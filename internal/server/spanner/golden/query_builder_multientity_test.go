@@ -18,6 +18,7 @@ import (
 	"context"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -142,3 +143,43 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		})
 	}
 }
+
+func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
+	v3Cfg := spanner.TableConfig{
+		TimeSeriesTable:  "TimeSeries_final_v3",
+		ObservationTable: "Observation_final_v3",
+	}
+
+	// Case 1: Valid alphanumeric keys
+	constraints := map[string]*pb.ConstraintList{
+		"variableMeasured":  {Values: []string{"var1"}},
+		"observationAbout":  {Values: []string{"wikidataId/Q119158"}},
+		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
+		"observationPeriod": {Values: []string{"P1Y"}},
+	}
+	_, _, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, v3Cfg)
+	if err != nil {
+		t.Errorf("expected no error for valid constraint keys, got %v", err)
+	}
+
+	// Case 2: Invalid key containing SQL injection payload
+	badConstraints1 := map[string]*pb.ConstraintList{
+		"variableMeasured": {Values: []string{"var1"}},
+		"unit') OR 1=1 --": {Values: []string{"Percent"}},
+	}
+	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, v3Cfg)
+	if err == nil {
+		t.Error("expected error for constraint key containing SQL injection payload, got nil")
+	}
+
+	// Case 3: Invalid key containing spaces
+	badConstraints2 := map[string]*pb.ConstraintList{
+		"variableMeasured": {Values: []string{"var1"}},
+		"invalid key":       {Values: []string{"value"}},
+	}
+	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, v3Cfg)
+	if err == nil {
+		t.Error("expected error for constraint key containing spaces, got nil")
+	}
+}
+

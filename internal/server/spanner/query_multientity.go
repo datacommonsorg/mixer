@@ -406,6 +406,10 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	ctx context.Context,
 	req *pb.SdmxDataQuery,
 ) (*pb.SdmxDataResult, error) {
+	if req == nil {
+		return nil, fmt.Errorf("GetSdmxObservations: request cannot be nil")
+	}
+
 	variables := []string{}
 	if list, ok := req.Constraints["variableMeasured"]; ok {
 		variables = list.Values
@@ -517,8 +521,11 @@ func parseEntityMappings(edgesMap map[string][]*Edge) map[string]map[string]stri
 	for varDcid, edges := range edgesMap {
 		mapping := map[string]string{}
 		for _, edge := range edges {
+			if edge == nil {
+				continue
+			}
 			if edge.Predicate == "entityMapping" {
-				parts := strings.Split(edge.Value, "=")
+				parts := strings.SplitN(edge.Value, "=", 2)
 				if len(parts) == 2 {
 					k := strings.TrimSpace(parts[0])
 					v := strings.TrimSpace(parts[1])

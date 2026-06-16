@@ -16,6 +16,7 @@ package spanner
 
 import (
 	"fmt"
+	"regexp"
 	"sort"
 	"strings"
 
@@ -278,12 +279,21 @@ var kgPredicateToSpannerColumn = map[string]string{
 	"observationPeriod": "observation_period",
 }
 
+var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
+
 // GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
 func GetMultiEntitySdmxObservationsQuery(
 	constraints map[string]*pb.ConstraintList,
 	entityMappings map[string]map[string]string,
 	cfg TableConfig,
 ) (*spanner.Statement, map[string]string, error) {
+	// Validate all constraint keys to prevent SQL Injection
+	for reqKey := range constraints {
+		if !constraintKeyRegex.MatchString(reqKey) {
+			return nil, nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: invalid constraint key %q", reqKey)
+		}
+	}
+
 	variables := []string{}
 	if list, ok := constraints["variableMeasured"]; ok {
 		variables = list.Values
