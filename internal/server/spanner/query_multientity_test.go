@@ -351,6 +351,7 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 	facet := resp.Facets["stored-facet-id"]
 	if facet == nil {
 		t.Fatal(`resp.Facets["stored-facet-id"] = nil`)
+		return
 	}
 	if got, want := facet.ProvenanceId, "dc/base/test_import"; got != want {
 		t.Fatalf("facet.ProvenanceId = %q, want %q", got, want)

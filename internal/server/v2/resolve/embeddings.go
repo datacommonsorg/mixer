@@ -25,6 +25,7 @@ import (
 	"net/url"
 	"path"
 	"strings"
+	"time"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -64,7 +65,7 @@ type EmbeddingsServiceClient struct {
 
 func NewEmbeddingsServiceClient(serverURL string, opts *EmbeddingsServiceClientOptions) *EmbeddingsServiceClient {
 	client := &EmbeddingsServiceClient{
-		httpClient:          &http.Client{},
+		httpClient:          &http.Client{Timeout: 10 * time.Second},
 		embeddingsServerURL: serverURL,
 	}
 	if opts != nil {
