@@ -29,20 +29,33 @@ import (
 
 func TestParseSDMXProbeRawQuery(t *testing.T) {
 	queryParams, constraints, err := parseSDMXProbeRawQuery(
-		"c%5BFREQ%5D=M&c[TIME_PERIOD]=ge%3A2015&c[TIME_PERIOD]=le%3A2020&" +
-			"c[PERIOD]=ge%3A2020-01%2Ble%3A2020-12&c[RAW_PERIOD]=ge%3A2020-01+le%3A2020-12&" +
-			"dimensionAtObservation=TIME_PERIOD&key=secret",
+		"c%5BFREQ%5D=A,M&c[CONF_STATUS]=F&c[OBS_VALUE]=ge%3A10.0&" +
+			"updatedAfter=2009-05-15T14%3A15%3A00%2B01%3A00&" +
+			"firstNObservations=1&lastNObservations=2&dimensionAtObservation=AllDimensions&" +
+			"attributes=OBS_STATUS,UNIT_MEASURE&measures=OBS_VALUE&includeHistory=true&" +
+			"offset=10&limit=20&sort=series_key%3Adesc+TIME_PERIOD%3Aasc&" +
+			"asOf=2009-06-15T14%3A15%3A00%2B01%3A00&reportingYearStartDay=--07-01&key=secret",
 	)
 	if err != nil {
 		t.Fatalf("parseSDMXProbeRawQuery() returned error: %v", err)
 	}
 
 	wantQueryParams := map[string][]string{
-		"c[FREQ]":                {"M"},
-		"c[TIME_PERIOD]":         {"ge:2015", "le:2020"},
-		"c[PERIOD]":              {"ge:2020-01+le:2020-12"},
-		"c[RAW_PERIOD]":          {"ge:2020-01+le:2020-12"},
-		"dimensionAtObservation": {"TIME_PERIOD"},
+		"c[FREQ]":                {"A,M"},
+		"c[CONF_STATUS]":         {"F"},
+		"c[OBS_VALUE]":           {"ge:10.0"},
+		"updatedAfter":           {"2009-05-15T14:15:00+01:00"},
+		"firstNObservations":     {"1"},
+		"lastNObservations":      {"2"},
+		"dimensionAtObservation": {"AllDimensions"},
+		"attributes":             {"OBS_STATUS,UNIT_MEASURE"},
+		"measures":               {"OBS_VALUE"},
+		"includeHistory":         {"true"},
+		"offset":                 {"10"},
+		"limit":                  {"20"},
+		"sort":                   {"series_key:desc+TIME_PERIOD:asc"},
+		"asOf":                   {"2009-06-15T14:15:00+01:00"},
+		"reportingYearStartDay":  {"--07-01"},
 		"key":                    {"[REDACTED]"},
 	}
 	if diff := cmp.Diff(wantQueryParams, queryParams); diff != "" {
@@ -50,10 +63,46 @@ func TestParseSDMXProbeRawQuery(t *testing.T) {
 	}
 
 	wantConstraints := map[string][]string{
+		"FREQ":        {"A,M"},
+		"CONF_STATUS": {"F"},
+		"OBS_VALUE":   {"ge:10.0"},
+	}
+	if diff := cmp.Diff(wantConstraints, constraints); diff != "" {
+		t.Errorf("parseSDMXProbeRawQuery() constraints mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestParseSDMXProbeRawQueryConstraintForms(t *testing.T) {
+	queryParams, constraints, err := parseSDMXProbeRawQuery(
+		"c%5BFREQ%5D=M&c[TIME_PERIOD]=ge%3A2020-01%2Ble%3A2020-12&" +
+			"c[RAW_PERIOD]=ge:2020-01+le:2020-12&c[TITLE]=co%3Aoil%20and%20gas&" +
+			"c[COUNTRY]=country%2FUSA&c[ATTR1]=A,B+M&c[PLUS_VALUE]=A%2BB",
+	)
+	if err != nil {
+		t.Fatalf("parseSDMXProbeRawQuery() returned error: %v", err)
+	}
+
+	wantQueryParams := map[string][]string{
+		"c[FREQ]":        {"M"},
+		"c[TIME_PERIOD]": {"ge:2020-01+le:2020-12"},
+		"c[RAW_PERIOD]":  {"ge:2020-01+le:2020-12"},
+		"c[TITLE]":       {"co:oil and gas"},
+		"c[COUNTRY]":     {"country/USA"},
+		"c[ATTR1]":       {"A,B+M"},
+		"c[PLUS_VALUE]":  {"A+B"},
+	}
+	if diff := cmp.Diff(wantQueryParams, queryParams); diff != "" {
+		t.Errorf("parseSDMXProbeRawQuery() query params mismatch (-want +got):\n%s", diff)
+	}
+
+	wantConstraints := map[string][]string{
 		"FREQ":        {"M"},
-		"TIME_PERIOD": {"ge:2015", "le:2020"},
-		"PERIOD":      {"ge:2020-01+le:2020-12"},
+		"TIME_PERIOD": {"ge:2020-01+le:2020-12"},
 		"RAW_PERIOD":  {"ge:2020-01+le:2020-12"},
+		"TITLE":       {"co:oil and gas"},
+		"COUNTRY":     {"country/USA"},
+		"ATTR1":       {"A,B+M"},
+		"PLUS_VALUE":  {"A+B"},
 	}
 	if diff := cmp.Diff(wantConstraints, constraints); diff != "" {
 		t.Errorf("parseSDMXProbeRawQuery() constraints mismatch (-want +got):\n%s", diff)
