@@ -64,6 +64,7 @@ const (
 	Mixer_V2BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V2BulkVariableGroupInfo"
 	Mixer_V2AgentSearchIndicators_FullMethodName      = "/datacommons.Mixer/V2AgentSearchIndicators"
 	Mixer_V2AgentGetObservations_FullMethodName       = "/datacommons.Mixer/V2AgentGetObservations"
+	Mixer_V2AgentGetVariableMetadata_FullMethodName   = "/datacommons.Mixer/V2AgentGetVariableMetadata"
 	Mixer_V2GetLocationsRankings_FullMethodName       = "/datacommons.Mixer/V2GetLocationsRankings"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
 	Mixer_GetPropertyLabels_FullMethodName            = "/datacommons.Mixer/GetPropertyLabels"
@@ -140,6 +141,7 @@ type MixerClient interface {
 	V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
 	V2AgentSearchIndicators(ctx context.Context, in *v2.SearchIndicatorsRequest, opts ...grpc.CallOption) (*v2.SearchIndicatorsResponse, error)
 	V2AgentGetObservations(ctx context.Context, in *v2.GetObservationsRequest, opts ...grpc.CallOption) (*v2.GetObservationsResponse, error)
+	V2AgentGetVariableMetadata(ctx context.Context, in *v2.GetVariableMetadataRequest, opts ...grpc.CallOption) (*v2.GetVariableMetadataResponse, error)
 	// Get rankings for given stat var DCIDs.
 	V2GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
@@ -426,6 +428,16 @@ func (c *mixerClient) V2AgentGetObservations(ctx context.Context, in *v2.GetObse
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(v2.GetObservationsResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2AgentGetObservations_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2AgentGetVariableMetadata(ctx context.Context, in *v2.GetVariableMetadataRequest, opts ...grpc.CallOption) (*v2.GetVariableMetadataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(v2.GetVariableMetadataResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2AgentGetVariableMetadata_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -939,6 +951,7 @@ type MixerServer interface {
 	V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
 	V2AgentSearchIndicators(context.Context, *v2.SearchIndicatorsRequest) (*v2.SearchIndicatorsResponse, error)
 	V2AgentGetObservations(context.Context, *v2.GetObservationsRequest) (*v2.GetObservationsResponse, error)
+	V2AgentGetVariableMetadata(context.Context, *v2.GetVariableMetadataRequest) (*v2.GetVariableMetadataResponse, error)
 	// Get rankings for given stat var DCIDs.
 	V2GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
@@ -1089,6 +1102,9 @@ func (UnimplementedMixerServer) V2AgentSearchIndicators(context.Context, *v2.Sea
 }
 func (UnimplementedMixerServer) V2AgentGetObservations(context.Context, *v2.GetObservationsRequest) (*v2.GetObservationsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V2AgentGetObservations not implemented")
+}
+func (UnimplementedMixerServer) V2AgentGetVariableMetadata(context.Context, *v2.GetVariableMetadataRequest) (*v2.GetVariableMetadataResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method V2AgentGetVariableMetadata not implemented")
 }
 func (UnimplementedMixerServer) V2GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V2GetLocationsRankings not implemented")
@@ -1610,6 +1626,24 @@ func _Mixer_V2AgentGetObservations_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2AgentGetObservations(ctx, req.(*v2.GetObservationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2AgentGetVariableMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.GetVariableMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2AgentGetVariableMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2AgentGetVariableMetadata_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2AgentGetVariableMetadata(ctx, req.(*v2.GetVariableMetadataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2564,6 +2598,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2AgentGetObservations",
 			Handler:    _Mixer_V2AgentGetObservations_Handler,
+		},
+		{
+			MethodName: "V2AgentGetVariableMetadata",
+			Handler:    _Mixer_V2AgentGetVariableMetadata_Handler,
 		},
 		{
 			MethodName: "V2GetLocationsRankings",

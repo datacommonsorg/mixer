@@ -212,6 +212,14 @@ service Mixer {
     };
   }
 
+  rpc V2AgentGetVariableMetadata(datacommons.v2.GetVariableMetadataRequest)
+      returns (datacommons.v2.GetVariableMetadataResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/get_variable_metadata"
+      additional_bindings : {post : "/v2/agent/get_variable_metadata" body : "*"}
+    };
+  }
+
   // Get rankings for given stat var DCIDs.
   rpc V2GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {

@@ -38,3 +38,12 @@ func (s *Server) V2AgentGetObservations(
 ) (*pbv2.GetObservationsResponse, error) {
 	return s.agentService.GetObservations(ctx, in)
 }
+
+// V2AgentGetVariableMetadata implements API for mixer.V2AgentGetVariableMetadata.
+// It delegates incoming RPC requests directly to the isolated agent.Service layer.
+func (s *Server) V2AgentGetVariableMetadata(
+	ctx context.Context,
+	in *pbv2.GetVariableMetadataRequest,
+) (*pbv2.GetVariableMetadataResponse, error) {
+	return s.agentService.GetVariableMetadata(ctx, in)
+}

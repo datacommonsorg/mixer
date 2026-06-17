@@ -16,6 +16,8 @@ syntax = "proto3";
 package datacommons.v2;
 
 import "google/protobuf/struct.proto";
+import "stat.proto";
+import "stat_var.proto";
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
@@ -110,4 +112,39 @@ message GetObservationsResponse {
   repeated PlaceObservation place_observations = 4;
   FacetMetadata source_metadata = 5;
   repeated AlternativeSource alternative_sources = 6;
+}
+
+message PropertyValue {
+  string value = 1;
+  string dcid = 2;
+  string name = 3;
+}
+
+message PropertyValues {
+  repeated PropertyValue values = 1;
+}
+
+// Request payload for the get_variable_metadata tool endpoint.
+message GetVariableMetadataRequest {
+  repeated string variable_dcids = 1;
+  repeated string entity_dcids = 2;
+}
+
+// Response payload for the get_variable_metadata tool endpoint.
+message GetVariableMetadataResponse {
+  message ProvenanceMetadata {
+    string dcid = 1;
+    map<string, PropertyValues> properties = 2;
+  }
+
+  message VariableMetadata {
+    string dcid = 1;
+    map<string, PropertyValues> properties = 2;
+    datacommons.StatVarSummary stat_var_summary = 3;
+    map<string, ProvenanceMetadata> provenances = 4;
+    map<string, datacommons.Facet> per_entity_facets = 5;
+  }
+
+  string status = 1;
+  map<string, VariableMetadata> variables = 2;
 }
