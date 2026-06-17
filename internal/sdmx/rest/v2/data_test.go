@@ -15,10 +15,13 @@
 package restv2
 
 import (
+	"context"
+	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -118,6 +121,107 @@ func TestParseDataRequest_Path(t *testing.T) {
 	}
 	if diff := cmp.Diff(want, got.Path); diff != "" {
 		t.Errorf("ParseDataRequest() path mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestParseDataRequest_Format(t *testing.T) {
+	tests := []struct {
+		name        string
+		originalURI string
+		want        string
+	}{
+		{
+			name:        "missing format",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+		},
+		{
+			name:        "csv",
+			originalURI: dataURI("format=csv&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			want:        "csv",
+		},
+		{
+			name:        "json stat",
+			originalURI: dataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			want:        "json-stat",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := ParseDataRequest(dataTail(), tt.originalURI)
+			if err != nil {
+				t.Fatalf("ParseDataRequest() error = %v", err)
+			}
+			if got.Format != tt.want {
+				t.Errorf("ParseDataRequest() format = %q, want %q", got.Format, tt.want)
+			}
+		})
+	}
+}
+
+func TestDataResponseFormatFromDataRequest(t *testing.T) {
+	tests := []struct {
+		name       string
+		request    *DataRequest
+		accept     string
+		want       DataResponseFormat
+		wantCode   codes.Code
+		wantErrSub string
+	}{
+		{
+			name:    "format json stat",
+			request: &DataRequest{Format: "json-stat"},
+			want:    DataResponseFormatJSONStat,
+		},
+		{
+			name:    "format csv",
+			request: &DataRequest{Format: "csv"},
+			want:    DataResponseFormatCSV,
+		},
+		{
+			name:    "format overrides accept",
+			request: &DataRequest{Format: "csv"},
+			accept:  "application/vnd.sdmx.data+json;version=2.0.0",
+			want:    DataResponseFormatCSV,
+		},
+		{
+			name:    "missing format falls back to accept",
+			request: &DataRequest{},
+			accept:  "application/vnd.sdmx.data+csv;version=2.0.0",
+			want:    DataResponseFormatCSV,
+		},
+		{
+			name:       "unsupported format",
+			request:    &DataRequest{Format: "xml"},
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "unsupported SDMX data response format",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tt.accept != "" {
+				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+			}
+
+			got, err := DataResponseFormatFromDataRequest(ctx, tt.request)
+			if tt.wantCode != codes.OK {
+				if status.Code(err) != tt.wantCode {
+					t.Fatalf("DataResponseFormatFromDataRequest() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+				}
+				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
+					t.Fatalf("DataResponseFormatFromDataRequest() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("DataResponseFormatFromDataRequest() error = %v", err)
+			}
+			if got != tt.want {
+				t.Errorf("DataResponseFormatFromDataRequest() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
 
@@ -226,6 +330,16 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			name:        "observation value unsupported",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[OBS_VALUE]=10"),
 			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "duplicate format",
+			originalURI: dataURI("format=csv&format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "unsupported format",
+			originalURI: dataURI("format=xml&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			wantCode:    codes.InvalidArgument,
 		},
 	}
 

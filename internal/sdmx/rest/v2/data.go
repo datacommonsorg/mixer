@@ -15,6 +15,7 @@
 package restv2
 
 import (
+	"context"
 	"net/url"
 	"strings"
 
@@ -25,6 +26,7 @@ import (
 type DataRequest struct {
 	Path        ResourcePath
 	Constraints map[string][]string
+	Format      string
 }
 
 func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
@@ -43,29 +45,62 @@ func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 	}
 
 	constraints := map[string][]string{}
+	format := ""
 	for _, param := range params {
 		componentID, ok, err := componentFilterName(param.Name)
 		if err != nil {
 			return nil, err
 		}
-		if !ok {
+		if ok {
+			if _, exists := constraints[componentID]; exists {
+				return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", componentID)
+			}
+			values, err := parseComponentValues(param.Value)
+			if err != nil {
+				return nil, err
+			}
+			constraints[componentID] = values
 			continue
 		}
-		if _, exists := constraints[componentID]; exists {
-			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", componentID)
-		}
-		values, err := parseComponentValues(param.Value)
+		format, err = parseDataQueryParam(param, format)
 		if err != nil {
 			return nil, err
 		}
-		constraints[componentID] = values
 	}
 
 	if err := validateDataRequest(path, constraints); err != nil {
 		return nil, err
 	}
 
-	return &DataRequest{Path: path, Constraints: constraints}, nil
+	return &DataRequest{Path: path, Constraints: constraints, Format: format}, nil
+}
+
+func DataResponseFormatFromDataRequest(ctx context.Context, request *DataRequest) (DataResponseFormat, error) {
+	switch request.Format {
+	case "":
+		return DataResponseFormatFromMetadata(ctx)
+	case "json-stat":
+		return DataResponseFormatJSONStat, nil
+	case "csv":
+		return DataResponseFormatCSV, nil
+	default:
+		return DataResponseFormatJSONStat, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
+	}
+}
+
+func parseDataQueryParam(param queryParam, format string) (string, error) {
+	switch param.Name {
+	case "format":
+		if format != "" {
+			return "", status.Error(codes.InvalidArgument, "duplicate SDMX format query parameter")
+		}
+		if param.Value != "json-stat" && param.Value != "csv" {
+			return "", status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", param.Value)
+		}
+		return param.Value, nil
+	default:
+		return format, nil
+	}
 }
 
 func componentFilterName(name string) (string, bool, error) {

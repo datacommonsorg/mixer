@@ -105,11 +105,6 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	responseFormat, err := restv2.DataResponseFormatFromMetadata(ctx)
-	if err != nil {
-		return err
-	}
-
 	originalURI, err := restv2.OriginalURIFromMetadata(ctx)
 	if err != nil {
 		if logSDMX {
@@ -128,6 +123,11 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 	}
 	if logSDMX {
 		slog.Info("SDMX data request parsed", "original_uri", originalURI, "tail", in.GetTail(), "path", request.Path, "constraints", request.Constraints)
+	}
+
+	responseFormat, err := restv2.DataResponseFormatFromDataRequest(ctx, request)
+	if err != nil {
+		return err
 	}
 
 	query, err := sdmxDataQueryFromREST(request)

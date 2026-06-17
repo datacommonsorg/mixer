@@ -117,7 +117,7 @@ func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error
 			continue
 		}
 		switch strings.ToLower(mediaType) {
-		case "application/vnd.sdmx.data+csv":
+		case "application/vnd.sdmx.data+csv", "text/csv":
 			if err := validateCSVAcceptParams(params); err != nil {
 				return DataResponseFormatJSONStat, true, err
 			}

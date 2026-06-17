@@ -86,6 +86,11 @@ func TestDataResponseFormatFromMetadata(t *testing.T) {
 			want:   DataResponseFormatCSV,
 		},
 		{
+			name:   "text CSV",
+			accept: "text/csv",
+			want:   DataResponseFormatCSV,
+		},
+		{
 			name:       "SDMX JSON not implemented",
 			accept:     "application/vnd.sdmx.data+json;version=2.0.0",
 			wantCode:   codes.Unimplemented,

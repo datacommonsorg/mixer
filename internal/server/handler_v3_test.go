@@ -307,6 +307,63 @@ func TestV3SdmxData_CSVSuccess(t *testing.T) {
 	}
 }
 
+func TestV3SdmxData_CSVFormatQuery(t *testing.T) {
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContext(sdmxDataURI("format=csv&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	if stream.sent[0].GetContentType() != sdmx.CSVContentType {
+		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmx.CSVContentType)
+	}
+	if got := string(stream.sent[0].GetData()); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" {
+		t.Errorf("HttpBody data = %q, want header-only CSV", got)
+	}
+}
+
+func TestV3SdmxData_JSONStatFormatQuery(t *testing.T) {
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContext(sdmxDataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	if stream.sent[0].GetContentType() != sdmx.JSONStatContentType {
+		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmx.JSONStatContentType)
+	}
+	if got := string(stream.sent[0].GetData()); got != "{}" {
+		t.Errorf("HttpBody data = %q, want empty JSON object", got)
+	}
+}
+
+func TestV3SdmxData_FormatQueryOverridesAccept(t *testing.T) {
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContextWithAccept(
+			sdmxDataURI("format=csv&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			"application/vnd.sdmx.data+json;version=2.0.0",
+		),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	if stream.sent[0].GetContentType() != sdmx.CSVContentType {
+		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmx.CSVContentType)
+	}
+}
+
 func TestV3SdmxData_EmptyResult(t *testing.T) {
 	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
 	server := newSdmxTestServer(ds)
