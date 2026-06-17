@@ -16,9 +16,12 @@ package spanner
 
 import (
 	"fmt"
+	"regexp"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 )
@@ -268,3 +271,86 @@ func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces 
 		Params: subquery.Params,
 	}
 }
+
+// kgPredicateToSpannerColumn maps Knowledge Graph predicates to physical Spanner column names.
+var kgPredicateToSpannerColumn = map[string]string{
+	"observationAbout":  "entity1",
+	"provenance":        "provenance",
+	"observationPeriod": "observation_period",
+}
+
+var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
+
+// GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
+func GetMultiEntitySdmxObservationsQuery(
+	constraints map[string]*pb.ConstraintList,
+	entityMappings map[string]map[string]string,
+	cfg TableConfig,
+) (*spanner.Statement, error) {
+	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
+	for reqKey, list := range constraints {
+		if !constraintKeyRegex.MatchString(reqKey) {
+			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: invalid constraint key %q", reqKey)
+		}
+		if list == nil {
+			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: nil constraint list for key %q", reqKey)
+		}
+	}
+
+	variables := []string{}
+	if list, ok := constraints["variableMeasured"]; ok {
+		variables = list.Values
+	}
+	if len(variables) == 0 {
+		return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: variableMeasured must be specified")
+	}
+
+	sqlSelect := fmt.Sprintf(statementsMultiEntity.getSdmxObs, cfg.ObservationTable, cfg.TimeSeriesTable)
+
+	params := map[string]interface{}{}
+	varBranches := []string{}
+
+	// Collect and sort constraint keys to ensure deterministic SQL query generation
+	var constraintKeys []string
+	for reqKey := range constraints {
+		if reqKey == "variableMeasured" {
+			continue
+		}
+		constraintKeys = append(constraintKeys, reqKey)
+	}
+	sort.Strings(constraintKeys)
+
+	// Pre-bind constraint values to parameters
+	for _, reqKey := range constraintKeys {
+		params[reqKey] = constraints[reqKey].Values
+	}
+
+	for _, varDcid := range variables {
+		varClauses := []string{fmt.Sprintf("t.variable_measured = %q", varDcid)}
+		mapping := entityMappings[varDcid]
+
+		for _, reqKey := range constraintKeys {
+			// Check if this constraint key (representing a KG predicate) maps to a dynamic entity slot
+			if slot, ok := mapping[reqKey]; ok {
+				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", slot, reqKey))
+			} else {
+				// Map to static Spanner column, or fall back to searching inside facet JSON
+				col := kgPredicateToSpannerColumn[reqKey]
+				if col == "" {
+					varClauses = append(varClauses, fmt.Sprintf("JSON_VALUE(t.facet, '$.%s') IN UNNEST(@%s)", reqKey, reqKey))
+				} else {
+					varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", col, reqKey))
+				}
+			}
+		}
+		varBranches = append(varBranches, "("+strings.Join(varClauses, " AND ")+")")
+	}
+
+	sql := sqlSelect + strings.Join(varBranches, " OR ")
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, nil
+}
+

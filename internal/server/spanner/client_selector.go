@@ -21,15 +21,24 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
 )
 
 // schemaSelectorClient dispatches calls to either default or multi-entity client.
+type multiEntityClientInterface interface {
+	GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error)
+	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
+	CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error)
+	GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error)
+	GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error)
+	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
+	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error)
+	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+}
+
 type schemaSelectorClient struct {
 	SpannerClient            // Embeds the default client
-	multiEntity              *multiEntityClient
+	multiEntity              multiEntityClientInterface
 	useMultiEntitySchemaFlag bool
 }
 
@@ -153,18 +162,18 @@ func (s *schemaSelectorClient) GetFilteredTopic(ctx context.Context, nodes []str
 }
 
 // GetSdmxObservations overrides the embedded client's GetSdmxObservations.
-// SDMX is not supported in multi-entity schema.
+// SDMX is supported in the multi-entity schema.
 func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	ctx, useMultiEntity := s.selectSchema(ctx)
-	if !useMultiEntity {
-		return s.SpannerClient.GetSdmxObservations(ctx, req)
+	if useMultiEntity {
+		return s.multiEntity.GetSdmxObservations(ctx, req)
 	}
-	return nil, status.Error(codes.Unimplemented, "SDMX is not supported on multi-entity schema")
+	return s.SpannerClient.GetSdmxObservations(ctx, req)
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or multi-entity client.
-func NewSchemaSelectorClient(baseClient SpannerClient, useMultiEntitySchema bool) (SpannerClient, error) {
-	multiEntityClient, err := NewMultiEntityClient(baseClient)
+func NewSchemaSelectorClient(baseClient SpannerClient, useMultiEntitySchema bool, cfg TableConfig) (SpannerClient, error) {
+	multiEntityClient, err := newMultiEntityClient(baseClient, cfg)
 	if err != nil {
 		return nil, err
 	}

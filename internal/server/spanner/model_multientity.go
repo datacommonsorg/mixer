@@ -24,6 +24,7 @@ type rawObservation struct {
 	ProvenanceID     spanner.NullString    `spanner:"provenance"`
 	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
 	Facets           spanner.NullJSON      `spanner:"facets"`
+	Entities         spanner.NullJSON      `spanner:"entities"`
 }
 
 // spannerObservation maps the STRUCT inside dates_and_values ARRAY.

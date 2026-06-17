@@ -16,16 +16,17 @@ package spanner
 
 import "fmt"
 
-// multiEntityClient delegates calls using the multi-entity schema (TimeSeries_final_v2).
+// multiEntityClient delegates calls using the multi-entity schema.
 type multiEntityClient struct {
-	sc *spannerDatabaseClient
+	sc  *spannerDatabaseClient
+	cfg TableConfig
 }
 
-// NewMultiEntityClient initializes the client from a base SpannerClient.
-func NewMultiEntityClient(client SpannerClient) (*multiEntityClient, error) {
+// newMultiEntityClient initializes the client from a base SpannerClient with a table configuration.
+func newMultiEntityClient(client SpannerClient, cfg TableConfig) (*multiEntityClient, error) {
 	sc, ok := client.(*spannerDatabaseClient)
 	if !ok {
-		return nil, fmt.Errorf("NewMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
+		return nil, fmt.Errorf("newMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
 	}
-	return &multiEntityClient{sc: sc}, nil
+	return &multiEntityClient{sc: sc, cfg: cfg}, nil
 }

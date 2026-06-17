@@ -14,6 +14,10 @@
 
 package golden
 
+import (
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+)
+
 var multiEntityObservationsTestCases = []struct {
 	name      string
 	variables []string
@@ -277,5 +281,80 @@ var multiEntityFilteredTopicTestCases = []struct {
 		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
 		numEntitiesExistence: 2,
 		golden:               "get_multientity_filtered_topic_num_entities_existence",
+	},
+}
+
+var multiEntitySdmxObservationsTestCases = []struct {
+	name           string
+	constraints    map[string]*pb.ConstraintList
+	entityMappings map[string]map[string]string
+	golden         string
+}{
+	{
+		name: "variable measured only",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+		},
+		entityMappings: map[string]map[string]string{},
+		golden:         "get_sdmx_obs_var_only",
+	},
+	{
+		name: "variable measured and origin slot",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+			"origin":           {Values: []string{"country/AGO"}},
+		},
+		entityMappings: map[string]map[string]string{
+			"var1": {"origin": "entity1"},
+		},
+		golden: "get_sdmx_obs_var_and_origin",
+	},
+	{
+		name: "variable measured and multiple slots (origin + destination)",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+			"origin":           {Values: []string{"country/AGO"}},
+			"destination":      {Values: []string{"country/PRT", "country/SGP"}},
+		},
+		entityMappings: map[string]map[string]string{
+			"var1": {"origin": "entity1", "destination": "entity2"},
+		},
+		golden: "get_sdmx_obs_slots_slicing",
+	},
+	{
+		name: "multiple variables with different slot mappings",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1", "var2"}},
+			"origin":           {Values: []string{"country/AGO"}},
+			"destination":      {Values: []string{"country/PRT"}},
+		},
+		entityMappings: map[string]map[string]string{
+			"var1": {"origin": "entity1", "destination": "entity2"},
+			"var2": {"origin": "entity2", "destination": "entity1"}, // reversed mapping for var2
+		},
+		golden: "get_sdmx_obs_multi_var_slots",
+	},
+	{
+		name: "variable measured, origin, destination and facet (unit) / standard column (provenance) filters",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+			"origin":           {Values: []string{"country/AGO"}},
+			"destination":      {Values: []string{"country/PRT"}},
+			"unit":             {Values: []string{"Percent"}},
+			"provenance":       {Values: []string{"dc/base/WTO_TradeConnectivity"}},
+		},
+		entityMappings: map[string]map[string]string{
+			"var1": {"origin": "entity1", "destination": "entity2"},
+		},
+		golden: "get_sdmx_obs_with_facet_and_prov",
+	},
+	{
+		name: "single-entity variable with observationAbout",
+		constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+			"observationAbout": {Values: []string{"wikidataId/Q119158"}},
+		},
+		entityMappings: map[string]map[string]string{}, // empty mapping representing single-entity
+		golden:         "get_sdmx_obs_single_entity",
 	},
 }
