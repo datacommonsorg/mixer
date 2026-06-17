@@ -29,7 +29,6 @@ type rawObservation struct {
 
 // spannerObservation maps the STRUCT inside dates_and_values ARRAY.
 type spannerObservation struct {
-	Date       string           `spanner:"date"`
-	Value      string           `spanner:"str_value"`
-	Attributes spanner.NullJSON `spanner:"attributes"`
+	Date  string `spanner:"date"`
+	Value string `spanner:"str_value"`
 }
