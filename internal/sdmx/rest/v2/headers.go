@@ -37,6 +37,12 @@ const (
 	DataResponseFormatCSV
 )
 
+type AvailabilityResponseFormat int
+
+const (
+	AvailabilityResponseFormatStructureJSON AvailabilityResponseFormat = iota
+)
+
 // OriginalURIFromMetadata returns the trusted request target before transcoding.
 func OriginalURIFromMetadata(ctx context.Context) (string, error) {
 	md, ok := metadata.FromIncomingContext(ctx)
@@ -79,6 +85,31 @@ func ValidateDataAccept(ctx context.Context) error {
 	return err
 }
 
+// AvailabilityResponseFormatFromMetadata selects the SDMX availability response format.
+func AvailabilityResponseFormatFromMetadata(ctx context.Context) (AvailabilityResponseFormat, error) {
+	md, ok := metadata.FromIncomingContext(ctx)
+	if !ok {
+		return AvailabilityResponseFormatStructureJSON, nil
+	}
+	foundAccept := false
+	for _, key := range []string{"accept", "grpcgateway-accept"} {
+		for _, value := range md.Get(key) {
+			foundAccept = true
+			format, found, err := availabilityResponseFormatFromAccept(value)
+			if err != nil {
+				return AvailabilityResponseFormatStructureJSON, err
+			}
+			if found {
+				return format, nil
+			}
+		}
+	}
+	if !foundAccept {
+		return AvailabilityResponseFormatStructureJSON, nil
+	}
+	return AvailabilityResponseFormatStructureJSON, nil
+}
+
 func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error) {
 	for _, item := range strings.Split(value, ",") {
 		mediaType, params, err := mime.ParseMediaType(strings.TrimSpace(item))
@@ -98,6 +129,45 @@ func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error
 	return DataResponseFormatJSONStat, false, nil
 }
 
+func availabilityResponseFormatFromAccept(value string) (AvailabilityResponseFormat, bool, error) {
+	var firstErr error
+	for _, item := range strings.Split(value, ",") {
+		mediaType, params, err := mime.ParseMediaType(strings.TrimSpace(item))
+		if err != nil {
+			continue
+		}
+		mediaType = strings.ToLower(mediaType)
+		switch mediaType {
+		case "*/*":
+			return AvailabilityResponseFormatStructureJSON, true, nil
+		case "application/vnd.sdmx.structure+json":
+			if err := validateStructureJSONAcceptParams(params); err != nil {
+				if firstErr == nil {
+					firstErr = err
+				}
+				continue
+			}
+			return AvailabilityResponseFormatStructureJSON, true, nil
+		case "application/vnd.sdmx.structure+xml":
+			if firstErr == nil {
+				firstErr = status.Error(codes.Unimplemented, "SDMX structure XML responses are not implemented yet")
+			}
+		case "application/vnd.sdmx.data+csv", "application/vnd.sdmx.data+json":
+			if firstErr == nil {
+				firstErr = status.Errorf(codes.Unimplemented, "SDMX availability response media type %q is not implemented yet", mediaType)
+			}
+		default:
+			if firstErr == nil {
+				firstErr = status.Errorf(codes.Unimplemented, "SDMX availability response media type %q is not implemented yet", mediaType)
+			}
+		}
+	}
+	if firstErr != nil {
+		return AvailabilityResponseFormatStructureJSON, true, firstErr
+	}
+	return AvailabilityResponseFormatStructureJSON, false, nil
+}
+
 func validateCSVAcceptParams(params map[string]string) error {
 	for key, value := range params {
 		switch strings.ToLower(key) {
@@ -110,6 +180,24 @@ func validateCSVAcceptParams(params map[string]string) error {
 		default:
 			return status.Errorf(codes.Unimplemented, "SDMX CSV response option %q is not implemented yet", key)
 		}
+	}
+	return nil
+}
+
+func validateStructureJSONAcceptParams(params map[string]string) error {
+	version := ""
+	for key, value := range params {
+		switch strings.ToLower(key) {
+		case "version":
+			version = value
+		case "q":
+			continue
+		default:
+			return status.Errorf(codes.Unimplemented, "SDMX structure JSON response option %q is not implemented yet", key)
+		}
+	}
+	if version != "2.0.0" {
+		return status.Errorf(codes.Unimplemented, "SDMX structure JSON version %q is not implemented yet", version)
 	}
 	return nil
 }

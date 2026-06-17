@@ -70,3 +70,58 @@ func TestInternalConstraintComponentID(t *testing.T) {
 		})
 	}
 }
+
+func TestInternalAvailabilityComponentID(t *testing.T) {
+	tests := []struct {
+		name      string
+		component string
+		want      string
+		wantCode  codes.Code
+	}{
+		{
+			name:      "time period maps to internal observation date",
+			component: "TIME_PERIOD",
+			want:      "observationDate",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "observation about passes through",
+			component: "observationAbout",
+			want:      "observationAbout",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "provenance passes through",
+			component: "provenance",
+			want:      "provenance",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "observation value is unsupported",
+			component: "OBS_VALUE",
+			wantCode:  codes.Unimplemented,
+		},
+		{
+			name:      "attribute is unsupported",
+			component: "scalingFactor",
+			wantCode:  codes.Unimplemented,
+		},
+		{
+			name:      "unknown component is unsupported",
+			component: "GEO",
+			wantCode:  codes.Unimplemented,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := InternalAvailabilityComponentID(tt.component)
+			if status.Code(err) != tt.wantCode {
+				t.Fatalf("InternalAvailabilityComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+			}
+			if got != tt.want {
+				t.Errorf("InternalAvailabilityComponentID() = %q, want %q", got, tt.want)
+			}
+		})
+	}
+}

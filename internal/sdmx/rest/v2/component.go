@@ -54,6 +54,31 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 	return nil
 }
 
+func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][]string) error {
+	if path.Context == "" {
+		return status.Error(codes.InvalidArgument, "SDMX availability path is required")
+	}
+	if path.Context != serversdmx.DataContext || path.AgencyID != serversdmx.DataAgencyID || path.ResourceID != serversdmx.DataResourceID {
+		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
+	}
+	if path.Version != serversdmx.DataVersion {
+		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
+	}
+	if !isAvailabilityDimensionComponent(path.ComponentID) {
+		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
+	}
+
+	for componentID := range constraints {
+		if !isAvailabilityDimensionComponent(componentID) {
+			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
+		}
+	}
+	if _, ok := constraints[ComponentVariableMeasured]; !ok {
+		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
+	}
+	return nil
+}
+
 func isAllowedDataComponent(componentID string) bool {
 	switch componentID {
 	case ComponentVariableMeasured, ComponentObservationAbout, ComponentTimePeriod:
@@ -61,6 +86,20 @@ func isAllowedDataComponent(componentID string) bool {
 	default:
 		return false
 	}
+}
+
+func isAvailabilityDimensionComponent(componentID string) bool {
+	kind, ok := dataComponentKind(componentID)
+	return ok && kind == serversdmx.ComponentKindDimension
+}
+
+func dataComponentKind(componentID string) (serversdmx.ComponentKind, bool) {
+	for _, component := range serversdmx.DataCSVComponents {
+		if component.ID == componentID {
+			return component.Kind, true
+		}
+	}
+	return "", false
 }
 
 func InternalConstraintComponentID(componentID string) (string, error) {
@@ -74,4 +113,14 @@ func InternalConstraintComponentID(componentID string) (string, error) {
 	default:
 		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 	}
+}
+
+func InternalAvailabilityComponentID(componentID string) (string, error) {
+	if !isAvailabilityDimensionComponent(componentID) {
+		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", componentID)
+	}
+	if componentID == ComponentTimePeriod {
+		return internalObservationDate, nil
+	}
+	return componentID, nil
 }

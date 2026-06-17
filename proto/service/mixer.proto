@@ -77,6 +77,13 @@ service Mixer {
     };
   }
 
+  rpc V3SdmxAvailability(datacommons.v3.SdmxRestRequest) returns (google.api.HttpBody) {
+    option (google.api.http) = {
+      get : "/sdmx/v3/availability/{tail=**}"
+      additional_bindings : {get : "/sdmx/v3/availability"}
+    };
+  }
+
   rpc V3NodeSearch(datacommons.v2.NodeSearchRequest) returns (datacommons.v2.NodeSearchResponse) {
     option (google.api.http) = {
       get : "/v3/node_search"

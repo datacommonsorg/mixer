@@ -131,3 +131,87 @@ func TestDataResponseFormatFromMetadata(t *testing.T) {
 		})
 	}
 }
+
+func TestAvailabilityResponseFormatFromMetadata(t *testing.T) {
+	tests := []struct {
+		name       string
+		accept     string
+		wantCode   codes.Code
+		wantErrSub string
+	}{
+		{
+			name: "missing metadata defaults to structure JSON",
+		},
+		{
+			name:   "wildcard defaults to structure JSON",
+			accept: "*/*",
+		},
+		{
+			name:   "structure JSON 2.0",
+			accept: "application/vnd.sdmx.structure+json;version=2.0.0",
+		},
+		{
+			name:   "supported type after unsupported type",
+			accept: "application/vnd.sdmx.structure+xml;version=3.0.0, application/vnd.sdmx.structure+json;version=2.0.0",
+		},
+		{
+			name:       "structure JSON 2.1 not implemented",
+			accept:     "application/vnd.sdmx.structure+json;version=2.1.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX structure JSON version",
+		},
+		{
+			name:       "structure XML not implemented",
+			accept:     "application/vnd.sdmx.structure+xml;version=3.0.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX structure XML responses are not implemented yet",
+		},
+		{
+			name:       "CSV not implemented",
+			accept:     "application/vnd.sdmx.data+csv;version=2.0.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX availability response media type",
+		},
+		{
+			name:       "data JSON not implemented",
+			accept:     "application/vnd.sdmx.data+json;version=2.0.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX availability response media type",
+		},
+		{
+			name:       "application JSON not implemented",
+			accept:     "application/json",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX availability response media type",
+		},
+		{
+			name:       "unsupported option",
+			accept:     "application/vnd.sdmx.structure+json;version=2.0.0;labels=name",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX structure JSON response option",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tt.accept != "" {
+				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+			}
+
+			_, err := AvailabilityResponseFormatFromMetadata(ctx)
+			if tt.wantCode != codes.OK {
+				if status.Code(err) != tt.wantCode {
+					t.Fatalf("AvailabilityResponseFormatFromMetadata() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+				}
+				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
+					t.Fatalf("AvailabilityResponseFormatFromMetadata() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("AvailabilityResponseFormatFromMetadata() error = %v", err)
+			}
+		})
+	}
+}

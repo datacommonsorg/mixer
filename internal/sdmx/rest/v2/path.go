@@ -29,6 +29,11 @@ type ResourcePath struct {
 	Key        string
 }
 
+type AvailabilityPath struct {
+	ResourcePath
+	ComponentID string
+}
+
 func parseResourcePath(tail string) (ResourcePath, error) {
 	tail = strings.Trim(tail, "/")
 	if tail == "" {
@@ -53,5 +58,35 @@ func parseResourcePath(tail string) (ResourcePath, error) {
 		ResourceID: parts[2],
 		Version:    parts[3],
 		Key:        parts[4],
+	}, nil
+}
+
+func parseAvailabilityPath(tail string) (AvailabilityPath, error) {
+	tail = strings.Trim(tail, "/")
+	if tail == "" {
+		return AvailabilityPath{}, nil
+	}
+
+	parts := strings.Split(tail, "/")
+	if len(parts) != 6 {
+		return AvailabilityPath{}, status.Error(codes.InvalidArgument, "invalid SDMX availability path")
+	}
+	for _, part := range parts {
+		if part == "" {
+			return AvailabilityPath{}, status.Error(codes.InvalidArgument, "invalid SDMX availability path")
+		}
+	}
+	if parts[4] != "*" {
+		return AvailabilityPath{}, status.Error(codes.Unimplemented, "SDMX availability keys other than * are not implemented yet")
+	}
+	return AvailabilityPath{
+		ResourcePath: ResourcePath{
+			Context:    parts[0],
+			AgencyID:   parts[1],
+			ResourceID: parts[2],
+			Version:    parts[3],
+			Key:        parts[4],
+		},
+		ComponentID: parts[5],
 	}, nil
 }

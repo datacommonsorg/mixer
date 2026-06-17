@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sdmx
+package csvv2
 
 import (
 	"encoding/csv"
@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -93,7 +94,7 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, "2020", "foo,bar", ""},
+		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, "2020", "foo,bar", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)

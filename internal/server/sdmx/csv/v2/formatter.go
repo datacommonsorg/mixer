@@ -12,13 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sdmx
+package csvv2
 
 import (
 	"bytes"
 	"encoding/csv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx"
 )
 
 const (
@@ -67,7 +68,7 @@ func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDa
 		f.StructureID,
 		csvActionInformation,
 	}
-	for _, component := range DataCSVComponents {
+	for _, component := range sdmx.DataCSVComponents {
 		row = append(row, dataCSVComponentValue(component, observation, dateValue))
 	}
 	return row
@@ -75,46 +76,46 @@ func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDa
 
 func dataCSVHeader() []string {
 	header := []string{"STRUCTURE", "STRUCTURE_ID", "ACTION"}
-	for _, component := range DataCSVComponents {
+	for _, component := range sdmx.DataCSVComponents {
 		header = append(header, component.ID)
 	}
 	return header
 }
 
-func dataCSVComponentValue(component DataComponent, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
+func dataCSVComponentValue(component sdmx.DataComponent, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
 	value := dataCSVRawComponentValue(component.ID, observation, dateValue)
-	if component.Kind == ComponentKindDimension && value == "" {
-		return FallbackNotAvailable
+	if component.Kind == sdmx.ComponentKindDimension && value == "" {
+		return sdmx.FallbackNotAvailable
 	}
 	return value
 }
 
 func dataCSVRawComponentValue(componentID string, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
 	switch componentID {
-	case DimVariableMeasured:
+	case sdmx.DimVariableMeasured:
 		return observation.GetVariableMeasured()
-	case ComponentObservationAbout:
-		return observation.GetDimensions()[ComponentObservationAbout]
-	case ComponentUnit:
-		return observation.GetAttributes()[ComponentUnit]
-	case ComponentMeasurementMethod:
-		return observation.GetAttributes()[ComponentMeasurementMethod]
-	case ComponentObservationPeriod:
-		return observation.GetAttributes()[ComponentObservationPeriod]
-	case ComponentProvenance:
+	case sdmx.ComponentObservationAbout:
+		return observation.GetDimensions()[sdmx.ComponentObservationAbout]
+	case sdmx.ComponentUnit:
+		return observation.GetAttributes()[sdmx.ComponentUnit]
+	case sdmx.ComponentMeasurementMethod:
+		return observation.GetAttributes()[sdmx.ComponentMeasurementMethod]
+	case sdmx.ComponentObservationPeriod:
+		return observation.GetAttributes()[sdmx.ComponentObservationPeriod]
+	case sdmx.ComponentProvenance:
 		return observation.GetProvenance()
-	case DimObservationDate:
+	case sdmx.DimObservationDate:
 		if dateValue == nil {
 			return ""
 		}
 		return dateValue.GetDate()
-	case DimObservationValue:
+	case sdmx.DimObservationValue:
 		if dateValue == nil {
 			return ""
 		}
 		return dateValue.GetValue()
-	case ComponentScalingFactor:
-		return observation.GetAttributes()[ComponentScalingFactor]
+	case sdmx.ComponentScalingFactor:
+		return observation.GetAttributes()[sdmx.ComponentScalingFactor]
 	default:
 		return ""
 	}

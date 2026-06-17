@@ -22,6 +22,8 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -211,6 +213,23 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery
 		return nil, err
 	}
 	return response.(*pb.SdmxDataResult), nil
+}
+
+// SdmxAvailability handles SDMX Availability requests.
+func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return nil, status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet")
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	if response == nil {
+		return &pb.SdmxAvailabilityResult{}, nil
+	}
+	return response.(*pb.SdmxAvailabilityResult), nil
 }
 
 func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
