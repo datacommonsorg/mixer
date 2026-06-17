@@ -1159,20 +1159,132 @@ func (x *GetVariableMetadataResponse_ProvenanceMetadata) GetProperties() map[str
 	return nil
 }
 
+type GetVariableMetadataResponse_FacetSeriesSummary struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Facet         *proto.Facet           `protobuf:"bytes,1,opt,name=facet,proto3" json:"facet,omitempty"`
+	ObsCount      int32                  `protobuf:"varint,2,opt,name=obs_count,json=obsCount,proto3" json:"obs_count,omitempty"`
+	EarliestDate  string                 `protobuf:"bytes,3,opt,name=earliest_date,json=earliestDate,proto3" json:"earliest_date,omitempty"`
+	LatestDate    string                 `protobuf:"bytes,4,opt,name=latest_date,json=latestDate,proto3" json:"latest_date,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) Reset() {
+	*x = GetVariableMetadataResponse_FacetSeriesSummary{}
+	mi := &file_v2_agent_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVariableMetadataResponse_FacetSeriesSummary) ProtoMessage() {}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVariableMetadataResponse_FacetSeriesSummary.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_FacetSeriesSummary) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{7, 1}
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetFacet() *proto.Facet {
+	if x != nil {
+		return x.Facet
+	}
+	return nil
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetObsCount() int32 {
+	if x != nil {
+		return x.ObsCount
+	}
+	return 0
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetEarliestDate() string {
+	if x != nil {
+		return x.EarliestDate
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetLatestDate() string {
+	if x != nil {
+		return x.LatestDate
+	}
+	return ""
+}
+
+type GetVariableMetadataResponse_EntityMetadata struct {
+	state                protoimpl.MessageState                                     `protogen:"open.v1"`
+	FacetSeriesSummaries map[string]*GetVariableMetadataResponse_FacetSeriesSummary `protobuf:"bytes,1,rep,name=facet_series_summaries,json=facetSeriesSummaries,proto3" json:"facet_series_summaries,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *GetVariableMetadataResponse_EntityMetadata) Reset() {
+	*x = GetVariableMetadataResponse_EntityMetadata{}
+	mi := &file_v2_agent_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVariableMetadataResponse_EntityMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVariableMetadataResponse_EntityMetadata) ProtoMessage() {}
+
+func (x *GetVariableMetadataResponse_EntityMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVariableMetadataResponse_EntityMetadata.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_EntityMetadata) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{7, 2}
+}
+
+func (x *GetVariableMetadataResponse_EntityMetadata) GetFacetSeriesSummaries() map[string]*GetVariableMetadataResponse_FacetSeriesSummary {
+	if x != nil {
+		return x.FacetSeriesSummaries
+	}
+	return nil
+}
+
 type GetVariableMetadataResponse_VariableMetadata struct {
-	state           protoimpl.MessageState                                     `protogen:"open.v1"`
-	Dcid            string                                                     `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
-	Properties      map[string]*PropertyValues                                 `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StatVarSummary  *proto.StatVarSummary                                      `protobuf:"bytes,3,opt,name=stat_var_summary,json=statVarSummary,proto3" json:"stat_var_summary,omitempty"`
-	Provenances     map[string]*GetVariableMetadataResponse_ProvenanceMetadata `protobuf:"bytes,4,rep,name=provenances,proto3" json:"provenances,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	PerEntityFacets map[string]*proto.Facet                                    `protobuf:"bytes,5,rep,name=per_entity_facets,json=perEntityFacets,proto3" json:"per_entity_facets,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state             protoimpl.MessageState                                     `protogen:"open.v1"`
+	Dcid              string                                                     `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
+	Properties        map[string]*PropertyValues                                 `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StatVarSummary    *proto.StatVarSummary                                      `protobuf:"bytes,3,opt,name=stat_var_summary,json=statVarSummary,proto3" json:"stat_var_summary,omitempty"`
+	Provenances       map[string]*GetVariableMetadataResponse_ProvenanceMetadata `protobuf:"bytes,4,rep,name=provenances,proto3" json:"provenances,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	PerEntityMetadata map[string]*GetVariableMetadataResponse_EntityMetadata     `protobuf:"bytes,5,rep,name=per_entity_metadata,json=perEntityMetadata,proto3" json:"per_entity_metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *GetVariableMetadataResponse_VariableMetadata) Reset() {
 	*x = GetVariableMetadataResponse_VariableMetadata{}
-	mi := &file_v2_agent_proto_msgTypes[19]
+	mi := &file_v2_agent_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1184,7 +1296,7 @@ func (x *GetVariableMetadataResponse_VariableMetadata) String() string {
 func (*GetVariableMetadataResponse_VariableMetadata) ProtoMessage() {}
 
 func (x *GetVariableMetadataResponse_VariableMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[19]
+	mi := &file_v2_agent_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1197,7 +1309,7 @@ func (x *GetVariableMetadataResponse_VariableMetadata) ProtoReflect() protorefle
 
 // Deprecated: Use GetVariableMetadataResponse_VariableMetadata.ProtoReflect.Descriptor instead.
 func (*GetVariableMetadataResponse_VariableMetadata) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7, 1}
+	return file_v2_agent_proto_rawDescGZIP(), []int{7, 3}
 }
 
 func (x *GetVariableMetadataResponse_VariableMetadata) GetDcid() string {
@@ -1228,9 +1340,9 @@ func (x *GetVariableMetadataResponse_VariableMetadata) GetProvenances() map[stri
 	return nil
 }
 
-func (x *GetVariableMetadataResponse_VariableMetadata) GetPerEntityFacets() map[string]*proto.Facet {
+func (x *GetVariableMetadataResponse_VariableMetadata) GetPerEntityMetadata() map[string]*GetVariableMetadataResponse_EntityMetadata {
 	if x != nil {
-		return x.PerEntityFacets
+		return x.PerEntityMetadata
 	}
 	return nil
 }
@@ -1332,8 +1444,7 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\x06values\x18\x01 \x03(\v2\x1d.datacommons.v2.PropertyValueR\x06values\"f\n" +
 	"\x1aGetVariableMetadataRequest\x12%\n" +
 	"\x0evariable_dcids\x18\x01 \x03(\tR\rvariableDcids\x12!\n" +
-	"\fentity_dcids\x18\x02 \x03(\tR\ventityDcids\"\x8a\n" +
-	"\n" +
+	"\fentity_dcids\x18\x02 \x03(\tR\ventityDcids\"\x8a\x0e\n" +
 	"\x1bGetVariableMetadataResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12X\n" +
 	"\tvariables\x18\x02 \x03(\v2:.datacommons.v2.GetVariableMetadataResponse.VariablesEntryR\tvariables\x1a\xf7\x01\n" +
@@ -1344,24 +1455,35 @@ const file_v2_agent_proto_rawDesc = "" +
 	"properties\x1a]\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
-	"\x05value\x18\x02 \x01(\v2\x1e.datacommons.v2.PropertyValuesR\x05value:\x028\x01\x1a\x82\x06\n" +
+	"\x05value\x18\x02 \x01(\v2\x1e.datacommons.v2.PropertyValuesR\x05value:\x028\x01\x1a\xa1\x01\n" +
+	"\x12FacetSeriesSummary\x12(\n" +
+	"\x05facet\x18\x01 \x01(\v2\x12.datacommons.FacetR\x05facet\x12\x1b\n" +
+	"\tobs_count\x18\x02 \x01(\x05R\bobsCount\x12#\n" +
+	"\rearliest_date\x18\x03 \x01(\tR\fearliestDate\x12\x1f\n" +
+	"\vlatest_date\x18\x04 \x01(\tR\n" +
+	"latestDate\x1a\xa7\x02\n" +
+	"\x0eEntityMetadata\x12\x8a\x01\n" +
+	"\x16facet_series_summaries\x18\x01 \x03(\v2T.datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntryR\x14facetSeriesSummaries\x1a\x87\x01\n" +
+	"\x19FacetSeriesSummariesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12T\n" +
+	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummaryR\x05value:\x028\x01\x1a\xb4\x06\n" +
 	"\x10VariableMetadata\x12\x12\n" +
 	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12l\n" +
 	"\n" +
 	"properties\x18\x02 \x03(\v2L.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntryR\n" +
 	"properties\x12E\n" +
 	"\x10stat_var_summary\x18\x03 \x01(\v2\x1b.datacommons.StatVarSummaryR\x0estatVarSummary\x12o\n" +
-	"\vprovenances\x18\x04 \x03(\v2M.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntryR\vprovenances\x12}\n" +
-	"\x11per_entity_facets\x18\x05 \x03(\v2Q.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityFacetsEntryR\x0fperEntityFacets\x1a]\n" +
+	"\vprovenances\x18\x04 \x03(\v2M.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntryR\vprovenances\x12\x83\x01\n" +
+	"\x13per_entity_metadata\x18\x05 \x03(\v2S.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntryR\x11perEntityMetadata\x1a]\n" +
 	"\x0fPropertiesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\v2\x1e.datacommons.v2.PropertyValuesR\x05value:\x028\x01\x1a~\n" +
 	"\x10ProvenancesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12T\n" +
-	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadataR\x05value:\x028\x01\x1aV\n" +
-	"\x14PerEntityFacetsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12(\n" +
-	"\x05value\x18\x02 \x01(\v2\x12.datacommons.FacetR\x05value:\x028\x01\x1az\n" +
+	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadataR\x05value:\x028\x01\x1a\x80\x01\n" +
+	"\x16PerEntityMetadataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12P\n" +
+	"\x05value\x18\x02 \x01(\v2:.datacommons.v2.GetVariableMetadataResponse.EntityMetadataR\x05value:\x028\x01\x1az\n" +
 	"\x0eVariablesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12R\n" +
 	"\x05value\x18\x02 \x01(\v2<.datacommons.v2.GetVariableMetadataResponse.VariableMetadataR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
@@ -1378,7 +1500,7 @@ func file_v2_agent_proto_rawDescGZIP() []byte {
 	return file_v2_agent_proto_rawDescData
 }
 
-var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_v2_agent_proto_goTypes = []any{
 	(*SearchIndicatorsRequest)(nil),                // 0: datacommons.v2.SearchIndicatorsRequest
 	(*SearchIndicatorsResponse)(nil),               // 1: datacommons.v2.SearchIndicatorsResponse
@@ -1399,15 +1521,18 @@ var file_v2_agent_proto_goTypes = []any{
 	(*GetObservationsResponse_TimeSeriesPoint)(nil),        // 16: datacommons.v2.GetObservationsResponse.TimeSeriesPoint
 	(*GetObservationsResponse_PlaceObservation)(nil),       // 17: datacommons.v2.GetObservationsResponse.PlaceObservation
 	(*GetVariableMetadataResponse_ProvenanceMetadata)(nil), // 18: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
-	(*GetVariableMetadataResponse_VariableMetadata)(nil),   // 19: datacommons.v2.GetVariableMetadataResponse.VariableMetadata
-	nil,                          // 20: datacommons.v2.GetVariableMetadataResponse.VariablesEntry
-	nil,                          // 21: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
-	nil,                          // 22: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
-	nil,                          // 23: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
-	nil,                          // 24: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityFacetsEntry
-	(*structpb.ListValue)(nil),   // 25: google.protobuf.ListValue
-	(*proto.StatVarSummary)(nil), // 26: datacommons.StatVarSummary
-	(*proto.Facet)(nil),          // 27: datacommons.Facet
+	(*GetVariableMetadataResponse_FacetSeriesSummary)(nil), // 19: datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary
+	(*GetVariableMetadataResponse_EntityMetadata)(nil),     // 20: datacommons.v2.GetVariableMetadataResponse.EntityMetadata
+	(*GetVariableMetadataResponse_VariableMetadata)(nil),   // 21: datacommons.v2.GetVariableMetadataResponse.VariableMetadata
+	nil,                          // 22: datacommons.v2.GetVariableMetadataResponse.VariablesEntry
+	nil,                          // 23: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
+	nil,                          // 24: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry
+	nil,                          // 25: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
+	nil,                          // 26: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
+	nil,                          // 27: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry
+	(*structpb.ListValue)(nil),   // 28: google.protobuf.ListValue
+	(*proto.Facet)(nil),          // 29: datacommons.Facet
+	(*proto.StatVarSummary)(nil), // 30: datacommons.StatVarSummary
 }
 var file_v2_agent_proto_depIdxs = []int32{
 	11, // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
@@ -1421,26 +1546,29 @@ var file_v2_agent_proto_depIdxs = []int32{
 	14, // 8: datacommons.v2.GetObservationsResponse.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
 	15, // 9: datacommons.v2.GetObservationsResponse.alternative_sources:type_name -> datacommons.v2.GetObservationsResponse.AlternativeSource
 	4,  // 10: datacommons.v2.PropertyValues.values:type_name -> datacommons.v2.PropertyValue
-	20, // 11: datacommons.v2.GetVariableMetadataResponse.variables:type_name -> datacommons.v2.GetVariableMetadataResponse.VariablesEntry
-	25, // 12: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
+	22, // 11: datacommons.v2.GetVariableMetadataResponse.variables:type_name -> datacommons.v2.GetVariableMetadataResponse.VariablesEntry
+	28, // 12: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
 	14, // 13: datacommons.v2.GetObservationsResponse.AlternativeSource.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
 	13, // 14: datacommons.v2.GetObservationsResponse.PlaceObservation.place:type_name -> datacommons.v2.GetObservationsResponse.Node
 	16, // 15: datacommons.v2.GetObservationsResponse.PlaceObservation.time_series:type_name -> datacommons.v2.GetObservationsResponse.TimeSeriesPoint
-	21, // 16: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
-	22, // 17: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
-	26, // 18: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.stat_var_summary:type_name -> datacommons.StatVarSummary
-	23, // 19: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.provenances:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
-	24, // 20: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.per_entity_facets:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityFacetsEntry
-	19, // 21: datacommons.v2.GetVariableMetadataResponse.VariablesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata
-	5,  // 22: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
-	5,  // 23: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
-	18, // 24: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
-	27, // 25: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityFacetsEntry.value:type_name -> datacommons.Facet
-	26, // [26:26] is the sub-list for method output_type
-	26, // [26:26] is the sub-list for method input_type
-	26, // [26:26] is the sub-list for extension type_name
-	26, // [26:26] is the sub-list for extension extendee
-	0,  // [0:26] is the sub-list for field type_name
+	23, // 16: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
+	29, // 17: datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary.facet:type_name -> datacommons.Facet
+	24, // 18: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.facet_series_summaries:type_name -> datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry
+	25, // 19: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
+	30, // 20: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.stat_var_summary:type_name -> datacommons.StatVarSummary
+	26, // 21: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.provenances:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
+	27, // 22: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.per_entity_metadata:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry
+	21, // 23: datacommons.v2.GetVariableMetadataResponse.VariablesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata
+	5,  // 24: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
+	19, // 25: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary
+	5,  // 26: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
+	18, // 27: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
+	20, // 28: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.EntityMetadata
+	29, // [29:29] is the sub-list for method output_type
+	29, // [29:29] is the sub-list for method input_type
+	29, // [29:29] is the sub-list for extension type_name
+	29, // [29:29] is the sub-list for extension extendee
+	0,  // [0:29] is the sub-list for field type_name
 }
 
 func init() { file_v2_agent_proto_init() }
@@ -1457,7 +1585,7 @@ func file_v2_agent_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v2_agent_proto_rawDesc), len(file_v2_agent_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   25,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

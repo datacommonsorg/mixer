@@ -54,9 +54,28 @@ func (m *mockVMMixerServer) V2BulkVariableInfo(ctx context.Context, in *pbv1.Bul
 }
 
 func (m *mockVMMixerServer) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	resp := &pbv2.ObservationResponse{Facets: make(map[string]*pb.Facet)}
+	resp := &pbv2.ObservationResponse{
+		Facets:     make(map[string]*pb.Facet),
+		ByVariable: make(map[string]*pbv2.VariableObservation),
+	}
 	for k, v := range m.obsData {
 		resp.Facets[k] = v
+	}
+	for _, vDcid := range in.GetVariable().GetDcids() {
+		var fList []*pbv2.FacetObservation
+		for k := range m.obsData {
+			fList = append(fList, &pbv2.FacetObservation{
+				FacetId:      k,
+				ObsCount:     54,
+				EarliestDate: "2010",
+				LatestDate:   "2020",
+			})
+		}
+		resp.ByVariable[vDcid] = &pbv2.VariableObservation{
+			ByEntity: map[string]*pbv2.EntityObservation{
+				"geoId/06": {OrderedFacets: fList},
+			},
+		}
 	}
 	return resp, nil
 }
@@ -144,8 +163,25 @@ func TestGetVariableMetadata(t *testing.T) {
 				t.Errorf("Expected provenance url %q, got: %v", tc.wantProvUrl, prov.GetProperties())
 			}
 
-			if vMeta.GetPerEntityFacets()["facet1"].GetImportName() != tc.wantFacetName {
-				t.Errorf("Expected per-entity facet importName %q, got: %v", tc.wantFacetName, vMeta.GetPerEntityFacets())
+			eMeta, ok := vMeta.GetPerEntityMetadata()["geoId/06"]
+			if !ok {
+				t.Fatalf("Missing expected entity metadata for geoId/06")
+			}
+			fSum, ok := eMeta.GetFacetSeriesSummaries()["facet1"]
+			if !ok || fSum == nil {
+				t.Fatalf("Missing expected facet series summary for facet1")
+			}
+			if fSum.GetFacet().GetImportName() != tc.wantFacetName {
+				t.Errorf("Expected per-entity facet importName %q, got: %v", tc.wantFacetName, fSum.GetFacet())
+			}
+			if fSum.GetObsCount() != 54 {
+				t.Errorf("Expected obsCount 54, got: %v", fSum.GetObsCount())
+			}
+			if fSum.GetEarliestDate() != "2010" {
+				t.Errorf("Expected earliestDate '2010', got: %v", fSum.GetEarliestDate())
+			}
+			if fSum.GetLatestDate() != "2020" {
+				t.Errorf("Expected latestDate '2020', got: %v", fSum.GetLatestDate())
 			}
 		})
 	}

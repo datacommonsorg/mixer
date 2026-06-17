@@ -20,7 +20,6 @@ import (
 	"sync"
 	"time"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -73,10 +72,10 @@ func initVariableMetadata(dcids []string) map[string]*pbv2.GetVariableMetadataRe
 	res := make(map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata)
 	for _, vDcid := range dcids {
 		res[vDcid] = &pbv2.GetVariableMetadataResponse_VariableMetadata{
-			Dcid:            vDcid,
-			Properties:      make(map[string]*pbv2.PropertyValues),
-			Provenances:     make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata),
-			PerEntityFacets: make(map[string]*pb.Facet),
+			Dcid:              vDcid,
+			Properties:        make(map[string]*pbv2.PropertyValues),
+			Provenances:       make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata),
+			PerEntityMetadata: make(map[string]*pbv2.GetVariableMetadataResponse_EntityMetadata),
 		}
 	}
 	return res
@@ -174,16 +173,53 @@ func (s *Service) fetchPerEntityFacets(
 	if err != nil {
 		return err
 	}
-	if obsResp != nil && obsResp.GetFacets() != nil {
-		mu.Lock()
-		for fID, fObj := range obsResp.GetFacets() {
-			for _, vMeta := range variables {
-				vMeta.PerEntityFacets[fID] = fObj
+	assignVariableFacets(obsResp, variables, mu)
+	return nil
+}
+
+// assignVariableFacets extracts observation facets scoped to their matching statistical variable and entity.
+func assignVariableFacets(
+	obsResp *pbv2.ObservationResponse,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+	mu *sync.Mutex,
+) {
+	if obsResp == nil || obsResp.GetByVariable() == nil {
+		return
+	}
+	mu.Lock()
+	defer mu.Unlock()
+	for vDcid, vObs := range obsResp.GetByVariable() {
+		vMeta, ok := variables[vDcid]
+		if !ok || vObs == nil {
+			continue
+		}
+		for eDcid, eObs := range vObs.GetByEntity() {
+			if eObs == nil {
+				continue
+			}
+			eMeta, eExists := vMeta.PerEntityMetadata[eDcid]
+			if !eExists {
+				eMeta = &pbv2.GetVariableMetadataResponse_EntityMetadata{
+					FacetSeriesSummaries: make(map[string]*pbv2.GetVariableMetadataResponse_FacetSeriesSummary),
+				}
+				vMeta.PerEntityMetadata[eDcid] = eMeta
+			}
+			for _, fObs := range eObs.GetOrderedFacets() {
+				if fObs == nil {
+					continue
+				}
+				fID := fObs.GetFacetId()
+				if fObj, exists := obsResp.GetFacets()[fID]; exists && fObj != nil {
+					eMeta.FacetSeriesSummaries[fID] = &pbv2.GetVariableMetadataResponse_FacetSeriesSummary{
+						Facet:        fObj,
+						ObsCount:     fObs.GetObsCount(),
+						EarliestDate: fObs.GetEarliestDate(),
+						LatestDate:   fObs.GetLatestDate(),
+					}
+				}
 			}
 		}
-		mu.Unlock()
 	}
-	return nil
 }
 
 // hydrateProvenanceMetadata collects unique provenance IDs and hydrates their descriptive properties.
@@ -214,8 +250,26 @@ func (s *Service) hydrateProvenanceMetadata(
 
 	for _, vMeta := range variables {
 		vMeta.Provenances = make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata)
-		for pDcid, pMeta := range provenancesMap {
-			vMeta.Provenances[pDcid] = pMeta
+
+		if vMeta.StatVarSummary != nil {
+			for provID := range vMeta.StatVarSummary.GetProvenanceSummary() {
+				if pMeta, ok := provenancesMap[provID]; ok {
+					vMeta.Provenances[provID] = pMeta
+				}
+			}
+		}
+
+		for _, eMeta := range vMeta.PerEntityMetadata {
+			if eMeta != nil {
+				for _, fSum := range eMeta.GetFacetSeriesSummaries() {
+					if fSum != nil && fSum.GetFacet() != nil && fSum.GetFacet().GetProvenanceId() != "" {
+						provID := fSum.GetFacet().GetProvenanceId()
+						if pMeta, ok := provenancesMap[provID]; ok {
+							vMeta.Provenances[provID] = pMeta
+						}
+					}
+				}
+			}
 		}
 	}
 	return nil
@@ -232,12 +286,20 @@ func collectProvenanceIDs(variables map[string]*pbv2.GetVariableMetadataResponse
 				}
 			}
 		}
-		for _, fObj := range vMeta.PerEntityFacets {
-			if fObj != nil && fObj.GetProvenanceId() != "" {
-				seen[fObj.GetProvenanceId()] = struct{}{}
+		for _, eMeta := range vMeta.PerEntityMetadata {
+			if eMeta != nil {
+				for _, fSum := range eMeta.GetFacetSeriesSummaries() {
+					if fSum != nil && fSum.GetFacet() != nil && fSum.GetFacet().GetProvenanceId() != "" {
+						seen[fSum.GetFacet().GetProvenanceId()] = struct{}{}
+					}
+				}
 			}
 		}
 	}
+
+
+
+
 
 	var ids []string
 	for id := range seen {
@@ -277,6 +339,10 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 		return make(map[string]*pbv2.PropertyValues)
 	}
 
+	type propValKey struct {
+		val, dcid, name string
+	}
+
 	res := make(map[string]*pbv2.PropertyValues)
 	for prop, nodesArc := range graph.GetArcs() {
 		if nodesArc == nil || len(nodesArc.GetNodes()) == 0 {
@@ -284,7 +350,7 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 		}
 
 		var pvList []*pbv2.PropertyValue
-		seen := make(map[string]struct{})
+		seen := make(map[propValKey]struct{})
 		for _, n := range nodesArc.GetNodes() {
 			if n == nil {
 				continue
@@ -293,7 +359,7 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 			dcid := n.GetDcid()
 			name := n.GetName()
 
-			key := val + "|" + dcid + "|" + name
+			key := propValKey{val, dcid, name}
 			if _, ok := seen[key]; ok {
 				continue
 			}
