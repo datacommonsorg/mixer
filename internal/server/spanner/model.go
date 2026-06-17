@@ -172,7 +172,13 @@ type FilteredStatVarGroupNode struct {
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
-	Project  string `yaml:"project"`
-	Instance string `yaml:"instance"`
-	Database string `yaml:"database"`
+	Project                     string  `yaml:"project"`
+	Instance                    string  `yaml:"instance"`
+	Database                    string  `yaml:"database"`
+	TimeSeriesTable             *string `yaml:"timeSeriesTable"`
+	ObservationTable            *string `yaml:"observationTable"`
+	TimeSeriesByEntity1Index    *string `yaml:"timeSeriesByEntity1Index"`
+	TimeSeriesByEntity2Index    *string `yaml:"timeSeriesByEntity2Index"`
+	TimeSeriesByEntity3Index    *string `yaml:"timeSeriesByEntity3Index"`
+	TimeSeriesByProvenanceIndex *string `yaml:"timeSeriesByProvenanceIndex"`
 }

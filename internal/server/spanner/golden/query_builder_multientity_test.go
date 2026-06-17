@@ -18,6 +18,7 @@ import (
 	"context"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -109,6 +110,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 	}
 }
 
+// TestMultiEntityGetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
 func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 	t.Parallel()
 
@@ -122,3 +124,53 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 		})
 	}
 }
+
+func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntitySdmxObservationsTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				stmt, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, spanner.DefaultTableConfig())
+				return stmt, err
+			})
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
+	// Case 1: Valid alphanumeric keys
+	constraints := map[string]*pb.ConstraintList{
+		"variableMeasured":  {Values: []string{"var1"}},
+		"observationAbout":  {Values: []string{"wikidataId/Q119158"}},
+		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
+		"observationPeriod": {Values: []string{"P1Y"}},
+	}
+	_, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, spanner.DefaultTableConfig())
+	if err != nil {
+		t.Errorf("expected no error for valid constraint keys, got %v", err)
+	}
+
+	// Case 2: Invalid key containing SQL injection payload
+	badConstraints1 := map[string]*pb.ConstraintList{
+		"variableMeasured": {Values: []string{"var1"}},
+		"unit') OR 1=1 --": {Values: []string{"Percent"}},
+	}
+	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, spanner.DefaultTableConfig())
+	if err == nil {
+		t.Error("expected error for constraint key containing SQL injection payload, got nil")
+	}
+
+	// Case 3: Invalid key containing spaces
+	badConstraints2 := map[string]*pb.ConstraintList{
+		"variableMeasured": {Values: []string{"var1"}},
+		"invalid key":       {Values: []string{"value"}},
+	}
+	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, spanner.DefaultTableConfig())
+	if err == nil {
+		t.Error("expected error for constraint key containing spaces, got nil")
+	}
+}
+

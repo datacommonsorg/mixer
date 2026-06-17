@@ -356,3 +356,59 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 		t.Fatalf("facet.ProvenanceId = %q, want %q", got, want)
 	}
 }
+
+func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxObservations(context.Background(), nil)
+	if err == nil {
+		t.Fatal("GetSdmxObservations() with nil request expected error, got nil")
+	}
+	if got, want := err.Error(), "GetSdmxObservations: request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxObservations() error = %q, want %q", got, want)
+	}
+}
+
+func TestParseEntityMappings(t *testing.T) {
+	edgesMap := map[string][]*Edge{
+		"var1": {
+			nil, // nil edge
+			{
+				Predicate: "entityMapping",
+				Value:     "origin=entity1",
+			},
+			{
+				Predicate: "entityMapping",
+				Value:     "destination=entity2=special", // value containing '='
+			},
+			{
+				Predicate: "otherPredicate",
+				Value:     "some=value",
+			},
+		},
+	}
+
+	got := parseEntityMappings(edgesMap)
+	want := map[string]map[string]string{
+		"var1": {
+			"origin":      "entity1",
+			"destination": "entity2=special",
+		},
+	}
+
+	if len(got) != len(want) {
+		t.Fatalf("parseEntityMappings() = %v, want %v", got, want)
+	}
+	for varDcid, gotMapping := range got {
+		wantMapping := want[varDcid]
+		if len(gotMapping) != len(wantMapping) {
+			t.Fatalf("Mapping for %s = %v, want %v", varDcid, gotMapping, wantMapping)
+		}
+		for k, v := range gotMapping {
+			if wantMapping[k] != v {
+				t.Errorf("Mapping for %s[%q] = %q, want %q", varDcid, k, v, wantMapping[k])
+			}
+		}
+	}
+}
+
+

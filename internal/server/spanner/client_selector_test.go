@@ -207,6 +207,7 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 		ctx                context.Context
 		useMultiEntityFlag bool
 		wantBaseCalls      int
+		wantMultiCalls     int
 		wantCode           codes.Code
 	}{
 		{
@@ -216,15 +217,17 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 			wantCode:      codes.OK,
 		},
 		{
-			name:               "multi entity flag returns unsupported",
+			name:               "multi entity flag delegates to multiEntity",
 			ctx:                context.Background(),
 			useMultiEntityFlag: true,
-			wantCode:           codes.Unimplemented,
+			wantMultiCalls:     1,
+			wantCode:           codes.OK,
 		},
 		{
-			name:     "true header returns unsupported",
-			ctx:      multiEntityHeaderContext("true"),
-			wantCode: codes.Unimplemented,
+			name:           "true header delegates to multiEntity",
+			ctx:            multiEntityHeaderContext("true"),
+			wantMultiCalls: 1,
+			wantCode:       codes.OK,
 		},
 		{
 			name:               "false header overrides flag and delegates to base",
@@ -237,8 +240,10 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			wantResult := &pb.SdmxDataResult{}
 			baseClient := &sdmxMockSpannerClient{result: wantResult}
+			multiEntityClient := &sdmxMockSpannerClient{result: wantResult}
 			selector := &schemaSelectorClient{
 				SpannerClient:            baseClient,
+				multiEntity:              multiEntityClient,
 				useMultiEntitySchemaFlag: tc.useMultiEntityFlag,
 			}
 
@@ -248,6 +253,9 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 			}
 			if baseClient.calls != tc.wantBaseCalls {
 				t.Fatalf("base GetSdmxObservations calls = %d, want %d", baseClient.calls, tc.wantBaseCalls)
+			}
+			if multiEntityClient.calls != tc.wantMultiCalls {
+				t.Fatalf("multiEntity GetSdmxObservations calls = %d, want %d", multiEntityClient.calls, tc.wantMultiCalls)
 			}
 			if tc.wantCode == codes.OK && got != wantResult {
 				t.Fatalf("GetSdmxObservations() result = %v, want %v", got, wantResult)
