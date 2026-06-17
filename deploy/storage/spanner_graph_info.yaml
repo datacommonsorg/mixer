@@ -1,12 +1,3 @@
 project: datcom-store
 instance: dc-kg-test
 database: dc_graph_2026_01_27
-
-# NOTE: The table and index overrides below are currently only read by the SDMX API
-# during rollout, as standard query templates hardcode table names in statements*.go.
-timeSeriesTable: TimeSeries_final_v3
-observationTable: Observation_final_v3
-timeSeriesByEntity1Index: TimeSeriesFinalV3ByEntity1
-timeSeriesByEntity2Index: TimeSeriesFinalV3ByEntity2
-timeSeriesByEntity3Index: TimeSeriesFinalV3ByEntity3
-timeSeriesByProvenanceIndex: TimeSeriesFinalV3ByProvenance
