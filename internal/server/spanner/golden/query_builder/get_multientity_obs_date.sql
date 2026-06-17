@@ -1,26 +1,26 @@
 		WITH params AS (
-			SELECT var, ent 
-			FROM UNNEST(['AirPollutant_Cancer_Risk']) AS var 
+			SELECT var, ent
+			FROM UNNEST(['AirPollutant_Cancer_Risk']) AS var
 			CROSS JOIN ('geoId/01001','geoId/02013') AS ent
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM Observation_final_v2 o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM Observation o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 						AND o.date = '2015'
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries_final_v2 t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent

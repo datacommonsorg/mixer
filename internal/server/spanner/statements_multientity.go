@@ -14,17 +14,6 @@
 
 package spanner
 
-import "fmt"
-
-const (
-	// TODO(rohitrkumar): Migrate to TimeSeries table and update indexes.
-	timeSeriesTable  = "TimeSeries_final_v2"
-	observationTable = "Observation_final_v2"
-
-	timeSeriesByEntity2Index = "TimeSeriesFinalV2ByEntity2"
-	timeSeriesByEntity3Index = "TimeSeriesFinalV2ByEntity3"
-)
-
 var statementsMultiEntity = struct {
 	getObsBoth                                     string
 	getObsBothWithDate                             string
@@ -56,254 +45,253 @@ var statementsMultiEntity = struct {
 	filterEntity3Exists                            string
 }{
 	// Retrieve observations where both variables and entities are present (full series)
-	// TODO(rohitrkumar): Align with new schema - facets_id -> facet_id, facets -> facet, str_value -> value
-	getObsBoth: fmt.Sprintf(`		WITH params AS (
-			SELECT var, ent 
-			FROM UNNEST(@variables) AS var 
+	getObsBoth: `		WITH params AS (
+			SELECT var, ent
+			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`, observationTable, timeSeriesTable),
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
 
 	// Retrieve observations for a specific date (both variables and entities present)
-	getObsBothWithDate: fmt.Sprintf(`		WITH params AS (
-			SELECT var, ent 
-			FROM UNNEST(@variables) AS var 
+	getObsBothWithDate: `		WITH params AS (
+			SELECT var, ent
+			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`, observationTable, timeSeriesTable),
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
 
 	// Retrieve latest observation (both variables and entities present)
-	getObsBothLatest: fmt.Sprintf(`		WITH params AS (
-			SELECT var, ent 
-			FROM UNNEST(@variables) AS var 
+	getObsBothLatest: `		WITH params AS (
+			SELECT var, ent
+			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value, attributes
-						FROM %s o
+						SELECT AS STRUCT date, value AS str_value
+						FROM %[1]s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
 							AND o.extra_entities_id = t.extra_entities_id
-							AND o.facets_id = t.facets_id
+							AND o.facet_id = t.facet_id
 						ORDER BY date DESC
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`, observationTable, timeSeriesTable),
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
 
 	// Retrieve observations where only entities are present (fetch all variables, full series)
-	getObsEntitiesOnly: fmt.Sprintf(`		SELECT 
+	getObsEntitiesOnly: `		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
-		FROM %s t
-		WHERE t.entity1 IN UNNEST(@entities)`, observationTable, timeSeriesTable),
+			t.facet AS facets
+		FROM %[2]s t
+		WHERE t.entity1 IN UNNEST(@entities)`,
 
 	// Retrieve observations where only entities are present (fetch all variables, specific date)
-	getObsEntitiesOnlyWithDate: fmt.Sprintf(`		SELECT 
+	getObsEntitiesOnlyWithDate: `		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
-		FROM %s t
-		WHERE t.entity1 IN UNNEST(@entities)`, observationTable, timeSeriesTable),
+			t.facet AS facets
+		FROM %[2]s t
+		WHERE t.entity1 IN UNNEST(@entities)`,
 
 	// Retrieve observations where only entities are present (fetch all variables, latest only)
-	getObsEntitiesOnlyLatest: fmt.Sprintf(`		SELECT 
+	getObsEntitiesOnlyLatest: `		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value, attributes
-						FROM %s o
+						SELECT AS STRUCT date, value AS str_value
+						FROM %[1]s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
 							AND o.extra_entities_id = t.extra_entities_id
-							AND o.facets_id = t.facets_id
+							AND o.facet_id = t.facet_id
 						ORDER BY date DESC
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
-		FROM %s t
-		WHERE t.entity1 IN UNNEST(@entities)`, observationTable, timeSeriesTable),
+			t.facet AS facets
+		FROM %[2]s t
+		WHERE t.entity1 IN UNNEST(@entities)`,
 
 	// Contained in place query with variables filtered (full series)
-	getObsByContainedInPlaceBoth: fmt.Sprintf(`		WITH places AS (
+	getObsByContainedInPlaceBoth: `		WITH places AS (
 			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE ( 
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]-> 
-				RETURN e.subject_id AS object_id 
+			FROM GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+				RETURN e.subject_id AS object_id
 			) result
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`, observationTable, timeSeriesTable),
+			AND t.entity1 = p.place_id`,
 
 	// Contained in place query with variables filtered (specific date)
-	getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		WITH places AS (
+	getObsByContainedInPlaceBothWithDate: `		WITH places AS (
 			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE ( 
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]-> 
-				RETURN e.subject_id AS object_id 
+			FROM GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+				RETURN e.subject_id AS object_id
 			) result
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
-					FROM %s o
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
+					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facets_id = t.facets_id
+						AND o.facet_id = t.facet_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`, observationTable, timeSeriesTable),
+			AND t.entity1 = p.place_id`,
 
 	// Contained in place query with variables filtered (latest only)
-	getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		WITH places AS (
+	getObsByContainedInPlaceBothLatest: `		WITH places AS (
 			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE ( 
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]-> 
-				RETURN e.subject_id AS object_id 
+			FROM GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+				RETURN e.subject_id AS object_id
 			) result
 		)
-		SELECT 
+		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
-			t.facets_id AS facet_id,
+			t.facet_id,
 			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value, attributes
-						FROM %s o
+						SELECT AS STRUCT date, value AS str_value
+						FROM %[1]s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
 							AND o.extra_entities_id = t.extra_entities_id
-							AND o.facets_id = t.facets_id
+							AND o.facet_id = t.facet_id
 						ORDER BY date DESC
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
-			t.facets
+			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`, observationTable, timeSeriesTable),
+			AND t.entity1 = p.place_id`,
 
 	getSdmxObs: `		SELECT 
 			t.variable_measured,
@@ -312,14 +300,14 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, value AS str_value, CAST(NULL AS JSON) AS attributes))
+					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
 					FROM %[1]s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
 						AND o.facet_id = t.facet_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facet AS facets,
 			t.entities
@@ -327,75 +315,75 @@ var statementsMultiEntity = struct {
 		WHERE `,
 
 	// Check existence when both variables and entities are specified
-	getStatVarsByEntityBoth: fmt.Sprintf(`		WITH 
+	getStatVarsByEntityBoth: `		WITH
 		slot1 AS (
-			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %[1]s AS t 
+			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
+			FROM %[1]s AS t
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity1 IN UNNEST(@entities)
 		),
 		slot2 AS (
-			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity2 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity2 IN UNNEST(@entities) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
-			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity3 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity3 IN UNNEST(@entities) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`,
 
 	// Check existence when only variables are specified
-	getStatVarsByEntityVarsOnly: fmt.Sprintf(`		WITH 
+	getStatVarsByEntityVarsOnly: `		WITH
 		slot1 AS (
-			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %[1]s AS t 
+			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
+			FROM %[1]s AS t
 			WHERE t.variable_measured IN UNNEST(@variables)
 		),
 		slot2 AS (
-			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity2 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
-			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity3 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`,
 
 	// Check existence when only entities are specified
-	getStatVarsByEntityEntitiesOnly: fmt.Sprintf(`		WITH 
+	getStatVarsByEntityEntitiesOnly: `		WITH
 		slot1 AS (
-			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %[1]s AS t 
+			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
+			FROM %[1]s AS t
 			WHERE t.entity1 IN UNNEST(@entities)
 		),
 		slot2 AS (
-			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity2 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t
 			WHERE t.entity2 IN UNNEST(@entities) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
-			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
+			SELECT DISTINCT t.variable_measured, t.entity3 AS entity
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
 			WHERE t.entity3 IN UNNEST(@entities) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`,
 
-	checkGroupPlaceExistence: fmt.Sprintf(`		WITH
+	checkGroupPlaceExistence: `		WITH
 		group_members AS (
 			SELECT DISTINCT
 				e.object_id AS variable_group,
@@ -442,7 +430,7 @@ var statementsMultiEntity = struct {
 			UNION ALL
 			SELECT variable, entity FROM slot3
 		) AS combined
-		ORDER BY variable, entity`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
+		ORDER BY variable, entity`,
 
 	getStatVarGroupNode: `		WITH ChildSVGs AS (
 				SELECT DISTINCT
@@ -498,7 +486,7 @@ var statementsMultiEntity = struct {
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
-					FROM TimeSeries_final_v2 ts
+					FROM %[3]s ts
 					WHERE ts.variable_measured = sv.child_sv
 					LIMIT 1
 				) AS has_data,
@@ -561,7 +549,7 @@ var statementsMultiEntity = struct {
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
-					FROM TimeSeries_final_v2 ts
+					FROM %[3]s ts
 					WHERE ts.variable_measured = sv.child_sv
 					LIMIT 1
 				) AS has_data,

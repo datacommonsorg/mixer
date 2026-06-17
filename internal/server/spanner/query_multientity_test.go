@@ -410,5 +410,3 @@ func TestParseEntityMappings(t *testing.T) {
 		}
 	}
 }
-
-
