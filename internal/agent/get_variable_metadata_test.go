@@ -95,13 +95,14 @@ func TestGetVariableMetadata(t *testing.T) {
 			bulkData: map[string]*pb.StatVarSummary{
 				"Count_Person": {
 					ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
-						"USCensus_PEP": {ImportName: "USCensus_PEP"},
+						"dc/base/USCensus_PEP": {ImportName: "USCensus_PEP"},
 					},
 				},
 			},
 			obsData: map[string]*pb.Facet{
-				"facet1": {ImportName: "USCensus_PEP"},
+				"facet1": {ImportName: "USCensus_PEP", ProvenanceId: "dc/base/USCensus_PEP"},
 			},
+
 			wantVar:       "Count_Person",
 			wantPropName:  "Population",
 			wantProvDcid:  "dc/base/USCensus_PEP",

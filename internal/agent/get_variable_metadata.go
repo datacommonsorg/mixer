@@ -17,7 +17,6 @@ package agent
 import (
 	"context"
 	"log/slog"
-	"strings"
 	"sync"
 	"time"
 
@@ -196,6 +195,7 @@ func (s *Service) hydrateProvenanceMetadata(
 	if len(provIDs) == 0 {
 		return nil
 	}
+	slog.Info("Hydrating provenance descriptions", "provenancesCount", len(provIDs))
 
 	g, gCtx := errgroup.WithContext(ctx)
 	var mu sync.Mutex
@@ -227,12 +227,14 @@ func collectProvenanceIDs(variables map[string]*pbv2.GetVariableMetadataResponse
 	for _, vMeta := range variables {
 		if vMeta.StatVarSummary != nil {
 			for provID := range vMeta.StatVarSummary.GetProvenanceSummary() {
-				seen[provID] = struct{}{}
+				if provID != "" {
+					seen[provID] = struct{}{}
+				}
 			}
 		}
 		for _, fObj := range vMeta.PerEntityFacets {
-			if fObj != nil && fObj.GetImportName() != "" {
-				seen[getProvenanceDcid(fObj.GetImportName())] = struct{}{}
+			if fObj != nil && fObj.GetProvenanceId() != "" {
+				seen[fObj.GetProvenanceId()] = struct{}{}
 			}
 		}
 	}
@@ -269,14 +271,6 @@ func (s *Service) fetchProvenanceMetadata(
 	return nil
 }
 
-// getProvenanceDcid normalizes an observation facet import identifier into a canonical KG DCID.
-func getProvenanceDcid(importName string) string {
-	if strings.HasPrefix(importName, "dc/") || strings.Contains(importName, "/") {
-		return importName
-	}
-	return "dc/base/" + importName
-}
-
 // toPropertyValuesMap converts a LinkedGraph into a map of PropertyValues lists.
 func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValues {
 	if graph == nil || graph.GetArcs() == nil {
@@ -290,18 +284,29 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 		}
 
 		var pvList []*pbv2.PropertyValue
+		seen := make(map[string]struct{})
 		for _, n := range nodesArc.GetNodes() {
 			if n == nil {
 				continue
 			}
+			val := n.GetValue()
+			dcid := n.GetDcid()
+			name := n.GetName()
+
+			key := val + "|" + dcid + "|" + name
+			if _, ok := seen[key]; ok {
+				continue
+			}
+			seen[key] = struct{}{}
+
 			pv := &pbv2.PropertyValue{}
-			if val := n.GetValue(); val != "" {
+			if val != "" {
 				pv.Value = val
 			}
-			if dcid := n.GetDcid(); dcid != "" {
+			if dcid != "" {
 				pv.Dcid = dcid
 			}
-			if name := n.GetName(); name != "" {
+			if name != "" {
 				pv.Name = name
 			}
 			pvList = append(pvList, pv)
