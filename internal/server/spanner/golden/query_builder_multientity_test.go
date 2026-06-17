@@ -31,7 +31,7 @@ func TestMultiEntityGetObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityObservationsQuery(c.variables, c.entities, c.date)
+				return spanner.GetMultiEntityObservationsQuery(c.variables, c.entities, c.date, spanner.DefaultTableConfig())
 			})
 		})
 	}
@@ -45,7 +45,7 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityStatVarsByEntityQuery(c.variables, c.entities)
+				return spanner.GetMultiEntityStatVarsByEntityQuery(c.variables, c.entities, spanner.DefaultTableConfig())
 			})
 		})
 	}
@@ -59,7 +59,7 @@ func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate), nil
+				return spanner.GetMultiEntityGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate, spanner.DefaultTableConfig()), nil
 			})
 		})
 	}
@@ -76,7 +76,7 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 				return spanner.GetMultiEntityObservationsContainedInPlaceQuery(c.variables, &v2.ContainedInPlace{
 					Ancestor:       c.ancestor,
 					ChildPlaceType: c.childPlaceType,
-				}, c.date)
+				}, c.date, spanner.DefaultTableConfig())
 			})
 		})
 	}
@@ -90,7 +90,7 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityStatVarGroupNodeQuery(c.nodes, c.includeDefinitions), nil
+				return spanner.GetMultiEntityStatVarGroupNodeQuery(c.nodes, c.includeDefinitions, spanner.DefaultTableConfig()), nil
 			})
 		})
 	}
@@ -104,7 +104,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, c.includeDefinitions), nil
+				return spanner.GetMultiEntityFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, c.includeDefinitions, spanner.DefaultTableConfig()), nil
 			})
 		})
 	}
@@ -119,7 +119,7 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence), nil
+				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, spanner.DefaultTableConfig()), nil
 			})
 		})
 	}

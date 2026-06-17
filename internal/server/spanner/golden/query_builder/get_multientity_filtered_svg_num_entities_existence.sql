@@ -12,16 +12,16 @@
 					SELECT ts.variable_measured
 					FROM (
 						SELECT t.variable_measured, t.entity1 AS entity, t.provenance
-						FROM TimeSeries_final_v2 AS t
+						FROM TimeSeries AS t
 						WHERE t.entity1 IN ('country/USA','country/IND','country/CAN')
 						UNION ALL
 						SELECT t.variable_measured, t.entity2 AS entity, t.provenance
-						FROM TimeSeries_final_v2@{FORCE_INDEX=TimeSeriesFinalV2ByEntity2} AS t
+						FROM TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2} AS t
 						WHERE t.entity2 IN ('country/USA','country/IND','country/CAN')
 							AND t.entity2 IS NOT NULL
 						UNION ALL
 						SELECT t.variable_measured, t.entity3 AS entity, t.provenance
-						FROM TimeSeries_final_v2@{FORCE_INDEX=TimeSeriesFinalV2ByEntity3} AS t
+						FROM TimeSeries@{FORCE_INDEX=TimeSeriesByEntity3} AS t
 						WHERE t.entity3 IN ('country/USA','country/IND','country/CAN')
 							AND t.entity3 IS NOT NULL
 							AND t.entity2 IS NOT NULL

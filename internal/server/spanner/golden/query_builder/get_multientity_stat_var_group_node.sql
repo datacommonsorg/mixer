@@ -54,7 +54,7 @@
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
-					FROM TimeSeries_final_v2 ts
+					FROM TimeSeries ts
 					WHERE ts.variable_measured = sv.child_sv
 					LIMIT 1
 				) AS has_data,
