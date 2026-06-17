@@ -276,9 +276,21 @@ func reconstructObservations(rawObs []*rawObservation) ([]*Observation, error) {
 				continue
 			}
 			if dv.Date != "" {
+				attributes, err := decodeObservationAttributes(dv.Attributes)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"invalid observation attributes: variable=%q entity=%q facet_id=%q date=%q: %w",
+						r.VariableMeasured,
+						r.ObservationAbout,
+						r.FacetId,
+						dv.Date,
+						err,
+					)
+				}
 				obs.Observations = append(obs.Observations, &DateValue{
-					Date:  dv.Date,
-					Value: dv.Value,
+					Date:       dv.Date,
+					Value:      dv.Value,
+					Attributes: attributes,
 				})
 			}
 		}
@@ -321,6 +333,41 @@ func populateObservationFacets(obs *Observation, facets map[string]interface{}) 
 	obs.ScalingFactor = getJSONString(facets, "scalingFactor")
 	obs.IsDcAggregate = getJSONBool(facets, "isDcAggregate")
 	obs.ProvenanceURL = getJSONString(facets, "provenanceUrl")
+}
+
+// decodeObservationAttributes expects attributes to be a JSON object that can be
+// represented as a string:string map. Entries with incompatible values are skipped.
+func decodeObservationAttributes(attrs spanner.NullJSON) (map[string]string, error) {
+	if !attrs.Valid || attrs.Value == nil {
+		return nil, nil
+	}
+
+	switch values := attrs.Value.(type) {
+	case map[string]interface{}:
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			stringValue, ok := observationAttributeValueToString(value)
+			if !ok {
+				continue
+			}
+			result[key] = stringValue
+		}
+		if len(result) == 0 {
+			return nil, nil
+		}
+		return result, nil
+	case map[string]string:
+		if len(values) == 0 {
+			return nil, nil
+		}
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			result[key] = value
+		}
+		return result, nil
+	default:
+		return nil, fmt.Errorf("attributes JSON must be an object, got %T", attrs.Value)
+	}
 }
 
 func observationAttributeValueToString(value any) (string, bool) {
@@ -454,6 +501,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 			}
 		}
 
+		// Reconstruct and attach attributes from facet JSON
 		if r.Facets.Valid {
 			if m, ok := r.Facets.Value.(map[string]interface{}); ok {
 				obs.Attributes = map[string]string{}

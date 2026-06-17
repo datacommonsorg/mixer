@@ -66,6 +66,152 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 }
 
+func TestReconstructObservationsAttributes(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes cloudspanner.NullJSON
+		want       map[string]string
+	}{
+		{
+			name: "missing attributes",
+		},
+		{
+			name: "json null attributes",
+			attributes: cloudspanner.NullJSON{
+				Valid: true,
+			},
+		},
+		{
+			name: "empty attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{},
+				Valid: true,
+			},
+		},
+		{
+			name: "string attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"OBS_STATUS": "A",
+					"UNIT_MULT":  "6",
+				},
+				Valid: true,
+			},
+			want: map[string]string{
+				"OBS_STATUS": "A",
+				"UNIT_MULT":  "6",
+			},
+		},
+		{
+			name: "convert scalar attributes and skip nested values",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"BOOL_VALUE":   true,
+					"FLOAT_VALUE":  float64(1.5),
+					"INT_VALUE":    int64(6),
+					"NIL_VALUE":    nil,
+					"ARRAY_VALUE":  []interface{}{"skip"},
+					"OBJECT_VALUE": map[string]interface{}{"skip": "me"},
+					"STRING_VALUE": "keep",
+				},
+				Valid: true,
+			},
+			want: map[string]string{
+				"BOOL_VALUE":   "true",
+				"FLOAT_VALUE":  "1.5",
+				"INT_VALUE":    "6",
+				"STRING_VALUE": "keep",
+			},
+		},
+		{
+			name: "only skipped attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"NIL_VALUE":    nil,
+					"ARRAY_VALUE":  []interface{}{"skip"},
+					"OBJECT_VALUE": map[string]interface{}{"skip": "me"},
+				},
+				Valid: true,
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			observations, err := reconstructObservations([]*rawObservation{
+				{
+					VariableMeasured: "Count_Person",
+					ObservationAbout: "geoId/06",
+					FacetId:          "stored-facet-id",
+					ProvenanceID: cloudspanner.NullString{
+						StringVal: "dc/base/test_import",
+						Valid:     true,
+					},
+					DatesAndValues: []*spannerObservation{
+						{Date: "2020", Value: "1", Attributes: tc.attributes},
+					},
+				},
+			})
+			if err != nil {
+				t.Fatalf("reconstructObservations() = %v", err)
+			}
+			got := observations[0].Observations[0].Attributes
+			if len(tc.want) == 0 {
+				if got != nil {
+					t.Fatalf("Attributes = %v, want nil", got)
+				}
+				return
+			}
+			if len(got) != len(tc.want) {
+				t.Fatalf("Attributes = %v, want %v", got, tc.want)
+			}
+			for key, wantValue := range tc.want {
+				if gotValue := got[key]; gotValue != wantValue {
+					t.Fatalf("Attributes[%q] = %q, want %q", key, gotValue, wantValue)
+				}
+			}
+		})
+	}
+}
+
+func TestReconstructObservationsInvalidAttributes(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes cloudspanner.NullJSON
+		want       string
+	}{
+		{
+			name: "top level non object",
+			attributes: cloudspanner.NullJSON{
+				Value: "not-an-object",
+				Valid: true,
+			},
+			want: "attributes JSON must be an object",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := reconstructObservations([]*rawObservation{
+				{
+					VariableMeasured: "Count_Person",
+					ObservationAbout: "geoId/06",
+					FacetId:          "stored-facet-id",
+					ProvenanceID: cloudspanner.NullString{
+						StringVal: "dc/base/test_import",
+						Valid:     true,
+					},
+					DatesAndValues: []*spannerObservation{
+						{Date: "2020", Value: "1", Attributes: tc.attributes},
+					},
+				},
+			})
+			if err == nil {
+				t.Fatal("reconstructObservations() expected error, got nil")
+			}
+			if got := err.Error(); !strings.Contains(got, tc.want) {
+				t.Fatalf("reconstructObservations() error = %q, want substring %q", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestPointStatJSONOmitsMissingAttributes(t *testing.T) {
 	jsonBytes, err := protojson.Marshal(&pb.PointStat{Date: "2020"})
 	if err != nil {
