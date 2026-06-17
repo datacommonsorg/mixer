@@ -38,35 +38,11 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 			want:        map[string][]string{"variableMeasured": {"Count_Person"}},
 		},
 		{
-			name:        "provenance",
-			tail:        availabilityTail("provenance"),
-			originalURI: availabilityURI("provenance", "c[variableMeasured]=Count_Person"),
-			wantPath:    availabilityPath("provenance"),
-			want:        map[string][]string{"variableMeasured": {"Count_Person"}},
-		},
-		{
-			name:        "time period",
-			tail:        availabilityTail("TIME_PERIOD"),
-			originalURI: availabilityURI("TIME_PERIOD", "c[variableMeasured]=Count_Person"),
-			wantPath:    availabilityPath("TIME_PERIOD"),
-			want:        map[string][]string{"variableMeasured": {"Count_Person"}},
-		},
-		{
 			name:        "or values",
 			tail:        availabilityTail("observationAbout"),
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person,Count_Household"),
 			wantPath:    availabilityPath("observationAbout"),
 			want:        map[string][]string{"variableMeasured": {"Count_Person", "Count_Household"}},
-		},
-		{
-			name:        "optional dimension filter",
-			tail:        availabilityTail("provenance"),
-			originalURI: availabilityURI("provenance", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020,2021"),
-			wantPath:    availabilityPath("provenance"),
-			want: map[string][]string{
-				"variableMeasured": {"Count_Person"},
-				"TIME_PERIOD":      {"2020", "2021"},
-			},
 		},
 		{
 			name:        "mode and references defaults",
@@ -120,13 +96,25 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		},
 		{
 			name:        "missing variable measured",
-			originalURI: availabilityURI("observationAbout", "c[observationAbout]=country%2FUSA"),
+			originalURI: availabilityURI("observationAbout", "mode=exact"),
 			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "selected observation value unsupported",
 			tail:        availabilityTail("OBS_VALUE"),
 			originalURI: availabilityURI("OBS_VALUE", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "selected provenance unsupported",
+			tail:        availabilityTail("provenance"),
+			originalURI: availabilityURI("provenance", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "selected time period unsupported",
+			tail:        availabilityTail("TIME_PERIOD"),
+			originalURI: availabilityURI("TIME_PERIOD", "c[variableMeasured]=Count_Person"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
@@ -138,6 +126,16 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		{
 			name:        "filter observation value unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[OBS_VALUE]=10"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "filter observation about unsupported",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "filter time period unsupported",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

@@ -47,13 +47,20 @@ func (m *sourceExistenceMockSpannerClient) CheckVariableSourceExistence(ctx cont
 type sdmxMockSpannerClient struct {
 	SpannerClient
 
-	calls  int
-	result *pb.SdmxDataResult
+	calls              int
+	availabilityCalls  int
+	result             *pb.SdmxDataResult
+	availabilityResult *pb.SdmxAvailabilityResult
 }
 
 func (m *sdmxMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	m.calls++
 	return m.result, nil
+}
+
+func (m *sdmxMockSpannerClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	m.availabilityCalls++
+	return m.availabilityResult, nil
 }
 
 func multiEntityHeaderContext(value string) context.Context {
@@ -261,5 +268,78 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 				t.Fatalf("GetSdmxObservations() result = %v, want %v", got, wantResult)
 			}
 		})
+	}
+}
+
+func TestSchemaSelectorClientGetSdmxAvailability(t *testing.T) {
+	for _, tc := range []struct {
+		name               string
+		ctx                context.Context
+		useMultiEntityFlag bool
+		wantBaseCalls      int
+		wantMultiCalls     int
+		wantCode           codes.Code
+	}{
+		{
+			name:          "legacy default delegates to base",
+			ctx:           context.Background(),
+			wantBaseCalls: 1,
+			wantCode:      codes.OK,
+		},
+		{
+			name:               "multi entity flag delegates to multiEntity",
+			ctx:                context.Background(),
+			useMultiEntityFlag: true,
+			wantMultiCalls:     1,
+			wantCode:           codes.OK,
+		},
+		{
+			name:           "true header delegates to multiEntity",
+			ctx:            multiEntityHeaderContext("true"),
+			wantMultiCalls: 1,
+			wantCode:       codes.OK,
+		},
+		{
+			name:               "false header overrides flag and delegates to base",
+			ctx:                multiEntityHeaderContext("false"),
+			useMultiEntityFlag: true,
+			wantBaseCalls:      1,
+			wantCode:           codes.OK,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			wantResult := &pb.SdmxAvailabilityResult{}
+			baseClient := &sdmxMockSpannerClient{availabilityResult: wantResult}
+			multiEntityClient := &sdmxMockSpannerClient{availabilityResult: wantResult}
+			selector := &schemaSelectorClient{
+				SpannerClient:            baseClient,
+				multiEntity:              multiEntityClient,
+				useMultiEntitySchemaFlag: tc.useMultiEntityFlag,
+			}
+
+			got, err := selector.GetSdmxAvailability(tc.ctx, &pb.SdmxAvailabilityQuery{})
+			if code := status.Code(err); code != tc.wantCode {
+				t.Fatalf("GetSdmxAvailability() code = %v, want %v", code, tc.wantCode)
+			}
+			if baseClient.availabilityCalls != tc.wantBaseCalls {
+				t.Fatalf("base GetSdmxAvailability calls = %d, want %d", baseClient.availabilityCalls, tc.wantBaseCalls)
+			}
+			if multiEntityClient.availabilityCalls != tc.wantMultiCalls {
+				t.Fatalf("multiEntity GetSdmxAvailability calls = %d, want %d", multiEntityClient.availabilityCalls, tc.wantMultiCalls)
+			}
+			if tc.wantCode == codes.OK && got != wantResult {
+				t.Fatalf("GetSdmxAvailability() result = %v, want %v", got, wantResult)
+			}
+		})
+	}
+}
+
+func TestSpannerDatabaseClientGetSdmxAvailabilityUnimplemented(t *testing.T) {
+	got, err := (&spannerDatabaseClient{}).GetSdmxAvailability(context.Background(), &pb.SdmxAvailabilityQuery{})
+	if got != nil {
+		t.Fatalf("GetSdmxAvailability() result = %v, want nil", got)
+	}
+	if code := status.Code(err); code != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v", code, codes.Unimplemented)
 	}
 }

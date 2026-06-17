@@ -220,7 +220,10 @@ func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *pb.SdmxA
 	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
-		return nil, status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet")
+		if dispatcher.sources == nil {
+			return nil, status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet")
+		}
+		return dispatcher.sources.SdmxAvailability(ctx, request.(*pb.SdmxAvailabilityQuery))
 	})
 
 	if err != nil {

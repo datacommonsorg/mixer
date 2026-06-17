@@ -79,22 +79,20 @@ func TestInternalAvailabilityComponentID(t *testing.T) {
 		wantCode  codes.Code
 	}{
 		{
-			name:      "time period maps to internal observation date",
-			component: "TIME_PERIOD",
-			want:      "observationDate",
-			wantCode:  codes.OK,
-		},
-		{
 			name:      "observation about passes through",
 			component: "observationAbout",
 			want:      "observationAbout",
 			wantCode:  codes.OK,
 		},
 		{
-			name:      "provenance passes through",
+			name:      "time period is unsupported",
+			component: "TIME_PERIOD",
+			wantCode:  codes.Unimplemented,
+		},
+		{
+			name:      "provenance is unsupported",
 			component: "provenance",
-			want:      "provenance",
-			wantCode:  codes.OK,
+			wantCode:  codes.Unimplemented,
 		},
 		{
 			name:      "observation value is unsupported",
@@ -121,6 +119,44 @@ func TestInternalAvailabilityComponentID(t *testing.T) {
 			}
 			if got != tt.want {
 				t.Errorf("InternalAvailabilityComponentID() = %q, want %q", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestInternalAvailabilityConstraintComponentID(t *testing.T) {
+	tests := []struct {
+		name      string
+		component string
+		want      string
+		wantCode  codes.Code
+	}{
+		{
+			name:      "variable measured passes through",
+			component: "variableMeasured",
+			want:      "variableMeasured",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "observation about is unsupported",
+			component: "observationAbout",
+			wantCode:  codes.Unimplemented,
+		},
+		{
+			name:      "time period is unsupported",
+			component: "TIME_PERIOD",
+			wantCode:  codes.Unimplemented,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := InternalAvailabilityConstraintComponentID(tt.component)
+			if status.Code(err) != tt.wantCode {
+				t.Fatalf("InternalAvailabilityConstraintComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+			}
+			if got != tt.want {
+				t.Errorf("InternalAvailabilityConstraintComponentID() = %q, want %q", got, tt.want)
 			}
 		})
 	}

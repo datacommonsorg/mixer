@@ -81,6 +81,11 @@ func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery
 	return &pb.SdmxDataResult{}, nil
 }
 
+func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
+	return &pb.SdmxAvailabilityResult{}, nil
+}
+
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return rds.client.FilterStatVarsByEntity(req)
 }

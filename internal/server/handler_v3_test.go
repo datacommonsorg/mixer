@@ -73,9 +73,12 @@ func (s *sdmxDataStream) RecvMsg(any) error {
 
 type sdmxDataSource struct {
 	datasource.DataSource
-	result *pb.SdmxDataResult
-	err    error
-	got    *pb.SdmxDataQuery
+	result             *pb.SdmxDataResult
+	err                error
+	got                *pb.SdmxDataQuery
+	availabilityResult *pb.SdmxAvailabilityResult
+	availabilityErr    error
+	gotAvailability    *pb.SdmxAvailabilityQuery
 }
 
 func (ds *sdmxDataSource) Type() datasource.DataSourceType {
@@ -89,6 +92,11 @@ func (ds *sdmxDataSource) Id() string {
 func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	ds.got = req
 	return ds.result, ds.err
+}
+
+func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	ds.gotAvailability = req
+	return ds.availabilityResult, ds.availabilityErr
 }
 
 func TestV3SdmxData_Validation(t *testing.T) {
@@ -536,7 +544,7 @@ func TestV3SdmxAvailability_Validation(t *testing.T) {
 		},
 		{
 			name:       "Missing variable measured",
-			ctx:        sdmxIncomingContext(sdmxAvailabilityURI("observationAbout", "c[observationAbout]=country%2FUSA")),
+			ctx:        sdmxIncomingContext(sdmxAvailabilityURI("observationAbout", "mode=exact")),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.InvalidArgument,
@@ -598,7 +606,10 @@ func TestV3SdmxAvailability_Validation(t *testing.T) {
 }
 
 func TestV3SdmxAvailability_BackendUnimplemented(t *testing.T) {
-	server := newSdmxAvailabilityTestServer()
+	ds := &sdmxDataSource{
+		availabilityErr: status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet"),
+	}
+	server := newSdmxAvailabilityTestServer(ds)
 	body, err := server.V3SdmxAvailability(
 		sdmxIncomingContext(sdmxAvailabilityURI("observationAbout", "c[variableMeasured]=Count_Person")),
 		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
@@ -614,24 +625,58 @@ func TestV3SdmxAvailability_BackendUnimplemented(t *testing.T) {
 	}
 }
 
+func TestV3SdmxAvailability_Success(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"country/USA", "geoId/06"}},
+	}
+	server := newSdmxAvailabilityTestServer(ds)
+	body, err := server.V3SdmxAvailability(
+		sdmxIncomingContext(sdmxAvailabilityURI("observationAbout", "c[variableMeasured]=Count_Person,Count_Household")),
+		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
+	)
+	if err != nil {
+		t.Fatalf("V3SdmxAvailability() error = %v", err)
+	}
+	if body.GetContentType() != sdmx.StructureJSONType {
+		t.Fatalf("V3SdmxAvailability() content type = %q, want %q", body.GetContentType(), sdmx.StructureJSONType)
+	}
+	for _, want := range []string{"\"id\":\"observationAbout\"", "\"country/USA\"", "\"geoId/06\""} {
+		if !strings.Contains(string(body.GetData()), want) {
+			t.Fatalf("V3SdmxAvailability() body missing %q: %s", want, string(body.GetData()))
+		}
+	}
+	wantQuery := &pb.SdmxAvailabilityQuery{
+		ComponentId: "observationAbout",
+		Constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
+		},
+	}
+	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
+		t.Fatalf("dispatcher query mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestV3SdmxAvailability_SDMXDebugLoggingSuccess(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	server := newSdmxAvailabilityTestServer()
+	ds := &sdmxDataSource{
+		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+	}
+	server := newSdmxAvailabilityTestServer(ds)
 	_, err := server.V3SdmxAvailability(
-		sdmxIncomingContextWithSDMXLog(sdmxAvailabilityURI("TIME_PERIOD", "c[variableMeasured]=Count_Person")),
-		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("TIME_PERIOD")},
+		sdmxIncomingContextWithSDMXLog(sdmxAvailabilityURI("observationAbout", "c[variableMeasured]=Count_Person")),
+		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
 	)
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("V3SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	if err != nil {
+		t.Fatalf("V3SdmxAvailability() error = %v", err)
 	}
 	logs := buf.String()
 	for _, want := range []string{
 		"SDMX availability request parsed",
 		"SDMX availability dispatcher request",
-		"TIME_PERIOD",
-		"observationDate",
+		"observationAbout",
+		"variableMeasured",
 	} {
 		if !strings.Contains(logs, want) {
 			t.Fatalf("logs do not contain %q: %s", want, logs)
@@ -643,18 +688,18 @@ func TestV3SdmxAvailability_SDMXDebugLoggingParseFailure(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	server := newSdmxAvailabilityTestServer()
+	server := newSdmxAvailabilityTestServer(&sdmxDataSource{})
 	_, err := server.V3SdmxAvailability(
-		sdmxIncomingContextWithSDMXLog(sdmxAvailabilityURI("observationAbout", "c[observationAbout]=country%2FUSA")),
+		sdmxIncomingContextWithSDMXLog(sdmxAvailabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
 		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
 	)
-	if status.Code(err) != codes.InvalidArgument {
-		t.Fatalf("V3SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("V3SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
 	logs := buf.String()
 	for _, want := range []string{
 		"SDMX availability request parse failed",
-		"missing required SDMX component filter variableMeasured",
+		"unsupported SDMX component filter",
 	} {
 		if !strings.Contains(logs, want) {
 			t.Fatalf("logs do not contain %q: %s", want, logs)
@@ -670,10 +715,11 @@ func newSdmxTestServer(ds *sdmxDataSource) *Server {
 	}
 }
 
-func newSdmxAvailabilityTestServer() *Server {
+func newSdmxAvailabilityTestServer(ds *sdmxDataSource) *Server {
+	sources := datasources.NewDataSources([]datasource.DataSource{ds}, nil)
 	return &Server{
 		flags:      &featureflags.Flags{EnableSDMXDataApi: true},
-		dispatcher: dispatcher.NewDispatcher(nil, nil),
+		dispatcher: dispatcher.NewDispatcher(nil, sources),
 	}
 }
 

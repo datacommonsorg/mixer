@@ -354,3 +354,42 @@ func GetMultiEntitySdmxObservationsQuery(
 	}, nil
 }
 
+// GetMultiEntitySdmxAvailabilityQuery builds the first SDMX availability lookup.
+func GetMultiEntitySdmxAvailabilityQuery(
+	req *pb.SdmxAvailabilityQuery,
+	cfg TableConfig,
+) (*spanner.Statement, error) {
+	if req == nil {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request cannot be nil")
+	}
+	if req.ComponentId != "observationAbout" {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", req.ComponentId)
+	}
+	if req.Constraints == nil {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request constraints cannot be nil")
+	}
+
+	for key, list := range req.Constraints {
+		if key != "variableMeasured" {
+			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported constraint key %q", key)
+		}
+		if list == nil {
+			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: nil constraint list for key %q", key)
+		}
+	}
+	variables := req.Constraints["variableMeasured"].GetValues()
+	if len(variables) == 0 {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: variableMeasured must be specified")
+	}
+
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(`SELECT DISTINCT t.entity1 AS value
+FROM %s t
+WHERE t.variable_measured IN UNNEST(@variableMeasured)
+  AND t.entity1 IS NOT NULL
+  AND t.entity1 != ""
+ORDER BY value
+`, cfg.TimeSeriesTable),
+		Params: map[string]interface{}{"variableMeasured": variables},
+	}, nil
+}

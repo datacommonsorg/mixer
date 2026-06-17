@@ -64,12 +64,12 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Version != serversdmx.DataVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
-	if !isAvailabilityDimensionComponent(path.ComponentID) {
+	if path.ComponentID != ComponentObservationAbout {
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
 	for componentID := range constraints {
-		if !isAvailabilityDimensionComponent(componentID) {
+		if componentID != ComponentVariableMeasured {
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
 	}
@@ -88,20 +88,6 @@ func isAllowedDataComponent(componentID string) bool {
 	}
 }
 
-func isAvailabilityDimensionComponent(componentID string) bool {
-	kind, ok := dataComponentKind(componentID)
-	return ok && kind == serversdmx.ComponentKindDimension
-}
-
-func dataComponentKind(componentID string) (serversdmx.ComponentKind, bool) {
-	for _, component := range serversdmx.DataCSVComponents {
-		if component.ID == componentID {
-			return component.Kind, true
-		}
-	}
-	return "", false
-}
-
 func InternalConstraintComponentID(componentID string) (string, error) {
 	switch componentID {
 	case ComponentVariableMeasured, ComponentObservationAbout:
@@ -116,11 +102,15 @@ func InternalConstraintComponentID(componentID string) (string, error) {
 }
 
 func InternalAvailabilityComponentID(componentID string) (string, error) {
-	if !isAvailabilityDimensionComponent(componentID) {
+	if componentID != ComponentObservationAbout {
 		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", componentID)
 	}
-	if componentID == ComponentTimePeriod {
-		return internalObservationDate, nil
+	return componentID, nil
+}
+
+func InternalAvailabilityConstraintComponentID(componentID string) (string, error) {
+	if componentID != ComponentVariableMeasured {
+		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 	}
 	return componentID, nil
 }

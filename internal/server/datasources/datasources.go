@@ -16,6 +16,7 @@ package datasources
 
 import (
 	"context"
+	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -209,6 +210,30 @@ func (ds *DataSources) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.
 					res.Observations = append(res.Observations, result.Observations...)
 				}
 			}
+			return res, nil
+		},
+	)
+}
+
+func (ds *DataSources) SdmxAvailability(ctx context.Context, in *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+			return s.SdmxAvailability(c, r)
+		},
+		func(all []*pb.SdmxAvailabilityResult) (*pb.SdmxAvailabilityResult, error) {
+			values := map[string]bool{}
+			for _, result := range all {
+				for _, value := range result.GetValues() {
+					if value != "" {
+						values[value] = true
+					}
+				}
+			}
+			res := &pb.SdmxAvailabilityResult{Values: make([]string, 0, len(values))}
+			for value := range values {
+				res.Values = append(res.Values, value)
+			}
+			sort.Strings(res.Values)
 			return res, nil
 		},
 	)

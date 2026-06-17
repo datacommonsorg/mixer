@@ -368,6 +368,17 @@ func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 	}
 }
 
+func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), nil)
+	if err == nil {
+		t.Fatal("GetSdmxAvailability() with nil request expected error, got nil")
+	}
+	if got, want := err.Error(), "GetSdmxAvailability: request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() error = %q, want %q", got, want)
+	}
+}
+
 func TestParseEntityMappings(t *testing.T) {
 	edgesMap := map[string][]*Edge{
 		"var1": {
@@ -410,5 +421,3 @@ func TestParseEntityMappings(t *testing.T) {
 		}
 	}
 }
-
-

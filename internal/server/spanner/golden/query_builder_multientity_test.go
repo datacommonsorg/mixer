@@ -166,7 +166,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	// Case 3: Invalid key containing spaces
 	badConstraints2 := map[string]*pb.ConstraintList{
 		"variableMeasured": {Values: []string{"var1"}},
-		"invalid key":       {Values: []string{"value"}},
+		"invalid key":      {Values: []string{"value"}},
 	}
 	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, spanner.DefaultTableConfig())
 	if err == nil {
@@ -174,3 +174,60 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}
 }
 
+func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
+	t.Parallel()
+
+	goldenFile := "get_sdmx_availability_observation_about.sql"
+	runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+		return spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+			ComponentId: "observationAbout",
+			Constraints: map[string]*pb.ConstraintList{
+				"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
+			},
+		}, spanner.DefaultTableConfig())
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		req  *pb.SdmxAvailabilityQuery
+	}{
+		{
+			name: "nil request",
+		},
+		{
+			name: "missing variable measured",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{},
+			},
+		},
+		{
+			name: "unsupported component",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "provenance",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": {Values: []string{"Count_Person"}},
+				},
+			},
+		},
+		{
+			name: "unsupported constraint",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": {Values: []string{"Count_Person"}},
+					"observationAbout": {Values: []string{"country/USA"}},
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(tc.req, spanner.DefaultTableConfig())
+			if err == nil {
+				t.Fatal("GetMultiEntitySdmxAvailabilityQuery() error = nil, want error")
+			}
+		})
+	}
+}
