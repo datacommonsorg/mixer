@@ -287,9 +287,11 @@ func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces 
 
 // kgPredicateToSpannerColumn maps Knowledge Graph predicates to physical Spanner column names.
 var kgPredicateToSpannerColumn = map[string]string{
+	"measurementMethod": "measurement_method",
 	"observationAbout":  "entity1",
-	"provenance":        "provenance",
 	"observationPeriod": "observation_period",
+	"provenance":        "provenance",
+	"unit":              "unit",
 }
 
 var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
@@ -397,13 +399,7 @@ func GetMultiEntitySdmxAvailabilityQuery(
 	}
 
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(`SELECT DISTINCT %[1]s AS value
-FROM %[2]s t
-WHERE t.variable_measured IN UNNEST(@variableMeasured)
-  AND %[1]s IS NOT NULL
-  AND %[1]s != ""
-ORDER BY value
-`, valueExpr, cfg.TimeSeriesTable),
+		SQL:    fmt.Sprintf(statementsMultiEntity.getSdmxAvailability, valueExpr, cfg.TimeSeriesTable),
 		Params: map[string]interface{}{"variableMeasured": variables},
 	}, nil
 }
@@ -412,13 +408,11 @@ func sdmxAvailabilityValueExpression(componentID string) (string, error) {
 	switch componentID {
 	case "variableMeasured":
 		return "t.variable_measured", nil
-	case "observationAbout":
-		return "t.entity1", nil
-	case "provenance", "observationPeriod":
-		return "t." + kgPredicateToSpannerColumn[componentID], nil
-	case "unit", "measurementMethod":
-		return fmt.Sprintf("JSON_VALUE(t.facet, '$.%s')", componentID), nil
 	default:
-		return "", fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", componentID)
+		col := kgPredicateToSpannerColumn[componentID]
+		if col == "" {
+			return "", fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", componentID)
+		}
+		return "t." + col, nil
 	}
 }

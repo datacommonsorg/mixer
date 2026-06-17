@@ -17,4 +17,4 @@
 			t.facet AS facets,
 			t.entities
 		FROM TimeSeries t
-		WHERE (t.variable_measured = "var1" AND t.entity2 IN ('country/PRT') AND t.entity1 IN ('country/AGO') AND t.provenance IN ('dc/base/WTO_TradeConnectivity') AND JSON_VALUE(t.facet, '$.unit') IN ('Percent'))
+		WHERE (t.variable_measured = "var1" AND t.entity2 IN ('country/PRT') AND t.measurement_method IN ('Census') AND t.entity1 IN ('country/AGO') AND t.provenance IN ('dc/base/WTO_TradeConnectivity') AND t.unit IN ('Percent'))

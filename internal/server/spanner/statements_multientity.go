@@ -25,6 +25,7 @@ var statementsMultiEntity = struct {
 	getObsByContainedInPlaceBothWithDate           string
 	getObsByContainedInPlaceBothLatest             string
 	getSdmxObs                                     string
+	getSdmxAvailability                            string
 	getStatVarsByEntityBoth                        string
 	getStatVarsByEntityVarsOnly                    string
 	getStatVarsByEntityEntitiesOnly                string
@@ -313,6 +314,14 @@ var statementsMultiEntity = struct {
 			t.entities
 		FROM %[2]s t
 		WHERE `,
+
+	getSdmxAvailability: `		SELECT DISTINCT %[1]s AS value
+		FROM %[2]s t
+		WHERE t.variable_measured IN UNNEST(@variableMeasured)
+			AND %[1]s IS NOT NULL
+			AND %[1]s != ""
+		ORDER BY value
+`,
 
 	// Check existence when both variables and entities are specified
 	getStatVarsByEntityBoth: `		WITH
