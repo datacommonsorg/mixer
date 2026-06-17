@@ -45,18 +45,20 @@ func (s *Service) GetVariableMetadata(
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
 	defer util.TimeTrack(time.Now(), "Agent: GetVariableMetadata")
-	slog.Info("GetVariableMetadata started", "variablesCount", len(req.GetVariableDcids()), "entitiesCount", len(req.GetEntityDcids()))
+	varDcids := dedup(req.GetVariableDcids())
+	entityDcids := dedup(req.GetEntityDcids())
+	slog.Info("GetVariableMetadata started", "variablesCount", len(varDcids), "entitiesCount", len(entityDcids))
 
-	if len(req.GetVariableDcids()) == 0 {
+	if len(varDcids) == 0 {
 		return &pbv2.GetVariableMetadataResponse{
 			Status:    StatusSuccess,
 			Variables: make(map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata),
 		}, nil
 	}
 
-	variables := initVariableMetadata(req.GetVariableDcids())
+	variables := initVariableMetadata(varDcids)
 
-	if err := s.fetchCoreMetadata(ctx, req, variables); err != nil {
+	if err := s.fetchCoreMetadata(ctx, varDcids, entityDcids, variables); err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to fetch core variable metadata: %v", err)
 	}
 
@@ -68,6 +70,21 @@ func (s *Service) GetVariableMetadata(
 		Status:    StatusSuccess,
 		Variables: variables,
 	}, nil
+}
+
+// dedup removes duplicate strings from a slice.
+func dedup(dcids []string) []string {
+	seen := make(map[string]struct{})
+	var res []string
+	for _, id := range dcids {
+		if id != "" {
+			if _, ok := seen[id]; !ok {
+				seen[id] = struct{}{}
+				res = append(res, id)
+			}
+		}
+	}
+	return res
 }
 
 // initVariableMetadata initializes the map of VariableMetadata entries.
@@ -90,15 +107,14 @@ func initVariableMetadata(dcids []string) map[string]*pbv2.GetVariableMetadataRe
 // builds cache keys from the exact requested node slice, single-node lookups maximize cache-hit rates across requests.
 func (s *Service) fetchCoreMetadata(
 	ctx context.Context,
-	req *pbv2.GetVariableMetadataRequest,
+	varDcids, entityDcids []string,
 	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
 ) error {
 	g, gCtx := errgroup.WithContext(ctx)
 	g.SetLimit(maxConcurrentFetchers)
 	var mu sync.Mutex
 
-
-	for _, vDcid := range req.GetVariableDcids() {
+	for _, vDcid := range varDcids {
 		dcid := vDcid
 		g.Go(func() error {
 			return s.fetchVariableProperties(gCtx, dcid, variables, &mu)
@@ -108,9 +124,9 @@ func (s *Service) fetchCoreMetadata(
 		})
 	}
 
-	if len(req.GetEntityDcids()) > 0 {
+	if len(entityDcids) > 0 {
 		g.Go(func() error {
-			return s.fetchPerEntityFacets(gCtx, req, variables, &mu)
+			return s.fetchPerEntityFacets(gCtx, varDcids, entityDcids, variables, &mu)
 		})
 	}
 
@@ -165,13 +181,13 @@ func (s *Service) fetchVariableSummary(
 // fetchPerEntityFacets retrieves observation facets across target variables and entities.
 func (s *Service) fetchPerEntityFacets(
 	ctx context.Context,
-	req *pbv2.GetVariableMetadataRequest,
+	varDcids, entityDcids []string,
 	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
 	mu *sync.Mutex,
 ) error {
 	obsReq := &pbv2.ObservationRequest{
-		Variable: &pbv2.DcidOrExpression{Dcids: req.GetVariableDcids()},
-		Entity:   &pbv2.DcidOrExpression{Dcids: req.GetEntityDcids()},
+		Variable: &pbv2.DcidOrExpression{Dcids: varDcids},
+		Entity:   &pbv2.DcidOrExpression{Dcids: entityDcids},
 		Select:   obsMetadataSelect,
 	}
 	obsResp, err := s.mixer.V2Observation(ctx, obsReq)
@@ -388,7 +404,9 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 			}
 			pvList = append(pvList, pv)
 		}
-		res[prop] = &pbv2.PropertyValues{Values: pvList}
+		if len(pvList) > 0 {
+			res[prop] = &pbv2.PropertyValues{Values: pvList}
+		}
 	}
 	return res
 }
