@@ -28,7 +28,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-const wildcardPropertyQuery = "->*"
+const (
+	wildcardPropertyQuery = "->*"
+	maxConcurrentFetchers = 20
+)
 
 var obsMetadataSelect = []string{"variable", "entity", "facet"}
 
@@ -91,7 +94,9 @@ func (s *Service) fetchCoreMetadata(
 	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
 ) error {
 	g, gCtx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentFetchers)
 	var mu sync.Mutex
+
 
 	for _, vDcid := range req.GetVariableDcids() {
 		dcid := vDcid
@@ -186,10 +191,10 @@ func assignVariableFacets(
 	if obsResp == nil || obsResp.GetByVariable() == nil {
 		return
 	}
-	mu.Lock()
-	defer mu.Unlock()
 	for vDcid, vObs := range obsResp.GetByVariable() {
+		mu.Lock()
 		vMeta, ok := variables[vDcid]
+		mu.Unlock()
 		if !ok || vObs == nil {
 			continue
 		}
@@ -197,6 +202,7 @@ func assignVariableFacets(
 			if eObs == nil {
 				continue
 			}
+			mu.Lock()
 			eMeta, eExists := vMeta.PerEntityMetadata[eDcid]
 			if !eExists {
 				eMeta = &pbv2.GetVariableMetadataResponse_EntityMetadata{
@@ -218,6 +224,7 @@ func assignVariableFacets(
 					}
 				}
 			}
+			mu.Unlock()
 		}
 	}
 }
@@ -234,6 +241,7 @@ func (s *Service) hydrateProvenanceMetadata(
 	slog.Info("Hydrating provenance descriptions", "provenancesCount", len(provIDs))
 
 	g, gCtx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentFetchers)
 	var mu sync.Mutex
 	provenancesMap := make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata)
 
@@ -358,6 +366,9 @@ func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValue
 			val := n.GetValue()
 			dcid := n.GetDcid()
 			name := n.GetName()
+			if val == "" && dcid == "" && name == "" {
+				continue
+			}
 
 			key := propValKey{val, dcid, name}
 			if _, ok := seen[key]; ok {
