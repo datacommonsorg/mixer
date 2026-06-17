@@ -286,11 +286,14 @@ func GetMultiEntitySdmxObservationsQuery(
 	constraints map[string]*pb.ConstraintList,
 	entityMappings map[string]map[string]string,
 	cfg TableConfig,
-) (*spanner.Statement, map[string]string, error) {
-	// Validate all constraint keys to prevent SQL Injection
-	for reqKey := range constraints {
+) (*spanner.Statement, error) {
+	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
+	for reqKey, list := range constraints {
 		if !constraintKeyRegex.MatchString(reqKey) {
-			return nil, nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: invalid constraint key %q", reqKey)
+			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: invalid constraint key %q", reqKey)
+		}
+		if list == nil {
+			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: nil constraint list for key %q", reqKey)
 		}
 	}
 
@@ -299,14 +302,13 @@ func GetMultiEntitySdmxObservationsQuery(
 		variables = list.Values
 	}
 	if len(variables) == 0 {
-		return nil, nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: variableMeasured must be specified")
+		return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: variableMeasured must be specified")
 	}
 
 	sqlSelect := fmt.Sprintf(statementsMultiEntity.getSdmxObs, cfg.ObservationTable, cfg.TimeSeriesTable)
 
 	params := map[string]interface{}{}
 	varBranches := []string{}
-	colToReqKey := map[string]string{}
 
 	// Collect and sort constraint keys to ensure deterministic SQL query generation
 	var constraintKeys []string
@@ -331,7 +333,6 @@ func GetMultiEntitySdmxObservationsQuery(
 			// Check if this constraint key (representing a KG predicate) maps to a dynamic entity slot
 			if slot, ok := mapping[reqKey]; ok {
 				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", slot, reqKey))
-				colToReqKey[slot] = reqKey
 			} else {
 				// Map to static Spanner column, or fall back to searching inside facet JSON
 				col := kgPredicateToSpannerColumn[reqKey]
@@ -339,7 +340,6 @@ func GetMultiEntitySdmxObservationsQuery(
 					varClauses = append(varClauses, fmt.Sprintf("JSON_VALUE(t.facet, '$.%s') IN UNNEST(@%s)", reqKey, reqKey))
 				} else {
 					varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", col, reqKey))
-					colToReqKey[col] = reqKey
 				}
 			}
 		}
@@ -351,6 +351,6 @@ func GetMultiEntitySdmxObservationsQuery(
 	return &spanner.Statement{
 		SQL:    sql,
 		Params: params,
-	}, colToReqKey, nil
+	}, nil
 }
 

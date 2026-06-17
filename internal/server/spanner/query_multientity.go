@@ -409,6 +409,9 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	if req == nil {
 		return nil, fmt.Errorf("GetSdmxObservations: request cannot be nil")
 	}
+	if req.Constraints == nil {
+		return nil, fmt.Errorf("GetSdmxObservations: request constraints cannot be nil")
+	}
 
 	variables := []string{}
 	if list, ok := req.Constraints["variableMeasured"]; ok {
@@ -428,7 +431,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		entityMappings = parseEntityMappings(edgesMap)
 	}
 
-	stmt, _, err := GetMultiEntitySdmxObservationsQuery(req.Constraints, entityMappings, nc.cfg)
+	stmt, err := GetMultiEntitySdmxObservationsQuery(req.Constraints, entityMappings, nc.cfg)
 	if err != nil {
 		return nil, err
 	}
