@@ -85,13 +85,38 @@ func TestInternalAvailabilityComponentID(t *testing.T) {
 			wantCode:  codes.OK,
 		},
 		{
-			name:      "time period is unsupported",
-			component: "TIME_PERIOD",
-			wantCode:  codes.Unimplemented,
+			name:      "provenance passes through",
+			component: "provenance",
+			want:      "provenance",
+			wantCode:  codes.OK,
 		},
 		{
-			name:      "provenance is unsupported",
-			component: "provenance",
+			name:      "unit passes through",
+			component: "unit",
+			want:      "unit",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "measurement method passes through",
+			component: "measurementMethod",
+			want:      "measurementMethod",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "observation period passes through",
+			component: "observationPeriod",
+			want:      "observationPeriod",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "variable measured passes through",
+			component: "variableMeasured",
+			want:      "variableMeasured",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "time period is unsupported",
+			component: "TIME_PERIOD",
 			wantCode:  codes.Unimplemented,
 		},
 		{

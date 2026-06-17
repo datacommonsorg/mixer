@@ -656,6 +656,32 @@ func TestV3SdmxAvailability_Success(t *testing.T) {
 	}
 }
 
+func TestV3SdmxAvailability_SelectsOtherDimension(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"Person"}},
+	}
+	server := newSdmxAvailabilityTestServer(ds)
+	body, err := server.V3SdmxAvailability(
+		sdmxIncomingContext(sdmxAvailabilityURI("unit", "c[variableMeasured]=Count_Person")),
+		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("unit")},
+	)
+	if err != nil {
+		t.Fatalf("V3SdmxAvailability() error = %v", err)
+	}
+	if !strings.Contains(string(body.GetData()), "\"id\":\"unit\"") {
+		t.Fatalf("V3SdmxAvailability() body missing unit id: %s", string(body.GetData()))
+	}
+	wantQuery := &pb.SdmxAvailabilityQuery{
+		ComponentId: "unit",
+		Constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"Count_Person"}},
+		},
+	}
+	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
+		t.Fatalf("dispatcher query mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestV3SdmxAvailability_SDMXDebugLoggingSuccess(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()

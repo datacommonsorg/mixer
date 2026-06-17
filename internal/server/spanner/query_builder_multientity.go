@@ -362,8 +362,9 @@ func GetMultiEntitySdmxAvailabilityQuery(
 	if req == nil {
 		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request cannot be nil")
 	}
-	if req.ComponentId != "observationAbout" {
-		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", req.ComponentId)
+	valueExpr, err := sdmxAvailabilityValueExpression(req.ComponentId)
+	if err != nil {
+		return nil, err
 	}
 	if req.Constraints == nil {
 		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request constraints cannot be nil")
@@ -383,13 +384,28 @@ func GetMultiEntitySdmxAvailabilityQuery(
 	}
 
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(`SELECT DISTINCT t.entity1 AS value
-FROM %s t
+		SQL: fmt.Sprintf(`SELECT DISTINCT %[1]s AS value
+FROM %[2]s t
 WHERE t.variable_measured IN UNNEST(@variableMeasured)
-  AND t.entity1 IS NOT NULL
-  AND t.entity1 != ""
+  AND %[1]s IS NOT NULL
+  AND %[1]s != ""
 ORDER BY value
-`, cfg.TimeSeriesTable),
+`, valueExpr, cfg.TimeSeriesTable),
 		Params: map[string]interface{}{"variableMeasured": variables},
 	}, nil
+}
+
+func sdmxAvailabilityValueExpression(componentID string) (string, error) {
+	switch componentID {
+	case "variableMeasured":
+		return "t.variable_measured", nil
+	case "observationAbout":
+		return "t.entity1", nil
+	case "provenance", "observationPeriod":
+		return "t." + kgPredicateToSpannerColumn[componentID], nil
+	case "unit", "measurementMethod":
+		return fmt.Sprintf("JSON_VALUE(t.facet, '$.%s')", componentID), nil
+	default:
+		return "", fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", componentID)
+	}
 }

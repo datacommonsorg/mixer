@@ -64,7 +64,7 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Version != serversdmx.DataVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
-	if path.ComponentID != ComponentObservationAbout {
+	if !isAvailabilityComponent(path.ComponentID) {
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
@@ -88,6 +88,23 @@ func isAllowedDataComponent(componentID string) bool {
 	}
 }
 
+func isAvailabilityComponent(componentID string) bool {
+	if componentID == ComponentTimePeriod {
+		return false
+	}
+	kind, ok := dataComponentKind(componentID)
+	return ok && kind == serversdmx.ComponentKindDimension
+}
+
+func dataComponentKind(componentID string) (serversdmx.ComponentKind, bool) {
+	for _, component := range serversdmx.DataCSVComponents {
+		if component.ID == componentID {
+			return component.Kind, true
+		}
+	}
+	return "", false
+}
+
 func InternalConstraintComponentID(componentID string) (string, error) {
 	switch componentID {
 	case ComponentVariableMeasured, ComponentObservationAbout:
@@ -102,7 +119,7 @@ func InternalConstraintComponentID(componentID string) (string, error) {
 }
 
 func InternalAvailabilityComponentID(componentID string) (string, error) {
-	if componentID != ComponentObservationAbout {
+	if !isAvailabilityComponent(componentID) {
 		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", componentID)
 	}
 	return componentID, nil
