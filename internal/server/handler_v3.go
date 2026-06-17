@@ -281,8 +281,8 @@ func sdmxAvailabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.Sdm
 		return nil, err
 	}
 	constraints := map[string]*pb.ConstraintList{}
-	for componentID, values := range request.Constraints {
-		constraintID, err := restv2.InternalAvailabilityConstraintComponentID(componentID)
+	for filterID, values := range request.Constraints {
+		constraintID, err := restv2.InternalAvailabilityConstraintComponentID(filterID)
 		if err != nil {
 			return nil, err
 		}

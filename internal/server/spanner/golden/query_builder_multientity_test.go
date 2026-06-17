@@ -243,6 +243,24 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 			},
 		},
 		{
+			name: "nil variable measured constraint",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": nil,
+				},
+			},
+		},
+		{
+			name: "empty variable measured values",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": &pb.ConstraintList{},
+				},
+			},
+		},
+		{
 			name: "unsupported component",
 			req: &pb.SdmxAvailabilityQuery{
 				ComponentId: "TIME_PERIOD",

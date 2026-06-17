@@ -385,18 +385,16 @@ func GetMultiEntitySdmxAvailabilityQuery(
 		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request constraints cannot be nil")
 	}
 
-	for key, list := range req.Constraints {
+	for key := range req.Constraints {
 		if key != "variableMeasured" {
 			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported constraint key %q", key)
 		}
-		if list == nil {
-			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: nil constraint list for key %q", key)
-		}
 	}
-	variables := req.Constraints["variableMeasured"].GetValues()
-	if len(variables) == 0 {
+	list, ok := req.Constraints["variableMeasured"]
+	if !ok || list == nil || len(list.GetValues()) == 0 {
 		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: variableMeasured must be specified")
 	}
+	variables := list.GetValues()
 
 	return &spanner.Statement{
 		SQL:    fmt.Sprintf(statementsMultiEntity.getSdmxAvailability, valueExpr, cfg.TimeSeriesTable),

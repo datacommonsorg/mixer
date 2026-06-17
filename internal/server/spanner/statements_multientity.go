@@ -319,7 +319,7 @@ var statementsMultiEntity = struct {
 		FROM %[2]s t
 		WHERE t.variable_measured IN UNNEST(@variableMeasured)
 			AND %[1]s IS NOT NULL
-			AND %[1]s != ""
+			AND %[1]s != ''
 		ORDER BY value
 `,
 

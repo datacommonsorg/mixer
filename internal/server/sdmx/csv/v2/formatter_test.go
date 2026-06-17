@@ -74,6 +74,31 @@ func TestCSVFormatter_Rows(t *testing.T) {
 	}
 }
 
+func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
+	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
+
+	got, err := formatter.Format([]*pb.SdmxObservation{
+		nil,
+		{
+			VariableMeasured: "Count_Person",
+			Dimensions: map[string]string{
+				"observationAbout": "country/USA",
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("Format() error = %v", err)
+	}
+
+	want := [][]string{
+		dataCSVHeader(),
+		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, "", ""},
+	}
+	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
+		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
 

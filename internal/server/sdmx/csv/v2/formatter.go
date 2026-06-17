@@ -42,6 +42,9 @@ func (f *CSVFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 		return "", err
 	}
 	for _, observation := range obs {
+		if observation == nil {
+			continue
+		}
 		if len(observation.GetDatesAndValues()) == 0 {
 			if err := writer.Write(f.row(observation, nil)); err != nil {
 				return "", err
