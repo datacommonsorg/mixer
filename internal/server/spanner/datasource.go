@@ -61,6 +61,7 @@ type SpannerDataSource struct {
 	recogPlaceStore *files.RecogPlaceStore
 	mapsClient      internalmaps.MapsClient
 	searchConfig    *SpannerSearchConfig
+	topicExpander   resolvev2.TopicExpander
 }
 
 const (
@@ -72,6 +73,7 @@ const (
 type SpannerDataSourceOptions struct {
 	RecogPlaceStore *files.RecogPlaceStore
 	MapsClient      internalmaps.MapsClient
+	TopicExpander   resolvev2.TopicExpander
 }
 
 func NewSpannerDataSource(
@@ -86,6 +88,7 @@ func NewSpannerDataSource(
 	if opts != nil {
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
+		sds.topicExpander = opts.TopicExpander
 	}
 	return sds
 }
@@ -485,6 +488,15 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
 		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	}
+
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
+		if sds.topicExpander == nil {
+			slog.Error("SpannerDataSource: topic expander is not initialized")
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized in SpannerDataSource")
+		}
+		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()))
+		return resolvev2.ResolveTopics(ctx, sds.topicExpander, req.GetNodes(), req.GetExpandTopics())
 	}
 
 	switch normalizedResolveRequest.InProp {
