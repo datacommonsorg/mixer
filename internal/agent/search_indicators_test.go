@@ -31,6 +31,8 @@ import (
 // mockMixerServer acts as a lightweight, self-contained in-process Mixer API engine
 // that dynamically serves query requests from its internal mock data maps.
 type mockMixerServer struct {
+	Mixer
+
 	// resolveMockData maps a search query node string (or place description like "World")
 	// to its pre-populated list of resolved KG entity candidates.
 	resolveMockData map[string][]*pbv2.ResolveResponse_Entity_Candidate
@@ -39,6 +41,7 @@ type mockMixerServer struct {
 	// that have active observation series data available for that place.
 	obsMockData     map[string][]string
 }
+
 
 // V2Resolve dynamically maps input query nodes to candidates from its resolveMockData map.
 func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {

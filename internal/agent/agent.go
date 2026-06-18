@@ -18,6 +18,7 @@ package agent
 import (
 	"context"
 
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -57,6 +58,9 @@ type Mixer interface {
 
 	// V2Node fetches property values for a list of entities.
 	V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+
+	// V2BulkVariableInfo fetches summary metadata for statistical variables.
+	V2BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 }
 
 // Service orchestrates the aggregation and formatting of lower-level API data in response
