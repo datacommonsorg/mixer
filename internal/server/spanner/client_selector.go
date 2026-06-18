@@ -34,6 +34,7 @@ type multiEntityClientInterface interface {
 	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
 	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error)
 	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+	GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error)
 }
 
 type schemaSelectorClient struct {
@@ -169,6 +170,16 @@ func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.
 		return s.multiEntity.GetSdmxObservations(ctx, req)
 	}
 	return s.SpannerClient.GetSdmxObservations(ctx, req)
+}
+
+// GetSdmxAvailability overrides the embedded client's GetSdmxAvailability.
+// SDMX is supported in the multi-entity schema.
+func (s *schemaSelectorClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	ctx, useMultiEntity := s.selectSchema(ctx)
+	if useMultiEntity {
+		return s.multiEntity.GetSdmxAvailability(ctx, req)
+	}
+	return s.SpannerClient.GetSdmxAvailability(ctx, req)
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or multi-entity client.

@@ -12,7 +12,7 @@
 				gm.variable_group AS variable,
 				ts.entity1 AS entity
 			FROM group_members gm
-			JOIN TimeSeries_final_v2 AS ts
+			JOIN TimeSeries AS ts
 				ON gm.variable_measured = ts.variable_measured
 			WHERE ts.entity1 IN ('geoId/01001','geoId/02013')
 		),
@@ -21,7 +21,7 @@
 				gm.variable_group AS variable,
 				ts.entity2 AS entity
 			FROM group_members gm
-			JOIN TimeSeries_final_v2@{FORCE_INDEX=TimeSeriesFinalV2ByEntity2} AS ts
+			JOIN TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2} AS ts
 				ON gm.variable_measured = ts.variable_measured
 			WHERE ts.entity2 IN ('geoId/01001','geoId/02013')
 			  AND ts.entity2 IS NOT NULL
@@ -31,7 +31,7 @@
 				gm.variable_group AS variable,
 				ts.entity3 AS entity
 			FROM group_members gm
-			JOIN TimeSeries_final_v2@{FORCE_INDEX=TimeSeriesFinalV2ByEntity3} AS ts
+			JOIN TimeSeries@{FORCE_INDEX=TimeSeriesByEntity3} AS ts
 				ON gm.variable_measured = ts.variable_measured
 			WHERE ts.entity3 IN ('geoId/01001','geoId/02013')
 			  AND ts.entity3 IS NOT NULL

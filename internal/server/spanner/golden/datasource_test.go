@@ -85,6 +85,9 @@ func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context,
 func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*spanner.SearchNode, error) {
 	return nil, nil
 }
@@ -166,7 +169,10 @@ func TestSpannerResolve(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, recogPlaceStore, &maps.FakeMapsClient{})
+	ds := spanner.NewSpannerDataSource(client, &spanner.SpannerDataSourceOptions{
+		RecogPlaceStore: recogPlaceStore,
+		MapsClient:      &maps.FakeMapsClient{},
+	})
 
 	t.Parallel()
 	ctx := context.Background()
@@ -221,7 +227,7 @@ func TestSpannerNode(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -276,7 +282,7 @@ func TestSpannerSparql(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -345,7 +351,7 @@ func TestSpannerEvent(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -571,7 +577,7 @@ func TestSpannerObservation(t *testing.T) {
 			filterNodesByTypeRes:            c.mockTypes,
 			checkGroupPlaceExistenceRes:     c.mockGroupPlaceRes,
 		}
-		ds := spanner.NewSpannerDataSource(client, nil, nil)
+		ds := spanner.NewSpannerDataSource(client, nil)
 
 		got, err := ds.Observation(ctx, c.req)
 		if (err != nil) != c.wantErr {
@@ -616,7 +622,7 @@ func TestSpannerObservation_SkipsProvenanceURLLookupWhenPresent(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -659,7 +665,7 @@ func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -694,7 +700,7 @@ func TestSpannerObservation_MissingProvenanceURLEdgeDoesNotFail(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -721,7 +727,7 @@ func TestSpannerObservation_ProvenanceURLLookupErrorFails(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	_, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err == nil || !strings.Contains(err.Error(), "error resolving provenance URLs") {
@@ -761,7 +767,7 @@ func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 	req := observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}})
 	req.Filter = &pbv2.FacetFilter{Domains: []string{"example.org"}}
 
@@ -797,7 +803,7 @@ func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) 
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"}))
 	if err != nil {
@@ -826,7 +832,7 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 			"Topic":        {"dc/topic/Demographics"},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Valid SVGs including WHO/Root
 	req1 := &pbv1.BulkVariableGroupInfoRequest{
@@ -924,7 +930,7 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Expression with Remote Data in Context
 	req := &pbv2.ObservationRequest{
@@ -986,7 +992,7 @@ func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -1030,7 +1036,7 @@ func TestSpannerObservation_NoExpression(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -1136,7 +1142,7 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 			client := &mockSpannerClient{
 				checkVariableExistenceRes: c.mockExist,
 			}
-			ds := spanner.NewSpannerDataSource(client, nil, nil)
+			ds := spanner.NewSpannerDataSource(client, nil)
 
 			got, err := ds.FilterStatVarsByEntity(ctx, c.req)
 			if err != nil {

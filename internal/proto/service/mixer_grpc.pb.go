@@ -33,6 +33,7 @@ import (
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -47,6 +48,7 @@ const (
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
 	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
+	Mixer_V3SdmxAvailability_FullMethodName           = "/datacommons.Mixer/V3SdmxAvailability"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
@@ -121,7 +123,8 @@ const (
 type MixerClient interface {
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
-	V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error)
+	V3SdmxData(ctx context.Context, in *v3.SdmxRestRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[httpbody.HttpBody], error)
+	V3SdmxAvailability(ctx context.Context, in *v3.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
@@ -254,10 +257,29 @@ func (c *mixerClient) V3Observation(ctx context.Context, in *v2.ObservationReque
 	return out, nil
 }
 
-func (c *mixerClient) V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error) {
+func (c *mixerClient) V3SdmxData(ctx context.Context, in *v3.SdmxRestRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[httpbody.HttpBody], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(v3.SdmxDataResponse)
-	err := c.cc.Invoke(ctx, Mixer_V3SdmxData_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &Mixer_ServiceDesc.Streams[0], Mixer_V3SdmxData_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[v3.SdmxRestRequest, httpbody.HttpBody]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mixer_V3SdmxDataClient = grpc.ServerStreamingClient[httpbody.HttpBody]
+
+func (c *mixerClient) V3SdmxAvailability(ctx context.Context, in *v3.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(httpbody.HttpBody)
+	err := c.cc.Invoke(ctx, Mixer_V3SdmxAvailability_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -931,7 +953,8 @@ func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImpor
 type MixerServer interface {
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
-	V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error)
+	V3SdmxData(*v3.SdmxRestRequest, grpc.ServerStreamingServer[httpbody.HttpBody]) error
+	V3SdmxAvailability(context.Context, *v3.SdmxRestRequest) (*httpbody.HttpBody, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
@@ -1049,8 +1072,11 @@ func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.No
 func (UnimplementedMixerServer) V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3Observation not implemented")
 }
-func (UnimplementedMixerServer) V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method V3SdmxData not implemented")
+func (UnimplementedMixerServer) V3SdmxData(*v3.SdmxRestRequest, grpc.ServerStreamingServer[httpbody.HttpBody]) error {
+	return status.Error(codes.Unimplemented, "method V3SdmxData not implemented")
+}
+func (UnimplementedMixerServer) V3SdmxAvailability(context.Context, *v3.SdmxRestRequest) (*httpbody.HttpBody, error) {
+	return nil, status.Error(codes.Unimplemented, "method V3SdmxAvailability not implemented")
 }
 func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3NodeSearch not implemented")
@@ -1306,20 +1332,31 @@ func _Mixer_V3Observation_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_V3SdmxData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.SdmxDataRequest)
+func _Mixer_V3SdmxData_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(v3.SdmxRestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MixerServer).V3SdmxData(m, &grpc.GenericServerStream[v3.SdmxRestRequest, httpbody.HttpBody]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Mixer_V3SdmxDataServer = grpc.ServerStreamingServer[httpbody.HttpBody]
+
+func _Mixer_V3SdmxAvailability_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v3.SdmxRestRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).V3SdmxData(ctx, in)
+		return srv.(MixerServer).V3SdmxAvailability(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mixer_V3SdmxData_FullMethodName,
+		FullMethod: Mixer_V3SdmxAvailability_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3SdmxData(ctx, req.(*v3.SdmxDataRequest))
+		return srv.(MixerServer).V3SdmxAvailability(ctx, req.(*v3.SdmxRestRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2528,8 +2565,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_V3Observation_Handler,
 		},
 		{
-			MethodName: "V3SdmxData",
-			Handler:    _Mixer_V3SdmxData_Handler,
+			MethodName: "V3SdmxAvailability",
+			Handler:    _Mixer_V3SdmxAvailability_Handler,
 		},
 		{
 			MethodName: "V3NodeSearch",
@@ -2796,6 +2833,12 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetImportTableData_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "V3SdmxData",
+			Handler:       _Mixer_V3SdmxData_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "service/mixer.proto",
 }

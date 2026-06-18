@@ -151,6 +151,9 @@ const (
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
+	// Whether to log SDMX request parsing and dispatcher mapping.
+	// To use, set header "X-Log-SDMX: true"
+	XLogSDMX = "X-Log-SDMX"
 	// Header to specify which embeddings index to use for V2 Resolve.
 	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
@@ -836,6 +839,36 @@ func GetOptionalBoolHeader(ctx context.Context, headerName string) (*bool, error
 		return &f, nil
 	}
 	return nil, status.Errorf(codes.InvalidArgument, "Invalid %s header value: %q. Valid values are 'true' or 'false'", headerName, val)
+}
+
+// HTTPStatusToGRPCCode maps HTTP status codes to gRPC codes.
+func HTTPStatusToGRPCCode(statusCode int) codes.Code {
+	switch statusCode {
+	case http.StatusOK:
+		return codes.OK
+	case http.StatusBadRequest:
+		return codes.InvalidArgument
+	case http.StatusUnauthorized:
+		return codes.Unauthenticated
+	case http.StatusForbidden:
+		return codes.PermissionDenied
+	case http.StatusNotFound:
+		return codes.NotFound
+	case http.StatusConflict:
+		return codes.AlreadyExists
+	case http.StatusTooManyRequests:
+		return codes.ResourceExhausted
+	case http.StatusInternalServerError:
+		return codes.Internal
+	case http.StatusNotImplemented:
+		return codes.Unimplemented
+	case http.StatusServiceUnavailable:
+		return codes.Unavailable
+	case http.StatusGatewayTimeout:
+		return codes.DeadlineExceeded
+	default:
+		return codes.Unknown
+	}
 }
 
 // IsTopicDcid checks if the DCID belongs to a Topic.

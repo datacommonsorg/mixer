@@ -351,6 +351,7 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 	facet := resp.Facets["stored-facet-id"]
 	if facet == nil {
 		t.Fatal(`resp.Facets["stored-facet-id"] = nil`)
+		return
 	}
 	if got, want := facet.ProvenanceId, "dc/base/test_import"; got != want {
 		t.Fatalf("facet.ProvenanceId = %q, want %q", got, want)
@@ -365,6 +366,17 @@ func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 	}
 	if got, want := err.Error(), "GetSdmxObservations: request cannot be nil"; got != want {
 		t.Fatalf("GetSdmxObservations() error = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), nil)
+	if err == nil {
+		t.Fatal("GetSdmxAvailability() with nil request expected error, got nil")
+	}
+	if got, want := err.Error(), "GetSdmxAvailability: request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() error = %q, want %q", got, want)
 	}
 }
 
@@ -410,5 +422,3 @@ func TestParseEntityMappings(t *testing.T) {
 		}
 	}
 }
-
-

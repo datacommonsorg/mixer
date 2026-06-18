@@ -1,6 +1,14 @@
 {
   "class": "dataset",
   "dimension": {
+    "TIME_PERIOD": {
+      "category": {
+        "index": [
+          "2020"
+        ]
+      },
+      "label": "TIME_PERIOD"
+    },
     "destination": {
       "category": {
         "index": [
@@ -8,14 +16,6 @@
         ]
       },
       "label": "destination"
-    },
-    "observationDate": {
-      "category": {
-        "index": [
-          "2020"
-        ]
-      },
-      "label": "observationDate"
     },
     "source": {
       "category": {
@@ -35,13 +35,18 @@
     }
   },
   "extension": {
-    "annotations": {}
+    "annotations": {},
+    "measures": {
+      "OBS_VALUE": {
+        "label": "OBS_VALUE"
+      }
+    }
   },
   "id": [
     "variableMeasured",
     "destination",
     "source",
-    "observationDate"
+    "TIME_PERIOD"
   ],
   "label": "Data Commons SDMX Query Results",
   "size": [

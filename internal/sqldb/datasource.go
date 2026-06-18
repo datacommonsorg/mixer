@@ -141,6 +141,11 @@ func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (
 	return &pb.SdmxDataResult{}, nil
 }
 
+// SdmxAvailability retrieves SDMX availability from the data source.
+func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return &pb.SdmxAvailabilityResult{}, nil
+}
+
 func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return &pb.FilterStatVarsByEntityResponse{}, nil
 }

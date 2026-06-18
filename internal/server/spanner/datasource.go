@@ -69,18 +69,25 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore *files.RecogPlaceStore
+	MapsClient      internalmaps.MapsClient
+}
+
 func NewSpannerDataSource(
 	client SpannerClient,
-	recogPlaceStore *files.RecogPlaceStore,
-	mapsClient internalmaps.MapsClient,
+	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
 	cfg, _ := loadSpannerSearchConfig()
-	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
-		searchConfig:    cfg,
+	sds := &SpannerDataSource{
+		client:       client,
+		searchConfig: cfg,
 	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+	}
+	return sds
 }
 
 // Type returns the type of the data source.
@@ -689,6 +696,9 @@ func (sds *SpannerDataSource) resolveDescription(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
+	if sds.recogPlaceStore == nil {
+		return nil, status.Errorf(codes.FailedPrecondition, "Description resolution is not configured (recogPlaceStore is nil)")
+	}
 	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
 		typeOfs = []string{""}
@@ -1042,6 +1052,11 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 // SdmxData retrieves observations from Spanner.
 func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return sds.client.GetSdmxObservations(ctx, req)
+}
+
+// SdmxAvailability retrieves available SDMX component values from Spanner.
+func (sds *SpannerDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return sds.client.GetSdmxAvailability(ctx, req)
 }
 
 // filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.

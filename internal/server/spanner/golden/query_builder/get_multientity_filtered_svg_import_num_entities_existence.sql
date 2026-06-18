@@ -10,7 +10,7 @@
 			FROM Edge e
 			JOIN@{JOIN_TYPE=HASH_JOIN} (
 					SELECT ts.variable_measured
-					FROM TimeSeries_final_v2 AS ts
+					FROM TimeSeries AS ts
 					JOIN Edge@{FORCE_INDEX=InEdge} e1
 					ON ts.provenance = e1.subject_id
 					WHERE e1.predicate = 'source'

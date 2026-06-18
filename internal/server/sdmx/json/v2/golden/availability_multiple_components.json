@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+  "data": {
+    "dataConstraints": [
+      {
+        "agencyID": "DATACOMMONS",
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "observationAbout",
+                "include": true,
+                "values": [
+                  "country/USA",
+                  "geoId/06"
+                ]
+              },
+              {
+                "id": "TIME_PERIOD",
+                "include": true,
+                "values": [
+                  "2020",
+                  "2021"
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "DF_OBSERVATIONS_AVAILABILITY",
+        "name": "Available DF_OBSERVATIONS data",
+        "role": "Actual",
+        "version": "1.0.0"
+      }
+    ]
+  }
+}
