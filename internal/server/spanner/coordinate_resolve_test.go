@@ -171,7 +171,7 @@ func TestResolveCoordinate(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -238,7 +238,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08", "36.77#-119.41"},
@@ -293,7 +293,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -340,7 +340,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
