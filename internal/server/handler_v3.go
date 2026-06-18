@@ -17,15 +17,19 @@ package server
 
 import (
 	"context"
-	"encoding/json"
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbsvc "github.com/datacommonsorg/mixer/internal/proto/service"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx"
+	csvv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/csv/v2"
+	jsonv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/json/v2"
+	restv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/rest/v2"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -94,81 +98,214 @@ func (s *Server) V3FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStat
 }
 
 // V3SdmxData handles SDMX Data requests.
-func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
-	*pbv3.SdmxDataResponse, error,
-) {
+func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
+	ctx := stream.Context()
+	logSDMX := restv2.ShouldLogSDMX(ctx)
+	if !s.flags.EnableSDMXDataApi {
+		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+
+	originalURI, err := restv2.OriginalURIFromMetadata(ctx)
+	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data request URI failed", "tail", in.GetTail(), "error", err)
+		}
+		return err
+	}
+
+	request, err := restv2.ParseDataRequest(in.GetTail(), originalURI)
+	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data request parse failed", "original_uri", originalURI, "tail", in.GetTail(), "error", err)
+		}
+		slog.Error("Failed to parse SDMX data request", "error", err, "tail", in.GetTail())
+		return err
+	}
+	if logSDMX {
+		slog.Info("SDMX data request parsed", "original_uri", originalURI, "tail", in.GetTail(), "path", request.Path, "constraints", request.Constraints)
+	}
+
+	responseFormat, err := restv2.DataResponseFormatFromDataRequest(ctx, request)
+	if err != nil {
+		return err
+	}
+
+	query, err := sdmxDataQueryFromREST(request)
+	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data dispatcher request failed", "original_uri", originalURI, "tail", in.GetTail(), "constraints", request.Constraints, "error", err)
+		}
+		return err
+	}
+	if logSDMX {
+		slog.Info("SDMX data dispatcher request", "original_uri", originalURI, "tail", in.GetTail(), "constraints", query.Constraints)
+	}
+	if len(query.Constraints) == 0 {
+		slog.Error("SDMX request missing required constraints", "tail", in.GetTail())
+		return status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
+	}
+
+	res, err := s.dispatcher.SdmxData(ctx, query)
+	if err != nil {
+		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)
+		return status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
+
+	observations := []*pb.SdmxObservation(nil)
+	if res != nil {
+		observations = res.Observations
+	}
+
+	if responseFormat == restv2.DataResponseFormatCSV {
+		formatter := &csvv2.CSVFormatter{StructureID: sdmxDataStructureID(request.Path)}
+		payload, err := formatter.Format(observations)
+		if err != nil {
+			slog.Error("Failed to format SDMX CSV response", "error", err)
+			return status.Error(codes.Internal, "Internal mapping error occurred.")
+		}
+		return stream.Send(&httpbody.HttpBody{
+			ContentType: sdmx.CSVContentType,
+			Data:        []byte(payload),
+		})
+	}
+
+	if len(observations) == 0 {
+		return stream.Send(&httpbody.HttpBody{
+			ContentType: sdmx.JSONStatContentType,
+			Data:        []byte("{}"),
+		})
+	}
+
+	formatter := &sdmx.JSONStatFormatter{}
+	payload, err := formatter.Format(observations)
+	if err != nil {
+		slog.Error("Failed to format SDMX response", "error", err)
+		return status.Error(codes.Internal, "Internal mapping error occurred.")
+	}
+
+	return stream.Send(&httpbody.HttpBody{
+		ContentType: sdmx.JSONStatContentType,
+		Data:        []byte(payload),
+	})
+}
+
+// V3SdmxAvailability handles SDMX Availability requests.
+func (s *Server) V3SdmxAvailability(ctx context.Context, in *pbv3.SdmxRestRequest) (*httpbody.HttpBody, error) {
+	logSDMX := restv2.ShouldLogSDMX(ctx)
 	if !s.flags.EnableSDMXDataApi {
 		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	constraints, err := parseConstraints(in.C)
-	if err != nil {
-		slog.Error("Failed to parse constraints for SDMX request", "error", err, "input", in.C)
+	if _, err := restv2.AvailabilityResponseFormatFromMetadata(ctx); err != nil {
 		return nil, err
 	}
 
-	query := &pb.SdmxDataQuery{
-		Constraints: constraints,
-	}
-
-	// Validation Gate
-	if len(query.Constraints) == 0 {
-		slog.Error("SDMX request missing required constraints", "input", in.C)
-		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
-	}
-
-	// Query the dispatcher
-	res, err := s.dispatcher.SdmxData(ctx, query)
+	originalURI, err := restv2.OriginalURIFromMetadata(ctx)
 	if err != nil {
-		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)
+		if logSDMX {
+			slog.Info("SDMX availability request URI failed", "tail", in.GetTail(), "error", err)
+		}
+		return nil, err
+	}
+
+	request, err := restv2.ParseAvailabilityRequest(in.GetTail(), originalURI)
+	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX availability request parse failed", "original_uri", originalURI, "tail", in.GetTail(), "error", err)
+		}
+		return nil, err
+	}
+	if logSDMX {
+		slog.Info("SDMX availability request parsed", "original_uri", originalURI, "tail", in.GetTail(), "path", request.Path, "constraints", request.Constraints)
+	}
+
+	query, err := sdmxAvailabilityQueryFromREST(request)
+	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX availability dispatcher request failed", "original_uri", originalURI, "tail", in.GetTail(), "component", request.Path.ComponentID, "constraints", request.Constraints, "error", err)
+		}
+		return nil, err
+	}
+	if logSDMX {
+		slog.Info("SDMX availability dispatcher request", "original_uri", originalURI, "tail", in.GetTail(), "component", query.ComponentId, "constraints", query.Constraints)
+	}
+
+	res, err := s.dispatcher.SdmxAvailability(ctx, query)
+	if err != nil {
+		if st, ok := status.FromError(err); ok && st.Code() == codes.Unimplemented {
+			return nil, err
+		}
+		slog.Error("Failed to handle SDMX availability request in dispatcher", "error", err)
 		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
 
-	if res == nil || len(res.Observations) == 0 {
-		return &pbv3.SdmxDataResponse{Payload: "{}"}, nil
+	values := []string(nil)
+	if res != nil {
+		values = res.GetValues()
 	}
-
-	// Format response
-	formatter := &sdmx.JSONStatFormatter{}
-	payload, err := formatter.Format(res.Observations)
+	formatter := &jsonv2.AvailabilityJSONFormatter{
+		AgencyID:   request.Path.AgencyID,
+		ResourceID: request.Path.ResourceID,
+		Version:    request.Path.Version,
+	}
+	payload, err := formatter.Format(request.Path.ComponentID, values)
 	if err != nil {
-		slog.Error("Failed to format SDMX response", "error", err)
+		slog.Error("Failed to format SDMX availability response", "error", err)
 		return nil, status.Error(codes.Internal, "Internal mapping error occurred.")
 	}
 
-	return &pbv3.SdmxDataResponse{Payload: payload}, nil
+	return &httpbody.HttpBody{
+		ContentType: sdmx.StructureJSONType,
+		Data:        []byte(payload),
+	}, nil
 }
 
-// parseConstraints parses the JSON string containing SDMX constraints.
-func parseConstraints(cStr string) (map[string]*pb.ConstraintList, error) {
-	// TODO: Address parameter exhaustion and cache-busting via malicious HTTP map manipulation by enforcing payload request depth and key limits in parseConstraints
-	// TODO: alternatively support pagination
-
-	rawConstraints := map[string]any{}
-	if cStr != "" {
-		if err := json.Unmarshal([]byte(cStr), &rawConstraints); err != nil {
-			return nil, status.Error(codes.InvalidArgument, "Invalid constraints format. Please provide a valid JSON object.")
-		}
-	}
-
+func sdmxDataQueryFromREST(request *restv2.DataRequest) (*pb.SdmxDataQuery, error) {
 	constraints := map[string]*pb.ConstraintList{}
-	for k, v := range rawConstraints {
-		switch val := v.(type) {
-		case string:
-			constraints[k] = &pb.ConstraintList{Values: []string{val}}
-		case []interface{}:
-			var lst []string
-			for _, item := range val {
-				strItem, ok := item.(string)
-				if !ok {
-					return nil, status.Errorf(codes.InvalidArgument, "non-string item in array for constraint %s", k)
-				}
-				lst = append(lst, strItem)
-			}
-			constraints[k] = &pb.ConstraintList{Values: lst}
-		default:
-			return nil, status.Errorf(codes.InvalidArgument, "unsupported type for constraint %s", k)
+	for componentID, values := range request.Constraints {
+		constraintID, err := restv2.InternalConstraintComponentID(componentID)
+		if err != nil {
+			return nil, err
 		}
+		if _, exists := constraints[constraintID]; exists {
+			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", constraintID)
+		}
+		constraints[constraintID] = &pb.ConstraintList{Values: values}
 	}
-	return constraints, nil
+	return &pb.SdmxDataQuery{Constraints: constraints}, nil
+}
+
+func sdmxAvailabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAvailabilityQuery, error) {
+	componentID, err := restv2.InternalAvailabilityComponentID(request.Path.ComponentID)
+	if err != nil {
+		return nil, err
+	}
+	constraints := map[string]*pb.ConstraintList{}
+	for filterID, values := range request.Constraints {
+		constraintID, err := restv2.InternalAvailabilityConstraintComponentID(filterID)
+		if err != nil {
+			return nil, err
+		}
+		if _, exists := constraints[constraintID]; exists {
+			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", constraintID)
+		}
+		constraints[constraintID] = &pb.ConstraintList{Values: values}
+	}
+	return &pb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
+}
+
+func sdmxDataStructureID(path restv2.ResourcePath) string {
+	agencyID := path.AgencyID
+	if agencyID == "" {
+		agencyID = sdmx.DataAgencyID
+	}
+	resourceID := path.ResourceID
+	if resourceID == "" {
+		resourceID = sdmx.DataResourceID
+	}
+	version := path.Version
+	if version == "" {
+		version = sdmx.DataVersion
+	}
+	return agencyID + ":" + resourceID + "(" + version + ")"
 }

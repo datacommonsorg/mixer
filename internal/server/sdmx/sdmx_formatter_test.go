@@ -123,7 +123,7 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 			}
 
 			goldenPath := filepath.Join("golden", tt.goldenFile)
-			
+
 			// Update golden files if UPDATE_GOLDEN=true
 			if os.Getenv("UPDATE_GOLDEN") == "true" {
 				b, err := json.MarshalIndent(gotMap, "", "  ")
@@ -151,4 +151,70 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
+	formatter := &JSONStatFormatter{}
+	output, err := formatter.Format([]*pb.SdmxObservation{
+		{
+			VariableMeasured: "Count_Person",
+			DatesAndValues: []*pb.SdmxDateValue{
+				{Date: "2020", Value: "1"},
+			},
+			Dimensions: map[string]string{
+				"gender": "Male",
+			},
+		},
+		{
+			VariableMeasured: "Count_Person",
+			DatesAndValues: []*pb.SdmxDateValue{
+				{Date: "2020", Value: "2"},
+			},
+			Dimensions: map[string]string{},
+		},
+	})
+	if err != nil {
+		t.Fatalf("Format() error: %v", err)
+	}
+
+	var got map[string]interface{}
+	if err := json.Unmarshal([]byte(output), &got); err != nil {
+		t.Fatalf("Failed to unmarshal output: %v", err)
+	}
+
+	dimensions := got["dimension"].(map[string]interface{})
+	if _, ok := dimensions[DimObservationDate]; !ok {
+		t.Fatalf("Missing %q dimension in output", DimObservationDate)
+	}
+	if _, ok := dimensions["observationDate"]; ok {
+		t.Fatal("Output should not include legacy observationDate dimension")
+	}
+	if _, ok := got["value"]; !ok {
+		t.Fatal("JSON-stat output should keep top-level value field")
+	}
+	if _, ok := got[DimObservationValue]; ok {
+		t.Fatalf("JSON-stat output should not rename top-level value field to %q", DimObservationValue)
+	}
+
+	gender := dimensions["gender"].(map[string]interface{})
+	category := gender["category"].(map[string]interface{})
+	indices := category["index"].([]interface{})
+	if !containsJSONValue(indices, FallbackNotAvailable) {
+		t.Fatalf("Missing fallback category %q in gender index: %v", FallbackNotAvailable, indices)
+	}
+
+	extension := got["extension"].(map[string]interface{})
+	measures := extension["measures"].(map[string]interface{})
+	if _, ok := measures[DimObservationValue]; !ok {
+		t.Fatalf("Missing %q measure metadata in extension", DimObservationValue)
+	}
+}
+
+func containsJSONValue(values []interface{}, want string) bool {
+	for _, value := range values {
+		if value == want {
+			return true
+		}
+	}
+	return false
 }

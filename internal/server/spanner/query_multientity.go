@@ -519,6 +519,33 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	return result, nil
 }
 
+// GetSdmxAvailability retrieves available observationAbout values for SDMX availability.
+func (nc *multiEntityClient) GetSdmxAvailability(
+	ctx context.Context,
+	req *pb.SdmxAvailabilityQuery,
+) (*pb.SdmxAvailabilityResult, error) {
+	if req == nil {
+		return nil, fmt.Errorf("GetSdmxAvailability: request cannot be nil")
+	}
+
+	stmt, err := GetMultiEntitySdmxAvailabilityQuery(req, nc.cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	result := &pb.SdmxAvailabilityResult{}
+	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawSdmxAvailabilityValue{} }, func(row interface{}) {
+		value := row.(*rawSdmxAvailabilityValue).Value
+		if value != "" {
+			result.Values = append(result.Values, value)
+		}
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 func parseEntityMappings(edgesMap map[string][]*Edge) map[string]map[string]string {
 	result := map[string]map[string]string{}
 	for varDcid, edges := range edgesMap {

@@ -33,3 +33,7 @@ type spannerObservation struct {
 	Value      string           `spanner:"str_value"`
 	Attributes spanner.NullJSON `spanner:"attributes"`
 }
+
+type rawSdmxAvailabilityValue struct {
+	Value string `spanner:"value"`
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+  "data": {
+    "dataConstraints": [
+      {
+        "agencyID": "DATACOMMONS",
+        "id": "DF_OBSERVATIONS_AVAILABILITY",
+        "name": "Available DF_OBSERVATIONS data",
+        "role": "Actual",
+        "version": "1.0.0"
+      }
+    ]
+  }
+}

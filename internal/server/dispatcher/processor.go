@@ -37,6 +37,7 @@ const (
 	TypeBulkVariableInfo       RequestType = "BulkVariableInfo"
 	TypeBulkVariableGroupInfo  RequestType = "BulkVariableGroupInfo"
 	TypeSdmxData               RequestType = "SdmxData"
+	TypeSdmxAvailability       RequestType = "SdmxAvailability"
 	TypeFilterStatVarsByEntity RequestType = "FilterStatVarsByEntity"
 )
 

@@ -25,6 +25,7 @@ import (
 const (
 	dimVariableMeasured = DimVariableMeasured
 	dimObservationDate  = DimObservationDate
+	dimObservationValue = DimObservationValue
 	dimProvenance       = "provenance"
 
 	jsonStatVersion   = "2.0"
@@ -32,6 +33,7 @@ const (
 	defaultLabel      = "Data Commons SDMX Query Results"
 	defaultSource     = "Data Commons"
 	extAnnotations    = "annotations"
+	extMeasures       = "measures"
 	emptyJSONResponse = "{}"
 )
 
@@ -89,7 +91,6 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 		}
 	}
 
-
 	resp := JSONStatResponse{
 		Version:   jsonStatVersion,
 		Class:     jsonStatClass,
@@ -101,6 +102,11 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 		Value:     values,
 		Extension: map[string]interface{}{
 			extAnnotations: extensions,
+			extMeasures: map[string]map[string]string{
+				dimObservationValue: {
+					"label": dimObservationValue,
+				},
+			},
 		},
 	}
 

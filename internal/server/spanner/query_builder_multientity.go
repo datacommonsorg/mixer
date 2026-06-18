@@ -287,9 +287,11 @@ func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces 
 
 // kgPredicateToSpannerColumn maps Knowledge Graph predicates to physical Spanner column names.
 var kgPredicateToSpannerColumn = map[string]string{
+	"measurementMethod": "measurement_method",
 	"observationAbout":  "entity1",
-	"provenance":        "provenance",
 	"observationPeriod": "observation_period",
+	"provenance":        "provenance",
+	"unit":              "unit",
 }
 
 var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
@@ -365,4 +367,50 @@ func GetMultiEntitySdmxObservationsQuery(
 		SQL:    sql,
 		Params: params,
 	}, nil
+}
+
+// GetMultiEntitySdmxAvailabilityQuery builds the first SDMX availability lookup.
+func GetMultiEntitySdmxAvailabilityQuery(
+	req *pb.SdmxAvailabilityQuery,
+	cfg TableConfig,
+) (*spanner.Statement, error) {
+	if req == nil {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request cannot be nil")
+	}
+	valueExpr, err := sdmxAvailabilityValueExpression(req.ComponentId)
+	if err != nil {
+		return nil, err
+	}
+	if req.Constraints == nil {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request constraints cannot be nil")
+	}
+
+	for key := range req.Constraints {
+		if key != "variableMeasured" {
+			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported constraint key %q", key)
+		}
+	}
+	list, ok := req.Constraints["variableMeasured"]
+	if !ok || list == nil || len(list.GetValues()) == 0 {
+		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: variableMeasured must be specified")
+	}
+	variables := list.GetValues()
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statementsMultiEntity.getSdmxAvailability, valueExpr, cfg.TimeSeriesTable),
+		Params: map[string]interface{}{"variableMeasured": variables},
+	}, nil
+}
+
+func sdmxAvailabilityValueExpression(componentID string) (string, error) {
+	switch componentID {
+	case "variableMeasured":
+		return "t.variable_measured", nil
+	default:
+		col := kgPredicateToSpannerColumn[componentID]
+		if col == "" {
+			return "", fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", componentID)
+		}
+		return "t." + col, nil
+	}
 }

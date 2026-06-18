@@ -85,6 +85,9 @@ func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context,
 func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*spanner.SearchNode, error) {
 	return nil, nil
 }

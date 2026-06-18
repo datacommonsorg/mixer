@@ -173,3 +173,118 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		t.Error("expected error for constraint key containing spaces, got nil")
 	}
 }
+
+func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range []struct {
+		name        string
+		componentID string
+		golden      string
+	}{
+		{
+			name:        "observation about",
+			componentID: "observationAbout",
+			golden:      "get_sdmx_availability_observation_about.sql",
+		},
+		{
+			name:        "provenance",
+			componentID: "provenance",
+			golden:      "get_sdmx_availability_provenance.sql",
+		},
+		{
+			name:        "unit",
+			componentID: "unit",
+			golden:      "get_sdmx_availability_unit.sql",
+		},
+		{
+			name:        "measurement method",
+			componentID: "measurementMethod",
+			golden:      "get_sdmx_availability_measurement_method.sql",
+		},
+		{
+			name:        "observation period",
+			componentID: "observationPeriod",
+			golden:      "get_sdmx_availability_observation_period.sql",
+		},
+		{
+			name:        "variable measured",
+			componentID: "variableMeasured",
+			golden:      "get_sdmx_availability_variable_measured.sql",
+		},
+	} {
+		c := c
+		t.Run(c.name, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, c.golden, func(ctx context.Context) (interface{}, error) {
+				return spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+					ComponentId: c.componentID,
+					Constraints: map[string]*pb.ConstraintList{
+						"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
+					},
+				}, spanner.DefaultTableConfig())
+			})
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		req  *pb.SdmxAvailabilityQuery
+	}{
+		{
+			name: "nil request",
+		},
+		{
+			name: "missing variable measured",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{},
+			},
+		},
+		{
+			name: "nil variable measured constraint",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": nil,
+				},
+			},
+		},
+		{
+			name: "empty variable measured values",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": &pb.ConstraintList{},
+				},
+			},
+		},
+		{
+			name: "unsupported component",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "TIME_PERIOD",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": {Values: []string{"Count_Person"}},
+				},
+			},
+		},
+		{
+			name: "unsupported constraint",
+			req: &pb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*pb.ConstraintList{
+					"variableMeasured": {Values: []string{"Count_Person"}},
+					"observationAbout": {Values: []string{"country/USA"}},
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(tc.req, spanner.DefaultTableConfig())
+			if err == nil {
+				t.Fatal("GetMultiEntitySdmxAvailabilityQuery() error = nil, want error")
+			}
+		})
+	}
+}

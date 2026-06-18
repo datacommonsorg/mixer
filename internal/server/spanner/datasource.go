@@ -1044,6 +1044,11 @@ func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuer
 	return sds.client.GetSdmxObservations(ctx, req)
 }
 
+// SdmxAvailability retrieves available SDMX component values from Spanner.
+func (sds *SpannerDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+	return sds.client.GetSdmxAvailability(ctx, req)
+}
+
 // filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.
 func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNodes []string) []*pbv1.VariableGroupInfoResponse {
 	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data)+len(invalidNodes))

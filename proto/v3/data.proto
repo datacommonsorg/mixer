@@ -17,28 +17,9 @@ package datacommons.v3;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
 
-// Request for SDMX Data API.
-// This request supports the SDMX-Lite REST pathway.
-message SdmxDataRequest {
-  // Constraints passed as a JSON string map (e.g., '{"variableMeasured":"Count_Person"}').
-  // This field is used to pass arbitrary key-value or key-list pairs to filter observations.
-  // We use a single JSON string parameter instead of dynamic URL parameters to simplify
-  // mapping through Envoy's grpc_json_transcoder and ensure fixed request structures.
-  string c = 1;
-  
-  // Shaping parameter defining which dimension should be placed at the observation level
-  // in the response (per SDMX specification).
-  // NOTE: This field is a placeholder for future implementation and is currently unused.
-  string dimension_at_observation = 2;
-  
-  // List of specific attributes to be returned in the response.
-  // NOTE: This field is a placeholder for future implementation and is currently unused.
-  string attributes = 3;
-}
-
-// Response for SDMX Data API containing the formatted payload.
-message SdmxDataResponse {
-  // The formatted payload holding result data.
-  // Currently supports JSON-stat 2.0 format. Future expansions may include SDMX-CSV.
-  string payload = 1;
+// Request envelope for SDMX REST APIs.
+message SdmxRestRequest {
+  // Tail after the SDMX API family route, for example:
+  // dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*
+  string tail = 1;
 }

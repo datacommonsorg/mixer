@@ -25,6 +25,7 @@ package datacommons;
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
 import "common.proto";
 import "custom.proto";
 import "misc.proto";
@@ -69,10 +70,17 @@ service Mixer {
     };
   }
 
-  rpc V3SdmxData(datacommons.v3.SdmxDataRequest) returns (datacommons.v3.SdmxDataResponse) {
+  rpc V3SdmxData(datacommons.v3.SdmxRestRequest) returns (stream google.api.HttpBody) {
     option (google.api.http) = {
-      get : "/v3/sdmx/v3/data/**"
-      additional_bindings : {post : "/v3/sdmx/v3/data/**" body : "*"}
+      get : "/sdmx/v3/data/{tail=**}"
+      additional_bindings : {get : "/sdmx/v3/data"}
+    };
+  }
+
+  rpc V3SdmxAvailability(datacommons.v3.SdmxRestRequest) returns (google.api.HttpBody) {
+    option (google.api.http) = {
+      get : "/sdmx/v3/availability/{tail=**}"
+      additional_bindings : {get : "/sdmx/v3/availability"}
     };
   }
 

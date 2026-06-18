@@ -19,10 +19,10 @@ import (
 	"fmt"
 	"log/slog"
 
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/proto"
 )
@@ -65,6 +65,7 @@ type DataSource interface {
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
 	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+	SdmxAvailability(context.Context, *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error)
 	FilterStatVarsByEntity(context.Context, *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error)
 }
 
@@ -169,5 +170,3 @@ func NewNodeFetcher(ds DataSource) nodefetcher.NodeAllFetcher {
 		return NodeFetchAll(ctx, ds, req, defaultFetchAllPageSize)
 	})
 }
-
-

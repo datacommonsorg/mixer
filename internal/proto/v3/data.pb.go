@@ -34,29 +34,19 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Request for SDMX Data API.
-// This request supports the SDMX-Lite REST pathway.
-type SdmxDataRequest struct {
+// Request envelope for SDMX REST APIs.
+type SdmxRestRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Constraints passed as a JSON string map (e.g., '{"variableMeasured":"Count_Person"}').
-	// This field is used to pass arbitrary key-value or key-list pairs to filter observations.
-	// We use a single JSON string parameter instead of dynamic URL parameters to simplify
-	// mapping through Envoy's grpc_json_transcoder and ensure fixed request structures.
-	C string `protobuf:"bytes,1,opt,name=c,proto3" json:"c,omitempty"`
-	// Shaping parameter defining which dimension should be placed at the observation level
-	// in the response (per SDMX specification).
-	// NOTE: This field is a placeholder for future implementation and is currently unused.
-	DimensionAtObservation string `protobuf:"bytes,2,opt,name=dimension_at_observation,json=dimensionAtObservation,proto3" json:"dimension_at_observation,omitempty"`
-	// List of specific attributes to be returned in the response.
-	// NOTE: This field is a placeholder for future implementation and is currently unused.
-	Attributes string `protobuf:"bytes,3,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	// Tail after the SDMX API family route, for example:
+	// dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*
+	Tail string `protobuf:"bytes,1,opt,name=tail,proto3" json:"tail,omitempty"`
 }
 
-func (x *SdmxDataRequest) Reset() {
-	*x = SdmxDataRequest{}
+func (x *SdmxRestRequest) Reset() {
+	*x = SdmxRestRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_v3_data_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -64,13 +54,13 @@ func (x *SdmxDataRequest) Reset() {
 	}
 }
 
-func (x *SdmxDataRequest) String() string {
+func (x *SdmxRestRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SdmxDataRequest) ProtoMessage() {}
+func (*SdmxRestRequest) ProtoMessage() {}
 
-func (x *SdmxDataRequest) ProtoReflect() protoreflect.Message {
+func (x *SdmxRestRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_v3_data_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -82,78 +72,14 @@ func (x *SdmxDataRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SdmxDataRequest.ProtoReflect.Descriptor instead.
-func (*SdmxDataRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SdmxRestRequest.ProtoReflect.Descriptor instead.
+func (*SdmxRestRequest) Descriptor() ([]byte, []int) {
 	return file_v3_data_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SdmxDataRequest) GetC() string {
+func (x *SdmxRestRequest) GetTail() string {
 	if x != nil {
-		return x.C
-	}
-	return ""
-}
-
-func (x *SdmxDataRequest) GetDimensionAtObservation() string {
-	if x != nil {
-		return x.DimensionAtObservation
-	}
-	return ""
-}
-
-func (x *SdmxDataRequest) GetAttributes() string {
-	if x != nil {
-		return x.Attributes
-	}
-	return ""
-}
-
-// Response for SDMX Data API containing the formatted payload.
-type SdmxDataResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// The formatted payload holding result data.
-	// Currently supports JSON-stat 2.0 format. Future expansions may include SDMX-CSV.
-	Payload string `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
-}
-
-func (x *SdmxDataResponse) Reset() {
-	*x = SdmxDataResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_v3_data_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SdmxDataResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SdmxDataResponse) ProtoMessage() {}
-
-func (x *SdmxDataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v3_data_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SdmxDataResponse.ProtoReflect.Descriptor instead.
-func (*SdmxDataResponse) Descriptor() ([]byte, []int) {
-	return file_v3_data_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *SdmxDataResponse) GetPayload() string {
-	if x != nil {
-		return x.Payload
+		return x.Tail
 	}
 	return ""
 }
@@ -163,21 +89,13 @@ var File_v3_data_proto protoreflect.FileDescriptor
 var file_v3_data_proto_rawDesc = []byte{
 	0x0a, 0x0d, 0x76, 0x33, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x0e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x33, 0x22,
-	0x79, 0x0a, 0x0f, 0x53, 0x64, 0x6d, 0x78, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x0c, 0x0a, 0x01, 0x63, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x01, 0x63,
-	0x12, 0x38, 0x0a, 0x18, 0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x61, 0x74,
-	0x5f, 0x6f, 0x62, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x16, 0x64, 0x69, 0x6d, 0x65, 0x6e, 0x73, 0x69, 0x6f, 0x6e, 0x41, 0x74, 0x4f,
-	0x62, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x61, 0x74,
-	0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
-	0x61, 0x74, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x73, 0x22, 0x2c, 0x0a, 0x10, 0x53, 0x64,
-	0x6d, 0x78, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18,
-	0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65,
-	0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x33, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x25, 0x0a, 0x0f, 0x53, 0x64, 0x6d, 0x78, 0x52, 0x65, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x74, 0x61, 0x69, 0x6c, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
+	0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e,
+	0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x33, 0x62, 0x06, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x33,
 }
 
 var (
@@ -192,10 +110,9 @@ func file_v3_data_proto_rawDescGZIP() []byte {
 	return file_v3_data_proto_rawDescData
 }
 
-var file_v3_data_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_v3_data_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_v3_data_proto_goTypes = []interface{}{
-	(*SdmxDataRequest)(nil),  // 0: datacommons.v3.SdmxDataRequest
-	(*SdmxDataResponse)(nil), // 1: datacommons.v3.SdmxDataResponse
+	(*SdmxRestRequest)(nil), // 0: datacommons.v3.SdmxRestRequest
 }
 var file_v3_data_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -212,19 +129,7 @@ func file_v3_data_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_v3_data_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SdmxDataRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_v3_data_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SdmxDataResponse); i {
+			switch v := v.(*SdmxRestRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -242,7 +147,7 @@ func file_v3_data_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v3_data_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
