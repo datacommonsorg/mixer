@@ -1,0 +1,412 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package agent
+
+import (
+	"context"
+	"log/slog"
+	"sync"
+	"time"
+
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
+
+const (
+	wildcardPropertyQuery = "->*"
+	maxConcurrentFetchers = 20
+)
+
+var obsMetadataSelect = []string{"variable", "entity", "facet"}
+
+// GetVariableMetadata assesses Statistical Variables by retrieving their definitions,
+// temporal/entity coverage, and source provenance descriptions.
+func (s *Service) GetVariableMetadata(
+	ctx context.Context,
+	req *pbv2.GetVariableMetadataRequest,
+) (*pbv2.GetVariableMetadataResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
+	defer util.TimeTrack(time.Now(), "Agent: GetVariableMetadata")
+	varDcids := dedup(req.GetVariableDcids())
+	entityDcids := dedup(req.GetEntityDcids())
+	slog.Info("GetVariableMetadata started", "variablesCount", len(varDcids), "entitiesCount", len(entityDcids))
+
+	if len(varDcids) == 0 {
+		return &pbv2.GetVariableMetadataResponse{
+			Status:    StatusSuccess,
+			Variables: make(map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata),
+		}, nil
+	}
+
+	variables := initVariableMetadata(varDcids)
+
+	if err := s.fetchCoreMetadata(ctx, varDcids, entityDcids, variables); err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to fetch core variable metadata: %v", err)
+	}
+
+	if err := s.hydrateProvenanceMetadata(ctx, variables); err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to hydrate provenance metadata: %v", err)
+	}
+
+	return &pbv2.GetVariableMetadataResponse{
+		Status:    StatusSuccess,
+		Variables: variables,
+	}, nil
+}
+
+// dedup removes duplicate strings from a slice.
+func dedup(dcids []string) []string {
+	seen := make(map[string]struct{})
+	var res []string
+	for _, id := range dcids {
+		if id != "" {
+			if _, ok := seen[id]; !ok {
+				seen[id] = struct{}{}
+				res = append(res, id)
+			}
+		}
+	}
+	return res
+}
+
+// initVariableMetadata initializes the map of VariableMetadata entries.
+func initVariableMetadata(dcids []string) map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata {
+	res := make(map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata)
+	for _, vDcid := range dcids {
+		res[vDcid] = &pbv2.GetVariableMetadataResponse_VariableMetadata{
+			Dcid:              vDcid,
+			Properties:        make(map[string]*pbv2.PropertyValues),
+			Provenances:       make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata),
+			PerEntityMetadata: make(map[string]*pbv2.GetVariableMetadataResponse_EntityMetadata),
+		}
+	}
+	return res
+}
+
+// fetchCoreMetadata concurrently retrieves general properties, summaries, and observation facets.
+// Note on Caching: We execute V2Node and V2BulkVariableInfo calls individually per variable via
+// parallel goroutines rather than a single batch call. Because the underlying Redis caching layer
+// builds cache keys from the exact requested node slice, single-node lookups maximize cache-hit rates across requests.
+func (s *Service) fetchCoreMetadata(
+	ctx context.Context,
+	varDcids, entityDcids []string,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+) error {
+	g, gCtx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentFetchers)
+	var mu sync.Mutex
+
+	for _, vDcid := range varDcids {
+		dcid := vDcid
+		g.Go(func() error {
+			return s.fetchVariableProperties(gCtx, dcid, variables, &mu)
+		})
+		g.Go(func() error {
+			return s.fetchVariableSummary(gCtx, dcid, variables, &mu)
+		})
+	}
+
+	if len(entityDcids) > 0 {
+		g.Go(func() error {
+			return s.fetchPerEntityFacets(gCtx, varDcids, entityDcids, variables, &mu)
+		})
+	}
+
+	return g.Wait()
+}
+
+// fetchVariableProperties fetches outbound properties for a single Statistical Variable.
+func (s *Service) fetchVariableProperties(
+	ctx context.Context, dcid string,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+	mu *sync.Mutex,
+) error {
+	req := &pbv2.NodeRequest{Nodes: []string{dcid}, Property: wildcardPropertyQuery}
+	resp, err := s.mixer.V2Node(ctx, req)
+	if err != nil {
+		return err
+	}
+	if resp != nil && resp.GetData() != nil {
+		if graph, ok := resp.GetData()[dcid]; ok && graph != nil {
+			props := toPropertyValuesMap(graph)
+			mu.Lock()
+			variables[dcid].Properties = props
+			mu.Unlock()
+		}
+	}
+	return nil
+}
+
+// fetchVariableSummary retrieves summary information for a single Statistical Variable.
+func (s *Service) fetchVariableSummary(
+	ctx context.Context, dcid string,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+	mu *sync.Mutex,
+) error {
+	req := &pbv1.BulkVariableInfoRequest{Nodes: []string{dcid}}
+	resp, err := s.mixer.V2BulkVariableInfo(ctx, req)
+	if err != nil {
+		return err
+	}
+	if resp != nil {
+		for _, info := range resp.GetData() {
+			if info.GetNode() == dcid && info.GetInfo() != nil {
+				mu.Lock()
+				variables[dcid].StatVarSummary = info.GetInfo()
+				mu.Unlock()
+			}
+		}
+	}
+	return nil
+}
+
+// fetchPerEntityFacets retrieves observation facets across target variables and entities.
+func (s *Service) fetchPerEntityFacets(
+	ctx context.Context,
+	varDcids, entityDcids []string,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+	mu *sync.Mutex,
+) error {
+	obsReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: varDcids},
+		Entity:   &pbv2.DcidOrExpression{Dcids: entityDcids},
+		Select:   obsMetadataSelect,
+	}
+	obsResp, err := s.mixer.V2Observation(ctx, obsReq)
+	if err != nil {
+		return err
+	}
+	assignVariableFacets(obsResp, variables, mu)
+	return nil
+}
+
+// assignVariableFacets extracts observation facets scoped to their matching statistical variable and entity.
+func assignVariableFacets(
+	obsResp *pbv2.ObservationResponse,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+	mu *sync.Mutex,
+) {
+	if obsResp == nil || obsResp.GetByVariable() == nil {
+		return
+	}
+	for vDcid, vObs := range obsResp.GetByVariable() {
+		mu.Lock()
+		vMeta, ok := variables[vDcid]
+		mu.Unlock()
+		if !ok || vObs == nil {
+			continue
+		}
+		for eDcid, eObs := range vObs.GetByEntity() {
+			if eObs == nil {
+				continue
+			}
+			mu.Lock()
+			eMeta, eExists := vMeta.PerEntityMetadata[eDcid]
+			if !eExists {
+				eMeta = &pbv2.GetVariableMetadataResponse_EntityMetadata{
+					FacetSeriesSummaries: make(map[string]*pbv2.GetVariableMetadataResponse_FacetSeriesSummary),
+				}
+				vMeta.PerEntityMetadata[eDcid] = eMeta
+			}
+			for _, fObs := range eObs.GetOrderedFacets() {
+				if fObs == nil {
+					continue
+				}
+				fID := fObs.GetFacetId()
+				if fObj, exists := obsResp.GetFacets()[fID]; exists && fObj != nil {
+					eMeta.FacetSeriesSummaries[fID] = &pbv2.GetVariableMetadataResponse_FacetSeriesSummary{
+						Facet:        fObj,
+						ObsCount:     fObs.GetObsCount(),
+						EarliestDate: fObs.GetEarliestDate(),
+						LatestDate:   fObs.GetLatestDate(),
+					}
+				}
+			}
+			mu.Unlock()
+		}
+	}
+}
+
+// hydrateProvenanceMetadata collects unique provenance IDs and hydrates their descriptive properties.
+func (s *Service) hydrateProvenanceMetadata(
+	ctx context.Context,
+	variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata,
+) error {
+	provIDs := collectProvenanceIDs(variables)
+	if len(provIDs) == 0 {
+		return nil
+	}
+	slog.Info("Hydrating provenance descriptions", "provenancesCount", len(provIDs))
+
+	g, gCtx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentFetchers)
+	var mu sync.Mutex
+	provenancesMap := make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata)
+
+	for _, pID := range provIDs {
+		provID := pID
+		g.Go(func() error {
+			return s.fetchProvenanceMetadata(gCtx, provID, provenancesMap, &mu)
+		})
+	}
+
+	if err := g.Wait(); err != nil {
+		return err
+	}
+
+	for _, vMeta := range variables {
+		vMeta.Provenances = make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata)
+
+		if vMeta.StatVarSummary != nil {
+			for provID := range vMeta.StatVarSummary.GetProvenanceSummary() {
+				if pMeta, ok := provenancesMap[provID]; ok {
+					vMeta.Provenances[provID] = pMeta
+				}
+			}
+		}
+
+		for _, eMeta := range vMeta.PerEntityMetadata {
+			if eMeta != nil {
+				for _, fSum := range eMeta.GetFacetSeriesSummaries() {
+					if fSum != nil && fSum.GetFacet() != nil && fSum.GetFacet().GetProvenanceId() != "" {
+						provID := fSum.GetFacet().GetProvenanceId()
+						if pMeta, ok := provenancesMap[provID]; ok {
+							vMeta.Provenances[provID] = pMeta
+						}
+					}
+				}
+			}
+		}
+	}
+	return nil
+}
+
+// collectProvenanceIDs gathers all unique provenance identifiers across summaries and facets.
+func collectProvenanceIDs(variables map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata) []string {
+	seen := make(map[string]struct{})
+	for _, vMeta := range variables {
+		if vMeta.StatVarSummary != nil {
+			for provID := range vMeta.StatVarSummary.GetProvenanceSummary() {
+				if provID != "" {
+					seen[provID] = struct{}{}
+				}
+			}
+		}
+		for _, eMeta := range vMeta.PerEntityMetadata {
+			if eMeta != nil {
+				for _, fSum := range eMeta.GetFacetSeriesSummaries() {
+					if fSum != nil && fSum.GetFacet() != nil && fSum.GetFacet().GetProvenanceId() != "" {
+						seen[fSum.GetFacet().GetProvenanceId()] = struct{}{}
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+
+	var ids []string
+	for id := range seen {
+		ids = append(ids, id)
+	}
+	return ids
+}
+
+// fetchProvenanceMetadata fetches descriptive properties for a single provenance entity.
+func (s *Service) fetchProvenanceMetadata(
+	ctx context.Context, pDcid string,
+	provenancesMap map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata,
+	mu *sync.Mutex,
+) error {
+	req := &pbv2.NodeRequest{Nodes: []string{pDcid}, Property: wildcardPropertyQuery}
+	resp, err := s.mixer.V2Node(ctx, req)
+	if err != nil {
+		return err
+	}
+	if resp != nil && resp.GetData() != nil {
+		if graph, ok := resp.GetData()[pDcid]; ok && graph != nil {
+			props := toPropertyValuesMap(graph)
+			mu.Lock()
+			provenancesMap[pDcid] = &pbv2.GetVariableMetadataResponse_ProvenanceMetadata{
+				Dcid:       pDcid,
+				Properties: props,
+			}
+			mu.Unlock()
+		}
+	}
+	return nil
+}
+
+// toPropertyValuesMap converts a LinkedGraph into a map of PropertyValues lists.
+func toPropertyValuesMap(graph *pbv2.LinkedGraph) map[string]*pbv2.PropertyValues {
+	if graph == nil || graph.GetArcs() == nil {
+		return make(map[string]*pbv2.PropertyValues)
+	}
+
+	type propValKey struct {
+		val, dcid, name string
+	}
+
+	res := make(map[string]*pbv2.PropertyValues)
+	for prop, nodesArc := range graph.GetArcs() {
+		if nodesArc == nil || len(nodesArc.GetNodes()) == 0 {
+			continue
+		}
+
+		var pvList []*pbv2.PropertyValue
+		seen := make(map[propValKey]struct{})
+		for _, n := range nodesArc.GetNodes() {
+			if n == nil {
+				continue
+			}
+			val := n.GetValue()
+			dcid := n.GetDcid()
+			name := n.GetName()
+			if val == "" && dcid == "" && name == "" {
+				continue
+			}
+
+			key := propValKey{val, dcid, name}
+			if _, ok := seen[key]; ok {
+				continue
+			}
+			seen[key] = struct{}{}
+
+			pv := &pbv2.PropertyValue{}
+			if val != "" {
+				pv.Value = val
+			}
+			if dcid != "" {
+				pv.Dcid = dcid
+			}
+			if name != "" {
+				pv.Name = name
+			}
+			pvList = append(pvList, pv)
+		}
+		if len(pvList) > 0 {
+			res[prop] = &pbv2.PropertyValues{Values: pvList}
+		}
+	}
+	return res
+}
