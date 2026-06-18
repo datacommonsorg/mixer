@@ -382,6 +382,30 @@ func main() {
 	}
 	slog.Info("After cache creation")
 
+	// Setup Redis client for L2 caching if configured.
+	var redisCacheClient redis.CacheClient
+	if *useRedis && *redisInfo != "" {
+		slog.Info("Setting up Redis cache client")
+		client, err := redis.NewCacheClient(*redisInfo)
+		if err != nil {
+			slog.Error("Failed to create Redis client", "error", err)
+			os.Exit(1)
+		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
+		defer client.Close()
+
+		redisCacheClient = client
+	}
+
+	// Topic Cache Manager: Manages the lifecycle of the topic hierarchy cache.
+	// It handles loading topic data from the database (Bigtable/Spanner)
+	// and maintaining the in-memory cache representation.
+	slog.Info("Initializing topic cache manager")
+	topicCacheManager := topic.NewTopicCacheManager(redisCacheClient)
+
+	// Topic Expander: Implements the resolve.TopicExpander interface wrapping the TopicCacheManager.
+	topicExpander := server.NewTopicExpander(topicCacheManager)
+
 	// Maps client
 	var mapsClient maps.MapsClient
 	if *useMapsApi {
@@ -393,11 +417,12 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
-	var spannerDS datasource.DataSource
+	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
 		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
 			RecogPlaceStore: store.RecogPlaceStore,
 			MapsClient:      mapsClient,
+			TopicExpander:   topicExpander,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
@@ -412,20 +437,6 @@ func main() {
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
 
-	// Declare Redis client at higher scope for injection
-	var redisCacheClient redis.CacheClient
-	if *useRedis && *redisInfo != "" {
-		slog.Info("Setting up Redis cache client")
-		client, err := redis.NewCacheClient(*redisInfo)
-		if err != nil {
-			slog.Error("Failed to create Redis client", "error", err)
-			os.Exit(1)
-		}
-		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-		defer client.Close()
-
-		redisCacheClient = client
-	}
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -462,13 +473,6 @@ func main() {
 		}
 	}
 
-	// Topic Cache Manager
-	var topicCacheManager *topic.TopicCacheManager
-	if flags.EnableEmbeddingsResolver {
-		slog.Info("Initializing topic cache manager")
-		topicCacheManager = topic.NewTopicCacheManager(redisCacheClient)
-	}
-
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
@@ -492,7 +496,7 @@ func main() {
 			WriteUsageLogs:          *writeUsageLogs,
 			EmbeddingsServiceClient: embeddingsServiceClient,
 			UseSpannerGraph:         *useSpannerGraph,
-			TopicCacheManager:       topicCacheManager,
+			TopicExpander:           topicExpander,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
@@ -511,7 +515,7 @@ func main() {
 	}
 
 	// Register component lifecycles
-	registerTopicCacheLifecycle(mixerServer)
+	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
 	registerAgentServiceLifecycle(mixerServer)
 
 	// Run all startup initialization hooks
@@ -581,8 +585,8 @@ func main() {
 	}
 }
 
-func registerTopicCacheLifecycle(s *server.Server) {
-	if tcm := s.TopicCacheManager(); tcm != nil {
+func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
+	if tcm != nil {
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)

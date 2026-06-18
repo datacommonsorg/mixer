@@ -41,7 +41,7 @@ func (s *Server) V2ResolveCore(
 	in *resolve.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" or "topic" resolvers, otherwise default to legacy place resolver logic.
-	adapter := s.newTopicExpander()
+	adapter := s.topicExpander
 
 	resolver := in.Request.GetResolver()
 	switch resolver {

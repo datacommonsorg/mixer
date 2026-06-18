@@ -35,13 +35,13 @@ type topicExpanderAdapter struct {
 	m *topic.TopicCacheManager
 }
 
-// newTopicExpander is a Server factory method to instantiate and return a resolve.TopicExpander.
-// It hides concrete adapter details entirely from core handlers.
-func (s *Server) newTopicExpander() resolve.TopicExpander {
-	if s.topicCacheManager == nil {
+// NewTopicExpander is a factory to instantiate a resolve.TopicExpander adapter.
+// It is used in main.go to construct the expander for datasource injection.
+func NewTopicExpander(m *topic.TopicCacheManager) resolve.TopicExpander {
+	if m == nil {
 		return nil
 	}
-	return &topicExpanderAdapter{m: s.topicCacheManager}
+	return &topicExpanderAdapter{m: m}
 }
 
 // ExpandRoots resolves root topics using the underlying TopicCacheManager.

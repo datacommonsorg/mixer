@@ -298,6 +298,7 @@ func newClient(
 			CacheData:               cachedata,
 			MapsClient:              mapsClient,
 			EmbeddingsServiceClient: embeddingsServiceClient,
+			TopicExpander:           nil, // Not testing topics in standard integration tests
 		},
 	)
 	srv := grpc.NewServer()
