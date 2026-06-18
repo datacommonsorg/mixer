@@ -43,6 +43,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -52,16 +53,15 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store                    *store.Store
-	metadata                 *resource.Metadata
-	cachedata                atomic.Pointer[cache.Cache]
-	mapsClient               maps.MapsClient
-	httpClient               *http.Client
-	dispatcher               *dispatcher.Dispatcher
-	flags                    *featureflags.Flags
-	writeUsageLogs           bool
-	embeddingsServerURL      string
-	resolveEmbeddingsIndexes string
+	store                   *store.Store
+	metadata                *resource.Metadata
+	cachedata               atomic.Pointer[cache.Cache]
+	mapsClient              maps.MapsClient
+	httpClient              *http.Client
+	dispatcher              *dispatcher.Dispatcher
+	flags                   *featureflags.Flags
+	writeUsageLogs          bool
+	embeddingsServiceClient *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
 	topicCacheManager *topic.TopicCacheManager
@@ -293,35 +293,39 @@ func (s *Server) ClosePeriodicRefresher() {
 	}
 }
 
+type MixerServerOptions struct {
+	CacheData               *cache.Cache
+	MapsClient              maps.MapsClient
+	WriteUsageLogs          bool
+	EmbeddingsServiceClient *resolve.EmbeddingsServiceClient
+	UseSpannerGraph         bool
+	TopicCacheManager       *topic.TopicCacheManager
+}
+
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
-	cachedata *cache.Cache,
-	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
-	writeUsageLogs bool,
-	embeddingsServerURL string,
-	resolveEmbeddingsIndexes string,
-	useSpannerGraph bool,
-	topicCacheManager *topic.TopicCacheManager,
+	opts *MixerServerOptions,
 ) *Server {
 	s := &Server{
-		store:                    store,
-		metadata:                 metadata,
-		cachedata:                atomic.Pointer[cache.Cache]{},
-		mapsClient:               mapsClient,
-		httpClient:               &http.Client{},
-		dispatcher:               dispatcher,
-		flags:                    flags,
-		writeUsageLogs:           writeUsageLogs,
-		embeddingsServerURL:      embeddingsServerURL,
-		resolveEmbeddingsIndexes: resolveEmbeddingsIndexes,
-		useSpannerGraph:          useSpannerGraph,
-		topicCacheManager:        topicCacheManager,
+		store:      store,
+		metadata:   metadata,
+		cachedata:  atomic.Pointer[cache.Cache]{},
+		httpClient: &http.Client{},
+		dispatcher: dispatcher,
+		flags:      flags,
 	}
-	s.cachedata.Store(cachedata)
+	if opts != nil {
+		s.mapsClient = opts.MapsClient
+		s.writeUsageLogs = opts.WriteUsageLogs
+		s.embeddingsServiceClient = opts.EmbeddingsServiceClient
+		s.useSpannerGraph = opts.UseSpannerGraph
+		s.topicCacheManager = opts.TopicCacheManager
+		s.cachedata.Store(opts.CacheData)
+	}
 	s.initAgentService()
 
 	return s

@@ -142,6 +142,114 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 }
 ```
 
+### Constructor Design: Required Parameters vs. Options Struct
+
+When designing constructors (`New...` functions) for complex components, prefer the **Required Parameters + Options Struct** pattern. This pattern balances API safety with flexibility and extensibility.
+
+#### The Pattern Structure
+1.  **Required Parameters**: Passed as direct positional arguments to the constructor.
+2.  **Options Struct**: Passed as a single pointer to an options struct (`*Options`), which can be `nil`.
+
+#### How to Differentiate: What goes where?
+
+Apply these guidelines to decide where a dependency or configuration belongs:
+
+1.  **The "Useless Without It" Rule (Hard Dependency)**:
+    *   **Direct Parameter**: Any dependency that the component *must* have to function at all, even in a mock/test environment. If omitting it makes the component completely unusable or guarantees a runtime panic, it must be a direct parameter.
+    *   **Options Struct**: Any dependency that is only needed for specific features, or can be safely omitted (leaving the component in a "degraded" but still functional state).
+
+2.  **The "Default Behavior" Rule (Sensible Defaults)**:
+    *   **Direct Parameter**: Dependencies for which there is no sensible default. The caller *must* make an explicit choice.
+    *   **Options Struct**: Configurations or secondary dependencies that have a logical default behavior if omitted.
+
+3.  **The "API Stability" Rule (Future-Proofing)**:
+    *   **Direct Parameter**: Core dependencies that define the identity of the component and are highly stable (unlikely to change).
+    *   **Options Struct**: Fields that are likely to be added, removed, or changed as the component grows. Putting them in the options struct ensures that future additions **do not break existing constructor calls** (especially in tests).
+
+#### Concrete Example: `SpannerDataSource`
+
+*   **`SpannerClient`** is a **direct parameter** because the datasource cannot perform any queries without it. There is no default.
+*   **`MapsClient`** and **`RecogPlaceStore`** are in the **options struct** because they are only needed for specific features (like description resolution) and can be left `nil` in tests or limited deployments without crashing core functionality.
+
+```go
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore *files.RecogPlaceStore
+	MapsClient      internalmaps.MapsClient
+}
+
+// client is required (direct parameter), opts is optional (can be nil)
+func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) *SpannerDataSource {
+	sds := &SpannerDataSource{
+		client: client,
+	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+	}
+	return sds
+}
+```
+
+#### Best Practices for Options Structs
+
+To ensure that adding new fields to an options struct in the future does not break existing code or tests, follow these rules:
+
+1.  **Always Use Named Fields**: When instantiating options structs, always specify the field names explicitly. Avoid positional struct initialization.
+    *   *Correct*: `opts := &SpannerDataSourceOptions{MapsClient: mc}`
+    *   *Incorrect*: `opts := &SpannerDataSourceOptions{nil, mc}` (this will fail to compile if a new field is added to the struct).
+2.  **Design for Zero-Values (Sensible Defaults)**: Ensure that the zero-value (e.g., `nil`, `false`, `0`, `""`) of any new option field represents a safe default, or handle the zero-value in the constructor to apply a non-zero default.
+    *   *Example*: If a new `Timeout time.Duration` option is added, and the default should be 5 seconds, implement it in the constructor:
+        ```go
+        timeout := 5 * time.Second // Default
+        if opts != nil && opts.Timeout != 0 {
+            timeout = opts.Timeout // Override if caller specified a non-zero value
+        }
+        ```
+
+### Resolving Circular Dependencies: Interface & Setter Injection
+
+Circular dependency loops (e.g., Component A -> Component B -> Component A) during server startup are a common design smell that leads to awkward testing setups and hard-to-follow initialization logic.
+
+We resolve these loops using **Setter Injection** (and in the future, **Interface Injection**).
+
+#### The Pattern: Post-Construction Setters
+To break a loop where Component A needs Component B, and Component B needs Component A:
+1. Instantiate Component B first (possibly with nil or default dependencies).
+2. Instantiate Component A, passing Component B to its constructor.
+3. Use a post-construction setter method on Component B to inject Component A (or a function from it).
+
+This breaks the circular dependency at construction time.
+
+#### Startup Sequence Example: TopicCacheManager and MixerServer
+In `cmd/main.go`, `MixerServer` needs `TopicCacheManager` (to register its lifecycle and expose it), and `TopicCacheManager` needs `MixerServer.V2NodeCore` as a fetcher fallback.
+
+This loop is resolved via setter injection:
+
+```go
+// 1. Create the datasource
+spannerDS := spanner.NewSpannerDataSource(...)
+
+// 2. Create the cache manager (without fetcher yet)
+topicCacheManager := topic.NewTopicCacheManager(...)
+
+// 3. Create the server, injecting the cache manager
+mixerServer := server.NewMixerServer(..., &server.MixerServerOptions{
+	TopicCacheManager: topicCacheManager,
+})
+
+// 4. Inject the server's V2NodeCore method back into the cache manager (breaks the loop!)
+nodeFetcher := nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
+topicCacheManager.InitFetcher(nodeFetcher)
+```
+
+#### Test Setup Simplification
+In `test/setup.go` (where we don't test topics):
+```go
+mixerServer := server.NewMixerServer(..., &server.MixerServerOptions{
+	TopicCacheManager: nil, // We just pass nil! No need to spin up cache manager.
+})
+```
+
 ### Feature Flags vs. Server/CLI Flags
 
 Mixer uses two mechanisms for configuration and feature gating: **Server/CLI Flags** and **Feature Flags**. It is important to use the correct mechanism depending on the scope of the change.
