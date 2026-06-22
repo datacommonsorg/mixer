@@ -50,79 +50,8 @@ type multiEntityStatements struct {
 
 func newMultiEntityStatements(cfg TableConfig) *multiEntityStatements {
 	return &multiEntityStatements{
-		getObsBoth:                           fmt.Sprintf(multiEntityStatementTemplates.getObsBoth, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsBothWithDate:                   fmt.Sprintf(multiEntityStatementTemplates.getObsBothWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsBothLatest:                     fmt.Sprintf(multiEntityStatementTemplates.getObsBothLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsEntitiesOnly:                   fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnly, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsEntitiesOnlyWithDate:           fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnlyWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsEntitiesOnlyLatest:             fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnlyLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsByContainedInPlaceBoth:         fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBoth, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBothWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getObsByContainedInPlaceBothLatest:   fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBothLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getSdmxObs:                           fmt.Sprintf(multiEntityStatementTemplates.getSdmxObs, cfg.ObservationTable, cfg.TimeSeriesTable),
-		getSdmxAvailability:                  fmt.Sprintf(multiEntityStatementTemplates.getSdmxAvailability, "%[1]s", cfg.TimeSeriesTable),
-		getStatVarsByEntityBoth: fmt.Sprintf(
-			multiEntityStatementTemplates.getStatVarsByEntityBoth,
-			cfg.TimeSeriesTable,
-			cfg.TimeSeriesByEntity2Index,
-			cfg.TimeSeriesByEntity3Index,
-		),
-		getStatVarsByEntityVarsOnly: fmt.Sprintf(
-			multiEntityStatementTemplates.getStatVarsByEntityVarsOnly,
-			cfg.TimeSeriesTable,
-			cfg.TimeSeriesByEntity2Index,
-			cfg.TimeSeriesByEntity3Index,
-		),
-		getStatVarsByEntityEntitiesOnly: fmt.Sprintf(
-			multiEntityStatementTemplates.getStatVarsByEntityEntitiesOnly,
-			cfg.TimeSeriesTable,
-			cfg.TimeSeriesByEntity2Index,
-			cfg.TimeSeriesByEntity3Index,
-		),
-		checkGroupPlaceExistence: fmt.Sprintf(
-			multiEntityStatementTemplates.checkGroupPlaceExistence,
-			cfg.TimeSeriesTable,
-			cfg.TimeSeriesByEntity2Index,
-			cfg.TimeSeriesByEntity3Index,
-		),
-		getStatVarGroupNode: fmt.Sprintf(
-			multiEntityStatementTemplates.getStatVarGroupNode,
-			"%[1]s",
-			"%[2]s",
-			cfg.TimeSeriesTable,
-		),
-		getStatVarGroupNodeWithDefinitions: fmt.Sprintf(
-			multiEntityStatementTemplates.getStatVarGroupNodeWithDefinitions,
-			"%[1]s",
-			"%[2]s",
-			cfg.TimeSeriesTable,
-		),
-		filterDescendentStatVarsByTimeSeries:   multiEntityStatementTemplates.filterDescendentStatVarsByTimeSeries,
-		selectDescendentStatVarsFromTimeSeries: fmt.Sprintf(multiEntityStatementTemplates.selectDescendentStatVarsFromTimeSeries, cfg.TimeSeriesTable),
-		selectDescendentStatVarsFromEntitySlots: fmt.Sprintf(
-			multiEntityStatementTemplates.selectDescendentStatVarsFromEntitySlots,
-			cfg.TimeSeriesTable,
-			cfg.TimeSeriesByEntity2Index,
-			cfg.TimeSeriesByEntity3Index,
-			"%[1]s",
-			"%[2]s",
-			"%[3]s",
-		),
-		joinDescendentStatVarsByProvenance:             multiEntityStatementTemplates.joinDescendentStatVarsByProvenance,
-		filterDescendentStatVarsByProvenancePredicate:  multiEntityStatementTemplates.filterDescendentStatVarsByProvenancePredicate,
-		filterDescendentStatVarsByProvenanceObject:     multiEntityStatementTemplates.filterDescendentStatVarsByProvenanceObject,
-		filterDescendentStatVarsByNumEntitiesExistence: multiEntityStatementTemplates.filterDescendentStatVarsByNumEntitiesExistence,
-		filterEntity1ByPlaces:                          multiEntityStatementTemplates.filterEntity1ByPlaces,
-		filterEntity2ByPlaces:                          multiEntityStatementTemplates.filterEntity2ByPlaces,
-		filterEntity3ByPlaces:                          multiEntityStatementTemplates.filterEntity3ByPlaces,
-		filterEntity2Exists:                            multiEntityStatementTemplates.filterEntity2Exists,
-		filterEntity3Exists:                            multiEntityStatementTemplates.filterEntity3Exists,
-	}
-}
-
-var multiEntityStatementTemplates = multiEntityStatements{
-	// Retrieve observations where both variables and entities are present (full series)
-	getObsBoth: `		WITH params AS (
+		// Retrieve observations where both variables and entities are present (full series)
+		getObsBoth: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
@@ -146,10 +75,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			t.facet AS facets
 		FROM params p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Retrieve observations for a specific date (both variables and entities present)
-	getObsBothWithDate: `		WITH params AS (
+		// Retrieve observations for a specific date (both variables and entities present)
+		getObsBothWithDate: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
@@ -174,10 +103,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			t.facet AS facets
 		FROM params p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Retrieve latest observation (both variables and entities present)
-	getObsBothLatest: `		WITH params AS (
+		// Retrieve latest observation (both variables and entities present)
+		getObsBothLatest: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
@@ -205,10 +134,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			t.facet AS facets
 		FROM params p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
-			ON t.variable_measured = p.var AND t.entity1 = p.ent`,
+			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Retrieve observations where only entities are present (fetch all variables, full series)
-	getObsEntitiesOnly: `		SELECT
+		// Retrieve observations where only entities are present (fetch all variables, full series)
+		getObsEntitiesOnly: fmt.Sprintf(`		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
@@ -226,10 +155,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM %[2]s t
-		WHERE t.entity1 IN UNNEST(@entities)`,
+		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Retrieve observations where only entities are present (fetch all variables, specific date)
-	getObsEntitiesOnlyWithDate: `		SELECT
+		// Retrieve observations where only entities are present (fetch all variables, specific date)
+		getObsEntitiesOnlyWithDate: fmt.Sprintf(`		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
@@ -248,10 +177,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM %[2]s t
-		WHERE t.entity1 IN UNNEST(@entities)`,
+		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Retrieve observations where only entities are present (fetch all variables, latest only)
-	getObsEntitiesOnlyLatest: `		SELECT
+		// Retrieve observations where only entities are present (fetch all variables, latest only)
+		getObsEntitiesOnlyLatest: fmt.Sprintf(`		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
@@ -273,10 +202,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM %[2]s t
-		WHERE t.entity1 IN UNNEST(@entities)`,
+		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Contained in place query with variables filtered (full series)
-	getObsByContainedInPlaceBoth: `		WITH places AS (
+		// Contained in place query with variables filtered (full series)
+		getObsByContainedInPlaceBoth: fmt.Sprintf(`		WITH places AS (
 			SELECT result.object_id AS place_id
 			FROM GRAPH_TABLE (
 				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
@@ -303,10 +232,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		FROM places p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`,
+			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Contained in place query with variables filtered (specific date)
-	getObsByContainedInPlaceBothWithDate: `		WITH places AS (
+		// Contained in place query with variables filtered (specific date)
+		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		WITH places AS (
 			SELECT result.object_id AS place_id
 			FROM GRAPH_TABLE (
 				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
@@ -334,10 +263,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		FROM places p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`,
+			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	// Contained in place query with variables filtered (latest only)
-	getObsByContainedInPlaceBothLatest: `		WITH places AS (
+		// Contained in place query with variables filtered (latest only)
+		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		WITH places AS (
 			SELECT result.object_id AS place_id
 			FROM GRAPH_TABLE (
 				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
@@ -368,10 +297,9 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		FROM places p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
 			ON t.variable_measured IN UNNEST(@variables)
-			AND t.entity1 = p.place_id`,
+			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	getSdmxObs: `		SELECT 
-			t.variable_measured,
+		getSdmxObs: fmt.Sprintf("\t\tSELECT \n"+`			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
 			t.provenance,
@@ -389,18 +317,17 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			t.facet AS facets,
 			t.entities
 		FROM %[2]s t
-		WHERE `,
+		WHERE `, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-	getSdmxAvailability: `		SELECT DISTINCT %[1]s AS value
-		FROM %[2]s t
+		getSdmxAvailability: fmt.Sprintf(`		SELECT DISTINCT %%[1]s AS value
+		FROM %[1]s t
 		WHERE t.variable_measured IN UNNEST(@variableMeasured)
-			AND %[1]s IS NOT NULL
-			AND %[1]s != ''
-		ORDER BY value
-`,
+			AND %%[1]s IS NOT NULL
+			AND %%[1]s != ''
+		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
 
-	// Check existence when both variables and entities are specified
-	getStatVarsByEntityBoth: `		WITH
+		// Check existence when both variables and entities are specified
+		getStatVarsByEntityBoth: fmt.Sprintf(`		WITH
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
 			FROM %[1]s AS t
@@ -420,10 +347,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`,
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
 
-	// Check existence when only variables are specified
-	getStatVarsByEntityVarsOnly: `		WITH
+		// Check existence when only variables are specified
+		getStatVarsByEntityVarsOnly: fmt.Sprintf(`		WITH
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
 			FROM %[1]s AS t
@@ -443,10 +370,10 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`,
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
 
-	// Check existence when only entities are specified
-	getStatVarsByEntityEntitiesOnly: `		WITH
+		// Check existence when only entities are specified
+		getStatVarsByEntityEntitiesOnly: fmt.Sprintf(`		WITH
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity
 			FROM %[1]s AS t
@@ -466,9 +393,9 @@ var multiEntityStatementTemplates = multiEntityStatements{
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`,
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
 
-	checkGroupPlaceExistence: `		WITH
+		checkGroupPlaceExistence: fmt.Sprintf(`		WITH
 		group_members AS (
 			SELECT DISTINCT
 				e.object_id AS variable_group,
@@ -515,17 +442,17 @@ var multiEntityStatementTemplates = multiEntityStatements{
 			UNION ALL
 			SELECT variable, entity FROM slot3
 		) AS combined
-		ORDER BY variable, entity`,
+		ORDER BY variable, entity`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
 
-	getStatVarGroupNode: `		WITH ChildSVGs AS (
+		getStatVarGroupNode: fmt.Sprintf(`		WITH ChildSVGs AS (
 				SELECT DISTINCT
 					subject_id AS child_svg,
 					object_id AS svg
 				FROM Edge
 				WHERE predicate = 'specializationOf'
-				AND object_id %[1]s
+				AND object_id %%[1]s
 				UNION ALL
-				%[2]s
+				%%[2]s
 			),
 			UniqueChildSVGs AS (
 				SELECT DISTINCT child_svg FROM ChildSVGs
@@ -546,7 +473,7 @@ var multiEntityStatementTemplates = multiEntityStatements{
 					object_id AS svg
 				FROM Edge
 				WHERE predicate = 'memberOf'
-				AND object_id %[1]s
+				AND object_id %%[1]s
 			),
 			UniqueChildSVs AS (
 				SELECT DISTINCT child_sv FROM ChildSVs
@@ -571,24 +498,24 @@ var multiEntityStatementTemplates = multiEntityStatements{
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
-					FROM %[3]s ts
+					FROM %[1]s ts
 					WHERE ts.variable_measured = sv.child_sv
 					LIMIT 1
 				) AS has_data,
 				'' AS definition
 			FROM ChildSVs sv
 			JOIN Node n
-			ON n.subject_id = sv.child_sv`,
+			ON n.subject_id = sv.child_sv`, cfg.TimeSeriesTable),
 
-	getStatVarGroupNodeWithDefinitions: `		WITH ChildSVGs AS (
+		getStatVarGroupNodeWithDefinitions: fmt.Sprintf(`		WITH ChildSVGs AS (
 				SELECT DISTINCT
 					subject_id AS child_svg,
 					object_id AS svg
 				FROM Edge
 				WHERE predicate = 'specializationOf'
-				AND object_id %[1]s
+				AND object_id %%[1]s
 				UNION ALL
-				%[2]s
+				%%[2]s
 			),
 			UniqueChildSVGs AS (
 				SELECT DISTINCT child_svg FROM ChildSVGs
@@ -609,7 +536,7 @@ var multiEntityStatementTemplates = multiEntityStatements{
 					object_id AS svg
 				FROM Edge
 				WHERE predicate = 'memberOf'
-				AND object_id %[1]s
+				AND object_id %%[1]s
 			),
 			UniqueChildSVs AS (
 				SELECT DISTINCT child_sv FROM ChildSVs
@@ -634,7 +561,7 @@ var multiEntityStatementTemplates = multiEntityStatements{
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
-					FROM %[3]s ts
+					FROM %[1]s ts
 					WHERE ts.variable_measured = sv.child_sv
 					LIMIT 1
 				) AS has_data,
@@ -648,51 +575,52 @@ var multiEntityStatementTemplates = multiEntityStatements{
 				), '') AS definition
 			FROM ChildSVs sv
 			JOIN Node n
-			ON n.subject_id = sv.child_sv`,
+			ON n.subject_id = sv.child_sv`, cfg.TimeSeriesTable),
 
-	filterDescendentStatVarsByTimeSeries: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+		filterDescendentStatVarsByTimeSeries: `JOIN@{JOIN_TYPE=HASH_JOIN} (
 					SELECT ts.variable_measured
 					FROM %s%s%s
 					GROUP BY ts.variable_measured%s
 				) o ON o.variable_measured = e.subject_id`,
 
-	selectDescendentStatVarsFromTimeSeries: `%s AS ts`,
+		selectDescendentStatVarsFromTimeSeries: fmt.Sprintf(`%s AS ts`, cfg.TimeSeriesTable),
 
-	selectDescendentStatVarsFromEntitySlots: `(
+		selectDescendentStatVarsFromEntitySlots: fmt.Sprintf(`(
 						SELECT t.variable_measured, t.entity1 AS entity, t.provenance
 						FROM %[1]s AS t
-						%[4]s
+						%%[1]s
 						UNION ALL
 						SELECT t.variable_measured, t.entity2 AS entity, t.provenance
 						FROM %[1]s@{FORCE_INDEX=%[2]s} AS t
-						%[5]s
+						%%[2]s
 						UNION ALL
 						SELECT t.variable_measured, t.entity3 AS entity, t.provenance
 						FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
-						%[6]s
-					) AS ts`,
+						%%[3]s
+					) AS ts`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
 
-	joinDescendentStatVarsByProvenance: `
+		joinDescendentStatVarsByProvenance: `
 					JOIN Edge@{FORCE_INDEX=InEdge} e1
 					ON ts.provenance = e1.subject_id`,
 
-	filterDescendentStatVarsByProvenancePredicate: "e1.predicate = @predicate",
+		filterDescendentStatVarsByProvenancePredicate: "e1.predicate = @predicate",
 
-	filterDescendentStatVarsByProvenanceObject: "e1.object_id = @provenance",
+		filterDescendentStatVarsByProvenanceObject: "e1.object_id = @provenance",
 
-	filterDescendentStatVarsByNumEntitiesExistence: `
+		filterDescendentStatVarsByNumEntitiesExistence: `
 					HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 
-	filterEntity1ByPlaces: "WHERE t.entity1 IN UNNEST(@places)",
+		filterEntity1ByPlaces: "WHERE t.entity1 IN UNNEST(@places)",
 
-	filterEntity2ByPlaces: `WHERE t.entity2 IN UNNEST(@places)
+		filterEntity2ByPlaces: `WHERE t.entity2 IN UNNEST(@places)
 							AND t.entity2 IS NOT NULL`,
 
-	filterEntity3ByPlaces: `WHERE t.entity3 IN UNNEST(@places)
+		filterEntity3ByPlaces: `WHERE t.entity3 IN UNNEST(@places)
 							AND t.entity3 IS NOT NULL
 							AND t.entity2 IS NOT NULL`,
 
-	filterEntity2Exists: "WHERE t.entity2 IS NOT NULL",
+		filterEntity2Exists: "WHERE t.entity2 IS NOT NULL",
 
-	filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
+		filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
+	}
 }
