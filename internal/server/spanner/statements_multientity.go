@@ -16,7 +16,8 @@ package spanner
 
 import "fmt"
 
-type multiEntityStatements struct {
+// MultiEntityStatements contains preformatted SQL templates for multi-entity query builders.
+type MultiEntityStatements struct {
 	getObsBoth                                     string
 	getObsBothWithDate                             string
 	getObsBothLatest                               string
@@ -48,8 +49,9 @@ type multiEntityStatements struct {
 	filterEntity3Exists                            string
 }
 
-func newMultiEntityStatements(cfg TableConfig) *multiEntityStatements {
-	return &multiEntityStatements{
+// NewMultiEntityStatements builds multi-entity SQL templates from table configuration.
+func NewMultiEntityStatements(cfg TableConfig) *MultiEntityStatements {
+	return &MultiEntityStatements{
 		// Retrieve observations where both variables and entities are present (full series)
 		getObsBoth: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent

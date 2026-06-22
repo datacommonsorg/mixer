@@ -31,7 +31,7 @@ import (
 
 // GetObservations retrieves observations using the new schema.
 func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
-	stmt, err := getMultiEntityObservationsQuery(variables, entities, date, nc.statements)
+	stmt, err := GetMultiEntityObservationsQuery(variables, entities, date, nc.statements)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []st
 
 // CheckVariableExistence checks variable existence across all entity slots in a single CTE-based query.
 func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	stmt, err := getMultiEntityStatVarsByEntityQuery(variables, entities, nc.statements)
+	stmt, err := GetMultiEntityStatVarsByEntityQuery(variables, entities, nc.statements)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func (nc *multiEntityClient) CheckVariableGroupPlaceExistence(ctx context.Contex
 	if len(variableGroups) == 0 || len(entities) == 0 {
 		return [][]string{}, nil
 	}
-	stmt := getMultiEntityGroupPlaceExistenceQuery(variableGroups, entities, predicate, nc.statements)
+	stmt := GetMultiEntityGroupPlaceExistenceQuery(variableGroups, entities, predicate, nc.statements)
 	return queryDynamic(ctx, nc.sc, *stmt)
 }
 
@@ -82,7 +82,7 @@ func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []st
 	err := queryStructs(
 		ctx,
 		nc.sc,
-		*getMultiEntityStatVarGroupNodeQuery(nodes, includeDefinitions, nc.statements),
+		*GetMultiEntityStatVarGroupNodeQuery(nodes, includeDefinitions, nc.statements),
 		func() interface{} {
 			return &StatVarGroupNode{}
 		},
@@ -157,7 +157,7 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 		return queryStructs(
 			errCtx,
 			nc.sc,
-			*getMultiEntityFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions, nc.statements),
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions, nc.statements),
 			func() interface{} {
 				return &ChildSV{}
 			},
@@ -171,7 +171,7 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 		return queryStructs(
 			errCtx,
 			nc.sc,
-			*getMultiEntityFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions, nc.statements),
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions, nc.statements),
 			func() interface{} {
 				return &ChildSVG{}
 			},
@@ -199,7 +199,7 @@ func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []strin
 		counts[node] = 0
 	}
 
-	stmt := getMultiEntityFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence, nc.statements)
+	stmt := GetMultiEntityFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence, nc.statements)
 	err := nc.sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
 		for {
 			row, err := iter.Next()
@@ -233,7 +233,7 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 		return observations, nil
 	}
 
-	stmt, err := getMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date, nc.statements)
+	stmt, err := GetMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date, nc.statements)
 	if err != nil {
 		return nil, err
 	}
@@ -431,7 +431,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		entityMappings = parseEntityMappings(edgesMap)
 	}
 
-	stmt, err := getMultiEntitySdmxObservationsQuery(req.Constraints, entityMappings, nc.statements)
+	stmt, err := GetMultiEntitySdmxObservationsQuery(req.Constraints, entityMappings, nc.statements)
 	if err != nil {
 		return nil, err
 	}
@@ -528,7 +528,7 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 		return nil, fmt.Errorf("GetSdmxAvailability: request cannot be nil")
 	}
 
-	stmt, err := getMultiEntitySdmxAvailabilityQuery(req, nc.statements)
+	stmt, err := GetMultiEntitySdmxAvailabilityQuery(req, nc.statements)
 	if err != nil {
 		return nil, err
 	}

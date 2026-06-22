@@ -27,11 +27,7 @@ import (
 )
 
 // GetMultiEntityObservationsQuery builds the observation lookup query with optional date filter.
-func GetMultiEntityObservationsQuery(variables []string, entities []string, date string, cfg TableConfig) (*spanner.Statement, error) {
-	return getMultiEntityObservationsQuery(variables, entities, date, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityObservationsQuery(variables []string, entities []string, date string, stmts *multiEntityStatements) (*spanner.Statement, error) {
+func GetMultiEntityObservationsQuery(variables []string, entities []string, date string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("GetMultiEntityObservationsQuery: entities must be specified")
 	}
@@ -71,11 +67,7 @@ func getMultiEntityObservationsQuery(variables []string, entities []string, date
 }
 
 // GetMultiEntityStatVarsByEntityQuery builds the variable existence query across entity slots.
-func GetMultiEntityStatVarsByEntityQuery(variables []string, entities []string, cfg TableConfig) (*spanner.Statement, error) {
-	return getMultiEntityStatVarsByEntityQuery(variables, entities, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityStatVarsByEntityQuery(variables []string, entities []string, stmts *multiEntityStatements) (*spanner.Statement, error) {
+func GetMultiEntityStatVarsByEntityQuery(variables []string, entities []string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
 	if len(variables) == 0 && len(entities) == 0 {
 		return nil, fmt.Errorf("GetMultiEntityStatVarsByEntityQuery: must be called with at least one variable or entity")
 	}
@@ -103,11 +95,7 @@ func getMultiEntityStatVarsByEntityQuery(variables []string, entities []string, 
 }
 
 // GetMultiEntityGroupPlaceExistenceQuery returns a query to check SVG/topic existence for places across entity slots.
-func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string, cfg TableConfig) *spanner.Statement {
-	return getMultiEntityGroupPlaceExistenceQuery(variableGroups, entities, predicate, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string, stmts *multiEntityStatements) *spanner.Statement {
+func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string, stmts *MultiEntityStatements) *spanner.Statement {
 	return &spanner.Statement{
 		SQL: stmts.checkGroupPlaceExistence,
 		Params: map[string]interface{}{
@@ -119,11 +107,7 @@ func getMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []
 }
 
 // GetMultiEntityObservationsContainedInPlaceQuery builds the observation containment lookup query with optional date filter.
-func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string, cfg TableConfig) (*spanner.Statement, error) {
-	return getMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string, stmts *multiEntityStatements) (*spanner.Statement, error) {
+func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
 	if len(variables) == 0 {
 		return nil, fmt.Errorf("GetMultiEntityObservationsContainedInPlaceQuery: variables must be specified")
 	}
@@ -155,11 +139,7 @@ func getMultiEntityObservationsContainedInPlaceQuery(variables []string, contain
 }
 
 // GetMultiEntityStatVarGroupNodeQuery returns a query to get StatVarGroupNode info from the multi-entity schema.
-func GetMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool, cfg TableConfig) *spanner.Statement {
-	return getMultiEntityStatVarGroupNodeQuery(nodes, includeDefinitions, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool, stmts *multiEntityStatements) *spanner.Statement {
+func GetMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool, stmts *MultiEntityStatements) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
 	selfFilter := "SELECT\n" +
@@ -182,7 +162,7 @@ func getMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool
 	}
 }
 
-func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *multiEntityStatements) *spanner.Statement {
+func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *MultiEntityStatements) *spanner.Statement {
 	params := map[string]interface{}{}
 	useEntitySlots := len(constrainedPlaces) > 0 || (constrainedProvenance == "" && numEntitiesExistence > 1)
 
@@ -235,7 +215,7 @@ func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constr
 	}
 }
 
-func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *multiEntityStatements) string {
+func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *MultiEntityStatements) string {
 	entity1Filter := ""
 	entity2Filter := stmts.filterEntity2Exists
 	entity3Filter := stmts.filterEntity3Exists
@@ -254,11 +234,7 @@ func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *multiEntity
 }
 
 // GetMultiEntityFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
-func GetMultiEntityFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool, cfg TableConfig) *spanner.Statement {
-	return getMultiEntityFilteredSVGChildrenQuery(template, node, constrainedPlaces, constrainedProvenance, numEntitiesExistence, includeDefinitions, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool, stmts *multiEntityStatements) *spanner.Statement {
+func GetMultiEntityFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool, stmts *MultiEntityStatements) *spanner.Statement {
 	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
 	subquery.Params["node"] = node
 
@@ -281,11 +257,7 @@ func getMultiEntityFilteredSVGChildrenQuery(template string, node string, constr
 }
 
 // GetMultiEntityFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
-func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, cfg TableConfig) *spanner.Statement {
-	return getMultiEntityFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedProvenance, numEntitiesExistence, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *multiEntityStatements) *spanner.Statement {
+func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *MultiEntityStatements) *spanner.Statement {
 	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
 
 	nodeFilter, nodeVal := getParamStatement("node", nodes)
@@ -312,15 +284,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 func GetMultiEntitySdmxObservationsQuery(
 	constraints map[string]*pb.ConstraintList,
 	entityMappings map[string]map[string]string,
-	cfg TableConfig,
-) (*spanner.Statement, error) {
-	return getMultiEntitySdmxObservationsQuery(constraints, entityMappings, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntitySdmxObservationsQuery(
-	constraints map[string]*pb.ConstraintList,
-	entityMappings map[string]map[string]string,
-	stmts *multiEntityStatements,
+	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
 	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
 	for reqKey, list := range constraints {
@@ -392,14 +356,7 @@ func getMultiEntitySdmxObservationsQuery(
 // GetMultiEntitySdmxAvailabilityQuery builds the first SDMX availability lookup.
 func GetMultiEntitySdmxAvailabilityQuery(
 	req *pb.SdmxAvailabilityQuery,
-	cfg TableConfig,
-) (*spanner.Statement, error) {
-	return getMultiEntitySdmxAvailabilityQuery(req, newMultiEntityStatements(cfg))
-}
-
-func getMultiEntitySdmxAvailabilityQuery(
-	req *pb.SdmxAvailabilityQuery,
-	stmts *multiEntityStatements,
+	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
 	if req == nil {
 		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request cannot be nil")
