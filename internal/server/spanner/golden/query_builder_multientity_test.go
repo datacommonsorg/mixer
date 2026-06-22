@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -171,6 +172,64 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, spanner.DefaultTableConfig())
 	if err == nil {
 		t.Error("expected error for constraint key containing spaces, got nil")
+	}
+}
+
+func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
+	cfg := spanner.DefaultTableConfig()
+	cfg.TimeSeriesTable = "CustomTsTable"
+	cfg.ObservationTable = "CustomObsTable"
+	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
+	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
+
+	obsStmt, err := spanner.GetMultiEntityObservationsQuery(
+		[]string{"Count_Person"},
+		[]string{"geoId/06"},
+		"",
+		cfg,
+	)
+	if err != nil {
+		t.Fatalf("GetMultiEntityObservationsQuery() returned error: %v", err)
+	}
+	assertSQLContains(t, obsStmt.SQL, "CustomObsTable", "CustomTsTable")
+
+	existenceStmt, err := spanner.GetMultiEntityStatVarsByEntityQuery(
+		[]string{"Count_Person"},
+		[]string{"geoId/06"},
+		cfg,
+	)
+	if err != nil {
+		t.Fatalf("GetMultiEntityStatVarsByEntityQuery() returned error: %v", err)
+	}
+	assertSQLContains(t, existenceStmt.SQL, "CustomTsTable", "CustomEntity2Index", "CustomEntity3Index")
+
+	filteredTopicStmt := spanner.GetMultiEntityFilteredTopicChildrenQuery(
+		[]string{"dc/topic/Test"},
+		nil,
+		"",
+		2,
+		cfg,
+	)
+	assertSQLContains(t, filteredTopicStmt.SQL, "CustomTsTable", "CustomEntity2Index", "CustomEntity3Index")
+
+	availabilityStmt, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+		ComponentId: "observationAbout",
+		Constraints: map[string]*pb.ConstraintList{
+			"variableMeasured": {Values: []string{"Count_Person"}},
+		},
+	}, cfg)
+	if err != nil {
+		t.Fatalf("GetMultiEntitySdmxAvailabilityQuery() returned error: %v", err)
+	}
+	assertSQLContains(t, availabilityStmt.SQL, "CustomTsTable")
+}
+
+func assertSQLContains(t *testing.T, sql string, values ...string) {
+	t.Helper()
+	for _, value := range values {
+		if !strings.Contains(sql, value) {
+			t.Fatalf("SQL does not contain %q:\n%s", value, sql)
+		}
 	}
 }
 

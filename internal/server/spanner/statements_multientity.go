@@ -14,7 +14,9 @@
 
 package spanner
 
-var statementsMultiEntity = struct {
+import "fmt"
+
+type multiEntityStatements struct {
 	getObsBoth                                     string
 	getObsBothWithDate                             string
 	getObsBothLatest                               string
@@ -44,7 +46,81 @@ var statementsMultiEntity = struct {
 	filterEntity3ByPlaces                          string
 	filterEntity2Exists                            string
 	filterEntity3Exists                            string
-}{
+}
+
+func newMultiEntityStatements(cfg TableConfig) *multiEntityStatements {
+	return &multiEntityStatements{
+		getObsBoth:                           fmt.Sprintf(multiEntityStatementTemplates.getObsBoth, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsBothWithDate:                   fmt.Sprintf(multiEntityStatementTemplates.getObsBothWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsBothLatest:                     fmt.Sprintf(multiEntityStatementTemplates.getObsBothLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsEntitiesOnly:                   fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnly, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsEntitiesOnlyWithDate:           fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnlyWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsEntitiesOnlyLatest:             fmt.Sprintf(multiEntityStatementTemplates.getObsEntitiesOnlyLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsByContainedInPlaceBoth:         fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBoth, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBothWithDate, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsByContainedInPlaceBothLatest:   fmt.Sprintf(multiEntityStatementTemplates.getObsByContainedInPlaceBothLatest, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getSdmxObs:                           fmt.Sprintf(multiEntityStatementTemplates.getSdmxObs, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getSdmxAvailability:                  fmt.Sprintf(multiEntityStatementTemplates.getSdmxAvailability, "%[1]s", cfg.TimeSeriesTable),
+		getStatVarsByEntityBoth: fmt.Sprintf(
+			multiEntityStatementTemplates.getStatVarsByEntityBoth,
+			cfg.TimeSeriesTable,
+			cfg.TimeSeriesByEntity2Index,
+			cfg.TimeSeriesByEntity3Index,
+		),
+		getStatVarsByEntityVarsOnly: fmt.Sprintf(
+			multiEntityStatementTemplates.getStatVarsByEntityVarsOnly,
+			cfg.TimeSeriesTable,
+			cfg.TimeSeriesByEntity2Index,
+			cfg.TimeSeriesByEntity3Index,
+		),
+		getStatVarsByEntityEntitiesOnly: fmt.Sprintf(
+			multiEntityStatementTemplates.getStatVarsByEntityEntitiesOnly,
+			cfg.TimeSeriesTable,
+			cfg.TimeSeriesByEntity2Index,
+			cfg.TimeSeriesByEntity3Index,
+		),
+		checkGroupPlaceExistence: fmt.Sprintf(
+			multiEntityStatementTemplates.checkGroupPlaceExistence,
+			cfg.TimeSeriesTable,
+			cfg.TimeSeriesByEntity2Index,
+			cfg.TimeSeriesByEntity3Index,
+		),
+		getStatVarGroupNode: fmt.Sprintf(
+			multiEntityStatementTemplates.getStatVarGroupNode,
+			"%[1]s",
+			"%[2]s",
+			cfg.TimeSeriesTable,
+		),
+		getStatVarGroupNodeWithDefinitions: fmt.Sprintf(
+			multiEntityStatementTemplates.getStatVarGroupNodeWithDefinitions,
+			"%[1]s",
+			"%[2]s",
+			cfg.TimeSeriesTable,
+		),
+		filterDescendentStatVarsByTimeSeries:   multiEntityStatementTemplates.filterDescendentStatVarsByTimeSeries,
+		selectDescendentStatVarsFromTimeSeries: fmt.Sprintf(multiEntityStatementTemplates.selectDescendentStatVarsFromTimeSeries, cfg.TimeSeriesTable),
+		selectDescendentStatVarsFromEntitySlots: fmt.Sprintf(
+			multiEntityStatementTemplates.selectDescendentStatVarsFromEntitySlots,
+			cfg.TimeSeriesTable,
+			cfg.TimeSeriesByEntity2Index,
+			cfg.TimeSeriesByEntity3Index,
+			"%[1]s",
+			"%[2]s",
+			"%[3]s",
+		),
+		joinDescendentStatVarsByProvenance:             multiEntityStatementTemplates.joinDescendentStatVarsByProvenance,
+		filterDescendentStatVarsByProvenancePredicate:  multiEntityStatementTemplates.filterDescendentStatVarsByProvenancePredicate,
+		filterDescendentStatVarsByProvenanceObject:     multiEntityStatementTemplates.filterDescendentStatVarsByProvenanceObject,
+		filterDescendentStatVarsByNumEntitiesExistence: multiEntityStatementTemplates.filterDescendentStatVarsByNumEntitiesExistence,
+		filterEntity1ByPlaces:                          multiEntityStatementTemplates.filterEntity1ByPlaces,
+		filterEntity2ByPlaces:                          multiEntityStatementTemplates.filterEntity2ByPlaces,
+		filterEntity3ByPlaces:                          multiEntityStatementTemplates.filterEntity3ByPlaces,
+		filterEntity2Exists:                            multiEntityStatementTemplates.filterEntity2Exists,
+		filterEntity3Exists:                            multiEntityStatementTemplates.filterEntity3Exists,
+	}
+}
+
+var multiEntityStatementTemplates = multiEntityStatements{
 	// Retrieve observations where both variables and entities are present (full series)
 	getObsBoth: `		WITH params AS (
 			SELECT var, ent
