@@ -24,8 +24,13 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
-func defaultMultiEntityStatements() *spanner.MultiEntityStatements {
-	return spanner.NewMultiEntityStatements(spanner.DefaultTableConfig())
+func defaultMultiEntityStatements(t *testing.T) *spanner.MultiEntityStatements {
+	t.Helper()
+	stmts, err := spanner.NewMultiEntityStatements(spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	return stmts
 }
 
 func TestMultiEntityGetObservationsQuery(t *testing.T) {
@@ -36,7 +41,7 @@ func TestMultiEntityGetObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityObservationsQuery(c.variables, c.entities, c.date, defaultMultiEntityStatements())
+				return spanner.GetMultiEntityObservationsQuery(c.variables, c.entities, c.date, defaultMultiEntityStatements(t))
 			})
 		})
 	}
@@ -50,7 +55,7 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityStatVarsByEntityQuery(c.variables, c.entities, defaultMultiEntityStatements())
+				return spanner.GetMultiEntityStatVarsByEntityQuery(c.variables, c.entities, defaultMultiEntityStatements(t))
 			})
 		})
 	}
@@ -64,7 +69,7 @@ func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate, defaultMultiEntityStatements()), nil
+				return spanner.GetMultiEntityGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate, defaultMultiEntityStatements(t)), nil
 			})
 		})
 	}
@@ -81,7 +86,7 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 				return spanner.GetMultiEntityObservationsContainedInPlaceQuery(c.variables, &v2.ContainedInPlace{
 					Ancestor:       c.ancestor,
 					ChildPlaceType: c.childPlaceType,
-				}, c.date, defaultMultiEntityStatements())
+				}, c.date, defaultMultiEntityStatements(t))
 			})
 		})
 	}
@@ -95,7 +100,7 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityStatVarGroupNodeQuery(c.nodes, c.includeDefinitions, defaultMultiEntityStatements()), nil
+				return spanner.GetMultiEntityStatVarGroupNodeQuery(c.nodes, c.includeDefinitions, defaultMultiEntityStatements(t)), nil
 			})
 		})
 	}
@@ -109,7 +114,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, c.includeDefinitions, defaultMultiEntityStatements()), nil
+				return spanner.GetMultiEntityFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, c.includeDefinitions, defaultMultiEntityStatements(t)), nil
 			})
 		})
 	}
@@ -124,7 +129,7 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, defaultMultiEntityStatements()), nil
+				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, defaultMultiEntityStatements(t)), nil
 			})
 		})
 	}
@@ -138,7 +143,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				stmt, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, defaultMultiEntityStatements())
+				stmt, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, defaultMultiEntityStatements(t))
 				return stmt, err
 			})
 		})
@@ -153,7 +158,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
 		"observationPeriod": {Values: []string{"P1Y"}},
 	}
-	_, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, defaultMultiEntityStatements())
+	_, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, defaultMultiEntityStatements(t))
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -163,7 +168,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"variableMeasured": {Values: []string{"var1"}},
 		"unit') OR 1=1 --": {Values: []string{"Percent"}},
 	}
-	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, defaultMultiEntityStatements())
+	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, defaultMultiEntityStatements(t))
 	if err == nil {
 		t.Error("expected error for constraint key containing SQL injection payload, got nil")
 	}
@@ -173,7 +178,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"variableMeasured": {Values: []string{"var1"}},
 		"invalid key":      {Values: []string{"value"}},
 	}
-	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, defaultMultiEntityStatements())
+	_, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, defaultMultiEntityStatements(t))
 	if err == nil {
 		t.Error("expected error for constraint key containing spaces, got nil")
 	}
@@ -185,7 +190,10 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	cfg.ObservationTable = "CustomObsTable"
 	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
 	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
-	stmts := spanner.NewMultiEntityStatements(cfg)
+	stmts, err := spanner.NewMultiEntityStatements(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	obsStmt, err := spanner.GetMultiEntityObservationsQuery(
 		[]string{"Count_Person"},
@@ -285,7 +293,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 					Constraints: map[string]*pb.ConstraintList{
 						"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
 					},
-				}, defaultMultiEntityStatements())
+				}, defaultMultiEntityStatements(t))
 			})
 		})
 	}
@@ -345,7 +353,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(tc.req, defaultMultiEntityStatements())
+			_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(tc.req, defaultMultiEntityStatements(t))
 			if err == nil {
 				t.Fatal("GetMultiEntitySdmxAvailabilityQuery() error = nil, want error")
 			}

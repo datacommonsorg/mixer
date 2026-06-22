@@ -28,8 +28,12 @@ func newMultiEntityClient(client SpannerClient, cfg TableConfig) (*multiEntityCl
 	if !ok {
 		return nil, fmt.Errorf("newMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
 	}
+	statements, err := NewMultiEntityStatements(cfg)
+	if err != nil {
+		return nil, fmt.Errorf("newMultiEntityClient: %w", err)
+	}
 	return &multiEntityClient{
 		sc:         sc,
-		statements: NewMultiEntityStatements(cfg),
+		statements: statements,
 	}, nil
 }

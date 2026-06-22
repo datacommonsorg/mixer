@@ -14,7 +14,10 @@
 
 package spanner
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // MultiEntityStatements contains preformatted SQL templates for multi-entity query builders.
 type MultiEntityStatements struct {
@@ -50,7 +53,11 @@ type MultiEntityStatements struct {
 }
 
 // NewMultiEntityStatements builds multi-entity SQL templates from table configuration.
-func NewMultiEntityStatements(cfg TableConfig) *MultiEntityStatements {
+func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
+	if err := validateMultiEntityTableConfig(cfg); err != nil {
+		return nil, err
+	}
+
 	return &MultiEntityStatements{
 		// Retrieve observations where both variables and entities are present (full series)
 		getObsBoth: fmt.Sprintf(`		WITH params AS (
@@ -624,5 +631,31 @@ func NewMultiEntityStatements(cfg TableConfig) *MultiEntityStatements {
 		filterEntity2Exists: "WHERE t.entity2 IS NOT NULL",
 
 		filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
+	}, nil
+}
+
+func validateMultiEntityTableConfig(cfg TableConfig) error {
+	missing := []string{}
+	if strings.TrimSpace(cfg.TimeSeriesTable) == "" {
+		missing = append(missing, "TimeSeriesTable")
 	}
+	if strings.TrimSpace(cfg.ObservationTable) == "" {
+		missing = append(missing, "ObservationTable")
+	}
+	if strings.TrimSpace(cfg.TimeSeriesByEntity1Index) == "" {
+		missing = append(missing, "TimeSeriesByEntity1Index")
+	}
+	if strings.TrimSpace(cfg.TimeSeriesByEntity2Index) == "" {
+		missing = append(missing, "TimeSeriesByEntity2Index")
+	}
+	if strings.TrimSpace(cfg.TimeSeriesByEntity3Index) == "" {
+		missing = append(missing, "TimeSeriesByEntity3Index")
+	}
+	if strings.TrimSpace(cfg.TimeSeriesByProvenanceIndex) == "" {
+		missing = append(missing, "TimeSeriesByProvenanceIndex")
+	}
+	if len(missing) > 0 {
+		return fmt.Errorf("NewMultiEntityStatements: missing required TableConfig fields: %s", strings.Join(missing, ", "))
+	}
+	return nil
 }
