@@ -529,9 +529,6 @@ func GetFacetID(m *pb.Facet) string {
 	if m.IsDcAggregate {
 		s += "-IsDcAggregate"
 	}
-	if m.ProvenanceId != "" {
-		s += "-" + m.ProvenanceId
-	}
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(s))
 	return fmt.Sprint(h.Sum32())
