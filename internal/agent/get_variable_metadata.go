@@ -153,11 +153,13 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 	g, gCtx := errgroup.WithContext(ctx)
 	g.SetLimit(maxConcurrentFetchers)
 
-	// Initialize slots sequentially, then fetch concurrently using direct pointers
-	for _, vDcid := range varDcids {
+	// Pre-allocate local slices to prevent CPU false sharing/cache bouncing across goroutines
+	properties := make([]*pbv2.LinkedGraph, len(varDcids))
+	summaries := make([]*pb.StatVarSummary, len(varDcids))
+
+	for i, vDcid := range varDcids {
+		idx := i
 		dcid := vDcid
-		rawVar := &rawVariableData{}
-		raw.variables[dcid] = rawVar // Safe: sequential map write in main thread
 
 		// Worker 1: Fetch Node Graph (Non-critical: log and skip on error)
 		g.Go(func() error {
@@ -166,7 +168,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 				log.Printf("Warning: failed to fetch node graph for variable %s: %v", dcid, err)
 				return nil // Graceful degradation: do not fail the errgroup
 			}
-			rawVar.properties = graph // Safe: direct pointer access (no map lookup)
+			properties[idx] = graph // Safe: write to unique index
 			return nil
 		})
 
@@ -181,7 +183,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 			if resp != nil && resp.GetData() != nil {
 				for _, info := range resp.GetData() {
 					if info.GetNode() == dcid {
-						rawVar.summary = info.GetInfo() // Safe: direct pointer access
+						summaries[idx] = info.GetInfo() // Safe: write to unique index
 					}
 				}
 			}
@@ -206,6 +208,16 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 
 	if err := g.Wait(); err != nil {
 		return nil, err
+	}
+
+	// Populate variables map sequentially from local slices after concurrent execution completes
+	for i, dcid := range varDcids {
+		if properties[i] != nil || summaries[i] != nil {
+			raw.variables[dcid] = &rawVariableData{
+				properties: properties[i],
+				summary:    summaries[i],
+			}
+		}
 	}
 
 	// Now hydrate provenances using the fetched data (lock-free!)
@@ -306,7 +318,7 @@ func extractSourceDcid(graph *pbv2.LinkedGraph) string {
 	if graph == nil || graph.GetArcs() == nil {
 		return ""
 	}
-	if srcArc, ok := graph.GetArcs()["source"]; ok {
+	if srcArc, ok := graph.GetArcs()["source"]; ok && srcArc != nil {
 		for _, n := range srcArc.GetNodes() {
 			if n != nil && n.GetDcid() != "" {
 				return n.GetDcid()
@@ -374,17 +386,17 @@ func translateProperties(graph *pbv2.LinkedGraph) *translatedProperties {
 	}
 
 	// 1. Resolve root Name (primary name or label)
-	if nameArc, ok := graph.GetArcs()["name"]; ok {
+	if nameArc, ok := graph.GetArcs()["name"]; ok && nameArc != nil {
 		tp.name = resolveFirstValue(nameArc.GetNodes())
 	}
 	if tp.name == "" {
-		if labelArc, ok := graph.GetArcs()["label"]; ok {
+		if labelArc, ok := graph.GetArcs()["label"]; ok && labelArc != nil {
 			tp.name = resolveFirstValue(labelArc.GetNodes())
 		}
 	}
 
 	// 2. Resolve root Description
-	if descArc, ok := graph.GetArcs()["description"]; ok {
+	if descArc, ok := graph.GetArcs()["description"]; ok && descArc != nil {
 		tp.description = resolveFirstValue(descArc.GetNodes())
 	}
 
@@ -544,6 +556,9 @@ func translateProvenance(id string, rawDataset *rawDatasetData) *pbv2.GetVariabl
 	provMeta := &pbv2.GetVariableMetadataResponse_ProvenanceMetadata{
 		Id:         id,
 		Properties: &structpb.Struct{Fields: make(map[string]*structpb.Value)},
+	}
+	if rawDataset == nil {
+		return provMeta
 	}
 
 	mergeProperties := func(graph *pbv2.LinkedGraph) {
