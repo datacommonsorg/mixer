@@ -35,7 +35,6 @@ type mockMixerClient struct {
 	observationFunc  func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 }
 
-
 func (m *mockMixerClient) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	atomic.AddInt32(&m.observationCalls, 1)
 
@@ -95,8 +94,8 @@ func TestCacheCheckAvailability(t *testing.T) {
 			setupCache: func(c *Cache) {
 				// Cache empty
 			},
-			places:              []string{"geoId/06"},
-			variables:           []string{"Count_Person", "Count_Person_Male"},
+			places:    []string{"geoId/06"},
+			variables: []string{"Count_Person", "Count_Person_Male"},
 			mockResponse: &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {},
@@ -123,8 +122,8 @@ func TestCacheCheckAvailability(t *testing.T) {
 					"Count_Person": {},
 				}
 			},
-			places:              []string{"geoId/06", "geoId/17"}, // Illinois is missing
-			variables:           []string{"Count_Person"},
+			places:    []string{"geoId/06", "geoId/17"}, // Illinois is missing
+			variables: []string{"Count_Person"},
 			mockResponse: &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {},
