@@ -33,6 +33,8 @@ import (
 const (
 	wildcardPropertyQuery = "->*"
 	maxConcurrentFetchers = 20
+	maxVariablesLimit     = 10
+	maxEntitiesLimit      = 10
 )
 
 var (
@@ -110,14 +112,14 @@ func (s *Service) GetVariableMetadata(
 	if len(req.GetVariableDcids()) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "variable_dcids cannot be empty")
 	}
-	if len(req.GetVariableDcids()) > 10 {
-		return nil, status.Error(codes.InvalidArgument, "variable_dcids cannot exceed 10")
+	if len(req.GetVariableDcids()) > maxVariablesLimit {
+		return nil, status.Errorf(codes.InvalidArgument, "variable_dcids cannot exceed %d", maxVariablesLimit)
 	}
 	if len(req.GetEntityDcids()) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "entity_dcids cannot be empty")
 	}
-	if len(req.GetEntityDcids()) > 10 {
-		return nil, status.Error(codes.InvalidArgument, "entity_dcids cannot exceed 10")
+	if len(req.GetEntityDcids()) > maxEntitiesLimit {
+		return nil, status.Errorf(codes.InvalidArgument, "entity_dcids cannot exceed %d", maxEntitiesLimit)
 	}
 
 	varDcids := dedup(req.GetVariableDcids())
