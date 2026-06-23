@@ -276,6 +276,18 @@ func TestDataDispatcherError(t *testing.T) {
 	}
 }
 
+func TestDataNilDispatcher(t *testing.T) {
+	svc := New(nil)
+
+	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
+	if status.Code(err) != codes.Internal {
+		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "Internal server error occurred while processing the request.") {
+		t.Fatalf("Data() message = %q, want generic internal error", status.Convert(err).Message())
+	}
+}
+
 func TestDataSDMXDebugLoggingDisabled(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
@@ -406,6 +418,18 @@ func TestAvailabilityBackendUnimplemented(t *testing.T) {
 	}
 	if !strings.Contains(status.Convert(err).Message(), "SDMX availability backend is not implemented yet") {
 		t.Fatalf("Availability() message = %q, want backend unimplemented", status.Convert(err).Message())
+	}
+}
+
+func TestAvailabilityNilDispatcher(t *testing.T) {
+	svc := New(nil)
+
+	_, err := svc.Availability(context.Background(), sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person"))
+	if status.Code(err) != codes.Internal {
+		t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "Internal server error occurred while processing the request.") {
+		t.Fatalf("Availability() message = %q, want generic internal error", status.Convert(err).Message())
 	}
 }
 

@@ -45,6 +45,13 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 			want:        map[string][]string{"variableMeasured": {"Count_Person", "Count_Household"}},
 		},
 		{
+			name:        "or values with whitespace",
+			tail:        availabilityTail("observationAbout"),
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person,%20Count_Household"),
+			wantPath:    availabilityPath("observationAbout"),
+			want:        map[string][]string{"variableMeasured": {"Count_Person", "Count_Household"}},
+		},
+		{
 			name:        "provenance",
 			tail:        availabilityTail("provenance"),
 			originalURI: availabilityURI("provenance", "c[variableMeasured]=Count_Person"),

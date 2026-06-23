@@ -99,6 +99,19 @@ func TestV3SdmxDataFeatureFlag(t *testing.T) {
 	}
 }
 
+func TestV3SdmxDataNilRequest(t *testing.T) {
+	server := newSdmxHandlerTestServer(&sdmxDataSource{})
+	stream := &sdmxDataStream{ctx: context.Background()}
+
+	err := server.V3SdmxData(nil, stream)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("V3SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "request cannot be nil") {
+		t.Fatalf("V3SdmxData() message = %q, want nil request message", status.Convert(err).Message())
+	}
+}
+
 func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	server := newSdmxHandlerTestServer(&sdmxDataSource{result: &sdmxpb.SdmxDataResult{}})
 	stream := &sdmxDataStream{
@@ -129,6 +142,18 @@ func TestV3SdmxAvailabilityFeatureFlag(t *testing.T) {
 	}
 	if !strings.Contains(status.Convert(err).Message(), "SDMX API is not enabled") {
 		t.Fatalf("V3SdmxAvailability() message = %q, want disabled message", status.Convert(err).Message())
+	}
+}
+
+func TestV3SdmxAvailabilityNilRequest(t *testing.T) {
+	server := newSdmxHandlerTestServer(&sdmxDataSource{})
+
+	_, err := server.V3SdmxAvailability(context.Background(), nil)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("V3SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "request cannot be nil") {
+		t.Fatalf("V3SdmxAvailability() message = %q, want nil request message", status.Convert(err).Message())
 	}
 }
 

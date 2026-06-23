@@ -31,6 +31,9 @@ func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3Sdm
 	if !s.flags.EnableSDMXDataApi {
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
+	if in == nil {
+		return status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 
 	req, err := sdmxgrpc.NewRequest(stream.Context(), in.GetTail())
 	if err != nil {
@@ -50,6 +53,9 @@ func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3Sdm
 func (s *Server) V3SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxRestRequest) (*httpbody.HttpBody, error) {
 	if !s.flags.EnableSDMXDataApi {
 		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+	if in == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
 
 	req, err := sdmxgrpc.NewRequest(ctx, in.GetTail())

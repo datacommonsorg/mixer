@@ -59,6 +59,9 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 		slog.Error("SDMX request missing required constraints", "tail", request.Tail)
 		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
 	}
+	if s.dispatcher == nil {
+		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
 
 	res, err := s.dispatcher.SdmxData(ctx, query)
 	if err != nil {

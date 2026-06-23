@@ -51,6 +51,9 @@ func (s *Service) Availability(ctx context.Context, request Request) (*Response,
 	if request.LogSDMX {
 		slog.Info("SDMX availability dispatcher request", "original_uri", request.OriginalURI, "tail", request.Tail, "component", query.ComponentId, "constraints", query.Constraints)
 	}
+	if s.dispatcher == nil {
+		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
 
 	res, err := s.dispatcher.SdmxAvailability(ctx, query)
 	if err != nil {

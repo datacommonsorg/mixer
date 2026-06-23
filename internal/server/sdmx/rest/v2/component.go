@@ -70,6 +70,7 @@ func parseComponentValues(value string) ([]string, error) {
 	parts := strings.Split(value, ",")
 	values := make([]string, 0, len(parts))
 	for _, part := range parts {
+		part = strings.TrimSpace(part)
 		if part == "" {
 			return nil, status.Error(codes.InvalidArgument, "empty SDMX component filter value")
 		}
