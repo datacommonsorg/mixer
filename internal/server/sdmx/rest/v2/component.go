@@ -15,12 +15,14 @@
 package restv2
 
 import (
-	serversdmx "github.com/datacommonsorg/mixer/internal/server/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 const (
+	dataContextDataflow = "dataflow"
+
 	ComponentVariableMeasured = "variableMeasured"
 	ComponentObservationAbout = "observationAbout"
 	ComponentTimePeriod       = "TIME_PERIOD"
@@ -33,10 +35,10 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX data path is required")
 	}
-	if path.Context != serversdmx.DataContext || path.AgencyID != serversdmx.DataAgencyID || path.ResourceID != serversdmx.DataResourceID {
+	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataAgencyID || path.ResourceID != datacommons.DataResourceID {
 		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
 	}
-	if path.Version != serversdmx.DataVersion {
+	if path.Version != datacommons.DataVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 
@@ -58,10 +60,10 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX availability path is required")
 	}
-	if path.Context != serversdmx.DataContext || path.AgencyID != serversdmx.DataAgencyID || path.ResourceID != serversdmx.DataResourceID {
+	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataAgencyID || path.ResourceID != datacommons.DataResourceID {
 		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
 	}
-	if path.Version != serversdmx.DataVersion {
+	if path.Version != datacommons.DataVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 	if !isAvailabilityComponent(path.ComponentID) {
@@ -93,11 +95,11 @@ func isAvailabilityComponent(componentID string) bool {
 		return false
 	}
 	kind, ok := dataComponentKind(componentID)
-	return ok && kind == serversdmx.ComponentKindDimension
+	return ok && kind == datacommons.ComponentKindDimension
 }
 
-func dataComponentKind(componentID string) (serversdmx.ComponentKind, bool) {
-	for _, component := range serversdmx.DataCSVComponents {
+func dataComponentKind(componentID string) (datacommons.ComponentKind, bool) {
+	for _, component := range datacommons.DataCSVComponents {
 		if component.ID == componentID {
 			return component.Kind, true
 		}

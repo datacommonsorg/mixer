@@ -20,7 +20,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -92,7 +92,7 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, "", ""},
+		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -119,7 +119,7 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, sdmx.FallbackNotAvailable, "2020", "foo,bar", ""},
+		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)

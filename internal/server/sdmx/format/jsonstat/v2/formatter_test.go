@@ -1,4 +1,4 @@
-package sdmx
+package jsonstatv2
 
 import (
 	"encoding/json"
@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -183,8 +184,8 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	}
 
 	dimensions := got["dimension"].(map[string]interface{})
-	if _, ok := dimensions[DimObservationDate]; !ok {
-		t.Fatalf("Missing %q dimension in output", DimObservationDate)
+	if _, ok := dimensions[datacommons.DimObservationDate]; !ok {
+		t.Fatalf("Missing %q dimension in output", datacommons.DimObservationDate)
 	}
 	if _, ok := dimensions["observationDate"]; ok {
 		t.Fatal("Output should not include legacy observationDate dimension")
@@ -192,21 +193,21 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	if _, ok := got["value"]; !ok {
 		t.Fatal("JSON-stat output should keep top-level value field")
 	}
-	if _, ok := got[DimObservationValue]; ok {
-		t.Fatalf("JSON-stat output should not rename top-level value field to %q", DimObservationValue)
+	if _, ok := got[datacommons.DimObservationValue]; ok {
+		t.Fatalf("JSON-stat output should not rename top-level value field to %q", datacommons.DimObservationValue)
 	}
 
 	gender := dimensions["gender"].(map[string]interface{})
 	category := gender["category"].(map[string]interface{})
 	indices := category["index"].([]interface{})
-	if !containsJSONValue(indices, FallbackNotAvailable) {
-		t.Fatalf("Missing fallback category %q in gender index: %v", FallbackNotAvailable, indices)
+	if !containsJSONValue(indices, datacommons.FallbackNotAvailable) {
+		t.Fatalf("Missing fallback category %q in gender index: %v", datacommons.FallbackNotAvailable, indices)
 	}
 
 	extension := got["extension"].(map[string]interface{})
 	measures := extension["measures"].(map[string]interface{})
-	if _, ok := measures[DimObservationValue]; !ok {
-		t.Fatalf("Missing %q measure metadata in extension", DimObservationValue)
+	if _, ok := measures[datacommons.DimObservationValue]; !ok {
+		t.Fatalf("Missing %q measure metadata in extension", datacommons.DimObservationValue)
 	}
 }
 

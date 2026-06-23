@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package jsonv2
+package sdmxjsonv2
 
 import (
 	"encoding/json"
 
-	"github.com/datacommonsorg/mixer/internal/server/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
 const (
@@ -70,9 +70,9 @@ func (f *AvailabilityJSONFormatter) Format(componentID string, values []string) 
 }
 
 func (f *AvailabilityJSONFormatter) FormatComponents(components []AvailabilityComponentValues) (string, error) {
-	agencyID := defaultString(f.AgencyID, sdmx.DataAgencyID)
-	resourceID := defaultString(f.ResourceID, sdmx.DataResourceID)
-	version := defaultString(f.Version, sdmx.DataVersion)
+	agencyID := defaultString(f.AgencyID, datacommons.DataAgencyID)
+	resourceID := defaultString(f.ResourceID, datacommons.DataResourceID)
+	version := defaultString(f.Version, datacommons.DataVersion)
 	constraint := availabilityDataConstraint{
 		ID:       resourceID + "_AVAILABILITY",
 		AgencyID: agencyID,

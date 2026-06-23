@@ -15,7 +15,6 @@
 package restv2
 
 import (
-	"context"
 	"net/url"
 	"strings"
 
@@ -75,10 +74,10 @@ func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 	return &DataRequest{Path: path, Constraints: constraints, Format: format}, nil
 }
 
-func DataResponseFormatFromDataRequest(ctx context.Context, request *DataRequest) (DataResponseFormat, error) {
+func DataResponseFormatFromDataRequest(request *DataRequest, accept []string) (DataResponseFormat, error) {
 	switch request.Format {
 	case "":
-		return DataResponseFormatFromMetadata(ctx)
+		return DataResponseFormatFromAccept(accept)
 	case "json-stat":
 		return DataResponseFormatJSONStat, nil
 	case "csv":

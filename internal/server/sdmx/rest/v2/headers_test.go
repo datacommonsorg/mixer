@@ -15,55 +15,14 @@
 package restv2
 
 import (
-	"context"
 	"strings"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
-func TestShouldLogSDMX(t *testing.T) {
-	tests := []struct {
-		name string
-		ctx  context.Context
-		want bool
-	}{
-		{
-			name: "missing metadata",
-			ctx:  context.Background(),
-		},
-		{
-			name: "missing header",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs("other", "true")),
-		},
-		{
-			name: "false",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs(util.XLogSDMX, "false")),
-		},
-		{
-			name: "other value",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs(util.XLogSDMX, "TRUE")),
-		},
-		{
-			name: "true",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs(util.XLogSDMX, "true")),
-			want: true,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := ShouldLogSDMX(tt.ctx); got != tt.want {
-				t.Errorf("ShouldLogSDMX() = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestDataResponseFormatFromMetadata(t *testing.T) {
+func TestDataResponseFormatFromAccept(t *testing.T) {
 	tests := []struct {
 		name       string
 		accept     string
@@ -112,32 +71,32 @@ func TestDataResponseFormatFromMetadata(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.Background()
+			accept := []string(nil)
 			if tt.accept != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+				accept = []string{tt.accept}
 			}
 
-			got, err := DataResponseFormatFromMetadata(ctx)
+			got, err := DataResponseFormatFromAccept(accept)
 			if tt.wantCode != codes.OK {
 				if status.Code(err) != tt.wantCode {
-					t.Fatalf("DataResponseFormatFromMetadata() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+					t.Fatalf("DataResponseFormatFromAccept() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
 				}
 				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
-					t.Fatalf("DataResponseFormatFromMetadata() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+					t.Fatalf("DataResponseFormatFromAccept() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
 				}
 				return
 			}
 			if err != nil {
-				t.Fatalf("DataResponseFormatFromMetadata() error = %v", err)
+				t.Fatalf("DataResponseFormatFromAccept() error = %v", err)
 			}
 			if got != tt.want {
-				t.Errorf("DataResponseFormatFromMetadata() = %v, want %v", got, tt.want)
+				t.Errorf("DataResponseFormatFromAccept() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func TestAvailabilityResponseFormatFromMetadata(t *testing.T) {
+func TestAvailabilityResponseFormatFromAccept(t *testing.T) {
 	tests := []struct {
 		name       string
 		accept     string
@@ -199,23 +158,23 @@ func TestAvailabilityResponseFormatFromMetadata(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.Background()
+			accept := []string(nil)
 			if tt.accept != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+				accept = []string{tt.accept}
 			}
 
-			_, err := AvailabilityResponseFormatFromMetadata(ctx)
+			_, err := AvailabilityResponseFormatFromAccept(accept)
 			if tt.wantCode != codes.OK {
 				if status.Code(err) != tt.wantCode {
-					t.Fatalf("AvailabilityResponseFormatFromMetadata() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+					t.Fatalf("AvailabilityResponseFormatFromAccept() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
 				}
 				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
-					t.Fatalf("AvailabilityResponseFormatFromMetadata() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+					t.Fatalf("AvailabilityResponseFormatFromAccept() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
 				}
 				return
 			}
 			if err != nil {
-				t.Fatalf("AvailabilityResponseFormatFromMetadata() error = %v", err)
+				t.Fatalf("AvailabilityResponseFormatFromAccept() error = %v", err)
 			}
 		})
 	}

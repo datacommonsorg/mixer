@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sdmx
+package jsonstatv2
 
 import (
 	"encoding/json"
@@ -20,12 +20,13 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
 const (
-	dimVariableMeasured = DimVariableMeasured
-	dimObservationDate  = DimObservationDate
-	dimObservationValue = DimObservationValue
+	dimVariableMeasured = datacommons.DimVariableMeasured
+	dimObservationDate  = datacommons.DimObservationDate
+	dimObservationValue = datacommons.DimObservationValue
 	dimProvenance       = "provenance"
 
 	jsonStatVersion   = "2.0"
@@ -158,7 +159,7 @@ func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[st
 				continue
 			}
 			if _, ok := o.Dimensions[dim]; !ok {
-				dimensions[dim][FallbackNotAvailable] = true
+				dimensions[dim][datacommons.FallbackNotAvailable] = true
 			}
 		}
 	}
@@ -254,7 +255,7 @@ func (f *JSONStatFormatter) mapGridValues(
 			}
 			val, ok := o.Dimensions[dim]
 			if !ok {
-				val = FallbackNotAvailable
+				val = datacommons.FallbackNotAvailable
 			}
 			idx := categoryIndices[dim][val]
 			baseIdx += idx * strides[dimIdx]

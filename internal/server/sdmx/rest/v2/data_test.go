@@ -15,13 +15,11 @@
 package restv2
 
 import (
-	"context"
 	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -200,12 +198,12 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.Background()
+			accept := []string(nil)
 			if tt.accept != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+				accept = []string{tt.accept}
 			}
 
-			got, err := DataResponseFormatFromDataRequest(ctx, tt.request)
+			got, err := DataResponseFormatFromDataRequest(tt.request, accept)
 			if tt.wantCode != codes.OK {
 				if status.Code(err) != tt.wantCode {
 					t.Fatalf("DataResponseFormatFromDataRequest() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)

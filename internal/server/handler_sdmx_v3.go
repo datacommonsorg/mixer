@@ -1,0 +1,62 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package server
+
+import (
+	"context"
+
+	pbsvc "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/service"
+	sdmxgrpc "github.com/datacommonsorg/mixer/internal/server/sdmx/transport/grpc"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
+
+// V3SdmxData handles SDMX Data requests.
+func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
+	if !s.flags.EnableSDMXDataApi {
+		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+
+	response, err := service.New(s.dispatcher).Data(
+		stream.Context(),
+		sdmxgrpc.NewRequest(stream.Context(), in.GetTail()),
+	)
+	if err != nil {
+		return err
+	}
+	return stream.Send(&httpbody.HttpBody{
+		ContentType: response.ContentType,
+		Data:        response.Body,
+	})
+}
+
+// V3SdmxAvailability handles SDMX Availability requests.
+func (s *Server) V3SdmxAvailability(ctx context.Context, in *pbv3.SdmxRestRequest) (*httpbody.HttpBody, error) {
+	if !s.flags.EnableSDMXDataApi {
+		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+
+	response, err := service.New(s.dispatcher).Availability(ctx, sdmxgrpc.NewRequest(ctx, in.GetTail()))
+	if err != nil {
+		return nil, err
+	}
+	return &httpbody.HttpBody{
+		ContentType: response.ContentType,
+		Data:        response.Body,
+	}, nil
+}
