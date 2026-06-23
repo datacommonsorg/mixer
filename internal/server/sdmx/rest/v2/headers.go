@@ -35,6 +35,7 @@ const (
 	AvailabilityResponseFormatStructureJSON AvailabilityResponseFormat = iota
 )
 
+// Accept media constants are request negotiation tokens, not emitted Content-Type values.
 const (
 	acceptMediaSDMXDataCSV       = "application/vnd.sdmx.data+csv"
 	acceptMediaSDMXDataJSON      = "application/vnd.sdmx.data+json"
