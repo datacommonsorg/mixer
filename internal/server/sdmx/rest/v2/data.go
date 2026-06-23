@@ -16,7 +16,6 @@ package restv2
 
 import (
 	"net/url"
-	"strings"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -51,19 +50,11 @@ func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 	constraints := map[string][]string{}
 	format := ""
 	for _, param := range params {
-		componentID, ok, err := componentFilterName(param.Name)
+		ok, err := parseComponentFilter(param, constraints)
 		if err != nil {
 			return nil, err
 		}
 		if ok {
-			if _, exists := constraints[componentID]; exists {
-				return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", componentID)
-			}
-			values, err := parseComponentValues(param.Value)
-			if err != nil {
-				return nil, err
-			}
-			constraints[componentID] = values
 			continue
 		}
 		format, err = parseDataQueryParam(param, format)
@@ -104,54 +95,5 @@ func parseDataQueryParam(param queryParam, format string) (string, error) {
 		return param.Value, nil
 	default:
 		return format, nil
-	}
-}
-
-func componentFilterName(name string) (string, bool, error) {
-	if !strings.HasPrefix(name, "c[") {
-		return "", false, nil
-	}
-	if !strings.HasSuffix(name, "]") {
-		return "", false, status.Error(codes.InvalidArgument, "invalid SDMX component filter name")
-	}
-	componentID := strings.TrimSuffix(strings.TrimPrefix(name, "c["), "]")
-	if componentID == "" {
-		return "", false, status.Error(codes.InvalidArgument, "invalid SDMX component filter name")
-	}
-	return componentID, true, nil
-}
-
-func parseComponentValues(value string) ([]string, error) {
-	if value == "" {
-		return nil, status.Error(codes.InvalidArgument, "empty SDMX component filter value")
-	}
-	if strings.Contains(value, "+") {
-		return nil, status.Error(codes.Unimplemented, "SDMX AND filters are not implemented yet")
-	}
-
-	parts := strings.Split(value, ",")
-	values := make([]string, 0, len(parts))
-	for _, part := range parts {
-		if part == "" {
-			return nil, status.Error(codes.InvalidArgument, "empty SDMX component filter value")
-		}
-		if hasUnsupportedOperator(part) {
-			return nil, status.Error(codes.Unimplemented, "SDMX component filter operators are not implemented yet")
-		}
-		values = append(values, part)
-	}
-	return values, nil
-}
-
-func hasUnsupportedOperator(value string) bool {
-	operator, _, ok := strings.Cut(value, ":")
-	if !ok {
-		return false
-	}
-	switch operator {
-	case "eq", "ne", "lt", "le", "gt", "ge", "co", "nc", "sw", "ew":
-		return true
-	default:
-		return false
 	}
 }

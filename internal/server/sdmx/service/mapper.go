@@ -23,16 +23,9 @@ import (
 )
 
 func dataQueryFromREST(request *restv2.DataRequest) (*pb.SdmxDataQuery, error) {
-	constraints := map[string]*pb.ConstraintList{}
-	for componentID, values := range request.Constraints {
-		internalComponentID, err := restv2.InternalDataFilterComponentID(componentID)
-		if err != nil {
-			return nil, err
-		}
-		if _, exists := constraints[internalComponentID]; exists {
-			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", internalComponentID)
-		}
-		constraints[internalComponentID] = &pb.ConstraintList{Values: values}
+	constraints, err := constraintsFromRESTFilters(request.Constraints, restv2.InternalDataFilterComponentID)
+	if err != nil {
+		return nil, err
 	}
 	return &pb.SdmxDataQuery{Constraints: constraints}, nil
 }
@@ -42,9 +35,20 @@ func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAva
 	if err != nil {
 		return nil, err
 	}
+	constraints, err := constraintsFromRESTFilters(request.Constraints, restv2.InternalAvailabilityFilterComponentID)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
+}
+
+func constraintsFromRESTFilters(
+	filters map[string][]string,
+	mapComponent func(string) (string, error),
+) (map[string]*pb.ConstraintList, error) {
 	constraints := map[string]*pb.ConstraintList{}
-	for filterID, values := range request.Constraints {
-		internalComponentID, err := restv2.InternalAvailabilityFilterComponentID(filterID)
+	for componentID, values := range filters {
+		internalComponentID, err := mapComponent(componentID)
 		if err != nil {
 			return nil, err
 		}
@@ -53,7 +57,7 @@ func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAva
 		}
 		constraints[internalComponentID] = &pb.ConstraintList{Values: values}
 	}
-	return &pb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
+	return constraints, nil
 }
 
 func dataStructureID(path restv2.ResourcePath) string {
