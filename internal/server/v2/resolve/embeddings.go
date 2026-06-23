@@ -273,7 +273,7 @@ func buildEntityCandidates(
 			Dcid:   statVarDcid,
 			TypeOf: []string{dominantType},
 			Metadata: map[string]string{
-				"score": fmt.Sprintf("%.4f", score),
+				"score": fmt.Sprintf("%.8f", score),
 			},
 		}
 
