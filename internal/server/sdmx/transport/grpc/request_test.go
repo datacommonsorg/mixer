@@ -143,7 +143,10 @@ func TestNewRequest(t *testing.T) {
 		util.XLogSDMX, "true",
 	))
 
-	got := NewRequest(ctx, "tail")
+	got, err := NewRequest(ctx, "tail")
+	if err != nil {
+		t.Fatalf("NewRequest() error = %v", err)
+	}
 	if got.Tail != "tail" {
 		t.Fatalf("Tail = %q, want tail", got.Tail)
 	}
@@ -155,5 +158,15 @@ func TestNewRequest(t *testing.T) {
 	}
 	if !got.LogSDMX {
 		t.Fatal("LogSDMX = false, want true")
+	}
+}
+
+func TestNewRequestMissingURI(t *testing.T) {
+	_, err := NewRequest(context.Background(), "tail")
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("NewRequest() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "missing SDMX request URI") {
+		t.Fatalf("NewRequest() message = %q, want missing URI", status.Convert(err).Message())
 	}
 }

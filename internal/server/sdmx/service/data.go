@@ -28,13 +28,6 @@ import (
 )
 
 func (s *Service) Data(ctx context.Context, request Request) (*Response, error) {
-	if request.OriginalURI == "" {
-		if request.LogSDMX {
-			slog.Info("SDMX data request URI failed", "tail", request.Tail, "error", missingRequestURIError())
-		}
-		return nil, missingRequestURIError()
-	}
-
 	restRequest, err := restv2.ParseDataRequest(request.Tail, request.OriginalURI)
 	if err != nil {
 		if request.LogSDMX {

@@ -69,12 +69,6 @@ func TestDataValidation(t *testing.T) {
 		wantErrSub string
 	}{
 		{
-			name:       "Missing original URI",
-			request:    Request{Tail: sdmxDataTail()},
-			wantCode:   codes.InvalidArgument,
-			wantErrSub: "missing SDMX request URI",
-		},
-		{
 			name:       "Missing variable measured",
 			request:    sdmxDataRequest("c[observationAbout]=country%2FUSA"),
 			wantCode:   codes.InvalidArgument,
@@ -347,27 +341,6 @@ func TestDataSDMXDebugLoggingParseFailure(t *testing.T) {
 	}
 }
 
-func TestDataSDMXDebugLoggingMissingURI(t *testing.T) {
-	buf, restore := captureSdmxLogs()
-	defer restore()
-
-	svc := newSdmxTestService(&sdmxDataSource{})
-
-	_, err := svc.Data(context.Background(), Request{Tail: sdmxDataTail(), LogSDMX: true})
-	if status.Code(err) != codes.InvalidArgument {
-		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
-	}
-	logs := buf.String()
-	for _, want := range []string{
-		"SDMX data request URI failed",
-		"missing SDMX request URI",
-	} {
-		if !strings.Contains(logs, want) {
-			t.Fatalf("logs do not contain %q: %s", want, logs)
-		}
-	}
-}
-
 func TestAvailabilityValidation(t *testing.T) {
 	tests := []struct {
 		name       string
@@ -375,12 +348,6 @@ func TestAvailabilityValidation(t *testing.T) {
 		wantCode   codes.Code
 		wantErrSub string
 	}{
-		{
-			name:       "Missing original URI",
-			request:    Request{Tail: sdmxAvailabilityTail("observationAbout")},
-			wantCode:   codes.InvalidArgument,
-			wantErrSub: "missing SDMX request URI",
-		},
 		{
 			name:       "Missing variable measured",
 			request:    sdmxAvailabilityRequest("observationAbout", "mode=exact"),

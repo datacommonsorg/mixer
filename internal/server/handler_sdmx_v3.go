@@ -32,10 +32,11 @@ func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3Sdm
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	response, err := service.New(s.dispatcher).Data(
-		stream.Context(),
-		sdmxgrpc.NewRequest(stream.Context(), in.GetTail()),
-	)
+	req, err := sdmxgrpc.NewRequest(stream.Context(), in.GetTail())
+	if err != nil {
+		return err
+	}
+	response, err := service.New(s.dispatcher).Data(stream.Context(), req)
 	if err != nil {
 		return err
 	}
@@ -51,7 +52,11 @@ func (s *Server) V3SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxRestRequ
 		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	response, err := service.New(s.dispatcher).Availability(ctx, sdmxgrpc.NewRequest(ctx, in.GetTail()))
+	req, err := sdmxgrpc.NewRequest(ctx, in.GetTail())
+	if err != nil {
+		return nil, err
+	}
+	response, err := service.New(s.dispatcher).Availability(ctx, req)
 	if err != nil {
 		return nil, err
 	}

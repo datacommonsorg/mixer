@@ -16,8 +16,6 @@ package service
 
 import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 type Request struct {
@@ -38,8 +36,4 @@ type Service struct {
 
 func New(dispatcher *dispatcher.Dispatcher) *Service {
 	return &Service{dispatcher: dispatcher}
-}
-
-func missingRequestURIError() error {
-	return status.Error(codes.InvalidArgument, "missing SDMX request URI")
 }

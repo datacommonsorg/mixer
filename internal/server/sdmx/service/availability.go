@@ -30,13 +30,6 @@ func (s *Service) Availability(ctx context.Context, request Request) (*Response,
 		return nil, err
 	}
 
-	if request.OriginalURI == "" {
-		if request.LogSDMX {
-			slog.Info("SDMX availability request URI failed", "tail", request.Tail, "error", missingRequestURIError())
-		}
-		return nil, missingRequestURIError()
-	}
-
 	restRequest, err := restv2.ParseAvailabilityRequest(request.Tail, request.OriginalURI)
 	if err != nil {
 		if request.LogSDMX {

@@ -29,14 +29,17 @@ const (
 	envoyPathHeader   = "x-envoy-original-path"
 )
 
-func NewRequest(ctx context.Context, tail string) service.Request {
-	originalURI, _ := OriginalURI(ctx)
+func NewRequest(ctx context.Context, tail string) (service.Request, error) {
+	originalURI, err := OriginalURI(ctx)
+	if err != nil {
+		return service.Request{}, err
+	}
 	return service.Request{
 		Tail:        tail,
 		OriginalURI: originalURI,
 		Accept:      Accept(ctx),
 		LogSDMX:     ShouldLogSDMX(ctx),
-	}
+	}, nil
 }
 
 func OriginalURI(ctx context.Context) (string, error) {
