@@ -73,8 +73,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	// Verify that the score matches the server-provided CosineScore (0.99),
 	// NOT the sentence score (0.95). This ensures we are using the primary ranking score.
 
-	if candidate.Metadata["score"] != "0.9900" {
-		t.Errorf("Expected score '0.9900', got '%s'", candidate.Metadata["score"])
+	if candidate.Metadata["score"] != "0.99000000" {
+		t.Errorf("Expected score '0.99000000', got '%s'", candidate.Metadata["score"])
 	}
 
 	if candidate.Metadata["sentence"] != "number of people" {
@@ -93,8 +93,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	if len(candidate2.TypeOf) != 1 || candidate2.TypeOf[0] != "Topic" {
 		t.Errorf("Expected TypeOf ['Topic'], got '%v'. This verifies Topic detection logic.", candidate2.TypeOf)
 	}
-	if candidate2.Metadata["score"] != "0.8800" {
-		t.Errorf("Expected score '0.8800', got '%s'", candidate2.Metadata["score"])
+	if candidate2.Metadata["score"] != "0.88000000" {
+		t.Errorf("Expected score '0.88000000', got '%s'", candidate2.Metadata["score"])
 	}
 }
 
@@ -247,8 +247,8 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	if c2.Dcid != "dcid2" {
 		t.Errorf("Candidate 2: Expected Dcid 'dcid2', got '%s'", c2.Dcid)
 	}
-	if c2.Metadata["score"] != "0.8800" {
-		t.Errorf("Candidate 2: Expected score '0.8800', got '%s'", c2.Metadata["score"])
+	if c2.Metadata["score"] != "0.88000000" {
+		t.Errorf("Candidate 2: Expected score '0.88000000', got '%s'", c2.Metadata["score"])
 	}
 	if _, hasSentence := c2.Metadata["sentence"]; hasSentence {
 		t.Errorf("Candidate 2: Expected NO sentence, but got one")
