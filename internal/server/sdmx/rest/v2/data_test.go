@@ -15,13 +15,11 @@
 package restv2
 
 import (
-	"context"
 	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -114,8 +112,8 @@ func TestParseDataRequest_Path(t *testing.T) {
 
 	want := ResourcePath{
 		Context:    "dataflow",
-		AgencyID:   "DATACOMMONS",
-		ResourceID: "DF_OBSERVATIONS",
+		AgencyID:   "DC",
+		ResourceID: "DF_OBS",
 		Version:    "1.0.0",
 		Key:        "*",
 	}
@@ -200,12 +198,12 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			ctx := context.Background()
+			accept := []string(nil)
 			if tt.accept != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+				accept = []string{tt.accept}
 			}
 
-			got, err := DataResponseFormatFromDataRequest(ctx, tt.request)
+			got, err := DataResponseFormatFromDataRequest(tt.request, accept)
 			if tt.wantCode != codes.OK {
 				if status.Code(err) != tt.wantCode {
 					t.Fatalf("DataResponseFormatFromDataRequest() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
@@ -279,20 +277,20 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		},
 		{
 			name:        "non star key unsupported",
-			tail:        "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US",
-			originalURI: "/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
+			tail:        "dataflow/DC/DF_OBS/1.0.0/A.US",
+			originalURI: "/sdmx/v3/data/dataflow/DC/DF_OBS/1.0.0/A.US?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
 			wantCode:    codes.Unimplemented,
 		},
 		{
 			name:        "invalid path",
-			tail:        "dataflow/DATACOMMONS",
-			originalURI: "/sdmx/v3/data/dataflow/DATACOMMONS?c[FREQ]=A",
+			tail:        "dataflow/DC",
+			originalURI: "/sdmx/v3/data/dataflow/DC?c[FREQ]=A",
 			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "empty path segment",
-			tail:        "dataflow//DF_OBSERVATIONS/1.0.0/*",
-			originalURI: "/sdmx/v3/data/dataflow//DF_OBSERVATIONS/1.0.0/*?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
+			tail:        "dataflow//DF_OBS/1.0.0/*",
+			originalURI: "/sdmx/v3/data/dataflow//DF_OBS/1.0.0/*?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
 			wantCode:    codes.InvalidArgument,
 		},
 		{
@@ -302,8 +300,8 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		},
 		{
 			name:        "wrong version",
-			tail:        "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*",
-			originalURI: "/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
+			tail:        "dataflow/DC/DF_OBS/1.0/*",
+			originalURI: "/sdmx/v3/data/dataflow/DC/DF_OBS/1.0/*?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
 			wantCode:    codes.InvalidArgument,
 		},
 		{
@@ -361,7 +359,7 @@ func TestParseDataRequest_Errors(t *testing.T) {
 }
 
 func dataTail() string {
-	return "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*"
+	return "dataflow/DC/DF_OBS/1.0.0/*"
 }
 
 func dataURI(query string) string {

@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -137,13 +138,13 @@ func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.B
 
 // SdmxData retrieves SDMX data from the data source.
 // Note: SQLite / CloudSQL does not natively support graph property traversal required for SDMX without complex JOIN chains.
-func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	return &pb.SdmxDataResult{}, nil
+func (sds *SQLDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return &sdmxpb.SdmxDataResult{}, nil
 }
 
 // SdmxAvailability retrieves SDMX availability from the data source.
-func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
-	return &pb.SdmxAvailabilityResult{}, nil
+func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return &sdmxpb.SdmxAvailabilityResult{}, nil
 }
 
 func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

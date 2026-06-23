@@ -19,7 +19,7 @@ import (
 	"reflect"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
@@ -49,16 +49,16 @@ type sdmxMockSpannerClient struct {
 
 	calls              int
 	availabilityCalls  int
-	result             *pb.SdmxDataResult
-	availabilityResult *pb.SdmxAvailabilityResult
+	result             *sdmxpb.SdmxDataResult
+	availabilityResult *sdmxpb.SdmxAvailabilityResult
 }
 
-func (m *sdmxMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (m *sdmxMockSpannerClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	m.calls++
 	return m.result, nil
 }
 
-func (m *sdmxMockSpannerClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (m *sdmxMockSpannerClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	m.availabilityCalls++
 	return m.availabilityResult, nil
 }
@@ -245,7 +245,7 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			wantResult := &pb.SdmxDataResult{}
+			wantResult := &sdmxpb.SdmxDataResult{}
 			baseClient := &sdmxMockSpannerClient{result: wantResult}
 			multiEntityClient := &sdmxMockSpannerClient{result: wantResult}
 			selector := &schemaSelectorClient{
@@ -254,7 +254,7 @@ func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
 				useMultiEntitySchemaFlag: tc.useMultiEntityFlag,
 			}
 
-			got, err := selector.GetSdmxObservations(tc.ctx, &pb.SdmxDataQuery{})
+			got, err := selector.GetSdmxObservations(tc.ctx, &sdmxpb.SdmxDataQuery{})
 			if code := status.Code(err); code != tc.wantCode {
 				t.Fatalf("GetSdmxObservations() code = %v, want %v", code, tc.wantCode)
 			}
@@ -308,7 +308,7 @@ func TestSchemaSelectorClientGetSdmxAvailability(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			wantResult := &pb.SdmxAvailabilityResult{}
+			wantResult := &sdmxpb.SdmxAvailabilityResult{}
 			baseClient := &sdmxMockSpannerClient{availabilityResult: wantResult}
 			multiEntityClient := &sdmxMockSpannerClient{availabilityResult: wantResult}
 			selector := &schemaSelectorClient{
@@ -317,7 +317,7 @@ func TestSchemaSelectorClientGetSdmxAvailability(t *testing.T) {
 				useMultiEntitySchemaFlag: tc.useMultiEntityFlag,
 			}
 
-			got, err := selector.GetSdmxAvailability(tc.ctx, &pb.SdmxAvailabilityQuery{})
+			got, err := selector.GetSdmxAvailability(tc.ctx, &sdmxpb.SdmxAvailabilityQuery{})
 			if code := status.Code(err); code != tc.wantCode {
 				t.Fatalf("GetSdmxAvailability() code = %v, want %v", code, tc.wantCode)
 			}
@@ -335,7 +335,7 @@ func TestSchemaSelectorClientGetSdmxAvailability(t *testing.T) {
 }
 
 func TestSpannerDatabaseClientGetSdmxAvailabilityUnimplemented(t *testing.T) {
-	got, err := (&spannerDatabaseClient{}).GetSdmxAvailability(context.Background(), &pb.SdmxAvailabilityQuery{})
+	got, err := (&spannerDatabaseClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
 	if got != nil {
 		t.Fatalf("GetSdmxAvailability() result = %v, want nil", got)
 	}

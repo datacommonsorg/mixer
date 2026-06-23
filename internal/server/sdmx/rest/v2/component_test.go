@@ -21,7 +21,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func TestInternalConstraintComponentID(t *testing.T) {
+func TestInternalDataFilterComponentID(t *testing.T) {
 	tests := []struct {
 		name      string
 		component string
@@ -60,12 +60,12 @@ func TestInternalConstraintComponentID(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := InternalConstraintComponentID(tt.component)
+			got, err := InternalDataFilterComponentID(tt.component)
 			if status.Code(err) != tt.wantCode {
-				t.Fatalf("InternalConstraintComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+				t.Fatalf("InternalDataFilterComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
 			}
 			if got != tt.want {
-				t.Errorf("InternalConstraintComponentID() = %q, want %q", got, tt.want)
+				t.Errorf("InternalDataFilterComponentID() = %q, want %q", got, tt.want)
 			}
 		})
 	}
@@ -149,7 +149,7 @@ func TestInternalAvailabilityComponentID(t *testing.T) {
 	}
 }
 
-func TestInternalAvailabilityConstraintComponentID(t *testing.T) {
+func TestInternalAvailabilityFilterComponentID(t *testing.T) {
 	tests := []struct {
 		name      string
 		component string
@@ -176,12 +176,12 @@ func TestInternalAvailabilityConstraintComponentID(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := InternalAvailabilityConstraintComponentID(tt.component)
+			got, err := InternalAvailabilityFilterComponentID(tt.component)
 			if status.Code(err) != tt.wantCode {
-				t.Fatalf("InternalAvailabilityConstraintComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+				t.Fatalf("InternalAvailabilityFilterComponentID() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
 			}
 			if got != tt.want {
-				t.Errorf("InternalAvailabilityConstraintComponentID() = %q, want %q", got, tt.want)
+				t.Errorf("InternalAvailabilityFilterComponentID() = %q, want %q", got, tt.want)
 			}
 		})
 	}

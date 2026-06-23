@@ -43,19 +43,11 @@ func ParseAvailabilityRequest(tail string, originalURI string) (*AvailabilityReq
 
 	constraints := map[string][]string{}
 	for _, param := range params {
-		componentID, ok, err := componentFilterName(param.Name)
+		ok, err := parseComponentFilter(param, constraints)
 		if err != nil {
 			return nil, err
 		}
 		if ok {
-			if _, exists := constraints[componentID]; exists {
-				return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", componentID)
-			}
-			values, err := parseComponentValues(param.Value)
-			if err != nil {
-				return nil, err
-			}
-			constraints[componentID] = values
 			continue
 		}
 		if err := validateAvailabilityQueryParam(param); err != nil {

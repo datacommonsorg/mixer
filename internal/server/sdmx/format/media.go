@@ -12,14 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
-package datacommons.v3;
+package format
 
-option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
-
-// Request envelope for SDMX REST APIs.
-message SdmxRestRequest {
-  // Tail after the SDMX API family route, for example:
-  // dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*
-  string tail = 1;
-}
+const (
+	JSONStatContentType = "application/json; charset=utf-8"
+	CSVContentType      = "application/vnd.sdmx.data+csv;version=2.0.0"
+	StructureJSONType   = "application/vnd.sdmx.structure+json;version=2.0.0"
+)

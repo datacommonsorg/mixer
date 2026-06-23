@@ -15,7 +15,7 @@
 package golden
 
 import (
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 )
 
 var multiEntityObservationsTestCases = []struct {
@@ -286,13 +286,13 @@ var multiEntityFilteredTopicTestCases = []struct {
 
 var multiEntitySdmxObservationsTestCases = []struct {
 	name           string
-	constraints    map[string]*pb.ConstraintList
+	constraints    map[string]*sdmxpb.ConstraintList
 	entityMappings map[string]map[string]string
 	golden         string
 }{
 	{
 		name: "variable measured only",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1"}},
 		},
 		entityMappings: map[string]map[string]string{},
@@ -300,7 +300,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "variable measured and origin slot",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1"}},
 			"origin":           {Values: []string{"country/AGO"}},
 		},
@@ -311,7 +311,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "variable measured and multiple slots (origin + destination)",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1"}},
 			"origin":           {Values: []string{"country/AGO"}},
 			"destination":      {Values: []string{"country/PRT", "country/SGP"}},
@@ -323,7 +323,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "multiple variables with different slot mappings",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1", "var2"}},
 			"origin":           {Values: []string{"country/AGO"}},
 			"destination":      {Values: []string{"country/PRT"}},
@@ -336,7 +336,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "variable measured, origin, destination and physical column filters",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured":  {Values: []string{"var1"}},
 			"origin":            {Values: []string{"country/AGO"}},
 			"destination":       {Values: []string{"country/PRT"}},
@@ -351,7 +351,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "single-entity variable with observationAbout",
-		constraints: map[string]*pb.ConstraintList{
+		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1"}},
 			"observationAbout": {Values: []string{"wikidataId/Q119158"}},
 		},
