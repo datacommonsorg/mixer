@@ -1,0 +1,37 @@
+[
+  {
+    "test_name": "bulk_variable_group_info_stat_var_group_node",
+    "api_versions": ["v3"],
+    "path": "/bulk/info/variable-group",
+    "json_payload": {
+      "nodes": ["dc/g/Agriculture", "dc/g/SDG"]
+    }
+  },
+  {
+    "test_name": "bulk_variable_group_info_hidden_excluded",
+    "api_versions": ["v3"],
+    "path": "/bulk/info/variable-group",
+    "json_payload": {
+      "nodes": ["dc/g/Hidden"]
+    }
+  },
+  {
+    "test_name": "bulk_variable_group_info_filtered_svg",
+    "api_versions": ["v3"],
+    "path": "/bulk/info/variable-group",
+    "json_payload": {
+      "nodes": ["dc/g/Environment", "dc/g/Agriculture"],
+      "constrainedEntities": ["country/USA", "country/IND", "country/CAN"],
+      "numEntitiesExistence": 2
+    }
+  },
+  {
+    "test_name": "bulk_variable_group_info_filtered_topic",
+    "api_versions": ["v3"],
+    "path": "/bulk/info/variable-group",
+    "json_payload": {
+      "nodes": ["dc/topic/Demographics", "dc/topic/Economy"],
+      "constrainedEntities": ["dc/s/WorldBank"]
+    }
+  }
+]

@@ -642,11 +642,11 @@ func translateTopicCandidate(
 	}
 
 	resp.Topics = append(resp.Topics, &pbv2.SearchIndicatorsResponse_Topic{
-		Dcid:                 c.GetDcid(),
-		MemberTopics:         memberTopics,
-		MemberVariables:      memberVariables,
-		PlacesWithData:       placesWithData,
-		Description:          c.GetName(),
+		Dcid:                  c.GetDcid(),
+		MemberTopics:          memberTopics,
+		MemberVariables:       memberVariables,
+		PlacesWithData:        placesWithData,
+		Description:           c.GetName(),
 		AlternateDescriptions: []string{c.GetName()}, // Fallback alt description
 	})
 }

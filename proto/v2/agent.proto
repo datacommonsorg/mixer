@@ -16,8 +16,6 @@ syntax = "proto3";
 package datacommons.v2;
 
 import "google/protobuf/struct.proto";
-import "stat.proto";
-import "stat_var.proto";
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
@@ -114,17 +112,8 @@ message GetObservationsResponse {
   repeated AlternativeSource alternative_sources = 6;
 }
 
-message PropertyValue {
-  string value = 1;
-  string dcid = 2;
-  string name = 3;
-}
-
-message PropertyValues {
-  repeated PropertyValue values = 1;
-}
-
 // Request payload for the get_variable_metadata tool endpoint.
+// Both variable_dcids and entity_dcids are strictly required.
 message GetVariableMetadataRequest {
   repeated string variable_dcids = 1;
   repeated string entity_dcids = 2;
@@ -132,30 +121,40 @@ message GetVariableMetadataRequest {
 
 // Response payload for the get_variable_metadata tool endpoint.
 message GetVariableMetadataResponse {
-  message ProvenanceMetadata {
-    string dcid = 1;
-    map<string, PropertyValues> properties = 2;
-  }
+  message FacetMetadata {
+    string id = 1;
+    string provenance_id = 2;
+    int32 obs_count = 3;
 
-  message FacetSeriesSummary {
-    datacommons.Facet facet = 1;
-    int32 obs_count = 2;
-    string earliest_date = 3;
-    string latest_date = 4;
-  }
+    message DateRange {
+      string start = 1;
+      string end = 2;
+    }
+    DateRange date_range = 4;
 
-  message EntityMetadata {
-    map<string, FacetSeriesSummary> facet_series_summaries = 1;
+    message Scope {
+      repeated string entity_coverage = 1;
+      repeated string entity_granularity = 2;
+    }
+    Scope scope = 5;
+
+    google.protobuf.Struct properties = 6;
   }
 
   message VariableMetadata {
-    string dcid = 1;
-    map<string, PropertyValues> properties = 2;
-    datacommons.StatVarSummary stat_var_summary = 3;
-    map<string, ProvenanceMetadata> provenances = 4;
-    map<string, EntityMetadata> per_entity_metadata = 5;
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    google.protobuf.Struct properties = 4;
+    repeated FacetMetadata facets = 5;
+  }
+
+  message ProvenanceMetadata {
+    string id = 1;
+    google.protobuf.Struct properties = 2;
   }
 
   string status = 1;
   map<string, VariableMetadata> variables = 2;
+  map<string, ProvenanceMetadata> provenances = 3;
 }
