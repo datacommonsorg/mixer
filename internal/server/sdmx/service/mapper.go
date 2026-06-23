@@ -63,15 +63,15 @@ func constraintsFromRESTFilters(
 func dataStructureID(path restv2.ResourcePath) string {
 	agencyID := path.AgencyID
 	if agencyID == "" {
-		agencyID = datacommons.DataAgencyID
+		agencyID = datacommons.DataflowAgencyID
 	}
 	resourceID := path.ResourceID
 	if resourceID == "" {
-		resourceID = datacommons.DataResourceID
+		resourceID = datacommons.DataflowID
 	}
 	version := path.Version
 	if version == "" {
-		version = datacommons.DataVersion
+		version = datacommons.DataflowVersion
 	}
 	return agencyID + ":" + resourceID + "(" + version + ")"
 }

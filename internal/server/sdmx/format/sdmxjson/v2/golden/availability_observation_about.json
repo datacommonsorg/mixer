@@ -3,7 +3,7 @@
   "data": {
     "dataConstraints": [
       {
-        "agencyID": "DATACOMMONS",
+        "agencyID": "DC",
         "cubeRegions": [
           {
             "include": true,
@@ -19,8 +19,8 @@
             ]
           }
         ],
-        "id": "DF_OBSERVATIONS_AVAILABILITY",
-        "name": "Available DF_OBSERVATIONS data",
+        "id": "DF_OBS_AVAILABILITY",
+        "name": "Available DF_OBS data",
         "role": "Actual",
         "version": "1.0.0"
       }

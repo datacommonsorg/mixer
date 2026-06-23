@@ -107,8 +107,8 @@ func TestDataValidation(t *testing.T) {
 		{
 			name: "Unsupported non star key",
 			request: Request{
-				Tail:        "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US",
-				OriginalURI: "/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
+				Tail:        "dataflow/DC/DF_OBS/1.0.0/A.US",
+				OriginalURI: "/sdmx/v3/data/dataflow/DC/DF_OBS/1.0.0/A.US?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA",
 			},
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "SDMX data keys other than * are not implemented yet",
@@ -221,7 +221,7 @@ func TestDataCSVSuccess(t *testing.T) {
 	}
 
 	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" +
-		"dataflow,DATACOMMONS:DF_OBSERVATIONS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0\r\n"
+		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0\r\n"
 	if got := string(response.Body); got != want {
 		t.Errorf("Response body = %q, want %q", got, want)
 	}
@@ -572,7 +572,7 @@ func sdmxAvailabilityRequest(componentID string, query string) Request {
 }
 
 func sdmxDataTail() string {
-	return "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*"
+	return "dataflow/DC/DF_OBS/1.0.0/*"
 }
 
 func sdmxDataURI(query string) string {

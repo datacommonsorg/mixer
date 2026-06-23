@@ -25,7 +25,7 @@ import (
 )
 
 func TestCSVFormatter_HeaderOnly(t *testing.T) {
-	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
 	got, err := formatter.Format(nil)
 	if err != nil {
@@ -39,7 +39,7 @@ func TestCSVFormatter_HeaderOnly(t *testing.T) {
 }
 
 func TestCSVFormatter_Rows(t *testing.T) {
-	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
 	got, err := formatter.Format([]*pb.SdmxObservation{
 		{
@@ -66,8 +66,8 @@ func TestCSVFormatter_Rows(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0"},
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0"},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0"},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0"},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -75,7 +75,7 @@ func TestCSVFormatter_Rows(t *testing.T) {
 }
 
 func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
-	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
 	got, err := formatter.Format([]*pb.SdmxObservation{
 		nil,
@@ -92,7 +92,7 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", ""},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -100,7 +100,7 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 }
 
 func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
-	formatter := &CSVFormatter{StructureID: "DATACOMMONS:DF_OBSERVATIONS(1.0.0)"}
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
 	got, err := formatter.Format([]*pb.SdmxObservation{
 		{
@@ -119,7 +119,7 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 
 	want := [][]string{
 		dataCSVHeader(),
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", ""},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)

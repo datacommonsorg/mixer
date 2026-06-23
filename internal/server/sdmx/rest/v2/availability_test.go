@@ -113,20 +113,20 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 	}{
 		{
 			name:        "wrong version",
-			tail:        "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*/observationAbout",
-			originalURI: "/sdmx/v3/availability/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*/observationAbout?c[variableMeasured]=Count_Person",
+			tail:        "dataflow/DC/DF_OBS/1.0/*/observationAbout",
+			originalURI: "/sdmx/v3/availability/dataflow/DC/DF_OBS/1.0/*/observationAbout?c[variableMeasured]=Count_Person",
 			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "non star key unsupported",
-			tail:        "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US/observationAbout",
-			originalURI: "/sdmx/v3/availability/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US/observationAbout?c[variableMeasured]=Count_Person",
+			tail:        "dataflow/DC/DF_OBS/1.0.0/A.US/observationAbout",
+			originalURI: "/sdmx/v3/availability/dataflow/DC/DF_OBS/1.0.0/A.US/observationAbout?c[variableMeasured]=Count_Person",
 			wantCode:    codes.Unimplemented,
 		},
 		{
 			name:        "missing component",
 			tail:        dataTail(),
-			originalURI: "/sdmx/v3/availability/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*?c[variableMeasured]=Count_Person",
+			originalURI: "/sdmx/v3/availability/dataflow/DC/DF_OBS/1.0.0/*?c[variableMeasured]=Count_Person",
 			wantCode:    codes.InvalidArgument,
 		},
 		{
@@ -243,8 +243,8 @@ func availabilityPath(componentID string) AvailabilityPath {
 	return AvailabilityPath{
 		ResourcePath: ResourcePath{
 			Context:    "dataflow",
-			AgencyID:   "DATACOMMONS",
-			ResourceID: "DF_OBSERVATIONS",
+			AgencyID:   "DC",
+			ResourceID: "DF_OBS",
 			Version:    "1.0.0",
 			Key:        "*",
 		},

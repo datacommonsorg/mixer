@@ -70,9 +70,9 @@ func (f *AvailabilityJSONFormatter) Format(componentID string, values []string) 
 }
 
 func (f *AvailabilityJSONFormatter) FormatComponents(components []AvailabilityComponentValues) (string, error) {
-	agencyID := defaultString(f.AgencyID, datacommons.DataAgencyID)
-	resourceID := defaultString(f.ResourceID, datacommons.DataResourceID)
-	version := defaultString(f.Version, datacommons.DataVersion)
+	agencyID := defaultString(f.AgencyID, datacommons.DataflowAgencyID)
+	resourceID := defaultString(f.ResourceID, datacommons.DataflowID)
+	version := defaultString(f.Version, datacommons.DataflowVersion)
 	constraint := availabilityDataConstraint{
 		ID:       resourceID + "_AVAILABILITY",
 		AgencyID: agencyID,

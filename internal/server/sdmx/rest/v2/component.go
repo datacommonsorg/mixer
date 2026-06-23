@@ -98,10 +98,10 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX data path is required")
 	}
-	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataAgencyID || path.ResourceID != datacommons.DataResourceID {
+	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataflowAgencyID || path.ResourceID != datacommons.DataflowID {
 		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
 	}
-	if path.Version != datacommons.DataVersion {
+	if path.Version != datacommons.DataflowVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 
@@ -123,10 +123,10 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX availability path is required")
 	}
-	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataAgencyID || path.ResourceID != datacommons.DataResourceID {
+	if path.Context != dataContextDataflow || path.AgencyID != datacommons.DataflowAgencyID || path.ResourceID != datacommons.DataflowID {
 		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
 	}
-	if path.Version != datacommons.DataVersion {
+	if path.Version != datacommons.DataflowVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 	if !isAvailabilityComponent(path.ComponentID) {

@@ -166,7 +166,7 @@ func sdmxIncomingContext(originalURI string) context.Context {
 }
 
 func sdmxDataTail() string {
-	return "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*"
+	return "dataflow/DC/DF_OBS/1.0.0/*"
 }
 
 func sdmxDataURI(query string) string {
