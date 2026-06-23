@@ -228,9 +228,9 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, filteredTopicStmt.SQL, "CustomTsTable", "CustomEntity2Index", "CustomEntity3Index")
 
-	availabilityStmt, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+	availabilityStmt, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*pb.ConstraintList{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 		},
 	}, stmts)
@@ -312,7 +312,7 @@ func TestMultiEntityQueryBuildersRejectNilStatements(t *testing.T) {
 			name: "GetMultiEntitySdmxObservationsQuery",
 			call: func() error {
 				_, err := spanner.GetMultiEntitySdmxObservationsQuery(
-					map[string]*pb.ConstraintList{"variableMeasured": {Values: []string{"Count_Person"}}},
+					map[string]*sdmxpb.ConstraintList{"variableMeasured": {Values: []string{"Count_Person"}}},
 					nil,
 					nil,
 				)
@@ -322,9 +322,9 @@ func TestMultiEntityQueryBuildersRejectNilStatements(t *testing.T) {
 		{
 			name: "GetMultiEntitySdmxAvailabilityQuery",
 			call: func() error {
-				_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+				_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
 					ComponentId: "observationAbout",
-					Constraints: map[string]*pb.ConstraintList{
+					Constraints: map[string]*sdmxpb.ConstraintList{
 						"variableMeasured": {Values: []string{"Count_Person"}},
 					},
 				}, nil)
