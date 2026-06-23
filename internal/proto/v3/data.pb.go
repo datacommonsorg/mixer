@@ -41,7 +41,7 @@ type SdmxRestRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// Tail after the SDMX API family route, for example:
-	// dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*
+	// dataflow/DC/DF_OBS/1.0.0/*
 	Tail string `protobuf:"bytes,1,opt,name=tail,proto3" json:"tail,omitempty"`
 }
 
