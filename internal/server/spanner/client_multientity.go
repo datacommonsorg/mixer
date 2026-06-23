@@ -18,8 +18,8 @@ import "fmt"
 
 // multiEntityClient delegates calls using the multi-entity schema.
 type multiEntityClient struct {
-	sc  *spannerDatabaseClient
-	cfg TableConfig
+	sc         *spannerDatabaseClient
+	statements *MultiEntityStatements
 }
 
 // newMultiEntityClient initializes the client from a base SpannerClient with a table configuration.
@@ -28,5 +28,12 @@ func newMultiEntityClient(client SpannerClient, cfg TableConfig) (*multiEntityCl
 	if !ok {
 		return nil, fmt.Errorf("newMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
 	}
-	return &multiEntityClient{sc: sc, cfg: cfg}, nil
+	statements, err := NewMultiEntityStatements(cfg)
+	if err != nil {
+		return nil, fmt.Errorf("newMultiEntityClient: %w", err)
+	}
+	return &multiEntityClient{
+		sc:         sc,
+		statements: statements,
+	}, nil
 }
