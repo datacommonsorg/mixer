@@ -99,7 +99,7 @@ func parseStatVarInfo(dcid string, graph *pbv2.LinkedGraph) *StatVarInfo {
 	if arc, exists := graph.GetArcs()["name"]; exists && len(arc.GetNodes()) > 0 {
 		info.Name = extractName(arc.GetNodes()[0])
 	}
-	info.ObservationProperties = extractValues(graph.GetArcs()["observationProperty"])
+	info.ObservationProperties = extractValues(graph.GetArcs()["observationProperties"])
 	info.EntityMappings = extractValues(graph.GetArcs()["entityMapping"])
 	return info
 }
@@ -119,12 +119,12 @@ func parseStatVarInfos(dcids []string, resp *pbv2.NodeResponse) map[string]*Stat
 	return res
 }
 
-// fetchStatVarInfos queries the Knowledge Graph for name, observationProperty, and entityMapping.
+// fetchStatVarInfos queries the Knowledge Graph for name, observationProperties, and entityMapping.
 func (m *TopicCacheManager) fetchStatVarInfos(ctx context.Context, dcids []string) (map[string]*StatVarInfo, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchStatVarInfos")
 	req := &pbv2.NodeRequest{
 		Nodes:    dcids,
-		Property: "->[name, observationProperty, entityMapping]",
+		Property: "->[name, observationProperties, entityMapping]",
 	}
 	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
