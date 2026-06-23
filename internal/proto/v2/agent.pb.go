@@ -21,7 +21,6 @@
 package v2
 
 import (
-	proto "github.com/datacommonsorg/mixer/internal/proto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	structpb "google.golang.org/protobuf/types/known/structpb"
@@ -385,111 +384,8 @@ func (x *GetObservationsResponse) GetAlternativeSources() []*GetObservationsResp
 	return nil
 }
 
-type PropertyValue struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
-	Dcid          string                 `protobuf:"bytes,2,opt,name=dcid,proto3" json:"dcid,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PropertyValue) Reset() {
-	*x = PropertyValue{}
-	mi := &file_v2_agent_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PropertyValue) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PropertyValue) ProtoMessage() {}
-
-func (x *PropertyValue) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PropertyValue.ProtoReflect.Descriptor instead.
-func (*PropertyValue) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *PropertyValue) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
-}
-
-func (x *PropertyValue) GetDcid() string {
-	if x != nil {
-		return x.Dcid
-	}
-	return ""
-}
-
-func (x *PropertyValue) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-type PropertyValues struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []*PropertyValue       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *PropertyValues) Reset() {
-	*x = PropertyValues{}
-	mi := &file_v2_agent_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *PropertyValues) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PropertyValues) ProtoMessage() {}
-
-func (x *PropertyValues) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PropertyValues.ProtoReflect.Descriptor instead.
-func (*PropertyValues) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *PropertyValues) GetValues() []*PropertyValue {
-	if x != nil {
-		return x.Values
-	}
-	return nil
-}
-
 // Request payload for the get_variable_metadata tool endpoint.
+// Both variable_dcids and entity_dcids are strictly required.
 type GetVariableMetadataRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	VariableDcids []string               `protobuf:"bytes,1,rep,name=variable_dcids,json=variableDcids,proto3" json:"variable_dcids,omitempty"`
@@ -500,7 +396,7 @@ type GetVariableMetadataRequest struct {
 
 func (x *GetVariableMetadataRequest) Reset() {
 	*x = GetVariableMetadataRequest{}
-	mi := &file_v2_agent_proto_msgTypes[6]
+	mi := &file_v2_agent_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -512,7 +408,7 @@ func (x *GetVariableMetadataRequest) String() string {
 func (*GetVariableMetadataRequest) ProtoMessage() {}
 
 func (x *GetVariableMetadataRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[6]
+	mi := &file_v2_agent_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -525,7 +421,7 @@ func (x *GetVariableMetadataRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVariableMetadataRequest.ProtoReflect.Descriptor instead.
 func (*GetVariableMetadataRequest) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{6}
+	return file_v2_agent_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetVariableMetadataRequest) GetVariableDcids() []string {
@@ -544,16 +440,17 @@ func (x *GetVariableMetadataRequest) GetEntityDcids() []string {
 
 // Response payload for the get_variable_metadata tool endpoint.
 type GetVariableMetadataResponse struct {
-	state         protoimpl.MessageState                                   `protogen:"open.v1"`
-	Status        string                                                   `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
-	Variables     map[string]*GetVariableMetadataResponse_VariableMetadata `protobuf:"bytes,2,rep,name=variables,proto3" json:"variables,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	state         protoimpl.MessageState                                     `protogen:"open.v1"`
+	Status        string                                                     `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	Variables     map[string]*GetVariableMetadataResponse_VariableMetadata   `protobuf:"bytes,2,rep,name=variables,proto3" json:"variables,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Provenances   map[string]*GetVariableMetadataResponse_ProvenanceMetadata `protobuf:"bytes,3,rep,name=provenances,proto3" json:"provenances,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetVariableMetadataResponse) Reset() {
 	*x = GetVariableMetadataResponse{}
-	mi := &file_v2_agent_proto_msgTypes[7]
+	mi := &file_v2_agent_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +462,7 @@ func (x *GetVariableMetadataResponse) String() string {
 func (*GetVariableMetadataResponse) ProtoMessage() {}
 
 func (x *GetVariableMetadataResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[7]
+	mi := &file_v2_agent_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +475,7 @@ func (x *GetVariableMetadataResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetVariableMetadataResponse.ProtoReflect.Descriptor instead.
 func (*GetVariableMetadataResponse) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7}
+	return file_v2_agent_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetVariableMetadataResponse) GetStatus() string {
@@ -591,6 +488,13 @@ func (x *GetVariableMetadataResponse) GetStatus() string {
 func (x *GetVariableMetadataResponse) GetVariables() map[string]*GetVariableMetadataResponse_VariableMetadata {
 	if x != nil {
 		return x.Variables
+	}
+	return nil
+}
+
+func (x *GetVariableMetadataResponse) GetProvenances() map[string]*GetVariableMetadataResponse_ProvenanceMetadata {
+	if x != nil {
+		return x.Provenances
 	}
 	return nil
 }
@@ -609,7 +513,7 @@ type SearchIndicatorsResponse_Topic struct {
 
 func (x *SearchIndicatorsResponse_Topic) Reset() {
 	*x = SearchIndicatorsResponse_Topic{}
-	mi := &file_v2_agent_proto_msgTypes[8]
+	mi := &file_v2_agent_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -621,7 +525,7 @@ func (x *SearchIndicatorsResponse_Topic) String() string {
 func (*SearchIndicatorsResponse_Topic) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_Topic) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[8]
+	mi := &file_v2_agent_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -691,7 +595,7 @@ type SearchIndicatorsResponse_Variable struct {
 
 func (x *SearchIndicatorsResponse_Variable) Reset() {
 	*x = SearchIndicatorsResponse_Variable{}
-	mi := &file_v2_agent_proto_msgTypes[9]
+	mi := &file_v2_agent_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -703,7 +607,7 @@ func (x *SearchIndicatorsResponse_Variable) String() string {
 func (*SearchIndicatorsResponse_Variable) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_Variable) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[9]
+	mi := &file_v2_agent_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -758,7 +662,7 @@ type SearchIndicatorsResponse_ResolvedPlace struct {
 
 func (x *SearchIndicatorsResponse_ResolvedPlace) Reset() {
 	*x = SearchIndicatorsResponse_ResolvedPlace{}
-	mi := &file_v2_agent_proto_msgTypes[10]
+	mi := &file_v2_agent_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -770,7 +674,7 @@ func (x *SearchIndicatorsResponse_ResolvedPlace) String() string {
 func (*SearchIndicatorsResponse_ResolvedPlace) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_ResolvedPlace) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[10]
+	mi := &file_v2_agent_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -818,7 +722,7 @@ type GetObservationsResponse_Node struct {
 
 func (x *GetObservationsResponse_Node) Reset() {
 	*x = GetObservationsResponse_Node{}
-	mi := &file_v2_agent_proto_msgTypes[13]
+	mi := &file_v2_agent_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -830,7 +734,7 @@ func (x *GetObservationsResponse_Node) String() string {
 func (*GetObservationsResponse_Node) ProtoMessage() {}
 
 func (x *GetObservationsResponse_Node) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[13]
+	mi := &file_v2_agent_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -881,7 +785,7 @@ type GetObservationsResponse_FacetMetadata struct {
 
 func (x *GetObservationsResponse_FacetMetadata) Reset() {
 	*x = GetObservationsResponse_FacetMetadata{}
-	mi := &file_v2_agent_proto_msgTypes[14]
+	mi := &file_v2_agent_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -893,7 +797,7 @@ func (x *GetObservationsResponse_FacetMetadata) String() string {
 func (*GetObservationsResponse_FacetMetadata) ProtoMessage() {}
 
 func (x *GetObservationsResponse_FacetMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[14]
+	mi := &file_v2_agent_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -961,7 +865,7 @@ type GetObservationsResponse_AlternativeSource struct {
 
 func (x *GetObservationsResponse_AlternativeSource) Reset() {
 	*x = GetObservationsResponse_AlternativeSource{}
-	mi := &file_v2_agent_proto_msgTypes[15]
+	mi := &file_v2_agent_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -973,7 +877,7 @@ func (x *GetObservationsResponse_AlternativeSource) String() string {
 func (*GetObservationsResponse_AlternativeSource) ProtoMessage() {}
 
 func (x *GetObservationsResponse_AlternativeSource) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[15]
+	mi := &file_v2_agent_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1013,7 +917,7 @@ type GetObservationsResponse_TimeSeriesPoint struct {
 
 func (x *GetObservationsResponse_TimeSeriesPoint) Reset() {
 	*x = GetObservationsResponse_TimeSeriesPoint{}
-	mi := &file_v2_agent_proto_msgTypes[16]
+	mi := &file_v2_agent_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1025,7 +929,7 @@ func (x *GetObservationsResponse_TimeSeriesPoint) String() string {
 func (*GetObservationsResponse_TimeSeriesPoint) ProtoMessage() {}
 
 func (x *GetObservationsResponse_TimeSeriesPoint) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[16]
+	mi := &file_v2_agent_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1065,7 +969,7 @@ type GetObservationsResponse_PlaceObservation struct {
 
 func (x *GetObservationsResponse_PlaceObservation) Reset() {
 	*x = GetObservationsResponse_PlaceObservation{}
-	mi := &file_v2_agent_proto_msgTypes[17]
+	mi := &file_v2_agent_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1077,7 +981,7 @@ func (x *GetObservationsResponse_PlaceObservation) String() string {
 func (*GetObservationsResponse_PlaceObservation) ProtoMessage() {}
 
 func (x *GetObservationsResponse_PlaceObservation) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[17]
+	mi := &file_v2_agent_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1107,10 +1011,170 @@ func (x *GetObservationsResponse_PlaceObservation) GetTimeSeries() []*GetObserva
 	return nil
 }
 
+type GetVariableMetadataResponse_FacetMetadata struct {
+	state         protoimpl.MessageState                               `protogen:"open.v1"`
+	Id            string                                               `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ProvenanceId  string                                               `protobuf:"bytes,2,opt,name=provenance_id,json=provenanceId,proto3" json:"provenance_id,omitempty"`
+	ObsCount      int32                                                `protobuf:"varint,3,opt,name=obs_count,json=obsCount,proto3" json:"obs_count,omitempty"`
+	DateRange     *GetVariableMetadataResponse_FacetMetadata_DateRange `protobuf:"bytes,4,opt,name=date_range,json=dateRange,proto3" json:"date_range,omitempty"`
+	Scope         *GetVariableMetadataResponse_FacetMetadata_Scope     `protobuf:"bytes,5,opt,name=scope,proto3" json:"scope,omitempty"`
+	Properties    *structpb.Struct                                     `protobuf:"bytes,6,opt,name=properties,proto3" json:"properties,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) Reset() {
+	*x = GetVariableMetadataResponse_FacetMetadata{}
+	mi := &file_v2_agent_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVariableMetadataResponse_FacetMetadata) ProtoMessage() {}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVariableMetadataResponse_FacetMetadata.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_FacetMetadata) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{5, 0}
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetProvenanceId() string {
+	if x != nil {
+		return x.ProvenanceId
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetObsCount() int32 {
+	if x != nil {
+		return x.ObsCount
+	}
+	return 0
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetDateRange() *GetVariableMetadataResponse_FacetMetadata_DateRange {
+	if x != nil {
+		return x.DateRange
+	}
+	return nil
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetScope() *GetVariableMetadataResponse_FacetMetadata_Scope {
+	if x != nil {
+		return x.Scope
+	}
+	return nil
+}
+
+func (x *GetVariableMetadataResponse_FacetMetadata) GetProperties() *structpb.Struct {
+	if x != nil {
+		return x.Properties
+	}
+	return nil
+}
+
+type GetVariableMetadataResponse_VariableMetadata struct {
+	state         protoimpl.MessageState                       `protogen:"open.v1"`
+	Id            string                                       `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                                       `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description   string                                       `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Properties    *structpb.Struct                             `protobuf:"bytes,4,opt,name=properties,proto3" json:"properties,omitempty"`
+	Facets        []*GetVariableMetadataResponse_FacetMetadata `protobuf:"bytes,5,rep,name=facets,proto3" json:"facets,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) Reset() {
+	*x = GetVariableMetadataResponse_VariableMetadata{}
+	mi := &file_v2_agent_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetVariableMetadataResponse_VariableMetadata) ProtoMessage() {}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetVariableMetadataResponse_VariableMetadata.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_VariableMetadata) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{5, 1}
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) GetProperties() *structpb.Struct {
+	if x != nil {
+		return x.Properties
+	}
+	return nil
+}
+
+func (x *GetVariableMetadataResponse_VariableMetadata) GetFacets() []*GetVariableMetadataResponse_FacetMetadata {
+	if x != nil {
+		return x.Facets
+	}
+	return nil
+}
+
 type GetVariableMetadataResponse_ProvenanceMetadata struct {
-	state         protoimpl.MessageState     `protogen:"open.v1"`
-	Dcid          string                     `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
-	Properties    map[string]*PropertyValues `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Properties    *structpb.Struct       `protobuf:"bytes,2,opt,name=properties,proto3" json:"properties,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1142,48 +1206,46 @@ func (x *GetVariableMetadataResponse_ProvenanceMetadata) ProtoReflect() protoref
 
 // Deprecated: Use GetVariableMetadataResponse_ProvenanceMetadata.ProtoReflect.Descriptor instead.
 func (*GetVariableMetadataResponse_ProvenanceMetadata) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7, 0}
+	return file_v2_agent_proto_rawDescGZIP(), []int{5, 2}
 }
 
-func (x *GetVariableMetadataResponse_ProvenanceMetadata) GetDcid() string {
+func (x *GetVariableMetadataResponse_ProvenanceMetadata) GetId() string {
 	if x != nil {
-		return x.Dcid
+		return x.Id
 	}
 	return ""
 }
 
-func (x *GetVariableMetadataResponse_ProvenanceMetadata) GetProperties() map[string]*PropertyValues {
+func (x *GetVariableMetadataResponse_ProvenanceMetadata) GetProperties() *structpb.Struct {
 	if x != nil {
 		return x.Properties
 	}
 	return nil
 }
 
-type GetVariableMetadataResponse_FacetSeriesSummary struct {
+type GetVariableMetadataResponse_FacetMetadata_DateRange struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Facet         *proto.Facet           `protobuf:"bytes,1,opt,name=facet,proto3" json:"facet,omitempty"`
-	ObsCount      int32                  `protobuf:"varint,2,opt,name=obs_count,json=obsCount,proto3" json:"obs_count,omitempty"`
-	EarliestDate  string                 `protobuf:"bytes,3,opt,name=earliest_date,json=earliestDate,proto3" json:"earliest_date,omitempty"`
-	LatestDate    string                 `protobuf:"bytes,4,opt,name=latest_date,json=latestDate,proto3" json:"latest_date,omitempty"`
+	Start         string                 `protobuf:"bytes,1,opt,name=start,proto3" json:"start,omitempty"`
+	End           string                 `protobuf:"bytes,2,opt,name=end,proto3" json:"end,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) Reset() {
-	*x = GetVariableMetadataResponse_FacetSeriesSummary{}
-	mi := &file_v2_agent_proto_msgTypes[19]
+func (x *GetVariableMetadataResponse_FacetMetadata_DateRange) Reset() {
+	*x = GetVariableMetadataResponse_FacetMetadata_DateRange{}
+	mi := &file_v2_agent_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) String() string {
+func (x *GetVariableMetadataResponse_FacetMetadata_DateRange) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVariableMetadataResponse_FacetSeriesSummary) ProtoMessage() {}
+func (*GetVariableMetadataResponse_FacetMetadata_DateRange) ProtoMessage() {}
 
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[19]
+func (x *GetVariableMetadataResponse_FacetMetadata_DateRange) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1194,109 +1256,48 @@ func (x *GetVariableMetadataResponse_FacetSeriesSummary) ProtoReflect() protoref
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetVariableMetadataResponse_FacetSeriesSummary.ProtoReflect.Descriptor instead.
-func (*GetVariableMetadataResponse_FacetSeriesSummary) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7, 1}
+// Deprecated: Use GetVariableMetadataResponse_FacetMetadata_DateRange.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_FacetMetadata_DateRange) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{5, 0, 0}
 }
 
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetFacet() *proto.Facet {
+func (x *GetVariableMetadataResponse_FacetMetadata_DateRange) GetStart() string {
 	if x != nil {
-		return x.Facet
-	}
-	return nil
-}
-
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetObsCount() int32 {
-	if x != nil {
-		return x.ObsCount
-	}
-	return 0
-}
-
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetEarliestDate() string {
-	if x != nil {
-		return x.EarliestDate
+		return x.Start
 	}
 	return ""
 }
 
-func (x *GetVariableMetadataResponse_FacetSeriesSummary) GetLatestDate() string {
+func (x *GetVariableMetadataResponse_FacetMetadata_DateRange) GetEnd() string {
 	if x != nil {
-		return x.LatestDate
+		return x.End
 	}
 	return ""
 }
 
-type GetVariableMetadataResponse_EntityMetadata struct {
-	state                protoimpl.MessageState                                     `protogen:"open.v1"`
-	FacetSeriesSummaries map[string]*GetVariableMetadataResponse_FacetSeriesSummary `protobuf:"bytes,1,rep,name=facet_series_summaries,json=facetSeriesSummaries,proto3" json:"facet_series_summaries,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
-}
-
-func (x *GetVariableMetadataResponse_EntityMetadata) Reset() {
-	*x = GetVariableMetadataResponse_EntityMetadata{}
-	mi := &file_v2_agent_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVariableMetadataResponse_EntityMetadata) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVariableMetadataResponse_EntityMetadata) ProtoMessage() {}
-
-func (x *GetVariableMetadataResponse_EntityMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVariableMetadataResponse_EntityMetadata.ProtoReflect.Descriptor instead.
-func (*GetVariableMetadataResponse_EntityMetadata) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7, 2}
-}
-
-func (x *GetVariableMetadataResponse_EntityMetadata) GetFacetSeriesSummaries() map[string]*GetVariableMetadataResponse_FacetSeriesSummary {
-	if x != nil {
-		return x.FacetSeriesSummaries
-	}
-	return nil
-}
-
-type GetVariableMetadataResponse_VariableMetadata struct {
-	state             protoimpl.MessageState                                     `protogen:"open.v1"`
-	Dcid              string                                                     `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
-	Properties        map[string]*PropertyValues                                 `protobuf:"bytes,2,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StatVarSummary    *proto.StatVarSummary                                      `protobuf:"bytes,3,opt,name=stat_var_summary,json=statVarSummary,proto3" json:"stat_var_summary,omitempty"`
-	Provenances       map[string]*GetVariableMetadataResponse_ProvenanceMetadata `protobuf:"bytes,4,rep,name=provenances,proto3" json:"provenances,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	PerEntityMetadata map[string]*GetVariableMetadataResponse_EntityMetadata     `protobuf:"bytes,5,rep,name=per_entity_metadata,json=perEntityMetadata,proto3" json:"per_entity_metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+type GetVariableMetadataResponse_FacetMetadata_Scope struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	EntityCoverage    []string               `protobuf:"bytes,1,rep,name=entity_coverage,json=entityCoverage,proto3" json:"entity_coverage,omitempty"`
+	EntityGranularity []string               `protobuf:"bytes,2,rep,name=entity_granularity,json=entityGranularity,proto3" json:"entity_granularity,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
 
-func (x *GetVariableMetadataResponse_VariableMetadata) Reset() {
-	*x = GetVariableMetadataResponse_VariableMetadata{}
-	mi := &file_v2_agent_proto_msgTypes[21]
+func (x *GetVariableMetadataResponse_FacetMetadata_Scope) Reset() {
+	*x = GetVariableMetadataResponse_FacetMetadata_Scope{}
+	mi := &file_v2_agent_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetVariableMetadataResponse_VariableMetadata) String() string {
+func (x *GetVariableMetadataResponse_FacetMetadata_Scope) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetVariableMetadataResponse_VariableMetadata) ProtoMessage() {}
+func (*GetVariableMetadataResponse_FacetMetadata_Scope) ProtoMessage() {}
 
-func (x *GetVariableMetadataResponse_VariableMetadata) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[21]
+func (x *GetVariableMetadataResponse_FacetMetadata_Scope) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1307,42 +1308,21 @@ func (x *GetVariableMetadataResponse_VariableMetadata) ProtoReflect() protorefle
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetVariableMetadataResponse_VariableMetadata.ProtoReflect.Descriptor instead.
-func (*GetVariableMetadataResponse_VariableMetadata) Descriptor() ([]byte, []int) {
-	return file_v2_agent_proto_rawDescGZIP(), []int{7, 3}
+// Deprecated: Use GetVariableMetadataResponse_FacetMetadata_Scope.ProtoReflect.Descriptor instead.
+func (*GetVariableMetadataResponse_FacetMetadata_Scope) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{5, 0, 1}
 }
 
-func (x *GetVariableMetadataResponse_VariableMetadata) GetDcid() string {
+func (x *GetVariableMetadataResponse_FacetMetadata_Scope) GetEntityCoverage() []string {
 	if x != nil {
-		return x.Dcid
-	}
-	return ""
-}
-
-func (x *GetVariableMetadataResponse_VariableMetadata) GetProperties() map[string]*PropertyValues {
-	if x != nil {
-		return x.Properties
+		return x.EntityCoverage
 	}
 	return nil
 }
 
-func (x *GetVariableMetadataResponse_VariableMetadata) GetStatVarSummary() *proto.StatVarSummary {
+func (x *GetVariableMetadataResponse_FacetMetadata_Scope) GetEntityGranularity() []string {
 	if x != nil {
-		return x.StatVarSummary
-	}
-	return nil
-}
-
-func (x *GetVariableMetadataResponse_VariableMetadata) GetProvenances() map[string]*GetVariableMetadataResponse_ProvenanceMetadata {
-	if x != nil {
-		return x.Provenances
-	}
-	return nil
-}
-
-func (x *GetVariableMetadataResponse_VariableMetadata) GetPerEntityMetadata() map[string]*GetVariableMetadataResponse_EntityMetadata {
-	if x != nil {
-		return x.PerEntityMetadata
+		return x.EntityGranularity
 	}
 	return nil
 }
@@ -1351,8 +1331,7 @@ var File_v2_agent_proto protoreflect.FileDescriptor
 
 const file_v2_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\x1a\n" +
-	"stat.proto\x1a\x0estat_var.proto\"\x8f\x02\n" +
+	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\x8f\x02\n" +
 	"\x17SearchIndicatorsRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
 	"\x06places\x18\x02 \x03(\tR\x06places\x12!\n" +
@@ -1435,58 +1414,50 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\x10PlaceObservation\x12B\n" +
 	"\x05place\x18\x01 \x01(\v2,.datacommons.v2.GetObservationsResponse.NodeR\x05place\x12X\n" +
 	"\vtime_series\x18\x02 \x03(\v27.datacommons.v2.GetObservationsResponse.TimeSeriesPointR\n" +
-	"timeSeries\"M\n" +
-	"\rPropertyValue\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\tR\x05value\x12\x12\n" +
-	"\x04dcid\x18\x02 \x01(\tR\x04dcid\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"G\n" +
-	"\x0ePropertyValues\x125\n" +
-	"\x06values\x18\x01 \x03(\v2\x1d.datacommons.v2.PropertyValueR\x06values\"f\n" +
+	"timeSeries\"f\n" +
 	"\x1aGetVariableMetadataRequest\x12%\n" +
 	"\x0evariable_dcids\x18\x01 \x03(\tR\rvariableDcids\x12!\n" +
-	"\fentity_dcids\x18\x02 \x03(\tR\ventityDcids\"\x8a\x0e\n" +
+	"\fentity_dcids\x18\x02 \x03(\tR\ventityDcids\"\x9f\n" +
+	"\n" +
 	"\x1bGetVariableMetadataResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12X\n" +
-	"\tvariables\x18\x02 \x03(\v2:.datacommons.v2.GetVariableMetadataResponse.VariablesEntryR\tvariables\x1a\xf7\x01\n" +
-	"\x12ProvenanceMetadata\x12\x12\n" +
-	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12n\n" +
+	"\tvariables\x18\x02 \x03(\v2:.datacommons.v2.GetVariableMetadataResponse.VariablesEntryR\tvariables\x12^\n" +
+	"\vprovenances\x18\x03 \x03(\v2<.datacommons.v2.GetVariableMetadataResponse.ProvenancesEntryR\vprovenances\x1a\xeb\x03\n" +
+	"\rFacetMetadata\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
+	"\rprovenance_id\x18\x02 \x01(\tR\fprovenanceId\x12\x1b\n" +
+	"\tobs_count\x18\x03 \x01(\x05R\bobsCount\x12b\n" +
 	"\n" +
-	"properties\x18\x02 \x03(\v2N.datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntryR\n" +
-	"properties\x1a]\n" +
-	"\x0fPropertiesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
-	"\x05value\x18\x02 \x01(\v2\x1e.datacommons.v2.PropertyValuesR\x05value:\x028\x01\x1a\xa1\x01\n" +
-	"\x12FacetSeriesSummary\x12(\n" +
-	"\x05facet\x18\x01 \x01(\v2\x12.datacommons.FacetR\x05facet\x12\x1b\n" +
-	"\tobs_count\x18\x02 \x01(\x05R\bobsCount\x12#\n" +
-	"\rearliest_date\x18\x03 \x01(\tR\fearliestDate\x12\x1f\n" +
-	"\vlatest_date\x18\x04 \x01(\tR\n" +
-	"latestDate\x1a\xa7\x02\n" +
-	"\x0eEntityMetadata\x12\x8a\x01\n" +
-	"\x16facet_series_summaries\x18\x01 \x03(\v2T.datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntryR\x14facetSeriesSummaries\x1a\x87\x01\n" +
-	"\x19FacetSeriesSummariesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12T\n" +
-	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummaryR\x05value:\x028\x01\x1a\xb4\x06\n" +
-	"\x10VariableMetadata\x12\x12\n" +
-	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12l\n" +
+	"date_range\x18\x04 \x01(\v2C.datacommons.v2.GetVariableMetadataResponse.FacetMetadata.DateRangeR\tdateRange\x12U\n" +
+	"\x05scope\x18\x05 \x01(\v2?.datacommons.v2.GetVariableMetadataResponse.FacetMetadata.ScopeR\x05scope\x127\n" +
 	"\n" +
-	"properties\x18\x02 \x03(\v2L.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntryR\n" +
-	"properties\x12E\n" +
-	"\x10stat_var_summary\x18\x03 \x01(\v2\x1b.datacommons.StatVarSummaryR\x0estatVarSummary\x12o\n" +
-	"\vprovenances\x18\x04 \x03(\v2M.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntryR\vprovenances\x12\x83\x01\n" +
-	"\x13per_entity_metadata\x18\x05 \x03(\v2S.datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntryR\x11perEntityMetadata\x1a]\n" +
-	"\x0fPropertiesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
-	"\x05value\x18\x02 \x01(\v2\x1e.datacommons.v2.PropertyValuesR\x05value:\x028\x01\x1a~\n" +
-	"\x10ProvenancesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12T\n" +
-	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadataR\x05value:\x028\x01\x1a\x80\x01\n" +
-	"\x16PerEntityMetadataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12P\n" +
-	"\x05value\x18\x02 \x01(\v2:.datacommons.v2.GetVariableMetadataResponse.EntityMetadataR\x05value:\x028\x01\x1az\n" +
+	"properties\x18\x06 \x01(\v2\x17.google.protobuf.StructR\n" +
+	"properties\x1a3\n" +
+	"\tDateRange\x12\x14\n" +
+	"\x05start\x18\x01 \x01(\tR\x05start\x12\x10\n" +
+	"\x03end\x18\x02 \x01(\tR\x03end\x1a_\n" +
+	"\x05Scope\x12'\n" +
+	"\x0fentity_coverage\x18\x01 \x03(\tR\x0eentityCoverage\x12-\n" +
+	"\x12entity_granularity\x18\x02 \x03(\tR\x11entityGranularity\x1a\xe4\x01\n" +
+	"\x10VariableMetadata\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x127\n" +
+	"\n" +
+	"properties\x18\x04 \x01(\v2\x17.google.protobuf.StructR\n" +
+	"properties\x12Q\n" +
+	"\x06facets\x18\x05 \x03(\v29.datacommons.v2.GetVariableMetadataResponse.FacetMetadataR\x06facets\x1a]\n" +
+	"\x12ProvenanceMetadata\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x127\n" +
+	"\n" +
+	"properties\x18\x02 \x01(\v2\x17.google.protobuf.StructR\n" +
+	"properties\x1az\n" +
 	"\x0eVariablesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12R\n" +
-	"\x05value\x18\x02 \x01(\v2<.datacommons.v2.GetVariableMetadataResponse.VariableMetadataR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
+	"\x05value\x18\x02 \x01(\v2<.datacommons.v2.GetVariableMetadataResponse.VariableMetadataR\x05value:\x028\x01\x1a~\n" +
+	"\x10ProvenancesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12T\n" +
+	"\x05value\x18\x02 \x01(\v2>.datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadataR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
 
 var (
 	file_v2_agent_proto_rawDescOnce sync.Once
@@ -1500,75 +1471,64 @@ func file_v2_agent_proto_rawDescGZIP() []byte {
 	return file_v2_agent_proto_rawDescData
 }
 
-var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
 var file_v2_agent_proto_goTypes = []any{
 	(*SearchIndicatorsRequest)(nil),                // 0: datacommons.v2.SearchIndicatorsRequest
 	(*SearchIndicatorsResponse)(nil),               // 1: datacommons.v2.SearchIndicatorsResponse
 	(*GetObservationsRequest)(nil),                 // 2: datacommons.v2.GetObservationsRequest
 	(*GetObservationsResponse)(nil),                // 3: datacommons.v2.GetObservationsResponse
-	(*PropertyValue)(nil),                          // 4: datacommons.v2.PropertyValue
-	(*PropertyValues)(nil),                         // 5: datacommons.v2.PropertyValues
-	(*GetVariableMetadataRequest)(nil),             // 6: datacommons.v2.GetVariableMetadataRequest
-	(*GetVariableMetadataResponse)(nil),            // 7: datacommons.v2.GetVariableMetadataResponse
-	(*SearchIndicatorsResponse_Topic)(nil),         // 8: datacommons.v2.SearchIndicatorsResponse.Topic
-	(*SearchIndicatorsResponse_Variable)(nil),      // 9: datacommons.v2.SearchIndicatorsResponse.Variable
-	(*SearchIndicatorsResponse_ResolvedPlace)(nil), // 10: datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	nil,                                  // 11: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
-	nil,                                  // 12: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
-	(*GetObservationsResponse_Node)(nil), // 13: datacommons.v2.GetObservationsResponse.Node
-	(*GetObservationsResponse_FacetMetadata)(nil),          // 14: datacommons.v2.GetObservationsResponse.FacetMetadata
-	(*GetObservationsResponse_AlternativeSource)(nil),      // 15: datacommons.v2.GetObservationsResponse.AlternativeSource
-	(*GetObservationsResponse_TimeSeriesPoint)(nil),        // 16: datacommons.v2.GetObservationsResponse.TimeSeriesPoint
-	(*GetObservationsResponse_PlaceObservation)(nil),       // 17: datacommons.v2.GetObservationsResponse.PlaceObservation
+	(*GetVariableMetadataRequest)(nil),             // 4: datacommons.v2.GetVariableMetadataRequest
+	(*GetVariableMetadataResponse)(nil),            // 5: datacommons.v2.GetVariableMetadataResponse
+	(*SearchIndicatorsResponse_Topic)(nil),         // 6: datacommons.v2.SearchIndicatorsResponse.Topic
+	(*SearchIndicatorsResponse_Variable)(nil),      // 7: datacommons.v2.SearchIndicatorsResponse.Variable
+	(*SearchIndicatorsResponse_ResolvedPlace)(nil), // 8: datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
+	nil,                                  // 9: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
+	nil,                                  // 10: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	(*GetObservationsResponse_Node)(nil), // 11: datacommons.v2.GetObservationsResponse.Node
+	(*GetObservationsResponse_FacetMetadata)(nil),          // 12: datacommons.v2.GetObservationsResponse.FacetMetadata
+	(*GetObservationsResponse_AlternativeSource)(nil),      // 13: datacommons.v2.GetObservationsResponse.AlternativeSource
+	(*GetObservationsResponse_TimeSeriesPoint)(nil),        // 14: datacommons.v2.GetObservationsResponse.TimeSeriesPoint
+	(*GetObservationsResponse_PlaceObservation)(nil),       // 15: datacommons.v2.GetObservationsResponse.PlaceObservation
+	(*GetVariableMetadataResponse_FacetMetadata)(nil),      // 16: datacommons.v2.GetVariableMetadataResponse.FacetMetadata
+	(*GetVariableMetadataResponse_VariableMetadata)(nil),   // 17: datacommons.v2.GetVariableMetadataResponse.VariableMetadata
 	(*GetVariableMetadataResponse_ProvenanceMetadata)(nil), // 18: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
-	(*GetVariableMetadataResponse_FacetSeriesSummary)(nil), // 19: datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary
-	(*GetVariableMetadataResponse_EntityMetadata)(nil),     // 20: datacommons.v2.GetVariableMetadataResponse.EntityMetadata
-	(*GetVariableMetadataResponse_VariableMetadata)(nil),   // 21: datacommons.v2.GetVariableMetadataResponse.VariableMetadata
-	nil,                          // 22: datacommons.v2.GetVariableMetadataResponse.VariablesEntry
-	nil,                          // 23: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
-	nil,                          // 24: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry
-	nil,                          // 25: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
-	nil,                          // 26: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
-	nil,                          // 27: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry
-	(*structpb.ListValue)(nil),   // 28: google.protobuf.ListValue
-	(*proto.Facet)(nil),          // 29: datacommons.Facet
-	(*proto.StatVarSummary)(nil), // 30: datacommons.StatVarSummary
+	nil, // 19: datacommons.v2.GetVariableMetadataResponse.VariablesEntry
+	nil, // 20: datacommons.v2.GetVariableMetadataResponse.ProvenancesEntry
+	(*GetVariableMetadataResponse_FacetMetadata_DateRange)(nil), // 21: datacommons.v2.GetVariableMetadataResponse.FacetMetadata.DateRange
+	(*GetVariableMetadataResponse_FacetMetadata_Scope)(nil),     // 22: datacommons.v2.GetVariableMetadataResponse.FacetMetadata.Scope
+	(*structpb.ListValue)(nil),                                  // 23: google.protobuf.ListValue
+	(*structpb.Struct)(nil),                                     // 24: google.protobuf.Struct
 }
 var file_v2_agent_proto_depIdxs = []int32{
-	11, // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
-	12, // 1: datacommons.v2.SearchIndicatorsResponse.dcid_place_type_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
-	8,  // 2: datacommons.v2.SearchIndicatorsResponse.topics:type_name -> datacommons.v2.SearchIndicatorsResponse.Topic
-	9,  // 3: datacommons.v2.SearchIndicatorsResponse.variables:type_name -> datacommons.v2.SearchIndicatorsResponse.Variable
-	10, // 4: datacommons.v2.SearchIndicatorsResponse.resolved_parent_place:type_name -> datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	13, // 5: datacommons.v2.GetObservationsResponse.variable:type_name -> datacommons.v2.GetObservationsResponse.Node
-	13, // 6: datacommons.v2.GetObservationsResponse.resolved_parent_place:type_name -> datacommons.v2.GetObservationsResponse.Node
-	17, // 7: datacommons.v2.GetObservationsResponse.place_observations:type_name -> datacommons.v2.GetObservationsResponse.PlaceObservation
-	14, // 8: datacommons.v2.GetObservationsResponse.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
-	15, // 9: datacommons.v2.GetObservationsResponse.alternative_sources:type_name -> datacommons.v2.GetObservationsResponse.AlternativeSource
-	4,  // 10: datacommons.v2.PropertyValues.values:type_name -> datacommons.v2.PropertyValue
-	22, // 11: datacommons.v2.GetVariableMetadataResponse.variables:type_name -> datacommons.v2.GetVariableMetadataResponse.VariablesEntry
-	28, // 12: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
-	14, // 13: datacommons.v2.GetObservationsResponse.AlternativeSource.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
-	13, // 14: datacommons.v2.GetObservationsResponse.PlaceObservation.place:type_name -> datacommons.v2.GetObservationsResponse.Node
-	16, // 15: datacommons.v2.GetObservationsResponse.PlaceObservation.time_series:type_name -> datacommons.v2.GetObservationsResponse.TimeSeriesPoint
-	23, // 16: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry
-	29, // 17: datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary.facet:type_name -> datacommons.Facet
-	24, // 18: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.facet_series_summaries:type_name -> datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry
-	25, // 19: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.properties:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry
-	30, // 20: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.stat_var_summary:type_name -> datacommons.StatVarSummary
-	26, // 21: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.provenances:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry
-	27, // 22: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.per_entity_metadata:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry
-	21, // 23: datacommons.v2.GetVariableMetadataResponse.VariablesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata
-	5,  // 24: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
-	19, // 25: datacommons.v2.GetVariableMetadataResponse.EntityMetadata.FacetSeriesSummariesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.FacetSeriesSummary
-	5,  // 26: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PropertiesEntry.value:type_name -> datacommons.v2.PropertyValues
-	18, // 27: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.ProvenancesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
-	20, // 28: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.PerEntityMetadataEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.EntityMetadata
-	29, // [29:29] is the sub-list for method output_type
-	29, // [29:29] is the sub-list for method input_type
-	29, // [29:29] is the sub-list for extension type_name
-	29, // [29:29] is the sub-list for extension extendee
-	0,  // [0:29] is the sub-list for field type_name
+	9,  // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
+	10, // 1: datacommons.v2.SearchIndicatorsResponse.dcid_place_type_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	6,  // 2: datacommons.v2.SearchIndicatorsResponse.topics:type_name -> datacommons.v2.SearchIndicatorsResponse.Topic
+	7,  // 3: datacommons.v2.SearchIndicatorsResponse.variables:type_name -> datacommons.v2.SearchIndicatorsResponse.Variable
+	8,  // 4: datacommons.v2.SearchIndicatorsResponse.resolved_parent_place:type_name -> datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
+	11, // 5: datacommons.v2.GetObservationsResponse.variable:type_name -> datacommons.v2.GetObservationsResponse.Node
+	11, // 6: datacommons.v2.GetObservationsResponse.resolved_parent_place:type_name -> datacommons.v2.GetObservationsResponse.Node
+	15, // 7: datacommons.v2.GetObservationsResponse.place_observations:type_name -> datacommons.v2.GetObservationsResponse.PlaceObservation
+	12, // 8: datacommons.v2.GetObservationsResponse.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
+	13, // 9: datacommons.v2.GetObservationsResponse.alternative_sources:type_name -> datacommons.v2.GetObservationsResponse.AlternativeSource
+	19, // 10: datacommons.v2.GetVariableMetadataResponse.variables:type_name -> datacommons.v2.GetVariableMetadataResponse.VariablesEntry
+	20, // 11: datacommons.v2.GetVariableMetadataResponse.provenances:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenancesEntry
+	23, // 12: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
+	12, // 13: datacommons.v2.GetObservationsResponse.AlternativeSource.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
+	11, // 14: datacommons.v2.GetObservationsResponse.PlaceObservation.place:type_name -> datacommons.v2.GetObservationsResponse.Node
+	14, // 15: datacommons.v2.GetObservationsResponse.PlaceObservation.time_series:type_name -> datacommons.v2.GetObservationsResponse.TimeSeriesPoint
+	21, // 16: datacommons.v2.GetVariableMetadataResponse.FacetMetadata.date_range:type_name -> datacommons.v2.GetVariableMetadataResponse.FacetMetadata.DateRange
+	22, // 17: datacommons.v2.GetVariableMetadataResponse.FacetMetadata.scope:type_name -> datacommons.v2.GetVariableMetadataResponse.FacetMetadata.Scope
+	24, // 18: datacommons.v2.GetVariableMetadataResponse.FacetMetadata.properties:type_name -> google.protobuf.Struct
+	24, // 19: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.properties:type_name -> google.protobuf.Struct
+	16, // 20: datacommons.v2.GetVariableMetadataResponse.VariableMetadata.facets:type_name -> datacommons.v2.GetVariableMetadataResponse.FacetMetadata
+	24, // 21: datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata.properties:type_name -> google.protobuf.Struct
+	17, // 22: datacommons.v2.GetVariableMetadataResponse.VariablesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.VariableMetadata
+	18, // 23: datacommons.v2.GetVariableMetadataResponse.ProvenancesEntry.value:type_name -> datacommons.v2.GetVariableMetadataResponse.ProvenanceMetadata
+	24, // [24:24] is the sub-list for method output_type
+	24, // [24:24] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_v2_agent_proto_init() }
@@ -1578,14 +1538,14 @@ func file_v2_agent_proto_init() {
 	}
 	file_v2_agent_proto_msgTypes[0].OneofWrappers = []any{}
 	file_v2_agent_proto_msgTypes[2].OneofWrappers = []any{}
-	file_v2_agent_proto_msgTypes[15].OneofWrappers = []any{}
+	file_v2_agent_proto_msgTypes[13].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v2_agent_proto_rawDesc), len(file_v2_agent_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   28,
+			NumMessages:   23,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
