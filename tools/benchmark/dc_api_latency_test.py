@@ -53,10 +53,13 @@ def send_request(
     request: dict[str, Any],
     skip_cache: bool = True,
     request_name: str | None = None,
+    use_final_schema: bool | None = None,
 ) -> None:
     headers = {"X-API-Key": _DC_API_KEY}
     if skip_cache:
         headers["X-Skip-Cache"] = str(skip_cache).lower()
+    if use_final_schema is not None:
+        headers["X-Use-Multi-Entity-Schema"] = str(use_final_schema).lower()
     request_name = request_name or f"{request['test_name']}_{api_version}"
     with client.rest(
             "POST",
@@ -92,6 +95,7 @@ def _(parser):
             "requests/node_requests.json",
             "requests/node_search_requests.json",
             "requests/observation_requests.json",
+            "requests/bulk_variable_group_info_requests.json",
         ],
         is_required=True,
         help="Comma separated list of json files containing test requests",
@@ -163,8 +167,26 @@ class BenchmarkV3SkipCache(BaseBenchmarkUser):
             self.api_version,
             request_data,
             skip_cache=True,
+            use_final_schema=False,
             request_name=(
-                f"{request_data['test_name']}_{self.api_version}_skip_cache"),
+                f"{request_data['test_name']}_{self.api_version}"
+                "_legacy_schema_skip_cache"),
+        )
+
+
+class BenchmarkV3FinalSchemaSkipCache(BaseBenchmarkUser):
+    api_version = "v3"
+
+    def execute_specific_request(self, request_data: dict[str, Any]):
+        send_request(
+            self,
+            self.api_version,
+            request_data,
+            skip_cache=True,
+            use_final_schema=True,
+            request_name=(
+                f"{request_data['test_name']}_{self.api_version}"
+                "_final_schema_skip_cache"),
         )
 
 
