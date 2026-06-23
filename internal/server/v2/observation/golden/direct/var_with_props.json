@@ -5,7 +5,7 @@
         "country/GBR": {
           "ordered_facets": [
             {
-              "facet_id": "2489488521",
+              "facet_id": "2358228475",
               "observations": [
                 {
                   "date": "2023",
@@ -17,7 +17,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "4032742180",
+              "facet_id": "839667200",
               "observations": [
                 {
                   "date": "2023",
@@ -33,7 +33,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "2489488521",
+              "facet_id": "2358228475",
               "observations": [
                 {
                   "date": "2023",
@@ -45,7 +45,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "4032742180",
+              "facet_id": "839667200",
               "observations": [
                 {
                   "date": "2023",
@@ -62,13 +62,13 @@
     }
   },
   "facets": {
-    "2489488521": {
+    "2358228475": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
       "unit": "USD",
       "provenance_id": "custom"
     },
-    "4032742180": {
+    "839667200": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
       "unit": "GBP",
