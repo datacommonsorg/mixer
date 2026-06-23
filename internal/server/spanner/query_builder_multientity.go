@@ -32,11 +32,11 @@ type multiEntityQueryBuilder struct {
 
 // NewMultiEntityQueryBuilder builds a query builder using table-config-specific SQL templates.
 func NewMultiEntityQueryBuilder(cfg TableConfig) (*multiEntityQueryBuilder, error) {
-	statements, err := NewMultiEntityStatements(cfg)
+	stmts, err := NewMultiEntityStatements(cfg)
 	if err != nil {
 		return nil, err
 	}
-	return &multiEntityQueryBuilder{statements: statements}, nil
+	return &multiEntityQueryBuilder{statements: stmts}, nil
 }
 
 // GetObservationsQuery builds the observation lookup query with optional date filter.
