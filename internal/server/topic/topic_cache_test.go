@@ -91,7 +91,7 @@ func TestGetStatVarInfos(t *testing.T) {
 						{Name: "Person Count"},
 					},
 				},
-				"observationProperty": {
+				"observationProperties": {
 					Nodes: []*pb.EntityInfo{
 						{Value: "statVarObservation"},
 					},
@@ -134,7 +134,7 @@ func TestTopicExpansion(t *testing.T) {
 		"Count_Person": {
 			Arcs: map[string]*pbv2.Nodes{
 				"name": {Nodes: []*pb.EntityInfo{{Name: "Person Count"}}},
-				"observationProperty": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
+				"observationProperties": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
 			},
 		},
 	}
