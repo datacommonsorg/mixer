@@ -15,22 +15,22 @@
 package service
 
 import (
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	restv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/rest/v2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-func dataQueryFromREST(request *restv2.DataRequest) (*pb.SdmxDataQuery, error) {
+func dataQueryFromREST(request *restv2.DataRequest) (*sdmxpb.SdmxDataQuery, error) {
 	constraints, err := constraintsFromRESTFilters(request.Constraints, restv2.InternalDataFilterComponentID)
 	if err != nil {
 		return nil, err
 	}
-	return &pb.SdmxDataQuery{Constraints: constraints}, nil
+	return &sdmxpb.SdmxDataQuery{Constraints: constraints}, nil
 }
 
-func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAvailabilityQuery, error) {
+func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*sdmxpb.SdmxAvailabilityQuery, error) {
 	componentID, err := restv2.InternalAvailabilityComponentID(request.Path.ComponentID)
 	if err != nil {
 		return nil, err
@@ -39,14 +39,14 @@ func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAva
 	if err != nil {
 		return nil, err
 	}
-	return &pb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
+	return &sdmxpb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
 }
 
 func constraintsFromRESTFilters(
 	filters map[string][]string,
 	mapComponent func(string) (string, error),
-) (map[string]*pb.ConstraintList, error) {
-	constraints := map[string]*pb.ConstraintList{}
+) (map[string]*sdmxpb.ConstraintList, error) {
+	constraints := map[string]*sdmxpb.ConstraintList{}
 	for componentID, values := range filters {
 		internalComponentID, err := mapComponent(componentID)
 		if err != nil {
@@ -55,7 +55,7 @@ func constraintsFromRESTFilters(
 		if _, exists := constraints[internalComponentID]; exists {
 			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", internalComponentID)
 		}
-		constraints[internalComponentID] = &pb.ConstraintList{Values: values}
+		constraints[internalComponentID] = &sdmxpb.ConstraintList{Values: values}
 	}
 	return constraints, nil
 }

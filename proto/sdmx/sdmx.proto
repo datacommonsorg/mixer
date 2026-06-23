@@ -12,19 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// This file defines internal protocol buffer messages used for handling SDMX data requests.
-// These messages are NOT exposed directly to external clients.
-//
-// They represent:
-// 1. The parsed SDMX query (SdmxDataQuery) after validation and parsing in the API handler.
-// 2. The intermediate data objects (SdmxDataResult, SdmxObservation, SdmxDateValue)
-//    read from the database (e.g., Spanner) before being formatted into the final
-//    response payload (e.g., JSON-stat).
+// This file defines protocol buffer messages used for SDMX REST routing and
+// internal SDMX data requests.
 
 syntax = "proto3";
 
-package datacommons;
-option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+package datacommons.sdmx;
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/sdmx";
+
+// Request envelope for SDMX REST APIs.
+message SdmxRestRequest {
+  // Tail after the SDMX API family route, for example:
+  // dataflow/DC/DF_OBS/1.0.0/*
+  string tail = 1;
+}
 
 // Represents a query for SDMX data.
 message SdmxDataQuery {
@@ -71,16 +72,16 @@ message SdmxDateValue {
 message SdmxObservation {
   // The statistical variable being measured (e.g., "Count_Person").
   string variable_measured = 1;
-  
+
   // The provenance or source of the data.
   string provenance = 2;
-  
+
   // The time series of dates and values for this observation.
   repeated SdmxDateValue dates_and_values = 3;
-  
+
   // Dimensions that identify the observation (e.g., location, gender).
   map<string, string> dimensions = 4;
-  
+
   // Attributes that provide metadata about the observation (e.g., unit, measurementMethod).
   map<string, string> attributes = 5;
 }

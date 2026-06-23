@@ -18,7 +18,7 @@ import (
 	"context"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/google/go-cmp/cmp"
@@ -29,8 +29,8 @@ import (
 
 type sdmxAvailabilitySource struct {
 	datasource.DataSource
-	got    *pb.SdmxAvailabilityQuery
-	result *pb.SdmxAvailabilityResult
+	got    *sdmxpb.SdmxAvailabilityQuery
+	result *sdmxpb.SdmxAvailabilityResult
 }
 
 func (s *sdmxAvailabilitySource) Type() datasource.DataSourceType {
@@ -41,7 +41,7 @@ func (s *sdmxAvailabilitySource) Id() string {
 	return "availability-test"
 }
 
-func (s *sdmxAvailabilitySource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (s *sdmxAvailabilitySource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	s.got = req
 	return s.result, nil
 }
@@ -50,10 +50,10 @@ func TestSdmxAvailabilityBackendUnimplementedWithoutSources(t *testing.T) {
 	dispatcher := NewDispatcher(nil, nil)
 	got, err := dispatcher.SdmxAvailability(
 		context.Background(),
-		&pb.SdmxAvailabilityQuery{
+		&sdmxpb.SdmxAvailabilityQuery{
 			ComponentId: "observationAbout",
-			Constraints: map[string]*pb.ConstraintList{
-				"variableMeasured": &pb.ConstraintList{Values: []string{"Count_Person"}},
+			Constraints: map[string]*sdmxpb.ConstraintList{
+				"variableMeasured": &sdmxpb.ConstraintList{Values: []string{"Count_Person"}},
 			},
 		},
 	)
@@ -68,11 +68,11 @@ func TestSdmxAvailabilityBackendUnimplementedWithoutSources(t *testing.T) {
 
 func TestSdmxAvailabilityCallsDataSources(t *testing.T) {
 	source := &sdmxAvailabilitySource{
-		result: &pb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+		result: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
 	}
-	query := &pb.SdmxAvailabilityQuery{
+	query := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*pb.ConstraintList{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 		},
 	}

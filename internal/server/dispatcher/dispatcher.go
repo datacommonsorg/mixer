@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -202,37 +203,37 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 }
 
 // SdmxData handles SDMX Data requests.
-func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	requestContext := newRequestContext(ctx, in, TypeSdmxData)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
-		return dispatcher.sources.SdmxData(ctx, request.(*pb.SdmxDataQuery))
+		return dispatcher.sources.SdmxData(ctx, request.(*sdmxpb.SdmxDataQuery))
 	})
 
 	if err != nil {
 		return nil, err
 	}
-	return response.(*pb.SdmxDataResult), nil
+	return response.(*sdmxpb.SdmxDataResult), nil
 }
 
 // SdmxAvailability handles SDMX Availability requests.
-func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
 		if dispatcher.sources == nil {
 			return nil, status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet")
 		}
-		return dispatcher.sources.SdmxAvailability(ctx, request.(*pb.SdmxAvailabilityQuery))
+		return dispatcher.sources.SdmxAvailability(ctx, request.(*sdmxpb.SdmxAvailabilityQuery))
 	})
 
 	if err != nil {
 		return nil, err
 	}
 	if response == nil {
-		return &pb.SdmxAvailabilityResult{}, nil
+		return &sdmxpb.SdmxAvailabilityResult{}, nil
 	}
-	return response.(*pb.SdmxAvailabilityResult), nil
+	return response.(*sdmxpb.SdmxAvailabilityResult), nil
 }
 
 func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

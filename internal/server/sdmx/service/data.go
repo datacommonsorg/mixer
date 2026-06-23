@@ -18,7 +18,7 @@ import (
 	"context"
 	"log/slog"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 	csvv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/format/csv/v2"
 	jsonstatv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/format/jsonstat/v2"
@@ -73,7 +73,7 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
 
-	observations := []*pb.SdmxObservation(nil)
+	observations := []*sdmxpb.SdmxObservation(nil)
 	if res != nil {
 		observations = res.Observations
 	}

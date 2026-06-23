@@ -20,8 +20,7 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -67,8 +66,8 @@ func (s *sdmxDataStream) RecvMsg(any) error {
 
 type sdmxDataSource struct {
 	datasource.DataSource
-	result             *pb.SdmxDataResult
-	availabilityResult *pb.SdmxAvailabilityResult
+	result             *sdmxpb.SdmxDataResult
+	availabilityResult *sdmxpb.SdmxAvailabilityResult
 }
 
 func (ds *sdmxDataSource) Type() datasource.DataSourceType {
@@ -79,11 +78,11 @@ func (ds *sdmxDataSource) Id() string {
 	return "sdmx-test"
 }
 
-func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	return ds.result, nil
 }
 
-func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	return ds.availabilityResult, nil
 }
 
@@ -91,7 +90,7 @@ func TestV3SdmxDataFeatureFlag(t *testing.T) {
 	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: false}}
 	stream := &sdmxDataStream{ctx: context.Background()}
 
-	err := server.V3SdmxData(&pbv3.SdmxRestRequest{}, stream)
+	err := server.V3SdmxData(&sdmxpb.SdmxRestRequest{}, stream)
 	if status.Code(err) != codes.Unimplemented {
 		t.Fatalf("V3SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
@@ -101,12 +100,12 @@ func TestV3SdmxDataFeatureFlag(t *testing.T) {
 }
 
 func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
-	server := newSdmxHandlerTestServer(&sdmxDataSource{result: &pb.SdmxDataResult{}})
+	server := newSdmxHandlerTestServer(&sdmxDataSource{result: &sdmxpb.SdmxDataResult{}})
 	stream := &sdmxDataStream{
 		ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
 	}
 
-	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	err := server.V3SdmxData(&sdmxpb.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
 	if err != nil {
 		t.Fatalf("V3SdmxData() error = %v", err)
 	}
@@ -124,7 +123,7 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 func TestV3SdmxAvailabilityFeatureFlag(t *testing.T) {
 	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: false}}
 
-	_, err := server.V3SdmxAvailability(context.Background(), &pbv3.SdmxRestRequest{})
+	_, err := server.V3SdmxAvailability(context.Background(), &sdmxpb.SdmxRestRequest{})
 	if status.Code(err) != codes.Unimplemented {
 		t.Fatalf("V3SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
@@ -135,12 +134,12 @@ func TestV3SdmxAvailabilityFeatureFlag(t *testing.T) {
 
 func TestV3SdmxAvailabilityWrapsServiceResponse(t *testing.T) {
 	server := newSdmxHandlerTestServer(&sdmxDataSource{
-		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
 	})
 
 	body, err := server.V3SdmxAvailability(
 		sdmxIncomingContext(sdmxAvailabilityURI("observationAbout", "c[variableMeasured]=Count_Person")),
-		&pbv3.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
+		&sdmxpb.SdmxRestRequest{Tail: sdmxAvailabilityTail("observationAbout")},
 	)
 	if err != nil {
 		t.Fatalf("V3SdmxAvailability() error = %v", err)

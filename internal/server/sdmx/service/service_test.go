@@ -22,7 +22,7 @@ import (
 	"strings"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -35,12 +35,12 @@ import (
 
 type sdmxDataSource struct {
 	datasource.DataSource
-	result             *pb.SdmxDataResult
+	result             *sdmxpb.SdmxDataResult
 	err                error
-	got                *pb.SdmxDataQuery
-	availabilityResult *pb.SdmxAvailabilityResult
+	got                *sdmxpb.SdmxDataQuery
+	availabilityResult *sdmxpb.SdmxAvailabilityResult
 	availabilityErr    error
-	gotAvailability    *pb.SdmxAvailabilityQuery
+	gotAvailability    *sdmxpb.SdmxAvailabilityQuery
 }
 
 func (ds *sdmxDataSource) Type() datasource.DataSourceType {
@@ -51,12 +51,12 @@ func (ds *sdmxDataSource) Id() string {
 	return "sdmx-test"
 }
 
-func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	ds.got = req
 	return ds.result, ds.err
 }
 
-func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	ds.gotAvailability = req
 	return ds.availabilityResult, ds.availabilityErr
 }
@@ -146,12 +146,12 @@ func TestDataValidation(t *testing.T) {
 
 func TestDataSuccess(t *testing.T) {
 	ds := &sdmxDataSource{
-		result: &pb.SdmxDataResult{
-			Observations: []*pb.SdmxObservation{
+		result: &sdmxpb.SdmxDataResult{
+			Observations: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
 					Provenance:       "dc/base",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "1"},
 					},
 					Dimensions: map[string]string{"geo": "country/USA"},
@@ -166,8 +166,8 @@ func TestDataSuccess(t *testing.T) {
 		t.Fatalf("Data() error = %v", err)
 	}
 
-	wantQuery := &pb.SdmxDataQuery{
-		Constraints: map[string]*pb.ConstraintList{
+	wantQuery := &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 			"observationAbout": {Values: []string{"country/USA"}},
 			"observationDate":  {Values: []string{"2020", "2021"}},
@@ -186,12 +186,12 @@ func TestDataSuccess(t *testing.T) {
 
 func TestDataCSVSuccess(t *testing.T) {
 	ds := &sdmxDataSource{
-		result: &pb.SdmxDataResult{
-			Observations: []*pb.SdmxObservation{
+		result: &sdmxpb.SdmxDataResult{
+			Observations: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
 					Provenance:       "dc/base",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "1.50"},
 					},
 					Dimensions: map[string]string{
@@ -228,7 +228,7 @@ func TestDataCSVSuccess(t *testing.T) {
 }
 
 func TestDataFormatQueryOverridesAccept(t *testing.T) {
-	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), withAccept(
@@ -244,7 +244,7 @@ func TestDataFormatQueryOverridesAccept(t *testing.T) {
 }
 
 func TestDataEmptyResult(t *testing.T) {
-	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
@@ -257,7 +257,7 @@ func TestDataEmptyResult(t *testing.T) {
 }
 
 func TestDataCSVEmptyResult(t *testing.T) {
-	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), withAccept(
@@ -286,7 +286,7 @@ func TestDataSDMXDebugLoggingDisabled(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
 	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
@@ -303,7 +303,7 @@ func TestDataSDMXDebugLoggingSuccess(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
 	_, err := svc.Data(context.Background(), withLog(sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020")))
@@ -444,7 +444,7 @@ func TestAvailabilityBackendUnimplemented(t *testing.T) {
 
 func TestAvailabilitySuccess(t *testing.T) {
 	ds := &sdmxDataSource{
-		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"country/USA", "geoId/06"}},
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA", "geoId/06"}},
 	}
 	svc := newSdmxTestService(ds)
 
@@ -460,9 +460,9 @@ func TestAvailabilitySuccess(t *testing.T) {
 			t.Fatalf("Availability() body missing %q: %s", want, string(response.Body))
 		}
 	}
-	wantQuery := &pb.SdmxAvailabilityQuery{
+	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*pb.ConstraintList{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
 		},
 	}
@@ -473,7 +473,7 @@ func TestAvailabilitySuccess(t *testing.T) {
 
 func TestAvailabilitySelectsOtherDimension(t *testing.T) {
 	ds := &sdmxDataSource{
-		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"Person"}},
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"Person"}},
 	}
 	svc := newSdmxTestService(ds)
 
@@ -484,9 +484,9 @@ func TestAvailabilitySelectsOtherDimension(t *testing.T) {
 	if !strings.Contains(string(response.Body), "\"id\":\"unit\"") {
 		t.Fatalf("Availability() body missing unit id: %s", string(response.Body))
 	}
-	wantQuery := &pb.SdmxAvailabilityQuery{
+	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "unit",
-		Constraints: map[string]*pb.ConstraintList{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 		},
 	}
@@ -500,7 +500,7 @@ func TestAvailabilitySDMXDebugLoggingSuccess(t *testing.T) {
 	defer restore()
 
 	ds := &sdmxDataSource{
-		availabilityResult: &pb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
 	}
 	svc := newSdmxTestService(ds)
 

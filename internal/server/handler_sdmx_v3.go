@@ -17,8 +17,8 @@ package server
 import (
 	"context"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbsvc "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/service"
 	sdmxgrpc "github.com/datacommonsorg/mixer/internal/server/sdmx/transport/grpc"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
@@ -27,7 +27,7 @@ import (
 )
 
 // V3SdmxData handles SDMX Data requests.
-func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
+func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
 	if !s.flags.EnableSDMXDataApi {
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
@@ -46,7 +46,7 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 }
 
 // V3SdmxAvailability handles SDMX Availability requests.
-func (s *Server) V3SdmxAvailability(ctx context.Context, in *pbv3.SdmxRestRequest) (*httpbody.HttpBody, error) {
+func (s *Server) V3SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxRestRequest) (*httpbody.HttpBody, error) {
 	if !s.flags.EnableSDMXDataApi {
 		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}

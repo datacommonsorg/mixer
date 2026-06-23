@@ -18,7 +18,7 @@ import (
 	"bytes"
 	"encoding/csv"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
@@ -33,7 +33,7 @@ type CSVFormatter struct {
 }
 
 // Format converts observations into a complete SDMX-CSV 2.0 payload.
-func (f *CSVFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
+func (f *CSVFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error) {
 	var buf bytes.Buffer
 	writer := csv.NewWriter(&buf)
 	writer.UseCRLF = true
@@ -65,7 +65,7 @@ func (f *CSVFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	return buf.String(), nil
 }
 
-func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) []string {
+func (f *CSVFormatter) row(observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) []string {
 	row := []string{
 		csvStructureDataflow,
 		f.StructureID,
@@ -85,7 +85,7 @@ func dataCSVHeader() []string {
 	return header
 }
 
-func dataCSVComponentValue(component datacommons.DataComponent, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
+func dataCSVComponentValue(component datacommons.DataComponent, observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) string {
 	value := dataCSVRawComponentValue(component.ID, observation, dateValue)
 	if component.Kind == datacommons.ComponentKindDimension && value == "" {
 		return datacommons.FallbackNotAvailable
@@ -93,7 +93,7 @@ func dataCSVComponentValue(component datacommons.DataComponent, observation *pb.
 	return value
 }
 
-func dataCSVRawComponentValue(componentID string, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
+func dataCSVRawComponentValue(componentID string, observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) string {
 	switch componentID {
 	case datacommons.ComponentVariableMeasured:
 		return observation.GetVariableMeasured()

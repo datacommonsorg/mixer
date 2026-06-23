@@ -19,7 +19,7 @@ import (
 	"strings"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/google/go-cmp/cmp"
 )
@@ -41,11 +41,11 @@ func TestCSVFormatter_HeaderOnly(t *testing.T) {
 func TestCSVFormatter_Rows(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*pb.SdmxObservation{
+	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
 		{
 			VariableMeasured: "Count_Person",
 			Provenance:       "dc/base",
-			DatesAndValues: []*pb.SdmxDateValue{
+			DatesAndValues: []*sdmxpb.SdmxDateValue{
 				{Date: "2020", Value: "1.50"},
 				{Date: "2021", Value: "2"},
 			},
@@ -77,7 +77,7 @@ func TestCSVFormatter_Rows(t *testing.T) {
 func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*pb.SdmxObservation{
+	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
 		nil,
 		{
 			VariableMeasured: "Count_Person",
@@ -102,10 +102,10 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*pb.SdmxObservation{
+	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
 		{
 			VariableMeasured: "Count,\"Person\"",
-			DatesAndValues: []*pb.SdmxDateValue{
+			DatesAndValues: []*sdmxpb.SdmxDateValue{
 				{Date: "2020", Value: "foo,bar"},
 			},
 		},
