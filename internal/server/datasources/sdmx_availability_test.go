@@ -18,7 +18,7 @@ import (
 	"context"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/google/go-cmp/cmp"
 )
@@ -37,8 +37,8 @@ func (s *availabilityDataSource) Id() string {
 	return s.id
 }
 
-func (s *availabilityDataSource) SdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
-	return &pb.SdmxAvailabilityResult{Values: s.values}, nil
+func (s *availabilityDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return &sdmxpb.SdmxAvailabilityResult{Values: s.values}, nil
 }
 
 func TestSdmxAvailabilityMergesValues(t *testing.T) {
@@ -47,7 +47,7 @@ func TestSdmxAvailabilityMergesValues(t *testing.T) {
 		&availabilityDataSource{id: "two", values: []string{"country/USA", "geoId/12"}},
 	}, nil)
 
-	got, err := ds.SdmxAvailability(context.Background(), &pb.SdmxAvailabilityQuery{})
+	got, err := ds.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
 	if err != nil {
 		t.Fatalf("SdmxAvailability() error = %v", err)
 	}

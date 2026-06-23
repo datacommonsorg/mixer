@@ -15,19 +15,11 @@
 package restv2
 
 import (
-	"context"
 	"mime"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
-)
-
-const (
-	originalURIHeader = "x-dc-original-uri"
-	envoyPathHeader   = "x-envoy-original-path"
 )
 
 type DataResponseFormat int
@@ -43,65 +35,50 @@ const (
 	AvailabilityResponseFormatStructureJSON AvailabilityResponseFormat = iota
 )
 
-// OriginalURIFromMetadata returns the trusted request target before transcoding.
-func OriginalURIFromMetadata(ctx context.Context) (string, error) {
-	md, ok := metadata.FromIncomingContext(ctx)
-	if !ok {
-		return "", status.Error(codes.InvalidArgument, "missing SDMX request URI")
-	}
+// Accept media constants are request negotiation tokens, not emitted Content-Type values.
+const (
+	acceptMediaSDMXDataCSV       = "application/vnd.sdmx.data+csv"
+	acceptMediaSDMXDataJSON      = "application/vnd.sdmx.data+json"
+	acceptMediaSDMXStructureJSON = "application/vnd.sdmx.structure+json"
+	acceptMediaSDMXStructureXML  = "application/vnd.sdmx.structure+xml"
+	acceptMediaTextCSV           = "text/csv"
+	acceptMediaAny               = "*/*"
+	acceptParamVersion           = "version"
+	acceptParamQ                 = "q"
+	acceptVersion2               = "2.0.0"
+)
 
-	for _, key := range []string{originalURIHeader, envoyPathHeader} {
-		values := md.Get(key)
-		if len(values) > 0 && values[0] != "" {
-			return values[0], nil
+// DataResponseFormatFromAccept selects the SDMX data response format.
+func DataResponseFormatFromAccept(accept []string) (DataResponseFormat, error) {
+	for _, value := range accept {
+		format, found, err := dataResponseFormatFromAccept(value)
+		if err != nil {
+			return DataResponseFormatJSONStat, err
 		}
-	}
-	return "", status.Error(codes.InvalidArgument, "missing SDMX request URI")
-}
-
-// DataResponseFormatFromMetadata selects the SDMX data response format.
-func DataResponseFormatFromMetadata(ctx context.Context) (DataResponseFormat, error) {
-	md, ok := metadata.FromIncomingContext(ctx)
-	if !ok {
-		return DataResponseFormatJSONStat, nil
-	}
-	for _, key := range []string{"accept", "grpcgateway-accept"} {
-		for _, value := range md.Get(key) {
-			format, found, err := dataResponseFormatFromAccept(value)
-			if err != nil {
-				return DataResponseFormatJSONStat, err
-			}
-			if found {
-				return format, nil
-			}
+		if found {
+			return format, nil
 		}
 	}
 	return DataResponseFormatJSONStat, nil
 }
 
 // ValidateDataAccept rejects SDMX wire formats that are not implemented yet.
-func ValidateDataAccept(ctx context.Context) error {
-	_, err := DataResponseFormatFromMetadata(ctx)
+func ValidateDataAccept(accept []string) error {
+	_, err := DataResponseFormatFromAccept(accept)
 	return err
 }
 
-// AvailabilityResponseFormatFromMetadata selects the SDMX availability response format.
-func AvailabilityResponseFormatFromMetadata(ctx context.Context) (AvailabilityResponseFormat, error) {
-	md, ok := metadata.FromIncomingContext(ctx)
-	if !ok {
-		return AvailabilityResponseFormatStructureJSON, nil
-	}
+// AvailabilityResponseFormatFromAccept selects the SDMX availability response format.
+func AvailabilityResponseFormatFromAccept(accept []string) (AvailabilityResponseFormat, error) {
 	foundAccept := false
-	for _, key := range []string{"accept", "grpcgateway-accept"} {
-		for _, value := range md.Get(key) {
-			foundAccept = true
-			format, found, err := availabilityResponseFormatFromAccept(value)
-			if err != nil {
-				return AvailabilityResponseFormatStructureJSON, err
-			}
-			if found {
-				return format, nil
-			}
+	for _, value := range accept {
+		foundAccept = true
+		format, found, err := availabilityResponseFormatFromAccept(value)
+		if err != nil {
+			return AvailabilityResponseFormatStructureJSON, err
+		}
+		if found {
+			return format, nil
 		}
 	}
 	if !foundAccept {
@@ -117,12 +94,12 @@ func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error
 			continue
 		}
 		switch strings.ToLower(mediaType) {
-		case "application/vnd.sdmx.data+csv", "text/csv":
+		case acceptMediaSDMXDataCSV, acceptMediaTextCSV:
 			if err := validateCSVAcceptParams(params); err != nil {
 				return DataResponseFormatJSONStat, true, err
 			}
 			return DataResponseFormatCSV, true, nil
-		case "application/vnd.sdmx.data+json":
+		case acceptMediaSDMXDataJSON:
 			return DataResponseFormatJSONStat, true, status.Error(codes.Unimplemented, "SDMX JSON responses are not implemented yet")
 		}
 	}
@@ -138,9 +115,9 @@ func availabilityResponseFormatFromAccept(value string) (AvailabilityResponseFor
 		}
 		mediaType = strings.ToLower(mediaType)
 		switch mediaType {
-		case "*/*":
+		case acceptMediaAny:
 			return AvailabilityResponseFormatStructureJSON, true, nil
-		case "application/vnd.sdmx.structure+json":
+		case acceptMediaSDMXStructureJSON:
 			if err := validateStructureJSONAcceptParams(params); err != nil {
 				if firstErr == nil {
 					firstErr = err
@@ -148,11 +125,11 @@ func availabilityResponseFormatFromAccept(value string) (AvailabilityResponseFor
 				continue
 			}
 			return AvailabilityResponseFormatStructureJSON, true, nil
-		case "application/vnd.sdmx.structure+xml":
+		case acceptMediaSDMXStructureXML:
 			if firstErr == nil {
 				firstErr = status.Error(codes.Unimplemented, "SDMX structure XML responses are not implemented yet")
 			}
-		case "application/vnd.sdmx.data+csv", "application/vnd.sdmx.data+json":
+		case acceptMediaSDMXDataCSV, acceptMediaSDMXDataJSON:
 			if firstErr == nil {
 				firstErr = status.Errorf(codes.Unimplemented, "SDMX availability response media type %q is not implemented yet", mediaType)
 			}
@@ -171,11 +148,11 @@ func availabilityResponseFormatFromAccept(value string) (AvailabilityResponseFor
 func validateCSVAcceptParams(params map[string]string) error {
 	for key, value := range params {
 		switch strings.ToLower(key) {
-		case "version":
-			if value != "2.0.0" {
+		case acceptParamVersion:
+			if value != acceptVersion2 {
 				return status.Errorf(codes.Unimplemented, "SDMX CSV version %q is not implemented yet", value)
 			}
-		case "q":
+		case acceptParamQ:
 			continue
 		default:
 			return status.Errorf(codes.Unimplemented, "SDMX CSV response option %q is not implemented yet", key)
@@ -188,25 +165,16 @@ func validateStructureJSONAcceptParams(params map[string]string) error {
 	version := ""
 	for key, value := range params {
 		switch strings.ToLower(key) {
-		case "version":
+		case acceptParamVersion:
 			version = value
-		case "q":
+		case acceptParamQ:
 			continue
 		default:
 			return status.Errorf(codes.Unimplemented, "SDMX structure JSON response option %q is not implemented yet", key)
 		}
 	}
-	if version != "2.0.0" {
+	if version != acceptVersion2 {
 		return status.Errorf(codes.Unimplemented, "SDMX structure JSON version %q is not implemented yet", version)
 	}
 	return nil
-}
-
-// ShouldLogSDMX checks whether SDMX request debug logs are enabled.
-func ShouldLogSDMX(ctx context.Context) bool {
-	if md, ok := metadata.FromIncomingContext(ctx); ok {
-		headers := md.Get(util.XLogSDMX)
-		return len(headers) > 0 && headers[0] == "true"
-	}
-	return false
 }

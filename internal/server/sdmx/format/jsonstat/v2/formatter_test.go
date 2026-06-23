@@ -1,4 +1,4 @@
-package sdmx
+package jsonstatv2
 
 import (
 	"encoding/json"
@@ -6,7 +6,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -16,15 +17,15 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 	tests := []struct {
 		name       string
 		goldenFile string
-		obs        []*pb.SdmxObservation
+		obs        []*sdmxpb.SdmxObservation
 	}{
 		{
 			name:       "Basic grid with missing cell",
 			goldenFile: "basic_grid.json",
-			obs: []*pb.SdmxObservation{
+			obs: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 						{Date: "2021", Value: "332000000"},
 					},
@@ -35,7 +36,7 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 				},
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "160000000"},
 					},
 					Dimensions: map[string]string{
@@ -48,10 +49,10 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "No observationAbout",
 			goldenFile: "no_observation_about.json",
-			obs: []*pb.SdmxObservation{
+			obs: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Exports",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "1000"},
 					},
 					Dimensions: map[string]string{
@@ -64,10 +65,10 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "Missing Dimensions",
 			goldenFile: "missing_dimensions.json",
-			obs: []*pb.SdmxObservation{
+			obs: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 					},
 					Dimensions: map[string]string{
@@ -77,7 +78,7 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 				},
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "332000000"},
 					},
 					Dimensions: map[string]string{
@@ -89,11 +90,11 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "Facet Attributes",
 			goldenFile: "facet_attributes.json",
-			obs: []*pb.SdmxObservation{
+			obs: []*sdmxpb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
 					Provenance:       "prov1",
-					DatesAndValues: []*pb.SdmxDateValue{
+					DatesAndValues: []*sdmxpb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 					},
 					Dimensions: map[string]string{
@@ -155,10 +156,10 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 
 func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	formatter := &JSONStatFormatter{}
-	output, err := formatter.Format([]*pb.SdmxObservation{
+	output, err := formatter.Format([]*sdmxpb.SdmxObservation{
 		{
 			VariableMeasured: "Count_Person",
-			DatesAndValues: []*pb.SdmxDateValue{
+			DatesAndValues: []*sdmxpb.SdmxDateValue{
 				{Date: "2020", Value: "1"},
 			},
 			Dimensions: map[string]string{
@@ -167,7 +168,7 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 		},
 		{
 			VariableMeasured: "Count_Person",
-			DatesAndValues: []*pb.SdmxDateValue{
+			DatesAndValues: []*sdmxpb.SdmxDateValue{
 				{Date: "2020", Value: "2"},
 			},
 			Dimensions: map[string]string{},
@@ -183,8 +184,8 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	}
 
 	dimensions := got["dimension"].(map[string]interface{})
-	if _, ok := dimensions[DimObservationDate]; !ok {
-		t.Fatalf("Missing %q dimension in output", DimObservationDate)
+	if _, ok := dimensions[datacommons.ComponentTimePeriod]; !ok {
+		t.Fatalf("Missing %q dimension in output", datacommons.ComponentTimePeriod)
 	}
 	if _, ok := dimensions["observationDate"]; ok {
 		t.Fatal("Output should not include legacy observationDate dimension")
@@ -192,21 +193,21 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	if _, ok := got["value"]; !ok {
 		t.Fatal("JSON-stat output should keep top-level value field")
 	}
-	if _, ok := got[DimObservationValue]; ok {
-		t.Fatalf("JSON-stat output should not rename top-level value field to %q", DimObservationValue)
+	if _, ok := got[datacommons.ComponentObservationValue]; ok {
+		t.Fatalf("JSON-stat output should not rename top-level value field to %q", datacommons.ComponentObservationValue)
 	}
 
 	gender := dimensions["gender"].(map[string]interface{})
 	category := gender["category"].(map[string]interface{})
 	indices := category["index"].([]interface{})
-	if !containsJSONValue(indices, FallbackNotAvailable) {
-		t.Fatalf("Missing fallback category %q in gender index: %v", FallbackNotAvailable, indices)
+	if !containsJSONValue(indices, datacommons.FallbackNotAvailable) {
+		t.Fatalf("Missing fallback category %q in gender index: %v", datacommons.FallbackNotAvailable, indices)
 	}
 
 	extension := got["extension"].(map[string]interface{})
 	measures := extension["measures"].(map[string]interface{})
-	if _, ok := measures[DimObservationValue]; !ok {
-		t.Fatalf("Missing %q measure metadata in extension", DimObservationValue)
+	if _, ok := measures[datacommons.ComponentObservationValue]; !ok {
+		t.Fatalf("Missing %q measure metadata in extension", datacommons.ComponentObservationValue)
 	}
 }
 

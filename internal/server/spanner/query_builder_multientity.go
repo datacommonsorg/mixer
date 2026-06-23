@@ -21,7 +21,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 )
@@ -310,7 +310,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 
 // GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
 func GetMultiEntitySdmxObservationsQuery(
-	constraints map[string]*pb.ConstraintList,
+	constraints map[string]*sdmxpb.ConstraintList,
 	entityMappings map[string]map[string]string,
 	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
@@ -386,7 +386,7 @@ func GetMultiEntitySdmxObservationsQuery(
 
 // GetMultiEntitySdmxAvailabilityQuery builds the first SDMX availability lookup.
 func GetMultiEntitySdmxAvailabilityQuery(
-	req *pb.SdmxAvailabilityQuery,
+	req *sdmxpb.SdmxAvailabilityQuery,
 	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
 	if err := validateMultiEntityStatements("GetMultiEntitySdmxAvailabilityQuery", stmts); err != nil {

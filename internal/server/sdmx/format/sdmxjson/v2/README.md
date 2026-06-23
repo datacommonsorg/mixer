@@ -40,15 +40,15 @@ Run from the Mixer repo root:
 ```bash
 /private/tmp/sdmx-ajv-cli-v3/node_modules/.bin/ajv validate \
   -s /private/tmp/sdmx-json-structure-schema-2.0.0.json \
-  -d 'internal/server/sdmx/json/v2/golden/availability_*.json'
+  -d 'internal/server/sdmx/format/sdmxjson/v2/golden/availability_*.json'
 ```
 
 Expected output:
 
 ```text
-internal/server/sdmx/json/v2/golden/availability_multiple_components.json valid
-internal/server/sdmx/json/v2/golden/availability_observation_about.json valid
-internal/server/sdmx/json/v2/golden/availability_time_period_empty.json valid
+internal/server/sdmx/format/sdmxjson/v2/golden/availability_multiple_components.json valid
+internal/server/sdmx/format/sdmxjson/v2/golden/availability_observation_about.json valid
+internal/server/sdmx/format/sdmxjson/v2/golden/availability_time_period_empty.json valid
 ```
 
 ## Notes

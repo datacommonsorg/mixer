@@ -23,7 +23,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
@@ -423,8 +423,8 @@ func getJSONBool(m map[string]interface{}, key string) bool {
 // GetSdmxObservations retrieves observations for SDMX query using dynamic entity slot mappings.
 func (nc *multiEntityClient) GetSdmxObservations(
 	ctx context.Context,
-	req *pb.SdmxDataQuery,
-) (*pb.SdmxDataResult, error) {
+	req *sdmxpb.SdmxDataQuery,
+) (*sdmxpb.SdmxDataResult, error) {
 	if req == nil {
 		return nil, fmt.Errorf("GetSdmxObservations: request cannot be nil")
 	}
@@ -464,8 +464,8 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	}
 
 	// Reconstruct the result, mapping entities back to requested keys
-	result := &pb.SdmxDataResult{
-		Observations: []*pb.SdmxObservation{},
+	result := &sdmxpb.SdmxDataResult{
+		Observations: []*sdmxpb.SdmxObservation{},
 	}
 
 	for _, r := range rawObs {
@@ -499,10 +499,10 @@ func (nc *multiEntityClient) GetSdmxObservations(
 			}
 		}
 
-		obs := &pb.SdmxObservation{
+		obs := &sdmxpb.SdmxObservation{
 			VariableMeasured: r.VariableMeasured,
 			Dimensions:       dimensions,
-			DatesAndValues:   []*pb.SdmxDateValue{},
+			DatesAndValues:   []*sdmxpb.SdmxDateValue{},
 		}
 		if r.ProvenanceID.Valid {
 			obs.Provenance = r.ProvenanceID.StringVal
@@ -513,7 +513,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 				continue
 			}
 			if dv.Date != "" {
-				obs.DatesAndValues = append(obs.DatesAndValues, &pb.SdmxDateValue{
+				obs.DatesAndValues = append(obs.DatesAndValues, &sdmxpb.SdmxDateValue{
 					Date:  dv.Date,
 					Value: dv.Value,
 				})
@@ -541,8 +541,8 @@ func (nc *multiEntityClient) GetSdmxObservations(
 // GetSdmxAvailability retrieves available observationAbout values for SDMX availability.
 func (nc *multiEntityClient) GetSdmxAvailability(
 	ctx context.Context,
-	req *pb.SdmxAvailabilityQuery,
-) (*pb.SdmxAvailabilityResult, error) {
+	req *sdmxpb.SdmxAvailabilityQuery,
+) (*sdmxpb.SdmxAvailabilityResult, error) {
 	if req == nil {
 		return nil, fmt.Errorf("GetSdmxAvailability: request cannot be nil")
 	}
@@ -552,7 +552,7 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 		return nil, err
 	}
 
-	result := &pb.SdmxAvailabilityResult{}
+	result := &sdmxpb.SdmxAvailabilityResult{}
 	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawSdmxAvailabilityValue{} }, func(row interface{}) {
 		value := row.(*rawSdmxAvailabilityValue).Value
 		if value != "" {

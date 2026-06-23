@@ -12,21 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sdmx
+package jsonstatv2
 
 import (
 	"encoding/json"
 	"sort"
 	"strconv"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
 const (
-	dimVariableMeasured = DimVariableMeasured
-	dimObservationDate  = DimObservationDate
-	dimObservationValue = DimObservationValue
-	dimProvenance       = "provenance"
+	dimVariableMeasured = datacommons.ComponentVariableMeasured
+	dimObservationDate  = datacommons.ComponentTimePeriod
+	dimObservationValue = datacommons.ComponentObservationValue
+	dimProvenance       = datacommons.ComponentProvenance
 
 	jsonStatVersion   = "2.0"
 	jsonStatClass     = "dataset"
@@ -39,7 +40,7 @@ const (
 
 // Formatter defines the interface for formatting SDMX query results.
 type Formatter interface {
-	Format(obs []*pb.SdmxObservation) (string, error)
+	Format(obs []*sdmxpb.SdmxObservation) (string, error)
 }
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
@@ -72,7 +73,7 @@ type JSONStatResponse struct {
 }
 
 // Format converts Spanner observations into a full JSON-stat 2.0 string.
-func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
+func (f *JSONStatFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error) {
 	if len(obs) == 0 {
 		return emptyJSONResponse, nil
 	}
@@ -120,7 +121,7 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 // extractDimensions identifies all unique values for each dimension (like date, variable, and location)
 // present in the input observations. This effectively determines the "shape" of the multi-dimensional
 // data cube we are building for the JSON-stat output.
-func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
+func (f *JSONStatFormatter) extractDimensions(obs []*sdmxpb.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
 	dimensions := map[string]map[string]bool{}
 	dimensions[dimVariableMeasured] = map[string]bool{}
 	dimensions[dimObservationDate] = map[string]bool{}
@@ -158,7 +159,7 @@ func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[st
 				continue
 			}
 			if _, ok := o.Dimensions[dim]; !ok {
-				dimensions[dim][FallbackNotAvailable] = true
+				dimensions[dim][datacommons.FallbackNotAvailable] = true
 			}
 		}
 	}
@@ -229,7 +230,7 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 // It uses the sorted value indices and computed strides to calculate the exact 1D position
 // for each combination of dimension values.
 func (f *JSONStatFormatter) mapGridValues(
-	obs []*pb.SdmxObservation,
+	obs []*sdmxpb.SdmxObservation,
 	strides []int,
 	categoryIndices map[string]map[string]int,
 	dimensionOrder []string,
@@ -254,7 +255,7 @@ func (f *JSONStatFormatter) mapGridValues(
 			}
 			val, ok := o.Dimensions[dim]
 			if !ok {
-				val = FallbackNotAvailable
+				val = datacommons.FallbackNotAvailable
 			}
 			idx := categoryIndices[dim][val]
 			baseIdx += idx * strides[dimIdx]

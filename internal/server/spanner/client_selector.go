@@ -18,7 +18,7 @@ import (
 	"context"
 	"log/slog"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
@@ -33,8 +33,8 @@ type multiEntityClientInterface interface {
 	GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
 	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error)
-	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
-	GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error)
+	GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
+	GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 }
 
 type schemaSelectorClient struct {
@@ -164,7 +164,7 @@ func (s *schemaSelectorClient) GetFilteredTopic(ctx context.Context, nodes []str
 
 // GetSdmxObservations overrides the embedded client's GetSdmxObservations.
 // SDMX is supported in the multi-entity schema.
-func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	ctx, useMultiEntity := s.selectSchema(ctx)
 	if useMultiEntity {
 		return s.multiEntity.GetSdmxObservations(ctx, req)
@@ -174,7 +174,7 @@ func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.
 
 // GetSdmxAvailability overrides the embedded client's GetSdmxAvailability.
 // SDMX is supported in the multi-entity schema.
-func (s *schemaSelectorClient) GetSdmxAvailability(ctx context.Context, req *pb.SdmxAvailabilityQuery) (*pb.SdmxAvailabilityResult, error) {
+func (s *schemaSelectorClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	ctx, useMultiEntity := s.selectSchema(ctx)
 	if useMultiEntity {
 		return s.multiEntity.GetSdmxAvailability(ctx, req)

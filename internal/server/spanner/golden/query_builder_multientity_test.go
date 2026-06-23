@@ -19,7 +19,7 @@ import (
 	"strings"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -152,7 +152,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 
 func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	// Case 1: Valid alphanumeric keys
-	constraints := map[string]*pb.ConstraintList{
+	constraints := map[string]*sdmxpb.ConstraintList{
 		"variableMeasured":  {Values: []string{"var1"}},
 		"observationAbout":  {Values: []string{"wikidataId/Q119158"}},
 		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
@@ -164,7 +164,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}
 
 	// Case 2: Invalid key containing SQL injection payload
-	badConstraints1 := map[string]*pb.ConstraintList{
+	badConstraints1 := map[string]*sdmxpb.ConstraintList{
 		"variableMeasured": {Values: []string{"var1"}},
 		"unit') OR 1=1 --": {Values: []string{"Percent"}},
 	}
@@ -174,7 +174,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}
 
 	// Case 3: Invalid key containing spaces
-	badConstraints2 := map[string]*pb.ConstraintList{
+	badConstraints2 := map[string]*sdmxpb.ConstraintList{
 		"variableMeasured": {Values: []string{"var1"}},
 		"invalid key":      {Values: []string{"value"}},
 	}
@@ -228,9 +228,9 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, filteredTopicStmt.SQL, "CustomTsTable", "CustomEntity2Index", "CustomEntity3Index")
 
-	availabilityStmt, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+	availabilityStmt, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*pb.ConstraintList{
+		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 		},
 	}, stmts)
@@ -312,7 +312,7 @@ func TestMultiEntityQueryBuildersRejectNilStatements(t *testing.T) {
 			name: "GetMultiEntitySdmxObservationsQuery",
 			call: func() error {
 				_, err := spanner.GetMultiEntitySdmxObservationsQuery(
-					map[string]*pb.ConstraintList{"variableMeasured": {Values: []string{"Count_Person"}}},
+					map[string]*sdmxpb.ConstraintList{"variableMeasured": {Values: []string{"Count_Person"}}},
 					nil,
 					nil,
 				)
@@ -322,9 +322,9 @@ func TestMultiEntityQueryBuildersRejectNilStatements(t *testing.T) {
 		{
 			name: "GetMultiEntitySdmxAvailabilityQuery",
 			call: func() error {
-				_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+				_, err := spanner.GetMultiEntitySdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
 					ComponentId: "observationAbout",
-					Constraints: map[string]*pb.ConstraintList{
+					Constraints: map[string]*sdmxpb.ConstraintList{
 						"variableMeasured": {Values: []string{"Count_Person"}},
 					},
 				}, nil)
@@ -386,9 +386,9 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 		c := c
 		t.Run(c.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, c.golden, func(ctx context.Context) (interface{}, error) {
-				return spanner.GetMultiEntitySdmxAvailabilityQuery(&pb.SdmxAvailabilityQuery{
+				return spanner.GetMultiEntitySdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
 					ComponentId: c.componentID,
-					Constraints: map[string]*pb.ConstraintList{
+					Constraints: map[string]*sdmxpb.ConstraintList{
 						"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
 					},
 				}, defaultMultiEntityStatements(t))
@@ -400,50 +400,50 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 	for _, tc := range []struct {
 		name string
-		req  *pb.SdmxAvailabilityQuery
+		req  *sdmxpb.SdmxAvailabilityQuery
 	}{
 		{
 			name: "nil request",
 		},
 		{
 			name: "missing variable measured",
-			req: &pb.SdmxAvailabilityQuery{
+			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "observationAbout",
-				Constraints: map[string]*pb.ConstraintList{},
+				Constraints: map[string]*sdmxpb.ConstraintList{},
 			},
 		},
 		{
 			name: "nil variable measured constraint",
-			req: &pb.SdmxAvailabilityQuery{
+			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "observationAbout",
-				Constraints: map[string]*pb.ConstraintList{
+				Constraints: map[string]*sdmxpb.ConstraintList{
 					"variableMeasured": nil,
 				},
 			},
 		},
 		{
 			name: "empty variable measured values",
-			req: &pb.SdmxAvailabilityQuery{
+			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "observationAbout",
-				Constraints: map[string]*pb.ConstraintList{
-					"variableMeasured": &pb.ConstraintList{},
+				Constraints: map[string]*sdmxpb.ConstraintList{
+					"variableMeasured": &sdmxpb.ConstraintList{},
 				},
 			},
 		},
 		{
 			name: "unsupported component",
-			req: &pb.SdmxAvailabilityQuery{
+			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "TIME_PERIOD",
-				Constraints: map[string]*pb.ConstraintList{
+				Constraints: map[string]*sdmxpb.ConstraintList{
 					"variableMeasured": {Values: []string{"Count_Person"}},
 				},
 			},
 		},
 		{
 			name: "unsupported constraint",
-			req: &pb.SdmxAvailabilityQuery{
+			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "observationAbout",
-				Constraints: map[string]*pb.ConstraintList{
+				Constraints: map[string]*sdmxpb.ConstraintList{
 					"variableMeasured": {Values: []string{"Count_Person"}},
 					"observationAbout": {Values: []string{"country/USA"}},
 				},
