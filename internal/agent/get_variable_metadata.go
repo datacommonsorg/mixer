@@ -42,7 +42,6 @@ var (
 	excludedSVProperties = map[string]struct{}{
 		"name":           {},
 		"description":    {},
-		"label":          {},
 		"typeOf":         {},
 		"provenance":     {},
 		"definition":     {},
@@ -111,8 +110,14 @@ func (s *Service) GetVariableMetadata(
 	if len(req.GetVariableDcids()) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "variable_dcids cannot be empty")
 	}
+	if len(req.GetVariableDcids()) > 10 {
+		return nil, status.Error(codes.InvalidArgument, "variable_dcids cannot exceed 10")
+	}
 	if len(req.GetEntityDcids()) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "entity_dcids cannot be empty")
+	}
+	if len(req.GetEntityDcids()) > 10 {
+		return nil, status.Error(codes.InvalidArgument, "entity_dcids cannot exceed 10")
 	}
 
 	varDcids := dedup(req.GetVariableDcids())

@@ -165,6 +165,24 @@ func TestGetVariableMetadata(t *testing.T) {
 			wantCode: codes.InvalidArgument,
 		},
 		{
+			desc: "Validation Failure: variable dcids exceed limit of 10",
+			req: &pbv2.GetVariableMetadataRequest{
+				VariableDcids: []string{"v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11"},
+				EntityDcids:   []string{"geoId/06"},
+			},
+			wantErr:  true,
+			wantCode: codes.InvalidArgument,
+		},
+		{
+			desc: "Validation Failure: entity dcids exceed limit of 10",
+			req: &pbv2.GetVariableMetadataRequest{
+				VariableDcids: []string{"Count_Person"},
+				EntityDcids:   []string{"e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8", "e9", "e10", "e11"},
+			},
+			wantErr:  true,
+			wantCode: codes.InvalidArgument,
+		},
+		{
 			desc: "Graceful Degradation: Fail to fetch one variable, but successfully return other",
 			req: &pbv2.GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person", "Median_Age_Person"}, // Median_Age_Person will fail graph fetch
