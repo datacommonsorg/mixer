@@ -16,7 +16,7 @@ package agent
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"sort"
 	"time"
 
@@ -35,6 +35,29 @@ const (
 	maxConcurrentFetchers = 20
 	maxVariablesLimit     = 10
 	maxEntitiesLimit      = 10
+
+	// Schema property names
+	propName                    = "name"
+	propDescription             = "description"
+	propTypeOf                  = "typeOf"
+	propProvenance              = "provenance"
+	propDefinition              = "definition"
+	propMemberOf                = "memberOf"
+	propLinkedMemberOf          = "linkedMemberOf"
+	propLinkedMember            = "linkedMember"
+	propUrl                     = "url"
+	propLicense                 = "license"
+	propLicenseType             = "licenseType"
+	propLastDataRefreshDate     = "lastDataRefreshDate"
+	propNextDataRefreshDate     = "nextDataRefreshDate"
+	propNextSourceReleaseDate   = "nextSourceReleaseDate"
+	propSourceReleaseFrequency  = "sourceReleaseFrequency"
+	propLatestObservationDate   = "latestObservationDate"
+	propEarliestObservationDate = "earliestObservationDate"
+	propIsPartOf                = "isPartOf"
+	propSource                  = "source"
+	propDomain                  = "domain"
+	propDescriptionUrl          = "descriptionUrl"
 )
 
 var (
@@ -42,33 +65,33 @@ var (
 
 	// properties to exclude from Statistical Variable properties Struct
 	excludedSVProperties = map[string]struct{}{
-		"name":           {},
-		"description":    {},
-		"typeOf":         {},
-		"provenance":     {},
-		"definition":     {},
-		"memberOf":       {},
-		"linkedMemberOf": {},
-		"linkedMember":   {},
+		propName:           {},
+		propDescription:    {},
+		propTypeOf:         {},
+		propProvenance:     {},
+		propDefinition:     {},
+		propMemberOf:       {},
+		propLinkedMemberOf: {},
+		propLinkedMember:   {},
 	}
 
 	// properties to explicitly include for Provenance and Source dataset properties Struct.
 	// These must be the exact raw property keys returned from the knowledge graph (V2Node).
 	includedDatasetProperties = map[string]struct{}{
-		"url":                     {},
-		"license":                 {},
-		"licenseType":             {},
-		"lastDataRefreshDate":     {},
-		"nextDataRefreshDate":     {},
-		"nextSourceReleaseDate":   {},
-		"sourceReleaseFrequency":  {},
-		"latestObservationDate":   {},
-		"earliestObservationDate": {},
-		"isPartOf":                {},
-		"source":                  {},
-		"domain":                  {},
-		"description":             {},
-		"descriptionUrl":          {},
+		propUrl:                     {},
+		propLicense:                 {},
+		propLicenseType:             {},
+		propLastDataRefreshDate:     {},
+		propNextDataRefreshDate:     {},
+		propNextSourceReleaseDate:   {},
+		propSourceReleaseFrequency:  {},
+		propLatestObservationDate:   {},
+		propEarliestObservationDate: {},
+		propIsPartOf:                {},
+		propSource:                  {},
+		propDomain:                  {},
+		propDescription:             {},
+		propDescriptionUrl:          {},
 	}
 )
 
@@ -172,7 +195,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 		g.Go(func() error {
 			graph, err := s.fetchNodeGraph(gCtx, dcid)
 			if err != nil {
-				log.Printf("Warning: failed to fetch node graph for variable %s: %v", dcid, err)
+				slog.Warn("Failed to fetch node graph", "variable", dcid, "err", err)
 				return nil // Graceful degradation: do not fail the errgroup
 			}
 			properties[idx] = graph // Safe: write to unique index
@@ -184,7 +207,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 			req := &pbv1.BulkVariableInfoRequest{Nodes: []string{dcid}}
 			resp, err := s.mixer.V2BulkVariableInfo(gCtx, req)
 			if err != nil {
-				log.Printf("Warning: failed to fetch bulk variable info for %s: %v", dcid, err)
+				slog.Warn("Failed to fetch bulk variable info", "variable", dcid, "err", err)
 				return nil // Graceful degradation
 			}
 			if resp != nil && resp.GetData() != nil {
@@ -254,7 +277,7 @@ func (s *Service) fetchRawProvenances(ctx context.Context, raw *rawFetchResult) 
 		g.Go(func() error {
 			dataset, err := s.fetchDatasetGraphs(gCtx, provDcid)
 			if err != nil {
-				log.Printf("Warning: failed to fetch dataset graphs for provenance %s: %v", provDcid, err)
+				slog.Warn("Failed to fetch dataset graphs", "provenance", provDcid, "err", err)
 				return nil // Graceful degradation: do not fail the entire request
 			}
 			// Safe: lock-free direct pointer writes!
@@ -325,7 +348,7 @@ func extractSourceDcid(graph *pbv2.LinkedGraph) string {
 	if graph == nil || graph.GetArcs() == nil {
 		return ""
 	}
-	if srcArc, ok := graph.GetArcs()["source"]; ok && srcArc != nil {
+	if srcArc, ok := graph.GetArcs()[propSource]; ok && srcArc != nil {
 		for _, n := range srcArc.GetNodes() {
 			if n != nil && n.GetDcid() != "" {
 				return n.GetDcid()
@@ -392,18 +415,13 @@ func translateProperties(graph *pbv2.LinkedGraph) *translatedProperties {
 		return tp
 	}
 
-	// 1. Resolve root Name (primary name or label)
-	if nameArc, ok := graph.GetArcs()["name"]; ok && nameArc != nil {
+	// 1. Resolve root Name (primary name)
+	if nameArc, ok := graph.GetArcs()[propName]; ok && nameArc != nil {
 		tp.name = resolveFirstValue(nameArc.GetNodes())
-	}
-	if tp.name == "" {
-		if labelArc, ok := graph.GetArcs()["label"]; ok && labelArc != nil {
-			tp.name = resolveFirstValue(labelArc.GetNodes())
-		}
 	}
 
 	// 2. Resolve root Description
-	if descArc, ok := graph.GetArcs()["description"]; ok && descArc != nil {
+	if descArc, ok := graph.GetArcs()[propDescription]; ok && descArc != nil {
 		tp.description = resolveFirstValue(descArc.GetNodes())
 	}
 
