@@ -39,9 +39,8 @@ type mockMixerServer struct {
 
 	// obsMockData maps a place DCID string to the slice of variable DCIDs
 	// that have active observation series data available for that place.
-	obsMockData     map[string][]string
+	obsMockData map[string][]string
 }
-
 
 // V2Resolve dynamically maps input query nodes to candidates from its resolveMockData map.
 func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
@@ -144,8 +143,8 @@ func TestSearchIndicators_Basic(t *testing.T) {
 	}
 
 	for _, tc := range []struct {
-		desc            string
-		request         *pbv2.SearchIndicatorsRequest
+		desc    string
+		request *pbv2.SearchIndicatorsRequest
 
 		// resolveMockData maps a search query node string (or place description like "World")
 		// to its pre-populated list of resolved KG entity candidates.
@@ -153,10 +152,10 @@ func TestSearchIndicators_Basic(t *testing.T) {
 
 		// obsMockData maps a place DCID string to the slice of variable DCIDs
 		// that have active observation series data available for that place.
-		obsMockData     map[string][]string
+		obsMockData map[string][]string
 
-		wantResponse    *pbv2.SearchIndicatorsResponse
-		expectedError   string
+		wantResponse  *pbv2.SearchIndicatorsResponse
+		expectedError string
 	}{
 		{
 			desc: "Basic indicator search without place constraints",
@@ -194,9 +193,9 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
 					{
-						Dcid:                 "topic/Health",
-						Description:          "Health",
-						MemberVariables:      []string{"Count_Person_WithAsthma"},
+						Dcid:                  "topic/Health",
+						Description:           "Health",
+						MemberVariables:       []string{"Count_Person_WithAsthma"},
 						AlternateDescriptions: []string{"Health"},
 					},
 				},
@@ -253,11 +252,11 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
 					{
-						Dcid:                 "topic/RootHealth",
-						Description:          "Global Health Topic",
-						MemberVariables:      []string{"Count_Person"},
+						Dcid:                  "topic/RootHealth",
+						Description:           "Global Health Topic",
+						MemberVariables:       []string{"Count_Person"},
 						AlternateDescriptions: []string{"Global Health Topic"},
-						PlacesWithData:       []string{"Earth"},
+						PlacesWithData:        []string{"Earth"},
 					},
 				},
 			},
@@ -350,10 +349,10 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
 					{
-						Dcid:                 "topic/Health",
-						Description:          "Health",
-						MemberTopics:         []string{"topic/HealthSubTopic"},
-						MemberVariables:      []string{"Count_Person_WithDiabetes"},
+						Dcid:                  "topic/Health",
+						Description:           "Health",
+						MemberTopics:          []string{"topic/HealthSubTopic"},
+						MemberVariables:       []string{"Count_Person_WithDiabetes"},
 						AlternateDescriptions: []string{"Health"},
 					},
 				},
