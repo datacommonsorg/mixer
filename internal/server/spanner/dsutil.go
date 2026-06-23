@@ -810,7 +810,7 @@ func processSvgId(svg string) []string {
 
 // isCuratedHierarchy checks if the SVG is part of a curated hierarchy, which have different naming conventions that do not follow the standard specialization pattern.
 func isCuratedHierarchy(svg string) bool {
-	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
+	return !strings.HasPrefix(svg, "dc/") || strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
 }
 
 // getSpecializedEntity returns the specialized entity for a child SVG given its parent SVG.
