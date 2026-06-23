@@ -25,14 +25,14 @@ import (
 func dataQueryFromREST(request *restv2.DataRequest) (*pb.SdmxDataQuery, error) {
 	constraints := map[string]*pb.ConstraintList{}
 	for componentID, values := range request.Constraints {
-		constraintID, err := restv2.InternalConstraintComponentID(componentID)
+		internalComponentID, err := restv2.InternalDataFilterComponentID(componentID)
 		if err != nil {
 			return nil, err
 		}
-		if _, exists := constraints[constraintID]; exists {
-			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", constraintID)
+		if _, exists := constraints[internalComponentID]; exists {
+			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", internalComponentID)
 		}
-		constraints[constraintID] = &pb.ConstraintList{Values: values}
+		constraints[internalComponentID] = &pb.ConstraintList{Values: values}
 	}
 	return &pb.SdmxDataQuery{Constraints: constraints}, nil
 }
@@ -44,14 +44,14 @@ func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*pb.SdmxAva
 	}
 	constraints := map[string]*pb.ConstraintList{}
 	for filterID, values := range request.Constraints {
-		constraintID, err := restv2.InternalAvailabilityConstraintComponentID(filterID)
+		internalComponentID, err := restv2.InternalAvailabilityFilterComponentID(filterID)
 		if err != nil {
 			return nil, err
 		}
-		if _, exists := constraints[constraintID]; exists {
-			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", constraintID)
+		if _, exists := constraints[internalComponentID]; exists {
+			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", internalComponentID)
 		}
-		constraints[constraintID] = &pb.ConstraintList{Values: values}
+		constraints[internalComponentID] = &pb.ConstraintList{Values: values}
 	}
 	return &pb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
 }

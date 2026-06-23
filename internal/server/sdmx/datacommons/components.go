@@ -21,12 +21,22 @@ const (
 	ComponentKindMeasure   ComponentKind = "measure"
 	ComponentKindAttribute ComponentKind = "attribute"
 
+	ComponentVariableMeasured  = "variableMeasured"
+	ComponentTimePeriod        = "TIME_PERIOD"
 	ComponentObservationAbout  = "observationAbout"
+	ComponentObservationValue  = "OBS_VALUE"
 	ComponentUnit              = "unit"
 	ComponentMeasurementMethod = "measurementMethod"
 	ComponentObservationPeriod = "observationPeriod"
 	ComponentProvenance        = "provenance"
 	ComponentScalingFactor     = "scalingFactor"
+
+	// InternalObservationDate is the dispatcher/query field mapped from SDMX TIME_PERIOD.
+	// It is not an SDMX wire component ID.
+	InternalObservationDate = "observationDate"
+
+	// FallbackNotAvailable is used across datasets to represent missing constraints.
+	FallbackNotAvailable = "NotApplicable"
 )
 
 type DataComponent struct {
@@ -34,15 +44,27 @@ type DataComponent struct {
 	Kind ComponentKind
 }
 
-// DataCSVComponents is the source of truth for Data API CSV column order and component meaning.
-var DataCSVComponents = []DataComponent{
-	{ID: DimVariableMeasured, Kind: ComponentKindDimension},
+// DataComponents is Data Commons observation dataflow component metadata.
+// The order is used by SDMX-CSV formatting.
+var DataComponents = []DataComponent{
+	{ID: ComponentVariableMeasured, Kind: ComponentKindDimension},
 	{ID: ComponentObservationAbout, Kind: ComponentKindDimension},
 	{ID: ComponentUnit, Kind: ComponentKindDimension},
 	{ID: ComponentMeasurementMethod, Kind: ComponentKindDimension},
 	{ID: ComponentObservationPeriod, Kind: ComponentKindDimension},
 	{ID: ComponentProvenance, Kind: ComponentKindDimension},
-	{ID: DimObservationDate, Kind: ComponentKindDimension},
-	{ID: DimObservationValue, Kind: ComponentKindMeasure},
+	{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
+	{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
+}
+
+func InternalDataComponentID(componentID string) (string, bool) {
+	switch componentID {
+	case ComponentVariableMeasured, ComponentObservationAbout:
+		return componentID, true
+	case ComponentTimePeriod:
+		return InternalObservationDate, true
+	default:
+		return "", false
+	}
 }

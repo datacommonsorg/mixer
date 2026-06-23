@@ -24,10 +24,10 @@ import (
 )
 
 const (
-	dimVariableMeasured = datacommons.DimVariableMeasured
-	dimObservationDate  = datacommons.DimObservationDate
-	dimObservationValue = datacommons.DimObservationValue
-	dimProvenance       = "provenance"
+	dimVariableMeasured = datacommons.ComponentVariableMeasured
+	dimObservationDate  = datacommons.ComponentTimePeriod
+	dimObservationValue = datacommons.ComponentObservationValue
+	dimProvenance       = datacommons.ComponentProvenance
 
 	jsonStatVersion   = "2.0"
 	jsonStatClass     = "dataset"

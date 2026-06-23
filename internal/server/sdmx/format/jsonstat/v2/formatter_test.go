@@ -184,8 +184,8 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	}
 
 	dimensions := got["dimension"].(map[string]interface{})
-	if _, ok := dimensions[datacommons.DimObservationDate]; !ok {
-		t.Fatalf("Missing %q dimension in output", datacommons.DimObservationDate)
+	if _, ok := dimensions[datacommons.ComponentTimePeriod]; !ok {
+		t.Fatalf("Missing %q dimension in output", datacommons.ComponentTimePeriod)
 	}
 	if _, ok := dimensions["observationDate"]; ok {
 		t.Fatal("Output should not include legacy observationDate dimension")
@@ -193,8 +193,8 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 	if _, ok := got["value"]; !ok {
 		t.Fatal("JSON-stat output should keep top-level value field")
 	}
-	if _, ok := got[datacommons.DimObservationValue]; ok {
-		t.Fatalf("JSON-stat output should not rename top-level value field to %q", datacommons.DimObservationValue)
+	if _, ok := got[datacommons.ComponentObservationValue]; ok {
+		t.Fatalf("JSON-stat output should not rename top-level value field to %q", datacommons.ComponentObservationValue)
 	}
 
 	gender := dimensions["gender"].(map[string]interface{})
@@ -206,8 +206,8 @@ func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
 
 	extension := got["extension"].(map[string]interface{})
 	measures := extension["measures"].(map[string]interface{})
-	if _, ok := measures[datacommons.DimObservationValue]; !ok {
-		t.Fatalf("Missing %q measure metadata in extension", datacommons.DimObservationValue)
+	if _, ok := measures[datacommons.ComponentObservationValue]; !ok {
+		t.Fatalf("Missing %q measure metadata in extension", datacommons.ComponentObservationValue)
 	}
 }
 

@@ -71,7 +71,7 @@ func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDa
 		f.StructureID,
 		csvActionInformation,
 	}
-	for _, component := range datacommons.DataCSVComponents {
+	for _, component := range datacommons.DataComponents {
 		row = append(row, dataCSVComponentValue(component, observation, dateValue))
 	}
 	return row
@@ -79,7 +79,7 @@ func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDa
 
 func dataCSVHeader() []string {
 	header := []string{"STRUCTURE", "STRUCTURE_ID", "ACTION"}
-	for _, component := range datacommons.DataCSVComponents {
+	for _, component := range datacommons.DataComponents {
 		header = append(header, component.ID)
 	}
 	return header
@@ -95,7 +95,7 @@ func dataCSVComponentValue(component datacommons.DataComponent, observation *pb.
 
 func dataCSVRawComponentValue(componentID string, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
 	switch componentID {
-	case datacommons.DimVariableMeasured:
+	case datacommons.ComponentVariableMeasured:
 		return observation.GetVariableMeasured()
 	case datacommons.ComponentObservationAbout:
 		return observation.GetDimensions()[datacommons.ComponentObservationAbout]
@@ -107,12 +107,12 @@ func dataCSVRawComponentValue(componentID string, observation *pb.SdmxObservatio
 		return observation.GetAttributes()[datacommons.ComponentObservationPeriod]
 	case datacommons.ComponentProvenance:
 		return observation.GetProvenance()
-	case datacommons.DimObservationDate:
+	case datacommons.ComponentTimePeriod:
 		if dateValue == nil {
 			return ""
 		}
 		return dateValue.GetDate()
-	case datacommons.DimObservationValue:
+	case datacommons.ComponentObservationValue:
 		if dateValue == nil {
 			return ""
 		}

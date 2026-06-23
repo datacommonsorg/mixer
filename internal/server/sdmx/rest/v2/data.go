@@ -28,6 +28,11 @@ type DataRequest struct {
 	Format      string
 }
 
+const (
+	dataFormatJSONStat = "json-stat"
+	dataFormatCSV      = "csv"
+)
+
 func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 	parsedURI, err := url.ParseRequestURI(originalURI)
 	if err != nil {
@@ -78,9 +83,9 @@ func DataResponseFormatFromDataRequest(request *DataRequest, accept []string) (D
 	switch request.Format {
 	case "":
 		return DataResponseFormatFromAccept(accept)
-	case "json-stat":
+	case dataFormatJSONStat:
 		return DataResponseFormatJSONStat, nil
-	case "csv":
+	case dataFormatCSV:
 		return DataResponseFormatCSV, nil
 	default:
 		return DataResponseFormatJSONStat, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
@@ -93,7 +98,7 @@ func parseDataQueryParam(param queryParam, format string) (string, error) {
 		if format != "" {
 			return "", status.Error(codes.InvalidArgument, "duplicate SDMX format query parameter")
 		}
-		if param.Value != "json-stat" && param.Value != "csv" {
+		if param.Value != dataFormatJSONStat && param.Value != dataFormatCSV {
 			return "", status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", param.Value)
 		}
 		return param.Value, nil

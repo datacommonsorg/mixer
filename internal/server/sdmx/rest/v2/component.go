@@ -22,13 +22,6 @@ import (
 
 const (
 	dataContextDataflow = "dataflow"
-
-	ComponentVariableMeasured = "variableMeasured"
-	ComponentObservationAbout = "observationAbout"
-	ComponentTimePeriod       = "TIME_PERIOD"
-	ComponentObservationValue = "OBS_VALUE"
-
-	internalObservationDate = "observationDate"
 )
 
 func validateDataRequest(path ResourcePath, constraints map[string][]string) error {
@@ -47,10 +40,10 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
 	}
-	if _, ok := constraints[ComponentVariableMeasured]; !ok {
+	if _, ok := constraints[datacommons.ComponentVariableMeasured]; !ok {
 		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
 	}
-	if _, ok := constraints[ComponentObservationAbout]; !ok {
+	if _, ok := constraints[datacommons.ComponentObservationAbout]; !ok {
 		return status.Error(codes.InvalidArgument, "missing required SDMX component filter observationAbout")
 	}
 	return nil
@@ -71,11 +64,11 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	}
 
 	for componentID := range constraints {
-		if componentID != ComponentVariableMeasured {
+		if componentID != datacommons.ComponentVariableMeasured {
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
 	}
-	if _, ok := constraints[ComponentVariableMeasured]; !ok {
+	if _, ok := constraints[datacommons.ComponentVariableMeasured]; !ok {
 		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
 	}
 	return nil
@@ -83,7 +76,7 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 
 func isAllowedDataComponent(componentID string) bool {
 	switch componentID {
-	case ComponentVariableMeasured, ComponentObservationAbout, ComponentTimePeriod:
+	case datacommons.ComponentVariableMeasured, datacommons.ComponentObservationAbout, datacommons.ComponentTimePeriod:
 		return true
 	default:
 		return false
@@ -91,7 +84,7 @@ func isAllowedDataComponent(componentID string) bool {
 }
 
 func isAvailabilityComponent(componentID string) bool {
-	if componentID == ComponentTimePeriod {
+	if componentID == datacommons.ComponentTimePeriod {
 		return false
 	}
 	kind, ok := dataComponentKind(componentID)
@@ -99,7 +92,7 @@ func isAvailabilityComponent(componentID string) bool {
 }
 
 func dataComponentKind(componentID string) (datacommons.ComponentKind, bool) {
-	for _, component := range datacommons.DataCSVComponents {
+	for _, component := range datacommons.DataComponents {
 		if component.ID == componentID {
 			return component.Kind, true
 		}
@@ -107,17 +100,15 @@ func dataComponentKind(componentID string) (datacommons.ComponentKind, bool) {
 	return "", false
 }
 
-func InternalConstraintComponentID(componentID string) (string, error) {
-	switch componentID {
-	case ComponentVariableMeasured, ComponentObservationAbout:
-		return componentID, nil
-	case ComponentTimePeriod:
-		return internalObservationDate, nil
-	case ComponentObservationValue:
-		return "", status.Error(codes.Unimplemented, "SDMX observation value filters are not implemented yet")
-	default:
-		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
+func InternalDataFilterComponentID(componentID string) (string, error) {
+	internalID, ok := datacommons.InternalDataComponentID(componentID)
+	if ok {
+		return internalID, nil
 	}
+	if componentID == datacommons.ComponentObservationValue {
+		return "", status.Error(codes.Unimplemented, "SDMX observation value filters are not implemented yet")
+	}
+	return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 }
 
 func InternalAvailabilityComponentID(componentID string) (string, error) {
@@ -127,8 +118,8 @@ func InternalAvailabilityComponentID(componentID string) (string, error) {
 	return componentID, nil
 }
 
-func InternalAvailabilityConstraintComponentID(componentID string) (string, error) {
-	if componentID != ComponentVariableMeasured {
+func InternalAvailabilityFilterComponentID(componentID string) (string, error) {
+	if componentID != datacommons.ComponentVariableMeasured {
 		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 	}
 	return componentID, nil

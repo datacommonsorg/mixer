@@ -34,6 +34,8 @@ type AvailabilityPath struct {
 	ComponentID string
 }
 
+const pathKeyWildcard = "*"
+
 func parseResourcePath(tail string) (ResourcePath, error) {
 	tail = strings.Trim(tail, "/")
 	if tail == "" {
@@ -49,7 +51,7 @@ func parseResourcePath(tail string) (ResourcePath, error) {
 			return ResourcePath{}, status.Error(codes.InvalidArgument, "invalid SDMX data path")
 		}
 	}
-	if parts[4] != "*" {
+	if parts[4] != pathKeyWildcard {
 		return ResourcePath{}, status.Error(codes.Unimplemented, "SDMX data keys other than * are not implemented yet")
 	}
 	return ResourcePath{
@@ -76,7 +78,7 @@ func parseAvailabilityPath(tail string) (AvailabilityPath, error) {
 			return AvailabilityPath{}, status.Error(codes.InvalidArgument, "invalid SDMX availability path")
 		}
 	}
-	if parts[4] != "*" {
+	if parts[4] != pathKeyWildcard {
 		return AvailabilityPath{}, status.Error(codes.Unimplemented, "SDMX availability keys other than * are not implemented yet")
 	}
 	return AvailabilityPath{
