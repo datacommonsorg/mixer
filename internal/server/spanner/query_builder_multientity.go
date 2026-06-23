@@ -26,13 +26,24 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 )
 
-// GetMultiEntityObservationsQuery builds the observation lookup query with optional date filter.
-func GetMultiEntityObservationsQuery(variables []string, entities []string, date string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityObservationsQuery", stmts); err != nil {
+type multiEntityQueryBuilder struct {
+	statements *MultiEntityStatements
+}
+
+// NewMultiEntityQueryBuilder builds a query builder using table-config-specific SQL templates.
+func NewMultiEntityQueryBuilder(cfg TableConfig) (*multiEntityQueryBuilder, error) {
+	stmts, err := NewMultiEntityStatements(cfg)
+	if err != nil {
 		return nil, err
 	}
+	return &multiEntityQueryBuilder{statements: stmts}, nil
+}
+
+// GetObservationsQuery builds the observation lookup query with optional date filter.
+func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entities []string, date string) (*spanner.Statement, error) {
+	stmts := b.statements
 	if len(entities) == 0 {
-		return nil, fmt.Errorf("GetMultiEntityObservationsQuery: entities must be specified")
+		return nil, fmt.Errorf("GetObservationsQuery: entities must be specified")
 	}
 
 	var sql string
@@ -69,20 +80,11 @@ func GetMultiEntityObservationsQuery(variables []string, entities []string, date
 	}, nil
 }
 
-func validateMultiEntityStatements(caller string, stmts *MultiEntityStatements) error {
-	if stmts == nil {
-		return fmt.Errorf("%s: stmts cannot be nil", caller)
-	}
-	return nil
-}
-
-// GetMultiEntityStatVarsByEntityQuery builds the variable existence query across entity slots.
-func GetMultiEntityStatVarsByEntityQuery(variables []string, entities []string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityStatVarsByEntityQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetStatVarsByEntityQuery builds the variable existence query across entity slots.
+func (b *multiEntityQueryBuilder) GetStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
+	stmts := b.statements
 	if len(variables) == 0 && len(entities) == 0 {
-		return nil, fmt.Errorf("GetMultiEntityStatVarsByEntityQuery: must be called with at least one variable or entity")
+		return nil, fmt.Errorf("GetStatVarsByEntityQuery: must be called with at least one variable or entity")
 	}
 
 	var sql string
@@ -107,11 +109,9 @@ func GetMultiEntityStatVarsByEntityQuery(variables []string, entities []string, 
 	}, nil
 }
 
-// GetMultiEntityGroupPlaceExistenceQuery returns a query to check SVG/topic existence for places across entity slots.
-func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityGroupPlaceExistenceQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetGroupPlaceExistenceQuery returns a query to check SVG/topic existence for places across entity slots.
+func (b *multiEntityQueryBuilder) GetGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string) (*spanner.Statement, error) {
+	stmts := b.statements
 	return &spanner.Statement{
 		SQL: stmts.checkGroupPlaceExistence,
 		Params: map[string]interface{}{
@@ -122,16 +122,14 @@ func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []
 	}, nil
 }
 
-// GetMultiEntityObservationsContainedInPlaceQuery builds the observation containment lookup query with optional date filter.
-func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityObservationsContainedInPlaceQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetObservationsContainedInPlaceQuery builds the observation containment lookup query with optional date filter.
+func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string) (*spanner.Statement, error) {
+	stmts := b.statements
 	if len(variables) == 0 {
-		return nil, fmt.Errorf("GetMultiEntityObservationsContainedInPlaceQuery: variables must be specified")
+		return nil, fmt.Errorf("GetObservationsContainedInPlaceQuery: variables must be specified")
 	}
 	if containedInPlace == nil {
-		return nil, fmt.Errorf("GetMultiEntityObservationsContainedInPlaceQuery: containedInPlace must be specified")
+		return nil, fmt.Errorf("GetObservationsContainedInPlaceQuery: containedInPlace must be specified")
 	}
 
 	params := map[string]interface{}{
@@ -157,11 +155,9 @@ func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, contain
 	}, nil
 }
 
-// GetMultiEntityStatVarGroupNodeQuery returns a query to get StatVarGroupNode info from the multi-entity schema.
-func GetMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityStatVarGroupNodeQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetStatVarGroupNodeQuery returns a query to get StatVarGroupNode info from the multi-entity schema.
+func (b *multiEntityQueryBuilder) GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) (*spanner.Statement, error) {
+	stmts := b.statements
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
 	selfFilter := "SELECT\n" +
@@ -255,11 +251,9 @@ func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *MultiEntity
 	)
 }
 
-// GetMultiEntityFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
-func GetMultiEntityFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityFilteredSVGChildrenQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
+func (b *multiEntityQueryBuilder) GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool) (*spanner.Statement, error) {
+	stmts := b.statements
 	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
 	subquery.Params["node"] = node
 
@@ -281,11 +275,9 @@ func GetMultiEntityFilteredSVGChildrenQuery(template string, node string, constr
 	}, nil
 }
 
-// GetMultiEntityFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
-func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *MultiEntityStatements) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntityFilteredTopicChildrenQuery", stmts); err != nil {
-		return nil, err
-	}
+// GetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
+func (b *multiEntityQueryBuilder) GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int) (*spanner.Statement, error) {
+	stmts := b.statements
 	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
 
 	nodeFilter, nodeVal := getParamStatement("node", nodes)
@@ -308,22 +300,19 @@ var kgPredicateToSpannerColumn = map[string]string{
 
 var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 
-// GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
-func GetMultiEntitySdmxObservationsQuery(
+// GetSdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
+func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.ConstraintList,
 	entityMappings map[string]map[string]string,
-	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntitySdmxObservationsQuery", stmts); err != nil {
-		return nil, err
-	}
+	stmts := b.statements
 	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
 	for reqKey, list := range constraints {
 		if !constraintKeyRegex.MatchString(reqKey) {
-			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: invalid constraint key %q", reqKey)
+			return nil, fmt.Errorf("GetSdmxObservationsQuery: invalid constraint key %q", reqKey)
 		}
 		if list == nil {
-			return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: nil constraint list for key %q", reqKey)
+			return nil, fmt.Errorf("GetSdmxObservationsQuery: nil constraint list for key %q", reqKey)
 		}
 	}
 
@@ -332,7 +321,7 @@ func GetMultiEntitySdmxObservationsQuery(
 		variables = list.Values
 	}
 	if len(variables) == 0 {
-		return nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: variableMeasured must be specified")
+		return nil, fmt.Errorf("GetSdmxObservationsQuery: variableMeasured must be specified")
 	}
 
 	sqlSelect := stmts.getSdmxObs
@@ -384,33 +373,30 @@ func GetMultiEntitySdmxObservationsQuery(
 	}, nil
 }
 
-// GetMultiEntitySdmxAvailabilityQuery builds the first SDMX availability lookup.
-func GetMultiEntitySdmxAvailabilityQuery(
+// GetSdmxAvailabilityQuery builds the first SDMX availability lookup.
+func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	req *sdmxpb.SdmxAvailabilityQuery,
-	stmts *MultiEntityStatements,
 ) (*spanner.Statement, error) {
-	if err := validateMultiEntityStatements("GetMultiEntitySdmxAvailabilityQuery", stmts); err != nil {
-		return nil, err
-	}
+	stmts := b.statements
 	if req == nil {
-		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request cannot be nil")
+		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: request cannot be nil")
 	}
 	valueExpr, err := sdmxAvailabilityValueExpression(req.ComponentId)
 	if err != nil {
 		return nil, err
 	}
 	if req.Constraints == nil {
-		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: request constraints cannot be nil")
+		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: request constraints cannot be nil")
 	}
 
 	for key := range req.Constraints {
 		if key != "variableMeasured" {
-			return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported constraint key %q", key)
+			return nil, fmt.Errorf("GetSdmxAvailabilityQuery: unsupported constraint key %q", key)
 		}
 	}
 	list, ok := req.Constraints["variableMeasured"]
 	if !ok || list == nil || len(list.GetValues()) == 0 {
-		return nil, fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: variableMeasured must be specified")
+		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: variableMeasured must be specified")
 	}
 	variables := list.GetValues()
 
@@ -427,7 +413,7 @@ func sdmxAvailabilityValueExpression(componentID string) (string, error) {
 	default:
 		col := kgPredicateToSpannerColumn[componentID]
 		if col == "" {
-			return "", fmt.Errorf("GetMultiEntitySdmxAvailabilityQuery: unsupported component %q", componentID)
+			return "", fmt.Errorf("GetSdmxAvailabilityQuery: unsupported component %q", componentID)
 		}
 		return "t." + col, nil
 	}
