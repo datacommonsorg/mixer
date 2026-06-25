@@ -351,11 +351,22 @@ spec:
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
+          {{- $espResources := $group.espResources | default dict }}
+          {{- $espGlobalResources := dict }}
+          {{- if $.Values.esp }}
+            {{- $espGlobalResources = $.Values.esp.resources | default dict }}
+          {{- end }}
           resources:
             limits:
-              memory: "300M"
+              memory: {{ $espResources.memoryLimit | default $espGlobalResources.memoryLimit | default "300M" | quote }}
+              {{- if or $espResources.cpuLimit $espGlobalResources.cpuLimit }}
+              cpu: {{ $espResources.cpuLimit | default $espGlobalResources.cpuLimit | quote }}
+              {{- end }}
             requests:
-              memory: "300M"
+              memory: {{ $espResources.memoryRequest | default $espGlobalResources.memoryRequest | default "300M" | quote }}
+              {{- if or $espResources.cpuRequest $espGlobalResources.cpuRequest }}
+              cpu: {{ $espResources.cpuRequest | default $espGlobalResources.cpuRequest | quote }}
+              {{- end }}
           volumeMounts:
             - mountPath: /etc/espv2_config
               name: service-config-volume
