@@ -352,17 +352,16 @@ spec:
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
           {{- $espResources := $group.espResources | default dict }}
-          {{- $espGlobalResources := $.Values.esp.resources | default dict }}
           resources:
             limits:
-              memory: {{ $espResources.memoryLimit | default $espGlobalResources.memoryLimit | default "300Mi" | quote }}
-              {{- if or $espResources.cpuLimit $espGlobalResources.cpuLimit }}
-              cpu: {{ $espResources.cpuLimit | default $espGlobalResources.cpuLimit | quote }}
+              memory: {{ $espResources.memoryLimit | default $.Values.esp.resources.memoryLimit | default "300Mi" | quote }}
+              {{- if or $espResources.cpuLimit $.Values.esp.resources.cpuLimit }}
+              cpu: {{ $espResources.cpuLimit | default $.Values.esp.resources.cpuLimit | quote }}
               {{- end }}
             requests:
-              memory: {{ $espResources.memoryRequest | default $espGlobalResources.memoryRequest | default "300Mi" | quote }}
-              {{- if or $espResources.cpuRequest $espGlobalResources.cpuRequest }}
-              cpu: {{ $espResources.cpuRequest | default $espGlobalResources.cpuRequest | quote }}
+              memory: {{ $espResources.memoryRequest | default $.Values.esp.resources.memoryRequest | default "300Mi" | quote }}
+              {{- if or $espResources.cpuRequest $.Values.esp.resources.cpuRequest }}
+              cpu: {{ $espResources.cpuRequest | default $.Values.esp.resources.cpuRequest | quote }}
               {{- end }}
           volumeMounts:
             - mountPath: /etc/espv2_config
