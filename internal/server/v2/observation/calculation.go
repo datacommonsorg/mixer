@@ -78,6 +78,9 @@ func MaybeCalculateHoles(
 	surface string,
 ) ([]*pbv2.ObservationResponse, error) {
 	result := []*pbv2.ObservationResponse{}
+	if !cachedata.Options().CacheSVFormula {
+		return result, nil
+	}
 	holes := FindObservationResponseHoles(inputReq, inputResp)
 	for variable, entity := range holes {
 		formulas, ok := cachedata.SVFormula(ctx)[variable]

@@ -19,10 +19,11 @@ import (
 	"fmt"
 	"log/slog"
 
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/proto"
 )
@@ -64,7 +65,8 @@ type DataSource interface {
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
-	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+	SdmxData(context.Context, *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
+	SdmxAvailability(context.Context, *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 	FilterStatVarsByEntity(context.Context, *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error)
 }
 
@@ -169,5 +171,3 @@ func NewNodeFetcher(ds DataSource) nodefetcher.NodeAllFetcher {
 		return NodeFetchAll(ctx, ds, req, defaultFetchAllPageSize)
 	})
 }
-
-

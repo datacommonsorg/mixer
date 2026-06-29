@@ -31,6 +31,7 @@ func ResolveTopics(
 	expandTopics bool,
 ) (*pbv2.ResolveResponse, error) {
 	if topicExpander == nil {
+		slog.Error("ResolveTopics: topicExpander is nil")
 		return nil, status.Errorf(codes.FailedPrecondition, "Topic resolution is not available in this environment.")
 	}
 

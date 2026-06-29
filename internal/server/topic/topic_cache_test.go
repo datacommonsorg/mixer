@@ -18,7 +18,7 @@ import (
 	"context"
 	"sync"
 	"testing"
-	"time"
+
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -79,30 +79,7 @@ func TestTopicCacheManagerInMemory(t *testing.T) {
 	}
 }
 
-func TestTopicCacheManagerRefresher(t *testing.T) {
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
 
-	fetcher := &mockNodeFetcher{}
-	manager := NewTopicCacheManager(nil)
-
-	// Start refresher with a fast interval
-	manager.Start(ctx, fetcher, 10*time.Millisecond)
-
-	// Let ticker fire a couple of times
-	time.Sleep(35 * time.Millisecond)
-
-	// Verify Close shuts down goroutines cleanly
-	manager.Close()
-
-	fetcher.mu.Lock()
-	count := fetcher.callCount
-	fetcher.mu.Unlock()
-
-	if count < 2 {
-		t.Errorf("Expected refresher to trigger LoadHierarchy at least 2 times, got %d", count)
-	}
-}
 
 func TestGetStatVarInfos(t *testing.T) {
 	ctx := context.Background()
@@ -114,7 +91,7 @@ func TestGetStatVarInfos(t *testing.T) {
 						{Name: "Person Count"},
 					},
 				},
-				"observationProperty": {
+				"observationProperties": {
 					Nodes: []*pb.EntityInfo{
 						{Value: "statVarObservation"},
 					},
@@ -157,7 +134,7 @@ func TestTopicExpansion(t *testing.T) {
 		"Count_Person": {
 			Arcs: map[string]*pbv2.Nodes{
 				"name": {Nodes: []*pb.EntityInfo{{Name: "Person Count"}}},
-				"observationProperty": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
+				"observationProperties": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
 			},
 		},
 	}

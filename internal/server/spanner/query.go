@@ -138,7 +138,7 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -235,7 +235,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Co
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
@@ -735,12 +735,12 @@ func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes [
 }
 
 // VectorSearchQuery performs vector similarity search in Spanner.
-func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
 	err := queryStructs(
 		ctx,
 		sc,
-		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypes),
+		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypes, embeddingLabel),
 		func() interface{} {
 			return &VectorSearchResult{}
 		},

@@ -1,5 +1,6 @@
-# This should only be used for DCP, do not use it for CDC
+# This is read in for DCP deployments when resolve via spanner is enabled. It is not used for CDC.
 flags:
-  UseSpannerGraph: true
-  UseStaleReads: true
-  V2DivertFraction: 1.0
+  UseMultiEntitySchema: true
+  EnableSDMXDataApi: true
+  EnableEmbeddingsResolver: false
+  EnableSpannerSearchEmbeddings: true

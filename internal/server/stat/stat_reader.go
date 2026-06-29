@@ -40,11 +40,17 @@ func toObsSeriesPb(jsonRaw []byte) (interface{}, error) {
 		ret := x.ObsTimeSeries
 		// Unify unit.
 		for _, series := range ret.SourceSeries {
+			if series == nil {
+				continue
+			}
 			if conversion, ok := convert.UnitMapping[series.Unit]; ok {
 				series.Unit = conversion.Unit
 				for date := range series.Val {
 					series.Val[date] *= conversion.Scaling
 				}
+			}
+			if series.ProvenanceId == "" && series.ImportName != "" {
+				series.ProvenanceId = "dc/base/" + series.ImportName
 			}
 		}
 		return ret, nil
@@ -76,8 +82,13 @@ func toObsSeries(jsonRaw []byte) (interface{}, error) {
 					source.Val[date] *= conversion.Scaling
 				}
 			}
+			provID := source.GetProvenanceId()
+			if provID == "" && source.GetImportName() != "" {
+				provID = "dc/base/" + source.GetImportName()
+			}
 			ret.SourceSeries[i] = &model.SourceSeries{
 				ImportName:        source.GetImportName(),
+				ProvenanceID:      provID,
 				ObservationPeriod: source.GetObservationPeriod(),
 				MeasurementMethod: source.GetMeasurementMethod(),
 				ScalingFactor:     source.GetScalingFactor(),
@@ -103,7 +114,16 @@ func toObsCollection(jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsCollection:
-		return x.ObsCollection, nil
+		ret := x.ObsCollection
+		for _, sc := range ret.SourceCohorts {
+			if sc == nil {
+				continue
+			}
+			if sc.ProvenanceId == "" && sc.ImportName != "" {
+				sc.ProvenanceId = "dc/base/" + sc.ImportName
+			}
+		}
+		return ret, nil
 	case nil:
 		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
 	default:

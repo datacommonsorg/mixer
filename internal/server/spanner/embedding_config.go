@@ -41,21 +41,23 @@ const (
 	VectorSearchAlgoANN VectorSearchAlgo = "ANN" // Approximate Nearest Neighbor, fast and default method
 )
 
-// EmbeddingType defines the task type for the embedding model (e.g., RETRIEVAL_QUERY) to generate embeddings for the term/node to resolve.
+// QueryTaskType defines the task type for the embedding model (e.g., RETRIEVAL_QUERY) to generate embeddings for the term/node to resolve.
 // Supported types can be found in this document: https://ai.google.dev/gemini-api/docs/embeddings#supported-task-types
-type EmbeddingType string
+type QueryTaskType string
 
 const (
-	EmbeddingTypeRetrievalQuery     EmbeddingType = "RETRIEVAL_QUERY"     // embedding task optimized for query to search from
-	EmbeddingTypeRetrievalDocument  EmbeddingType = "RETRIEVAL_DOCUMENT"  // embedding task optimized for document to search on
-	EmbeddingTypeSemanticSimilarity EmbeddingType = "SEMANTIC_SIMILARITY" // embedding task optimized for finding semantic
+	QueryTaskTypeRetrievalQuery     QueryTaskType = "RETRIEVAL_QUERY"     // embedding task optimized for query to search from
+	QueryTaskTypeRetrievalDocument  QueryTaskType = "RETRIEVAL_DOCUMENT"  // embedding task optimized for document to search on
+	QueryTaskTypeSemanticSimilarity QueryTaskType = "SEMANTIC_SIMILARITY" // embedding task optimized for finding semantic
 )
 
-// VectorSearchConfig holds the configuration for the parameters necessary to vector search.
-type VectorSearchConfig struct {
+// SearchConfig holds the configuration for the parameters necessary to search.
+type SearchConfig struct {
+	SearchAlgorithm  SearchMethod     `json:"search_algorithm" yaml:"search_algorithm"`
 	EmbeddingModel   string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
 	EmbeddingTable   string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
-	EmbeddingType    EmbeddingType    `json:"embedding_type" yaml:"embedding_type"`
+	QueryTaskType    QueryTaskType    `json:"query_task_type" yaml:"query_task_type"`
+	EmbeddingLabel   string           `json:"embedding_label" yaml:"embedding_label"`
 	VectorSearchAlgo VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`
 	Limit            int              `json:"limit" yaml:"limit"`
 	NumLeaves        int              `json:"num_leaves" yaml:"num_leaves"`
@@ -71,9 +73,8 @@ const (
 
 // SpannerSearchConfig holds the full configuration for Spanner search operations.
 type SpannerSearchConfig struct {
-	SearchAlgorithm    SearchMethod         `json:"search_algorithm" yaml:"search_algorithm"`
-	VectorSearchConfig VectorSearchConfig   `json:"vector_search_config" yaml:"vector_search_config"`
-	Postprocessing     []PostprocessingType `json:"postprocessing" yaml:"postprocessing"` // list of postprocessing steps to apply to search results
+	SearchConfig   SearchConfig         `json:"search_config" yaml:"search_config"`
+	Postprocessing []PostprocessingType `json:"postprocessing" yaml:"postprocessing"` // list of postprocessing steps to apply to search results
 }
 
 // GetSpannerSearchConfigPath returns the absolute path to the YAML configuration file for a given environment.

@@ -18,12 +18,14 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"maps"
 	"slices"
 	"sort"
 	"strings"
 
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -56,11 +58,11 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client                        SpannerClient
-	recogPlaceStore               *files.RecogPlaceStore
-	mapsClient                    internalmaps.MapsClient
-	searchConfig                  *SpannerSearchConfig
-	enableSpannerSearchEmbeddings bool
+	client          SpannerClient
+	recogPlaceStore *files.RecogPlaceStore
+	mapsClient      internalmaps.MapsClient
+	searchConfig    *SpannerSearchConfig
+	topicExpander   resolvev2.TopicExpander
 }
 
 const (
@@ -69,20 +71,27 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore *files.RecogPlaceStore
+	MapsClient      internalmaps.MapsClient
+	TopicExpander   resolvev2.TopicExpander
+}
+
 func NewSpannerDataSource(
 	client SpannerClient,
-	recogPlaceStore *files.RecogPlaceStore,
-	mapsClient internalmaps.MapsClient,
-	enableSpannerSearchEmbeddings bool,
+	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
 	cfg, _ := loadSpannerSearchConfig()
-	return &SpannerDataSource{
-		client:                        client,
-		recogPlaceStore:               recogPlaceStore,
-		mapsClient:                    mapsClient,
-		searchConfig:                  cfg,
-		enableSpannerSearchEmbeddings: enableSpannerSearchEmbeddings,
+	sds := &SpannerDataSource{
+		client:       client,
+		searchConfig: cfg,
 	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+		sds.topicExpander = opts.TopicExpander
+	}
+	return sds
 }
 
 // Type returns the type of the data source.
@@ -185,9 +194,57 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return nil, err
 	}
 
+	if err := sds.hydrateMissingProvenanceURLs(ctx, observations); err != nil {
+		return nil, err
+	}
+
 	observations = filterObservationsByDateAndFacet(observations, req.Date, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
+}
+
+func (sds *SpannerDataSource) hydrateMissingProvenanceURLs(ctx context.Context, observations []*Observation) error {
+	provenanceIDSet := map[string]struct{}{}
+	for _, observation := range observations {
+		if observation.ProvenanceURL == "" && observation.ProvenanceID != "" {
+			provenanceIDSet[observation.ProvenanceID] = struct{}{}
+		}
+	}
+	if len(provenanceIDSet) == 0 {
+		return nil
+	}
+
+	provenanceIDs := slices.Sorted(maps.Keys(provenanceIDSet))
+
+	nodeResp, err := datasource.NodeFetchAll(ctx, sds, &pbv2.NodeRequest{
+		Nodes:    provenanceIDs,
+		Property: "->" + predUrl,
+	}, fetchAllPageSize)
+	if err != nil {
+		return fmt.Errorf("error resolving provenance URLs: %w", err)
+	}
+
+	provenanceIDToURL := provenanceURLMapFromNodeResponse(nodeResp)
+
+	for _, observation := range observations {
+		if observation.ProvenanceURL == "" {
+			observation.ProvenanceURL = provenanceIDToURL[observation.ProvenanceID]
+		}
+	}
+	return nil
+}
+
+func provenanceURLMapFromNodeResponse(nodeResp *pbv2.NodeResponse) map[string]string {
+	provenanceIDToURL := map[string]string{}
+	for provenanceID, linkedGraph := range nodeResp.GetData() {
+		for _, node := range linkedGraph.GetArcs()[predUrl].GetNodes() {
+			if node.GetValue() != "" {
+				provenanceIDToURL[provenanceID] = node.GetValue()
+				break
+			}
+		}
+	}
+	return provenanceIDToURL
 }
 
 // fetchObservations retrieves observations from Spanner, supporting both direct entity lists and relation expressions (federated or local-only).
@@ -199,7 +256,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	if entityExpr == "" {
 		// Path 1: Direct fetch for list of entities.
 		slog.Debug("SpannerDataSource: fetching observations for direct entity list", "count", len(entities))
-		return sds.client.GetObservations(ctx, variables, entities)
+		return sds.client.GetObservations(ctx, variables, entities, req.Date)
 	}
 
 	containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
@@ -213,7 +270,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	if !ok {
 		// Path 2: Local-only execution using one-shot containment query.
 		slog.Debug("Spanner.Observation: no expanded entities found in context, using one-shot containment query")
-		return sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+		return sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace, req.Date)
 	}
 
 	// Path 3: We have pre-expanded entities from the context (e.g., from a remote source).
@@ -229,7 +286,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	}
 
 	slog.Debug("Spanner.Observation: fetching observations for merged entities", "count", len(mergedDcids))
-	return sds.client.GetObservations(ctx, variables, mergedDcids)
+	return sds.client.GetObservations(ctx, variables, mergedDcids, req.Date)
 }
 
 // handleExistenceRequest handles existence-only requests for observations.
@@ -430,12 +487,17 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		if !sds.enableSpannerSearchEmbeddings {
-			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
-			return &pbv2.ResolveResponse{}, nil
-		}
 		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	}
+
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
+		if sds.topicExpander == nil {
+			slog.Error("SpannerDataSource: topic expander is not initialized")
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized in SpannerDataSource")
+		}
+		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()))
+		return resolvev2.ResolveTopics(ctx, sds.topicExpander, req.GetNodes(), req.GetExpandTopics())
 	}
 
 	switch normalizedResolveRequest.InProp {
@@ -496,9 +558,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 1. Get term embedding
 			embeddings, err := sds.client.GetTermEmbeddingQuery(
 				errCtx,
-				cfg.VectorSearchConfig.EmbeddingModel,
+				cfg.SearchConfig.EmbeddingModel,
 				node,
-				string(cfg.VectorSearchConfig.EmbeddingType),
+				string(cfg.SearchConfig.QueryTaskType),
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
@@ -511,12 +573,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 2. Vector search
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
-				cfg.VectorSearchConfig.EmbeddingTable,
-				cfg.VectorSearchConfig.Limit,
+				cfg.SearchConfig.EmbeddingTable,
+				cfg.SearchConfig.Limit,
 				embeddings,
-				cfg.VectorSearchConfig.NumLeaves,
-				cfg.VectorSearchConfig.Threshold,
+				cfg.SearchConfig.NumLeaves,
+				cfg.SearchConfig.Threshold,
 				typeOfs,
+				cfg.SearchConfig.EmbeddingLabel,
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
@@ -646,6 +709,9 @@ func (sds *SpannerDataSource) resolveDescription(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
+	if sds.recogPlaceStore == nil {
+		return nil, status.Errorf(codes.FailedPrecondition, "Description resolution is not configured (recogPlaceStore is nil)")
+	}
 	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
 		typeOfs = []string{""}
@@ -997,8 +1063,13 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 }
 
 // SdmxData retrieves observations from Spanner.
-func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	return sds.client.GetSdmxObservations(ctx, req)
+}
+
+// SdmxAvailability retrieves available SDMX component values from Spanner.
+func (sds *SpannerDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return sds.client.GetSdmxAvailability(ctx, req)
 }
 
 // filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.

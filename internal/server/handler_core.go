@@ -41,7 +41,7 @@ func (s *Server) V2ResolveCore(
 	in *resolve.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" or "topic" resolvers, otherwise default to legacy place resolver logic.
-	adapter := s.newTopicExpander()
+	adapter := s.topicExpander
 
 	resolver := in.Request.GetResolver()
 	switch resolver {
@@ -49,11 +49,14 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		idx, err := resolve.SelectEmbeddingsIndex(ctx, s.resolveEmbeddingsIndexes)
+		if s.embeddingsServiceClient == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Embeddings service client is not initialized.")
+		}
+		idx, err := s.embeddingsServiceClient.SelectIndex(ctx)
 		if err != nil {
 			return nil, err
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
+		return s.embeddingsServiceClient.Resolve(ctx, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
 	case resolve.ResolveResolverTopic:
 		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
 	}
@@ -100,7 +103,7 @@ func (s *Server) V2NodeCore(
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
 			typeOfs, ok := arc.Filter["typeOf"]
-			if !ok || len(typeOfs) != 1 {
+			if !ok || len(typeOfs) == 0 {
 				return nil, status.Errorf(codes.InvalidArgument,
 					"invalid filter for %s", in.GetProperty())
 			}
@@ -111,7 +114,7 @@ func (s *Server) V2NodeCore(
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
-				typeOfs[0],
+				typeOfs,
 			)
 		}
 
@@ -135,6 +138,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 
@@ -162,6 +166,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 	}

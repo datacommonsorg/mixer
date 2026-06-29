@@ -65,12 +65,14 @@
     "2358228475": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
-      "unit": "USD"
+      "unit": "USD",
+      "provenance_id": "custom"
     },
     "839667200": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
-      "unit": "GBP"
+      "unit": "GBP",
+      "provenance_id": "custom"
     }
   }
 }

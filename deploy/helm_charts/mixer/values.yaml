@@ -487,6 +487,7 @@ serviceGroups:
       cpuRequest: "300m"
     cacheSVG: true
   default:
+    enableEmbeddingsSidecar: true
     urlPaths:
       - "/*"
     replicas: 1

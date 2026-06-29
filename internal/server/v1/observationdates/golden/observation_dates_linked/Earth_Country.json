@@ -554,19 +554,22 @@
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/UNEnergy"
     },
     "3022640954": {
       "import_name": "EIA_Electricity",
       "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
-      "unit": "GigawattHour"
+      "unit": "GigawattHour",
+      "provenance_id": "dc/base/EIA_Electricity"
     },
     "4226672321": {
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "measurement_method": "UNStatsEstimate",
       "observation_period": "P1Y",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/UNEnergy"
     }
   }
 }

@@ -167,20 +167,20 @@ var statements = struct {
 	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)`,
+			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)%[3]s`,
 	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %s)-[e:Edge
+			m.subject_id %[1]s)-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)`,
+			e.predicate = @predicate]->{1,%[2]d}(n:Node)%[3]s`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)%[3]s`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %s)<-[e:Edge
+			m.subject_id %[1]s)<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)`,
+			e.predicate = @predicate]-{1,%[2]d}(n:Node)%[3]s`,
 	filterPredicate: `
 		WHERE
 			e.predicate = @predicate`,
@@ -262,6 +262,7 @@ var statements = struct {
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,
@@ -278,6 +279,7 @@ var statements = struct {
 			obs.observation_about,
 			obs.observations,
 			obs.import_name,
+			obs.provenance,
 			obs.observation_period,
 			obs.measurement_method,
 			obs.unit,
@@ -658,16 +660,17 @@ var statements = struct {
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
-			embedding_content AS name,
-			types,
+			JSON_VALUE(embedding_content.name) AS name,
+			node_types AS types,
 			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
 		FROM
 			%[1]s
 		WHERE
 			embeddings IS NOT NULL
+			AND embedding_label = @embedding_label
 			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
 			AND EXISTS (
-				SELECT 1 FROM UNNEST(types) AS t WHERE t IN UNNEST(@node_types)
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
 			)
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
@@ -677,7 +680,8 @@ var statements = struct {
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		WHERE c.type = 'ProvenanceSummary'
 		  AND e2.predicate IN ('source', 'isPartOf')
-		  AND c.key IN UNNEST(@variables)`,
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
 	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
 		FROM Cache c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
@@ -685,7 +689,8 @@ var statements = struct {
 		WHERE c.type = 'ProvenanceSummary'
 		  AND e2.predicate IN ('source', 'isPartOf')
 		  AND e3.predicate = @predicate
-		  AND e3.object_id IN UNNEST(@variables)`,
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
 	checkGroupPlaceExistence: `		SELECT DISTINCT e.object_id AS variable, o.observation_about AS entity
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=APPLY_JOIN} Observation@{FORCE_INDEX=VariableMeasuredObservationAbout} o ON e.subject_id = o.variable_measured
