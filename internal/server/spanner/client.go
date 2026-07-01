@@ -74,12 +74,16 @@ type spannerDatabaseClient struct {
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
+
+	// Flag to control query logic for IngestionHistory table.
+	useNewIngestionHistorySchema bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, error) {
+func newSpannerDatabaseClient(client *spanner.Client, useNewSchema bool) (*spannerDatabaseClient, error) {
 	sc := &spannerDatabaseClient{
-		client: client,
+		client:                       client,
+		useNewIngestionHistorySchema: useNewSchema,
 	}
 
 	// Set an initial timestamp synchronously before starting the background loop.
@@ -95,7 +99,7 @@ func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, e
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useNewSchema bool) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -104,7 +108,7 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client)
+	return newSpannerDatabaseClient(client, useNewSchema)
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
@@ -129,10 +133,8 @@ func DefaultTableConfig() TableConfig {
 	}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-// It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool, useNewIngestionHistorySchema bool) (SpannerClient, error) {
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useNewIngestionHistorySchema)
 	if err != nil {
 		return nil, err
 	}

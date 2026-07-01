@@ -19,6 +19,8 @@ package spanner
 var statements = struct {
 	// Fetch latest CompletionTimestamp from IngestionHistory table.
 	getCompletionTimestamp string
+	// Fetch latest Timestamp from IngestionHistory table with run protection.
+	getIngestionHistoryTimestamp string
 	// Filter by single parameter value.
 	getParam string
 	// Filter by multiple parameter values.
@@ -142,6 +144,20 @@ var statements = struct {
 			IngestionFailure = FALSE
 		ORDER BY 
 			CompletionTimestamp DESC
+		LIMIT 1`,
+	getIngestionHistoryTimestamp: `		SELECT
+			Timestamp
+		FROM
+			IngestionHistory
+		WHERE
+			Status = 'SUCCESS'
+			AND Timestamp < (
+				SELECT COALESCE(MIN(Timestamp), TIMESTAMP '9999-12-31T23:59:59Z')
+				FROM IngestionHistory
+				WHERE Status IN ('RUNNING', 'PENDING')
+			)
+		ORDER BY 
+			Timestamp DESC
 		LIMIT 1`,
 	getParam:  `= @%s`,
 	getParams: `IN UNNEST(@%s)`,
