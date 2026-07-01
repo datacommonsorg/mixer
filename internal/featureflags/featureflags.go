@@ -51,6 +51,8 @@ type Flags struct {
 	// Whether to default indicator resolution to Spanner.
 	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
+	// Whether to use the new IngestionHistory schema with Timestamp.
+	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -67,6 +69,7 @@ func setDefaultValues() *Flags {
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
+		UseNewIngestionHistorySchema:  false,
 	}
 }
 

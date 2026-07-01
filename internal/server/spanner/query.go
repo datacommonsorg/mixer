@@ -935,7 +935,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
-	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
+	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery(sc.useNewIngestionHistorySchema))
 	defer iter.Stop()
 
 	row, err := iter.Next()
@@ -966,7 +966,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 
 	var timestamp time.Time
 	if err := row.Column(0, &timestamp); err != nil {
-		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
 
 	sc.timestamp.Store(timestamp.UnixNano())
