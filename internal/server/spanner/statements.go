@@ -17,9 +17,9 @@ package spanner
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	// Fetch latest CompletionTimestamp from IngestionHistory table.
+	// Fetch latest CompletionTimestamp from IngestionHistory table (legacy schema).
 	getCompletionTimestamp string
-	// Fetch latest Timestamp from IngestionHistory table with run protection.
+	// Fetch latest CompletionTimestamp from IngestionHistory table with run protection (new schema).
 	getIngestionHistoryTimestamp string
 	// Filter by single parameter value.
 	getParam string
@@ -137,27 +137,25 @@ var statements = struct {
 	checkGroupPlaceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
-		CompletionTimestamp
+			CompletionTimestamp
 		FROM
 			IngestionHistory
-		WHERE
-			IngestionFailure = FALSE
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
 	getIngestionHistoryTimestamp: `		SELECT
-			Timestamp
+			CompletionTimestamp
 		FROM
 			IngestionHistory
 		WHERE
-			Status = 'SUCCESS'
-			AND Timestamp < (
-				SELECT COALESCE(MIN(Timestamp), TIMESTAMP '9999-12-31T23:59:59Z')
+			IngestionFailure = FALSE
+			AND CompletionTimestamp < (
+				SELECT COALESCE(MIN(CreationTimestamp), TIMESTAMP '9999-12-31T23:59:59Z')
 				FROM IngestionHistory
 				WHERE Status IN ('RUNNING', 'PENDING')
 			)
 		ORDER BY 
-			Timestamp DESC
+			CompletionTimestamp DESC
 		LIMIT 1`,
 	getParam:  `= @%s`,
 	getParams: `IN UNNEST(@%s)`,
