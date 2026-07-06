@@ -148,7 +148,7 @@ var statements = struct {
 		FROM
 			IngestionHistory
 		WHERE
-			IngestionFailure = FALSE
+			Status = 'SUCCESS'
 			AND CompletionTimestamp < (
 				SELECT COALESCE(MIN(CreationTimestamp), TIMESTAMP '9999-12-31T23:59:59Z')
 				FROM IngestionHistory
