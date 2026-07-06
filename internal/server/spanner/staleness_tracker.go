@@ -105,7 +105,7 @@ func (t *stalenessTracker) RecordFailure(now time.Time, err error) *logEvent {
 				message: fmt.Sprintf("Spanner staleness timestamp poller has failed to run successfully for %s", t.failureThreshold),
 				args: []interface{}{
 					"lastSuccessTime", t.lastSuccessTime.UTC().String(),
-					"error", err.Error(),
+					"error", err,
 				},
 			}
 		}
