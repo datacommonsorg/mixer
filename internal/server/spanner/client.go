@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"strings"
 	"sync"
 	"sync/atomic"
 
@@ -178,6 +179,20 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
+// parseDatabaseURI checks if databaseStr is a full Spanner database URI (projects/P/instances/I/databases/D).
+// If it is a full URI, it extracts project, instance, and database.
+// If it is not a full URI (e.g., just a database name like "dc_graph_2026_01_27"), it returns empty project/instance and the original string as database.
+func parseDatabaseURI(databaseStr string) (project, instance, database string, err error) {
+	if !strings.HasPrefix(databaseStr, "projects/") {
+		return "", "", databaseStr, nil
+	}
+	parts := strings.Split(databaseStr, "/")
+	if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+		return "", "", "", fmt.Errorf("invalid Spanner database URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", databaseStr)
+	}
+	return parts[1], parts[3], parts[5], nil
+}
+
 // createSpannerConfig creates the config from the specific yaml string and an optional database override.
 func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
@@ -185,12 +200,24 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 		return nil, fmt.Errorf("failed to create spanner config: %w", err)
 	}
 
-	// Override database with flag value if set.
+	// Override database config with flag value if set.
 	// This is temporary during development to allow fast rollout of version changes.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	if databaseOverride != "" {
-		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
-		cfg.Database = databaseOverride
+		proj, inst, db, err := parseDatabaseURI(databaseOverride)
+		if err != nil {
+			return nil, err
+		}
+		if proj != "" {
+			slog.Debug("Setting Spanner project value from database URI flag", "value", proj)
+			cfg.Project = proj
+		}
+		if inst != "" {
+			slog.Debug("Setting Spanner instance value from database URI flag", "value", inst)
+			cfg.Instance = inst
+		}
+		slog.Debug("Setting Spanner database value from flag", "value", db)
+		cfg.Database = db
 	}
 
 	return &cfg, nil
