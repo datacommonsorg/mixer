@@ -59,6 +59,9 @@ const (
 	// Default timeout for timestamp polling.
 	timestampPollingTimeout = 10 * time.Second
 
+	// Default fallback staleness duration when staleness timestamp is unavailable or expired.
+	defaultStalenessDuration = 15 * time.Second
+
 	// Default timeout for API requests.
 	ApiTimeout = 60 * time.Second
 
@@ -950,7 +953,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	}
 
 	if warnMsg != "" {
-		slog.Warn(warnMsg + " Falling back to strong reads.")
+		slog.Warn(warnMsg + " Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
 		return nil
 	}
 
@@ -1050,15 +1053,16 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 	ts, err := sc.getStalenessTimestamp()
 	if err != nil {
-		return runQuery(spanner.StrongRead())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	err = runQuery(spanner.ReadTimestamp(ts))
 
-	// Log error if timestamp is older than retention and fall back to strong read.
+	// Log error if timestamp is older than retention and fall back to exact staleness read.
 	if spanner.ErrCode(err) == codes.FailedPrecondition {
-		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-			"expiredTimestamp", ts.String())
-		return runQuery(spanner.StrongRead())
+		slog.Error("Stale read timestamp expired. Falling back to exact staleness read.",
+			"expiredTimestamp", ts.String(),
+			"duration", defaultStalenessDuration.String())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	return err
 }
