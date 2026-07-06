@@ -98,7 +98,7 @@ func TestStalenessTracker(t *testing.T) {
 	}
 
 	// 10. Success at baseTime + 38m resets the failure state
-	event = tracker.RecordSuccess(baseTime.Add(38*time.Minute), newVal, newVal)
+	tracker.RecordSuccess(baseTime.Add(38*time.Minute), newVal, newVal)
 	// We might get nil if no-change is not reached, but failure should be reset
 	// Let's verify failure log is reset by triggering a failure at 39m (nil since it's only 1m since last success)
 	event = tracker.RecordFailure(baseTime.Add(39*time.Minute), testErr)
