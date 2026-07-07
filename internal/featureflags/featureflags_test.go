@@ -148,6 +148,29 @@ flags:
 			want:    nil,
 			wantErr: true,
 		},
+		{
+			name: "valid database URI",
+			fileContent: `
+flags:
+  UseSpannerGraph: true
+  SpannerGraphDatabase: projects/test-proj/instances/test-inst/databases/test-db
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.UseSpannerGraph = true
+				f.SpannerGraphDatabase = "projects/test-proj/instances/test-inst/databases/test-db"
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - invalid database URI",
+			fileContent: `
+flags:
+  UseSpannerGraph: true
+  SpannerGraphDatabase: projects/test-proj/instances/test-inst
+`,
+			want:    nil,
+			wantErr: true,
+		},
 	}
 
 	for _, tc := range testCases {

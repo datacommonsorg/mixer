@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -78,8 +79,16 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.SpannerGraphDatabase != "" && !f.UseSpannerGraph {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+	if f.SpannerGraphDatabase != "" {
+		if !f.UseSpannerGraph {
+			return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+		}
+		if strings.HasPrefix(f.SpannerGraphDatabase, "projects/") {
+			parts := strings.Split(f.SpannerGraphDatabase, "/")
+			if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+				return fmt.Errorf("invalid SpannerGraphDatabase URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", f.SpannerGraphDatabase)
+			}
+		}
 	}
 	if f.UseStaleReads && !f.UseSpannerGraph {
 		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
