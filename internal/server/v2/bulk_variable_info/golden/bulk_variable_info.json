@@ -172,12 +172,12 @@
                   "State": {},
                   "StateComponent": {}
                 },
-                "observationCount": 5882506,
-                "timeSeriesCount": 508545
+                "observationCount": 5882522,
+                "timeSeriesCount": 508553
               }
             ],
-            "observationCount": 5882506,
-            "timeSeriesCount": 508545
+            "observationCount": 5882522,
+            "timeSeriesCount": 508553
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
@@ -188,7 +188,7 @@
                   "unit": "Years"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusCoreBasedStatisticalArea": {},
                   "CensusCountyDivision": {},
@@ -205,12 +205,12 @@
                   "SchoolDistrict": {},
                   "State": {}
                 },
-                "observationCount": 2664064,
-                "timeSeriesCount": 218044
+                "observationCount": 2867309,
+                "timeSeriesCount": 219411
               }
             ],
-            "observationCount": 2664064,
-            "timeSeriesCount": 218044
+            "observationCount": 2867309,
+            "timeSeriesCount": 219411
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
@@ -263,17 +263,17 @@
                   "unit": "Years"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusDivision": {},
                   "Country": {},
                   "State": {}
                 },
-                "observationCount": 427,
+                "observationCount": 488,
                 "timeSeriesCount": 61
               }
             ],
-            "observationCount": 427,
+            "observationCount": 488,
             "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {

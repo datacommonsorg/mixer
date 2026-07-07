@@ -10,7 +10,7 @@
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "observationAbout",
       "objectId": "country/USA",
-      "objectName": "United States of America",
+      "objectName": "United States",
       "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     {
@@ -45,7 +45,7 @@
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "observationAbout",
       "objectId": "country/USA",
-      "objectName": "United States of America",
+      "objectName": "United States",
       "provenanceId": "dc/base/CensusPEP"
     },
     {

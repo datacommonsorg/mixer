@@ -56,13 +56,13 @@
             },
             {
               "date": "2010",
-              "value": 309321666,
-              "facet": "4181918134"
+              "value": 303965272,
+              "facet": "1964317807"
             },
             {
               "date": "2010",
-              "value": 303965272,
-              "facet": "1964317807"
+              "value": 309321666,
+              "facet": "4181918134"
             },
             {
               "date": "2010",
@@ -101,13 +101,13 @@
             },
             {
               "date": "2010",
-              "value": 37319502,
-              "facet": "4181918134"
+              "value": 36637290,
+              "facet": "1964317807"
             },
             {
               "date": "2010",
-              "value": 36637290,
-              "facet": "1964317807"
+              "value": 37319502,
+              "facet": "4181918134"
             },
             {
               "date": "2010",
@@ -278,12 +278,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {

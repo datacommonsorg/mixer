@@ -87,7 +87,8 @@
                 "2020": 4260043501000,
                 "2021": 4374676380000,
                 "2022": 4495368112000,
-                "2023": 4458417904000
+                "2023": 4452539312000,
+                "2024": 4343668092000
               },
               "observationPeriod": "P1Y",
               "importName": "UNEnergy",
@@ -120,7 +121,8 @@
                 "2021": 4109699389840,
                 "2022": 4230667563220,
                 "2023": 4183270479000,
-                "2024": 4308634297150
+                "2024": 4308634297150,
+                "2025": 4429501603130
               },
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
@@ -281,10 +283,10 @@
                 "2017": 325122128,
                 "2018": 326838199,
                 "2019": 328329953,
-                "2020": 331526933,
+                "2020": 329484123,
                 "2021": 331893745,
-                "2022": 333271411,
-                "2023": 334914895,
+                "2022": 333996304,
+                "2023": 336755052,
                 "2024": 340003797,
                 "2025": 341784857
               },
@@ -414,6 +416,45 @@
             },
             {
               "val": {
+                "2010": 303965272,
+                "2011": 306603772,
+                "2012": 309138711,
+                "2013": 311536594,
+                "2014": 314107084,
+                "2015": 316515021,
+                "2016": 318558162,
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481,
+                "2022": 331097593,
+                "2023": 332387540,
+                "2024": 334922499
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+            },
+            {
+              "val": {
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481,
+                "2022": 331097593,
+                "2023": 332387540,
+                "2024": 334922499
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602"
+            },
+            {
+              "val": {
                 "2020": 331577720,
                 "2021": 332099760,
                 "2022": 334017321,
@@ -487,46 +528,9 @@
                 "2023": 332387540
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
-            },
-            {
-              "val": {
-                "2010": 303965272,
-                "2011": 306603772,
-                "2012": 309138711,
-                "2013": 311536594,
-                "2014": 314107084,
-                "2015": 316515021,
-                "2016": 318558162,
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795,
-                "2020": 326569308,
-                "2021": 329725481,
-                "2022": 331097593,
-                "2023": 332387540
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
-            },
-            {
-              "val": {
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795,
-                "2020": 326569308,
-                "2021": 329725481,
-                "2022": 331097593,
-                "2023": 332387540
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2023.S2602"
             },
             {
               "val": {
@@ -809,7 +813,8 @@
                 "2021": 197165105640,
                 "2022": 203383856840,
                 "2023": 216628794790,
-                "2024": 214191383340
+                "2024": 214191383340,
+                "2025": 205884379660
               },
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
@@ -1017,6 +1022,45 @@
             },
             {
               "val": {
+                "2010": 36637290,
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023,
+                "2021": 39455353,
+                "2022": 39356104,
+                "2023": 39242785,
+                "2024": 39287377
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+            },
+            {
+              "val": {
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023,
+                "2021": 39455353,
+                "2022": 39356104,
+                "2023": 39242785,
+                "2024": 39287377
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602"
+            },
+            {
+              "val": {
                 "1990": 29959515,
                 "1991": 30470736,
                 "1992": 30974659,
@@ -1076,46 +1120,9 @@
                 "2023": 39242785
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
-            },
-            {
-              "val": {
-                "2010": 36637290,
-                "2011": 36969200,
-                "2012": 37325068,
-                "2013": 37659181,
-                "2014": 38066920,
-                "2015": 38421464,
-                "2016": 38654206,
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023,
-                "2021": 39455353,
-                "2022": 39356104,
-                "2023": 39242785
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
-            },
-            {
-              "val": {
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023,
-                "2021": 39455353,
-                "2022": 39356104,
-                "2023": 39242785
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2023.S2602"
             },
             {
               "val": {
@@ -1468,12 +1475,13 @@
                 "2020": 80104,
                 "2021": 82409,
                 "2022": 82132,
-                "2023": 82363
+                "2023": 82363,
+                "2024": 83732
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
             },
             {
               "val": {

@@ -261,6 +261,10 @@
       "dcid": "Count_CriminalIncidents_HumanTraffickingCommercialSexActs_IsHateCrime"
     },
     {
+      "name": "Count of Hate Crime Incidents: Human Trafficking_Involuntary Servitude",
+      "dcid": "Count_CriminalIncidents_HumanTraffickingInvoluntaryServitude_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Identity Theft",
       "dcid": "Count_CriminalIncidents_IdentityTheft_IsHateCrime"
     },
@@ -705,6 +709,10 @@
       "dcid": "Offender_Count_CriminalIncidents_HumanTraffickingCommercialSexActs_IsHateCrime"
     },
     {
+      "name": "Count of Hate Crime Incidents (Offender): Human Trafficking_Involuntary Servitude",
+      "dcid": "Offender_Count_CriminalIncidents_HumanTraffickingInvoluntaryServitude_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents (Offender): Identity Theft",
       "dcid": "Offender_Count_CriminalIncidents_IdentityTheft_IsHateCrime"
     },
@@ -985,6 +993,10 @@
       "dcid": "Offense_Count_CriminalIncidents_HumanTraffickingCommercialSexActs_IsHateCrime"
     },
     {
+      "name": "Count of Hate Crime Incidents (Offense): Human Trafficking_Involuntary Servitude",
+      "dcid": "Offense_Count_CriminalIncidents_HumanTraffickingInvoluntaryServitude_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents (Offense): Identity Theft",
       "dcid": "Offense_Count_CriminalIncidents_IdentityTheft_IsHateCrime"
     },
@@ -1005,6 +1017,10 @@
       "dcid": "Offense_Count_CriminalIncidents_KidnappingOrAbduction_IsHateCrime"
     },
     {
+      "name": "Count of Hate Crime Incidents (Offense): Known Offender",
+      "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_KnownOffender"
+    },
+    {
       "name": "Count of Hate Crime Incidents (Offense): Larceny Theft",
       "dcid": "Offense_Count_CriminalIncidents_LarcenyTheft_IsHateCrime"
     },
@@ -1015,6 +1031,10 @@
     {
       "name": "Count of Hate Crime Incidents (Offense): Motor Vehicle Theft",
       "dcid": "Offense_Count_CriminalIncidents_MotorVehicleTheft_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents (Offense): Multiple Victim Type",
+      "dcid": "Offense_Count_CriminalIncidents_IsHateCrime_VictimTypeMultipleVictimType"
     },
     {
       "name": "Count of Hate Crime Incidents (Offense): Murder And Non Negligent Manslaughter",
@@ -1287,6 +1307,10 @@
     {
       "name": "Count of Hate Crime Incidents (Victim): Human Trafficking_Commercial Sex Acts",
       "dcid": "Victim_Count_CriminalIncidents_HumanTraffickingCommercialSexActs_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents (Victim): Human Trafficking_Involuntary Servitude",
+      "dcid": "Victim_Count_CriminalIncidents_HumanTraffickingInvoluntaryServitude_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents (Victim): Identity Theft",
@@ -1641,6 +1665,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_HumanTraffickingCommercialSexActs_IsHateCrime"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Human Trafficking_Involuntary Servitude",
+      "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_HumanTraffickingInvoluntaryServitude_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Identity Theft",
       "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IdentityTheft_IsHateCrime"
     },
@@ -1695,6 +1723,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Murder And Non Negligent Manslaughter",
       "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_MurderAndNonNegligentManslaughter_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Native Hawaiian or Other Pacific Islander Alone Offender",
+      "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Negligent Manslaughter",
@@ -1813,6 +1845,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime_LocationOfCrimeStadiumOrArena"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Statutory Rape",
+      "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_StatutoryRape_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Disability Status, Stolen Property Offenses",
       "dcid": "Count_CriminalIncidents_BiasMotivationDisabilityStatus_StolenPropertyOffenses_IsHateCrime"
     },
@@ -1895,6 +1931,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Amusement Park",
       "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime_LocationOfCrimeAmusementPark"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Animal Cruelty",
+      "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_AnimalCruelty_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Arson",
@@ -2057,6 +2097,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime_HispanicOrLatino"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Identity Theft",
+      "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_IdentityTheft_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Impersonation",
       "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_Impersonation_IsHateCrime"
     },
@@ -2143,6 +2187,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Pocket Picking",
       "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_PocketPicking_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Pornography or Obscene Material",
+      "dcid": "Count_CriminalIncidents_BiasMotivationEthnicity_PornographyOrObsceneMaterial_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Ethnicity, Prisons",
@@ -2287,6 +2335,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Amusement Park",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_LocationOfCrimeAmusementPark"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Animal Cruelty",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_AnimalCruelty_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Arson",
@@ -2453,6 +2505,14 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_LocationOfCrimeHighwayOrRoadOrAlleyOrStreetOrSidewalk"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Human Trafficking_Involuntary Servitude",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_HumanTraffickingInvoluntaryServitude_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Identity Theft",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_IdentityTheft_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Impersonation",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_Impersonation_IsHateCrime"
     },
@@ -2505,8 +2565,16 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_LocationOfCrimeMultipleCrimeLocations"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Multiple Ethnicity Offender",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderEthnicityMultipleEthnicity"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Murder And Non Negligent Manslaughter",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_MurderAndNonNegligentManslaughter_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Native Hawaiian or Other Pacific Islander Alone Offender",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceNativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Not Specified",
@@ -2625,6 +2693,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_LocationOfCrimeStadiumOrArena"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Stolen Property Offenses",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_StolenPropertyOffenses_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Theft From Building",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_TheftFromBuilding_IsHateCrime"
     },
@@ -2659,6 +2731,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Unknown Race Offender",
       "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_OffenderRaceUnknownRace"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Gender, Unknown Victim Type",
+      "dcid": "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime_VictimTypeUnknownVictimType"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Gender, Weapon Law Violations",
@@ -2797,6 +2873,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeElementarySchoolOrHighSchool"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Extortion or Blackmail",
+      "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_ExtortionOrBlackmail_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, False Pretense or Swindle or Confidence Game",
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_FalsePretenseOrSwindleOrConfidenceGame_IsHateCrime"
     },
@@ -2831,6 +2911,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Grocery Store \u0026 Supermarket",
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeGroceryStoreOrSupermarket"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Hacking or Computer Invasion",
+      "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_HackingOrComputerInvasion_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Highway or Road or Alley or Street or Sidewalk",
@@ -2953,6 +3037,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeSelfStorage"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Sexual Assault With An Object",
+      "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_SexualAssaultWithAnObject_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Shoplifting",
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_Shoplifting_IsHateCrime"
     },
@@ -2973,6 +3061,10 @@
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_VictimTypeSociety"
     },
     {
+      "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Sodomy",
+      "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_Sodomy_IsHateCrime"
+    },
+    {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Specialty Store",
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_IsHateCrime_LocationOfCrimeSpecialtyStore"
     },
@@ -2987,6 +3079,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Theft From Motor Vehicle",
       "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_TheftFromMotorVehicle_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Theft of Motor Vehicle Parts or Accessories",
+      "dcid": "Count_CriminalIncidents_BiasMotivationMultipleBias_TheftOfMotorVehiclePartsOrAccessories_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Multiple Bias, Tribal Lands",
@@ -3207,6 +3303,10 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Other Race or Ethnicity, Weapon Law Violations",
       "dcid": "Count_CriminalIncidents_BiasMotivationOtherRaceOrEthnicity_WeaponLawViolations_IsHateCrime"
+    },
+    {
+      "name": "Count of Hate Crime Incidents: Bias Against Other Race or Ethnicity, Wire Fraud",
+      "dcid": "Count_CriminalIncidents_BiasMotivationOtherRaceOrEthnicity_WireFraud_IsHateCrime"
     },
     {
       "name": "Count of Hate Crime Incidents: Bias Against Race or Ethnicity, ATMSeparate From Bank",
@@ -3899,106 +3999,6 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Religion, Abandoned or Condemned Structure",
       "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeAbandonedOrCondemnedStructure"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Aggravated Assault",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_AggravatedAssault_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Airport \u0026 Bus Station \u0026 Train Station",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeAirportOrBusStationOrTrainStation"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, All Other Larceny",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_AllOtherLarceny_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Amusement Park",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeAmusementPark"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Animal Cruelty",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_AnimalCruelty_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Arson",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_Arson_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Atheism or Agnosticism Faith Victim",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_AtheismOrAgnosticism"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Auto Dealer",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeAutoDealer"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Bank or Savings And Loan",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeBankOrSavingsAndLoan"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Bar or Pub \u0026 Night Club",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeBarOrPubOrNightClub"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Body of Water \u0026 Beach",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeBodyOfWaterOrBeach"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Buddhism Faith Victim",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_Buddhism"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Burglary",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_Burglary_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Business",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_VictimTypeBusiness"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Campground",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeCampground"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Catholicism Faith Victim",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_Catholicism"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Child Care",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeChildCare"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, College or University",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeCollegeOrUniversity"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Commercial or Office Building",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeCommercialOrOfficeBuilding"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Community Center",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeCommunityCenter"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Construction Site",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeConstructionSite"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Convenience Store",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime_LocationOfCrimeConvenienceStore"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Counterfeiting or Forgery",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_CounterfeitingOrForgery_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Credit Card or Automated Teller Machine Fraud",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_CreditCardOrAutomatedTellerMachineFraud_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Crime Against Person",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_CrimeAgainstPerson_IsHateCrime"
     }
   ],
   "matches": [
