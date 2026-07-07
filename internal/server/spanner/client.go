@@ -22,6 +22,7 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -63,6 +64,11 @@ type SpannerClient interface {
 	Close()
 }
 
+const (
+	noChangeLogThreshold = 10 * time.Minute
+	failureLogThreshold  = 10 * time.Minute
+)
+
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
 	client    *spanner.Client
@@ -75,12 +81,20 @@ type spannerDatabaseClient struct {
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
+
+	// Flag to control query logic for IngestionHistory table.
+	useNewIngestionHistorySchema bool
+
+	// Logging/State tracking for the timestamp poller.
+	tracker *stalenessTracker
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, error) {
+func newSpannerDatabaseClient(client *spanner.Client, useNewSchema bool) (*spannerDatabaseClient, error) {
 	sc := &spannerDatabaseClient{
-		client: client,
+		client:                       client,
+		useNewIngestionHistorySchema: useNewSchema,
+		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
 	}
 
 	// Set an initial timestamp synchronously before starting the background loop.
@@ -96,7 +110,7 @@ func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, e
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useNewSchema bool) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -105,7 +119,7 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client)
+	return newSpannerDatabaseClient(client, useNewSchema)
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
@@ -130,10 +144,8 @@ func DefaultTableConfig() TableConfig {
 	}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-// It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool, useNewIngestionHistorySchema bool) (SpannerClient, error) {
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useNewIngestionHistorySchema)
 	if err != nil {
 		return nil, err
 	}
@@ -249,9 +261,15 @@ func (sc *spannerDatabaseClient) Start() {
 				case <-sc.ticker.C():
 					// Ignore the error here to allow the process to continue running
 					// even if one fetch fails. The previous timestamp remains in cache.
+					now := time.Now()
 					err := sc.updateTimestamp(ctx)
 					if err != nil {
 						slog.Error("Error updating Spanner staleness timestamp", "error", err)
+						if sc.tracker != nil {
+							if ev := sc.tracker.RecordFailure(now, err); ev != nil {
+								slog.Log(ctx, ev.level, ev.message, ev.args...)
+							}
+						}
 					}
 				}
 			}
