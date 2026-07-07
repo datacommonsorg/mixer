@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"maps"
 	"slices"
 	"strings"
 
@@ -27,6 +28,12 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
+)
+
+const (
+	// maxObservationPropertyEntitySlots matches the materialized entity1/entity2/entity3 TimeSeries slots.
+	maxObservationPropertyEntitySlots = 3
+	minObservationPropertiesPageSize  = 100
 )
 
 // GetObservations retrieves observations using the new schema.
@@ -439,15 +446,19 @@ func (nc *multiEntityClient) GetSdmxObservations(
 
 	entityMappings := map[string]map[string]string{}
 	if len(variables) > 0 {
+		variables = sortedUniqueStrings(variables)
 		arc := &v2.Arc{
 			Out:        true,
-			SingleProp: "entityMapping",
+			SingleProp: "observationProperties",
 		}
-		edgesMap, err := nc.sc.GetNodeEdgesByID(ctx, variables, arc, 100, 0)
+		edgesMap, err := nc.sc.GetNodeEdgesByID(ctx, variables, arc, observationPropertiesPageSize(len(variables)), 0)
 		if err != nil {
-			return nil, fmt.Errorf("failed to fetch entityMapping: %w", err)
+			return nil, fmt.Errorf("failed to fetch observationProperties: %w", err)
 		}
-		entityMappings = parseEntityMappings(edgesMap)
+		entityMappings, err = observationPropertiesEntityMappings(edgesMap)
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	stmt, err := nc.queryBuilder.GetSdmxObservationsQuery(req.Constraints, entityMappings)
@@ -565,28 +576,59 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	return result, nil
 }
 
-func parseEntityMappings(edgesMap map[string][]*Edge) map[string]map[string]string {
+func observationPropertiesEntityMappings(edgesMap map[string][]*Edge) (map[string]map[string]string, error) {
 	result := map[string]map[string]string{}
 	for varDcid, edges := range edgesMap {
-		mapping := map[string]string{}
+		propertySet := map[string]struct{}{}
 		for _, edge := range edges {
 			if edge == nil {
 				continue
 			}
-			if edge.Predicate == "entityMapping" {
-				parts := strings.SplitN(edge.Value, "=", 2)
-				if len(parts) == 2 {
-					k := strings.TrimSpace(parts[0])
-					v := strings.TrimSpace(parts[1])
-					if k != "" && v != "" {
-						mapping[k] = v
-					}
-				}
+			if edge.Predicate != "observationProperties" {
+				continue
 			}
+			property := strings.TrimSpace(edge.Value)
+			if property != "" {
+				propertySet[property] = struct{}{}
+			}
+		}
+
+		// Ingestion assigns sorted observationProperties to entity1, entity2, entity3.
+		properties := slices.Sorted(maps.Keys(propertySet))
+		if len(properties) > maxObservationPropertyEntitySlots {
+			return nil, fmt.Errorf(
+				"observationPropertiesEntityMappings: stat var %q has %d observationProperties; max supported entity slots is %d",
+				varDcid,
+				len(properties),
+				maxObservationPropertyEntitySlots,
+			)
+		}
+
+		mapping := map[string]string{}
+		for i, property := range properties {
+			mapping[property] = fmt.Sprintf("entity%d", i+1)
 		}
 		if len(mapping) > 0 {
 			result[varDcid] = mapping
 		}
 	}
-	return result
+	return result, nil
+}
+
+func observationPropertiesPageSize(variableCount int) int {
+	// Fetch one more property per variable than the schema supports so unsupported
+	// metadata is detected before SQL generation.
+	pageSize := variableCount * (maxObservationPropertyEntitySlots + 1)
+	if pageSize < minObservationPropertiesPageSize {
+		return minObservationPropertiesPageSize
+	}
+	return pageSize
+}
+
+func sortedUniqueStrings(values []string) []string {
+	seen := map[string]struct{}{}
+	for _, value := range values {
+		seen[value] = struct{}{}
+	}
+	return slices.Sorted(maps.Keys(seen))
 }

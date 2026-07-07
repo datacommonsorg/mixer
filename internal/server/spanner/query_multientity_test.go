@@ -424,35 +424,53 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	}
 }
 
-func TestParseEntityMappings(t *testing.T) {
+func TestObservationPropertiesEntityMappings(t *testing.T) {
 	edgesMap := map[string][]*Edge{
 		"var1": {
 			nil, // nil edge
+			// Input order is intentionally non-alphabetical; sorted properties define entity slots.
 			{
-				Predicate: "entityMapping",
-				Value:     "origin=entity1",
+				Predicate: "observationProperties",
+				Value:     " sourceCountry ",
 			},
 			{
-				Predicate: "entityMapping",
-				Value:     "destination=entity2=special", // value containing '='
+				Predicate: "observationProperties",
+				Value:     "destinationCountry",
+			},
+			{
+				Predicate: "observationProperties",
+				Value:     "destinationCountry",
+			},
+			{
+				Predicate: "observationProperties",
+				Value:     "",
 			},
 			{
 				Predicate: "otherPredicate",
-				Value:     "some=value",
+				Value:     "ignoredCountry",
+			},
+		},
+		"var2": {
+			{
+				Predicate: "observationProperties",
+				Value:     "",
 			},
 		},
 	}
 
-	got := parseEntityMappings(edgesMap)
+	got, err := observationPropertiesEntityMappings(edgesMap)
+	if err != nil {
+		t.Fatalf("observationPropertiesEntityMappings() error = %v", err)
+	}
 	want := map[string]map[string]string{
 		"var1": {
-			"origin":      "entity1",
-			"destination": "entity2=special",
+			"destinationCountry": "entity1",
+			"sourceCountry":      "entity2",
 		},
 	}
 
 	if len(got) != len(want) {
-		t.Fatalf("parseEntityMappings() = %v, want %v", got, want)
+		t.Fatalf("observationPropertiesEntityMappings() = %v, want %v", got, want)
 	}
 	for varDcid, gotMapping := range got {
 		wantMapping := want[varDcid]
@@ -464,5 +482,57 @@ func TestParseEntityMappings(t *testing.T) {
 				t.Errorf("Mapping for %s[%q] = %q, want %q", varDcid, k, v, wantMapping[k])
 			}
 		}
+	}
+}
+
+func TestObservationPropertiesEntityMappingsTooManyProperties(t *testing.T) {
+	edgesMap := map[string][]*Edge{
+		"var1": {
+			{Predicate: "observationProperties", Value: "destinationCountry"},
+			{Predicate: "observationProperties", Value: "intermediaryCountry"},
+			{Predicate: "observationProperties", Value: "sourceCountry"},
+			{Predicate: "observationProperties", Value: "transportMode"},
+		},
+	}
+
+	_, err := observationPropertiesEntityMappings(edgesMap)
+	if err == nil {
+		t.Fatal("observationPropertiesEntityMappings() error = nil, want error")
+	}
+	want := "observationPropertiesEntityMappings: stat var \"var1\" has 4 observationProperties; max supported entity slots is 3"
+	if err.Error() != want {
+		t.Fatalf("observationPropertiesEntityMappings() error = %q, want %q", err.Error(), want)
+	}
+}
+
+func TestObservationPropertiesEntityMappingPageSize(t *testing.T) {
+	tests := []struct {
+		name          string
+		variableCount int
+		want          int
+	}{
+		{
+			name:          "uses minimum page size for small requests",
+			variableCount: 1,
+			want:          minObservationPropertiesPageSize,
+		},
+		{
+			name:          "uses minimum page size at boundary",
+			variableCount: 25,
+			want:          minObservationPropertiesPageSize,
+		},
+		{
+			name:          "scales past minimum",
+			variableCount: 26,
+			want:          104,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := observationPropertiesPageSize(tc.variableCount); got != tc.want {
+				t.Fatalf("observationPropertiesPageSize(%d) = %d, want %d", tc.variableCount, got, tc.want)
+			}
+		})
 	}
 }
