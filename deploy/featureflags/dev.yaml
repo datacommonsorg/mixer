@@ -6,5 +6,6 @@ flags:
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
+  UseMultiEntitySchema: true  
   V2DivertFraction: 1.0
-  UseMultiEntitySchema: true
+  
