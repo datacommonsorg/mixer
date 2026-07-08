@@ -449,30 +449,33 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		return nil, fmt.Errorf("GetSdmxObservations: request constraints cannot be nil")
 	}
 
-	variables := []string{}
+	statVarIDs := []string{}
 	if list, ok := req.Constraints["variableMeasured"]; ok {
-		variables = list.Values
+		statVarIDs = list.Values
 	}
 
-	entityMappings := map[string]map[string]string{}
-	entityDimensions := []string{}
-	if len(variables) > 0 {
-		variables = sortedUniqueStrings(variables)
+	entitySlotByDimensionByStatVar := map[string]map[string]string{}
+	entityDimensionIDs := []string{}
+	if len(statVarIDs) > 0 {
+		statVarIDs = sortedUniqueStrings(statVarIDs)
 		arc := &v2.Arc{
 			Out:        true,
 			SingleProp: "observationProperties",
 		}
-		edgesMap, err := nc.sc.GetNodeEdgesByID(ctx, variables, arc, observationPropertiesPageSize(len(variables)), 0)
+		observationPropertyEdgesByStatVar, err := nc.sc.GetNodeEdgesByID(ctx, statVarIDs, arc, observationPropertiesPageSize(len(statVarIDs)), 0)
 		if err != nil {
 			return nil, fmt.Errorf("failed to fetch observationProperties: %w", err)
 		}
-		entityDimensions, entityMappings, err = sdmxEntityDimensionsAndMappings(variables, edgesMap)
+		entityDimensionIDs, entitySlotByDimensionByStatVar, err = resolveSdmxEntityShape(statVarIDs, observationPropertyEdgesByStatVar)
 		if err != nil {
+			return nil, err
+		}
+		if err := validateSdmxDataConstraintComponents(req.Constraints, statVarIDs, entitySlotByDimensionByStatVar); err != nil {
 			return nil, err
 		}
 	}
 
-	stmt, err := nc.queryBuilder.GetSdmxObservationsQuery(req.Constraints, entityMappings)
+	stmt, err := nc.queryBuilder.GetSdmxObservationsQuery(req.Constraints, entitySlotByDimensionByStatVar)
 	if err != nil {
 		return nil, err
 	}
@@ -486,43 +489,25 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	}
 
 	result := &sdmxpb.SdmxDataResult{
-		Shape:  sdmxDataShape(entityDimensions),
+		Shape:  sdmxDataShape(entityDimensionIDs),
 		Series: []*sdmxpb.SdmxTimeSeries{},
 	}
 
 	for _, r := range rawObs {
-		// Parse entities JSON to map slot columns (entity1, entity2) to actual DCIDs
-		entitiesMap := map[string]string{}
+		// Parse entities JSON to map physical entity slots (entity1, entity2) to actual DCIDs.
+		entitySlotValues := map[string]string{}
 		if r.Entities.Valid {
 			if m, ok := r.Entities.Value.(map[string]interface{}); ok {
 				for k, v := range m {
 					if s, ok := v.(string); ok {
-						entitiesMap[k] = s
+						entitySlotValues[k] = s
 					}
 				}
 			}
 		}
 
-		dimensions := map[string]string{
-			datacommons.ComponentVariableMeasured: r.VariableMeasured,
-		}
-
-		// Map entities back to their original dimension keys using the variable's entity mapping
-		if mapping, ok := entityMappings[r.VariableMeasured]; ok {
-			for reqKey, col := range mapping {
-				if val, ok := entitiesMap[col]; ok {
-					dimensions[reqKey] = val
-				}
-			}
-		} else {
-			// Single-entity fallback: map entity1 to observationAbout
-			if r.ObservationAbout != "" {
-				dimensions["observationAbout"] = r.ObservationAbout
-			}
-		}
-
 		series := &sdmxpb.SdmxTimeSeries{
-			Dimensions: dimensions,
+			Dimensions: sdmxSeriesDimensions(r.VariableMeasured, entitySlotValues, entitySlotByDimensionByStatVar),
 			Points:     []*sdmxpb.SdmxDataPoint{},
 		}
 		if r.ProvenanceID.Valid {
@@ -551,6 +536,50 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	}
 
 	return result, nil
+}
+
+func sdmxSeriesDimensions(
+	variableMeasured string,
+	entitySlotValues map[string]string,
+	entitySlotByDimensionByStatVar map[string]map[string]string,
+) map[string]string {
+	dimensionValues := map[string]string{
+		datacommons.ComponentVariableMeasured: variableMeasured,
+	}
+	for dimensionID, entitySlot := range entitySlotByDimensionByStatVar[variableMeasured] {
+		if value, ok := entitySlotValues[entitySlot]; ok {
+			dimensionValues[dimensionID] = value
+		}
+	}
+	return dimensionValues
+}
+
+func validateSdmxDataConstraintComponents(
+	constraints map[string]*sdmxpb.ConstraintList,
+	statVarIDs []string,
+	entitySlotByDimensionByStatVar map[string]map[string]string,
+) error {
+	for componentID := range constraints {
+		if componentID == datacommons.ComponentVariableMeasured {
+			continue
+		}
+		if _, ok := sdmxStaticDataFilterColumn(componentID); ok {
+			continue
+		}
+		for _, statVarID := range statVarIDs {
+			entitySlotByDimension := entitySlotByDimensionByStatVar[statVarID]
+			if _, ok := entitySlotByDimension[componentID]; !ok {
+				return status.Errorf(
+					codes.InvalidArgument,
+					"GetSdmxObservations: unsupported SDMX component filter %q for stat var %q; resolved entity dimensions are %v",
+					componentID,
+					statVarID,
+					slices.Sorted(maps.Keys(entitySlotByDimension)),
+				)
+			}
+		}
+	}
+	return nil
 }
 
 func populateSdmxFacetComponents(series *sdmxpb.SdmxTimeSeries, facets map[string]interface{}) {
@@ -612,15 +641,14 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	return result, nil
 }
 
-func sdmxEntityDimensionsAndMappings(
-	variables []string,
-	edgesMap map[string][]*Edge,
+func resolveSdmxEntityShape(
+	statVarIDs []string,
+	observationPropertyEdgesByStatVar map[string][]*Edge,
 ) ([]string, map[string]map[string]string, error) {
-	dimensionsByVariable := map[string][]string{}
-	fallbackVariables := map[string]struct{}{}
-	for _, varDcid := range variables {
-		propertySet := map[string]struct{}{}
-		for _, edge := range edgesMap[varDcid] {
+	entityDimensionsByStatVar := map[string][]string{}
+	for _, statVarID := range statVarIDs {
+		observationPropertySet := map[string]struct{}{}
+		for _, edge := range observationPropertyEdgesByStatVar[statVarID] {
 			if edge == nil {
 				continue
 			}
@@ -629,65 +657,61 @@ func sdmxEntityDimensionsAndMappings(
 			}
 			property := strings.TrimSpace(edge.Value)
 			if property != "" {
-				propertySet[property] = struct{}{}
+				observationPropertySet[property] = struct{}{}
 			}
 		}
 
 		// Ingestion assigns sorted observationProperties to entity1, entity2, entity3.
-		properties := slices.Sorted(maps.Keys(propertySet))
-		if len(properties) > maxObservationPropertyEntitySlots {
+		entityDimensionIDs := slices.Sorted(maps.Keys(observationPropertySet))
+		if len(entityDimensionIDs) > maxObservationPropertyEntitySlots {
 			return nil, nil, status.Errorf(
 				codes.InvalidArgument,
-				"sdmxEntityDimensionsAndMappings: stat var %q has %d observationProperties; max supported entity slots is %d",
-				varDcid,
-				len(properties),
+				"resolveSdmxEntityShape: stat var %q has %d observationProperties; max supported entity slots is %d",
+				statVarID,
+				len(entityDimensionIDs),
 				maxObservationPropertyEntitySlots,
 			)
 		}
-		if len(properties) == 0 {
-			properties = []string{datacommons.ComponentObservationAbout}
-			fallbackVariables[varDcid] = struct{}{}
+		if len(entityDimensionIDs) == 0 {
+			entityDimensionIDs = []string{datacommons.ComponentObservationAbout}
 		}
-		dimensionsByVariable[varDcid] = properties
+		entityDimensionsByStatVar[statVarID] = entityDimensionIDs
 	}
 
-	var entityDimensions []string
-	referenceVarDcid := ""
-	for _, varDcid := range variables {
-		dimensions := dimensionsByVariable[varDcid]
-		if entityDimensions == nil {
-			entityDimensions = dimensions
-			referenceVarDcid = varDcid
+	var resolvedEntityDimensionIDs []string
+	referenceStatVarID := ""
+	for _, statVarID := range statVarIDs {
+		entityDimensionIDs := entityDimensionsByStatVar[statVarID]
+		if resolvedEntityDimensionIDs == nil {
+			resolvedEntityDimensionIDs = entityDimensionIDs
+			referenceStatVarID = statVarID
 			continue
 		}
-		if !slices.Equal(entityDimensions, dimensions) {
+		if !slices.Equal(resolvedEntityDimensionIDs, entityDimensionIDs) {
 			return nil, nil, status.Errorf(
 				codes.InvalidArgument,
-				"sdmxEntityDimensionsAndMappings: incompatible entity dimensions for stat var %q: got %v, want %v from stat var %q",
-				varDcid,
-				dimensions,
-				entityDimensions,
-				referenceVarDcid,
+				"resolveSdmxEntityShape: incompatible entity dimensions for stat var %q: got %v, want %v from stat var %q",
+				statVarID,
+				entityDimensionIDs,
+				resolvedEntityDimensionIDs,
+				referenceStatVarID,
 			)
 		}
 	}
 
-	result := map[string]map[string]string{}
-	for varDcid, dimensions := range dimensionsByVariable {
-		if _, ok := fallbackVariables[varDcid]; ok {
-			continue
+	entitySlotByDimensionByStatVar := map[string]map[string]string{}
+	for statVarID, entityDimensionIDs := range entityDimensionsByStatVar {
+		entitySlotByDimension := map[string]string{}
+		for i, dimensionID := range entityDimensionIDs {
+			entitySlotByDimension[dimensionID] = fmt.Sprintf("entity%d", i+1)
 		}
-		mapping := map[string]string{}
-		for i, property := range dimensions {
-			mapping[property] = fmt.Sprintf("entity%d", i+1)
-		}
-		result[varDcid] = mapping
+		entitySlotByDimensionByStatVar[statVarID] = entitySlotByDimension
 	}
-	return entityDimensions, result, nil
+	return resolvedEntityDimensionIDs, entitySlotByDimensionByStatVar, nil
 }
 
-func sdmxDataShape(entityDimensions []string) *sdmxpb.SdmxDataShape {
-	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+func sdmxDataShape(entityDimensionIDs []string) *sdmxpb.SdmxDataShape {
+	components := datacommons.DataComponentsForEntityDimensions(entityDimensionIDs)
 	result := &sdmxpb.SdmxDataShape{
 		Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
 	}

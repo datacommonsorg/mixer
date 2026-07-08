@@ -293,18 +293,18 @@ var multiEntityFilteredTopicTestCases = []struct {
 }
 
 var multiEntitySdmxObservationsTestCases = []struct {
-	name           string
-	constraints    map[string]*sdmxpb.ConstraintList
-	entityMappings map[string]map[string]string
-	golden         string
+	name                           string
+	constraints                    map[string]*sdmxpb.ConstraintList
+	entitySlotByDimensionByStatVar map[string]map[string]string
+	golden                         string
 }{
 	{
 		name: "variable measured only",
 		constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"var1"}},
 		},
-		entityMappings: map[string]map[string]string{},
-		golden:         "get_sdmx_obs_var_only",
+		entitySlotByDimensionByStatVar: map[string]map[string]string{},
+		golden:                         "get_sdmx_obs_var_only",
 	},
 	{
 		name: "variable measured and origin slot",
@@ -312,7 +312,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"variableMeasured": {Values: []string{"var1"}},
 			"origin":           {Values: []string{"country/AGO"}},
 		},
-		entityMappings: map[string]map[string]string{
+		entitySlotByDimensionByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1"},
 		},
 		golden: "get_sdmx_obs_var_and_origin",
@@ -324,7 +324,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"origin":           {Values: []string{"country/AGO"}},
 			"destination":      {Values: []string{"country/PRT", "country/SGP"}},
 		},
-		entityMappings: map[string]map[string]string{
+		entitySlotByDimensionByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
 		},
 		golden: "get_sdmx_obs_slots_slicing",
@@ -336,7 +336,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"origin":           {Values: []string{"country/AGO"}},
 			"destination":      {Values: []string{"country/PRT"}},
 		},
-		entityMappings: map[string]map[string]string{
+		entitySlotByDimensionByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
 			"var2": {"origin": "entity2", "destination": "entity1"}, // reversed mapping for var2
 		},
@@ -352,7 +352,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"provenance":        {Values: []string{"dc/base/WTO_TradeConnectivity"}},
 			"unit":              {Values: []string{"Percent"}},
 		},
-		entityMappings: map[string]map[string]string{
+		entitySlotByDimensionByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
 		},
 		golden: "get_sdmx_obs_with_facet_and_prov",
@@ -363,7 +363,9 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"variableMeasured": {Values: []string{"var1"}},
 			"observationAbout": {Values: []string{"wikidataId/Q119158"}},
 		},
-		entityMappings: map[string]map[string]string{}, // empty mapping representing single-entity
-		golden:         "get_sdmx_obs_single_entity",
+		entitySlotByDimensionByStatVar: map[string]map[string]string{
+			"var1": {"observationAbout": "entity1"},
+		},
+		golden: "get_sdmx_obs_single_entity",
 	},
 }

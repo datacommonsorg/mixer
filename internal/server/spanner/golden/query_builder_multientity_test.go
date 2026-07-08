@@ -166,7 +166,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 				if err != nil {
 					return nil, err
 				}
-				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entityMappings)
+				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByDimensionByStatVar)
 				return stmt, err
 			})
 		})
@@ -186,7 +186,10 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
 		"observationPeriod": {Values: []string{"P1Y"}},
 	}
-	_, err = builder.GetSdmxObservationsQuery(constraints, nil)
+	entitySlotByDimensionByStatVar := map[string]map[string]string{
+		"var1": {"observationAbout": "entity1"},
+	}
+	_, err = builder.GetSdmxObservationsQuery(constraints, entitySlotByDimensionByStatVar)
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -209,6 +212,76 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	_, err = builder.GetSdmxObservationsQuery(badConstraints2, nil)
 	if err == nil {
 		t.Error("expected error for constraint key containing spaces, got nil")
+	}
+
+	// Case 4: Unsupported dynamic key should not fall back to facet JSON filtering.
+	badConstraints3 := map[string]*sdmxpb.ConstraintList{
+		"variableMeasured": {Values: []string{"var1"}},
+		"customEntity":     {Values: []string{"value"}},
+	}
+	_, err = builder.GetSdmxObservationsQuery(badConstraints3, entitySlotByDimensionByStatVar)
+	if err == nil {
+		t.Fatal("expected error for unsupported dynamic constraint key, got nil")
+	}
+	if got, want := err.Error(), "GetSdmxObservationsQuery: unsupported constraint key \"customEntity\""; got != want {
+		t.Fatalf("error = %q, want %q", got, want)
+	}
+
+	// Case 5: observationAbout is allowed only when resolved as an entity dimension.
+	_, err = builder.GetSdmxObservationsQuery(constraints, map[string]map[string]string{
+		"var1": {"destinationCountry": "entity1", "sourceCountry": "entity2"},
+	})
+	if err == nil {
+		t.Fatal("expected error for observationAbout outside resolved entity mapping, got nil")
+	}
+	if got, want := err.Error(), "GetSdmxObservationsQuery: unsupported constraint key \"observationAbout\""; got != want {
+		t.Fatalf("error = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, c := range multiEntitySdmxObservationsTestCases {
+		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByDimensionByStatVar)
+		if err != nil {
+			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
+		}
+		if strings.Contains(stmt.SQL, "JSON_VALUE(t.facet") {
+			t.Fatalf("GetSdmxObservationsQuery(%q) SQL contains facet JSON fallback: %s", c.name, stmt.SQL)
+		}
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	stmt, err := builder.GetSdmxObservationsQuery(
+		map[string]*sdmxpb.ConstraintList{
+			"variableMeasured": {Values: []string{"var1"}},
+			"observationAbout": {Values: []string{"country/USA"}},
+		},
+		map[string]map[string]string{
+			"var1": {
+				"destinationCountry": "entity1",
+				"observationAbout":   "entity2",
+			},
+		},
+	)
+	if err != nil {
+		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+	}
+	if !strings.Contains(stmt.SQL, "t.entity2 IN UNNEST(@observationAbout)") {
+		t.Fatalf("SQL = %s, want observationAbout filter on entity2", stmt.SQL)
+	}
+	if strings.Contains(stmt.SQL, "t.entity1 IN UNNEST(@observationAbout)") {
+		t.Fatalf("SQL = %s, want no observationAbout filter on entity1", stmt.SQL)
 	}
 }
 
