@@ -451,7 +451,7 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		"nestedFacet":                          map[string]interface{}{"drop": "me"},
 	})
 
-	wantEntityDimensionIDs := map[string]string{
+	wantDimensionValues := map[string]string{
 		datacommons.ComponentVariableMeasured:  "Count_Person",
 		datacommons.ComponentObservationAbout:  "country/USA",
 		datacommons.ComponentProvenance:        "dc/base/test_import",
@@ -459,10 +459,10 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		datacommons.ComponentMeasurementMethod: "Census",
 		datacommons.ComponentObservationPeriod: "P1Y",
 	}
-	if len(series.Dimensions) != len(wantEntityDimensionIDs) {
-		t.Fatalf("Dimensions = %v, want %v", series.Dimensions, wantEntityDimensionIDs)
+	if len(series.Dimensions) != len(wantDimensionValues) {
+		t.Fatalf("Dimensions = %v, want %v", series.Dimensions, wantDimensionValues)
 	}
-	for key, want := range wantEntityDimensionIDs {
+	for key, want := range wantDimensionValues {
 		if got := series.Dimensions[key]; got != want {
 			t.Fatalf("Dimensions[%q] = %q, want %q", key, got, want)
 		}
