@@ -1677,6 +1677,14 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionHepatitisC"
     },
     {
+      "name": "Count of females aged 10 to 14 years",
+      "dcid": "Count_Person_10To14Years_Female"
+    },
+    {
+      "name": "Count of females aged 15 to 19 years",
+      "dcid": "Count_Person_15To19Years_Female"
+    },
+    {
       "name": "Count of invasive, ,, Female Haemophilus influenzae incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionInvasiveDisease_HaemophilusInfluenzae"
     },
@@ -2597,10 +2605,6 @@
       "dcid": "Count_Person_1OrMoreYears_Female"
     },
     {
-      "name": "Population: 10 - 14 Years, Female",
-      "dcid": "Count_Person_10To14Years_Female"
-    },
-    {
       "name": "Population: 10th Grade, Female",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainment10ThGrade_Female"
     },
@@ -2619,10 +2623,6 @@
     {
       "name": "Population: 15 - 17 Years, Female",
       "dcid": "Count_Person_15To17Years_Female"
-    },
-    {
-      "name": "Population: 15 - 19 Years, Female",
-      "dcid": "Count_Person_15To19Years_Female"
     },
     {
       "name": "Population: 15 - 44 Years, Female",

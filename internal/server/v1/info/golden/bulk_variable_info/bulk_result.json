@@ -1865,7 +1865,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1884,7 +1884,7 @@
                       }
                     ],
                     "minValue": 7554734.001,
-                    "maxValue": 34088009.85
+                    "maxValue": 34565327.52
                   },
                   "Country": {
                     "placeCount": 1,
@@ -1895,7 +1895,7 @@
                       }
                     ],
                     "minValue": 163070238.756,
-                    "maxValue": 167855707.7
+                    "maxValue": 169135861.995
                   },
                   "State": {
                     "placeCount": 51,
@@ -1918,12 +1918,12 @@
                   }
                 },
                 "minValue": 281400.808,
-                "maxValue": 167855707.7,
-                "observationCount": 427,
+                "maxValue": 169135861.995,
+                "observationCount": 488,
                 "timeSeriesCount": 61
               }
             ],
-            "observationCount": 427,
+            "observationCount": 488,
             "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
@@ -2161,7 +2161,7 @@
               {
                 "seriesKey": {},
                 "earliestDate": "1901",
-                "latestDate": "2026-03",
+                "latestDate": "2026-06",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -2172,16 +2172,16 @@
                       }
                     ],
                     "minValue": 1255000,
-                    "maxValue": 3029291
+                    "maxValue": 3032519
                   }
                 },
                 "minValue": 1255000,
-                "maxValue": 3029291,
-                "observationCount": 199,
+                "maxValue": 3032519,
+                "observationCount": 200,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 199,
+            "observationCount": 200,
             "timeSeriesCount": 1
           },
           "dc/base/Egypt_Census": {

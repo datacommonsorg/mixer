@@ -268,7 +268,7 @@ func GetSortedResolvedPlaceCandidates(
 	for t, candidates := range typeToCandidate {
 		types = append(types, t)
 		sort.Slice(candidates, func(i, j int) bool {
-			return candidates[i].Dcid < candidates[j].Dcid
+			return candidates[i].GetDcid() < candidates[j].GetDcid()
 		})
 	}
 

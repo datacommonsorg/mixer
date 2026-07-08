@@ -99,9 +99,13 @@ func handleLangOperator(prefix string, langs []string, params map[string]interfa
 	return strings.Join(parts, " OR ")
 }
 
-func GetCompletionTimestampQuery() *spanner.Statement {
+func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
+	sql := statements.getCompletionTimestamp
+	if useNewSchema {
+		sql = statements.getIngestionHistoryTimestamp
+	}
 	return &spanner.Statement{
-		SQL: statements.getCompletionTimestamp,
+		SQL: sql,
 	}
 }
 
