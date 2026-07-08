@@ -41,6 +41,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -193,7 +194,10 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient, false)
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: st.RecogPlaceStore,
+			MapsClient:      mapsClient,
+		})
 		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
@@ -284,7 +288,19 @@ func newClient(
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, "", "", false, nil)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient("", nil)
+	mixerServer := server.NewMixerServer(
+		mixerStore,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               cachedata,
+			MapsClient:              mapsClient,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			TopicExpander:           nil, // Not testing topics in standard integration tests
+		},
+	)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
@@ -431,7 +447,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "", false)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
@@ -443,7 +459,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 // NewSchemaSelectorSpannerClient creates a new test schema selector spanner client.
 func NewSchemaSelectorSpannerClient(t *testing.T) spanner.SpannerClient {
 	baseClient := NewNormalizedSpannerClient(t)
-	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient)
+	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient, false, spanner.DefaultTableConfig())
 	if err != nil {
 		t.Fatalf("Failed to create SchemaSelectorClient: %v", err)
 	}

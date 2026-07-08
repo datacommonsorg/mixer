@@ -128,9 +128,13 @@ Enabling Spanner Graph requires the following feature flags to be set:
 
 These are currently set in `local.yaml`.
 
-Additionally, to use a database other than the default in `spanner_graph_info.yaml`, set the feature flag:
+Additionally, to use a Spanner project, instance, or database other than the default in `spanner_graph_info.yaml`, set the feature flag:
 
-- `SpannerGraphDatabase: <DATABASE NAME>` 
+- `SpannerGraphDatabase: <DATABASE NAME OR FULL URI>`
+
+Note: `SpannerGraphDatabase` accepts either:
+1. A simple database name (e.g., `dc_graph_2026_01_27`), which overrides only the database while inheriting project and instance from `spanner_graph_info.yaml`.
+2. A fully qualified Spanner database URI (`projects/<project>/instances/<instance>/databases/<database>`), which automatically overrides Project, Instance, and Database in a single flag specification.
 
 ```bash
 # In repo root directory

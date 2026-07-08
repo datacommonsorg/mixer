@@ -10338,58 +10338,68 @@
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/UNEnergy"
     },
     "1688273529": {
       "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/FBIGovCrime_AggCountry"
     },
     "2157651424": {
       "import_name": "USGSWaterUse",
       "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
       "observation_period": "P1Y",
-      "unit": "MillionGallonsPerDay"
+      "unit": "MillionGallonsPerDay",
+      "provenance_id": "dc/base/USGSWaterUse"
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
-      "unit": "InternationalDollar"
+      "unit": "InternationalDollar",
+      "provenance_id": "dc/base/WorldDevelopmentIndicators"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
       "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/EIA_Electricity"
     },
     "324358135": {
       "import_name": "BLS_LAUS",
       "provenance_url": "https://www.bls.gov/lau/",
       "measurement_method": "BLSSeasonallyUnadjusted",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "provenance_id": "dc/base/BLS_LAUS"
     },
     "3707913853": {
       "import_name": "BLS_CPS",
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "provenance_id": "dc/base/BLS_CPS"
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/WorldDevelopmentIndicators"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/FBIGovCrime"
     }
   }
 }

@@ -34,6 +34,7 @@ func GetProvenances(ctx context.Context, sqlClient *sqldb.SQLClient) (map[string
 		result[id] = &pb.Facet{
 			ImportName:    name,
 			ProvenanceUrl: url,
+			ProvenanceId:  id,
 		}
 	}
 	return result, nil

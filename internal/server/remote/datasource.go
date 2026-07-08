@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -76,9 +77,14 @@ func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv
 	return rds.client.BulkVariableGroupInfo(req)
 }
 
-func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
-	return &pb.SdmxDataResult{}, nil
+	return &sdmxpb.SdmxDataResult{}, nil
+}
+
+func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
+	return &sdmxpb.SdmxAvailabilityResult{}, nil
 }
 
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

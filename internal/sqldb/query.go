@@ -179,6 +179,26 @@ func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]
 	return summaries, nil
 }
 
+// GetSVProvenanceSummaries retrieves per-provenance per-series summaries for the specified variables.
+func (sc *SQLClient) GetSVProvenanceSummaries(ctx context.Context, variables []string) ([]*SVProvenanceSummary, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetSVProvenanceSummaries")
+	var summaries []*SVProvenanceSummary
+	if len(variables) == 0 {
+		return summaries, nil
+	}
+	stmt := statement{
+		query: statements.getStatVarProvenanceSummaries,
+		args: map[string]interface{}{
+			"variables": variables,
+		},
+	}
+	err := sc.queryAndCollect(ctx, stmt, &summaries)
+	if err != nil {
+		return nil, err
+	}
+	return summaries, nil
+}
+
 // GetAllStatVarGroups retrieves all StatVarGroups from the database.
 func (sc *SQLClient) GetAllStatVarGroups(ctx context.Context) ([]*StatVarGroup, error) {
 	defer util.TimeTrack(time.Now(), "SQL: GetStatVarGroups")

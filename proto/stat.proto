@@ -41,6 +41,7 @@ message Facet {
   string unit = 6;
   bool is_dc_aggregate = 7;
   bool is_dc_imputed = 8;
+  string provenance_id = 9;
 }
 
 message Facets {
@@ -78,6 +79,9 @@ message PointStat {
   string meta_hash = 4;
   // Same as meta_hash, used in V1 API.
   string facet = 5;
+  // Optional observation-level attributes. Only populated by APIs backed by
+  // observation storage that supports point-level attributes.
+  map<string, string> attributes = 6;
 }
 
 message SourceSeries {
@@ -93,6 +97,7 @@ message SourceSeries {
   // Only used for latest date obs collection.
   map<string, string> place_to_latest_date = 11;
   bool is_dc_imputed = 13;
+  string provenance_id = 14;
   reserved 2;
 }
 

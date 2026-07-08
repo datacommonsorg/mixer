@@ -59,6 +59,9 @@ const (
 	// Default timeout for timestamp polling.
 	timestampPollingTimeout = 10 * time.Second
 
+	// Default fallback staleness duration when staleness timestamp is unavailable or expired.
+	defaultStalenessDuration = 15 * time.Second
+
 	// Default timeout for API requests.
 	ApiTimeout = 60 * time.Second
 
@@ -138,7 +141,7 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -173,8 +176,69 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 	return queryDynamic(ctx, sc, *stmt)
 }
 
+// CheckVariableSourceExistence checks for the existence of observations for the given variables/variable groups and sources.
+// Returns a slice of rows, where each row contains [variable/variable group, source] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	if len(variables) == 0 || len(sources) == 0 {
+		return [][]string{}, nil
+	}
+
+	var result [][]string
+
+	var existenceQueryStmt spanner.Statement
+	if predicate == "" {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkSVSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+			},
+		}
+	} else {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkGroupSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"predicate": predicate,
+			},
+		}
+	}
+
+	existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
+	if err != nil {
+		return nil, err
+	}
+
+	sourceFilter := map[string]struct{}{}
+	for _, s := range sources {
+		sourceFilter[s] = struct{}{}
+	}
+
+	for _, row := range existenceQueryRows {
+		if len(row) != 2 {
+			continue
+		}
+		variable := row[0]
+		source := row[1]
+		if _, ok := sourceFilter[source]; ok {
+			result = append(result, []string{variable, source})
+		}
+	}
+
+	return result, nil
+}
+
+// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables groups (SVGs or topics) and places.
+// Returns a slice of rows, where each row contains [variable group, entity] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	if len(variableGroups) == 0 || len(entities) == 0 {
+		return [][]string{}, nil
+	}
+	stmt := CheckGroupPlaceExistenceQuery(variableGroups, entities, predicate)
+	return queryDynamic(ctx, sc, *stmt)
+}
+
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
@@ -674,12 +738,12 @@ func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes [
 }
 
 // VectorSearchQuery performs vector similarity search in Spanner.
-func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
 	err := queryStructs(
 		ctx,
 		sc,
-		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypes),
+		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypes, embeddingLabel),
 		func() interface{} {
 			return &VectorSearchResult{}
 		},
@@ -874,7 +938,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
-	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
+	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery(sc.useNewIngestionHistorySchema))
 	defer iter.Stop()
 
 	row, err := iter.Next()
@@ -889,7 +953,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	}
 
 	if warnMsg != "" {
-		slog.Warn(warnMsg + " Falling back to strong reads.")
+		slog.Warn(warnMsg + " Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
 		return nil
 	}
 
@@ -905,10 +969,23 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 
 	var timestamp time.Time
 	if err := row.Column(0, &timestamp); err != nil {
-		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
 
-	sc.timestamp.Store(timestamp.UnixNano())
+	now := time.Now()
+	prevNano := sc.timestamp.Load()
+	newNano := timestamp.UnixNano()
+
+	if prevNano == 0 || prevNano != newNano {
+		sc.timestamp.Store(newNano)
+	}
+
+	if sc.tracker != nil {
+		if ev := sc.tracker.RecordSuccess(now, prevNano, newNano); ev != nil {
+			slog.Log(ctx, ev.level, ev.message, ev.args...)
+		}
+	}
+
 	return nil
 }
 
@@ -976,15 +1053,16 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 	ts, err := sc.getStalenessTimestamp()
 	if err != nil {
-		return runQuery(spanner.StrongRead())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	err = runQuery(spanner.ReadTimestamp(ts))
 
-	// Log error if timestamp is older than retention and fall back to strong read.
+	// Log error if timestamp is older than retention and fall back to exact staleness read.
 	if spanner.ErrCode(err) == codes.FailedPrecondition {
-		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-			"expiredTimestamp", ts.String())
-		return runQuery(spanner.StrongRead())
+		slog.Error("Stale read timestamp expired. Falling back to exact staleness read.",
+			"expiredTimestamp", ts.String(),
+			"duration", defaultStalenessDuration.String())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	return err
 }

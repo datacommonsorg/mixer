@@ -129,29 +129,34 @@
       "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/FBIGovCrime_AggCountry"
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
-      "unit": "InternationalDollar"
+      "unit": "InternationalDollar",
+      "provenance_id": "dc/base/WorldDevelopmentIndicators"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/WorldDevelopmentIndicators"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/FBIGovCrime"
     }
   }
 }

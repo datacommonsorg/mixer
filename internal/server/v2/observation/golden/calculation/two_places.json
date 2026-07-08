@@ -73,7 +73,8 @@
     "3238703853": {
       "import_name": "UAE_Population",
       "provenance_url": "https://bayanat.ae/en/Data?query=population",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/UAE_Population"
     }
   }
 }

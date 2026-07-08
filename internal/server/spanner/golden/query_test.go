@@ -104,7 +104,7 @@ func TestGetObservations(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservations(ctx, c.variables, c.entities)
+			actual, err := client.GetObservations(ctx, c.variables, c.entities, "")
 			if err != nil {
 				return nil, err
 			}
@@ -126,7 +126,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, "")
 			if err != nil {
 				return nil, err
 			}
@@ -456,7 +456,7 @@ func TestVectorSearch(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.VectorSearchQuery(ctx, c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes)
+			return client.VectorSearchQuery(ctx, c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes, c.embeddingLabel)
 		})
 	}
 }

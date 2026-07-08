@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -32,6 +33,8 @@ type Flags struct {
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
 	// Enabled new Spanner-based dispatcher/datasource backend.
 	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
+	// Whether to default Spanner API calls to the multi-entity schema.
+	UseMultiEntitySchema bool `yaml:"UseMultiEntitySchema"`
 	// Spanner Graph database for Spanner DataSource.
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
@@ -46,9 +49,11 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
-	// Whether to enable Spanner search embeddings.
-	// switch this to true in local.yaml for easier development
+	// Whether to default indicator resolution to Spanner.
+	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
+	// Whether to use the new IngestionHistory schema with Timestamp.
+	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -57,6 +62,7 @@ func setDefaultValues() *Flags {
 		EnableV3:                      false,
 		V3MirrorFraction:              0.0,
 		UseSpannerGraph:               false,
+		UseMultiEntitySchema:          false,
 		SpannerGraphDatabase:          "",
 		UseStaleReads:                 false,
 		EnableEmbeddingsResolver:      true,
@@ -64,6 +70,7 @@ func setDefaultValues() *Flags {
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
+		UseNewIngestionHistorySchema:  false,
 	}
 }
 
@@ -75,8 +82,16 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.SpannerGraphDatabase != "" && !f.UseSpannerGraph {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+	if f.SpannerGraphDatabase != "" {
+		if !f.UseSpannerGraph {
+			return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+		}
+		if strings.HasPrefix(f.SpannerGraphDatabase, "projects/") {
+			parts := strings.Split(f.SpannerGraphDatabase, "/")
+			if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+				return fmt.Errorf("invalid SpannerGraphDatabase URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", f.SpannerGraphDatabase)
+			}
+		}
 	}
 	if f.UseStaleReads && !f.UseSpannerGraph {
 		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")

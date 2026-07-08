@@ -53876,7 +53876,8 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
+      "unit": "Year",
+      "provenance_id": "dc/base/CensusACS5YearSurvey"
     }
   }
 }

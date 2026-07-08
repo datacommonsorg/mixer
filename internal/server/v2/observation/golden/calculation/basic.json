@@ -233,21 +233,25 @@
     "263855571": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
     },
     "3238703853": {
       "import_name": "UAE_Population",
       "provenance_url": "https://bayanat.ae/en/Data?query=population",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/UAE_Population"
     },
     "341794991": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
     },
     "409660979": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/"
+      "provenance_url": "https://datacommons.org/",
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
     }
   }
 }

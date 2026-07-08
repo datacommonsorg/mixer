@@ -49,6 +49,7 @@ type PlacePopInfo struct {
 // SourceSeries represents time series data for a particular source.
 type SourceSeries struct {
 	ImportName        string             `json:"importName,omitempty"`
+	ProvenanceID      string             `json:"provenanceId,omitempty"`
 	ObservationPeriod string             `json:"observationPeriod,omitempty"`
 	MeasurementMethod string             `json:"measurementMethod,omitempty"`
 	ScalingFactor     string             `json:"scalingFactor,omitempty"`

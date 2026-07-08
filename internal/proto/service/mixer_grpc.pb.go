@@ -30,9 +30,10 @@ package service
 import (
 	context "context"
 	proto "github.com/datacommonsorg/mixer/internal/proto"
+	sdmx "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -44,9 +45,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
+	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
+	Mixer_V3SdmxAvailability_FullMethodName           = "/datacommons.Mixer/V3SdmxAvailability"
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
-	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
@@ -62,6 +64,10 @@ const (
 	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
 	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
 	Mixer_V2BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V2BulkVariableGroupInfo"
+	Mixer_V2AgentSearchIndicators_FullMethodName      = "/datacommons.Mixer/V2AgentSearchIndicators"
+	Mixer_V2AgentGetObservations_FullMethodName       = "/datacommons.Mixer/V2AgentGetObservations"
+	Mixer_V2AgentGetVariableMetadata_FullMethodName   = "/datacommons.Mixer/V2AgentGetVariableMetadata"
+	Mixer_V2GetLocationsRankings_FullMethodName       = "/datacommons.Mixer/V2GetLocationsRankings"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
 	Mixer_GetPropertyLabels_FullMethodName            = "/datacommons.Mixer/GetPropertyLabels"
 	Mixer_GetPropertyValues_FullMethodName            = "/datacommons.Mixer/GetPropertyValues"
@@ -115,9 +121,10 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
+	V3SdmxData(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (Mixer_V3SdmxDataClient, error)
+	V3SdmxAvailability(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
-	V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
@@ -135,6 +142,11 @@ type MixerClient interface {
 	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
 	V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
+	V2AgentSearchIndicators(ctx context.Context, in *v2.SearchIndicatorsRequest, opts ...grpc.CallOption) (*v2.SearchIndicatorsResponse, error)
+	V2AgentGetObservations(ctx context.Context, in *v2.GetObservationsRequest, opts ...grpc.CallOption) (*v2.GetObservationsResponse, error)
+	V2AgentGetVariableMetadata(ctx context.Context, in *v2.GetVariableMetadataRequest, opts ...grpc.CallOption) (*v2.GetVariableMetadataResponse, error)
+	// Get rankings for given stat var DCIDs.
+	V2GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -225,6 +237,47 @@ func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
 }
 
+func (c *mixerClient) V3SdmxData(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (Mixer_V3SdmxDataClient, error) {
+	stream, err := c.cc.NewStream(ctx, &Mixer_ServiceDesc.Streams[0], Mixer_V3SdmxData_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &mixerV3SdmxDataClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Mixer_V3SdmxDataClient interface {
+	Recv() (*httpbody.HttpBody, error)
+	grpc.ClientStream
+}
+
+type mixerV3SdmxDataClient struct {
+	grpc.ClientStream
+}
+
+func (x *mixerV3SdmxDataClient) Recv() (*httpbody.HttpBody, error) {
+	m := new(httpbody.HttpBody)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *mixerClient) V3SdmxAvailability(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error) {
+	out := new(httpbody.HttpBody)
+	err := c.cc.Invoke(ctx, Mixer_V3SdmxAvailability_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error) {
 	out := new(v2.NodeResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Node_FullMethodName, in, out, opts...)
@@ -237,15 +290,6 @@ func (c *mixerClient) V3Node(ctx context.Context, in *v2.NodeRequest, opts ...gr
 func (c *mixerClient) V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
 	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Observation_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error) {
-	out := new(v3.SdmxDataResponse)
-	err := c.cc.Invoke(ctx, Mixer_V3SdmxData_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -381,6 +425,42 @@ func (c *mixerClient) V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariabl
 func (c *mixerClient) V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error) {
 	out := new(v1.BulkVariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2BulkVariableGroupInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2AgentSearchIndicators(ctx context.Context, in *v2.SearchIndicatorsRequest, opts ...grpc.CallOption) (*v2.SearchIndicatorsResponse, error) {
+	out := new(v2.SearchIndicatorsResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2AgentSearchIndicators_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2AgentGetObservations(ctx context.Context, in *v2.GetObservationsRequest, opts ...grpc.CallOption) (*v2.GetObservationsResponse, error) {
+	out := new(v2.GetObservationsResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2AgentGetObservations_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2AgentGetVariableMetadata(ctx context.Context, in *v2.GetVariableMetadataRequest, opts ...grpc.CallOption) (*v2.GetVariableMetadataResponse, error) {
+	out := new(v2.GetVariableMetadataResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2AgentGetVariableMetadata_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error) {
+	out := new(proto.GetLocationsRankingsResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2GetLocationsRankings_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -815,9 +895,10 @@ func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImpor
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
+	V3SdmxData(*sdmx.SdmxRestRequest, Mixer_V3SdmxDataServer) error
+	V3SdmxAvailability(context.Context, *sdmx.SdmxRestRequest) (*httpbody.HttpBody, error)
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
-	V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
@@ -835,6 +916,11 @@ type MixerServer interface {
 	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
 	V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
+	V2AgentSearchIndicators(context.Context, *v2.SearchIndicatorsRequest) (*v2.SearchIndicatorsResponse, error)
+	V2AgentGetObservations(context.Context, *v2.GetObservationsRequest) (*v2.GetObservationsResponse, error)
+	V2AgentGetVariableMetadata(context.Context, *v2.GetVariableMetadataRequest) (*v2.GetVariableMetadataResponse, error)
+	// Get rankings for given stat var DCIDs.
+	V2GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -921,14 +1007,17 @@ type MixerServer interface {
 type UnimplementedMixerServer struct {
 }
 
+func (UnimplementedMixerServer) V3SdmxData(*sdmx.SdmxRestRequest, Mixer_V3SdmxDataServer) error {
+	return status.Errorf(codes.Unimplemented, "method V3SdmxData not implemented")
+}
+func (UnimplementedMixerServer) V3SdmxAvailability(context.Context, *sdmx.SdmxRestRequest) (*httpbody.HttpBody, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3SdmxAvailability not implemented")
+}
 func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Node not implemented")
 }
 func (UnimplementedMixerServer) V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Observation not implemented")
-}
-func (UnimplementedMixerServer) V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method V3SdmxData not implemented")
 }
 func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3NodeSearch not implemented")
@@ -974,6 +1063,18 @@ func (UnimplementedMixerServer) V2BulkVariableInfo(context.Context, *v1.BulkVari
 }
 func (UnimplementedMixerServer) V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2BulkVariableGroupInfo not implemented")
+}
+func (UnimplementedMixerServer) V2AgentSearchIndicators(context.Context, *v2.SearchIndicatorsRequest) (*v2.SearchIndicatorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2AgentSearchIndicators not implemented")
+}
+func (UnimplementedMixerServer) V2AgentGetObservations(context.Context, *v2.GetObservationsRequest) (*v2.GetObservationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2AgentGetObservations not implemented")
+}
+func (UnimplementedMixerServer) V2AgentGetVariableMetadata(context.Context, *v2.GetVariableMetadataRequest) (*v2.GetVariableMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2AgentGetVariableMetadata not implemented")
+}
+func (UnimplementedMixerServer) V2GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2GetLocationsRankings not implemented")
 }
 func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
@@ -1128,6 +1229,45 @@ func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 	s.RegisterService(&Mixer_ServiceDesc, srv)
 }
 
+func _Mixer_V3SdmxData_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(sdmx.SdmxRestRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MixerServer).V3SdmxData(m, &mixerV3SdmxDataServer{stream})
+}
+
+type Mixer_V3SdmxDataServer interface {
+	Send(*httpbody.HttpBody) error
+	grpc.ServerStream
+}
+
+type mixerV3SdmxDataServer struct {
+	grpc.ServerStream
+}
+
+func (x *mixerV3SdmxDataServer) Send(m *httpbody.HttpBody) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _Mixer_V3SdmxAvailability_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(sdmx.SdmxRestRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3SdmxAvailability(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3SdmxAvailability_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3SdmxAvailability(ctx, req.(*sdmx.SdmxRestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_V3Node_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v2.NodeRequest)
 	if err := dec(in); err != nil {
@@ -1160,24 +1300,6 @@ func _Mixer_V3Observation_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3Observation(ctx, req.(*v2.ObservationRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_V3SdmxData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.SdmxDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).V3SdmxData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_V3SdmxData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3SdmxData(ctx, req.(*v3.SdmxDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1448,6 +1570,78 @@ func _Mixer_V2BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2BulkVariableGroupInfo(ctx, req.(*v1.BulkVariableGroupInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2AgentSearchIndicators_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.SearchIndicatorsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2AgentSearchIndicators(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2AgentSearchIndicators_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2AgentSearchIndicators(ctx, req.(*v2.SearchIndicatorsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2AgentGetObservations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.GetObservationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2AgentGetObservations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2AgentGetObservations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2AgentGetObservations(ctx, req.(*v2.GetObservationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2AgentGetVariableMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.GetVariableMetadataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2AgentGetVariableMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2AgentGetVariableMetadata_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2AgentGetVariableMetadata(ctx, req.(*v2.GetVariableMetadataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2GetLocationsRankings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.GetLocationsRankingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2GetLocationsRankings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2GetLocationsRankings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2GetLocationsRankings(ctx, req.(*proto.GetLocationsRankingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2306,16 +2500,16 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "V3SdmxAvailability",
+			Handler:    _Mixer_V3SdmxAvailability_Handler,
+		},
+		{
 			MethodName: "V3Node",
 			Handler:    _Mixer_V3Node_Handler,
 		},
 		{
 			MethodName: "V3Observation",
 			Handler:    _Mixer_V3Observation_Handler,
-		},
-		{
-			MethodName: "V3SdmxData",
-			Handler:    _Mixer_V3SdmxData_Handler,
 		},
 		{
 			MethodName: "V3NodeSearch",
@@ -2376,6 +2570,22 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2BulkVariableGroupInfo",
 			Handler:    _Mixer_V2BulkVariableGroupInfo_Handler,
+		},
+		{
+			MethodName: "V2AgentSearchIndicators",
+			Handler:    _Mixer_V2AgentSearchIndicators_Handler,
+		},
+		{
+			MethodName: "V2AgentGetObservations",
+			Handler:    _Mixer_V2AgentGetObservations_Handler,
+		},
+		{
+			MethodName: "V2AgentGetVariableMetadata",
+			Handler:    _Mixer_V2AgentGetVariableMetadata_Handler,
+		},
+		{
+			MethodName: "V2GetLocationsRankings",
+			Handler:    _Mixer_V2GetLocationsRankings_Handler,
 		},
 		{
 			MethodName: "Query",
@@ -2566,6 +2776,12 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_GetImportTableData_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "V3SdmxData",
+			Handler:       _Mixer_V3SdmxData_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "service/mixer.proto",
 }

@@ -55,6 +55,7 @@ type Observation struct {
 	FacetId           string     `spanner:"facet_id"`
 	Observations      TimeSeries `spanner:"observations"`
 	ImportName        string     `spanner:"import_name"`
+	ProvenanceID      string     `spanner:"provenance"`
 	ObservationPeriod string     `spanner:"observation_period"`
 	MeasurementMethod string     `spanner:"measurement_method"`
 	Unit              string     `spanner:"unit"`
@@ -66,8 +67,9 @@ type Observation struct {
 // Single observation in a time series.
 // Value is a string to allow series with non-numeric types.
 type DateValue struct {
-	Date  string
-	Value string
+	Date       string
+	Value      string
+	Attributes map[string]string
 }
 
 type TimeSeries []*DateValue
@@ -141,16 +143,16 @@ type StatVarGroupNode struct {
 
 // SVGChild represents the info to build a base SVG child.
 type SVGChild struct {
-	SubjectID string `spanner:"subject_id"`
-	Name      string `spanner:"name"`
-	Predicate string `spanner:"predicate"`
+	SubjectID  string `spanner:"subject_id"`
+	Name       string `spanner:"name"`
+	Predicate  string `spanner:"predicate"`
 	Definition string `spanner:"definition"`
 }
 
 // ChildSV represents the info to build a child SV of an SVG.
 type ChildSV struct {
-	SubjectID string `spanner:"subject_id"`
-	Name      string `spanner:"name"`
+	SubjectID  string `spanner:"subject_id"`
+	Name       string `spanner:"name"`
 	Definition string `spanner:"definition"`
 }
 
@@ -170,7 +172,13 @@ type FilteredStatVarGroupNode struct {
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
-	Project  string `yaml:"project"`
-	Instance string `yaml:"instance"`
-	Database string `yaml:"database"`
+	Project                     string  `yaml:"project"`
+	Instance                    string  `yaml:"instance"`
+	Database                    string  `yaml:"database"`
+	TimeSeriesTable             *string `yaml:"timeSeriesTable"`
+	ObservationTable            *string `yaml:"observationTable"`
+	TimeSeriesByEntity1Index    *string `yaml:"timeSeriesByEntity1Index"`
+	TimeSeriesByEntity2Index    *string `yaml:"timeSeriesByEntity2Index"`
+	TimeSeriesByEntity3Index    *string `yaml:"timeSeriesByEntity3Index"`
+	TimeSeriesByProvenanceIndex *string `yaml:"timeSeriesByProvenanceIndex"`
 }

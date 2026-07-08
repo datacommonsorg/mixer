@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"errors"
 	"path"
 	"runtime"
 	"slices"
@@ -24,6 +25,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -40,7 +42,13 @@ import (
 type mockSpannerClient struct {
 	resolveByIDRes                     map[string][]string
 	getNodeEdgesRes                    map[string][]*spanner.Edge
+	getNodeEdgesErr                    error
+	getNodeEdgesCalls                  int
+	getNodeEdgesIDs                    [][]string
 	checkVariableExistenceRes          [][]string
+	checkVariableSourceExistenceRes    [][]string
+	checkGroupPlaceExistenceRes        [][]string
+	checkVariableSourceExistenceErr    error
 	filterNodesByTypeRes               map[string][]string
 	getObservationsRes                 []*spanner.Observation
 	getObservationsContainedInPlaceRes []*spanner.Observation
@@ -50,18 +58,35 @@ func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out 
 	return nil, nil
 }
 func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*spanner.Edge, error) {
+	m.getNodeEdgesCalls++
+	m.getNodeEdgesIDs = append(m.getNodeEdgesIDs, slices.Clone(ids))
+	if m.getNodeEdgesErr != nil {
+		return nil, m.getNodeEdgesErr
+	}
 	return m.getNodeEdgesRes, nil
 }
-func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spanner.Observation, error) {
+func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*spanner.Observation, error) {
 	return m.getObservationsRes, nil
 }
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	return m.checkVariableExistenceRes, nil
 }
-func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
+func (m *mockSpannerClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	if m.checkVariableSourceExistenceErr != nil {
+		return nil, m.checkVariableSourceExistenceErr
+	}
+	return m.checkVariableSourceExistenceRes, nil
+}
+func (m *mockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	return m.checkGroupPlaceExistenceRes, nil
+}
+func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*spanner.Observation, error) {
 	return m.getObservationsContainedInPlaceRes, nil
 }
-func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*spanner.SearchNode, error) {
@@ -93,7 +118,7 @@ func (m *mockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []stri
 	}
 	return res, nil
 }
-func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*spanner.VectorSearchResult, error) {
+func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*spanner.VectorSearchResult, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
@@ -145,7 +170,10 @@ func TestSpannerResolve(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, recogPlaceStore, &maps.FakeMapsClient{}, false)
+	ds := spanner.NewSpannerDataSource(client, &spanner.SpannerDataSourceOptions{
+		RecogPlaceStore: recogPlaceStore,
+		MapsClient:      &maps.FakeMapsClient{},
+	})
 
 	t.Parallel()
 	ctx := context.Background()
@@ -200,7 +228,7 @@ func TestSpannerNode(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -255,7 +283,7 @@ func TestSpannerSparql(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -324,7 +352,7 @@ func TestSpannerEvent(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -392,11 +420,15 @@ func TestSpannerObservation(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "datasource")
 
 	for _, c := range []struct {
-		desc       string
-		req        *pbv2.ObservationRequest
-		mockRes    [][]string
-		goldenFile string
-		wantErr    bool
+		desc              string
+		req               *pbv2.ObservationRequest
+		mockRes           [][]string
+		mockGroupRes      [][]string
+		mockGroupPlaceRes [][]string
+		mockGroupErr      error
+		mockTypes         map[string][]string
+		goldenFile        string
+		wantErr           bool
 	}{
 		{
 			desc: "Basic existence check (single entity)",
@@ -414,6 +446,25 @@ func TestSpannerObservation(t *testing.T) {
 				{"Median_Income_Person", "geoId/06"},
 			},
 			goldenFile: "observation_existence.json",
+		},
+		{
+			desc: "Existence check for StatVarGroup",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"dc/g/Root"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"dc/s/WorldBank"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockTypes: map[string][]string{
+				"StatVarGroup": {"dc/g/Root"},
+			},
+			mockGroupRes: [][]string{
+				{"dc/g/Root", "dc/s/WorldBank"},
+			},
+			goldenFile: "observation_existence_svg.json",
 		},
 		{
 			desc: "Multi-entity existence check",
@@ -479,11 +530,55 @@ func TestSpannerObservation(t *testing.T) {
 			mockRes: [][]string{},
 			wantErr: true,
 		},
+		{
+			desc: "Existence check for StatVarGroup and Place",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"dc/g/Root"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockTypes: map[string][]string{
+				"StatVarGroup": {"dc/g/Root"},
+			},
+			mockGroupPlaceRes: [][]string{
+				{"dc/g/Root", "geoId/06"},
+			},
+			goldenFile: "observation_existence_svg_place.json",
+			wantErr:    false,
+		},
+		{
+			desc: "Existence check for Topic and Place",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"dc/topic/Root"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockTypes: map[string][]string{
+				"Topic": {"dc/topic/Root"},
+			},
+			mockGroupPlaceRes: [][]string{
+				{"dc/topic/Root", "geoId/06"},
+			},
+			goldenFile: "observation_existence_topic_place.json",
+			wantErr:    false,
+		},
 	} {
 		client := &mockSpannerClient{
-			checkVariableExistenceRes: c.mockRes,
+			checkVariableExistenceRes:       c.mockRes,
+			checkVariableSourceExistenceRes: c.mockGroupRes,
+			checkVariableSourceExistenceErr: c.mockGroupErr,
+			filterNodesByTypeRes:            c.mockTypes,
+			checkGroupPlaceExistenceRes:     c.mockGroupPlaceRes,
 		}
-		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+		ds := spanner.NewSpannerDataSource(client, nil)
 
 		got, err := ds.Observation(ctx, c.req)
 		if (err != nil) != c.wantErr {
@@ -512,6 +607,222 @@ func TestSpannerObservation(t *testing.T) {
 	}
 }
 
+func TestSpannerObservation_SkipsProvenanceURLLookupWhenPresent(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				ProvenanceURL:    "https://legacy.test/source",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := client.getNodeEdgesCalls; got != 0 {
+		t.Fatalf("GetNodeEdgesByID calls = %d, want 0", got)
+	}
+	if got, want := resp.GetFacets()["facet-1"].GetProvenanceUrl(), "https://legacy.test/source"; got != want {
+		t.Fatalf("facet provenanceUrl = %q, want %q", got, want)
+	}
+}
+
+func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://resolved.test/source"},
+			},
+		},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+			{
+				VariableMeasured: "Median_Income_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-2",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := client.getNodeEdgesCalls; got != 1 {
+		t.Fatalf("GetNodeEdgesByID calls = %d, want 1", got)
+	}
+	if got, want := client.getNodeEdgesIDs[0], []string{"dc/base/prov-1"}; !slices.Equal(got, want) {
+		t.Fatalf("GetNodeEdgesByID ids = %v, want %v", got, want)
+	}
+	for _, facetID := range []string{"facet-1", "facet-2"} {
+		if got, want := resp.GetFacets()[facetID].GetProvenanceUrl(), "https://resolved.test/source"; got != want {
+			t.Fatalf("%s provenanceUrl = %q, want %q", facetID, got, want)
+		}
+	}
+}
+
+func TestSpannerObservation_MissingProvenanceURLEdgeDoesNotFail(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := resp.GetFacets()["facet-1"].GetProvenanceUrl(); got != "" {
+		t.Fatalf("facet provenanceUrl = %q, want empty", got)
+	}
+}
+
+func TestSpannerObservation_ProvenanceURLLookupErrorFails(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesErr: errors.New("node lookup failed"),
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	_, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err == nil || !strings.Contains(err.Error(), "error resolving provenance URLs") {
+		t.Fatalf("Observation error = %v, want provenance URL lookup error", err)
+	}
+}
+
+func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://source.example.org/data"},
+			},
+			"dc/base/prov-2": {
+				{Predicate: "url", Value: "https://other.test/data"},
+			},
+		},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-2",
+				ProvenanceID:     "dc/base/prov-2",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+	req := observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}})
+	req.Filter = &pbv2.FacetFilter{Domains: []string{"example.org"}}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if _, ok := resp.GetFacets()["facet-1"]; !ok {
+		t.Fatal("facet-1 missing, want domain-matching facet")
+	}
+	if _, ok := resp.GetFacets()["facet-2"]; ok {
+		t.Fatal("facet-2 present, want non-matching domain filtered out")
+	}
+}
+
+func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://contained.test/source"},
+			},
+		},
+		getObservationsContainedInPlaceRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06001",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got, want := resp.GetFacets()["facet-1"].GetProvenanceUrl(), "https://contained.test/source"; got != want {
+		t.Fatalf("facet provenanceUrl = %q, want %q", got, want)
+	}
+}
+
+func observationHydrationRequest(entity *pbv2.DcidOrExpression) *pbv2.ObservationRequest {
+	return &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person", "Median_Income_Person"}},
+		Entity:   entity,
+		Select:   []string{"variable", "entity", "date", "value", "facet"},
+	}
+}
+
 func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 	ctx := context.Background()
 
@@ -522,7 +833,7 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 			"Topic":        {"dc/topic/Demographics"},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Valid SVGs including WHO/Root
 	req1 := &pbv1.BulkVariableGroupInfoRequest{
@@ -620,7 +931,7 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Expression with Remote Data in Context
 	req := &pbv2.ObservationRequest{
@@ -682,7 +993,7 @@ func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -726,7 +1037,7 @@ func TestSpannerObservation_NoExpression(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -832,7 +1143,7 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 			client := &mockSpannerClient{
 				checkVariableExistenceRes: c.mockExist,
 			}
-			ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+			ds := spanner.NewSpannerDataSource(client, nil)
 
 			got, err := ds.FilterStatVarsByEntity(ctx, c.req)
 			if err != nil {

@@ -255,6 +255,19 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_entity.json",
 			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"country/JPN"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+					Date:   "LATEST",
+				},
+				goldenFile: "observations_filter_inferior_facets.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
