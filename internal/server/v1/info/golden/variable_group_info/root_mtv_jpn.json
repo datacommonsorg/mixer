@@ -31,7 +31,7 @@
         "id": "dc/g/Energy",
         "specializedEntity": "Energy",
         "displayName": "Energy",
-        "descendentStatVarCount": 1251
+        "descendentStatVarCount": 1262
       },
       {
         "id": "dc/g/Environment",
@@ -55,7 +55,7 @@
         "id": "dc/g/Crime",
         "specializedEntity": "Crime",
         "displayName": "Crime",
-        "descendentStatVarCount": 847
+        "descendentStatVarCount": 848
       },
       {
         "id": "dc/g/AboutDataCommons",

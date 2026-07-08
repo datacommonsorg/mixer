@@ -1168,7 +1168,8 @@
               "measurementMethod": "NYT_COVID19_GitHub",
               "importName": "NYT_COVID19",
               "provenanceDomain": "nytimes.com",
-              "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
+              "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+              "provenanceId": "dc/base/NYT_COVID19"
             }
           ]
         },
@@ -2114,13 +2115,15 @@
                 "2026-01": 4.3,
                 "2026-02": 4.4,
                 "2026-03": 4.3,
-                "2026-04": 4.3
+                "2026-04": 4.3,
+                "2026-05": 4.3
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
               "importName": "BLS_CPS",
               "provenanceDomain": "bls.gov",
-              "provenanceUrl": "https://www.bls.gov/cps/"
+              "provenanceUrl": "https://www.bls.gov/cps/",
+              "provenanceId": "dc/base/BLS_CPS"
             },
             {
               "val": {
@@ -2441,7 +2444,8 @@
               "observationPeriod": "P3M",
               "importName": "BLS_CPS",
               "provenanceDomain": "bls.gov",
-              "provenanceUrl": "https://www.bls.gov/cps/"
+              "provenanceUrl": "https://www.bls.gov/cps/",
+              "provenanceId": "dc/base/BLS_CPS"
             }
           ]
         }
@@ -3611,7 +3615,8 @@
               "measurementMethod": "NYT_COVID19_GitHub",
               "importName": "NYT_COVID19",
               "provenanceDomain": "nytimes.com",
-              "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html"
+              "provenanceUrl": "https://www.nytimes.com/article/coronavirus-county-data-us.html",
+              "provenanceId": "dc/base/NYT_COVID19"
             }
           ]
         },
@@ -4220,13 +4225,15 @@
                 "2025-12": 5.1,
                 "2026-01": 5.5,
                 "2026-02": 5.5,
-                "2026-03": 5.2
+                "2026-03": 5.2,
+                "2026-04": 5
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
               "importName": "BLS_LAUS",
               "provenanceDomain": "bls.gov",
-              "provenanceUrl": "https://www.bls.gov/lau/"
+              "provenanceUrl": "https://www.bls.gov/lau/",
+              "provenanceId": "dc/base/BLS_LAUS"
             },
             {
               "val": {
@@ -4285,7 +4292,8 @@
               "observationPeriod": "P1Y",
               "importName": "BLS_LAUS",
               "provenanceDomain": "bls.gov",
-              "provenanceUrl": "https://www.bls.gov/lau/"
+              "provenanceUrl": "https://www.bls.gov/lau/",
+              "provenanceId": "dc/base/BLS_LAUS"
             },
             {
               "val": {
@@ -4890,13 +4898,15 @@
                 "2025-12": 5.5,
                 "2026-01": 5.4,
                 "2026-02": 5.4,
-                "2026-03": 5.3
+                "2026-03": 5.3,
+                "2026-04": 5.3
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
               "importName": "BLS_LAUS",
               "provenanceDomain": "bls.gov",
-              "provenanceUrl": "https://www.bls.gov/lau/"
+              "provenanceUrl": "https://www.bls.gov/lau/",
+              "provenanceId": "dc/base/BLS_LAUS"
             }
           ]
         }
