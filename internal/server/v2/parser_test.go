@@ -151,6 +151,34 @@ func TestParseArc(t *testing.T) {
 		},
 		{
 			"->",
+			"[nameWithLanguage{$lang:es}]",
+			&Arc{
+				Out:          true,
+				BracketProps: []string{"nameWithLanguage"},
+				BracketFilters: map[string]map[string][]string{
+					"nameWithLanguage": {
+						"$lang": {"es"},
+					},
+				},
+			},
+			true,
+		},
+		{
+			"->",
+			"[name, nameWithLanguage{$lang:[es, fr]}]",
+			&Arc{
+				Out:          true,
+				BracketProps: []string{"name", "nameWithLanguage"},
+				BracketFilters: map[string]map[string][]string{
+					"nameWithLanguage": {
+						"$lang": {"es", "fr"},
+					},
+				},
+			},
+			true,
+		},
+		{
+			"->",
 			"containedInPlace+",
 			&Arc{
 				Out:        true,
@@ -248,6 +276,18 @@ func TestParseArc(t *testing.T) {
 		{
 			"<-",
 			"prop{dcid}",
+			nil,
+			false,
+		},
+		{
+			"->",
+			"{$lang:es}",
+			nil,
+			false,
+		},
+		{
+			"->",
+			"[name, {$lang:es}]",
 			nil,
 			false,
 		},

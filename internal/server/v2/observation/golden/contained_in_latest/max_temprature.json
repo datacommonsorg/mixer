@@ -2248,7 +2248,8 @@
       "measurement_method": "NASA_Mean_HadGEM2-AO",
       "observation_period": "P1M",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "1363463533": {
       "import_name": "NASA_NEXDCP30",
@@ -2256,7 +2257,8 @@
       "measurement_method": "NASA_Mean_GISS-E2-R-CC",
       "observation_period": "P1M",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "1456458083": {
       "import_name": "NASA_NEXDCP30",
@@ -2264,7 +2266,8 @@
       "measurement_method": "NASA_Mean_CESM1-CAM5",
       "observation_period": "P1M",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "1800131346": {
       "import_name": "NASA_NEXDCP30",
@@ -2272,7 +2275,8 @@
       "measurement_method": "NASA_Mean_GISS-E2-R",
       "observation_period": "P1Y",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "1861625206": {
       "import_name": "NASA_NEXDCP30",
@@ -2280,7 +2284,8 @@
       "measurement_method": "NASA_Mean_GISS-E2-R",
       "observation_period": "P1M",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "3052410961": {
       "import_name": "NASA_NEXDCP30",
@@ -2288,7 +2293,8 @@
       "measurement_method": "NASA_Mean_GISS-E2-R-CC",
       "observation_period": "P1Y",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "3751056376": {
       "import_name": "NASA_NEXDCP30",
@@ -2296,7 +2302,8 @@
       "measurement_method": "NASA_Mean_HadGEM2-AO",
       "observation_period": "P1Y",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "561705335": {
       "import_name": "NASA_NEXDCP30",
@@ -2304,7 +2311,8 @@
       "measurement_method": "NASA_Mean_CCSM4",
       "observation_period": "P1Y",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "671356303": {
       "import_name": "NASA_NEXDCP30",
@@ -2312,7 +2320,8 @@
       "measurement_method": "NASA_Mean_CESM1-CAM5",
       "observation_period": "P1Y",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     },
     "753499467": {
       "import_name": "NASA_NEXDCP30",
@@ -2320,7 +2329,8 @@
       "measurement_method": "NASA_Mean_CCSM4",
       "observation_period": "P1M",
       "unit": "Celsius",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NASA_NEXDCP30"
     }
   }
 }

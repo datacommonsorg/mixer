@@ -78,6 +78,20 @@ var nodeOutEdgesByIDTestCases = []struct {
 		golden: "get_node_edges_out_bracket_props",
 	},
 	{
+		ids: []string{"country/CAN"},
+		arc: &v2.Arc{
+			Out:          true,
+			BracketProps: []string{"name", "nameWithLanguage"},
+			BracketFilters: map[string]map[string][]string{
+				"nameWithLanguage": {
+					"$lang": {"es"},
+				},
+			},
+		},
+		offset: 0,
+		golden: "get_node_edges_out_bracket_props_lang",
+	},
+	{
 		ids: []string{"nuts/UKI1"},
 		arc: &v2.Arc{
 			Out: true,
@@ -265,6 +279,20 @@ var filterStatVarsByEntityTestCases = []struct {
 		variables: []string{"Count_Person"},
 		entities:  []string{"geoId/06"},
 		golden:    "filter_stat_vars_by_entity_single",
+	},
+}
+
+var checkGroupPlaceExistenceTestCases = []struct {
+	variableGroups []string
+	entities       []string
+	predicate      string
+	golden         string
+}{
+	{
+		variableGroups: []string{"dc/g/Demographics"},
+		entities:       []string{"geoId/06"},
+		predicate:      "linkedMemberOf",
+		golden:         "check_group_place_existence",
 	},
 }
 
@@ -624,22 +652,24 @@ var embeddingFromQueryTestCases = []struct {
 }
 
 var vectorSearchNodeTestCases = []struct {
-	tableName  string
-	limit      int
-	embeddings []float64
-	numLeaves  int
-	threshold  float64
-	nodeTypes  []string
-	golden     string
+	tableName      string
+	limit          int
+	embeddings     []float64
+	numLeaves      int
+	threshold      float64
+	nodeTypes      []string
+	embeddingLabel string
+	golden         string
 }{
 	{
-		tableName:  "NodeEmbedding",
-		limit:      5,
-		embeddings: []float64{0.1, 0.2, 0.3},
-		numLeaves:  20,
-		threshold:  0.6,
-		nodeTypes:  []string{"StatisticalVariable", "Topic"},
-		golden:     "vector_search_node",
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.6,
+		nodeTypes:      []string{"StatisticalVariable", "Topic"},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search_node",
 	},
 }
 var getFilteredStatVarGroupNodeTestCases = []struct {
@@ -732,22 +762,24 @@ var getTermEmbeddingsTestCases = []struct {
 }
 
 var vectorSearchQueryTestCases = []struct {
-	tableName  string
-	limit      int
-	embeddings []float64
-	numLeaves  int
-	threshold  float64
-	nodeTypes  []string
-	golden     string
+	tableName      string
+	limit          int
+	embeddings     []float64
+	numLeaves      int
+	threshold      float64
+	nodeTypes      []string
+	embeddingLabel string
+	golden         string
 }{
 	{
-		tableName:  "NodeEmbedding",
-		limit:      5,
-		embeddings: []float64{0.1, 0.2, 0.3},
-		numLeaves:  20,
-		threshold:  0.5,
-		nodeTypes:  []string{"StatisticalVariable", "Topic"},
-		golden:     "vector_search",
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.5,
+		nodeTypes:      []string{"StatisticalVariable", "Topic"},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search",
 	},
 }
 

@@ -1,9 +1,10 @@
 # this file get reads by v2/resolve when we set resolver to use spanner and an feature flag to experiment for resolution experimentation
-search_algorithm: "vector_search"
-vector_search_config:
+search_config:
+  search_algorithm: "vector_search"
   embedding_model: "NodeEmbeddingModel"
   embedding_table: "NodeEmbedding"
-  embedding_type: "RETRIEVAL_QUERY"
+  query_task_type: "RETRIEVAL_QUERY"
+  embedding_label: "base_text_embedding"
   vector_search_algo: "ANN"
   limit: 50
   num_leaves: 10

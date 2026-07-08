@@ -878,7 +878,8 @@
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     }
   }
 }

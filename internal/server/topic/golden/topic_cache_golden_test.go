@@ -45,10 +45,10 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 	}
 
 	// Instantiate real SpannerDataSource wrapper with the real database client
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil)
 	fetcher := datasource.NewNodeFetcher(ds)
 	manager := topic.NewTopicCacheManager(nil)
-	manager.Start(ctx, fetcher, 0)
+	manager.InitFetcher(fetcher)
 
 	got, err := manager.FetchTopicsFromKG(ctx)
 	if err != nil {

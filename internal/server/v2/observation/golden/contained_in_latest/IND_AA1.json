@@ -588,7 +588,8 @@
   "facets": {
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
-      "provenance_url": "https://censusindia.gov.in/"
+      "provenance_url": "https://censusindia.gov.in/",
+      "provenance_id": "dc/base/IndiaCensus_Primary"
     }
   }
 }

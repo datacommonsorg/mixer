@@ -9259,7 +9259,8 @@
       "provenance_url": "https://www.epa.gov/ghgreporting",
       "measurement_method": "EPA_GHGRP",
       "observation_period": "P1Y",
-      "unit": "MetricTonCO2e"
+      "unit": "MetricTonCO2e",
+      "provenance_id": "dc/base/EPA_GHGRP"
     }
   }
 }

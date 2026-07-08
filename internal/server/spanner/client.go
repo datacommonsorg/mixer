@@ -24,6 +24,7 @@ import (
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -36,9 +37,11 @@ import (
 type SpannerClient interface {
 	GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error)
 	GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error)
-	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
+	GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error)
 	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
-	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
+	CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error)
+	CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error)
+	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error)
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error)
@@ -49,10 +52,11 @@ type SpannerClient interface {
 	GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error)
 	GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
-	VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error)
+	VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error)
 	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
 	FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error)
-	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+	GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
+	GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 	Id() string
 	Start()
 	Close()
@@ -103,14 +107,61 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	return newSpannerDatabaseClient(client)
 }
 
+// TableConfig holds the names of multi-entity Spanner tables and indexes.
+type TableConfig struct {
+	TimeSeriesTable             string
+	ObservationTable            string
+	TimeSeriesByEntity1Index    string
+	TimeSeriesByEntity2Index    string
+	TimeSeriesByEntity3Index    string
+	TimeSeriesByProvenanceIndex string
+}
+
+// DefaultTableConfig returns the default suffix-less table and index configuration for multi-entity Spanner tables.
+func DefaultTableConfig() TableConfig {
+	return TableConfig{
+		TimeSeriesTable:             "TimeSeries",
+		ObservationTable:            "Observation",
+		TimeSeriesByEntity1Index:    "TimeSeriesByEntity1",
+		TimeSeriesByEntity2Index:    "TimeSeriesByEntity2",
+		TimeSeriesByEntity3Index:    "TimeSeriesByEntity3",
+		TimeSeriesByProvenanceIndex: "TimeSeriesByProvenance",
+	}
+}
+
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 // It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
 	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, err
 	}
-	return NewSchemaSelectorClient(rawClient)
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	if err != nil {
+		return nil, err
+	}
+
+	tableCfg := DefaultTableConfig()
+	if cfg.TimeSeriesTable != nil {
+		tableCfg.TimeSeriesTable = *cfg.TimeSeriesTable
+	}
+	if cfg.ObservationTable != nil {
+		tableCfg.ObservationTable = *cfg.ObservationTable
+	}
+	if cfg.TimeSeriesByEntity1Index != nil {
+		tableCfg.TimeSeriesByEntity1Index = *cfg.TimeSeriesByEntity1Index
+	}
+	if cfg.TimeSeriesByEntity2Index != nil {
+		tableCfg.TimeSeriesByEntity2Index = *cfg.TimeSeriesByEntity2Index
+	}
+	if cfg.TimeSeriesByEntity3Index != nil {
+		tableCfg.TimeSeriesByEntity3Index = *cfg.TimeSeriesByEntity3Index
+	}
+	if cfg.TimeSeriesByProvenanceIndex != nil {
+		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
+	}
+
+	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema, tableCfg)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -195,6 +246,11 @@ func (sc *spannerDatabaseClient) Close() {
 }
 
 // GetSdmxObservations is not supported on the default client.
-func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
+func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the multi-entity schema")
+}
+
+// GetSdmxAvailability is not supported on the default client.
+func (sc *spannerDatabaseClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return nil, status.Error(codes.Unimplemented, "SDMX availability is only supported on the multi-entity schema")
 }

@@ -116,6 +116,12 @@ func btContainedInFacet(
 				if err := proto.Unmarshal(jsonRaw, &placeVarfacets); err != nil {
 					return nil, err
 				}
+				for _, placeVarFacet := range placeVarfacets.GetPlaceVariableFacets() {
+					f := placeVarFacet.Facet
+					if f != nil && f.ProvenanceId == "" && f.ImportName != "" {
+						f.ProvenanceId = "dc/base/" + f.ImportName
+					}
+				}
 				return &placeVarfacets, nil
 			},
 		)

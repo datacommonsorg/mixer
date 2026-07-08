@@ -16,9 +16,11 @@ package datasources
 
 import (
 	"context"
+	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -197,18 +199,42 @@ func filterResolveSources(ds *DataSources, in *pbv2.ResolveRequest) []datasource
 	return filteredSources
 }
 
-func (ds *DataSources) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (ds *DataSources) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	return fetchAndMerge(ctx, ds.sources, in,
-		func(c context.Context, s datasource.DataSource, r *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+		func(c context.Context, s datasource.DataSource, r *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 			return s.SdmxData(c, r)
 		},
-		func(all []*pb.SdmxDataResult) (*pb.SdmxDataResult, error) {
-			res := &pb.SdmxDataResult{}
+		func(all []*sdmxpb.SdmxDataResult) (*sdmxpb.SdmxDataResult, error) {
+			res := &sdmxpb.SdmxDataResult{}
 			for _, result := range all {
 				if result != nil && result.Observations != nil {
 					res.Observations = append(res.Observations, result.Observations...)
 				}
 			}
+			return res, nil
+		},
+	)
+}
+
+func (ds *DataSources) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+			return s.SdmxAvailability(c, r)
+		},
+		func(all []*sdmxpb.SdmxAvailabilityResult) (*sdmxpb.SdmxAvailabilityResult, error) {
+			values := map[string]bool{}
+			for _, result := range all {
+				for _, value := range result.GetValues() {
+					if value != "" {
+						values[value] = true
+					}
+				}
+			}
+			res := &sdmxpb.SdmxAvailabilityResult{Values: make([]string, 0, len(values))}
+			for value := range values {
+				res.Values = append(res.Values, value)
+			}
+			sort.Strings(res.Values)
 			return res, nil
 		},
 	)

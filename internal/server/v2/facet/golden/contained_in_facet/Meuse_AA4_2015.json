@@ -24,7 +24,8 @@
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+      "measurement_method": "WikidataPopulation",
+      "provenance_id": "dc/base/WikidataPopulation"
     }
   }
 }

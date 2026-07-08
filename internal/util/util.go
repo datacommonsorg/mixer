@@ -47,6 +47,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -144,12 +145,24 @@ const (
 	// Whether to skip reading from Redis cache.
 	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
-	// Whether to use normalized Spanner schema.
-	// To use, set header "X-Use-Normalized-Schema: true"
-	XUseNormalizedSchema = "X-Use-Normalized-Schema"
+	// Whether to use multi-entity Spanner schema.
+	// To override, set header "X-Use-Multi-Entity-Schema: true" or "false"
+	XUseMultiEntitySchema = "X-Use-Multi-Entity-Schema"
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
+	// Whether to log SDMX request parsing and dispatcher mapping.
+	// To use, set header "X-Log-SDMX: true"
+	XLogSDMX = "X-Log-SDMX"
+	// Header to specify which embeddings index to use for V2 Resolve.
+	// To use, set header "X-V2Resolve-Index: multi-entity"
+	XV2ResolveIndex = "X-V2Resolve-Index"
+	// Header to force V2 Resolve (indicators only) to use Spanner.
+	// To use, set header "X-V2Resolve-Indicator-Spanner: true" (force Spanner) or "false" (force legacy).
+	XV2ResolveIndicatorSpanner = "X-V2Resolve-Indicator-Spanner"
+	// Whether to divert request to Spanner.
+	// To use, set header "X-Divert-Spanner: true"
+	XDivertSpanner = "X-Divert-Spanner"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
@@ -497,6 +510,7 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 		Unit:              s.Unit,
 		ProvenanceUrl:     s.ProvenanceUrl,
 		IsDcAggregate:     s.IsDcAggregate,
+		ProvenanceId:      s.ProvenanceId,
 	}
 }
 
@@ -645,6 +659,15 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
+// StringSliceToSet is a helper to convert a string slice to a string set.
+func StringSliceToSet(s []string) map[string]struct{} {
+	res := make(map[string]struct{})
+	for _, k := range s {
+		res[k] = struct{}{}
+	}
+	return res
+}
+
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -776,4 +799,96 @@ func GetMetadata(ctx context.Context) (surface string, toRemote bool) {
 		}
 	}
 	return surface, toRemote
+}
+
+// GetSingleHeaderValue reads the specified header from the context metadata and returns its first value.
+func GetSingleHeaderValue(ctx context.Context, headerName string) string {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(headerName)
+		if len(headers) > 0 {
+			return headers[0]
+		}
+	}
+	return ""
+}
+
+// IsHeaderTrue reads the specified header from the context metadata and returns true if its value is "true".
+func IsHeaderTrue(ctx context.Context, headerName string) bool {
+	return GetSingleHeaderValue(ctx, headerName) == "true"
+}
+
+// GetOptionalBoolHeader reads the specified header from the context metadata.
+// It returns (nil, nil) if the header is missing.
+// It returns (true, nil) if the header is "true".
+// It returns (false, nil) if the header is "false".
+// It returns (nil, error) if the header has any other value.
+func GetOptionalBoolHeader(ctx context.Context, headerName string) (*bool, error) {
+	val := GetSingleHeaderValue(ctx, headerName)
+	if val == "" {
+		return nil, nil
+	}
+	if val == "true" {
+		t := true
+		return &t, nil
+	}
+	if val == "false" {
+		f := false
+		return &f, nil
+	}
+	return nil, status.Errorf(codes.InvalidArgument, "Invalid %s header value: %q. Valid values are 'true' or 'false'", headerName, val)
+}
+
+// HTTPStatusToGRPCCode maps HTTP status codes to gRPC codes.
+func HTTPStatusToGRPCCode(statusCode int) codes.Code {
+	switch statusCode {
+	case http.StatusOK:
+		return codes.OK
+	case http.StatusBadRequest:
+		return codes.InvalidArgument
+	case http.StatusUnauthorized:
+		return codes.Unauthenticated
+	case http.StatusForbidden:
+		return codes.PermissionDenied
+	case http.StatusNotFound:
+		return codes.NotFound
+	case http.StatusConflict:
+		return codes.AlreadyExists
+	case http.StatusTooManyRequests:
+		return codes.ResourceExhausted
+	case http.StatusInternalServerError:
+		return codes.Internal
+	case http.StatusNotImplemented:
+		return codes.Unimplemented
+	case http.StatusServiceUnavailable:
+		return codes.Unavailable
+	case http.StatusGatewayTimeout:
+		return codes.DeadlineExceeded
+	default:
+		return codes.Unknown
+	}
+}
+
+// IsTopicDcid checks if the DCID belongs to a Topic.
+// It checks for the pattern "[prefix]/topic/", requiring /topic/ to be the segment of the id.
+// It does this to allow SVGs that have something other than "dc" at the start, such as "c/topic/Demographics"
+func IsTopicDcid(dcid string) bool {
+	idx := strings.Index(dcid, "/topic/")
+	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// IsStatVarGroupDcid checks if the DCID belongs to a Stat Var Group.
+// It checks for the pattern "[prefix]/g/" (requiring /g/ to be the segment of the id.
+// It does this to allow SVGs that have something other than "dc" at the start, such as "c/g/Root"
+func IsStatVarGroupDcid(dcid string) bool {
+	idx := strings.Index(dcid, "/g/")
+	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
+func ToStringListValue(list []string) *structpb.ListValue {
+	var values []*structpb.Value
+	for _, s := range list {
+		values = append(values, structpb.NewStringValue(s))
+	}
+	return &structpb.ListValue{Values: values}
 }

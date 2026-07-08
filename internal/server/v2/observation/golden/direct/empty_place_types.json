@@ -24,7 +24,8 @@
   "facets": {
     "2921750529": {
       "import_name": "Custom Prov",
-      "provenance_url": "custom.datacommons.org"
+      "provenance_url": "custom.datacommons.org",
+      "provenance_id": "custom"
     }
   }
 }

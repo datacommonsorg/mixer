@@ -108,6 +108,18 @@ func TestFilterStatVarsByEntityQueryError(t *testing.T) {
 	}
 }
 
+func TestCheckGroupPlaceExistenceQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range checkGroupPlaceExistenceTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.CheckGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate), nil
+		})
+	}
+}
+
 func TestSearchNodesQuery(t *testing.T) {
 	t.Parallel()
 
@@ -247,7 +259,7 @@ func TestVectorSearchQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.VectorSearchQuery(c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes), nil
+			return spanner.VectorSearchQuery(c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes, c.embeddingLabel), nil
 		})
 	}
 }

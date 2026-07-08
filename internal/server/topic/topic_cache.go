@@ -41,19 +41,27 @@ var (
 	redisCacheKeyProto    = &wrapperspb.StringValue{Value: "topic/topic_cache"}
 )
 
+// StatVarInfo stores property metadata for a Statistical Variable.
+type StatVarInfo struct {
+	Dcid                  string
+	Name                  string
+	ObservationProperties []string
+	EntityMappings        []string
+}
+
 // TopicVariableCache is an in-memory composite struct caching server-wide topic hierarchy
 // and variable metadata.
 type TopicVariableCache struct {
 	TopicHierarchy *pb.TopicHierarchy
-	// SVs map[string]*SVInfo // Placeholder for follow-up task
+	StatVars       map[string]*StatVarInfo
 }
 
 // String implements fmt.Stringer to provide a concise summary of the cached hierarchy contents.
 func (c *TopicVariableCache) String() string {
 	if c == nil || c.TopicHierarchy == nil {
-		return "TopicVariableCache{topicCount: 0, rootCount: 0}"
+		return "TopicVariableCache{topicCount: 0, rootCount: 0, statVarsCount: 0}"
 	}
-	return fmt.Sprintf("TopicVariableCache{topicCount: %d, rootCount: %d}", len(c.TopicHierarchy.GetTopics()), len(c.TopicHierarchy.GetRootTopicDcids()))
+	return fmt.Sprintf("TopicVariableCache{topicCount: %d, rootCount: %d, statVarsCount: %d}", len(c.TopicHierarchy.GetTopics()), len(c.TopicHierarchy.GetRootTopicDcids()), len(c.StatVars))
 }
 
 // TopicCacheManager manages the loading, building, and caching of topics.
@@ -63,82 +71,26 @@ type TopicCacheManager struct {
 
 	mu    sync.RWMutex
 	cache *TopicVariableCache
-
-	ticker    *time.Ticker
-	stopCh    chan struct{}
-	startOnce sync.Once
-	stopOnce  sync.Once
-	wg        sync.WaitGroup
 }
 
 // NewTopicCacheManager creates a new TopicCacheManager.
 // Note: The fetcher interface is intentionally omitted from this constructor to avoid circular dependencies
 // during server startup (NewStoreNodeFetcher requires *Server, which requires TopicCacheManager).
-// The fetcher is injected post-server creation via Start() or InitFetcher().
+// The fetcher is injected post-server creation via InitFetcher().
 func NewTopicCacheManager(redisClient redis.CacheClient) *TopicCacheManager {
 	return &TopicCacheManager{
 		redisClient: redisClient,
 	}
 }
 
-// InitFetcher initializes the internal fetcher without performing an initial cache load.
-// This is primarily used for testing cold-cache retrieval behavior.
+// InitFetcher initializes the internal fetcher.
 func (m *TopicCacheManager) InitFetcher(fetcher nodefetcher.NodeAllFetcher) {
-	m.startOnce.Do(func() {
-		m.fetcher = fetcher
-	})
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	m.fetcher = fetcher
 }
 
-// Start starts the background goroutine to periodically refresh the topic hierarchy cache from the KG.
-// It performs an initial synchronous load before starting the background ticker loop.
-// Note: Injecting the fetcher here breaks circular initialization dependencies in cmd/main.go.
-func (m *TopicCacheManager) Start(ctx context.Context, fetcher nodefetcher.NodeAllFetcher, interval time.Duration) {
-	m.startOnce.Do(func() {
-		m.fetcher = fetcher
 
-		slog.Info("Performing initial topic cache load")
-		if _, err := m.LoadHierarchy(ctx); err != nil {
-			slog.Error("Error during initial topic cache load", "error", err)
-		}
-
-		if interval <= 0 {
-			return
-		}
-
-		m.ticker = time.NewTicker(interval)
-		m.stopCh = make(chan struct{})
-		m.wg.Add(1)
-
-		go func() {
-			defer m.wg.Done()
-			defer m.ticker.Stop()
-
-			for {
-				select {
-				case <-m.stopCh:
-					return
-				case <-ctx.Done():
-					return
-				case <-m.ticker.C:
-					slog.Info("Background topic cache refresher triggered")
-					if _, err := m.LoadHierarchy(ctx); err != nil {
-						slog.Error("Error refreshing topic hierarchy", "error", err)
-					}
-				}
-			}
-		}()
-	})
-}
-
-// Close stops the background refresher goroutine.
-func (m *TopicCacheManager) Close() {
-	m.stopOnce.Do(func() {
-		if m.stopCh != nil {
-			close(m.stopCh)
-		}
-		m.wg.Wait()
-	})
-}
 
 // CachedHierarchy returns the currently cached TopicHierarchy in local L1 memory, or nil if empty.
 // Note: The returned TopicHierarchy pointer references the live in-memory cache and must be treated as read-only by callers.
@@ -159,9 +111,94 @@ func (m *TopicCacheManager) Update(hierarchy *pb.TopicHierarchy) {
 	defer m.mu.Unlock()
 	m.cache = &TopicVariableCache{
 		TopicHierarchy: hierarchy,
+		StatVars:       make(map[string]*StatVarInfo),
 	}
 
 	slog.Info("Topic cache updated in memory", "cache", m.cache.String())
+}
+
+// readStatVarsFromCache checks the local cache for requested DCIDs under read lock.
+// It returns a map of found metadata and a slice of any remaining un-cached DCIDs.
+func (m *TopicCacheManager) readStatVarsFromCache(dcids []string) (map[string]*StatVarInfo, []string) {
+	m.mu.RLock()
+	defer m.mu.RUnlock()
+
+	result := make(map[string]*StatVarInfo)
+	var missingDcids []string
+
+	cacheExists := m.cache != nil && m.cache.StatVars != nil
+	if cacheExists {
+		for _, dcid := range dcids {
+			if info, found := m.cache.StatVars[dcid]; found {
+				result[dcid] = info
+			} else {
+				missingDcids = append(missingDcids, dcid)
+			}
+		}
+	} else {
+		missingDcids = append(missingDcids, dcids...)
+	}
+	return result, missingDcids
+}
+
+// saveStatVarsToCache saves newly fetched metadata into the local cache under write lock.
+func (m *TopicCacheManager) saveStatVarsToCache(infos map[string]*StatVarInfo) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	if m.cache == nil {
+		return
+	}
+	if m.cache.StatVars == nil {
+		m.cache.StatVars = make(map[string]*StatVarInfo)
+	}
+	for dcid, info := range infos {
+		m.cache.StatVars[dcid] = info
+	}
+}
+
+// GetStatVarInfos returns metadata for the requested DCIDs. It utilizes a read-through
+// cache, fetching any un-cached SV metadata dynamically in batches.
+func (m *TopicCacheManager) GetStatVarInfos(ctx context.Context, dcids []string) (map[string]*StatVarInfo, error) {
+	if m.fetcher == nil {
+		return nil, fmt.Errorf("topic cache manager uninitialized: fetcher is nil")
+	}
+
+	result, missingDcids := m.readStatVarsFromCache(dcids)
+	if len(missingDcids) == 0 {
+		return result, nil
+	}
+
+	// Batch fetch missing stat var info
+	fetchedInfos, err := m.fetchStatVarInfos(ctx, missingDcids)
+	if err != nil {
+		return nil, err
+	}
+
+	m.saveStatVarsToCache(fetchedInfos)
+
+	// Merge newly fetched info into result
+	for dcid, info := range fetchedInfos {
+		result[dcid] = info
+	}
+
+	return result, nil
+}
+
+// GetTopicDisplayName returns the display name for a topic DCID if available.
+func (m *TopicCacheManager) GetTopicDisplayName(ctx context.Context, topicDcid string) string {
+	h, _ := m.GetHierarchy(ctx)
+	if h != nil && h.GetTopics() != nil {
+		if n, ok := h.GetTopics()[topicDcid]; ok && n != nil {
+			name := n.GetName()
+			if name == "" {
+				slog.Warn("Topic has empty display name in hierarchy cache", "dcid", topicDcid)
+			}
+			return name
+		}
+	}
+	slog.Debug("Topic not found in hierarchy cache during name resolution", "dcid", topicDcid)
+	return ""
 }
 
 // GetHierarchy retrieves the cached TopicHierarchy.

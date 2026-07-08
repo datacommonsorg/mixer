@@ -53,6 +53,25 @@ type SVSummary struct {
 	SampleEntityIds StringSlice `db:"sample_entity_ids"`
 }
 
+// SVProvenanceSummary represents a per-(variable, provenance, series-key, entity-type) summary row.
+type SVProvenanceSummary struct {
+	Variable          string      `db:"variable"`
+	Provenance        string      `db:"provenance"`
+	ProvenanceName    string      `db:"provenance_name"`
+	MeasurementMethod string      `db:"measurement_method"`
+	ObservationPeriod string      `db:"observation_period"`
+	ScalingFactor     string      `db:"scaling_factor"`
+	Unit              string      `db:"unit"`
+	EntityType        string      `db:"entity_type"`
+	EarliestDate      string      `db:"earliest_date"`
+	LatestDate        string      `db:"latest_date"`
+	MinValue          float64     `db:"min_value"`
+	MaxValue          float64     `db:"max_value"`
+	ObservationCount  int64       `db:"observation_count"`
+	EntityCount       int32       `db:"entity_count"`
+	SampleEntityIds   StringSlice `db:"sample_entity_ids"`
+}
+
 // StringSlice is a custom scanner for comma-separated strings.
 type StringSlice []string
 

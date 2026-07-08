@@ -32,6 +32,8 @@ type Flags struct {
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
 	// Enabled new Spanner-based dispatcher/datasource backend.
 	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
+	// Whether to default Spanner API calls to the multi-entity schema.
+	UseMultiEntitySchema bool `yaml:"UseMultiEntitySchema"`
 	// Spanner Graph database for Spanner DataSource.
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
@@ -46,8 +48,8 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
-	// Whether to enable Spanner search embeddings.
-	// switch this to true in local.yaml for easier development
+	// Whether to default indicator resolution to Spanner.
+	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 }
 
@@ -57,6 +59,7 @@ func setDefaultValues() *Flags {
 		EnableV3:                      false,
 		V3MirrorFraction:              0.0,
 		UseSpannerGraph:               false,
+		UseMultiEntitySchema:          false,
 		SpannerGraphDatabase:          "",
 		UseStaleReads:                 false,
 		EnableEmbeddingsResolver:      true,

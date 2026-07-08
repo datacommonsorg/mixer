@@ -39,39 +39,46 @@
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
+      "measurement_method": "Wikipedia",
+      "provenance_id": "dc/base/WikipediaStatsData"
     },
     "1794369807": {
       "import_name": "UNData",
       "provenance_url": "https://data.un.org/Data.aspx?q=city+population&d=POP&f=tableCode%3a240",
-      "measurement_method": "UNData"
+      "measurement_method": "UNData",
+      "provenance_id": "dc/base/UNData"
     },
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
-      "provenance_url": "https://censusindia.gov.in/"
+      "provenance_url": "https://censusindia.gov.in/",
+      "provenance_id": "dc/base/IndiaCensus_Primary"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+      "measurement_method": "WikidataPopulation",
+      "provenance_id": "dc/base/WikidataPopulation"
     },
     "2488031303": {
       "import_name": "NITIIndiaPopulationProjection",
       "provenance_url": "https://ndap.niti.gov.in/dataset/7208, https://ndap.niti.gov.in/dataset/7209",
       "measurement_method": "NITIIndiaProjection",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/NITIIndiaPopulationProjection"
     },
     "4181918134": {
       "import_name": "OECDRegionalDemography_Population",
       "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
       "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/OECDRegionalDemography_Population"
     },
     "473499523": {
       "import_name": "Subnational_Demographics_Stats",
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/Subnational_Demographics_Stats"
     }
   }
 }

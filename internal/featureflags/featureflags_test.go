@@ -69,6 +69,17 @@ flags:
 			wantErr: false,
 		},
 		{
+			name: "multi entity schema flag",
+			fileContent: `
+flags:
+  UseMultiEntitySchema: true
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.UseMultiEntitySchema = true
+			}),
+			wantErr: false,
+		},
+		{
 			name: "all flags",
 			fileContent: `
 flags:

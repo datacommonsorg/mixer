@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -50,7 +51,7 @@ func (m *coordinateMockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids 
 	return map[string][]*Edge{}, nil
 }
 
-func (m *coordinateMockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (m *coordinateMockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	return nil, nil
 }
 
@@ -58,11 +59,23 @@ func (m *coordinateMockSpannerClient) CheckVariableExistence(ctx context.Context
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (m *coordinateMockSpannerClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (m *coordinateMockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	return nil, nil
 }
 
@@ -106,7 +119,7 @@ func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error) {
 	return m.vectorSearchRes, nil
 }
 
@@ -159,7 +172,7 @@ func TestResolveCoordinate(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -226,7 +239,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08", "36.77#-119.41"},
@@ -281,7 +294,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -328,7 +341,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},

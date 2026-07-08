@@ -565,7 +565,7 @@ type BulkVariableGroupInfoRequest struct {
 	// (optional) Number of passed in entities that should have data for the stat
 	// var (group)s that are returned. Default to 1 if unspecified.
 	NumEntitiesExistence int32 `protobuf:"varint,4,opt,name=num_entities_existence,json=numEntitiesExistence,proto3" json:"num_entities_existence,omitempty"`
-	// (optional) Whether to include definitions in the response.
+	// (optional) Whether to include statistical variable definitions in the response.
 	IncludeDefinitions bool `protobuf:"varint,5,opt,name=include_definitions,json=includeDefinitions,proto3" json:"include_definitions,omitempty"`
 }
 

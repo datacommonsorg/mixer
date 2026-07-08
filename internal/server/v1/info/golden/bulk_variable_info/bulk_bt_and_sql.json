@@ -4823,6 +4823,45 @@
             "minValue": 1,
             "maxValue": 1000
           }
+        },
+        "provenanceSummary": {
+          "custom": {
+            "importName": "Custom Prov",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2001",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "State": {
+                    "placeCount": 48,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/01",
+                        "name": "geoId/01"
+                      },
+                      {
+                        "dcid": "geoId/02",
+                        "name": "geoId/02"
+                      },
+                      {
+                        "dcid": "geoId/03",
+                        "name": "geoId/03"
+                      }
+                    ],
+                    "minValue": 1,
+                    "maxValue": 1000
+                  }
+                },
+                "minValue": 1,
+                "maxValue": 1000,
+                "observationCount": 65,
+                "timeSeriesCount": 48
+              }
+            ],
+            "observationCount": 65,
+            "timeSeriesCount": 48
+          }
         }
       }
     }
