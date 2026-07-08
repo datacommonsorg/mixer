@@ -54,6 +54,25 @@ var DataComponents = []DataComponent{
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
 }
 
+func DataComponentsForEntityDimensions(entityDimensions []string) []DataComponent {
+	components := []DataComponent{
+		{ID: ComponentVariableMeasured, Kind: ComponentKindDimension},
+	}
+	for _, entityDimension := range entityDimensions {
+		components = append(components, DataComponent{ID: entityDimension, Kind: ComponentKindDimension})
+	}
+	components = append(components,
+		DataComponent{ID: ComponentUnit, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentMeasurementMethod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentObservationPeriod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentProvenance, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
+		DataComponent{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
+	)
+	return components
+}
+
 var dataComponentsByID = func() map[string]DataComponent {
 	result := make(map[string]DataComponent, len(DataComponents))
 	for _, component := range DataComponents {

@@ -2,8 +2,6 @@ package jsonstatv2
 
 import (
 	"encoding/json"
-	"os"
-	"path/filepath"
 	"testing"
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -11,213 +9,161 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestJSONStatFormatter_Golden(t *testing.T) {
+func TestJSONStatFormatterUsesShapeDimensionOrder(t *testing.T) {
 	formatter := &JSONStatFormatter{}
-
-	tests := []struct {
-		name       string
-		goldenFile string
-		obs        []*sdmxpb.SdmxObservation
-	}{
-		{
-			name:       "Basic grid with missing cell",
-			goldenFile: "basic_grid.json",
-			obs: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Count_Person",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "331000000"},
-						{Date: "2021", Value: "332000000"},
-					},
-					Dimensions: map[string]string{
-						"gender":           "Male",
-						"observationAbout": "country/USA",
-					},
+	output, err := formatter.Format(testSdmxResult(
+		[]string{"destinationCountry", "sourceCountry"},
+		[]*sdmxpb.SdmxTimeSeries{
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured:  "Count_Person",
+					"destinationCountry":                   "country/CAN",
+					"sourceCountry":                        "country/USA",
+					datacommons.ComponentUnit:              "Person",
+					datacommons.ComponentMeasurementMethod: "Census",
+					datacommons.ComponentObservationPeriod: "P1Y",
+					datacommons.ComponentProvenance:        "dc/base",
+					"extraDimension":                       "dropped",
 				},
-				{
-					VariableMeasured: "Count_Person",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "160000000"},
-					},
-					Dimensions: map[string]string{
-						"gender":           "Female",
-						"observationAbout": "country/USA",
-					},
+				Attributes: map[string]string{
+					datacommons.ComponentScalingFactor: "0",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2021", ObservationValue: "2"},
+					{TimePeriod: "2020", ObservationValue: "1"},
 				},
 			},
 		},
-		{
-			name:       "No observationAbout",
-			goldenFile: "no_observation_about.json",
-			obs: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Exports",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "1000"},
-					},
-					Dimensions: map[string]string{
-						"source":      "country/USA",
-						"destination": "country/CHN",
-					},
-				},
-			},
-		},
-		{
-			name:       "Missing Dimensions",
-			goldenFile: "missing_dimensions.json",
-			obs: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Count_Person",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "331000000"},
-					},
-					Dimensions: map[string]string{
-						"gender":           "Male",
-						"observationAbout": "country/USA",
-					},
-				},
-				{
-					VariableMeasured: "Count_Person",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "332000000"},
-					},
-					Dimensions: map[string]string{
-						"observationAbout": "country/USA",
-					},
-				},
-			},
-		},
-		{
-			name:       "Facet Attributes",
-			goldenFile: "facet_attributes.json",
-			obs: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Count_Person",
-					Provenance:       "prov1",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "331000000"},
-					},
-					Dimensions: map[string]string{
-						"gender":            "Male",
-						"measurementMethod": "Census",
-						"observationAbout":  "country/USA",
-						"observationPeriod": "P1Y",
-						"unit":              "Person",
-					},
-					Attributes: map[string]string{
-						"scalingFactor": "0",
-					},
-				},
-			},
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			output, err := formatter.Format(tt.obs)
-			if err != nil {
-				t.Fatalf("Format() error: %v", err)
-			}
-
-			// Construct expected map
-			var gotMap map[string]interface{}
-			if err := json.Unmarshal([]byte(output), &gotMap); err != nil {
-				t.Fatalf("Failed to unmarshal output: %v", err)
-			}
-
-			goldenPath := filepath.Join("golden", tt.goldenFile)
-
-			// Update golden files if UPDATE_GOLDEN=true
-			if os.Getenv("UPDATE_GOLDEN") == "true" {
-				b, err := json.MarshalIndent(gotMap, "", "  ")
-				if err != nil {
-					t.Fatalf("Failed to marshal golden output: %v", err)
-				}
-				if err := os.WriteFile(goldenPath, b, 0644); err != nil {
-					t.Fatalf("Failed to write golden file: %v", err)
-				}
-				return
-			}
-
-			goldenBytes, err := os.ReadFile(goldenPath)
-			if err != nil {
-				t.Fatalf("Failed to read golden file %q: %v", goldenPath, err)
-			}
-
-			var wantMap map[string]interface{}
-			if err := json.Unmarshal(goldenBytes, &wantMap); err != nil {
-				t.Fatalf("Failed to unmarshal golden file: %v", err)
-			}
-
-			if diff := cmp.Diff(wantMap, gotMap); diff != "" {
-				t.Errorf("Formatter output mismatch (-want +got):\n%s", diff)
-			}
-		})
-	}
-}
-
-func TestJSONStatFormatter_SDMXComponentNames(t *testing.T) {
-	formatter := &JSONStatFormatter{}
-	output, err := formatter.Format([]*sdmxpb.SdmxObservation{
-		{
-			VariableMeasured: "Count_Person",
-			DatesAndValues: []*sdmxpb.SdmxDateValue{
-				{Date: "2020", Value: "1"},
-			},
-			Dimensions: map[string]string{
-				"gender": "Male",
-			},
-		},
-		{
-			VariableMeasured: "Count_Person",
-			DatesAndValues: []*sdmxpb.SdmxDateValue{
-				{Date: "2020", Value: "2"},
-			},
-			Dimensions: map[string]string{},
-		},
-	})
+	))
 	if err != nil {
-		t.Fatalf("Format() error: %v", err)
+		t.Fatalf("Format() error = %v", err)
 	}
 
 	var got map[string]interface{}
 	if err := json.Unmarshal([]byte(output), &got); err != nil {
-		t.Fatalf("Failed to unmarshal output: %v", err)
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+
+	wantID := []interface{}{
+		datacommons.ComponentVariableMeasured,
+		"destinationCountry",
+		"sourceCountry",
+		datacommons.ComponentUnit,
+		datacommons.ComponentMeasurementMethod,
+		datacommons.ComponentObservationPeriod,
+		datacommons.ComponentProvenance,
+		datacommons.ComponentTimePeriod,
+	}
+	if diff := cmp.Diff(wantID, got["id"]); diff != "" {
+		t.Fatalf("id mismatch (-want +got):\n%s", diff)
 	}
 
 	dimensions := got["dimension"].(map[string]interface{})
-	if _, ok := dimensions[datacommons.ComponentTimePeriod]; !ok {
-		t.Fatalf("Missing %q dimension in output", datacommons.ComponentTimePeriod)
-	}
-	if _, ok := dimensions["observationDate"]; ok {
-		t.Fatal("Output should not include legacy observationDate dimension")
-	}
-	if _, ok := got["value"]; !ok {
-		t.Fatal("JSON-stat output should keep top-level value field")
-	}
-	if _, ok := got[datacommons.ComponentObservationValue]; ok {
-		t.Fatalf("JSON-stat output should not rename top-level value field to %q", datacommons.ComponentObservationValue)
+	if _, ok := dimensions["extraDimension"]; ok {
+		t.Fatal("Format() inferred an extra dimension outside result.Shape")
 	}
 
-	gender := dimensions["gender"].(map[string]interface{})
-	category := gender["category"].(map[string]interface{})
-	indices := category["index"].([]interface{})
-	if !containsJSONValue(indices, datacommons.FallbackNotAvailable) {
-		t.Fatalf("Missing fallback category %q in gender index: %v", datacommons.FallbackNotAvailable, indices)
+	timePeriod := dimensions[datacommons.ComponentTimePeriod].(map[string]interface{})
+	category := timePeriod["category"].(map[string]interface{})
+	if diff := cmp.Diff([]interface{}{"2020", "2021"}, category["index"]); diff != "" {
+		t.Fatalf("TIME_PERIOD categories mismatch (-want +got):\n%s", diff)
 	}
 
 	extension := got["extension"].(map[string]interface{})
-	measures := extension["measures"].(map[string]interface{})
-	if _, ok := measures[datacommons.ComponentObservationValue]; !ok {
-		t.Fatalf("Missing %q measure metadata in extension", datacommons.ComponentObservationValue)
+	annotations := extension["annotations"].(map[string]interface{})
+	provenance := annotations["dc/base"].(map[string]interface{})
+	if got := provenance[datacommons.ComponentScalingFactor]; got != "0" {
+		t.Fatalf("scalingFactor annotation = %v, want 0", got)
 	}
 }
 
-func containsJSONValue(values []interface{}, want string) bool {
-	for _, value := range values {
-		if value == want {
-			return true
-		}
+func TestJSONStatFormatterMissingShapeReturnsError(t *testing.T) {
+	formatter := &JSONStatFormatter{}
+	_, err := formatter.Format(&sdmxpb.SdmxDataResult{})
+	if err == nil {
+		t.Fatal("Format() error = nil, want error")
 	}
-	return false
+	if got, want := err.Error(), "SDMX data shape is required"; got != want {
+		t.Fatalf("Format() error = %q, want %q", got, want)
+	}
+}
+
+func TestJSONStatFormatterIndexesTimePeriodByShapePosition(t *testing.T) {
+	formatter := &JSONStatFormatter{}
+	result := &sdmxpb.SdmxDataResult{
+		Shape: &sdmxpb.SdmxDataShape{
+			Components: []*sdmxpb.SdmxComponent{
+				{Id: datacommons.ComponentVariableMeasured, Kind: sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION},
+				{Id: datacommons.ComponentTimePeriod, Kind: sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION},
+				{Id: datacommons.ComponentObservationAbout, Kind: sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION},
+				{Id: datacommons.ComponentObservationValue, Kind: sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE},
+			},
+		},
+		Series: []*sdmxpb.SdmxTimeSeries{
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured: "Count_Person",
+					datacommons.ComponentObservationAbout: "country/CAN",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2020", ObservationValue: "1"},
+					{TimePeriod: "2021", ObservationValue: "2"},
+				},
+			},
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured: "Count_Person",
+					datacommons.ComponentObservationAbout: "country/USA",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2020", ObservationValue: "3"},
+					{TimePeriod: "2021", ObservationValue: "4"},
+				},
+			},
+		},
+	}
+
+	output, err := formatter.Format(result)
+	if err != nil {
+		t.Fatalf("Format() error = %v", err)
+	}
+
+	var got map[string]interface{}
+	if err := json.Unmarshal([]byte(output), &got); err != nil {
+		t.Fatalf("json.Unmarshal() error = %v", err)
+	}
+
+	if diff := cmp.Diff([]interface{}{float64(1), float64(3), float64(2), float64(4)}, got["value"]); diff != "" {
+		t.Fatalf("value mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func testSdmxResult(entityDimensions []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+	result := &sdmxpb.SdmxDataResult{
+		Shape: &sdmxpb.SdmxDataShape{
+			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
+		},
+		Series: series,
+	}
+	for _, component := range components {
+		result.Shape.Components = append(result.Shape.Components, &sdmxpb.SdmxComponent{
+			Id:   component.ID,
+			Kind: testProtoComponentKind(component.Kind),
+		})
+	}
+	return result
+}
+
+func testProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
+	switch kind {
+	case datacommons.ComponentKindDimension:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION
+	case datacommons.ComponentKindMeasure:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE
+	case datacommons.ComponentKindAttribute:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE
+	default:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_UNSPECIFIED
+	}
 }

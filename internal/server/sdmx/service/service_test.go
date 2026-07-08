@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
@@ -59,6 +60,36 @@ func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuer
 func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	ds.gotAvailability = req
 	return ds.availabilityResult, ds.availabilityErr
+}
+
+func testSdmxDataResult(entityDimensions []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+	result := &sdmxpb.SdmxDataResult{
+		Shape: &sdmxpb.SdmxDataShape{
+			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
+		},
+		Series: series,
+	}
+	for _, component := range components {
+		result.Shape.Components = append(result.Shape.Components, &sdmxpb.SdmxComponent{
+			Id:   component.ID,
+			Kind: testProtoComponentKind(component.Kind),
+		})
+	}
+	return result
+}
+
+func testProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
+	switch kind {
+	case datacommons.ComponentKindDimension:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION
+	case datacommons.ComponentKindMeasure:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE
+	case datacommons.ComponentKindAttribute:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE
+	default:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_UNSPECIFIED
+	}
 }
 
 func TestDataValidation(t *testing.T) {
@@ -99,8 +130,8 @@ func TestDataValidation(t *testing.T) {
 			wantErrSub: "unsupported SDMX component filter",
 		},
 		{
-			name:       "Unsupported geo filter",
-			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[geo]=country%2FUSA"),
+			name:       "Unsupported scaling factor filter",
+			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[scalingFactor]=0"),
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "unsupported SDMX component filter",
 		},
@@ -146,18 +177,18 @@ func TestDataValidation(t *testing.T) {
 
 func TestDataSuccess(t *testing.T) {
 	ds := &sdmxDataSource{
-		result: &sdmxpb.SdmxDataResult{
-			Observations: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Count_Person",
-					Provenance:       "dc/base",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "1"},
-					},
-					Dimensions: map[string]string{"geo": "country/USA"},
+		result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured: "Count_Person",
+					datacommons.ComponentObservationAbout: "country/USA",
+					datacommons.ComponentProvenance:       "dc/base",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2020", ObservationValue: "1"},
 				},
 			},
-		},
+		}),
 	}
 	svc := newSdmxTestService(ds)
 
@@ -183,28 +214,61 @@ func TestDataSuccess(t *testing.T) {
 	}
 }
 
-func TestDataCSVSuccess(t *testing.T) {
+func TestDataMultiEntityDimensionFilters(t *testing.T) {
 	ds := &sdmxDataSource{
-		result: &sdmxpb.SdmxDataResult{
-			Observations: []*sdmxpb.SdmxObservation{
-				{
-					VariableMeasured: "Count_Person",
-					Provenance:       "dc/base",
-					DatesAndValues: []*sdmxpb.SdmxDateValue{
-						{Date: "2020", Value: "1.50"},
-					},
-					Dimensions: map[string]string{
-						"observationAbout":  "country/USA",
-						"unit":              "Person",
-						"measurementMethod": "Census",
-						"observationPeriod": "P1Y",
-					},
-					Attributes: map[string]string{
-						"scalingFactor": "0",
-					},
+		result: testSdmxDataResult([]string{"destinationCountry", "sourceCountry"}, []*sdmxpb.SdmxTimeSeries{
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured: "Count_Person_Migrated",
+					"destinationCountry":                  "country/CAN",
+					"sourceCountry":                       "country/USA",
+					datacommons.ComponentProvenance:       "dc/base",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2020", ObservationValue: "1"},
 				},
 			},
+		}),
+	}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person_Migrated&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA"))
+	if err != nil {
+		t.Fatalf("Data() error = %v", err)
+	}
+
+	wantQuery := &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.ConstraintList{
+			"variableMeasured":   {Values: []string{"Count_Person_Migrated"}},
+			"destinationCountry": {Values: []string{"country/CAN"}},
+			"sourceCountry":      {Values: []string{"country/USA"}},
 		},
+	}
+	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
+		t.Errorf("SdmxData query mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestDataCSVSuccess(t *testing.T) {
+	ds := &sdmxDataSource{
+		result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
+			{
+				Dimensions: map[string]string{
+					datacommons.ComponentVariableMeasured:  "Count_Person",
+					datacommons.ComponentObservationAbout:  "country/USA",
+					datacommons.ComponentUnit:              "Person",
+					datacommons.ComponentMeasurementMethod: "Census",
+					datacommons.ComponentObservationPeriod: "P1Y",
+					datacommons.ComponentProvenance:        "dc/base",
+				},
+				Attributes: map[string]string{
+					datacommons.ComponentScalingFactor: "0",
+				},
+				Points: []*sdmxpb.SdmxDataPoint{
+					{TimePeriod: "2020", ObservationValue: "1.50"},
+				},
+			},
+		}),
 	}
 	svc := newSdmxTestService(ds)
 
@@ -227,7 +291,7 @@ func TestDataCSVSuccess(t *testing.T) {
 }
 
 func TestDataFormatQueryOverridesAccept(t *testing.T) {
-	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, nil)}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), withAccept(
@@ -243,20 +307,23 @@ func TestDataFormatQueryOverridesAccept(t *testing.T) {
 }
 
 func TestDataEmptyResult(t *testing.T) {
-	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, nil)}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
-	if got := string(response.Body); got != "{}" {
-		t.Errorf("Response body = %q, want {}", got)
+	body := string(response.Body)
+	for _, want := range []string{"\"version\":\"2.0\"", "\"id\":[\"variableMeasured\",\"observationAbout\"", "\"value\":[]"} {
+		if !strings.Contains(body, want) {
+			t.Errorf("Response body = %q, want substring %q", body, want)
+		}
 	}
 }
 
 func TestDataCSVEmptyResult(t *testing.T) {
-	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, nil)}
 	svc := newSdmxTestService(ds)
 
 	response, err := svc.Data(context.Background(), withAccept(
@@ -271,6 +338,19 @@ func TestDataCSVEmptyResult(t *testing.T) {
 	}
 }
 
+func TestDataMissingShape(t *testing.T) {
+	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person"))
+	if status.Code(err) != codes.Internal {
+		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+	if got, want := status.Convert(err).Message(), "Internal mapping error occurred."; got != want {
+		t.Fatalf("Data() message = %q, want %q", got, want)
+	}
+}
+
 func TestDataDispatcherError(t *testing.T) {
 	ds := &sdmxDataSource{err: errors.New("dispatcher failed")}
 	svc := newSdmxTestService(ds)
@@ -278,6 +358,19 @@ func TestDataDispatcherError(t *testing.T) {
 	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
 	if status.Code(err) != codes.Internal {
 		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+}
+
+func TestDataDispatcherStatusErrorPassesThrough(t *testing.T) {
+	ds := &sdmxDataSource{err: status.Error(codes.InvalidArgument, "bad SDMX request")}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if got, want := status.Convert(err).Message(), "bad SDMX request"; got != want {
+		t.Fatalf("Data() message = %q, want %q", got, want)
 	}
 }
 
@@ -297,7 +390,7 @@ func TestDataSDMXDebugLoggingDisabled(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, nil)}
 	svc := newSdmxTestService(ds)
 
 	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
@@ -314,7 +407,7 @@ func TestDataSDMXDebugLoggingSuccess(t *testing.T) {
 	buf, restore := captureSdmxLogs()
 	defer restore()
 
-	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}, nil)}
 	svc := newSdmxTestService(ds)
 
 	_, err := svc.Data(context.Background(), withLog(sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")))

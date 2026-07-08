@@ -24,6 +24,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	"google.golang.org/grpc/codes"
@@ -113,7 +114,9 @@ func TestV3SdmxDataNilRequest(t *testing.T) {
 }
 
 func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
-	server := newSdmxHandlerTestServer(&sdmxDataSource{result: &sdmxpb.SdmxDataResult{}})
+	server := newSdmxHandlerTestServer(&sdmxDataSource{
+		result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}),
+	})
 	stream := &sdmxDataStream{
 		ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
 	}
@@ -128,8 +131,37 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	if stream.sent[0].GetContentType() != sdmxformat.JSONStatContentType {
 		t.Fatalf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxformat.JSONStatContentType)
 	}
-	if got := string(stream.sent[0].GetData()); got != "{}" {
-		t.Fatalf("Data = %q, want {}", got)
+	if got := string(stream.sent[0].GetData()); !strings.Contains(got, "\"id\":[\"variableMeasured\",\"observationAbout\"") {
+		t.Fatalf("Data = %q, want JSON-stat dimensions", got)
+	}
+}
+
+func testSdmxDataResult(entityDimensions []string) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+	result := &sdmxpb.SdmxDataResult{
+		Shape: &sdmxpb.SdmxDataShape{
+			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
+		},
+	}
+	for _, component := range components {
+		result.Shape.Components = append(result.Shape.Components, &sdmxpb.SdmxComponent{
+			Id:   component.ID,
+			Kind: testProtoComponentKind(component.Kind),
+		})
+	}
+	return result
+}
+
+func testProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
+	switch kind {
+	case datacommons.ComponentKindDimension:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION
+	case datacommons.ComponentKindMeasure:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE
+	case datacommons.ComponentKindAttribute:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE
+	default:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_UNSPECIFIED
 	}
 }
 

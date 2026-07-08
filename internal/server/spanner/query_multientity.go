@@ -29,6 +29,8 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -453,6 +455,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	}
 
 	entityMappings := map[string]map[string]string{}
+	entityDimensions := []string{}
 	if len(variables) > 0 {
 		variables = sortedUniqueStrings(variables)
 		arc := &v2.Arc{
@@ -463,7 +466,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		if err != nil {
 			return nil, fmt.Errorf("failed to fetch observationProperties: %w", err)
 		}
-		entityMappings, err = observationPropertiesEntityMappings(edgesMap)
+		entityDimensions, entityMappings, err = sdmxEntityDimensionsAndMappings(variables, edgesMap)
 		if err != nil {
 			return nil, err
 		}
@@ -482,9 +485,9 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		return nil, err
 	}
 
-	// Reconstruct the result, mapping entities back to requested keys
 	result := &sdmxpb.SdmxDataResult{
-		Observations: []*sdmxpb.SdmxObservation{},
+		Shape:  sdmxDataShape(entityDimensions),
+		Series: []*sdmxpb.SdmxTimeSeries{},
 	}
 
 	for _, r := range rawObs {
@@ -501,7 +504,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		}
 
 		dimensions := map[string]string{
-			"variableMeasured": r.VariableMeasured,
+			datacommons.ComponentVariableMeasured: r.VariableMeasured,
 		}
 
 		// Map entities back to their original dimension keys using the variable's entity mapping
@@ -518,13 +521,12 @@ func (nc *multiEntityClient) GetSdmxObservations(
 			}
 		}
 
-		obs := &sdmxpb.SdmxObservation{
-			VariableMeasured: r.VariableMeasured,
-			Dimensions:       dimensions,
-			DatesAndValues:   []*sdmxpb.SdmxDateValue{},
+		series := &sdmxpb.SdmxTimeSeries{
+			Dimensions: dimensions,
+			Points:     []*sdmxpb.SdmxDataPoint{},
 		}
 		if r.ProvenanceID.Valid {
-			obs.Provenance = r.ProvenanceID.StringVal
+			series.Dimensions[datacommons.ComponentProvenance] = r.ProvenanceID.StringVal
 		}
 
 		for _, dv := range r.DatesAndValues {
@@ -532,26 +534,26 @@ func (nc *multiEntityClient) GetSdmxObservations(
 				continue
 			}
 			if dv.Date != "" {
-				obs.DatesAndValues = append(obs.DatesAndValues, &sdmxpb.SdmxDateValue{
-					Date:  dv.Date,
-					Value: dv.Value,
+				series.Points = append(series.Points, &sdmxpb.SdmxDataPoint{
+					TimePeriod:       dv.Date,
+					ObservationValue: dv.Value,
 				})
 			}
 		}
 
 		if r.Facets.Valid {
 			if m, ok := r.Facets.Value.(map[string]interface{}); ok {
-				populateSdmxFacetComponents(obs, m)
+				populateSdmxFacetComponents(series, m)
 			}
 		}
 
-		result.Observations = append(result.Observations, obs)
+		result.Series = append(result.Series, series)
 	}
 
 	return result, nil
 }
 
-func populateSdmxFacetComponents(obs *sdmxpb.SdmxObservation, facets map[string]interface{}) {
+func populateSdmxFacetComponents(series *sdmxpb.SdmxTimeSeries, facets map[string]interface{}) {
 	for key, value := range facets {
 		kind, ok := sdmxFacetComponentKind(key)
 		if !ok {
@@ -563,15 +565,15 @@ func populateSdmxFacetComponents(obs *sdmxpb.SdmxObservation, facets map[string]
 		}
 		switch kind {
 		case datacommons.ComponentKindDimension:
-			if obs.Dimensions == nil {
-				obs.Dimensions = map[string]string{}
+			if series.Dimensions == nil {
+				series.Dimensions = map[string]string{}
 			}
-			obs.Dimensions[key] = stringValue
+			series.Dimensions[key] = stringValue
 		case datacommons.ComponentKindAttribute:
-			if obs.Attributes == nil {
-				obs.Attributes = map[string]string{}
+			if series.Attributes == nil {
+				series.Attributes = map[string]string{}
 			}
-			obs.Attributes[key] = stringValue
+			series.Attributes[key] = stringValue
 		}
 	}
 }
@@ -610,11 +612,15 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	return result, nil
 }
 
-func observationPropertiesEntityMappings(edgesMap map[string][]*Edge) (map[string]map[string]string, error) {
-	result := map[string]map[string]string{}
-	for varDcid, edges := range edgesMap {
+func sdmxEntityDimensionsAndMappings(
+	variables []string,
+	edgesMap map[string][]*Edge,
+) ([]string, map[string]map[string]string, error) {
+	dimensionsByVariable := map[string][]string{}
+	fallbackVariables := map[string]struct{}{}
+	for _, varDcid := range variables {
 		propertySet := map[string]struct{}{}
-		for _, edge := range edges {
+		for _, edge := range edgesMap[varDcid] {
 			if edge == nil {
 				continue
 			}
@@ -630,23 +636,81 @@ func observationPropertiesEntityMappings(edgesMap map[string][]*Edge) (map[strin
 		// Ingestion assigns sorted observationProperties to entity1, entity2, entity3.
 		properties := slices.Sorted(maps.Keys(propertySet))
 		if len(properties) > maxObservationPropertyEntitySlots {
-			return nil, fmt.Errorf(
-				"observationPropertiesEntityMappings: stat var %q has %d observationProperties; max supported entity slots is %d",
+			return nil, nil, status.Errorf(
+				codes.InvalidArgument,
+				"sdmxEntityDimensionsAndMappings: stat var %q has %d observationProperties; max supported entity slots is %d",
 				varDcid,
 				len(properties),
 				maxObservationPropertyEntitySlots,
 			)
 		}
-
-		mapping := map[string]string{}
-		for i, property := range properties {
-			mapping[property] = fmt.Sprintf("entity%d", i+1)
+		if len(properties) == 0 {
+			properties = []string{datacommons.ComponentObservationAbout}
+			fallbackVariables[varDcid] = struct{}{}
 		}
-		if len(mapping) > 0 {
-			result[varDcid] = mapping
+		dimensionsByVariable[varDcid] = properties
+	}
+
+	var entityDimensions []string
+	referenceVarDcid := ""
+	for _, varDcid := range variables {
+		dimensions := dimensionsByVariable[varDcid]
+		if entityDimensions == nil {
+			entityDimensions = dimensions
+			referenceVarDcid = varDcid
+			continue
+		}
+		if !slices.Equal(entityDimensions, dimensions) {
+			return nil, nil, status.Errorf(
+				codes.InvalidArgument,
+				"sdmxEntityDimensionsAndMappings: incompatible entity dimensions for stat var %q: got %v, want %v from stat var %q",
+				varDcid,
+				dimensions,
+				entityDimensions,
+				referenceVarDcid,
+			)
 		}
 	}
-	return result, nil
+
+	result := map[string]map[string]string{}
+	for varDcid, dimensions := range dimensionsByVariable {
+		if _, ok := fallbackVariables[varDcid]; ok {
+			continue
+		}
+		mapping := map[string]string{}
+		for i, property := range dimensions {
+			mapping[property] = fmt.Sprintf("entity%d", i+1)
+		}
+		result[varDcid] = mapping
+	}
+	return entityDimensions, result, nil
+}
+
+func sdmxDataShape(entityDimensions []string) *sdmxpb.SdmxDataShape {
+	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+	result := &sdmxpb.SdmxDataShape{
+		Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
+	}
+	for _, component := range components {
+		result.Components = append(result.Components, &sdmxpb.SdmxComponent{
+			Id:   component.ID,
+			Kind: sdmxProtoComponentKind(component.Kind),
+		})
+	}
+	return result
+}
+
+func sdmxProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
+	switch kind {
+	case datacommons.ComponentKindDimension:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION
+	case datacommons.ComponentKindMeasure:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE
+	case datacommons.ComponentKindAttribute:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE
+	default:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_UNSPECIFIED
+	}
 }
 
 func observationPropertiesPageSize(variableCount int) int {

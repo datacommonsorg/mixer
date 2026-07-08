@@ -18,7 +18,6 @@ import (
 	"context"
 	"log/slog"
 
-	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 	csvv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/format/csv/v2"
 	jsonstatv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/format/jsonstat/v2"
@@ -65,18 +64,20 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 
 	res, err := s.dispatcher.SdmxData(ctx, query)
 	if err != nil {
+		if _, ok := status.FromError(err); ok {
+			return nil, err
+		}
 		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)
 		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
-
-	observations := []*sdmxpb.SdmxObservation(nil)
-	if res != nil {
-		observations = res.Observations
+	if res == nil || res.GetShape() == nil {
+		slog.Error("SDMX data result missing shape")
+		return nil, status.Error(codes.Internal, "Internal mapping error occurred.")
 	}
 
 	if responseFormat == restv2.DataResponseFormatCSV {
 		formatter := &csvv2.CSVFormatter{StructureID: dataStructureID(restRequest.Path)}
-		payload, err := formatter.Format(observations)
+		payload, err := formatter.Format(res)
 		if err != nil {
 			slog.Error("Failed to format SDMX CSV response", "error", err)
 			return nil, status.Error(codes.Internal, "Internal mapping error occurred.")
@@ -87,15 +88,8 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 		}, nil
 	}
 
-	if len(observations) == 0 {
-		return &Response{
-			ContentType: sdmxformat.JSONStatContentType,
-			Body:        []byte("{}"),
-		}, nil
-	}
-
 	formatter := &jsonstatv2.JSONStatFormatter{}
-	payload, err := formatter.Format(observations)
+	payload, err := formatter.Format(res)
 	if err != nil {
 		slog.Error("Failed to format SDMX response", "error", err)
 		return nil, status.Error(codes.Internal, "Internal mapping error occurred.")

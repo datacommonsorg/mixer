@@ -54,6 +54,15 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
+			name:        "dynamic entity filters",
+			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA"),
+			want: map[string][]string{
+				"variableMeasured":   {"Count_Person_Migrated"},
+				"destinationCountry": {"country/CAN"},
+				"sourceCountry":      {"country/USA"},
+			},
+		},
+		{
 			name:        "encoded ampersand stays in value",
 			originalURI: dataURI("c[variableMeasured]=Count%26Person&c[observationAbout]=country%2FUSA"),
 			want: map[string][]string{
@@ -306,18 +315,13 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
-			name:        "missing observation about",
-			originalURI: dataURI("c[variableMeasured]=Count_Person"),
-			wantCode:    codes.InvalidArgument,
-		},
-		{
-			name:        "geo unsupported",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[geo]=country%2FUSA"),
+			name:        "freq unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[FREQ]=A"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
-			name:        "freq unsupported",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[FREQ]=A"),
+			name:        "scaling factor unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[scalingFactor]=0"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

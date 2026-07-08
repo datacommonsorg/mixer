@@ -114,9 +114,6 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 	if _, ok := constraints[datacommons.ComponentVariableMeasured]; !ok {
 		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
 	}
-	if _, ok := constraints[datacommons.ComponentObservationAbout]; !ok {
-		return status.Error(codes.InvalidArgument, "missing required SDMX component filter observationAbout")
-	}
 	return nil
 }
 
@@ -146,12 +143,27 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 }
 
 func isAllowedDataComponent(componentID string) bool {
-	switch componentID {
-	case datacommons.ComponentVariableMeasured, datacommons.ComponentObservationAbout:
-		return true
-	default:
+	if componentID == datacommons.ComponentTimePeriod {
 		return false
 	}
+	if kind, ok := datacommons.DataComponentKind(componentID); ok {
+		return kind == datacommons.ComponentKindDimension
+	}
+	return isDynamicEntityComponent(componentID)
+}
+
+func isDynamicEntityComponent(componentID string) bool {
+	if componentID == "" || componentID[0] < 'a' || componentID[0] > 'z' {
+		return false
+	}
+	for i := 0; i < len(componentID); i++ {
+		c := componentID[i]
+		if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_' {
+			continue
+		}
+		return false
+	}
+	return true
 }
 
 func isAvailabilityComponent(componentID string) bool {
