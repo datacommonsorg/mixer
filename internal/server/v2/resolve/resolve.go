@@ -266,7 +266,7 @@ func GetSortedResolvedPlaceCandidates(
 	// Two candidates do not likely to have the same type. In the rare case they do, sort by dcid.
 	for _, candidates := range typeToCandidate {
 		sort.Slice(candidates, func(i, j int) bool {
-			return candidates[i].Dcid < candidates[j].Dcid
+			return candidates[i].GetDcid() < candidates[j].GetDcid()
 		})
 	}
 
