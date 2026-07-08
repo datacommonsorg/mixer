@@ -1485,8 +1485,8 @@
               "facet_id": "1915134240",
               "observations": [
                 {
-                  "date": "2026-03",
-                  "value": 6025603
+                  "date": "2026-06",
+                  "value": 6031247
                 }
               ]
             },
@@ -3769,15 +3769,6 @@
               ]
             },
             {
-              "facet_id": "1836477334",
-              "observations": [
-                {
-                  "date": "2023",
-                  "value": 27555
-                }
-              ]
-            },
-            {
               "facet_id": "473499523",
               "observations": [
                 {
@@ -5801,8 +5792,8 @@
               "facet_id": "196790193",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 332387540
+                  "date": "2024",
+                  "value": 334922499
                 }
               ]
             },
@@ -6274,11 +6265,6 @@
       "measurement_method": "EurostatRegionalStatistics",
       "provenance_id": "dc/base/EurostatData_Demographic_Balance_Crude_Rates"
     },
-    "1836477334": {
-      "import_name": "Mongolia_Education",
-      "provenance_url": "https://www.1212.mn/en/statcate",
-      "provenance_id": "dc/base/Mongolia_Education"
-    },
     "1897073702": {
       "import_name": "SouthAfrica_Census",
       "provenance_url": "https://southafrica.opendataforafrica.org/",
@@ -6302,7 +6288,7 @@
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
     },

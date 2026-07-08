@@ -46,7 +46,8 @@
               "importName": "WorldDevelopmentIndicators",
               "provenanceDomain": "worldbank.org",
               "unit": "InternationalDollar",
-              "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/"
+              "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
+              "provenanceId": "dc/base/WorldDevelopmentIndicators"
             }
           ]
         },
@@ -94,7 +95,8 @@
               "importName": "UNEnergy",
               "provenanceDomain": "un.org",
               "unit": "KilowattHour",
-              "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/"
+              "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/",
+              "provenanceId": "dc/base/UNEnergy"
             },
             {
               "val": {
@@ -127,7 +129,8 @@
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
               "unit": "KilowattHour",
-              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity"
+              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity",
+              "provenanceId": "dc/base/EIA_Electricity"
             }
           ]
         },
@@ -155,7 +158,8 @@
               "importName": "FBIGovCrime_AggCountry",
               "provenanceDomain": "fbi.gov",
               "isDcAggregate": true,
-              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+              "provenanceId": "dc/base/FBIGovCrime_AggCountry"
             }
           ]
         },
@@ -294,7 +298,8 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/USCensusPEP_Annual_Population"
             },
             {
               "val": {
@@ -317,7 +322,8 @@
               "importName": "CensusACS5YearSurvey_AggCountry",
               "provenanceDomain": "census.gov",
               "isDcAggregate": true,
-              "provenanceUrl": "https://www.census.gov/"
+              "provenanceUrl": "https://www.census.gov/",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
             },
             {
               "val": {
@@ -328,7 +334,8 @@
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
             },
             {
               "val": {
@@ -339,7 +346,8 @@
               "measurementMethod": "USDecennialCensus",
               "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+              "provenanceId": "dc/base/USDecennialCensus_RedistrictingRelease"
             },
             {
               "val": {
@@ -412,7 +420,8 @@
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
               "provenanceDomain": "worldbank.org",
-              "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/"
+              "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
+              "provenanceId": "dc/base/WorldDevelopmentIndicators"
             },
             {
               "val": {
@@ -435,7 +444,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
             },
             {
               "val": {
@@ -451,7 +461,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
             },
             {
               "val": {
@@ -465,7 +476,8 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+              "provenanceId": "dc/base/USCensusPEP_AgeSexRaceHispanicOrigin"
             },
             {
               "val": {
@@ -508,7 +520,8 @@
               "observationPeriod": "P1Y",
               "importName": "OECDRegionalDemography_Population",
               "provenanceDomain": "oecd.org",
-              "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C"
+              "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
+              "provenanceId": "dc/base/OECDRegionalDemography_Population"
             },
             {
               "val": {
@@ -530,7 +543,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
             },
             {
               "val": {
@@ -545,7 +559,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2023.S2603"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2023.S2603",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S2603"
             },
             {
               "val": {
@@ -574,7 +589,8 @@
               },
               "importName": "CDC_Mortality_UnderlyingCause",
               "provenanceDomain": "cdc.gov",
-              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
+              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html",
+              "provenanceId": "dc/base/CDC_Mortality_UnderlyingCause"
             },
             {
               "val": {
@@ -702,7 +718,8 @@
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/CensusPEP"
             },
             {
               "val": {
@@ -720,7 +737,8 @@
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS1YearSurvey"
             },
             {
               "val": {
@@ -777,7 +795,8 @@
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikimediafoundation.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+              "provenanceId": "dc/base/WikidataPopulation"
             }
           ]
         }
@@ -819,7 +838,8 @@
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
               "unit": "KilowattHour",
-              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity"
+              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity",
+              "provenanceId": "dc/base/EIA_Electricity"
             }
           ]
         },
@@ -846,7 +866,8 @@
               "observationPeriod": "P1Y",
               "importName": "FBIGovCrime",
               "provenanceDomain": "fbi.gov",
-              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+              "provenanceId": "dc/base/FBIGovCrime"
             }
           ]
         },
@@ -985,7 +1006,8 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/USCensusPEP_Annual_Population"
             },
             {
               "val": {
@@ -1007,7 +1029,8 @@
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
             },
             {
               "val": {
@@ -1018,7 +1041,8 @@
               "measurementMethod": "USDecennialCensus",
               "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+              "provenanceId": "dc/base/USDecennialCensus_RedistrictingRelease"
             },
             {
               "val": {
@@ -1041,7 +1065,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
             },
             {
               "val": {
@@ -1057,7 +1082,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2024.S2602",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
             },
             {
               "val": {
@@ -1100,7 +1126,8 @@
               "observationPeriod": "P1Y",
               "importName": "OECDRegionalDemography_Population",
               "provenanceDomain": "oecd.org",
-              "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C"
+              "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
+              "provenanceId": "dc/base/OECDRegionalDemography_Population"
             },
             {
               "val": {
@@ -1122,7 +1149,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
             },
             {
               "val": {
@@ -1151,7 +1179,8 @@
               },
               "importName": "CDC_Mortality_UnderlyingCause",
               "provenanceDomain": "cdc.gov",
-              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html"
+              "provenanceUrl": "https://wonder.cdc.gov/ucd-icd10.html",
+              "provenanceId": "dc/base/CDC_Mortality_UnderlyingCause"
             },
             {
               "val": {
@@ -1279,7 +1308,8 @@
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/CensusPEP"
             },
             {
               "val": {
@@ -1297,7 +1327,8 @@
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS1YearSurvey"
             },
             {
               "val": {
@@ -1343,7 +1374,8 @@
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikimediafoundation.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+              "provenanceId": "dc/base/WikidataPopulation"
             }
           ]
         }
@@ -1377,7 +1409,8 @@
               "observationPeriod": "P1Y",
               "importName": "FBIGovCrime",
               "provenanceDomain": "fbi.gov",
-              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr"
+              "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+              "provenanceId": "dc/base/FBIGovCrime"
             }
           ]
         },
@@ -1425,7 +1458,8 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/USCensusPEP_Annual_Population"
             },
             {
               "val": {
@@ -1447,7 +1481,8 @@
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS5YearSurvey"
             },
             {
               "val": {
@@ -1458,7 +1493,8 @@
               "measurementMethod": "USDecennialCensus",
               "importName": "USDecennialCensus_RedistrictingRelease",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+              "provenanceId": "dc/base/USDecennialCensus_RedistrictingRelease"
             },
             {
               "val": {
@@ -1481,7 +1517,8 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+              "provenanceId": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
             },
             {
               "val": {
@@ -1499,7 +1536,8 @@
               "measurementMethod": "CensusACS1yrSurvey",
               "importName": "CensusACS1YearSurvey",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+              "provenanceId": "dc/base/CensusACS1YearSurvey"
             },
             {
               "val": {
@@ -1536,7 +1574,8 @@
               "measurementMethod": "CensusPEPSurvey",
               "importName": "CensusPEP",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+              "provenanceId": "dc/base/CensusPEP"
             },
             {
               "val": {
@@ -1545,7 +1584,8 @@
               "measurementMethod": "Wikipedia",
               "importName": "WikipediaStatsData",
               "provenanceDomain": "wikipedia.org",
-              "provenanceUrl": "https://www.wikipedia.org"
+              "provenanceUrl": "https://www.wikipedia.org",
+              "provenanceId": "dc/base/WikipediaStatsData"
             },
             {
               "val": {
@@ -1555,7 +1595,8 @@
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
               "provenanceDomain": "wikimediafoundation.org",
-              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+              "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+              "provenanceId": "dc/base/WikidataPopulation"
             }
           ]
         }
