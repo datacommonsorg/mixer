@@ -37,6 +37,13 @@ const (
 	minObservationPropertiesPageSize  = 100
 )
 
+var sdmxFacetComponentIDs = map[string]struct{}{
+	datacommons.ComponentUnit:              {},
+	datacommons.ComponentMeasurementMethod: {},
+	datacommons.ComponentObservationPeriod: {},
+	datacommons.ComponentScalingFactor:     {},
+}
+
 // GetObservations retrieves observations using the new schema.
 func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	stmt, err := nc.queryBuilder.GetObservationsQuery(variables, entities, date)
@@ -546,23 +553,39 @@ func (nc *multiEntityClient) GetSdmxObservations(
 
 func populateSdmxFacetComponents(obs *sdmxpb.SdmxObservation, facets map[string]interface{}) {
 	for key, value := range facets {
+		kind, ok := sdmxFacetComponentKind(key)
+		if !ok {
+			continue
+		}
 		stringValue, ok := observationAttributeValueToString(value)
 		if !ok || stringValue == "" {
 			continue
 		}
-		switch key {
-		case datacommons.ComponentUnit, datacommons.ComponentMeasurementMethod, datacommons.ComponentObservationPeriod:
+		switch kind {
+		case datacommons.ComponentKindDimension:
 			if obs.Dimensions == nil {
 				obs.Dimensions = map[string]string{}
 			}
 			obs.Dimensions[key] = stringValue
-		case datacommons.ComponentScalingFactor:
+		case datacommons.ComponentKindAttribute:
 			if obs.Attributes == nil {
 				obs.Attributes = map[string]string{}
 			}
 			obs.Attributes[key] = stringValue
 		}
 	}
+}
+
+func sdmxFacetComponentKind(componentID string) (datacommons.ComponentKind, bool) {
+	if _, ok := sdmxFacetComponentIDs[componentID]; !ok {
+		return "", false
+	}
+	for _, component := range datacommons.DataComponents {
+		if component.ID == componentID {
+			return component.Kind, true
+		}
+	}
+	return "", false
 }
 
 // GetSdmxAvailability retrieves available observationAbout values for SDMX availability.

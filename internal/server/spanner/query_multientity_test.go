@@ -439,6 +439,11 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		datacommons.ComponentMeasurementMethod: "Census",
 		datacommons.ComponentObservationPeriod: "P1Y",
 		datacommons.ComponentScalingFactor:     "0",
+		datacommons.ComponentVariableMeasured:  "Count_Dropped",
+		datacommons.ComponentObservationAbout:  "country/DROPPED",
+		datacommons.ComponentProvenance:        "dc/dropped",
+		datacommons.ComponentTimePeriod:        "2020",
+		datacommons.ComponentObservationValue:  "99",
 		"customFacet":                          "drop",
 		"nestedFacet":                          map[string]interface{}{"drop": "me"},
 	})
@@ -475,6 +480,40 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 	}
 	if got, want := obs.Provenance, "dc/base/test_import"; got != want {
 		t.Fatalf("Provenance = %q, want %q", got, want)
+	}
+}
+
+func TestSdmxFacetComponentKind(t *testing.T) {
+	tests := []struct {
+		componentID string
+		wantKind    datacommons.ComponentKind
+		wantOK      bool
+	}{
+		{
+			componentID: datacommons.ComponentUnit,
+			wantKind:    datacommons.ComponentKindDimension,
+			wantOK:      true,
+		},
+		{
+			componentID: datacommons.ComponentScalingFactor,
+			wantKind:    datacommons.ComponentKindAttribute,
+			wantOK:      true,
+		},
+		{
+			componentID: datacommons.ComponentProvenance,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.componentID, func(t *testing.T) {
+			gotKind, gotOK := sdmxFacetComponentKind(tc.componentID)
+			if gotOK != tc.wantOK {
+				t.Fatalf("sdmxFacetComponentKind(%q) ok = %v, want %v", tc.componentID, gotOK, tc.wantOK)
+			}
+			if gotKind != tc.wantKind {
+				t.Fatalf("sdmxFacetComponentKind(%q) kind = %q, want %q", tc.componentID, gotKind, tc.wantKind)
+			}
+		})
 	}
 }
 
