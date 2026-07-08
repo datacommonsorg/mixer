@@ -25,6 +25,7 @@ import (
 
 	"cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
@@ -531,15 +532,9 @@ func (nc *multiEntityClient) GetSdmxObservations(
 			}
 		}
 
-		// Reconstruct and attach attributes from facet JSON
 		if r.Facets.Valid {
 			if m, ok := r.Facets.Value.(map[string]interface{}); ok {
-				obs.Attributes = map[string]string{}
-				for k, v := range m {
-					if s, ok := observationAttributeValueToString(v); ok {
-						obs.Attributes[k] = s
-					}
-				}
+				populateSdmxFacetComponents(obs, m)
 			}
 		}
 
@@ -547,6 +542,27 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	}
 
 	return result, nil
+}
+
+func populateSdmxFacetComponents(obs *sdmxpb.SdmxObservation, facets map[string]interface{}) {
+	for key, value := range facets {
+		stringValue, ok := observationAttributeValueToString(value)
+		if !ok || stringValue == "" {
+			continue
+		}
+		switch key {
+		case datacommons.ComponentUnit, datacommons.ComponentMeasurementMethod, datacommons.ComponentObservationPeriod:
+			if obs.Dimensions == nil {
+				obs.Dimensions = map[string]string{}
+			}
+			obs.Dimensions[key] = stringValue
+		case datacommons.ComponentScalingFactor:
+			if obs.Attributes == nil {
+				obs.Attributes = map[string]string{}
+			}
+			obs.Attributes[key] = stringValue
+		}
+	}
 }
 
 // GetSdmxAvailability retrieves available observationAbout values for SDMX availability.

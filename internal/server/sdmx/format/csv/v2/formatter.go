@@ -100,11 +100,11 @@ func dataCSVRawComponentValue(componentID string, observation *sdmxpb.SdmxObserv
 	case datacommons.ComponentObservationAbout:
 		return observation.GetDimensions()[datacommons.ComponentObservationAbout]
 	case datacommons.ComponentUnit:
-		return observation.GetAttributes()[datacommons.ComponentUnit]
+		return observation.GetDimensions()[datacommons.ComponentUnit]
 	case datacommons.ComponentMeasurementMethod:
-		return observation.GetAttributes()[datacommons.ComponentMeasurementMethod]
+		return observation.GetDimensions()[datacommons.ComponentMeasurementMethod]
 	case datacommons.ComponentObservationPeriod:
-		return observation.GetAttributes()[datacommons.ComponentObservationPeriod]
+		return observation.GetDimensions()[datacommons.ComponentObservationPeriod]
 	case datacommons.ComponentProvenance:
 		return observation.GetProvenance()
 	case datacommons.ComponentTimePeriod:

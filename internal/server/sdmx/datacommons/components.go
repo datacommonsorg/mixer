@@ -31,10 +31,6 @@ const (
 	ComponentProvenance        = "provenance"
 	ComponentScalingFactor     = "scalingFactor"
 
-	// InternalObservationDate is the dispatcher/query field mapped from SDMX TIME_PERIOD.
-	// It is not an SDMX wire component ID.
-	InternalObservationDate = "observationDate"
-
 	// FallbackNotAvailable is used across datasets to represent missing constraints.
 	FallbackNotAvailable = "NotApplicable"
 )
@@ -56,15 +52,4 @@ var DataComponents = []DataComponent{
 	{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
 	{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
-}
-
-func InternalDataComponentID(componentID string) (string, bool) {
-	switch componentID {
-	case ComponentVariableMeasured, ComponentObservationAbout:
-		return componentID, true
-	case ComponentTimePeriod:
-		return InternalObservationDate, true
-	default:
-		return "", false
-	}
 }

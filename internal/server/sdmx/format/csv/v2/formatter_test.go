@@ -50,13 +50,13 @@ func TestCSVFormatter_Rows(t *testing.T) {
 				{Date: "2021", Value: "2"},
 			},
 			Dimensions: map[string]string{
-				"observationAbout": "country/USA",
-			},
-			Attributes: map[string]string{
+				"observationAbout":  "country/USA",
 				"unit":              "Person",
 				"measurementMethod": "Census",
 				"observationPeriod": "P1Y",
-				"scalingFactor":     "0",
+			},
+			Attributes: map[string]string{
+				"scalingFactor": "0",
 			},
 		},
 	})

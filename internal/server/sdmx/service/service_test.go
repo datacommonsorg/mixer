@@ -93,6 +93,12 @@ func TestDataValidation(t *testing.T) {
 			wantErrSub: "unsupported SDMX component filter",
 		},
 		{
+			name:       "Unsupported time period filter",
+			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "unsupported SDMX component filter",
+		},
+		{
 			name:       "Unsupported geo filter",
 			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[geo]=country%2FUSA"),
 			wantCode:   codes.Unimplemented,
@@ -155,7 +161,7 @@ func TestDataSuccess(t *testing.T) {
 	}
 	svc := newSdmxTestService(ds)
 
-	response, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2021"))
+	response, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
@@ -164,7 +170,6 @@ func TestDataSuccess(t *testing.T) {
 		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
 			"observationAbout": {Values: []string{"country/USA"}},
-			"observationDate":  {Values: []string{"2020", "2021"}},
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
@@ -189,13 +194,13 @@ func TestDataCSVSuccess(t *testing.T) {
 						{Date: "2020", Value: "1.50"},
 					},
 					Dimensions: map[string]string{
-						"observationAbout": "country/USA",
-					},
-					Attributes: map[string]string{
+						"observationAbout":  "country/USA",
 						"unit":              "Person",
 						"measurementMethod": "Census",
 						"observationPeriod": "P1Y",
-						"scalingFactor":     "0",
+					},
+					Attributes: map[string]string{
+						"scalingFactor": "0",
 					},
 				},
 			},
@@ -312,7 +317,7 @@ func TestDataSDMXDebugLoggingSuccess(t *testing.T) {
 	ds := &sdmxDataSource{result: &sdmxpb.SdmxDataResult{}}
 	svc := newSdmxTestService(ds)
 
-	_, err := svc.Data(context.Background(), withLog(sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020")))
+	_, err := svc.Data(context.Background(), withLog(sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")))
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
@@ -323,7 +328,6 @@ func TestDataSDMXDebugLoggingSuccess(t *testing.T) {
 		"Count_Person",
 		"country/USA",
 		"SDMX data dispatcher request",
-		"observationDate",
 	} {
 		if !strings.Contains(logs, want) {
 			t.Fatalf("logs do not contain %q: %s", want, logs)

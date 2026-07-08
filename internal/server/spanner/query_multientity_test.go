@@ -21,7 +21,9 @@ import (
 
 	cloudspanner "cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -421,6 +423,58 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	}
 	if got, want := err.Error(), "GetSdmxAvailability: request cannot be nil"; got != want {
 		t.Fatalf("GetSdmxAvailability() error = %q, want %q", got, want)
+	}
+}
+
+func TestPopulateSdmxFacetComponents(t *testing.T) {
+	obs := &sdmxpb.SdmxObservation{
+		Provenance: "dc/base/test_import",
+		Dimensions: map[string]string{
+			datacommons.ComponentVariableMeasured: "Count_Person",
+			datacommons.ComponentObservationAbout: "country/USA",
+		},
+	}
+	populateSdmxFacetComponents(obs, map[string]interface{}{
+		datacommons.ComponentUnit:              "Person",
+		datacommons.ComponentMeasurementMethod: "Census",
+		datacommons.ComponentObservationPeriod: "P1Y",
+		datacommons.ComponentScalingFactor:     "0",
+		"customFacet":                          "drop",
+		"nestedFacet":                          map[string]interface{}{"drop": "me"},
+	})
+
+	wantDimensions := map[string]string{
+		datacommons.ComponentVariableMeasured:  "Count_Person",
+		datacommons.ComponentObservationAbout:  "country/USA",
+		datacommons.ComponentUnit:              "Person",
+		datacommons.ComponentMeasurementMethod: "Census",
+		datacommons.ComponentObservationPeriod: "P1Y",
+	}
+	if len(obs.Dimensions) != len(wantDimensions) {
+		t.Fatalf("Dimensions = %v, want %v", obs.Dimensions, wantDimensions)
+	}
+	for key, want := range wantDimensions {
+		if got := obs.Dimensions[key]; got != want {
+			t.Fatalf("Dimensions[%q] = %q, want %q", key, got, want)
+		}
+	}
+	if _, ok := obs.Dimensions[datacommons.ComponentProvenance]; ok {
+		t.Fatalf("Dimensions[%q] is set; provenance should remain top-level only", datacommons.ComponentProvenance)
+	}
+
+	wantAttributes := map[string]string{
+		datacommons.ComponentScalingFactor: "0",
+	}
+	if len(obs.Attributes) != len(wantAttributes) {
+		t.Fatalf("Attributes = %v, want %v", obs.Attributes, wantAttributes)
+	}
+	for key, want := range wantAttributes {
+		if got := obs.Attributes[key]; got != want {
+			t.Fatalf("Attributes[%q] = %q, want %q", key, got, want)
+		}
+	}
+	if got, want := obs.Provenance, "dc/base/test_import"; got != want {
+		t.Fatalf("Provenance = %q, want %q", got, want)
 	}
 }
 

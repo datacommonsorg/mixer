@@ -46,15 +46,6 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
-			name:        "optional time period",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2021"),
-			want: map[string][]string{
-				"variableMeasured": {"Count_Person"},
-				"observationAbout": {"country/USA"},
-				"TIME_PERIOD":      {"2020", "2021"},
-			},
-		},
-		{
 			name:        "encoded slash value",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			want: map[string][]string{
@@ -243,6 +234,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		{
 			name:        "operator unsupported",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=ge:2020"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "time period filter unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

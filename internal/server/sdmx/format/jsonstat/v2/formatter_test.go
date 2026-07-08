@@ -98,12 +98,14 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 						{Date: "2020", Value: "331000000"},
 					},
 					Dimensions: map[string]string{
-						"gender":           "Male",
-						"observationAbout": "country/USA",
+						"gender":            "Male",
+						"measurementMethod": "Census",
+						"observationAbout":  "country/USA",
+						"observationPeriod": "P1Y",
+						"unit":              "Person",
 					},
 					Attributes: map[string]string{
-						"unit":              "Person",
-						"measurementMethod": "Census",
+						"scalingFactor": "0",
 					},
 				},
 			},
