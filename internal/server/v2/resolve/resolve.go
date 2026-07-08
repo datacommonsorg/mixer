@@ -255,14 +255,19 @@ func ParseCoordinate(coordinateExpr string) (float64, float64, error) {
 // If a candidate's type is not in the priority list, then sort by DCID alphabetically.
 func GetSortedResolvedPlaceCandidates(
 	places []*pb.ResolveCoordinatesResponse_Place) []*pbv2.ResolveResponse_Entity_Candidate {
-	typeToCandidate := map[string]*pbv2.ResolveResponse_Entity_Candidate{}
+	typeToCandidate := map[string][]*pbv2.ResolveResponse_Entity_Candidate{}
 	for _, place := range places {
-		// Two candidates do not likely to have the same type. In the rare case they do, we can
-		// randomly pick one.
-		typeToCandidate[place.GetDominantType()] = &pbv2.ResolveResponse_Entity_Candidate{
+		candidate := &pbv2.ResolveResponse_Entity_Candidate{
 			Dcid:         place.GetDcid(),
 			DominantType: place.GetDominantType(),
 		}
+		typeToCandidate[place.GetDominantType()] = append(typeToCandidate[place.GetDominantType()], candidate)
+	}
+	// Two candidates do not likely to have the same type. In the rare case they do, sort by dcid.
+	for _, candidates := range typeToCandidate {
+		sort.Slice(candidates, func(i, j int) bool {
+			return candidates[i].Dcid < candidates[j].Dcid
+		})
 	}
 
 	// Add candidates whose type is in the priority list.
@@ -270,7 +275,7 @@ func GetSortedResolvedPlaceCandidates(
 	selectedPriorityTypeSet := map[string]struct{}{}
 	for _, priorityType := range resolvedPlaceTypePriorityList {
 		if candidate, ok := typeToCandidate[priorityType]; ok {
-			candidates = append(candidates, candidate)
+			candidates = append(candidates, candidate...)
 			selectedPriorityTypeSet[priorityType] = struct{}{}
 		}
 	}
@@ -279,7 +284,7 @@ func GetSortedResolvedPlaceCandidates(
 	leftoverCandidates := []*pbv2.ResolveResponse_Entity_Candidate{}
 	for t, candidate := range typeToCandidate {
 		if _, ok := selectedPriorityTypeSet[t]; !ok {
-			leftoverCandidates = append(leftoverCandidates, candidate)
+			leftoverCandidates = append(leftoverCandidates, candidate...)
 		}
 	}
 	sort.Slice(leftoverCandidates, func(i, j int) bool {

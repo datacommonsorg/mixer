@@ -40,6 +40,10 @@
           "dominantType": "SchoolDistrict"
         },
         {
+          "dcid": "geoId/sch0626310",
+          "dominantType": "SchoolDistrict"
+        },
+        {
           "dcid": "ipcc_50/37.25_-122.25_USA",
           "dominantType": "IPCCPlace_50"
         },
@@ -123,6 +127,10 @@
         },
         {
           "dcid": "geoId/sch0630630",
+          "dominantType": "SchoolDistrict"
+        },
+        {
+          "dcid": "geoId/sch0639930",
           "dominantType": "SchoolDistrict"
         },
         {
