@@ -45,7 +45,7 @@ func newStalenessTracker(noChangeThreshold, failureThreshold time.Duration) *sta
 
 func formatTimestamp(val int64) string {
 	if val == 0 {
-		return "none (strong read fallback)"
+		return "none (exact staleness fallback)"
 	}
 	return time.Unix(0, val).UTC().String()
 }
