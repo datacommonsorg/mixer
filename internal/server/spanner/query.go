@@ -967,14 +967,18 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
-	var timestamp time.Time
-	if err := row.Column(0, &timestamp); err != nil {
+	var nullTs spanner.NullTime
+	if err := row.Column(0, &nullTs); err != nil {
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
+	}
+
+	var newNano int64
+	if nullTs.Valid {
+		newNano = nullTs.Time.UnixNano()
 	}
 
 	now := time.Now()
 	prevNano := sc.timestamp.Load()
-	newNano := timestamp.UnixNano()
 
 	if prevNano == 0 || prevNano != newNano {
 		sc.timestamp.Store(newNano)

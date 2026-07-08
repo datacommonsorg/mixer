@@ -43,6 +43,13 @@ func newStalenessTracker(noChangeThreshold, failureThreshold time.Duration) *sta
 	}
 }
 
+func formatTimestamp(val int64) string {
+	if val == 0 {
+		return "none (strong read fallback)"
+	}
+	return time.Unix(0, val).UTC().String()
+}
+
 func (t *stalenessTracker) RecordSuccess(now time.Time, prevVal, newVal int64) *logEvent {
 	t.lastSuccessTime = now
 	t.lastLoggedFailureTime = time.Time{} // Reset failure log time
@@ -53,19 +60,17 @@ func (t *stalenessTracker) RecordSuccess(now time.Time, prevVal, newVal int64) *
 		return &logEvent{
 			level:   slog.LevelInfo,
 			message: "Spanner staleness timestamp initialized",
-			args:    []interface{}{"timestamp", time.Unix(0, newVal).UTC().String()},
+			args:    []interface{}{"timestamp", formatTimestamp(newVal)},
 		}
 	}
 
 	if prevVal != newVal {
-		oldTime := time.Unix(0, prevVal).UTC()
-		newTime := time.Unix(0, newVal).UTC()
 		t.lastChangeTime = now
 		t.lastLoggedNoChangeTime = now
 		return &logEvent{
 			level:   slog.LevelInfo,
 			message: "Spanner staleness timestamp updated",
-			args:    []interface{}{"old", oldTime.String(), "new", newTime.String()},
+			args:    []interface{}{"old", formatTimestamp(prevVal), "new", formatTimestamp(newVal)},
 		}
 	}
 
@@ -81,7 +86,7 @@ func (t *stalenessTracker) RecordSuccess(now time.Time, prevVal, newVal int64) *
 			level:   slog.LevelInfo,
 			message: fmt.Sprintf("Spanner staleness timestamp has not changed in the last %s", t.noChangeThreshold),
 			args: []interface{}{
-				"timestamp", time.Unix(0, newVal).UTC().String(),
+				"timestamp", formatTimestamp(newVal),
 				"durationSinceLastChange", now.Sub(t.lastChangeTime).Round(time.Second).String(),
 			},
 		}
