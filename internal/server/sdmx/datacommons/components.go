@@ -53,3 +53,16 @@ var DataComponents = []DataComponent{
 	{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
 }
+
+var dataComponentsByID = func() map[string]DataComponent {
+	result := make(map[string]DataComponent, len(DataComponents))
+	for _, component := range DataComponents {
+		result[component.ID] = component
+	}
+	return result
+}()
+
+func DataComponentKind(componentID string) (ComponentKind, bool) {
+	component, ok := dataComponentsByID[componentID]
+	return component.Kind, ok
+}

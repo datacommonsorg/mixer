@@ -580,12 +580,7 @@ func sdmxFacetComponentKind(componentID string) (datacommons.ComponentKind, bool
 	if _, ok := sdmxFacetComponentIDs[componentID]; !ok {
 		return "", false
 	}
-	for _, component := range datacommons.DataComponents {
-		if component.ID == componentID {
-			return component.Kind, true
-		}
-	}
-	return "", false
+	return datacommons.DataComponentKind(componentID)
 }
 
 // GetSdmxAvailability retrieves available observationAbout values for SDMX availability.

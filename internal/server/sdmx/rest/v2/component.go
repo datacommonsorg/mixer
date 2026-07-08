@@ -158,15 +158,6 @@ func isAvailabilityComponent(componentID string) bool {
 	if componentID == datacommons.ComponentTimePeriod {
 		return false
 	}
-	kind, ok := dataComponentKind(componentID)
+	kind, ok := datacommons.DataComponentKind(componentID)
 	return ok && kind == datacommons.ComponentKindDimension
-}
-
-func dataComponentKind(componentID string) (datacommons.ComponentKind, bool) {
-	for _, component := range datacommons.DataComponents {
-		if component.ID == componentID {
-			return component.Kind, true
-		}
-	}
-	return "", false
 }
