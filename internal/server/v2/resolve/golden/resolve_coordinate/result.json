@@ -20,10 +20,6 @@
           "dominantType": "Country"
         },
         {
-          "dcid": "geoId/06085504601",
-          "dominantType": "CensusTract"
-        },
-        {
           "dcid": "geoId/060855046011",
           "dominantType": "CensusBlockGroup"
         },
@@ -32,8 +28,20 @@
           "dominantType": "CensusCountyDivision"
         },
         {
+          "dcid": "geoId/06085504601",
+          "dominantType": "CensusTract"
+        },
+        {
+          "dcid": "zip/94043",
+          "dominantType": "CensusZipCodeTabulationArea"
+        },
+        {
           "dcid": "geoId/0618",
           "dominantType": "CongressionalDistrict"
+        },
+        {
+          "dcid": "ipcc_50/37.25_-122.25_USA",
+          "dominantType": "IPCCPlace_50"
         },
         {
           "dcid": "geoId/sch0626280",
@@ -42,14 +50,6 @@
         {
           "dcid": "geoId/sch0626310",
           "dominantType": "SchoolDistrict"
-        },
-        {
-          "dcid": "ipcc_50/37.25_-122.25_USA",
-          "dominantType": "IPCCPlace_50"
-        },
-        {
-          "dcid": "zip/94043",
-          "dominantType": "CensusZipCodeTabulationArea"
         }
       ]
     },
@@ -69,8 +69,8 @@
           "dominantType": "Country"
         },
         {
-          "dcid": "geoId/4811",
-          "dominantType": "CongressionalDistrict"
+          "dcid": "geoId/483179501001",
+          "dominantType": "CensusBlockGroup"
         },
         {
           "dcid": "geoId/4831793835",
@@ -81,16 +81,16 @@
           "dominantType": "CensusTract"
         },
         {
-          "dcid": "geoId/483179501001",
-          "dominantType": "CensusBlockGroup"
-        },
-        {
-          "dcid": "geoId/sch4825790",
-          "dominantType": "SchoolDistrict"
+          "dcid": "geoId/4811",
+          "dominantType": "CongressionalDistrict"
         },
         {
           "dcid": "ipcc_50/32.25_-102.25_USA",
           "dominantType": "IPCCPlace_50"
+        },
+        {
+          "dcid": "geoId/sch4825790",
+          "dominantType": "SchoolDistrict"
         }
       ]
     },
@@ -110,10 +110,6 @@
           "dominantType": "Country"
         },
         {
-          "dcid": "geoId/06107004200",
-          "dominantType": "CensusTract"
-        },
-        {
           "dcid": "geoId/061070042001",
           "dominantType": "CensusBlockGroup"
         },
@@ -122,8 +118,20 @@
           "dominantType": "CensusCountyDivision"
         },
         {
+          "dcid": "geoId/06107004200",
+          "dominantType": "CensusTract"
+        },
+        {
+          "dcid": "zip/93212",
+          "dominantType": "CensusZipCodeTabulationArea"
+        },
+        {
           "dcid": "geoId/0621",
           "dominantType": "CongressionalDistrict"
+        },
+        {
+          "dcid": "ipcc_50/35.75_-119.25_USA",
+          "dominantType": "IPCCPlace_50"
         },
         {
           "dcid": "geoId/sch0630630",
@@ -132,14 +140,6 @@
         {
           "dcid": "geoId/sch0639930",
           "dominantType": "SchoolDistrict"
-        },
-        {
-          "dcid": "ipcc_50/35.75_-119.25_USA",
-          "dominantType": "IPCCPlace_50"
-        },
-        {
-          "dcid": "zip/93212",
-          "dominantType": "CensusZipCodeTabulationArea"
         }
       ]
     },
@@ -159,10 +159,6 @@
           "dominantType": "Country"
         },
         {
-          "dcid": "geoId/06107004200",
-          "dominantType": "CensusTract"
-        },
-        {
           "dcid": "geoId/061070042001",
           "dominantType": "CensusBlockGroup"
         },
@@ -171,20 +167,24 @@
           "dominantType": "CensusCountyDivision"
         },
         {
-          "dcid": "geoId/0621",
-          "dominantType": "CongressionalDistrict"
+          "dcid": "geoId/06107004200",
+          "dominantType": "CensusTract"
         },
         {
-          "dcid": "geoId/sch0609690",
-          "dominantType": "SchoolDistrict"
+          "dcid": "zip/93212",
+          "dominantType": "CensusZipCodeTabulationArea"
+        },
+        {
+          "dcid": "geoId/0621",
+          "dominantType": "CongressionalDistrict"
         },
         {
           "dcid": "ipcc_50/36.25_-119.75_USA",
           "dominantType": "IPCCPlace_50"
         },
         {
-          "dcid": "zip/93212",
-          "dominantType": "CensusZipCodeTabulationArea"
+          "dcid": "geoId/sch0609690",
+          "dominantType": "SchoolDistrict"
         }
       ]
     }
