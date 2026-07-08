@@ -255,17 +255,17 @@ func ParseCoordinate(coordinateExpr string) (float64, float64, error) {
 // If a candidate's type is not in the priority list, then sort by type and DCID alphabetically.
 func GetSortedResolvedPlaceCandidates(
 	places []*pb.ResolveCoordinatesResponse_Place) []*pbv2.ResolveResponse_Entity_Candidate {
-	typeToCandidate := map[string][]*pbv2.ResolveResponse_Entity_Candidate{}
+	typeToCandidates := map[string][]*pbv2.ResolveResponse_Entity_Candidate{}
 	for _, place := range places {
 		candidate := &pbv2.ResolveResponse_Entity_Candidate{
 			Dcid:         place.GetDcid(),
 			DominantType: place.GetDominantType(),
 		}
-		typeToCandidate[place.GetDominantType()] = append(typeToCandidate[place.GetDominantType()], candidate)
+		typeToCandidates[place.GetDominantType()] = append(typeToCandidates[place.GetDominantType()], candidate)
 	}
 	// Two candidates do not likely to have the same type. In the rare case they do, sort by dcid.
 	types := []string{}
-	for t, candidates := range typeToCandidate {
+	for t, candidates := range typeToCandidates {
 		types = append(types, t)
 		sort.Slice(candidates, func(i, j int) bool {
 			return candidates[i].GetDcid() < candidates[j].GetDcid()
@@ -276,7 +276,7 @@ func GetSortedResolvedPlaceCandidates(
 	candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
 	selectedPriorityTypeSet := map[string]struct{}{}
 	for _, priorityType := range resolvedPlaceTypePriorityList {
-		if typeCandidates, ok := typeToCandidate[priorityType]; ok {
+		if typeCandidates, ok := typeToCandidates[priorityType]; ok {
 			candidates = append(candidates, typeCandidates...)
 			selectedPriorityTypeSet[priorityType] = struct{}{}
 		}
@@ -286,7 +286,7 @@ func GetSortedResolvedPlaceCandidates(
 	sort.Strings(types)
 	for _, t := range types {
 		if _, ok := selectedPriorityTypeSet[t]; !ok {
-			candidates = append(candidates, typeToCandidate[t]...)
+			candidates = append(candidates, typeToCandidates[t]...)
 		}
 	}
 
