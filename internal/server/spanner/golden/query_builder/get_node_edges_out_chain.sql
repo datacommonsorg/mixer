@@ -13,10 +13,10 @@
 		  	subject_id,
 			'specializationOf+' AS predicate,
 			'' AS provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
 			IFNULL(n.name, '') AS name,
-			n.types
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			object_id

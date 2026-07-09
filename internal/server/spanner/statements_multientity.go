@@ -490,7 +490,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			SELECT
 				svg.svg,
 				n.subject_id,
-				n.name,
+				IFNULL(n.name, '') AS name,
 				c.descendent_stat_var_count,
 				FALSE AS has_data,
 				'' AS definition
@@ -503,7 +503,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			SELECT
 				sv.svg,
 				n.subject_id,
-				n.name,
+				IFNULL(n.name, '') AS name,
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1
@@ -553,7 +553,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			SELECT
 				svg.svg,
 				n.subject_id,
-				n.name,
+				IFNULL(n.name, '') AS name,
 				c.descendent_stat_var_count,
 				FALSE AS has_data,
 				'' AS definition
@@ -566,7 +566,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			SELECT
 				sv.svg,
 				n.subject_id,
-				n.name,
+				IFNULL(n.name, '') AS name,
 				-1 AS descendent_stat_var_count,
 				EXISTS (
 					SELECT 1

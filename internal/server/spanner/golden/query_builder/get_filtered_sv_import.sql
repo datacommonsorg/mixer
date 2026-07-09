@@ -1,6 +1,6 @@
 		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			'' AS definition
 		FROM Node n
 		JOIN (
