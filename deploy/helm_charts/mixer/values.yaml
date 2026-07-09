@@ -362,6 +362,8 @@ mixer:
       functionalDeps: dcid
 
 esp:
+  transcodingIgnoreUnknownQueryParameters: false
+  transcodingQueryParametersDisableUnescapePlus: false
   image:
     repository: gcr.io/endpoints-release/endpoints-runtime
     pullPolicy: IfNotPresent
