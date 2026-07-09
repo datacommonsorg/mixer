@@ -51,6 +51,12 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "196790193",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "2390551605",
               "obs_count": 5,
               "earliest_date": "2020",
@@ -66,12 +72,6 @@
               "facet_id": "10983471",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -144,6 +144,12 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "196790193",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "4181918134",
               "obs_count": 34,
               "earliest_date": "1990",
@@ -153,12 +159,6 @@
               "facet_id": "10983471",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -206,15 +206,15 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "3690003977",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "2763329611",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -240,15 +240,15 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "3690003977",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "2763329611",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             }
           ]
@@ -308,7 +308,7 @@
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
     },
@@ -370,7 +370,7 @@
     },
     "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years",
       "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
