@@ -68,6 +68,7 @@ done
 
 CMD=("go" "run" "cmd/main.go"
     "--host_project=datcom-mixer-dev-316822")
+
 # Only set bq_dataset if BigQuery is enabled
 if [[ "$use_bigquery" == "true" ]]; then
     CMD+=("--bq_dataset=$(head -1 deploy/storage/bigquery.version)")
