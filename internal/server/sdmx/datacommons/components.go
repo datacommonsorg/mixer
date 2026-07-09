@@ -54,12 +54,12 @@ var DataComponents = []DataComponent{
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
 }
 
-func DataComponentsForEntityDimensions(entityDimensions []string) []DataComponent {
+func DataComponentsForObservationProperties(observationProperties []string) []DataComponent {
 	components := []DataComponent{
 		{ID: ComponentVariableMeasured, Kind: ComponentKindDimension},
 	}
-	for _, entityDimension := range entityDimensions {
-		components = append(components, DataComponent{ID: entityDimension, Kind: ComponentKindDimension})
+	for _, observationProperty := range observationProperties {
+		components = append(components, DataComponent{ID: observationProperty, Kind: ComponentKindDimension})
 	}
 	components = append(components,
 		DataComponent{ID: ComponentUnit, Kind: ComponentKindDimension},

@@ -136,8 +136,8 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	}
 }
 
-func testSdmxDataResult(entityDimensions []string) *sdmxpb.SdmxDataResult {
-	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+func testSdmxDataResult(observationProperties []string) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForObservationProperties(observationProperties)
 	result := &sdmxpb.SdmxDataResult{
 		Shape: &sdmxpb.SdmxDataShape{
 			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),

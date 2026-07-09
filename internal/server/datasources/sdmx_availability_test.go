@@ -162,8 +162,8 @@ func TestSdmxDataRejectsSeriesWithoutShape(t *testing.T) {
 	}
 }
 
-func testSdmxShape(entityDimensions []string) *sdmxpb.SdmxDataShape {
-	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+func testSdmxShape(observationProperties []string) *sdmxpb.SdmxDataShape {
+	components := datacommons.DataComponentsForObservationProperties(observationProperties)
 	shape := &sdmxpb.SdmxDataShape{
 		Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
 	}

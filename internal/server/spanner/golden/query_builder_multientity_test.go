@@ -166,7 +166,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 				if err != nil {
 					return nil, err
 				}
-				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByDimensionByStatVar)
+				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByObservationPropertyByStatVar)
 				return stmt, err
 			})
 		})
@@ -186,10 +186,10 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
 		"observationPeriod": {Values: []string{"P1Y"}},
 	}
-	entitySlotByDimensionByStatVar := map[string]map[string]string{
+	entitySlotByObservationPropertyByStatVar := map[string]map[string]string{
 		"var1": {"observationAbout": "entity1"},
 	}
-	_, err = builder.GetSdmxObservationsQuery(constraints, entitySlotByDimensionByStatVar)
+	_, err = builder.GetSdmxObservationsQuery(constraints, entitySlotByObservationPropertyByStatVar)
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -219,7 +219,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"variableMeasured": {Values: []string{"var1"}},
 		"customEntity":     {Values: []string{"value"}},
 	}
-	_, err = builder.GetSdmxObservationsQuery(badConstraints3, entitySlotByDimensionByStatVar)
+	_, err = builder.GetSdmxObservationsQuery(badConstraints3, entitySlotByObservationPropertyByStatVar)
 	if err == nil {
 		t.Fatal("expected error for unsupported dynamic constraint key, got nil")
 	}
@@ -227,12 +227,12 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		t.Fatalf("error = %q, want %q", got, want)
 	}
 
-	// Case 5: observationAbout is allowed only when resolved as an entity dimension.
+	// Case 5: observationAbout is allowed only when resolved as an observationProperty.
 	_, err = builder.GetSdmxObservationsQuery(constraints, map[string]map[string]string{
 		"var1": {"destinationCountry": "entity1", "sourceCountry": "entity2"},
 	})
 	if err == nil {
-		t.Fatal("expected error for observationAbout outside resolved entity mapping, got nil")
+		t.Fatal("expected error for observationAbout outside resolved observationProperties, got nil")
 	}
 	if got, want := err.Error(), "GetSdmxObservationsQuery: unsupported constraint key \"observationAbout\""; got != want {
 		t.Fatalf("error = %q, want %q", got, want)
@@ -246,7 +246,7 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 	}
 
 	for _, c := range multiEntitySdmxObservationsTestCases {
-		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByDimensionByStatVar)
+		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByObservationPropertyByStatVar)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
 		}

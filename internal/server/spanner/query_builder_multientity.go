@@ -294,7 +294,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 // GetSdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.ConstraintList,
-	entitySlotByDimensionByStatVar map[string]map[string]string,
+	entitySlotByObservationPropertyByStatVar map[string]map[string]string,
 ) (*spanner.Statement, error) {
 	stmts := b.statements
 	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
@@ -337,10 +337,10 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 
 	for _, statVarID := range statVarIDs {
 		varClauses := []string{fmt.Sprintf("t.variable_measured = %q", statVarID)}
-		entitySlotByDimension := entitySlotByDimensionByStatVar[statVarID]
+		entitySlotByObservationProperty := entitySlotByObservationPropertyByStatVar[statVarID]
 
 		for _, componentID := range componentIDs {
-			if entitySlot, ok := entitySlotByDimension[componentID]; ok {
+			if entitySlot, ok := entitySlotByObservationProperty[componentID]; ok {
 				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", entitySlot, componentID))
 			} else if spannerColumn, ok := sdmxStaticDataFilterColumn(componentID); ok {
 				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", spannerColumn, componentID))

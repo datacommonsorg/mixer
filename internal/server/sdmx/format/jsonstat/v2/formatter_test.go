@@ -138,8 +138,8 @@ func TestJSONStatFormatterIndexesTimePeriodByShapePosition(t *testing.T) {
 	}
 }
 
-func testSdmxResult(entityDimensions []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
-	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+func testSdmxResult(observationProperties []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForObservationProperties(observationProperties)
 	result := &sdmxpb.SdmxDataResult{
 		Shape: &sdmxpb.SdmxDataShape{
 			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),

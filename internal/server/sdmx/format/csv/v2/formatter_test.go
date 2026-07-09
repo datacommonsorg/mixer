@@ -160,8 +160,8 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	}
 }
 
-func testSdmxResult(entityDimensions []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
-	components := datacommons.DataComponentsForEntityDimensions(entityDimensions)
+func testSdmxResult(observationProperties []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForObservationProperties(observationProperties)
 	result := &sdmxpb.SdmxDataResult{
 		Shape: &sdmxpb.SdmxDataShape{
 			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
@@ -177,8 +177,8 @@ func testSdmxResult(entityDimensions []string, series []*sdmxpb.SdmxTimeSeries) 
 	return result
 }
 
-func testCSVHeader(entityDimensions []string) []string {
-	return dataCSVHeader(datacommons.DataComponentsForEntityDimensions(entityDimensions))
+func testCSVHeader(observationProperties []string) []string {
+	return dataCSVHeader(datacommons.DataComponentsForObservationProperties(observationProperties))
 }
 
 func testProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
