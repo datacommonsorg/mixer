@@ -32,6 +32,8 @@ ingress:
 # TODO(/v2/resolve cleanup): Remove this once /v2/resolve always requires an api key.
 esp:
   v2_resolve_allow_unregistered: false
+  transcodingIgnoreUnknownQueryParameters: true
+  transcodingQueryParametersDisableUnescapePlus: true
 
 # GCP level config
 ip: 35.244.157.41
