@@ -42,9 +42,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -282,10 +282,15 @@ func main() {
 	slog.Info("After branch setup")
 
 	// Metadata.
+	// Don't set the BigQuery dataset if BigQuery is not enabled.
+	bqDataset := *bigQueryDataset
+	if !*useBigquery {
+		bqDataset = ""
+	}
 	metadata, err := server.NewMetadata(
 		ctx,
 		*hostProject,
-		*bigQueryDataset,
+		bqDataset,
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
@@ -436,7 +441,6 @@ func main() {
 	// DataSources
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
-
 
 	// Processors
 	processors := []*dispatcher.Processor{}

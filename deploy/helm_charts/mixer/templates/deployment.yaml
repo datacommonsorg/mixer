@@ -177,7 +177,9 @@ spec:
               /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
               --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
               --host_project="${HOST_PROJECT}" \
+              {{- if $.Values.mixer.useBigquery }}
               --bq_dataset="$FINAL_BQ_VERSION" \
+              {{- end }}
               --schema_path=/datacommons/mapping \
               --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }} \
               --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} \

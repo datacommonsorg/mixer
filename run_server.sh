@@ -57,9 +57,23 @@ for arg in "$@"; do
   fi
 done
 
+# Check if BigQuery is disabled. It is enabled by default.
+use_bigquery=true
+for arg in "$@"; do
+  if [[ "$arg" == "--use_bigquery=false" ]]; then
+    use_bigquery=false
+    break
+  fi
+done
+
 CMD=("go" "run" "cmd/main.go"
-    "--host_project=datcom-mixer-dev-316822"
-    "--bq_dataset=$(head -1 deploy/storage/bigquery.version)"
+    "--host_project=datcom-mixer-dev-316822")
+# Only set bq_dataset if BigQuery is enabled
+if [[ "$use_bigquery" == "true" ]]; then
+    CMD+=("--bq_dataset=$(head -1 deploy/storage/bigquery.version)")
+fi
+
+CMD+=(
     "--base_bigtable_info=$(cat deploy/storage/base_bigtable_info.yaml)"
     "--schema_path=$PWD/deploy/mapping/"
     "--use_base_bigtable=true"
