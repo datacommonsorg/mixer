@@ -508,7 +508,7 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 
 func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	includeMetadata := includeObsMetadata(req)
-	response := generateObsResponse(req.Variable, observations, false /*includeObs*/, includeMetadata, false /*shouldFilterInferiorFacets*/)
+	response := generateObsResponse(req.GetVariable(), observations, false /*includeObs*/, includeMetadata, false /*shouldFilterInferiorFacets*/)
 
 	if len(req.Entity.Dcids) > 0 {
 		return response
