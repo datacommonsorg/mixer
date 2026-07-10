@@ -4,8 +4,8 @@
 		AND ARRAY_INCLUDES_ANY(n.types, ['StatisticalVariable'])
 		RETURN
 			n.subject_id, 
-			n.name,
-			n.types, 
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types, 
 			SCORE(n.name_tokenlist, 'income', enhance_query => TRUE) AS score 
 		ORDER BY 
 			score + IF(n.name = 'income', 1, 0) DESC,

@@ -1,6 +1,6 @@
 		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			IFNULL((
 				SELECT n_def.value
 				FROM Edge e_def

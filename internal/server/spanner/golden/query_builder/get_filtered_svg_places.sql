@@ -1,6 +1,6 @@
 		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e_counts.descendent_stat_var_count
 		FROM Node n
 		JOIN (

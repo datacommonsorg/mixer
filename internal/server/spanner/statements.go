@@ -215,10 +215,10 @@ var statements = struct {
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
 			IFNULL(n.name, '') AS name,
-			n.types
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -235,10 +235,10 @@ var statements = struct {
 		  	subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
 			IFNULL(n.name, '') AS name,
-			n.types
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			object_id`,
@@ -255,10 +255,10 @@ var statements = struct {
 		  	subject_id,
 			predicate,
 			provenance,
-			ANY_VALUE(n.value) AS value,
+			IFNULL(ANY_VALUE(n.value), '') AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(IFNULL(n.name, '')) AS name,
-			ANY_VALUE(n.types) AS types
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
 		GROUP BY
 			subject_id,
 			predicate,
@@ -325,8 +325,8 @@ var statements = struct {
 			SEARCH(n.name_tokenlist, @query)%s
 		RETURN
 			n.subject_id, 
-			n.name,
-			n.types, 
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types, 
 			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
 		ORDER BY 
 			score + IF(n.name = @query, 1, 0) DESC,
@@ -346,7 +346,7 @@ var statements = struct {
 			AND o.predicate = @outProp]->(n:Node)
 		RETURN
 			o.subject_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
 	resolvePropToDcid: `		GRAPH DCGraph MATCH <-[i:Edge
 		WHERE
 			i.object_id IN UNNEST(@nodes)
@@ -362,7 +362,7 @@ var statements = struct {
 			o.predicate = @outProp]->(n:Node)
 		RETURN
 			i.object_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
 	node: `(%[1]s:Node%[2]s)`,
 	nodeFilter: `
 		WHERE
@@ -446,7 +446,7 @@ var statements = struct {
 		SELECT 
 			svg.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			c.descendent_stat_var_count,
 			FALSE AS has_data,
 			'' AS definition
@@ -459,7 +459,7 @@ var statements = struct {
 		SELECT 
 			sv.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			-1 AS descendent_stat_var_count,
 			EXISTS (
 				SELECT 1 
@@ -508,7 +508,7 @@ var statements = struct {
 		SELECT 
 			svg.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			c.descendent_stat_var_count,
 			FALSE AS has_data,
 			'' AS definition
@@ -521,7 +521,7 @@ var statements = struct {
 		SELECT 
 			sv.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			-1 AS descendent_stat_var_count,
 			EXISTS (
 				SELECT 1 
@@ -549,7 +549,7 @@ var statements = struct {
 				FROM UNNEST(@nodes) AS node`,
 	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e.predicate,
 			'' AS definition
 		FROM Node n
@@ -560,7 +560,7 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getSVGChildrenWithDefinitions: `		SELECT DISTINCT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e.predicate,
 			IFNULL((
 				SELECT n_def.value
@@ -578,7 +578,7 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			'' AS definition
 		FROM Node n
 		JOIN (
@@ -598,7 +598,7 @@ var statements = struct {
 			ON n.subject_id = e_existence.subject_id`,
 	getFilteredChildSVsWithDefinitions: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			IFNULL((
 				SELECT n_def.value
 				FROM Edge e_def
@@ -625,7 +625,7 @@ var statements = struct {
 			ON n.subject_id = e_existence.subject_id`,
 	getFilteredChildSVGs: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e_counts.descendent_stat_var_count
 		FROM Node n
 		JOIN (

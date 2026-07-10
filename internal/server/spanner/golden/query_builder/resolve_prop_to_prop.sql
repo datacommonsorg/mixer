@@ -6,4 +6,4 @@
 			o.predicate = 'wikidataId']->(n:Node)
 		RETURN
 			i.object_id AS node,
-			n.value AS candidate
+			IFNULL(n.value, '') AS candidate
