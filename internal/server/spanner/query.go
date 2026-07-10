@@ -1210,18 +1210,6 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 	return results, nil
 }
 
-// isTimeoutOrCanceled checks if the error is a formal timeout (DeadlineExceeded)
-// or a dropped connection (Canceled).
-func isTimeoutOrCanceled(err error) bool {
-	if err == nil {
-		return false
-	}
-	return spanner.ErrCode(err) == codes.DeadlineExceeded ||
-		errors.Is(err, context.DeadlineExceeded) ||
-		spanner.ErrCode(err) == codes.Canceled ||
-		errors.Is(err, context.Canceled)
-}
-
 // getTimeoutReason categorizes a Spanner/Context error into a specific termination state.
 func getTimeoutReason(err error, duration time.Duration) TimeoutReason {
 	if err == nil {
@@ -1232,11 +1220,12 @@ func getTimeoutReason(err error, duration time.Duration) TimeoutReason {
 	isCanceled := spanner.ErrCode(err) == codes.Canceled || errors.Is(err, context.Canceled)
 
 	if isDeadline {
-		return AppTimeout // Hit the Go context timeout (e.g., fallbackLimit or timestampPollingTimeout)
+		// Hit the Go context timeout (e.g., fallbackLimit or timestampPollingTimeout)
+		return AppTimeout
 	}
 
 	if isCanceled {
-		// If the query was canceled right around ESP's 60s limit, it was the proxy.
+		// If the query was canceled around the proxy timeout, it was likely the proxy.
 		if duration >= (ApiTimeout - ApiTimeoutBuffer) {
 			return ProxyTimeout
 		}
@@ -1265,7 +1254,7 @@ func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Durati
 	allArgs := append(baseArgs, extraArgs...)
 
 	if reason == ClientCanceled {
-		slog.InfoContext(ctx, fmt.Sprintf("%s canceled by client.", action), allArgs...)
+		slog.InfoContext(ctx, fmt.Sprintf("%s canceled.", action), allArgs...)
 	} else {
 		allArgs = append(allArgs, "error", err.Error())
 		slog.ErrorContext(ctx, fmt.Sprintf("%s timed out.", action), allArgs...)
