@@ -263,3 +263,119 @@ func TestFilterObservationsByDateAndFacet(t *testing.T) {
 	}
 }
 
+func TestIncludeObsMetadata(t *testing.T) {
+	tests := []struct {
+		name string
+		req  *pbv2.ObservationRequest
+		want bool
+	}{
+		{
+			name: "contained in all dates",
+			req: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+			},
+			want: true,
+		},
+		{
+			name: "contained in specific date",
+			req: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+				Date:   "2020",
+			},
+			want: false,
+		},
+		{
+			name: "contained in latest",
+			req: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+				Date:   "LATEST",
+			},
+			want: false,
+		},
+		{
+			name: "direct latest",
+			req: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}},
+				Date:   "LATEST",
+			},
+			want: true,
+		},
+		{
+			name: "missing entity",
+			req:  &pbv2.ObservationRequest{},
+			want: true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := includeObsMetadata(tc.req); got != tc.want {
+				t.Errorf("includeObsMetadata() = %t, want %t", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestDatedExpressionResponseOmitsMetadataAndPreservesFacetRanking(t *testing.T) {
+	const (
+		variable = "Count_Person"
+		entity   = "geoId/06001"
+	)
+	observations := []*Observation{
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "latest-facet",
+			ImportName:        "CensusACS5YearSurvey",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			ProvenanceURL:     "z.example",
+			Observations:      TimeSeries{{Date: "2020", Value: "2"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "older-facet",
+			ImportName:        "CensusACS5YearSurvey",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			ProvenanceURL:     "a.example",
+			Observations:      TimeSeries{{Date: "2019", Value: "1"}},
+		},
+	}
+	containedInReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+		Date:     "LATEST",
+	}
+
+	response := obsToObsResponse(containedInReq, observations)
+	orderedFacets := response.ByVariable[variable].ByEntity[entity].OrderedFacets
+	if got, want := len(orderedFacets), 2; got != want {
+		t.Fatalf("len(orderedFacets) = %d, want %d", got, want)
+	}
+	if got, want := orderedFacets[0].FacetId, "latest-facet"; got != want {
+		t.Errorf("orderedFacets[0].FacetId = %q, want %q", got, want)
+	}
+	for _, facet := range orderedFacets {
+		if facet.ObsCount != 0 || facet.EarliestDate != "" || facet.LatestDate != "" {
+			t.Errorf("facet %q metadata = (%d, %q, %q), want omitted", facet.FacetId, facet.ObsCount, facet.EarliestDate, facet.LatestDate)
+		}
+	}
+
+	facetResponse := obsToFacetResponse(containedInReq, observations)
+	for _, facet := range facetResponse.ByVariable[variable].ByEntity[entityPlaceholder].OrderedFacets {
+		if facet.ObsCount != 0 || facet.EarliestDate != "" || facet.LatestDate != "" {
+			t.Errorf("facet-only response metadata = (%d, %q, %q), want omitted", facet.ObsCount, facet.EarliestDate, facet.LatestDate)
+		}
+	}
+
+	directReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+		Date:     "LATEST",
+	}
+	directResponse := obsToObsResponse(directReq, observations)
+	directFacet := directResponse.ByVariable[variable].ByEntity[entity].OrderedFacets[0]
+	if directFacet.ObsCount == 0 || directFacet.EarliestDate == "" || directFacet.LatestDate == "" {
+		t.Errorf("direct response metadata = (%d, %q, %q), want populated", directFacet.ObsCount, directFacet.EarliestDate, directFacet.LatestDate)
+	}
+}

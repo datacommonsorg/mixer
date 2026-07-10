@@ -18,26 +18,21 @@
 				t.facet
 			FROM places p
 			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
+				ON t.variable_measured IN ('AirPollutant_Cancer_Risk','Count_Person')
 				AND t.entity1 = p.place_id
 		)
 		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
-			ANY_VALUE(t.provenance) AS provenance,
-			ARRAY_AGG(
-				STRUCT(
+			t.provenance,
+			ARRAY(
+				SELECT AS STRUCT
 					o.date AS date,
 					o.value AS str_value
-				)
 			) AS dates_and_values,
-			ANY_VALUE(t.facet) AS facets
+			t.facet AS facets
 		FROM series t
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} Observation o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		GROUP BY
-			t.variable_measured,
-			t.entity1,
-			t.extra_entities_id,
-			t.facet_id
+		WHERE o.date = '2015'

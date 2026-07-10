@@ -128,6 +128,14 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		date:           "latest",
 		golden:         "get_multientity_obs_contained_in_place_latest",
 	},
+	{
+		name:           "contained in place specific date with variables",
+		variables:      []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:       "geoId/10",
+		childPlaceType: "County",
+		date:           "2015",
+		golden:         "get_multientity_obs_contained_in_place_date",
+	},
 }
 
 var multiEntityStatVarGroupNodeTestCases = []struct {
