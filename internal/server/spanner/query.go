@@ -942,7 +942,6 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery(sc.useNewIngestionHistorySchema))
 	defer iter.Stop()
 	row, err := iter.Next()
-	duration := time.Since(startTime)
 
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
@@ -961,7 +960,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	if err != nil {
 		if isTimeoutOrCanceled(err) {
 			slog.ErrorContext(queryCtx, "Spanner timestamp polling aborted.",
-				"duration", duration.String(),
+				"duration", time.Since(startTime).String(),
 				"error", err.Error(),
 			)
 		}
