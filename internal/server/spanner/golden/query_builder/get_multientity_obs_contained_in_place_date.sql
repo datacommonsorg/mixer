@@ -21,11 +21,12 @@
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
 						AND o.facet_id = t.facet_id
+						AND o.date = '2015'
 				),
 				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM places p
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-			ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
+			ON t.variable_measured IN ('AirPollutant_Cancer_Risk','Count_Person')
 			AND t.entity1 = p.place_id

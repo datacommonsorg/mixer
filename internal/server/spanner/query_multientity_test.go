@@ -346,6 +346,7 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 		&pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
 		observations,
 		true,  /* includeObs */
+		true,  /* includeObsMetadata */
 		false, /* shouldFilterInferiorFacets */
 	)
 	facet := resp.Facets["stored-facet-id"]

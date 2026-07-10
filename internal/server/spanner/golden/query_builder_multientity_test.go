@@ -233,6 +233,19 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, obsStmt.SQL, "CustomObsTable", "CustomTsTable")
 
+	containedInStmt, err := builder.GetObservationsContainedInPlaceQuery(
+		[]string{"Count_Person"},
+		&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+		"",
+	)
+	if err != nil {
+		t.Fatalf("GetObservationsContainedInPlaceQuery() returned error: %v", err)
+	}
+	assertSQLContains(t, containedInStmt.SQL,
+		"CustomObsTable",
+		"CustomTsTable@{FORCE_INDEX=_BASE_TABLE}",
+	)
+
 	existenceStmt, err := builder.GetStatVarsByEntityQuery(
 		[]string{"Count_Person"},
 		[]string{"geoId/06"},

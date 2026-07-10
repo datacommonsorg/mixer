@@ -214,12 +214,15 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Contained in place query with variables filtered (full series)
-		getObsByContainedInPlaceBoth: fmt.Sprintf(`		WITH places AS (
-			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE (
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-				RETURN e.subject_id AS object_id
-			) result
+		getObsByContainedInPlaceBoth: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH places AS (
+			SELECT DISTINCT e.subject_id AS place_id
+			FROM Edge e
+			JOIN Edge e2 ON e.subject_id = e2.subject_id
+			WHERE e.predicate = 'linkedContainedInPlace'
+				AND e.object_id = @ancestor
+				AND e2.predicate = 'typeOf'
+				AND e2.object_id = @childPlaceType
 		)
 		SELECT
 			t.variable_measured,
@@ -239,17 +242,20 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
 			ON t.variable_measured IN UNNEST(@variables)
 			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Contained in place query with variables filtered (specific date)
-		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		WITH places AS (
-			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE (
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-				RETURN e.subject_id AS object_id
-			) result
+		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH places AS (
+			SELECT DISTINCT e.subject_id AS place_id
+			FROM Edge e
+			JOIN Edge e2 ON e.subject_id = e2.subject_id
+			WHERE e.predicate = 'linkedContainedInPlace'
+				AND e.object_id = @ancestor
+				AND e2.predicate = 'typeOf'
+				AND e2.object_id = @childPlaceType
 		)
 		SELECT
 			t.variable_measured,
@@ -270,17 +276,20 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
 			ON t.variable_measured IN UNNEST(@variables)
 			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Contained in place query with variables filtered (latest only)
-		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		WITH places AS (
-			SELECT result.object_id AS place_id
-			FROM GRAPH_TABLE (
-				DCGraph MATCH <-[e:Edge WHERE e.object_id = @ancestor AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-				RETURN e.subject_id AS object_id
-			) result
+		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH places AS (
+			SELECT DISTINCT e.subject_id AS place_id
+			FROM Edge e
+			JOIN Edge e2 ON e.subject_id = e2.subject_id
+			WHERE e.predicate = 'linkedContainedInPlace'
+				AND e.object_id = @ancestor
+				AND e2.predicate = 'typeOf'
+				AND e2.object_id = @childPlaceType
 		)
 		SELECT
 			t.variable_measured,
@@ -304,7 +313,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
 			ON t.variable_measured IN UNNEST(@variables)
 			AND t.entity1 = p.place_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
 

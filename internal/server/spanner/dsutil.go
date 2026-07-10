@@ -397,12 +397,12 @@ func groupObservationsByVariableAndEntity(observations []*Observation) map[varia
 	return result
 }
 
-func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool, shouldFilterInferiorFacets bool) *pbv2.ObservationResponse {
+func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool, includeObsMetadata, shouldFilterInferiorFacets bool) *pbv2.ObservationResponse {
 	response := newObservationResponse(variable)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
 	for variableEntity, obs := range variableEntityObs {
-		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs, shouldFilterInferiorFacets)
+		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs, includeObsMetadata, shouldFilterInferiorFacets)
 		variableObs, ok := response.ByVariable[variableEntity.variable]
 		if !ok {
 			variableObs = &pbv2.VariableObservation{
@@ -471,13 +471,25 @@ func mergeEntityOrderedFacets(
 	return result
 }
 
-func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	// Whether the response should filter out low ranked facets from the response.
-	isContainedInWithDate := (req.Entity.Expression != "" && req.Date != "")
-	isDirectWithLatestDate := (req.Entity.Expression == "" && req.Date == shared.LATEST)
-	shouldFilterInferiorFacets := isContainedInWithDate || isDirectWithLatestDate
+// shouldFilterInferiorFacets reports whether the response should omit low-ranked facets.
+func shouldFilterInferiorFacets(req *pbv2.ObservationRequest) bool {
+	entityExpression := req.GetEntity().GetExpression()
+	date := req.GetDate()
+	isContainedInWithDate := entityExpression != "" && date != ""
+	isDirectWithLatestDate := entityExpression == "" && date == shared.LATEST
 
-	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, shouldFilterInferiorFacets)
+	return isContainedInWithDate || isDirectWithLatestDate
+}
+
+// includeObsMetadata reports whether observation count and date bounds should be returned.
+func includeObsMetadata(req *pbv2.ObservationRequest) bool {
+	return req.GetEntity().GetExpression() == "" || req.GetDate() == ""
+}
+
+func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
+	includeMetadata := includeObsMetadata(req)
+	filterInferiorFacets := shouldFilterInferiorFacets(req)
+	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, includeMetadata, filterInferiorFacets)
 
 	// Attach all requested entity dcids to response.
 	if len(req.Entity.Dcids) > 0 {
@@ -495,7 +507,8 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 }
 
 func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable, observations, false /*includeObs*/, false /*shouldFilterInferiorFacets*/)
+	includeMetadata := includeObsMetadata(req)
+	response := generateObsResponse(req.Variable, observations, false /*includeObs*/, includeMetadata, false /*shouldFilterInferiorFacets*/)
 
 	if len(req.Entity.Dcids) > 0 {
 		return response
@@ -538,13 +551,14 @@ func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observ
 func observationsToOrderedFacets(
 	observations []*Observation,
 	includeObs bool,
+	includeObsMetadata bool,
 	shouldFilterInferiorFacets bool,
 ) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
 	facets := map[string]*pb.Facet{}
 	placeVariableFacets := []*pb.PlaceVariableFacet{}
 	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
 	for _, obs := range observations {
-		pvf, facetObs := observationToFacetObservation(obs, includeObs)
+		pvf, facetObs := observationToFacetObservation(obs, includeObs, includeObsMetadata)
 
 		// Skip rows with no time series.
 		if pvf == nil {
@@ -574,6 +588,7 @@ func observationsToOrderedFacets(
 func observationToFacetObservation(
 	observation *Observation,
 	includeObs bool,
+	includeObsMetadata bool,
 ) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
@@ -599,23 +614,30 @@ func observationToFacetObservation(
 		return nil, nil
 	}
 
+	obsCount := int32(len(observations))
+	earliestDate := observations[0].Date
+	latestDate := observations[len(observations)-1].Date
+
 	facetObservation := &pbv2.FacetObservation{
-		FacetId:      observation.FacetId,
-		ObsCount:     *proto.Int32(int32(len(observations))),
-		EarliestDate: observations[0].Date,
-		LatestDate:   observations[len(observations)-1].Date,
+		FacetId: observation.FacetId,
 	}
 
 	if includeObs {
 		facetObservation.Observations = observations
 	}
 
+	if includeObsMetadata {
+		facetObservation.ObsCount = obsCount
+		facetObservation.EarliestDate = earliestDate
+		facetObservation.LatestDate = latestDate
+	}
+
 	placeVariableFacet := &pb.PlaceVariableFacet{
 		Facet:        facet,
 		FacetId:      observation.FacetId,
-		ObsCount:     facetObservation.ObsCount,
-		EarliestDate: facetObservation.EarliestDate,
-		LatestDate:   facetObservation.LatestDate,
+		ObsCount:     obsCount,
+		EarliestDate: earliestDate,
+		LatestDate:   latestDate,
 	}
 
 	return placeVariableFacet, facetObservation
