@@ -1,6 +1,6 @@
 		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
-			SELECT e.subject_id AS place_id
+			SELECT DISTINCT e.subject_id AS place_id
 			FROM Edge e
 			JOIN Edge e2 ON e.subject_id = e2.subject_id
 			WHERE e.predicate = 'linkedContainedInPlace'
@@ -30,6 +30,7 @@
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM places p
+		CROSS JOIN ('AirPollutant_Cancer_Risk') AS target_variable
 		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-			ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
+			ON t.variable_measured = target_variable
 			AND t.entity1 = p.place_id
