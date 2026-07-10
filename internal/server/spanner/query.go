@@ -96,6 +96,8 @@ const (
 	ClientCanceled TimeoutReason = "CLIENT_CANCELED"
 	ProxyTimeout   TimeoutReason = "PROXY_TIMEOUT"
 	AppTimeout     TimeoutReason = "APP_TIMEOUT"
+
+	TimeoutMessage string = "Spanner operation aborted."
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -1248,15 +1250,16 @@ func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Durati
 	}
 
 	baseArgs := []any{
+		"action", action,
 		"reason", reason,
 		"duration", duration.String(),
 	}
 	allArgs := append(baseArgs, extraArgs...)
 
 	if reason == ClientCanceled {
-		slog.InfoContext(ctx, fmt.Sprintf("%s canceled.", action), allArgs...)
+		slog.InfoContext(ctx, TimeoutMessage, allArgs...)
 	} else {
 		allArgs = append(allArgs, "error", err.Error())
-		slog.ErrorContext(ctx, fmt.Sprintf("%s timed out.", action), allArgs...)
+		slog.ErrorContext(ctx, TimeoutMessage, allArgs...)
 	}
 }
