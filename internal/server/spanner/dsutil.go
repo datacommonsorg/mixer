@@ -489,10 +489,10 @@ func includeObsMetadata(req *pbv2.ObservationRequest) bool {
 func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	includeMetadata := includeObsMetadata(req)
 	filterInferiorFacets := shouldFilterInferiorFacets(req)
-	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, includeMetadata, filterInferiorFacets)
+	response := generateObsResponse(req.GetVariable(), observations, true /*includeObs*/, includeMetadata, filterInferiorFacets)
 
 	// Attach all requested entity dcids to response.
-	if len(req.Entity.Dcids) > 0 {
+	if len(req.GetEntity().GetDcids()) > 0 {
 		for _, variableObs := range response.ByVariable {
 			for _, entity := range req.Entity.Dcids {
 				_, ok := variableObs.ByEntity[entity]
