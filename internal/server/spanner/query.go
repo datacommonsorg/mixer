@@ -938,9 +938,9 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
+	startTime := time.Now()
 	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery(sc.useNewIngestionHistorySchema))
 	defer iter.Stop()
-
 	row, err := iter.Next()
 
 	// Handle missing or empty table cases gracefully
@@ -958,9 +958,9 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	}
 
 	if err != nil {
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
-				"timeout_duration", timestampPollingTimeout.String(),
+		if isTimeoutOrCanceled(err) {
+			slog.ErrorContext(queryCtx, "Spanner timestamp polling aborted.",
+				"duration", time.Since(startTime).String(),
 				"error", err.Error(),
 			)
 		}
@@ -1007,12 +1007,13 @@ func (sc *spannerDatabaseClient) executeQuery(
 	var cancel context.CancelFunc
 
 	if _, ok := ctx.Deadline(); ok {
+		// If the client explicitly provided a deadline, respect it.
 		queryCtx, cancel = context.WithCancel(ctx)
 	} else {
-		// Fallback if the parent context surprisingly has no deadline.
-		// Using the default API timeout.
-		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", ApiTimeout.String())
-		queryCtx, cancel = context.WithTimeout(ctx, ApiTimeout)
+		// Apply an absolute upper bound with a small buffer to protect the DB
+		// in case ESP is bypassed.
+		fallbackLimit := ApiTimeout + (5 * time.Second)
+		queryCtx, cancel = context.WithTimeout(ctx, fallbackLimit)
 	}
 	defer cancel()
 
@@ -1040,10 +1041,11 @@ func (sc *spannerDatabaseClient) executeQuery(
 			fmt.Println("================================================")
 		}
 
-		// Log slow Spanner queries that timed out.
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner query timed out",
+		// Log slow Spanner queries that timed out or were canceled.
+		if isTimeoutOrCanceled(err) {
+			slog.ErrorContext(queryCtx, "Spanner query aborted.",
 				"sql", stmt.SQL,
+				"duration", duration.String(),
 				"error", err.Error(),
 			)
 		}
@@ -1201,7 +1203,14 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 	return results, nil
 }
 
-// isTimeoutError checks if an error is a timeout error from Spanner or context.
-func isTimeoutError(err error) bool {
-	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
+// isTimeoutOrCanceled checks if the error is a formal timeout (DeadlineExceeded)
+// or a dropped connection (Canceled).
+func isTimeoutOrCanceled(err error) bool {
+	if err == nil {
+		return false
+	}
+	return spanner.ErrCode(err) == codes.DeadlineExceeded ||
+		errors.Is(err, context.DeadlineExceeded) ||
+		spanner.ErrCode(err) == codes.Canceled ||
+		errors.Is(err, context.Canceled)
 }
