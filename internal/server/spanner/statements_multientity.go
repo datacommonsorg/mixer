@@ -299,7 +299,8 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-		// Join latest observations before aggregation while preserving a non-null array.
+		// Join latest observations before aggregation. COALESCE is required because
+		// Spanner rejects ARRAY_AGG(... LIMIT 1) as a potentially null-valued ARRAY<STRUCT>.
 		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
 			SELECT DISTINCT e.subject_id AS place_id
