@@ -7,25 +7,37 @@
 				AND e.object_id = 'geoId/10'
 				AND e2.predicate = 'typeOf'
 				AND e2.object_id = 'County'
+		),
+		series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet
+			FROM places p
+			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
+				ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
+				AND t.entity1 = p.place_id
 		)
 		SELECT
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
-			t.provenance,
-			COALESCE(
-				(
-					SELECT ARRAY_AGG(STRUCT(date, value AS str_value))
-					FROM Observation o
-					WHERE o.variable_measured = t.variable_measured
-						AND o.entity1 = t.entity1
-						AND o.extra_entities_id = t.extra_entities_id
-						AND o.facet_id = t.facet_id
-				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			ANY_VALUE(t.provenance) AS provenance,
+			ARRAY_AGG(
+				STRUCT(
+					o.date AS date,
+					o.value AS str_value
+				)
 			) AS dates_and_values,
-			t.facet AS facets
-		FROM places p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-			ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
-			AND t.entity1 = p.place_id
+			ANY_VALUE(t.facet) AS facets
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} Observation o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id
