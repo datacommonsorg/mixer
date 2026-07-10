@@ -62,8 +62,12 @@ const (
 	// Default fallback staleness duration when staleness timestamp is unavailable or expired.
 	defaultStalenessDuration = 15 * time.Second
 
-	// Default timeout for API requests.
+	// Default proxy timeout for API requests.
 	ApiTimeout = 60 * time.Second
+
+	// Buffer for proxy request timeout.
+	// This is to avoid race conditions and account for jitter in timing.
+	ApiTimeoutBuffer = 2 * time.Second
 
 	// Special edge predicates.
 	predAffectedPlace      = "affectedPlace"
@@ -78,6 +82,20 @@ const (
 
 	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
 	maxConcurrentFilteredSVGGoroutines = 10
+)
+
+// TimeoutReason represents the reason for a timeout.
+// NotATimeout: The error is not a timeout.
+// ClientCanceled: The client canceled the request.
+// ProxyTimeout: The proxy timed out the request.
+// AppTimeout: The application timed out the request.
+type TimeoutReason string
+
+const (
+	NotATimeout    TimeoutReason = ""
+	ClientCanceled TimeoutReason = "CLIENT_CANCELED"
+	ProxyTimeout   TimeoutReason = "PROXY_TIMEOUT"
+	AppTimeout     TimeoutReason = "APP_TIMEOUT"
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -958,12 +976,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	}
 
 	if err != nil {
-		if isTimeoutOrCanceled(err) {
-			slog.ErrorContext(queryCtx, "Spanner timestamp polling aborted.",
-				"duration", time.Since(startTime).String(),
-				"error", err.Error(),
-			)
-		}
+		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
@@ -1012,7 +1025,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 	} else {
 		// Apply an absolute upper bound with a small buffer to protect the DB
 		// in case ESP is bypassed.
-		fallbackLimit := ApiTimeout + (5 * time.Second)
+		fallbackLimit := ApiTimeout + ApiTimeoutBuffer
 		queryCtx, cancel = context.WithTimeout(ctx, fallbackLimit)
 	}
 	defer cancel()
@@ -1042,13 +1055,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		}
 
 		// Log slow Spanner queries that timed out or were canceled.
-		if isTimeoutOrCanceled(err) {
-			slog.ErrorContext(queryCtx, "Spanner query aborted.",
-				"sql", stmt.SQL,
-				"duration", duration.String(),
-				"error", err.Error(),
-			)
-		}
+		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
 		return err
 	}
@@ -1213,4 +1220,54 @@ func isTimeoutOrCanceled(err error) bool {
 		errors.Is(err, context.DeadlineExceeded) ||
 		spanner.ErrCode(err) == codes.Canceled ||
 		errors.Is(err, context.Canceled)
+}
+
+// getTimeoutReason categorizes a Spanner/Context error into a specific termination state.
+func getTimeoutReason(err error, duration time.Duration) TimeoutReason {
+	if err == nil {
+		return NotATimeout
+	}
+
+	isDeadline := spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
+	isCanceled := spanner.ErrCode(err) == codes.Canceled || errors.Is(err, context.Canceled)
+
+	if isDeadline {
+		return AppTimeout // Hit the Go context timeout (e.g., fallbackLimit or timestampPollingTimeout)
+	}
+
+	if isCanceled {
+		// If the query was canceled right around ESP's 60s limit, it was the proxy.
+		if duration >= (ApiTimeout - ApiTimeoutBuffer) {
+			return ProxyTimeout
+		}
+		// Otherwise, the client hung up early.
+		return ClientCanceled
+	}
+
+	return NotATimeout
+}
+
+// maybeLogSpannerTimeout categorizes a potential timeout/cancellation and logs it at the appropriate severity.
+func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Duration, action string, extraArgs ...any) {
+	if err == nil {
+		return
+	}
+
+	reason := getTimeoutReason(err, duration)
+	if reason == NotATimeout {
+		return
+	}
+
+	baseArgs := []any{
+		"reason", reason,
+		"duration", duration.String(),
+	}
+	allArgs := append(baseArgs, extraArgs...)
+
+	if reason == ClientCanceled {
+		slog.InfoContext(ctx, fmt.Sprintf("%s canceled by client.", action), allArgs...)
+	} else {
+		allArgs = append(allArgs, "error", err.Error())
+		slog.ErrorContext(ctx, fmt.Sprintf("%s timed out.", action), allArgs...)
+	}
 }
