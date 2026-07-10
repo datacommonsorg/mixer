@@ -81,14 +81,6 @@ func (s *Server) mirrorV3(
 		v3WaitGroup.Add(1)
 	}
 
-	var mirrorDeadline time.Time
-	if deadline, ok := ctx.Deadline(); ok {
-		mirrorDeadline = deadline
-	} else {
-		slog.Warn("Original context has no deadline; using default API timeout", "timeout", spanner.ApiTimeout.String())
-		mirrorDeadline = time.Now().Add(spanner.ApiTimeout)
-	}
-
 	// This is run in a separate goroutine to not block the response to the original
 	// request.
 	go func() {
@@ -99,8 +91,9 @@ func (s *Server) mirrorV3(
 		// with the original request.
 		baseMirrorCtx := metrics.NewContext(context.WithoutCancel(ctx))
 
-		// Re-apply the deadline to the detached context
-		mirrorCtx, cancel := context.WithDeadline(baseMirrorCtx, mirrorDeadline)
+		// Apply a strict timeout to this background task so it doesn't leak if V3 hangs.
+		// Because this is detached from ESP, we must use our hardcoded ApiTimeout.
+		mirrorCtx, cancel := context.WithTimeout(baseMirrorCtx, spanner.ApiTimeout)
 		defer cancel()
 
 		// First call, without skipping cache
