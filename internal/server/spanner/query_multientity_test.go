@@ -66,6 +66,49 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 }
 
+func TestReconstructObservationsSortsDates(t *testing.T) {
+	observations, err := reconstructObservations([]*rawObservation{
+		{
+			VariableMeasured: "Count_Person",
+			ObservationAbout: "geoId/06",
+			FacetId:          "stored-facet-id",
+			DatesAndValues: []*spannerObservation{
+				{Date: "2021", Value: "3"},
+				{Date: "2019", Value: "1"},
+				{Date: "2020", Value: "2"},
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("reconstructObservations() = %v", err)
+	}
+
+	got := observations[0].Observations
+	want := []struct {
+		date  string
+		value string
+	}{
+		{date: "2019", value: "1"},
+		{date: "2020", value: "2"},
+		{date: "2021", value: "3"},
+	}
+	if len(got) != len(want) {
+		t.Fatalf("len(Observations) = %d, want %d", len(got), len(want))
+	}
+	for i, expected := range want {
+		if got[i].Date != expected.date || got[i].Value != expected.value {
+			t.Errorf(
+				"Observations[%d] = (%q, %q), want (%q, %q)",
+				i,
+				got[i].Date,
+				got[i].Value,
+				expected.date,
+				expected.value,
+			)
+		}
+	}
+}
+
 func TestReconstructObservationsAttributes(t *testing.T) {
 	for _, tc := range []struct {
 		name       string
