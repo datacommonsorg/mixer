@@ -31,13 +31,18 @@ func TestDataResponseFormatFromAccept(t *testing.T) {
 		wantErrSub string
 	}{
 		{
-			name: "missing metadata defaults to JSON-stat",
-			want: DataResponseFormatJSONStat,
+			name: "missing metadata defaults to CSV",
+			want: DataResponseFormatCSV,
 		},
 		{
-			name:   "JSON accept defaults to JSON-stat",
+			name:   "unrecognized accept defaults to CSV",
 			accept: "application/json",
-			want:   DataResponseFormatJSONStat,
+			want:   DataResponseFormatCSV,
+		},
+		{
+			name:   "wildcard defaults to CSV",
+			accept: "*/*",
+			want:   DataResponseFormatCSV,
 		},
 		{
 			name:   "SDMX CSV",

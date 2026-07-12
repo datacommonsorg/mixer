@@ -156,11 +156,6 @@ func TestParseDataRequest_Format(t *testing.T) {
 			originalURI: dataURI("format=csv&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			want:        "csv",
 		},
-		{
-			name:        "json stat",
-			originalURI: dataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
-			want:        "json-stat",
-		},
 	}
 
 	for _, tt := range tests {
@@ -186,9 +181,10 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 		wantErrSub string
 	}{
 		{
-			name:    "format json stat",
-			request: &DataRequest{Format: "json-stat"},
-			want:    DataResponseFormatJSONStat,
+			name:       "format json stat unsupported",
+			request:    &DataRequest{Format: "json-stat"},
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "unsupported SDMX data response format",
 		},
 		{
 			name:    "format csv",
@@ -356,6 +352,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		{
 			name:        "unsupported format",
 			originalURI: dataURI("format=xml&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "json stat format unsupported",
+			originalURI: dataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			wantCode:    codes.InvalidArgument,
 		},
 	}

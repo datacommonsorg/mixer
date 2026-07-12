@@ -53,13 +53,13 @@ func DataResponseFormatFromAccept(accept []string) (DataResponseFormat, error) {
 	for _, value := range accept {
 		format, found, err := dataResponseFormatFromAccept(value)
 		if err != nil {
-			return DataResponseFormatJSONStat, err
+			return DataResponseFormatCSV, err
 		}
 		if found {
 			return format, nil
 		}
 	}
-	return DataResponseFormatJSONStat, nil
+	return DataResponseFormatCSV, nil
 }
 
 // ValidateDataAccept rejects SDMX wire formats that are not implemented yet.

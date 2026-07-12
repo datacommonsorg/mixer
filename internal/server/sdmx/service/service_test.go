@@ -206,11 +206,11 @@ func TestDataSuccess(t *testing.T) {
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
 		t.Errorf("SdmxData query mismatch (-want +got):\n%s", diff)
 	}
-	if response.ContentType != sdmxformat.JSONStatContentType {
-		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.JSONStatContentType)
+	if response.ContentType != sdmxformat.CSVContentType {
+		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
 	}
-	if !strings.Contains(string(response.Body), "\"version\":\"2.0\"") {
-		t.Errorf("response does not look like JSON-stat: %s", response.Body)
+	if !strings.HasPrefix(string(response.Body), "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout") {
+		t.Errorf("response does not look like SDMX CSV: %s", response.Body)
 	}
 }
 
@@ -327,10 +327,9 @@ func TestDataEmptyResult(t *testing.T) {
 		t.Fatalf("Data() error = %v", err)
 	}
 	body := string(response.Body)
-	for _, want := range []string{"\"version\":\"2.0\"", "\"id\":[\"variableMeasured\",\"observationAbout\"", "\"value\":[]"} {
-		if !strings.Contains(body, want) {
-			t.Errorf("Response body = %q, want substring %q", body, want)
-		}
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n"
+	if body != want {
+		t.Errorf("Response body = %q, want %q", body, want)
 	}
 }
 
