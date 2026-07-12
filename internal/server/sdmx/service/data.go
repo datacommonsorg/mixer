@@ -64,7 +64,7 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 
 	res, err := s.dispatcher.SdmxData(ctx, query)
 	if err != nil {
-		if _, ok := status.FromError(err); ok {
+		if isSdmxClientError(err) {
 			return nil, err
 		}
 		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)

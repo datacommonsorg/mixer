@@ -63,6 +63,25 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
+			name: "multiple values for fixed and dynamic dimensions",
+			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated,Count_Refugee&" +
+				"c[destinationCountry]=country%2FCAN,country%2FMEX&" +
+				"c[sourceCountry]=country%2FUSA,country%2FIND&" +
+				"c[unit]=Person,Traveler&" +
+				"c[measurementMethod]=Census,Survey&" +
+				"c[observationPeriod]=P1Y,P1M&" +
+				"c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo"),
+			want: map[string][]string{
+				"variableMeasured":   {"Count_Person_Migrated", "Count_Refugee"},
+				"destinationCountry": {"country/CAN", "country/MEX"},
+				"sourceCountry":      {"country/USA", "country/IND"},
+				"unit":               {"Person", "Traveler"},
+				"measurementMethod":  {"Census", "Survey"},
+				"observationPeriod":  {"P1Y", "P1M"},
+				"provenance":         {"dc/base/one", "dc/base/two"},
+			},
+		},
+		{
 			name:        "encoded ampersand stays in value",
 			originalURI: dataURI("c[variableMeasured]=Count%26Person&c[observationAbout]=country%2FUSA"),
 			want: map[string][]string{

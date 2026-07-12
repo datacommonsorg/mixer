@@ -106,15 +106,7 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 
-	for componentID := range constraints {
-		if !isAllowedDataComponent(componentID) {
-			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
-		}
-	}
-	if _, ok := constraints[datacommons.ComponentVariableMeasured]; !ok {
-		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
-	}
-	return nil
+	return validateComponentFilters(constraints)
 }
 
 func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][]string) error {
@@ -127,12 +119,16 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Version != datacommons.DataflowVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
-	if !isAvailabilityComponent(path.ComponentID) {
+	if !isFilterableDimensionCandidate(path.ComponentID) {
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
+	return validateComponentFilters(constraints)
+}
+
+func validateComponentFilters(constraints map[string][]string) error {
 	for componentID := range constraints {
-		if componentID != datacommons.ComponentVariableMeasured {
+		if !isFilterableDimensionCandidate(componentID) {
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
 	}
@@ -142,7 +138,7 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	return nil
 }
 
-func isAllowedDataComponent(componentID string) bool {
+func isFilterableDimensionCandidate(componentID string) bool {
 	if componentID == datacommons.ComponentTimePeriod {
 		return false
 	}
@@ -164,12 +160,4 @@ func isDynamicEntityComponent(componentID string) bool {
 		return false
 	}
 	return true
-}
-
-func isAvailabilityComponent(componentID string) bool {
-	if componentID == datacommons.ComponentTimePeriod {
-		return false
-	}
-	kind, ok := datacommons.DataComponentKind(componentID)
-	return ok && kind == datacommons.ComponentKindDimension
 }

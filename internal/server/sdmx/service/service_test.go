@@ -214,7 +214,7 @@ func TestDataSuccess(t *testing.T) {
 	}
 }
 
-func TestDataMultiEntityDimensionFilters(t *testing.T) {
+func TestDataDimensionFiltersPreserveMultipleValues(t *testing.T) {
 	ds := &sdmxDataSource{
 		result: testSdmxDataResult([]string{"destinationCountry", "sourceCountry"}, []*sdmxpb.SdmxTimeSeries{
 			{
@@ -232,16 +232,28 @@ func TestDataMultiEntityDimensionFilters(t *testing.T) {
 	}
 	svc := newSdmxTestService(ds)
 
-	_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person_Migrated&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA"))
+	_, err := svc.Data(context.Background(), sdmxDataRequest(
+		"c[variableMeasured]=Count_Person_Migrated,Count_Refugee&"+
+			"c[destinationCountry]=country%2FCAN,country%2FMEX&"+
+			"c[sourceCountry]=country%2FUSA,country%2FIND&"+
+			"c[unit]=Person,Traveler&"+
+			"c[measurementMethod]=Census,Survey&"+
+			"c[observationPeriod]=P1Y,P1M&"+
+			"c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo",
+	))
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
 
 	wantQuery := &sdmxpb.SdmxDataQuery{
 		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured":   {Values: []string{"Count_Person_Migrated"}},
-			"destinationCountry": {Values: []string{"country/CAN"}},
-			"sourceCountry":      {Values: []string{"country/USA"}},
+			"variableMeasured":   {Values: []string{"Count_Person_Migrated", "Count_Refugee"}},
+			"destinationCountry": {Values: []string{"country/CAN", "country/MEX"}},
+			"sourceCountry":      {Values: []string{"country/USA", "country/IND"}},
+			"unit":               {Values: []string{"Person", "Traveler"}},
+			"measurementMethod":  {Values: []string{"Census", "Survey"}},
+			"observationPeriod":  {Values: []string{"P1Y", "P1M"}},
+			"provenance":         {Values: []string{"dc/base/one", "dc/base/two"}},
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
@@ -518,6 +530,60 @@ func TestAvailabilityBackendUnimplemented(t *testing.T) {
 	}
 }
 
+func TestAvailabilityBackendInvalidArgument(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityErr: status.Error(codes.InvalidArgument, "unsupported SDMX availability component \"destinationCountry\""),
+	}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Availability(context.Background(), sdmxAvailabilityRequest("destinationCountry", "c[variableMeasured]=Count_Person"))
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if !strings.Contains(status.Convert(err).Message(), "destinationCountry") {
+		t.Fatalf("Availability() message = %q, want component name", status.Convert(err).Message())
+	}
+}
+
+func TestSdmxBackendInfrastructureErrorsAreInternal(t *testing.T) {
+	const backendMessage = "spanner permission details"
+	tests := []struct {
+		name string
+		call func(*Service) error
+		ds   *sdmxDataSource
+	}{
+		{
+			name: "data",
+			ds:   &sdmxDataSource{err: status.Error(codes.PermissionDenied, backendMessage)},
+			call: func(svc *Service) error {
+				_, err := svc.Data(context.Background(), sdmxDataRequest("c[variableMeasured]=Count_Person"))
+				return err
+			},
+		},
+		{
+			name: "availability",
+			ds:   &sdmxDataSource{availabilityErr: status.Error(codes.PermissionDenied, backendMessage)},
+			call: func(svc *Service) error {
+				_, err := svc.Availability(context.Background(), sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person"))
+				return err
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := tt.call(newSdmxTestService(tt.ds))
+			if status.Code(err) != codes.Internal {
+				t.Fatalf("SDMX request code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+			}
+			message := status.Convert(err).Message()
+			if strings.Contains(message, backendMessage) {
+				t.Fatalf("SDMX request exposed backend message %q", message)
+			}
+		})
+	}
+}
+
 func TestAvailabilityNilDispatcher(t *testing.T) {
 	svc := New(nil)
 
@@ -536,7 +602,12 @@ func TestAvailabilitySuccess(t *testing.T) {
 	}
 	svc := newSdmxTestService(ds)
 
-	response, err := svc.Availability(context.Background(), sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person,Count_Household"))
+	response, err := svc.Availability(context.Background(), sdmxAvailabilityRequest(
+		"observationAbout",
+		"c[variableMeasured]=Count_Person,Count_Household&"+
+			"c[observationAbout]=country%2FUSA,geoId%2F06&"+
+			"c[unit]=Person,Count",
+	))
 	if err != nil {
 		t.Fatalf("Availability() error = %v", err)
 	}
@@ -552,6 +623,8 @@ func TestAvailabilitySuccess(t *testing.T) {
 		ComponentId: "observationAbout",
 		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
+			"observationAbout": {Values: []string{"country/USA", "geoId/06"}},
+			"unit":             {Values: []string{"Person", "Count"}},
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
@@ -576,6 +649,34 @@ func TestAvailabilitySelectsOtherDimension(t *testing.T) {
 		ComponentId: "unit",
 		Constraints: map[string]*sdmxpb.ConstraintList{
 			"variableMeasured": {Values: []string{"Count_Person"}},
+		},
+	}
+	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
+		t.Fatalf("dispatcher query mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestAvailabilitySelectsDynamicDimension(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/CAN"}},
+	}
+	svc := newSdmxTestService(ds)
+
+	response, err := svc.Availability(context.Background(), sdmxAvailabilityRequest(
+		"destinationCountry",
+		"c[variableMeasured]=Count_Person_Migrated&c[sourceCountry]=country%2FUSA",
+	))
+	if err != nil {
+		t.Fatalf("Availability() error = %v", err)
+	}
+	if !strings.Contains(string(response.Body), "\"id\":\"destinationCountry\"") {
+		t.Fatalf("Availability() body missing destinationCountry id: %s", string(response.Body))
+	}
+	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "destinationCountry",
+		Constraints: map[string]*sdmxpb.ConstraintList{
+			"variableMeasured": {Values: []string{"Count_Person_Migrated"}},
+			"sourceCountry":    {Values: []string{"country/USA"}},
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
@@ -615,7 +716,7 @@ func TestAvailabilitySDMXDebugLoggingParseFailure(t *testing.T) {
 
 	svc := newSdmxTestService(&sdmxDataSource{})
 
-	_, err := svc.Availability(context.Background(), withLog(sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")))
+	_, err := svc.Availability(context.Background(), withLog(sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020")))
 	if status.Code(err) != codes.Unimplemented {
 		t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
