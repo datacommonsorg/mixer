@@ -203,9 +203,9 @@ var statements = struct {
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n)-[filter%[1]d:Edge
+	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]->`,
+			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValue: `
 			AND filter%[1]d.object_id = @val%[1]d`,
 	filterValues: `
