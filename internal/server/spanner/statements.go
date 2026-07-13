@@ -203,7 +203,7 @@ var statements = struct {
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n)-[filter%[1]d:Edge
+	filterProperty: `(n)-[@{FORCE_INDEX=InEdge}filter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%s]->`,
 	filterValue: `
