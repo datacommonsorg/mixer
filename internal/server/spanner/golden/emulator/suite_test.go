@@ -116,7 +116,7 @@ func newEmulatorSuite(ctx context.Context) (_ *emulatorSuite, err error) {
 	}
 	databaseClient, err := databaseadmin.NewDatabaseAdminClient(ctx)
 	if err != nil {
-		instanceClient.Close()
+		_ = instanceClient.Close()
 		return nil, err
 	}
 
