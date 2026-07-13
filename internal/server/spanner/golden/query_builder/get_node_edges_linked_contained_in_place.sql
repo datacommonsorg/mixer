@@ -3,7 +3,7 @@
 			m.subject_id = 'country/USA')<-[e:Edge
 		WHERE
 			e.predicate = 'linkedContainedInPlace']-(n:Node),
-		(n)-[filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
 			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->
