@@ -128,11 +128,11 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	if len(stream.sent) != 1 {
 		t.Fatalf("sent %d HttpBody messages, want 1", len(stream.sent))
 	}
-	if stream.sent[0].GetContentType() != sdmxformat.JSONStatContentType {
-		t.Fatalf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxformat.JSONStatContentType)
+	if stream.sent[0].GetContentType() != sdmxformat.CSVContentType {
+		t.Fatalf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxformat.CSVContentType)
 	}
-	if got := string(stream.sent[0].GetData()); !strings.Contains(got, "\"id\":[\"variableMeasured\",\"observationAbout\"") {
-		t.Fatalf("Data = %q, want JSON-stat dimensions", got)
+	if got := string(stream.sent[0].GetData()); !strings.HasPrefix(got, "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout") {
+		t.Fatalf("Data = %q, want SDMX CSV header", got)
 	}
 }
 
