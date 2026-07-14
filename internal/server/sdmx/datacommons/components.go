@@ -31,10 +31,6 @@ const (
 	ComponentProvenance        = "provenance"
 	ComponentScalingFactor     = "scalingFactor"
 
-	// InternalObservationDate is the dispatcher/query field mapped from SDMX TIME_PERIOD.
-	// It is not an SDMX wire component ID.
-	InternalObservationDate = "observationDate"
-
 	// FallbackNotAvailable is used across datasets to represent missing constraints.
 	FallbackNotAvailable = "NotApplicable"
 )
@@ -58,13 +54,34 @@ var DataComponents = []DataComponent{
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
 }
 
-func InternalDataComponentID(componentID string) (string, bool) {
-	switch componentID {
-	case ComponentVariableMeasured, ComponentObservationAbout:
-		return componentID, true
-	case ComponentTimePeriod:
-		return InternalObservationDate, true
-	default:
-		return "", false
+func DataComponentsForObservationProperties(observationProperties []string) []DataComponent {
+	components := []DataComponent{
+		{ID: ComponentVariableMeasured, Kind: ComponentKindDimension},
 	}
+	for _, observationProperty := range observationProperties {
+		components = append(components, DataComponent{ID: observationProperty, Kind: ComponentKindDimension})
+	}
+	components = append(components,
+		DataComponent{ID: ComponentUnit, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentMeasurementMethod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentObservationPeriod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentProvenance, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
+		DataComponent{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
+		DataComponent{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
+	)
+	return components
+}
+
+var dataComponentsByID = func() map[string]DataComponent {
+	result := make(map[string]DataComponent, len(DataComponents))
+	for _, component := range DataComponents {
+		result[component.ID] = component
+	}
+	return result
+}()
+
+func DataComponentKind(componentID string) (ComponentKind, bool) {
+	component, ok := dataComponentsByID[componentID]
+	return component.Kind, ok
 }

@@ -25,7 +25,8 @@ import (
 type DataResponseFormat int
 
 const (
-	DataResponseFormatJSONStat DataResponseFormat = iota
+	DataResponseFormatUnknown DataResponseFormat = iota
+	DataResponseFormatJSONStat
 	DataResponseFormatCSV
 )
 
@@ -53,13 +54,13 @@ func DataResponseFormatFromAccept(accept []string) (DataResponseFormat, error) {
 	for _, value := range accept {
 		format, found, err := dataResponseFormatFromAccept(value)
 		if err != nil {
-			return DataResponseFormatJSONStat, err
+			return DataResponseFormatUnknown, err
 		}
 		if found {
 			return format, nil
 		}
 	}
-	return DataResponseFormatJSONStat, nil
+	return DataResponseFormatCSV, nil
 }
 
 // ValidateDataAccept rejects SDMX wire formats that are not implemented yet.
@@ -96,14 +97,14 @@ func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error
 		switch strings.ToLower(mediaType) {
 		case acceptMediaSDMXDataCSV, acceptMediaTextCSV:
 			if err := validateCSVAcceptParams(params); err != nil {
-				return DataResponseFormatJSONStat, true, err
+				return DataResponseFormatUnknown, true, err
 			}
 			return DataResponseFormatCSV, true, nil
 		case acceptMediaSDMXDataJSON:
-			return DataResponseFormatJSONStat, true, status.Error(codes.Unimplemented, "SDMX JSON responses are not implemented yet")
+			return DataResponseFormatUnknown, true, status.Error(codes.Unimplemented, "SDMX JSON responses are not implemented yet")
 		}
 	}
-	return DataResponseFormatJSONStat, false, nil
+	return DataResponseFormatUnknown, false, nil
 }
 
 func availabilityResponseFormatFromAccept(value string) (AvailabilityResponseFormat, bool, error) {

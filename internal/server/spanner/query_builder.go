@@ -183,7 +183,11 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 					params["val"+strconv.Itoa(i)] = filterVal
 				}
 			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
+			indexHint := ""
+			if len(filterVal) > 0 {
+				indexHint = "@{FORCE_INDEX=InEdge}"
+			}
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
 			i++
 		}
 	}
