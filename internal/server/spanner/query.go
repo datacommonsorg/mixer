@@ -1063,17 +1063,9 @@ func (sc *spannerDatabaseClient) executeQuery(
 		// Log slow Spanner queries that timed out or were canceled.
 		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
-		if err != nil {
-			slog.Info("DEBUG executeQuery error check",
-				"dbInitialized", sc.dbInitialized.Load(),
-				"isTableNotFound", isTableNotFoundError(err),
-				"errorType", fmt.Sprintf("%T", err),
-				"errorMessage", err.Error(),
-			)
-			if !sc.dbInitialized.Load() && isTableNotFoundError(err) {
-				slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
-				return nil
-			}
+		if err != nil && !sc.dbInitialized.Load() && isTableNotFoundError(err) {
+			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
+			return nil
 		}
 		return err
 	}
@@ -1305,7 +1297,6 @@ func isTableNotFoundError(err error) bool {
 		errStr := err.Error()
 		return strings.Contains(errStr, "Table not found") ||
 			strings.Contains(errStr, "Property graph not found") ||
-			strings.Contains(errStr, "does not exist") ||
 			strings.Contains(errStr, "Database not found")
 	}
 	return false
