@@ -20,6 +20,7 @@ import (
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 )
 
 const (
@@ -32,27 +33,32 @@ type CSVFormatter struct {
 	StructureID string
 }
 
-// Format converts observations into a complete SDMX-CSV 2.0 payload.
-func (f *CSVFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error) {
+// Format converts a shape-driven SDMX result into a complete SDMX-CSV 2.0 payload.
+func (f *CSVFormatter) Format(result *sdmxpb.SdmxDataResult) (string, error) {
+	components, err := sdmxformat.DataComponentsFromShape(result.GetShape())
+	if err != nil {
+		return "", err
+	}
+
 	var buf bytes.Buffer
 	writer := csv.NewWriter(&buf)
 	writer.UseCRLF = true
 
-	if err := writer.Write(dataCSVHeader()); err != nil {
+	if err := writer.Write(dataCSVHeader(components)); err != nil {
 		return "", err
 	}
-	for _, observation := range obs {
-		if observation == nil {
+	for _, series := range result.GetSeries() {
+		if series == nil {
 			continue
 		}
-		if len(observation.GetDatesAndValues()) == 0 {
-			if err := writer.Write(f.row(observation, nil)); err != nil {
+		if len(series.GetPoints()) == 0 {
+			if err := writer.Write(f.row(components, series, nil)); err != nil {
 				return "", err
 			}
 			continue
 		}
-		for _, dateValue := range observation.GetDatesAndValues() {
-			if err := writer.Write(f.row(observation, dateValue)); err != nil {
+		for _, point := range series.GetPoints() {
+			if err := writer.Write(f.row(components, series, point)); err != nil {
 				return "", err
 			}
 		}
@@ -65,61 +71,38 @@ func (f *CSVFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error) {
 	return buf.String(), nil
 }
 
-func (f *CSVFormatter) row(observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) []string {
+func (f *CSVFormatter) row(
+	components []datacommons.DataComponent,
+	series *sdmxpb.SdmxTimeSeries,
+	point *sdmxpb.SdmxDataPoint,
+) []string {
 	row := []string{
 		csvStructureDataflow,
 		f.StructureID,
 		csvActionInformation,
 	}
-	for _, component := range datacommons.DataComponents {
-		row = append(row, dataCSVComponentValue(component, observation, dateValue))
+	for _, component := range components {
+		row = append(row, dataCSVComponentValue(component, series, point))
 	}
 	return row
 }
 
-func dataCSVHeader() []string {
+func dataCSVHeader(components []datacommons.DataComponent) []string {
 	header := []string{"STRUCTURE", "STRUCTURE_ID", "ACTION"}
-	for _, component := range datacommons.DataComponents {
+	for _, component := range components {
 		header = append(header, component.ID)
 	}
 	return header
 }
 
-func dataCSVComponentValue(component datacommons.DataComponent, observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) string {
-	value := dataCSVRawComponentValue(component.ID, observation, dateValue)
+func dataCSVComponentValue(
+	component datacommons.DataComponent,
+	series *sdmxpb.SdmxTimeSeries,
+	point *sdmxpb.SdmxDataPoint,
+) string {
+	value := sdmxformat.SdmxComponentValue(component, series, point)
 	if component.Kind == datacommons.ComponentKindDimension && value == "" {
 		return datacommons.FallbackNotAvailable
 	}
 	return value
-}
-
-func dataCSVRawComponentValue(componentID string, observation *sdmxpb.SdmxObservation, dateValue *sdmxpb.SdmxDateValue) string {
-	switch componentID {
-	case datacommons.ComponentVariableMeasured:
-		return observation.GetVariableMeasured()
-	case datacommons.ComponentObservationAbout:
-		return observation.GetDimensions()[datacommons.ComponentObservationAbout]
-	case datacommons.ComponentUnit:
-		return observation.GetAttributes()[datacommons.ComponentUnit]
-	case datacommons.ComponentMeasurementMethod:
-		return observation.GetAttributes()[datacommons.ComponentMeasurementMethod]
-	case datacommons.ComponentObservationPeriod:
-		return observation.GetAttributes()[datacommons.ComponentObservationPeriod]
-	case datacommons.ComponentProvenance:
-		return observation.GetProvenance()
-	case datacommons.ComponentTimePeriod:
-		if dateValue == nil {
-			return ""
-		}
-		return dateValue.GetDate()
-	case datacommons.ComponentObservationValue:
-		if dateValue == nil {
-			return ""
-		}
-		return dateValue.GetValue()
-	case datacommons.ComponentScalingFactor:
-		return observation.GetAttributes()[datacommons.ComponentScalingFactor]
-	default:
-		return ""
-	}
 }

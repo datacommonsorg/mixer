@@ -74,12 +74,10 @@ func DataResponseFormatFromDataRequest(request *DataRequest, accept []string) (D
 	switch request.Format {
 	case "":
 		return DataResponseFormatFromAccept(accept)
-	case dataFormatJSONStat:
-		return DataResponseFormatJSONStat, nil
 	case dataFormatCSV:
 		return DataResponseFormatCSV, nil
 	default:
-		return DataResponseFormatJSONStat, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
+		return DataResponseFormatUnknown, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
 	}
 }
 
@@ -89,7 +87,7 @@ func parseDataQueryParam(param queryParam, format string) (string, error) {
 		if format != "" {
 			return "", status.Error(codes.InvalidArgument, "duplicate SDMX format query parameter")
 		}
-		if param.Value != dataFormatJSONStat && param.Value != dataFormatCSV {
+		if param.Value != dataFormatCSV {
 			return "", status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", param.Value)
 		}
 		return param.Value, nil

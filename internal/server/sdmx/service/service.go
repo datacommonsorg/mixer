@@ -16,6 +16,8 @@ package service
 
 import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type Request struct {
@@ -36,4 +38,13 @@ type Service struct {
 
 func New(dispatcher *dispatcher.Dispatcher) *Service {
 	return &Service{dispatcher: dispatcher}
+}
+
+func isSdmxClientError(err error) bool {
+	switch status.Code(err) {
+	case codes.Canceled, codes.InvalidArgument, codes.DeadlineExceeded, codes.Unimplemented:
+		return true
+	default:
+		return false
+	}
 }

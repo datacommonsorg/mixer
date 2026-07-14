@@ -17,6 +17,14 @@
       },
       "label": "gender"
     },
+    "measurementMethod": {
+      "category": {
+        "index": [
+          "Census"
+        ]
+      },
+      "label": "measurementMethod"
+    },
     "observationAbout": {
       "category": {
         "index": [
@@ -24,6 +32,22 @@
         ]
       },
       "label": "observationAbout"
+    },
+    "observationPeriod": {
+      "category": {
+        "index": [
+          "P1Y"
+        ]
+      },
+      "label": "observationPeriod"
+    },
+    "unit": {
+      "category": {
+        "index": [
+          "Person"
+        ]
+      },
+      "label": "unit"
     },
     "variableMeasured": {
       "category": {
@@ -37,8 +61,7 @@
   "extension": {
     "annotations": {
       "prov1": {
-        "measurementMethod": "Census",
-        "unit": "Person"
+        "scalingFactor": "0"
       }
     },
     "measures": {
@@ -50,11 +73,17 @@
   "id": [
     "variableMeasured",
     "gender",
+    "measurementMethod",
     "observationAbout",
+    "observationPeriod",
+    "unit",
     "TIME_PERIOD"
   ],
   "label": "Data Commons SDMX Query Results",
   "size": [
+    1,
+    1,
+    1,
     1,
     1,
     1,
