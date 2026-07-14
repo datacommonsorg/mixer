@@ -77,7 +77,7 @@ func DataResponseFormatFromDataRequest(request *DataRequest, accept []string) (D
 	case dataFormatCSV:
 		return DataResponseFormatCSV, nil
 	default:
-		return DataResponseFormatJSONStat, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
+		return DataResponseFormatUnknown, status.Errorf(codes.InvalidArgument, "unsupported SDMX data response format %q", request.Format)
 	}
 }
 

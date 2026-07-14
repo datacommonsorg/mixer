@@ -183,6 +183,7 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 		{
 			name:       "format json stat unsupported",
 			request:    &DataRequest{Format: "json-stat"},
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX data response format",
 		},
@@ -206,6 +207,7 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 		{
 			name:       "unsupported format",
 			request:    &DataRequest{Format: "xml"},
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX data response format",
 		},
@@ -225,6 +227,9 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 				}
 				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
 					t.Fatalf("DataResponseFormatFromDataRequest() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				if got != tt.want {
+					t.Errorf("DataResponseFormatFromDataRequest() = %v, want %v", got, tt.want)
 				}
 				return
 			}

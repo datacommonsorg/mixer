@@ -57,18 +57,21 @@ func TestDataResponseFormatFromAccept(t *testing.T) {
 		{
 			name:       "SDMX JSON not implemented",
 			accept:     "application/vnd.sdmx.data+json;version=2.0.0",
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "SDMX JSON responses are not implemented yet",
 		},
 		{
 			name:       "SDMX CSV option not implemented",
 			accept:     "application/vnd.sdmx.data+csv;version=2.0.0;labels=name",
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "SDMX CSV response option",
 		},
 		{
 			name:       "SDMX CSV version not implemented",
 			accept:     "application/vnd.sdmx.data+csv;version=1.0.0",
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "SDMX CSV version",
 		},
@@ -88,6 +91,9 @@ func TestDataResponseFormatFromAccept(t *testing.T) {
 				}
 				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
 					t.Fatalf("DataResponseFormatFromAccept() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				if got != tt.want {
+					t.Errorf("DataResponseFormatFromAccept() = %v, want %v", got, tt.want)
 				}
 				return
 			}
