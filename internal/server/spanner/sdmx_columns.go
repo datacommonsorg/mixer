@@ -16,16 +16,19 @@ package spanner
 
 import "github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 
-var sdmxStaticDataFilterColumns = map[string]string{
-	datacommons.ComponentMeasurementMethod: "measurement_method",
-	datacommons.ComponentObservationPeriod: "observation_period",
-	datacommons.ComponentProvenance:        "provenance",
-	datacommons.ComponentUnit:              "unit",
-}
-
 func sdmxStaticDataFilterColumn(componentID string) (string, bool) {
-	spannerColumn, ok := sdmxStaticDataFilterColumns[componentID]
-	return spannerColumn, ok
+	switch componentID {
+	case datacommons.ComponentMeasurementMethod:
+		return "measurement_method", true
+	case datacommons.ComponentObservationPeriod:
+		return "observation_period", true
+	case datacommons.ComponentProvenance:
+		return "provenance", true
+	case datacommons.ComponentUnit:
+		return "unit", true
+	default:
+		return "", false
+	}
 }
 
 func sdmxDataFilterColumn(componentID string, entitySlotByObservationProperty map[string]string) (string, bool) {

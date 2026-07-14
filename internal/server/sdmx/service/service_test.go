@@ -385,6 +385,29 @@ func TestDataDispatcherStatusErrorPassesThrough(t *testing.T) {
 	}
 }
 
+func TestDataDispatcherStatusErrorDebugLogging(t *testing.T) {
+	buf, restore := captureSdmxLogs()
+	defer restore()
+
+	ds := &sdmxDataSource{err: status.Error(codes.InvalidArgument, "bad SDMX request")}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Data(context.Background(), withLog(sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")))
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	logs := buf.String()
+	for _, want := range []string{
+		"SDMX data dispatcher returned client error",
+		"original_uri",
+		"bad SDMX request",
+	} {
+		if !strings.Contains(logs, want) {
+			t.Fatalf("logs do not contain %q: %s", want, logs)
+		}
+	}
+}
+
 func TestDataNilDispatcher(t *testing.T) {
 	svc := New(nil)
 

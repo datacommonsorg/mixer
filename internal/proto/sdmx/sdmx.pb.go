@@ -297,7 +297,8 @@ func (x *ConstraintList) GetValues() []string {
 	return nil
 }
 
-// The result of an SDMX data query.
+// Internal container for SDMX query results returned by the Dispatcher (after fetching/merging
+// from backends). Consumed by formatters to generate the final HTTP response payload.
 type SdmxDataResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -404,7 +405,8 @@ func (x *SdmxAvailabilityResult) GetValues() []string {
 	return nil
 }
 
-// Ordered SDMX component shape for a data response.
+// Metadata defining the structure (shape) of the data response. Specifies the roles
+// and deterministic order of components for serialization.
 type SdmxDataShape struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -453,7 +455,9 @@ func (x *SdmxDataShape) GetComponents() []*SdmxComponent {
 	return nil
 }
 
-// A single SDMX component.
+// Defines a single field in the formatted output response. Maps the field name to its role,
+// which determines how and where values are stored (e.g. "variableMeasured" -> DIMENSION,
+// "OBS_VALUE" -> MEASURE, "scalingFactor" -> ATTRIBUTE).
 type SdmxComponent struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
