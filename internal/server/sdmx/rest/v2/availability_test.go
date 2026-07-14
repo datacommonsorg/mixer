@@ -52,6 +52,25 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 			want:        map[string][]string{"variableMeasured": {"Count_Person", "Count_Household"}},
 		},
 		{
+			name: "dynamic target with dimension filters",
+			tail: availabilityTail("destinationCountry"),
+			originalURI: availabilityURI("destinationCountry", "c[variableMeasured]=Count_Person_Migrated,Count_Refugee&"+
+				"c[destinationCountry]=country%2FCAN,country%2FMEX&"+
+				"c[sourceCountry]=country%2FUSA,country%2FIND&"+
+				"c[unit]=Person,Traveler&c[measurementMethod]=Census,Survey&"+
+				"c[observationPeriod]=P1Y,P1M&c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo"),
+			wantPath: availabilityPath("destinationCountry"),
+			want: map[string][]string{
+				"variableMeasured":   {"Count_Person_Migrated", "Count_Refugee"},
+				"destinationCountry": {"country/CAN", "country/MEX"},
+				"sourceCountry":      {"country/USA", "country/IND"},
+				"unit":               {"Person", "Traveler"},
+				"measurementMethod":  {"Census", "Survey"},
+				"observationPeriod":  {"P1Y", "P1M"},
+				"provenance":         {"dc/base/one", "dc/base/two"},
+			},
+		},
+		{
 			name:        "provenance",
 			tail:        availabilityTail("provenance"),
 			originalURI: availabilityURI("provenance", "c[variableMeasured]=Count_Person"),
@@ -137,6 +156,12 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
+			name:        "malformed selected component identifier",
+			tail:        availabilityTail("invalid key"),
+			originalURI: availabilityURI("invalid%20key", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
 			name:        "missing variable measured",
 			originalURI: availabilityURI("observationAbout", "mode=exact"),
 			wantCode:    codes.InvalidArgument,
@@ -165,11 +190,6 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
-			name:        "filter observation about unsupported",
-			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
-			wantCode:    codes.Unimplemented,
-		},
-		{
 			name:        "filter time period unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020"),
 			wantCode:    codes.Unimplemented,
@@ -178,6 +198,11 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			name:        "filter attribute unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[scalingFactor]=0"),
 			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "malformed filter component identifier",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[invalid%20key]=value"),
+			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "duplicate component",

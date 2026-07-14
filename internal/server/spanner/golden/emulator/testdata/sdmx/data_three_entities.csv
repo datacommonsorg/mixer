@@ -1,0 +1,2 @@
+STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,destinationCountry,sourceCountry,transportMode,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor
+dataflow,DC:DF_OBS(1.0.0),I,Count_MigrationByTransportMode,country/CAN,country/USA,Air,Count,Census,P1Y,dc/base/HumanReadableStatVars,2024,7,

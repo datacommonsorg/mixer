@@ -57,7 +57,7 @@ func (s *Service) Availability(ctx context.Context, request Request) (*Response,
 
 	res, err := s.dispatcher.SdmxAvailability(ctx, query)
 	if err != nil {
-		if st, ok := status.FromError(err); ok && st.Code() == codes.Unimplemented {
+		if isSdmxClientError(err) {
 			return nil, err
 		}
 		slog.Error("Failed to handle SDMX availability request in dispatcher", "error", err)

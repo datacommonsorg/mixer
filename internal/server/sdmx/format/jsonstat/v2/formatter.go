@@ -16,11 +16,13 @@ package jsonstatv2
 
 import (
 	"encoding/json"
+	"slices"
 	"sort"
 	"strconv"
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 )
 
 const (
@@ -29,18 +31,17 @@ const (
 	dimObservationValue = datacommons.ComponentObservationValue
 	dimProvenance       = datacommons.ComponentProvenance
 
-	jsonStatVersion   = "2.0"
-	jsonStatClass     = "dataset"
-	defaultLabel      = "Data Commons SDMX Query Results"
-	defaultSource     = "Data Commons"
-	extAnnotations    = "annotations"
-	extMeasures       = "measures"
-	emptyJSONResponse = "{}"
+	jsonStatVersion = "2.0"
+	jsonStatClass   = "dataset"
+	defaultLabel    = "Data Commons SDMX Query Results"
+	defaultSource   = "Data Commons"
+	extAnnotations  = "annotations"
+	extMeasures     = "measures"
 )
 
 // Formatter defines the interface for formatting SDMX query results.
 type Formatter interface {
-	Format(obs []*sdmxpb.SdmxObservation) (string, error)
+	Format(result *sdmxpb.SdmxDataResult) (string, error)
 }
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
@@ -72,15 +73,16 @@ type JSONStatResponse struct {
 	Extension map[string]interface{}    `json:"extension,omitempty"`
 }
 
-// Format converts Spanner observations into a full JSON-stat 2.0 string.
-func (f *JSONStatFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error) {
-	if len(obs) == 0 {
-		return emptyJSONResponse, nil
+// Format converts a shape-driven SDMX result into a full JSON-stat 2.0 string.
+func (f *JSONStatFormatter) Format(result *sdmxpb.SdmxDataResult) (string, error) {
+	components, err := sdmxformat.DataComponentsFromShape(result.GetShape())
+	if err != nil {
+		return "", err
 	}
 
-	dimensions, extensions := f.extractDimensions(obs)
-	dimensionOrder, sortedCategories, size, strides, categoryIndices := f.computeStrides(dimensions)
-	values := f.mapGridValues(obs, strides, categoryIndices, dimensionOrder)
+	dimensions, dimensionOrder, extensions := f.extractDimensions(result.GetSeries(), components)
+	sortedCategories, size, strides, categoryIndices := f.computeStrides(dimensions, dimensionOrder)
+	values := f.mapGridValues(result.GetSeries(), strides, categoryIndices, dimensionOrder)
 
 	dimMap := map[string]DimensionEntry{}
 	for _, dim := range dimensionOrder {
@@ -118,77 +120,74 @@ func (f *JSONStatFormatter) Format(obs []*sdmxpb.SdmxObservation) (string, error
 	return string(b), nil
 }
 
-// extractDimensions identifies all unique values for each dimension (like date, variable, and location)
-// present in the input observations. This effectively determines the "shape" of the multi-dimensional
-// data cube we are building for the JSON-stat output.
-func (f *JSONStatFormatter) extractDimensions(obs []*sdmxpb.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
+// extractDimensions identifies all unique values for each shape dimension.
+func (f *JSONStatFormatter) extractDimensions(
+	seriesList []*sdmxpb.SdmxTimeSeries,
+	components []datacommons.DataComponent,
+) (map[string]map[string]bool, []string, map[string]map[string]string) {
 	dimensions := map[string]map[string]bool{}
-	dimensions[dimVariableMeasured] = map[string]bool{}
-	dimensions[dimObservationDate] = map[string]bool{}
-
+	dimensionOrder := []string{}
+	dimensionComponents := []datacommons.DataComponent{}
+	for _, component := range components {
+		if component.Kind != datacommons.ComponentKindDimension {
+			continue
+		}
+		dimensions[component.ID] = map[string]bool{}
+		dimensionOrder = append(dimensionOrder, component.ID)
+		dimensionComponents = append(dimensionComponents, component)
+	}
 	extensions := map[string]map[string]string{}
 
-	for _, o := range obs {
-		dimensions[dimVariableMeasured][o.VariableMeasured] = true
-		for _, dv := range o.DatesAndValues {
-			dimensions[dimObservationDate][dv.Date] = true
+	for _, series := range seriesList {
+		if series == nil {
+			continue
+		}
+		for _, component := range dimensionComponents {
+			if component.ID == dimObservationDate {
+				for _, point := range series.GetPoints() {
+					value := sdmxformat.SdmxComponentValue(component, series, point)
+					if value == "" {
+						value = datacommons.FallbackNotAvailable
+					}
+					dimensions[component.ID][value] = true
+				}
+				continue
+			}
+			value := sdmxformat.SdmxComponentValue(component, series, nil)
+			if value == "" {
+				value = datacommons.FallbackNotAvailable
+			}
+			dimensions[component.ID][value] = true
 		}
 
-		prov := o.Provenance
+		prov := series.GetDimensions()[dimProvenance]
 		if prov != "" && extensions[prov] == nil {
 			extensions[prov] = map[string]string{}
 		}
 
-		for k, v := range o.Attributes {
+		for k, v := range series.GetAttributes() {
 			if prov != "" {
 				extensions[prov][k] = v
 			}
 		}
-
-		for k, v := range o.Dimensions {
-			if _, ok := dimensions[k]; !ok {
-				dimensions[k] = map[string]bool{}
-			}
-			dimensions[k][v] = true
-		}
 	}
 
-	for _, o := range obs {
-		for dim := range dimensions {
-			if dim == dimVariableMeasured || dim == dimObservationDate || dim == dimProvenance {
-				continue
-			}
-			if _, ok := o.Dimensions[dim]; !ok {
-				dimensions[dim][datacommons.FallbackNotAvailable] = true
-			}
-		}
-	}
-
-	return dimensions, extensions
+	return dimensions, dimensionOrder, extensions
 }
 
-// computeStrides establishes a consistent order for dimensions and sorts their values alphabetically.
+// computeStrides uses shape order for dimensions and sorts their values alphabetically.
 // It then calculates the "strides" (step sizes) needed to map a multi-dimensional coordinate
 // (e.g., [Location, Date, Variable]) into a single unique index in the flat, linear array
 // that JSON-stat uses to store values.
-func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool) (
+func (f *JSONStatFormatter) computeStrides(
+	dimensions map[string]map[string]bool,
 	dimensionOrder []string,
+) (
 	sortedCategories map[string][]string,
 	size []int,
 	strides []int,
 	categoryIndices map[string]map[string]int,
 ) {
-	dimensionOrder = []string{dimVariableMeasured}
-	middleDims := make([]string, 0, len(dimensions)-2)
-	for dim := range dimensions {
-		if dim != dimVariableMeasured && dim != dimObservationDate {
-			middleDims = append(middleDims, dim)
-		}
-	}
-	sort.Strings(middleDims)
-	dimensionOrder = append(dimensionOrder, middleDims...)
-	dimensionOrder = append(dimensionOrder, dimObservationDate)
-
 	sortedCategories = map[string][]string{}
 	for dim, values := range dimensions {
 		var vals []string
@@ -223,14 +222,14 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 		}
 	}
 
-	return dimensionOrder, sortedCategories, size, strides, categoryIndices
+	return sortedCategories, size, strides, categoryIndices
 }
 
 // mapGridValues places each observation's value into its correct spot in the final flat array.
 // It uses the sorted value indices and computed strides to calculate the exact 1D position
 // for each combination of dimension values.
 func (f *JSONStatFormatter) mapGridValues(
-	obs []*sdmxpb.SdmxObservation,
+	seriesList []*sdmxpb.SdmxTimeSeries,
 	strides []int,
 	categoryIndices map[string]map[string]int,
 	dimensionOrder []string,
@@ -245,30 +244,40 @@ func (f *JSONStatFormatter) mapGridValues(
 		values[i] = nil
 	}
 
-	for _, o := range obs {
-		varIdx := categoryIndices[dimVariableMeasured][o.VariableMeasured]
-		baseIdx := varIdx * strides[0]
+	timePeriodDimIdx := slices.Index(dimensionOrder, dimObservationDate)
+	if timePeriodDimIdx < 0 {
+		return values
+	}
 
+	for _, series := range seriesList {
+		if series == nil {
+			continue
+		}
+		baseIdx := 0
 		for dimIdx, dim := range dimensionOrder {
-			if dim == dimVariableMeasured || dim == dimObservationDate {
+			if dim == dimObservationDate {
 				continue
 			}
-			val, ok := o.Dimensions[dim]
-			if !ok {
+			val := series.GetDimensions()[dim]
+			if val == "" {
 				val = datacommons.FallbackNotAvailable
 			}
 			idx := categoryIndices[dim][val]
 			baseIdx += idx * strides[dimIdx]
 		}
 
-		for _, dv := range o.DatesAndValues {
-			dateIdx := categoryIndices[dimObservationDate][dv.Date]
-			flatIdx := baseIdx + dateIdx*strides[len(dimensionOrder)-1]
+		for _, point := range series.GetPoints() {
+			date := point.GetTimePeriod()
+			if date == "" {
+				date = datacommons.FallbackNotAvailable
+			}
+			dateIdx := categoryIndices[dimObservationDate][date]
+			flatIdx := baseIdx + dateIdx*strides[timePeriodDimIdx]
 
-			if fl, err := strconv.ParseFloat(dv.Value, 64); err == nil {
+			if fl, err := strconv.ParseFloat(point.GetObservationValue(), 64); err == nil {
 				values[flatIdx] = fl
 			} else {
-				values[flatIdx] = dv.Value
+				values[flatIdx] = point.GetObservationValue()
 			}
 		}
 	}

@@ -71,3 +71,31 @@ func (s *Server) V3SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxRestRequ
 		Data:        response.Body,
 	}, nil
 }
+
+// SdmxData provides structured SDMX data to in-process consumers.
+func (s *Server) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	if !s.flags.EnableSDMXDataApi {
+		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+	if in == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
+	if s.dispatcher == nil {
+		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
+	return s.dispatcher.SdmxData(ctx, in)
+}
+
+// SdmxAvailability provides structured SDMX availability to in-process consumers.
+func (s *Server) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	if !s.flags.EnableSDMXDataApi {
+		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+	if in == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
+	if s.dispatcher == nil {
+		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
+	return s.dispatcher.SdmxAvailability(ctx, in)
+}
