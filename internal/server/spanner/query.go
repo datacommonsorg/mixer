@@ -982,10 +982,17 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
-	var timestamp time.Time
-	if err := row.Column(0, &timestamp); err != nil {
+	var nullTime spanner.NullTime
+	if err := row.Column(0, &nullTime); err != nil {
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
+
+	if !nullTime.Valid {
+		slog.Warn("IngestionHistory timestamp is NULL. Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
+		return nil
+	}
+
+	timestamp := nullTime.Time
 
 	now := time.Now()
 	prevNano := sc.timestamp.Load()
