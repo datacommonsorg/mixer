@@ -145,20 +145,21 @@ var statements = struct {
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
-	getIngestionHistoryTimestamp: `		SELECT
-			CompletionTimestamp
-		FROM
-			IngestionHistory
-		WHERE
-			Status = 'SUCCESS'
-			AND CompletionTimestamp < (
-				SELECT COALESCE(MIN(CreationTimestamp), TIMESTAMP '9999-12-31T23:59:59Z')
-				FROM IngestionHistory
-				WHERE Status IN ('RUNNING', 'PENDING')
-			)
-		ORDER BY 
-			CompletionTimestamp DESC
-		LIMIT 1`,
+	getIngestionHistoryTimestamp: `		SELECT MIN(CreationTimestamp) AS StalenessTimestamp
+FROM IngestionHistory
+WHERE (
+  -- Check if a successful run has ever occurred
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+) IS NULL 
+-- If a success exists, only grab runs created after it
+OR CreationTimestamp > (
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+);
+`,
 	getParam:  `= @%s`,
 	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
