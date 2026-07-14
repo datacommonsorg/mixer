@@ -119,6 +119,9 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 	if path.Version != datacommons.DataflowVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
+	if !isValidComponentID(path.ComponentID) {
+		return status.Errorf(codes.InvalidArgument, "invalid SDMX availability component %q", path.ComponentID)
+	}
 	if !isFilterableDimensionCandidate(path.ComponentID) {
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
@@ -128,6 +131,9 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 
 func validateComponentFilters(constraints map[string][]string) error {
 	for componentID := range constraints {
+		if !isValidComponentID(componentID) {
+			return status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", componentID)
+		}
 		if !isFilterableDimensionCandidate(componentID) {
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
@@ -148,8 +154,8 @@ func isFilterableDimensionCandidate(componentID string) bool {
 	return isDynamicEntityComponent(componentID)
 }
 
-func isDynamicEntityComponent(componentID string) bool {
-	if componentID == "" || componentID[0] < 'a' || componentID[0] > 'z' {
+func isValidComponentID(componentID string) bool {
+	if componentID == "" {
 		return false
 	}
 	for i := 0; i < len(componentID); i++ {
@@ -157,6 +163,13 @@ func isDynamicEntityComponent(componentID string) bool {
 		if (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_' {
 			continue
 		}
+		return false
+	}
+	return true
+}
+
+func isDynamicEntityComponent(componentID string) bool {
+	if !isValidComponentID(componentID) || componentID[0] < 'a' || componentID[0] > 'z' {
 		return false
 	}
 	return true

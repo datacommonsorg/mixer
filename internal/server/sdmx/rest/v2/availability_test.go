@@ -156,6 +156,12 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
+			name:        "malformed selected component identifier",
+			tail:        availabilityTail("invalid key"),
+			originalURI: availabilityURI("invalid%20key", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
 			name:        "missing variable measured",
 			originalURI: availabilityURI("observationAbout", "mode=exact"),
 			wantCode:    codes.InvalidArgument,
@@ -192,6 +198,11 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			name:        "filter attribute unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[scalingFactor]=0"),
 			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "malformed filter component identifier",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[invalid%20key]=value"),
+			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "duplicate component",

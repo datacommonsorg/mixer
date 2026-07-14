@@ -281,6 +281,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
+			name:        "malformed component identifier",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[invalid%20key]=value"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
 			name:        "bad name encoding",
 			originalURI: "/sdmx/v3/data?c%ZZ=A",
 			wantCode:    codes.InvalidArgument,
