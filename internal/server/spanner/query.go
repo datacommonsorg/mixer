@@ -966,9 +966,12 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
 	if err == iterator.Done {
+		sc.dbInitialized.Store(true)
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
-		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
+	} else if isTableNotFoundError(err) {
+		if sc.dbInitialized.Load() {
+			return fmt.Errorf("IngestionHistory table disappeared: %w", err)
+		}
 		warnMsg = "IngestionHistory table not found."
 	}
 
@@ -981,6 +984,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
+	sc.dbInitialized.Store(true)
 
 	var timestamp time.Time
 	if err := row.Column(0, &timestamp); err != nil {
@@ -1009,8 +1013,8 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
 	}
-	slog.Error("Spanner staleness timestamp not available")
-	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
+	slog.Warn("Spanner staleness timestamp not available. Falling back to default staleness.")
+	return time.Now().Add(-defaultStalenessDuration).UTC(), nil
 }
 
 func (sc *spannerDatabaseClient) executeQuery(
@@ -1059,6 +1063,10 @@ func (sc *spannerDatabaseClient) executeQuery(
 		// Log slow Spanner queries that timed out or were canceled.
 		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
+		if err != nil && !sc.dbInitialized.Load() && isTableNotFoundError(err) {
+			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
+			return nil
+		}
 		return err
 	}
 
@@ -1262,4 +1270,19 @@ func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Durati
 		allArgs = append(allArgs, "error", err.Error())
 		slog.ErrorContext(ctx, TimeoutMessage, allArgs...)
 	}
+}
+
+// isTableNotFoundError checks if an error indicates a missing table or database.
+func isTableNotFoundError(err error) bool {
+	if err == nil {
+		return false
+	}
+	code := spanner.ErrCode(err)
+	if code == codes.NotFound {
+		return true
+	}
+	if code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found") {
+		return true
+	}
+	return false
 }
