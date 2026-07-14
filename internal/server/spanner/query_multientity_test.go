@@ -413,11 +413,22 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 	client := &multiEntityClient{}
 	_, err := client.GetSdmxObservations(context.Background(), nil)
-	if err == nil {
-		t.Fatal("GetSdmxObservations() with nil request expected error, got nil")
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxObservations() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
-	if got, want := err.Error(), "GetSdmxObservations: request cannot be nil"; got != want {
-		t.Fatalf("GetSdmxObservations() error = %q, want %q", got, want)
+	if got, want := status.Convert(err).Message(), "SDMX data request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxObservations() message = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxObservations() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX data request constraints cannot be nil"; got != want {
+		t.Fatalf("GetSdmxObservations() message = %q, want %q", got, want)
 	}
 }
 
@@ -737,25 +748,76 @@ func TestSdmxBackendError(t *testing.T) {
 	}
 }
 
+func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
+	for _, tc := range []struct {
+		name                 string
+		componentID          string
+		statVarIDs           []string
+		entitySlotsByStatVar map[string]map[string]string
+		want                 string
+	}{
+		{
+			name:        "missing variable measured values",
+			componentID: datacommons.ComponentVariableMeasured,
+			want:        "SDMX availability requires at least one variableMeasured value",
+		},
+		{
+			name:        "missing component mapping",
+			componentID: "destinationCountry",
+			statVarIDs:  []string{"var1"},
+			want:        `unsupported SDMX availability component "destinationCountry" for variableMeasured "var1"`,
+		},
+		{
+			name:        "inconsistent component mapping",
+			componentID: "destinationCountry",
+			statVarIDs:  []string{"var1", "var2"},
+			entitySlotsByStatVar: map[string]map[string]string{
+				"var1": {"destinationCountry": "entity1"},
+				"var2": {"destinationCountry": "entity2"},
+			},
+			want: `SDMX availability component "destinationCountry" has incompatible entity mappings across variableMeasured values [var1 var2]`,
+		},
+		{
+			name:        "empty component mapping",
+			componentID: "destinationCountry",
+			statVarIDs:  []string{"var1"},
+			entitySlotsByStatVar: map[string]map[string]string{
+				"var1": {"destinationCountry": ""},
+			},
+			want: `unsupported SDMX availability component "destinationCountry"`,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := sdmxAvailabilityValueExpression(tc.componentID, tc.statVarIDs, tc.entitySlotsByStatVar)
+			if status.Code(err) != codes.InvalidArgument {
+				t.Fatalf("sdmxAvailabilityValueExpression() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			}
+			if got := status.Convert(err).Message(); got != tc.want {
+				t.Fatalf("sdmxAvailabilityValueExpression() message = %q, want %q", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	client := &multiEntityClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), nil)
-	if err == nil {
-		t.Fatal("GetSdmxAvailability() with nil request expected error, got nil")
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
-	if got, want := err.Error(), "GetSdmxAvailability: request cannot be nil"; got != want {
-		t.Fatalf("GetSdmxAvailability() error = %q, want %q", got, want)
+	if got, want := status.Convert(err).Message(), "SDMX availability request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
 	}
 }
 
 func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
 	client := &multiEntityClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
-	if err == nil {
-		t.Fatal("GetSdmxAvailability() error = nil, want error")
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
-	if got, want := err.Error(), "GetSdmxAvailability: request constraints cannot be nil"; got != want {
-		t.Fatalf("GetSdmxAvailability() error = %q, want %q", got, want)
+	if got, want := status.Convert(err).Message(), "SDMX availability request constraints cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
 	}
 }
 

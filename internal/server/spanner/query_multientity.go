@@ -444,10 +444,10 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	req *sdmxpb.SdmxDataQuery,
 ) (*sdmxpb.SdmxDataResult, error) {
 	if req == nil {
-		return nil, fmt.Errorf("GetSdmxObservations: request cannot be nil")
+		return nil, status.Error(codes.InvalidArgument, "SDMX data request cannot be nil")
 	}
 	if req.Constraints == nil {
-		return nil, fmt.Errorf("GetSdmxObservations: request constraints cannot be nil")
+		return nil, status.Error(codes.InvalidArgument, "SDMX data request constraints cannot be nil")
 	}
 
 	prepared, err := prepareSdmxObservationsQuery(
@@ -707,10 +707,10 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	req *sdmxpb.SdmxAvailabilityQuery,
 ) (*sdmxpb.SdmxAvailabilityResult, error) {
 	if req == nil {
-		return nil, fmt.Errorf("GetSdmxAvailability: request cannot be nil")
+		return nil, status.Error(codes.InvalidArgument, "SDMX availability request cannot be nil")
 	}
 	if req.Constraints == nil {
-		return nil, fmt.Errorf("GetSdmxAvailability: request constraints cannot be nil")
+		return nil, status.Error(codes.InvalidArgument, "SDMX availability request constraints cannot be nil")
 	}
 
 	stmt, err := prepareSdmxAvailabilityQuery(
