@@ -27,7 +27,7 @@ import (
 func TestCSVFormatter_HeaderOnly(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format(nil)
+	got, err := formatter.Format(testSdmxResult([]string{datacommons.ComponentObservationAbout}, nil))
 	if err != nil {
 		t.Fatalf("Format() error = %v", err)
 	}
@@ -41,31 +41,31 @@ func TestCSVFormatter_HeaderOnly(t *testing.T) {
 func TestCSVFormatter_Rows(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
+	got, err := formatter.Format(testSdmxResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
 		{
-			VariableMeasured: "Count_Person",
-			Provenance:       "dc/base",
-			DatesAndValues: []*sdmxpb.SdmxDateValue{
-				{Date: "2020", Value: "1.50"},
-				{Date: "2021", Value: "2"},
-			},
 			Dimensions: map[string]string{
-				"observationAbout": "country/USA",
-			},
-			Attributes: map[string]string{
+				"variableMeasured":  "Count_Person",
+				"observationAbout":  "country/USA",
 				"unit":              "Person",
 				"measurementMethod": "Census",
 				"observationPeriod": "P1Y",
-				"scalingFactor":     "0",
+				"provenance":        "dc/base",
+			},
+			Attributes: map[string]string{
+				"scalingFactor": "0",
+			},
+			Points: []*sdmxpb.SdmxDataPoint{
+				{TimePeriod: "2020", ObservationValue: "1.50"},
+				{TimePeriod: "2021", ObservationValue: "2"},
 			},
 		},
-	})
+	}))
 	if err != nil {
 		t.Fatalf("Format() error = %v", err)
 	}
 
 	want := [][]string{
-		dataCSVHeader(),
+		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
 		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0"},
 		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0"},
 	}
@@ -74,24 +74,56 @@ func TestCSVFormatter_Rows(t *testing.T) {
 	}
 }
 
-func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
+func TestCSVFormatter_MultiEntityHeader(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
-		nil,
+	got, err := formatter.Format(testSdmxResult([]string{"destinationCountry", "sourceCountry"}, []*sdmxpb.SdmxTimeSeries{
 		{
-			VariableMeasured: "Count_Person",
 			Dimensions: map[string]string{
-				"observationAbout": "country/USA",
+				datacommons.ComponentVariableMeasured: "Count_Person",
+				"destinationCountry":                  "country/CAN",
+				"sourceCountry":                       "country/USA",
+				datacommons.ComponentProvenance:       "dc/base",
+			},
+			Points: []*sdmxpb.SdmxDataPoint{
+				{TimePeriod: "2020", ObservationValue: "1"},
 			},
 		},
-	})
+	}))
 	if err != nil {
 		t.Fatalf("Format() error = %v", err)
 	}
 
 	want := [][]string{
-		dataCSVHeader(),
+		testCSVHeader([]string{"destinationCountry", "sourceCountry"}),
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/CAN", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "dc/base", "2020", "1", ""},
+	}
+	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
+		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
+	}
+	if strings.Contains(strings.Split(got, "\r\n")[0], datacommons.ComponentObservationAbout) {
+		t.Fatalf("multi-entity header contains %q: %q", datacommons.ComponentObservationAbout, got)
+	}
+}
+
+func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
+
+	got, err := formatter.Format(testSdmxResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
+		nil,
+		{
+			Dimensions: map[string]string{
+				"variableMeasured": "Count_Person",
+				"observationAbout": "country/USA",
+			},
+		},
+	}))
+	if err != nil {
+		t.Fatalf("Format() error = %v", err)
+	}
+
+	want := [][]string{
+		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
 		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
@@ -102,14 +134,16 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
 
-	got, err := formatter.Format([]*sdmxpb.SdmxObservation{
+	got, err := formatter.Format(testSdmxResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
 		{
-			VariableMeasured: "Count,\"Person\"",
-			DatesAndValues: []*sdmxpb.SdmxDateValue{
-				{Date: "2020", Value: "foo,bar"},
+			Dimensions: map[string]string{
+				"variableMeasured": "Count,\"Person\"",
+			},
+			Points: []*sdmxpb.SdmxDataPoint{
+				{TimePeriod: "2020", ObservationValue: "foo,bar"},
 			},
 		},
-	})
+	}))
 	if err != nil {
 		t.Fatalf("Format() error = %v", err)
 	}
@@ -118,11 +152,45 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	}
 
 	want := [][]string{
-		dataCSVHeader(),
+		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
 		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func testSdmxResult(observationProperties []string, series []*sdmxpb.SdmxTimeSeries) *sdmxpb.SdmxDataResult {
+	components := datacommons.DataComponentsForObservationProperties(observationProperties)
+	result := &sdmxpb.SdmxDataResult{
+		Shape: &sdmxpb.SdmxDataShape{
+			Components: make([]*sdmxpb.SdmxComponent, 0, len(components)),
+		},
+		Series: series,
+	}
+	for _, component := range components {
+		result.Shape.Components = append(result.Shape.Components, &sdmxpb.SdmxComponent{
+			Id:   component.ID,
+			Kind: testProtoComponentKind(component.Kind),
+		})
+	}
+	return result
+}
+
+func testCSVHeader(observationProperties []string) []string {
+	return dataCSVHeader(datacommons.DataComponentsForObservationProperties(observationProperties))
+}
+
+func testProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponentKind {
+	switch kind {
+	case datacommons.ComponentKindDimension:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_DIMENSION
+	case datacommons.ComponentKindMeasure:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_MEASURE
+	case datacommons.ComponentKindAttribute:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE
+	default:
+		return sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_UNSPECIFIED
 	}
 }
 

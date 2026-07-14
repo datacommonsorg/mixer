@@ -16,6 +16,7 @@ package datasources
 
 import (
 	"context"
+	"fmt"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -28,6 +29,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -207,13 +210,40 @@ func (ds *DataSources) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (
 		func(all []*sdmxpb.SdmxDataResult) (*sdmxpb.SdmxDataResult, error) {
 			res := &sdmxpb.SdmxDataResult{}
 			for _, result := range all {
-				if result != nil && result.Observations != nil {
-					res.Observations = append(res.Observations, result.Observations...)
+				if result == nil {
+					continue
+				}
+				if result.GetShape() == nil && len(result.GetSeries()) > 0 {
+					return nil, fmt.Errorf("SdmxData: data result missing shape")
+				}
+				if result.GetShape() != nil {
+					if res.Shape == nil {
+						res.Shape = result.GetShape()
+					} else if !sameSdmxShape(res.Shape, result.GetShape()) {
+						return nil, status.Error(codes.InvalidArgument, "SdmxData: incompatible data shapes")
+					}
+				}
+				if result.Series != nil {
+					res.Series = append(res.Series, result.Series...)
 				}
 			}
 			return res, nil
 		},
 	)
+}
+
+func sameSdmxShape(a *sdmxpb.SdmxDataShape, b *sdmxpb.SdmxDataShape) bool {
+	aComponents := a.GetComponents()
+	bComponents := b.GetComponents()
+	if len(aComponents) != len(bComponents) {
+		return false
+	}
+	for i := range aComponents {
+		if aComponents[i].GetId() != bComponents[i].GetId() || aComponents[i].GetKind() != bComponents[i].GetKind() {
+			return false
+		}
+	}
+	return true
 }
 
 func (ds *DataSources) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
