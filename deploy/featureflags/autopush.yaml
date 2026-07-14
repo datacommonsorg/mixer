@@ -8,4 +8,3 @@ flags:
   SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
   UseMultiEntitySchema: true
   EnableSDMXDataApi: true
-  EnableSpannerSearchEmbeddings: true
