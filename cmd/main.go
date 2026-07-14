@@ -599,7 +599,8 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 			errStr := err.Error()
 			return strings.Contains(errStr, "Property graph not found") ||
 				strings.Contains(errStr, "Table not found") ||
-				strings.Contains(errStr, "does not exist")
+				strings.Contains(errStr, "does not exist") ||
+				strings.Contains(errStr, "Database not found")
 		}
 
 		s.RegisterLifecycle("topic-cache",
