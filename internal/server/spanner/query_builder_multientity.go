@@ -24,6 +24,8 @@ import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type multiEntityQueryBuilder struct {
@@ -289,132 +291,146 @@ func (b *multiEntityQueryBuilder) GetFilteredTopicChildrenQuery(nodes []string, 
 	}, nil
 }
 
-// kgPredicateToSpannerColumn maps Knowledge Graph predicates to physical Spanner column names.
-var kgPredicateToSpannerColumn = map[string]string{
-	"measurementMethod": "measurement_method",
-	"observationAbout":  "entity1",
-	"observationPeriod": "observation_period",
-	"provenance":        "provenance",
-	"unit":              "unit",
-}
-
 var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 
 // GetSdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.ConstraintList,
-	entityMappings map[string]map[string]string,
+	entitySlotsByStatVar map[string]map[string]string,
 ) (*spanner.Statement, error) {
-	stmts := b.statements
-	// Validate all constraint keys to prevent SQL Injection, and ensure lists are not nil
-	for reqKey, list := range constraints {
-		if !constraintKeyRegex.MatchString(reqKey) {
-			return nil, fmt.Errorf("GetSdmxObservationsQuery: invalid constraint key %q", reqKey)
-		}
-		if list == nil {
-			return nil, fmt.Errorf("GetSdmxObservationsQuery: nil constraint list for key %q", reqKey)
-		}
+	compiled, err := compileSdmxConstraints(constraints, entitySlotsByStatVar)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
-
-	variables := []string{}
-	if list, ok := constraints["variableMeasured"]; ok {
-		variables = list.Values
-	}
-	if len(variables) == 0 {
-		return nil, fmt.Errorf("GetSdmxObservationsQuery: variableMeasured must be specified")
-	}
-
-	sqlSelect := stmts.getSdmxObs
-
-	params := map[string]interface{}{}
-	varBranches := []string{}
-
-	// Collect and sort constraint keys to ensure deterministic SQL query generation
-	var constraintKeys []string
-	for reqKey := range constraints {
-		if reqKey == "variableMeasured" {
-			continue
-		}
-		constraintKeys = append(constraintKeys, reqKey)
-	}
-	sort.Strings(constraintKeys)
-
-	// Pre-bind constraint values to parameters
-	for _, reqKey := range constraintKeys {
-		params[reqKey] = constraints[reqKey].Values
-	}
-
-	for _, varDcid := range variables {
-		varClauses := []string{fmt.Sprintf("t.variable_measured = %q", varDcid)}
-		mapping := entityMappings[varDcid]
-
-		for _, reqKey := range constraintKeys {
-			// Check if this constraint key (representing a KG predicate) maps to a dynamic entity slot
-			if slot, ok := mapping[reqKey]; ok {
-				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", slot, reqKey))
-			} else {
-				// Map to static Spanner column, or fall back to searching inside facet JSON
-				col := kgPredicateToSpannerColumn[reqKey]
-				if col == "" {
-					varClauses = append(varClauses, fmt.Sprintf("JSON_VALUE(t.facet, '$.%s') IN UNNEST(@%s)", reqKey, reqKey))
-				} else {
-					varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", col, reqKey))
-				}
-			}
-		}
-		varBranches = append(varBranches, "("+strings.Join(varClauses, " AND ")+")")
-	}
-
-	sql := sqlSelect + strings.Join(varBranches, " OR ")
 
 	return &spanner.Statement{
-		SQL:    sql,
-		Params: params,
+		SQL:    b.statements.getSdmxObs + compiled.where,
+		Params: compiled.params,
 	}, nil
 }
 
-// GetSdmxAvailabilityQuery builds the first SDMX availability lookup.
+type compiledSdmxConstraints struct {
+	where      string
+	params     map[string]interface{}
+	statVarIDs []string
+}
+
+func compileSdmxConstraints(
+	constraints map[string]*sdmxpb.ConstraintList,
+	entitySlotsByStatVar map[string]map[string]string,
+) (*compiledSdmxConstraints, error) {
+	if constraints == nil {
+		return nil, status.Error(codes.InvalidArgument, "SDMX request constraints cannot be nil")
+	}
+	for componentID, list := range constraints {
+		if !constraintKeyRegex.MatchString(componentID) {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", componentID)
+		}
+		if list == nil || len(list.GetValues()) == 0 {
+			return nil, status.Errorf(codes.InvalidArgument, "SDMX component filter %q must have at least one value", componentID)
+		}
+		for _, value := range list.GetValues() {
+			if strings.TrimSpace(value) == "" {
+				return nil, status.Errorf(codes.InvalidArgument, "SDMX component filter %q contains an empty value", componentID)
+			}
+		}
+	}
+
+	variableMeasured, ok := constraints["variableMeasured"]
+	if !ok || len(variableMeasured.GetValues()) == 0 {
+		return nil, status.Error(codes.InvalidArgument, "SDMX component filter variableMeasured must be specified")
+	}
+	statVarIDs := sortedUniqueStrings(variableMeasured.GetValues())
+
+	componentIDs := []string{}
+	for componentID := range constraints {
+		if componentID != "variableMeasured" {
+			componentIDs = append(componentIDs, componentID)
+		}
+	}
+	sort.Strings(componentIDs)
+
+	params := map[string]interface{}{}
+	for _, componentID := range componentIDs {
+		params[componentID] = constraints[componentID].GetValues()
+	}
+
+	statVarBranches := make([]string, 0, len(statVarIDs))
+	for _, statVarID := range statVarIDs {
+		clauses := []string{fmt.Sprintf("t.variable_measured = %q", statVarID)}
+		entitySlots := entitySlotsByStatVar[statVarID]
+		for _, componentID := range componentIDs {
+			spannerColumn, ok := sdmxDataFilterColumn(componentID, entitySlots)
+			if !ok {
+				return nil, status.Errorf(codes.InvalidArgument, "unsupported SDMX component filter %q", componentID)
+			}
+			clauses = append(clauses, sdmxAllowedValuesClause(spannerColumn, componentID))
+		}
+		statVarBranches = append(statVarBranches, "("+strings.Join(clauses, " AND ")+")")
+	}
+
+	return &compiledSdmxConstraints{
+		where:      strings.Join(statVarBranches, " OR "),
+		params:     params,
+		statVarIDs: statVarIDs,
+	}, nil
+}
+
+func sdmxAllowedValuesClause(spannerColumn string, parameter string) string {
+	return fmt.Sprintf("t.%s IN UNNEST(@%s)", spannerColumn, parameter)
+}
+
+// GetSdmxAvailabilityQuery builds the SDMX availability lookup.
 func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	req *sdmxpb.SdmxAvailabilityQuery,
+	entitySlotsByStatVar map[string]map[string]string,
 ) (*spanner.Statement, error) {
-	stmts := b.statements
 	if req == nil {
-		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: request cannot be nil")
+		return nil, status.Error(codes.InvalidArgument, "SDMX availability request cannot be nil")
 	}
-	valueExpr, err := sdmxAvailabilityValueExpression(req.ComponentId)
+	compiled, err := compileSdmxConstraints(req.GetConstraints(), entitySlotsByStatVar)
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
+	}
+	valueExpression, err := sdmxAvailabilityValueExpression(req.GetComponentId(), compiled.statVarIDs, entitySlotsByStatVar)
 	if err != nil {
 		return nil, err
 	}
-	if req.Constraints == nil {
-		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: request constraints cannot be nil")
-	}
-
-	for key := range req.Constraints {
-		if key != "variableMeasured" {
-			return nil, fmt.Errorf("GetSdmxAvailabilityQuery: unsupported constraint key %q", key)
-		}
-	}
-	list, ok := req.Constraints["variableMeasured"]
-	if !ok || list == nil || len(list.GetValues()) == 0 {
-		return nil, fmt.Errorf("GetSdmxAvailabilityQuery: variableMeasured must be specified")
-	}
-	variables := list.GetValues()
 
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(stmts.getSdmxAvailability, valueExpr),
-		Params: map[string]interface{}{"variableMeasured": variables},
+		SQL:    fmt.Sprintf(b.statements.getSdmxAvailability, valueExpression, compiled.where),
+		Params: compiled.params,
 	}, nil
 }
 
-func sdmxAvailabilityValueExpression(componentID string) (string, error) {
-	switch componentID {
-	case "variableMeasured":
-		return "t.variable_measured", nil
-	default:
-		col := kgPredicateToSpannerColumn[componentID]
-		if col == "" {
-			return "", fmt.Errorf("GetSdmxAvailabilityQuery: unsupported component %q", componentID)
-		}
-		return "t." + col, nil
+func sdmxAvailabilityValueExpression(
+	componentID string,
+	statVarIDs []string,
+	entitySlotsByStatVar map[string]map[string]string,
+) (string, error) {
+	if len(statVarIDs) == 0 {
+		return "", status.Error(codes.InvalidArgument, "SDMX availability requires at least one variableMeasured value")
 	}
+	if componentID == "variableMeasured" {
+		return "t.variable_measured", nil
+	}
+
+	spannerColumn := ""
+	for _, statVarID := range statVarIDs {
+		column, ok := sdmxDataFilterColumn(componentID, entitySlotsByStatVar[statVarID])
+		if !ok {
+			return "", status.Errorf(codes.InvalidArgument, "unsupported SDMX availability component %q for variableMeasured %q", componentID, statVarID)
+		}
+		if spannerColumn == "" {
+			spannerColumn = column
+			continue
+		}
+		if column != spannerColumn {
+			return "", status.Errorf(codes.InvalidArgument, "SDMX availability component %q has incompatible entity mappings across variableMeasured values %v", componentID, statVarIDs)
+		}
+	}
+	if spannerColumn == "" {
+		return "", status.Errorf(codes.InvalidArgument, "unsupported SDMX availability component %q", componentID)
+	}
+	return "t." + spannerColumn, nil
 }
