@@ -372,7 +372,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		getSdmxAvailability: fmt.Sprintf(`		SELECT DISTINCT %%[1]s AS value
 		FROM %[1]s t
-		WHERE t.variable_measured IN UNNEST(@variableMeasured)
+		WHERE (%%[2]s)
 			AND %%[1]s IS NOT NULL
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
