@@ -30,6 +30,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 type sdmxDataStream struct {
@@ -67,8 +68,10 @@ func (s *sdmxDataStream) RecvMsg(any) error {
 
 type sdmxDataSource struct {
 	datasource.DataSource
-	result             *sdmxpb.SdmxDataResult
-	availabilityResult *sdmxpb.SdmxAvailabilityResult
+	result              *sdmxpb.SdmxDataResult
+	availabilityResult  *sdmxpb.SdmxAvailabilityResult
+	dataRequest         *sdmxpb.SdmxDataQuery
+	availabilityRequest *sdmxpb.SdmxAvailabilityQuery
 }
 
 func (ds *sdmxDataSource) Type() datasource.DataSourceType {
@@ -80,10 +83,12 @@ func (ds *sdmxDataSource) Id() string {
 }
 
 func (ds *sdmxDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	ds.dataRequest = req
 	return ds.result, nil
 }
 
 func (ds *sdmxDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	ds.availabilityRequest = req
 	return ds.availabilityResult, nil
 }
 
@@ -206,6 +211,111 @@ func TestV3SdmxAvailabilityWrapsServiceResponse(t *testing.T) {
 	}
 	if !strings.Contains(string(body.GetData()), "\"country/USA\"") {
 		t.Fatalf("Data missing value: %s", string(body.GetData()))
+	}
+}
+
+func TestSdmxDataFeatureFlagPrecedesValidation(t *testing.T) {
+	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: false}}
+
+	_, err := server.SdmxData(context.Background(), nil)
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX API is not enabled"; got != want {
+		t.Fatalf("SdmxData() message = %q, want %q", got, want)
+	}
+}
+
+func TestSdmxDataForwardsStructuredRequest(t *testing.T) {
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout})}
+	server := newSdmxHandlerTestServer(ds)
+	request := &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.ConstraintList{
+			datacommons.ComponentVariableMeasured: {Values: []string{"Count_Person"}},
+		},
+	}
+
+	got, err := server.SdmxData(context.Background(), request)
+	if err != nil {
+		t.Fatalf("SdmxData() error = %v", err)
+	}
+	if !proto.Equal(ds.dataRequest, request) {
+		t.Fatalf("SdmxData() request = %v, want %v", ds.dataRequest, request)
+	}
+	if !proto.Equal(got, ds.result) {
+		t.Fatalf("SdmxData() response = %v, want %v", got, ds.result)
+	}
+}
+
+func TestSdmxDataValidation(t *testing.T) {
+	server := newSdmxHandlerTestServer(&sdmxDataSource{})
+
+	_, err := server.SdmxData(context.Background(), nil)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("SdmxData(nil) code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+
+	server.dispatcher = nil
+	_, err = server.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})
+	if status.Code(err) != codes.Internal {
+		t.Fatalf("SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+	if got, want := status.Convert(err).Message(), "Internal server error occurred while processing the request."; got != want {
+		t.Fatalf("SdmxData() message = %q, want %q", got, want)
+	}
+}
+
+func TestSdmxAvailabilityFeatureFlagPrecedesValidation(t *testing.T) {
+	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: false}}
+
+	_, err := server.SdmxAvailability(context.Background(), nil)
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX API is not enabled"; got != want {
+		t.Fatalf("SdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
+func TestSdmxAvailabilityForwardsStructuredRequest(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+	}
+	server := newSdmxHandlerTestServer(ds)
+	request := &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.ConstraintList{
+			datacommons.ComponentVariableMeasured: {Values: []string{"Count_Person"}},
+		},
+	}
+
+	got, err := server.SdmxAvailability(context.Background(), request)
+	if err != nil {
+		t.Fatalf("SdmxAvailability() error = %v", err)
+	}
+	if !proto.Equal(ds.availabilityRequest, request) {
+		t.Fatalf("SdmxAvailability() request = %v, want %v", ds.availabilityRequest, request)
+	}
+	if !proto.Equal(got, ds.availabilityResult) {
+		t.Fatalf("SdmxAvailability() response = %v, want %v", got, ds.availabilityResult)
+	}
+}
+
+func TestSdmxAvailabilityValidation(t *testing.T) {
+	server := newSdmxHandlerTestServer(&sdmxDataSource{})
+
+	_, err := server.SdmxAvailability(context.Background(), nil)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("SdmxAvailability(nil) code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+
+	server.dispatcher = nil
+	_, err = server.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
+	if status.Code(err) != codes.Internal {
+		t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
+	}
+	if got, want := status.Convert(err).Message(), "Internal server error occurred while processing the request."; got != want {
+		t.Fatalf("SdmxAvailability() message = %q, want %q", got, want)
 	}
 }
 

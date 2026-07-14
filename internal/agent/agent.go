@@ -18,6 +18,7 @@ package agent
 import (
 	"context"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
@@ -46,7 +47,7 @@ const (
 	nodePropertiesQuery = "->[name, typeOf]"
 )
 
-// Mixer defines the strict subset of Mixer V2 API capabilities
+// Mixer defines the strict subset of Mixer API capabilities
 // required by the agent package in-process.
 type Mixer interface {
 	// V2Resolve resolves entities matching coordinates, Wikidata IDs, description names,
@@ -61,6 +62,12 @@ type Mixer interface {
 
 	// V2BulkVariableInfo fetches summary metadata for statistical variables.
 	V2BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
+
+	// SdmxData fetches structured SDMX data.
+	SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
+
+	// SdmxAvailability fetches available SDMX component values.
+	SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 }
 
 // Service orchestrates the aggregation and formatting of lower-level API data in response
