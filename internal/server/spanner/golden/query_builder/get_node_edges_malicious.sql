@@ -3,7 +3,7 @@
 			m.subject_id = 'foo OR 1=1;')<-[e:Edge
 		WHERE
 			e.predicate = 'foo OR 1=1;']-(n:Node),
-		(n)-[filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'foo OR 1=1;'
 			AND filter0.object_id IN ('foo OR 1=1;','foo OR 1=1;:OG7012T2qe10jzYRBvG6dgUEx5fj7uIxT+RkGvxpn/U=')]->
