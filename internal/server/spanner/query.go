@@ -968,7 +968,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	if err == iterator.Done {
 		sc.dbInitialized.Store(true)
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if isTableNotFoundError(err) {
+	} else if IsTableNotFoundError(err) {
 		if sc.dbInitialized.Load() {
 			return fmt.Errorf("IngestionHistory table disappeared: %w", err)
 		}
@@ -1063,7 +1063,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		// Log slow Spanner queries that timed out or were canceled.
 		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
-		if err != nil && !sc.dbInitialized.Load() && isTableNotFoundError(err) {
+		if err != nil && !sc.dbInitialized.Load() && IsTableNotFoundError(err) {
 			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
 			return nil
 		}
@@ -1284,8 +1284,8 @@ func getGrpcCode(err error) codes.Code {
 	return codes.Unknown
 }
 
-// isTableNotFoundError checks if an error indicates a missing table, property graph, or database.
-func isTableNotFoundError(err error) bool {
+// IsTableNotFoundError checks if an error indicates a missing table, property graph, or database.
+func IsTableNotFoundError(err error) bool {
 	if err == nil {
 		return false
 	}

@@ -104,15 +104,15 @@ func TestIsTableNotFoundError(t *testing.T) {
 	rawErr := status.Error(codes.NotFound, "Database not found: projects/datcom-website-dev/instances/gabe-test-dcp-instance/databases/gabenew-dc-db")
 	wrappedErr := fmt.Errorf("failed to fetch row: %w", rawErr)
 
-	if !isTableNotFoundError(wrappedErr) {
-		t.Errorf("Expected isTableNotFoundError to return true for wrapped codes.NotFound error, but got false")
+	if !IsTableNotFoundError(wrappedErr) {
+		t.Errorf("Expected IsTableNotFoundError to return true for wrapped codes.NotFound error, but got false")
 	}
 
 	// Let's also check with InvalidArgument containing "Property graph not found"
 	rawErr2 := status.Error(codes.InvalidArgument, "Property graph not found: DCGraph")
 	wrappedErr2 := fmt.Errorf("failed to fetch row: %w", rawErr2)
 
-	if !isTableNotFoundError(wrappedErr2) {
-		t.Errorf("Expected isTableNotFoundError to return true for wrapped codes.InvalidArgument property graph error, but got false")
+	if !IsTableNotFoundError(wrappedErr2) {
+		t.Errorf("Expected IsTableNotFoundError to return true for wrapped codes.InvalidArgument property graph error, but got false")
 	}
 }

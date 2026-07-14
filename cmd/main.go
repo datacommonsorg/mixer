@@ -26,7 +26,6 @@ import (
 	"os"
 	"runtime"
 	"runtime/pprof"
-	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
@@ -592,21 +591,10 @@ func main() {
 
 func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
 	if tcm != nil {
-		isDatabaseUninitializedError := func(err error) bool {
-			if err == nil {
-				return false
-			}
-			errStr := err.Error()
-			return strings.Contains(errStr, "Property graph not found") ||
-				strings.Contains(errStr, "Table not found") ||
-				strings.Contains(errStr, "does not exist") ||
-				strings.Contains(errStr, "Database not found")
-		}
-
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
-				if err != nil && isDatabaseUninitializedError(err) {
+				if err != nil && spanner.IsTableNotFoundError(err) {
 					slog.Warn("Failed to load topic cache hierarchy on startup because Spanner database is uninitialized (will retry in background)", "error", err)
 					return nil
 				}
@@ -614,7 +602,7 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 			},
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
-				if err != nil && isDatabaseUninitializedError(err) {
+				if err != nil && spanner.IsTableNotFoundError(err) {
 					slog.Warn("Failed to reload topic cache hierarchy because Spanner database is uninitialized", "error", err)
 					return nil
 				}

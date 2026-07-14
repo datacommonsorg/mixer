@@ -238,15 +238,17 @@ func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarc
 		return nil, fmt.Errorf("failed to load topic cache from KG during miss: %w", err)
 	}
 
-	if hierarchy == nil || len(hierarchy.GetTopics()) == 0 {
+	if hierarchy == nil {
+		hierarchy = &pb.TopicHierarchy{}
+	}
+	if len(hierarchy.GetTopics()) == 0 {
 		slog.Warn("Loaded empty topic hierarchy.")
-		return hierarchy, nil
 	}
 
 	m.Update(hierarchy)
 
 	// Populate Redis warm L2 cache
-	if m.redisClient != nil {
+	if m.redisClient != nil && len(hierarchy.GetTopics()) > 0 {
 		if err := m.redisClient.CacheResponse(ctx, redisCacheKeyProto, hierarchy); err != nil {
 			slog.Error("Failed to write topic cache to Redis", "error", err)
 		} else {
