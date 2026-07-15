@@ -31,10 +31,14 @@ func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*sdmxpb.Sdm
 	}, nil
 }
 
-func constraintsFromRESTFilters(filters map[string][]string) map[string]*sdmxpb.ConstraintList {
-	constraints := map[string]*sdmxpb.ConstraintList{}
+func constraintsFromRESTFilters(filters map[string][]string) map[string]*sdmxpb.SdmxComponentConstraint {
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{}
 	for componentID, values := range filters {
-		constraints[componentID] = &sdmxpb.ConstraintList{Values: values}
+		predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+		for _, value := range values {
+			predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+		}
+		constraints[componentID] = &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
 	}
 	return constraints
 }

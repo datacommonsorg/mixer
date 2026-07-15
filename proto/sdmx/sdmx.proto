@@ -29,23 +29,48 @@ message SdmxRestRequest {
 
 // Represents a query for SDMX data.
 message SdmxDataQuery {
-  // Map of constraints where the key is the dimension ID (e.g., "sex", "age")
-  // and the value is a list of allowed values for that dimension.
-  map<string, ConstraintList> constraints = 1;
+  // Map of constraints where the key is the component ID.
+  map<string, SdmxComponentConstraint> constraints = 1;
 }
 
 // Represents a query for SDMX availability.
 message SdmxAvailabilityQuery {
   // Dispatcher/internal component ID to return available values for.
   string component_id = 1;
-  // Map of constraints where the key is the dimension ID and the value is a list of allowed values.
-  map<string, ConstraintList> constraints = 2;
+  // Map of constraints where the key is the component ID.
+  map<string, SdmxComponentConstraint> constraints = 2;
 }
 
-// A list of string values for a constraint.
-message ConstraintList {
-  // The list of allowed values for the constraint dimension.
-  repeated string values = 1;
+// A constraint on an SDMX component.
+message SdmxComponentConstraint {
+  // Predicates on the component value. Multiple predicates are combined with OR.
+  repeated SdmxPredicate predicates = 1;
+
+  // Key is a one-step datacommons property ID on the component like containedIn, typeOf.
+  map<string, SdmxPropertyConstraint> property_constraints = 2;
+}
+
+// A constraint on values reached through a component property.
+message SdmxPropertyConstraint {
+  // Predicates on the property value. Multiple predicates are combined with OR.
+  repeated SdmxPredicate predicates = 1;
+
+  // Whether to use recursive property traversal
+  // For e.g  containedInPlace+ would set property = containedInPlace and transtivie = true 
+  bool transitive = 2;
+}
+
+// A predicate on an SDMX component or property value.
+message SdmxPredicate {
+  // Operator applicable on value. 
+  // Equality is default.
+  SdmxOperator operator = 1;
+
+  string value = 2;
+}
+
+enum SdmxOperator {
+  SDMX_OPERATOR_EQ = 0;
 }
 
 // Internal container for SDMX query results returned by the Dispatcher (after fetching/merging

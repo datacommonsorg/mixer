@@ -202,8 +202,25 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 	}
 }
 
+func validateSdmxConstraints(constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
+	for _, constraint := range constraints {
+		if len(constraint.GetPropertyConstraints()) > 0 {
+			return status.Error(codes.Unimplemented, "SDMX property constraints are not implemented yet")
+		}
+		for _, predicate := range constraint.GetPredicates() {
+			if predicate.GetOperator() != sdmxpb.SdmxOperator_SDMX_OPERATOR_EQ {
+				return status.Error(codes.Unimplemented, "SDMX operators other than EQ are not implemented yet")
+			}
+		}
+	}
+	return nil
+}
+
 // SdmxData handles SDMX Data requests.
 func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	if err := validateSdmxConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxData)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
@@ -218,6 +235,9 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQ
 
 // SdmxAvailability handles SDMX Availability requests.
 func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	if err := validateSdmxConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {

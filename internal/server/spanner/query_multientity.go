@@ -541,7 +541,7 @@ type preparedSdmxShape struct {
 
 func prepareSdmxObservationsQuery(
 	ctx context.Context,
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 	queryBuilder *multiEntityQueryBuilder,
 ) (*preparedSdmxObservationsQuery, error) {
@@ -569,13 +569,13 @@ func prepareSdmxObservationsQuery(
 
 func prepareSdmxShape(
 	ctx context.Context,
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 ) (*preparedSdmxShape, error) {
 	if err := validateSdmxConstraintValues(constraints); err != nil {
 		return nil, err
 	}
-	statVarIDs := sortedUniqueStrings(constraints[datacommons.ComponentVariableMeasured].GetValues())
+	statVarIDs := sortedUniqueStrings(sdmxConstraintValues(constraints[datacommons.ComponentVariableMeasured]))
 
 	arc := &v2.Arc{
 		Out:        true,
@@ -613,18 +613,18 @@ func sdmxSeriesDimensions(
 	return dimensionValues
 }
 
-func validateSdmxConstraintValues(constraints map[string]*sdmxpb.ConstraintList) error {
+func validateSdmxConstraintValues(constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
 	variableMeasured, ok := constraints[datacommons.ComponentVariableMeasured]
-	if !ok || variableMeasured == nil || len(variableMeasured.GetValues()) == 0 {
+	if !ok || len(sdmxConstraintValues(variableMeasured)) == 0 {
 		return status.Error(codes.InvalidArgument, "SDMX component filter variableMeasured must be specified")
 	}
 
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
-		values := constraints[componentID]
-		if values == nil || len(values.GetValues()) == 0 {
+		values := sdmxConstraintValues(constraints[componentID])
+		if len(values) == 0 {
 			return status.Errorf(codes.InvalidArgument, "SDMX component filter %q must have at least one value", componentID)
 		}
-		for _, value := range values.GetValues() {
+		for _, value := range values {
 			if strings.TrimSpace(value) == "" {
 				return status.Errorf(codes.InvalidArgument, "SDMX component filter %q contains an empty value", componentID)
 			}
@@ -634,21 +634,21 @@ func validateSdmxConstraintValues(constraints map[string]*sdmxpb.ConstraintList)
 }
 
 func validateSdmxDataConstraintComponents(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	shape *sdmxpb.SdmxDataShape,
 ) error {
 	return validateSdmxConstraintComponents(constraints, sdmxFilterableDataComponents(shape), "components")
 }
 
 func validateSdmxAvailabilityConstraintComponents(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	shape *sdmxpb.SdmxDataShape,
 ) error {
 	return validateSdmxConstraintComponents(constraints, sdmxFilterableDimensions(shape), "dimensions")
 }
 
 func validateSdmxConstraintComponents(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	filterableComponents map[string]struct{},
 	componentKind string,
 ) error {
@@ -668,7 +668,7 @@ func validateSdmxConstraintComponents(
 }
 
 func validateSdmxRequiredObservationProperty(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	observationProperties []string,
 ) error {
 	for _, observationProperty := range observationProperties {
