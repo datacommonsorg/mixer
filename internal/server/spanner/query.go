@@ -1014,7 +1014,7 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 		return time.Unix(0, val).UTC(), nil
 	}
 	slog.Warn("Spanner staleness timestamp not available. Falling back to default staleness.")
-	return time.Now().Add(-defaultStalenessDuration).UTC(), nil
+	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
 func (sc *spannerDatabaseClient) executeQuery(
