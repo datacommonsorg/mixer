@@ -449,7 +449,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "", false, false)
+	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), nil)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
