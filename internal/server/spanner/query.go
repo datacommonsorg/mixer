@@ -966,9 +966,12 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
 	if err == iterator.Done {
+		sc.dbInitialized.Store(true)
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
-		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
+	} else if IsTableNotFoundError(err) {
+		if sc.dbInitialized.Load() {
+			return fmt.Errorf("IngestionHistory table disappeared: %w", err)
+		}
 		warnMsg = "IngestionHistory table not found."
 	}
 
@@ -981,6 +984,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
+	sc.dbInitialized.Store(true)
 
 	var nullTime spanner.NullTime
 	if err := row.Column(0, &nullTime); err != nil {
@@ -1016,7 +1020,7 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
 	}
-	slog.Error("Spanner staleness timestamp not available")
+	slog.Warn("Spanner staleness timestamp not available. Falling back to default staleness.")
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
@@ -1066,6 +1070,10 @@ func (sc *spannerDatabaseClient) executeQuery(
 		// Log slow Spanner queries that timed out or were canceled.
 		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
+		if err != nil && !sc.dbInitialized.Load() && IsTableNotFoundError(err) {
+			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
+			return nil
+		}
 		return err
 	}
 
@@ -1269,4 +1277,34 @@ func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Durati
 		allArgs = append(allArgs, "error", err.Error())
 		slog.ErrorContext(ctx, TimeoutMessage, allArgs...)
 	}
+}
+
+// getGrpcCode unwraps the error chain recursively to retrieve the gRPC status code.
+func getGrpcCode(err error) codes.Code {
+	for err != nil {
+		code := spanner.ErrCode(err)
+		if code != codes.Unknown {
+			return code
+		}
+		err = errors.Unwrap(err)
+	}
+	return codes.Unknown
+}
+
+// IsTableNotFoundError checks if an error indicates a missing table, property graph, or database.
+func IsTableNotFoundError(err error) bool {
+	if err == nil {
+		return false
+	}
+	code := getGrpcCode(err)
+	if code == codes.NotFound {
+		return true
+	}
+	if code == codes.InvalidArgument {
+		errStr := err.Error()
+		return strings.Contains(errStr, "Table not found") ||
+			strings.Contains(errStr, "Property graph not found") ||
+			strings.Contains(errStr, "Database not found")
+	}
+	return false
 }

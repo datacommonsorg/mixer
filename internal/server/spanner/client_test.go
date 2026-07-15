@@ -15,9 +15,12 @@
 package spanner
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func TestCreateSpannerConfig(t *testing.T) {
@@ -93,5 +96,23 @@ database: default-database
 				t.Errorf("createSpannerConfig() mismatch (-want +got):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestIsTableNotFoundError(t *testing.T) {
+	// Let's create a dummy gRPC status error that mimics Spanner's NotFound error
+	rawErr := status.Error(codes.NotFound, "Database not found: projects/datcom-website-dev/instances/gabe-test-dcp-instance/databases/gabenew-dc-db")
+	wrappedErr := fmt.Errorf("failed to fetch row: %w", rawErr)
+
+	if !IsTableNotFoundError(wrappedErr) {
+		t.Errorf("Expected IsTableNotFoundError to return true for wrapped codes.NotFound error, but got false")
+	}
+
+	// Let's also check with InvalidArgument containing "Property graph not found"
+	rawErr2 := status.Error(codes.InvalidArgument, "Property graph not found: DCGraph")
+	wrappedErr2 := fmt.Errorf("failed to fetch row: %w", rawErr2)
+
+	if !IsTableNotFoundError(wrappedErr2) {
+		t.Errorf("Expected IsTableNotFoundError to return true for wrapped codes.InvalidArgument property graph error, but got false")
 	}
 }
