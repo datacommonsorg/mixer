@@ -171,6 +171,29 @@ flags:
 			want:    nil,
 			wantErr: true,
 		},
+		{
+			name: "validation error - UseSpannerKeyValueStore without UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: false
+  UseSpannerKeyValueStore: true
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "valid UseSpannerKeyValueStore with UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: true
+  UseSpannerKeyValueStore: true
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.UseSpannerGraph = true
+				f.UseSpannerKeyValueStore = true
+			}),
+			wantErr: false,
+		},
 	}
 
 	for _, tc := range testCases {

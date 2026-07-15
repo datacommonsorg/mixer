@@ -387,7 +387,7 @@ OR CreationTimestamp > (
 	getKeyValueStoreData: `		SELECT
 			key,
 			provenance,
-			TO_JSON_STRING(value) AS value,
+			TO_JSON_STRING(value) AS value
 		FROM
 			KeyValueStore
 		WHERE

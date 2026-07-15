@@ -105,6 +105,9 @@ func (f *Flags) validateFlagValues() error {
 	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
 	}
+	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
+		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
+	}
 	return nil
 }
 
