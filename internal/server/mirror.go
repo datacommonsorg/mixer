@@ -96,11 +96,8 @@ func (s *Server) mirrorV3(
 		mirrorCtx, cancel := context.WithTimeout(baseMirrorCtx, spanner.ApiTimeout)
 		defer cancel()
 
-		// First call, without skipping cache
+		// Call without skipping cache to simulate production behavior, which will have a cache.
 		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, false /* skipCache */)
-		// Second call, skipping cache.
-		// Must be run second so that the cache isn't always warm.
-		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, true /* skipCache */)
 	}()
 }
 
