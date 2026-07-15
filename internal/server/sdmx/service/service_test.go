@@ -275,6 +275,7 @@ func TestDataCSVSuccess(t *testing.T) {
 				},
 				Attributes: map[string]string{
 					datacommons.ComponentScalingFactor: "0",
+					datacommons.ComponentFacetID:       "stored-facet-id",
 				},
 				Points: []*sdmxpb.SdmxDataPoint{
 					{TimePeriod: "2020", ObservationValue: "1.50"},
@@ -295,8 +296,8 @@ func TestDataCSVSuccess(t *testing.T) {
 		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
 	}
 
-	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" +
-		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0\r\n"
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n" +
+		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0,stored-facet-id\r\n"
 	if got := string(response.Body); got != want {
 		t.Errorf("Response body = %q, want %q", got, want)
 	}
@@ -327,7 +328,7 @@ func TestDataEmptyResult(t *testing.T) {
 		t.Fatalf("Data() error = %v", err)
 	}
 	body := string(response.Body)
-	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n"
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n"
 	if body != want {
 		t.Errorf("Response body = %q, want %q", body, want)
 	}
@@ -344,7 +345,7 @@ func TestDataCSVEmptyResult(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
-	if got := string(response.Body); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" {
+	if got := string(response.Body); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n" {
 		t.Errorf("Response body = %q, want header-only CSV", got)
 	}
 }

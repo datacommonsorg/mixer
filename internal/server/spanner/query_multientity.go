@@ -511,6 +511,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 				populateSdmxFacetComponents(series, m)
 			}
 		}
+		populateSdmxFacetID(series, r.FacetId)
 
 		result.Series = append(result.Series, series)
 	}
@@ -692,6 +693,13 @@ func populateSdmxFacetComponents(series *sdmxpb.SdmxTimeSeries, facets map[strin
 			series.Attributes[key] = stringValue
 		}
 	}
+}
+
+func populateSdmxFacetID(series *sdmxpb.SdmxTimeSeries, facetID string) {
+	if series.Attributes == nil {
+		series.Attributes = map[string]string{}
+	}
+	series.Attributes[datacommons.ComponentFacetID] = facetID
 }
 
 func sdmxFacetComponentKind(componentID string) (datacommons.ComponentKind, bool) {

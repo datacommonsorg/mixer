@@ -523,7 +523,7 @@ type SdmxTimeSeries struct {
 
 	// Series-level SDMX dimensions, including variableMeasured, entity dimensions, and provenance.
 	Dimensions map[string]string `protobuf:"bytes,1,rep,name=dimensions,proto3" json:"dimensions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// Series-level SDMX attributes, currently scalingFactor.
+	// Series-level SDMX attributes, including scalingFactor and facetId.
 	Attributes map[string]string `protobuf:"bytes,2,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Time/value points for this series.
 	Points []*SdmxDataPoint `protobuf:"bytes,3,rep,name=points,proto3" json:"points,omitempty"`

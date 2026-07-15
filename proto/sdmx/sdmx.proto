@@ -95,7 +95,7 @@ message SdmxTimeSeries {
   // Series-level SDMX dimensions, including variableMeasured, entity dimensions, and provenance.
   map<string, string> dimensions = 1;
 
-  // Series-level SDMX attributes, currently scalingFactor.
+  // Series-level SDMX attributes, including scalingFactor and facetId.
   map<string, string> attributes = 2;
 
   // Time/value points for this series.

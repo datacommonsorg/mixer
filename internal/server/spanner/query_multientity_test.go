@@ -883,6 +883,7 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		datacommons.ComponentProvenance:        "dc/dropped",
 		datacommons.ComponentTimePeriod:        "2020",
 		datacommons.ComponentObservationValue:  "99",
+		datacommons.ComponentFacetID:           "json-facet-id",
 		"customFacet":                          "drop",
 		"nestedFacet":                          map[string]interface{}{"drop": "me"},
 	})
@@ -914,6 +915,62 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		if got := series.Attributes[key]; got != want {
 			t.Fatalf("Attributes[%q] = %q, want %q", key, got, want)
 		}
+	}
+}
+
+func TestPopulateSdmxFacetID(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes map[string]string
+		want       map[string]string
+	}{
+		{
+			name: "without existing attributes",
+			want: map[string]string{
+				datacommons.ComponentFacetID: "stored-facet-id",
+			},
+		},
+		{
+			name: "with existing attributes",
+			attributes: map[string]string{
+				datacommons.ComponentScalingFactor: "0",
+			},
+			want: map[string]string{
+				datacommons.ComponentScalingFactor: "0",
+				datacommons.ComponentFacetID:       "stored-facet-id",
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			series := &sdmxpb.SdmxTimeSeries{Attributes: tc.attributes}
+
+			populateSdmxFacetID(series, "stored-facet-id")
+
+			if diff := cmp.Diff(tc.want, series.Attributes); diff != "" {
+				t.Fatalf("Attributes mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestSdmxDataShapeFacetID(t *testing.T) {
+	shape := sdmxDataShape([]string{datacommons.ComponentObservationAbout})
+	var facetIDComponent *sdmxpb.SdmxComponent
+	for _, component := range shape.GetComponents() {
+		if component.GetId() == datacommons.ComponentFacetID {
+			facetIDComponent = component
+			break
+		}
+	}
+
+	if facetIDComponent == nil {
+		t.Fatal("shape does not contain facet ID")
+	}
+	if got := facetIDComponent.GetKind(); got != sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE {
+		t.Fatalf("facet ID component kind = %v, want attribute", got)
+	}
+	if got := shape.GetComponents()[len(shape.GetComponents())-1].GetId(); got != datacommons.ComponentFacetID {
+		t.Fatalf("last component = %q, want %q", got, datacommons.ComponentFacetID)
 	}
 }
 
@@ -1283,6 +1340,7 @@ func TestValidateSdmxAvailabilityComponent(t *testing.T) {
 		{name: "time period", componentID: datacommons.ComponentTimePeriod, wantError: true},
 		{name: "measure", componentID: datacommons.ComponentObservationValue, wantError: true},
 		{name: "attribute", componentID: datacommons.ComponentScalingFactor, wantError: true},
+		{name: "facet ID attribute", componentID: datacommons.ComponentFacetID, wantError: true},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			err := validateSdmxAvailabilityComponent(tt.componentID, shape)

@@ -350,6 +350,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
+			name:        "facet ID unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[facetId]=123"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
 			name:        "observation value unsupported",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[OBS_VALUE]=10"),
 			wantCode:    codes.Unimplemented,

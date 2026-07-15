@@ -30,6 +30,7 @@ const (
 	ComponentObservationPeriod = "observationPeriod"
 	ComponentProvenance        = "provenance"
 	ComponentScalingFactor     = "scalingFactor"
+	ComponentFacetID           = "facetId"
 
 	// FallbackNotAvailable is used across datasets to represent missing constraints.
 	FallbackNotAvailable = "NotApplicable"
@@ -52,6 +53,7 @@ var DataComponents = []DataComponent{
 	{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
 	{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
 	{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
+	{ID: ComponentFacetID, Kind: ComponentKindAttribute},
 }
 
 func DataComponentsForObservationProperties(observationProperties []string) []DataComponent {
@@ -69,6 +71,7 @@ func DataComponentsForObservationProperties(observationProperties []string) []Da
 		DataComponent{ID: ComponentTimePeriod, Kind: ComponentKindDimension},
 		DataComponent{ID: ComponentObservationValue, Kind: ComponentKindMeasure},
 		DataComponent{ID: ComponentScalingFactor, Kind: ComponentKindAttribute},
+		DataComponent{ID: ComponentFacetID, Kind: ComponentKindAttribute},
 	)
 	return components
 }
