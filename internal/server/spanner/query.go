@@ -1049,7 +1049,6 @@ func (sc *spannerDatabaseClient) executeQuery(
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)
 		startTime := time.Now()
-
 		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()
 		err := handleRows(iter)
