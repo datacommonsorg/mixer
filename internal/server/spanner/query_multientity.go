@@ -572,6 +572,9 @@ func prepareSdmxShape(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 ) (*preparedSdmxShape, error) {
+	if err := datacommons.ValidateSupportedConstraints(constraints); err != nil {
+		return nil, err
+	}
 	if err := validateSdmxConstraintValues(constraints); err != nil {
 		return nil, err
 	}

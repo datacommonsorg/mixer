@@ -844,6 +844,77 @@ func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
+func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
+	tests := []struct {
+		name       string
+		constraint *sdmxpb.SdmxComponentConstraint
+		want       string
+	}{
+		{
+			name: "property constraint",
+			constraint: &sdmxpb.SdmxComponentConstraint{
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: "var1"}},
+				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "StatisticalVariable"}}},
+				},
+			},
+			want: "SDMX property constraints are not implemented yet",
+		},
+		{
+			name: "unsupported operator",
+			constraint: &sdmxpb.SdmxComponentConstraint{
+				Predicates: []*sdmxpb.SdmxPredicate{{
+					Operator: sdmxpb.SdmxOperator(1),
+					Value:    "var1",
+				}},
+			},
+			want: "SDMX operators other than EQ are not implemented yet",
+		},
+	}
+	endpoints := []struct {
+		name string
+		call func(*multiEntityClient, *sdmxpb.SdmxComponentConstraint) error
+	}{
+		{
+			name: "data",
+			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+				_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						datacommons.ComponentVariableMeasured: constraint,
+					},
+				})
+				return err
+			},
+		},
+		{
+			name: "availability",
+			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+				_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: datacommons.ComponentVariableMeasured,
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						datacommons.ComponentVariableMeasured: constraint,
+					},
+				})
+				return err
+			},
+		},
+	}
+
+	for _, endpoint := range endpoints {
+		for _, tt := range tests {
+			t.Run(endpoint.name+"/"+tt.name, func(t *testing.T) {
+				err := endpoint.call(&multiEntityClient{}, tt.constraint)
+				if status.Code(err) != codes.Unimplemented {
+					t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+				}
+				if got := status.Convert(err).Message(); got != tt.want {
+					t.Fatalf("SDMX backend message = %q, want %q", got, tt.want)
+				}
+			})
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing.T) {
 	tests := []struct {
 		name       string
