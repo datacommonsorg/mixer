@@ -45,7 +45,27 @@ func (m *mockNodeFetcher) NodeFetchAll(ctx context.Context, req *pbv2.NodeReques
 func TestTopicCacheManagerInMemory(t *testing.T) {
 	ctx := context.Background()
 
-	fetcher := &mockNodeFetcher{}
+	resps := map[string]*pbv2.LinkedGraph{
+		"Topic": {
+			Arcs: map[string]*pbv2.Nodes{
+				"typeOf": {
+					Nodes: []*pb.EntityInfo{
+						{Dcid: "dc/topic/Root", Name: "Root Topic"},
+					},
+				},
+			},
+		},
+		"dc/topic/Root": {
+			Arcs: map[string]*pbv2.Nodes{
+				"relevantVariableList": {
+					Nodes: []*pb.EntityInfo{
+						{Value: "Count_Person"},
+					},
+				},
+			},
+		},
+	}
+	fetcher := &mockNodeFetcher{resps: resps}
 	manager := NewTopicCacheManager(nil)
 	manager.InitFetcher(fetcher)
 
