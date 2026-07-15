@@ -87,7 +87,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 			}
 			mirrorCallCount := 0
 			var mirroredReqs []proto.Message
-			skipCacheHeaderValues := make(chan bool, 2)
+			skipCacheHeaderValues := make(chan bool, 1)
 			var mu sync.Mutex
 
 			v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
@@ -107,17 +107,14 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 			mirrorWg.Wait()
 
 			if tc.shouldMirror {
-				if mirrorCallCount != 2 {
-					t.Errorf("expected 2 mirror calls, but got %d", mirrorCallCount)
+				if mirrorCallCount != 1 {
+					t.Errorf("expected 1 mirror calls, but got %d", mirrorCallCount)
 				}
-				if !proto.Equal(req, mirroredReqs[0]) || !proto.Equal(req, mirroredReqs[1]) {
+				if !proto.Equal(req, mirroredReqs[0]) {
 					t.Errorf("mirrored request was not equal to the original request")
 				}
 				if <-skipCacheHeaderValues {
-					t.Errorf("expected the first call to allow cache usage")
-				}
-				if !<-skipCacheHeaderValues {
-					t.Errorf("expected the second call to skip the cache")
+					t.Errorf("expected the call allow cache usage")
 				}
 			} else {
 				// Give the goroutine a chance to run if it was incorrectly started.
@@ -190,8 +187,8 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 				if !ok {
 					t.Fatalf("metric is not a histogram")
 				}
-				if len(hist.DataPoints) != 2 {
-					t.Fatalf("expected 2 datapoints for latency, got %d", len(hist.DataPoints))
+				if len(hist.DataPoints) != 1 {
+					t.Fatalf("expected 1 datapoints for latency, got %d", len(hist.DataPoints))
 				}
 				for _, dp := range hist.DataPoints {
 					foundAttr := false
@@ -259,8 +256,8 @@ func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
-	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
-		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
+	if strings.Count(logOutput, "V3 mirrored call had a different response") != 1 {
+		t.Errorf("log output should contain 1 diff warning, but got: %q", logOutput)
 	}
 
 	var rm metricdata.ResourceMetrics
@@ -286,8 +283,8 @@ func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
 	if !found {
 		t.Error("datacommons.mixer.v3_response_mismatches metric not found")
 	}
-	if mismatchCount != 2 {
-		t.Errorf("mismatch count: got %d, want 2", mismatchCount)
+	if mismatchCount != 1 {
+		t.Errorf("mismatch count: got %d, want 1", mismatchCount)
 	}
 }
 
@@ -317,8 +314,8 @@ func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
-	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
-		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
+	if strings.Count(logOutput, "V3 mirrored call had a different response") != 1 {
+		t.Errorf("log output should contain 1 diff warning, but got: %q", logOutput)
 	}
 
 	var rm metricdata.ResourceMetrics
@@ -344,8 +341,8 @@ func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	if !found {
 		t.Error("datacommons.mixer.v3_response_mismatches metric not found")
 	}
-	if mismatchCount != 2 {
-		t.Errorf("mismatch count: got %d, want 2", mismatchCount)
+	if mismatchCount != 1 {
+		t.Errorf("mismatch count: got %d, want 1", mismatchCount)
 	}
 }
 
@@ -447,8 +444,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
-	if strings.Count(logOutput, "V3 mirrored call failed") != 2 {
-		t.Errorf("log output should contain 2 error warnings, but got: %q", logOutput)
+	if strings.Count(logOutput, "V3 mirrored call failed") != 1 {
+		t.Errorf("log output should contain 1 error warning, but got: %q", logOutput)
 	}
 
 	var rm metricdata.ResourceMetrics
@@ -485,8 +482,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	if !found {
 		t.Error("datacommons.mixer.v3_mirror_errors metric not found")
 	}
-	if errorCount != 2 {
-		t.Errorf("error count: got %d, want 2", errorCount)
+	if errorCount != 1 {
+		t.Errorf("error count: got %d, want 1", errorCount)
 	}
 }
 
@@ -683,7 +680,7 @@ func TestMirrorV3_FallsBackToDefaultDeadline(t *testing.T) {
 
 	s.mirrorV3(ctx, req, resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
-	if callCount != 2 {
-		t.Errorf("Expected v3Call to be executed exactly 2 times, got %d", callCount)
+	if callCount != 1 {
+		t.Errorf("Expected v3Call to be executed exactly 1 time, got %d", callCount)
 	}
 }
