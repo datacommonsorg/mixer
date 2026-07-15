@@ -6,3 +6,4 @@ flags:
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: dc_graph_2026_01_27
+  EnableSpannerSearchEmbeddings: true
