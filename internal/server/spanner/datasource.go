@@ -23,6 +23,8 @@ import (
 	"sort"
 	"strings"
 
+	"google.golang.org/genai"
+
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -63,6 +65,7 @@ type SpannerDataSource struct {
 	mapsClient      internalmaps.MapsClient
 	searchConfig    *SpannerSearchConfig
 	topicExpander   resolvev2.TopicExpander
+	genaiClient     *genai.Client
 }
 
 const (
@@ -91,6 +94,26 @@ func NewSpannerDataSource(
 		sds.mapsClient = opts.MapsClient
 		sds.topicExpander = opts.TopicExpander
 	}
+
+	if client != nil {
+		dbURI := client.Id()
+		project, _, _, err := parseDatabaseURI(dbURI)
+		if err == nil && project != "" {
+			ctx := context.Background()
+			genaiClient, err := genai.NewClient(ctx, &genai.ClientConfig{
+				Project:  project,
+				Location: "us-central1",
+				Backend:  genai.BackendVertexAI,
+			})
+			if err != nil {
+				slog.Error("SpannerDataSource: failed to initialize GenAI client", "error", err)
+			} else {
+				sds.genaiClient = genaiClient
+				slog.Info("SpannerDataSource: successfully initialized Google GenAI client", "project", project)
+			}
+		}
+	}
+
 	return sds
 }
 
@@ -556,14 +579,35 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			embeddings, err := sds.client.GetTermEmbeddingQuery(
-				errCtx,
-				cfg.SearchConfig.EmbeddingModel,
-				node,
-				string(cfg.SearchConfig.QueryTaskType),
-			)
-			if err != nil {
-				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+			var embeddings []float64
+			var err error
+			if sds.genaiClient != nil {
+				var res *genai.EmbedContentResponse
+				res, err = sds.genaiClient.Models.EmbedContent(
+					errCtx,
+					cfg.SearchConfig.EmbeddingModelEndpoint,
+					genai.Text(node),
+					&genai.EmbedContentConfig{TaskType: string(cfg.SearchConfig.QueryTaskType)},
+				)
+				if err != nil {
+					return status.Errorf(codes.Internal, "failed to get term embedding for %s via GenAI SDK: %v", node, err)
+				}
+				if len(res.Embeddings) > 0 {
+					embeddings = make([]float64, len(res.Embeddings[0].Values))
+					for idx, val := range res.Embeddings[0].Values {
+						embeddings[idx] = float64(val)
+					}
+				}
+			} else {
+				embeddings, err = sds.client.GetTermEmbeddingQuery(
+					errCtx,
+					cfg.SearchConfig.EmbeddingModel,
+					node,
+					string(cfg.SearchConfig.QueryTaskType),
+				)
+				if err != nil {
+					return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+				}
 			}
 			if len(embeddings) == 0 {
 				resolveResponse.Entities[i] = entity
