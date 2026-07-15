@@ -164,20 +164,20 @@ func TestGetProvenanceSummaryQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, c.variables, false), nil
+			return spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, c.variables, false), nil
 		})
 	}
 }
 
-func TestGetCacheDataQueryKeyValueStore(t *testing.T) {
+func TestGetKeyValueStoreQuery(t *testing.T) {
 	t.Parallel()
 
-	stmt := spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, []string{"foo"}, true)
+	stmt := spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, []string{"foo"}, true)
 	if stmt == nil {
-		t.Fatal("GetCacheDataQuery returned nil statement")
+		t.Fatal("GetKeyValueStoreQuery returned nil statement")
 	}
 	if !strings.Contains(stmt.SQL, "FROM\n\t\t\tKeyValueStore") {
-		t.Errorf("GetCacheDataQuery(..., useKeyValueStore=true) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
+		t.Errorf("GetKeyValueStoreQuery(..., useKeyValueStore=true) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
 	}
 }
 

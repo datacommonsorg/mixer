@@ -497,7 +497,8 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-func GetCacheDataQuery(typeFilter CacheDataType, keys []string, useKeyValueStore bool) *spanner.Statement {
+// GetKeyValueStoreQuery builds a query targeting KeyValueStore (or legacy Cache table when useKeyValueStore is false).
+func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string, useKeyValueStore bool) *spanner.Statement {
 	keyFilter, keyVal := getParamStatement("key", keys)
 	params := map[string]interface{}{
 		"type": string(typeFilter),

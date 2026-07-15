@@ -89,7 +89,7 @@ var statements = struct {
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
-	// Get data from Cache table.
+	// Get data from legacy Cache table.
 	getCacheData string
 	// Get data from KeyValueStore table.
 	getKeyValueStoreData string
