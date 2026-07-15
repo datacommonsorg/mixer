@@ -937,10 +937,15 @@ func TestPopulateSdmxFacetID(t *testing.T) {
 	for _, tc := range []struct {
 		name       string
 		attributes map[string]string
+		facetID    string
 		want       map[string]string
 	}{
 		{
-			name: "without existing attributes",
+			name: "empty facet ID",
+		},
+		{
+			name:    "without existing attributes",
+			facetID: "stored-facet-id",
 			want: map[string]string{
 				datacommons.ComponentFacetID: "stored-facet-id",
 			},
@@ -950,6 +955,7 @@ func TestPopulateSdmxFacetID(t *testing.T) {
 			attributes: map[string]string{
 				datacommons.ComponentScalingFactor: "0",
 			},
+			facetID: "stored-facet-id",
 			want: map[string]string{
 				datacommons.ComponentScalingFactor: "0",
 				datacommons.ComponentFacetID:       "stored-facet-id",
@@ -959,7 +965,7 @@ func TestPopulateSdmxFacetID(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			series := &sdmxpb.SdmxTimeSeries{Attributes: tc.attributes}
 
-			populateSdmxFacetID(series, "stored-facet-id")
+			populateSdmxFacetID(series, tc.facetID)
 
 			if diff := cmp.Diff(tc.want, series.Attributes); diff != "" {
 				t.Fatalf("Attributes mismatch (-want +got):\n%s", diff)

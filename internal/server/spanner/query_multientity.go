@@ -740,6 +740,9 @@ func populateSdmxFacetComponents(series *sdmxpb.SdmxTimeSeries, facets map[strin
 }
 
 func populateSdmxFacetID(series *sdmxpb.SdmxTimeSeries, facetID string) {
+	if facetID == "" {
+		return
+	}
 	if series.Attributes == nil {
 		series.Attributes = map[string]string{}
 	}
