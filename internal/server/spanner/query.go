@@ -1043,12 +1043,12 @@ func (sc *spannerDatabaseClient) executeQuery(
 	}
 	defer cancel()
 
+	// Optimize query performance for small arrays
+	UnrollParameters(&stmt)
+
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)
 		startTime := time.Now()
-
-		// Optimize query performance for small arrays
-		UnrollParameters(&stmt)
 
 		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()

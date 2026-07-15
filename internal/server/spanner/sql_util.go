@@ -24,14 +24,22 @@ import (
 // InterpolateSQL replaces params with values in SQL.
 // This is primarily used for debugging and testing to see the final query.
 func InterpolateSQL(stmt *cloudSpanner.Statement) string {
+	// Create a copy of the statement to avoid mutating the caller's statement.
+	stmtCopy := &cloudSpanner.Statement{
+		SQL:    stmt.SQL,
+		Params: make(map[string]interface{}),
+	}
+	for k, v := range stmt.Params {
+		stmtCopy.Params[k] = v
+	}
 	// Apply the same unrolling logic that executeQuery uses, so tests reflect reality.
-	UnrollParameters(stmt)
+	UnrollParameters(stmtCopy)
 
-	sqlString := stmt.SQL
+	sqlString := stmtCopy.SQL
 
 	// Sort keys by length descending to prevent replacing substrings (e.g. @param before @param_0)
 	var keys []string
-	for k := range stmt.Params {
+	for k := range stmtCopy.Params {
 		keys = append(keys, k)
 	}
 	for i := 0; i < len(keys); i++ {
@@ -43,7 +51,7 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 	}
 
 	for _, key := range keys {
-		value := stmt.Params[key]
+		value := stmtCopy.Params[key]
 		placeholder := "@" + key
 		var formattedValue string
 
