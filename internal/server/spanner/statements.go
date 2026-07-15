@@ -99,6 +99,7 @@ var statements = struct {
 	getStatVarGroupNode string
 	// Fetch StatVarGroupNode info with definitions.
 	getStatVarGroupNodeWithDefinitions string
+	// Attach stat var groups.
 	attachSVGs string
 	// Fetch all children of a stat var group without definitions.
 	getSVGChildren string
