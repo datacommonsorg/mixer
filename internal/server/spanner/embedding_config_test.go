@@ -82,8 +82,8 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
 		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
 	}
-	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	if cfg.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
+		t.Errorf("Expected EmbeddingLabel=nl_stat_var_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)

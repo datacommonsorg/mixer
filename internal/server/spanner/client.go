@@ -87,6 +87,9 @@ type spannerDatabaseClient struct {
 
 	// Logging/State tracking for the timestamp poller.
 	tracker *stalenessTracker
+
+	// Flag to dynamically track if the Spanner schema has been initialized.
+	dbInitialized atomic.Bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
@@ -102,8 +105,7 @@ func newSpannerDatabaseClient(client *spanner.Client, useNewSchema bool) (*spann
 	sc.stopCh = make(chan struct{})
 	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
 	if err := sc.updateTimestamp(context.Background()); err != nil {
-		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
-		return nil, err
+		slog.Warn("Error initializing Spanner staleness timestamp on startup (falling back to default staleness reads)", "error", err.Error())
 	}
 	return sc, nil
 }
