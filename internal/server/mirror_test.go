@@ -108,7 +108,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 
 			if tc.shouldMirror {
 				if mirrorCallCount != 1 {
-					t.Errorf("expected 1 mirror calls, but got %d", mirrorCallCount)
+					t.Errorf("expected 1 mirror call, but got %d", mirrorCallCount)
 				}
 				if !proto.Equal(req, mirroredReqs[0]) {
 					t.Errorf("mirrored request was not equal to the original request")
@@ -188,7 +188,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 					t.Fatalf("metric is not a histogram")
 				}
 				if len(hist.DataPoints) != 1 {
-					t.Fatalf("expected 1 datapoints for latency, got %d", len(hist.DataPoints))
+					t.Fatalf("expected 1 datapoint for latency, got %d", len(hist.DataPoints))
 				}
 				for _, dp := range hist.DataPoints {
 					foundAttr := false
