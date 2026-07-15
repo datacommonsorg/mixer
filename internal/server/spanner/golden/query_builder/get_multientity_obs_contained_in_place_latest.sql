@@ -18,7 +18,7 @@
 				t.facet
 			FROM places p
 			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
+				ON t.variable_measured = 'AirPollutant_Cancer_Risk'
 				AND t.entity1 = p.place_id
 		)
 		SELECT

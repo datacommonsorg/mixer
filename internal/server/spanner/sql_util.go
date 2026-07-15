@@ -24,8 +24,26 @@ import (
 // InterpolateSQL replaces params with values in SQL.
 // This is primarily used for debugging and testing to see the final query.
 func InterpolateSQL(stmt *cloudSpanner.Statement) string {
+	// Apply the same unrolling logic that executeQuery uses, so tests reflect reality.
+	UnrollParameters(stmt)
+
 	sqlString := stmt.SQL
-	for key, value := range stmt.Params {
+
+	// Sort keys by length descending to prevent replacing substrings (e.g. @param before @param_0)
+	var keys []string
+	for k := range stmt.Params {
+		keys = append(keys, k)
+	}
+	for i := 0; i < len(keys); i++ {
+		for j := i + 1; j < len(keys); j++ {
+			if len(keys[i]) < len(keys[j]) {
+				keys[i], keys[j] = keys[j], keys[i]
+			}
+		}
+	}
+
+	for _, key := range keys {
+		value := stmt.Params[key]
 		placeholder := "@" + key
 		var formattedValue string
 
@@ -58,4 +76,49 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
 	}
 	return sqlString
+}
+
+// UnrollArrayParamsMaxLength specifies the maximum length of array parameters to unroll into explicit IN clauses.
+const UnrollArrayParamsMaxLength = 10
+
+// UnrollParameters modifies the given Spanner statement to unroll array parameters
+// of length <= UnrollArrayParamsMaxLength. It replaces "IN UNNEST(@param)" with "IN (@param_0, @param_1, ...)"
+// (or "= @param_0" if length is 1) and populates the params map with the individual values.
+// The original array parameter is kept in case it is referenced elsewhere in the query (e.g. UNNEST(@param) without IN).
+func UnrollParameters(stmt *cloudSpanner.Statement) {
+	if stmt.Params == nil {
+		return
+	}
+
+	newParams := make(map[string]interface{})
+	for k, v := range stmt.Params {
+		newParams[k] = v
+	}
+
+	for key, value := range stmt.Params {
+		switch v := value.(type) {
+		case []string:
+			l := len(v)
+			if l > 0 && l <= UnrollArrayParamsMaxLength {
+				placeholder := "IN UNNEST(@" + key + ")"
+				if strings.Contains(stmt.SQL, placeholder) {
+					if l == 1 {
+						newName := fmt.Sprintf("%s_0", key)
+						newParams[newName] = v[0]
+						stmt.SQL = strings.ReplaceAll(stmt.SQL, placeholder, "= @"+newName)
+					} else {
+						var paramNames []string
+						for i, val := range v {
+							newName := fmt.Sprintf("%s_%d", key, i)
+							paramNames = append(paramNames, "@"+newName)
+							newParams[newName] = val
+						}
+						replacement := "IN (" + strings.Join(paramNames, ",") + ")"
+						stmt.SQL = strings.ReplaceAll(stmt.SQL, placeholder, replacement)
+					}
+				}
+			}
+		}
+	}
+	stmt.Params = newParams
 }
