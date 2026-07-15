@@ -348,6 +348,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"variableMeasured":  {Values: []string{"var1"}},
 			"origin":            {Values: []string{"country/AGO", "country/BRA"}},
 			"destination":       {Values: []string{"country/PRT", "country/SGP"}},
+			"facetId":           {Values: []string{"facet", "alternate-facet"}},
 			"measurementMethod": {Values: []string{"Census", "Survey"}},
 			"observationPeriod": {Values: []string{"P1Y", "P1M"}},
 			"provenance":        {Values: []string{"dc/base/WTO_TradeConnectivity", "dc/base/UN_Trade"}},

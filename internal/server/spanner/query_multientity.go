@@ -534,8 +534,9 @@ type preparedSdmxObservationsQuery struct {
 }
 
 type preparedSdmxShape struct {
-	shape                *sdmxpb.SdmxDataShape
-	entitySlotsByStatVar map[string]map[string]string
+	shape                 *sdmxpb.SdmxDataShape
+	observationProperties []string
+	entitySlotsByStatVar  map[string]map[string]string
 }
 
 func prepareSdmxObservationsQuery(
@@ -546,6 +547,12 @@ func prepareSdmxObservationsQuery(
 ) (*preparedSdmxObservationsQuery, error) {
 	preparedShape, err := prepareSdmxShape(ctx, constraints, getNodeEdgesByID)
 	if err != nil {
+		return nil, err
+	}
+	if err := validateSdmxDataConstraintComponents(constraints, preparedShape.shape); err != nil {
+		return nil, err
+	}
+	if err := validateSdmxRequiredObservationProperty(constraints, preparedShape.observationProperties); err != nil {
 		return nil, err
 	}
 
@@ -583,12 +590,10 @@ func prepareSdmxShape(
 		return nil, err
 	}
 	shape := sdmxDataShape(observationProperties)
-	if err := validateSdmxConstraintComponents(constraints, shape); err != nil {
-		return nil, err
-	}
 	return &preparedSdmxShape{
-		shape:                shape,
-		entitySlotsByStatVar: entitySlotsByStatVar,
+		shape:                 shape,
+		observationProperties: observationProperties,
+		entitySlotsByStatVar:  entitySlotsByStatVar,
 	}, nil
 }
 
@@ -628,23 +633,54 @@ func validateSdmxConstraintValues(constraints map[string]*sdmxpb.ConstraintList)
 	return nil
 }
 
-func validateSdmxConstraintComponents(
+func validateSdmxDataConstraintComponents(
 	constraints map[string]*sdmxpb.ConstraintList,
 	shape *sdmxpb.SdmxDataShape,
 ) error {
-	filterableDimensions := sdmxFilterableDimensions(shape)
+	return validateSdmxConstraintComponents(constraints, sdmxFilterableDataComponents(shape), "components")
+}
+
+func validateSdmxAvailabilityConstraintComponents(
+	constraints map[string]*sdmxpb.ConstraintList,
+	shape *sdmxpb.SdmxDataShape,
+) error {
+	return validateSdmxConstraintComponents(constraints, sdmxFilterableDimensions(shape), "dimensions")
+}
+
+func validateSdmxConstraintComponents(
+	constraints map[string]*sdmxpb.ConstraintList,
+	filterableComponents map[string]struct{},
+	componentKind string,
+) error {
 
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
-		if _, ok := filterableDimensions[componentID]; !ok {
+		if _, ok := filterableComponents[componentID]; !ok {
 			return status.Errorf(
 				codes.InvalidArgument,
-				"unsupported SDMX component filter %q; filterable dimensions are %v",
+				"unsupported SDMX component filter %q; filterable %s are %v",
 				componentID,
-				slices.Sorted(maps.Keys(filterableDimensions)),
+				componentKind,
+				slices.Sorted(maps.Keys(filterableComponents)),
 			)
 		}
 	}
 	return nil
+}
+
+func validateSdmxRequiredObservationProperty(
+	constraints map[string]*sdmxpb.ConstraintList,
+	observationProperties []string,
+) error {
+	for _, observationProperty := range observationProperties {
+		if _, ok := constraints[observationProperty]; ok {
+			return nil
+		}
+	}
+	return status.Errorf(
+		codes.InvalidArgument,
+		"SDMX data query must include at least one observation property filter; allowed observation properties are %v",
+		observationProperties,
+	)
 }
 
 func validateSdmxAvailabilityComponent(componentID string, shape *sdmxpb.SdmxDataShape) error {
@@ -668,6 +704,14 @@ func sdmxFilterableDimensions(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 		}
 	}
 	return filterableDimensions
+}
+
+func sdmxFilterableDataComponents(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
+	filterableComponents := sdmxFilterableDimensions(shape)
+	for componentID := range datacommons.FilterableAttributes {
+		filterableComponents[componentID] = struct{}{}
+	}
+	return filterableComponents
 }
 
 func populateSdmxFacetComponents(series *sdmxpb.SdmxTimeSeries, facets map[string]interface{}) {
@@ -752,6 +796,9 @@ func prepareSdmxAvailabilityQuery(
 ) (*spanner.Statement, error) {
 	preparedShape, err := prepareSdmxShape(ctx, req.GetConstraints(), getNodeEdgesByID)
 	if err != nil {
+		return nil, err
+	}
+	if err := validateSdmxAvailabilityConstraintComponents(req.GetConstraints(), preparedShape.shape); err != nil {
 		return nil, err
 	}
 	if err := validateSdmxAvailabilityComponent(req.GetComponentId(), preparedShape.shape); err != nil {

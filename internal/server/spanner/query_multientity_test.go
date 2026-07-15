@@ -488,6 +488,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		datacommons.ComponentMeasurementMethod: {Values: []string{"Census", "Survey"}},
 		datacommons.ComponentObservationPeriod: {Values: []string{"P1Y", "P1M"}},
 		datacommons.ComponentProvenance:        {Values: []string{"dc/base/one", "dc/base/two"}},
+		datacommons.ComponentFacetID:           {Values: []string{"facet", "alternate-facet"}},
 	}
 
 	prepared, err := prepareSdmxObservationsQuery(
@@ -541,6 +542,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		"measurementMethod":  []string{"Census", "Survey"},
 		"observationPeriod":  []string{"P1Y", "P1M"},
 		"provenance":         []string{"dc/base/one", "dc/base/two"},
+		"facetId":            []string{"facet", "alternate-facet"},
 	}
 	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
@@ -551,6 +553,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		`t.variable_measured = "var1" AND t.entity1 IN ('country/CAN','country/MEX')`,
 		`t.variable_measured = "var2" AND t.entity1 IN ('country/CAN','country/MEX')`,
 		`t.entity2 IN ('country/USA','country/IND')`,
+		`t.facet_id IN ('facet','alternate-facet')`,
 		`t.measurement_method IN ('Census','Survey')`,
 		`t.observation_period IN ('P1Y','P1M')`,
 		`t.provenance IN ('dc/base/one','dc/base/two')`,
@@ -664,6 +667,18 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 			},
 			edges:      map[string][]*Edge{"var1": observationPropertiesEdges("destinationCountry", "sourceCountry")},
 			wantErrSub: "unsupported SDMX component filter \"customEntity\"",
+		},
+		{
+			name: "facet ID filter unsupported",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: datacommons.ComponentObservationAbout,
+				Constraints: map[string]*sdmxpb.ConstraintList{
+					datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+					datacommons.ComponentFacetID:          {Values: []string{"facet"}},
+				},
+			},
+			edges:      map[string][]*Edge{"var1": nil},
+			wantErrSub: "unsupported SDMX component filter \"facetId\"",
 		},
 		{
 			name: "incompatible stat var shapes",
@@ -1237,7 +1252,7 @@ func TestSdmxSeriesDimensionsUsesEntitySlotMapping(t *testing.T) {
 	}
 }
 
-func TestValidateSdmxConstraintComponents(t *testing.T) {
+func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 	shape := sdmxDataShape([]string{"destinationCountry", "sourceCountry"})
 
 	tests := []struct {
@@ -1263,12 +1278,19 @@ func TestValidateSdmxConstraintComponents(t *testing.T) {
 			},
 		},
 		{
+			name: "filterable attribute passes",
+			constraints: map[string]*sdmxpb.ConstraintList{
+				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+				datacommons.ComponentFacetID:          {Values: []string{"facet"}},
+			},
+		},
+		{
 			name: "observationAbout not in shape fails",
 			constraints: map[string]*sdmxpb.ConstraintList{
 				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
 				datacommons.ComponentObservationAbout: {Values: []string{"country/USA"}},
 			},
-			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "unknown dynamic filter fails",
@@ -1276,7 +1298,7 @@ func TestValidateSdmxConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
 				"customEntity":                        {Values: []string{"country/USA"}},
 			},
-			wantError: "unsupported SDMX component filter \"customEntity\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "time period fails",
@@ -1284,7 +1306,7 @@ func TestValidateSdmxConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
 				datacommons.ComponentTimePeriod:       {Values: []string{"2020"}},
 			},
-			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "measure fails",
@@ -1292,7 +1314,7 @@ func TestValidateSdmxConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
 				datacommons.ComponentObservationValue: {Values: []string{"10"}},
 			},
-			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "attribute fails",
@@ -1300,29 +1322,102 @@ func TestValidateSdmxConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
 				datacommons.ComponentScalingFactor:    {Values: []string{"0"}},
 			},
-			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := validateSdmxConstraintComponents(tt.constraints, shape)
+			err := validateSdmxDataConstraintComponents(tt.constraints, shape)
 			if tt.wantError == "" {
 				if err != nil {
-					t.Fatalf("validateSdmxConstraintComponents() error = %v, want nil", err)
+					t.Fatalf("validateSdmxDataConstraintComponents() error = %v, want nil", err)
 				}
 				return
 			}
 			if err == nil {
-				t.Fatal("validateSdmxConstraintComponents() error = nil, want error")
+				t.Fatal("validateSdmxDataConstraintComponents() error = nil, want error")
 			}
 			if status.Code(err) != codes.InvalidArgument {
-				t.Fatalf("validateSdmxConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+				t.Fatalf("validateSdmxDataConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
 			if got := status.Convert(err).Message(); got != tt.wantError {
-				t.Fatalf("validateSdmxConstraintComponents() message = %q, want %q", got, tt.wantError)
+				t.Fatalf("validateSdmxDataConstraintComponents() message = %q, want %q", got, tt.wantError)
 			}
 		})
+	}
+}
+
+func TestValidateSdmxRequiredObservationProperty(t *testing.T) {
+	tests := []struct {
+		name                  string
+		constraints           map[string]*sdmxpb.ConstraintList
+		observationProperties []string
+		wantError             string
+	}{
+		{
+			name: "one observation property passes",
+			constraints: map[string]*sdmxpb.ConstraintList{
+				"destinationCountry": {Values: []string{"country/CAN"}},
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+		},
+		{
+			name: "multiple observation properties pass",
+			constraints: map[string]*sdmxpb.ConstraintList{
+				"destinationCountry": {Values: []string{"country/CAN"}},
+				"sourceCountry":      {Values: []string{"country/USA"}},
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+		},
+		{
+			name: "filterable attribute does not satisfy requirement",
+			constraints: map[string]*sdmxpb.ConstraintList{
+				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+				datacommons.ComponentFacetID:          {Values: []string{"facet"}},
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+			wantError:             "SDMX data query must include at least one observation property filter; allowed observation properties are [destinationCountry sourceCountry]",
+		},
+		{
+			name: "fallback observation about is required",
+			constraints: map[string]*sdmxpb.ConstraintList{
+				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+			},
+			observationProperties: []string{datacommons.ComponentObservationAbout},
+			wantError:             "SDMX data query must include at least one observation property filter; allowed observation properties are [observationAbout]",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := validateSdmxRequiredObservationProperty(tt.constraints, tt.observationProperties)
+			if tt.wantError == "" {
+				if err != nil {
+					t.Fatalf("validateSdmxRequiredObservationProperty() error = %v, want nil", err)
+				}
+				return
+			}
+			if status.Code(err) != codes.InvalidArgument {
+				t.Fatalf("validateSdmxRequiredObservationProperty() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			}
+			if got := status.Convert(err).Message(); got != tt.wantError {
+				t.Fatalf("validateSdmxRequiredObservationProperty() message = %q, want %q", got, tt.wantError)
+			}
+		})
+	}
+}
+
+func TestFilterableAttributesHaveStaticDataColumns(t *testing.T) {
+	for componentID := range datacommons.FilterableAttributes {
+		kind, ok := datacommons.DataComponentKind(componentID)
+		if !ok || kind != datacommons.ComponentKindAttribute {
+			t.Errorf("filterable attribute %q is not registered as an attribute", componentID)
+		}
+		column, ok := sdmxStaticDataFilterColumn(componentID)
+		if !ok || column == "" {
+			t.Errorf("filterable attribute %q has no static data column", componentID)
+		}
 	}
 }
 

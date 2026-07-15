@@ -84,6 +84,12 @@ var dataComponentsByID = func() map[string]DataComponent {
 	return result
 }()
 
+// FilterableAttributes contains attributes allowed in SDMX data filters.
+// Treat this set as read-only.
+var FilterableAttributes = map[string]struct{}{
+	ComponentFacetID: {},
+}
+
 func DataComponentKind(componentID string) (ComponentKind, bool) {
 	component, ok := dataComponentsByID[componentID]
 	return component.Kind, ok

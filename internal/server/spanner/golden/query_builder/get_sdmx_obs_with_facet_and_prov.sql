@@ -17,4 +17,4 @@
 			t.facet AS facets,
 			t.entities
 		FROM TimeSeries t
-		WHERE (t.variable_measured = "var1" AND t.entity2 IN ('country/PRT','country/SGP') AND t.measurement_method IN ('Census','Survey') AND t.observation_period IN ('P1Y','P1M') AND t.entity1 IN ('country/AGO','country/BRA') AND t.provenance IN ('dc/base/WTO_TradeConnectivity','dc/base/UN_Trade') AND t.unit IN ('Percent','Count'))
+		WHERE (t.variable_measured = "var1" AND t.entity2 IN ('country/PRT','country/SGP') AND t.facet_id IN ('facet','alternate-facet') AND t.measurement_method IN ('Census','Survey') AND t.observation_period IN ('P1Y','P1M') AND t.entity1 IN ('country/AGO','country/BRA') AND t.provenance IN ('dc/base/WTO_TradeConnectivity','dc/base/UN_Trade') AND t.unit IN ('Percent','Count'))
