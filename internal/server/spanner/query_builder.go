@@ -175,13 +175,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
 			if len(filterVal) > 0 {
-				if len(filterVal) == 1 {
-					objectFilter = fmt.Sprintf(statements.filterValue, i)
-					params["val"+strconv.Itoa(i)] = filterVal[0]
-				} else {
-					objectFilter = fmt.Sprintf(statements.filterValues, i)
-					params["val"+strconv.Itoa(i)] = filterVal
-				}
+				objectFilter = fmt.Sprintf(statements.filterValues, i)
+				params["val"+strconv.Itoa(i)] = filterVal
 			}
 			indexHint := ""
 			if len(filterVal) > 0 {
@@ -514,10 +509,7 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 func GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
-	selfFilter := statements.attachSVG
-	if len(nodes) > 1 {
-		selfFilter = statements.attachSVGs
-	}
+	selfFilter := statements.attachSVGs
 
 	sqlTemplate := statements.getStatVarGroupNode
 	if includeDefinitions {
@@ -664,11 +656,8 @@ func addObjectValues(input []string) []string {
 	return result
 }
 
-// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter based on the number of inputs.
+// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter.
 func getParamStatement(param string, inputs []string) (string, interface{}) {
-	if len(inputs) == 1 {
-		return fmt.Sprintf(statements.getParam, param), inputs[0]
-	}
 	return fmt.Sprintf(statements.getParams, param), inputs
 }
 
