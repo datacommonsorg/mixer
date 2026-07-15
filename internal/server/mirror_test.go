@@ -114,7 +114,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 					t.Errorf("mirrored request was not equal to the original request")
 				}
 				if <-skipCacheHeaderValues {
-					t.Errorf("expected the call allow cache usage")
+					t.Errorf("expected the call to allow cache usage")
 				}
 			} else {
 				// Give the goroutine a chance to run if it was incorrectly started.
