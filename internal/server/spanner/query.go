@@ -207,15 +207,23 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 
 	var existenceQueryStmt spanner.Statement
 	if predicate == "" {
+		sql := statements.checkSVSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkSVSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkSVSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 			},
 		}
 	} else {
+		sql := statements.checkGroupSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkGroupSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkGroupSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 				"predicate": predicate,
@@ -698,7 +706,7 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	results, err := queryCache(
 		ctx,
 		sc,
-		*GetCacheDataQuery(TypeProvenanceSummary, variables),
+		*GetCacheDataQuery(TypeProvenanceSummary, variables, sc.useSpannerKeyValueStore),
 		func() *pb.StatVarSummary_ProvenanceSummary {
 			return &pb.StatVarSummary_ProvenanceSummary{}
 		},

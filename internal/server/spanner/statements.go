@@ -91,6 +91,8 @@ var statements = struct {
 	triple string
 	// Get data from Cache table.
 	getCacheData string
+	// Get data from KeyValueStore table.
+	getKeyValueStoreData string
 	// Fetch event dates for a given type and location.
 	getEventCollectionDate string
 	// Fetch events for a given type, location and date.
@@ -131,8 +133,12 @@ var statements = struct {
 	filterNodesByTypes string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
+	// Check existence of SVs against sources using KeyValueStore table.
+	checkSVSourceExistenceFromKV string
 	// Check existence of variable groups against sources.
 	checkGroupSourceExistence string
+	// Check existence of variable groups against sources using KeyValueStore table.
+	checkGroupSourceExistenceFromKV string
 	// Check existence of variable groups against places.
 	checkGroupPlaceExistence string
 }{
@@ -375,6 +381,15 @@ OR CreationTimestamp > (
 			TO_JSON_STRING(value) AS value,
 		FROM
 			Cache
+		WHERE
+			type = @type
+			AND key %s`,
+	getKeyValueStoreData: `		SELECT
+			key,
+			provenance,
+			TO_JSON_STRING(value) AS value,
+		FROM
+			KeyValueStore
 		WHERE
 			type = @type
 			AND key %s`,
@@ -701,6 +716,22 @@ OR CreationTimestamp > (
 		ORDER BY variable, source`,
 	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
 		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND e3.predicate = @predicate
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkSVSourceExistenceFromKV: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
+		FROM KeyValueStore c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupSourceExistenceFromKV: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+		FROM KeyValueStore c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
 		WHERE c.type = 'ProvenanceSummary'
