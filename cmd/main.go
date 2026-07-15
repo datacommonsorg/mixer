@@ -594,10 +594,18 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to load topic cache hierarchy on startup because Spanner database is uninitialized (will retry in background)", "error", err)
+					return nil
+				}
 				return err
 			},
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to reload topic cache hierarchy because Spanner database is uninitialized", "error", err)
+					return nil
+				}
 				return err
 			},
 		)
