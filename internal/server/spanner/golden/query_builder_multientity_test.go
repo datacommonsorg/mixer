@@ -168,7 +168,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 				if err != nil {
 					return nil, err
 				}
-				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByObservationProperty)
+				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
 				return stmt, err
 			})
 		})
@@ -187,10 +187,10 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"provenance":        sdmxComponentConstraint("dc/base/INPE_Fire_Event_Count"),
 		"observationPeriod": sdmxComponentConstraint("P1Y"),
 	}
-	entitySlotByObservationProperty := map[string]string{
+	observationPropertyToEntitySlot := map[string]string{
 		"observationAbout": "entity1",
 	}
-	_, err = builder.GetSdmxObservationsQuery(constraints, entitySlotByObservationProperty)
+	_, err = builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot)
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -198,7 +198,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string
 		constraints                     map[string]*sdmxpb.SdmxComponentConstraint
-		entitySlotByObservationProperty map[string]string
+		observationPropertyToEntitySlot map[string]string
 		want                            string
 	}{
 		{
@@ -258,7 +258,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 				"variableMeasured": sdmxComponentConstraint("var1"),
 				"customEntity":     sdmxComponentConstraint("value"),
 			},
-			entitySlotByObservationProperty: entitySlotByObservationProperty,
+			observationPropertyToEntitySlot: observationPropertyToEntitySlot,
 			want:                            `GetSdmxObservationsQuery: unsupported SDMX component filter "customEntity"`,
 		},
 		{
@@ -267,7 +267,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 				"variableMeasured":   sdmxComponentConstraint("var1"),
 				"destinationCountry": sdmxComponentConstraint("country/USA"),
 			},
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"destinationCountry": "entity4",
 			},
 			want: `GetSdmxObservationsQuery: SDMX observation property "destinationCountry" maps to unsupported entity slot "entity4"`,
@@ -275,7 +275,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		{
 			name:        "observation about outside resolved properties",
 			constraints: constraints,
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"destinationCountry": "entity1", "sourceCountry": "entity2",
 			},
 			want: `GetSdmxObservationsQuery: unsupported SDMX component filter "observationAbout"`,
@@ -287,7 +287,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 				"destinationCountry": sdmxComponentConstraint("country/CAN"),
 				"sourceCountry":      sdmxComponentConstraint("country/USA"),
 			},
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"destinationCountry": "entity1",
 				"sourceCountry":      "entity1",
 			},
@@ -295,7 +295,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.entitySlotByObservationProperty)
+			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.observationPropertyToEntitySlot)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxObservationsQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
@@ -313,7 +313,7 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 	}
 
 	for _, c := range multiEntitySdmxObservationsTestCases {
-		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.entitySlotByObservationProperty)
+		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
 		}
@@ -445,13 +445,13 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 	for _, c := range []struct {
 		name                            string
 		componentID                     string
-		entitySlotByObservationProperty map[string]string
+		observationPropertyToEntitySlot map[string]string
 		golden                          string
 	}{
 		{
 			name:        "observation about",
 			componentID: "observationAbout",
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"observationAbout": "entity1",
 			},
 			golden: "get_sdmx_availability_observation_about.sql",
@@ -459,7 +459,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 		{
 			name:        "dynamic observation property",
 			componentID: "destinationCountry",
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"destinationCountry": "entity1", "sourceCountry": "entity2",
 			},
 			golden: "get_sdmx_availability_destination_country.sql",
@@ -502,7 +502,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 						"variableMeasured": sdmxComponentConstraint("Count_Person", "Count_Household"),
 					},
-				}, c.entitySlotByObservationProperty)
+				}, c.observationPropertyToEntitySlot)
 			})
 		})
 	}
@@ -540,7 +540,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string
 		req                             *sdmxpb.SdmxAvailabilityQuery
-		entitySlotByObservationProperty map[string]string
+		observationPropertyToEntitySlot map[string]string
 		want                            string
 	}{
 		{
@@ -625,7 +625,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.entitySlotByObservationProperty)
+			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.observationPropertyToEntitySlot)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxAvailabilityQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
