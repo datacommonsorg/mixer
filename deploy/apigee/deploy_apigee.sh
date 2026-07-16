@@ -170,7 +170,7 @@ function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
   PLAN_FILE="$TMP_DIR/tfplan_$TIMESTAMP"
 
-  terraform init
+  terraform init -upgrade
 
   # The -detailed-exitcode flag will cause 'plan' to return:
   # 0 = Succeeded with empty diff
