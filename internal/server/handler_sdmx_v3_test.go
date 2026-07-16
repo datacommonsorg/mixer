@@ -33,6 +33,14 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
+}
+
 type sdmxDataStream struct {
 	ctx  context.Context
 	sent []*httpbody.HttpBody
@@ -230,8 +238,8 @@ func TestSdmxDataForwardsStructuredRequest(t *testing.T) {
 	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout})}
 	server := newSdmxHandlerTestServer(ds)
 	request := &sdmxpb.SdmxDataQuery{
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			datacommons.ComponentVariableMeasured: {Values: []string{"Count_Person"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
 		},
 	}
 
@@ -284,8 +292,8 @@ func TestSdmxAvailabilityForwardsStructuredRequest(t *testing.T) {
 	server := newSdmxHandlerTestServer(ds)
 	request := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			datacommons.ComponentVariableMeasured: {Values: []string{"Count_Person"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
 		},
 	}
 

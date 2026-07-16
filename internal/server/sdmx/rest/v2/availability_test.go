@@ -185,6 +185,12 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
+			name:        "selected facet ID unsupported",
+			tail:        availabilityTail("facetId"),
+			originalURI: availabilityURI("facetId", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
 			name:        "filter observation value unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[OBS_VALUE]=10"),
 			wantCode:    codes.Unimplemented,
@@ -197,6 +203,11 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		{
 			name:        "filter attribute unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[scalingFactor]=0"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "filter facet ID unsupported",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[facetId]=123"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

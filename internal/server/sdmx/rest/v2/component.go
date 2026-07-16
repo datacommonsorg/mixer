@@ -106,7 +106,7 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 
-	return validateComponentFilters(constraints)
+	return validateComponentFilters(constraints, isFilterableDataComponentCandidate)
 }
 
 func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][]string) error {
@@ -126,15 +126,15 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
-	return validateComponentFilters(constraints)
+	return validateComponentFilters(constraints, isFilterableDimensionCandidate)
 }
 
-func validateComponentFilters(constraints map[string][]string) error {
+func validateComponentFilters(constraints map[string][]string, isFilterable func(string) bool) error {
 	for componentID := range constraints {
 		if !isValidComponentID(componentID) {
 			return status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", componentID)
 		}
-		if !isFilterableDimensionCandidate(componentID) {
+		if !isFilterable(componentID) {
 			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 		}
 	}
@@ -142,6 +142,11 @@ func validateComponentFilters(constraints map[string][]string) error {
 		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
 	}
 	return nil
+}
+
+func isFilterableDataComponentCandidate(componentID string) bool {
+	_, isFilterableAttribute := datacommons.FilterableAttributes[componentID]
+	return isFilterableDimensionCandidate(componentID) || isFilterableAttribute
 }
 
 func isFilterableDimensionCandidate(componentID string) bool {

@@ -295,7 +295,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 
 // GetSdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	entitySlotsByStatVar map[string]map[string]string,
 ) (*spanner.Statement, error) {
 	compiled, err := compileSdmxConstraints(constraints, entitySlotsByStatVar)
@@ -315,21 +315,31 @@ type compiledSdmxConstraints struct {
 	statVarIDs []string
 }
 
+func sdmxConstraintValues(constraint *sdmxpb.SdmxComponentConstraint) []string {
+	predicates := constraint.GetPredicates()
+	values := make([]string, 0, len(predicates))
+	for _, predicate := range predicates {
+		values = append(values, predicate.GetValue())
+	}
+	return values
+}
+
 func compileSdmxConstraints(
-	constraints map[string]*sdmxpb.ConstraintList,
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	entitySlotsByStatVar map[string]map[string]string,
 ) (*compiledSdmxConstraints, error) {
 	if constraints == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX request constraints cannot be nil")
 	}
-	for componentID, list := range constraints {
+	for componentID, constraint := range constraints {
 		if !constraintKeyRegex.MatchString(componentID) {
 			return nil, status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", componentID)
 		}
-		if list == nil || len(list.GetValues()) == 0 {
+		values := sdmxConstraintValues(constraint)
+		if len(values) == 0 {
 			return nil, status.Errorf(codes.InvalidArgument, "SDMX component filter %q must have at least one value", componentID)
 		}
-		for _, value := range list.GetValues() {
+		for _, value := range values {
 			if strings.TrimSpace(value) == "" {
 				return nil, status.Errorf(codes.InvalidArgument, "SDMX component filter %q contains an empty value", componentID)
 			}
@@ -337,10 +347,11 @@ func compileSdmxConstraints(
 	}
 
 	variableMeasured, ok := constraints["variableMeasured"]
-	if !ok || len(variableMeasured.GetValues()) == 0 {
+	variableMeasuredValues := sdmxConstraintValues(variableMeasured)
+	if !ok || len(variableMeasuredValues) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "SDMX component filter variableMeasured must be specified")
 	}
-	statVarIDs := sortedUniqueStrings(variableMeasured.GetValues())
+	statVarIDs := sortedUniqueStrings(variableMeasuredValues)
 
 	componentIDs := []string{}
 	for componentID := range constraints {
@@ -352,7 +363,7 @@ func compileSdmxConstraints(
 
 	params := map[string]interface{}{}
 	for _, componentID := range componentIDs {
-		params[componentID] = constraints[componentID].GetValues()
+		params[componentID] = sdmxConstraintValues(constraints[componentID])
 	}
 
 	statVarBranches := make([]string, 0, len(statVarIDs))

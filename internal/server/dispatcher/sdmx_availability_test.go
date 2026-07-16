@@ -27,6 +27,14 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
+}
+
 type sdmxAvailabilitySource struct {
 	datasource.DataSource
 	got    *sdmxpb.SdmxAvailabilityQuery
@@ -52,8 +60,8 @@ func TestSdmxAvailabilityBackendUnimplementedWithoutSources(t *testing.T) {
 		context.Background(),
 		&sdmxpb.SdmxAvailabilityQuery{
 			ComponentId: "observationAbout",
-			Constraints: map[string]*sdmxpb.ConstraintList{
-				"variableMeasured": &sdmxpb.ConstraintList{Values: []string{"Count_Person"}},
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_Person"),
 			},
 		},
 	)
@@ -72,8 +80,8 @@ func TestSdmxAvailabilityCallsDataSources(t *testing.T) {
 	}
 	query := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"Count_Person"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person"),
 		},
 	}
 	dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
@@ -87,5 +95,72 @@ func TestSdmxAvailabilityCallsDataSources(t *testing.T) {
 	}
 	if diff := cmp.Diff(query, source.got, protocmp.Transform()); diff != "" {
 		t.Fatalf("SdmxAvailability() request mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestSdmxPropertyConstraintsUnimplemented(t *testing.T) {
+	componentConstraint := sdmxComponentConstraint("country/USA")
+	componentConstraint.PropertyConstraints = map[string]*sdmxpb.SdmxPropertyConstraint{
+		"typeOf": {
+			Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}},
+		},
+	}
+
+	tests := []struct {
+		name string
+		call func(*Dispatcher) error
+	}{
+		{
+			name: "data",
+			call: func(dispatcher *Dispatcher) error {
+				_, err := dispatcher.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"source": componentConstraint,
+					},
+				})
+				return err
+			},
+		},
+		{
+			name: "availability",
+			call: func(dispatcher *Dispatcher) error {
+				_, err := dispatcher.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "source",
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"source": componentConstraint,
+					},
+				})
+				return err
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := tt.call(NewDispatcher(nil, nil))
+			if status.Code(err) != codes.Unimplemented {
+				t.Fatalf("code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+			}
+			if got, want := status.Convert(err).Message(), "SDMX property constraints are not implemented yet"; got != want {
+				t.Fatalf("message = %q, want %q", got, want)
+			}
+		})
+	}
+}
+
+func TestSdmxUnsupportedOperatorUnimplemented(t *testing.T) {
+	componentConstraint := sdmxComponentConstraint("country/USA")
+	componentConstraint.Predicates[0].Operator = sdmxpb.SdmxOperator(1)
+
+	_, err := NewDispatcher(nil, nil).SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"source": componentConstraint,
+		},
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX operators other than EQ are not implemented yet"; got != want {
+		t.Fatalf("message = %q, want %q", got, want)
 	}
 }

@@ -18,6 +18,14 @@ import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 )
 
+func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
+}
+
 var multiEntityObservationsTestCases = []struct {
 	name      string
 	variables []string
@@ -294,23 +302,23 @@ var multiEntityFilteredTopicTestCases = []struct {
 
 var multiEntitySdmxObservationsTestCases = []struct {
 	name                 string
-	constraints          map[string]*sdmxpb.ConstraintList
+	constraints          map[string]*sdmxpb.SdmxComponentConstraint
 	entitySlotsByStatVar map[string]map[string]string
 	golden               string
 }{
 	{
 		name: "variable measured only",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"var1"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{},
 		golden:               "get_sdmx_obs_var_only",
 	},
 	{
 		name: "variable measured and origin slot",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"var1"}},
-			"origin":           {Values: []string{"country/AGO"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"origin":           sdmxComponentConstraint("country/AGO"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1"},
@@ -319,10 +327,10 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "variable measured and multiple slots (origin + destination)",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"var1"}},
-			"origin":           {Values: []string{"country/AGO"}},
-			"destination":      {Values: []string{"country/PRT", "country/SGP"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"origin":           sdmxComponentConstraint("country/AGO"),
+			"destination":      sdmxComponentConstraint("country/PRT", "country/SGP"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
@@ -331,10 +339,10 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "multiple variables with different slot mappings",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"var1", "var2"}},
-			"origin":           {Values: []string{"country/AGO"}},
-			"destination":      {Values: []string{"country/PRT"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1", "var2"),
+			"origin":           sdmxComponentConstraint("country/AGO"),
+			"destination":      sdmxComponentConstraint("country/PRT"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
@@ -344,14 +352,15 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "variable measured, origin, destination and physical column filters",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured":  {Values: []string{"var1"}},
-			"origin":            {Values: []string{"country/AGO", "country/BRA"}},
-			"destination":       {Values: []string{"country/PRT", "country/SGP"}},
-			"measurementMethod": {Values: []string{"Census", "Survey"}},
-			"observationPeriod": {Values: []string{"P1Y", "P1M"}},
-			"provenance":        {Values: []string{"dc/base/WTO_TradeConnectivity", "dc/base/UN_Trade"}},
-			"unit":              {Values: []string{"Percent", "Count"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured":  sdmxComponentConstraint("var1"),
+			"origin":            sdmxComponentConstraint("country/AGO", "country/BRA"),
+			"destination":       sdmxComponentConstraint("country/PRT", "country/SGP"),
+			"facetId":           sdmxComponentConstraint("facet", "alternate-facet"),
+			"measurementMethod": sdmxComponentConstraint("Census", "Survey"),
+			"observationPeriod": sdmxComponentConstraint("P1Y", "P1M"),
+			"provenance":        sdmxComponentConstraint("dc/base/WTO_TradeConnectivity", "dc/base/UN_Trade"),
+			"unit":              sdmxComponentConstraint("Percent", "Count"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{
 			"var1": {"origin": "entity1", "destination": "entity2"},
@@ -360,9 +369,9 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	},
 	{
 		name: "single-entity variable with observationAbout",
-		constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"var1"}},
-			"observationAbout": {Values: []string{"wikidataId/Q119158"}},
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
 		},
 		entitySlotsByStatVar: map[string]map[string]string{
 			"var1": {"observationAbout": "entity1"},

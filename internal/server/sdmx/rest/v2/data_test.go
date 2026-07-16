@@ -63,6 +63,15 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
+			name:        "filterable attribute",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[facetId]=facet"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"observationAbout": {"country/USA"},
+				"facetId":          {"facet"},
+			},
+		},
+		{
 			name: "multiple values for fixed and dynamic dimensions",
 			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated,Count_Refugee&" +
 				"c[destinationCountry]=country%2FCAN,country%2FMEX&" +

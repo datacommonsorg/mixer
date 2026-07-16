@@ -34,6 +34,31 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
+}
+
+func TestConstraintsFromRESTFiltersDefaultsToEquality(t *testing.T) {
+	constraint := constraintsFromRESTFilters(map[string][]string{
+		"source": {"india", "usa"},
+	})["source"]
+
+	gotValues := make([]string, 0, len(constraint.GetPredicates()))
+	for _, predicate := range constraint.GetPredicates() {
+		if got := predicate.GetOperator(); got != sdmxpb.SdmxOperator_SDMX_OPERATOR_EQ {
+			t.Fatalf("predicate operator = %v, want EQ", got)
+		}
+		gotValues = append(gotValues, predicate.GetValue())
+	}
+	if diff := cmp.Diff([]string{"india", "usa"}, gotValues); diff != "" {
+		t.Fatalf("predicate values mismatch (-want +got):\n%s", diff)
+	}
+}
+
 type sdmxDataSource struct {
 	datasource.DataSource
 	result             *sdmxpb.SdmxDataResult
@@ -118,6 +143,18 @@ func TestDataValidation(t *testing.T) {
 			wantErrSub: "SDMX component filter operators are not implemented yet",
 		},
 		{
+			name:       "Explicit equality remains unsupported",
+			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=eq:country%2FUSA"),
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX component filter operators are not implemented yet",
+		},
+		{
+			name:       "Property selector remains unsupported",
+			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout.typeOf]=County"),
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "invalid SDMX component filter",
+		},
+		{
 			name:       "Unsupported observation value filter",
 			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[OBS_VALUE]=10"),
 			wantCode:   codes.Unimplemented,
@@ -198,9 +235,9 @@ func TestDataSuccess(t *testing.T) {
 	}
 
 	wantQuery := &sdmxpb.SdmxDataQuery{
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"Count_Person"}},
-			"observationAbout": {Values: []string{"country/USA"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person"),
+			"observationAbout": sdmxComponentConstraint("country/USA"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
@@ -246,14 +283,14 @@ func TestDataDimensionFiltersPreserveMultipleValues(t *testing.T) {
 	}
 
 	wantQuery := &sdmxpb.SdmxDataQuery{
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured":   {Values: []string{"Count_Person_Migrated", "Count_Refugee"}},
-			"destinationCountry": {Values: []string{"country/CAN", "country/MEX"}},
-			"sourceCountry":      {Values: []string{"country/USA", "country/IND"}},
-			"unit":               {Values: []string{"Person", "Traveler"}},
-			"measurementMethod":  {Values: []string{"Census", "Survey"}},
-			"observationPeriod":  {Values: []string{"P1Y", "P1M"}},
-			"provenance":         {Values: []string{"dc/base/one", "dc/base/two"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured":   sdmxComponentConstraint("Count_Person_Migrated", "Count_Refugee"),
+			"destinationCountry": sdmxComponentConstraint("country/CAN", "country/MEX"),
+			"sourceCountry":      sdmxComponentConstraint("country/USA", "country/IND"),
+			"unit":               sdmxComponentConstraint("Person", "Traveler"),
+			"measurementMethod":  sdmxComponentConstraint("Census", "Survey"),
+			"observationPeriod":  sdmxComponentConstraint("P1Y", "P1M"),
+			"provenance":         sdmxComponentConstraint("dc/base/one", "dc/base/two"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
@@ -275,6 +312,7 @@ func TestDataCSVSuccess(t *testing.T) {
 				},
 				Attributes: map[string]string{
 					datacommons.ComponentScalingFactor: "0",
+					datacommons.ComponentFacetID:       "stored-facet-id",
 				},
 				Points: []*sdmxpb.SdmxDataPoint{
 					{TimePeriod: "2020", ObservationValue: "1.50"},
@@ -295,8 +333,8 @@ func TestDataCSVSuccess(t *testing.T) {
 		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
 	}
 
-	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" +
-		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0\r\n"
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n" +
+		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0,stored-facet-id\r\n"
 	if got := string(response.Body); got != want {
 		t.Errorf("Response body = %q, want %q", got, want)
 	}
@@ -327,7 +365,7 @@ func TestDataEmptyResult(t *testing.T) {
 		t.Fatalf("Data() error = %v", err)
 	}
 	body := string(response.Body)
-	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n"
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n"
 	if body != want {
 		t.Errorf("Response body = %q, want %q", body, want)
 	}
@@ -344,7 +382,7 @@ func TestDataCSVEmptyResult(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
 	}
-	if got := string(response.Body); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" {
+	if got := string(response.Body); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n" {
 		t.Errorf("Response body = %q, want header-only CSV", got)
 	}
 }
@@ -643,10 +681,10 @@ func TestAvailabilitySuccess(t *testing.T) {
 	}
 	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "observationAbout",
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"Count_Person", "Count_Household"}},
-			"observationAbout": {Values: []string{"country/USA", "geoId/06"}},
-			"unit":             {Values: []string{"Person", "Count"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person", "Count_Household"),
+			"observationAbout": sdmxComponentConstraint("country/USA", "geoId/06"),
+			"unit":             sdmxComponentConstraint("Person", "Count"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
@@ -669,8 +707,8 @@ func TestAvailabilitySelectsOtherDimension(t *testing.T) {
 	}
 	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "unit",
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"Count_Person"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
@@ -696,9 +734,9 @@ func TestAvailabilitySelectsDynamicDimension(t *testing.T) {
 	}
 	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "destinationCountry",
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			"variableMeasured": {Values: []string{"Count_Person_Migrated"}},
-			"sourceCountry":    {Values: []string{"country/USA"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person_Migrated"),
+			"sourceCountry":    sdmxComponentConstraint("country/USA"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {

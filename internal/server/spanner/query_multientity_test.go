@@ -34,6 +34,14 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
+}
+
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	observations, err := reconstructObservations([]*rawObservation{
 		{
@@ -435,7 +443,7 @@ func TestMultiEntityGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) 
 func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing.T) {
 	tests := []struct {
 		name       string
-		constraint *sdmxpb.ConstraintList
+		constraint *sdmxpb.SdmxComponentConstraint
 		want       string
 	}{
 		{
@@ -444,12 +452,12 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 		},
 		{
 			name:       "empty value list",
-			constraint: &sdmxpb.ConstraintList{},
+			constraint: &sdmxpb.SdmxComponentConstraint{},
 			want:       "SDMX component filter variableMeasured must be specified",
 		},
 		{
 			name:       "blank value",
-			constraint: &sdmxpb.ConstraintList{Values: []string{" "}},
+			constraint: sdmxComponentConstraint(" "),
 			want:       "SDMX component filter \"variableMeasured\" contains an empty value",
 		},
 	}
@@ -458,7 +466,7 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 		t.Run(tt.name, func(t *testing.T) {
 			client := &multiEntityClient{}
 			_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{
-				Constraints: map[string]*sdmxpb.ConstraintList{
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 					datacommons.ComponentVariableMeasured: tt.constraint,
 				},
 			})
@@ -480,14 +488,15 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	constraints := map[string]*sdmxpb.ConstraintList{
-		datacommons.ComponentVariableMeasured:  {Values: []string{"var2", "var1", "var2"}},
-		"destinationCountry":                   {Values: []string{"country/CAN", "country/MEX"}},
-		"sourceCountry":                        {Values: []string{"country/USA", "country/IND"}},
-		datacommons.ComponentUnit:              {Values: []string{"Count", "Percent"}},
-		datacommons.ComponentMeasurementMethod: {Values: []string{"Census", "Survey"}},
-		datacommons.ComponentObservationPeriod: {Values: []string{"P1Y", "P1M"}},
-		datacommons.ComponentProvenance:        {Values: []string{"dc/base/one", "dc/base/two"}},
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured:  sdmxComponentConstraint("var2", "var1", "var2"),
+		"destinationCountry":                   sdmxComponentConstraint("country/CAN", "country/MEX"),
+		"sourceCountry":                        sdmxComponentConstraint("country/USA", "country/IND"),
+		datacommons.ComponentUnit:              sdmxComponentConstraint("Count", "Percent"),
+		datacommons.ComponentMeasurementMethod: sdmxComponentConstraint("Census", "Survey"),
+		datacommons.ComponentObservationPeriod: sdmxComponentConstraint("P1Y", "P1M"),
+		datacommons.ComponentProvenance:        sdmxComponentConstraint("dc/base/one", "dc/base/two"),
+		datacommons.ComponentFacetID:           sdmxComponentConstraint("facet", "alternate-facet"),
 	}
 
 	prepared, err := prepareSdmxObservationsQuery(
@@ -541,6 +550,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		"measurementMethod":  []string{"Census", "Survey"},
 		"observationPeriod":  []string{"P1Y", "P1M"},
 		"provenance":         []string{"dc/base/one", "dc/base/two"},
+		"facetId":            []string{"facet", "alternate-facet"},
 	}
 	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
@@ -551,6 +561,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		`t.variable_measured = "var1" AND t.entity1 IN ('country/CAN','country/MEX')`,
 		`t.variable_measured = "var2" AND t.entity1 IN ('country/CAN','country/MEX')`,
 		`t.entity2 IN ('country/USA','country/IND')`,
+		`t.facet_id IN ('facet','alternate-facet')`,
 		`t.measurement_method IN ('Census','Survey')`,
 		`t.observation_period IN ('P1Y','P1M')`,
 		`t.provenance IN ('dc/base/one','dc/base/two')`,
@@ -570,14 +581,14 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 	}
 	req := &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "destinationCountry",
-		Constraints: map[string]*sdmxpb.ConstraintList{
-			datacommons.ComponentVariableMeasured:  {Values: []string{"var2", "var1", "var2"}},
-			"destinationCountry":                   {Values: []string{"country/CAN", "country/MEX"}},
-			"sourceCountry":                        {Values: []string{"country/USA", "country/IND"}},
-			datacommons.ComponentUnit:              {Values: []string{"Count", "Percent"}},
-			datacommons.ComponentMeasurementMethod: {Values: []string{"Census", "Survey"}},
-			datacommons.ComponentObservationPeriod: {Values: []string{"P1Y", "P1M"}},
-			datacommons.ComponentProvenance:        {Values: []string{"dc/base/one", "dc/base/two"}},
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured:  sdmxComponentConstraint("var2", "var1", "var2"),
+			"destinationCountry":                   sdmxComponentConstraint("country/CAN", "country/MEX"),
+			"sourceCountry":                        sdmxComponentConstraint("country/USA", "country/IND"),
+			datacommons.ComponentUnit:              sdmxComponentConstraint("Count", "Percent"),
+			datacommons.ComponentMeasurementMethod: sdmxComponentConstraint("Census", "Survey"),
+			datacommons.ComponentObservationPeriod: sdmxComponentConstraint("P1Y", "P1M"),
+			datacommons.ComponentProvenance:        sdmxComponentConstraint("dc/base/one", "dc/base/two"),
 		},
 	}
 
@@ -646,8 +657,8 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 			name: "target absent from shape",
 			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: datacommons.ComponentObservationAbout,
-				Constraints: map[string]*sdmxpb.ConstraintList{
-					datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				},
 			},
 			edges:      map[string][]*Edge{"var1": observationPropertiesEdges("destinationCountry", "sourceCountry")},
@@ -657,20 +668,32 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 			name: "filter absent from shape",
 			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "destinationCountry",
-				Constraints: map[string]*sdmxpb.ConstraintList{
-					datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-					"customEntity":                        {Values: []string{"country/USA"}},
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+					"customEntity":                        sdmxComponentConstraint("country/USA"),
 				},
 			},
 			edges:      map[string][]*Edge{"var1": observationPropertiesEdges("destinationCountry", "sourceCountry")},
 			wantErrSub: "unsupported SDMX component filter \"customEntity\"",
 		},
 		{
+			name: "facet ID filter unsupported",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: datacommons.ComponentObservationAbout,
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+					datacommons.ComponentFacetID:          sdmxComponentConstraint("facet"),
+				},
+			},
+			edges:      map[string][]*Edge{"var1": nil},
+			wantErrSub: "unsupported SDMX component filter \"facetId\"",
+		},
+		{
 			name: "incompatible stat var shapes",
 			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "destinationCountry",
-				Constraints: map[string]*sdmxpb.ConstraintList{
-					datacommons.ComponentVariableMeasured: {Values: []string{"var1", "var2"}},
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1", "var2"),
 				},
 			},
 			edges: map[string][]*Edge{
@@ -707,8 +730,8 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 func TestPrepareSdmxShapeMetadataError(t *testing.T) {
 	_, err := prepareSdmxShape(
 		context.Background(),
-		map[string]*sdmxpb.ConstraintList{
-			datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 		},
 		func(context.Context, []string, *v2.Arc, int, int) (map[string][]*Edge, error) {
 			return nil, errors.New("metadata unavailable")
@@ -821,10 +844,81 @@ func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
+func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
+	tests := []struct {
+		name       string
+		constraint *sdmxpb.SdmxComponentConstraint
+		want       string
+	}{
+		{
+			name: "property constraint",
+			constraint: &sdmxpb.SdmxComponentConstraint{
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: "var1"}},
+				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "StatisticalVariable"}}},
+				},
+			},
+			want: "SDMX property constraints are not implemented yet",
+		},
+		{
+			name: "unsupported operator",
+			constraint: &sdmxpb.SdmxComponentConstraint{
+				Predicates: []*sdmxpb.SdmxPredicate{{
+					Operator: sdmxpb.SdmxOperator(1),
+					Value:    "var1",
+				}},
+			},
+			want: "SDMX operators other than EQ are not implemented yet",
+		},
+	}
+	endpoints := []struct {
+		name string
+		call func(*multiEntityClient, *sdmxpb.SdmxComponentConstraint) error
+	}{
+		{
+			name: "data",
+			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+				_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						datacommons.ComponentVariableMeasured: constraint,
+					},
+				})
+				return err
+			},
+		},
+		{
+			name: "availability",
+			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+				_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: datacommons.ComponentVariableMeasured,
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						datacommons.ComponentVariableMeasured: constraint,
+					},
+				})
+				return err
+			},
+		},
+	}
+
+	for _, endpoint := range endpoints {
+		for _, tt := range tests {
+			t.Run(endpoint.name+"/"+tt.name, func(t *testing.T) {
+				err := endpoint.call(&multiEntityClient{}, tt.constraint)
+				if status.Code(err) != codes.Unimplemented {
+					t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+				}
+				if got := status.Convert(err).Message(); got != tt.want {
+					t.Fatalf("SDMX backend message = %q, want %q", got, tt.want)
+				}
+			})
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing.T) {
 	tests := []struct {
 		name       string
-		constraint *sdmxpb.ConstraintList
+		constraint *sdmxpb.SdmxComponentConstraint
 		want       string
 	}{
 		{
@@ -833,12 +927,12 @@ func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing
 		},
 		{
 			name:       "empty value list",
-			constraint: &sdmxpb.ConstraintList{},
+			constraint: &sdmxpb.SdmxComponentConstraint{},
 			want:       "SDMX component filter variableMeasured must be specified",
 		},
 		{
 			name:       "blank value",
-			constraint: &sdmxpb.ConstraintList{Values: []string{" "}},
+			constraint: sdmxComponentConstraint(" "),
 			want:       "SDMX component filter \"variableMeasured\" contains an empty value",
 		},
 	}
@@ -848,7 +942,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing
 			client := &multiEntityClient{}
 			_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: datacommons.ComponentVariableMeasured,
-				Constraints: map[string]*sdmxpb.ConstraintList{
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 					datacommons.ComponentVariableMeasured: tt.constraint,
 				},
 			})
@@ -883,6 +977,7 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		datacommons.ComponentProvenance:        "dc/dropped",
 		datacommons.ComponentTimePeriod:        "2020",
 		datacommons.ComponentObservationValue:  "99",
+		datacommons.ComponentFacetID:           "json-facet-id",
 		"customFacet":                          "drop",
 		"nestedFacet":                          map[string]interface{}{"drop": "me"},
 	})
@@ -914,6 +1009,68 @@ func TestPopulateSdmxFacetComponents(t *testing.T) {
 		if got := series.Attributes[key]; got != want {
 			t.Fatalf("Attributes[%q] = %q, want %q", key, got, want)
 		}
+	}
+}
+
+func TestPopulateSdmxFacetID(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes map[string]string
+		facetID    string
+		want       map[string]string
+	}{
+		{
+			name: "empty facet ID",
+		},
+		{
+			name:    "without existing attributes",
+			facetID: "stored-facet-id",
+			want: map[string]string{
+				datacommons.ComponentFacetID: "stored-facet-id",
+			},
+		},
+		{
+			name: "with existing attributes",
+			attributes: map[string]string{
+				datacommons.ComponentScalingFactor: "0",
+			},
+			facetID: "stored-facet-id",
+			want: map[string]string{
+				datacommons.ComponentScalingFactor: "0",
+				datacommons.ComponentFacetID:       "stored-facet-id",
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			series := &sdmxpb.SdmxTimeSeries{Attributes: tc.attributes}
+
+			populateSdmxFacetID(series, tc.facetID)
+
+			if diff := cmp.Diff(tc.want, series.Attributes); diff != "" {
+				t.Fatalf("Attributes mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestSdmxDataShapeFacetID(t *testing.T) {
+	shape := sdmxDataShape([]string{datacommons.ComponentObservationAbout})
+	var facetIDComponent *sdmxpb.SdmxComponent
+	for _, component := range shape.GetComponents() {
+		if component.GetId() == datacommons.ComponentFacetID {
+			facetIDComponent = component
+			break
+		}
+	}
+
+	if facetIDComponent == nil {
+		t.Fatal("shape does not contain facet ID")
+	}
+	if got := facetIDComponent.GetKind(); got != sdmxpb.SdmxComponentKind_SDMX_COMPONENT_KIND_ATTRIBUTE {
+		t.Fatalf("facet ID component kind = %v, want attribute", got)
+	}
+	if got := shape.GetComponents()[len(shape.GetComponents())-1].GetId(); got != datacommons.ComponentFacetID {
+		t.Fatalf("last component = %q, want %q", got, datacommons.ComponentFacetID)
 	}
 }
 
@@ -1180,92 +1337,172 @@ func TestSdmxSeriesDimensionsUsesEntitySlotMapping(t *testing.T) {
 	}
 }
 
-func TestValidateSdmxConstraintComponents(t *testing.T) {
+func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 	shape := sdmxDataShape([]string{"destinationCountry", "sourceCountry"})
 
 	tests := []struct {
 		name        string
-		constraints map[string]*sdmxpb.ConstraintList
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
 		wantError   string
 	}{
 		{
 			name: "known static filters pass",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured:  {Values: []string{"var1"}},
-				datacommons.ComponentUnit:              {Values: []string{"USD"}},
-				datacommons.ComponentMeasurementMethod: {Values: []string{"Census"}},
-				datacommons.ComponentObservationPeriod: {Values: []string{"P1Y"}},
-				datacommons.ComponentProvenance:        {Values: []string{"dc/base/test"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured:  sdmxComponentConstraint("var1"),
+				datacommons.ComponentUnit:              sdmxComponentConstraint("USD"),
+				datacommons.ComponentMeasurementMethod: sdmxComponentConstraint("Census"),
+				datacommons.ComponentObservationPeriod: sdmxComponentConstraint("P1Y"),
+				datacommons.ComponentProvenance:        sdmxComponentConstraint("dc/base/test"),
 			},
 		},
 		{
 			name: "known entity filter passes",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				"destinationCountry":                  {Values: []string{"country/USA"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				"destinationCountry":                  sdmxComponentConstraint("country/USA"),
+			},
+		},
+		{
+			name: "filterable attribute passes",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentFacetID:          sdmxComponentConstraint("facet"),
 			},
 		},
 		{
 			name: "observationAbout not in shape fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				datacommons.ComponentObservationAbout: {Values: []string{"country/USA"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentObservationAbout: sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "unknown dynamic filter fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				"customEntity":                        {Values: []string{"country/USA"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				"customEntity":                        sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"customEntity\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "time period fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				datacommons.ComponentTimePeriod:       {Values: []string{"2020"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
 			},
-			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "measure fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				datacommons.ComponentObservationValue: {Values: []string{"10"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentObservationValue: sdmxComponentConstraint("10"),
 			},
-			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "attribute fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				datacommons.ComponentScalingFactor:    {Values: []string{"0"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentScalingFactor:    sdmxComponentConstraint("0"),
 			},
-			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable dimensions are [destinationCountry measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			err := validateSdmxConstraintComponents(tt.constraints, shape)
+			err := validateSdmxDataConstraintComponents(tt.constraints, shape)
 			if tt.wantError == "" {
 				if err != nil {
-					t.Fatalf("validateSdmxConstraintComponents() error = %v, want nil", err)
+					t.Fatalf("validateSdmxDataConstraintComponents() error = %v, want nil", err)
 				}
 				return
 			}
 			if err == nil {
-				t.Fatal("validateSdmxConstraintComponents() error = nil, want error")
+				t.Fatal("validateSdmxDataConstraintComponents() error = nil, want error")
 			}
 			if status.Code(err) != codes.InvalidArgument {
-				t.Fatalf("validateSdmxConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+				t.Fatalf("validateSdmxDataConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
 			if got := status.Convert(err).Message(); got != tt.wantError {
-				t.Fatalf("validateSdmxConstraintComponents() message = %q, want %q", got, tt.wantError)
+				t.Fatalf("validateSdmxDataConstraintComponents() message = %q, want %q", got, tt.wantError)
 			}
 		})
+	}
+}
+
+func TestValidateSdmxRequiredObservationProperty(t *testing.T) {
+	tests := []struct {
+		name                  string
+		constraints           map[string]*sdmxpb.SdmxComponentConstraint
+		observationProperties []string
+		wantError             string
+	}{
+		{
+			name: "one observation property passes",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"destinationCountry": sdmxComponentConstraint("country/CAN"),
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+		},
+		{
+			name: "multiple observation properties pass",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"destinationCountry": sdmxComponentConstraint("country/CAN"),
+				"sourceCountry":      sdmxComponentConstraint("country/USA"),
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+		},
+		{
+			name: "filterable attribute does not satisfy requirement",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentFacetID:          sdmxComponentConstraint("facet"),
+			},
+			observationProperties: []string{"destinationCountry", "sourceCountry"},
+			wantError:             "SDMX data query must include at least one observation property filter; allowed observation properties are [destinationCountry sourceCountry]",
+		},
+		{
+			name: "fallback observation about is required",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+			},
+			observationProperties: []string{datacommons.ComponentObservationAbout},
+			wantError:             "SDMX data query must include at least one observation property filter; allowed observation properties are [observationAbout]",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			err := validateSdmxRequiredObservationProperty(tt.constraints, tt.observationProperties)
+			if tt.wantError == "" {
+				if err != nil {
+					t.Fatalf("validateSdmxRequiredObservationProperty() error = %v, want nil", err)
+				}
+				return
+			}
+			if status.Code(err) != codes.InvalidArgument {
+				t.Fatalf("validateSdmxRequiredObservationProperty() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			}
+			if got := status.Convert(err).Message(); got != tt.wantError {
+				t.Fatalf("validateSdmxRequiredObservationProperty() message = %q, want %q", got, tt.wantError)
+			}
+		})
+	}
+}
+
+func TestFilterableAttributesHaveStaticDataColumns(t *testing.T) {
+	for componentID := range datacommons.FilterableAttributes {
+		kind, ok := datacommons.DataComponentKind(componentID)
+		if !ok || kind != datacommons.ComponentKindAttribute {
+			t.Errorf("filterable attribute %q is not registered as an attribute", componentID)
+		}
+		column, ok := sdmxStaticDataFilterColumn(componentID)
+		if !ok || column == "" {
+			t.Errorf("filterable attribute %q has no static data column", componentID)
+		}
 	}
 }
 
@@ -1283,6 +1520,7 @@ func TestValidateSdmxAvailabilityComponent(t *testing.T) {
 		{name: "time period", componentID: datacommons.ComponentTimePeriod, wantError: true},
 		{name: "measure", componentID: datacommons.ComponentObservationValue, wantError: true},
 		{name: "attribute", componentID: datacommons.ComponentScalingFactor, wantError: true},
+		{name: "facet ID attribute", componentID: datacommons.ComponentFacetID, wantError: true},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			err := validateSdmxAvailabilityComponent(tt.componentID, shape)
@@ -1299,42 +1537,42 @@ func TestValidateSdmxAvailabilityComponent(t *testing.T) {
 func TestValidateSdmxConstraintValues(t *testing.T) {
 	tests := []struct {
 		name        string
-		constraints map[string]*sdmxpb.ConstraintList
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
 		wantError   string
 	}{
 		{
 			name: "multiple values pass",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1", "var2"}},
-				datacommons.ComponentUnit:             {Values: []string{"Count", "Percent"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1", "var2"),
+				datacommons.ComponentUnit:             sdmxComponentConstraint("Count", "Percent"),
 			},
 		},
 		{
 			name:        "missing variable measured fails",
-			constraints: map[string]*sdmxpb.ConstraintList{},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{},
 			wantError:   "SDMX component filter variableMeasured must be specified",
 		},
 		{
 			name: "nil values fail",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentUnit:             nil,
 			},
 			wantError: "SDMX component filter \"unit\" must have at least one value",
 		},
 		{
 			name: "empty values fail",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentUnit:             {},
 			},
 			wantError: "SDMX component filter \"unit\" must have at least one value",
 		},
 		{
 			name: "blank value fails",
-			constraints: map[string]*sdmxpb.ConstraintList{
-				datacommons.ComponentVariableMeasured: {Values: []string{"var1"}},
-				datacommons.ComponentUnit:             {Values: []string{" "}},
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentUnit:             sdmxComponentConstraint(" "),
 			},
 			wantError: "SDMX component filter \"unit\" contains an empty value",
 		},

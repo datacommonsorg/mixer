@@ -63,12 +63,12 @@ func TestSDMXData(t *testing.T) {
 		},
 		{
 			name:   "compatible two-property stat variables",
-			query:  "c[variableMeasured]=Count_Migration,Count_Refugee",
+			query:  "c[variableMeasured]=Count_Migration,Count_Refugee&c[destinationCountry]=country%2FCAN,country%2FGBR,country%2FMEX",
 			golden: "data_compatible_stat_vars.csv",
 		},
 		{
 			name:   "compatible fallback stat variables",
-			query:  "c[variableMeasured]=Count_Household,Count_Person",
+			query:  "c[variableMeasured]=Count_Household,Count_Person&c[observationAbout]=geoId%2F06,country%2FUSA",
 			golden: "data_fallback_compatible_stat_vars.csv",
 		},
 		{
@@ -80,6 +80,11 @@ func TestSDMXData(t *testing.T) {
 				"c[observationPeriod]=P1Y,P1M&" +
 				"c[provenance]=dc%2Fbase%2FHumanReadableStatVars,dc%2Fbase%2FOther",
 			golden: "data_multiple_values.csv",
+		},
+		{
+			name:   "facet ID",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN,country%2FGBR&c[facetId]=facet",
+			golden: "data_facet_id.csv",
 		},
 		{
 			name:   "empty result",
@@ -99,6 +104,20 @@ func TestSDMXData(t *testing.T) {
 			}
 			compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
 		})
+	}
+}
+
+func TestSDMXDataRequiresObservationProperty(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	_, err := sdmxService.Data(context.Background(), emulatorDataRequest(
+		"c[variableMeasured]=Count_Migration&c[facetId]=facet",
+	))
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("Data() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	want := "SDMX data query must include at least one observation property filter; allowed observation properties are [destinationCountry sourceCountry]"
+	if got := status.Convert(err).Message(); got != want {
+		t.Fatalf("Data() message = %q, want %q", got, want)
 	}
 }
 
