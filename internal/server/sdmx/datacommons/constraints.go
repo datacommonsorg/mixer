@@ -112,10 +112,9 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 				return err
 			}
 		}
-
-if !hasContainedInPlace || !hasTypeOf {
-	return status.Errorf(codes.InvalidArgument, "SDMX property filters on component %q require containedInPlace+ and typeOf", componentID)
-}
+		if !hasContainedInPlace || !hasTypeOf {
+			return status.Errorf(codes.InvalidArgument, "SDMX property filters on component %q require containedInPlace+ and typeOf", componentID)
+		}
 	}
 	return validateRequiredVariableMeasured(constraints)
 }
