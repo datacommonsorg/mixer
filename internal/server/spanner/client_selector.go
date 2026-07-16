@@ -79,7 +79,7 @@ func (s *schemaSelectorClient) CheckVariableExistence(ctx context.Context, varia
 
 // CheckVariableSourceExistence delegates to the embedded client.
 func (s *schemaSelectorClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
-	// Source existence is backed by Cache/Edge provenance data, not the
+	// Source existence is backed by KeyValueStore/Edge provenance data, not the
 	// observation storage schema. Delegate to the base client so source and
 	// dataset existence requests keep working when multi-entity observation
 	// reads are enabled.

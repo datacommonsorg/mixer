@@ -18,6 +18,7 @@ import (
 	"strings"
 	"testing"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -60,6 +61,15 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 				"variableMeasured":   {"Count_Person_Migrated"},
 				"destinationCountry": {"country/CAN"},
 				"sourceCountry":      {"country/USA"},
+			},
+		},
+		{
+			name:        "filterable attribute",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[facetId]=facet"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"observationAbout": {"country/USA"},
+				"facetId":          {"facet"},
 			},
 		},
 		{
@@ -113,11 +123,42 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			if err != nil {
 				t.Fatalf("ParseDataRequest() error = %v", err)
 			}
-			if diff := cmp.Diff(tt.want, got.Constraints); diff != "" {
+			if diff := cmp.Diff(tt.want, componentConstraintValues(got.Constraints)); diff != "" {
 				t.Errorf("ParseDataRequest() constraints mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}
+}
+
+func TestParseDataRequest_PropertyConstraints(t *testing.T) {
+	for _, query := range []string{
+		"c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=country%2FUSA&c[sourceCountry.typeOf]=State",
+		"c%5BvariableMeasured%5D=Count_Migration&c%5BsourceCountry.containedInPlace%2B%5D=country%2FUSA&c%5BsourceCountry.typeOf%5D=State",
+	} {
+		got, err := ParseDataRequest(dataTail(), dataURI(query))
+		if err != nil {
+			t.Fatalf("ParseDataRequest() error = %v", err)
+		}
+		constraint := got.Constraints["sourceCountry"]
+		containedIn := constraint.GetPropertyConstraints()["containedInPlace"]
+		if !containedIn.GetTransitive() || containedIn.GetPredicates()[0].GetValue() != "country/USA" {
+			t.Fatalf("containedInPlace constraint = %v", containedIn)
+		}
+		typeOf := constraint.GetPropertyConstraints()["typeOf"]
+		if typeOf.GetTransitive() || typeOf.GetPredicates()[0].GetValue() != "State" {
+			t.Fatalf("typeOf constraint = %v", typeOf)
+		}
+	}
+}
+
+func componentConstraintValues(constraints map[string]*sdmxpb.SdmxComponentConstraint) map[string][]string {
+	result := map[string][]string{}
+	for componentID, constraint := range constraints {
+		for _, predicate := range constraint.GetPredicates() {
+			result[componentID] = append(result[componentID], predicate.GetValue())
+		}
+	}
+	return result
 }
 
 func TestParseDataRequest_Path(t *testing.T) {
@@ -263,6 +304,36 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		{
 			name:        "operator unsupported",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=ge:2020"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "multi step property selector",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "direct containment unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace]=country%2FUSA&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "transitive type unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf+]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "multiple containment values",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA,country%2FCAN&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "direct and property predicates",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=geoId%2F06&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "property on known non observation component",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[unit.containedInPlace+]=country%2FUSA&c[unit.typeOf]=County"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

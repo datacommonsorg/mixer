@@ -24,6 +24,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 type availabilityDataSource struct {
@@ -110,6 +111,28 @@ func TestSdmxDataMergesIdenticalShapes(t *testing.T) {
 	}
 	if len(got.GetSeries()) != 2 {
 		t.Fatalf("len(SdmxData().Series) = %d, want 2", len(got.GetSeries()))
+	}
+}
+
+func TestSdmxDataMergesLocalResultWithEmptyRemoteResult(t *testing.T) {
+	shape := testSdmxShape([]string{datacommons.ComponentObservationAbout})
+	localResult := &sdmxpb.SdmxDataResult{
+		Shape: shape,
+		Series: []*sdmxpb.SdmxTimeSeries{
+			{Dimensions: map[string]string{datacommons.ComponentVariableMeasured: "Count_Person"}},
+		},
+	}
+	ds := NewDataSources([]datasource.DataSource{
+		&sdmxDataSource{id: "local", result: localResult},
+		&sdmxDataSource{id: "remote", result: &sdmxpb.SdmxDataResult{}},
+	}, nil)
+
+	got, err := ds.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})
+	if err != nil {
+		t.Fatalf("SdmxData() error = %v", err)
+	}
+	if diff := cmp.Diff(localResult, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("SdmxData() mismatch (-want +got):\n%s", diff)
 	}
 }
 

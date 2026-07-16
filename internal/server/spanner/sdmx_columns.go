@@ -18,6 +18,8 @@ import "github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 
 func sdmxStaticDataFilterColumn(componentID string) (string, bool) {
 	switch componentID {
+	case datacommons.ComponentFacetID:
+		return "facet_id", true
 	case datacommons.ComponentMeasurementMethod:
 		return "measurement_method", true
 	case datacommons.ComponentObservationPeriod:
@@ -31,8 +33,8 @@ func sdmxStaticDataFilterColumn(componentID string) (string, bool) {
 	}
 }
 
-func sdmxDataFilterColumn(componentID string, entitySlotByObservationProperty map[string]string) (string, bool) {
-	if entitySlot, ok := entitySlotByObservationProperty[componentID]; ok {
+func sdmxDataFilterColumn(componentID string, observationPropertyToEntitySlot map[string]string) (string, bool) {
+	if entitySlot, ok := observationPropertyToEntitySlot[componentID]; ok {
 		return entitySlot, true
 	}
 	return sdmxStaticDataFilterColumn(componentID)

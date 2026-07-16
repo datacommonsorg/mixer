@@ -17,4 +17,4 @@
 			t.facet AS facets,
 			t.entities
 		FROM TimeSeries t
-		WHERE (t.variable_measured = "var1" AND t.entity1 IN ('wikidataId/Q119158'))
+		WHERE t.variable_measured IN ('var1') AND t.entity1 IN ('wikidataId/Q119158')
