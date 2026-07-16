@@ -512,15 +512,14 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 			childPlaceTypeParam := fmt.Sprintf("containment_%d_child_place_type", cteIndex)
 			params[ancestorParam] = key.ancestor
 			params[childPlaceTypeParam] = key.childPlaceType
-			cteDefinitions = append(cteDefinitions, fmt.Sprintf(`%s AS (
-			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
-			WHERE contained.predicate = '%s'
-				AND contained.object_id = @%s
-				AND typed.predicate = '%s'
-				AND typed.object_id = @%s
-		)`, cteName, containedRule.GraphPredicate, ancestorParam, typeRule.GraphPredicate, childPlaceTypeParam))
+			cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+				b.statements.sdmxContainedPlacesCTE,
+				cteName,
+				containedRule.GraphPredicate,
+				ancestorParam,
+				typeRule.GraphPredicate,
+				childPlaceTypeParam,
+			))
 		}
 		resolved[i].cteName = cteName
 	}
@@ -547,39 +546,21 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		where = "\n\t\t\tWHERE " + strings.Join(whereClauses, "\n\t\t\t\tAND ")
 	}
 
-	seriesCTE := fmt.Sprintf(`series AS (
-			SELECT
-				t.variable_measured,
-				t.entity1,
-				t.extra_entities_id,
-				t.facet_id,
-				t.provenance,
-				t.facet,
-				t.entities
-			FROM %s anchor
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s@{FORCE_INDEX=%s} t
-				ON t.%s = anchor.place_id
-				AND %s%s
-		)`, anchor.cteName, b.tableConfig.TimeSeriesTable, index, anchor.entityColumn, compiled.where, where)
+	seriesCTE := fmt.Sprintf(
+		b.statements.sdmxContainedSeriesCTE,
+		anchor.cteName,
+		index,
+		anchor.entityColumn,
+		compiled.where,
+		where,
+	)
 
-	sql := fmt.Sprintf(`		%sWITH %s,
-		%s
-		SELECT
-			t.variable_measured,
-			t.entity1 AS observation_about,
-			t.facet_id,
-			ANY_VALUE(t.provenance) AS provenance,
-			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value)) AS dates_and_values,
-			ANY_VALUE(t.facet) AS facets,
-			ANY_VALUE(t.entities) AS entities
-		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s o
-		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		GROUP BY
-			t.variable_measured,
-			t.entity1,
-			t.extra_entities_id,
-			t.facet_id`, statementHint, strings.Join(cteDefinitions, ",\n\t\t"), seriesCTE, b.tableConfig.ObservationTable)
+	sql := fmt.Sprintf(
+		b.statements.getSdmxContainedInPlace,
+		statementHint,
+		strings.Join(cteDefinitions, ",\n\t\t"),
+		seriesCTE,
+	)
 
 	return &spanner.Statement{SQL: sql, Params: params}, nil
 }
