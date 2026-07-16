@@ -545,8 +545,14 @@ func prepareSdmxObservationsQuery(
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 	queryBuilder *multiEntityQueryBuilder,
 ) (*preparedSdmxObservationsQuery, error) {
+	if err := datacommons.ValidateDataConstraints(constraints); err != nil {
+		return nil, err
+	}
 	preparedShape, err := prepareSdmxShape(ctx, constraints, getNodeEdgesByID)
 	if err != nil {
+		return nil, err
+	}
+	if err := validateSdmxPropertyConstraintScopes(constraints, preparedShape.entitySlotByObservationProperty); err != nil {
 		return nil, err
 	}
 	if err := validateSdmxDataConstraintComponents(constraints, preparedShape.shape); err != nil {
@@ -572,9 +578,6 @@ func prepareSdmxShape(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 ) (*preparedSdmxShape, error) {
-	if err := datacommons.ValidateSupportedConstraints(constraints); err != nil {
-		return nil, err
-	}
 	if err := validateSdmxConstraintValues(constraints); err != nil {
 		return nil, err
 	}
@@ -623,14 +626,40 @@ func validateSdmxConstraintValues(constraints map[string]*sdmxpb.SdmxComponentCo
 	}
 
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
-		values := sdmxConstraintValues(constraints[componentID])
+		constraint := constraints[componentID]
+		values := sdmxConstraintValues(constraint)
 		if len(values) == 0 {
+			if len(constraint.GetPropertyConstraints()) > 0 {
+				continue
+			}
 			return status.Errorf(codes.InvalidArgument, "SDMX component filter %q must have at least one value", componentID)
 		}
 		for _, value := range values {
 			if strings.TrimSpace(value) == "" {
 				return status.Errorf(codes.InvalidArgument, "SDMX component filter %q contains an empty value", componentID)
 			}
+		}
+	}
+	return nil
+}
+
+func validateSdmxPropertyConstraintScopes(
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
+	entitySlotByObservationProperty map[string]string,
+) error {
+	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
+		propertyConstraints := constraints[componentID].GetPropertyConstraints()
+		if len(propertyConstraints) == 0 {
+			continue
+		}
+		for _, propertyID := range slices.Sorted(maps.Keys(propertyConstraints)) {
+			rule, ok := datacommons.DataPropertyRule(propertyID)
+			if ok && rule.Scope != datacommons.ComponentScopeObservationProperty {
+				return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
+			}
+		}
+		if _, ok := entitySlotByObservationProperty[componentID]; !ok {
+			return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
 		}
 	}
 	return nil
@@ -800,6 +829,9 @@ func prepareSdmxAvailabilityQuery(
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 	queryBuilder *multiEntityQueryBuilder,
 ) (*spanner.Statement, error) {
+	if err := datacommons.ValidateAvailabilityConstraints(req.GetConstraints()); err != nil {
+		return nil, err
+	}
 	preparedShape, err := prepareSdmxShape(ctx, req.GetConstraints(), getNodeEdgesByID)
 	if err != nil {
 		return nil, err

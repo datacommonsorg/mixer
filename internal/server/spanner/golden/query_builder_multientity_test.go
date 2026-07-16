@@ -358,6 +358,18 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, obsStmt.SQL, "CustomObsTable", "CustomTsTable")
 
+	sdmxStmt, err := builder.GetSdmxObservationsQuery(
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person"),
+			"source":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		map[string]string{"source": "entity2"},
+	)
+	if err != nil {
+		t.Fatalf("GetSdmxObservationsQuery() returned error: %v", err)
+	}
+	assertSQLContains(t, sdmxStmt.SQL, "CustomObsTable", "CustomTsTable", "CustomEntity2Index")
+
 	containedInStmt, err := builder.GetObservationsContainedInPlaceQuery(
 		[]string{"Count_Person"},
 		&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},

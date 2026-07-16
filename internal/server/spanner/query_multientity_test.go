@@ -42,6 +42,18 @@ func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
 	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
 }
 
+func sdmxContainedInPlaceConstraint(ancestor, childPlaceType string) *sdmxpb.SdmxComponentConstraint {
+	return &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			datacommons.PropertyContainedInPlace: {
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: ancestor}},
+				Transitive: true,
+			},
+			datacommons.PropertyTypeOf: {Predicates: []*sdmxpb.SdmxPredicate{{Value: childPlaceType}}},
+		},
+	}
+}
+
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	observations, err := reconstructObservations([]*rawObservation{
 		{
@@ -573,6 +585,76 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 	}
 }
 
+func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+		"destinationCountry":                  sdmxComponentConstraint("country/CAN"),
+		"sourceCountry":                       sdmxContainedInPlaceConstraint("country/USA", "State"),
+	}
+	prepared, err := prepareSdmxObservationsQuery(
+		context.Background(),
+		constraints,
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Migration": observationPropertiesEdges("destinationCountry", "sourceCountry"),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if err != nil {
+		t.Fatalf("prepareSdmxObservationsQuery() error = %v", err)
+	}
+	wantParams := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
+		"destinationCountry":                  []string{"country/CAN"},
+		"containedAncestor0":                  "country/USA",
+		"containedChildPlaceType0":            "State",
+	}
+	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
+		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
+	}
+	for _, fragment := range []string{
+		"contained.predicate = 'linkedContainedInPlace'",
+		"typed.predicate = 'typeOf'",
+		"TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2}",
+		"ON t.entity2 = anchor.place_id",
+		"t.variable_measured IN UNNEST(@variableMeasured)",
+		"t.entity1 IN UNNEST(@destinationCountry)",
+		"t.entity2 IS NOT NULL",
+	} {
+		if !strings.Contains(prepared.statement.SQL, fragment) {
+			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, prepared.statement.SQL)
+		}
+	}
+}
+
+func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservationProperties(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = prepareSdmxObservationsQuery(
+		context.Background(),
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			"customEntity":                        sdmxContainedInPlaceConstraint("country/USA", "County"),
+		},
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Person": observationPropertiesEdges(datacommons.ComponentObservationAbout),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("prepareSdmxObservationsQuery() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+}
+
 func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
 	if err != nil {
@@ -830,32 +912,12 @@ func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
-func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
-	tests := []struct {
-		name       string
-		constraint *sdmxpb.SdmxComponentConstraint
-		want       string
-	}{
-		{
-			name: "property constraint",
-			constraint: &sdmxpb.SdmxComponentConstraint{
-				Predicates: []*sdmxpb.SdmxPredicate{{Value: "var1"}},
-				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
-					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "StatisticalVariable"}}},
-				},
-			},
-			want: "SDMX property constraints are not implemented yet",
-		},
-		{
-			name: "unsupported operator",
-			constraint: &sdmxpb.SdmxComponentConstraint{
-				Predicates: []*sdmxpb.SdmxPredicate{{
-					Operator: sdmxpb.SdmxOperator(1),
-					Value:    "var1",
-				}},
-			},
-			want: "SDMX operators other than EQ are not implemented yet",
-		},
+func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
+	constraint := &sdmxpb.SdmxComponentConstraint{
+		Predicates: []*sdmxpb.SdmxPredicate{{
+			Operator: sdmxpb.SdmxOperator(1),
+			Value:    "var1",
+		}},
 	}
 	endpoints := []struct {
 		name string
@@ -887,17 +949,32 @@ func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
 	}
 
 	for _, endpoint := range endpoints {
-		for _, tt := range tests {
-			t.Run(endpoint.name+"/"+tt.name, func(t *testing.T) {
-				err := endpoint.call(&multiEntityClient{}, tt.constraint)
-				if status.Code(err) != codes.Unimplemented {
-					t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
-				}
-				if got := status.Convert(err).Message(); got != tt.want {
-					t.Fatalf("SDMX backend message = %q, want %q", got, tt.want)
-				}
-			})
-		}
+		t.Run(endpoint.name, func(t *testing.T) {
+			err := endpoint.call(&multiEntityClient{}, constraint)
+			if status.Code(err) != codes.Unimplemented {
+				t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+			}
+			if got, want := status.Convert(err).Message(), "SDMX operators other than EQ are not implemented yet"; got != want {
+				t.Fatalf("SDMX backend message = %q, want %q", got, want)
+			}
+		})
+	}
+}
+
+func TestMultiEntitySdmxAvailabilityRejectsPropertyConstraints(t *testing.T) {
+	_, err := (&multiEntityClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			datacommons.ComponentObservationAbout: {
+				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+				},
+			},
+		},
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
 }
 
