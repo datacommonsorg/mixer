@@ -139,6 +139,14 @@
           </Condition>
           <Name>enforce-quota-limit</Name>
         </Step>
+        <Step>
+          <!-- TODO(gmechali): Remove set-disable-spanner-header step once NL2SQL legacy client migration is complete. -->
+          <Condition>
+            (developer.app.id = "REPLACE_WITH_LEGACY_CLIENT_APP_ID") OR
+            (verifyapikey.verify-api-key-in-header.developer.app.id = "REPLACE_WITH_LEGACY_CLIENT_APP_ID")
+          </Condition>
+          <Name>set-disable-spanner-header</Name>
+        </Step>
       </Request>
     </Flow>
   </Flows>

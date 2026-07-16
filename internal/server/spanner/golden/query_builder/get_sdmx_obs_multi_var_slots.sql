@@ -17,4 +17,4 @@
 			t.facet AS facets,
 			t.entities
 		FROM TimeSeries t
-		WHERE (t.variable_measured = "var1" AND t.entity2 IN ('country/PRT') AND t.entity1 IN ('country/AGO')) OR (t.variable_measured = "var2" AND t.entity1 IN ('country/PRT') AND t.entity2 IN ('country/AGO'))
+		WHERE t.variable_measured IN ('var1','var2') AND t.entity1 IN ('country/AGO') AND t.entity2 IN ('country/PRT')

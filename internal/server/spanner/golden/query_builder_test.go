@@ -18,6 +18,7 @@ import (
 	"context"
 	"path"
 	"runtime"
+	"strings"
 	"testing"
 
 	cloudSpanner "cloud.google.com/go/spanner"
@@ -163,8 +164,20 @@ func TestGetProvenanceSummaryQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, c.variables), nil
+			return spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, c.variables, false), nil
 		})
+	}
+}
+
+func TestGetKeyValueStoreQuery(t *testing.T) {
+	t.Parallel()
+
+	stmt := spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, []string{"foo"}, true)
+	if stmt == nil {
+		t.Fatal("GetKeyValueStoreQuery returned nil statement")
+	}
+	if !strings.Contains(stmt.SQL, "FROM\n\t\t\tKeyValueStore") {
+		t.Errorf("GetKeyValueStoreQuery(..., useKeyValueStore=true) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
 	}
 }
 

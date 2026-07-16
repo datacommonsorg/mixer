@@ -1,2 +1,2 @@
-STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,destinationCountry,observationAbout,sourceCountry,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor
-dataflow,DC:DF_OBS(1.0.0),I,Count_MigrationByObservationAbout,country/CAN,country/MEX,country/USA,Count,Census,P1Y,dc/base/HumanReadableStatVars,2024,5,
+STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,destinationCountry,observationAbout,sourceCountry,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId
+dataflow,DC:DF_OBS(1.0.0),I,Count_MigrationByObservationAbout,country/CAN,country/MEX,country/USA,Count,Census,P1Y,dc/base/HumanReadableStatVars,2024,5,,facet

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- TODO(gmechali): Remove policy once NL2SQL legacy client migration is complete. -->
+<AssignMessage continueOnError="false" enabled="true" name="set-disable-spanner-header">
+  <DisplayName>set-disable-spanner-header</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="X-Disable-Spanner">true</Header>
+    </Headers>
+  </Set>
+</AssignMessage>

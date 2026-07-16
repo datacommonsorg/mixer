@@ -21,22 +21,14 @@ import (
 )
 
 func dataQueryFromREST(request *restv2.DataRequest) (*sdmxpb.SdmxDataQuery, error) {
-	return &sdmxpb.SdmxDataQuery{Constraints: constraintsFromRESTFilters(request.Constraints)}, nil
+	return &sdmxpb.SdmxDataQuery{Constraints: request.Constraints}, nil
 }
 
 func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*sdmxpb.SdmxAvailabilityQuery, error) {
 	return &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: request.Path.ComponentID,
-		Constraints: constraintsFromRESTFilters(request.Constraints),
+		Constraints: request.Constraints,
 	}, nil
-}
-
-func constraintsFromRESTFilters(filters map[string][]string) map[string]*sdmxpb.ConstraintList {
-	constraints := map[string]*sdmxpb.ConstraintList{}
-	for componentID, values := range filters {
-		constraints[componentID] = &sdmxpb.ConstraintList{Values: values}
-	}
-	return constraints
 }
 
 func dataStructureID(path restv2.ResourcePath) string {
