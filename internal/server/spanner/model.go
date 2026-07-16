@@ -24,8 +24,8 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// CacheDataType represents the type of cache data.
-type CacheDataType string
+// KeyValueStoreType represents the type of KeyValueStore data.
+type KeyValueStoreType string
 
 const (
 	TypeProvenanceSummary = "ProvenanceSummary"
