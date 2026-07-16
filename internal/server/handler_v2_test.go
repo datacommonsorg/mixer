@@ -254,6 +254,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 		enableEmbeddings       bool // flags.EnableSpannerSearchEmbeddings
 		resolver               string
 		indicatorSpannerHeader string // X-V2Resolve-Indicator-Spanner header
+		disableSpannerHeader   string // X-Disable-Spanner header
 		wantRoute              bool
 		wantErr                bool
 	}{
@@ -281,6 +282,20 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			useSpannerGraph: false,
 			resolver:        resolve.ResolveResolverTopic,
 			wantRoute:       false,
+		},
+		{
+			desc:                 "Place resolver with X-Disable-Spanner -> don't route",
+			useSpannerGraph:      true,
+			resolver:             resolve.ResolveResolverPlace,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
+		},
+		{
+			desc:                 "Topic resolver with X-Disable-Spanner -> don't route",
+			useSpannerGraph:      true,
+			resolver:             resolve.ResolveResolverTopic,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
 		},
 		{
 			desc:            "Empty resolver defaults to place (Spanner enabled) -> route",
@@ -372,8 +387,15 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			}
 
 			ctx := context.Background()
+			md := metadata.MD{}
 			if tc.indicatorSpannerHeader != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs(util.XV2ResolveIndicatorSpanner, tc.indicatorSpannerHeader))
+				md.Set(util.XV2ResolveIndicatorSpanner, tc.indicatorSpannerHeader)
+			}
+			if tc.disableSpannerHeader != "" {
+				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
+			}
+			if len(md) > 0 {
+				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
 			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
