@@ -367,6 +367,41 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:              false,
 		},
 
+		// Indicator resolver - X-Disable-Spanner global override
+		{
+			desc:                 "Indicator resolver - X-Disable-Spanner overrides default routing (flag true)",
+			useSpannerGraph:      true,
+			enableEmbeddings:     true,
+			resolver:             resolve.ResolveResolverIndicator,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
+		},
+		{
+			desc:                   "Indicator resolver - X-Disable-Spanner overrides force Spanner header",
+			useSpannerGraph:        true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			disableSpannerHeader:   "true",
+			wantRoute:              false,
+		},
+		{
+			desc:                   "Indicator resolver - X-Disable-Spanner true with force Legacy header",
+			useSpannerGraph:        true,
+			enableEmbeddings:       true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "false",
+			disableSpannerHeader:   "true",
+			wantRoute:              false,
+		},
+		{
+			desc:                 "Indicator resolver - X-Disable-Spanner false does not prevent routing",
+			useSpannerGraph:      true,
+			enableEmbeddings:     true,
+			resolver:             resolve.ResolveResolverIndicator,
+			disableSpannerHeader: "false",
+			wantRoute:            true,
+		},
+
 		// Invalid header values
 		{
 			desc:                   "Indicator resolver - Invalid header value -> error",
