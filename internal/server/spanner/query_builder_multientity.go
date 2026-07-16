@@ -371,7 +371,7 @@ func compileSdmxConstraints(
 	clauses := []string{sdmxAllowedValuesClause("variable_measured", datacommons.ComponentVariableMeasured)}
 	for _, componentID := range componentIDs {
 		spannerColumn, ok := sdmxDataFilterColumn(componentID, entitySlotByObservationProperty)
-		if !ok {
+		if !ok || spannerColumn == "" {
 			return nil, status.Errorf(codes.InvalidArgument, "unsupported SDMX component filter %q", componentID)
 		}
 		clauses = append(clauses, sdmxAllowedValuesClause(spannerColumn, componentID))

@@ -262,6 +262,17 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			want:                            `GetSdmxObservationsQuery: unsupported SDMX component filter "customEntity"`,
 		},
 		{
+			name: "empty dynamic component mapping",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured":   sdmxComponentConstraint("var1"),
+				"destinationCountry": sdmxComponentConstraint("country/USA"),
+			},
+			entitySlotByObservationProperty: map[string]string{
+				"destinationCountry": "",
+			},
+			want: `GetSdmxObservationsQuery: unsupported SDMX component filter "destinationCountry"`,
+		},
+		{
 			name:        "observation about outside resolved properties",
 			constraints: constraints,
 			entitySlotByObservationProperty: map[string]string{
