@@ -17,6 +17,7 @@ package restv2
 import (
 	"strings"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -26,37 +27,82 @@ const (
 	dataContextDataflow = "dataflow"
 )
 
-func parseComponentFilter(param queryParam, constraints map[string][]string) (bool, error) {
-	componentID, ok, err := componentFilterName(param.Name)
+type componentSelector struct {
+	componentID string
+	propertyID  string
+	transitive  bool
+}
+
+func parseComponentFilter(param queryParam, constraints map[string]*sdmxpb.SdmxComponentConstraint) (bool, error) {
+	selector, ok, err := componentFilterName(param.Name)
 	if err != nil {
 		return false, err
 	}
 	if !ok {
 		return false, nil
 	}
-	if _, exists := constraints[componentID]; exists {
-		return true, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", componentID)
-	}
 	values, err := parseComponentValues(param.Value)
 	if err != nil {
 		return true, err
 	}
-	constraints[componentID] = values
+	predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, value := range values {
+		predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+	}
+
+	constraint := constraints[selector.componentID]
+	if constraint == nil {
+		constraint = &sdmxpb.SdmxComponentConstraint{}
+		constraints[selector.componentID] = constraint
+	}
+	if selector.propertyID == "" {
+		if len(constraint.GetPredicates()) > 0 {
+			return true, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", selector.componentID)
+		}
+		constraint.Predicates = predicates
+		return true, nil
+	}
+
+	if constraint.PropertyConstraints == nil {
+		constraint.PropertyConstraints = map[string]*sdmxpb.SdmxPropertyConstraint{}
+	}
+	if _, exists := constraint.PropertyConstraints[selector.propertyID]; exists {
+		return true, status.Errorf(codes.InvalidArgument, "duplicate SDMX property filter %q", selector.componentID+"."+selector.propertyID)
+	}
+	constraint.PropertyConstraints[selector.propertyID] = &sdmxpb.SdmxPropertyConstraint{
+		Predicates: predicates,
+		Transitive: selector.transitive,
+	}
 	return true, nil
 }
 
-func componentFilterName(name string) (string, bool, error) {
+func componentFilterName(name string) (componentSelector, bool, error) {
 	if !strings.HasPrefix(name, "c[") {
-		return "", false, nil
+		return componentSelector{}, false, nil
 	}
 	if !strings.HasSuffix(name, "]") {
-		return "", false, status.Error(codes.InvalidArgument, "invalid SDMX component filter name")
+		return componentSelector{}, false, status.Error(codes.InvalidArgument, "invalid SDMX component filter name")
 	}
-	componentID := strings.TrimSuffix(strings.TrimPrefix(name, "c["), "]")
-	if componentID == "" {
-		return "", false, status.Error(codes.InvalidArgument, "invalid SDMX component filter name")
+	selectorName := strings.TrimSuffix(strings.TrimPrefix(name, "c["), "]")
+	parts := strings.Split(selectorName, ".")
+	if len(parts) > 2 || !isValidComponentID(parts[0]) {
+		return componentSelector{}, false, status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", selectorName)
 	}
-	return componentID, true, nil
+	selector := componentSelector{componentID: parts[0]}
+	if len(parts) == 1 {
+		return selector, true, nil
+	}
+
+	propertyID := parts[1]
+	selector.transitive = strings.HasSuffix(propertyID, "+")
+	if selector.transitive {
+		propertyID = strings.TrimSuffix(propertyID, "+")
+	}
+	if !isValidComponentID(propertyID) {
+		return componentSelector{}, false, status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", selectorName)
+	}
+	selector.propertyID = propertyID
+	return selector, true, nil
 }
 
 func parseComponentValues(value string) ([]string, error) {
@@ -95,7 +141,7 @@ func hasUnsupportedOperator(value string) bool {
 	}
 }
 
-func validateDataRequest(path ResourcePath, constraints map[string][]string) error {
+func validateDataRequest(path ResourcePath, constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX data path is required")
 	}
@@ -106,10 +152,13 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 
-	return validateComponentFilters(constraints, isFilterableDataComponentCandidate)
+	if err := validateComponentFilters(constraints, isFilterableDataComponentCandidate); err != nil {
+		return err
+	}
+	return datacommons.ValidateDataConstraints(constraints)
 }
 
-func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][]string) error {
+func validateAvailabilityRequest(path AvailabilityPath, constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX availability path is required")
 	}
@@ -126,10 +175,13 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string][
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
-	return validateComponentFilters(constraints, isFilterableDimensionCandidate)
+	if err := validateComponentFilters(constraints, isFilterableDimensionCandidate); err != nil {
+		return err
+	}
+	return datacommons.ValidateAvailabilityConstraints(constraints)
 }
 
-func validateComponentFilters(constraints map[string][]string, isFilterable func(string) bool) error {
+func validateComponentFilters(constraints map[string]*sdmxpb.SdmxComponentConstraint, isFilterable func(string) bool) error {
 	for componentID := range constraints {
 		if !isValidComponentID(componentID) {
 			return status.Errorf(codes.InvalidArgument, "invalid SDMX component filter %q", componentID)

@@ -42,6 +42,18 @@ func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
 	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
 }
 
+func sdmxContainedInPlaceConstraint(ancestor, childPlaceType string) *sdmxpb.SdmxComponentConstraint {
+	return &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			datacommons.PropertyContainedInPlace: {
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: ancestor}},
+				Transitive: true,
+			},
+			datacommons.PropertyTypeOf: {Predicates: []*sdmxpb.SdmxPredicate{{Value: childPlaceType}}},
+		},
+	}
+}
+
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	observations, err := reconstructObservations([]*rawObservation{
 		{
@@ -448,12 +460,12 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 	}{
 		{
 			name: "nil constraint list",
-			want: "SDMX component filter variableMeasured must be specified",
+			want: "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "empty value list",
 			constraint: &sdmxpb.SdmxComponentConstraint{},
-			want:       "SDMX component filter variableMeasured must be specified",
+			want:       "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "blank value",
@@ -530,22 +542,22 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 	if diff := cmp.Diff(wantShape, prepared.shape, protocmp.Transform()); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() shape mismatch (-want +got):\n%s", diff)
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		"destinationCountry": "entity1",
 		"sourceCountry":      "entity2",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, prepared.entitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, prepared.observationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() entity slots mismatch (-want +got):\n%s", diff)
 	}
 	wantParams := map[string]interface{}{
 		datacommons.ComponentVariableMeasured: []string{"var1", "var2"},
-		"destinationCountry":                  []string{"country/CAN", "country/MEX"},
-		"sourceCountry":                       []string{"country/USA", "country/IND"},
-		"unit":                                []string{"Count", "Percent"},
-		"measurementMethod":                   []string{"Census", "Survey"},
-		"observationPeriod":                   []string{"P1Y", "P1M"},
-		"provenance":                          []string{"dc/base/one", "dc/base/two"},
-		"facetId":                             []string{"facet", "alternate-facet"},
+		"filter_entity1":                      []string{"country/CAN", "country/MEX"},
+		"filter_entity2":                      []string{"country/USA", "country/IND"},
+		"filter_unit":                         []string{"Count", "Percent"},
+		"filter_measurement_method":           []string{"Census", "Survey"},
+		"filter_observation_period":           []string{"P1Y", "P1M"},
+		"filter_provenance":                   []string{"dc/base/one", "dc/base/two"},
+		"filter_facet_id":                     []string{"facet", "alternate-facet"},
 	}
 	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
@@ -570,6 +582,141 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 		if !strings.Contains(interpolatedSQL, fragment) {
 			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, interpolatedSQL)
 		}
+	}
+}
+
+func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.T) {
+	compile := func(observationProperty string) *compiledSdmxConstraints {
+		t.Helper()
+		compiled, err := compileSdmxConstraints(
+			map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+				observationProperty:                   sdmxComponentConstraint("country/USA"),
+				datacommons.ComponentUnit:             sdmxComponentConstraint("Count"),
+			},
+			map[string]string{observationProperty: "entity1"},
+		)
+		if err != nil {
+			t.Fatalf("compileSdmxConstraints() error = %v", err)
+		}
+		return compiled
+	}
+
+	beforeUnit := compile("aaaRegion")
+	afterUnit := compile("zzzRegion")
+	if diff := cmp.Diff(beforeUnit.where, afterUnit.where); diff != "" {
+		t.Fatalf("compileSdmxConstraints() SQL depends on observation property name (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff(beforeUnit.params, afterUnit.params); diff != "" {
+		t.Fatalf("compileSdmxConstraints() params depend on observation property name (-want +got):\n%s", diff)
+	}
+	if got, want := beforeUnit.where, "t.variable_measured IN UNNEST(@variableMeasured) AND t.entity1 IN UNNEST(@filter_entity1) AND t.unit IN UNNEST(@filter_unit)"; got != want {
+		t.Fatalf("compileSdmxConstraints() where = %q, want %q", got, want)
+	}
+}
+
+func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropertyNames(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	build := func(directComponent, containedComponent string) *cloudspanner.Statement {
+		t.Helper()
+		statement, err := queryBuilder.GetSdmxObservationsQuery(
+			map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+				directComponent:                       sdmxComponentConstraint("country/CAN"),
+				containedComponent:                    sdmxContainedInPlaceConstraint("northamerica", "Country"),
+			},
+			map[string]string{
+				directComponent:    "entity1",
+				containedComponent: "entity2",
+			},
+		)
+		if err != nil {
+			t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+		}
+		return statement
+	}
+
+	first := build("destinationCountry", "sourceCountry")
+	second := build("arrivalRegion", "originRegion")
+	if diff := cmp.Diff(first.SQL, second.SQL); diff != "" {
+		t.Fatalf("GetSdmxObservationsQuery() SQL depends on observation property names (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff(first.Params, second.Params); diff != "" {
+		t.Fatalf("GetSdmxObservationsQuery() params depend on observation property names (-want +got):\n%s", diff)
+	}
+}
+
+func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+		"containedAncestor0":                  sdmxComponentConstraint("country/CAN"),
+		"sourceCountry":                       sdmxContainedInPlaceConstraint("country/USA", "State"),
+	}
+	prepared, err := prepareSdmxObservationsQuery(
+		context.Background(),
+		constraints,
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Migration": observationPropertiesEdges("containedAncestor0", "sourceCountry"),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if err != nil {
+		t.Fatalf("prepareSdmxObservationsQuery() error = %v", err)
+	}
+	wantParams := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
+		"filter_entity1":                      []string{"country/CAN"},
+		"containment_0_ancestor":              "country/USA",
+		"containment_0_child_place_type":      "State",
+	}
+	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
+		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
+	}
+	for _, fragment := range []string{
+		"contained.predicate = 'linkedContainedInPlace'",
+		"typed.predicate = 'typeOf'",
+		"TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2}",
+		"ON t.entity2 = anchor.place_id",
+		"t.variable_measured IN UNNEST(@variableMeasured)",
+		"t.entity1 IN UNNEST(@filter_entity1)",
+		"t.entity2 IS NOT NULL",
+	} {
+		if !strings.Contains(prepared.statement.SQL, fragment) {
+			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, prepared.statement.SQL)
+		}
+	}
+}
+
+func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservationProperties(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	_, err = prepareSdmxObservationsQuery(
+		context.Background(),
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			"customEntity":                        sdmxContainedInPlaceConstraint("country/USA", "County"),
+		},
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Person": observationPropertiesEdges(datacommons.ComponentObservationAbout),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("prepareSdmxObservationsQuery() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
 }
 
@@ -617,12 +764,12 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 
 	wantParams := map[string]interface{}{
 		datacommons.ComponentVariableMeasured: []string{"var1", "var2"},
-		"destinationCountry":                  []string{"country/CAN", "country/MEX"},
-		"sourceCountry":                       []string{"country/USA", "country/IND"},
-		"unit":                                []string{"Count", "Percent"},
-		"measurementMethod":                   []string{"Census", "Survey"},
-		"observationPeriod":                   []string{"P1Y", "P1M"},
-		"provenance":                          []string{"dc/base/one", "dc/base/two"},
+		"filter_entity1":                      []string{"country/CAN", "country/MEX"},
+		"filter_entity2":                      []string{"country/USA", "country/IND"},
+		"filter_unit":                         []string{"Count", "Percent"},
+		"filter_measurement_method":           []string{"Census", "Survey"},
+		"filter_observation_period":           []string{"P1Y", "P1M"},
+		"filter_provenance":                   []string{"dc/base/one", "dc/base/two"},
 	}
 	if diff := cmp.Diff(wantParams, stmt.Params); diff != "" {
 		t.Fatalf("prepareSdmxAvailabilityQuery() params mismatch (-want +got):\n%s", diff)
@@ -779,7 +926,7 @@ func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string
 		componentID                     string
-		entitySlotByObservationProperty map[string]string
+		observationPropertyToEntitySlot map[string]string
 		want                            string
 	}{
 		{
@@ -790,14 +937,14 @@ func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 		{
 			name:        "empty component mapping",
 			componentID: "destinationCountry",
-			entitySlotByObservationProperty: map[string]string{
+			observationPropertyToEntitySlot: map[string]string{
 				"destinationCountry": "",
 			},
 			want: `unsupported SDMX availability component "destinationCountry"`,
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := sdmxAvailabilityValueExpression(tc.componentID, tc.entitySlotByObservationProperty)
+			_, err := sdmxAvailabilityValueExpression(tc.componentID, tc.observationPropertyToEntitySlot)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("sdmxAvailabilityValueExpression() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
@@ -830,32 +977,12 @@ func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
-func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
-	tests := []struct {
-		name       string
-		constraint *sdmxpb.SdmxComponentConstraint
-		want       string
-	}{
-		{
-			name: "property constraint",
-			constraint: &sdmxpb.SdmxComponentConstraint{
-				Predicates: []*sdmxpb.SdmxPredicate{{Value: "var1"}},
-				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
-					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "StatisticalVariable"}}},
-				},
-			},
-			want: "SDMX property constraints are not implemented yet",
-		},
-		{
-			name: "unsupported operator",
-			constraint: &sdmxpb.SdmxComponentConstraint{
-				Predicates: []*sdmxpb.SdmxPredicate{{
-					Operator: sdmxpb.SdmxOperator(1),
-					Value:    "var1",
-				}},
-			},
-			want: "SDMX operators other than EQ are not implemented yet",
-		},
+func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
+	constraint := &sdmxpb.SdmxComponentConstraint{
+		Predicates: []*sdmxpb.SdmxPredicate{{
+			Operator: sdmxpb.SdmxOperator(1),
+			Value:    "var1",
+		}},
 	}
 	endpoints := []struct {
 		name string
@@ -887,17 +1014,32 @@ func TestMultiEntitySdmxRejectsUnsupportedConstraints(t *testing.T) {
 	}
 
 	for _, endpoint := range endpoints {
-		for _, tt := range tests {
-			t.Run(endpoint.name+"/"+tt.name, func(t *testing.T) {
-				err := endpoint.call(&multiEntityClient{}, tt.constraint)
-				if status.Code(err) != codes.Unimplemented {
-					t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
-				}
-				if got := status.Convert(err).Message(); got != tt.want {
-					t.Fatalf("SDMX backend message = %q, want %q", got, tt.want)
-				}
-			})
-		}
+		t.Run(endpoint.name, func(t *testing.T) {
+			err := endpoint.call(&multiEntityClient{}, constraint)
+			if status.Code(err) != codes.Unimplemented {
+				t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+			}
+			if got, want := status.Convert(err).Message(), "SDMX operators other than EQ are not implemented yet"; got != want {
+				t.Fatalf("SDMX backend message = %q, want %q", got, want)
+			}
+		})
+	}
+}
+
+func TestMultiEntitySdmxAvailabilityRejectsPropertyConstraints(t *testing.T) {
+	_, err := (&multiEntityClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			datacommons.ComponentObservationAbout: {
+				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+				},
+			},
+		},
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 	}
 }
 
@@ -909,12 +1051,12 @@ func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing
 	}{
 		{
 			name: "nil constraint list",
-			want: "SDMX component filter variableMeasured must be specified",
+			want: "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "empty value list",
 			constraint: &sdmxpb.SdmxComponentConstraint{},
-			want:       "SDMX component filter variableMeasured must be specified",
+			want:       "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "blank value",
@@ -1095,7 +1237,7 @@ func TestSdmxFacetComponentKind(t *testing.T) {
 }
 
 func TestResolveSdmxEntityShape(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": {
 			nil, // nil edge
 			// Input order is intentionally non-alphabetical; sorted properties define entity slots.
@@ -1128,7 +1270,7 @@ func TestResolveSdmxEntityShape(t *testing.T) {
 		},
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err := resolveSdmxEntityShape([]string{"var1"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err := resolveSdmxEntityShape([]string{"var1"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1141,15 +1283,15 @@ func TestResolveSdmxEntityShape(t *testing.T) {
 			t.Fatalf("observationProperties = %v, want %v", gotObservationProperties, wantObservationProperties)
 		}
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		"destinationCountry": "entity1",
 		"sourceCountry":      "entity2",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err = resolveSdmxEntityShape([]string{"var2"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err = resolveSdmxEntityShape([]string{"var2"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1157,21 +1299,21 @@ func TestResolveSdmxEntityShape(t *testing.T) {
 	if len(gotObservationProperties) != len(wantObservationProperties) || gotObservationProperties[0] != wantObservationProperties[0] {
 		t.Fatalf("observationProperties = %v, want %v", gotObservationProperties, wantObservationProperties)
 	}
-	wantEntitySlotByObservationProperty = map[string]string{
+	wantObservationPropertyToEntitySlot = map[string]string{
 		datacommons.ComponentObservationAbout: "entity1",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 }
 
 func TestResolveSdmxEntityShapeAcceptsSameTwoEntityShapeDifferentOrder(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": observationPropertiesEdges("sourceCountry", "destinationCountry"),
 		"var2": observationPropertiesEdges("destinationCountry", "sourceCountry"),
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err := resolveSdmxEntityShape([]string{"var1", "var2"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err := resolveSdmxEntityShape([]string{"var1", "var2"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1180,22 +1322,22 @@ func TestResolveSdmxEntityShapeAcceptsSameTwoEntityShapeDifferentOrder(t *testin
 	if diff := cmp.Diff(wantObservationProperties, gotObservationProperties); diff != "" {
 		t.Fatalf("observationProperties mismatch (-want +got):\n%s", diff)
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		"destinationCountry": "entity1",
 		"sourceCountry":      "entity2",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 }
 
 func TestResolveSdmxEntityShapeAcceptsSameThreeEntityShapeDifferentOrder(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": observationPropertiesEdges("sourceCountry", "transportMode", "destinationCountry"),
 		"var2": observationPropertiesEdges("transportMode", "destinationCountry", "sourceCountry"),
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err := resolveSdmxEntityShape([]string{"var1", "var2"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err := resolveSdmxEntityShape([]string{"var1", "var2"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1204,22 +1346,22 @@ func TestResolveSdmxEntityShapeAcceptsSameThreeEntityShapeDifferentOrder(t *test
 	if diff := cmp.Diff(wantObservationProperties, gotObservationProperties); diff != "" {
 		t.Fatalf("observationProperties mismatch (-want +got):\n%s", diff)
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		"destinationCountry": "entity1",
 		"sourceCountry":      "entity2",
 		"transportMode":      "entity3",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 }
 
 func TestResolveSdmxEntityShapeUsesExplicitObservationAboutProperty(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": observationPropertiesEdges(datacommons.ComponentObservationAbout),
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err := resolveSdmxEntityShape([]string{"var1"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err := resolveSdmxEntityShape([]string{"var1"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1228,21 +1370,21 @@ func TestResolveSdmxEntityShapeUsesExplicitObservationAboutProperty(t *testing.T
 	if diff := cmp.Diff(wantObservationProperties, gotObservationProperties); diff != "" {
 		t.Fatalf("observationProperties mismatch (-want +got):\n%s", diff)
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		datacommons.ComponentObservationAbout: "entity1",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 }
 
 func TestResolveSdmxEntityShapeAcceptsObservationAboutInMultiEntityShape(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": observationPropertiesEdges("sourceCountry", datacommons.ComponentObservationAbout, "destinationCountry"),
 		"var2": observationPropertiesEdges(datacommons.ComponentObservationAbout, "destinationCountry", "sourceCountry"),
 	}
 
-	gotObservationProperties, gotEntitySlotByObservationProperty, err := resolveSdmxEntityShape([]string{"var1", "var2"}, observationPropertyEdgesByStatVar)
+	gotObservationProperties, gotObservationPropertyToEntitySlot, err := resolveSdmxEntityShape([]string{"var1", "var2"}, statVarToObservationPropertyEdges)
 	if err != nil {
 		t.Fatalf("resolveSdmxEntityShape() error = %v", err)
 	}
@@ -1251,12 +1393,12 @@ func TestResolveSdmxEntityShapeAcceptsObservationAboutInMultiEntityShape(t *test
 	if diff := cmp.Diff(wantObservationProperties, gotObservationProperties); diff != "" {
 		t.Fatalf("observationProperties mismatch (-want +got):\n%s", diff)
 	}
-	wantEntitySlotByObservationProperty := map[string]string{
+	wantObservationPropertyToEntitySlot := map[string]string{
 		"destinationCountry":                  "entity1",
 		datacommons.ComponentObservationAbout: "entity2",
 		"sourceCountry":                       "entity3",
 	}
-	if diff := cmp.Diff(wantEntitySlotByObservationProperty, gotEntitySlotByObservationProperty); diff != "" {
+	if diff := cmp.Diff(wantObservationPropertyToEntitySlot, gotObservationPropertyToEntitySlot); diff != "" {
 		t.Fatalf("entity slot mapping mismatch (-want +got):\n%s", diff)
 	}
 }
@@ -1548,7 +1690,7 @@ func TestValidateSdmxConstraintValues(t *testing.T) {
 }
 
 func TestResolveSdmxEntityShapeTooManyProperties(t *testing.T) {
-	observationPropertyEdgesByStatVar := map[string][]*Edge{
+	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": {
 			{Predicate: "observationProperties", Value: "destinationCountry"},
 			{Predicate: "observationProperties", Value: "intermediaryCountry"},
@@ -1557,7 +1699,7 @@ func TestResolveSdmxEntityShapeTooManyProperties(t *testing.T) {
 		},
 	}
 
-	_, _, err := resolveSdmxEntityShape([]string{"var1"}, observationPropertyEdgesByStatVar)
+	_, _, err := resolveSdmxEntityShape([]string{"var1"}, statVarToObservationPropertyEdges)
 	if err == nil {
 		t.Fatal("resolveSdmxEntityShape() error = nil, want error")
 	}
@@ -1574,13 +1716,13 @@ func TestResolveSdmxEntityShapeIncompatibleVariables(t *testing.T) {
 	tests := []struct {
 		name                              string
 		vars                              []string
-		observationPropertyEdgesByStatVar map[string][]*Edge
+		statVarToObservationPropertyEdges map[string][]*Edge
 		want                              string
 	}{
 		{
 			name: "single and multi",
 			vars: []string{"multi", "single"},
-			observationPropertyEdgesByStatVar: map[string][]*Edge{
+			statVarToObservationPropertyEdges: map[string][]*Edge{
 				"single": nil,
 				"multi":  observationPropertiesEdges("destinationCountry", "sourceCountry"),
 			},
@@ -1589,7 +1731,7 @@ func TestResolveSdmxEntityShapeIncompatibleVariables(t *testing.T) {
 		{
 			name: "same count different property",
 			vars: []string{"var1", "var2"},
-			observationPropertyEdgesByStatVar: map[string][]*Edge{
+			statVarToObservationPropertyEdges: map[string][]*Edge{
 				"var1": observationPropertiesEdges("destinationCountry", "sourceCountry"),
 				"var2": observationPropertiesEdges("destinationCountry", "originCountry"),
 			},
@@ -1598,7 +1740,7 @@ func TestResolveSdmxEntityShapeIncompatibleVariables(t *testing.T) {
 		{
 			name: "different property count",
 			vars: []string{"var1", "var2"},
-			observationPropertyEdgesByStatVar: map[string][]*Edge{
+			statVarToObservationPropertyEdges: map[string][]*Edge{
 				"var1": observationPropertiesEdges("destinationCountry", "sourceCountry"),
 				"var2": observationPropertiesEdges("destinationCountry", "sourceCountry", "transportMode"),
 			},
@@ -1608,7 +1750,7 @@ func TestResolveSdmxEntityShapeIncompatibleVariables(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, _, err := resolveSdmxEntityShape(tt.vars, tt.observationPropertyEdgesByStatVar)
+			_, _, err := resolveSdmxEntityShape(tt.vars, tt.statVarToObservationPropertyEdges)
 			if err == nil {
 				t.Fatal("resolveSdmxEntityShape() error = nil, want error")
 			}

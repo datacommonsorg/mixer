@@ -21,26 +21,14 @@ import (
 )
 
 func dataQueryFromREST(request *restv2.DataRequest) (*sdmxpb.SdmxDataQuery, error) {
-	return &sdmxpb.SdmxDataQuery{Constraints: constraintsFromRESTFilters(request.Constraints)}, nil
+	return &sdmxpb.SdmxDataQuery{Constraints: request.Constraints}, nil
 }
 
 func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*sdmxpb.SdmxAvailabilityQuery, error) {
 	return &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: request.Path.ComponentID,
-		Constraints: constraintsFromRESTFilters(request.Constraints),
+		Constraints: request.Constraints,
 	}, nil
-}
-
-func constraintsFromRESTFilters(filters map[string][]string) map[string]*sdmxpb.SdmxComponentConstraint {
-	constraints := map[string]*sdmxpb.SdmxComponentConstraint{}
-	for componentID, values := range filters {
-		predicates := make([]*sdmxpb.SdmxPredicate, 0, len(values))
-		for _, value := range values {
-			predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
-		}
-		constraints[componentID] = &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
-	}
-	return constraints
 }
 
 func dataStructureID(path restv2.ResourcePath) string {

@@ -26,6 +26,18 @@ func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
 	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
 }
 
+func sdmxContainedInPlaceConstraint(ancestor, childPlaceType string) *sdmxpb.SdmxComponentConstraint {
+	return &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			"containedInPlace": {
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: ancestor}},
+				Transitive: true,
+			},
+			"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: childPlaceType}}},
+		},
+	}
+}
+
 var multiEntityObservationsTestCases = []struct {
 	name      string
 	variables []string
@@ -303,7 +315,7 @@ var multiEntityFilteredTopicTestCases = []struct {
 var multiEntitySdmxObservationsTestCases = []struct {
 	name                            string
 	constraints                     map[string]*sdmxpb.SdmxComponentConstraint
-	entitySlotByObservationProperty map[string]string
+	observationPropertyToEntitySlot map[string]string
 	golden                          string
 }{
 	{
@@ -311,7 +323,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
 		},
-		entitySlotByObservationProperty: map[string]string{},
+		observationPropertyToEntitySlot: map[string]string{},
 		golden:                          "get_sdmx_obs_var_only",
 	},
 	{
@@ -320,7 +332,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"variableMeasured": sdmxComponentConstraint("var1"),
 			"origin":           sdmxComponentConstraint("country/AGO"),
 		},
-		entitySlotByObservationProperty: map[string]string{
+		observationPropertyToEntitySlot: map[string]string{
 			"origin": "entity1",
 		},
 		golden: "get_sdmx_obs_var_and_origin",
@@ -332,7 +344,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"origin":           sdmxComponentConstraint("country/AGO"),
 			"destination":      sdmxComponentConstraint("country/PRT", "country/SGP"),
 		},
-		entitySlotByObservationProperty: map[string]string{
+		observationPropertyToEntitySlot: map[string]string{
 			"origin": "entity1", "destination": "entity2",
 		},
 		golden: "get_sdmx_obs_slots_slicing",
@@ -344,7 +356,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"origin":           sdmxComponentConstraint("country/AGO"),
 			"destination":      sdmxComponentConstraint("country/PRT"),
 		},
-		entitySlotByObservationProperty: map[string]string{
+		observationPropertyToEntitySlot: map[string]string{
 			"origin": "entity1", "destination": "entity2",
 		},
 		golden: "get_sdmx_obs_multi_var_slots",
@@ -361,7 +373,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"provenance":        sdmxComponentConstraint("dc/base/WTO_TradeConnectivity", "dc/base/UN_Trade"),
 			"unit":              sdmxComponentConstraint("Percent", "Count"),
 		},
-		entitySlotByObservationProperty: map[string]string{
+		observationPropertyToEntitySlot: map[string]string{
 			"origin": "entity1", "destination": "entity2",
 		},
 		golden: "get_sdmx_obs_with_facet_and_prov",
@@ -372,9 +384,63 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			"variableMeasured": sdmxComponentConstraint("var1"),
 			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
 		},
-		entitySlotByObservationProperty: map[string]string{
+		observationPropertyToEntitySlot: map[string]string{
 			"observationAbout": "entity1",
 		},
 		golden: "get_sdmx_obs_single_entity",
+	},
+	{
+		name: "contained observation about on entity1",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+		golden:                          "get_sdmx_obs_contained_entity1",
+	},
+	{
+		name: "contained source on entity2 with direct entity1 filter",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured":   sdmxComponentConstraint("var1"),
+			"destinationCountry": sdmxComponentConstraint("country/CAN"),
+			"sourceCountry":      sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"destinationCountry": "entity1", "sourceCountry": "entity2",
+		},
+		golden: "get_sdmx_obs_contained_entity2",
+	},
+	{
+		name: "contained transport mode on entity3",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"transportMode":    sdmxContainedInPlaceConstraint("northamerica", "TransportMode"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"transportMode": "entity3"},
+		golden:                          "get_sdmx_obs_contained_entity3",
+	},
+	{
+		name: "entity3 anchors before entity2 and reuses place set",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"middle":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		golden: "get_sdmx_obs_contained_entity3_before_entity2",
+	},
+	{
+		name: "entity1 anchors multiple place sets",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"first":            sdmxContainedInPlaceConstraint("country/CAN", "Province"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		golden: "get_sdmx_obs_contained_entity1_multiple_sets",
 	},
 }

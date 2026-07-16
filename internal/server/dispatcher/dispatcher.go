@@ -205,7 +205,7 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 
 // SdmxData handles SDMX Data requests.
 func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
-	if err := datacommons.ValidateSupportedConstraints(in.GetConstraints()); err != nil {
+	if err := datacommons.ValidateDataConstraints(in.GetConstraints()); err != nil {
 		return nil, err
 	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxData)
@@ -222,7 +222,7 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQ
 
 // SdmxAvailability handles SDMX Availability requests.
 func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
-	if err := datacommons.ValidateSupportedConstraints(in.GetConstraints()); err != nil {
+	if err := datacommons.ValidateAvailabilityConstraints(in.GetConstraints()); err != nil {
 		return nil, err
 	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)

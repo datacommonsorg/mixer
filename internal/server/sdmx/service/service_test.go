@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
+	restv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/rest/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -42,20 +43,16 @@ func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
 	return &sdmxpb.SdmxComponentConstraint{Predicates: predicates}
 }
 
-func TestConstraintsFromRESTFiltersDefaultsToEquality(t *testing.T) {
-	constraint := constraintsFromRESTFilters(map[string][]string{
-		"source": {"india", "usa"},
-	})["source"]
-
-	gotValues := make([]string, 0, len(constraint.GetPredicates()))
-	for _, predicate := range constraint.GetPredicates() {
-		if got := predicate.GetOperator(); got != sdmxpb.SdmxOperator_SDMX_OPERATOR_EQ {
-			t.Fatalf("predicate operator = %v, want EQ", got)
-		}
-		gotValues = append(gotValues, predicate.GetValue())
+func TestDataQueryFromRESTPreservesConstraints(t *testing.T) {
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		"source": sdmxComponentConstraint("india", "usa"),
 	}
-	if diff := cmp.Diff([]string{"india", "usa"}, gotValues); diff != "" {
-		t.Fatalf("predicate values mismatch (-want +got):\n%s", diff)
+	query, err := dataQueryFromREST(&restv2.DataRequest{Constraints: constraints})
+	if err != nil {
+		t.Fatalf("dataQueryFromREST() error = %v", err)
+	}
+	if diff := cmp.Diff(constraints, query.GetConstraints(), protocmp.Transform()); diff != "" {
+		t.Fatalf("dataQueryFromREST() constraints mismatch (-want +got):\n%s", diff)
 	}
 }
 
@@ -149,10 +146,10 @@ func TestDataValidation(t *testing.T) {
 			wantErrSub: "SDMX component filter operators are not implemented yet",
 		},
 		{
-			name:       "Property selector remains unsupported",
+			name:       "Incomplete property selector pair",
 			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout.typeOf]=County"),
 			wantCode:   codes.InvalidArgument,
-			wantErrSub: "invalid SDMX component filter",
+			wantErrSub: "require containedInPlace+ and typeOf",
 		},
 		{
 			name:       "Unsupported observation value filter",

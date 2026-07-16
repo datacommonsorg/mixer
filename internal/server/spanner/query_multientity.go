@@ -487,7 +487,7 @@ func (nc *multiEntityClient) GetSdmxObservations(
 		}
 
 		series := &sdmxpb.SdmxTimeSeries{
-			Dimensions: sdmxSeriesDimensions(r.VariableMeasured, entitySlotValues, prepared.entitySlotByObservationProperty),
+			Dimensions: sdmxSeriesDimensions(r.VariableMeasured, entitySlotValues, prepared.observationPropertyToEntitySlot),
 			Points:     []*sdmxpb.SdmxDataPoint{},
 		}
 		if r.ProvenanceID.Valid {
@@ -529,14 +529,14 @@ type getNodeEdgesByIDFunc func(
 
 type preparedSdmxObservationsQuery struct {
 	shape                           *sdmxpb.SdmxDataShape
-	entitySlotByObservationProperty map[string]string
+	observationPropertyToEntitySlot map[string]string
 	statement                       *spanner.Statement
 }
 
 type preparedSdmxShape struct {
 	shape                           *sdmxpb.SdmxDataShape
 	observationProperties           []string
-	entitySlotByObservationProperty map[string]string
+	observationPropertyToEntitySlot map[string]string
 }
 
 func prepareSdmxObservationsQuery(
@@ -545,8 +545,14 @@ func prepareSdmxObservationsQuery(
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 	queryBuilder *multiEntityQueryBuilder,
 ) (*preparedSdmxObservationsQuery, error) {
+	if err := datacommons.ValidateDataConstraints(constraints); err != nil {
+		return nil, err
+	}
 	preparedShape, err := prepareSdmxShape(ctx, constraints, getNodeEdgesByID)
 	if err != nil {
+		return nil, err
+	}
+	if err := validateSdmxPropertyConstraintScopes(constraints, preparedShape.observationPropertyToEntitySlot); err != nil {
 		return nil, err
 	}
 	if err := validateSdmxDataConstraintComponents(constraints, preparedShape.shape); err != nil {
@@ -556,13 +562,13 @@ func prepareSdmxObservationsQuery(
 		return nil, err
 	}
 
-	statement, err := queryBuilder.GetSdmxObservationsQuery(constraints, preparedShape.entitySlotByObservationProperty)
+	statement, err := queryBuilder.GetSdmxObservationsQuery(constraints, preparedShape.observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, err
 	}
 	return &preparedSdmxObservationsQuery{
 		shape:                           preparedShape.shape,
-		entitySlotByObservationProperty: preparedShape.entitySlotByObservationProperty,
+		observationPropertyToEntitySlot: preparedShape.observationPropertyToEntitySlot,
 		statement:                       statement,
 	}, nil
 }
@@ -572,9 +578,6 @@ func prepareSdmxShape(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 ) (*preparedSdmxShape, error) {
-	if err := datacommons.ValidateSupportedConstraints(constraints); err != nil {
-		return nil, err
-	}
 	if err := validateSdmxConstraintValues(constraints); err != nil {
 		return nil, err
 	}
@@ -584,11 +587,11 @@ func prepareSdmxShape(
 		Out:        true,
 		SingleProp: "observationProperties",
 	}
-	observationPropertyEdgesByStatVar, err := getNodeEdgesByID(ctx, statVarIDs, arc, observationPropertiesPageSize(len(statVarIDs)), 0)
+	statVarToObservationPropertyEdges, err := getNodeEdgesByID(ctx, statVarIDs, arc, observationPropertiesPageSize(len(statVarIDs)), 0)
 	if err != nil {
 		return nil, sdmxBackendError("failed to fetch observationProperties", err)
 	}
-	observationProperties, entitySlotByObservationProperty, err := resolveSdmxEntityShape(statVarIDs, observationPropertyEdgesByStatVar)
+	observationProperties, observationPropertyToEntitySlot, err := resolveSdmxEntityShape(statVarIDs, statVarToObservationPropertyEdges)
 	if err != nil {
 		return nil, err
 	}
@@ -596,19 +599,19 @@ func prepareSdmxShape(
 	return &preparedSdmxShape{
 		shape:                           shape,
 		observationProperties:           observationProperties,
-		entitySlotByObservationProperty: entitySlotByObservationProperty,
+		observationPropertyToEntitySlot: observationPropertyToEntitySlot,
 	}, nil
 }
 
 func sdmxSeriesDimensions(
 	variableMeasured string,
 	entitySlotValues map[string]string,
-	entitySlotByObservationProperty map[string]string,
+	observationPropertyToEntitySlot map[string]string,
 ) map[string]string {
 	dimensionValues := map[string]string{
 		datacommons.ComponentVariableMeasured: variableMeasured,
 	}
-	for observationProperty, entitySlot := range entitySlotByObservationProperty {
+	for observationProperty, entitySlot := range observationPropertyToEntitySlot {
 		if value, ok := entitySlotValues[entitySlot]; ok {
 			dimensionValues[observationProperty] = value
 		}
@@ -623,14 +626,34 @@ func validateSdmxConstraintValues(constraints map[string]*sdmxpb.SdmxComponentCo
 	}
 
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
-		values := sdmxConstraintValues(constraints[componentID])
+		constraint := constraints[componentID]
+		values := sdmxConstraintValues(constraint)
 		if len(values) == 0 {
+			if len(constraint.GetPropertyConstraints()) > 0 {
+				continue
+			}
 			return status.Errorf(codes.InvalidArgument, "SDMX component filter %q must have at least one value", componentID)
 		}
 		for _, value := range values {
 			if strings.TrimSpace(value) == "" {
 				return status.Errorf(codes.InvalidArgument, "SDMX component filter %q contains an empty value", componentID)
 			}
+		}
+	}
+	return nil
+}
+
+func validateSdmxPropertyConstraintScopes(
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
+	observationPropertyToEntitySlot map[string]string,
+) error {
+	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
+		propertyConstraints := constraints[componentID].GetPropertyConstraints()
+		if len(propertyConstraints) == 0 {
+			continue
+		}
+		if _, ok := observationPropertyToEntitySlot[componentID]; !ok {
+			return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
 		}
 	}
 	return nil
@@ -800,6 +823,9 @@ func prepareSdmxAvailabilityQuery(
 	getNodeEdgesByID getNodeEdgesByIDFunc,
 	queryBuilder *multiEntityQueryBuilder,
 ) (*spanner.Statement, error) {
+	if err := datacommons.ValidateAvailabilityConstraints(req.GetConstraints()); err != nil {
+		return nil, err
+	}
 	preparedShape, err := prepareSdmxShape(ctx, req.GetConstraints(), getNodeEdgesByID)
 	if err != nil {
 		return nil, err
@@ -810,17 +836,17 @@ func prepareSdmxAvailabilityQuery(
 	if err := validateSdmxAvailabilityComponent(req.GetComponentId(), preparedShape.shape); err != nil {
 		return nil, err
 	}
-	return queryBuilder.GetSdmxAvailabilityQuery(req, preparedShape.entitySlotByObservationProperty)
+	return queryBuilder.GetSdmxAvailabilityQuery(req, preparedShape.observationPropertyToEntitySlot)
 }
 
 func resolveSdmxEntityShape(
 	statVarIDs []string,
-	observationPropertyEdgesByStatVar map[string][]*Edge,
+	statVarToObservationPropertyEdges map[string][]*Edge,
 ) ([]string, map[string]string, error) {
-	observationPropertiesByStatVar := map[string][]string{}
+	statVarToObservationProperties := map[string][]string{}
 	for _, statVarID := range statVarIDs {
 		observationPropertySet := map[string]struct{}{}
-		for _, edge := range observationPropertyEdgesByStatVar[statVarID] {
+		for _, edge := range statVarToObservationPropertyEdges[statVarID] {
 			if edge == nil {
 				continue
 			}
@@ -856,13 +882,13 @@ func resolveSdmxEntityShape(
 		if len(observationProperties) == 0 {
 			observationProperties = []string{datacommons.ComponentObservationAbout}
 		}
-		observationPropertiesByStatVar[statVarID] = observationProperties
+		statVarToObservationProperties[statVarID] = observationProperties
 	}
 
 	var resolvedObservationProperties []string
 	referenceStatVarID := ""
 	for _, statVarID := range statVarIDs {
-		observationProperties := observationPropertiesByStatVar[statVarID]
+		observationProperties := statVarToObservationProperties[statVarID]
 		if resolvedObservationProperties == nil {
 			resolvedObservationProperties = observationProperties
 			referenceStatVarID = statVarID
@@ -880,11 +906,11 @@ func resolveSdmxEntityShape(
 		}
 	}
 
-	entitySlotByObservationProperty := map[string]string{}
+	observationPropertyToEntitySlot := map[string]string{}
 	for i, observationProperty := range resolvedObservationProperties {
-		entitySlotByObservationProperty[observationProperty] = fmt.Sprintf("entity%d", i+1)
+		observationPropertyToEntitySlot[observationProperty] = fmt.Sprintf("entity%d", i+1)
 	}
-	return resolvedObservationProperties, entitySlotByObservationProperty, nil
+	return resolvedObservationProperties, observationPropertyToEntitySlot, nil
 }
 
 func sdmxBackendError(message string, err error) error {

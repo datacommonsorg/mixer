@@ -91,6 +91,26 @@ func TestSDMXData(t *testing.T) {
 			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",
 			golden: "data_empty.csv",
 		},
+		{
+			name:   "contained destination on entity1",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&c[sourceCountry]=country%2FUSA",
+			golden: "data_two_entities.csv",
+		},
+		{
+			name:   "contained source on entity2",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_two_entities.csv",
+		},
+		{
+			name:   "same containment on entity2 and entity3",
+			query:  "c[variableMeasured]=Count_MigrationByObservationAbout&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_explicit_observation_about.csv",
+		},
+		{
+			name:   "empty containment result",
+			query:  "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
+			golden: "data_empty.csv",
+		},
 	}
 	for _, testCase := range tests {
 		t.Run(testCase.name, func(t *testing.T) {
