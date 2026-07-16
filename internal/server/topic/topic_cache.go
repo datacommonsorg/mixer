@@ -243,6 +243,11 @@ func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarc
 	}
 	if len(hierarchy.GetTopics()) == 0 {
 		slog.Warn("Loaded empty topic hierarchy.")
+		// Fail-safe preservation: never overwrite an existing functional L1 cache with an empty structure
+		if existing := m.CachedHierarchy(); len(existing.GetTopics()) > 0 {
+			slog.Warn("Retaining existing fully populated topic cache (fail-safe preservation against empty yield)")
+			return existing, nil
+		}
 	}
 
 	m.Update(hierarchy)

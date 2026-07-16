@@ -130,6 +130,7 @@ func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, no
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
 func (m *coordinateMockSpannerClient) Start()     {}
 func (m *coordinateMockSpannerClient) Close()     {}
+func (m *coordinateMockSpannerClient) SetOnIngestionUpdate(hook func(ctx context.Context)) {}
 
 func TestResolveCoordinate(t *testing.T) {
 	t.Parallel()

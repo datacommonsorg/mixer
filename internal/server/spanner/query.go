@@ -981,8 +981,6 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
-	sc.dbInitialized.Store(true)
-
 	var nullTime spanner.NullTime
 	if err := row.Column(0, &nullTime); err != nil {
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
@@ -1013,11 +1011,64 @@ func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, 
 	timestamp := nullTime.Time
 
 	now := time.Now()
+	wasInitialized := sc.dbInitialized.Swap(true)
 	prevNano := sc.timestamp.Load()
 	newNano := timestamp.UnixNano()
 
-	if prevNano == 0 || prevNano != newNano {
-		sc.timestamp.Store(newNano)
+	if !wasInitialized || prevNano == 0 || prevNano != newNano {
+		sc.hookMutex.Lock()
+		if prevNano == 0 || prevNano != newNano {
+			sc.timestamp.Store(newNano)
+		}
+		hook := sc.onIngestionUpdate
+		isReloading := sc.isReloading.Load()
+		if hook != nil && !isReloading {
+			sc.isReloading.Store(true)
+		}
+		sc.hookMutex.Unlock()
+
+		if hook != nil {
+			if !isReloading {
+				slog.Info("Spanner ingestion state change detected; initiating reactive cache refresh",
+					"prev_timestamp", prevNano,
+					"new_timestamp", newNano,
+					"was_initialized", wasInitialized)
+
+				go func() {
+					var cleanExit bool
+					defer func() {
+						if !cleanExit {
+							sc.hookMutex.Lock()
+							sc.isReloading.Store(false)
+							sc.hookMutex.Unlock()
+							if r := recover(); r != nil {
+								slog.Error("Panic occurred inside reactive ingestion callback; reset reloading state", "panic", r)
+							}
+						}
+					}()
+					for {
+						sc.hookMutex.Lock()
+						targetTs := sc.timestamp.Load()
+						sc.hookMutex.Unlock()
+
+						hook(context.Background())
+
+						sc.hookMutex.Lock()
+						if sc.timestamp.Load() == targetTs {
+							sc.isReloading.Store(false)
+							cleanExit = true
+							sc.hookMutex.Unlock()
+							break
+						}
+						sc.hookMutex.Unlock()
+						slog.Info("Additional Spanner timestamp change observed during reload; draining subsequent update")
+					}
+				}()
+			} else {
+				slog.Info("Reactive cache refresh already in progress; active drain loop will pick up timestamp",
+					"new_timestamp", newNano)
+			}
+		}
 	}
 
 	if sc.tracker != nil {

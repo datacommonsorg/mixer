@@ -203,6 +203,12 @@ func (s *Server) RunInitHooks(ctx context.Context) error {
 	return runHooksInParallel(ctx, s.initHooks, true /* failOnError */)
 }
 
+// RunPeriodicHooks executes all registered periodic callbacks concurrently in parallel without aborting on first failure.
+func (s *Server) RunPeriodicHooks(ctx context.Context) error {
+	slog.Info("Executing all registered periodic hooks across components in parallel")
+	return runHooksInParallel(ctx, s.periodicHooks, false /* failOnError */)
+}
+
 // StartPeriodicRefresher starts the centralized background goroutine to trigger periodic reloads.
 func (s *Server) StartPeriodicRefresher(ctx context.Context, interval time.Duration) {
 	s.periodicOnce.Do(func() {

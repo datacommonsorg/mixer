@@ -235,7 +235,6 @@ func main() {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		spannerClient.Start()
 		defer spannerClient.Close()
 	}
 	slog.Info("After Spanner client creation")
@@ -568,6 +567,17 @@ func main() {
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
 		slog.Error("Failed to initialize server components during startup", "error", err)
 		os.Exit(1)
+	}
+
+	// Bind reactive ingestion callback and start background Spanner polling ONLY after server components are initialized
+	if spannerClient != nil {
+		spannerClient.SetOnIngestionUpdate(func(ctx context.Context) {
+			slog.Info("Executing reactive periodic hooks triggered by Spanner ingestion state change")
+			if err := mixerServer.RunPeriodicHooks(ctx); err != nil {
+				slog.Error("Reactive RunPeriodicHooks failed during Spanner sync", "error", err)
+			}
+		})
+		spannerClient.Start()
 	}
 
 	// Start the periodic scheduler

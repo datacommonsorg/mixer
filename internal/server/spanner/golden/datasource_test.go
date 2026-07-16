@@ -141,6 +141,7 @@ func (m *mockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()     {}
 func (m *mockSpannerClient) Close()     {}
+func (m *mockSpannerClient) SetOnIngestionUpdate(hook func(ctx context.Context)) {}
 
 func TestSpannerResolve(t *testing.T) {
 	client := test.NewSpannerClient()
