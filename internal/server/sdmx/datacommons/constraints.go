@@ -27,6 +27,8 @@ import (
 const (
 	PropertyContainedInPlace = "containedInPlace"
 	PropertyTypeOf           = "typeOf"
+
+	graphPredicateLinkedContainedInPlace = "linkedContainedInPlace"
 )
 
 type ComponentScope int
@@ -53,7 +55,7 @@ var dataConstraintConfig = constraintConfig{
 		PropertyContainedInPlace: {
 			Scope:          ComponentScopeObservationProperty,
 			Transitive:     true,
-			GraphPredicate: "linkedContainedInPlace",
+			GraphPredicate: graphPredicateLinkedContainedInPlace,
 		},
 		PropertyTypeOf: {
 			Scope:          ComponentScopeObservationProperty,
