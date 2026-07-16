@@ -6,5 +6,5 @@ flags:
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
-  EnableSpannerSearchEmbeddings: true
+  EnableSpannerSearchEmbeddings: false
   UseMultiEntitySchema: true

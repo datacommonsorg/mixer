@@ -32,6 +32,9 @@ type MultiEntityStatements struct {
 	getObsByContainedInPlaceBothLatest             string
 	getSdmxObs                                     string
 	getSdmxAvailability                            string
+	getSdmxContainedInPlace                        string
+	sdmxContainedPlacesCTE                         string
+	sdmxContainedSeriesCTE                         string
 	getStatVarsByEntityBoth                        string
 	getStatVarsByEntityVarsOnly                    string
 	getStatVarsByEntityEntitiesOnly                string
@@ -376,6 +379,50 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			AND %%[1]s IS NOT NULL
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
+
+		sdmxContainedPlacesCTE: `%[1]s AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge contained
+			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			WHERE contained.predicate = '%[2]s'
+				AND contained.object_id = @%[3]s
+				AND typed.predicate = '%[4]s'
+				AND typed.object_id = @%[5]s
+		)`,
+
+		sdmxContainedSeriesCTE: fmt.Sprintf(`series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet,
+				t.entities
+			FROM %%[1]s anchor
+			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s@{FORCE_INDEX=%%[2]s} t
+				ON t.%%[3]s = anchor.place_id
+				AND %%[4]s%%[5]s
+		)`, cfg.TimeSeriesTable),
+
+		getSdmxContainedInPlace: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+		%%[3]s
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value)) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets,
+			ANY_VALUE(t.entities) AS entities
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable),
 
 		// Check existence when both variables and entities are specified
 		getStatVarsByEntityBoth: fmt.Sprintf(`		WITH

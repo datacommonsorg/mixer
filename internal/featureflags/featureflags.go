@@ -54,6 +54,8 @@ type Flags struct {
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 	// Whether to use the new IngestionHistory schema with Timestamp.
 	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
+	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
+	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -71,6 +73,7 @@ func setDefaultValues() *Flags {
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
 		UseNewIngestionHistorySchema:  false,
+		UseSpannerKeyValueStore:       false,
 	}
 }
 
@@ -101,6 +104,9 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
+	}
+	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
+		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
 	}
 	return nil
 }
