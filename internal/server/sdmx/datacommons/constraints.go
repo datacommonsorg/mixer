@@ -105,6 +105,9 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 			if !ok {
 				return status.Errorf(codes.Unimplemented, "SDMX property constraint %q is not implemented yet", propertyID)
 			}
+			if !componentMatchesScope(componentID, rule.Scope) {
+				return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
+			}
 			if err := validatePropertyConstraint(componentID, propertyID, propertyConstraint, rule); err != nil {
 				return err
 			}
@@ -117,7 +120,7 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 			return status.Errorf(codes.InvalidArgument, "SDMX property filters on component %q require containedInPlace+ and typeOf", componentID)
 		}
 	}
-	return nil
+	return validateRequiredVariableMeasured(constraints)
 }
 
 // ValidateAvailabilityConstraints checks the predicate features supported by
@@ -137,7 +140,7 @@ func ValidateAvailabilityConstraints(constraints map[string]*sdmxpb.SdmxComponen
 			}
 		}
 	}
-	return nil
+	return validateRequiredVariableMeasured(constraints)
 }
 
 // ContainedInPlaceConstraints returns the validated containment pair for each
@@ -169,6 +172,32 @@ func validateComponentPredicates(constraints map[string]*sdmxpb.SdmxComponentCon
 		}
 	}
 	return nil
+}
+
+func validateRequiredVariableMeasured(constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
+	constraint, ok := constraints[ComponentVariableMeasured]
+	if !ok || len(constraint.GetPredicates()) == 0 {
+		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
+	}
+	return nil
+}
+
+func componentMatchesScope(componentID string, scope ComponentScope) bool {
+	if scope == ComponentScopeAll {
+		return true
+	}
+
+	kind, known := DataComponentKind(componentID)
+	switch scope {
+	case ComponentScopeDimension:
+		return !known || kind == ComponentKindDimension
+	case ComponentScopeObservationProperty:
+		return componentID == ComponentObservationAbout || !known
+	case ComponentScopeAttribute:
+		return known && kind == ComponentKindAttribute
+	default:
+		return false
+	}
 }
 
 func validatePredicate(predicate *sdmxpb.SdmxPredicate, filter string) error {

@@ -332,6 +332,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
+			name:        "property on known non observation component",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[unit.containedInPlace+]=country%2FUSA&c[unit.typeOf]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
 			name:        "time period filter unsupported",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
 			wantCode:    codes.Unimplemented,

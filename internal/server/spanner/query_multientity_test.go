@@ -460,12 +460,12 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 	}{
 		{
 			name: "nil constraint list",
-			want: "SDMX component filter variableMeasured must be specified",
+			want: "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "empty value list",
 			constraint: &sdmxpb.SdmxComponentConstraint{},
-			want:       "SDMX component filter variableMeasured must be specified",
+			want:       "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "blank value",
@@ -551,13 +551,13 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 	}
 	wantParams := map[string]interface{}{
 		datacommons.ComponentVariableMeasured: []string{"var1", "var2"},
-		"destinationCountry":                  []string{"country/CAN", "country/MEX"},
-		"sourceCountry":                       []string{"country/USA", "country/IND"},
-		"unit":                                []string{"Count", "Percent"},
-		"measurementMethod":                   []string{"Census", "Survey"},
-		"observationPeriod":                   []string{"P1Y", "P1M"},
-		"provenance":                          []string{"dc/base/one", "dc/base/two"},
-		"facetId":                             []string{"facet", "alternate-facet"},
+		"filter_entity1":                      []string{"country/CAN", "country/MEX"},
+		"filter_entity2":                      []string{"country/USA", "country/IND"},
+		"filter_unit":                         []string{"Count", "Percent"},
+		"filter_measurement_method":           []string{"Census", "Survey"},
+		"filter_observation_period":           []string{"P1Y", "P1M"},
+		"filter_provenance":                   []string{"dc/base/one", "dc/base/two"},
+		"filter_facet_id":                     []string{"facet", "alternate-facet"},
 	}
 	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
@@ -585,6 +585,71 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 	}
 }
 
+func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.T) {
+	compile := func(observationProperty string) *compiledSdmxConstraints {
+		t.Helper()
+		compiled, err := compileSdmxConstraints(
+			map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+				observationProperty:                   sdmxComponentConstraint("country/USA"),
+				datacommons.ComponentUnit:             sdmxComponentConstraint("Count"),
+			},
+			map[string]string{observationProperty: "entity1"},
+		)
+		if err != nil {
+			t.Fatalf("compileSdmxConstraints() error = %v", err)
+		}
+		return compiled
+	}
+
+	beforeUnit := compile("aaaRegion")
+	afterUnit := compile("zzzRegion")
+	if diff := cmp.Diff(beforeUnit.where, afterUnit.where); diff != "" {
+		t.Fatalf("compileSdmxConstraints() SQL depends on observation property name (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff(beforeUnit.params, afterUnit.params); diff != "" {
+		t.Fatalf("compileSdmxConstraints() params depend on observation property name (-want +got):\n%s", diff)
+	}
+	if got, want := beforeUnit.where, "t.variable_measured IN UNNEST(@variableMeasured) AND t.entity1 IN UNNEST(@filter_entity1) AND t.unit IN UNNEST(@filter_unit)"; got != want {
+		t.Fatalf("compileSdmxConstraints() where = %q, want %q", got, want)
+	}
+}
+
+func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropertyNames(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	build := func(directComponent, containedComponent string) *cloudspanner.Statement {
+		t.Helper()
+		statement, err := queryBuilder.GetSdmxObservationsQuery(
+			map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+				directComponent:                       sdmxComponentConstraint("country/CAN"),
+				containedComponent:                    sdmxContainedInPlaceConstraint("northamerica", "Country"),
+			},
+			map[string]string{
+				directComponent:    "entity1",
+				containedComponent: "entity2",
+			},
+		)
+		if err != nil {
+			t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+		}
+		return statement
+	}
+
+	first := build("destinationCountry", "sourceCountry")
+	second := build("arrivalRegion", "originRegion")
+	if diff := cmp.Diff(first.SQL, second.SQL); diff != "" {
+		t.Fatalf("GetSdmxObservationsQuery() SQL depends on observation property names (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff(first.Params, second.Params); diff != "" {
+		t.Fatalf("GetSdmxObservationsQuery() params depend on observation property names (-want +got):\n%s", diff)
+	}
+}
+
 func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
 	if err != nil {
@@ -592,7 +657,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 	}
 	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
 		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
-		"destinationCountry":                  sdmxComponentConstraint("country/CAN"),
+		"containedAncestor0":                  sdmxComponentConstraint("country/CAN"),
 		"sourceCountry":                       sdmxContainedInPlaceConstraint("country/USA", "State"),
 	}
 	prepared, err := prepareSdmxObservationsQuery(
@@ -600,7 +665,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 		constraints,
 		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
 			return map[string][]*Edge{
-				"Count_Migration": observationPropertiesEdges("destinationCountry", "sourceCountry"),
+				"Count_Migration": observationPropertiesEdges("containedAncestor0", "sourceCountry"),
 			}, nil
 		},
 		queryBuilder,
@@ -610,9 +675,9 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 	}
 	wantParams := map[string]interface{}{
 		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
-		"destinationCountry":                  []string{"country/CAN"},
-		"containedAncestor0":                  "country/USA",
-		"containedChildPlaceType0":            "State",
+		"filter_entity1":                      []string{"country/CAN"},
+		"containment_0_ancestor":              "country/USA",
+		"containment_0_child_place_type":      "State",
 	}
 	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
 		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
@@ -623,7 +688,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 		"TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2}",
 		"ON t.entity2 = anchor.place_id",
 		"t.variable_measured IN UNNEST(@variableMeasured)",
-		"t.entity1 IN UNNEST(@destinationCountry)",
+		"t.entity1 IN UNNEST(@filter_entity1)",
 		"t.entity2 IS NOT NULL",
 	} {
 		if !strings.Contains(prepared.statement.SQL, fragment) {
@@ -699,12 +764,12 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 
 	wantParams := map[string]interface{}{
 		datacommons.ComponentVariableMeasured: []string{"var1", "var2"},
-		"destinationCountry":                  []string{"country/CAN", "country/MEX"},
-		"sourceCountry":                       []string{"country/USA", "country/IND"},
-		"unit":                                []string{"Count", "Percent"},
-		"measurementMethod":                   []string{"Census", "Survey"},
-		"observationPeriod":                   []string{"P1Y", "P1M"},
-		"provenance":                          []string{"dc/base/one", "dc/base/two"},
+		"filter_entity1":                      []string{"country/CAN", "country/MEX"},
+		"filter_entity2":                      []string{"country/USA", "country/IND"},
+		"filter_unit":                         []string{"Count", "Percent"},
+		"filter_measurement_method":           []string{"Census", "Survey"},
+		"filter_observation_period":           []string{"P1Y", "P1M"},
+		"filter_provenance":                   []string{"dc/base/one", "dc/base/two"},
 	}
 	if diff := cmp.Diff(wantParams, stmt.Params); diff != "" {
 		t.Fatalf("prepareSdmxAvailabilityQuery() params mismatch (-want +got):\n%s", diff)
@@ -986,12 +1051,12 @@ func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing
 	}{
 		{
 			name: "nil constraint list",
-			want: "SDMX component filter variableMeasured must be specified",
+			want: "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "empty value list",
 			constraint: &sdmxpb.SdmxComponentConstraint{},
-			want:       "SDMX component filter variableMeasured must be specified",
+			want:       "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "blank value",

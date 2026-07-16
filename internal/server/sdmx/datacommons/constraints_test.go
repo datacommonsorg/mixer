@@ -107,7 +107,55 @@ func TestValidateDataConstraints(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			err := ValidateDataConstraints(map[string]*sdmxpb.SdmxComponentConstraint{"observationAbout": tc.constraint})
+			err := ValidateDataConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
+				ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+				ComponentObservationAbout: tc.constraint,
+			})
+			if got := status.Code(err); got != tc.wantCode {
+				t.Fatalf("ValidateDataConstraints() code = %v, want %v; err = %v", got, tc.wantCode, err)
+			}
+		})
+	}
+}
+
+func TestValidateDataConstraintsRequiresVariableMeasured(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+	}{
+		{name: "missing", constraints: nil},
+		{name: "no predicates", constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			ComponentVariableMeasured: {},
+		}},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := ValidateDataConstraints(tc.constraints)
+			if status.Code(err) != codes.InvalidArgument {
+				t.Fatalf("ValidateDataConstraints() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			}
+			if got, want := status.Convert(err).Message(), "missing required SDMX component filter variableMeasured"; got != want {
+				t.Fatalf("ValidateDataConstraints() message = %q, want %q", got, want)
+			}
+		})
+	}
+}
+
+func TestValidateDataConstraintsPropertyScopes(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		componentID string
+		wantCode    codes.Code
+	}{
+		{name: "observation about", componentID: ComponentObservationAbout},
+		{name: "dynamic observation property", componentID: "sourceCountry"},
+		{name: "known dimension", componentID: ComponentUnit, wantCode: codes.Unimplemented},
+		{name: "known attribute", componentID: ComponentFacetID, wantCode: codes.Unimplemented},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := ValidateDataConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
+				ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+				tc.componentID:            testContainedInPlaceConstraint("country/USA", "County"),
+			})
 			if got := status.Code(err); got != tc.wantCode {
 				t.Fatalf("ValidateDataConstraints() code = %v, want %v; err = %v", got, tc.wantCode, err)
 			}
@@ -138,5 +186,28 @@ func TestValidateAvailabilityConstraintsRejectsProperties(t *testing.T) {
 	})
 	if status.Code(err) != codes.Unimplemented {
 		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+}
+
+func TestValidateAvailabilityConstraintsRequiresVariableMeasured(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+		wantCode    codes.Code
+	}{
+		{name: "valid", constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+		}},
+		{name: "missing", wantCode: codes.InvalidArgument},
+		{name: "no predicates", constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			ComponentVariableMeasured: {},
+		}, wantCode: codes.InvalidArgument},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := ValidateAvailabilityConstraints(tc.constraints)
+			if got := status.Code(err); got != tc.wantCode {
+				t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", got, tc.wantCode, err)
+			}
+		})
 	}
 }

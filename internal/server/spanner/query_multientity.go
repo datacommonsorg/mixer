@@ -652,12 +652,6 @@ func validateSdmxPropertyConstraintScopes(
 		if len(propertyConstraints) == 0 {
 			continue
 		}
-		for _, propertyID := range slices.Sorted(maps.Keys(propertyConstraints)) {
-			rule, ok := datacommons.DataPropertyRule(propertyID)
-			if ok && rule.Scope != datacommons.ComponentScopeObservationProperty {
-				return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
-			}
-		}
 		if _, ok := entitySlotByObservationProperty[componentID]; !ok {
 			return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
 		}

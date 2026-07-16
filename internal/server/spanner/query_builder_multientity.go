@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"maps"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
@@ -332,6 +333,12 @@ type compiledSdmxConstraints struct {
 	params map[string]interface{}
 }
 
+type resolvedSdmxDirectFilter struct {
+	componentID   string
+	spannerColumn string
+	values        []string
+}
+
 func sdmxConstraintValues(constraint *sdmxpb.SdmxComponentConstraint) []string {
 	predicates := constraint.GetPredicates()
 	values := make([]string, 0, len(predicates))
@@ -341,12 +348,43 @@ func sdmxConstraintValues(constraint *sdmxpb.SdmxComponentConstraint) []string {
 	return values
 }
 
+func validateSdmxEntitySlotMapping(entitySlotByObservationProperty map[string]string) error {
+	observationPropertyByEntitySlot := map[string]string{}
+	for _, observationProperty := range slices.Sorted(maps.Keys(entitySlotByObservationProperty)) {
+		entitySlot := entitySlotByObservationProperty[observationProperty]
+		switch entitySlot {
+		case "entity1", "entity2", "entity3":
+		default:
+			return status.Errorf(
+				codes.InvalidArgument,
+				"SDMX observation property %q maps to unsupported entity slot %q",
+				observationProperty,
+				entitySlot,
+			)
+		}
+		if existingObservationProperty, ok := observationPropertyByEntitySlot[entitySlot]; ok {
+			return status.Errorf(
+				codes.InvalidArgument,
+				"SDMX observation properties %q and %q map to the same entity slot %q",
+				existingObservationProperty,
+				observationProperty,
+				entitySlot,
+			)
+		}
+		observationPropertyByEntitySlot[entitySlot] = observationProperty
+	}
+	return nil
+}
+
 func compileSdmxConstraints(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	entitySlotByObservationProperty map[string]string,
 ) (*compiledSdmxConstraints, error) {
 	if constraints == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX request constraints cannot be nil")
+	}
+	if err := validateSdmxEntitySlotMapping(entitySlotByObservationProperty); err != nil {
+		return nil, err
 	}
 	for componentID, constraint := range constraints {
 		if !constraintKeyRegex.MatchString(componentID) {
@@ -381,20 +419,32 @@ func compileSdmxConstraints(
 	}
 	sort.Strings(componentIDs)
 
-	params := map[string]interface{}{
-		datacommons.ComponentVariableMeasured: statVarIDs,
-	}
-	for _, componentID := range componentIDs {
-		params[componentID] = sdmxConstraintValues(constraints[componentID])
-	}
-
-	clauses := []string{sdmxAllowedValuesClause("variable_measured", datacommons.ComponentVariableMeasured)}
+	filters := make([]resolvedSdmxDirectFilter, 0, len(componentIDs))
 	for _, componentID := range componentIDs {
 		spannerColumn, ok := sdmxDataFilterColumn(componentID, entitySlotByObservationProperty)
 		if !ok || spannerColumn == "" {
 			return nil, status.Errorf(codes.InvalidArgument, "unsupported SDMX component filter %q", componentID)
 		}
-		clauses = append(clauses, sdmxAllowedValuesClause(spannerColumn, componentID))
+		filters = append(filters, resolvedSdmxDirectFilter{
+			componentID:   componentID,
+			spannerColumn: spannerColumn,
+			values:        sdmxConstraintValues(constraints[componentID]),
+		})
+	}
+	sort.Slice(filters, func(i, j int) bool {
+		if filters[i].spannerColumn != filters[j].spannerColumn {
+			return filters[i].spannerColumn < filters[j].spannerColumn
+		}
+		return filters[i].componentID < filters[j].componentID
+	})
+	params := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: statVarIDs,
+	}
+	clauses := []string{sdmxAllowedValuesClause("variable_measured", datacommons.ComponentVariableMeasured)}
+	for _, filter := range filters {
+		parameter := "filter_" + filter.spannerColumn
+		params[parameter] = filter.values
+		clauses = append(clauses, sdmxAllowedValuesClause(filter.spannerColumn, parameter))
 	}
 
 	return &compiledSdmxConstraints{
@@ -408,7 +458,6 @@ func sdmxAllowedValuesClause(spannerColumn string, parameter string) string {
 }
 
 type resolvedSdmxContainedInPlace struct {
-	componentID  string
 	entityColumn string
 	relation     datacommons.ContainedInPlaceConstraint
 	cteName      string
@@ -420,13 +469,13 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	compiled *compiledSdmxConstraints,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
-	for componentID, relation := range constraints {
+	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
+		relation := constraints[componentID]
 		entityColumn, ok := entitySlotByObservationProperty[componentID]
-		if !ok || (entityColumn != "entity1" && entityColumn != "entity2" && entityColumn != "entity3") {
+		if !ok {
 			return nil, status.Errorf(codes.InvalidArgument, "unsupported SDMX property constraint component %q", componentID)
 		}
 		resolved = append(resolved, resolvedSdmxContainedInPlace{
-			componentID:  componentID,
 			entityColumn: entityColumn,
 			relation:     relation,
 		})
@@ -437,7 +486,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		if leftPriority != rightPriority {
 			return leftPriority < rightPriority
 		}
-		return resolved[i].componentID < resolved[j].componentID
+		return resolved[i].entityColumn < resolved[j].entityColumn
 	})
 
 	type relationKey struct {
@@ -459,8 +508,8 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 			cteIndex := len(cteByRelation)
 			cteName = fmt.Sprintf("contained_places_%d", cteIndex)
 			cteByRelation[key] = cteName
-			ancestorParam := fmt.Sprintf("containedAncestor%d", cteIndex)
-			childPlaceTypeParam := fmt.Sprintf("containedChildPlaceType%d", cteIndex)
+			ancestorParam := fmt.Sprintf("containment_%d_ancestor", cteIndex)
+			childPlaceTypeParam := fmt.Sprintf("containment_%d_child_place_type", cteIndex)
 			params[ancestorParam] = key.ancestor
 			params[childPlaceTypeParam] = key.childPlaceType
 			cteDefinitions = append(cteDefinitions, fmt.Sprintf(`%s AS (

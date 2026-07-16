@@ -155,11 +155,6 @@ func validateDataRequest(path ResourcePath, constraints map[string]*sdmxpb.SdmxC
 	if err := validateComponentFilters(constraints, isFilterableDataComponentCandidate); err != nil {
 		return err
 	}
-	for componentID, constraint := range constraints {
-		if len(constraint.GetPropertyConstraints()) > 0 && !isObservationPropertyCandidate(componentID) {
-			return status.Errorf(codes.Unimplemented, "SDMX property constraints on component %q are not implemented yet", componentID)
-		}
-	}
 	return datacommons.ValidateDataConstraints(constraints)
 }
 
@@ -235,8 +230,4 @@ func isDynamicEntityComponent(componentID string) bool {
 		return false
 	}
 	return true
-}
-
-func isObservationPropertyCandidate(componentID string) bool {
-	return componentID == datacommons.ComponentObservationAbout || isDynamicEntityComponent(componentID)
 }

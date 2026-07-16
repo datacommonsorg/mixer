@@ -203,7 +203,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}{
 		{
 			name: "nil constraints",
-			want: "GetSdmxObservationsQuery: SDMX request constraints cannot be nil",
+			want: "GetSdmxObservationsQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "invalid key containing SQL injection payload",
@@ -250,7 +250,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"unit": sdmxComponentConstraint("Percent"),
 			},
-			want: "GetSdmxObservationsQuery: SDMX component filter variableMeasured must be specified",
+			want: "GetSdmxObservationsQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "unsupported dynamic key",
@@ -262,15 +262,15 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			want:                            `GetSdmxObservationsQuery: unsupported SDMX component filter "customEntity"`,
 		},
 		{
-			name: "empty dynamic component mapping",
+			name: "unsupported entity slot mapping",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured":   sdmxComponentConstraint("var1"),
 				"destinationCountry": sdmxComponentConstraint("country/USA"),
 			},
 			entitySlotByObservationProperty: map[string]string{
-				"destinationCountry": "",
+				"destinationCountry": "entity4",
 			},
-			want: `GetSdmxObservationsQuery: unsupported SDMX component filter "destinationCountry"`,
+			want: `GetSdmxObservationsQuery: SDMX observation property "destinationCountry" maps to unsupported entity slot "entity4"`,
 		},
 		{
 			name:        "observation about outside resolved properties",
@@ -279,6 +279,19 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 				"destinationCountry": "entity1", "sourceCountry": "entity2",
 			},
 			want: `GetSdmxObservationsQuery: unsupported SDMX component filter "observationAbout"`,
+		},
+		{
+			name: "duplicate entity slot mapping",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured":   sdmxComponentConstraint("var1"),
+				"destinationCountry": sdmxComponentConstraint("country/CAN"),
+				"sourceCountry":      sdmxComponentConstraint("country/USA"),
+			},
+			entitySlotByObservationProperty: map[string]string{
+				"destinationCountry": "entity1",
+				"sourceCountry":      "entity1",
+			},
+			want: `GetSdmxObservationsQuery: SDMX observation properties "destinationCountry" and "sourceCountry" map to the same entity slot "entity1"`,
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -329,10 +342,10 @@ func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *
 	if err != nil {
 		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
 	}
-	if !strings.Contains(stmt.SQL, "t.entity2 IN UNNEST(@observationAbout)") {
+	if !strings.Contains(stmt.SQL, "t.entity2 IN UNNEST(@filter_entity2)") {
 		t.Fatalf("SQL = %s, want observationAbout filter on entity2", stmt.SQL)
 	}
-	if strings.Contains(stmt.SQL, "t.entity1 IN UNNEST(@observationAbout)") {
+	if strings.Contains(stmt.SQL, "t.entity1 IN UNNEST(@filter_entity1)") {
 		t.Fatalf("SQL = %s, want no observationAbout filter on entity1", stmt.SQL)
 	}
 }
@@ -539,7 +552,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 			req: &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: "observationAbout",
 			},
-			want: "GetSdmxAvailabilityQuery: SDMX request constraints cannot be nil",
+			want: "GetSdmxAvailabilityQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "missing variable measured",
@@ -547,7 +560,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 				ComponentId: "observationAbout",
 				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{},
 			},
-			want: "GetSdmxAvailabilityQuery: SDMX component filter variableMeasured must be specified",
+			want: "GetSdmxAvailabilityQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "nil variable measured constraint",
@@ -557,7 +570,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 					"variableMeasured": nil,
 				},
 			},
-			want: `GetSdmxAvailabilityQuery: SDMX component filter "variableMeasured" must have at least one value`,
+			want: "GetSdmxAvailabilityQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "empty variable measured values",
@@ -567,7 +580,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 					"variableMeasured": &sdmxpb.SdmxComponentConstraint{},
 				},
 			},
-			want: `GetSdmxAvailabilityQuery: SDMX component filter "variableMeasured" must have at least one value`,
+			want: "GetSdmxAvailabilityQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
 			name: "blank variable measured value",

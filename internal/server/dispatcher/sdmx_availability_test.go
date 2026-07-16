@@ -142,6 +142,57 @@ func TestSdmxDataPropertyConstraintsCallsDataSources(t *testing.T) {
 	}
 }
 
+func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
+	propertyConstraint := &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			"containedInPlace": {
+				Predicates: []*sdmxpb.SdmxPredicate{{Value: "country/USA"}},
+				Transitive: true,
+			},
+			"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+		},
+	}
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+		wantCode    codes.Code
+	}{
+		{name: "missing variable measured", wantCode: codes.InvalidArgument},
+		{
+			name: "property on known non observation component",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_Person"),
+				"unit":             propertyConstraint,
+			},
+			wantCode: codes.Unimplemented,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			source := &sdmxDataConstraintSource{}
+			dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
+			_, err := dispatcher.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{Constraints: tc.constraints})
+			if got := status.Code(err); got != tc.wantCode {
+				t.Fatalf("SdmxData() code = %v, want %v; err = %v", got, tc.wantCode, err)
+			}
+			if source.got != nil {
+				t.Fatalf("SdmxData() called source with %v", source.got)
+			}
+		})
+	}
+}
+
+func TestSdmxAvailabilityRequiresVariableMeasuredBeforeSources(t *testing.T) {
+	source := &sdmxAvailabilitySource{}
+	dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
+	_, err := dispatcher.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{ComponentId: "observationAbout"})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if source.got != nil {
+		t.Fatalf("SdmxAvailability() called source with %v", source.got)
+	}
+}
+
 func TestSdmxAvailabilityPropertyConstraintsUnimplemented(t *testing.T) {
 	_, err := NewDispatcher(nil, nil).SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: "source",
