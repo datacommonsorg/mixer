@@ -163,6 +163,9 @@ const (
 	// Whether to divert request to Spanner.
 	// To use, set header "X-Divert-Spanner: true"
 	XDivertSpanner = "X-Divert-Spanner"
+	// Whether to disable request to Spanner.
+	// To use, set header "X-Disable-Spanner: true"
+	XDisableSpanner = "X-Disable-Spanner"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64

@@ -1,2 +1,6 @@
 flags:
   EnableSDMXDataApi: true
+  SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
+  UseMultiEntitySchema: true  
+  UseSpannerGraph: true
+  V2DivertFraction: 1

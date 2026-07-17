@@ -6,7 +6,18 @@ VALUES
   ('Count_MigrationByTransportMode', 'Count_MigrationByTransportMode'),
   ('Count_Person', 'Count_Person'),
   ('Count_Refugee', 'Count_Refugee'),
-  ('destinationCountry', 'destinationCountry'),
+	('Country', 'Country'),
+	('State', 'State'),
+	('asia', 'asia'),
+	('country/CAN', 'country/CAN'),
+	('country/FRA', 'country/FRA'),
+	('country/GBR', 'country/GBR'),
+	('country/IND', 'country/IND'),
+	('country/MEX', 'country/MEX'),
+	('country/USA', 'country/USA'),
+	('destinationCountry', 'destinationCountry'),
+	('europe', 'europe'),
+	('northamerica', 'northamerica'),
   ('observationAbout', 'observationAbout'),
   ('sourceCountry', 'sourceCountry'),
   ('transportMode', 'transportMode');
@@ -22,7 +33,19 @@ VALUES
   ('Count_MigrationByTransportMode', 'observationProperties', 'sourceCountry', 'dc/base/HumanReadableStatVars'),
   ('Count_MigrationByObservationAbout', 'observationProperties', 'sourceCountry', 'dc/base/HumanReadableStatVars'),
   ('Count_MigrationByObservationAbout', 'observationProperties', 'observationAbout', 'dc/base/HumanReadableStatVars'),
-  ('Count_MigrationByObservationAbout', 'observationProperties', 'destinationCountry', 'dc/base/HumanReadableStatVars');
+	('Count_MigrationByObservationAbout', 'observationProperties', 'destinationCountry', 'dc/base/HumanReadableStatVars'),
+	('country/CAN', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
+	('country/CAN', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+	('country/FRA', 'linkedContainedInPlace', 'europe', 'dc/base/WikidataOtherIdGeos'),
+	('country/FRA', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+	('country/GBR', 'linkedContainedInPlace', 'europe', 'dc/base/WikidataOtherIdGeos'),
+	('country/GBR', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+	('country/IND', 'linkedContainedInPlace', 'asia', 'dc/base/WikidataOtherIdGeos'),
+	('country/IND', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+	('country/MEX', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
+	('country/MEX', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+	('country/USA', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
+	('country/USA', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos');
 
 INSERT INTO TimeSeries (variable_measured, extra_entities_id, facet_id, entities, facet, last_update_timestamp)
 VALUES

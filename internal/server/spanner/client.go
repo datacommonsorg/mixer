@@ -84,6 +84,8 @@ type spannerDatabaseClient struct {
 
 	// Flag to control query logic for IngestionHistory table.
 	useNewIngestionHistorySchema bool
+	// Flag to control reading from KeyValueStore instead of Cache table.
+	useSpannerKeyValueStore bool
 
 	// Logging/State tracking for the timestamp poller.
 	tracker *stalenessTracker
@@ -92,11 +94,23 @@ type spannerDatabaseClient struct {
 	dbInitialized atomic.Bool
 }
 
+// SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
+type SpannerClientOptions struct {
+	DatabaseOverride             string
+	UseMultiEntitySchema         bool
+	UseNewIngestionHistorySchema bool
+	UseSpannerKeyValueStore      bool
+}
+
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client, useNewSchema bool) (*spannerDatabaseClient, error) {
+func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions) (*spannerDatabaseClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
 	sc := &spannerDatabaseClient{
 		client:                       client,
-		useNewIngestionHistorySchema: useNewSchema,
+		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
+		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
 	}
 
@@ -112,8 +126,11 @@ func newSpannerDatabaseClient(client *spanner.Client, useNewSchema bool) (*spann
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useNewSchema bool) (SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
+	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
@@ -121,7 +138,7 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client, useNewSchema)
+	return newSpannerDatabaseClient(client, opts)
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
@@ -146,12 +163,15 @@ func DefaultTableConfig() TableConfig {
 	}
 }
 
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool, useNewIngestionHistorySchema bool) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useNewIngestionHistorySchema)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, opts)
 	if err != nil {
 		return nil, err
 	}
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
 	if err != nil {
 		return nil, err
 	}
@@ -176,7 +196,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
 
-	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema, tableCfg)
+	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.

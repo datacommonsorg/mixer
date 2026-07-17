@@ -32,7 +32,7 @@ func TestCSVFormatter_HeaderOnly(t *testing.T) {
 		t.Fatalf("Format() error = %v", err)
 	}
 
-	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n"
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n"
 	if got != want {
 		t.Errorf("Format() = %q, want %q", got, want)
 	}
@@ -53,6 +53,7 @@ func TestCSVFormatter_Rows(t *testing.T) {
 			},
 			Attributes: map[string]string{
 				"scalingFactor": "0",
+				"facetId":       "stored-facet-id",
 			},
 			Points: []*sdmxpb.SdmxDataPoint{
 				{TimePeriod: "2020", ObservationValue: "1.50"},
@@ -66,8 +67,39 @@ func TestCSVFormatter_Rows(t *testing.T) {
 
 	want := [][]string{
 		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
-		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0"},
-		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0"},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0", "stored-facet-id"},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0", "stored-facet-id"},
+	}
+	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
+		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestCSVFormatter_FacetID(t *testing.T) {
+	formatter := &CSVFormatter{StructureID: "DC:DF_OBS(1.0.0)"}
+	result := testSdmxResult([]string{datacommons.ComponentObservationAbout}, []*sdmxpb.SdmxTimeSeries{
+		{
+			Dimensions: map[string]string{
+				datacommons.ComponentVariableMeasured: "Count_Person",
+				datacommons.ComponentObservationAbout: "country/USA",
+			},
+			Attributes: map[string]string{
+				datacommons.ComponentScalingFactor: "0",
+				datacommons.ComponentFacetID:       "stored-facet-id",
+			},
+			Points: []*sdmxpb.SdmxDataPoint{
+				{TimePeriod: "2020", ObservationValue: "1"},
+			},
+		},
+	})
+	got, err := formatter.Format(result)
+	if err != nil {
+		t.Fatalf("Format() error = %v", err)
+	}
+
+	want := [][]string{
+		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "1", "0", "stored-facet-id"},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -96,7 +128,7 @@ func TestCSVFormatter_MultiEntityHeader(t *testing.T) {
 
 	want := [][]string{
 		testCSVHeader([]string{"destinationCountry", "sourceCountry"}),
-		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/CAN", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "dc/base", "2020", "1", ""},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/CAN", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "dc/base", "2020", "1", "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -124,7 +156,7 @@ func TestCSVFormatter_SkipsNilObservations(t *testing.T) {
 
 	want := [][]string{
 		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
-		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", ""},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count_Person", "country/USA", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "", "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
@@ -153,7 +185,7 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 
 	want := [][]string{
 		testCSVHeader([]string{datacommons.ComponentObservationAbout}),
-		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", ""},
+		{"dataflow", "DC:DF_OBS(1.0.0)", "I", "Count,\"Person\"", datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, datacommons.FallbackNotAvailable, "2020", "foo,bar", "", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)

@@ -14,6 +14,9 @@
     <Policy>strip-api-key-header-and-params</Policy>
     <Policy>block-internal-only-endpoints</Policy>
     <Policy>block-deprecated-endpoints</Policy>
+    <Policy>set-content-type-to-json</Policy>
+    <Policy>extract-json-params</Policy>
+    <Policy>set-disable-spanner-header</Policy>
   </Policies>
   <ProxyEndpoints>
     <ProxyEndpoint>api</ProxyEndpoint>

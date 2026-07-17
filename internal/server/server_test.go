@@ -26,65 +26,103 @@ import (
 func TestShouldDivertV2(t *testing.T) {
 
 	tests := []struct {
-		name            string
-		useSpannerGraph bool
-		flagUseSpanner  bool
-		divertFraction  float64
-		headerValue     string // Use "" to simulate a missing header
-		expected        bool
+		name                      string
+		useSpannerGraph           bool
+		flagUseSpanner           bool
+		divertFraction            float64
+		divertHeaderValue         string // Use "" to simulate a missing header
+		disableSpannerHeaderValue string // Use "" to simulate a missing header
+		expected                  bool
 	}{
 		{
-			name:            "Branch 1: Overall useSpannerGraph flag true forces diversion",
-			useSpannerGraph: true,
-			flagUseSpanner:  false,   // Should be ignored
-			headerValue:     "false", // Should be ignored
-			expected:        true,
+			name:                      "Branch 1: Overall useSpannerGraph flag true forces diversion",
+			useSpannerGraph:           true,
+			flagUseSpanner:            false,   // Should be ignored
+			divertHeaderValue:         "false", // Should be ignored
+			disableSpannerHeaderValue: "",
+			expected:                  true,
 		},
 		{
-			name:            "Branch 2: Experimental UseSpannerGraph flag false prevents diversion",
-			useSpannerGraph: false,
-			flagUseSpanner:  false,
-			headerValue:     "true", // Should be ignored
-			expected:        false,
+			name:                      "Branch 2: Experimental UseSpannerGraph flag false prevents diversion",
+			useSpannerGraph:           false,
+			flagUseSpanner:            false,
+			divertHeaderValue:         "true", // Should be ignored
+			disableSpannerHeaderValue: "",
+			expected:                  false,
 		},
 		{
-			name:            "Branch 3: Header is explicitly true",
-			useSpannerGraph: false,
-			flagUseSpanner:  true,
-			headerValue:     "true",
-			expected:        true,
+			name:                      "Branch 3: Header is explicitly true",
+			useSpannerGraph:           false,
+			flagUseSpanner:            true,
+			divertHeaderValue:         "true",
+			disableSpannerHeaderValue: "",
+			expected:                  true,
 		},
 		{
-			name:            "Branch 4: Header is false, fraction is 0, returns false",
-			useSpannerGraph: false,
-			flagUseSpanner:  true,
-			headerValue:     "false",
-			divertFraction:  0.0,
-			expected:        false,
+			name:                      "Branch 4: Header is false, fraction is 0, returns false",
+			useSpannerGraph:           false,
+			flagUseSpanner:            true,
+			divertHeaderValue:         "false",
+			disableSpannerHeaderValue: "",
+			divertFraction:            0.0,
+			expected:                  false,
 		},
 		{
-			name:            "Branch 5: No header, fraction is 1.0 (100% diversion)",
-			useSpannerGraph: false,
-			flagUseSpanner:  true,
-			headerValue:     "",
-			divertFraction:  1.0, // rand.Float64() is always < 1.0
-			expected:        true,
+			name:                      "Branch 5: No header, fraction is 1.0 (100% diversion)",
+			useSpannerGraph:           false,
+			flagUseSpanner:            true,
+			divertHeaderValue:         "",
+			disableSpannerHeaderValue: "",
+			divertFraction:            1.0, // rand.Float64() is always < 1.0
+			expected:                  true,
 		},
 		{
-			name:            "Branch 6: Missing header, negative fraction is safely ignored",
-			useSpannerGraph: false,
-			flagUseSpanner:  true,
-			headerValue:     "",
-			divertFraction:  -0.5,
-			expected:        false,
+			name:                      "Branch 6: Missing header, negative fraction is safely ignored",
+			useSpannerGraph:           false,
+			flagUseSpanner:            true,
+			divertHeaderValue:         "",
+			disableSpannerHeaderValue: "",
+			divertFraction:            -0.5,
+			expected:                  false,
+		},
+		{
+			name:                      "Branch 7: X-Disable-Spanner overrides useSpannerGraph flag",
+			useSpannerGraph:           true,
+			flagUseSpanner:            false,
+			divertHeaderValue:         "true",
+			disableSpannerHeaderValue: "true", // Should force legacy
+			expected:                  false,
+		},
+		{
+			name:                      "Branch 8: X-Disable-Spanner overrides divert header and fraction",
+			useSpannerGraph:           false,
+			flagUseSpanner:            true,
+			divertHeaderValue:         "true",
+			disableSpannerHeaderValue: "true", // Should force legacy
+			divertFraction:            1.0,
+			expected:                  false,
+		},
+		{
+			name:                      "Branch 9: X-Disable-Spanner false does not prevent diversion",
+			useSpannerGraph:           true,
+			flagUseSpanner:            false,
+			divertHeaderValue:         "false",
+			disableSpannerHeaderValue: "false", // Should NOT force legacy
+			expected:                  true,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			ctx := context.Background()
-			if tt.headerValue != "" {
-				md := metadata.Pairs(util.XDivertSpanner, tt.headerValue)
+			md := metadata.MD{}
+			if tt.divertHeaderValue != "" {
+				md.Set(util.XDivertSpanner, tt.divertHeaderValue)
+			}
+			if tt.disableSpannerHeaderValue != "" {
+				md.Set(util.XDisableSpanner, tt.disableSpannerHeaderValue)
+			}
+			if len(md) > 0 {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 

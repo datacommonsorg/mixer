@@ -64,6 +64,10 @@ steps:
       - -c
       - |
         set -e
+        gcloud emulators spanner start --host-port=localhost:9010 --rest-port=9020 &
+        sleep 5
+        export RUN_SPANNER_EMULATOR_TESTS=true
+        export SPANNER_EMULATOR_HOST=localhost:9010
         go test -v ./...
     waitFor: ["build-proto"]
 

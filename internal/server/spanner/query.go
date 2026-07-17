@@ -207,15 +207,23 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 
 	var existenceQueryStmt spanner.Statement
 	if predicate == "" {
+		sql := statements.checkSVSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkSVSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkSVSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 			},
 		}
 	} else {
+		sql := statements.checkGroupSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkGroupSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkGroupSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 				"predicate": predicate,
@@ -695,10 +703,10 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 			nil
 	}
 
-	results, err := queryCache(
+	results, err := queryKeyValueStore(
 		ctx,
 		sc,
-		*GetCacheDataQuery(TypeProvenanceSummary, variables),
+		*GetKeyValueStoreQuery(TypeProvenanceSummary, variables, sc.useSpannerKeyValueStore),
 		func() *pb.StatVarSummary_ProvenanceSummary {
 			return &pb.StatVarSummary_ProvenanceSummary{}
 		},
@@ -1124,8 +1132,8 @@ func queryDynamic(
 	return rowData, err
 }
 
-// queryCache executes a query and maps the results to an input cache proto.
-func queryCache[T proto.Message](
+// queryKeyValueStore executes a query against KeyValueStore (or legacy Cache) and maps the results to a proto.
+func queryKeyValueStore[T proto.Message](
 	ctx context.Context,
 	sc *spannerDatabaseClient,
 	stmt spanner.Statement,
@@ -1133,7 +1141,7 @@ func queryCache[T proto.Message](
 ) (map[string]map[string]T, error) {
 	var data map[string]map[string]T
 	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		result, err := processCacheRows(iter, newProto)
+		result, err := processKeyValueStoreRows(iter, newProto)
 		data = result
 		return err
 	})
@@ -1185,8 +1193,8 @@ func processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
 	return rowData, nil
 }
 
-// processCacheRows processes rows and maps them to a proto struct.
-func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
+// processKeyValueStoreRows processes rows and maps them to a proto struct.
+func processKeyValueStoreRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
 	results := make(map[string]map[string]T)
 	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
 
