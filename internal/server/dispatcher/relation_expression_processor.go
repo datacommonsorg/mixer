@@ -41,22 +41,24 @@ const maxConcurrentSdmxContainedInPlaceExpansions = 3
 // RelationExpressionProcessor implements dispatcher.Processor to expand relation expressions
 // by fetching child entities from the provided datasource.
 type RelationExpressionProcessor struct {
-	source                                   datasource.DataSource
-	sdmxRemoteContainedInPlaceExpansionLimit int
+	source                        datasource.DataSource
+	sdmxRemotePlaceExpansionLimit int
 }
 
 // NewRelationExpressionProcessor creates a new RelationExpressionProcessor.
 func NewRelationExpressionProcessor(
 	source datasource.DataSource,
-	sdmxRemoteContainedInPlaceExpansionLimit int,
+	sdmxRemotePlaceExpansionLimit int,
 ) *RelationExpressionProcessor {
 	return &RelationExpressionProcessor{
-		source:                                   source,
-		sdmxRemoteContainedInPlaceExpansionLimit: sdmxRemoteContainedInPlaceExpansionLimit,
+		source:                        source,
+		sdmxRemotePlaceExpansionLimit: sdmxRemotePlaceExpansionLimit,
 	}
 }
 
 // PreProcess handles expression expansion using the configured source.
+// TODO: Mark local-only responses caused by remote expansion failures as
+// non-cacheable so transient failures are not cached by Redis.
 func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, error) {
 	if rc.Type == TypeSdmxData {
 		return p.preProcessSdmxData(rc)
@@ -141,6 +143,9 @@ func (p *RelationExpressionProcessor) preProcessSdmxData(rc *RequestContext) (Ou
 	for i, relation := range relations {
 		i, relation := i, relation
 		group.Go(func() error {
+			if err := groupCtx.Err(); err != nil {
+				return err
+			}
 			start := time.Now()
 			dcids, err := p.fetchSdmxEntities(groupCtx, relation)
 			if err != nil {
@@ -249,7 +254,7 @@ func (p *RelationExpressionProcessor) fetchSdmxEntities(
 	limitedSource := &sdmxRemoteExpansionSource{
 		DataSource: p.source,
 		relation:   relation,
-		limit:      p.sdmxRemoteContainedInPlaceExpansionLimit,
+		limit:      p.sdmxRemotePlaceExpansionLimit,
 		dcids:      map[string]struct{}{},
 	}
 	if _, err := datasource.NodeFetchAll(ctx, limitedSource, nodeReq, datasources.DefaultPageSize); err != nil {

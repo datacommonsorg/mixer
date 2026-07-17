@@ -69,6 +69,14 @@ func TestValidateDataConstraints(t *testing.T) {
 			wantCode: codes.InvalidArgument,
 		},
 		{
+			name: "multiple child place types",
+			constraint: &sdmxpb.SdmxComponentConstraint{PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+				PropertyContainedInPlace: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "country/USA"}}, Transitive: true},
+				PropertyTypeOf:           {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Country"}, {Value: "State"}}},
+			}},
+			wantCode: codes.InvalidArgument,
+		},
+		{
 			name: "direct containment",
 			constraint: &sdmxpb.SdmxComponentConstraint{PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
 				PropertyContainedInPlace: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "country/USA"}}},

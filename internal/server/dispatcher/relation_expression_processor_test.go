@@ -448,3 +448,65 @@ func TestRelationExpressionProcessorPreProcessSdmxDataLimitsConcurrency(t *testi
 		t.Fatalf("maximum concurrent Node calls = %d, want %d", got, want)
 	}
 }
+
+func TestRelationExpressionProcessorPreProcessSdmxDataStopsQueuedExpansionsAfterLimit(t *testing.T) {
+	componentToContainedInPlace := map[string]*sdmxpb.SdmxComponentConstraint{}
+	for i := range 4 {
+		componentToContainedInPlace[fmt.Sprintf("place%d", i)] = sdmxContainedInPlaceComponentConstraint(fmt.Sprintf("ancestor%d", i), "Country")
+	}
+
+	started := make(chan string, maxConcurrentSdmxContainedInPlaceExpansions)
+	releaseLimit := make(chan struct{})
+	var queuedRelationCalled atomic.Bool
+	remoteSource := &mockSource{
+		nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+			ancestor := req.GetNodes()[0]
+			if ancestor == "ancestor3" {
+				queuedRelationCalled.Store(true)
+				return sdmxNodeResponse(ancestor, nil, ""), nil
+			}
+			started <- ancestor
+			if ancestor == "ancestor0" {
+				<-releaseLimit
+				return sdmxNodeResponse(ancestor, []string{"place1", "place2", "place3"}, ""), nil
+			}
+			<-ctx.Done()
+			return nil, ctx.Err()
+		},
+	}
+	processor := NewRelationExpressionProcessor(remoteSource, 2)
+	rc := &RequestContext{
+		Context:        context.Background(),
+		Type:           TypeSdmxData,
+		CurrentRequest: sdmxDataQueryWithContainedInPlace(componentToContainedInPlace),
+	}
+
+	done := make(chan error, 1)
+	go func() {
+		_, err := processor.PreProcess(rc)
+		done <- err
+	}()
+	for range maxConcurrentSdmxContainedInPlaceExpansions {
+		select {
+		case <-started:
+		case <-time.After(time.Second):
+			t.Fatal("timed out waiting for initial remote expansions")
+		}
+	}
+	close(releaseLimit)
+
+	select {
+	case err := <-done:
+		if got, want := status.Code(err), codes.InvalidArgument; got != want {
+			t.Fatalf("PreProcess() code = %v, want %v; err = %v", got, want, err)
+		}
+		if !strings.Contains(status.Convert(err).Message(), "choose a narrower ancestor or child place type") {
+			t.Fatalf("PreProcess() message = %q, want narrowing guidance", status.Convert(err).Message())
+		}
+	case <-time.After(time.Second):
+		t.Fatal("timed out waiting for remote expansions to stop")
+	}
+	if queuedRelationCalled.Load() {
+		t.Fatal("queued relation called Node() after expansion limit canceled the group")
+	}
+}

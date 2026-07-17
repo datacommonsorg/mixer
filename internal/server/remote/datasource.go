@@ -46,6 +46,8 @@ func (rds *RemoteDataSource) Id() string {
 
 func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	// The remote datasource currently calls V2 node, which does not use custom pageSize.
+	// TODO: Propagate ctx through RemoteClient and FetchRemote and configure a
+	// bounded HTTP timeout so remote requests honor cancellation and deadlines.
 	return rds.client.Node(req)
 }
 
