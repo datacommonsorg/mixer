@@ -17,13 +17,8 @@
 				t.provenance,
 				t.facet
 			FROM places p
-<<<<<<< HEAD
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured = 'AirPollutant_Cancer_Risk'
-=======
 			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN ('AirPollutant_Cancer_Risk')
->>>>>>> 70d74a7a2f4e7a5a8f10021012d700d9165c355d
+				ON t.variable_measured = 'AirPollutant_Cancer_Risk'
 				AND t.entity1 = p.place_id
 		)
 		SELECT
