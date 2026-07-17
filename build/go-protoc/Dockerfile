@@ -14,7 +14,7 @@
 
 # go-protoc: image with Golang, bash, protoc, and proto + gRPC plugins for go
 
-FROM golang:1.23.11-alpine3.22 AS go-protoc
+FROM golang:1.24-alpine3.22 AS go-protoc
 
 # TODO: Sync the version of protoc recommended throughout our repos to match
 # the one included with Alpine on the base image here.

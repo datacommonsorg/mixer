@@ -1,0 +1,63 @@
+{
+  "class": "dataset",
+  "dimension": {
+    "TIME_PERIOD": {
+      "category": {
+        "index": [
+          "2020"
+        ]
+      },
+      "label": "TIME_PERIOD"
+    },
+    "destination": {
+      "category": {
+        "index": [
+          "country/CHN"
+        ]
+      },
+      "label": "destination"
+    },
+    "source": {
+      "category": {
+        "index": [
+          "country/USA"
+        ]
+      },
+      "label": "source"
+    },
+    "variableMeasured": {
+      "category": {
+        "index": [
+          "Exports"
+        ]
+      },
+      "label": "variableMeasured"
+    }
+  },
+  "extension": {
+    "annotations": {},
+    "measures": {
+      "OBS_VALUE": {
+        "label": "OBS_VALUE"
+      }
+    }
+  },
+  "id": [
+    "variableMeasured",
+    "destination",
+    "source",
+    "TIME_PERIOD"
+  ],
+  "label": "Data Commons SDMX Query Results",
+  "size": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "source": "Data Commons",
+  "value": [
+    1000
+  ],
+  "version": "2.0"
+}

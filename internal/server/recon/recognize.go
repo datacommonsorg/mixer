@@ -46,11 +46,11 @@ var (
 func RecognizePlaces(
 	ctx context.Context,
 	in *pb.RecognizePlacesRequest,
-	store *store.Store,
+	recogPlaceStore *files.RecogPlaceStore,
 	resolveBogusName bool,
 ) (*pb.RecognizePlacesResponse, error) {
 	pr := &placeRecognition{
-		recogPlaceStore:  store.RecogPlaceStore,
+		recogPlaceStore:  recogPlaceStore,
 		resolveBogusName: resolveBogusName,
 	}
 

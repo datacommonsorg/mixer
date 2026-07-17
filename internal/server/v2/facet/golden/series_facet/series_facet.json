@@ -16,21 +16,21 @@
           "ordered_facets": [
             {
               "facet_id": "2176550201",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "2645850372",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1145703171",
-              "obs_count": 2,
+              "obs_count": 3,
               "earliest_date": "2022",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -42,6 +42,18 @@
               "facet_id": "3981252704",
               "obs_count": 65,
               "earliest_date": "1960",
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "1964317807",
+              "obs_count": 15,
+              "earliest_date": "2010",
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "196790193",
+              "obs_count": 8,
+              "earliest_date": "2017",
               "latest_date": "2024"
             },
             {
@@ -60,18 +72,6 @@
               "facet_id": "10983471",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "1964317807",
-              "obs_count": 14,
-              "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -121,21 +121,33 @@
             },
             {
               "facet_id": "2176550201",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1145703171",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
               "obs_count": 3,
               "earliest_date": "2000",
               "latest_date": "2020"
+            },
+            {
+              "facet_id": "1964317807",
+              "obs_count": 15,
+              "earliest_date": "2010",
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "196790193",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
             },
             {
               "facet_id": "4181918134",
@@ -147,18 +159,6 @@
               "facet_id": "10983471",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "1964317807",
-              "obs_count": 14,
-              "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -195,26 +195,26 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "815809675",
+              "obs_count": 15,
+              "earliest_date": "2010",
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "3690003977",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
             },
             {
               "facet_id": "2763329611",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "815809675",
-              "obs_count": 14,
-              "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             },
             {
@@ -229,26 +229,26 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "815809675",
+              "obs_count": 15,
+              "earliest_date": "2010",
+              "latest_date": "2024"
+            },
+            {
+              "facet_id": "3690003977",
+              "obs_count": 8,
+              "earliest_date": "2017",
+              "latest_date": "2024"
             },
             {
               "facet_id": "2763329611",
               "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "815809675",
-              "obs_count": 14,
-              "earliest_date": "2010",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 7,
-              "earliest_date": "2017",
               "latest_date": "2023"
             }
           ]
@@ -279,114 +279,135 @@
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
     },
     "1145703171": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+      "measurement_method": "CensusACS5yrSurvey",
+      "provenance_id": "dc/base/CensusACS5YearSurvey"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS1yrSurvey"
+      "measurement_method": "CensusACS1yrSurvey",
+      "provenance_id": "dc/base/CensusACS1YearSurvey"
     },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
+      "measurement_method": "USDecennialCensus",
+      "provenance_id": "dc/base/USDecennialCensus_RedistrictingRelease"
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2603"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     },
     "2390551605": {
       "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey_Race2000Onwards",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_AgeSexRaceHispanicOrigin"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+      "measurement_method": "WikidataPopulation",
+      "provenance_id": "dc/base/WikidataPopulation"
     },
     "2517965213": {
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
+      "measurement_method": "CensusPEPSurvey",
+      "provenance_id": "dc/base/CensusPEP"
     },
     "2645850372": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "provenance_url": "https://www.census.gov/",
       "measurement_method": "CensusACS5yrSurvey",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/CensusACS5YearSurvey_AggCountry"
     },
     "2763329611": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "unit": "Years",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
     },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html",
+      "provenance_id": "dc/base/CDC_Mortality_UnderlyingCause"
     },
     "2921750529": {
       "import_name": "Custom Prov",
-      "provenance_url": "custom.datacommons.org"
+      "provenance_url": "custom.datacommons.org",
+      "provenance_id": "custom"
     },
     "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "unit": "Years",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2602"
     },
     "3795540742": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
+      "unit": "Year",
+      "provenance_id": "dc/base/CensusACS5YearSurvey"
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observation_period": "P1Y"
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/WorldDevelopmentIndicators"
     },
     "4181918134": {
       "import_name": "OECDRegionalDemography_Population",
       "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
       "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/OECDRegionalDemography_Population"
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "unit": "Years",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2603"
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "unit": "Years",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
     }
   }
 }

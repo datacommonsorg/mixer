@@ -7,6 +7,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -39,7 +40,15 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		Property: "<-description->dcid", // Must be valid for indicator resolver
 		Nodes:    []string{"foo"},
 	}
-	_, err := sDisabled.V2ResolveCore(ctx, req)
+
+	_, err := sDisabled.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
 	if err == nil {
 		t.Error("Expected error when flag is disabled, got nil")
 	} else {
@@ -66,11 +75,22 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		flags: &featureflags.Flags{
 			EnableEmbeddingsResolver: true,
 		},
-		httpClient:          mockClient,
-		embeddingsServerURL: "http://example.com",
+		embeddingsServiceClient: resolve.NewEmbeddingsServiceClient(
+			"http://example.com",
+			&resolve.EmbeddingsServiceClientOptions{
+				HTTPClient: mockClient,
+			},
+		),
 	}
 
-	_, _ = sEnabled.V2ResolveCore(ctx, req)
+	_, _ = sEnabled.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
 
 	if !called {
 		t.Error("Expected HTTP client to be called when flag is enabled")

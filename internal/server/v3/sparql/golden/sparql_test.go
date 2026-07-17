@@ -82,7 +82,7 @@ func TestV3Sparql(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3Sparql",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3Sparql = %s", err)

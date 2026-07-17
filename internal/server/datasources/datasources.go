@@ -16,14 +16,21 @@ package datasources
 
 import (
 	"context"
+	"fmt"
+	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -33,11 +40,17 @@ const (
 
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
-	sources []datasource.DataSource
+	sources          []datasource.DataSource
+	remoteDataSource datasource.DataSource
 }
 
-func NewDataSources(sources []datasource.DataSource) *DataSources {
-	return &DataSources{sources: sources}
+func NewDataSources(sources []datasource.DataSource, remoteDataSource datasource.DataSource) *DataSources {
+	return &DataSources{sources, remoteDataSource}
+}
+
+// GetRemoteDataSource returns the remote data source.
+func (ds *DataSources) GetRemoteDataSource() datasource.DataSource {
+	return ds.remoteDataSource
 }
 
 // GetSources returns the list of data source IDs.
@@ -49,6 +62,8 @@ func (ds *DataSources) GetSources() []string {
 	return sources
 }
 
+// fetchAndMerge is a generic helper that fetches data from multiple sources in parallel
+// and merges the responses using the provided fetcher and merger functions.
 func fetchAndMerge[req any, resp any](
 	ctx context.Context,
 	sources []datasource.DataSource,
@@ -109,7 +124,9 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchReques
 }
 
 func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	return fetchAndMerge(ctx, ds.sources, in,
+	filteredResolveSources := filterResolveSources(ds, in)
+
+	return fetchAndMerge(ctx, filteredResolveSources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 			return s.Resolve(c, r)
 		},
@@ -131,6 +148,135 @@ func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.Qu
 		},
 		func(all []*pb.QueryResponse) (*pb.QueryResponse, error) {
 			return merger.MergeMultiQueryResponse(all, opts.Orderby, opts.ASC, opts.Limit)
+		},
+	)
+}
+
+func (ds *DataSources) Event(ctx context.Context, in *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+			return s.Event(c, r)
+		},
+		func(all []*pbv2.EventResponse) (*pbv2.EventResponse, error) {
+			return merger.MergeMultiEvent(all), nil
+		},
+	)
+}
+
+func (ds *DataSources) BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+			return s.BulkVariableInfo(c, r)
+		},
+		func(all []*pbv1.BulkVariableInfoResponse) (*pbv1.BulkVariableInfoResponse, error) {
+			return merger.MergeMultiBulkVariableInfo(all), nil
+		},
+	)
+}
+
+func (ds *DataSources) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+			return s.BulkVariableGroupInfo(c, r)
+		},
+		func(all []*pbv1.BulkVariableGroupInfoResponse) (*pbv1.BulkVariableGroupInfoResponse, error) {
+			return merger.MergeMultiBulkVariableGroupInfo(all), nil
+		},
+	)
+}
+
+// Resolve API specifies which sources to call in the target input params.
+// filterResolveSources filters sources accordingly.
+func filterResolveSources(ds *DataSources, in *pbv2.ResolveRequest) []datasource.DataSource {
+	hasRemoteMixerDomain := ds.remoteDataSource != nil
+
+	callLocal, callRemote := resolve.ResolveRouting(in.GetTarget(), hasRemoteMixerDomain)
+	var filteredSources []datasource.DataSource
+	for _, source := range ds.sources {
+		isRemote := source == ds.remoteDataSource
+		if (isRemote && callRemote) || (!isRemote && callLocal) {
+			filteredSources = append(filteredSources, source)
+		}
+	}
+
+	return filteredSources
+}
+
+func (ds *DataSources) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+			return s.SdmxData(c, r)
+		},
+		func(all []*sdmxpb.SdmxDataResult) (*sdmxpb.SdmxDataResult, error) {
+			res := &sdmxpb.SdmxDataResult{}
+			for _, result := range all {
+				if result == nil {
+					continue
+				}
+				if result.GetShape() == nil && len(result.GetSeries()) > 0 {
+					return nil, fmt.Errorf("SdmxData: data result missing shape")
+				}
+				if result.GetShape() != nil {
+					if res.Shape == nil {
+						res.Shape = result.GetShape()
+					} else if !sameSdmxShape(res.Shape, result.GetShape()) {
+						return nil, status.Error(codes.InvalidArgument, "SdmxData: incompatible data shapes")
+					}
+				}
+				if result.Series != nil {
+					res.Series = append(res.Series, result.Series...)
+				}
+			}
+			return res, nil
+		},
+	)
+}
+
+func sameSdmxShape(a *sdmxpb.SdmxDataShape, b *sdmxpb.SdmxDataShape) bool {
+	aComponents := a.GetComponents()
+	bComponents := b.GetComponents()
+	if len(aComponents) != len(bComponents) {
+		return false
+	}
+	for i := range aComponents {
+		if aComponents[i].GetId() != bComponents[i].GetId() || aComponents[i].GetKind() != bComponents[i].GetKind() {
+			return false
+		}
+	}
+	return true
+}
+
+func (ds *DataSources) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+			return s.SdmxAvailability(c, r)
+		},
+		func(all []*sdmxpb.SdmxAvailabilityResult) (*sdmxpb.SdmxAvailabilityResult, error) {
+			values := map[string]bool{}
+			for _, result := range all {
+				for _, value := range result.GetValues() {
+					if value != "" {
+						values[value] = true
+					}
+				}
+			}
+			res := &sdmxpb.SdmxAvailabilityResult{Values: make([]string, 0, len(values))}
+			for value := range values {
+				res.Values = append(res.Values, value)
+			}
+			sort.Strings(res.Values)
+			return res, nil
+		},
+	)
+}
+
+func (ds *DataSources) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+			return s.FilterStatVarsByEntity(c, r)
+		},
+		func(all []*pb.FilterStatVarsByEntityResponse) (*pb.FilterStatVarsByEntityResponse, error) {
+			return merger.MergeMultiFilterStatVarsByEntity(all), nil
 		},
 	)
 }

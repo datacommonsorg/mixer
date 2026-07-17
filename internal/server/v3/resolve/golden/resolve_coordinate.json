@@ -1,0 +1,58 @@
+{
+  "entities": [
+    {
+      "node": "37.42#-122.08"
+    },
+    {
+      "node": "32.41#-102.11",
+      "candidates": [
+        {
+          "dcid": "geoId/48317",
+          "dominant_type": "County"
+        },
+        {
+          "dcid": "geoId/48",
+          "dominant_type": "State"
+        },
+        {
+          "dcid": "country/USA",
+          "dominant_type": "Country"
+        }
+      ]
+    },
+    {
+      "node": "36.0#-119.4",
+      "candidates": [
+        {
+          "dcid": "geoId/06107",
+          "dominant_type": "County"
+        },
+        {
+          "dcid": "geoId/06",
+          "dominant_type": "State"
+        },
+        {
+          "dcid": "country/USA",
+          "dominant_type": "Country"
+        }
+      ]
+    },
+    {
+      "node": "+36#-119.5000000",
+      "candidates": [
+        {
+          "dcid": "geoId/06107",
+          "dominant_type": "County"
+        },
+        {
+          "dcid": "geoId/06",
+          "dominant_type": "State"
+        },
+        {
+          "dcid": "country/USA",
+          "dominant_type": "Country"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT variable_measured
+				FROM Observation 
+				WHERE observation_about IN ('country/USA','country/IND')
+				GROUP BY variable_measured
+			) o ON o.variable_measured = e.subject_id
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = 'dc/g/Demographics'
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id

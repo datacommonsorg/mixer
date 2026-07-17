@@ -58,13 +58,6 @@ func TestPropertyValuesOut(t *testing.T) {
 				"",
 			},
 			{
-				"bio.json",
-				"diseaseOntologyID",
-				"SevereDengue",
-				0,
-				"",
-			},
-			{
 				"geoOverlaps1.json",
 				"geoOverlaps",
 				"geoId/0649670",

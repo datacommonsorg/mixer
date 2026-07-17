@@ -44,11 +44,6 @@ message LandingPageCache {
   reserved 2;
 }
 
-
-message BioPageRequest {
-  string node = 1;
-}
-
 message PlacePageRequest {
   string node = 1;
   // A list of additional stat vars need to be fetched in addition to the

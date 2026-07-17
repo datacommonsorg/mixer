@@ -2,9 +2,9 @@ clusters:
   - projects/datcom-mixer-staging/locations/us-central1/clusters/mixer-us-central1
 liveUrl: https://staging.api.datacommons.org
 flags:
-  EnableV3: true
   V3MirrorFraction: 1.0
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
-  SpannerGraphDatabase: dc_graph_2026_01_27
-  UseStaleReads: true
+  SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
+  EnableSpannerSearchEmbeddings: false
+  UseMultiEntitySchema: true

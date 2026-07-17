@@ -19,6 +19,8 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -120,4 +122,31 @@ func (sds *SQLDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest)
 // However, Sparql is not currently supported for SQL data sources so it returns an empty response.
 func (sds *SQLDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
 	return &pb.QueryResponse{}, nil
+}
+
+func (sds *SQLDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	return &pbv2.EventResponse{}, nil
+}
+
+func (sds *SQLDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	return &pbv1.BulkVariableInfoResponse{}, nil
+}
+
+func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	return &pbv1.BulkVariableGroupInfoResponse{}, nil
+}
+
+// SdmxData retrieves SDMX data from the data source.
+// Note: SQLite / CloudSQL does not natively support graph property traversal required for SDMX without complex JOIN chains.
+func (sds *SQLDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return &sdmxpb.SdmxDataResult{}, nil
+}
+
+// SdmxAvailability retrieves SDMX availability from the data source.
+func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return &sdmxpb.SdmxAvailabilityResult{}, nil
+}
+
+func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return &pb.FilterStatVarsByEntityResponse{}, nil
 }

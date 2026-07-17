@@ -7,13 +7,6 @@
         "typeOf"
       ]
     },
-    "bio/hs": {
-      "properties": [
-        "isProvisional",
-        "provenance",
-        "typeOf"
-      ]
-    },
     "geoId/06": {
       "properties": [
         "administrativeCapital",

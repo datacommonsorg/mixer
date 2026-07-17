@@ -25,6 +25,7 @@ package datacommons;
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
 import "common.proto";
 import "custom.proto";
 import "misc.proto";
@@ -49,8 +50,26 @@ import "v2/node.proto";
 import "v2/node_search.proto";
 import "v2/observation.proto";
 import "v2/resolve.proto";
+import "v2/agent.proto";
+import "sdmx/sdmx.proto";
 
 service Mixer {
+  // ======================  SDMX   SDMX   SDMX  ======================
+
+  rpc V3SdmxData(datacommons.sdmx.SdmxRestRequest) returns (stream google.api.HttpBody) {
+    option (google.api.http) = {
+      get : "/sdmx/v3/data/{tail=**}"
+      additional_bindings : {get : "/sdmx/v3/data"}
+    };
+  }
+
+  rpc V3SdmxAvailability(datacommons.sdmx.SdmxRestRequest) returns (google.api.HttpBody) {
+    option (google.api.http) = {
+      get : "/sdmx/v3/availability/{tail=**}"
+      additional_bindings : {get : "/sdmx/v3/availability"}
+    };
+  }
+
   // ======================  V3   V3   V3   V3  ======================
 
   rpc V3Node(datacommons.v2.NodeRequest) returns (datacommons.v2.NodeResponse) {
@@ -81,10 +100,33 @@ service Mixer {
     };
   }
 
+  rpc V3Event(datacommons.v2.EventRequest) returns (datacommons.v2.EventResponse) {
+    option (google.api.http) = {
+      get : "/v3/event"
+      additional_bindings : {post : "/v3/event" body : "*"}
+    };
+  }
+
   rpc V3Sparql(SparqlRequest) returns (QueryResponse) {
     option (google.api.http) = {
       get : "/v3/sparql"
       additional_bindings : {post : "/v3/sparql" body : "*"}
+    };
+  }
+
+  rpc V3BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
+      returns (datacommons.v1.BulkVariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v3/bulk/info/variable"
+      additional_bindings : {post : "/v3/bulk/info/variable" body : "*"}
+    };
+  }
+
+  rpc V3BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
+      returns (datacommons.v1.BulkVariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v3/bulk/info/variable-group"
+      additional_bindings : {post : "/v3/bulk/info/variable-group" body : "*"}
     };
   }
 
@@ -128,12 +170,72 @@ service Mixer {
     };
   }
 
+  // Recognize places from a NL query.
+  rpc V2RecognizePlaces(RecognizePlacesRequest)
+      returns (RecognizePlacesResponse) {
+    option (google.api.http) = {
+      get : "/v2/recognize/places"
+      additional_bindings : {post : "/v2/recognize/places" body : "*"}
+    };
+  }
+
   // Filters a list of stat vars using a list of entities (places or sources).
   rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
       returns (FilterStatVarsByEntityResponse) {
     option (google.api.http) = {
       post : "/v2/variable/filter" 
       body : "*"
+    };
+  }
+
+  rpc V2BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
+      returns (datacommons.v1.BulkVariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v2/bulk/info/variable"
+      additional_bindings : {post : "/v2/bulk/info/variable" body : "*"}
+    };
+  }
+
+  rpc V2BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
+      returns (datacommons.v1.BulkVariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v2/bulk/info/variable-group"
+      additional_bindings : {post : "/v2/bulk/info/variable-group" body : "*"}
+    };
+  }
+
+  // ======================  V2 Agent  ======================
+
+  rpc V2AgentSearchIndicators(datacommons.v2.SearchIndicatorsRequest)
+      returns (datacommons.v2.SearchIndicatorsResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/search_indicators"
+      additional_bindings : {post : "/v2/agent/search_indicators" body : "*"}
+    };
+  }
+
+  rpc V2AgentGetObservations(datacommons.v2.GetObservationsRequest)
+      returns (datacommons.v2.GetObservationsResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/get_observations"
+      additional_bindings : {post : "/v2/agent/get_observations" body : "*"}
+    };
+  }
+
+  rpc V2AgentGetVariableMetadata(datacommons.v2.GetVariableMetadataRequest)
+      returns (datacommons.v2.GetVariableMetadataResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/get_variable_metadata"
+      additional_bindings : {post : "/v2/agent/get_variable_metadata" body : "*"}
+    };
+  }
+
+  // Get rankings for given stat var DCIDs.
+  rpc V2GetLocationsRankings(GetLocationsRankingsRequest)
+      returns (GetLocationsRankingsResponse) {
+    option (google.api.http) = {
+      get : "/v2/place/ranking"
+      additional_bindings : {post : "/v2/place/ranking" body : "*"}
     };
   }
 
@@ -231,13 +333,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/place/related"
       additional_bindings : {post : "/v1/place/related" body : "*"}
-    };
-  }
-
-  // Given a text search query, return all nodes matching the query.
-  rpc Search(SearchRequest) returns (SearchResponse) {
-    option (google.api.http) = {
-      get : "/search"
     };
   }
 
@@ -354,14 +449,6 @@ service Mixer {
     };
   }
 
-  rpc BulkVariables(datacommons.v1.BulkVariablesRequest)
-      returns (datacommons.v1.BulkVariablesResponse) {
-    option (google.api.http) = {
-      get : "/v1/bulk/variables"
-      additional_bindings : {post : "/v1/bulk/variables" body : "*"}
-    };
-  }
-
   rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
       returns (datacommons.v1.PlaceInfoResponse) {
     option (google.api.http) = {
@@ -461,12 +548,6 @@ service Mixer {
     };
   }
 
-  rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
-    option (google.api.http) = {
-      get : "/v1/internal/page/bio/{node=**}"
-    };
-  }
-
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (datacommons.v1.PlacePageResponse) {
     option (google.api.http) = {
@@ -540,6 +621,7 @@ service Mixer {
   // Recognize non-place entities from a NL query.
   rpc RecognizeEntities(RecognizeEntitiesRequest)
       returns (RecognizeEntitiesResponse) {
+    option deprecated = true;
     option (google.api.http) = {
       get : "/v1/recognize/entities"
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}

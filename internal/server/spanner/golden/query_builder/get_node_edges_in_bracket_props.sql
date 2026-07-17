@@ -1,16 +1,16 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN ('EarthquakeEvent'))<-[e:Edge
+			m.subject_id = 'EarthquakeEvent')<-[e:Edge
 		WHERE
 			e.predicate IN ('domainIncludes','naturalHazardType')]-(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
-			n.name,
-			n.types
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,

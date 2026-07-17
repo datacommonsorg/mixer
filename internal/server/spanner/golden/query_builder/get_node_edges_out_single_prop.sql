@@ -1,16 +1,16 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN ('Person'))-[e:Edge
+			m.subject_id = 'Person')-[e:Edge
 		WHERE
-			e.predicate IN ('source')]->(n:Node)
+			e.predicate = 'source']->(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
-			n.name,
-			n.types
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,

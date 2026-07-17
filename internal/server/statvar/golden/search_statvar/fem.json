@@ -865,6 +865,10 @@
       "dcid": "sdg/VC_PRS_UNSNT.SEX--F"
     },
     {
+      "name": "Average age of females",
+      "dcid": "Mean_Age_Person_Female"
+    },
+    {
       "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
       "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
     },
@@ -3285,6 +3289,14 @@
       "dcid": "Count_Teacher_PermanentProfessor_Female"
     },
     {
+      "name": "Count of females aged 10 to 14 years",
+      "dcid": "Count_Person_10To14Years_Female"
+    },
+    {
+      "name": "Count of females aged 15 to 19 years",
+      "dcid": "Count_Person_15To19Years_Female"
+    },
+    {
       "name": "Count of invasive, ,, Female Haemophilus influenzae incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionInvasiveDisease_HaemophilusInfluenzae"
     },
@@ -3987,18 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Tetanus, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE016__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE068__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trachoma, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE031__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichomoniasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE008__SEX--F"
     }
   ],
   "matches": [

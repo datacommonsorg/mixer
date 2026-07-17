@@ -1,0 +1,97 @@
+{
+  "class": "dataset",
+  "dimension": {
+    "TIME_PERIOD": {
+      "category": {
+        "index": [
+          "2020"
+        ]
+      },
+      "label": "TIME_PERIOD"
+    },
+    "gender": {
+      "category": {
+        "index": [
+          "Male"
+        ]
+      },
+      "label": "gender"
+    },
+    "measurementMethod": {
+      "category": {
+        "index": [
+          "Census"
+        ]
+      },
+      "label": "measurementMethod"
+    },
+    "observationAbout": {
+      "category": {
+        "index": [
+          "country/USA"
+        ]
+      },
+      "label": "observationAbout"
+    },
+    "observationPeriod": {
+      "category": {
+        "index": [
+          "P1Y"
+        ]
+      },
+      "label": "observationPeriod"
+    },
+    "unit": {
+      "category": {
+        "index": [
+          "Person"
+        ]
+      },
+      "label": "unit"
+    },
+    "variableMeasured": {
+      "category": {
+        "index": [
+          "Count_Person"
+        ]
+      },
+      "label": "variableMeasured"
+    }
+  },
+  "extension": {
+    "annotations": {
+      "prov1": {
+        "scalingFactor": "0"
+      }
+    },
+    "measures": {
+      "OBS_VALUE": {
+        "label": "OBS_VALUE"
+      }
+    }
+  },
+  "id": [
+    "variableMeasured",
+    "gender",
+    "measurementMethod",
+    "observationAbout",
+    "observationPeriod",
+    "unit",
+    "TIME_PERIOD"
+  ],
+  "label": "Data Commons SDMX Query Results",
+  "size": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "source": "Data Commons",
+  "value": [
+    331000000
+  ],
+  "version": "2.0"
+}

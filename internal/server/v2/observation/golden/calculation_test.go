@@ -135,7 +135,7 @@ func TestCalculation(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestCalculation",
-		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
+		&test.TestOption{UseSQLite: true, UseStatisticalCalculation: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestCalculation = %s", err)
@@ -222,7 +222,7 @@ func TestCalculationForObsCollection(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestCalculationForObsCollection",
-		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
+		&test.TestOption{UseSQLite: true, UseStatisticalCalculation: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestCalculationForObsCollection = %s", err)

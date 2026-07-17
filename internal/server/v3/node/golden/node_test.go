@@ -153,7 +153,7 @@ func TestV3Node(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3Node",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3Node = %s", err)
@@ -228,7 +228,7 @@ func TestV3NodePagination(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3NodePagination",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3NodePagination = %s", err)

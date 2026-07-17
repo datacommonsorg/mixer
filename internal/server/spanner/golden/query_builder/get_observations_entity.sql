@@ -3,6 +3,7 @@
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,
@@ -11,6 +12,6 @@
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation
+			Observation@{FORCE_INDEX=_BASE_TABLE}
 		WHERE
-			observation_about IN ('wikidataId/Q341968')
+			observation_about = 'wikidataId/Q341968'

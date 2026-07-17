@@ -3,6 +3,7 @@
 			obs.observation_about,
 			obs.observations,
 			obs.import_name,
+			obs.provenance,
 			obs.observation_period,
 			obs.measurement_method,
 			obs.unit,
@@ -24,6 +25,7 @@
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,
@@ -32,7 +34,7 @@
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation
+			Observation@{FORCE_INDEX=_BASE_TABLE}
 		WHERE
 			variable_measured IN ('Count_Person','Median_Age_Person'))obs
 		ON 

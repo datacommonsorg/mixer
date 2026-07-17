@@ -3206,38 +3206,45 @@
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
     },
     "1145703171": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+      "measurement_method": "CensusACS5yrSurvey",
+      "provenance_id": "dc/base/CensusACS5YearSurvey"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS1yrSurvey"
+      "measurement_method": "CensusACS1yrSurvey",
+      "provenance_id": "dc/base/CensusACS1YearSurvey"
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     },
     "2517965213": {
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
+      "measurement_method": "CensusPEPSurvey",
+      "provenance_id": "dc/base/CensusPEP"
     },
     "377779557": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2023.S2601APR",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR"
     }
   }
 }

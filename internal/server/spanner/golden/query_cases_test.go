@@ -78,6 +78,20 @@ var nodeOutEdgesByIDTestCases = []struct {
 		golden: "get_node_edges_out_bracket_props",
 	},
 	{
+		ids: []string{"country/CAN"},
+		arc: &v2.Arc{
+			Out:          true,
+			BracketProps: []string{"name", "nameWithLanguage"},
+			BracketFilters: map[string]map[string][]string{
+				"nameWithLanguage": {
+					"$lang": {"es"},
+				},
+			},
+		},
+		offset: 0,
+		golden: "get_node_edges_out_bracket_props_lang",
+	},
+	{
 		ids: []string{"nuts/UKI1"},
 		arc: &v2.Arc{
 			Out: true,
@@ -247,6 +261,41 @@ var observationsContainedInPlaceTestCases = []struct {
 	},
 }
 
+var filterStatVarsByEntityTestCases = []struct {
+	variables []string
+	entities  []string
+	golden    string
+}{
+	{
+		variables: []string{"Count_Person", "Median_Income_Person"},
+		entities:  []string{"geoId/06"},
+		golden:    "filter_stat_vars_by_entity_multi",
+	},
+	{
+		entities: []string{"geoId/06"},
+		golden:   "filter_stat_vars_by_entity_no_vars",
+	},
+	{
+		variables: []string{"Count_Person"},
+		entities:  []string{"geoId/06"},
+		golden:    "filter_stat_vars_by_entity_single",
+	},
+}
+
+var checkGroupPlaceExistenceTestCases = []struct {
+	variableGroups []string
+	entities       []string
+	predicate      string
+	golden         string
+}{
+	{
+		variableGroups: []string{"dc/g/Demographics"},
+		entities:       []string{"geoId/06"},
+		predicate:      "linkedMemberOf",
+		golden:         "check_group_place_existence",
+	},
+}
+
 var searchNodesTestCases = []struct {
 	query  string
 	types  []string
@@ -320,6 +369,7 @@ var sparqlTestCases = []struct {
 	},
 	{
 		nodes: []types.Node{
+			{Alias: "?state"},
 			{Alias: "?name"},
 		},
 		queries: []*types.Query{
@@ -387,5 +437,370 @@ var sparqlTestCases = []struct {
 			ASC:      false,
 		},
 		golden: "sparql_country_names_desc",
+	},
+	{
+		nodes: []types.Node{
+			{Alias: "?subject"},
+			{Alias: "?dcid"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "dcid",
+				Obj:  "geoId/06",
+			},
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "dcid",
+				Obj:  types.Node{Alias: "?dcid"},
+			},
+		},
+		opts:   &types.QueryOptions{},
+		golden: "sparql_dcid_california",
+	},
+}
+
+var provenanceSummaryTestCases = []struct {
+	variables []string
+	golden    string
+}{
+	{
+		variables: []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer", "foo"},
+		golden:    "get_provenance_summary",
+	},
+}
+
+var eventCollectionDateTestCases = []struct {
+	placeDcid string
+	eventType string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		golden:    "get_event_collection_date",
+	},
+	{
+		placeDcid: "country/GBR",
+		eventType: "FloodEvent",
+		golden:    "get_event_collection_date_flood",
+	},
+}
+
+var eventCollectionDcidsTestCases = []struct {
+	placeDcid string
+	eventType string
+	date      string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection_dcids",
+	},
+	{
+		placeDcid: "geoId/37",
+		eventType: "HeatTemperatureEvent",
+		date:      "2022-01",
+		golden:    "get_event_collection_dcids_heat",
+	},
+}
+
+var eventCollectionTestCases = []struct {
+	placeDcid        string
+	eventType        string
+	date             string
+	filterProp       string
+	filterUnit       string
+	filterLowerLimit float64
+	filterUpperLimit float64
+	golden           string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection",
+	},
+	{
+		placeDcid:        "country/LBR",
+		eventType:        "FireEvent",
+		date:             "2020-10",
+		filterProp:       "area",
+		filterUnit:       "SquareKilometer",
+		filterLowerLimit: 100,
+		filterUpperLimit: 200,
+		golden:           "get_event_collection_filtered",
+	},
+	{
+		placeDcid: "geoId/37",
+		eventType: "HeatTemperatureEvent",
+		date:      "2022-01",
+		golden:    "get_event_collection_heat",
+	},
+}
+
+var getStatVarGroupNodeTestCases = []struct {
+	nodes              []string
+	includeDefinitions bool
+	golden             string
+}{
+	{
+		nodes:  []string{"dc/g/Demographics"},
+		golden: "get_stat_var_group_node",
+	},
+	{
+		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
+		golden: "get_stat_var_group_node_multi",
+	},
+	{
+		nodes:              []string{"dc/g/Demographics"},
+		includeDefinitions: true,
+		golden:             "get_stat_var_group_node_with_definitions",
+	},
+}
+
+var getSVGChildrenTestCases = []struct {
+	node               string
+	includeDefinitions bool
+	golden             string
+}{
+	{
+		node:   "dc/g/Demographics",
+		golden: "get_svg_children",
+	},
+	{
+		node:               "dc/g/Demographics",
+		includeDefinitions: true,
+		golden:             "get_svg_children_with_definitions",
+	},
+}
+
+var getFilteredSVGChildrenTestCases = []struct {
+	template             string
+	node                 string
+	constrainedPlaces    []string
+	constrainedImport    string
+	numEntitiesExistence int
+	includeDefinitions   bool
+	golden               string
+}{
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_sv_places",
+	},
+	{
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_svg_places",
+	},
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_sv_import",
+	},
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_svg_place_import",
+	},
+	{
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		constrainedImport:    "",
+		numEntitiesExistence: 2,
+		golden:               "get_filtered_svg_num_entities_existence",
+	},
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		includeDefinitions:   true,
+		golden:               "get_filtered_sv_with_definitions",
+	},
+}
+
+var embeddingFromQueryTestCases = []struct {
+	modelName   string
+	searchLabel string
+	taskType    string
+	golden      string
+}{
+	{
+		modelName:   "test_model",
+		searchLabel: "test_query",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_embedding_from_query",
+	},
+}
+
+var vectorSearchNodeTestCases = []struct {
+	tableName      string
+	limit          int
+	embeddings     []float64
+	numLeaves      int
+	threshold      float64
+	nodeTypes      []string
+	embeddingLabel string
+	golden         string
+}{
+	{
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.6,
+		nodeTypes:      []string{"StatisticalVariable", "Topic"},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search_node",
+	},
+}
+var getFilteredStatVarGroupNodeTestCases = []struct {
+	nodes                []string
+	constrainedPlaces    []string
+	constrainedImport    string
+	numEntitiesExistence int
+	includeDefinitions   bool
+	golden               string
+}{
+	{
+		nodes:                []string{"dc/g/Demographics", "dc/g/Agriculture"},
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_stat_var_group_node_places",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedPlaces:    []string{},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_stat_var_group_node_import",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_stat_var_group_node_place_import",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		constrainedImport:    "",
+		numEntitiesExistence: 2,
+		golden:               "get_filtered_stat_var_group_node_num_entities_existence",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedPlaces:    []string{"country/USA"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		includeDefinitions:   true,
+		golden:               "get_filtered_stat_var_group_node_with_definitions",
+	},
+}
+
+var getFilteredTopicTestCases = []struct {
+	nodes                []string
+	constrainedPlaces    []string
+	constrainedImport    string
+	numEntitiesExistence int
+	golden               string
+}{
+	{
+		nodes:                []string{"dc/topic/Demographics"},
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_topic_places",
+	},
+	{
+		nodes:                []string{"dc/topic/Demographics", "dc/topic/Economy"},
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_topic_places_multiple_topics",
+	},
+}
+
+var getTermEmbeddingsTestCases = []struct {
+	modelName   string
+	searchLabel string
+	taskType    string
+	golden      string
+}{
+	{
+		modelName:   "text_embeddings",
+		searchLabel: "California",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_term_embeddings_california",
+	},
+	{
+		modelName:   "text_embeddings",
+		searchLabel: "NonExistentTerm12345",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_term_embeddings_empty",
+	},
+}
+
+var vectorSearchQueryTestCases = []struct {
+	tableName      string
+	limit          int
+	embeddings     []float64
+	numLeaves      int
+	threshold      float64
+	nodeTypes      []string
+	embeddingLabel string
+	golden         string
+}{
+	{
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.5,
+		nodeTypes:      []string{"StatisticalVariable", "Topic"},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search",
+	},
+}
+
+var filterNodesByTypeTestCases = []struct {
+	nodes       []string
+	typeFilters []string
+	golden      string
+}{
+	{
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"StatVarGroup"},
+		golden:      "filter_nodes_by_type_svg",
+	},
+	{
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"Topic"},
+		golden:      "filter_nodes_by_type_topic",
+	},
+	{
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"StatVarGroup", "Topic"},
+		golden:      "filter_nodes_by_types_combined",
 	},
 }

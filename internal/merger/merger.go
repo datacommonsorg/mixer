@@ -24,6 +24,7 @@ import (
 	"slices"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -302,6 +303,20 @@ func MergeEvent(main, aux *pbv2.EventResponse) *pbv2.EventResponse {
 	return main
 }
 
+// MergeMultiEvent merges multiple V2 EventResponses.
+// Assumes the responses are in order of priority.
+func MergeMultiEvent(allResp []*pbv2.EventResponse) *pbv2.EventResponse {
+	if len(allResp) == 0 {
+		return &pbv2.EventResponse{}
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		cur := MergeEvent(prev, allResp[i])
+		prev = cur
+	}
+	return prev
+}
+
 // MergeObservation merges two V2 observation responses.
 func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	if main == nil {
@@ -518,6 +533,18 @@ func MergeFilterStatVarsByEntityResponse(primary, secondary *pb.FilterStatVarsBy
 	return merged
 }
 
+// Merges multiple FilterStatVarsByEntityResponse.
+func MergeMultiFilterStatVarsByEntity(allResp []*pb.FilterStatVarsByEntityResponse) *pb.FilterStatVarsByEntityResponse {
+	if len(allResp) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{}
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		prev = MergeFilterStatVarsByEntityResponse(prev, allResp[i])
+	}
+	return prev
+}
+
 // Merges multiple V2 NodeSearchResponses.
 // Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {
@@ -623,4 +650,107 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	}
 
 	return merged, nil
+}
+
+// MergeMultiBulkVariableInfo merges multiple BulkVariableInfoResponses.
+func MergeMultiBulkVariableInfo(allResp []*pbv1.BulkVariableInfoResponse) *pbv1.BulkVariableInfoResponse {
+	if len(allResp) == 0 {
+		return &pbv1.BulkVariableInfoResponse{}
+	}
+	mergedSummaries := map[string]*pb.StatVarSummary{}
+	for _, resp := range allResp {
+		if resp == nil {
+			continue
+		}
+		for _, item := range resp.GetData() {
+			if item == nil || item.Info == nil {
+				continue
+			}
+			summary, ok := mergedSummaries[item.Node]
+			if !ok {
+				summary = &pb.StatVarSummary{
+					ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{},
+				}
+				mergedSummaries[item.Node] = summary
+			}
+			for provId, provSummary := range item.Info.ProvenanceSummary {
+				summary.ProvenanceSummary[provId] = provSummary
+			}
+		}
+	}
+	merged := &pbv1.BulkVariableInfoResponse{
+		Data: make([]*pbv1.VariableInfoResponse, 0, len(mergedSummaries)),
+	}
+	for node, summary := range mergedSummaries {
+		merged.Data = append(merged.Data, &pbv1.VariableInfoResponse{
+			Node: node,
+			Info: summary,
+		})
+	}
+	slices.SortFunc(merged.Data, func(a, b *pbv1.VariableInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return merged
+}
+
+// MergeMultiBulkVariableGroupInfo merges multiple BulkVariableGroupInfoResponses.
+func MergeMultiBulkVariableGroupInfo(allResp []*pbv1.BulkVariableGroupInfoResponse) *pbv1.BulkVariableGroupInfoResponse {
+	if len(allResp) == 0 {
+		return &pbv1.BulkVariableGroupInfoResponse{}
+	}
+
+	// Merge info for the same variable group together.
+	// This assumes that the SVG hierarchies are distinct between sources.
+	// This is consistent with the legacy V1 implementation.
+	keyedInfo := map[string]*pbv1.VariableGroupInfoResponse{}
+	for _, resp := range allResp {
+		if resp == nil {
+			continue
+		}
+		for _, item := range resp.GetData() {
+			if item == nil {
+				continue
+			}
+			if _, ok := keyedInfo[item.Node]; !ok {
+				keyedInfo[item.Node] = item
+				continue
+			}
+			mergedItem := keyedInfo[item.Node]
+			if mergedItem.Info == nil {
+				mergedItem.Info = item.Info
+				continue
+			}
+			if item.Info == nil {
+				continue
+			}
+			if mergedItem.Info.AbsoluteName == "" {
+				mergedItem.Info.AbsoluteName = item.Info.AbsoluteName
+			}
+			mergedItem.Info.ChildStatVarGroups = append(
+				mergedItem.Info.ChildStatVarGroups,
+				item.Info.ChildStatVarGroups...,
+			)
+			mergedItem.Info.ChildStatVars = append(
+				mergedItem.Info.ChildStatVars,
+				item.Info.ChildStatVars...,
+			)
+			mergedItem.Info.DescendentStatVarCount += item.Info.DescendentStatVarCount
+			mergedItem.Info.ParentStatVarGroups = append(
+				mergedItem.Info.ParentStatVarGroups,
+				item.Info.ParentStatVarGroups...,
+			)
+		}
+	}
+
+	merged := &pbv1.BulkVariableGroupInfoResponse{
+		Data: make([]*pbv1.VariableGroupInfoResponse, 0),
+	}
+	for _, info := range keyedInfo {
+		merged.Data = append(merged.Data, info)
+	}
+	// Sort the merged response by node for consistent ordering.
+	slices.SortFunc(merged.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return merged
 }

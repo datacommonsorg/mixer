@@ -473,11 +473,11 @@
           "date": "2020",
           "entity_count": [
             {
-              "count": 197,
+              "count": 199,
               "facet": "1450533103"
             },
             {
-              "count": 22,
+              "count": 18,
               "facet": "4226672321"
             },
             {
@@ -490,11 +490,11 @@
           "date": "2021",
           "entity_count": [
             {
-              "count": 194,
+              "count": 196,
               "facet": "1450533103"
             },
             {
-              "count": 27,
+              "count": 23,
               "facet": "4226672321"
             },
             {
@@ -507,11 +507,11 @@
           "date": "2022",
           "entity_count": [
             {
-              "count": 187,
+              "count": 193,
               "facet": "1450533103"
             },
             {
-              "count": 29,
+              "count": 24,
               "facet": "4226672321"
             },
             {
@@ -524,11 +524,11 @@
           "date": "2023",
           "entity_count": [
             {
-              "count": 97,
+              "count": 189,
               "facet": "1450533103"
             },
             {
-              "count": 60,
+              "count": 30,
               "facet": "4226672321"
             },
             {
@@ -539,6 +539,23 @@
         },
         {
           "date": "2024",
+          "entity_count": [
+            {
+              "count": 103,
+              "facet": "1450533103"
+            },
+            {
+              "count": 51,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2025",
           "entity_count": [
             {
               "count": 1,
@@ -554,19 +571,22 @@
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/UNEnergy"
     },
     "3022640954": {
       "import_name": "EIA_Electricity",
       "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
-      "unit": "GigawattHour"
+      "unit": "GigawattHour",
+      "provenance_id": "dc/base/EIA_Electricity"
     },
     "4226672321": {
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "measurement_method": "UNStatsEstimate",
       "observation_period": "P1Y",
-      "unit": "KilowattHour"
+      "unit": "KilowattHour",
+      "provenance_id": "dc/base/UNEnergy"
     }
   }
 }

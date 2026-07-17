@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -25,11 +26,15 @@ import (
 // Container for feature flag values.
 type Flags struct {
 	// Enable datasources in V3 API.
+	// Deprecated in favor of UseSpannerGraph.
+	// TODO: Clean up flag once code changes roll out.
 	EnableV3 bool `yaml:"EnableV3"`
 	// Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
-	// Use Google Spanner as a database.
+	// Enabled new Spanner-based dispatcher/datasource backend.
 	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
+	// Whether to default Spanner API calls to the multi-entity schema.
+	UseMultiEntitySchema bool `yaml:"UseMultiEntitySchema"`
 	// Spanner Graph database for Spanner DataSource.
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
@@ -40,18 +45,35 @@ type Flags struct {
 	EnableEmbeddingsResolver bool `yaml:"EnableEmbeddingsResolver"`
 	// Fraction of V2 API requests to divert to the new dispatcher backend. Value from 0 to 1.0.
 	V2DivertFraction float64 `yaml:"V2DivertFraction"`
+	// Use inputPropertyExpressions for StatisticalCalculations to fill observation holes.
+	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
+	// Whether to enable the SDMX API endpoint.
+	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
+	// Whether to default indicator resolution to Spanner.
+	// If false, default requests go to legacy remote service.
+	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
+	// Whether to use the new IngestionHistory schema with Timestamp.
+	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
+	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
+	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                 false,
-		V3MirrorFraction:         0.0,
-		UseSpannerGraph:          false,
-		SpannerGraphDatabase:     "",
-		UseStaleReads:            false,
-		EnableEmbeddingsResolver: true,
-		V2DivertFraction:         0.0,
+		EnableV3:                      false,
+		V3MirrorFraction:              0.0,
+		UseSpannerGraph:               false,
+		UseMultiEntitySchema:          false,
+		SpannerGraphDatabase:          "",
+		UseStaleReads:                 false,
+		EnableEmbeddingsResolver:      true,
+		V2DivertFraction:              0.0,
+		UseStatisticalCalculation:     false,
+		EnableSDMXDataApi:             false,
+		EnableSpannerSearchEmbeddings: false,
+		UseNewIngestionHistorySchema:  false,
+		UseSpannerKeyValueStore:       false,
 	}
 }
 
@@ -60,11 +82,19 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction < 0 || f.V3MirrorFraction > 1.0 {
 		return fmt.Errorf("V3MirrorFraction must be between 0 and 1.0, got %f", f.V3MirrorFraction)
 	}
-	if f.V3MirrorFraction > 0 && !f.EnableV3 {
-		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
+	if f.V3MirrorFraction > 0 && !f.UseSpannerGraph {
+		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
+	if f.SpannerGraphDatabase != "" {
+		if !f.UseSpannerGraph {
+			return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+		}
+		if strings.HasPrefix(f.SpannerGraphDatabase, "projects/") {
+			parts := strings.Split(f.SpannerGraphDatabase, "/")
+			if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+				return fmt.Errorf("invalid SpannerGraphDatabase URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", f.SpannerGraphDatabase)
+			}
+		}
 	}
 	if f.UseStaleReads && !f.UseSpannerGraph {
 		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
@@ -72,8 +102,11 @@ func (f *Flags) validateFlagValues() error {
 	if f.V2DivertFraction < 0 || f.V2DivertFraction > 1.0 {
 		return fmt.Errorf("V2DivertFraction must be between 0 and 1.0, got %f", f.V2DivertFraction)
 	}
-	if f.V2DivertFraction > 0 && !f.EnableV3 {
-		return fmt.Errorf("V2DivertFraction > 0 requires EnableV3 to be true")
+	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
+		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
+	}
+	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
+		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
 	}
 	return nil
 }

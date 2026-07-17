@@ -18,57 +18,16 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
-	"google.golang.org/protobuf/proto"
-
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
-
-// RequestType represents the type of request.
-type RequestType string
-
-const (
-	TypeNode        RequestType = "Node"
-	TypeNodeSearch  RequestType = "NodeSearch"
-	TypeObservation RequestType = "Observation"
-	TypeResolve     RequestType = "Resolve"
-	TypeSparql      RequestType = "Sparql"
-)
-
-// RequestContext holds the context for a given request.
-
-// NOTE: We are using the base proto.Message for requests and responses.
-// Other options were using generics or going with different *RequestContext struct for each type of request.
-// The downside of using a base type is that it needs casting wherever it it used.
-// The upside is that we only have one context object
-// and if there aren't many processors that deal with the RequestContext, casting in a small number of places is ok.
-// We can revisit and use a different approach if this proves to be cumbersome.
-type RequestContext struct {
-	context.Context
-	Type            RequestType
-	OriginalRequest proto.Message
-	CurrentRequest  proto.Message
-	CurrentResponse proto.Message
-}
-
-// Outcome represents the result of a processing step.
-type Outcome int
-
-const (
-	// Continue indicates that processing should continue.
-	// This should be the default outcome of most processing steps.
-	Continue Outcome = iota
-	// Done indicates that processing should stop.
-	// With this outcome, the current response is returned immediately.
-	Done
-)
-
-// Processor interface defines methods for performing pre and post processing operations.
-type Processor interface {
-	PreProcess(*RequestContext) (Outcome, error)
-	PostProcess(*RequestContext) (Outcome, error)
-}
 
 // Dispatcher struct handles requests by dispatching requests to various processors and datasources as appropriate.
 type Dispatcher struct {
@@ -196,6 +155,45 @@ func (dispatcher *Dispatcher) Sparql(ctx context.Context, in *pb.SparqlRequest) 
 	return response.(*pb.QueryResponse), nil
 }
 
+func (dispatcher *Dispatcher) Event(ctx context.Context, in *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeEvent)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.Event(ctx, request.(*pbv2.EventRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv2.EventResponse), nil
+}
+
+func (dispatcher *Dispatcher) BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeBulkVariableInfo)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.BulkVariableInfo(ctx, request.(*pbv1.BulkVariableInfoRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv1.BulkVariableInfoResponse), nil
+}
+
+func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeBulkVariableGroupInfo)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.BulkVariableGroupInfo(ctx, request.(*pbv1.BulkVariableGroupInfoRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv1.BulkVariableGroupInfoResponse), nil
+}
+
 func newRequestContext(ctx context.Context, request proto.Message, requestType RequestType) *RequestContext {
 	return &RequestContext{
 		Context:         ctx,
@@ -203,4 +201,57 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 		OriginalRequest: proto.Clone(request),
 		CurrentRequest:  request,
 	}
+}
+
+// SdmxData handles SDMX Data requests.
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	if err := datacommons.ValidateDataConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
+	requestContext := newRequestContext(ctx, in, TypeSdmxData)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.SdmxData(ctx, request.(*sdmxpb.SdmxDataQuery))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*sdmxpb.SdmxDataResult), nil
+}
+
+// SdmxAvailability handles SDMX Availability requests.
+func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	if err := datacommons.ValidateAvailabilityConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
+	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		if dispatcher.sources == nil {
+			return nil, status.Error(codes.Unimplemented, "SDMX availability backend is not implemented yet")
+		}
+		return dispatcher.sources.SdmxAvailability(ctx, request.(*sdmxpb.SdmxAvailabilityQuery))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	if response == nil {
+		return &sdmxpb.SdmxAvailabilityResult{}, nil
+	}
+	return response.(*sdmxpb.SdmxAvailabilityResult), nil
+}
+
+func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeFilterStatVarsByEntity)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.FilterStatVarsByEntity(ctx, request.(*pb.FilterStatVarsByEntityRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pb.FilterStatVarsByEntityResponse), nil
 }

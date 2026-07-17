@@ -17,9 +17,11 @@ package remote
 
 import (
 	"fmt"
+	"log/slog"
 	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 
@@ -96,6 +98,43 @@ func (rc *RemoteClient) Sparql(req *pb.SparqlRequest) (*pb.QueryResponse, error)
 	resp := &pb.QueryResponse{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/sparql", req, resp)
 	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) Event(req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	resp := &pbv2.EventResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/event", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	resp := &pbv1.BulkVariableInfoResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) BulkVariableGroupInfo(req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	resp := &pbv1.BulkVariableGroupInfoResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable-group", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	resp := &pb.FilterStatVarsByEntityResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp)
+	if err != nil {
+		slog.Error("Failed to fetch remote variable filter", "error", err)
 		return nil, err
 	}
 	return resp, nil

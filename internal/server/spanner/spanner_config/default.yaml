@@ -1,0 +1,13 @@
+# this file get reads by v2/resolve when we set resolver to use spanner
+search_config:
+  search_algorithm: "vector_search"
+  embedding_model: "NodeEmbeddingModel"
+  embedding_table: "NodeEmbedding"
+  query_task_type: "RETRIEVAL_QUERY"
+  embedding_label: "nl_stat_var_embedding"
+  vector_search_algo: "ANN"
+  limit: 50
+  num_leaves: 10
+  threshold: 0.5
+postprocessing:
+  - "none"

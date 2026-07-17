@@ -146,6 +146,10 @@ func Count(
 	if err != nil {
 		return nil, err
 	}
+	if !cachedata.Options().CacheSVFormula {
+		return result, err
+	}
+
 	// Check for count for computed observations.
 	// Use counts of formula variables as a heuristic.
 	for _, svOrSvg := range svOrSvgs {

@@ -20,6 +20,8 @@ import (
 	"testing"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -255,11 +257,27 @@ func TestNewEmptyResponse(t *testing.T) {
 			requestType: dispatcher.TypeResolve,
 			want:        &pbv2.ResolveResponse{},
 		},
+		{
+			name:        "Sparql",
+			requestType: dispatcher.TypeSparql,
+			want:        &pb.QueryResponse{},
+		},
+		{
+			name:        "SdmxData",
+			requestType: dispatcher.TypeSdmxData,
+			want:        &sdmxpb.SdmxDataResult{},
+		},
+		{
+			name:        "SdmxAvailability",
+			requestType: dispatcher.TypeSdmxAvailability,
+			want:        &sdmxpb.SdmxAvailabilityResult{},
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			got := newEmptyResponse(test.requestType)
+			got, err := newEmptyResponse(test.requestType)
+			assert.NoError(t, err)
 			assert.True(t, proto.Equal(test.want, got))
 		})
 	}

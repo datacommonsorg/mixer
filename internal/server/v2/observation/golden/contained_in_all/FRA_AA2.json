@@ -381,16 +381,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 2092813
+                  "value": 2103778
                 },
                 {
                   "date": "2024",
-                  "value": 2070806
+                  "value": 2084894
+                },
+                {
+                  "date": "2025",
+                  "value": 2065560
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -717,16 +721,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1461552
+                  "value": 1468108
                 },
                 {
                   "date": "2024",
-                  "value": 1470763
+                  "value": 1479706
+                },
+                {
+                  "date": "2025",
+                  "value": 1490900
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -1005,16 +1013,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1477228
+                  "value": 1485086
                 },
                 {
                   "date": "2024",
-                  "value": 1483576
+                  "value": 1495123
+                },
+                {
+                  "date": "2025",
+                  "value": 1504565
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -1293,16 +1305,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1331182
+                  "value": 1338485
                 },
                 {
                   "date": "2024",
-                  "value": 1337492
+                  "value": 1347483
+                },
+                {
+                  "date": "2025",
+                  "value": 1356114
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -1581,16 +1597,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1653212
+                  "value": 1654712
                 },
                 {
                   "date": "2024",
-                  "value": 1658614
+                  "value": 1661465
+                },
+                {
+                  "date": "2025",
+                  "value": 1668275
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -1869,16 +1889,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1692115
+                  "value": 1704316
                 },
                 {
                   "date": "2024",
-                  "value": 1702158
+                  "value": 1718265
+                },
+                {
+                  "date": "2025",
+                  "value": 1731789
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -2157,16 +2181,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1422186
+                  "value": 1426929
                 },
                 {
                   "date": "2024",
-                  "value": 1424361
+                  "value": 1430965
+                },
+                {
+                  "date": "2025",
+                  "value": 1434875
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -2445,16 +2473,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1277071
+                  "value": 1281653
                 },
                 {
                   "date": "2024",
-                  "value": 1282581
+                  "value": 1289641
+                },
+                {
+                  "date": "2025",
+                  "value": 1297210
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -6569,16 +6601,20 @@
                 },
                 {
                   "date": "2023",
-                  "value": 332080
+                  "value": 333602
                 },
                 {
                   "date": "2024",
-                  "value": 332318
+                  "value": 334441
+                },
+                {
+                  "date": "2025",
+                  "value": 334995
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 25,
               "earliest_date": "2000",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -22009,28 +22045,33 @@
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
+      "measurement_method": "Wikipedia",
+      "provenance_id": "dc/base/WikipediaStatsData"
     },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
-      "measurement_method": "EurostatRegionalStatistics"
+      "measurement_method": "EurostatRegionalStatistics",
+      "provenance_id": "dc/base/EurostatData_Demographic_Balance_Crude_Rates"
     },
     "1794369807": {
       "import_name": "UNData",
       "provenance_url": "https://data.un.org/Data.aspx?q=city+population&d=POP&f=tableCode%3a240",
-      "measurement_method": "UNData"
+      "measurement_method": "UNData",
+      "provenance_id": "dc/base/UNData"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+      "measurement_method": "WikidataPopulation",
+      "provenance_id": "dc/base/WikidataPopulation"
     },
     "4181918134": {
       "import_name": "OECDRegionalDemography_Population",
       "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
       "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/OECDRegionalDemography_Population"
     }
   }
 }

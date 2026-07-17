@@ -19,6 +19,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 )
@@ -51,9 +52,37 @@ func (s *Server) V3Resolve(ctx context.Context, in *pbv2.ResolveRequest) (
 	return s.dispatcher.Resolve(ctx, in)
 }
 
+// V3Event implements API for mixer.V3Event.
+func (s *Server) V3Event(ctx context.Context, in *pbv2.EventRequest) (
+	*pbv2.EventResponse, error,
+) {
+	return s.dispatcher.Event(ctx, in)
+}
+
 // V3Sparql implements API for mixer.V3Sparql.
 func (s *Server) V3Sparql(ctx context.Context, in *pb.SparqlRequest) (
 	*pb.QueryResponse, error,
 ) {
 	return s.dispatcher.Sparql(ctx, in)
+}
+
+// V3BulkVariableInfo implements API for mixer.V3BulkVariableInfo.
+func (s *Server) V3BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (
+	*pbv1.BulkVariableInfoResponse, error,
+) {
+	return s.dispatcher.BulkVariableInfo(ctx, in)
+}
+
+// V3BulkVariableGroupInfo implements API for mixer.V3BulkVariableGroupInfo.
+func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (
+	*pbv1.BulkVariableGroupInfoResponse, error,
+) {
+	return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+}
+
+// V3FilterStatVarsByEntity implements API for mixer.V3FilterStatVarsByEntity.
+func (s *Server) V3FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (
+	*pb.FilterStatVarsByEntityResponse, error,
+) {
+	return s.dispatcher.FilterStatVarsByEntity(ctx, in)
 }

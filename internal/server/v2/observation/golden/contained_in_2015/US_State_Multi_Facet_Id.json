@@ -1336,13 +1336,15 @@
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/USCensusPEP_Annual_Population"
     }
   }
 }

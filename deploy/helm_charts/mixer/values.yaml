@@ -40,8 +40,9 @@ mixer:
   useBaseBigtable: true
   useBranchBigtable: true
   useCustomBigtable: false
+  useBigquery: true
+  useSpannerGraph: false
   foldRemoteRootSvg: false
-  cacheSVFormula: false
   # Comma separated embeddings indexes for resolving indicators.
   resolveEmbeddingsIndexes: "base_uae_mem"
   redis:
@@ -361,6 +362,8 @@ mixer:
       functionalDeps: dcid
 
 esp:
+  transcodingIgnoreUnknownQueryParameters: false
+  transcodingQueryParametersDisableUnescapePlus: false
   image:
     repository: gcr.io/endpoints-release/endpoints-runtime
     pullPolicy: IfNotPresent
@@ -388,6 +391,7 @@ embeddingsSidecar:
       - medium_ft
       - sdg_ft
       - undata_ft
+      - base_multi_entity
     vertex_ai_models:
       uae-large-v1-model:
         project_id: datcom-nl
@@ -430,6 +434,7 @@ serviceGroups:
       - "/v1/info/variable-group/*"
       - "/v1/variable/*"
       - "/v1/bulk/info/variable-group"
+      - "/v2/bulk/info/variable-group"
     replicas: 1
     resources:
       memoryRequest: "8G"
@@ -456,7 +461,7 @@ serviceGroups:
     replicas: 1
     resources:
       memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryLimit: "8G"
   node:
     urlPaths:
       - "/node/*"
@@ -473,6 +478,7 @@ serviceGroups:
       memoryLimit: "8G"
     cacheSVG: true
   default:
+    enableEmbeddingsSidecar: true
     urlPaths:
       - "/*"
     replicas: 1

@@ -50,6 +50,42 @@ func TestV3Resolve(t *testing.T) {
 				},
 				goldenFile: "resolve_by_id.json",
 			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"California", "foo"},
+					Property: "<-description->dcid",
+				},
+				goldenFile: "resolve_description.json",
+			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"California"},
+					Property: "<-description{typeOf:State}->dcid",
+				},
+				goldenFile: "resolve_description_type_filter.json",
+			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"37.42#-122.08", "32.41#-102.11", "36.0#-119.4", "+36#-119.5000000"},
+					Property: "<-geoCoordinate->dcid",
+				},
+				goldenFile: "resolve_coordinate.json",
+			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"37.42#-122.08", "32.41#-102.11", "36.0#-119.4", "+36#-119.5000000"},
+					Property: "<-geoCoordinate{typeOf:County}->dcid",
+				},
+				goldenFile: "resolve_coordinate_type_filter.json",
+			},
+			{
+				// We don't have any boundary info for Continent.
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"37.42#-122.08", "32.41#-102.11", "36.0#-119.4", "+36#-119.5000000"},
+					Property: "<-geoCoordinate{typeOf:Continent}->dcid",
+				},
+				goldenFile: "resolve_coordinate_continent_filter.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Resolve(ctx, c.req)
@@ -77,7 +113,7 @@ func TestV3Resolve(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3Resolve",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3Resolve = %s", err)

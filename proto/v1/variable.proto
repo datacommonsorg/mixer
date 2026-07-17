@@ -26,16 +26,6 @@ message VariablesResponse {
   repeated string variables = 2;
 }
 
-message BulkVariablesRequest {
-  repeated string entities = 1;
-  // If set, return the union of all variables of all entities.
-  bool union = 2;
-}
-
-message BulkVariablesResponse {
-  repeated VariablesResponse data = 1;
-}
-
 message VariableAncestorsRequest {
   // DCID of a stat var (group)
   string node = 1;

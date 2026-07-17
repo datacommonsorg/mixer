@@ -110,13 +110,6 @@ func (s *Server) Variables(
 	return variables.Variables(ctx, in, s.store)
 }
 
-// BulkVariables implements API for mixer.BulkVariables.
-func (s *Server) BulkVariables(
-	ctx context.Context, in *pbv1.BulkVariablesRequest,
-) (*pbv1.BulkVariablesResponse, error) {
-	return variables.BulkVariables(ctx, in, s.store)
-}
-
 // PlaceInfo implements API for mixer.PlaceInfo.
 func (s *Server) PlaceInfo(
 	ctx context.Context, in *pbv1.PlaceInfoRequest,
@@ -423,13 +416,6 @@ func (s *Server) BulkObservationDatesLinked(
 
 }
 
-// BioPage implements API for mixer.BioPage.
-func (s *Server) BioPage(
-	ctx context.Context, in *pbv1.BioPageRequest,
-) (*pb.GraphNodes, error) {
-	return page.BioPage(ctx, in, s.store)
-}
-
 // PlacePage implements API for mixer.PlacePage.
 func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 	*pbv1.PlacePageResponse, error) {
@@ -484,7 +470,7 @@ func (s *Server) VariableAncestors(
 func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,
 ) (*pb.RecognizePlacesResponse, error) {
-	return recon.RecognizePlaces(ctx, in, s.store, false)
+	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
 }
 
 // RecognizeEntities implements API for Mixer.RecognizeEntities.

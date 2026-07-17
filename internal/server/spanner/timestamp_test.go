@@ -36,11 +36,15 @@ func (mt *MockTicker) C() <-chan time.Time {
 }
 
 func (mt *MockTicker) Stop() {
-	close(mt.channel)
+	// No-op for mock
 }
 
 func (mt *MockTicker) Tick() {
-	mt.channel <- time.Now()
+	select {
+	case mt.channel <- time.Now():
+	default:
+		// Prevent blocking if the goroutine isn't listening
+	}
 }
 
 func TestTimestampUpdated(t *testing.T) {
@@ -48,10 +52,10 @@ func TestTimestampUpdated(t *testing.T) {
 	mockTicker := NewMockTicker()
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
 	updateDone := make(chan bool, 1)
+
 	sc := &spannerDatabaseClient{
-		useStaleReads: true,
-		ticker:        mockTicker,
-		stopCh:        make(chan struct{}),
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
 	}
 	// Store intial timestamp.
 	sc.timestamp.Store(startTime.UnixNano())
@@ -69,6 +73,7 @@ func TestTimestampUpdated(t *testing.T) {
 	mockTicker.Tick()
 
 	<-updateDone
+	sc.Close()
 
 	if updateCount != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", updateCount)
@@ -79,12 +84,10 @@ func TestTimestampUpdated(t *testing.T) {
 	}
 
 	// Expect timestamp to be updated.
-	expectedTimestamp := time.Date(2025, time.January, 1, 11, 0, 0, 0, time.UTC)
+	expectedTimestamp := startTime.Add(1 * time.Hour)
 	if timestamp != expectedTimestamp {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
 	}
-
-	sc.Stop()
 }
 
 func TestTimestampUpdateFailure(t *testing.T) {
@@ -92,10 +95,10 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	mockTicker := NewMockTicker()
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
 	updateDone := make(chan bool, 1)
+
 	sc := &spannerDatabaseClient{
-		useStaleReads: true,
-		ticker:        mockTicker,
-		stopCh:        make(chan struct{}),
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
 	}
 	// Store initial timestamp
 	sc.timestamp.Store(startTime.UnixNano())
@@ -111,6 +114,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	mockTicker.Tick()
 
 	<-updateDone
+	sc.Close()
 
 	if count != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", count)
@@ -125,6 +129,4 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	if timestamp != expectedTimestamp {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
 	}
-
-	sc.Stop()
 }

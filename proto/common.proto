@@ -45,10 +45,5 @@ message GraphNode {
   string value = 2;
 }
 
-// This is used in SubGraph cache.
-// A single root ID might match multiple SubGraph configs.
-// All `nodes` have the same root ID.
-message GraphNodes { repeated GraphNode nodes = 1; }
-
 // PayloadResponse represents API response with encoded payload string
 message PayloadResponse { string payload = 1; }

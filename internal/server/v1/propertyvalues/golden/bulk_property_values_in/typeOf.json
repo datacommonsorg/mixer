@@ -2717,7 +2717,7 @@
             "City"
           ],
           "dcid": "geoId/0100988",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Marbury",
@@ -2749,7 +2749,7 @@
             "City"
           ],
           "dcid": "geoId/0101228",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Allgood",
@@ -2854,8 +2854,7 @@
         {
           "name": "Argo",
           "types": [
-            "City",
-            "Town"
+            "City"
           ],
           "dcid": "geoId/0102320",
           "provenanceId": "dc/base/BaseGeos"
@@ -2889,8 +2888,7 @@
         {
           "name": "Ashford",
           "types": [
-            "City",
-            "Town"
+            "City"
           ],
           "dcid": "geoId/0102836",
           "provenanceId": "dc/base/BaseGeos"
@@ -3199,7 +3197,7 @@
             "Town"
           ],
           "dcid": "geoId/0105932",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Bessemer",
@@ -3525,8 +3523,7 @@
         {
           "name": "Brookwood",
           "types": [
-            "City",
-            "Town"
+            "City"
           ],
           "dcid": "geoId/0109808",
           "provenanceId": "dc/base/BaseGeos"
@@ -3772,30 +3769,6 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Center Point",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113264",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Centerville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113384",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Centre",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113648",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
           "name": "Chatom",
           "types": [
             "City",
@@ -3823,30 +3796,12 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Clayton",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0115376",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Cleveland",
           "types": [
             "City",
             "Town"
           ],
           "dcid": "geoId/0115472",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Coaling",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0116000",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -3877,15 +3832,6 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Collinsville",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0116600",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
           "name": "Colony",
           "types": [
             "City",
@@ -3910,6 +3856,15 @@
             "Town"
           ],
           "dcid": "geoId/0117176",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cordova",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0117368",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -3946,6 +3901,15 @@
             "Town"
           ],
           "dcid": "geoId/0118088",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Creola",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0118304",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -4036,7 +4000,7 @@
             "Town"
           ],
           "dcid": "geoId/0121280",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Douglas",
@@ -4147,15 +4111,6 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Eutaw",
-          "types": [
-            "City",
-            "Town"
-          ],
-          "dcid": "geoId/0124664",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Eva",
           "types": [
             "City",
@@ -4216,7 +4171,7 @@
             "Town"
           ],
           "dcid": "geoId/0126824",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Florala",
@@ -4333,6 +4288,51 @@
             "Town"
           ],
           "dcid": "geoId/0129296",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Geiger",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0129392",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Georgiana",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0129560",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Geraldine",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0129608",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Gilbertown",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0129704",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Glen Allen",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0129944",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -4607,7 +4607,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/0631470",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hart",
@@ -5058,7 +5058,7 @@
             "Village"
           ],
           "dcid": "geoId/1001400",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Ardencroft",
@@ -5176,7 +5176,7 @@
             "Village"
           ],
           "dcid": "geoId/1221150",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Fort Lauderdale",
@@ -5302,7 +5302,7 @@
             "Village"
           ],
           "dcid": "geoId/1249600",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Oakleaf Plantation",
@@ -5438,7 +5438,7 @@
             "Neighborhood"
           ],
           "dcid": "geoId/1278300",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Bibb County",
@@ -6043,7 +6043,7 @@
             "City"
           ],
           "dcid": "geoId/2236255",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "New Orleans",
@@ -6335,7 +6335,7 @@
             "City"
           ],
           "dcid": "geoId/3401090",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Andover",
@@ -6371,7 +6371,7 @@
             "City"
           ],
           "dcid": "geoId/3402110",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Audubon",
@@ -6443,7 +6443,7 @@
             "City"
           ],
           "dcid": "geoId/3403940",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Beachwood",
@@ -6488,7 +6488,7 @@
             "City"
           ],
           "dcid": "geoId/3405170",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Berlin",
@@ -6551,7 +6551,7 @@
             "City"
           ],
           "dcid": "geoId/3406970",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Branchville",
@@ -6569,7 +6569,7 @@
             "City"
           ],
           "dcid": "geoId/3407750",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Brooklawn",
@@ -6686,7 +6686,7 @@
             "City"
           ],
           "dcid": "geoId/3413420",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cliffside Park",
@@ -6731,7 +6731,7 @@
             "City"
           ],
           "dcid": "geoId/3415820",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Croxton",
@@ -6758,7 +6758,7 @@
             "City"
           ],
           "dcid": "geoId/3417530",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Dumont",
@@ -6776,7 +6776,7 @@
             "City"
           ],
           "dcid": "geoId/3418490",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "East Long Branch",
@@ -6821,7 +6821,7 @@
             "City"
           ],
           "dcid": "geoId/3420020",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Elmer",
@@ -6839,7 +6839,7 @@
             "City"
           ],
           "dcid": "geoId/3421300",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Emerson",
@@ -6866,7 +6866,7 @@
             "City"
           ],
           "dcid": "geoId/3421570",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Essex Fells",
@@ -6911,7 +6911,7 @@
             "City"
           ],
           "dcid": "geoId/3422860",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Far Hills",
@@ -6920,7 +6920,7 @@
             "City"
           ],
           "dcid": "geoId/3422890",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Farmingdale",
@@ -6947,7 +6947,7 @@
             "City"
           ],
           "dcid": "geoId/3423700",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Florham Park",
@@ -7001,7 +7001,7 @@
             "City"
           ],
           "dcid": "geoId/3425200",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Frenchtown",
@@ -7055,7 +7055,7 @@
             "City"
           ],
           "dcid": "geoId/3426610",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Glen Rock",
@@ -7064,7 +7064,7 @@
             "City"
           ],
           "dcid": "geoId/3426640",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Greenville",
@@ -7100,7 +7100,7 @@
             "City"
           ],
           "dcid": "geoId/3429070",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hamburg",
@@ -7145,7 +7145,7 @@
             "City"
           ],
           "dcid": "geoId/3430420",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Haworth",
@@ -7253,7 +7253,7 @@
             "City"
           ],
           "dcid": "geoId/3611150562",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Arcade",
@@ -7353,7 +7353,7 @@
             "City"
           ],
           "dcid": "geoId/5118448",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Covington",
@@ -7380,7 +7380,7 @@
             "City"
           ],
           "dcid": "geoId/5125808",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Fairfax",
@@ -7443,7 +7443,7 @@
             "City"
           ],
           "dcid": "geoId/5135624",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Hopewell",
@@ -7452,7 +7452,7 @@
             "City"
           ],
           "dcid": "geoId/5138424",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lexington",
@@ -7461,7 +7461,7 @@
             "City"
           ],
           "dcid": "geoId/5145512",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Lynchburg",
@@ -7551,7 +7551,7 @@
             "City"
           ],
           "dcid": "geoId/5164000",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Radford",
@@ -7596,7 +7596,7 @@
             "City"
           ],
           "dcid": "geoId/5175216",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Suffolk",
@@ -13021,5 +13021,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6zTzUrEQAzAcTe225j1FC/7Gn49wLqKIKKHXbyPNG0H2o6OqdIH8X0F8SBzmqDH5PDjTyC0o2Lrdaalzi/y2NDJph786N80OvXvsoniTvmAARcMCAx4yIAFA5YMuGTAigGRAY8YkLjA1XrIQc+M6GsOem5E6xz0wog2OeilufQ2QaurEMPUdmboJoG+J4NS4mr9uaD7hDl+EN92zyF2IdTGKKHrNGofPsa/3+jJ971rxQzdUbUN06jxl/WzMFpKeyp36lT+88XkCwAA//8BAAD//7pPLrG4AwAA"
+  "nextToken": "H4sIAAAAAAAA/6zTzUrEQAzAcTe22xg8xcu+hl93a0E8uYLifaRpO9B2dEyVvoZPLIgHmdMEPSaHH38CoT0VjdeVtrq+yL6jk7qd/OzfNDr171JHcad8wIAbBgQGPGTAggFLBtwyYMWAyIBHXCDtphzwzAC+5oDnBrDNAS8MYJcDXpoKmwSsrkMMSz+YkDpBvqdMoUTafW7oNiGO78T3w3OIQwitIUboKo15DB/z327y5MfR9WJCbqhqwjJr/OX8LAyO0j2VD+pU/utt5AsAAP//AQAA//9zIuFdiAMAAA=="
 }

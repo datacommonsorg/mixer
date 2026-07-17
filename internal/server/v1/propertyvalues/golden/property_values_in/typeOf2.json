@@ -1,6 +1,406 @@
 {
   "values": [
     {
+      "name": "Aruba",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ABW",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Afghanistan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AFG",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "French Afars and Issas",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AFI",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Angola",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AGO",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Åland Islands",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ALA",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "name": "Albania",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ALB",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Andorra",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AND",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Netherlands Antilles",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ANT",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "United Arab Emirates",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARE",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Argentina",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARG",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Armenia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ARM",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Antarctica",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATA",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "name": "French Southern Territories",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATF",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATG",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Dronning Maud Land",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/ATN",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "name": "Australia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AUS",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Austria",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AUT",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Azerbaijan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/AZE",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Burundi",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BDI",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Belgium",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BEL",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Benin",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BEN",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BES",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Burkina Faso",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BFA",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bangladesh",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BGD",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bulgaria",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BGR",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bahrain",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BHR",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bahamas",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BHS",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BIH",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Saint Barthélemy",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLM",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Belarus",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLR",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Belize",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BLZ",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bolivia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BOL",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Brazil",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRA",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Barbados",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRB",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Brunei",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BRN",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bhutan",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BTN",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Bouvet Island",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BVT",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Botswana",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BWA",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Byelorussian SSR",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/BYS",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Central African Republic",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CAF",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Canada",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CAN",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Switzerland",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHE",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Chile",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHL",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "China",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CHN",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CIV",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Cameroon",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/CMR",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Congo [DRC]",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/COD",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Congo [Republic]",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/COG",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Cook Islands",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/COK",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "name": "Colombia",
+      "types": [
+        "Country"
+      ],
+      "dcid": "country/COL",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
       "name": "Comoros",
       "types": [
         "Country"

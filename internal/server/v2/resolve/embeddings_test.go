@@ -7,6 +7,11 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 )
 
 func TestResolveUsingEmbeddings(t *testing.T) {
@@ -41,11 +46,11 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"})
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
+	resp, err := client.Resolve(ctx, "test_idx", []string{"population"}, nil, nil, false)
 	if err != nil {
-		t.Fatalf("ResolveEmbeddings() error: %v", err)
+		t.Fatalf("Resolve() error: %v", err)
 	}
-
 
 	if len(resp.Entities) != 1 {
 		t.Fatalf("Expected 1 entity, got %d", len(resp.Entities))
@@ -68,8 +73,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	// Verify that the score matches the server-provided CosineScore (0.99),
 	// NOT the sentence score (0.95). This ensures we are using the primary ranking score.
 
-	if candidate.Metadata["score"] != "0.9900" {
-		t.Errorf("Expected score '0.9900', got '%s'", candidate.Metadata["score"])
+	if candidate.Metadata["score"] != "0.99000000" {
+		t.Errorf("Expected score '0.99000000', got '%s'", candidate.Metadata["score"])
 	}
 
 	if candidate.Metadata["sentence"] != "number of people" {
@@ -88,8 +93,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	if len(candidate2.TypeOf) != 1 || candidate2.TypeOf[0] != "Topic" {
 		t.Errorf("Expected TypeOf ['Topic'], got '%v'. This verifies Topic detection logic.", candidate2.TypeOf)
 	}
-	if candidate2.Metadata["score"] != "0.8800" {
-		t.Errorf("Expected score '0.8800', got '%s'", candidate2.Metadata["score"])
+	if candidate2.Metadata["score"] != "0.88000000" {
+		t.Errorf("Expected score '0.88000000', got '%s'", candidate2.Metadata["score"])
 	}
 }
 
@@ -99,15 +104,35 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 		serverHandler http.HandlerFunc
 		serverURL     string
 		expectedError string
+		expectedCode  codes.Code
 		useEmptyURL   bool
 	}{
 		{
-			name: "Server Error",
+			name: "Server Error (500)",
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusInternalServerError)
 				_, _ = w.Write([]byte("internal error"))
 			},
-			expectedError: "The resolution service encountered an error processing your request.",
+			expectedError: "internal error",
+			expectedCode:  codes.Internal,
+		},
+		{
+			name: "Bad Request (400)",
+			serverHandler: func(w http.ResponseWriter, r *http.Request) {
+				w.WriteHeader(http.StatusBadRequest)
+				_, _ = w.Write([]byte("bad index name"))
+			},
+			expectedError: "bad index name",
+			expectedCode:  codes.InvalidArgument,
+		},
+		{
+			name: "Not Found (404)",
+			serverHandler: func(w http.ResponseWriter, r *http.Request) {
+				w.WriteHeader(http.StatusNotFound)
+				_, _ = w.Write([]byte("index not found"))
+			},
+			expectedError: "index not found",
+			expectedCode:  codes.NotFound,
 		},
 		{
 			name: "Malformed JSON",
@@ -115,25 +140,35 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				_, _ = w.Write([]byte("{invalid-json"))
 			},
 			expectedError: "An internal error occurred while parsing the resolution response.",
+			expectedCode:  codes.Internal,
 		},
 		{
 			name:          "Empty Server URL",
 			useEmptyURL:   true,
 			expectedError: "Indicator resolution is not available",
+			expectedCode:  codes.FailedPrecondition,
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			server := httptest.NewServer(tc.serverHandler)
-			defer server.Close()
-
-			url := server.URL
-			if tc.useEmptyURL {
-				url = ""
+			var server *httptest.Server
+			var url string
+			if !tc.useEmptyURL {
+				server = httptest.NewServer(tc.serverHandler)
+				defer server.Close()
+				url = server.URL
 			}
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"})
+			var client *http.Client
+			if server != nil {
+				client = server.Client()
+			} else {
+				client = http.DefaultClient
+			}
+
+			embeddingsServiceClient := NewEmbeddingsServiceClient(url, &EmbeddingsServiceClientOptions{HTTPClient: client})
+			_, err := embeddingsServiceClient.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
 				return
@@ -141,6 +176,14 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 
 			if !strings.Contains(err.Error(), tc.expectedError) {
 				t.Errorf("Expected error containing '%s', got '%v'", tc.expectedError, err)
+			}
+
+			status, ok := status.FromError(err)
+			if !ok {
+				t.Fatalf("Expected gRPC status error, got %v", err)
+			}
+			if status.Code() != tc.expectedCode {
+				t.Errorf("Expected error code %v, got %v", tc.expectedCode, status.Code())
 			}
 		})
 	}
@@ -174,7 +217,8 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"})
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
+	resp, err := client.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
 	}
@@ -203,8 +247,8 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	if c2.Dcid != "dcid2" {
 		t.Errorf("Candidate 2: Expected Dcid 'dcid2', got '%s'", c2.Dcid)
 	}
-	if c2.Metadata["score"] != "0.8800" {
-		t.Errorf("Candidate 2: Expected score '0.8800', got '%s'", c2.Metadata["score"])
+	if c2.Metadata["score"] != "0.88000000" {
+		t.Errorf("Candidate 2: Expected score '0.88000000', got '%s'", c2.Metadata["score"])
 	}
 	if _, hasSentence := c2.Metadata["sentence"]; hasSentence {
 		t.Errorf("Candidate 2: Expected NO sentence, but got one")
@@ -234,7 +278,7 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 				if gotIdx != tc.expectedIdx {
 					t.Errorf("Expected idx '%s' in URL, got '%s'", tc.expectedIdx, gotIdx)
 				}
-				
+
 				var req searchVarsRequest
 				if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 					t.Errorf("Failed to decode request: %v", err)
@@ -248,9 +292,135 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"})
+			client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
+			_, err := client.Resolve(context.Background(), tc.expectedIdx, []string{"query"}, nil, nil, false)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
+			}
+		})
+	}
+}
+
+func TestResolveUsingEmbeddings_Filter(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if err := json.NewEncoder(w).Encode(map[string]interface{}{
+			"queryResults": map[string]interface{}{
+				"filter_test": map[string]interface{}{
+					"SV":              []string{"Count_Person", "dc/topic/Population"},
+					"CosineScore":     []float64{0.99, 0.88},
+					"SV_to_Sentences": map[string]interface{}{},
+				},
+			},
+		}); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	ctx := context.Background()
+
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
+
+	// Filter for StatisticalVariable
+	resp, err := client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+	if len(resp.Entities[0].Candidates) != 1 {
+		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
+	}
+	if resp.Entities[0].Candidates[0].Dcid != "Count_Person" {
+		t.Errorf("Expected 'Count_Person', got '%s'", resp.Entities[0].Candidates[0].Dcid)
+	}
+
+	// Filter for Topic
+	resp, err = client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"Topic"}, nil, false)
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+	if len(resp.Entities[0].Candidates) != 1 {
+		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
+	}
+	if resp.Entities[0].Candidates[0].Dcid != "dc/topic/Population" {
+		t.Errorf("Expected 'dc/topic/Population', got '%s'", resp.Entities[0].Candidates[0].Dcid)
+	}
+}
+
+func TestSelectEmbeddingsIndex(t *testing.T) {
+	tests := []struct {
+		name               string
+		headerValue        string
+		expectedIdx        string
+		expectError        bool
+		expectedErrorCode  codes.Code
+	}{
+		{
+			// Test: Fallback to default index.
+			// Situation: No X-V2Resolve-Index header is provided.
+			// Expectation: Returns the defaultIndex.
+			name:               "No header",
+			headerValue:        "",
+			expectedIdx:        "default_idx",
+			expectError:        false,
+		},
+		{
+			// Test: Successful override to multi-entity index.
+			// Situation: Header is set to "multi-entity".
+			// Expectation: Returns "base_multi_entity".
+			name:               "Valid header, enabled",
+			headerValue:        "multi-entity",
+			expectedIdx:        "base_multi_entity",
+			expectError:        false,
+		},
+		{
+			// Test: Successful override to base-nl index.
+			// Situation: Header is set to "base-nl".
+			// Expectation: Returns "base_uae_mem".
+			name:               "Valid header (base-nl), enabled",
+			headerValue:        "base-nl",
+			expectedIdx:        "base_uae_mem",
+			expectError:        false,
+		},
+		{
+			// Test: Pass through unknown label.
+			// Situation: Header is set to an unknown value "invalid".
+			// Expectation: Returns "invalid".
+			name:               "Invalid header, pass through",
+			headerValue:        "invalid",
+			expectedIdx:        "invalid",
+			expectError:        false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tc.headerValue != "" {
+				md := metadata.Pairs(util.XV2ResolveIndex, tc.headerValue)
+				ctx = metadata.NewIncomingContext(ctx, md)
+			}
+
+			client := NewEmbeddingsServiceClient("", &EmbeddingsServiceClientOptions{DefaultIndexes: "default_idx"})
+			idx, err := client.SelectIndex(ctx)
+
+			if tc.expectError {
+				if err == nil {
+					t.Fatalf("Expected error, got nil")
+				}
+				status, ok := status.FromError(err)
+				if !ok {
+					t.Fatalf("Expected gRPC status error, got %v", err)
+				}
+				if status.Code() != tc.expectedErrorCode {
+					t.Errorf("Expected error code %v, got %v", tc.expectedErrorCode, status.Code())
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("Unexpected error: %v", err)
+				}
+				if idx != tc.expectedIdx {
+					t.Errorf("Expected index '%s', got '%s'", tc.expectedIdx, idx)
+				}
 			}
 		})
 	}

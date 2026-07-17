@@ -17,8 +17,14 @@ package spanner
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	// Fetch latest CompletionTimestamp from IngestionHistory table.
+	// Fetch latest CompletionTimestamp from IngestionHistory table (legacy schema).
 	getCompletionTimestamp string
+	// Fetch latest CompletionTimestamp from IngestionHistory table with run protection (new schema).
+	getIngestionHistoryTimestamp string
+	// Filter by single parameter value.
+	getParam string
+	// Filter by multiple parameter values.
+	getParams string
 	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
@@ -37,10 +43,12 @@ var statements = struct {
 	getChainedEdgesByObjectID string
 	// Subquery to filter edges by predicate.
 	filterPredicate string
+	// Subquery to filter edges by multiple predicates.
+	filterPredicates string
 	// Subquery to filter edges by object properties.
 	filterProperty string
-	// Subquery to filter edges by object values.
-	filterValue string
+	// Subquery to filter edges by multiple object values.
+	filterValues string
 	// Default subquery to return Edges.
 	returnEdges string
 	// Default subquery to return Edges for arcs with chaining.
@@ -59,6 +67,8 @@ var statements = struct {
 	selectEntityDcids string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
+	// Get variables for given entity.
+	getStatVarsByEntity string
 	// Search nodes by name only.
 	searchNodesByQuery string
 	// Subquery to filter search results by types.
@@ -71,21 +81,91 @@ var statements = struct {
 	resolvePropToDcid string
 	// Resolve one property to another.
 	resolvePropToProp string
+	// Generic node pattern.
+	node string
 	// Generic subquery for filtering a Node.
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
+	// Get data from legacy Cache table.
+	getCacheData string
+	// Get data from KeyValueStore table.
+	getKeyValueStoreData string
+	// Fetch event dates for a given type and location.
+	getEventCollectionDate string
+	// Fetch events for a given type, location and date.
+	getEventCollectionDcids string
+	// Fetch events for a given type, location and date, along with magnitude property.
+	getEventCollectionDcidsWithMagnitude string
+	// Fetch StatVarGroupNode info without definitions.
+	getStatVarGroupNode string
+	// Fetch StatVarGroupNode info with definitions.
+	getStatVarGroupNodeWithDefinitions string
+	// Attach stat var groups.
+	attachSVGs string
+	// Fetch all children of a stat var group without definitions.
+	getSVGChildren string
+	// Fetch all children of a stat var group with definitions.
+	getSVGChildrenWithDefinitions string
+	// Fetch filtered count of descendent stat vars for a given variable group.
+	getFilteredChildSVGs string
+	// Fetch filtered descendent stat vars for a given variable group without definitions.
+	getFilteredChildSVs string
+	// Fetch filtered descendent stat vars for a given variable group with definitions.
+	getFilteredChildSVsWithDefinitions string
+	// Fetch filtered count of descendent stat vars for a given topic.
+	getFilteredTopic string
+	// Filter descendent stat vars.
+	filterDescendentStatVars string
+	// Filter descendent stat vars by import.
+	filterDescendentStatVarsByImport string
+	// Filter descendent stat vars by num_entities_existences.
+	filterDescendentStatVarsByNumEntitiesExistence string
+	// Extract embedding values for a retrieval query.
+	getEmbeddingFromQuery string
+	// Search nodes using vector search.
+	vectorSearchNode string
+	// Filter nodes by type.
+	filterNodesByTypes string
+	// Check existence of SVs against sources.
+	checkSVSourceExistence string
+	// Check existence of SVs against sources using KeyValueStore table.
+	checkSVSourceExistenceFromKV string
+	// Check existence of variable groups against sources.
+	checkGroupSourceExistence string
+	// Check existence of variable groups against sources using KeyValueStore table.
+	checkGroupSourceExistenceFromKV string
+	// Check existence of variable groups against places.
+	checkGroupPlaceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
-		CompletionTimestamp
+			CompletionTimestamp
 		FROM
 			IngestionHistory
+		WHERE
+			IngestionFailure = FALSE
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
+	getIngestionHistoryTimestamp: `		SELECT MIN(CreationTimestamp) AS StalenessTimestamp
+FROM IngestionHistory
+WHERE (
+  -- Check if a successful run has ever occurred
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+) IS NULL 
+-- If a success exists, only grab runs created after it
+OR CreationTimestamp > (
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+);
+`,
+	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.subject_id IN UNNEST(@ids)]->
+			e.subject_id %s]->
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate
@@ -94,7 +174,7 @@ var statements = struct {
 			e.predicate`,
 	getPropsByObjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.object_id IN UNNEST(@ids)]->
+			e.object_id %s]->
 		RETURN DISTINCT
 			e.object_id AS subject_id,
 			e.predicate
@@ -105,37 +185,40 @@ var statements = struct {
 	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)`,
+			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)%[3]s`,
 	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+			m.subject_id %[1]s)-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)`,
+			e.predicate = @predicate]->{1,%[2]d}(n:Node)%[3]s`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)%[3]s`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge
+			m.subject_id %[1]s)<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)`,
+			e.predicate = @predicate]-{1,%[2]d}(n:Node)%[3]s`,
 	filterPredicate: `
 		WHERE
-			e.predicate IN UNNEST(@predicates)`,
-	filterProperty: `<-[filter%[1]d:Edge
+			e.predicate = @predicate`,
+	filterPredicates: `
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]-(n)`,
-	filterValue: `
+			e.predicate IN UNNEST(@predicate)`,
+	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
+		WHERE
+			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
+	filterValues: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
 		RETURN
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
-			n.name,
-			n.types
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -152,10 +235,10 @@ var statements = struct {
 		  	subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
-			n.name,
-			n.types
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			object_id`,
@@ -172,10 +255,15 @@ var statements = struct {
 		  	subject_id,
 			predicate,
 			provenance,
-			n.value,
-			n.bytes,
-			n.name,
-			n.types
+			IFNULL(ANY_VALUE(n.value), '') AS value,
+			ANY_VALUE(n.bytes) AS bytes,
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
+		GROUP BY
+			subject_id,
+			predicate,
+			object_id,
+			provenance
 		ORDER BY
 			subject_id,
 			predicate,
@@ -190,6 +278,7 @@ var statements = struct {
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,
@@ -198,14 +287,15 @@ var statements = struct {
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation`,
-	selectVariableDcids: `variable_measured IN UNNEST(@variables)`,
-	selectEntityDcids:   `observation_about IN UNNEST(@entities)`,
+			Observation@{FORCE_INDEX=_BASE_TABLE}`,
+	selectVariableDcids: `variable_measured %s`,
+	selectEntityDcids:   `observation_about %s`,
 	getObsByVariableAndContainedInPlace: `		SELECT
 			obs.variable_measured,
 			obs.observation_about,
 			obs.observations,
 			obs.import_name,
+			obs.provenance,
 			obs.observation_period,
 			obs.measurement_method,
 			obs.unit,
@@ -225,13 +315,18 @@ var statements = struct {
 		INNER JOIN (%s)obs
 		ON 
 			result.object_id = obs.observation_about`,
+	getStatVarsByEntity: `		SELECT DISTINCT
+			variable_measured,
+			observation_about
+		FROM
+			Observation`,
 	searchNodesByQuery: `		GRAPH DCGraph MATCH (n:Node)
 		WHERE
 			SEARCH(n.name_tokenlist, @query)%s
 		RETURN
 			n.subject_id, 
-			n.name,
-			n.types, 
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types, 
 			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
 		ORDER BY 
 			score + IF(n.name = @query, 1, 0) DESC,
@@ -251,7 +346,7 @@ var statements = struct {
 			AND o.predicate = @outProp]->(n:Node)
 		RETURN
 			o.subject_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
 	resolvePropToDcid: `		GRAPH DCGraph MATCH <-[i:Edge
 		WHERE
 			i.object_id IN UNNEST(@nodes)
@@ -267,9 +362,378 @@ var statements = struct {
 			o.predicate = @outProp]->(n:Node)
 		RETURN
 			i.object_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
+	node: `(%[1]s:Node%[2]s)`,
 	nodeFilter: `
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
+	getCacheData: `		SELECT
+			key,
+			provenance,
+			TO_JSON_STRING(value) AS value,
+		FROM
+			Cache
+		WHERE
+			type = @type
+			AND key %s`,
+	getKeyValueStoreData: `		SELECT
+			key,
+			provenance,
+			TO_JSON_STRING(value) AS value
+		FROM
+			KeyValueStore
+		WHERE
+			type = @type
+			AND key %s`,
+	getEventCollectionDate: `		@{force_join_order=true}
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		RETURN DISTINCT 
+			SUBSTR(dateNode.value, 1, 7) AS month
+		ORDER BY 
+			month`,
+	getEventCollectionDcids: `		@{force_join_order=true}
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		WHERE 
+			SUBSTR(dateNode.value, 1, 7) = @date
+		RETURN DISTINCT 
+			event.subject_id AS dcid`,
+	getEventCollectionDcidsWithMagnitude: `		@{force_join_order=true}
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		WHERE 
+			SUBSTR(dateNode.value, 1, 7) = @date
+		MATCH (event:Node)-[magEdge:Edge {predicate: @magnitudeProp}]->()
+		RETURN DISTINCT 
+			event.subject_id AS dcid,
+			magEdge.object_id AS magnitude`,
+	getStatVarGroupNode: `		WITH ChildSVGs AS (
+			SELECT DISTINCT
+				subject_id AS child_svg, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'specializationOf'
+			AND object_id %[1]s
+			UNION ALL
+			%[2]s
+		),
+		UniqueChildSVGs AS (
+			SELECT DISTINCT child_svg FROM ChildSVGs
+		),
+		ChildSVGCounts AS (
+			SELECT 
+				e.object_id AS child_svg, 
+				COUNT(e.subject_id) AS descendent_stat_var_count
+			FROM UniqueChildSVGs u
+			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
+			ON e.object_id = u.child_svg
+			WHERE e.predicate = 'linkedMemberOf' 
+			GROUP BY e.object_id
+		),
+		ChildSVs AS (
+			SELECT DISTINCT
+				subject_id AS child_sv, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'memberOf'
+			AND object_id %[1]s
+		),
+		UniqueChildSVs AS (
+			SELECT DISTINCT child_sv FROM ChildSVs
+		)
+		SELECT 
+			svg.svg,
+			n.subject_id, 
+			IFNULL(n.name, '') AS name, 
+			c.descendent_stat_var_count,
+			FALSE AS has_data,
+			'' AS definition
+		FROM ChildSVGs svg
+		JOIN ChildSVGCounts c 
+		ON svg.child_svg = c.child_svg
+		JOIN Node n 
+		ON n.subject_id = svg.child_svg
+		UNION ALL
+		SELECT 
+			sv.svg,
+			n.subject_id, 
+			IFNULL(n.name, '') AS name, 
+			-1 AS descendent_stat_var_count,
+			EXISTS (
+				SELECT 1 
+				FROM Observation o 
+				WHERE o.variable_measured = sv.child_sv
+				LIMIT 1
+			) AS has_data,
+			'' AS definition
+		FROM ChildSVs sv
+		JOIN Node n 
+		ON n.subject_id = sv.child_sv`,
+	getStatVarGroupNodeWithDefinitions: `		WITH ChildSVGs AS (
+			SELECT DISTINCT
+				subject_id AS child_svg, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'specializationOf'
+			AND object_id %[1]s
+			UNION ALL
+			%[2]s
+		),
+		UniqueChildSVGs AS (
+			SELECT DISTINCT child_svg FROM ChildSVGs
+		),
+		ChildSVGCounts AS (
+			SELECT 
+				e.object_id AS child_svg, 
+				COUNT(e.subject_id) AS descendent_stat_var_count
+			FROM UniqueChildSVGs u
+			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
+			ON e.object_id = u.child_svg
+			WHERE e.predicate = 'linkedMemberOf' 
+			GROUP BY e.object_id
+		),
+		ChildSVs AS (
+			SELECT DISTINCT
+				subject_id AS child_sv, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'memberOf'
+			AND object_id %[1]s
+		),
+		UniqueChildSVs AS (
+			SELECT DISTINCT child_sv FROM ChildSVs
+		)
+		SELECT 
+			svg.svg,
+			n.subject_id, 
+			IFNULL(n.name, '') AS name, 
+			c.descendent_stat_var_count,
+			FALSE AS has_data,
+			'' AS definition
+		FROM ChildSVGs svg
+		JOIN ChildSVGCounts c 
+		ON svg.child_svg = c.child_svg
+		JOIN Node n 
+		ON n.subject_id = svg.child_svg
+		UNION ALL
+		SELECT 
+			sv.svg,
+			n.subject_id, 
+			IFNULL(n.name, '') AS name, 
+			-1 AS descendent_stat_var_count,
+			EXISTS (
+				SELECT 1 
+				FROM Observation o 
+				WHERE o.variable_measured = sv.child_sv
+				LIMIT 1
+			) AS has_data,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = sv.child_sv
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
+		FROM ChildSVs sv
+		JOIN Node n 
+		ON n.subject_id = sv.child_sv`,
+	attachSVGs: `SELECT
+				node AS child_svg,
+				node AS svg
+				FROM UNNEST(@nodes) AS node`,
+	getSVGChildren: `		SELECT DISTINCT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e.predicate,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id`,
+	getSVGChildrenWithDefinitions: `		SELECT DISTINCT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e.predicate,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id`,
+	getFilteredChildSVs: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			%s
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+	getFilteredChildSVsWithDefinitions: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			%s
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+	getFilteredChildSVGs: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e_counts.descendent_stat_var_count
+		FROM Node n
+		JOIN (
+			SELECT
+				e.object_id AS subject_id,
+				COUNT(e.subject_id) AS descendent_stat_var_count
+			FROM Edge e
+			%s
+			WHERE e.predicate = 'linkedMemberOf'
+				AND e.object_id IN (
+					SELECT DISTINCT subject_id
+					FROM Edge
+					WHERE object_id = @node
+						AND predicate = 'specializationOf'
+					UNION ALL
+					SELECT @node AS subject_id
+				)
+			GROUP BY
+				e.object_id
+		) e_counts
+			ON n.subject_id = e_counts.subject_id`,
+	getFilteredTopic: `		SELECT
+			e.object_id AS subject_id,
+			COUNT(e.subject_id) AS descendent_stat_var_count
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		%[1]s
+		WHERE e.predicate = 'linkedMember'
+			AND e.object_id %[2]s
+		GROUP BY
+			e.object_id`,
+	filterDescendentStatVars: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT variable_measured
+				FROM Observation %[1]s
+				GROUP BY variable_measured%[2]s
+			) o ON o.variable_measured = e.subject_id`,
+	filterDescendentStatVarsByImport: `
+				JOIN Edge@{FORCE_INDEX=InEdge} e1
+				ON import_name = SUBSTR(e1.subject_id, 9)
+				WHERE e1.predicate = @predicate
+					AND e1.object_id = @import`,
+	filterDescendentStatVarsByNumEntitiesExistence: `
+				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
+	getEmbeddingFromQuery: `		SELECT embeddings.values
+		FROM ML.PREDICT(MODEL %s, (SELECT @search_label AS content, @task_type AS task_type))`,
+	filterNodesByTypes: `		SELECT subject_id, ARRAY(SELECT t FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters)) AS matched_types
+		FROM Node
+		WHERE subject_id IN UNNEST(@nodes)
+			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
+	vectorSearchNode: `		SELECT
+			subject_id,
+			JSON_VALUE(embedding_content.name) AS name,
+			node_types AS types,
+			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
+		FROM
+			%[1]s
+		WHERE
+			embeddings IS NOT NULL
+			AND embedding_label = @embedding_label
+			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
+			AND EXISTS (
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
+			)
+		ORDER BY
+			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
+		LIMIT @limit`,
+	checkSVSourceExistence: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
+		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND e3.predicate = @predicate
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkSVSourceExistenceFromKV: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
+		FROM KeyValueStore c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupSourceExistenceFromKV: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+		FROM KeyValueStore c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND e3.predicate = @predicate
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupPlaceExistence: `		SELECT DISTINCT e.object_id AS variable, o.observation_about AS entity
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		JOIN@{JOIN_TYPE=APPLY_JOIN} Observation@{FORCE_INDEX=VariableMeasuredObservationAbout} o ON e.subject_id = o.variable_measured
+		WHERE e.predicate = @predicate
+		  AND e.object_id IN UNNEST(@variableGroups)
+		  AND o.observation_about IN UNNEST(@entities)
+		ORDER BY variable, entity`,
 }

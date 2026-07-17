@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -90,10 +91,10 @@ func TestObservationInternal(t *testing.T) {
 	h := &http.Client{}
 
 	for _, tc := range []struct {
-			desc          string
-			req           *pbv2.ObservationRequest
-			wantQueryType shared.QueryType
-			wantResp      *pbv2.ObservationResponse
+		desc          string
+		req           *pbv2.ObservationRequest
+		wantQueryType shared.QueryType
+		wantResp      *pbv2.ObservationResponse
 	}{
 		{
 			"series",
@@ -111,7 +112,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"country/USA": {}, 
+							"country/USA": {},
 						},
 					},
 				},
@@ -145,7 +146,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeFacet,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {}, 
+					"Count_Person": {},
 				},
 			},
 		},
@@ -165,7 +166,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"": {}, 
+							"": {},
 						},
 					},
 				},
@@ -185,7 +186,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeExistence,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {}, 
+					"Count_Person": {},
 				},
 			},
 		},
@@ -206,9 +207,9 @@ func TestObservationInternal(t *testing.T) {
 func TestV2Observation_UsageLog(t *testing.T) {
 	ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
 	s := &Server{
-		store:    &store.Store{},
-		metadata: &resource.Metadata{},
-		flags: &featureflags.Flags{},
+		store:          &store.Store{},
+		metadata:       &resource.Metadata{},
+		flags:          &featureflags.Flags{},
 		writeUsageLogs: true,
 	}
 	s.cachedata.Store(&cache.Cache{})
@@ -244,186 +245,203 @@ func TestV2Observation_UsageLog(t *testing.T) {
 		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
 	}
 }
-func TestResolveRouting(t *testing.T) {
+
+func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
-		desc              string
-		target            string
-		remoteMixerDomain string
-		wantLocal         bool
-		wantRemote        bool
-		wantErr           bool
+		desc                   string
+		useSpannerGraph        bool // CLI flag
+		useSpannerGraphFlag    bool // Feature flag
+		enableEmbeddings       bool // flags.EnableSpannerSearchEmbeddings
+		resolver               string
+		indicatorSpannerHeader string // X-V2Resolve-Indicator-Spanner header
+		disableSpannerHeader   string // X-Disable-Spanner header
+		wantRoute              bool
+		wantErr                bool
 	}{
+		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
-			desc:              "Base instance (empty remote domain)",
-			target:            "any_target",
-			remoteMixerDomain: "",
-			wantLocal:         true,
-			wantRemote:        false,
-			wantErr:           false,
+			desc:            "Place resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverPlace,
+			wantRoute:       true,
 		},
 		{
-			desc:              "Custom instance, target base_only",
-			target:            ResolveTargetBaseOnly,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         false,
-			wantRemote:        true,
-			wantErr:           false,
+			desc:            "Place resolver with Spanner disabled -> don't route",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverPlace,
+			wantRoute:       false,
 		},
 		{
-			desc:              "Custom instance, target custom_only",
-			target:            ResolveTargetCustomOnly,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        false,
-			wantErr:           false,
+			desc:            "Topic resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverTopic,
+			wantRoute:       true,
 		},
 		{
-			desc:              "Custom instance, target base_and_custom",
-			target:            ResolveTargetBaseAndCustom,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
-			wantErr:           false,
+			desc:            "Topic resolver with Spanner disabled -> don't route",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverTopic,
+			wantRoute:       false,
+		},
+		{
+			desc:                 "Place resolver with X-Disable-Spanner -> don't route",
+			useSpannerGraph:      true,
+			resolver:             resolve.ResolveResolverPlace,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
+		},
+		{
+			desc:                 "Topic resolver with X-Disable-Spanner -> don't route",
+			useSpannerGraph:      true,
+			resolver:             resolve.ResolveResolverTopic,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
+		},
+		{
+			desc:            "Empty resolver defaults to place (Spanner enabled) -> route",
+			useSpannerGraph: true,
+			resolver:        "",
+			wantRoute:       true,
 		},
 
+		// Indicator resolver - Default path (no header)
+		{
+			desc:             "Indicator resolver - Spanner enabled & flag true -> route",
+			useSpannerGraph:  true,
+			enableEmbeddings: true,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        true,
+		},
+		{
+			desc:             "Indicator resolver - Spanner enabled & flag false -> don't route",
+			useSpannerGraph:  true,
+			enableEmbeddings: false,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        false,
+		},
+		{
+			desc:             "Indicator resolver - Spanner disabled & flag true -> don't route",
+			useSpannerGraph:  false,
+			enableEmbeddings: true,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        false,
+		},
+
+		// Indicator resolver - Header override: true (force Spanner)
+		{
+			desc:                   "Indicator resolver - Force Spanner (true), Spanner enabled -> route",
+			useSpannerGraph:        true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			wantRoute:              true,
+		},
+		{
+			desc:                   "Indicator resolver - Force Spanner (true), Spanner disabled -> error (fail-fast)",
+			useSpannerGraph:        false,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			wantErr:                true,
+		},
+		{
+			desc:                   "Indicator resolver - Force Spanner (true) via Feature Flag, Spanner enabled -> route",
+			useSpannerGraphFlag:    true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			wantRoute:              true,
+		},
+
+		// Indicator resolver - Header override: false (force Legacy)
+		{
+			desc:                   "Indicator resolver - Force Legacy (false), Spanner enabled & flag true -> don't route",
+			useSpannerGraph:        true,
+			enableEmbeddings:       true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "false",
+			wantRoute:              false,
+		},
+		{
+			desc:                   "Indicator resolver - Force Legacy (false), Spanner disabled -> don't route",
+			useSpannerGraph:        false,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "false",
+			wantRoute:              false,
+		},
+
+		// Indicator resolver - X-Disable-Spanner global override
+		{
+			desc:                 "Indicator resolver - X-Disable-Spanner overrides default routing (flag true)",
+			useSpannerGraph:      true,
+			enableEmbeddings:     true,
+			resolver:             resolve.ResolveResolverIndicator,
+			disableSpannerHeader: "true",
+			wantRoute:            false,
+		},
+		{
+			desc:                   "Indicator resolver - X-Disable-Spanner overrides force Spanner header",
+			useSpannerGraph:        true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			disableSpannerHeader:   "true",
+			wantRoute:              false,
+		},
+		{
+			desc:                   "Indicator resolver - X-Disable-Spanner true with force Legacy header",
+			useSpannerGraph:        true,
+			enableEmbeddings:       true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "false",
+			disableSpannerHeader:   "true",
+			wantRoute:              false,
+		},
+		{
+			desc:                 "Indicator resolver - X-Disable-Spanner false does not prevent routing",
+			useSpannerGraph:      true,
+			enableEmbeddings:     true,
+			resolver:             resolve.ResolveResolverIndicator,
+			disableSpannerHeader: "false",
+			wantRoute:            true,
+		},
+
+		// Invalid header values
+		{
+			desc:                   "Indicator resolver - Invalid header value -> error",
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "invalid_value",
+			wantErr:                true,
+		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			gotLocal, gotRemote, err := resolveRouting(tc.target, tc.remoteMixerDomain)
+			s := &Server{
+				useSpannerGraph: tc.useSpannerGraph,
+				flags: &featureflags.Flags{
+					UseSpannerGraph:               tc.useSpannerGraphFlag,
+					EnableSpannerSearchEmbeddings: tc.enableEmbeddings,
+				},
+			}
+
+			ctx := context.Background()
+			md := metadata.MD{}
+			if tc.indicatorSpannerHeader != "" {
+				md.Set(util.XV2ResolveIndicatorSpanner, tc.indicatorSpannerHeader)
+			}
+			if tc.disableSpannerHeader != "" {
+				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
+			}
+			if len(md) > 0 {
+				ctx = metadata.NewIncomingContext(ctx, md)
+			}
+
+			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
 			if (err != nil) != tc.wantErr {
-				t.Errorf("resolveRouting(%q, %q) error = %v, wantErr %v", tc.target, tc.remoteMixerDomain, err, tc.wantErr)
+				t.Fatalf("shouldRouteResolveToDispatcher() error = %v, wantErr %v", err, tc.wantErr)
+			}
+			if tc.wantErr {
 				return
 			}
-			if !tc.wantErr {
-				if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
-					t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
-						tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
-				}
-			}
-		})
-	}
-}
-
-func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
-	tests := []struct {
-		desc    string
-		in      *pbv2.ResolveRequest
-		want    *pbv2.ResolveRequest
-		wantErr bool
-		wantErrMsg string
-	}{
-		{
-			desc: "all empty",
-			in:   &pbv2.ResolveRequest{},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseAndCustom,
-				Resolver: ResolveResolverPlace,
-				Property: ResolvePropertyDescription,
-			},
-		},
-		{
-			desc: "partial set - target",
-			in: &pbv2.ResolveRequest{
-				Target: ResolveTargetCustomOnly,
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetCustomOnly,
-				Resolver: ResolveResolverPlace,
-				Property: ResolvePropertyDescription,
-			},
-		},
-		{
-			desc: "partial set - resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverIndicator,
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseAndCustom,
-				Resolver: ResolveResolverIndicator,
-				Property: ResolvePropertyDescription,
-			},
-		},
-		{
-			desc: "fully set",
-			in: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseOnly,
-				Resolver: ResolveResolverPlace,
-				Property: "custom_prop",
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseOnly,
-				Resolver: ResolveResolverPlace,
-				Property: "custom_prop",
-			},
-		},
-		{
-			desc: "invalid target",
-			in: &pbv2.ResolveRequest{
-				Target: "invalid",
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   "invalid",
-				Resolver: ResolveResolverPlace,
-				Property: ResolvePropertyDescription,
-			},
-			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'",
-		},
-		{
-			desc: "invalid resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: "invalid",
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseAndCustom,
-				Resolver: "invalid",
-				Property: ResolvePropertyDescription,
-			},
-			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for resolver, valid values are: 'indicator', 'place'",
-		},
-		{
-			desc: "invalid target and resolver",
-			in: &pbv2.ResolveRequest{
-				Target:   "invalid_target",
-				Resolver: "invalid_resolver",
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   "invalid_target",
-				Resolver: "invalid_resolver",
-				Property: ResolvePropertyDescription,
-			},
-			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'. Invalid value for resolver, valid values are: 'indicator', 'place'",
-		},
-		{
-			desc: "invalid property for indicator resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverIndicator,
-				Property: "invalid_property",
-			},
-			want: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseAndCustom,
-				Resolver: ResolveResolverIndicator,
-				Property: "invalid_property",
-			},
-			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for property, indicator resolution only supports the 'description' based property",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.desc, func(t *testing.T) {
-			err := setDefaultsAndValidateResolveInputs(tc.in)
-			if (err != nil) != tc.wantErr {
-				t.Errorf("setDefaultsAndValidateResolveInputs() error = %v, wantErr %v", err, tc.wantErr)
-			}
-			if tc.wantErr && !strings.Contains(err.Error(), tc.wantErrMsg) {
-				t.Errorf("setDefaultsAndValidateResolveInputs() error = %v, wantErrMsg %v", err, tc.wantErrMsg)
-			}
-			if diff := cmp.Diff(tc.in, tc.want, protocmp.Transform()); diff != "" {
-				t.Errorf("setDefaultsAndValidateResolveInputs() diff (-got +want):\n%s", diff)
+			if gotRoute != tc.wantRoute {
+				t.Errorf("shouldRouteResolveToDispatcher() = %v, want %v", gotRoute, tc.wantRoute)
 			}
 		})
 	}

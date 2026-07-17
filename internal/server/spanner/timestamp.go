@@ -26,15 +26,20 @@ type Ticker interface {
 }
 
 type TimestampTicker struct {
-	*time.Ticker
+	ticker *time.Ticker
 }
 
 // C implements the Ticker interface.
-func (t TimestampTicker) C() <-chan time.Time {
-	return t.Ticker.C
+func (t *TimestampTicker) C() <-chan time.Time {
+	return t.ticker.C
 }
 
-// NewTicker returns a new Ticker interface using the real implementation.
+// Stop stops the underlying time.Ticker.
+func (t *TimestampTicker) Stop() {
+	t.ticker.Stop()
+}
+
+// NewTimestampTicker returns a new Ticker interface using the real implementation.
 func NewTimestampTicker() Ticker {
-	return TimestampTicker{time.NewTicker(timestampDuration)}
+	return &TimestampTicker{ticker: time.NewTicker(timestampDuration)}
 }

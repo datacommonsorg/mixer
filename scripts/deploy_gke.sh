@@ -69,13 +69,13 @@ cd $ROOT
 
 if [[ $ENV == "mixer_autopush" ]]; then
   # Update bigquery version
-  gsutil cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
+  gcloud storage cp gs://datcom-control/latest_base_bigquery_version.txt deploy/storage/bigquery.version
   # Import group
   yq eval -i 'del(.tables)' deploy/storage/base_bigtable_info.yaml
   yq eval -i '.tables = []' deploy/storage/base_bigtable_info.yaml
-  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+  for src in $(gcloud storage ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
     echo "Copying $src"
-    export TABLE="$(gsutil cat "$src")"
+    export TABLE="$(gcloud storage cat "$src")"
     yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 fi
@@ -98,7 +98,7 @@ yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 echo "endpoints.yaml content:"
 cat endpoints.yaml
-gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
+gcloud storage cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$TAG.pb .
 CONFIG_ID=$(gcloud endpoints services deploy mixer-grpc.$TAG.pb endpoints.yaml --project $PROJECT_ID 2>&1 | awk -F'[][]' '/Service Configuration/ {print $2}')
 
 # Deploy to GKE

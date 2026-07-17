@@ -92,7 +92,7 @@ func TestV3NodeSearch(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3NodeSearch",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3NodeSearch = %s", err)

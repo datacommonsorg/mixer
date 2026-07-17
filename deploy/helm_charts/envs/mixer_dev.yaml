@@ -7,6 +7,10 @@ mixer:
   hostProject: datcom-mixer-dev-316822
   serviceName: dev.api.datacommons.org
   cluster_prefix: mixer
+  useBaseBigtable: false
+  useBranchBigtable: false
+  useBigquery: false
+  useSpannerGraph: true
   redis:
     enabled: true
     configFile: |
@@ -28,6 +32,8 @@ ingress:
 # TODO(/v2/resolve cleanup): Remove this once /v2/resolve always requires an api key.
 esp:
   v2_resolve_allow_unregistered: false
+  transcodingIgnoreUnknownQueryParameters: true
+  transcodingQueryParametersDisableUnescapePlus: true
 
 # GCP level config
 ip: 35.244.157.41

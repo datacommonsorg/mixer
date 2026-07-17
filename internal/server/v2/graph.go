@@ -17,11 +17,6 @@ package v2
 
 import "github.com/datacommonsorg/mixer/internal/util"
 
-const (
-	// Indicates that all properties should be returned.
-	WILDCARD = "*"
-)
-
 // Arc represents an arc in the graph.
 type Arc struct {
 	// Whether it's out or in arc.
@@ -34,6 +29,8 @@ type Arc struct {
 	BracketProps []string
 	// The filter of the arc: filter key -> filter values.
 	Filter map[string][]string
+	// The filters of the bracket properties: property -> filter key -> filter values.
+	BracketFilters map[string]map[string][]string
 }
 
 func (arc *Arc) Direction() string {

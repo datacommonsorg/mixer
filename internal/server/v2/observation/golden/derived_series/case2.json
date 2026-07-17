@@ -57,11 +57,15 @@
                 {
                   "date": "2023",
                   "value": 1.0015822292514052
+                },
+                {
+                  "date": "2024",
+                  "value": 1.002072785631771
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             }
           ]
         }

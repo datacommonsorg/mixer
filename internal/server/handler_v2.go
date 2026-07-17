@@ -17,20 +17,21 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"log/slog"
-	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
@@ -45,15 +46,27 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	if err := setDefaultsAndValidateResolveInputs(in); err != nil {
-		return nil, err
+	if in == nil {
+		return nil, status.Errorf(codes.InvalidArgument, "Request is nil")
 	}
-	v2StartTime := time.Now()
 
-	callLocal, callRemote, err := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+	useDispatcher, err := s.shouldRouteResolveToDispatcher(ctx, in.GetResolver())
 	if err != nil {
 		return nil, err
 	}
+	if useDispatcher {
+		return s.dispatcher.Resolve(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
+	normalizedResolveRequest, err := resolve.ValidateAndParseResolveInputs(in)
+	if err != nil {
+		return nil, err
+	}
+
+	hasRemoteMixerDomain := s.metadata.RemoteMixerDomain != ""
+	callLocal, callRemote := resolve.ResolveRouting(normalizedResolveRequest.Request.GetTarget(), hasRemoteMixerDomain)
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -61,7 +74,7 @@ func (s *Server) V2Resolve(
 
 	if callLocal {
 		errGroup.Go(func() error {
-			localResp, err := s.V2ResolveCore(errCtx, in)
+			localResp, err := s.V2ResolveCore(errCtx, normalizedResolveRequest)
 			if err != nil {
 				return err
 			}
@@ -75,7 +88,7 @@ func (s *Server) V2Resolve(
 	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -110,6 +123,55 @@ func (s *Server) V2Resolve(
 	)
 
 	return v2Resp, nil
+}
+
+// isSpannerEnabled returns true if the Spanner backend has been enabled.
+func (s *Server) isSpannerEnabled() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
+// shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
+// It returns an error if the request explicitly asks for an unavailable backend.
+func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {
+	if resolver == "" {
+		resolver = resolve.ResolveResolverPlace // Default
+	}
+
+	// Place and Topic resolvers use standard diversion logic
+	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
+		return s.shouldDivertV2(ctx), nil
+	}
+
+	// Indicator resolver (embeddings-based) has custom request-time toggling
+	if resolver == resolve.ResolveResolverIndicator {
+		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
+		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
+			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
+			return false, nil
+		}
+		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
+		if err != nil {
+			return false, err
+		}
+		if divertVal != nil {
+			if *divertVal {
+				// Force Spanner: Fail fast if Spanner backend is not configured
+				if !s.isSpannerEnabled() {
+					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
+					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
+				}
+				return true, nil
+			} else {
+				// Force Legacy
+				return false, nil
+			}
+		}
+		// Default: use Spanner if configured AND default routing flag is true
+		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.isSpannerEnabled(), nil
+	}
+
+	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
+	return false, nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -235,6 +297,38 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 func (s *Server) V2Event(
 	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
+	// Divert to dispatcher if enabled.
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.Event(ctx, in)
+	}
+
+	// Handle V2 Event.
+	v2StartTime := time.Now()
+	v2Resp, err := s.handleV2Event(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	v2Latency := time.Since(v2StartTime)
+
+	// Mirror to V3 for comparison.
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Event(ctx, req.(*pbv2.EventRequest))
+		},
+		GetV2EventCmpOpts(),
+	)
+
+	return v2Resp, nil
+}
+
+// handleV2Event wraps the core V2 implementation of mixer.V2Event.
+func (s *Server) handleV2Event(
+	ctx context.Context, in *pbv2.EventRequest,
+) (*pbv2.EventResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.EventResponse, 1)
 	remoteRespChan := make(chan *pbv2.EventResponse, 1)
@@ -338,6 +432,13 @@ func (s *Server) V2Observation(
 	return v2Resp, nil
 }
 
+// V2RecognizePlaces implements API for Mixer.V2RecognizePlaces.
+func (s *Server) V2RecognizePlaces(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
+}
+
 // V2Sparql implements API for Mixer.V2Sparql.
 func (s *Server) V2Sparql(
 	ctx context.Context, in *pb.SparqlRequest,
@@ -375,6 +476,12 @@ func (s *Server) V2Sparql(
 func (s *Server) FilterStatVarsByEntity(
 	ctx context.Context, in *pb.FilterStatVarsByEntityRequest,
 ) (*pb.FilterStatVarsByEntityResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.FilterStatVarsByEntity(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
 	errGroup, _ := errgroup.WithContext(ctx)
 
 	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
@@ -414,73 +521,142 @@ func (s *Server) FilterStatVarsByEntity(
 	close(localResponseChan)
 	close(remoteResponseChan)
 
-	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
-	return merged, nil
+	v2Resp := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3FilterStatVarsByEntity(ctx, req.(*pb.FilterStatVarsByEntityRequest))
+		},
+		GetV2FilterStatVarsByEntityCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
-// resolveRouting determines whether to route to local and/or remote instances
-// based on the target parameter and the presence of a remote mixer domain.
-// Returns (shouldCallLocal, shouldCallRemote, error).
-//
-// Assumes setDefaultsAndValidateResolveInputs has been called prior.
-//
-// logic:
-//   - If remoteMixerDomain is empty, we are the base instance (or standalone).
-//     Always process locally, ignore target.
-//   - If remoteMixerDomain is set, we are a custom instance.
-//     Route based on target:
-//   - "base_only": Call remote only.
-//   - "custom_only": Call local only.
-//   - "base_and_custom": Call both.
-//   - Any other value defaults to calling both.
-func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
-	if remoteMixerDomain == "" {
-		return true, false, nil
-	}
-	switch target {
-	case ResolveTargetBaseOnly:
-		return false, true, nil
-	case ResolveTargetCustomOnly:
-		return true, false, nil
-	default:
-		return true, true, nil
-	}
-}
-
-func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
-	if in.GetTarget() == "" {
-		// ignored if current call is to base dc
-		in.Target = ResolveTargetBaseAndCustom
-	}
-	if in.GetResolver() == "" {
-		in.Resolver = ResolveResolverPlace
-	}
-	if in.GetProperty() == "" {
-		in.Property = ResolvePropertyDescription
+// V2BulkVariableInfo implements API for Mixer.V2BulkVariableInfo.
+func (s *Server) V2BulkVariableInfo(
+	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
+) (*pbv1.BulkVariableInfoResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableInfo(ctx, in)
 	}
 
-	var validationErrors []string
+	v2StartTime := time.Now()
 
-	switch in.GetTarget() {
-	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target, valid values are: '%s', '%s', '%s'",
-			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+	// Use the V1 implementation for now.
+	v2Resp, err := s.BulkVariableInfo(ctx, in)
+	if err != nil {
+		return nil, err
 	}
 
-	switch in.GetResolver() {
-	case ResolveResolverPlace:
-	case ResolveResolverIndicator:
-		if in.GetProperty() != ResolvePropertyDescription {
-			validationErrors = append(validationErrors, "Invalid value for property, indicator resolution only supports the 'description' based property")
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, varInfo := range v2Resp.GetData() {
+		if varInfo.GetInfo() == nil {
+			continue
 		}
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace))
+		varInfo.Info.PlaceTypeSummary = map[string]*pb.StatVarSummary_PlaceTypeSummary{}
+		for _, provSummary := range varInfo.GetInfo().GetProvenanceSummary() {
+			provSummary.ReleaseFrequency = ""
+			for _, seriesSummary := range provSummary.GetSeriesSummary() {
+				for key := range seriesSummary.GetPlaceTypeSummary() {
+					seriesSummary.PlaceTypeSummary[key] = &pb.StatVarSummary_PlaceTypeSummary{}
+				}
+				seriesSummary.MinValue = nil
+				seriesSummary.MaxValue = nil
+			}
+		}
 	}
 
-	if len(validationErrors) > 0 {
-		return status.Errorf(codes.InvalidArgument, "Invalid inputs in request: %s", strings.Join(validationErrors, ". "))
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableInfo(ctx, req.(*pbv1.BulkVariableInfoRequest))
+		},
+		GetV2BulkVariableInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
+}
+
+// V2BulkVariableGroupInfo implements API for Mixer.V2BulkVariableGroupInfo.
+func (s *Server) V2BulkVariableGroupInfo(
+	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
+) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
 	}
-	return nil
+
+	v2StartTime := time.Now()
+
+	// Use the V1 implementation for now.
+	v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
+
+	convertV1ToV2BulkVariableGroupInfo(v2Resp)
+
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableGroupInfo(ctx, req.(*pbv1.BulkVariableGroupInfoRequest))
+		},
+		GetV2BulkVariableGroupInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
+}
+
+// convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
+func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse) {
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, info := range resp.GetData() {
+		if info.GetInfo() == nil {
+			continue
+		}
+		info.Info.ParentStatVarGroups = nil
+		for _, childSV := range info.GetInfo().GetChildStatVars() {
+			childSV.SearchName = ""
+			childSV.SearchNames = nil
+		}
+	}
+}
+
+// V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
+func (s *Server) V2GetLocationsRankings(
+	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+) (*pb.GetLocationsRankingsResponse, error) {
+
+	// Use the V1 implementation for now.
+	v1Resp, err := s.GetLocationsRankings(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	if v1Resp == nil {
+		return &pb.GetLocationsRankingsResponse{}, nil
+	}
+	v2Resp := proto.Clone(v1Resp).(*pb.GetLocationsRankingsResponse)
+
+	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
+	v2Resp.Legacy = true
+
+	return v2Resp, nil
 }

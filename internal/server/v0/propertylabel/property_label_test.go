@@ -47,17 +47,6 @@ func TestMerge(t *testing.T) {
 				OutLabels: []string{"containedIn"},
 			},
 		},
-		{
-			"bio/tiger",
-			&pb.PropertyLabels{
-				InLabels:  []string{},
-				OutLabels: []string{"color", "longitude", "name"},
-			},
-			&pb.PropertyLabels{
-				InLabels:  []string{},
-				OutLabels: []string{},
-			},
-		},
 	} {
 		base := map[string]string{}
 		branch := map[string]string{}

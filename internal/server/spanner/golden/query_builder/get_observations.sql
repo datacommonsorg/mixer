@@ -3,6 +3,7 @@
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,
@@ -11,7 +12,7 @@
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation
+			Observation@{FORCE_INDEX=_BASE_TABLE}
 		WHERE
-			variable_measured IN ('AirPollutant_Cancer_Risk')
+			variable_measured = 'AirPollutant_Cancer_Risk'
 			AND observation_about IN ('geoId/01001','geoId/02013')

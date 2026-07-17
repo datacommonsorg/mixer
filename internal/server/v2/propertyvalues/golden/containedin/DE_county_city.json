@@ -1,0 +1,380 @@
+{
+  "data": {
+    "geoId/10": {
+      "arcs": {
+        "containedInPlace+": {
+          "nodes": [
+            {
+              "name": "Kent County",
+              "dcid": "geoId/10001"
+            },
+            {
+              "name": "New Castle County",
+              "dcid": "geoId/10003"
+            },
+            {
+              "name": "Sussex County",
+              "dcid": "geoId/10005"
+            },
+            {
+              "name": "Arden",
+              "dcid": "geoId/1001400"
+            },
+            {
+              "name": "Ardencroft",
+              "dcid": "geoId/1001530"
+            },
+            {
+              "name": "Ardentown",
+              "dcid": "geoId/1001660"
+            },
+            {
+              "name": "Bear",
+              "dcid": "geoId/1004130"
+            },
+            {
+              "name": "Bellefonte",
+              "dcid": "geoId/1004650"
+            },
+            {
+              "name": "Bethany Beach",
+              "dcid": "geoId/1005690"
+            },
+            {
+              "name": "Bethel",
+              "dcid": "geoId/1005820"
+            },
+            {
+              "name": "Blades",
+              "dcid": "geoId/1006730"
+            },
+            {
+              "name": "Bowers",
+              "dcid": "geoId/1007250"
+            },
+            {
+              "name": "Bridgeville",
+              "dcid": "geoId/1008680"
+            },
+            {
+              "name": "Brookside",
+              "dcid": "geoId/1009850"
+            },
+            {
+              "name": "Camden",
+              "dcid": "geoId/1010760"
+            },
+            {
+              "name": "Cheswold",
+              "dcid": "geoId/1014660"
+            },
+            {
+              "name": "Claymont",
+              "dcid": "geoId/1015310"
+            },
+            {
+              "name": "Clayton",
+              "dcid": "geoId/1015440"
+            },
+            {
+              "name": "Dagsboro",
+              "dcid": "geoId/1018950"
+            },
+            {
+              "name": "Delaware City",
+              "dcid": "geoId/1019730"
+            },
+            {
+              "name": "Delmar",
+              "dcid": "geoId/1020380"
+            },
+            {
+              "name": "Dewey Beach",
+              "dcid": "geoId/1020900"
+            },
+            {
+              "name": "Dover",
+              "dcid": "geoId/1021200"
+            },
+            {
+              "name": "Dover Base Housing",
+              "dcid": "geoId/1021387"
+            },
+            {
+              "name": "Edgemoor",
+              "dcid": "geoId/1023240"
+            },
+            {
+              "name": "Ellendale",
+              "dcid": "geoId/1024020"
+            },
+            {
+              "name": "Elsmere",
+              "dcid": "geoId/1024540"
+            },
+            {
+              "name": "Farmington",
+              "dcid": "geoId/1025840"
+            },
+            {
+              "name": "Felton",
+              "dcid": "geoId/1026620"
+            },
+            {
+              "name": "Fenwick Island",
+              "dcid": "geoId/1026880"
+            },
+            {
+              "name": "Frankford",
+              "dcid": "geoId/1028310"
+            },
+            {
+              "name": "Frederica",
+              "dcid": "geoId/1028440"
+            },
+            {
+              "name": "Georgetown",
+              "dcid": "geoId/1029090"
+            },
+            {
+              "name": "Glasgow",
+              "dcid": "geoId/1029350"
+            },
+            {
+              "name": "Greenville",
+              "dcid": "geoId/1031430"
+            },
+            {
+              "name": "Greenwood",
+              "dcid": "geoId/1031560"
+            },
+            {
+              "name": "Harrington",
+              "dcid": "geoId/1033120"
+            },
+            {
+              "name": "Hartly",
+              "dcid": "geoId/1033250"
+            },
+            {
+              "name": "Henlopen Acres",
+              "dcid": "geoId/1033900"
+            },
+            {
+              "name": "Highland Acres",
+              "dcid": "geoId/1034810"
+            },
+            {
+              "name": "Hockessin",
+              "dcid": "geoId/1035850"
+            },
+            {
+              "name": "Houston",
+              "dcid": "geoId/1036760"
+            },
+            {
+              "name": "Kent Acres",
+              "dcid": "geoId/1038710"
+            },
+            {
+              "name": "Kenton",
+              "dcid": "geoId/1039100"
+            },
+            {
+              "name": "Laurel",
+              "dcid": "geoId/1041310"
+            },
+            {
+              "name": "Leipsic",
+              "dcid": "geoId/1041700"
+            },
+            {
+              "name": "Lewes",
+              "dcid": "geoId/1041830"
+            },
+            {
+              "name": "Lincoln",
+              "dcid": "geoId/1042480"
+            },
+            {
+              "name": "Little Creek",
+              "dcid": "geoId/1042870"
+            },
+            {
+              "name": "Long Neck",
+              "dcid": "geoId/1043245"
+            },
+            {
+              "name": "Magnolia",
+              "dcid": "geoId/1044430"
+            },
+            {
+              "name": "Middletown",
+              "dcid": "geoId/1047030"
+            },
+            {
+              "name": "Milford",
+              "dcid": "geoId/1047420"
+            },
+            {
+              "name": "Millsboro",
+              "dcid": "geoId/1047940"
+            },
+            {
+              "name": "Millville",
+              "dcid": "geoId/1048200"
+            },
+            {
+              "name": "Milton",
+              "dcid": "geoId/1048330"
+            },
+            {
+              "name": "Newark",
+              "dcid": "geoId/1050670"
+            },
+            {
+              "name": "New Castle",
+              "dcid": "geoId/1050800"
+            },
+            {
+              "name": "Newport",
+              "dcid": "geoId/1051190"
+            },
+            {
+              "name": "North Star",
+              "dcid": "geoId/1052490"
+            },
+            {
+              "name": "Ocean View",
+              "dcid": "geoId/1053920"
+            },
+            {
+              "name": "Odessa",
+              "dcid": "geoId/1054050"
+            },
+            {
+              "name": "Owens Station",
+              "dcid": "geoId/1054800"
+            },
+            {
+              "name": "Pike Creek",
+              "dcid": "geoId/1056490"
+            },
+            {
+              "name": "Pike Creek Valley",
+              "dcid": "geoId/1056500"
+            },
+            {
+              "name": "Port Penn",
+              "dcid": "geoId/1058600"
+            },
+            {
+              "name": "Rehoboth Beach",
+              "dcid": "geoId/1060290"
+            },
+            {
+              "name": "Rising Sun-Lebanon",
+              "dcid": "geoId/1061265"
+            },
+            {
+              "name": "Riverview",
+              "dcid": "geoId/1061480"
+            },
+            {
+              "name": "Rodney Village",
+              "dcid": "geoId/1061720"
+            },
+            {
+              "name": "St. Georges",
+              "dcid": "geoId/1063800"
+            },
+            {
+              "name": "Seaford",
+              "dcid": "geoId/1064320"
+            },
+            {
+              "name": "Selbyville",
+              "dcid": "geoId/1064840"
+            },
+            {
+              "name": "Slaughter Beach",
+              "dcid": "geoId/1067050"
+            },
+            {
+              "name": "Smyrna",
+              "dcid": "geoId/1067310"
+            },
+            {
+              "name": "South Bethany",
+              "dcid": "geoId/1067700"
+            },
+            {
+              "name": "Talleyville",
+              "dcid": "geoId/1070560"
+            },
+            {
+              "name": "Townsend",
+              "dcid": "geoId/1072510"
+            },
+            {
+              "name": "Viola",
+              "dcid": "geoId/1074330"
+            },
+            {
+              "name": "Wilmington",
+              "dcid": "geoId/1077580"
+            },
+            {
+              "name": "Wilmington Manor",
+              "dcid": "geoId/1077840"
+            },
+            {
+              "name": "Winterthur",
+              "dcid": "geoId/1079010"
+            },
+            {
+              "name": "Woodside",
+              "dcid": "geoId/1080830"
+            },
+            {
+              "name": "Woodside East",
+              "dcid": "geoId/1080895"
+            },
+            {
+              "name": "Wyoming",
+              "dcid": "geoId/1081350"
+            },
+            {
+              "name": "Stanton",
+              "dcid": "wikidataId/Q2331926"
+            },
+            {
+              "name": "Banning",
+              "dcid": "wikidataId/Q4856978"
+            },
+            {
+              "name": "Glenville",
+              "dcid": "wikidataId/Q5569402"
+            },
+            {
+              "name": "North Laurel",
+              "dcid": "wikidataId/Q56274495"
+            },
+            {
+              "name": "New Market",
+              "dcid": "wikidataId/Q7009998"
+            },
+            {
+              "name": "Saint Johnstown",
+              "dcid": "wikidataId/Q7401496"
+            },
+            {
+              "name": "Dover Air Force Base",
+              "dcid": "wikidataId/Q755023"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

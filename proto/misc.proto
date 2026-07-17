@@ -54,24 +54,6 @@ message SearchEntityResult {
   string name = 2;
 }
 
-// Search request sent to the mixer.
-message SearchRequest {
-  // Search query which is just a plain text string, e.g. "california".
-  // This is not a datalog query, but a plain text query. The mixer is free
-  // to choose an interpretation of the query, e.g. using NLP or just plain
-  // keyword search and return relevant entities from the graph.
-  string query = 1;
-
-  // Maximum number of entities to return.
-  int32 max_results = 2;
-}
-
-// Search response from mixer.
-message SearchResponse {
-  // Matching entities broken down by type.
-  repeated SearchResultSection section = 1;
-}
-
 // Empty request to get version information.
 message GetVersionRequest {}
 

@@ -21,6 +21,7 @@ import (
 	"sort"
 	"testing"
 
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
@@ -103,7 +104,7 @@ func TestGetObservations(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservations(ctx, c.variables, c.entities)
+			actual, err := client.GetObservations(ctx, c.variables, c.entities, "")
 			if err != nil {
 				return nil, err
 			}
@@ -125,7 +126,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, "")
 			if err != nil {
 				return nil, err
 			}
@@ -186,6 +187,162 @@ func TestSparql(t *testing.T) {
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return client.Sparql(ctx, c.nodes, c.queries, c.opts)
+		})
+	}
+}
+
+func TestGetProvenanceSummary(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range provenanceSummaryTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetProvenanceSummary(ctx, c.variables)
+		})
+	}
+}
+
+func TestGetEventCollectionDate(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionDateTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetEventCollectionDate(ctx, c.placeDcid, c.eventType)
+		})
+	}
+}
+
+func TestFindEventDcids(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			res, err := client.GetEventCollectionDcids(ctx, c.placeDcid, c.eventType, c.date)
+			if err != nil {
+				return nil, err
+			}
+			// Trim to 100 events to avoid very large golden files.
+			if len(res) > 100 {
+				res = res[:100]
+			}
+			return res, nil
+		})
+	}
+}
+
+func TestGetEventCollection(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			req := &pbv1.EventCollectionRequest{
+				AffectedPlaceDcid: c.placeDcid,
+				EventType:         c.eventType,
+				Date:              c.date,
+			}
+			if c.filterProp != "" {
+				req.FilterProp = c.filterProp
+				req.FilterUnit = c.filterUnit
+				req.FilterUpperLimit = c.filterUpperLimit
+				req.FilterLowerLimit = c.filterLowerLimit
+			}
+			res, err := client.GetEventCollection(ctx, req)
+			if err != nil {
+				return nil, err
+			}
+			// Trim to 10 events to avoid very large golden files.
+			if len(res.Events) > 10 {
+				res.Events = res.Events[:10]
+			}
+			return res, nil
+		})
+	}
+}
+
+func TestGetStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := client.GetStatVarGroupNode(ctx, c.nodes, c.includeDefinitions)
+			if err != nil {
+				return nil, err
+			}
+			sortStatVarGroupNode(actual)
+			return actual, nil
+		})
+	}
+}
+
+func TestGetFilteredStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := client.GetFilteredStatVarGroupNode(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions)
+			if err != nil {
+				return nil, err
+			}
+			sortFilteredStatVarGroupNode(actual)
+			return actual, nil
+		})
+	}
+}
+
+func TestGetFilteredTopic(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetFilteredTopic(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
 		})
 	}
 }
@@ -268,4 +425,83 @@ func sortObservations(results []*spanner.Observation) {
 
 		return a.FacetId < b.FacetId
 	})
+}
+
+func TestGetTermEmbeddings(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getTermEmbeddingsTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetTermEmbeddingQuery(ctx, c.modelName, c.searchLabel, c.taskType)
+		})
+	}
+}
+
+func TestVectorSearch(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range vectorSearchQueryTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.VectorSearchQuery(ctx, c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes, c.embeddingLabel)
+		})
+	}
+}
+
+func TestFilterNodesByTypes(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range filterNodesByTypeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.FilterNodesByTypes(ctx, c.nodes, c.typeFilters)
+		})
+	}
+}
+
+// sortStatVarGroupNode sorts StatVarGroupNode results by SVG and subject_id to ensure deterministic order in tests.
+func sortStatVarGroupNode(results []*spanner.StatVarGroupNode) {
+	sort.Slice(results, func(i, j int) bool {
+		a, b := results[i], results[j]
+
+		if a.SVG != b.SVG {
+			return a.SVG < b.SVG
+		}
+
+		return a.SubjectID < b.SubjectID
+	})
+}
+
+// sortFilteredStatVarGroupNode sorts the children of a FilteredStatVarGroupNode by subject_id to ensure deterministic order in tests.
+func sortFilteredStatVarGroupNode(results map[string]*spanner.FilteredStatVarGroupNode) {
+	for _, node := range results {
+		sort.Slice(node.SVGChild, func(i, j int) bool {
+			return node.SVGChild[i].SubjectID < node.SVGChild[j].SubjectID
+		})
+		sort.Slice(node.ChildSV, func(i, j int) bool {
+			return node.ChildSV[i].SubjectID < node.ChildSV[j].SubjectID
+		})
+		sort.Slice(node.ChildSVG, func(i, j int) bool {
+			return node.ChildSVG[i].SubjectID < node.ChildSVG[j].SubjectID
+		})
+	}
 }

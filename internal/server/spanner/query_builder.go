@@ -33,6 +33,8 @@ import (
 
 const (
 	// SQL query snippets.
+	// WHERE keyword for SQL queries.
+	sqlWhere = "WHERE"
 	// Prefix for graph queries with any node selection.
 	sqlReturn = "\n\t\tRETURN"
 	// DISTINCT keyword for SQL queries.
@@ -43,49 +45,110 @@ const (
 	sqlOrderBy = "\n\t\tORDER BY "
 	// LIMIT clause for SQL queries.
 	sqlLimit = "\n\t\tLIMIT @limit"
+	// AND keyword for SQL queries.
+	sqlAnd = "AND"
 )
 
 const (
 	// Prefix length of value to include in object value ids.
 	objectValuePrefix = 16
+	// Template for fetching child SVs
+	templateSV = "SV"
+	// Template for fetching child SVGs
+	templateSVG = "SVG"
+	// isPartOf predicate
+	predicateIsPartOf = "isPartOf"
+	// source predicate
+	predicateSource = "source"
+	// memberOf predicate
+	predicateMemberOf = "memberOf"
+	// specializationOf predicate
+	predicateSpecializationOf = "specializationOf"
+	// Dataset dcid prefix
+	prefixDataset = "dc/d/"
+	// Source dcid prefix
+	prefixSource = "dc/s/"
+	// StatVarGroup dcid prefix
+	prefixSVG = "dc/g/"
+	// key for filtering nodes by language suffix
+	filterLang = "$lang"
 )
 
-func GetCompletionTimestampQuery() *spanner.Statement {
+// QueryOperatorHandler defines the signature for processing meta-filters.
+// It returns the generated SQL condition and mutates the params map directly.
+type QueryOperatorHandler func(prefix string, values []string, params map[string]interface{}) string
+
+// queryOperatorRegistry maps operator keys to their respective handlers.
+// Add future operators (e.g., "$date", "$limit") here.
+var queryOperatorRegistry = map[string]QueryOperatorHandler{
+	filterLang: handleLangOperator,
+}
+
+// handleLangOperator generates the SQL clause for language matching.
+func handleLangOperator(prefix string, langs []string, params map[string]interface{}) string {
+	if len(langs) == 0 {
+		return ""
+	}
+	var parts []string
+	for j, lang := range langs {
+		paramName := fmt.Sprintf("%s_%d", prefix, j)
+		// Database stores values exactly like "Value"@en
+		params[paramName] = "@" + strings.ToLower(lang)
+		parts = append(parts, fmt.Sprintf("ENDS_WITH(n.value, @%s)", paramName))
+	}
+	return strings.Join(parts, " OR ")
+}
+
+func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
+	sql := statements.getCompletionTimestamp
+	if useNewSchema {
+		sql = statements.getIngestionHistoryTimestamp
+	}
 	return &spanner.Statement{
-		SQL: statements.getCompletionTimestamp,
+		SQL: sql,
 	}
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
+	idFilter, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
+
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    statements.getPropsBySubjectID,
-			Params: map[string]interface{}{"ids": ids},
+			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, idFilter),
+			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    statements.getPropsByObjectID,
-			Params: map[string]interface{}{"ids": ids},
+			SQL:    fmt.Sprintf(statements.getPropsByObjectID, idFilter),
+			Params: params,
 		}
 	}
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	params := map[string]interface{}{"ids": ids}
+	idFilter, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	// Attach predicates.
 	filterPredicate := ""
 	if arc.SingleProp != "" && arc.SingleProp != v3.Wildcard && arc.Decorator != v3.Chain {
 		filterPredicate = statements.filterPredicate
-		params["predicates"] = []string{arc.SingleProp}
+		params["predicate"] = arc.SingleProp
 	} else if len(arc.BracketProps) > 0 {
-		filterPredicate = statements.filterPredicate
-		params["predicates"] = arc.BracketProps
+		filterPredicate = statements.filterPredicates
+		params["predicate"] = arc.BracketProps
 	}
 
 	// Generate filters.
 	subqueries := []string{}
+	var filterParts []string // Holds the WHERE clauses for query operators
+
 	if len(arc.Filter) > 0 {
 		// Sort for determinism.
 		props := make([]string, 0, len(arc.Filter))
@@ -96,42 +159,93 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 		i := 0
 		for _, prop := range props {
+			// 1. Dispatch to Query Operator Handler (if it exists)
+			if handler, isOperator := queryOperatorRegistry[prop]; isOperator {
+				safeOpName := strings.TrimPrefix(prop, "$") // e.g., "lang"
+				prefix := fmt.Sprintf("op_global_%s", safeOpName)
+
+				if clause := handler(prefix, arc.Filter[prop], params); clause != "" {
+					filterParts = append(filterParts, "("+clause+")")
+				}
+				continue // Skip standard property logic
+			}
+
+			// 2. Standard Property Processing
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
 			if len(filterVal) > 0 {
-				objectFilter = fmt.Sprintf(statements.filterValue, i)
+				objectFilter = fmt.Sprintf(statements.filterValues, i)
 				params["val"+strconv.Itoa(i)] = filterVal
 			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
-			i += 1
+			indexHint := ""
+			if len(filterVal) > 0 {
+				indexHint = "@{FORCE_INDEX=InEdge}"
+			}
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
+			i++
 		}
 	}
 
-	// Order subqueries by selectivity (i.e. expected cardinality of edges) for query performance.
+	// Property-specific filters (from arc.BracketFilters)
+	if len(arc.BracketFilters) > 0 {
+		// Sort properties for deterministic SQL generation
+		sortedProps := make([]string, 0, len(arc.BracketFilters))
+		for prop := range arc.BracketFilters {
+			sortedProps = append(sortedProps, prop)
+		}
+		sort.Strings(sortedProps)
+
+		for i, prop := range sortedProps {
+			propFilters := arc.BracketFilters[prop]
+			propParam := fmt.Sprintf("prop_filter_%d", i)
+			params[propParam] = prop
+
+			// Sort operator keys to guarantee deterministic SQL output
+			opKeys := make([]string, 0, len(propFilters))
+			for k := range propFilters {
+				opKeys = append(opKeys, k)
+			}
+			sort.Strings(opKeys)
+
+			for _, opKey := range opKeys {
+				if handler, isOperator := queryOperatorRegistry[opKey]; isOperator {
+					safeOpName := strings.TrimPrefix(opKey, "$")
+					prefix := fmt.Sprintf("op_prop_%d_%s", i, safeOpName)
+
+					if clause := handler(prefix, propFilters[opKey], params); clause != "" {
+						filterParts = append(filterParts, fmt.Sprintf("(e.predicate != @%s OR %s)", propParam, clause))
+					}
+				}
+			}
+		}
+	}
+
+	var nodeFilterStr string
+	if len(filterParts) > 0 {
+		nodeFilterStr = " WHERE " + strings.Join(filterParts, " AND ")
+	}
+
 	var subquery string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
-		// Add filters last for out-edges.
-		subqueries = append([]string{subquery}, subqueries...)
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
-		// Add filters first for in-edges.
-		subqueries = append(subqueries, subquery)
 	}
+	subqueries = append([]string{subquery}, subqueries...)
 
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
@@ -171,12 +285,14 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 
 	filters := []string{}
 	if len(variables) > 0 {
-		stmt.Params["variables"] = variables
-		filters = append(filters, statements.selectVariableDcids)
+		variableFilter, variableVal := getParamStatement("variable", variables)
+		stmt.Params["variable"] = variableVal
+		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, variableFilter))
 	}
 	if len(entities) > 0 {
-		stmt.Params["entities"] = entities
-		filters = append(filters, statements.selectEntityDcids)
+		entityFilter, entityVal := getParamStatement("entity", entities)
+		stmt.Params["entity"] = entityVal
+		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, entityFilter))
 	}
 	stmt.SQL += where + strings.Join(filters, and)
 
@@ -189,6 +305,47 @@ func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *
 	stmt.Params["ancestor"] = containedInPlace.Ancestor
 	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType
 	return stmt
+}
+
+func FilterStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
+	if len(variables) == 0 && len(entities) == 0 {
+		return nil, fmt.Errorf("FilterStatVarsByEntityQuery must be called with at least one variable or entity")
+	}
+	sql := statements.getStatVarsByEntity
+	params := map[string]interface{}{}
+
+	var filters []string
+	if len(variables) > 0 {
+		filter, val := getParamStatement("variables", variables)
+		params["variables"] = val
+		filters = append(filters, fmt.Sprintf("variable_measured %s", filter))
+	}
+	if len(entities) > 0 {
+		filter, val := getParamStatement("entities", entities)
+		params["entities"] = val
+		filters = append(filters, fmt.Sprintf("observation_about %s", filter))
+	}
+
+	if len(filters) > 0 {
+		sql += where + strings.Join(filters, and)
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, nil
+}
+
+// CheckGroupPlaceExistenceQuery returns a query to check existence of svg/topic for places.
+func CheckGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.checkGroupPlaceExistence,
+		Params: map[string]interface{}{
+			"variableGroups": variableGroups,
+			"entities":       entities,
+			"predicate":      predicate,
+		},
+	}
 }
 
 func SearchNodesQuery(query string, types []string) *spanner.Statement {
@@ -241,44 +398,26 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	sql := statements.graphPrefixAny
 	params := map[string]interface{}{}
 
-	aliasToDcid := mapAliasToDcid(queries)
 	safeAliasMap := generateSafeAliasMap(queries)
 	count := 0
 	triples := []string{}
-	dcids := map[string]bool{}
+	nodeMaps := []string{}
 	for _, q := range queries {
-		// Skip dcid triples which will be resolved.
-		if q.Pred == "dcid" {
-			continue
-		}
-
 		eCount := strconv.Itoa(count)
 		params["predicate"+eCount] = q.Pred
 
 		// Parse subject.
 		sId := safeAliasMap[q.Sub.Alias]
 		var sFilter string
-		if dcid, ok := aliasToDcid[q.Sub.Alias]; ok {
-			if _, ok := dcids[dcid]; !ok {
-				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
-				params[sId] = []string{dcid}
-				dcids[dcid] = true
-			}
-		}
 
 		// Parse object.
 		var oId, oFilter string
 		if node, ok := q.Obj.(types.Node); ok {
 			oId = safeAliasMap[node.Alias]
-			if dcid, ok := aliasToDcid[node.Alias]; ok {
-				if _, ok := dcids[dcid]; !ok {
-					oFilter = fmt.Sprintf(statements.nodeFilter, oId)
-					params[oId] = []string{dcid}
-					dcids[dcid] = true
-				}
+			if q.Pred == "dcid" {
+				nodeMaps = append(nodeMaps, oId+" = "+sId)
 			}
 		} else {
-			oId = "o" + eCount
 			var vals []string
 			switch v := q.Obj.(type) {
 			case []string:
@@ -288,18 +427,38 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 			default:
 				return nil, fmt.Errorf("unsupported object type: %T", q.Obj)
 			}
-			if q.Pred != "typeOf" { // typeOf has reference object.
+			if q.Pred != "typeOf" && q.Pred != "dcid" { // typeOf has reference object.
 				vals = addObjectValues(vals)
 			}
-			oFilter = fmt.Sprintf(statements.nodeFilter, oId)
-			params[oId] = vals
+			if q.Pred == "dcid" {
+				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
+				params[sId] = vals
+			} else {
+				oId = "o" + eCount
+				oFilter = fmt.Sprintf(statements.nodeFilter, oId)
+				params[oId] = vals
+			}
+
 		}
 
-		triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
-		count++
+		if q.Pred == "dcid" {
+			if oId == "" {
+				triples = append(triples, fmt.Sprintf(statements.node, sId, sFilter))
+			} else {
+				triples = append(triples, fmt.Sprintf(statements.node, oId, oFilter))
+			}
+		} else {
+			triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
+			count++
+		}
+
 	}
 
 	sql += strings.Join(triples, ",\n\t\t")
+
+	if len(nodeMaps) > 0 {
+		sql += "\n\t\t" + sqlWhere + "\n\t\t\t" + strings.Join(nodeMaps, "\n\t\t\tAND ")
+	}
 
 	var nodeAliases []string
 	for _, n := range nodes {
@@ -333,15 +492,126 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-// mapAliasToDcid maps SPARQL aliases to their corresponding DCIDs.
-func mapAliasToDcid(queries []*types.Query) map[string]string {
-	dcidMap := make(map[string]string)
-	for _, q := range queries {
-		if q.Pred == "dcid" {
-			dcidMap[q.Sub.Alias] = q.Obj.(string)
-		}
+// GetKeyValueStoreQuery builds a query targeting KeyValueStore (or legacy Cache table when useKeyValueStore is false).
+func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string, useKeyValueStore bool) *spanner.Statement {
+	keyFilter, keyVal := getParamStatement("key", keys)
+	params := map[string]interface{}{
+		"type": string(typeFilter),
+		"key":  keyVal,
 	}
-	return dcidMap
+
+	sql := statements.getCacheData
+	if useKeyValueStore {
+		sql = statements.getKeyValueStoreData
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(sql, keyFilter),
+		Params: params,
+	}
+}
+
+// GetStatVarGroupNode returns a query to get StatVarGroupNode info.
+func GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
+	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
+
+	selfFilter := statements.attachSVGs
+
+	sqlTemplate := statements.getStatVarGroupNode
+	if includeDefinitions {
+		sqlTemplate = statements.getStatVarGroupNodeWithDefinitions
+	}
+
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(sqlTemplate, nodeFilter, selfFilter),
+		Params: map[string]interface{}{
+			"nodes": nodeVal,
+		},
+	}
+}
+
+// GetSVGChildren returns a query to get all children for a given stat var group.
+func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statement {
+	sqlTemplate := statements.getSVGChildren
+	if includeDefinitions {
+		sqlTemplate = statements.getSVGChildrenWithDefinitions
+	}
+	return &spanner.Statement{
+		SQL: sqlTemplate,
+		Params: map[string]interface{}{
+			"node": node,
+		},
+	}
+}
+
+// filterDescentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
+func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+	var params = map[string]interface{}{}
+
+	var entityFilter string
+	distinct := "observation_about"
+	if constrainedImport != "" {
+		entityFilter = statements.filterDescendentStatVarsByImport
+		params["predicate"] = getImportFilterPredicate(constrainedImport)
+		params["import"] = constrainedImport
+		distinct = "e1.subject_id"
+	}
+	if len(constrainedPlaces) > 0 {
+		placeFilter, placeVal := getParamStatement("places", constrainedPlaces)
+		if entityFilter == "" {
+			entityFilter = "\n\t\t\t\t" + sqlWhere + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+		} else {
+			entityFilter = entityFilter + "\n\t\t\t\t\t" + sqlAnd + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+		}
+		params["places"] = placeVal
+	}
+
+	var numFilter string
+	if numEntitiesExistence > 1 {
+		numFilter = fmt.Sprintf(statements.filterDescendentStatVarsByNumEntitiesExistence, distinct)
+		params["numEntitiesExistence"] = numEntitiesExistence
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.filterDescendentStatVars, entityFilter, numFilter),
+		Params: params,
+	}
+}
+
+// GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
+func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
+	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery.Params["node"] = node
+
+	var baseStatement string
+	switch template {
+	case templateSV:
+		if includeDefinitions {
+			baseStatement = statements.getFilteredChildSVsWithDefinitions
+		} else {
+			baseStatement = statements.getFilteredChildSVs
+		}
+	case templateSVG:
+		baseStatement = statements.getFilteredChildSVGs
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(baseStatement, subquery.SQL),
+		Params: subquery.Params,
+	}
+}
+
+// GetFilteredTopicChildren returns a query to get children for given topics filtered by constrained entities and existence threshold.
+func GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+
+	nodeFilter, nodeVal := getParamStatement("node", nodes)
+	subquery.Params["node"] = nodeVal
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.getFilteredTopic, subquery.SQL, nodeFilter),
+		Params: subquery.Params,
+	}
 }
 
 // generateSafeAliasMap generates a map of safe aliases for SPARQL queries.
@@ -390,4 +660,85 @@ func addObjectValues(input []string) []string {
 		result = append(result, generateObjectValue(v))
 	}
 	return result
+}
+
+// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter.
+func getParamStatement(param string, inputs []string) (string, interface{}) {
+	return fmt.Sprintf(statements.getParams, param), inputs
+}
+
+// getImportFilterPredicate returns the appropriate filter predicate for a given filter entity.
+func getImportFilterPredicate(entity string) string {
+	if strings.HasPrefix(entity, prefixDataset) {
+		return predicateIsPartOf
+	}
+	return predicateSource
+}
+
+func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getEventCollectionDate,
+		Params: map[string]interface{}{
+			"placeID":   placeID,
+			"eventType": eventType,
+		},
+	}
+}
+
+func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Statement {
+	if cfg, ok := EventConfigs[eventType]; ok && cfg.MagnitudeProp != "" {
+		return &spanner.Statement{
+			SQL: statements.getEventCollectionDcidsWithMagnitude,
+			Params: map[string]interface{}{
+				"placeID":       placeID,
+				"eventType":     eventType,
+				"date":          date,
+				"magnitudeProp": cfg.MagnitudeProp,
+			},
+		}
+	}
+	return &spanner.Statement{
+		SQL: statements.getEventCollectionDcids,
+		Params: map[string]interface{}{
+			"placeID":   placeID,
+			"eventType": eventType,
+			"date":      date,
+		},
+	}
+}
+
+// GetTermEmbeddingQuery returns a Spanner statement to extract embedding from a query.
+func GetTermEmbeddingQuery(modelName, searchLabel, taskType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(statements.getEmbeddingFromQuery, "`"+modelName+"`"),
+		Params: map[string]interface{}{
+			"search_label": searchLabel,
+			"task_type":    taskType,
+		},
+	}
+}
+
+// VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
+func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {
+	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
+		Params: map[string]interface{}{
+			"embeddings":      embeddings,
+			"limit":           limit,
+			"node_types":      nodeTypes,
+			"embedding_label": embeddingLabel,
+		},
+	}
+}
+
+// FilterNodesByTypesQuery returns a Spanner statement to filter nodes by type.
+func FilterNodesByTypesQuery(nodes []string, typeFilters []string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.filterNodesByTypes,
+		Params: map[string]interface{}{
+			"nodes":        nodes,
+			"type_filters": typeFilters,
+		},
+	}
 }

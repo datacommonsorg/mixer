@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"fmt"
 	"path"
 	"runtime"
 	"strings"
@@ -89,6 +88,39 @@ func TestGetObservationsContainedInPlaceQuery(t *testing.T) {
 	}
 }
 
+func TestFilterStatVarsByEntityQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range filterStatVarsByEntityTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.FilterStatVarsByEntityQuery(c.variables, c.entities)
+		})
+	}
+}
+
+func TestFilterStatVarsByEntityQueryError(t *testing.T) {
+	t.Parallel()
+
+	_, err := spanner.FilterStatVarsByEntityQuery([]string{}, []string{})
+	if err == nil {
+		t.Errorf("FilterStatVarsByEntityQuery() expected error, got nil")
+	}
+}
+
+func TestCheckGroupPlaceExistenceQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range checkGroupPlaceExistenceTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.CheckGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate), nil
+		})
+	}
+}
+
 func TestSearchNodesQuery(t *testing.T) {
 	t.Parallel()
 
@@ -125,6 +157,138 @@ func TestSparqlQuery(t *testing.T) {
 	}
 }
 
+func TestGetProvenanceSummaryQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range provenanceSummaryTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, c.variables, false), nil
+		})
+	}
+}
+
+func TestGetKeyValueStoreQuery(t *testing.T) {
+	t.Parallel()
+
+	stmt := spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, []string{"foo"}, true)
+	if stmt == nil {
+		t.Fatal("GetKeyValueStoreQuery returned nil statement")
+	}
+	if !strings.Contains(stmt.SQL, "FROM\n\t\t\tKeyValueStore") {
+		t.Errorf("GetKeyValueStoreQuery(..., useKeyValueStore=true) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
+	}
+}
+
+func TestGetEventCollectionDateQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range eventCollectionDateTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetEventCollectionDateQuery(c.placeDcid, c.eventType), nil
+		})
+	}
+}
+
+func TestGetEventCollectionDcidsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetEventCollectionDcidsQuery(c.placeDcid, c.eventType, c.date), nil
+		})
+	}
+}
+
+func TestGetStatVarGroupNodeQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetStatVarGroupNodeQuery(c.nodes, c.includeDefinitions), nil
+		})
+	}
+}
+
+func TestGetSVGChildrenQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getSVGChildrenTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetSVGChildrenQuery(c.node, c.includeDefinitions), nil
+		})
+	}
+}
+
+func TestGetFilteredSVGChildren(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getFilteredSVGChildrenTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions), nil
+		})
+	}
+}
+
+func TestGetFilteredTopicChildren(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
+		})
+	}
+}
+
+func TestGetTermEmbeddingQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range embeddingFromQueryTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetTermEmbeddingQuery(c.modelName, c.searchLabel, c.taskType), nil
+		})
+	}
+}
+
+func TestVectorSearchQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range vectorSearchNodeTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.VectorSearchQuery(c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes, c.embeddingLabel), nil
+		})
+	}
+}
+
+func TestFilterNodesByTypesQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range filterNodesByTypeTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.FilterNodesByTypesQuery(c.nodes, c.typeFilters), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
@@ -137,7 +301,7 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	if err != nil {
 		t.Fatalf("test function error (%v): %v", goldenFile, err)
 	}
-	interpolated := interpolateSQL(actual.(*cloudSpanner.Statement))
+	interpolated := spanner.InterpolateSQL(actual.(*cloudSpanner.Statement))
 
 	if test.GenerateGolden {
 		err := test.WriteGolden(interpolated, goldenDir, goldenFile)
@@ -156,36 +320,4 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	if diff := cmp.Diff(want, interpolated); diff != "" {
 		t.Errorf("%v payload mismatch (-want +got):\n%s", goldenFile, diff)
 	}
-}
-
-// Replace params with values in SQL. ONLY FOR TESTS.
-func interpolateSQL(stmt *cloudSpanner.Statement) string {
-	sqlString := stmt.SQL
-	for key, value := range stmt.Params {
-		placeholder := "@" + key
-		var formattedValue string
-
-		switch v := value.(type) {
-		case string:
-			formattedValue = fmt.Sprintf("'%s'", strings.ReplaceAll(v, "'", "''"))
-		case []string:
-			// For UNNEST, represent the array as a comma-separated list
-			// enclosed in parentheses or brackets for clarity.
-			var quotedValues []string
-			for _, s := range v {
-				quotedValues = append(quotedValues, fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''")))
-			}
-			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
-			// Need to handle both UNNEST(@key) and @key
-			sqlString = strings.ReplaceAll(sqlString, "UNNEST("+placeholder+")", formattedValue)
-			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
-			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
-		// ... add more cases for int64, float64, bool, etc.
-		default:
-			// Catch-all for other types
-			formattedValue = fmt.Sprintf("%v", v)
-		}
-		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
-	}
-	return sqlString
 }

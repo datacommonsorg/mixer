@@ -26,11 +26,13 @@ import (
 	"os"
 	"runtime"
 	"runtime/pprof"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -41,6 +43,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -54,6 +58,11 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
+)
+
+const (
+	// Refresh interval for server hooks.
+	periodicRefreshInterval = 1 * time.Hour
 )
 
 var (
@@ -92,10 +101,8 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
-	// Cache map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations
-	// TODO: Test Custom DC and set to true after release
-	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 	// Spanner Graph
+	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Cloud Spanner Graph as database.")
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
 	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
@@ -141,6 +148,10 @@ func main() {
 	slog.Info("Created feature flags")
 
 	ctx := context.Background()
+
+	// The new Spanner-based backend can be enabled either by a server config flag (for stable configuration) or a feature flag (for experimental configuration).
+	// After launch, only the server config should be used.
+	shouldUseSpannerGraph := *useSpannerGraph || flags.UseSpannerGraph
 
 	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
 	if err == nil && credentials.ProjectID != "" {
@@ -194,19 +205,21 @@ func main() {
 	sources := []datasource.DataSource{}
 
 	// Spanner Graph.
-	if flags.EnableV3 && flags.UseSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
+	var spannerClient spanner.SpannerClient
+	if shouldUseSpannerGraph {
+		var err error
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
+			DatabaseOverride:             flags.SpannerGraphDatabase,
+			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
+			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
+			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		if flags.UseStaleReads {
-			spannerClient.Start()
-			defer spannerClient.Stop()
-		}
-		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
-		// TODO: Order sources by priority once other implementations are added.
-		sources = append(sources, ds)
+		spannerClient.Start()
+		defer spannerClient.Close()
 	}
 	slog.Info("After Spanner client creation")
 
@@ -274,10 +287,15 @@ func main() {
 	slog.Info("After branch setup")
 
 	// Metadata.
+	// Don't set the BigQuery dataset if BigQuery is not enabled.
+	bqDataset := *bigQueryDataset
+	if !*useBigquery {
+		bqDataset = ""
+	}
 	metadata, err := server.NewMetadata(
 		ctx,
 		*hostProject,
-		*bigQueryDataset,
+		bqDataset,
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
@@ -292,7 +310,7 @@ func main() {
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
 	// TODO: clean up how we create and add data sources.
 	var remoteDataSource datasource.DataSource
-	if flags.EnableV3 && *remoteMixerDomain != "" {
+	if shouldUseSpannerGraph && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			slog.Error("Failed to create remote client", "error", err)
@@ -340,14 +358,16 @@ func main() {
 	}
 
 	// SQL Data Source
-	if flags.EnableV3 && sqldb.IsConnected(&sqlClient) {
+	if shouldUseSpannerGraph && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, ds)
 	}
 
 	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) {
-		slog.Error("No bigtables or remote mixer domain or sql database are provided")
+	// An empty store is allowed *only* when there's a stable Spanner configuration.
+	// In particular, feature-flag-enabled Spanner configurations should still require Bigtable as a fallback.
+	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) && !*useSpannerGraph {
+		slog.Error("No bigtables, remote mixer domain, SQL database, or Spanner client provided")
 		os.Exit(1)
 	}
 	store, err := store.NewStore(
@@ -363,7 +383,7 @@ func main() {
 		FetchSVG:       *cacheSVG,
 		SearchSVG:      *cacheSVG,
 		CacheSQL:       sqldb.IsConnected(&store.SQLClient),
-		CacheSVFormula: *cacheSVFormula,
+		CacheSVFormula: flags.UseStatisticalCalculation,
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)
 	if err != nil {
@@ -371,6 +391,30 @@ func main() {
 		os.Exit(1)
 	}
 	slog.Info("After cache creation")
+
+	// Setup Redis client for L2 caching if configured.
+	var redisCacheClient redis.CacheClient
+	if *useRedis && *redisInfo != "" {
+		slog.Info("Setting up Redis cache client")
+		client, err := redis.NewCacheClient(*redisInfo)
+		if err != nil {
+			slog.Error("Failed to create Redis client", "error", err)
+			os.Exit(1)
+		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
+		defer client.Close()
+
+		redisCacheClient = client
+	}
+
+	// Topic Cache Manager: Manages the lifecycle of the topic hierarchy cache.
+	// It handles loading topic data from the database (Bigtable/Spanner)
+	// and maintaining the in-memory cache representation.
+	slog.Info("Initializing topic cache manager")
+	topicCacheManager := topic.NewTopicCacheManager(redisCacheClient)
+
+	// Topic Expander: Implements the resolve.TopicExpander interface wrapping the TopicCacheManager.
+	topicExpander := server.NewTopicExpander(topicCacheManager)
 
 	// Maps client
 	var mapsClient maps.MapsClient
@@ -382,53 +426,116 @@ func main() {
 		}
 	}
 
+	// Initialize SpannerDataSource now that dependencies are ready.
+	var spannerDS *spanner.SpannerDataSource
+	if spannerClient != nil {
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: store.RecogPlaceStore,
+			MapsClient:      mapsClient,
+			TopicExpander:   topicExpander,
+		})
+		// TODO: Order sources by priority once other implementations are added.
+		sources = append(sources, spannerDS)
+	}
+
 	// Add remote data source if it was created.
 	if remoteDataSource != nil {
 		sources = append(sources, remoteDataSource)
 	}
 
 	// DataSources
-	dataSources := datasources.NewDataSources(sources)
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
+	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
 
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if flags.EnableV3 {
-		slog.Info("V3 enabled, setting up processors")
+	if shouldUseSpannerGraph {
+		slog.Info("New backend enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
 			slog.Error("Failed to create data source cache", "error", err)
 			os.Exit(1)
 		}
+		slog.Info("In-memory data source cache initialized successfully")
 
 		// Cache Processor
-		if *useRedis && *redisInfo != "" {
+		if redisCacheClient != nil {
 			slog.Info("Setting up Redis cache processor")
-			redisClient, err := redis.NewCacheClient(*redisInfo)
-			if err != nil {
-				slog.Error("Failed to create Redis client", "error", err)
-				os.Exit(1)
-			}
-			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-			defer redisClient.Close()
-
-			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
+			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
-		slog.Info("After Redis setup")
+
+		// Relation Expression Processor
+		if remoteDataSource != nil {
+			slog.Info("remoteDataSource is configured, setting up relation expression processor")
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
+			processors = append(processors, &relationExpressionProcessor)
+		}
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
-		processors = append(processors, &calculationProcessor)
-		slog.Info("After calculation processor setup")
+		if flags.UseStatisticalCalculation {
+			slog.Info("Setting up calculation processor")
+			var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
+			processors = append(processors, &calculationProcessor)
+
+		}
 	}
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
+	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
+
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
+		*embeddingsServerURL,
+		&resolve.EmbeddingsServiceClientOptions{
+			DefaultIndexes: *resolveEmbeddingsIndexes,
+		},
+	)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes)
+	mixerServer := server.NewMixerServer(
+		store,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               c,
+			MapsClient:              mapsClient,
+			WriteUsageLogs:          *writeUsageLogs,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			UseSpannerGraph:         *useSpannerGraph,
+			TopicExpander:           topicExpander,
+		},
+	)
 	pbs.RegisterMixerServer(srv, mixerServer)
+
+	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
+	if topicCacheManager != nil {
+		var nodeFetcher nodefetcher.NodeAllFetcher
+		if shouldUseSpannerGraph && spannerDS != nil {
+			slog.Info("Setting up Spanner NodeFetcher for topic cache")
+			nodeFetcher = datasource.NewNodeFetcher(spannerDS)
+		} else {
+			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
+			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
+		}
+		topicCacheManager.InitFetcher(nodeFetcher)
+	}
+
+	// Register component lifecycles
+	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
+	registerAgentServiceLifecycle(mixerServer)
+
+	// Run all startup initialization hooks
+	if err := mixerServer.RunInitHooks(ctx); err != nil {
+		slog.Error("Failed to initialize server components during startup", "error", err)
+		os.Exit(1)
+	}
+
+	// Start the periodic scheduler
+	mixerServer.StartPeriodicRefresher(ctx, periodicRefreshInterval)
+	defer mixerServer.ClosePeriodicRefresher()
 
 	// Subscribe to branch cache update
 	if *useBranchBigtable {
@@ -484,5 +591,43 @@ func main() {
 	if err := srv.Serve(lis); err != nil {
 		slog.Error("Failed to serve", "error", err)
 		os.Exit(1)
+	}
+}
+
+func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
+	if tcm != nil {
+		s.RegisterLifecycle("topic-cache",
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to load topic cache hierarchy on startup because Spanner database is uninitialized (will retry in background)", "error", err)
+					return nil
+				}
+				return err
+			},
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to reload topic cache hierarchy because Spanner database is uninitialized", "error", err)
+					return nil
+				}
+				return err
+			},
+		)
+	}
+}
+
+func registerAgentServiceLifecycle(s *server.Server) {
+	if agentSvc := s.AgentService(); agentSvc != nil {
+		s.RegisterLifecycle("agent-service-cache",
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+		)
 	}
 }

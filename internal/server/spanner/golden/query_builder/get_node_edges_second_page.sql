@@ -1,16 +1,16 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN ('StatisticalVariable'))<-[e:Edge
+			m.subject_id = 'StatisticalVariable')<-[e:Edge
 		WHERE
-			e.predicate IN ('typeOf')]-(n:Node)
+			e.predicate = 'typeOf']-(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
-			n.name,
-			n.types
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,

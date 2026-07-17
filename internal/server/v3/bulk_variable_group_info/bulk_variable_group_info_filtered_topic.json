@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "node": "dc/topic/Demographics",
+      "info": {
+        "descendentStatVarCount": 2
+      }
+    },
+    {
+      "node": "dc/topic/Economy",
+      "info": {
+        "descendentStatVarCount": 10
+      }
+    }
+  ]
+}

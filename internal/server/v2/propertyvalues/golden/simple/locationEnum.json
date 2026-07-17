@@ -5,6 +5,14 @@
         "typeOf": {
           "nodes": [
             {
+              "name": "Area Of Birth",
+              "types": [
+                "LocationClassificationEnum"
+              ],
+              "dcid": "AreaOfBirth",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
               "name": "City",
               "types": [
                 "Class",

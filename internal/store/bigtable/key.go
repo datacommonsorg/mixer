@@ -31,8 +31,6 @@ const (
 	BtEventCollection = "d/4/"
 	// BtReconIDMapPrefix for ID mapping for ID-based recon. The key excludes DCID.
 	BtReconIDMapPrefix = "d/5/"
-	// BtBioPagePrefix for biology page cache.
-	BtBioPagePrefix = "d/6/"
 	// BtPropType is the prefix for getting the types for given entity and property
 	BtPropType = "d/7/"
 	// BtObsCollectionDateFrequency for obs collection cache that contains the frequency of each

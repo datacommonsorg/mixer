@@ -4,4 +4,4 @@
 			AND o.predicate = 'unDataCode']->(n:Node)
 		RETURN
 			o.subject_id AS node,
-			n.value AS candidate
+			IFNULL(n.value, '') AS candidate

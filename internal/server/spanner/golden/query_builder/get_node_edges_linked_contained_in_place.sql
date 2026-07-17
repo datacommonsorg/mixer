@@ -1,12 +1,12 @@
-		GRAPH DCGraph MATCH <-[filter0:Edge
+		GRAPH DCGraph MATCH (m:Node
+		WHERE
+			m.subject_id = 'country/USA')<-[e:Edge
+		WHERE
+			e.predicate = 'linkedContainedInPlace']-(n:Node),
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
-			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]-(n),
-		(m:Node
-		WHERE
-			m.subject_id IN ('country/USA'))<-[e:Edge
-		WHERE
-			e.predicate IN ('linkedContainedInPlace')]-(n:Node)
+			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->
 		RETURN
 		  	m.subject_id,
 			n.subject_id AS object_id,
@@ -19,10 +19,15 @@
 		  	subject_id,
 			predicate,
 			provenance,
-			n.value,
-			n.bytes,
-			n.name,
-			n.types
+			IFNULL(ANY_VALUE(n.value), '') AS value,
+			ANY_VALUE(n.bytes) AS bytes,
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
+		GROUP BY
+			subject_id,
+			predicate,
+			object_id,
+			provenance
 		ORDER BY
 			subject_id,
 			predicate,

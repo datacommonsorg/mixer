@@ -17,15 +17,21 @@
 package spanner
 
 import (
+	"cmp"
 	"fmt"
 	"log/slog"
+	"slices"
 	"sort"
 	"strconv"
+	"strings"
+	"unicode"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
@@ -255,6 +261,19 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
 
+	// Sort nodes in each arc: Dcid -> Value -> ProvenanceId
+	for _, nodes := range linkedGraph.Arcs {
+		slices.SortFunc(nodes.Nodes, func(i, j *pb.EntityInfo) int {
+			if c := cmp.Compare(i.GetDcid(), j.GetDcid()); c != 0 {
+				return c
+			}
+			if c := cmp.Compare(i.GetValue(), j.GetValue()); c != 0 {
+				return c
+			}
+			return cmp.Compare(i.GetProvenanceId(), j.GetProvenanceId())
+		})
+	}
+
 	return linkedGraph, nil
 }
 
@@ -310,6 +329,9 @@ func filterObservationsByDateAndFacet(
 	var filtered []*Observation
 	for _, observation := range observations {
 		filterTimeSeriesByDate(&observation.Observations, date)
+		if len(observation.Observations) == 0 {
+			continue
+		}
 		facet := observationToFacet(observation)
 		if util.ShouldIncludeFacet(filter, facet, observation.FacetId) {
 			filtered = append(filtered, observation)
@@ -375,12 +397,12 @@ func groupObservationsByVariableAndEntity(observations []*Observation) map[varia
 	return result
 }
 
-func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool) *pbv2.ObservationResponse {
+func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool, includeObsMetadata, shouldFilterInferiorFacets bool) *pbv2.ObservationResponse {
 	response := newObservationResponse(variable)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
 	for variableEntity, obs := range variableEntityObs {
-		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
+		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs, includeObsMetadata, shouldFilterInferiorFacets)
 		variableObs, ok := response.ByVariable[variableEntity.variable]
 		if !ok {
 			variableObs = &pbv2.VariableObservation{
@@ -449,11 +471,28 @@ func mergeEntityOrderedFacets(
 	return result
 }
 
+// shouldFilterInferiorFacets reports whether the response should omit low-ranked facets.
+func shouldFilterInferiorFacets(req *pbv2.ObservationRequest) bool {
+	entityExpression := req.GetEntity().GetExpression()
+	date := req.GetDate()
+	isContainedInWithDate := entityExpression != "" && date != ""
+	isDirectWithLatestDate := entityExpression == "" && date == shared.LATEST
+
+	return isContainedInWithDate || isDirectWithLatestDate
+}
+
+// includeObsMetadata reports whether observation count and date bounds should be returned.
+func includeObsMetadata(req *pbv2.ObservationRequest) bool {
+	return req.GetEntity().GetExpression() == "" || req.GetDate() == ""
+}
+
 func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable, observations, true /*includeObs*/)
+	includeMetadata := includeObsMetadata(req)
+	filterInferiorFacets := shouldFilterInferiorFacets(req)
+	response := generateObsResponse(req.GetVariable(), observations, true /*includeObs*/, includeMetadata, filterInferiorFacets)
 
 	// Attach all requested entity dcids to response.
-	if len(req.Entity.Dcids) > 0 {
+	if len(req.GetEntity().GetDcids()) > 0 {
 		for _, variableObs := range response.ByVariable {
 			for _, entity := range req.Entity.Dcids {
 				_, ok := variableObs.ByEntity[entity]
@@ -468,7 +507,8 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 }
 
 func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable, observations, false /*includeObs*/)
+	includeMetadata := includeObsMetadata(req)
+	response := generateObsResponse(req.GetVariable(), observations, false /*includeObs*/, includeMetadata, false /*shouldFilterInferiorFacets*/)
 
 	if len(req.Entity.Dcids) > 0 {
 		return response
@@ -511,12 +551,14 @@ func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observ
 func observationsToOrderedFacets(
 	observations []*Observation,
 	includeObs bool,
+	includeObsMetadata bool,
+	shouldFilterInferiorFacets bool,
 ) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
 	facets := map[string]*pb.Facet{}
 	placeVariableFacets := []*pb.PlaceVariableFacet{}
 	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
 	for _, obs := range observations {
-		pvf, facetObs := observationToFacetObservation(obs, includeObs)
+		pvf, facetObs := observationToFacetObservation(obs, includeObs, includeObsMetadata)
 
 		// Skip rows with no time series.
 		if pvf == nil {
@@ -532,6 +574,11 @@ func observationsToOrderedFacets(
 	orderedFacets := []*pbv2.FacetObservation{}
 	sort.Sort(ranking.FacetByRank(placeVariableFacets))
 	for _, pvf := range placeVariableFacets {
+		// If there is higher quality facet, then do not pick from the inferior facet even it could have more recent data.
+		if shouldFilterInferiorFacets && len(orderedFacets) > 0 && stat.IsInferiorFacet(pvf.Facet) {
+			delete(facets, pvf.FacetId)
+			continue
+		}
 		orderedFacets = append(orderedFacets, facetIdToFacetObs[pvf.FacetId])
 	}
 
@@ -541,6 +588,7 @@ func observationsToOrderedFacets(
 func observationToFacetObservation(
 	observation *Observation,
 	includeObs bool,
+	includeObsMetadata bool,
 ) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
@@ -566,23 +614,30 @@ func observationToFacetObservation(
 		return nil, nil
 	}
 
+	obsCount := int32(len(observations))
+	earliestDate := observations[0].Date
+	latestDate := observations[len(observations)-1].Date
+
 	facetObservation := &pbv2.FacetObservation{
-		FacetId:      observation.FacetId,
-		ObsCount:     *proto.Int32(int32(len(observations))),
-		EarliestDate: observations[0].Date,
-		LatestDate:   observations[len(observations)-1].Date,
+		FacetId: observation.FacetId,
 	}
 
 	if includeObs {
 		facetObservation.Observations = observations
 	}
 
+	if includeObsMetadata {
+		facetObservation.ObsCount = obsCount
+		facetObservation.EarliestDate = earliestDate
+		facetObservation.LatestDate = latestDate
+	}
+
 	placeVariableFacet := &pb.PlaceVariableFacet{
 		Facet:        facet,
 		FacetId:      observation.FacetId,
-		ObsCount:     facetObservation.ObsCount,
-		EarliestDate: facetObservation.EarliestDate,
-		LatestDate:   facetObservation.LatestDate,
+		ObsCount:     obsCount,
+		EarliestDate: earliestDate,
+		LatestDate:   latestDate,
 	}
 
 	return placeVariableFacet, facetObservation
@@ -597,6 +652,7 @@ func observationToFacet(observation *Observation) *pb.Facet {
 		ScalingFactor:     observation.ScalingFactor,
 		Unit:              observation.Unit,
 		IsDcAggregate:     observation.IsDcAggregate,
+		ProvenanceId:      observation.ProvenanceID,
 	}
 	return &facet
 }
@@ -606,10 +662,13 @@ func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
 	}
-	return &pb.PointStat{
-		Date:  dateValue.Date,
-		Value: proto.Float64(floatVal),
-	}, nil
+	pointStat := &pb.PointStat{
+		Date:       dateValue.Date,
+		Value:      proto.Float64(floatVal),
+		Attributes: dateValue.Attributes,
+	}
+
+	return pointStat, nil
 }
 
 func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchResponse {
@@ -678,4 +737,271 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) (*pb.Q
 		response.Rows = append(response.Rows, row)
 	}
 	return response, nil
+}
+
+func generateBulkVariableInfoResponse(variableInfo map[string]map[string]*pb.StatVarSummary_ProvenanceSummary) *pbv1.BulkVariableInfoResponse {
+	response := &pbv1.BulkVariableInfoResponse{
+		Data: make([]*pbv1.VariableInfoResponse, 0, len(variableInfo)),
+	}
+	for key, provToValue := range variableInfo {
+		response.Data = append(response.Data, &pbv1.VariableInfoResponse{
+			Node: key,
+			Info: &pb.StatVarSummary{
+				ProvenanceSummary: provToValue,
+			},
+		})
+	}
+	// Sort response by variable.
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+func filteredTopicInfoToBulkVariableGroupInfoResponse(counts map[string]int, nodes []string) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: make([]*pbv1.VariableGroupInfoResponse, 0, len(nodes)),
+	}
+
+	for node, count := range counts {
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: &pb.StatVarGroupNode{
+				DescendentStatVarCount: int32(count),
+			},
+		})
+	}
+
+	// Sort response by node.
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+// splitPascalCase splits a PascalCase string into separate words with spaces.
+func splitPascalCase(s string) string {
+	var builder strings.Builder
+
+	// Pre-allocate memory.
+	builder.Grow(len(s) + 5)
+
+	runes := []rune(s)
+	for i, r := range runes {
+		if i > 0 {
+			prev := runes[i-1]
+
+			// Rule 1: Lowercase to Uppercase (e.g., "m" -> "I")
+			isLowerToUpper := unicode.IsLower(prev) && unicode.IsUpper(r)
+
+			// Rule 2: Acronym boundary (e.g., "X" -> "M" -> "L")
+			isAcronym := unicode.IsUpper(prev) && unicode.IsUpper(r) &&
+				i+1 < len(runes) && unicode.IsLower(runes[i+1])
+
+			// Rule 3: Letter to Number (e.g., "s" -> "6")
+			isLetterToDigit := unicode.IsLetter(prev) && unicode.IsDigit(r)
+
+			// Rule 4: Number to Letter (e.g., "5" -> "Y")
+			isDigitToLetter := unicode.IsDigit(prev) && unicode.IsLetter(r)
+
+			// If any of our boundaries are met, insert a space
+			if isLowerToUpper || isAcronym || isLetterToDigit || isDigitToLetter {
+				builder.WriteRune(' ')
+			}
+		}
+		builder.WriteRune(r)
+	}
+
+	return builder.String()
+}
+
+// processSvgId removes the SVG prefix up through the population type and splits into pvs.
+func processSvgId(svg string) []string {
+	var trimmed string
+	_, after, found := strings.Cut(svg, "_")
+	if found {
+		trimmed = after
+	} else {
+		trimmed = strings.TrimPrefix(svg, prefixSVG)
+	}
+
+	return strings.FieldsFunc(trimmed, func(r rune) bool {
+		return r == '_' || r == '-'
+	})
+}
+
+// isCuratedHierarchy checks if the SVG is part of a curated hierarchy, which have different naming conventions that do not follow the standard specialization pattern.
+func isCuratedHierarchy(svg string) bool {
+	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
+}
+
+// getSpecializedEntity returns the specialized entity for a child SVG given its parent SVG.
+func getSpecializedEntity(parent, child, childName string) string {
+	if !strings.Contains(child, "_") || isCuratedHierarchy(child) { // Child is likely curated.
+		return childName
+	}
+	parentParts := processSvgId(parent)
+	childParts := processSvgId(child)
+
+	for i := 0; i < len(parentParts) && i < len(childParts); i++ {
+		if parentParts[i] != childParts[i] {
+			return splitPascalCase(childParts[i])
+		}
+	}
+
+	return splitPascalCase(childParts[len(childParts)-1])
+}
+
+// sortSVGNode sorts the child SVGs and SVs of a StatVarGroupNode. Child SVGs are sorted by specialized entity, with special handling for curated hierarchies, and child SVs are sorted by display name.
+func sortSVGNode(node *pb.StatVarGroupNode) {
+	sort.Slice(node.ChildStatVarGroups, func(i, j int) bool {
+		// Use numeric sorting for special groups.
+		if isCuratedHierarchy(node.ChildStatVarGroups[i].Id) {
+			iName := strings.Split(node.ChildStatVarGroups[i].SpecializedEntity, ":")[0]
+			jName := strings.Split(node.ChildStatVarGroups[j].SpecializedEntity, ":")[0]
+			iNum, err1 := strconv.Atoi(iName)
+			jNum, err2 := strconv.Atoi(jName)
+			if err1 == nil && err2 == nil {
+				return iNum < jNum
+			}
+			// Fall back to string comparison if numeric parsing fails.
+		}
+		return node.ChildStatVarGroups[i].SpecializedEntity < node.ChildStatVarGroups[j].SpecializedEntity
+	})
+	sort.Slice(node.ChildStatVars, func(i, j int) bool {
+		return node.ChildStatVars[i].DisplayName < node.ChildStatVars[j].DisplayName
+	})
+}
+
+// svgInfoToBulkVariableGroupInfoResponse converts a list of StatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes []string) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: make([]*pbv1.VariableGroupInfoResponse, 0, len(nodes)),
+	}
+
+	nodeToSVG := map[string]*pb.StatVarGroupNode{}
+	for _, node := range nodes {
+		nodeToSVG[node] = &pb.StatVarGroupNode{}
+	}
+	for _, row := range svgInfo {
+		// We are trimming excess quotes to help with sorting.
+		// TODO: This should really be handled at ingestion time instead.
+		name := strings.Trim(row.Name, "\"")
+		svgNode := nodeToSVG[row.SVG]
+		if row.DescendentStatVarCount >= 0 { // Child SVG.
+			if row.SubjectID == row.SVG { // Self.
+				svgNode.AbsoluteName = name
+				svgNode.DescendentStatVarCount = int32(row.DescendentStatVarCount)
+				continue
+			}
+			childSVG := &pb.StatVarGroupNode_ChildSVG{
+				Id:                     row.SubjectID,
+				SpecializedEntity:      getSpecializedEntity(row.SVG, row.SubjectID, name),
+				DisplayName:            name,
+				DescendentStatVarCount: int32(row.DescendentStatVarCount),
+			}
+			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, childSVG)
+		} else { // Child SV.
+			childSV := &pb.StatVarGroupNode_ChildSV{
+				Id:          row.SubjectID,
+				DisplayName: name,
+				HasData:     row.HasData,
+				Definition:  row.Definition,
+			}
+			svgNode.ChildStatVars = append(svgNode.ChildStatVars, childSV)
+		}
+	}
+
+	// Sort results.
+	for node, svgNode := range nodeToSVG {
+		sortSVGNode(svgNode)
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: nodeToSVG[node],
+		})
+	}
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+// filteredSVGInfoToBulkVariableGroupInfoResponse converts a map of FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo map[string]*FilteredStatVarGroupNode) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: []*pbv1.VariableGroupInfoResponse{},
+	}
+
+	for node, info := range svgInfo {
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: filteredSVGInfoToStatVarGroupNode(info, node),
+		})
+	}
+
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+// filteredSVGInfoToStatVarGroupNode converts a FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node string) *pb.StatVarGroupNode {
+	svgNode := &pb.StatVarGroupNode{}
+	allChildren := map[string]bool{}
+
+	// Attach Child SVGs.
+	for _, row := range svgInfo.ChildSVG {
+		name := strings.Trim(row.Name, "\"")
+		if row.SubjectID == node { // Self.
+			svgNode.AbsoluteName = name
+			svgNode.DescendentStatVarCount = int32(row.DescendentStatVarCount)
+			continue
+		}
+		svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
+			Id:                     row.SubjectID,
+			SpecializedEntity:      getSpecializedEntity(node, row.SubjectID, name),
+			DisplayName:            name,
+			DescendentStatVarCount: int32(row.DescendentStatVarCount),
+		})
+		allChildren[row.SubjectID] = true
+	}
+
+	// Attach Child SVs.
+	for _, row := range svgInfo.ChildSV {
+		name := strings.Trim(row.Name, "\"")
+		svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
+			Id:          row.SubjectID,
+			DisplayName: name,
+			HasData:     true,
+			Definition:  row.Definition,
+		})
+		allChildren[row.SubjectID] = true
+	}
+
+	// Attach missing children.
+	for _, row := range svgInfo.SVGChild {
+		if _, ok := allChildren[row.SubjectID]; ok {
+			continue
+		}
+		name := strings.Trim(row.Name, "\"")
+		switch row.Predicate {
+		case predicateSpecializationOf:
+			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
+				Id:                row.SubjectID,
+				SpecializedEntity: getSpecializedEntity(node, row.SubjectID, name),
+				DisplayName:       name,
+			})
+		case predicateMemberOf:
+			svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
+				Id:          row.SubjectID,
+				DisplayName: name,
+				Definition:  row.Definition,
+			})
+		}
+	}
+
+	sortSVGNode(svgNode)
+
+	return svgNode
 }

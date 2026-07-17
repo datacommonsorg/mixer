@@ -70,3 +70,6 @@ http_memprof_out
 
 # custom dc sqlite database
 sqlite
+
+# AI agent and agent skills folder
+.agent/

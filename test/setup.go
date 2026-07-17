@@ -25,6 +25,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"testing"
 
 	_ "modernc.org/sqlite" // import the sqlite driver
 
@@ -40,6 +41,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -53,14 +55,13 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	FetchSVG          bool
-	SearchSVG         bool
-	UseCustomTable    bool
-	UseSQLite         bool
-	CacheSVFormula    bool
-	UseSpannerGraph   bool
-	EnableV3          bool
-	RemoteMixerDomain string
+	FetchSVG                  bool
+	SearchSVG                 bool
+	UseCustomTable            bool
+	UseSQLite                 bool
+	UseStatisticalCalculation bool
+	UseSpannerGraph           bool
+	RemoteMixerDomain         string
 }
 
 var (
@@ -68,11 +69,15 @@ var (
 	LatencyTest = os.Getenv("LATENCY_TEST") == "true"
 	// GenerateGolden is used to check whether generating golden.
 	GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
+	// RunSpannerEmulatorTests is used to enable hermetic Spanner emulator tests.
+	RunSpannerEmulatorTests = os.Getenv("RUN_SPANNER_EMULATOR_TESTS") == "true"
 	// EnableSpannerGraph is used to check whether spanner graph should be enabled.
 	// Currently this is only enabled on workstations of developers working on the spanner graph POC.
 	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
 	// TODO: Remove this variable after POC.
 	EnableSpannerGraph = os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
+	// EnableSpannerNormalizedSchema is used to check whether normalized spanner schema should be used.
+	EnableSpannerNormalizedSchema = os.Getenv("ENABLE_SPANNER_NORMALIZED_SCHEMA") == "true"
 )
 
 // This test runs agains staging staging bt and bq dataset.
@@ -86,20 +91,19 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, useStatisticalCalculation, useSpannerGraph, remoteMixerDomain := false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
 		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
-		cacheSVFormula = option[0].CacheSVFormula
+		useStatisticalCalculation = option[0].UseStatisticalCalculation
 		cacheOptions.CacheSQL = useSQLite
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
-		cacheOptions.CacheSVFormula = cacheSVFormula
+		cacheOptions.CacheSVFormula = useStatisticalCalculation
 		useSpannerGraph = option[0].UseSpannerGraph
-		enableV3 = option[0].EnableV3
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -110,7 +114,6 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 		useCustomTable,
 		useSQLite,
 		useSpannerGraph,
-		enableV3,
 		cacheOptions,
 		remoteMixerDomain,
 	)
@@ -118,7 +121,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCustomTable, useSQLite, useSpannerGraph, enableV3 bool,
+	useCustomTable, useSQLite, useSpannerGraph bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, func(), error) {
@@ -131,14 +134,12 @@ func setupInternal(
 	sources := []datasource.DataSource{}
 
 	var spannerDataSource datasource.DataSource
+	var spannerClient spanner.SpannerClient
 	var spannerCleanup = func() {}
-	if enableV3 && useSpannerGraph {
-		spannerClient := NewSpannerClient()
+	if useSpannerGraph {
+		spannerClient = NewSpannerClient()
 		if spannerClient != nil {
-			spannerCleanup = spannerClient.Stop
-			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
-			// TODO: Order sources by priority once other implementations are added.
-			sources = append(sources, spannerDataSource)
+			spannerCleanup = spannerClient.Close
 		}
 	}
 
@@ -172,7 +173,7 @@ func setupInternal(
 		if err != nil {
 			log.Fatalf("SQL database validation failed: %v", err)
 		}
-		if enableV3 {
+		if useSpannerGraph {
 			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, spannerDataSource)
 			sources = append(sources, ds)
 		}
@@ -193,25 +194,37 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
+	mapsClient := &maps.FakeMapsClient{}
+	if spannerClient != nil {
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: st.RecogPlaceStore,
+			MapsClient:      mapsClient,
+		})
+		sources = append(sources, spannerDataSource)
+	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
 		return nil, func() {}, err
 	}
-	mapsClient := &maps.FakeMapsClient{}
 
-	if enableV3 && remoteMixerDomain != "" {
+	var remoteDataSource datasource.DataSource
+	if useSpannerGraph && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			log.Fatalf("Failed to create remote client: %v", err)
 		}
-		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
-		sources = append(sources, ds)
+		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
+
 	}
 
-	dataSources := datasources.NewDataSources(sources)
+	if remoteDataSource != nil {
+		sources = append(sources, remoteDataSource)
+	}
+
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if enableV3 {
+	if useSpannerGraph {
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
@@ -276,7 +289,20 @@ func newClient(
 		return nil, func() {}, err
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, "", "")
+	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient("", nil)
+	mixerServer := server.NewMixerServer(
+		mixerStore,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               cachedata,
+			MapsClient:              mapsClient,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			TopicExpander:           nil, // Not testing topics in standard integration tests
+		},
+	)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
@@ -399,17 +425,45 @@ func NewSpannerClient() spanner.SpannerClient {
 	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
 }
 
+// SkipIfNormalizedSchemaDisabled skips the test if ENABLE_SPANNER_NORMALIZED_SCHEMA is not set.
+func SkipIfNormalizedSchemaDisabled(t *testing.T) {
+	if !EnableSpannerNormalizedSchema {
+		t.Skip("Skipping normalized schema tests (ENABLE_SPANNER_NORMALIZED_SCHEMA not set)")
+	}
+}
+
+// NewNormalizedSpannerClient creates a new test spanner client for normalized schema tests.
+// It handles flag checks and skips the test if flags are not enabled.
+func NewNormalizedSpannerClient(t *testing.T) spanner.SpannerClient {
+	SkipIfNormalizedSchemaDisabled(t)
+	client := NewSpannerClient()
+	if client == nil {
+		t.Skip("Skipping normalized schema tests (Spanner graph not enabled)")
+	}
+	return client
+}
+
 func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) spanner.SpannerClient {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "", true)
+	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), nil)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
 	// Use stale reads for testing.
 	spannerClient.Start()
 	return spannerClient
+}
+
+// NewSchemaSelectorSpannerClient creates a new test schema selector spanner client.
+func NewSchemaSelectorSpannerClient(t *testing.T) spanner.SpannerClient {
+	baseClient := NewNormalizedSpannerClient(t)
+	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient, false, spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatalf("Failed to create SchemaSelectorClient: %v", err)
+	}
+	return selectorClient
 }

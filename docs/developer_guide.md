@@ -35,22 +35,14 @@ Install the following packages as a one-time action.
 cd ~/   # Be sure there is no go.mod in the local directory
 go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.3.0
 ```
 
 Run the following command to generate Go proto files.
 
 ```bash
 # In repo root directory
-protoc \
-  --proto_path=proto \
-  --go_out=paths=source_relative:internal/proto \
-  --go-grpc_out=paths=source_relative:internal/proto \
-  --go-grpc_opt=require_unimplemented_servers=false \
-  --experimental_allow_proto3_optional \
-  --include_imports \
-  --include_source_info \
-  --descriptor_set_out mixer-grpc.pb \
-  proto/*.proto proto/**/*.proto
+./scripts/compile_protos.sh
 ```
 
 ## Start Mixer as a gRPC server
@@ -132,20 +124,27 @@ export DB_PASS=<password>
 
 Enabling Spanner Graph requires the following feature flags to be set:
 
-- `EnableV3: true`
 - `UseSpannerGraph: true`
 
 These are currently set in `local.yaml`.
 
-Additionally, to use a database other than the default in `spanner_graph_info.yaml`, set the feature flag:
+Additionally, to use a Spanner project, instance, or database other than the default in `spanner_graph_info.yaml`, set the feature flag:
 
-- `SpannerGraphDatabase: <DATABASE NAME>` 
+- `SpannerGraphDatabase: <DATABASE NAME OR FULL URI>`
+
+Note: `SpannerGraphDatabase` accepts either:
+1. A simple database name (e.g., `dc_graph_2026_01_27`), which overrides only the database while inheriting project and instance from `spanner_graph_info.yaml`.
+2. A fully qualified Spanner database URI (`projects/<project>/instances/<instance>/databases/<database>`), which automatically overrides Project, Instance, and Database in a single flag specification.
 
 ```bash
 # In repo root directory
 export MIXER_API_KEY=<YOUR API KEY>
 ./run_server.sh \
     --feature_flags_path=$PWD/deploy/featureflags/local.yaml \
+    --use_base_bigtable=false \
+    --use_branch_bigtable=false \
+    --use_bigquery=false \
+    --use_spanner_graph=true \
     --spanner_graph_info="$(cat deploy/storage/spanner_graph_info.yaml)" 
 ```
 
