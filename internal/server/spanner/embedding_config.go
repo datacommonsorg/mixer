@@ -56,6 +56,7 @@ type SearchConfig struct {
 	SearchAlgorithm  SearchMethod     `json:"search_algorithm" yaml:"search_algorithm"`
 	EmbeddingModel         string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
 	EmbeddingModelEndpoint string           `json:"embedding_model_endpoint" yaml:"embedding_model_endpoint"`
+	EmbeddingModelLocation string           `json:"embedding_model_location" yaml:"embedding_model_location"`
 	EmbeddingTable         string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
 	QueryTaskType    QueryTaskType    `json:"query_task_type" yaml:"query_task_type"`
 	EmbeddingLabel   string           `json:"embedding_label" yaml:"embedding_label"`

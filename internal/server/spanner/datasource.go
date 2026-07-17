@@ -99,10 +99,14 @@ func NewSpannerDataSource(
 		dbURI := client.Id()
 		project, _, _, err := parseDatabaseURI(dbURI)
 		if err == nil && project != "" {
+			var location string
+			if cfg != nil {
+				location = cfg.SearchConfig.EmbeddingModelLocation
+			}
 			ctx := context.Background()
 			genaiClient, err := genai.NewClient(ctx, &genai.ClientConfig{
 				Project:  project,
-				Location: "us-central1",
+				Location: location,
 				Backend:  genai.BackendVertexAI,
 			})
 			if err != nil {
@@ -571,6 +575,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
 
+	if sds.genaiClient == nil {
+		return nil, status.Errorf(codes.Internal, "GenAI client is not initialized in SpannerDataSource")
+	}
+	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
+		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
+	}
+
 	for i, node := range nodes {
 		i, node := i, node // Capture loop variables
 		errGroup.Go(func() error {
@@ -581,9 +592,6 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 1. Get term embedding
 			var embeddings []float64
 			var err error
-			if sds.genaiClient == nil {
-				return status.Errorf(codes.Internal, "GenAI client is not initialized in SpannerDataSource")
-			}
 			var res *genai.EmbedContentResponse
 			res, err = sds.genaiClient.Models.EmbedContent(
 				errCtx,

@@ -3,6 +3,7 @@ search_config:
   search_algorithm: "vector_search"
   embedding_model: "NodeEmbeddingModel"
   embedding_model_endpoint: "text-embedding-005"
+  embedding_model_location: "us-central1"
   embedding_table: "NodeEmbedding"
   query_task_type: "RETRIEVAL_QUERY"
   embedding_label: "nl_stat_var_embedding"
