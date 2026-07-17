@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"testing"
 	"time"
+
+	"cloud.google.com/go/spanner"
 )
 
 type MockTicker struct {
@@ -128,5 +130,43 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	expectedTimestamp := startTime
 	if timestamp != expectedTimestamp {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
+	}
+}
+
+// Test: Timestamp reset on null or completed run.
+// Situation: The client previously held an active ingestion timestamp when the database transitioned to returning null on run completion.
+// Expectation: The helper zeros out the timestamp in production code so getStalenessTimestamp returns an error to trigger exact staleness reads.
+func TestTimestampResetOnNull(t *testing.T) {
+	mockTicker := NewMockTicker()
+	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updateDone := make(chan bool, 1)
+
+	sc := &spannerDatabaseClient{
+		ticker:  mockTicker,
+		stopCh:  make(chan struct{}),
+		tracker: newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
+	}
+	sc.timestamp.Store(startTime.UnixNano())
+
+	// Delegate directly to production logic via processStalenessTimestamp without mocking internal mutations.
+	sc.updateTimestamp = func(ctx context.Context) error {
+		err := sc.processStalenessTimestamp(ctx, spanner.NullTime{Valid: false})
+		updateDone <- true
+		return err
+	}
+
+	sc.Start()
+	mockTicker.Tick()
+
+	<-updateDone
+	sc.Close()
+
+	if val := sc.timestamp.Load(); val != 0 {
+		t.Fatalf("Expected sc.timestamp to be reset to 0, but got %d", val)
+	}
+
+	// Expect getStalenessTimestamp to return an error when zero so executeQuery invokes exact staleness fallback reads.
+	if _, err := sc.getStalenessTimestamp(); err == nil {
+		t.Fatalf("Expected error when staleness timestamp is zero, but got nil")
 	}
 }
