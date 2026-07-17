@@ -999,15 +999,20 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
 
+	return sc.processStalenessTimestamp(ctx, nullTime)
+}
+
+// processStalenessTimestamp updates the cached atomic read timestamp based on Spanner query execution results.
+func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, nullTime spanner.NullTime) error {
 	if !nullTime.Valid {
 		slog.Warn("IngestionHistory timestamp is NULL. Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
-		// Guard against redundant memory rewrites during idle intervals by only updating when a non-zero snapshot exists.
+		// Guard against redundant memory rewrites right right across idle windows when sc.timestamp is already zero.
 		if prev := sc.timestamp.Load(); prev != 0 {
-			// Reset the trapped snapshot timestamp right away so getStalenessTimestamp() returns an error, triggering exact staleness reads.
 			sc.timestamp.Store(0)
-			// Record the transition back to exact staleness in the telemetry log tracker right away to keep monitoring accurate.
 			if sc.tracker != nil {
-				sc.tracker.RecordSuccess(time.Now(), prev, 0)
+				if ev := sc.tracker.RecordSuccess(time.Now(), prev, 0); ev != nil {
+					slog.Log(ctx, ev.level, ev.message, ev.args...)
+				}
 			}
 		}
 		return nil
