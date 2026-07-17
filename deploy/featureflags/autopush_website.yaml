@@ -10,3 +10,4 @@ flags:
   EnableSpannerSearchEmbeddings: true
   UseMultiEntitySchema: true
   EnableSDMXDataApi: true
+  UseSpannerKeyValueStore: true
