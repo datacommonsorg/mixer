@@ -123,7 +123,7 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 			if diff := cmp.Diff(tt.wantPath, got.Path); diff != "" {
 				t.Errorf("ParseAvailabilityRequest() path mismatch (-want +got):\n%s", diff)
 			}
-			if diff := cmp.Diff(tt.want, got.Constraints); diff != "" {
+			if diff := cmp.Diff(tt.want, componentConstraintValues(got.Constraints)); diff != "" {
 				t.Errorf("ParseAvailabilityRequest() constraints mismatch (-want +got):\n%s", diff)
 			}
 		})
@@ -185,6 +185,12 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
+			name:        "selected facet ID unsupported",
+			tail:        availabilityTail("facetId"),
+			originalURI: availabilityURI("facetId", "c[variableMeasured]=Count_Person"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
 			name:        "filter observation value unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[OBS_VALUE]=10"),
 			wantCode:    codes.Unimplemented,
@@ -197,6 +203,11 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		{
 			name:        "filter attribute unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[scalingFactor]=0"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "filter facet ID unsupported",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[facetId]=123"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
@@ -222,6 +233,11 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		{
 			name:        "operator unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=ge:2020"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "property constraint unsupported",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf]=County"),
 			wantCode:    codes.Unimplemented,
 		},
 		{

@@ -17,7 +17,7 @@
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
 				ON t.variable_measured = 'AirPollutant_Cancer_Risk'
 				AND t.entity1 = p.place_id
 		)
@@ -34,7 +34,7 @@
 			) AS dates_and_values,
 			ANY_VALUE(t.facet) AS facets
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} Observation o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} Observation o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		GROUP BY
 			t.variable_measured,
