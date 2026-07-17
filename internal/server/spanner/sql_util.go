@@ -20,7 +20,6 @@ import (
 	"sort"
 	"strings"
 	"sync"
-	"unicode"
 
 	cloudSpanner "cloud.google.com/go/spanner"
 )
@@ -49,8 +48,11 @@ func inUnnestRegex(paramKey string) *regexp.Regexp {
 // extractLeadingSpace returns the leading whitespace character from a regex
 // match, or empty string if the match starts at the beginning of the string.
 func extractLeadingSpace(match string) string {
-	if len(match) > 0 && unicode.IsSpace(rune(match[0])) {
-		return string(match[0])
+	if len(match) > 0 {
+		switch match[0] {
+		case ' ', '\t', '\n', '\v', '\f', '\r':
+			return string(match[0])
+		}
 	}
 	return ""
 }
