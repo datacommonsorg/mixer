@@ -130,3 +130,47 @@ func TestTimestampUpdateFailure(t *testing.T) {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
 	}
 }
+
+// Test: Timestamp reset on null or completed run.
+// Situation: The client previously held an active ingestion timestamp right when the database transitioned back to returning null on run completion.
+// Expectation: The helper zeros out the timestamp so getStalenessTimestamp returns an error to trigger exact staleness reads.
+func TestTimestampResetOnNull(t *testing.T) {
+	mockTicker := NewMockTicker()
+	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updateDone := make(chan bool, 1)
+
+	sc := &spannerDatabaseClient{
+		ticker:  mockTicker,
+		stopCh:  make(chan struct{}),
+		tracker: newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
+	}
+	// Store an active historical timestamp right before the update tick.
+	sc.timestamp.Store(startTime.UnixNano())
+
+	// Simulate fetchAndUpdateTimestamp hitting a NULL timestamp outcome when no runs are active.
+	sc.updateTimestamp = func(context.Context) error {
+		if prev := sc.timestamp.Load(); prev != 0 {
+			sc.timestamp.Store(0)
+			if sc.tracker != nil {
+				sc.tracker.RecordSuccess(time.Now(), prev, 0)
+			}
+		}
+		updateDone <- true
+		return nil
+	}
+
+	sc.Start()
+	mockTicker.Tick()
+
+	<-updateDone
+	sc.Close()
+
+	if val := sc.timestamp.Load(); val != 0 {
+		t.Fatalf("Expected sc.timestamp to be reset to 0, but got %d", val)
+	}
+
+	// Expect getStalenessTimestamp to return an error right when zero so executeQuery invokes ExactStaleness reads.
+	if _, err := sc.getStalenessTimestamp(); err == nil {
+		t.Fatalf("Expected error when staleness timestamp is zero, but got nil")
+	}
+}
