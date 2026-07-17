@@ -2,7 +2,7 @@
 		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(['AirPollutant_Cancer_Risk']) AS var
-			CROSS JOIN ('geoId/01001','geoId/02013') AS ent
+			CROSS JOIN UNNEST(['geoId/01001','geoId/02013']) AS ent
 		),
 		series AS (
 			SELECT
