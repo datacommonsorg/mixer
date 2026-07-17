@@ -86,7 +86,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Retrieve observations for a specific date (both variables and entities present)
@@ -114,7 +114,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Retrieve latest observation (both variables and entities present)
@@ -145,7 +145,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Retrieve observations where only entities are present (fetch all variables, full series)
@@ -236,7 +236,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
 				ON t.variable_measured IN UNNEST(@variables)
 				AND t.entity1 = p.place_id
 		)
@@ -253,7 +253,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			ANY_VALUE(t.facet) AS facets
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[1]s o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		GROUP BY
 			t.variable_measured,
@@ -282,7 +282,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
 				ON t.variable_measured IN UNNEST(@variables)
 				AND t.entity1 = p.place_id
 		)
@@ -298,7 +298,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %[1]s o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
