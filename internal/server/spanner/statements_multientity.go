@@ -414,7 +414,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 				t.facet,
 				t.entities
 			FROM %%[1]s anchor
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s@{FORCE_INDEX=%%[2]s} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %s@{FORCE_INDEX=%%[2]s} t
 				ON t.%%[3]s = anchor.place_id
 				AND %%[4]s%%[5]s
 		)`, cfg.TimeSeriesTable),
@@ -430,7 +430,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			ANY_VALUE(t.facet) AS facets,
 			ANY_VALUE(t.entities) AS entities
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		GROUP BY
 			t.variable_measured,

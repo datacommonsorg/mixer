@@ -21,7 +21,7 @@
 				t.facet,
 				t.entities
 			FROM contained_places_0 anchor
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries@{FORCE_INDEX=TimeSeriesByEntity3} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=TimeSeriesByEntity3} t
 				ON t.entity3 = anchor.place_id
 				AND t.variable_measured IN ('var1')
 			WHERE t.entity3 IS NOT NULL
@@ -37,7 +37,7 @@
 			ANY_VALUE(t.facet) AS facets,
 			ANY_VALUE(t.entities) AS entities
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} Observation o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} Observation o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		GROUP BY
 			t.variable_measured,
