@@ -581,32 +581,23 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 1. Get term embedding
 			var embeddings []float64
 			var err error
-			if sds.genaiClient != nil {
-				var res *genai.EmbedContentResponse
-				res, err = sds.genaiClient.Models.EmbedContent(
-					errCtx,
-					cfg.SearchConfig.EmbeddingModelEndpoint,
-					genai.Text(node),
-					&genai.EmbedContentConfig{TaskType: string(cfg.SearchConfig.QueryTaskType)},
-				)
-				if err != nil {
-					return status.Errorf(codes.Internal, "failed to get term embedding for %s via GenAI SDK: %v", node, err)
-				}
-				if len(res.Embeddings) > 0 {
-					embeddings = make([]float64, len(res.Embeddings[0].Values))
-					for idx, val := range res.Embeddings[0].Values {
-						embeddings[idx] = float64(val)
-					}
-				}
-			} else {
-				embeddings, err = sds.client.GetTermEmbeddingQuery(
-					errCtx,
-					cfg.SearchConfig.EmbeddingModel,
-					node,
-					string(cfg.SearchConfig.QueryTaskType),
-				)
-				if err != nil {
-					return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+			if sds.genaiClient == nil {
+				return status.Errorf(codes.Internal, "GenAI client is not initialized in SpannerDataSource")
+			}
+			var res *genai.EmbedContentResponse
+			res, err = sds.genaiClient.Models.EmbedContent(
+				errCtx,
+				cfg.SearchConfig.EmbeddingModelEndpoint,
+				genai.Text(node),
+				&genai.EmbedContentConfig{TaskType: string(cfg.SearchConfig.QueryTaskType)},
+			)
+			if err != nil {
+				return status.Errorf(codes.Internal, "failed to get term embedding for %s via GenAI SDK: %v", node, err)
+			}
+			if len(res.Embeddings) > 0 {
+				embeddings = make([]float64, len(res.Embeddings[0].Values))
+				for idx, val := range res.Embeddings[0].Values {
+					embeddings[idx] = float64(val)
 				}
 			}
 			if len(embeddings) == 0 {
