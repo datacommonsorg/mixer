@@ -110,7 +110,6 @@ const (
 	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
 	Mixer_ResolveCoordinates_FullMethodName           = "/datacommons.Mixer/ResolveCoordinates"
 	Mixer_ResolveIds_FullMethodName                   = "/datacommons.Mixer/ResolveIds"
-	Mixer_FindEntities_FullMethodName                 = "/datacommons.Mixer/FindEntities"
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
 	Mixer_RecognizeEntities_FullMethodName            = "/datacommons.Mixer/RecognizeEntities"
@@ -215,8 +214,6 @@ type MixerClient interface {
 	ResolveCoordinates(ctx context.Context, in *proto.ResolveCoordinatesRequest, opts ...grpc.CallOption) (*proto.ResolveCoordinatesResponse, error)
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(ctx context.Context, in *proto.ResolveIdsRequest, opts ...grpc.CallOption) (*proto.ResolveIdsResponse, error)
-	// Find entities from a description, with an optional filter on type.
-	FindEntities(ctx context.Context, in *proto.FindEntitiesRequest, opts ...grpc.CallOption) (*proto.FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
@@ -845,15 +842,6 @@ func (c *mixerClient) ResolveIds(ctx context.Context, in *proto.ResolveIdsReques
 	return out, nil
 }
 
-func (c *mixerClient) FindEntities(ctx context.Context, in *proto.FindEntitiesRequest, opts ...grpc.CallOption) (*proto.FindEntitiesResponse, error) {
-	out := new(proto.FindEntitiesResponse)
-	err := c.cc.Invoke(ctx, Mixer_FindEntities_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error) {
 	out := new(proto.BulkFindEntitiesResponse)
 	err := c.cc.Invoke(ctx, Mixer_BulkFindEntities_FullMethodName, in, out, opts...)
@@ -989,8 +977,6 @@ type MixerServer interface {
 	ResolveCoordinates(context.Context, *proto.ResolveCoordinatesRequest) (*proto.ResolveCoordinatesResponse, error)
 	// Resolve a list of IDs, given the input prop and output prop.
 	ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error)
-	// Find entities from a description, with an optional filter on type.
-	FindEntities(context.Context, *proto.FindEntitiesRequest) (*proto.FindEntitiesResponse, error)
 	// Find entities from descriptions, with optional filters on types.
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
@@ -1201,9 +1187,6 @@ func (UnimplementedMixerServer) ResolveCoordinates(context.Context, *proto.Resol
 }
 func (UnimplementedMixerServer) ResolveIds(context.Context, *proto.ResolveIdsRequest) (*proto.ResolveIdsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveIds not implemented")
-}
-func (UnimplementedMixerServer) FindEntities(context.Context, *proto.FindEntitiesRequest) (*proto.FindEntitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FindEntities not implemented")
 }
 func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkFindEntities not implemented")
@@ -2402,24 +2385,6 @@ func _Mixer_ResolveIds_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_FindEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.FindEntitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).FindEntities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_FindEntities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).FindEntities(ctx, req.(*proto.FindEntitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_BulkFindEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.BulkFindEntitiesRequest)
 	if err := dec(in); err != nil {
@@ -2754,10 +2719,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResolveIds",
 			Handler:    _Mixer_ResolveIds_Handler,
-		},
-		{
-			MethodName: "FindEntities",
-			Handler:    _Mixer_FindEntities_Handler,
 		},
 		{
 			MethodName: "BulkFindEntities",

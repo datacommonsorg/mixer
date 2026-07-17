@@ -25,5 +25,5 @@
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent
