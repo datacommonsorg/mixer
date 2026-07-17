@@ -338,8 +338,9 @@ func (s *Server) AgentService() *agent.Service {
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
 	// First, check if the header override is set.
-	// If true, ALWAYS revert back to legacy backend regardless of other flags.
+	// If true, ALWAYS revert back to legacy backend.
 	if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
+		slog.Info("X-Disable-Spanner header set, reverting to legacy backend")
 		return false
 	}
 
