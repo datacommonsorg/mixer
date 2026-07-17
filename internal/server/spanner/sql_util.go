@@ -19,24 +19,45 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+	"sync"
+	"unicode"
 
 	cloudSpanner "cloud.google.com/go/spanner"
 )
 
-// inUnnestRegex returns a regex that matches "IN UNNEST(@paramKey)" where IN
-// is a standalone SQL keyword (preceded by whitespace or start-of-line),
+// notInPrefixRegex matches a leading NOT keyword within a regex match.
+var notInPrefixRegex = regexp.MustCompile(`(?i)(?:^|\s)NOT\s+IN`)
+
+// inUnnestRegexCache caches compiled regexes by param key to avoid
+// recompiling on every query execution.
+var inUnnestRegexCache sync.Map
+
+// inUnnestRegex returns a regex that matches "IN UNNEST(@paramKey)" or
+// "NOT IN UNNEST(@paramKey)" where IN is a standalone SQL keyword
+// (preceded by whitespace or start-of-line, optionally preceded by NOT),
 // preventing false matches with "JOIN UNNEST(@paramKey)" where JOIN ends with IN.
+// Compiled regexes are cached since the set of param keys is small and reused.
 func inUnnestRegex(paramKey string) *regexp.Regexp {
-	return regexp.MustCompile(`(?i)(^|\s)IN\s+UNNEST\(@` + regexp.QuoteMeta(paramKey) + `\)`)
+	if cached, ok := inUnnestRegexCache.Load(paramKey); ok {
+		return cached.(*regexp.Regexp)
+	}
+	compiled := regexp.MustCompile(`(?i)(^|\s)(?:NOT\s+)?IN\s+UNNEST\(@` + regexp.QuoteMeta(paramKey) + `\)`)
+	actual, _ := inUnnestRegexCache.LoadOrStore(paramKey, compiled)
+	return actual.(*regexp.Regexp)
 }
 
 // extractLeadingSpace returns the leading whitespace character from a regex
 // match, or empty string if the match starts at the beginning of the string.
 func extractLeadingSpace(match string) string {
-	if len(match) > 0 && (match[0] == ' ' || match[0] == '\t' || match[0] == '\n') {
+	if len(match) > 0 && unicode.IsSpace(rune(match[0])) {
 		return string(match[0])
 	}
 	return ""
+}
+
+// hasNotPrefix returns true if the regex match includes a preceding NOT keyword.
+func hasNotPrefix(match string) bool {
+	return notInPrefixRegex.MatchString(match)
 }
 
 // quoteSQLString returns a SQL-escaped string literal.
@@ -85,12 +106,15 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 				quotedValues = append(quotedValues, quoteSQLString(s))
 			}
 			parenthesized := "(" + strings.Join(quotedValues, ",") + ")"
-			// Replace "IN UNNEST(@key)" with "IN (...)" using word-boundary matching.
+			// Replace "IN UNNEST(@key)" (or "NOT IN UNNEST(@key)") using word-boundary matching.
 			sqlString = inUnnestRegex(key).ReplaceAllStringFunc(sqlString, func(match string) string {
-				return extractLeadingSpace(match) + "IN " + parenthesized
+				prefix := "IN "
+				if hasNotPrefix(match) {
+					prefix = "NOT IN "
+				}
+				return extractLeadingSpace(match) + prefix + parenthesized
 			})
 			// For remaining @key references (e.g. FROM UNNEST(@key)), use array literal.
-			placeholder = "@" + key
 			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
 		case []float64:
 			var stringValues []string
@@ -133,15 +157,21 @@ func UnrollParameters(stmt *cloudSpanner.Statement) {
 		if l == 0 || l > UnrollArrayParamsMaxLength {
 			continue
 		}
-		// Use regex to match "IN UNNEST(@key)" where IN is a standalone keyword.
-		// This prevents false matches like "JOIN UNNEST(@key)" where JOIN ends with IN.
+		// Use regex to match "IN UNNEST(@key)" (or "NOT IN UNNEST(@key)") where
+		// IN is a standalone keyword. This prevents false matches like
+		// "JOIN UNNEST(@key)" where JOIN ends with IN.
 		regex := inUnnestRegex(key)
 		stmt.SQL = regex.ReplaceAllStringFunc(stmt.SQL, func(match string) string {
 			leadingSpace := extractLeadingSpace(match)
+			notPrefix := hasNotPrefix(match)
 			if l == 1 {
-				newName := fmt.Sprintf("%s_0", key)
+				newName := key + "_0"
 				newParams[newName] = v[0]
-				return leadingSpace + "= @" + newName
+				eqOp := "="
+				if notPrefix {
+					eqOp = "!="
+				}
+				return leadingSpace + eqOp + " @" + newName
 			}
 			var paramNames []string
 			for i, val := range v {
@@ -149,7 +179,11 @@ func UnrollParameters(stmt *cloudSpanner.Statement) {
 				paramNames = append(paramNames, "@"+newName)
 				newParams[newName] = val
 			}
-			return leadingSpace + "IN (" + strings.Join(paramNames, ",") + ")"
+			inPrefix := "IN ("
+			if notPrefix {
+				inPrefix = "NOT IN ("
+			}
+			return leadingSpace + inPrefix + strings.Join(paramNames, ",") + ")"
 		})
 	}
 	stmt.Params = newParams
