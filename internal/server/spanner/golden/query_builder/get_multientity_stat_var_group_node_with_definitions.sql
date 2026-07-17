@@ -7,8 +7,9 @@
 				AND object_id = 'dc/g/Demographics'
 				UNION ALL
 				SELECT
-				'dc/g/Demographics' AS child_svg,
-				'dc/g/Demographics' AS svg
+				node AS child_svg,
+				node AS svg
+				FROM UNNEST(['dc/g/Demographics']) AS node
 			),
 			UniqueChildSVGs AS (
 				SELECT DISTINCT child_svg FROM ChildSVGs
