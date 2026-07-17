@@ -34,6 +34,7 @@ type MultiEntityStatements struct {
 	getSdmxAvailability                            string
 	getSdmxContainedInPlace                        string
 	sdmxContainedPlacesCTE                         string
+	sdmxContainedPlacesWithRemoteCTE               string
 	sdmxContainedSeriesCTE                         string
 	getStatVarsByEntityBoth                        string
 	getStatVarsByEntityVarsOnly                    string
@@ -388,6 +389,19 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
 				AND typed.object_id = @%[5]s
+		)`,
+
+		sdmxContainedPlacesWithRemoteCTE: `%[1]s AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge contained
+			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			WHERE contained.predicate = '%[2]s'
+				AND contained.object_id = @%[3]s
+				AND typed.predicate = '%[4]s'
+				AND typed.object_id = @%[5]s
+			UNION DISTINCT
+			SELECT place_id
+			FROM UNNEST(@%[6]s) AS place_id
 		)`,
 
 		sdmxContainedSeriesCTE: fmt.Sprintf(`series AS (

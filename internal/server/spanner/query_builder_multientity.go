@@ -301,6 +301,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	observationPropertyToEntitySlot map[string]string,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
 	containedInPlaceConstraints, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
@@ -315,6 +316,7 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 			containedInPlaceConstraints,
 			observationPropertyToEntitySlot,
 			compiled,
+			containedInPlaceToRemoteDCIDs,
 		)
 		if err != nil {
 			return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
@@ -467,6 +469,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	constraints map[string]datacommons.ContainedInPlaceConstraint,
 	observationPropertyToEntitySlot map[string]string,
 	compiled *compiledSdmxConstraints,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
@@ -489,20 +492,13 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		return resolved[i].entityColumn < resolved[j].entityColumn
 	})
 
-	type relationKey struct {
-		ancestor       string
-		childPlaceType string
-	}
-	relationToCTE := map[relationKey]string{}
+	relationToCTE := map[datacommons.ContainedInPlaceConstraint]string{}
 	cteDefinitions := []string{}
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
 	for i := range resolved {
-		key := relationKey{
-			ancestor:       resolved[i].relation.Ancestor,
-			childPlaceType: resolved[i].relation.ChildPlaceType,
-		}
+		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]
 		if !ok {
 			cteIndex := len(relationToCTE)
@@ -510,16 +506,31 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 			relationToCTE[key] = cteName
 			ancestorParam := fmt.Sprintf("containment_%d_ancestor", cteIndex)
 			childPlaceTypeParam := fmt.Sprintf("containment_%d_child_place_type", cteIndex)
-			params[ancestorParam] = key.ancestor
-			params[childPlaceTypeParam] = key.childPlaceType
-			cteDefinitions = append(cteDefinitions, fmt.Sprintf(
-				b.statements.sdmxContainedPlacesCTE,
-				cteName,
-				containedRule.GraphPredicate,
-				ancestorParam,
-				typeRule.GraphPredicate,
-				childPlaceTypeParam,
-			))
+			params[ancestorParam] = key.Ancestor
+			params[childPlaceTypeParam] = key.ChildPlaceType
+			remoteDCIDs := containedInPlaceToRemoteDCIDs[key]
+			if len(remoteDCIDs) > 0 {
+				remotePlacesParam := fmt.Sprintf("containment_%d_remote_places", cteIndex)
+				params[remotePlacesParam] = remoteDCIDs
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesWithRemoteCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+					remotePlacesParam,
+				))
+			} else {
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+				))
+			}
 		}
 		resolved[i].cteName = cteName
 	}

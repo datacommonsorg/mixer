@@ -95,7 +95,12 @@ var (
 	// Include maps client
 	useMapsApi = flag.Bool("use_maps_api", true, "Uses maps API for place recognition.")
 	// Remote mixer url. The API serves merged data from local and remote mixer
-	remoteMixerDomain = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
+	remoteMixerDomain                        = flag.String("remote_mixer_domain", "", "Remote mixer domain to fetch and merge data for API response.")
+	sdmxRemoteContainedInPlaceExpansionLimit = flag.Int(
+		"sdmx_remote_contained_in_place_expansion_limit",
+		10000,
+		"Maximum unique remote place DCIDs for each SDMX containedInPlace+ relation.",
+	)
 	// Profile startup memory instead of listening for requests
 	startupMemoryProfile = flag.String("startup_memprof", "", "File path to write the memory profile of mixer startup to")
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
@@ -138,6 +143,10 @@ func main() {
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	if *sdmxRemoteContainedInPlaceExpansionLimit <= 0 {
+		slog.Error("sdmx_remote_contained_in_place_expansion_limit must be positive")
+		os.Exit(1)
+	}
 
 	var err error
 	flags, err := featureflags.NewFlags(*featureFlagsPath)
@@ -469,7 +478,10 @@ func main() {
 		// Relation Expression Processor
 		if remoteDataSource != nil {
 			slog.Info("remoteDataSource is configured, setting up relation expression processor")
-			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(
+				remoteDataSource,
+				*sdmxRemoteContainedInPlaceExpansionLimit,
+			)
 			processors = append(processors, &relationExpressionProcessor)
 		}
 

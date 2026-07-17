@@ -17,11 +17,15 @@ package emulator
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"path/filepath"
 	"slices"
 	"strings"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -33,6 +37,20 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
+
+type sdmxRemoteDataSource struct {
+	datasource.DataSource
+	nodeFunc func(context.Context, *pbv2.NodeRequest, int) (*pbv2.NodeResponse, error)
+}
+
+func (s *sdmxRemoteDataSource) Type() datasource.DataSourceType { return datasource.TypeRemote }
+func (s *sdmxRemoteDataSource) Id() string                      { return "sdmx-remote" }
+func (s *sdmxRemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	return s.nodeFunc(ctx, req, pageSize)
+}
+func (s *sdmxRemoteDataSource) SdmxData(context.Context, *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return &sdmxpb.SdmxDataResult{}, nil
+}
 
 func TestSDMXData(t *testing.T) {
 	sdmxService := newSDMXService(requireSuite(t).spannerClient)
@@ -125,6 +143,42 @@ func TestSDMXData(t *testing.T) {
 			compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
 		})
 	}
+}
+
+func TestSDMXDataUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
+	var nodeCalls int
+	remoteSource := &sdmxRemoteDataSource{
+		nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+			nodeCalls++
+			if got, want := req.GetNodes(), []string{"europe"}; !slices.Equal(got, want) {
+				return nil, fmt.Errorf("Node() nodes = %v, want %v", got, want)
+			}
+			if got, want := req.GetProperty(), "<-containedInPlace+{typeOf:Country}"; got != want {
+				return nil, fmt.Errorf("Node() property = %q, want %q", got, want)
+			}
+			return &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"europe": {
+						Arcs: map[string]*pbv2.Nodes{
+							"containedInPlace+": {Nodes: []*pb.EntityInfo{{Dcid: "country/USA"}}},
+						},
+					},
+				},
+			}, nil
+		},
+	}
+	sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
+	response, err := sdmxService.Data(context.Background(), emulatorDataRequest(
+		"c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN&"+
+			"c[sourceCountry.containedInPlace+]=europe&c[sourceCountry.typeOf]=Country",
+	))
+	if err != nil {
+		t.Fatalf("Data() error = %v", err)
+	}
+	if nodeCalls != 1 {
+		t.Fatalf("Node() calls = %d, want 1", nodeCalls)
+	}
+	compareEmulatorCSVGolden(t, "data_two_entities.csv", string(response.Body))
 }
 
 func TestSDMXDataRequiresObservationProperty(t *testing.T) {
@@ -258,6 +312,16 @@ func newSDMXService(client mixerspanner.SpannerClient) *service.Service {
 	spannerSource := mixerspanner.NewSpannerDataSource(client, nil)
 	sources := datasources.NewDataSources([]datasource.DataSource{spannerSource}, nil)
 	return service.New(dispatcher.NewDispatcher(nil, sources))
+}
+
+func newSDMXServiceWithRemote(
+	client mixerspanner.SpannerClient,
+	remoteSource datasource.DataSource,
+) *service.Service {
+	spannerSource := mixerspanner.NewSpannerDataSource(client, nil)
+	sources := datasources.NewDataSources([]datasource.DataSource{spannerSource, remoteSource}, remoteSource)
+	var relationProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteSource, 10000)
+	return service.New(dispatcher.NewDispatcher([]*dispatcher.Processor{&relationProcessor}, sources))
 }
 
 func emulatorDataRequest(query string) service.Request {
