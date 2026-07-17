@@ -23,6 +23,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -204,6 +205,9 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 
 // SdmxData handles SDMX Data requests.
 func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	if err := datacommons.ValidateDataConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxData)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
@@ -218,6 +222,9 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQ
 
 // SdmxAvailability handles SDMX Availability requests.
 func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	if err := datacommons.ValidateAvailabilityConstraints(in.GetConstraints()); err != nil {
+		return nil, err
+	}
 	requestContext := newRequestContext(ctx, in, TypeSdmxAvailability)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {

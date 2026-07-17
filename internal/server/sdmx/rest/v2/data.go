@@ -17,13 +17,14 @@ package restv2
 import (
 	"net/url"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 type DataRequest struct {
 	Path        ResourcePath
-	Constraints map[string][]string
+	Constraints map[string]*sdmxpb.SdmxComponentConstraint
 	Format      string
 }
 
@@ -47,7 +48,7 @@ func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 		return nil, err
 	}
 
-	constraints := map[string][]string{}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{}
 	format := ""
 	for _, param := range params {
 		ok, err := parseComponentFilter(param, constraints)

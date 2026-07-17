@@ -159,7 +159,9 @@ func newEmulatorSuite(ctx context.Context) (_ *emulatorSuite, err error) {
 	}
 
 	config := fmt.Sprintf("project: %s\ninstance: %s\ndatabase: %s\n", emulatorProjectID, instanceID, databaseID)
-	resources.spannerClient, err = mixerspanner.NewSpannerClient(ctx, config, "", true, false)
+	resources.spannerClient, err = mixerspanner.NewSpannerClient(ctx, config, &mixerspanner.SpannerClientOptions{
+		UseMultiEntitySchema: true,
+	})
 	if err != nil {
 		return nil, err
 	}
