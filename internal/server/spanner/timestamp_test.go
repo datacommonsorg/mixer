@@ -134,7 +134,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 }
 
 // Test: Timestamp reset on null or completed run.
-// Situation: The client previously held an active ingestion timestamp when the database transitioned right to returning null on run completion.
+// Situation: The client previously held an active ingestion timestamp when the database transitioned to returning null on run completion.
 // Expectation: The helper zeros out the timestamp in production code so getStalenessTimestamp returns an error to trigger exact staleness reads.
 func TestTimestampResetOnNull(t *testing.T) {
 	mockTicker := NewMockTicker()
@@ -167,6 +167,6 @@ func TestTimestampResetOnNull(t *testing.T) {
 
 	// Expect getStalenessTimestamp to return an error when zero so executeQuery invokes exact staleness fallback reads.
 	if _, err := sc.getStalenessTimestamp(); err == nil {
-		t.Fatalf("Expected error right right when staleness timestamp is zero, but got nil")
+		t.Fatalf("Expected error when staleness timestamp is zero, but got nil")
 	}
 }

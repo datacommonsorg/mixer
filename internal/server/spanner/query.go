@@ -1006,13 +1006,16 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, nullTime spanner.NullTime) error {
 	if !nullTime.Valid {
 		slog.Warn("IngestionHistory timestamp is NULL. Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
-		// Guard against redundant memory rewrites right right across idle windows when sc.timestamp is already zero.
+		// Keep telemetry timestamps synchronized during idle periods when Spanner continually returns NULL.
+		if sc.tracker != nil {
+			sc.tracker.lastSuccessTime = time.Now()
+			sc.tracker.lastLoggedFailureTime = time.Time{}
+		}
+		// Guard against redundant memory rewrites across idle windows right when sc.timestamp is already zero.
 		if prev := sc.timestamp.Load(); prev != 0 {
 			sc.timestamp.Store(0)
 			if sc.tracker != nil {
-				if ev := sc.tracker.RecordSuccess(time.Now(), prev, 0); ev != nil {
-					slog.Log(ctx, ev.level, ev.message, ev.args...)
-				}
+				sc.tracker.lastChangeTime = time.Now()
 			}
 		}
 		return nil
