@@ -16,10 +16,33 @@ package spanner
 
 import (
 	"fmt"
+	"regexp"
+	"sort"
 	"strings"
 
 	cloudSpanner "cloud.google.com/go/spanner"
 )
+
+// inUnnestRegex returns a regex that matches "IN UNNEST(@paramKey)" where IN
+// is a standalone SQL keyword (preceded by whitespace or start-of-line),
+// preventing false matches with "JOIN UNNEST(@paramKey)" where JOIN ends with IN.
+func inUnnestRegex(paramKey string) *regexp.Regexp {
+	return regexp.MustCompile(`(?i)(^|\s)IN\s+UNNEST\(@` + regexp.QuoteMeta(paramKey) + `\)`)
+}
+
+// extractLeadingSpace returns the leading whitespace character from a regex
+// match, or empty string if the match starts at the beginning of the string.
+func extractLeadingSpace(match string) string {
+	if len(match) > 0 && (match[0] == ' ' || match[0] == '\t' || match[0] == '\n') {
+		return string(match[0])
+	}
+	return ""
+}
+
+// quoteSQLString returns a SQL-escaped string literal.
+func quoteSQLString(s string) string {
+	return fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''"))
+}
 
 // InterpolateSQL replaces params with values in SQL.
 // This is primarily used for debugging and testing to see the final query.
@@ -37,18 +60,15 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 
 	sqlString := stmtCopy.SQL
 
-	// Sort keys by length descending to prevent replacing substrings (e.g. @param before @param_0)
+	// Sort keys by length descending to prevent replacing substrings
+	// (e.g. @param before @param_0).
 	var keys []string
 	for k := range stmtCopy.Params {
 		keys = append(keys, k)
 	}
-	for i := 0; i < len(keys); i++ {
-		for j := i + 1; j < len(keys); j++ {
-			if len(keys[i]) < len(keys[j]) {
-				keys[i], keys[j] = keys[j], keys[i]
-			}
-		}
-	}
+	sort.Slice(keys, func(i, j int) bool {
+		return len(keys[i]) > len(keys[j])
+	})
 
 	for _, key := range keys {
 		value := stmtCopy.Params[key]
@@ -57,18 +77,20 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 
 		switch v := value.(type) {
 		case string:
-			formattedValue = fmt.Sprintf("'%s'", strings.ReplaceAll(v, "'", "''"))
+			formattedValue = quoteSQLString(v)
 		case []string:
-			// For UNNEST, represent the array as a comma-separated list
-			// enclosed in parentheses or brackets for clarity.
+			// For IN UNNEST(@key), represent the array as a parenthesized list.
 			var quotedValues []string
 			for _, s := range v {
-				quotedValues = append(quotedValues, fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''")))
+				quotedValues = append(quotedValues, quoteSQLString(s))
 			}
-			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
-			// Need to handle both UNNEST(@key) and @key
-			sqlString = strings.ReplaceAll(sqlString, "IN UNNEST("+placeholder+")", "IN "+formattedValue)
-			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
+			parenthesized := "(" + strings.Join(quotedValues, ",") + ")"
+			// Replace "IN UNNEST(@key)" with "IN (...)" using word-boundary matching.
+			sqlString = inUnnestRegex(key).ReplaceAllStringFunc(sqlString, func(match string) string {
+				return extractLeadingSpace(match) + "IN " + parenthesized
+			})
+			// For remaining @key references (e.g. FROM UNNEST(@key)), use array literal.
+			placeholder = "@" + key
 			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
 		case []float64:
 			var stringValues []string
@@ -76,9 +98,7 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 				stringValues = append(stringValues, fmt.Sprintf("%v", f))
 			}
 			formattedValue = "[" + strings.Join(stringValues, ",") + "]"
-		// ... add more cases for int64, float64, bool, etc.
 		default:
-			// Catch-all for other types
 			formattedValue = fmt.Sprintf("%v", v)
 		}
 		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
@@ -90,9 +110,10 @@ func InterpolateSQL(stmt *cloudSpanner.Statement) string {
 const UnrollArrayParamsMaxLength = 10
 
 // UnrollParameters modifies the given Spanner statement to unroll array parameters
-// of length <= UnrollArrayParamsMaxLength. It replaces "IN UNNEST(@param)" with "IN (@param_0, @param_1, ...)"
-// (or "= @param_0" if length is 1) and populates the params map with the individual values.
-// The original array parameter is kept in case it is referenced elsewhere in the query (e.g. UNNEST(@param) without IN).
+// of length <= UnrollArrayParamsMaxLength. It replaces "IN UNNEST(@param)" with
+// "IN (@param_0, @param_1, ...)" (or "= @param_0" if length is 1) and populates
+// the params map with the individual values. The original array parameter is kept
+// in case it is referenced elsewhere in the query (e.g. UNNEST(@param) without IN).
 func UnrollParameters(stmt *cloudSpanner.Statement) {
 	if stmt.Params == nil {
 		return
@@ -104,29 +125,32 @@ func UnrollParameters(stmt *cloudSpanner.Statement) {
 	}
 
 	for key, value := range stmt.Params {
-		switch v := value.(type) {
-		case []string:
-			l := len(v)
-			if l > 0 && l <= UnrollArrayParamsMaxLength {
-				placeholder := "IN UNNEST(@" + key + ")"
-				if strings.Contains(stmt.SQL, placeholder) {
-					if l == 1 {
-						newName := fmt.Sprintf("%s_0", key)
-						newParams[newName] = v[0]
-						stmt.SQL = strings.ReplaceAll(stmt.SQL, placeholder, "= @"+newName)
-					} else {
-						var paramNames []string
-						for i, val := range v {
-							newName := fmt.Sprintf("%s_%d", key, i)
-							paramNames = append(paramNames, "@"+newName)
-							newParams[newName] = val
-						}
-						replacement := "IN (" + strings.Join(paramNames, ",") + ")"
-						stmt.SQL = strings.ReplaceAll(stmt.SQL, placeholder, replacement)
-					}
-				}
-			}
+		v, ok := value.([]string)
+		if !ok {
+			continue
 		}
+		l := len(v)
+		if l == 0 || l > UnrollArrayParamsMaxLength {
+			continue
+		}
+		// Use regex to match "IN UNNEST(@key)" where IN is a standalone keyword.
+		// This prevents false matches like "JOIN UNNEST(@key)" where JOIN ends with IN.
+		regex := inUnnestRegex(key)
+		stmt.SQL = regex.ReplaceAllStringFunc(stmt.SQL, func(match string) string {
+			leadingSpace := extractLeadingSpace(match)
+			if l == 1 {
+				newName := fmt.Sprintf("%s_0", key)
+				newParams[newName] = v[0]
+				return leadingSpace + "= @" + newName
+			}
+			var paramNames []string
+			for i, val := range v {
+				newName := fmt.Sprintf("%s_%d", key, i)
+				paramNames = append(paramNames, "@"+newName)
+				newParams[newName] = val
+			}
+			return leadingSpace + "IN (" + strings.Join(paramNames, ",") + ")"
+		})
 	}
 	stmt.Params = newParams
 }
