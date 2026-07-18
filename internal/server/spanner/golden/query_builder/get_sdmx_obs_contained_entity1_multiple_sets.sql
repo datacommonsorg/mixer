@@ -1,7 +1,8 @@
+		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH contained_places_0 AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = 'linkedContainedInPlace'
 				AND contained.object_id = 'country/CAN'
 				AND typed.predicate = 'typeOf'
@@ -9,12 +10,21 @@
 		),
 		contained_places_1 AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = 'linkedContainedInPlace'
 				AND contained.object_id = 'country/USA'
 				AND typed.predicate = 'typeOf'
 				AND typed.object_id = 'State'
+		),
+		contained_places_2 AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
+			WHERE contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = 'northamerica'
+				AND typed.predicate = 'typeOf'
+				AND typed.object_id = 'Country'
 		),
 		series AS (
 			SELECT
@@ -29,7 +39,10 @@
 			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=_BASE_TABLE} t
 				ON t.entity1 = anchor.place_id
 				AND t.variable_measured IN ('var1')
-			WHERE t.entity3 IN (SELECT place_id FROM contained_places_1)
+			WHERE t.entity3 IS NOT NULL
+				AND t.entity3 IN (SELECT place_id FROM contained_places_1)
+				AND t.entity2 IS NOT NULL
+				AND t.entity2 IN (SELECT place_id FROM contained_places_2)
 		)
 		SELECT
 			t.variable_measured,

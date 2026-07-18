@@ -449,10 +449,11 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote",
 	},
 	{
-		name: "entity1 anchors multiple place sets",
+		name: "entity1 anchors entity2 and entity3 place sets",
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
 			"first":            sdmxContainedInPlaceConstraint("country/CAN", "Province"),
+			"middle":           sdmxContainedInPlaceConstraint("northamerica", "Country"),
 			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
 		},
 		observationPropertyToEntitySlot: map[string]string{

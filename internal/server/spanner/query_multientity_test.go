@@ -706,6 +706,34 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 	}
 }
 
+func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
+	cfg := DefaultTableConfig()
+	cfg.spannerEmulatorCompatibility = true
+	queryBuilder, err := NewMultiEntityQueryBuilder(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := queryBuilder.GetSdmxObservationsQuery(
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			"region":                              sdmxContainedInPlaceConstraint("northamerica", "Country"),
+		},
+		map[string]string{"region": "entity1"},
+		nil,
+	)
+	if err != nil {
+		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+	}
+	if !strings.Contains(statement.SQL, "spanner_emulator.disable_query_null_filtered_index_check=true") {
+		t.Errorf("GetSdmxObservationsQuery() SQL does not contain the emulator compatibility hint:\n%s", statement.SQL)
+	}
+	for _, hint := range []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"} {
+		if strings.Contains(statement.SQL, hint) {
+			t.Errorf("GetSdmxObservationsQuery() SQL contains unsupported emulator hint %q:\n%s", hint, statement.SQL)
+		}
+	}
+}
+
 func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
 	if err != nil {

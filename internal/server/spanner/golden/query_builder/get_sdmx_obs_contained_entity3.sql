@@ -1,8 +1,8 @@
-		@{spanner_emulator.disable_query_null_filtered_index_check=true}
+		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH contained_places_0 AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = 'linkedContainedInPlace'
 				AND contained.object_id = 'northamerica'
 				AND typed.predicate = 'typeOf'

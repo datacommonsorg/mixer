@@ -535,21 +535,46 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		resolved[i].cteName = cteName
 	}
 
+	// The anchor is the containment-constrained entity used to drive the
+	// contained_places-to-TimeSeries join. Its entity slot selects the access
+	// path; remaining containment constraints are applied as semi-join filters.
 	anchor := resolved[0]
 	index := "_BASE_TABLE"
-	statementHint := ""
+	// Production containment queries favor total scan and join throughput.
+	statementHints := []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"}
+	if b.tableConfig.spannerEmulatorCompatibility {
+		// The emulator cannot validate null-filtered index behavior. Apply its
+		// per-query bypass uniformly to this query family; production never
+		// receives this hint.
+		statementHints = []string{"spanner_emulator.disable_query_null_filtered_index_check=true"}
+	}
 	whereClauses := []string{}
+	// An entity3 anchor also requires entity2 to be non-null, which may overlap
+	// with a separate entity2 containment constraint.
+	addedNotNullFilters := map[string]struct{}{}
+	appendNotNullFilter := func(entityColumn string) {
+		if entityColumn != "entity2" && entityColumn != "entity3" {
+			return
+		}
+		if _, added := addedNotNullFilters[entityColumn]; added {
+			return
+		}
+		addedNotNullFilters[entityColumn] = struct{}{}
+		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IS NOT NULL", entityColumn))
+	}
 	switch anchor.entityColumn {
 	case "entity2":
 		index = b.tableConfig.TimeSeriesByEntity2Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity2")
 	case "entity3":
 		index = b.tableConfig.TimeSeriesByEntity3Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity3 IS NOT NULL", "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity3")
+		appendNotNullFilter("entity2")
 	}
+	// Make null rejection explicit for nullable entity filters instead of relying
+	// on Spanner to infer it from IN when considering null-filtered indexes.
 	for _, constraint := range resolved[1:] {
+		appendNotNullFilter(constraint.entityColumn)
 		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IN (SELECT place_id FROM %s)", constraint.entityColumn, constraint.cteName))
 	}
 	where := ""
@@ -566,6 +591,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		where,
 	)
 
+	statementHint := fmt.Sprintf("@{%s}\n\t\t", strings.Join(statementHints, ", "))
 	sql := fmt.Sprintf(
 		b.statements.getSdmxContainedInPlace,
 		statementHint,
@@ -577,6 +603,9 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 }
 
 func sdmxContainmentAnchorPriority(entityColumn string) int {
+	// Prefer entity1's base-table path. If entity1 is unavailable, prefer entity3
+	// over entity2 because TimeSeriesByEntity3 also stores entity2, allowing an
+	// entity2 filter before fetching base-table rows.
 	switch entityColumn {
 	case "entity1":
 		return 0

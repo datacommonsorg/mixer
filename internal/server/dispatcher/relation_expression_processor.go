@@ -158,6 +158,9 @@ func (p *RelationExpressionProcessor) preProcessSdmxData(rc *RequestContext) (Ou
 					)
 					return limitErr
 				}
+				// TODO: Propagate context cancellation and deadline errors instead of
+				// falling back to local-only results when the shared Observation
+				// relation-expansion behavior is updated.
 				slog.Warn("RelationExpressionProcessor: falling back to local-only SDMX containment expansion",
 					"ancestor", relation.Ancestor,
 					"childPlaceType", relation.ChildPlaceType,

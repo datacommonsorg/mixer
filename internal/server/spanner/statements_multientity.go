@@ -381,10 +381,12 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
 
+		// Keep typeOf edges as the left input. This query shape has produced
+		// materially faster Spanner plans; re-benchmark before changing the order.
 		sdmxContainedPlacesCTE: `%[1]s AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = '%[2]s'
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
@@ -393,8 +395,8 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		sdmxContainedPlacesWithRemoteCTE: `%[1]s AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = '%[2]s'
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
