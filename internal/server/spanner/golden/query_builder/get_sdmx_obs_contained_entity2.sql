@@ -20,7 +20,7 @@
 			FROM contained_places_0 anchor
 			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2} t
 				ON t.entity2 = anchor.place_id
-				AND t.variable_measured IN ('var1') AND t.entity1 IN ('country/CAN')
+				AND t.variable_measured = 'var1' AND t.entity1 = 'country/CAN'
 			WHERE t.entity2 IS NOT NULL
 		)
 		SELECT

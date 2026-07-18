@@ -1,7 +1,7 @@
 		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(['AirPollutant_Cancer_Risk']) AS var
-			CROSS JOIN ('geoId/01001','geoId/02013') AS ent
+			CROSS JOIN UNNEST(['geoId/01001','geoId/02013']) AS ent
 		)
 		SELECT
 			t.variable_measured,
@@ -21,5 +21,5 @@
 			) AS dates_and_values,
 			t.facet AS facets
 		FROM params p
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} TimeSeries t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries t
 			ON t.variable_measured = p.var AND t.entity1 = p.ent
