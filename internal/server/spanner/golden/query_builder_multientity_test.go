@@ -605,6 +605,54 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	})
 }
 
+func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
+	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "measurementMethod",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020", "2020"),
+			},
+		}, nil)
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "measurementMethod",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
+		},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+	}
+	for _, substring := range []string{
+		"SELECT DISTINCT t.measurement_method AS value",
+		"JOIN@{JOIN_METHOD=MERGE_JOIN} Observation o",
+		"USING (variable_measured, entity1, extra_entities_id, facet_id)",
+		"o.date IN UNNEST(@time_periods)",
+	} {
+		if !strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+		}
+	}
+	for _, substring := range []string{"APPLY_JOIN", "GROUP BY", "LIMIT 1", "TIME_PERIOD"} {
+		if strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
 	if err != nil {
@@ -675,6 +723,17 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 				},
 			},
 			want: `unsupported SDMX availability component "TIME_PERIOD"`,
+		},
+		{
+			name: "latest time period",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("Count_Person"),
+					"TIME_PERIOD":      sdmxComponentConstraint("latest"),
+				},
+			},
+			want: "GetSdmxAvailabilityQuery: SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates",
 		},
 		{
 			name: "unsupported constraint",

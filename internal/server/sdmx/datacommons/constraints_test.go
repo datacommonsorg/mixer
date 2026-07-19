@@ -148,19 +148,19 @@ func TestValidateDataConstraintsRequiresVariableMeasured(t *testing.T) {
 	}
 }
 
-func TestClassifyDataTimePeriod(t *testing.T) {
+func TestClassifyTimePeriod(t *testing.T) {
 	for _, tc := range []struct {
 		name     string
 		values   []string
 		present  bool
-		want     DataTimePeriodSelection
+		want     TimePeriodSelection
 		wantCode codes.Code
 	}{
-		{name: "absent", want: DataTimePeriodSelection{Mode: DataTimePeriodAll}},
-		{name: "one date", present: true, values: []string{"2020"}, want: DataTimePeriodSelection{Mode: DataTimePeriodExplicit, Dates: []string{"2020"}}},
-		{name: "dates are trimmed deduplicated and sorted", present: true, values: []string{" 2022 ", "2020", "2022"}, want: DataTimePeriodSelection{Mode: DataTimePeriodExplicit, Dates: []string{"2020", "2022"}}},
-		{name: "latest is case insensitive", present: true, values: []string{"latest"}, want: DataTimePeriodSelection{Mode: DataTimePeriodLatest}},
-		{name: "repeated latest", present: true, values: []string{"LATEST", "latest"}, want: DataTimePeriodSelection{Mode: DataTimePeriodLatest}},
+		{name: "absent", want: TimePeriodSelection{Mode: TimePeriodAll}},
+		{name: "one date", present: true, values: []string{"2020"}, want: TimePeriodSelection{Mode: TimePeriodExplicit, Dates: []string{"2020"}}},
+		{name: "dates are trimmed deduplicated and sorted", present: true, values: []string{" 2022 ", "2020", "2022"}, want: TimePeriodSelection{Mode: TimePeriodExplicit, Dates: []string{"2020", "2022"}}},
+		{name: "latest is case insensitive", present: true, values: []string{"latest"}, want: TimePeriodSelection{Mode: TimePeriodLatest}},
+		{name: "repeated latest", present: true, values: []string{"LATEST", "latest"}, want: TimePeriodSelection{Mode: TimePeriodLatest}},
 		{name: "mixed latest and date", present: true, values: []string{"LATEST", "2020"}, wantCode: codes.InvalidArgument},
 		{name: "empty", present: true, wantCode: codes.InvalidArgument},
 	} {
@@ -173,12 +173,12 @@ func TestClassifyDataTimePeriod(t *testing.T) {
 				}
 				constraints[ComponentTimePeriod] = constraint
 			}
-			got, err := ClassifyDataTimePeriod(constraints)
+			got, err := ClassifyTimePeriod(constraints)
 			if code := status.Code(err); code != tc.wantCode {
-				t.Fatalf("ClassifyDataTimePeriod() code = %v, want %v; err = %v", code, tc.wantCode, err)
+				t.Fatalf("ClassifyTimePeriod() code = %v, want %v; err = %v", code, tc.wantCode, err)
 			}
 			if diff := cmp.Diff(tc.want, got); diff != "" {
-				t.Fatalf("ClassifyDataTimePeriod() mismatch (-want +got):\n%s", diff)
+				t.Fatalf("ClassifyTimePeriod() mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}
@@ -233,13 +233,41 @@ func TestValidateAvailabilityConstraintsRejectsProperties(t *testing.T) {
 	}
 }
 
-func TestValidateAvailabilityConstraintsRejectsTimePeriod(t *testing.T) {
-	err := ValidateAvailabilityConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
-		ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
-		ComponentTimePeriod:       {Predicates: []*sdmxpb.SdmxPredicate{{Value: "2020"}}},
-	})
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+func TestValidateAvailabilityConstraintsTimePeriod(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		values      []string
+		wantMessage string
+	}{
+		{name: "one date", values: []string{"2020"}},
+		{name: "date list", values: []string{"2022", "2020", "2022"}},
+		{name: "latest", values: []string{"LATEST"}, wantMessage: "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"},
+		{name: "latest case insensitive", values: []string{"latest"}, wantMessage: "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"},
+		{name: "repeated latest", values: []string{"LATEST", "latest"}, wantMessage: "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"},
+		{name: "latest mixed with date", values: []string{"LATEST", "2020"}, wantMessage: "SDMX TIME_PERIOD filter cannot combine LATEST with explicit dates"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			predicates := make([]*sdmxpb.SdmxPredicate, 0, len(tc.values))
+			for _, value := range tc.values {
+				predicates = append(predicates, &sdmxpb.SdmxPredicate{Value: value})
+			}
+			err := ValidateAvailabilityConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
+				ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+				ComponentTimePeriod:       {Predicates: predicates},
+			})
+			if tc.wantMessage == "" {
+				if err != nil {
+					t.Fatalf("ValidateAvailabilityConstraints() error = %v, want nil", err)
+				}
+				return
+			}
+			if status.Code(err) != codes.InvalidArgument {
+				t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			}
+			if got := status.Convert(err).Message(); got != tc.wantMessage {
+				t.Fatalf("ValidateAvailabilityConstraints() message = %q, want %q", got, tc.wantMessage)
+			}
+		})
 	}
 }
 

@@ -541,6 +541,18 @@ func TestAvailabilityValidation(t *testing.T) {
 			wantErrSub: "unsupported SDMX availability component",
 		},
 		{
+			name:       "Selected time period unsupported",
+			request:    sdmxAvailabilityRequest("TIME_PERIOD", "c[variableMeasured]=Count_Person"),
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "unsupported SDMX availability component",
+		},
+		{
+			name:       "Latest time period invalid",
+			request:    sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=latest"),
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "SDMX TIME_PERIOD filter LATEST is not valid for availability",
+		},
+		{
 			name:       "Unsupported mode",
 			request:    sdmxAvailabilityRequest("observationAbout", "mode=available&c[variableMeasured]=Count_Person"),
 			wantCode:   codes.Unimplemented,
@@ -665,7 +677,7 @@ func TestAvailabilitySuccess(t *testing.T) {
 		"observationAbout",
 		"c[variableMeasured]=Count_Person,Count_Household&"+
 			"c[observationAbout]=country%2FUSA,geoId%2F06&"+
-			"c[unit]=Person,Count",
+			"c[unit]=Person,Count&c[TIME_PERIOD]=2020,2022",
 	))
 	if err != nil {
 		t.Fatalf("Availability() error = %v", err)
@@ -684,6 +696,7 @@ func TestAvailabilitySuccess(t *testing.T) {
 			"variableMeasured": sdmxComponentConstraint("Count_Person", "Count_Household"),
 			"observationAbout": sdmxComponentConstraint("country/USA", "geoId/06"),
 			"unit":             sdmxComponentConstraint("Person", "Count"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2022"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
@@ -775,14 +788,14 @@ func TestAvailabilitySDMXDebugLoggingParseFailure(t *testing.T) {
 
 	svc := newSdmxTestService(&sdmxDataSource{})
 
-	_, err := svc.Availability(context.Background(), withLog(sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020")))
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	_, err := svc.Availability(context.Background(), withLog(sdmxAvailabilityRequest("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=LATEST")))
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
 	logs := buf.String()
 	for _, want := range []string{
 		"SDMX availability request parse failed",
-		"unsupported SDMX component filter",
+		"SDMX TIME_PERIOD filter LATEST is not valid for availability",
 	} {
 		if !strings.Contains(logs, want) {
 			t.Fatalf("logs do not contain %q: %s", want, logs)

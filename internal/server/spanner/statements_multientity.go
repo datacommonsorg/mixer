@@ -34,6 +34,7 @@ type MultiEntityStatements struct {
 	getSdmxObsWithDates                            string
 	getSdmxObsLatest                               string
 	getSdmxAvailability                            string
+	getSdmxAvailabilityWithDates                   string
 	getSdmxContainedInPlace                        string
 	getSdmxContainedInPlaceWithDates               string
 	getSdmxContainedInPlaceLatest                  string
@@ -467,6 +468,19 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			AND %%[1]s IS NOT NULL
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
+
+		// Both tables are ordered by the full time-series key. Availability can
+		// match millions of series, so stream those keys instead of applying one
+		// Observation lookup per TimeSeries row.
+		getSdmxAvailabilityWithDates: fmt.Sprintf(`%[3]sSELECT DISTINCT %%[1]s AS value
+		FROM %[2]s t
+		JOIN@{JOIN_METHOD=MERGE_JOIN} %[1]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE (%%[2]s)
+			AND o.date IN UNNEST(@time_periods)
+			AND %%[1]s IS NOT NULL
+			AND %%[1]s != ''
+		ORDER BY value`, cfg.ObservationTable, cfg.TimeSeriesTable, sdmxDateStatementHint) + "\n",
 
 		// Force typeOf edges as the left input so Spanner filters by place type
 		// before containment. A broad containment lookup can return every place

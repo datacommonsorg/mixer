@@ -1063,6 +1063,23 @@ func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) 
 	}
 }
 
+func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			datacommons.ComponentTimePeriod:       sdmxComponentConstraint("latest"),
+		},
+	})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
 	client := &multiEntityClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
@@ -1613,6 +1630,38 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 			}
 			if got := status.Convert(err).Message(); got != tt.wantError {
 				t.Fatalf("validateSdmxDataConstraintComponents() message = %q, want %q", got, tt.wantError)
+			}
+		})
+	}
+}
+
+func TestValidateSdmxAvailabilityConstraintComponents(t *testing.T) {
+	shape := sdmxDataShape([]string{"destinationCountry", "sourceCountry"})
+	for _, tc := range []struct {
+		name        string
+		componentID string
+		wantError   bool
+	}{
+		{name: "time period", componentID: datacommons.ComponentTimePeriod},
+		{name: "dynamic dimension", componentID: "destinationCountry"},
+		{name: "unknown component", componentID: "customEntity", wantError: true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := validateSdmxAvailabilityConstraintComponents(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+					tc.componentID:                        sdmxComponentConstraint("value"),
+				},
+				shape,
+			)
+			if tc.wantError {
+				if status.Code(err) != codes.InvalidArgument {
+					t.Fatalf("validateSdmxAvailabilityConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("validateSdmxAvailabilityConstraintComponents() error = %v, want nil", err)
 			}
 		})
 	}

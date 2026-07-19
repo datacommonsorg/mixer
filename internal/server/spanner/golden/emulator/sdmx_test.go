@@ -422,6 +422,24 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_variable_measured.json",
 		},
 		{
+			name:      "single time period",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=2020",
+			golden:    "availability_time_period_single_date.json",
+		},
+		{
+			name:      "time period list",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=2020,2023",
+			golden:    "availability_time_period_date_list.json",
+		},
+		{
+			name:      "unmatched time period",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=1999",
+			golden:    "availability_empty.json",
+		},
+		{
 			name:      "empty result",
 			component: "sourceCountry",
 			query:     "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",

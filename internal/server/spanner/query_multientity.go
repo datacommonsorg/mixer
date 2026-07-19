@@ -675,7 +675,7 @@ func validateSdmxAvailabilityConstraintComponents(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	shape *sdmxpb.SdmxDataShape,
 ) error {
-	return validateSdmxConstraintComponents(constraints, sdmxFilterableDimensions(shape), "dimensions")
+	return validateSdmxConstraintComponents(constraints, sdmxFilterableAvailabilityConstraints(shape), "dimensions")
 }
 
 func validateSdmxConstraintComponents(
@@ -735,6 +735,12 @@ func sdmxFilterableDimensions(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 		}
 	}
 	return filterableDimensions
+}
+
+func sdmxFilterableAvailabilityConstraints(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
+	filterableComponents := sdmxFilterableDimensions(shape)
+	filterableComponents[datacommons.ComponentTimePeriod] = struct{}{}
+	return filterableComponents
 }
 
 func sdmxFilterableDataComponents(shape *sdmxpb.SdmxDataShape) map[string]struct{} {

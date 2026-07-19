@@ -175,7 +175,7 @@ func validateAvailabilityRequest(path AvailabilityPath, constraints map[string]*
 		return status.Errorf(codes.Unimplemented, "unsupported SDMX availability component %q", path.ComponentID)
 	}
 
-	if err := validateComponentFilters(constraints, isFilterableDimensionCandidate); err != nil {
+	if err := validateComponentFilters(constraints, isFilterableAvailabilityConstraintCandidate); err != nil {
 		return err
 	}
 	return datacommons.ValidateAvailabilityConstraints(constraints)
@@ -199,6 +199,10 @@ func validateComponentFilters(constraints map[string]*sdmxpb.SdmxComponentConstr
 func isFilterableDataComponentCandidate(componentID string) bool {
 	_, isFilterableAttribute := datacommons.FilterableAttributes[componentID]
 	return componentID == datacommons.ComponentTimePeriod || isFilterableDimensionCandidate(componentID) || isFilterableAttribute
+}
+
+func isFilterableAvailabilityConstraintCandidate(componentID string) bool {
+	return componentID == datacommons.ComponentTimePeriod || isFilterableDimensionCandidate(componentID)
 }
 
 func isFilterableDimensionCandidate(componentID string) bool {
