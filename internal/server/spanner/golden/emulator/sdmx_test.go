@@ -434,6 +434,12 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_time_period_date_list.json",
 		},
 		{
+			name:      "time period list with series constraint",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[unit]=Count&c[TIME_PERIOD]=2020,2023",
+			golden:    "availability_time_period_date_list.json",
+		},
+		{
 			name:      "unmatched time period",
 			component: "measurementMethod",
 			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=1999",

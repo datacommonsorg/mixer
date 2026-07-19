@@ -1006,6 +1006,82 @@ func TestSdmxBackendError(t *testing.T) {
 	}
 }
 
+func TestSelectSdmxAvailabilityDateJoinPlan(t *testing.T) {
+	for _, tc := range []struct {
+		name    string
+		context sdmxAvailabilityDateJoinContext
+		want    sdmxAvailabilityDateJoinPlan
+	}{
+		{
+			name: "ordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinMergeBaseTable,
+		},
+		{
+			name: "ordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        false,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name: "unordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: false,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name:    "unordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{},
+			want:    sdmxAvailabilityDateJoinAutomatic,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := selectSdmxAvailabilityDateJoinPlan(tc.context); got != tc.want {
+				t.Fatalf("selectSdmxAvailabilityDateJoinPlan() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestIsBroadSdmxAvailabilitySeriesScan(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+		want        bool
+	}{
+		{
+			name: "multiple variables and time period",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1", "var2"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020", "2023"),
+			},
+			want: true,
+		},
+		{
+			name: "additional series constraint",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
+				"unit":                                sdmxComponentConstraint("Count"),
+			},
+			want: false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := isBroadSdmxAvailabilitySeriesScan(tc.constraints); got != tc.want {
+				t.Fatalf("isBroadSdmxAvailabilitySeriesScan() = %t, want %t", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string

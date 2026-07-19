@@ -645,6 +645,48 @@ func sdmxContainmentAnchorPriority(entityColumn string) int {
 	}
 }
 
+type sdmxAvailabilityDateJoinPlan int
+
+const (
+	sdmxAvailabilityDateJoinAutomatic sdmxAvailabilityDateJoinPlan = iota
+	sdmxAvailabilityDateJoinMergeBaseTable
+)
+
+type sdmxAvailabilityDateJoinContext struct {
+	seriesOrderedByFullKey bool
+	broadSeriesScan        bool
+}
+
+// selectSdmxAvailabilityDateJoinPlan chooses the physical join strategy at the
+// TimeSeries-to-Observation boundary. A merge join is safe only when both inputs
+// can be kept in (variable_measured, entity1, extra_entities_id, facet_id)
+// order. Direct queries can guarantee that by forcing both base tables. A
+// secondary index, containment anchor, candidate-series CTE, or local/remote
+// union must be treated as unordered until a production query plan proves that
+// it preserves the complete key order. Future containment builders should
+// construct this context after choosing their series access path and default to
+// automatic planning. Do not run a COUNT query to make this choice; if reliable
+// cardinality metadata becomes available, add it to this context instead.
+func selectSdmxAvailabilityDateJoinPlan(
+	joinContext sdmxAvailabilityDateJoinContext,
+) sdmxAvailabilityDateJoinPlan {
+	if joinContext.seriesOrderedByFullKey && joinContext.broadSeriesScan {
+		return sdmxAvailabilityDateJoinMergeBaseTable
+	}
+	return sdmxAvailabilityDateJoinAutomatic
+}
+
+func isBroadSdmxAvailabilitySeriesScan(
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
+) bool {
+	for componentID := range constraints {
+		if componentID != datacommons.ComponentVariableMeasured && componentID != datacommons.ComponentTimePeriod {
+			return false
+		}
+	}
+	return true
+}
+
 // GetSdmxAvailabilityQuery builds the SDMX availability lookup.
 func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	req *sdmxpb.SdmxAvailabilityQuery,
@@ -675,6 +717,15 @@ func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	params := compiled.params
 	if timeSelection.Mode == datacommons.TimePeriodExplicit {
 		queryTemplate = b.statements.getSdmxAvailabilityWithDates
+		joinPlan := selectSdmxAvailabilityDateJoinPlan(sdmxAvailabilityDateJoinContext{
+			// The merge variant forces both base tables, which share the full
+			// time-series key prefix required by the merge join.
+			seriesOrderedByFullKey: true,
+			broadSeriesScan:        isBroadSdmxAvailabilitySeriesScan(req.GetConstraints()),
+		})
+		if joinPlan == sdmxAvailabilityDateJoinMergeBaseTable {
+			queryTemplate = b.statements.getSdmxAvailabilityWithDatesMergeBaseTable
+		}
 		params = maps.Clone(compiled.params)
 		params["time_periods"] = timeSelection.Dates
 	}
