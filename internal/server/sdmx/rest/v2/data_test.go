@@ -73,6 +73,24 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
+			name:        "time period date list",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2022"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"observationAbout": {"country/USA"},
+				"TIME_PERIOD":      {"2020", "2022"},
+			},
+		},
+		{
+			name:        "time period latest case insensitive",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=latest"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"observationAbout": {"country/USA"},
+				"TIME_PERIOD":      {"latest"},
+			},
+		},
+		{
 			name: "multiple values for fixed and dynamic dimensions",
 			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated,Count_Refugee&" +
 				"c[destinationCountry]=country%2FCAN,country%2FMEX&" +
@@ -337,9 +355,9 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
-			name:        "time period filter unsupported",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
-			wantCode:    codes.Unimplemented,
+			name:        "latest mixed with explicit date",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=LATEST,2020"),
+			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "duplicate component",

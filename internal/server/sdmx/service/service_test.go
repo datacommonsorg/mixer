@@ -158,10 +158,10 @@ func TestDataValidation(t *testing.T) {
 			wantErrSub: "unsupported SDMX component filter",
 		},
 		{
-			name:       "Unsupported time period filter",
-			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
-			wantCode:   codes.Unimplemented,
-			wantErrSub: "unsupported SDMX component filter",
+			name:       "Latest mixed with explicit time period",
+			request:    sdmxDataRequest("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=LATEST,2020"),
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "cannot combine LATEST with explicit dates",
 		},
 		{
 			name:       "Unsupported scaling factor filter",
@@ -273,7 +273,8 @@ func TestDataDimensionFiltersPreserveMultipleValues(t *testing.T) {
 			"c[unit]=Person,Traveler&"+
 			"c[measurementMethod]=Census,Survey&"+
 			"c[observationPeriod]=P1Y,P1M&"+
-			"c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo",
+			"c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo&"+
+			"c[TIME_PERIOD]=2020,2022",
 	))
 	if err != nil {
 		t.Fatalf("Data() error = %v", err)
@@ -288,6 +289,7 @@ func TestDataDimensionFiltersPreserveMultipleValues(t *testing.T) {
 			"measurementMethod":  sdmxComponentConstraint("Census", "Survey"),
 			"observationPeriod":  sdmxComponentConstraint("P1Y", "P1M"),
 			"provenance":         sdmxComponentConstraint("dc/base/one", "dc/base/two"),
+			"TIME_PERIOD":        sdmxComponentConstraint("2020", "2022"),
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {

@@ -31,8 +31,12 @@ type MultiEntityStatements struct {
 	getObsByContainedInPlaceBothWithDate           string
 	getObsByContainedInPlaceBothLatest             string
 	getSdmxObs                                     string
+	getSdmxObsWithDates                            string
+	getSdmxObsLatest                               string
 	getSdmxAvailability                            string
 	getSdmxContainedInPlace                        string
+	getSdmxContainedInPlaceWithDates               string
+	getSdmxContainedInPlaceLatest                  string
 	sdmxContainedPlacesCTE                         string
 	sdmxContainedPlacesWithRemoteCTE               string
 	sdmxContainedSeriesCTE                         string
@@ -60,6 +64,10 @@ type MultiEntityStatements struct {
 func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	if err := validateMultiEntityTableConfig(cfg); err != nil {
 		return nil, err
+	}
+	sdmxDateStatementHint := "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n\t\t"
+	if cfg.spannerEmulatorCompatibility {
+		sdmxDateStatementHint = "\t\t"
 	}
 
 	return &MultiEntityStatements{
@@ -396,6 +404,63 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM %[2]s t
 		WHERE `, cfg.ObservationTable, cfg.TimeSeriesTable),
 
+		getSdmxObsWithDates: fmt.Sprintf(`%[3]sWITH series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet,
+				t.entities
+			FROM %[2]s t
+			WHERE %%s
+		)
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets,
+			ANY_VALUE(t.entities) AS entities
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE o.date IN UNNEST(@time_periods)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable, cfg.TimeSeriesTable, sdmxDateStatementHint),
+
+		getSdmxObsLatest: fmt.Sprintf(`		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			COALESCE(
+				(
+					SELECT ARRAY(
+						SELECT AS STRUCT
+							o.date AS date,
+							o.value AS str_value
+						FROM %[1]s o
+						WHERE o.variable_measured = t.variable_measured
+							AND o.entity1 = t.entity1
+							AND o.extra_entities_id = t.extra_entities_id
+							AND o.facet_id = t.facet_id
+						ORDER BY o.date DESC
+						LIMIT 1
+					)
+				),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			t.facet AS facets,
+			t.entities
+		FROM %[2]s t
+		WHERE `, cfg.ObservationTable, cfg.TimeSeriesTable),
+
 		getSdmxAvailability: fmt.Sprintf(`		SELECT DISTINCT %%[1]s AS value
 		FROM %[1]s t
 		WHERE (%%[2]s)
@@ -462,6 +527,54 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			t.entity1,
 			t.extra_entities_id,
 			t.facet_id`, cfg.ObservationTable),
+
+		getSdmxContainedInPlaceWithDates: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+		%%[3]s
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets,
+			ANY_VALUE(t.entities) AS entities
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE o.date IN UNNEST(@time_periods)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable),
+
+		getSdmxContainedInPlaceLatest: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+		%%[3]s
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			COALESCE(
+				(
+					SELECT ARRAY(
+						SELECT AS STRUCT
+							o.date AS date,
+							o.value AS str_value
+						FROM %s o
+						WHERE o.variable_measured = t.variable_measured
+							AND o.entity1 = t.entity1
+							AND o.extra_entities_id = t.extra_entities_id
+							AND o.facet_id = t.facet_id
+						ORDER BY o.date DESC
+						LIMIT 1
+					)
+				),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			t.facet AS facets,
+			t.entities
+		FROM series t`, cfg.ObservationTable),
 
 		// Check existence when both variables and entities are specified
 		getStatVarsByEntityBoth: fmt.Sprintf(`		WITH

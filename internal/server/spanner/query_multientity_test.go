@@ -1548,7 +1548,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationAbout: sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "unknown dynamic filter fails",
@@ -1556,15 +1556,14 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				"customEntity":                        sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
-			name: "time period fails",
+			name: "time period passes",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
 			},
-			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "measure fails",
@@ -1572,7 +1571,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationValue: sdmxComponentConstraint("10"),
 			},
-			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "attribute fails",
@@ -1580,7 +1579,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentScalingFactor:    sdmxComponentConstraint("0"),
 			},
-			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 	}
 

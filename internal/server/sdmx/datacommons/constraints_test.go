@@ -148,6 +148,42 @@ func TestValidateDataConstraintsRequiresVariableMeasured(t *testing.T) {
 	}
 }
 
+func TestClassifyDataTimePeriod(t *testing.T) {
+	for _, tc := range []struct {
+		name     string
+		values   []string
+		present  bool
+		want     DataTimePeriodSelection
+		wantCode codes.Code
+	}{
+		{name: "absent", want: DataTimePeriodSelection{Mode: DataTimePeriodAll}},
+		{name: "one date", present: true, values: []string{"2020"}, want: DataTimePeriodSelection{Mode: DataTimePeriodExplicit, Dates: []string{"2020"}}},
+		{name: "dates are trimmed deduplicated and sorted", present: true, values: []string{" 2022 ", "2020", "2022"}, want: DataTimePeriodSelection{Mode: DataTimePeriodExplicit, Dates: []string{"2020", "2022"}}},
+		{name: "latest is case insensitive", present: true, values: []string{"latest"}, want: DataTimePeriodSelection{Mode: DataTimePeriodLatest}},
+		{name: "repeated latest", present: true, values: []string{"LATEST", "latest"}, want: DataTimePeriodSelection{Mode: DataTimePeriodLatest}},
+		{name: "mixed latest and date", present: true, values: []string{"LATEST", "2020"}, wantCode: codes.InvalidArgument},
+		{name: "empty", present: true, wantCode: codes.InvalidArgument},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			constraints := map[string]*sdmxpb.SdmxComponentConstraint{}
+			if tc.present {
+				constraint := &sdmxpb.SdmxComponentConstraint{}
+				for _, value := range tc.values {
+					constraint.Predicates = append(constraint.Predicates, &sdmxpb.SdmxPredicate{Value: value})
+				}
+				constraints[ComponentTimePeriod] = constraint
+			}
+			got, err := ClassifyDataTimePeriod(constraints)
+			if code := status.Code(err); code != tc.wantCode {
+				t.Fatalf("ClassifyDataTimePeriod() code = %v, want %v; err = %v", code, tc.wantCode, err)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Fatalf("ClassifyDataTimePeriod() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestValidateDataConstraintsPropertyScopes(t *testing.T) {
 	for _, tc := range []struct {
 		name        string
@@ -191,6 +227,16 @@ func TestContainedInPlaceConstraints(t *testing.T) {
 func TestValidateAvailabilityConstraintsRejectsProperties(t *testing.T) {
 	err := ValidateAvailabilityConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
 		"observationAbout": testContainedInPlaceConstraint("country/USA", "County"),
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+}
+
+func TestValidateAvailabilityConstraintsRejectsTimePeriod(t *testing.T) {
+	err := ValidateAvailabilityConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
+		ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+		ComponentTimePeriod:       {Predicates: []*sdmxpb.SdmxPredicate{{Value: "2020"}}},
 	})
 	if status.Code(err) != codes.Unimplemented {
 		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)

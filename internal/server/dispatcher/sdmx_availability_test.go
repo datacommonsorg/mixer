@@ -142,6 +142,23 @@ func TestSdmxDataPropertyConstraintsCallsDataSources(t *testing.T) {
 	}
 }
 
+func TestSdmxDataTimeConstraintsCallDataSources(t *testing.T) {
+	query := &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Person"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2022"),
+		},
+	}
+	source := &sdmxDataConstraintSource{}
+	dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
+	if _, err := dispatcher.SdmxData(context.Background(), query); err != nil {
+		t.Fatalf("SdmxData() error = %v", err)
+	}
+	if diff := cmp.Diff(query, source.got, protocmp.Transform()); diff != "" {
+		t.Fatalf("SdmxData() request mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
 	propertyConstraint := &sdmxpb.SdmxComponentConstraint{
 		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
@@ -165,6 +182,14 @@ func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
 				"unit":             propertyConstraint,
 			},
 			wantCode: codes.Unimplemented,
+		},
+		{
+			name: "latest mixed with explicit date",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_Person"),
+				"TIME_PERIOD":      sdmxComponentConstraint("LATEST", "2020"),
+			},
+			wantCode: codes.InvalidArgument,
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -190,6 +215,34 @@ func TestSdmxAvailabilityRequiresVariableMeasuredBeforeSources(t *testing.T) {
 	}
 	if source.got != nil {
 		t.Fatalf("SdmxAvailability() called source with %v", source.got)
+	}
+}
+
+func TestSdmxAvailabilityRejectsTimePeriodBeforeSources(t *testing.T) {
+	for _, query := range []*sdmxpb.SdmxAvailabilityQuery{
+		{
+			ComponentId: "TIME_PERIOD",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_Person"),
+			},
+		},
+		{
+			ComponentId: "observationAbout",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_Person"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2020"),
+			},
+		},
+	} {
+		source := &sdmxAvailabilitySource{}
+		dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
+		_, err := dispatcher.SdmxAvailability(context.Background(), query)
+		if status.Code(err) != codes.Unimplemented {
+			t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+		}
+		if source.got != nil {
+			t.Fatalf("SdmxAvailability() called source with %v", source.got)
+		}
 	}
 }
 

@@ -222,6 +222,9 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQ
 
 // SdmxAvailability handles SDMX Availability requests.
 func (dispatcher *Dispatcher) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	if in.GetComponentId() == datacommons.ComponentTimePeriod {
+		return nil, status.Error(codes.Unimplemented, "SDMX TIME_PERIOD availability is not implemented yet")
+	}
 	if err := datacommons.ValidateAvailabilityConstraints(in.GetConstraints()); err != nil {
 		return nil, err
 	}

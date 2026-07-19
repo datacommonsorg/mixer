@@ -73,6 +73,26 @@ func TestSDMXData(t *testing.T) {
 			golden: "data_fallback_observation_about.csv",
 		},
 		{
+			name:   "explicit time period list",
+			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2022,2023",
+			golden: "data_time_period_date_list.csv",
+		},
+		{
+			name:   "single time period omits unmatched series",
+			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020",
+			golden: "data_time_period_single_date.csv",
+		},
+		{
+			name:   "latest time period per series",
+			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=LATEST",
+			golden: "data_time_period_latest.csv",
+		},
+		{
+			name:   "contained observation about with latest time period",
+			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[TIME_PERIOD]=latest",
+			golden: "data_time_period_latest.csv",
+		},
+		{
 			name:   "three observation properties",
 			query:  "c[variableMeasured]=Count_MigrationByTransportMode&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA&c[transportMode]=Air&c[unit]=Count&c[measurementMethod]=Census&c[observationPeriod]=P1Y&c[provenance]=dc%2Fbase%2FHumanReadableStatVars",
 			golden: "data_three_entities.csv",

@@ -198,7 +198,7 @@ func validateComponentFilters(constraints map[string]*sdmxpb.SdmxComponentConstr
 
 func isFilterableDataComponentCandidate(componentID string) bool {
 	_, isFilterableAttribute := datacommons.FilterableAttributes[componentID]
-	return isFilterableDimensionCandidate(componentID) || isFilterableAttribute
+	return componentID == datacommons.ComponentTimePeriod || isFilterableDimensionCandidate(componentID) || isFilterableAttribute
 }
 
 func isFilterableDimensionCandidate(componentID string) bool {

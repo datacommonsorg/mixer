@@ -298,11 +298,17 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	observationPropertyToEntitySlot map[string]string,
 	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
+	timeSelection, err := datacommons.ClassifyDataTimePeriod(constraints)
+	if err != nil {
+		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
+	}
 	containedInPlaceConstraints, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
-	compiled, err := compileSdmxConstraints(constraints, observationPropertyToEntitySlot)
+	seriesConstraints := maps.Clone(constraints)
+	delete(seriesConstraints, datacommons.ComponentTimePeriod)
+	compiled, err := compileSdmxConstraints(seriesConstraints, observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
@@ -312,6 +318,7 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 			observationPropertyToEntitySlot,
 			compiled,
 			containedInPlaceToRemoteDCIDs,
+			timeSelection,
 		)
 		if err != nil {
 			return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
@@ -319,10 +326,25 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 		return statement, nil
 	}
 
-	return &spanner.Statement{
-		SQL:    b.statements.getSdmxObs + compiled.where,
-		Params: compiled.params,
-	}, nil
+	switch timeSelection.Mode {
+	case datacommons.DataTimePeriodExplicit:
+		params := maps.Clone(compiled.params)
+		params["time_periods"] = timeSelection.Dates
+		return &spanner.Statement{
+			SQL:    fmt.Sprintf(b.statements.getSdmxObsWithDates, compiled.where),
+			Params: params,
+		}, nil
+	case datacommons.DataTimePeriodLatest:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObsLatest + compiled.where,
+			Params: compiled.params,
+		}, nil
+	default:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObs + compiled.where,
+			Params: compiled.params,
+		}, nil
+	}
 }
 
 type compiledSdmxConstraints struct {
@@ -465,6 +487,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	observationPropertyToEntitySlot map[string]string,
 	compiled *compiledSdmxConstraints,
 	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
+	timeSelection datacommons.DataTimePeriodSelection,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
@@ -590,8 +613,16 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	)
 
 	statementHint := fmt.Sprintf("@{%s}\n\t\t", strings.Join(statementHints, ", "))
+	queryTemplate := b.statements.getSdmxContainedInPlace
+	switch timeSelection.Mode {
+	case datacommons.DataTimePeriodExplicit:
+		queryTemplate = b.statements.getSdmxContainedInPlaceWithDates
+		params["time_periods"] = timeSelection.Dates
+	case datacommons.DataTimePeriodLatest:
+		queryTemplate = b.statements.getSdmxContainedInPlaceLatest
+	}
 	sql := fmt.Sprintf(
-		b.statements.getSdmxContainedInPlace,
+		queryTemplate,
 		statementHint,
 		strings.Join(cteDefinitions, ",\n\t\t"),
 		seriesCTE,

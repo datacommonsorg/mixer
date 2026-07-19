@@ -739,6 +739,7 @@ func sdmxFilterableDimensions(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 
 func sdmxFilterableDataComponents(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 	filterableComponents := sdmxFilterableDimensions(shape)
+	filterableComponents[datacommons.ComponentTimePeriod] = struct{}{}
 	for componentID := range datacommons.FilterableAttributes {
 		filterableComponents[componentID] = struct{}{}
 	}

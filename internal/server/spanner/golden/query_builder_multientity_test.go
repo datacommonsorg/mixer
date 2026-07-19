@@ -257,6 +257,14 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			want: "GetSdmxObservationsQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
+			name: "latest mixed with explicit date",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"TIME_PERIOD":      sdmxComponentConstraint("LATEST", "2020"),
+			},
+			want: "GetSdmxObservationsQuery: SDMX TIME_PERIOD filter cannot combine LATEST with explicit dates",
+		},
+		{
 			name: "unsupported dynamic key",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured": sdmxComponentConstraint("var1"),
@@ -305,6 +313,66 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			}
 			if got := status.Convert(err).Message(); got != tc.want {
 				t.Fatalf("GetSdmxObservationsQuery() message = %q, want %q", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tc := range []struct {
+		name       string
+		timeValues []string
+		contains   []string
+		excludes   []string
+	}{
+		{
+			name:       "explicit dates use observation join",
+			timeValues: []string{"2020", "2022"},
+			contains: []string{
+				"JOIN@{JOIN_METHOD=APPLY_JOIN} Observation o",
+				"WHERE o.date IN UNNEST(@time_periods)",
+				"ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date)",
+			},
+			excludes: []string{"LIMIT 1"},
+		},
+		{
+			name:       "latest uses full-key correlated lookup",
+			timeValues: []string{"LATEST"},
+			contains: []string{
+				"AND o.extra_entities_id = t.extra_entities_id",
+				"AND o.facet_id = t.facet_id",
+				"ORDER BY o.date DESC",
+				"LIMIT 1",
+			},
+			excludes: []string{"@time_periods"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			statement, err := builder.GetSdmxObservationsQuery(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("var1"),
+					"TIME_PERIOD":      sdmxComponentConstraint(tc.timeValues...),
+				},
+				nil,
+				nil,
+			)
+			if err != nil {
+				t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+			}
+			for _, substring := range tc.contains {
+				if !strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL missing %q:\n%s", substring, statement.SQL)
+				}
+			}
+			for _, substring := range tc.excludes {
+				if strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+				}
 			}
 		})
 	}
