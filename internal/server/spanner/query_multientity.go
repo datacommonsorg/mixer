@@ -796,6 +796,9 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX availability request cannot be nil")
 	}
+	if req.GetComponentId() == datacommons.ComponentTimePeriod {
+		return nil, status.Error(codes.Unimplemented, "SDMX TIME_PERIOD availability is not implemented yet")
+	}
 	if req.Constraints == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX availability request constraints cannot be nil")
 	}

@@ -16,6 +16,7 @@ package dispatcher
 
 import (
 	"context"
+	"errors"
 	"testing"
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -39,11 +40,13 @@ type sdmxAvailabilitySource struct {
 	datasource.DataSource
 	got    *sdmxpb.SdmxAvailabilityQuery
 	result *sdmxpb.SdmxAvailabilityResult
+	err    error
 }
 
 type sdmxDataConstraintSource struct {
 	datasource.DataSource
 	got *sdmxpb.SdmxDataQuery
+	err error
 }
 
 func (s *sdmxDataConstraintSource) Type() datasource.DataSourceType {
@@ -56,7 +59,7 @@ func (s *sdmxDataConstraintSource) Id() string {
 
 func (s *sdmxDataConstraintSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	s.got = req
-	return &sdmxpb.SdmxDataResult{}, nil
+	return &sdmxpb.SdmxDataResult{}, s.err
 }
 
 func (s *sdmxAvailabilitySource) Type() datasource.DataSourceType {
@@ -69,7 +72,7 @@ func (s *sdmxAvailabilitySource) Id() string {
 
 func (s *sdmxAvailabilitySource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	s.got = req
-	return s.result, nil
+	return s.result, s.err
 }
 
 func TestSdmxAvailabilityBackendUnimplementedWithoutSources(t *testing.T) {
@@ -159,7 +162,7 @@ func TestSdmxDataTimeConstraintsCallDataSources(t *testing.T) {
 	}
 }
 
-func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
+func TestSdmxDataForwardsConstraintsWithoutValidation(t *testing.T) {
 	propertyConstraint := &sdmxpb.SdmxComponentConstraint{
 		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
 			"containedInPlace": {
@@ -172,16 +175,14 @@ func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
 	for _, tc := range []struct {
 		name        string
 		constraints map[string]*sdmxpb.SdmxComponentConstraint
-		wantCode    codes.Code
 	}{
-		{name: "missing variable measured", wantCode: codes.InvalidArgument},
+		{name: "missing variable measured"},
 		{
 			name: "property on known non observation component",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured": sdmxComponentConstraint("Count_Person"),
 				"unit":             propertyConstraint,
 			},
-			wantCode: codes.Unimplemented,
 		},
 		{
 			name: "latest mixed with explicit date",
@@ -189,95 +190,86 @@ func TestSdmxDataConstraintValidationBeforeSources(t *testing.T) {
 				"variableMeasured": sdmxComponentConstraint("Count_Person"),
 				"TIME_PERIOD":      sdmxComponentConstraint("LATEST", "2020"),
 			},
-			wantCode: codes.InvalidArgument,
+		},
+		{
+			name: "unsupported operator",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": {
+					Predicates: []*sdmxpb.SdmxPredicate{{Operator: sdmxpb.SdmxOperator(1), Value: "Count_Person"}},
+				},
+			},
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			source := &sdmxDataConstraintSource{}
+			sourceErr := errors.New("source validation failed")
+			source := &sdmxDataConstraintSource{err: sourceErr}
 			dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
-			_, err := dispatcher.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{Constraints: tc.constraints})
-			if got := status.Code(err); got != tc.wantCode {
-				t.Fatalf("SdmxData() code = %v, want %v; err = %v", got, tc.wantCode, err)
+			query := &sdmxpb.SdmxDataQuery{Constraints: tc.constraints}
+			_, err := dispatcher.SdmxData(context.Background(), query)
+			if !errors.Is(err, sourceErr) {
+				t.Fatalf("SdmxData() error = %v, want %v", err, sourceErr)
 			}
-			if source.got != nil {
-				t.Fatalf("SdmxData() called source with %v", source.got)
+			if diff := cmp.Diff(query, source.got, protocmp.Transform()); diff != "" {
+				t.Fatalf("SdmxData() request mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}
 }
 
-func TestSdmxAvailabilityRequiresVariableMeasuredBeforeSources(t *testing.T) {
-	source := &sdmxAvailabilitySource{}
-	dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
-	_, err := dispatcher.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{ComponentId: "observationAbout"})
-	if status.Code(err) != codes.InvalidArgument {
-		t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+func TestSdmxAvailabilityForwardsConstraintsWithoutValidation(t *testing.T) {
+	propertyConstraint := &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+		},
 	}
-	if source.got != nil {
-		t.Fatalf("SdmxAvailability() called source with %v", source.got)
-	}
-}
-
-func TestSdmxAvailabilityRejectsTimePeriodBeforeSources(t *testing.T) {
-	for _, query := range []*sdmxpb.SdmxAvailabilityQuery{
+	for _, tc := range []struct {
+		name  string
+		query *sdmxpb.SdmxAvailabilityQuery
+	}{
 		{
-			ComponentId: "TIME_PERIOD",
-			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
-				"variableMeasured": sdmxComponentConstraint("Count_Person"),
-			},
+			name:  "missing variable measured",
+			query: &sdmxpb.SdmxAvailabilityQuery{ComponentId: "observationAbout"},
 		},
 		{
-			ComponentId: "observationAbout",
-			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
-				"variableMeasured": sdmxComponentConstraint("Count_Person"),
-				"TIME_PERIOD":      sdmxComponentConstraint("2020"),
-			},
-		},
-	} {
-		source := &sdmxAvailabilitySource{}
-		dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
-		_, err := dispatcher.SdmxAvailability(context.Background(), query)
-		if status.Code(err) != codes.Unimplemented {
-			t.Fatalf("SdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
-		}
-		if source.got != nil {
-			t.Fatalf("SdmxAvailability() called source with %v", source.got)
-		}
-	}
-}
-
-func TestSdmxAvailabilityPropertyConstraintsUnimplemented(t *testing.T) {
-	_, err := NewDispatcher(nil, nil).SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
-		ComponentId: "source",
-		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
-			"source": {
-				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
-					"typeOf": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+			name: "selected time period",
+			query: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "TIME_PERIOD",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("Count_Person"),
 				},
 			},
 		},
-	})
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
-	}
-	if got, want := status.Convert(err).Message(), "SDMX property constraints are not implemented for availability yet"; got != want {
-		t.Fatalf("message = %q, want %q", got, want)
-	}
-}
-
-func TestSdmxUnsupportedOperatorUnimplemented(t *testing.T) {
-	componentConstraint := sdmxComponentConstraint("country/USA")
-	componentConstraint.Predicates[0].Operator = sdmxpb.SdmxOperator(1)
-
-	_, err := NewDispatcher(nil, nil).SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{
-		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
-			"source": componentConstraint,
+		{
+			name: "filtered time period",
+			query: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("Count_Person"),
+					"TIME_PERIOD":      sdmxComponentConstraint("2020"),
+				},
+			},
 		},
-	})
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
-	}
-	if got, want := status.Convert(err).Message(), "SDMX operators other than EQ are not implemented yet"; got != want {
-		t.Fatalf("message = %q, want %q", got, want)
+		{
+			name: "property constraint",
+			query: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "source",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"source": propertyConstraint,
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			sourceErr := errors.New("source validation failed")
+			source := &sdmxAvailabilitySource{err: sourceErr}
+			dispatcher := NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{source}, nil))
+			_, err := dispatcher.SdmxAvailability(context.Background(), tc.query)
+			if !errors.Is(err, sourceErr) {
+				t.Fatalf("SdmxAvailability() error = %v, want %v", err, sourceErr)
+			}
+			if diff := cmp.Diff(tc.query, source.got, protocmp.Transform()); diff != "" {
+				t.Fatalf("SdmxAvailability() request mismatch (-want +got):\n%s", diff)
+			}
+		})
 	}
 }

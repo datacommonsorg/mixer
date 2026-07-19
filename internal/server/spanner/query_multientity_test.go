@@ -1050,6 +1050,19 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	}
 }
 
+func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentTimePeriod,
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD availability is not implemented yet"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
 	client := &multiEntityClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
