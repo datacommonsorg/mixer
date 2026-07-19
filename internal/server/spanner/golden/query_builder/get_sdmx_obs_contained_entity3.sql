@@ -2,7 +2,7 @@
 		WITH contained_places_0 AS (
 			SELECT DISTINCT contained.subject_id AS place_id
 			FROM Edge typed
-			JOIN Edge contained ON contained.subject_id = typed.subject_id
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = 'linkedContainedInPlace'
 				AND contained.object_id = 'northamerica'
 				AND typed.predicate = 'typeOf'

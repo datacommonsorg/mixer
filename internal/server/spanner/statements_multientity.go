@@ -231,16 +231,20 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM %[2]s t
 		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
+		// The containment queries below force typeOf edges as the left input so
+		// Spanner filters by place type before containment. A broad containment
+		// lookup can return every place under an ancestor and usually produces a
+		// larger intermediate result than the typeOf lookup.
 		// Join all dates before aggregation to optimize total result throughput.
 		getObsByContainedInPlaceBoth: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE typed.predicate = 'typeOf'
+				AND typed.object_id = @childPlaceType
+				AND contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = @ancestor
 		),
 		series AS (
 			SELECT
@@ -280,13 +284,13 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		// requested date are discarded in Spanner.
 		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE typed.predicate = 'typeOf'
+				AND typed.object_id = @childPlaceType
+				AND contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = @ancestor
 		),
 		series AS (
 			SELECT
@@ -321,13 +325,13 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		// date-descending child scan can stop after one row.
 		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE typed.predicate = 'typeOf'
+				AND typed.object_id = @childPlaceType
+				AND contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = @ancestor
 		),
 		series AS (
 			SELECT
@@ -399,12 +403,13 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
 
-		// Keep typeOf edges as the left input. This query shape has produced
-		// materially faster Spanner plans; re-benchmark before changing the order.
+		// Force typeOf edges as the left input so Spanner filters by place type
+		// before containment. A broad containment lookup can return every place
+		// under an ancestor and usually produces a larger intermediate result.
 		sdmxContainedPlacesCTE: `%[1]s AS (
 			SELECT DISTINCT contained.subject_id AS place_id
 			FROM Edge typed
-			JOIN Edge contained ON contained.subject_id = typed.subject_id
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = '%[2]s'
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
@@ -414,7 +419,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		sdmxContainedPlacesWithRemoteCTE: `%[1]s AS (
 			SELECT DISTINCT contained.subject_id AS place_id
 			FROM Edge typed
-			JOIN Edge contained ON contained.subject_id = typed.subject_id
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = '%[2]s'
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
