@@ -1,16 +1,65 @@
 package spanner
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
+	"io"
+	"net/http"
 	"testing"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/genai"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+type mockEmbedContentTransport struct {
+	embeddings []float64
+}
+
+func (m *mockEmbedContentTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	values := m.embeddings
+	if values == nil {
+		values = []float64{}
+	}
+	respJSON, _ := json.Marshal(map[string]any{
+		"predictions": []map[string]any{
+			{
+				"embeddings": map[string]any{
+					"values": values,
+				},
+			},
+		},
+		"embedding": map[string]any{
+			"values": values,
+		},
+		"embeddings": []map[string]any{
+			{"values": values},
+		},
+	})
+	return &http.Response{
+		StatusCode: http.StatusOK,
+		Body:       io.NopCloser(bytes.NewReader(respJSON)),
+		Header:     http.Header{"Content-Type": []string{"application/json"}},
+	}, nil
+}
+
+func newMockGenAIClient(embeddings []float64) *genai.Client {
+	httpClient := &http.Client{
+		Transport: &mockEmbedContentTransport{embeddings: embeddings},
+	}
+	client, _ := genai.NewClient(context.Background(), &genai.ClientConfig{
+		Project:    "test-project",
+		Location:   "us-central1",
+		HTTPClient: httpClient,
+		Backend:    genai.BackendVertexAI,
+	})
+	return client
+}
 
 func TestResolveEmbeddingsEmpty(t *testing.T) {
 	t.Parallel()
@@ -18,6 +67,7 @@ func TestResolveEmbeddingsEmpty(t *testing.T) {
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		embeddingsRes: []float64{},
 	}, nil)
+	ds.genaiClient = newMockGenAIClient([]float64{})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"California"},
@@ -55,6 +105,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 			},
 		},
 	}, nil)
+	ds.genaiClient = newMockGenAIClient([]float64{0.1, 0.2})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate"},
@@ -101,6 +152,8 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 			},
 		},
 	}, nil)
+	ds.genaiClient = newMockGenAIClient([]float64{0.1, 0.2})
+
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate", "Environment", "Weather"},

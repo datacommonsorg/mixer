@@ -123,9 +123,6 @@ func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tab
 	return m.vectorSearchRes, nil
 }
 
-func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
-	return m.embeddingsRes, nil
-}
 
 func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	return nil, nil
