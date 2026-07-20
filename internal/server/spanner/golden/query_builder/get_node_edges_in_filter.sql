@@ -1,11 +1,11 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
 			m.subject_id = 'Farm')<-[e:Edge]-(n:Node),
-		(n)-[filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'farmInventoryType'
 			AND filter0.object_id IN ('Melon','Melon:mxuMmhySOejKGXRXFbMXdorKlNV934EOop6b21kOJGw=')]->,
-		(n)-[filter1:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter1:Edge
 		WHERE
 			filter1.predicate = 'name'
 			AND filter1.object_id IN ('Area of Farm: Melon','Area of Farm: Me:xblU8pfFl5m+cg9tsR1EsW19+PLlpqfNhwYkFu0mgzE=')]->
@@ -21,10 +21,10 @@
 		  	subject_id,
 			predicate,
 			provenance,
-			ANY_VALUE(n.value) AS value,
+			IFNULL(ANY_VALUE(n.value), '') AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(IFNULL(n.name, '')) AS name,
-			ANY_VALUE(n.types) AS types
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
 		GROUP BY
 			subject_id,
 			predicate,

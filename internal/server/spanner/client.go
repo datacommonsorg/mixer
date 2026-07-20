@@ -19,8 +19,10 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"strings"
 	"sync"
 	"sync/atomic"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -62,6 +64,11 @@ type SpannerClient interface {
 	Close()
 }
 
+const (
+	noChangeLogThreshold = 10 * time.Minute
+	failureLogThreshold  = 10 * time.Minute
+)
+
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
 	client    *spanner.Client
@@ -74,12 +81,37 @@ type spannerDatabaseClient struct {
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
+
+	// Flag to control query logic for IngestionHistory table.
+	useNewIngestionHistorySchema bool
+	// Flag to control reading from KeyValueStore instead of Cache table.
+	useSpannerKeyValueStore bool
+
+	// Logging/State tracking for the timestamp poller.
+	tracker *stalenessTracker
+
+	// Flag to dynamically track if the Spanner schema has been initialized.
+	dbInitialized atomic.Bool
+}
+
+// SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
+type SpannerClientOptions struct {
+	DatabaseOverride             string
+	UseMultiEntitySchema         bool
+	UseNewIngestionHistorySchema bool
+	UseSpannerKeyValueStore      bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, error) {
+func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions) (*spannerDatabaseClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
 	sc := &spannerDatabaseClient{
-		client: client,
+		client:                       client,
+		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
+		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
+		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
 	}
 
 	// Set an initial timestamp synchronously before starting the background loop.
@@ -87,16 +119,18 @@ func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, e
 	sc.stopCh = make(chan struct{})
 	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
 	if err := sc.updateTimestamp(context.Background()); err != nil {
-		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
-		return nil, err
+		slog.Warn("Error initializing Spanner staleness timestamp on startup (falling back to default staleness reads)", "error", err.Error())
 	}
 	return sc, nil
 }
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
+	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
@@ -104,7 +138,7 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client)
+	return newSpannerDatabaseClient(client, opts)
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
@@ -129,14 +163,15 @@ func DefaultTableConfig() TableConfig {
 	}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-// It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, opts)
 	if err != nil {
 		return nil, err
 	}
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
 	if err != nil {
 		return nil, err
 	}
@@ -161,7 +196,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
 
-	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema, tableCfg)
+	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -178,6 +213,20 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
+// parseDatabaseURI checks if databaseStr is a full Spanner database URI (projects/P/instances/I/databases/D).
+// If it is a full URI, it extracts project, instance, and database.
+// If it is not a full URI (e.g., just a database name like "dc_graph_2026_01_27"), it returns empty project/instance and the original string as database.
+func parseDatabaseURI(databaseStr string) (project, instance, database string, err error) {
+	if !strings.HasPrefix(databaseStr, "projects/") {
+		return "", "", databaseStr, nil
+	}
+	parts := strings.Split(databaseStr, "/")
+	if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+		return "", "", "", fmt.Errorf("invalid Spanner database URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", databaseStr)
+	}
+	return parts[1], parts[3], parts[5], nil
+}
+
 // createSpannerConfig creates the config from the specific yaml string and an optional database override.
 func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
@@ -185,12 +234,24 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 		return nil, fmt.Errorf("failed to create spanner config: %w", err)
 	}
 
-	// Override database with flag value if set.
+	// Override database config with flag value if set.
 	// This is temporary during development to allow fast rollout of version changes.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	if databaseOverride != "" {
-		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
-		cfg.Database = databaseOverride
+		proj, inst, db, err := parseDatabaseURI(databaseOverride)
+		if err != nil {
+			return nil, err
+		}
+		if proj != "" {
+			slog.Debug("Setting Spanner project value from database URI flag", "value", proj)
+			cfg.Project = proj
+		}
+		if inst != "" {
+			slog.Debug("Setting Spanner instance value from database URI flag", "value", inst)
+			cfg.Instance = inst
+		}
+		slog.Debug("Setting Spanner database value from flag", "value", db)
+		cfg.Database = db
 	}
 
 	return &cfg, nil
@@ -222,9 +283,15 @@ func (sc *spannerDatabaseClient) Start() {
 				case <-sc.ticker.C():
 					// Ignore the error here to allow the process to continue running
 					// even if one fetch fails. The previous timestamp remains in cache.
+					now := time.Now()
 					err := sc.updateTimestamp(ctx)
 					if err != nil {
 						slog.Error("Error updating Spanner staleness timestamp", "error", err)
+						if sc.tracker != nil {
+							if ev := sc.tracker.RecordFailure(now, err); ev != nil {
+								slog.Log(ctx, ev.level, ev.message, ev.args...)
+							}
+						}
 					}
 				}
 			}

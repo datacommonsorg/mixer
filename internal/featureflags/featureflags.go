@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -51,6 +52,10 @@ type Flags struct {
 	// Whether to default indicator resolution to Spanner.
 	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
+	// Whether to use the new IngestionHistory schema with Timestamp.
+	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
+	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
+	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -67,6 +72,8 @@ func setDefaultValues() *Flags {
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
+		UseNewIngestionHistorySchema:  false,
+		UseSpannerKeyValueStore:       false,
 	}
 }
 
@@ -78,8 +85,16 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.SpannerGraphDatabase != "" && !f.UseSpannerGraph {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+	if f.SpannerGraphDatabase != "" {
+		if !f.UseSpannerGraph {
+			return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
+		}
+		if strings.HasPrefix(f.SpannerGraphDatabase, "projects/") {
+			parts := strings.Split(f.SpannerGraphDatabase, "/")
+			if len(parts) != 6 || parts[0] != "projects" || parts[2] != "instances" || parts[4] != "databases" || parts[1] == "" || parts[3] == "" || parts[5] == "" {
+				return fmt.Errorf("invalid SpannerGraphDatabase URI format: %q (expected projects/<project>/instances/<instance>/databases/<database>)", f.SpannerGraphDatabase)
+			}
+		}
 	}
 	if f.UseStaleReads && !f.UseSpannerGraph {
 		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
@@ -89,6 +104,9 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
+	}
+	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
+		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
 	}
 	return nil
 }

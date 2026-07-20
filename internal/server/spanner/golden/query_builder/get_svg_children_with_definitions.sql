@@ -1,6 +1,6 @@
 		SELECT DISTINCT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e.predicate,
 			IFNULL((
 				SELECT n_def.value

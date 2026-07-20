@@ -42,9 +42,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -208,7 +208,12 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
 		var err error
-		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseMultiEntitySchema)
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
+			DatabaseOverride:             flags.SpannerGraphDatabase,
+			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
+			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
+			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
@@ -282,10 +287,15 @@ func main() {
 	slog.Info("After branch setup")
 
 	// Metadata.
+	// Don't set the BigQuery dataset if BigQuery is not enabled.
+	bqDataset := *bigQueryDataset
+	if !*useBigquery {
+		bqDataset = ""
+	}
 	metadata, err := server.NewMetadata(
 		ctx,
 		*hostProject,
-		*bigQueryDataset,
+		bqDataset,
 		*schemaPath,
 		*remoteMixerDomain,
 		*foldRemoteRootSvg,
@@ -436,7 +446,6 @@ func main() {
 	// DataSources
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
-
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -590,10 +599,18 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to load topic cache hierarchy on startup because Spanner database is uninitialized (will retry in background)", "error", err)
+					return nil
+				}
 				return err
 			},
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)
+				if err != nil && spanner.IsTableNotFoundError(err) {
+					slog.Warn("Failed to reload topic cache hierarchy because Spanner database is uninitialized", "error", err)
+					return nil
+				}
 				return err
 			},
 		)

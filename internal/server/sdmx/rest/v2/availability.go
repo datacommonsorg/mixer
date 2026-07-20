@@ -17,13 +17,14 @@ package restv2
 import (
 	"net/url"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 type AvailabilityRequest struct {
 	Path        AvailabilityPath
-	Constraints map[string][]string
+	Constraints map[string]*sdmxpb.SdmxComponentConstraint
 }
 
 func ParseAvailabilityRequest(tail string, originalURI string) (*AvailabilityRequest, error) {
@@ -41,7 +42,7 @@ func ParseAvailabilityRequest(tail string, originalURI string) (*AvailabilityReq
 		return nil, err
 	}
 
-	constraints := map[string][]string{}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{}
 	for _, param := range params {
 		ok, err := parseComponentFilter(param, constraints)
 		if err != nil {

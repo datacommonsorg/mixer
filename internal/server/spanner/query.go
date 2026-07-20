@@ -59,8 +59,15 @@ const (
 	// Default timeout for timestamp polling.
 	timestampPollingTimeout = 10 * time.Second
 
-	// Default timeout for API requests.
+	// Default fallback staleness duration when staleness timestamp is unavailable or expired.
+	defaultStalenessDuration = 15 * time.Second
+
+	// Default proxy timeout for API requests.
 	ApiTimeout = 60 * time.Second
+
+	// Buffer for proxy request timeout.
+	// This is to avoid race conditions and account for jitter in timing.
+	ApiTimeoutBuffer = 2 * time.Second
 
 	// Special edge predicates.
 	predAffectedPlace      = "affectedPlace"
@@ -75,6 +82,22 @@ const (
 
 	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
 	maxConcurrentFilteredSVGGoroutines = 10
+)
+
+// TimeoutReason represents the reason for a timeout.
+// NotATimeout: The error is not a timeout.
+// ClientCanceled: The client canceled the request.
+// ProxyTimeout: The proxy timed out the request.
+// AppTimeout: The application timed out the request.
+type TimeoutReason string
+
+const (
+	NotATimeout    TimeoutReason = ""
+	ClientCanceled TimeoutReason = "CLIENT_CANCELED"
+	ProxyTimeout   TimeoutReason = "PROXY_TIMEOUT"
+	AppTimeout     TimeoutReason = "APP_TIMEOUT"
+
+	TimeoutMessage string = "Spanner operation aborted."
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -184,15 +207,23 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 
 	var existenceQueryStmt spanner.Statement
 	if predicate == "" {
+		sql := statements.checkSVSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkSVSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkSVSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 			},
 		}
 	} else {
+		sql := statements.checkGroupSourceExistence
+		if sc.useSpannerKeyValueStore {
+			sql = statements.checkGroupSourceExistenceFromKV
+		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: statements.checkGroupSourceExistence,
+			SQL: sql,
 			Params: map[string]interface{}{
 				"variables": variables,
 				"predicate": predicate,
@@ -672,10 +703,10 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 			nil
 	}
 
-	results, err := queryCache(
+	results, err := queryKeyValueStore(
 		ctx,
 		sc,
-		*GetCacheDataQuery(TypeProvenanceSummary, variables),
+		*GetKeyValueStoreQuery(TypeProvenanceSummary, variables, sc.useSpannerKeyValueStore),
 		func() *pb.StatVarSummary_ProvenanceSummary {
 			return &pb.StatVarSummary_ProvenanceSummary{}
 		},
@@ -935,41 +966,77 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
-	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
+	startTime := time.Now()
+	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery(sc.useNewIngestionHistorySchema))
 	defer iter.Stop()
-
 	row, err := iter.Next()
 
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
 	if err == iterator.Done {
+		sc.dbInitialized.Store(true)
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
-		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
+	} else if IsTableNotFoundError(err) {
+		if sc.dbInitialized.Load() {
+			return fmt.Errorf("IngestionHistory table disappeared: %w", err)
+		}
 		warnMsg = "IngestionHistory table not found."
 	}
 
 	if warnMsg != "" {
-		slog.Warn(warnMsg + " Falling back to strong reads.")
+		slog.Warn(warnMsg + " Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
 		return nil
 	}
 
 	if err != nil {
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
-				"timeout_duration", timestampPollingTimeout.String(),
-				"error", err.Error(),
-			)
-		}
+		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
+	sc.dbInitialized.Store(true)
 
-	var timestamp time.Time
-	if err := row.Column(0, &timestamp); err != nil {
-		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+	var nullTime spanner.NullTime
+	if err := row.Column(0, &nullTime); err != nil {
+		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
 
-	sc.timestamp.Store(timestamp.UnixNano())
+	return sc.processStalenessTimestamp(ctx, nullTime)
+}
+
+// processStalenessTimestamp updates the cached atomic read timestamp based on Spanner query execution results.
+func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, nullTime spanner.NullTime) error {
+	if !nullTime.Valid {
+		slog.Warn("IngestionHistory timestamp is NULL. Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
+		// Keep telemetry timestamps synchronized during idle periods when Spanner continually returns NULL.
+		if sc.tracker != nil {
+			sc.tracker.lastSuccessTime = time.Now()
+			sc.tracker.lastLoggedFailureTime = time.Time{}
+		}
+		// Guard against redundant memory rewrites across idle windows right when sc.timestamp is already zero.
+		if prev := sc.timestamp.Load(); prev != 0 {
+			sc.timestamp.Store(0)
+			if sc.tracker != nil {
+				sc.tracker.lastChangeTime = time.Now()
+			}
+		}
+		return nil
+	}
+
+	timestamp := nullTime.Time
+
+	now := time.Now()
+	prevNano := sc.timestamp.Load()
+	newNano := timestamp.UnixNano()
+
+	if prevNano == 0 || prevNano != newNano {
+		sc.timestamp.Store(newNano)
+	}
+
+	if sc.tracker != nil {
+		if ev := sc.tracker.RecordSuccess(now, prevNano, newNano); ev != nil {
+			slog.Log(ctx, ev.level, ev.message, ev.args...)
+		}
+	}
+
 	return nil
 }
 
@@ -978,7 +1045,7 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
 	}
-	slog.Error("Spanner staleness timestamp not available")
+	slog.Warn("Spanner staleness timestamp not available. Falling back to default staleness.")
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
@@ -991,14 +1058,18 @@ func (sc *spannerDatabaseClient) executeQuery(
 	var cancel context.CancelFunc
 
 	if _, ok := ctx.Deadline(); ok {
+		// If the client explicitly provided a deadline, respect it.
 		queryCtx, cancel = context.WithCancel(ctx)
 	} else {
-		// Fallback if the parent context surprisingly has no deadline.
-		// Using the default API timeout.
-		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", ApiTimeout.String())
-		queryCtx, cancel = context.WithTimeout(ctx, ApiTimeout)
+		// Apply an absolute upper bound with a small buffer to protect the DB
+		// in case ESP is bypassed.
+		fallbackLimit := ApiTimeout + ApiTimeoutBuffer
+		queryCtx, cancel = context.WithTimeout(ctx, fallbackLimit)
 	}
 	defer cancel()
+
+	// Optimize query performance for small arrays
+	UnrollParameters(&stmt)
 
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)
@@ -1024,28 +1095,28 @@ func (sc *spannerDatabaseClient) executeQuery(
 			fmt.Println("================================================")
 		}
 
-		// Log slow Spanner queries that timed out.
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner query timed out",
-				"sql", stmt.SQL,
-				"error", err.Error(),
-			)
-		}
+		// Log slow Spanner queries that timed out or were canceled.
+		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
 
+		if err != nil && !sc.dbInitialized.Load() && IsTableNotFoundError(err) {
+			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
+			return nil
+		}
 		return err
 	}
 
 	ts, err := sc.getStalenessTimestamp()
 	if err != nil {
-		return runQuery(spanner.StrongRead())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	err = runQuery(spanner.ReadTimestamp(ts))
 
-	// Log error if timestamp is older than retention and fall back to strong read.
+	// Log error if timestamp is older than retention and fall back to exact staleness read.
 	if spanner.ErrCode(err) == codes.FailedPrecondition {
-		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-			"expiredTimestamp", ts.String())
-		return runQuery(spanner.StrongRead())
+		slog.Error("Stale read timestamp expired. Falling back to exact staleness read.",
+			"expiredTimestamp", ts.String(),
+			"duration", defaultStalenessDuration.String())
+		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}
 	return err
 }
@@ -1078,8 +1149,8 @@ func queryDynamic(
 	return rowData, err
 }
 
-// queryCache executes a query and maps the results to an input cache proto.
-func queryCache[T proto.Message](
+// queryKeyValueStore executes a query against KeyValueStore (or legacy Cache) and maps the results to a proto.
+func queryKeyValueStore[T proto.Message](
 	ctx context.Context,
 	sc *spannerDatabaseClient,
 	stmt spanner.Statement,
@@ -1087,7 +1158,7 @@ func queryCache[T proto.Message](
 ) (map[string]map[string]T, error) {
 	var data map[string]map[string]T
 	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		result, err := processCacheRows(iter, newProto)
+		result, err := processKeyValueStoreRows(iter, newProto)
 		data = result
 		return err
 	})
@@ -1139,8 +1210,8 @@ func processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
 	return rowData, nil
 }
 
-// processCacheRows processes rows and maps them to a proto struct.
-func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
+// processKeyValueStoreRows processes rows and maps them to a proto struct.
+func processKeyValueStoreRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
 	results := make(map[string]map[string]T)
 	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
 
@@ -1184,7 +1255,84 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 	return results, nil
 }
 
-// isTimeoutError checks if an error is a timeout error from Spanner or context.
-func isTimeoutError(err error) bool {
-	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
+// getTimeoutReason categorizes a Spanner/Context error into a specific termination state.
+func getTimeoutReason(err error, duration time.Duration) TimeoutReason {
+	if err == nil {
+		return NotATimeout
+	}
+
+	isDeadline := spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
+	isCanceled := spanner.ErrCode(err) == codes.Canceled || errors.Is(err, context.Canceled)
+
+	if isDeadline {
+		// Hit the Go context timeout (e.g., fallbackLimit or timestampPollingTimeout)
+		return AppTimeout
+	}
+
+	if isCanceled {
+		// If the query was canceled around the proxy timeout, it was likely the proxy.
+		if duration >= (ApiTimeout - ApiTimeoutBuffer) {
+			return ProxyTimeout
+		}
+		// Otherwise, the client hung up early.
+		return ClientCanceled
+	}
+
+	return NotATimeout
+}
+
+// maybeLogSpannerTimeout categorizes a potential timeout/cancellation and logs it at the appropriate severity.
+func maybeLogSpannerTimeout(ctx context.Context, err error, duration time.Duration, action string, extraArgs ...any) {
+	if err == nil {
+		return
+	}
+
+	reason := getTimeoutReason(err, duration)
+	if reason == NotATimeout {
+		return
+	}
+
+	baseArgs := []any{
+		"action", action,
+		"reason", reason,
+		"duration", duration.String(),
+	}
+	allArgs := append(baseArgs, extraArgs...)
+
+	if reason == ClientCanceled {
+		slog.InfoContext(ctx, TimeoutMessage, allArgs...)
+	} else {
+		allArgs = append(allArgs, "error", err.Error())
+		slog.ErrorContext(ctx, TimeoutMessage, allArgs...)
+	}
+}
+
+// getGrpcCode unwraps the error chain recursively to retrieve the gRPC status code.
+func getGrpcCode(err error) codes.Code {
+	for err != nil {
+		code := spanner.ErrCode(err)
+		if code != codes.Unknown {
+			return code
+		}
+		err = errors.Unwrap(err)
+	}
+	return codes.Unknown
+}
+
+// IsTableNotFoundError checks if an error indicates a missing table, property graph, or database.
+func IsTableNotFoundError(err error) bool {
+	if err == nil {
+		return false
+	}
+	code := getGrpcCode(err)
+	if code == codes.NotFound {
+		return true
+	}
+	if code == codes.InvalidArgument {
+		errStr := err.Error()
+		return strings.Contains(errStr, "Table not found") ||
+			strings.Contains(errStr, "Property graph not found") ||
+			strings.Contains(errStr, "Database not found")
+	}
+	return false
 }

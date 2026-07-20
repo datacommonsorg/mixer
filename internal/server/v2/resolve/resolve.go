@@ -252,42 +252,43 @@ func ParseCoordinate(coordinateExpr string) (float64, float64, error) {
 }
 
 // GetSortedResolvedPlaceCandidates sorts resolved place candidates by place-type priority.
-// If a candidate's type is not in the priority list, then sort by DCID alphabetically.
+// If a candidate's type is not in the priority list, then sort by type and DCID alphabetically.
 func GetSortedResolvedPlaceCandidates(
 	places []*pb.ResolveCoordinatesResponse_Place) []*pbv2.ResolveResponse_Entity_Candidate {
-	typeToCandidate := map[string]*pbv2.ResolveResponse_Entity_Candidate{}
+	typeToCandidates := map[string][]*pbv2.ResolveResponse_Entity_Candidate{}
 	for _, place := range places {
-		// Two candidates do not likely to have the same type. In the rare case they do, we can
-		// randomly pick one.
-		typeToCandidate[place.GetDominantType()] = &pbv2.ResolveResponse_Entity_Candidate{
+		candidate := &pbv2.ResolveResponse_Entity_Candidate{
 			Dcid:         place.GetDcid(),
 			DominantType: place.GetDominantType(),
 		}
+		typeToCandidates[place.GetDominantType()] = append(typeToCandidates[place.GetDominantType()], candidate)
+	}
+	// Two candidates do not likely to have the same type. In the rare case they do, sort by dcid.
+	types := []string{}
+	for t, candidates := range typeToCandidates {
+		types = append(types, t)
+		sort.Slice(candidates, func(i, j int) bool {
+			return candidates[i].GetDcid() < candidates[j].GetDcid()
+		})
 	}
 
 	// Add candidates whose type is in the priority list.
 	candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
 	selectedPriorityTypeSet := map[string]struct{}{}
 	for _, priorityType := range resolvedPlaceTypePriorityList {
-		if candidate, ok := typeToCandidate[priorityType]; ok {
-			candidates = append(candidates, candidate)
+		if typeCandidates, ok := typeToCandidates[priorityType]; ok {
+			candidates = append(candidates, typeCandidates...)
 			selectedPriorityTypeSet[priorityType] = struct{}{}
 		}
 	}
 
-	// Sort leftover candidates.
-	leftoverCandidates := []*pbv2.ResolveResponse_Entity_Candidate{}
-	for t, candidate := range typeToCandidate {
+	// Sort and add leftover candidates.
+	sort.Strings(types)
+	for _, t := range types {
 		if _, ok := selectedPriorityTypeSet[t]; !ok {
-			leftoverCandidates = append(leftoverCandidates, candidate)
+			candidates = append(candidates, typeToCandidates[t]...)
 		}
 	}
-	sort.Slice(leftoverCandidates, func(i, j int) bool {
-		return leftoverCandidates[i].GetDcid() < leftoverCandidates[j].GetDcid()
-	})
-
-	// Assemeble final result.
-	candidates = append(candidates, leftoverCandidates...)
 
 	return candidates
 }

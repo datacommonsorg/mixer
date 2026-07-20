@@ -17,8 +17,10 @@ package spanner
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	// Fetch latest CompletionTimestamp from IngestionHistory table.
+	// Fetch latest CompletionTimestamp from IngestionHistory table (legacy schema).
 	getCompletionTimestamp string
+	// Fetch latest CompletionTimestamp from IngestionHistory table with run protection (new schema).
+	getIngestionHistoryTimestamp string
 	// Filter by single parameter value.
 	getParam string
 	// Filter by multiple parameter values.
@@ -45,8 +47,6 @@ var statements = struct {
 	filterPredicates string
 	// Subquery to filter edges by object properties.
 	filterProperty string
-	// Subquery to filter edges by an object value.
-	filterValue string
 	// Subquery to filter edges by multiple object values.
 	filterValues string
 	// Default subquery to return Edges.
@@ -87,8 +87,10 @@ var statements = struct {
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
-	// Get data from Cache table.
+	// Get data from legacy Cache table.
 	getCacheData string
+	// Get data from KeyValueStore table.
+	getKeyValueStoreData string
 	// Fetch event dates for a given type and location.
 	getEventCollectionDate string
 	// Fetch events for a given type, location and date.
@@ -99,9 +101,7 @@ var statements = struct {
 	getStatVarGroupNode string
 	// Fetch StatVarGroupNode info with definitions.
 	getStatVarGroupNodeWithDefinitions string
-	// Attach single stat var group.
-	attachSVG string
-	// Attach multiple stat var groups.
+	// Attach stat var groups.
 	attachSVGs string
 	// Fetch all children of a stat var group without definitions.
 	getSVGChildren string
@@ -129,13 +129,17 @@ var statements = struct {
 	filterNodesByTypes string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
+	// Check existence of SVs against sources using KeyValueStore table.
+	checkSVSourceExistenceFromKV string
 	// Check existence of variable groups against sources.
 	checkGroupSourceExistence string
+	// Check existence of variable groups against sources using KeyValueStore table.
+	checkGroupSourceExistenceFromKV string
 	// Check existence of variable groups against places.
 	checkGroupPlaceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
-		CompletionTimestamp
+			CompletionTimestamp
 		FROM
 			IngestionHistory
 		WHERE
@@ -143,7 +147,21 @@ var statements = struct {
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
-	getParam:  `= @%s`,
+	getIngestionHistoryTimestamp: `		SELECT MIN(CreationTimestamp) AS StalenessTimestamp
+FROM IngestionHistory
+WHERE (
+  -- Check if a successful run has ever occurred
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+) IS NULL 
+-- If a success exists, only grab runs created after it
+OR CreationTimestamp > (
+  SELECT MAX(CompletionTimestamp)
+  FROM IngestionHistory
+  WHERE Status = 'SUCCESS'
+);
+`,
 	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
@@ -187,11 +205,9 @@ var statements = struct {
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n)-[filter%[1]d:Edge
+	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]->`,
-	filterValue: `
-			AND filter%[1]d.object_id = @val%[1]d`,
+			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
@@ -199,10 +215,10 @@ var statements = struct {
 			m.subject_id,
 			e.predicate,
 			e.provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
 			IFNULL(n.name, '') AS name,
-			n.types
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -219,10 +235,10 @@ var statements = struct {
 		  	subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
-			n.value,
+			IFNULL(n.value, '') AS value,
 			n.bytes,
 			IFNULL(n.name, '') AS name,
-			n.types
+			IFNULL(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			object_id`,
@@ -239,10 +255,10 @@ var statements = struct {
 		  	subject_id,
 			predicate,
 			provenance,
-			ANY_VALUE(n.value) AS value,
+			IFNULL(ANY_VALUE(n.value), '') AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(IFNULL(n.name, '')) AS name,
-			ANY_VALUE(n.types) AS types
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
 		GROUP BY
 			subject_id,
 			predicate,
@@ -309,8 +325,8 @@ var statements = struct {
 			SEARCH(n.name_tokenlist, @query)%s
 		RETURN
 			n.subject_id, 
-			n.name,
-			n.types, 
+			IFNULL(n.name, '') AS name,
+			IFNULL(n.types, []) AS types, 
 			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
 		ORDER BY 
 			score + IF(n.name = @query, 1, 0) DESC,
@@ -330,7 +346,7 @@ var statements = struct {
 			AND o.predicate = @outProp]->(n:Node)
 		RETURN
 			o.subject_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
 	resolvePropToDcid: `		GRAPH DCGraph MATCH <-[i:Edge
 		WHERE
 			i.object_id IN UNNEST(@nodes)
@@ -346,7 +362,7 @@ var statements = struct {
 			o.predicate = @outProp]->(n:Node)
 		RETURN
 			i.object_id AS node,
-			n.value AS candidate`,
+			IFNULL(n.value, '') AS candidate`,
 	node: `(%[1]s:Node%[2]s)`,
 	nodeFilter: `
 		WHERE
@@ -358,6 +374,15 @@ var statements = struct {
 			TO_JSON_STRING(value) AS value,
 		FROM
 			Cache
+		WHERE
+			type = @type
+			AND key %s`,
+	getKeyValueStoreData: `		SELECT
+			key,
+			provenance,
+			TO_JSON_STRING(value) AS value
+		FROM
+			KeyValueStore
 		WHERE
 			type = @type
 			AND key %s`,
@@ -430,7 +455,7 @@ var statements = struct {
 		SELECT 
 			svg.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			c.descendent_stat_var_count,
 			FALSE AS has_data,
 			'' AS definition
@@ -443,7 +468,7 @@ var statements = struct {
 		SELECT 
 			sv.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			-1 AS descendent_stat_var_count,
 			EXISTS (
 				SELECT 1 
@@ -492,7 +517,7 @@ var statements = struct {
 		SELECT 
 			svg.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			c.descendent_stat_var_count,
 			FALSE AS has_data,
 			'' AS definition
@@ -505,7 +530,7 @@ var statements = struct {
 		SELECT 
 			sv.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			-1 AS descendent_stat_var_count,
 			EXISTS (
 				SELECT 1 
@@ -524,16 +549,13 @@ var statements = struct {
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv`,
-	attachSVG: `SELECT 
-				@nodes AS child_svg,
-				@nodes AS svg`,
 	attachSVGs: `SELECT
 				node AS child_svg,
 				node AS svg
 				FROM UNNEST(@nodes) AS node`,
 	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e.predicate,
 			'' AS definition
 		FROM Node n
@@ -544,7 +566,7 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getSVGChildrenWithDefinitions: `		SELECT DISTINCT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e.predicate,
 			IFNULL((
 				SELECT n_def.value
@@ -562,7 +584,7 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			'' AS definition
 		FROM Node n
 		JOIN (
@@ -582,7 +604,7 @@ var statements = struct {
 			ON n.subject_id = e_existence.subject_id`,
 	getFilteredChildSVsWithDefinitions: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			IFNULL((
 				SELECT n_def.value
 				FROM Edge e_def
@@ -609,7 +631,7 @@ var statements = struct {
 			ON n.subject_id = e_existence.subject_id`,
 	getFilteredChildSVGs: `		SELECT
 			n.subject_id,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			e_counts.descendent_stat_var_count
 		FROM Node n
 		JOIN (
@@ -684,6 +706,22 @@ var statements = struct {
 		ORDER BY variable, source`,
 	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
 		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND e3.predicate = @predicate
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkSVSourceExistenceFromKV: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
+		FROM KeyValueStore c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupSourceExistenceFromKV: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+		FROM KeyValueStore c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
 		WHERE c.type = 'ProvenanceSummary'

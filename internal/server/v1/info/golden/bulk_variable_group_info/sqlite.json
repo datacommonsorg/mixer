@@ -33,13 +33,13 @@
             "id": "dc/g/Energy",
             "specializedEntity": "Energy",
             "displayName": "Energy",
-            "descendentStatVarCount": 2588
+            "descendentStatVarCount": 2596
           },
           {
             "id": "dc/g/Environment",
             "specializedEntity": "Environment",
             "displayName": "Environment",
-            "descendentStatVarCount": 390
+            "descendentStatVarCount": 424
           },
           {
             "id": "dc/g/Health",
@@ -57,7 +57,7 @@
             "id": "dc/g/Crime",
             "specializedEntity": "Crime",
             "displayName": "Crime",
-            "descendentStatVarCount": 3775
+            "descendentStatVarCount": 3789
           },
           {
             "id": "dc/g/AboutDataCommons",
@@ -87,7 +87,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 43775
+        "descendentStatVarCount": 43879
       }
     },
     {

@@ -1,11 +1,11 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
 			m.subject_id = 'nuts/UKI1')-[e:Edge]->(n:Node),
-		(n)-[filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'name'
 			AND filter0.object_id IN ('AdministrativeArea2','AdministrativeAr:4cB0ui47vrAeY7MO/uBAvpsajxkYlJo3EW8fStdW4ko=')]->,
-		(n)-[filter1:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter1:Edge
 		WHERE
 			filter1.predicate = 'subClassOf'
 			AND filter1.object_id IN ('AdministrativeArea','AdministrativeAr:WXALAhw8j+Uz/Tw7uR3ClTolVepyj0tjRCKr6Xkw60s=')]->
@@ -21,10 +21,10 @@
 		  	subject_id,
 			predicate,
 			provenance,
-			ANY_VALUE(n.value) AS value,
+			IFNULL(ANY_VALUE(n.value), '') AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(IFNULL(n.name, '')) AS name,
-			ANY_VALUE(n.types) AS types
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
 		GROUP BY
 			subject_id,
 			predicate,

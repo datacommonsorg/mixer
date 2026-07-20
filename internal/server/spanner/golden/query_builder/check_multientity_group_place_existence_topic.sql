@@ -5,7 +5,7 @@
 				e.subject_id AS variable_measured
 			FROM Edge@{FORCE_INDEX=InEdge} e
 			WHERE e.predicate = 'linkedMember'
-			  AND e.object_id IN ('dc/t/Place/Population')
+			  AND e.object_id = 'dc/t/Place/Population'
 		),
 		slot1 AS (
 			SELECT DISTINCT

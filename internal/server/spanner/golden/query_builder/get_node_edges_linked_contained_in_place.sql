@@ -3,7 +3,7 @@
 			m.subject_id = 'country/USA')<-[e:Edge
 		WHERE
 			e.predicate = 'linkedContainedInPlace']-(n:Node),
-		(n)-[filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
 			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->
@@ -19,10 +19,10 @@
 		  	subject_id,
 			predicate,
 			provenance,
-			ANY_VALUE(n.value) AS value,
+			IFNULL(ANY_VALUE(n.value), '') AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(IFNULL(n.name, '')) AS name,
-			ANY_VALUE(n.types) AS types
+			IFNULL(ANY_VALUE(n.name), '') AS name,
+			IFNULL(ANY_VALUE(n.types), []) AS types
 		GROUP BY
 			subject_id,
 			predicate,

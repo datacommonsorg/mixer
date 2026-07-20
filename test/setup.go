@@ -69,6 +69,8 @@ var (
 	LatencyTest = os.Getenv("LATENCY_TEST") == "true"
 	// GenerateGolden is used to check whether generating golden.
 	GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
+	// RunSpannerEmulatorTests is used to enable hermetic Spanner emulator tests.
+	RunSpannerEmulatorTests = os.Getenv("RUN_SPANNER_EMULATOR_TESTS") == "true"
 	// EnableSpannerGraph is used to check whether spanner graph should be enabled.
 	// Currently this is only enabled on workstations of developers working on the spanner graph POC.
 	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
@@ -447,7 +449,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), nil)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

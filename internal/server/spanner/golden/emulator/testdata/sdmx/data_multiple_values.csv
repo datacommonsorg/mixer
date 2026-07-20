@@ -1,0 +1,3 @@
+STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,destinationCountry,sourceCountry,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId
+dataflow,DC:DF_OBS(1.0.0),I,Count_Migration,country/CAN,country/USA,Count,Census,P1Y,dc/base/HumanReadableStatVars,2024,10,,facet
+dataflow,DC:DF_OBS(1.0.0),I,Count_Refugee,country/MEX,country/IND,Percent,Survey,P1M,dc/base/Other,2023,20,,alternate-facet

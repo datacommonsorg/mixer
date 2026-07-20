@@ -99,9 +99,13 @@ func handleLangOperator(prefix string, langs []string, params map[string]interfa
 	return strings.Join(parts, " OR ")
 }
 
-func GetCompletionTimestampQuery() *spanner.Statement {
+func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
+	sql := statements.getCompletionTimestamp
+	if useNewSchema {
+		sql = statements.getIngestionHistoryTimestamp
+	}
 	return &spanner.Statement{
-		SQL: statements.getCompletionTimestamp,
+		SQL: sql,
 	}
 }
 
@@ -171,15 +175,14 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
 			if len(filterVal) > 0 {
-				if len(filterVal) == 1 {
-					objectFilter = fmt.Sprintf(statements.filterValue, i)
-					params["val"+strconv.Itoa(i)] = filterVal[0]
-				} else {
-					objectFilter = fmt.Sprintf(statements.filterValues, i)
-					params["val"+strconv.Itoa(i)] = filterVal
-				}
+				objectFilter = fmt.Sprintf(statements.filterValues, i)
+				params["val"+strconv.Itoa(i)] = filterVal
 			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
+			indexHint := ""
+			if len(filterVal) > 0 {
+				indexHint = "@{FORCE_INDEX=InEdge}"
+			}
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
 			i++
 		}
 	}
@@ -489,15 +492,21 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Statement {
+// GetKeyValueStoreQuery builds a query targeting KeyValueStore (or legacy Cache table when useKeyValueStore is false).
+func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string, useKeyValueStore bool) *spanner.Statement {
 	keyFilter, keyVal := getParamStatement("key", keys)
 	params := map[string]interface{}{
 		"type": string(typeFilter),
 		"key":  keyVal,
 	}
 
+	sql := statements.getCacheData
+	if useKeyValueStore {
+		sql = statements.getKeyValueStoreData
+	}
+
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.getCacheData, keyFilter),
+		SQL:    fmt.Sprintf(sql, keyFilter),
 		Params: params,
 	}
 }
@@ -506,10 +515,7 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 func GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
-	selfFilter := statements.attachSVG
-	if len(nodes) > 1 {
-		selfFilter = statements.attachSVGs
-	}
+	selfFilter := statements.attachSVGs
 
 	sqlTemplate := statements.getStatVarGroupNode
 	if includeDefinitions {
@@ -656,11 +662,8 @@ func addObjectValues(input []string) []string {
 	return result
 }
 
-// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter based on the number of inputs.
+// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter.
 func getParamStatement(param string, inputs []string) (string, interface{}) {
-	if len(inputs) == 1 {
-		return fmt.Sprintf(statements.getParam, param), inputs[0]
-	}
 	return fmt.Sprintf(statements.getParams, param), inputs
 }
 

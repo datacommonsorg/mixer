@@ -263,17 +263,17 @@
                   "unit": "Years"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusDivision": {},
                   "Country": {},
                   "State": {}
                 },
-                "observationCount": 427,
+                "observationCount": 488,
                 "timeSeriesCount": 61
               }
             ],
-            "observationCount": 427,
+            "observationCount": 488,
             "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {

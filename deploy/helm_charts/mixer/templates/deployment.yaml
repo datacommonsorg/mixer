@@ -177,7 +177,9 @@ spec:
               /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
               --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
               --host_project="${HOST_PROJECT}" \
+              {{- if $.Values.mixer.useBigquery }}
               --bq_dataset="$FINAL_BQ_VERSION" \
+              {{- end }}
               --schema_path=/datacommons/mapping \
               --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }} \
               --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} \
@@ -373,6 +375,12 @@ spec:
             - --healthz=healthz
             - --service_json_path=/etc/espv2_config/service_config.json
             - --envoy_connection_buffer_limit_bytes=209715200 # 200Mb
+            {{- if $.Values.esp.transcodingIgnoreUnknownQueryParameters }}
+            - --transcoding_ignore_unknown_query_parameters
+            {{- end }}
+            {{- if $.Values.esp.transcodingQueryParametersDisableUnescapePlus }}
+            - --transcoding_query_parameters_disable_unescape_plus
+            {{- end }}
           env:
             - name: SERVICE_NAME
               valueFrom:

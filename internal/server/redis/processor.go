@@ -20,6 +20,7 @@ import (
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -92,6 +93,10 @@ func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error)
 		return &pbv1.BulkVariableInfoResponse{}, nil
 	case dispatcher.TypeBulkVariableGroupInfo:
 		return &pbv1.BulkVariableGroupInfoResponse{}, nil
+	case dispatcher.TypeSdmxData:
+		return &sdmxpb.SdmxDataResult{}, nil
+	case dispatcher.TypeSdmxAvailability:
+		return &sdmxpb.SdmxAvailabilityResult{}, nil
 	default:
 		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}

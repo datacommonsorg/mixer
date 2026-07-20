@@ -18,6 +18,7 @@ import (
 	"strings"
 	"testing"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -46,20 +47,48 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			},
 		},
 		{
-			name:        "optional time period",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2021"),
-			want: map[string][]string{
-				"variableMeasured": {"Count_Person"},
-				"observationAbout": {"country/USA"},
-				"TIME_PERIOD":      {"2020", "2021"},
-			},
-		},
-		{
 			name:        "encoded slash value",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			want: map[string][]string{
 				"variableMeasured": {"Count_Person"},
 				"observationAbout": {"country/USA"},
+			},
+		},
+		{
+			name:        "dynamic entity filters",
+			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA"),
+			want: map[string][]string{
+				"variableMeasured":   {"Count_Person_Migrated"},
+				"destinationCountry": {"country/CAN"},
+				"sourceCountry":      {"country/USA"},
+			},
+		},
+		{
+			name:        "filterable attribute",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[facetId]=facet"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"observationAbout": {"country/USA"},
+				"facetId":          {"facet"},
+			},
+		},
+		{
+			name: "multiple values for fixed and dynamic dimensions",
+			originalURI: dataURI("c[variableMeasured]=Count_Person_Migrated,Count_Refugee&" +
+				"c[destinationCountry]=country%2FCAN,country%2FMEX&" +
+				"c[sourceCountry]=country%2FUSA,country%2FIND&" +
+				"c[unit]=Person,Traveler&" +
+				"c[measurementMethod]=Census,Survey&" +
+				"c[observationPeriod]=P1Y,P1M&" +
+				"c[provenance]=dc%2Fbase%2Fone,dc%2Fbase%2Ftwo"),
+			want: map[string][]string{
+				"variableMeasured":   {"Count_Person_Migrated", "Count_Refugee"},
+				"destinationCountry": {"country/CAN", "country/MEX"},
+				"sourceCountry":      {"country/USA", "country/IND"},
+				"unit":               {"Person", "Traveler"},
+				"measurementMethod":  {"Census", "Survey"},
+				"observationPeriod":  {"P1Y", "P1M"},
+				"provenance":         {"dc/base/one", "dc/base/two"},
 			},
 		},
 		{
@@ -94,11 +123,42 @@ func TestParseDataRequest_Constraints(t *testing.T) {
 			if err != nil {
 				t.Fatalf("ParseDataRequest() error = %v", err)
 			}
-			if diff := cmp.Diff(tt.want, got.Constraints); diff != "" {
+			if diff := cmp.Diff(tt.want, componentConstraintValues(got.Constraints)); diff != "" {
 				t.Errorf("ParseDataRequest() constraints mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}
+}
+
+func TestParseDataRequest_PropertyConstraints(t *testing.T) {
+	for _, query := range []string{
+		"c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=country%2FUSA&c[sourceCountry.typeOf]=State",
+		"c%5BvariableMeasured%5D=Count_Migration&c%5BsourceCountry.containedInPlace%2B%5D=country%2FUSA&c%5BsourceCountry.typeOf%5D=State",
+	} {
+		got, err := ParseDataRequest(dataTail(), dataURI(query))
+		if err != nil {
+			t.Fatalf("ParseDataRequest() error = %v", err)
+		}
+		constraint := got.Constraints["sourceCountry"]
+		containedIn := constraint.GetPropertyConstraints()["containedInPlace"]
+		if !containedIn.GetTransitive() || containedIn.GetPredicates()[0].GetValue() != "country/USA" {
+			t.Fatalf("containedInPlace constraint = %v", containedIn)
+		}
+		typeOf := constraint.GetPropertyConstraints()["typeOf"]
+		if typeOf.GetTransitive() || typeOf.GetPredicates()[0].GetValue() != "State" {
+			t.Fatalf("typeOf constraint = %v", typeOf)
+		}
+	}
+}
+
+func componentConstraintValues(constraints map[string]*sdmxpb.SdmxComponentConstraint) map[string][]string {
+	result := map[string][]string{}
+	for componentID, constraint := range constraints {
+		for _, predicate := range constraint.GetPredicates() {
+			result[componentID] = append(result[componentID], predicate.GetValue())
+		}
+	}
+	return result
 }
 
 func TestParseDataRequest_Path(t *testing.T) {
@@ -137,11 +197,6 @@ func TestParseDataRequest_Format(t *testing.T) {
 			originalURI: dataURI("format=csv&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			want:        "csv",
 		},
-		{
-			name:        "json stat",
-			originalURI: dataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
-			want:        "json-stat",
-		},
 	}
 
 	for _, tt := range tests {
@@ -167,9 +222,11 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 		wantErrSub string
 	}{
 		{
-			name:    "format json stat",
-			request: &DataRequest{Format: "json-stat"},
-			want:    DataResponseFormatJSONStat,
+			name:       "format json stat unsupported",
+			request:    &DataRequest{Format: "json-stat"},
+			want:       DataResponseFormatUnknown,
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "unsupported SDMX data response format",
 		},
 		{
 			name:    "format csv",
@@ -191,6 +248,7 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 		{
 			name:       "unsupported format",
 			request:    &DataRequest{Format: "xml"},
+			want:       DataResponseFormatUnknown,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX data response format",
 		},
@@ -210,6 +268,9 @@ func TestDataResponseFormatFromDataRequest(t *testing.T) {
 				}
 				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
 					t.Fatalf("DataResponseFormatFromDataRequest() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				if got != tt.want {
+					t.Errorf("DataResponseFormatFromDataRequest() = %v, want %v", got, tt.want)
 				}
 				return
 			}
@@ -246,6 +307,41 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
+			name:        "multi step property selector",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "direct containment unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace]=country%2FUSA&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "transitive type unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf+]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "multiple containment values",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA,country%2FCAN&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "direct and property predicates",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=geoId%2F06&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf]=County"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "property on known non observation component",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[unit.containedInPlace+]=country%2FUSA&c[unit.typeOf]=County"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
+			name:        "time period filter unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020"),
+			wantCode:    codes.Unimplemented,
+		},
+		{
 			name:        "duplicate component",
 			originalURI: dataURI("c[variableMeasured]=Count_Person&c[variableMeasured]=Count_Household&c[observationAbout]=country%2FUSA"),
 			wantCode:    codes.InvalidArgument,
@@ -258,6 +354,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		{
 			name:        "malformed component",
 			originalURI: "/sdmx/v3/data?c[FREQ=A",
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "malformed component identifier",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[invalid%20key]=value"),
 			wantCode:    codes.InvalidArgument,
 		},
 		{
@@ -310,18 +411,13 @@ func TestParseDataRequest_Errors(t *testing.T) {
 			wantCode:    codes.InvalidArgument,
 		},
 		{
-			name:        "missing observation about",
-			originalURI: dataURI("c[variableMeasured]=Count_Person"),
-			wantCode:    codes.InvalidArgument,
-		},
-		{
-			name:        "geo unsupported",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[geo]=country%2FUSA"),
+			name:        "freq unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[FREQ]=A"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
-			name:        "freq unsupported",
-			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[FREQ]=A"),
+			name:        "scaling factor unsupported",
+			originalURI: dataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[scalingFactor]=0"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
@@ -337,6 +433,11 @@ func TestParseDataRequest_Errors(t *testing.T) {
 		{
 			name:        "unsupported format",
 			originalURI: dataURI("format=xml&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "json stat format unsupported",
+			originalURI: dataURI("format=json-stat&c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
 			wantCode:    codes.InvalidArgument,
 		},
 	}

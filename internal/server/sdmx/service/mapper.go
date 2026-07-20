@@ -18,46 +18,17 @@ import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	restv2 "github.com/datacommonsorg/mixer/internal/server/sdmx/rest/v2"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 func dataQueryFromREST(request *restv2.DataRequest) (*sdmxpb.SdmxDataQuery, error) {
-	constraints, err := constraintsFromRESTFilters(request.Constraints, restv2.InternalDataFilterComponentID)
-	if err != nil {
-		return nil, err
-	}
-	return &sdmxpb.SdmxDataQuery{Constraints: constraints}, nil
+	return &sdmxpb.SdmxDataQuery{Constraints: request.Constraints}, nil
 }
 
 func availabilityQueryFromREST(request *restv2.AvailabilityRequest) (*sdmxpb.SdmxAvailabilityQuery, error) {
-	componentID, err := restv2.InternalAvailabilityComponentID(request.Path.ComponentID)
-	if err != nil {
-		return nil, err
-	}
-	constraints, err := constraintsFromRESTFilters(request.Constraints, restv2.InternalAvailabilityFilterComponentID)
-	if err != nil {
-		return nil, err
-	}
-	return &sdmxpb.SdmxAvailabilityQuery{ComponentId: componentID, Constraints: constraints}, nil
-}
-
-func constraintsFromRESTFilters(
-	filters map[string][]string,
-	mapComponent func(string) (string, error),
-) (map[string]*sdmxpb.ConstraintList, error) {
-	constraints := map[string]*sdmxpb.ConstraintList{}
-	for componentID, values := range filters {
-		internalComponentID, err := mapComponent(componentID)
-		if err != nil {
-			return nil, err
-		}
-		if _, exists := constraints[internalComponentID]; exists {
-			return nil, status.Errorf(codes.InvalidArgument, "duplicate SDMX component filter %q", internalComponentID)
-		}
-		constraints[internalComponentID] = &sdmxpb.ConstraintList{Values: values}
-	}
-	return constraints, nil
+	return &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: request.Path.ComponentID,
+		Constraints: request.Constraints,
+	}, nil
 }
 
 func dataStructureID(path restv2.ResourcePath) string {

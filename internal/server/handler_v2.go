@@ -144,6 +144,11 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
+		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
+		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
+			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
+			return false, nil
+		}
 		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
 		if err != nil {
 			return false, err

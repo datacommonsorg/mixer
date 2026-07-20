@@ -17,4 +17,4 @@
 			t.facet AS facets,
 			t.entities
 		FROM TimeSeries t
-		WHERE (t.variable_measured = "var1")
+		WHERE t.variable_measured = 'var1'

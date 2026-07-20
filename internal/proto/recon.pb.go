@@ -451,62 +451,6 @@ func (x *ResolveIdsResponse) GetEntities() []*ResolveIdsResponse_Entity {
 	return nil
 }
 
-type FindEntitiesRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
-	// Optional.
-	Type string `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty"`
-}
-
-func (x *FindEntitiesRequest) Reset() {
-	*x = FindEntitiesRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *FindEntitiesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FindEntitiesRequest) ProtoMessage() {}
-
-func (x *FindEntitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FindEntitiesRequest.ProtoReflect.Descriptor instead.
-func (*FindEntitiesRequest) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *FindEntitiesRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *FindEntitiesRequest) GetType() string {
-	if x != nil {
-		return x.Type
-	}
-	return ""
-}
-
 type FindEntitiesResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -518,7 +462,7 @@ type FindEntitiesResponse struct {
 func (x *FindEntitiesResponse) Reset() {
 	*x = FindEntitiesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[9]
+		mi := &file_recon_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -531,7 +475,7 @@ func (x *FindEntitiesResponse) String() string {
 func (*FindEntitiesResponse) ProtoMessage() {}
 
 func (x *FindEntitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[9]
+	mi := &file_recon_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -544,7 +488,7 @@ func (x *FindEntitiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindEntitiesResponse.ProtoReflect.Descriptor instead.
 func (*FindEntitiesResponse) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{9}
+	return file_recon_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *FindEntitiesResponse) GetDcids() []string {
@@ -565,7 +509,7 @@ type BulkFindEntitiesRequest struct {
 func (x *BulkFindEntitiesRequest) Reset() {
 	*x = BulkFindEntitiesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[10]
+		mi := &file_recon_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -578,7 +522,7 @@ func (x *BulkFindEntitiesRequest) String() string {
 func (*BulkFindEntitiesRequest) ProtoMessage() {}
 
 func (x *BulkFindEntitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[10]
+	mi := &file_recon_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -591,7 +535,7 @@ func (x *BulkFindEntitiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkFindEntitiesRequest.ProtoReflect.Descriptor instead.
 func (*BulkFindEntitiesRequest) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{10}
+	return file_recon_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *BulkFindEntitiesRequest) GetEntities() []*BulkFindEntitiesRequest_Entity {
@@ -612,7 +556,7 @@ type BulkFindEntitiesResponse struct {
 func (x *BulkFindEntitiesResponse) Reset() {
 	*x = BulkFindEntitiesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[11]
+		mi := &file_recon_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -625,7 +569,7 @@ func (x *BulkFindEntitiesResponse) String() string {
 func (*BulkFindEntitiesResponse) ProtoMessage() {}
 
 func (x *BulkFindEntitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[11]
+	mi := &file_recon_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -638,7 +582,7 @@ func (x *BulkFindEntitiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkFindEntitiesResponse.ProtoReflect.Descriptor instead.
 func (*BulkFindEntitiesResponse) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{11}
+	return file_recon_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BulkFindEntitiesResponse) GetEntities() []*BulkFindEntitiesResponse_Entity {
@@ -659,7 +603,7 @@ type RecognizePlacesRequest struct {
 func (x *RecognizePlacesRequest) Reset() {
 	*x = RecognizePlacesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[12]
+		mi := &file_recon_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -672,7 +616,7 @@ func (x *RecognizePlacesRequest) String() string {
 func (*RecognizePlacesRequest) ProtoMessage() {}
 
 func (x *RecognizePlacesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[12]
+	mi := &file_recon_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -685,7 +629,7 @@ func (x *RecognizePlacesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesRequest.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesRequest) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{12}
+	return file_recon_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *RecognizePlacesRequest) GetQueries() []string {
@@ -706,7 +650,7 @@ type RecognizePlacesResponse struct {
 func (x *RecognizePlacesResponse) Reset() {
 	*x = RecognizePlacesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[13]
+		mi := &file_recon_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -719,7 +663,7 @@ func (x *RecognizePlacesResponse) String() string {
 func (*RecognizePlacesResponse) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[13]
+	mi := &file_recon_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -732,7 +676,7 @@ func (x *RecognizePlacesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesResponse.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesResponse) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13}
+	return file_recon_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RecognizePlacesResponse) GetQueryItems() map[string]*RecognizePlacesResponse_Items {
@@ -753,7 +697,7 @@ type RecognizeEntitiesRequest struct {
 func (x *RecognizeEntitiesRequest) Reset() {
 	*x = RecognizeEntitiesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[14]
+		mi := &file_recon_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -766,7 +710,7 @@ func (x *RecognizeEntitiesRequest) String() string {
 func (*RecognizeEntitiesRequest) ProtoMessage() {}
 
 func (x *RecognizeEntitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[14]
+	mi := &file_recon_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +723,7 @@ func (x *RecognizeEntitiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizeEntitiesRequest.ProtoReflect.Descriptor instead.
 func (*RecognizeEntitiesRequest) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{14}
+	return file_recon_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RecognizeEntitiesRequest) GetQueries() []string {
@@ -800,7 +744,7 @@ type RecognizeEntitiesResponse struct {
 func (x *RecognizeEntitiesResponse) Reset() {
 	*x = RecognizeEntitiesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[15]
+		mi := &file_recon_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -813,7 +757,7 @@ func (x *RecognizeEntitiesResponse) String() string {
 func (*RecognizeEntitiesResponse) ProtoMessage() {}
 
 func (x *RecognizeEntitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[15]
+	mi := &file_recon_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -826,7 +770,7 @@ func (x *RecognizeEntitiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizeEntitiesResponse.ProtoReflect.Descriptor instead.
 func (*RecognizeEntitiesResponse) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15}
+	return file_recon_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RecognizeEntitiesResponse) GetQueryItems() map[string]*RecognizeEntitiesResponse_Items {
@@ -851,7 +795,7 @@ type RecogPlace struct {
 func (x *RecogPlace) Reset() {
 	*x = RecogPlace{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[16]
+		mi := &file_recon_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -864,7 +808,7 @@ func (x *RecogPlace) String() string {
 func (*RecogPlace) ProtoMessage() {}
 
 func (x *RecogPlace) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[16]
+	mi := &file_recon_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -877,7 +821,7 @@ func (x *RecogPlace) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlace.ProtoReflect.Descriptor instead.
 func (*RecogPlace) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{16}
+	return file_recon_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RecogPlace) GetNames() []*RecogPlace_Name {
@@ -919,7 +863,7 @@ type RecogPlaces struct {
 func (x *RecogPlaces) Reset() {
 	*x = RecogPlaces{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[17]
+		mi := &file_recon_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -932,7 +876,7 @@ func (x *RecogPlaces) String() string {
 func (*RecogPlaces) ProtoMessage() {}
 
 func (x *RecogPlaces) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[17]
+	mi := &file_recon_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -945,7 +889,7 @@ func (x *RecogPlaces) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlaces.ProtoReflect.Descriptor instead.
 func (*RecogPlaces) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{17}
+	return file_recon_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *RecogPlaces) GetPlaces() []*RecogPlace {
@@ -966,7 +910,7 @@ type TokenSpans struct {
 func (x *TokenSpans) Reset() {
 	*x = TokenSpans{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[18]
+		mi := &file_recon_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -979,7 +923,7 @@ func (x *TokenSpans) String() string {
 func (*TokenSpans) ProtoMessage() {}
 
 func (x *TokenSpans) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[18]
+	mi := &file_recon_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -992,7 +936,7 @@ func (x *TokenSpans) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TokenSpans.ProtoReflect.Descriptor instead.
 func (*TokenSpans) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{18}
+	return file_recon_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *TokenSpans) GetSpans() []*TokenSpans_Span {
@@ -1018,7 +962,7 @@ type ReconEntities_Entity struct {
 func (x *ReconEntities_Entity) Reset() {
 	*x = ReconEntities_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[19]
+		mi := &file_recon_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1031,7 +975,7 @@ func (x *ReconEntities_Entity) String() string {
 func (*ReconEntities_Entity) ProtoMessage() {}
 
 func (x *ReconEntities_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[19]
+	mi := &file_recon_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1073,7 +1017,7 @@ type ReconEntities_Entity_ID struct {
 func (x *ReconEntities_Entity_ID) Reset() {
 	*x = ReconEntities_Entity_ID{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[20]
+		mi := &file_recon_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1086,7 +1030,7 @@ func (x *ReconEntities_Entity_ID) String() string {
 func (*ReconEntities_Entity_ID) ProtoMessage() {}
 
 func (x *ReconEntities_Entity_ID) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[20]
+	mi := &file_recon_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1131,7 +1075,7 @@ type CoordinateRecon_Place struct {
 func (x *CoordinateRecon_Place) Reset() {
 	*x = CoordinateRecon_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[21]
+		mi := &file_recon_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1144,7 +1088,7 @@ func (x *CoordinateRecon_Place) String() string {
 func (*CoordinateRecon_Place) ProtoMessage() {}
 
 func (x *CoordinateRecon_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[21]
+	mi := &file_recon_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1193,7 +1137,7 @@ type ResolveEntitiesResponse_ResolvedId struct {
 func (x *ResolveEntitiesResponse_ResolvedId) Reset() {
 	*x = ResolveEntitiesResponse_ResolvedId{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[22]
+		mi := &file_recon_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1206,7 +1150,7 @@ func (x *ResolveEntitiesResponse_ResolvedId) String() string {
 func (*ResolveEntitiesResponse_ResolvedId) ProtoMessage() {}
 
 func (x *ResolveEntitiesResponse_ResolvedId) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[22]
+	mi := &file_recon_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1248,7 +1192,7 @@ type ResolveEntitiesResponse_ResolvedEntity struct {
 func (x *ResolveEntitiesResponse_ResolvedEntity) Reset() {
 	*x = ResolveEntitiesResponse_ResolvedEntity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[23]
+		mi := &file_recon_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1261,7 +1205,7 @@ func (x *ResolveEntitiesResponse_ResolvedEntity) String() string {
 func (*ResolveEntitiesResponse_ResolvedEntity) ProtoMessage() {}
 
 func (x *ResolveEntitiesResponse_ResolvedEntity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[23]
+	mi := &file_recon_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1303,7 +1247,7 @@ type ResolveCoordinatesRequest_Coordinate struct {
 func (x *ResolveCoordinatesRequest_Coordinate) Reset() {
 	*x = ResolveCoordinatesRequest_Coordinate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[24]
+		mi := &file_recon_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1316,7 +1260,7 @@ func (x *ResolveCoordinatesRequest_Coordinate) String() string {
 func (*ResolveCoordinatesRequest_Coordinate) ProtoMessage() {}
 
 func (x *ResolveCoordinatesRequest_Coordinate) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[24]
+	mi := &file_recon_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1358,7 +1302,7 @@ type ResolveCoordinatesResponse_Place struct {
 func (x *ResolveCoordinatesResponse_Place) Reset() {
 	*x = ResolveCoordinatesResponse_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[25]
+		mi := &file_recon_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1371,7 +1315,7 @@ func (x *ResolveCoordinatesResponse_Place) String() string {
 func (*ResolveCoordinatesResponse_Place) ProtoMessage() {}
 
 func (x *ResolveCoordinatesResponse_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[25]
+	mi := &file_recon_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1417,7 +1361,7 @@ type ResolveCoordinatesResponse_PlaceCoordinate struct {
 func (x *ResolveCoordinatesResponse_PlaceCoordinate) Reset() {
 	*x = ResolveCoordinatesResponse_PlaceCoordinate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[26]
+		mi := &file_recon_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1430,7 +1374,7 @@ func (x *ResolveCoordinatesResponse_PlaceCoordinate) String() string {
 func (*ResolveCoordinatesResponse_PlaceCoordinate) ProtoMessage() {}
 
 func (x *ResolveCoordinatesResponse_PlaceCoordinate) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[26]
+	mi := &file_recon_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1486,7 +1430,7 @@ type ResolveIdsResponse_Entity struct {
 func (x *ResolveIdsResponse_Entity) Reset() {
 	*x = ResolveIdsResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[27]
+		mi := &file_recon_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1499,7 +1443,7 @@ func (x *ResolveIdsResponse_Entity) String() string {
 func (*ResolveIdsResponse_Entity) ProtoMessage() {}
 
 func (x *ResolveIdsResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[27]
+	mi := &file_recon_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1542,7 +1486,7 @@ type BulkFindEntitiesRequest_Entity struct {
 func (x *BulkFindEntitiesRequest_Entity) Reset() {
 	*x = BulkFindEntitiesRequest_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[28]
+		mi := &file_recon_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1555,7 +1499,7 @@ func (x *BulkFindEntitiesRequest_Entity) String() string {
 func (*BulkFindEntitiesRequest_Entity) ProtoMessage() {}
 
 func (x *BulkFindEntitiesRequest_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[28]
+	mi := &file_recon_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1568,7 +1512,7 @@ func (x *BulkFindEntitiesRequest_Entity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkFindEntitiesRequest_Entity.ProtoReflect.Descriptor instead.
 func (*BulkFindEntitiesRequest_Entity) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{10, 0}
+	return file_recon_proto_rawDescGZIP(), []int{9, 0}
 }
 
 func (x *BulkFindEntitiesRequest_Entity) GetDescription() string {
@@ -1599,7 +1543,7 @@ type BulkFindEntitiesResponse_Entity struct {
 func (x *BulkFindEntitiesResponse_Entity) Reset() {
 	*x = BulkFindEntitiesResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[29]
+		mi := &file_recon_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1612,7 +1556,7 @@ func (x *BulkFindEntitiesResponse_Entity) String() string {
 func (*BulkFindEntitiesResponse_Entity) ProtoMessage() {}
 
 func (x *BulkFindEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[29]
+	mi := &file_recon_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1625,7 +1569,7 @@ func (x *BulkFindEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BulkFindEntitiesResponse_Entity.ProtoReflect.Descriptor instead.
 func (*BulkFindEntitiesResponse_Entity) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{11, 0}
+	return file_recon_proto_rawDescGZIP(), []int{10, 0}
 }
 
 func (x *BulkFindEntitiesResponse_Entity) GetDescription() string {
@@ -1660,7 +1604,7 @@ type RecognizePlacesResponse_Place struct {
 func (x *RecognizePlacesResponse_Place) Reset() {
 	*x = RecognizePlacesResponse_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[30]
+		mi := &file_recon_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1673,7 +1617,7 @@ func (x *RecognizePlacesResponse_Place) String() string {
 func (*RecognizePlacesResponse_Place) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[30]
+	mi := &file_recon_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1686,7 +1630,7 @@ func (x *RecognizePlacesResponse_Place) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesResponse_Place.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesResponse_Place) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13, 0}
+	return file_recon_proto_rawDescGZIP(), []int{12, 0}
 }
 
 func (x *RecognizePlacesResponse_Place) GetDcid() string {
@@ -1710,7 +1654,7 @@ type RecognizePlacesResponse_Item struct {
 func (x *RecognizePlacesResponse_Item) Reset() {
 	*x = RecognizePlacesResponse_Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[31]
+		mi := &file_recon_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1723,7 +1667,7 @@ func (x *RecognizePlacesResponse_Item) String() string {
 func (*RecognizePlacesResponse_Item) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[31]
+	mi := &file_recon_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1736,7 +1680,7 @@ func (x *RecognizePlacesResponse_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesResponse_Item.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesResponse_Item) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13, 1}
+	return file_recon_proto_rawDescGZIP(), []int{12, 1}
 }
 
 func (x *RecognizePlacesResponse_Item) GetSpan() string {
@@ -1764,7 +1708,7 @@ type RecognizePlacesResponse_Items struct {
 func (x *RecognizePlacesResponse_Items) Reset() {
 	*x = RecognizePlacesResponse_Items{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[32]
+		mi := &file_recon_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1777,7 +1721,7 @@ func (x *RecognizePlacesResponse_Items) String() string {
 func (*RecognizePlacesResponse_Items) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Items) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[32]
+	mi := &file_recon_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1790,7 +1734,7 @@ func (x *RecognizePlacesResponse_Items) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizePlacesResponse_Items.ProtoReflect.Descriptor instead.
 func (*RecognizePlacesResponse_Items) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13, 2}
+	return file_recon_proto_rawDescGZIP(), []int{12, 2}
 }
 
 func (x *RecognizePlacesResponse_Items) GetItems() []*RecognizePlacesResponse_Item {
@@ -1811,7 +1755,7 @@ type RecognizeEntitiesResponse_Entity struct {
 func (x *RecognizeEntitiesResponse_Entity) Reset() {
 	*x = RecognizeEntitiesResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[34]
+		mi := &file_recon_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1824,7 +1768,7 @@ func (x *RecognizeEntitiesResponse_Entity) String() string {
 func (*RecognizeEntitiesResponse_Entity) ProtoMessage() {}
 
 func (x *RecognizeEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[34]
+	mi := &file_recon_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1837,7 +1781,7 @@ func (x *RecognizeEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizeEntitiesResponse_Entity.ProtoReflect.Descriptor instead.
 func (*RecognizeEntitiesResponse_Entity) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15, 0}
+	return file_recon_proto_rawDescGZIP(), []int{14, 0}
 }
 
 func (x *RecognizeEntitiesResponse_Entity) GetDcid() string {
@@ -1861,7 +1805,7 @@ type RecognizeEntitiesResponse_Item struct {
 func (x *RecognizeEntitiesResponse_Item) Reset() {
 	*x = RecognizeEntitiesResponse_Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[35]
+		mi := &file_recon_proto_msgTypes[34]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1874,7 +1818,7 @@ func (x *RecognizeEntitiesResponse_Item) String() string {
 func (*RecognizeEntitiesResponse_Item) ProtoMessage() {}
 
 func (x *RecognizeEntitiesResponse_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[35]
+	mi := &file_recon_proto_msgTypes[34]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1887,7 +1831,7 @@ func (x *RecognizeEntitiesResponse_Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizeEntitiesResponse_Item.ProtoReflect.Descriptor instead.
 func (*RecognizeEntitiesResponse_Item) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15, 1}
+	return file_recon_proto_rawDescGZIP(), []int{14, 1}
 }
 
 func (x *RecognizeEntitiesResponse_Item) GetSpan() string {
@@ -1915,7 +1859,7 @@ type RecognizeEntitiesResponse_Items struct {
 func (x *RecognizeEntitiesResponse_Items) Reset() {
 	*x = RecognizeEntitiesResponse_Items{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[36]
+		mi := &file_recon_proto_msgTypes[35]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1928,7 +1872,7 @@ func (x *RecognizeEntitiesResponse_Items) String() string {
 func (*RecognizeEntitiesResponse_Items) ProtoMessage() {}
 
 func (x *RecognizeEntitiesResponse_Items) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[36]
+	mi := &file_recon_proto_msgTypes[35]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1941,7 +1885,7 @@ func (x *RecognizeEntitiesResponse_Items) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecognizeEntitiesResponse_Items.ProtoReflect.Descriptor instead.
 func (*RecognizeEntitiesResponse_Items) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15, 2}
+	return file_recon_proto_rawDescGZIP(), []int{14, 2}
 }
 
 func (x *RecognizeEntitiesResponse_Items) GetItems() []*RecognizeEntitiesResponse_Item {
@@ -1962,7 +1906,7 @@ type RecogPlace_Name struct {
 func (x *RecogPlace_Name) Reset() {
 	*x = RecogPlace_Name{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[38]
+		mi := &file_recon_proto_msgTypes[37]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1975,7 +1919,7 @@ func (x *RecogPlace_Name) String() string {
 func (*RecogPlace_Name) ProtoMessage() {}
 
 func (x *RecogPlace_Name) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[38]
+	mi := &file_recon_proto_msgTypes[37]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1988,7 +1932,7 @@ func (x *RecogPlace_Name) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlace_Name.ProtoReflect.Descriptor instead.
 func (*RecogPlace_Name) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{16, 0}
+	return file_recon_proto_rawDescGZIP(), []int{15, 0}
 }
 
 func (x *RecogPlace_Name) GetParts() []string {
@@ -2012,7 +1956,7 @@ type TokenSpans_Span struct {
 func (x *TokenSpans_Span) Reset() {
 	*x = TokenSpans_Span{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[39]
+		mi := &file_recon_proto_msgTypes[38]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -2025,7 +1969,7 @@ func (x *TokenSpans_Span) String() string {
 func (*TokenSpans_Span) ProtoMessage() {}
 
 func (x *TokenSpans_Span) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[39]
+	mi := &file_recon_proto_msgTypes[38]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2038,7 +1982,7 @@ func (x *TokenSpans_Span) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TokenSpans_Span.ProtoReflect.Descriptor instead.
 func (*TokenSpans_Span) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{18, 0}
+	return file_recon_proto_rawDescGZIP(), []int{17, 0}
 }
 
 func (x *TokenSpans_Span) GetTokens() []string {
@@ -2167,126 +2111,121 @@ var file_recon_proto_rawDesc = []byte{
 	0x74, 0x69, 0x74, 0x79, 0x12, 0x13, 0x0a, 0x05, 0x69, 0x6e, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x6e, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x6f, 0x75, 0x74,
 	0x5f, 0x69, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x6f, 0x75, 0x74, 0x49,
-	0x64, 0x73, 0x22, 0x4b, 0x0a, 0x13, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69,
-	0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73,
-	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x74,
-	0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x22,
-	0x2c, 0x0a, 0x14, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x63, 0x69, 0x64, 0x73,
-	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x64, 0x63, 0x69, 0x64, 0x73, 0x22, 0xa2, 0x01,
-	0x0a, 0x17, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69,
-	0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x47, 0x0a, 0x08, 0x65, 0x6e, 0x74,
-	0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69,
-	0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69,
-	0x65, 0x73, 0x1a, 0x3e, 0x0a, 0x06, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x20, 0x0a, 0x0b,
-	0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x12,
-	0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79,
-	0x70, 0x65, 0x22, 0xba, 0x01, 0x0a, 0x18, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45,
-	0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x48, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x2c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x52,
-	0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x54, 0x0a, 0x06, 0x45, 0x6e, 0x74,
-	0x69, 0x74, 0x79, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69,
-	0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69,
-	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x63, 0x69,
-	0x64, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x64, 0x63, 0x69, 0x64, 0x73, 0x22,
-	0x32, 0x0a, 0x16, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63,
-	0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x71, 0x75, 0x65,
-	0x72, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x71, 0x75, 0x65, 0x72,
-	0x69, 0x65, 0x73, 0x22, 0xa2, 0x03, 0x0a, 0x17, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a,
-	0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x55, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x34, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x64, 0x73, 0x22, 0x2c, 0x0a, 0x14, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x64, 0x63,
+	0x69, 0x64, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x64, 0x63, 0x69, 0x64, 0x73,
+	0x22, 0xa2, 0x01, 0x0a, 0x17, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x47, 0x0a, 0x08,
+	0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b,
+	0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x42, 0x75, 0x6c,
+	0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x52, 0x08, 0x65, 0x6e, 0x74,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x3e, 0x0a, 0x06, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12,
+	0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f,
+	0x6e, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x74, 0x79, 0x70, 0x65, 0x22, 0xba, 0x01, 0x0a, 0x18, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69,
+	0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x48, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x73, 0x2e, 0x42, 0x75, 0x6c, 0x6b, 0x46, 0x69, 0x6e, 0x64, 0x45, 0x6e, 0x74, 0x69, 0x74,
+	0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74, 0x69,
+	0x74, 0x79, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x54, 0x0a, 0x06,
+	0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69,
+	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73,
+	0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05,
+	0x64, 0x63, 0x69, 0x64, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x64, 0x63, 0x69,
+	0x64, 0x73, 0x22, 0x32, 0x0a, 0x16, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07,
+	0x71, 0x75, 0x65, 0x72, 0x69, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x71,
+	0x75, 0x65, 0x72, 0x69, 0x65, 0x73, 0x22, 0xa2, 0x03, 0x0a, 0x17, 0x52, 0x65, 0x63, 0x6f, 0x67,
+	0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x55, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x69, 0x74, 0x65, 0x6d,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x34, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x51, 0x75,
+	0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x71,
+	0x75, 0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1b, 0x0a, 0x05, 0x50, 0x6c, 0x61,
+	0x63, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x1a, 0x5e, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12,
+	0x0a, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70,
+	0x61, 0x6e, 0x12, 0x42, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
+	0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06,
+	0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x1a, 0x48, 0x0a, 0x05, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x12,
+	0x3f, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29,
+	0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63,
+	0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73,
+	0x1a, 0x69, 0x0a, 0x0f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e,
+	0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x40, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
 	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x71, 0x75, 0x65, 0x72,
-	0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1b, 0x0a, 0x05, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x12,
-	0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
-	0x63, 0x69, 0x64, 0x1a, 0x5e, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x73,
-	0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x12,
-	0x42, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65,
-	0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61,
-	0x63, 0x65, 0x73, 0x1a, 0x48, 0x0a, 0x05, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x12, 0x3f, 0x0a, 0x05,
-	0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e,
-	0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x69, 0x0a,
-	0x0f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79,
-	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
-	0x65, 0x79, 0x12, 0x40, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x52, 0x05, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x34, 0x0a, 0x18, 0x52, 0x65, 0x63, 0x6f,
-	0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69, 0x65, 0x73, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69, 0x65, 0x73, 0x22, 0xb2,
-	0x03, 0x0a, 0x19, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69,
-	0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x57, 0x0a, 0x0b,
-	0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x36, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49,
-	0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x71, 0x75, 0x65, 0x72, 0x79,
-	0x49, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1c, 0x0a, 0x06, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12,
-	0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64,
-	0x63, 0x69, 0x64, 0x1a, 0x65, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x73,
-	0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x12,
-	0x49, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x2d, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79,
-	0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x4a, 0x0a, 0x05, 0x49, 0x74,
-	0x65, 0x6d, 0x73, 0x12, 0x41, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01, 0x20, 0x03,
-	0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
-	0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x52,
-	0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x6b, 0x0a, 0x0f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x49,
-	0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x42, 0x0a, 0x05, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x64, 0x61, 0x74,
-	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69,
-	0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
-	0x02, 0x38, 0x01, 0x22, 0xbf, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61,
-	0x63, 0x65, 0x12, 0x32, 0x0a, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e,
-	0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x2e, 0x4e, 0x61, 0x6d, 0x65, 0x52,
-	0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x12, 0x2b, 0x0a, 0x11, 0x63, 0x6f,
-	0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18,
-	0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x10, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e,
-	0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x6f, 0x70, 0x75, 0x6c,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x70,
-	0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x1c, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x14, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05,
-	0x70, 0x61, 0x72, 0x74, 0x73, 0x22, 0x3e, 0x0a, 0x0b, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c,
-	0x61, 0x63, 0x65, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x73, 0x22, 0x91, 0x01, 0x0a, 0x0a, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53,
-	0x70, 0x61, 0x6e, 0x73, 0x12, 0x32, 0x0a, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x73, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x2e, 0x53, 0x70, 0x61,
-	0x6e, 0x52, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73, 0x1a, 0x4f, 0x0a, 0x04, 0x53, 0x70, 0x61, 0x6e,
-	0x12, 0x16, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09,
-	0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63,
-	0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63,
-	0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74,
-	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74,
-	0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73,
+	0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x34, 0x0a, 0x18, 0x52,
+	0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69,
+	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69, 0x65,
+	0x73, 0x22, 0xb2, 0x03, 0x0a, 0x19, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45,
+	0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
+	0x57, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69,
+	0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x71, 0x75,
+	0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1c, 0x0a, 0x06, 0x45, 0x6e, 0x74, 0x69,
+	0x74, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x1a, 0x65, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12,
+	0x0a, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70,
+	0x61, 0x6e, 0x12, 0x49, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x02,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69,
+	0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74,
+	0x69, 0x74, 0x79, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x4a, 0x0a,
+	0x05, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x12, 0x41, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
+	0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74,
+	0x65, 0x6d, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x6b, 0x0a, 0x0f, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03,
+	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x42,
+	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f,
+	0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xbf, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x63, 0x6f, 0x67,
+	0x50, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x32, 0x0a, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x2e, 0x4e, 0x61,
+	0x6d, 0x65, 0x52, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69,
+	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x12, 0x2b, 0x0a,
+	0x11, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x70, 0x6c, 0x61, 0x63,
+	0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x10, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69,
+	0x6e, 0x69, 0x6e, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x6f,
+	0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a,
+	0x70, 0x6f, 0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x1c, 0x0a, 0x04, 0x4e, 0x61,
+	0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x09, 0x52, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x22, 0x3e, 0x0a, 0x0b, 0x52, 0x65, 0x63, 0x6f,
+	0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65,
+	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x22, 0x91, 0x01, 0x0a, 0x0a, 0x54, 0x6f, 0x6b,
+	0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x12, 0x32, 0x0a, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x2e,
+	0x53, 0x70, 0x61, 0x6e, 0x52, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73, 0x1a, 0x4f, 0x0a, 0x04, 0x53,
+	0x70, 0x61, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x18, 0x01, 0x20,
+	0x03, 0x28, 0x09, 0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70,
+	0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61,
+	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50,
+	0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x42, 0x30, 0x5a, 0x2e,
+	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f,
+	0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2301,7 +2240,7 @@ func file_recon_proto_rawDescGZIP() []byte {
 	return file_recon_proto_rawDescData
 }
 
-var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 40)
+var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
 var file_recon_proto_goTypes = []interface{}{
 	(*ReconEntities)(nil),                              // 0: datacommons.ReconEntities
 	(*CoordinateRecon)(nil),                            // 1: datacommons.CoordinateRecon
@@ -2311,67 +2250,66 @@ var file_recon_proto_goTypes = []interface{}{
 	(*ResolveCoordinatesResponse)(nil),                 // 5: datacommons.ResolveCoordinatesResponse
 	(*ResolveIdsRequest)(nil),                          // 6: datacommons.ResolveIdsRequest
 	(*ResolveIdsResponse)(nil),                         // 7: datacommons.ResolveIdsResponse
-	(*FindEntitiesRequest)(nil),                        // 8: datacommons.FindEntitiesRequest
-	(*FindEntitiesResponse)(nil),                       // 9: datacommons.FindEntitiesResponse
-	(*BulkFindEntitiesRequest)(nil),                    // 10: datacommons.BulkFindEntitiesRequest
-	(*BulkFindEntitiesResponse)(nil),                   // 11: datacommons.BulkFindEntitiesResponse
-	(*RecognizePlacesRequest)(nil),                     // 12: datacommons.RecognizePlacesRequest
-	(*RecognizePlacesResponse)(nil),                    // 13: datacommons.RecognizePlacesResponse
-	(*RecognizeEntitiesRequest)(nil),                   // 14: datacommons.RecognizeEntitiesRequest
-	(*RecognizeEntitiesResponse)(nil),                  // 15: datacommons.RecognizeEntitiesResponse
-	(*RecogPlace)(nil),                                 // 16: datacommons.RecogPlace
-	(*RecogPlaces)(nil),                                // 17: datacommons.RecogPlaces
-	(*TokenSpans)(nil),                                 // 18: datacommons.TokenSpans
-	(*ReconEntities_Entity)(nil),                       // 19: datacommons.ReconEntities.Entity
-	(*ReconEntities_Entity_ID)(nil),                    // 20: datacommons.ReconEntities.Entity.ID
-	(*CoordinateRecon_Place)(nil),                      // 21: datacommons.CoordinateRecon.Place
-	(*ResolveEntitiesResponse_ResolvedId)(nil),         // 22: datacommons.ResolveEntitiesResponse.ResolvedId
-	(*ResolveEntitiesResponse_ResolvedEntity)(nil),     // 23: datacommons.ResolveEntitiesResponse.ResolvedEntity
-	(*ResolveCoordinatesRequest_Coordinate)(nil),       // 24: datacommons.ResolveCoordinatesRequest.Coordinate
-	(*ResolveCoordinatesResponse_Place)(nil),           // 25: datacommons.ResolveCoordinatesResponse.Place
-	(*ResolveCoordinatesResponse_PlaceCoordinate)(nil), // 26: datacommons.ResolveCoordinatesResponse.PlaceCoordinate
-	(*ResolveIdsResponse_Entity)(nil),                  // 27: datacommons.ResolveIdsResponse.Entity
-	(*BulkFindEntitiesRequest_Entity)(nil),             // 28: datacommons.BulkFindEntitiesRequest.Entity
-	(*BulkFindEntitiesResponse_Entity)(nil),            // 29: datacommons.BulkFindEntitiesResponse.Entity
-	(*RecognizePlacesResponse_Place)(nil),              // 30: datacommons.RecognizePlacesResponse.Place
-	(*RecognizePlacesResponse_Item)(nil),               // 31: datacommons.RecognizePlacesResponse.Item
-	(*RecognizePlacesResponse_Items)(nil),              // 32: datacommons.RecognizePlacesResponse.Items
-	nil,                                                // 33: datacommons.RecognizePlacesResponse.QueryItemsEntry
-	(*RecognizeEntitiesResponse_Entity)(nil),           // 34: datacommons.RecognizeEntitiesResponse.Entity
-	(*RecognizeEntitiesResponse_Item)(nil),             // 35: datacommons.RecognizeEntitiesResponse.Item
-	(*RecognizeEntitiesResponse_Items)(nil),            // 36: datacommons.RecognizeEntitiesResponse.Items
-	nil,                                                // 37: datacommons.RecognizeEntitiesResponse.QueryItemsEntry
-	(*RecogPlace_Name)(nil),                            // 38: datacommons.RecogPlace.Name
-	(*TokenSpans_Span)(nil),                            // 39: datacommons.TokenSpans.Span
-	(*EntitySubGraph)(nil),                             // 40: datacommons.EntitySubGraph
-	(*IdWithProperty)(nil),                             // 41: datacommons.IdWithProperty
+	(*FindEntitiesResponse)(nil),                       // 8: datacommons.FindEntitiesResponse
+	(*BulkFindEntitiesRequest)(nil),                    // 9: datacommons.BulkFindEntitiesRequest
+	(*BulkFindEntitiesResponse)(nil),                   // 10: datacommons.BulkFindEntitiesResponse
+	(*RecognizePlacesRequest)(nil),                     // 11: datacommons.RecognizePlacesRequest
+	(*RecognizePlacesResponse)(nil),                    // 12: datacommons.RecognizePlacesResponse
+	(*RecognizeEntitiesRequest)(nil),                   // 13: datacommons.RecognizeEntitiesRequest
+	(*RecognizeEntitiesResponse)(nil),                  // 14: datacommons.RecognizeEntitiesResponse
+	(*RecogPlace)(nil),                                 // 15: datacommons.RecogPlace
+	(*RecogPlaces)(nil),                                // 16: datacommons.RecogPlaces
+	(*TokenSpans)(nil),                                 // 17: datacommons.TokenSpans
+	(*ReconEntities_Entity)(nil),                       // 18: datacommons.ReconEntities.Entity
+	(*ReconEntities_Entity_ID)(nil),                    // 19: datacommons.ReconEntities.Entity.ID
+	(*CoordinateRecon_Place)(nil),                      // 20: datacommons.CoordinateRecon.Place
+	(*ResolveEntitiesResponse_ResolvedId)(nil),         // 21: datacommons.ResolveEntitiesResponse.ResolvedId
+	(*ResolveEntitiesResponse_ResolvedEntity)(nil),     // 22: datacommons.ResolveEntitiesResponse.ResolvedEntity
+	(*ResolveCoordinatesRequest_Coordinate)(nil),       // 23: datacommons.ResolveCoordinatesRequest.Coordinate
+	(*ResolveCoordinatesResponse_Place)(nil),           // 24: datacommons.ResolveCoordinatesResponse.Place
+	(*ResolveCoordinatesResponse_PlaceCoordinate)(nil), // 25: datacommons.ResolveCoordinatesResponse.PlaceCoordinate
+	(*ResolveIdsResponse_Entity)(nil),                  // 26: datacommons.ResolveIdsResponse.Entity
+	(*BulkFindEntitiesRequest_Entity)(nil),             // 27: datacommons.BulkFindEntitiesRequest.Entity
+	(*BulkFindEntitiesResponse_Entity)(nil),            // 28: datacommons.BulkFindEntitiesResponse.Entity
+	(*RecognizePlacesResponse_Place)(nil),              // 29: datacommons.RecognizePlacesResponse.Place
+	(*RecognizePlacesResponse_Item)(nil),               // 30: datacommons.RecognizePlacesResponse.Item
+	(*RecognizePlacesResponse_Items)(nil),              // 31: datacommons.RecognizePlacesResponse.Items
+	nil,                                                // 32: datacommons.RecognizePlacesResponse.QueryItemsEntry
+	(*RecognizeEntitiesResponse_Entity)(nil),           // 33: datacommons.RecognizeEntitiesResponse.Entity
+	(*RecognizeEntitiesResponse_Item)(nil),             // 34: datacommons.RecognizeEntitiesResponse.Item
+	(*RecognizeEntitiesResponse_Items)(nil),            // 35: datacommons.RecognizeEntitiesResponse.Items
+	nil,                                                // 36: datacommons.RecognizeEntitiesResponse.QueryItemsEntry
+	(*RecogPlace_Name)(nil),                            // 37: datacommons.RecogPlace.Name
+	(*TokenSpans_Span)(nil),                            // 38: datacommons.TokenSpans.Span
+	(*EntitySubGraph)(nil),                             // 39: datacommons.EntitySubGraph
+	(*IdWithProperty)(nil),                             // 40: datacommons.IdWithProperty
 }
 var file_recon_proto_depIdxs = []int32{
-	19, // 0: datacommons.ReconEntities.entities:type_name -> datacommons.ReconEntities.Entity
-	21, // 1: datacommons.CoordinateRecon.places:type_name -> datacommons.CoordinateRecon.Place
-	40, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
-	23, // 3: datacommons.ResolveEntitiesResponse.resolved_entities:type_name -> datacommons.ResolveEntitiesResponse.ResolvedEntity
-	24, // 4: datacommons.ResolveCoordinatesRequest.coordinates:type_name -> datacommons.ResolveCoordinatesRequest.Coordinate
-	26, // 5: datacommons.ResolveCoordinatesResponse.place_coordinates:type_name -> datacommons.ResolveCoordinatesResponse.PlaceCoordinate
-	27, // 6: datacommons.ResolveIdsResponse.entities:type_name -> datacommons.ResolveIdsResponse.Entity
-	28, // 7: datacommons.BulkFindEntitiesRequest.entities:type_name -> datacommons.BulkFindEntitiesRequest.Entity
-	29, // 8: datacommons.BulkFindEntitiesResponse.entities:type_name -> datacommons.BulkFindEntitiesResponse.Entity
-	33, // 9: datacommons.RecognizePlacesResponse.query_items:type_name -> datacommons.RecognizePlacesResponse.QueryItemsEntry
-	37, // 10: datacommons.RecognizeEntitiesResponse.query_items:type_name -> datacommons.RecognizeEntitiesResponse.QueryItemsEntry
-	38, // 11: datacommons.RecogPlace.names:type_name -> datacommons.RecogPlace.Name
-	16, // 12: datacommons.RecogPlaces.places:type_name -> datacommons.RecogPlace
-	39, // 13: datacommons.TokenSpans.spans:type_name -> datacommons.TokenSpans.Span
-	20, // 14: datacommons.ReconEntities.Entity.ids:type_name -> datacommons.ReconEntities.Entity.ID
-	41, // 15: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
-	22, // 16: datacommons.ResolveEntitiesResponse.ResolvedEntity.resolved_ids:type_name -> datacommons.ResolveEntitiesResponse.ResolvedId
-	25, // 17: datacommons.ResolveCoordinatesResponse.PlaceCoordinate.places:type_name -> datacommons.ResolveCoordinatesResponse.Place
-	30, // 18: datacommons.RecognizePlacesResponse.Item.places:type_name -> datacommons.RecognizePlacesResponse.Place
-	31, // 19: datacommons.RecognizePlacesResponse.Items.items:type_name -> datacommons.RecognizePlacesResponse.Item
-	32, // 20: datacommons.RecognizePlacesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizePlacesResponse.Items
-	34, // 21: datacommons.RecognizeEntitiesResponse.Item.entities:type_name -> datacommons.RecognizeEntitiesResponse.Entity
-	35, // 22: datacommons.RecognizeEntitiesResponse.Items.items:type_name -> datacommons.RecognizeEntitiesResponse.Item
-	36, // 23: datacommons.RecognizeEntitiesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizeEntitiesResponse.Items
-	16, // 24: datacommons.TokenSpans.Span.places:type_name -> datacommons.RecogPlace
+	18, // 0: datacommons.ReconEntities.entities:type_name -> datacommons.ReconEntities.Entity
+	20, // 1: datacommons.CoordinateRecon.places:type_name -> datacommons.CoordinateRecon.Place
+	39, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
+	22, // 3: datacommons.ResolveEntitiesResponse.resolved_entities:type_name -> datacommons.ResolveEntitiesResponse.ResolvedEntity
+	23, // 4: datacommons.ResolveCoordinatesRequest.coordinates:type_name -> datacommons.ResolveCoordinatesRequest.Coordinate
+	25, // 5: datacommons.ResolveCoordinatesResponse.place_coordinates:type_name -> datacommons.ResolveCoordinatesResponse.PlaceCoordinate
+	26, // 6: datacommons.ResolveIdsResponse.entities:type_name -> datacommons.ResolveIdsResponse.Entity
+	27, // 7: datacommons.BulkFindEntitiesRequest.entities:type_name -> datacommons.BulkFindEntitiesRequest.Entity
+	28, // 8: datacommons.BulkFindEntitiesResponse.entities:type_name -> datacommons.BulkFindEntitiesResponse.Entity
+	32, // 9: datacommons.RecognizePlacesResponse.query_items:type_name -> datacommons.RecognizePlacesResponse.QueryItemsEntry
+	36, // 10: datacommons.RecognizeEntitiesResponse.query_items:type_name -> datacommons.RecognizeEntitiesResponse.QueryItemsEntry
+	37, // 11: datacommons.RecogPlace.names:type_name -> datacommons.RecogPlace.Name
+	15, // 12: datacommons.RecogPlaces.places:type_name -> datacommons.RecogPlace
+	38, // 13: datacommons.TokenSpans.spans:type_name -> datacommons.TokenSpans.Span
+	19, // 14: datacommons.ReconEntities.Entity.ids:type_name -> datacommons.ReconEntities.Entity.ID
+	40, // 15: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
+	21, // 16: datacommons.ResolveEntitiesResponse.ResolvedEntity.resolved_ids:type_name -> datacommons.ResolveEntitiesResponse.ResolvedId
+	24, // 17: datacommons.ResolveCoordinatesResponse.PlaceCoordinate.places:type_name -> datacommons.ResolveCoordinatesResponse.Place
+	29, // 18: datacommons.RecognizePlacesResponse.Item.places:type_name -> datacommons.RecognizePlacesResponse.Place
+	30, // 19: datacommons.RecognizePlacesResponse.Items.items:type_name -> datacommons.RecognizePlacesResponse.Item
+	31, // 20: datacommons.RecognizePlacesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizePlacesResponse.Items
+	33, // 21: datacommons.RecognizeEntitiesResponse.Item.entities:type_name -> datacommons.RecognizeEntitiesResponse.Entity
+	34, // 22: datacommons.RecognizeEntitiesResponse.Items.items:type_name -> datacommons.RecognizeEntitiesResponse.Item
+	35, // 23: datacommons.RecognizeEntitiesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizeEntitiesResponse.Items
+	15, // 24: datacommons.TokenSpans.Span.places:type_name -> datacommons.RecogPlace
 	25, // [25:25] is the sub-list for method output_type
 	25, // [25:25] is the sub-list for method input_type
 	25, // [25:25] is the sub-list for extension type_name
@@ -2483,18 +2421,6 @@ func file_recon_proto_init() {
 			}
 		}
 		file_recon_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FindEntitiesRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*FindEntitiesResponse); i {
 			case 0:
 				return &v.state
@@ -2506,7 +2432,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesRequest); i {
 			case 0:
 				return &v.state
@@ -2518,7 +2444,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesResponse); i {
 			case 0:
 				return &v.state
@@ -2530,7 +2456,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesRequest); i {
 			case 0:
 				return &v.state
@@ -2542,7 +2468,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse); i {
 			case 0:
 				return &v.state
@@ -2554,7 +2480,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizeEntitiesRequest); i {
 			case 0:
 				return &v.state
@@ -2566,7 +2492,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizeEntitiesResponse); i {
 			case 0:
 				return &v.state
@@ -2578,7 +2504,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlace); i {
 			case 0:
 				return &v.state
@@ -2590,7 +2516,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlaces); i {
 			case 0:
 				return &v.state
@@ -2602,7 +2528,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TokenSpans); i {
 			case 0:
 				return &v.state
@@ -2614,7 +2540,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReconEntities_Entity); i {
 			case 0:
 				return &v.state
@@ -2626,7 +2552,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReconEntities_Entity_ID); i {
 			case 0:
 				return &v.state
@@ -2638,7 +2564,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CoordinateRecon_Place); i {
 			case 0:
 				return &v.state
@@ -2650,7 +2576,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveEntitiesResponse_ResolvedId); i {
 			case 0:
 				return &v.state
@@ -2662,7 +2588,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveEntitiesResponse_ResolvedEntity); i {
 			case 0:
 				return &v.state
@@ -2674,7 +2600,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesRequest_Coordinate); i {
 			case 0:
 				return &v.state
@@ -2686,7 +2612,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesResponse_Place); i {
 			case 0:
 				return &v.state
@@ -2698,7 +2624,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesResponse_PlaceCoordinate); i {
 			case 0:
 				return &v.state
@@ -2710,7 +2636,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveIdsResponse_Entity); i {
 			case 0:
 				return &v.state
@@ -2722,7 +2648,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesRequest_Entity); i {
 			case 0:
 				return &v.state
@@ -2734,7 +2660,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesResponse_Entity); i {
 			case 0:
 				return &v.state
@@ -2746,7 +2672,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Place); i {
 			case 0:
 				return &v.state
@@ -2758,7 +2684,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Item); i {
 			case 0:
 				return &v.state
@@ -2770,7 +2696,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Items); i {
 			case 0:
 				return &v.state
@@ -2782,7 +2708,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizeEntitiesResponse_Entity); i {
 			case 0:
 				return &v.state
@@ -2794,7 +2720,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizeEntitiesResponse_Item); i {
 			case 0:
 				return &v.state
@@ -2806,7 +2732,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizeEntitiesResponse_Items); i {
 			case 0:
 				return &v.state
@@ -2818,7 +2744,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlace_Name); i {
 			case 0:
 				return &v.state
@@ -2830,7 +2756,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TokenSpans_Span); i {
 			case 0:
 				return &v.state
@@ -2849,7 +2775,7 @@ func file_recon_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_recon_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   40,
+			NumMessages:   39,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

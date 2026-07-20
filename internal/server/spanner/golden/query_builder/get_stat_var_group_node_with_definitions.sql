@@ -6,9 +6,10 @@
 			WHERE predicate = 'specializationOf'
 			AND object_id = 'dc/g/Demographics'
 			UNION ALL
-			SELECT 
-				'dc/g/Demographics' AS child_svg,
-				'dc/g/Demographics' AS svg
+			SELECT
+				node AS child_svg,
+				node AS svg
+				FROM UNNEST(['dc/g/Demographics']) AS node
 		),
 		UniqueChildSVGs AS (
 			SELECT DISTINCT child_svg FROM ChildSVGs
@@ -37,7 +38,7 @@
 		SELECT 
 			svg.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			c.descendent_stat_var_count,
 			FALSE AS has_data,
 			'' AS definition
@@ -50,7 +51,7 @@
 		SELECT 
 			sv.svg,
 			n.subject_id, 
-			n.name, 
+			IFNULL(n.name, '') AS name, 
 			-1 AS descendent_stat_var_count,
 			EXISTS (
 				SELECT 1 

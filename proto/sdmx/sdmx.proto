@@ -29,29 +29,58 @@ message SdmxRestRequest {
 
 // Represents a query for SDMX data.
 message SdmxDataQuery {
-  // Map of constraints where the key is the dimension ID (e.g., "sex", "age")
-  // and the value is a list of allowed values for that dimension.
-  map<string, ConstraintList> constraints = 1;
+  // Map of constraints where the key is the component ID.
+  map<string, SdmxComponentConstraint> constraints = 1;
 }
 
 // Represents a query for SDMX availability.
 message SdmxAvailabilityQuery {
   // Dispatcher/internal component ID to return available values for.
   string component_id = 1;
-  // Map of constraints where the key is the dimension ID and the value is a list of allowed values.
-  map<string, ConstraintList> constraints = 2;
+  // Map of constraints where the key is the component ID.
+  map<string, SdmxComponentConstraint> constraints = 2;
 }
 
-// A list of string values for a constraint.
-message ConstraintList {
-  // The list of allowed values for the constraint dimension.
-  repeated string values = 1;
+// A constraint on an SDMX component.
+message SdmxComponentConstraint {
+  // Predicates on the component value. Multiple predicates are combined with OR.
+  repeated SdmxPredicate predicates = 1;
+
+  // Key is a one-step datacommons property ID on the component like containedIn, typeOf.
+  map<string, SdmxPropertyConstraint> property_constraints = 2;
 }
 
-// The result of an SDMX data query.
+// A constraint on values reached through a component property.
+message SdmxPropertyConstraint {
+  // Predicates on the property value. Multiple predicates are combined with OR.
+  repeated SdmxPredicate predicates = 1;
+
+  // Whether to use recursive property traversal
+  // For e.g  containedInPlace+ would set property = containedInPlace and transtivie = true 
+  bool transitive = 2;
+}
+
+// A predicate on an SDMX component or property value.
+message SdmxPredicate {
+  // Operator applicable on value. 
+  // Equality is default.
+  SdmxOperator operator = 1;
+
+  string value = 2;
+}
+
+enum SdmxOperator {
+  SDMX_OPERATOR_EQ = 0;
+}
+
+// Internal container for SDMX query results returned by the Dispatcher (after fetching/merging
+// from backends). Consumed by formatters to generate the final HTTP response payload.
 message SdmxDataResult {
-  // The list of observations matching the query.
-  repeated SdmxObservation observations = 1;
+  // The resolved SDMX component shape for this response.
+  SdmxDataShape shape = 1;
+
+  // The time series matching the query.
+  repeated SdmxTimeSeries series = 2;
 }
 
 // The result of an SDMX availability query.
@@ -60,28 +89,49 @@ message SdmxAvailabilityResult {
   repeated string values = 1;
 }
 
-// A pair representing a date and its associated value.
-message SdmxDateValue {
-  // The date of the observation (e.g., "2020", "2020-01").
-  string date = 1;
-  // The numeric or string value of the observation.
-  string value = 2;
+// Metadata defining the structure (shape) of the data response. Specifies the roles
+// and deterministic order of components for serialization.
+message SdmxDataShape {
+  // Components in the deterministic order used by all SDMX renderers.
+  repeated SdmxComponent components = 1;
 }
 
-// Represents an intermediate observation object containing data and metadata read from the database.
-message SdmxObservation {
-  // The statistical variable being measured (e.g., "Count_Person").
-  string variable_measured = 1;
+// Defines a single field in the formatted output response. Maps the field name to its role,
+// which determines how and where values are stored (e.g. "variableMeasured" -> DIMENSION,
+// "OBS_VALUE" -> MEASURE, "scalingFactor" -> ATTRIBUTE).
+message SdmxComponent {
+  // Component ID, e.g. "variableMeasured" or "TIME_PERIOD".
+  string id = 1;
 
-  // The provenance or source of the data.
-  string provenance = 2;
+  // Component role in the SDMX data shape.
+  SdmxComponentKind kind = 2;
+}
 
-  // The time series of dates and values for this observation.
-  repeated SdmxDateValue dates_and_values = 3;
+// SDMX component role.
+enum SdmxComponentKind {
+  SDMX_COMPONENT_KIND_UNSPECIFIED = 0;
+  SDMX_COMPONENT_KIND_DIMENSION = 1;
+  SDMX_COMPONENT_KIND_MEASURE = 2;
+  SDMX_COMPONENT_KIND_ATTRIBUTE = 3;
+}
 
-  // Dimensions that identify the observation (e.g., location, gender).
-  map<string, string> dimensions = 4;
+// Represents an intermediate SDMX time series read from the database.
+message SdmxTimeSeries {
+  // Series-level SDMX dimensions, including variableMeasured, entity dimensions, and provenance.
+  map<string, string> dimensions = 1;
 
-  // Attributes that provide metadata about the observation (e.g., unit, measurementMethod).
-  map<string, string> attributes = 5;
+  // Series-level SDMX attributes, including scalingFactor and facetId.
+  map<string, string> attributes = 2;
+
+  // Time/value points for this series.
+  repeated SdmxDataPoint points = 3;
+}
+
+// A single time/value point in an SDMX time series.
+message SdmxDataPoint {
+  // TIME_PERIOD value, e.g. "2020" or "2020-01".
+  string time_period = 1;
+
+  // OBS_VALUE value.
+  string observation_value = 2;
 }
