@@ -94,8 +94,11 @@ func requireSuite(t *testing.T) *emulatorSuite {
 
 func validateSpannerEmulatorHost(value string) error {
 	host, port, err := net.SplitHostPort(value)
-	if err != nil || host != "localhost" || port == "" {
-		return fmt.Errorf("RUN_SPANNER_EMULATOR_TESTS=true requires SPANNER_EMULATOR_HOST=localhost:<port>")
+	if err != nil || port == "" {
+		return fmt.Errorf("RUN_SPANNER_EMULATOR_TESTS=true requires SPANNER_EMULATOR_HOST=<host>:<port>")
+	}
+	if host != "localhost" && host != "127.0.0.1" && host != "::1" && host != "spanner-emulator" {
+		return fmt.Errorf("invalid emulator host %q: must be localhost, 127.0.0.1, [::1], or spanner-emulator", host)
 	}
 	return nil
 }
@@ -345,9 +348,11 @@ func TestValidateSpannerEmulatorHost(t *testing.T) {
 		wantErr bool
 	}{
 		{name: "localhost", value: "localhost:9010"},
+		{name: "spanner-emulator", value: "spanner-emulator:9010"},
+		{name: "loopback IPv4", value: "127.0.0.1:9010"},
+		{name: "loopback IPv6", value: "[::1]:9010"},
 		{name: "missing", wantErr: true},
 		{name: "missing port", value: "localhost", wantErr: true},
-		{name: "loopback IP", value: "127.0.0.1:9010", wantErr: true},
 		{name: "remote", value: "spanner.googleapis.com:443", wantErr: true},
 		{name: "localhost suffix", value: "localhost.example.com:9010", wantErr: true},
 		{name: "URL", value: "http://localhost:9010", wantErr: true},
