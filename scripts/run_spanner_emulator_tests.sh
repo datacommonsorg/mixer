@@ -43,9 +43,9 @@ fi
 
 export SPANNER_EMULATOR_HOST="${SPANNER_EMULATOR_HOST:-localhost:9010}"
 case "$SPANNER_EMULATOR_HOST" in
-  localhost:?*) ;;
+  localhost:?* | 127.0.0.1:?* | "\[::1\]":?* | spanner-emulator:?*) ;;
   *)
-    echo "Error: SPANNER_EMULATOR_HOST must use localhost:<port>." >&2
+    echo "Error: SPANNER_EMULATOR_HOST must be localhost, 127.0.0.1, [::1], or spanner-emulator with a port." >&2
     exit 1
     ;;
 esac

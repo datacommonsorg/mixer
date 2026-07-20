@@ -13,6 +13,16 @@
 # limitations under the License.
 
 steps:
+  # Start Spanner emulator in background
+  - id: start-emulator
+    name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        docker run -d --name spanner-emulator --network cloudbuild gcr.io/cloud-spanner-emulator/emulator:${_SPANNER_EMULATOR_VERSION}
+    waitFor: ['-']
+
   # Validate BQ version file and run golangci-lint
   - id: lint
     name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
@@ -59,16 +69,29 @@ steps:
 
   - id: test
     name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    env:
+      - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
+      - 'RUN_SPANNER_EMULATOR_TESTS=true'
     entrypoint: "bash"
     args:
       - -c
       - |
         set -e
+        # Wait for emulator to start (checking spanner-emulator:9010)
+        echo "Waiting for Spanner emulator to start..."
+        for i in {1..30}; do
+          if (echo > /dev/tcp/spanner-emulator/9010) >/dev/null 2>&1; then
+            echo "Spanner emulator is ready."
+            break
+          fi
+          sleep 1
+        done
         go test -v ./...
-    waitFor: ["build-proto"]
+    waitFor: ["build-proto", "start-emulator"]
 
 substitutions:
   _FULL_ENV_VERSION: "mixer-only-2026-02-20"
+  _SPANNER_EMULATOR_VERSION: "1.5.55"
 
 options:
   volumes:
