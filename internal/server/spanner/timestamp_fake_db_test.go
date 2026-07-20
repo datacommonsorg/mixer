@@ -232,3 +232,18 @@ func TestStalenessTimestamp_IncludePostprocessingStage(t *testing.T) {
 		t.Fatalf("got %v, want %v (postprocessing stage run-5)", ts, want)
 	}
 }
+
+func TestStalenessTimestamp_FailedPreprocessingStage(t *testing.T) {
+	sc, cleanup := setupFakeSpannerClient(t, []ingestionHistoryRow{
+		{"run-1", "2026-07-20T10:00:00Z", strPtr("2026-07-20T10:10:00Z"), "SUCCESS", strPtr("dataflow")},
+		{"run-2", "2026-07-20T10:30:00Z", strPtr("2026-07-20T10:31:00Z"), "FAILURE", strPtr("preprocessing")},
+	})
+	defer cleanup()
+
+	_ = sc.fetchAndUpdateTimestamp(context.Background())
+	ts, _ := sc.getStalenessTimestamp()
+	if !ts.IsZero() {
+		t.Fatalf("got %v, want zero timestamp (failed preprocessing stage should be ignored)", ts)
+	}
+}
+
