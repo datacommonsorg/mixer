@@ -153,17 +153,20 @@ var statements = struct {
 		LIMIT 1`,
 	getIngestionHistoryTimestamp: `		SELECT MIN(CreationTimestamp) AS StalenessTimestamp
 FROM IngestionHistory
-WHERE (
-  -- Check if a successful run has ever occurred
-  SELECT MAX(CompletionTimestamp)
-  FROM IngestionHistory
-  WHERE Status = 'SUCCESS'
-) IS NULL 
--- If a success exists, only grab runs created after it
-OR CreationTimestamp > (
-  SELECT MAX(CompletionTimestamp)
-  FROM IngestionHistory
-  WHERE Status = 'SUCCESS'
+WHERE (Stage IS NULL OR Stage != 'preprocessing')
+AND (
+  (
+    -- Check if a successful run has ever occurred
+    SELECT MAX(CompletionTimestamp)
+    FROM IngestionHistory
+    WHERE Status = 'SUCCESS'
+  ) IS NULL 
+  -- If a success exists, only grab runs created after it
+  OR CreationTimestamp > (
+    SELECT MAX(CompletionTimestamp)
+    FROM IngestionHistory
+    WHERE Status = 'SUCCESS'
+  )
 );
 `,
 	getParam:  `= @%s`,
