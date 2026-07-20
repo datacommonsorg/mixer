@@ -77,6 +77,15 @@ steps:
       - -c
       - |
         set -e
+        # Wait for emulator to start (checking spanner-emulator:9010)
+        echo "Waiting for Spanner emulator to start..."
+        for i in {1..30}; do
+          if (echo > /dev/tcp/spanner-emulator/9010) >/dev/null 2>&1; then
+            echo "Spanner emulator is ready."
+            break
+          fi
+          sleep 1
+        done
         go test -v ./...
     waitFor: ["build-proto", "start-emulator"]
 
