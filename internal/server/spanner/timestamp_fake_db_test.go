@@ -51,7 +51,7 @@ func (f *fakeSpannerServer) ExecuteStreamingSql(req *spannerpb.ExecuteSqlRequest
 	if err != nil {
 		return err
 	}
-	defer rows.Close()
+	defer func() { _ = rows.Close() }()
 
 	meta := &spannerpb.ResultSetMetadata{
 		RowType: &spannerpb.StructType{
