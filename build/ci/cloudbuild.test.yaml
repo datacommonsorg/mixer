@@ -20,7 +20,7 @@ steps:
     args:
       - '-c'
       - |
-        docker run -d --name spanner-emulator --network cloudbuild gcr.io/cloud-spanner-emulator/emulator:1.5.55
+        docker run -d --name spanner-emulator --network cloudbuild gcr.io/cloud-spanner-emulator/emulator:${_SPANNER_EMULATOR_VERSION}
     waitFor: ['-']
 
   # Validate BQ version file and run golangci-lint
@@ -82,6 +82,7 @@ steps:
 
 substitutions:
   _FULL_ENV_VERSION: "mixer-only-2026-02-20"
+  _SPANNER_EMULATOR_VERSION: "1.5.55"
 
 options:
   volumes:
