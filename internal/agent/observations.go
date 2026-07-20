@@ -352,15 +352,30 @@ func (s *Service) fetchEntityProperties(ctx context.Context, dcids []string) (ma
 					p.name = names.GetNodes()[0].GetValue()
 				}
 				if types, ok := graph.GetArcs()[arcTypeOf]; ok {
-					for _, typeNode := range types.GetNodes() {
-						p.typeOf = append(p.typeOf, typeNode.GetDcid())
-					}
+					p.typeOf = extractUniqueNodeDcids(types.GetNodes())
 				}
 			}
 		}
 		props[dcid] = p
 	}
 	return props, nil
+}
+
+// extractUniqueNodeDcids extracts non-empty, deduplicated DCIDs from protobuf entity nodes.
+func extractUniqueNodeDcids(nodes []*pb.EntityInfo) []string {
+	if len(nodes) == 0 {
+		return nil
+	}
+	var result []string
+	seen := make(map[string]bool)
+	for _, node := range nodes {
+		dcid := node.GetDcid()
+		if dcid != "" && !seen[dcid] {
+			seen[dcid] = true
+			result = append(result, dcid)
+		}
+	}
+	return result
 }
 
 // fetchProvenanceProperties performs a single V2Node call to resolve URLs for provenances.
@@ -429,6 +444,14 @@ func emptyEntityMetadataTable() *pbv2.Table {
 	}
 }
 
+type facetStats struct {
+	facetID          string
+	placesFoundCount int
+	dateCount        int
+	latestDate       time.Time
+	staticScore      int
+}
+
 // buildSdmxResponse compiles SDMX data result into GetObservationsResponse with dual tables.
 func (s *Service) buildSdmxResponse(
 	in *pbv2.GetObservationsRequest,
@@ -454,7 +477,29 @@ func (s *Service) buildSdmxResponse(
 		return resp, nil
 	}
 
-	// 1. Identify dimension slot column order (excluding variableMeasured, provenance, and facet fields)
+	dimSlots := extractDimensionSlots(result)
+	resp.Data.Columns = append(append([]string{}, dimSlots...), colDate, colValue)
+
+	primaryFacetID, facetsMap, statsMap := rankSdmxFacets(in, result, filter, provProps)
+	if primaryFacetID == "" {
+		return resp, nil
+	}
+
+	rows, err := buildSdmxDataRows(result, primaryFacetID, dimSlots, filter)
+	if err != nil {
+		return nil, err
+	}
+	resp.Data.Rows = rows
+
+	sourceMetadata, altSources := buildSourceMetadata(primaryFacetID, facetsMap, statsMap, len(entityMetaTable.GetRows()))
+	resp.SourceMetadata = sourceMetadata
+	resp.AlternativeSources = altSources
+
+	return resp, nil
+}
+
+// extractDimensionSlots extracts and sorts non-metadata dimension slot column names.
+func extractDimensionSlots(result *sdmxpb.SdmxDataResult) []string {
 	dimSlotsSet := make(map[string]bool)
 	for _, series := range result.GetSeries() {
 		for dimKey := range series.GetDimensions() {
@@ -469,22 +514,55 @@ func (s *Service) buildSdmxResponse(
 		dimSlots = append(dimSlots, slot)
 	}
 	sort.Strings(dimSlots)
+	return dimSlots
+}
 
-	// Build data table columns: [slot_1, slot_2, ..., colDate, colValue]
-	var dataColumns []string
-	dataColumns = append(dataColumns, dimSlots...)
-	dataColumns = append(dataColumns, colDate, colValue)
-	resp.Data.Columns = dataColumns
+// filterPointsByDate filters series data points based on the specified date configuration.
+func filterPointsByDate(points []*sdmxpb.SdmxDataPoint, filter *dateFilter) []*sdmxpb.SdmxDataPoint {
+	var targetPoints []*sdmxpb.SdmxDataPoint
+	if filter != nil && filter.dateType == dateTypeLatest {
+		if latest := findLatestPoint(points); latest != nil {
+			targetPoints = append(targetPoints, latest)
+		}
+	} else {
+		for _, point := range points {
+			if isDateInInterval(point.GetTimePeriod(), filter) {
+				targetPoints = append(targetPoints, point)
+			}
+		}
+	}
+	return targetPoints
+}
 
-	// 2. Collect all facets and calculate their statistics for ranking
-	type facetStats struct {
-		facetID          string
-		placesFoundCount int
-		dateCount        int
-		latestDate       time.Time
-		staticScore      int
+// buildFacetMetadata constructs a FacetMetadata struct from a time series.
+func buildFacetMetadata(series *sdmxpb.SdmxTimeSeries, facetID string, provProps map[string]*provenanceProperties) *pbv2.GetObservationsResponse_FacetMetadata {
+	provDcid := series.GetDimensions()[datacommons.ComponentProvenance]
+	var provUrl string
+	if p, ok := provProps[provDcid]; ok {
+		provUrl = p.provenanceUrl
 	}
 
+	unit := series.GetAttributes()[datacommons.ComponentUnit]
+	if unit == "" {
+		unit = series.GetDimensions()[datacommons.ComponentUnit]
+	}
+
+	return &pbv2.GetObservationsResponse_FacetMetadata{
+		SourceId:          facetID,
+		MeasurementMethod: series.GetDimensions()[datacommons.ComponentMeasurementMethod],
+		ObservationPeriod: series.GetDimensions()[datacommons.ComponentObservationPeriod],
+		ProvenanceUrl:     provUrl,
+		Unit:              unit,
+	}
+}
+
+// rankSdmxFacets evaluates and ranks all facets present in the SDMX result.
+func rankSdmxFacets(
+	in *pbv2.GetObservationsRequest,
+	result *sdmxpb.SdmxDataResult,
+	filter *dateFilter,
+	provProps map[string]*provenanceProperties,
+) (string, map[string]*pbv2.GetObservationsResponse_FacetMetadata, map[string]*facetStats) {
 	facetsMap := make(map[string]*pbv2.GetObservationsResponse_FacetMetadata)
 	statsMap := make(map[string]*facetStats)
 	placesByFacet := make(map[string]map[string]bool)
@@ -495,26 +573,8 @@ func (s *Service) buildSdmxResponse(
 			facetID = "unknown"
 		}
 
-		// Initialize facet metadata if not seen
 		if _, ok := facetsMap[facetID]; !ok {
-			provDcid := series.GetDimensions()[datacommons.ComponentProvenance]
-			var provUrl string
-			if p, ok := provProps[provDcid]; ok {
-				provUrl = p.provenanceUrl
-			}
-
-			unit := series.GetAttributes()[datacommons.ComponentUnit]
-			if unit == "" {
-				unit = series.GetDimensions()[datacommons.ComponentUnit]
-			}
-
-			facetsMap[facetID] = &pbv2.GetObservationsResponse_FacetMetadata{
-				SourceId:          facetID,
-				MeasurementMethod: series.GetDimensions()[datacommons.ComponentMeasurementMethod],
-				ObservationPeriod: series.GetDimensions()[datacommons.ComponentObservationPeriod],
-				ProvenanceUrl:     provUrl,
-				Unit:              unit,
-			}
+			facetsMap[facetID] = buildFacetMetadata(series, facetID, provProps)
 		}
 
 		// Track places found count
@@ -533,27 +593,13 @@ func (s *Service) buildSdmxResponse(
 			placesByFacet[facetID][placeVal] = true
 		}
 
-		// Count date points and find latest date after applying filter
-		var targetPoints []*sdmxpb.SdmxDataPoint
-		if filter != nil && filter.dateType == dateTypeLatest {
-			if latest := findLatestPoint(series.GetPoints()); latest != nil {
-				targetPoints = append(targetPoints, latest)
-			}
-		} else {
-			for _, point := range series.GetPoints() {
-				if isDateInInterval(point.GetTimePeriod(), filter) {
-					targetPoints = append(targetPoints, point)
-				}
-			}
-		}
-
+		targetPoints := filterPointsByDate(series.GetPoints(), filter)
 		if len(targetPoints) > 0 {
 			if _, ok := statsMap[facetID]; !ok {
 				statsMap[facetID] = &facetStats{facetID: facetID}
 			}
 			statsMap[facetID].dateCount += len(targetPoints)
 
-			// Update latest date
 			for _, pt := range targetPoints {
 				t, _, err := parseDateStringToInterval(pt.GetTimePeriod())
 				if err == nil && t.After(statsMap[facetID].latestDate) {
@@ -564,10 +610,9 @@ func (s *Service) buildSdmxResponse(
 	}
 
 	if len(facetsMap) == 0 {
-		return resp, nil
+		return "", facetsMap, statsMap
 	}
 
-	// Compile stats list for sorting
 	var statsList []*facetStats
 	for facetID, stats := range statsMap {
 		stats.placesFoundCount = len(placesByFacet[facetID])
@@ -575,7 +620,6 @@ func (s *Service) buildSdmxResponse(
 		statsList = append(statsList, stats)
 	}
 
-	// If no stats were collected, rank using static score only
 	if len(statsList) == 0 {
 		for facetID := range facetsMap {
 			statsList = append(statsList, &facetStats{
@@ -585,12 +629,18 @@ func (s *Service) buildSdmxResponse(
 		}
 	}
 
+	sortFacetStats(statsList)
+	return statsList[0].facetID, facetsMap, statsMap
+}
+
+// sortFacetStats orders facet statistics using multi-tier evaluation heuristics.
+func sortFacetStats(statsList []*facetStats) {
 	// Sort stats according to heuristics:
-	// 1. Most places found (higher is better)
-	// 2. Most observation points (higher is better)
-	// 3. Most recent data (latest date, later is better)
-	// 4. Static rank score (higher is better)
-	// 5. Final tie-breaker: string comparison of source ID
+	// - Most places found (higher is better)
+	// - Most observation points (higher is better)
+	// - Most recent data (latest date, later is better)
+	// - Static rank score (higher is better)
+	// - Final tie-breaker: string comparison of source ID
 	sort.Slice(statsList, func(i, j int) bool {
 		si, sj := statsList[i], statsList[j]
 		if si.placesFoundCount != sj.placesFoundCount {
@@ -607,10 +657,17 @@ func (s *Service) buildSdmxResponse(
 		}
 		return si.facetID < sj.facetID
 	})
+}
 
-	primaryFacetID := statsList[0].facetID
+// buildSdmxDataRows constructs table rows for observation data matching the primary facet.
+func buildSdmxDataRows(
+	result *sdmxpb.SdmxDataResult,
+	primaryFacetID string,
+	dimSlots []string,
+	filter *dateFilter,
+) ([]*structpb.ListValue, error) {
+	var rows []*structpb.ListValue
 
-	// 3. Populate rows from the primary facet only
 	for _, series := range result.GetSeries() {
 		facetID := series.GetAttributes()[attrFacetID]
 		if facetID == "" {
@@ -620,25 +677,12 @@ func (s *Service) buildSdmxResponse(
 			continue
 		}
 
-		// Construct dim values prefix
 		var dimVals []interface{}
 		for _, slot := range dimSlots {
 			dimVals = append(dimVals, series.GetDimensions()[slot])
 		}
 
-		var targetPoints []*sdmxpb.SdmxDataPoint
-		if filter != nil && filter.dateType == dateTypeLatest {
-			if latest := findLatestPoint(series.GetPoints()); latest != nil {
-				targetPoints = append(targetPoints, latest)
-			}
-		} else {
-			for _, point := range series.GetPoints() {
-				if isDateInInterval(point.GetTimePeriod(), filter) {
-					targetPoints = append(targetPoints, point)
-				}
-			}
-		}
-
+		targetPoints := filterPointsByDate(series.GetPoints(), filter)
 		for _, point := range targetPoints {
 			val, err := strconv.ParseFloat(point.GetObservationValue(), 64)
 			var parsedVal interface{} = val
@@ -652,39 +696,50 @@ func (s *Service) buildSdmxResponse(
 
 			row, err := structpb.NewList(rowVals)
 			if err != nil {
-				return nil, fmt.Errorf("buildSdmxResponse: failed to serialize data row: %w", err)
+				return nil, fmt.Errorf("buildSdmxDataRows: failed to serialize data row: %w", err)
 			}
-			resp.Data.Rows = append(resp.Data.Rows, row)
+			rows = append(rows, row)
 		}
 	}
 
-	// Deterministic sorting of data table rows based on slot values and then date
-	sortSdmxRows(resp.Data.Rows)
+	sortSdmxRows(rows)
+	return rows, nil
+}
 
-	// 4. Populate source metadata in the response
-	if primaryFacetID != "" {
-		resp.SourceMetadata = facetsMap[primaryFacetID]
-
-		var altIDs []string
-		for id := range facetsMap {
-			if id != primaryFacetID {
-				altIDs = append(altIDs, id)
-			}
-		}
-		sort.Strings(altIDs)
-		for _, id := range altIDs {
-			alt := &pbv2.GetObservationsResponse_AlternativeSource{
-				SourceMetadata: facetsMap[id],
-			}
-			if len(entityMetaTable.Rows) > 1 && statsMap[id] != nil {
-				c := int32(statsMap[id].placesFoundCount)
-				alt.PlacesFoundCount = &c
-			}
-			resp.AlternativeSources = append(resp.AlternativeSources, alt)
-		}
+// buildSourceMetadata constructs the primary and alternative source metadata for response.
+func buildSourceMetadata(
+	primaryFacetID string,
+	facetsMap map[string]*pbv2.GetObservationsResponse_FacetMetadata,
+	statsMap map[string]*facetStats,
+	entityRowCount int,
+) (*pbv2.GetObservationsResponse_FacetMetadata, []*pbv2.GetObservationsResponse_AlternativeSource) {
+	if primaryFacetID == "" {
+		return nil, nil
 	}
 
-	return resp, nil
+	sourceMetadata := facetsMap[primaryFacetID]
+
+	var altIDs []string
+	for id := range facetsMap {
+		if id != primaryFacetID {
+			altIDs = append(altIDs, id)
+		}
+	}
+	sort.Strings(altIDs)
+
+	var altSources []*pbv2.GetObservationsResponse_AlternativeSource
+	for _, id := range altIDs {
+		alt := &pbv2.GetObservationsResponse_AlternativeSource{
+			SourceMetadata: facetsMap[id],
+		}
+		if entityRowCount > 1 && statsMap[id] != nil {
+			c := int32(statsMap[id].placesFoundCount)
+			alt.PlacesFoundCount = &c
+		}
+		altSources = append(altSources, alt)
+	}
+
+	return sourceMetadata, altSources
 }
 
 // computeFacetScore maps response facet metadata to core pb.Facet and fetches its ranking score.

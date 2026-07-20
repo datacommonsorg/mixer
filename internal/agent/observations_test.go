@@ -1459,3 +1459,44 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 	})
 }
+
+func TestFetchEntityProperties_Deduplication(t *testing.T) {
+	mock := &obsMockMixer{
+		v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+			return &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"country/AFG": {
+						Arcs: map[string]*pbv2.Nodes{
+							"name": {Nodes: []*pb.EntityInfo{{Value: "Afghanistan"}}},
+							"typeOf": {
+								Nodes: []*pb.EntityInfo{
+									{Dcid: "Country", ProvenanceId: "dc/base/Provenance1"},
+									{Dcid: "Country", ProvenanceId: "dc/base/Provenance2"},
+									{Dcid: "Place", ProvenanceId: "dc/base/Provenance3"},
+								},
+							},
+						},
+					},
+				},
+			}, nil
+		},
+	}
+
+	svc := NewService(mock, nil)
+	props, err := svc.fetchEntityProperties(context.Background(), []string{"country/AFG"})
+	if err != nil {
+		t.Fatalf("fetchEntityProperties failed: %v", err)
+	}
+
+	wantProps := map[string]*nodeProperties{
+		"country/AFG": {
+			name:   "Afghanistan",
+			typeOf: []string{"Country", "Place"},
+		},
+	}
+
+	if diff := cmp.Diff(props, wantProps, cmp.AllowUnexported(nodeProperties{})); diff != "" {
+		t.Errorf("fetchEntityProperties typeOf deduplication mismatch (-got +want):\n%s", diff)
+	}
+}
+
