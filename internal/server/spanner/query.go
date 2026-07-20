@@ -999,8 +999,25 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
 	}
 
+	return sc.processStalenessTimestamp(ctx, nullTime)
+}
+
+// processStalenessTimestamp updates the cached atomic read timestamp based on Spanner query execution results.
+func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, nullTime spanner.NullTime) error {
 	if !nullTime.Valid {
 		slog.Warn("IngestionHistory timestamp is NULL. Falling back to " + defaultStalenessDuration.String() + " exact staleness reads.")
+		// Keep telemetry timestamps synchronized during idle periods when Spanner continually returns NULL.
+		if sc.tracker != nil {
+			sc.tracker.lastSuccessTime = time.Now()
+			sc.tracker.lastLoggedFailureTime = time.Time{}
+		}
+		// Guard against redundant memory rewrites across idle windows right when sc.timestamp is already zero.
+		if prev := sc.timestamp.Load(); prev != 0 {
+			sc.timestamp.Store(0)
+			if sc.tracker != nil {
+				sc.tracker.lastChangeTime = time.Now()
+			}
+		}
 		return nil
 	}
 
@@ -1050,6 +1067,9 @@ func (sc *spannerDatabaseClient) executeQuery(
 		queryCtx, cancel = context.WithTimeout(ctx, fallbackLimit)
 	}
 	defer cancel()
+
+	// Optimize query performance for small arrays
+	UnrollParameters(&stmt)
 
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)

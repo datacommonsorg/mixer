@@ -6,5 +6,7 @@ flags:
   V3MirrorFraction: 1.0
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
-  SpannerGraphDatabase: dc_graph_2026_01_27
+  SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-staging/databases/dc_graph
   EnableSpannerSearchEmbeddings: false
+  UseMultiEntitySchema: true
+  UseSpannerKeyValueStore: true

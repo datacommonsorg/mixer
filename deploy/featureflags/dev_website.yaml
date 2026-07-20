@@ -10,3 +10,4 @@ flags:
   EnableSpannerSearchEmbeddings: true
   UseMultiEntitySchema: true
   V2DivertFraction: 1.0
+  UseSpannerKeyValueStore: true

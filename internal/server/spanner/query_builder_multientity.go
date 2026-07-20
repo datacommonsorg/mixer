@@ -166,12 +166,7 @@ func (b *multiEntityQueryBuilder) GetStatVarGroupNodeQuery(nodes []string, inclu
 	stmts := b.statements
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
-	selfFilter := "SELECT\n" +
-		"\t\t\t\t@nodes AS child_svg,\n" +
-		"\t\t\t\t@nodes AS svg"
-	if len(nodes) > 1 {
-		selfFilter = statements.attachSVGs
-	}
+	selfFilter := statements.attachSVGs
 
 	sqlTemplate := stmts.getStatVarGroupNode
 	if includeDefinitions {

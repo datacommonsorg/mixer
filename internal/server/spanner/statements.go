@@ -47,8 +47,6 @@ var statements = struct {
 	filterPredicates string
 	// Subquery to filter edges by object properties.
 	filterProperty string
-	// Subquery to filter edges by an object value.
-	filterValue string
 	// Subquery to filter edges by multiple object values.
 	filterValues string
 	// Default subquery to return Edges.
@@ -103,9 +101,7 @@ var statements = struct {
 	getStatVarGroupNode string
 	// Fetch StatVarGroupNode info with definitions.
 	getStatVarGroupNodeWithDefinitions string
-	// Attach single stat var group.
-	attachSVG string
-	// Attach multiple stat var groups.
+	// Attach stat var groups.
 	attachSVGs string
 	// Fetch all children of a stat var group without definitions.
 	getSVGChildren string
@@ -169,7 +165,6 @@ AND (
   )
 );
 `,
-	getParam:  `= @%s`,
 	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
@@ -216,8 +211,6 @@ AND (
 	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
-	filterValue: `
-			AND filter%[1]d.object_id = @val%[1]d`,
 	filterValues: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
@@ -559,9 +552,6 @@ AND (
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv`,
-	attachSVG: `SELECT 
-				@nodes AS child_svg,
-				@nodes AS svg`,
 	attachSVGs: `SELECT
 				node AS child_svg,
 				node AS svg
