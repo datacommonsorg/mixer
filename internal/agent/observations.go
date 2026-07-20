@@ -27,6 +27,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -114,6 +115,9 @@ func parseDirectDcids(list *structpb.ListValue) ([]string, error) {
 		if !ok {
 			return nil, fmt.Errorf("list contains non-string element: %v", item)
 		}
+		if strVal.StringValue == "" {
+			return nil, fmt.Errorf("list contains empty string DCID")
+		}
 		dcids = append(dcids, strVal.StringValue)
 	}
 	return dcids, nil
@@ -186,6 +190,9 @@ func (s *Service) getObservationsSdmx(
 		entityBatch := append([]string{in.GetVariableDcid()}, entityDcids...)
 		entityProps, err = s.fetchEntityProperties(gCtx, entityBatch)
 		if err != nil {
+			if gCtx.Err() != nil {
+				return gCtx.Err()
+			}
 			if _, isStatusErr := status.FromError(err); isStatusErr {
 				log.Printf("Agent getObservationsSdmx: entity metadata enrichment failed: %v", err)
 				entityProps = make(map[string]*nodeProperties)
@@ -200,6 +207,9 @@ func (s *Service) getObservationsSdmx(
 		var err error
 		provProps, err = s.fetchProvenanceProperties(gCtx, provenanceDcids)
 		if err != nil {
+			if gCtx.Err() != nil {
+				return gCtx.Err()
+			}
 			if _, isStatusErr := status.FromError(err); isStatusErr {
 				log.Printf("Agent getObservationsSdmx: provenance metadata enrichment failed: %v", err)
 				provProps = make(map[string]*provenanceProperties)
@@ -508,13 +518,7 @@ func extractDimensionSlots(result *sdmxpb.SdmxDataResult) []string {
 			}
 		}
 	}
-
-	dimSlots := make([]string, 0, len(dimSlotsSet))
-	for slot := range dimSlotsSet {
-		dimSlots = append(dimSlots, slot)
-	}
-	sort.Strings(dimSlots)
-	return dimSlots
+	return util.SortedStringKeys(dimSlotsSet)
 }
 
 // filterPointsByDate filters series data points based on the specified date configuration.
@@ -567,6 +571,8 @@ func rankSdmxFacets(
 	statsMap := make(map[string]*facetStats)
 	placesByFacet := make(map[string]map[string]bool)
 
+	slots := util.SortedStringKeys(in.GetEntities())
+
 	for _, series := range result.GetSeries() {
 		facetID := series.GetAttributes()[attrFacetID]
 		if facetID == "" {
@@ -579,7 +585,7 @@ func rankSdmxFacets(
 
 		// Track places found count
 		var placeVal string
-		for slot := range in.GetEntities() {
+		for _, slot := range slots {
 			if val, ok := series.GetDimensions()[slot]; ok && val != "" {
 				placeVal = val
 				break
