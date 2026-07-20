@@ -109,6 +109,9 @@ func parseEntityConstraint(val *structpb.Value) ([]string, *parentPlaceSpec, err
 
 // parseDirectDcids extracts DCID string values from a protobuf ListValue, ensuring type safety.
 func parseDirectDcids(list *structpb.ListValue) ([]string, error) {
+	if len(list.GetValues()) == 0 {
+		return nil, fmt.Errorf("entity specification list cannot be empty")
+	}
 	var dcids []string
 	for _, item := range list.GetValues() {
 		strVal, ok := item.GetKind().(*structpb.Value_StringValue)
@@ -304,7 +307,7 @@ func extractEntityAndProvenanceDcids(
 	for _, series := range result.GetSeries() {
 		// Collect target entities only from slots present in request entities
 		for dimKey, dimVal := range series.GetDimensions() {
-			if allowedSlots[dimKey] {
+			if allowedSlots[dimKey] && dimVal != "" {
 				entitySet[dimVal] = true
 			}
 		}
@@ -583,20 +586,14 @@ func rankSdmxFacets(
 			facetsMap[facetID] = buildFacetMetadata(series, facetID, provProps)
 		}
 
-		// Track places found count
-		var placeVal string
+		// Track places found count across all requested slots
 		for _, slot := range slots {
 			if val, ok := series.GetDimensions()[slot]; ok && val != "" {
-				placeVal = val
-				break
+				if _, ok := placesByFacet[facetID]; !ok {
+					placesByFacet[facetID] = make(map[string]bool)
+				}
+				placesByFacet[facetID][val] = true
 			}
-		}
-
-		if placeVal != "" {
-			if _, ok := placesByFacet[facetID]; !ok {
-				placesByFacet[facetID] = make(map[string]bool)
-			}
-			placesByFacet[facetID][placeVal] = true
 		}
 
 		targetPoints := filterPointsByDate(series.GetPoints(), filter)
@@ -778,7 +775,7 @@ func findLatestPoint(points []*sdmxpb.SdmxDataPoint) *sdmxpb.SdmxDataPoint {
 
 // sortSdmxRows sorts SDMX data table rows lexicographically on dimension values and date keys.
 func sortSdmxRows(rows []*structpb.ListValue) {
-	sort.Slice(rows, func(i, j int) bool {
+	sort.SliceStable(rows, func(i, j int) bool {
 		rowI := rows[i].GetValues()
 		rowJ := rows[j].GetValues()
 		limit := len(rowI) - 1
