@@ -94,8 +94,8 @@ func requireSuite(t *testing.T) *emulatorSuite {
 
 func validateSpannerEmulatorHost(value string) error {
 	host, port, err := net.SplitHostPort(value)
-	if err != nil || host != "localhost" || port == "" {
-		return fmt.Errorf("RUN_SPANNER_EMULATOR_TESTS=true requires SPANNER_EMULATOR_HOST=localhost:<port>")
+	if err != nil || (host != "localhost" && host != "spanner-emulator") || port == "" {
+		return fmt.Errorf("RUN_SPANNER_EMULATOR_TESTS=true requires SPANNER_EMULATOR_HOST=localhost:<port> or spanner-emulator:<port>")
 	}
 	return nil
 }
@@ -344,6 +344,7 @@ func TestValidateSpannerEmulatorHost(t *testing.T) {
 		wantErr bool
 	}{
 		{name: "localhost", value: "localhost:9010"},
+		{name: "spanner-emulator", value: "spanner-emulator:9010"},
 		{name: "missing", wantErr: true},
 		{name: "missing port", value: "localhost", wantErr: true},
 		{name: "loopback IP", value: "127.0.0.1:9010", wantErr: true},
