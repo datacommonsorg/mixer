@@ -101,8 +101,11 @@ func setupFakeSpannerClient(t *testing.T, rows []ingestionHistoryRow) (*spannerD
 	t.Helper()
 	ctx := context.Background()
 
-	sqliteDB, _ := sql.Open("sqlite", ":memory:")
-	_, _ = sqliteDB.Exec(`
+	sqliteDB, err := sql.Open("sqlite", ":memory:")
+	if err != nil {
+		t.Fatalf("failed to open sqlite db: %v", err)
+	}
+	_, err = sqliteDB.Exec(`
 		CREATE TABLE IngestionHistory (
 			WorkflowExecutionID TEXT PRIMARY KEY,
 			CreationTimestamp TEXT,
@@ -110,6 +113,9 @@ func setupFakeSpannerClient(t *testing.T, rows []ingestionHistoryRow) (*spannerD
 			Status TEXT,
 			Stage TEXT
 		);`)
+	if err != nil {
+		t.Fatalf("failed to create table: %v", err)
+	}
 
 	for _, r := range rows {
 		var completionVal, stageVal interface{}
@@ -119,10 +125,13 @@ func setupFakeSpannerClient(t *testing.T, rows []ingestionHistoryRow) (*spannerD
 		if r.stage != nil {
 			stageVal = *r.stage
 		}
-		_, _ = sqliteDB.Exec(`
+		_, err = sqliteDB.Exec(`
 			INSERT INTO IngestionHistory (WorkflowExecutionID, CreationTimestamp, CompletionTimestamp, Status, Stage)
 			VALUES (?, ?, ?, ?, ?);
 		`, r.workflowID, r.creationTimestamp, completionVal, r.status, stageVal)
+		if err != nil {
+			t.Fatalf("failed to insert row: %v", err)
+		}
 	}
 
 	lis := bufconn.Listen(1024 * 1024)
@@ -130,11 +139,18 @@ func setupFakeSpannerClient(t *testing.T, rows []ingestionHistoryRow) (*spannerD
 	spannerpb.RegisterSpannerServer(server, &fakeSpannerServer{db: sqliteDB})
 	go func() { _ = server.Serve(lis) }()
 
-	conn, _ := grpc.NewClient("passthrough:///bufnet",
+	conn, err := grpc.NewClient("passthrough:///bufnet",
 		grpc.WithContextDialer(func(context.Context, string) (net.Conn, error) { return lis.Dial() }),
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
-	client, _ := spanner.NewClient(ctx, "projects/test-proj/instances/test-inst/databases/test-db", option.WithGRPCConn(conn))
+	if err != nil {
+		t.Fatalf("failed to create gRPC client conn: %v", err)
+	}
+
+	client, err := spanner.NewClient(ctx, "projects/test-proj/instances/test-inst/databases/test-db", option.WithGRPCConn(conn))
+	if err != nil {
+		t.Fatalf("failed to create spanner client: %v", err)
+	}
 
 	sc := &spannerDatabaseClient{
 		client:                       client,
