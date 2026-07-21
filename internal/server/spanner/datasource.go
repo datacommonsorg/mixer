@@ -23,8 +23,7 @@ import (
 	"sort"
 	"strings"
 
-	"google.golang.org/genai"
-
+	"github.com/datacommonsorg/mixer/internal/embedder"
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -65,7 +64,7 @@ type SpannerDataSource struct {
 	mapsClient      internalmaps.MapsClient
 	searchConfig    *SpannerSearchConfig
 	topicExpander   resolvev2.TopicExpander
-	genaiClient     *genai.Client
+	embedder        embedder.Embedder
 }
 
 const (
@@ -78,6 +77,7 @@ type SpannerDataSourceOptions struct {
 	RecogPlaceStore *files.RecogPlaceStore
 	MapsClient      internalmaps.MapsClient
 	TopicExpander   resolvev2.TopicExpander
+	Embedder        embedder.Embedder
 }
 
 func NewSpannerDataSource(
@@ -93,29 +93,7 @@ func NewSpannerDataSource(
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
 		sds.topicExpander = opts.TopicExpander
-	}
-
-	if client != nil {
-		dbURI := client.Id()
-		project, _, _, err := parseDatabaseURI(dbURI)
-		if err == nil && project != "" {
-			var location string
-			if cfg != nil {
-				location = cfg.SearchConfig.EmbeddingModelLocation
-			}
-			ctx := context.Background()
-			genaiClient, err := genai.NewClient(ctx, &genai.ClientConfig{
-				Project:  project,
-				Location: location,
-				Backend:  genai.BackendVertexAI,
-			})
-			if err != nil {
-				slog.Error("SpannerDataSource: failed to initialize GenAI client", "error", err)
-			} else {
-				sds.genaiClient = genaiClient
-				slog.Info("SpannerDataSource: successfully initialized Google GenAI client", "project", project)
-			}
-		}
+		sds.embedder = opts.Embedder
 	}
 
 	return sds
@@ -575,8 +553,8 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
 
-	if sds.genaiClient == nil {
-		return nil, status.Errorf(codes.Internal, "GenAI client is not initialized in SpannerDataSource")
+	if sds.embedder == nil {
+		return nil, status.Errorf(codes.Internal, "Embedder is not initialized in SpannerDataSource")
 	}
 	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
 		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
@@ -590,23 +568,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			var embeddings []float64
-			var err error
-			var res *genai.EmbedContentResponse
-			res, err = sds.genaiClient.Models.EmbedContent(
-				errCtx,
-				cfg.SearchConfig.EmbeddingModelEndpoint,
-				genai.Text(node),
-				&genai.EmbedContentConfig{TaskType: string(cfg.SearchConfig.QueryTaskType)},
-			)
+			embeddings, err := sds.embedder.Embed(errCtx, cfg.SearchConfig.EmbeddingModelEndpoint, string(cfg.SearchConfig.QueryTaskType), node)
 			if err != nil {
-				return status.Errorf(codes.Internal, "failed to get term embedding for %s via GenAI SDK: %v", node, err)
-			}
-			if len(res.Embeddings) > 0 {
-				embeddings = make([]float64, len(res.Embeddings[0].Values))
-				for idx, val := range res.Embeddings[0].Values {
-					embeddings[idx] = float64(val)
-				}
+				return err
 			}
 			if len(embeddings) == 0 {
 				resolveResponse.Entities[i] = entity

@@ -28,6 +28,7 @@ import (
 	"runtime/pprof"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/embedder"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
@@ -426,6 +427,17 @@ func main() {
 		}
 	}
 
+	// Embedder: Generates vector embeddings for Spanner vector search.
+	var embedderClient embedder.Embedder
+	if spannerClient != nil {
+		embedderClient, err = embedder.NewEmbedder(ctx, spannerClient.Id())
+		if err != nil {
+			slog.Error("Failed to initialize GenAI Embedder", "error", err)
+		} else {
+			slog.Info("Successfully initialized GenAI Embedder")
+		}
+	}
+
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
@@ -433,6 +445,7 @@ func main() {
 			RecogPlaceStore: store.RecogPlaceStore,
 			MapsClient:      mapsClient,
 			TopicExpander:   topicExpander,
+			Embedder:        embedderClient,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
