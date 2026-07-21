@@ -461,7 +461,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 // NewSchemaSelectorSpannerClient creates a new test schema selector spanner client.
 func NewSchemaSelectorSpannerClient(t *testing.T) spanner.SpannerClient {
 	baseClient := NewNormalizedSpannerClient(t)
-	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient, false, spanner.DefaultTableConfig())
+	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient, false, spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatalf("Failed to create SchemaSelectorClient: %v", err)
 	}
