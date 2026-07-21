@@ -244,6 +244,9 @@ func buildSdmxDataQuery(in *pbv2.GetObservationsRequest) (*sdmxpb.SdmxDataQuery,
 
 	var parentCount int
 	for slot, val := range in.GetEntities() {
+		if slot == "" {
+			return nil, status.Error(codes.InvalidArgument, "entity slot name cannot be empty")
+		}
 		dcids, parentSpec, err := parseEntityConstraint(val)
 		if err != nil {
 			return nil, status.Errorf(codes.InvalidArgument, "slot %q: %v", slot, err)

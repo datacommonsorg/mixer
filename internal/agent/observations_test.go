@@ -1196,6 +1196,22 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 	})
 
+	t.Run("Validation Failure: Empty Slot Name", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
+		entitiesMap := map[string]*structpb.Value{
+			"": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for empty entity slot name, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
 	t.Run("SDMX Path Date Filtering (Specific Year)", func(t *testing.T) {
 		mock := &obsMockMixer{
 			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
