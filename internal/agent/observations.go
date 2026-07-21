@@ -19,20 +19,50 @@ import (
 	"fmt"
 	"log"
 	"sort"
+	"strconv"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
-type nodeMetadata struct {
-	dcid   string
-	name   string
-	typeOf []string
+const (
+	colDcid     = "dcid"
+	colName     = "name"
+	colTypeOf   = "typeOf"
+	colDate     = "date"
+	colValue    = "value"
+	attrFacetID = "facetId"
+	arcName     = "name"
+	arcTypeOf   = "typeOf"
+)
+
+var reservedSlotDimensions = map[string]struct{}{
+	datacommons.ComponentVariableMeasured:  {},
+	datacommons.ComponentProvenance:        {},
+	datacommons.ComponentMeasurementMethod: {},
+	datacommons.ComponentObservationPeriod: {},
+	datacommons.ComponentUnit:              {},
+	datacommons.ComponentTimePeriod:        {},
+	datacommons.ComponentObservationValue:  {},
+	datacommons.ComponentScalingFactor:     {},
+	datacommons.ComponentFacetID:           {},
 }
 
-// GetObservations aggregates and formats observations for a statistical variable.
+// GetObservations aggregates and formats observations for statistical variables.
+//
+// Dispatcher Routing Note:
+// Uses presence of non-empty 'entities' map to differentiate between legacy (V2Observation)
+// and new multi-entity SDMX execution paths. Legacy path will be removed once MCP server
+// integration is completed.
 func (s *Service) GetObservations(
 	ctx context.Context,
 	in *pbv2.GetObservationsRequest,
@@ -40,13 +70,106 @@ func (s *Service) GetObservations(
 	if in == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
-
-	// Validation and Date Filter Parsing
 	if in.GetVariableDcid() == "" {
 		return nil, status.Error(codes.InvalidArgument, "variable_dcid must be specified")
 	}
-	if in.GetPlaceDcid() == "" {
-		return nil, status.Error(codes.InvalidArgument, "place_dcid must be specified")
+
+	if len(in.GetEntities()) > 0 {
+		log.Printf("Agent GetObservations: routing to SDMX engine (variable=%s, entities_count=%d)", in.GetVariableDcid(), len(in.GetEntities()))
+		return s.getObservationsSdmx(ctx, in)
+	}
+	//nolint:staticcheck // Deprecated field checked for backward compatibility routing
+	if in.GetPlaceDcid() != "" {
+		log.Printf("Agent GetObservations: routing to legacy V2Observation engine (variable=%s, place=%s)", in.GetVariableDcid(), in.GetPlaceDcid())
+		return s.getObservationsLegacy(ctx, in)
+	}
+
+	return nil, status.Error(codes.InvalidArgument, "either entities map or place_dcid must be specified")
+}
+
+type parentPlaceSpec struct {
+	parentDcid string
+	childType  string
+}
+
+// parseEntityConstraint extracts direct DCIDs or parent place specs from a protobuf Value.
+func parseEntityConstraint(val *structpb.Value) ([]string, *parentPlaceSpec, error) {
+	if val == nil {
+		return nil, nil, nil
+	}
+
+	switch kind := val.GetKind().(type) {
+	case *structpb.Value_ListValue:
+		dcids, err := parseDirectDcids(kind.ListValue)
+		return dcids, nil, err
+
+	case *structpb.Value_StructValue:
+		spec, err := parseParentPlaceSpec(kind.StructValue)
+		return nil, spec, err
+
+	default:
+		return nil, nil, fmt.Errorf("invalid entity specification format; expected array or object")
+	}
+}
+
+// parseDirectDcids extracts DCID string values from a protobuf ListValue, ensuring type safety.
+func parseDirectDcids(list *structpb.ListValue) ([]string, error) {
+	if len(list.GetValues()) == 0 {
+		return nil, fmt.Errorf("entity specification list cannot be empty")
+	}
+	var dcids []string
+	for _, item := range list.GetValues() {
+		strVal, ok := item.GetKind().(*structpb.Value_StringValue)
+		if !ok {
+			return nil, fmt.Errorf("list contains non-string element: %v", item)
+		}
+		if strVal.StringValue == "" {
+			return nil, fmt.Errorf("list contains empty string DCID")
+		}
+		dcids = append(dcids, strVal.StringValue)
+	}
+	return dcids, nil
+}
+
+// parseParentPlaceSpec extracts parent place configuration fields from a protobuf Struct, verifying constraints.
+func parseParentPlaceSpec(st *structpb.Struct) (*parentPlaceSpec, error) {
+	fields := st.GetFields()
+
+	parentDcidVal, ok := fields["parent_dcid"]
+	if !ok {
+		return nil, fmt.Errorf("missing 'parent_dcid' in entity specification")
+	}
+	parentDcidStr, ok := parentDcidVal.GetKind().(*structpb.Value_StringValue)
+	if !ok {
+		return nil, fmt.Errorf("'parent_dcid' must be a string")
+	}
+
+	childTypeVal, ok := fields["child_type"]
+	if !ok {
+		return nil, fmt.Errorf("missing 'child_type' in entity specification")
+	}
+	childTypeStr, ok := childTypeVal.GetKind().(*structpb.Value_StringValue)
+	if !ok {
+		return nil, fmt.Errorf("'child_type' must be a string")
+	}
+
+	if parentDcidStr.StringValue == "" || childTypeStr.StringValue == "" {
+		return nil, fmt.Errorf("parent_dcid and child_type cannot be empty")
+	}
+
+	return &parentPlaceSpec{
+		parentDcid: parentDcidStr.StringValue,
+		childType:  childTypeStr.StringValue,
+	}, nil
+}
+
+// getObservationsSdmx executes multi-entity SDMX observation lookup, metadata enrichment, and dual-table formatting.
+func (s *Service) getObservationsSdmx(
+	ctx context.Context,
+	in *pbv2.GetObservationsRequest,
+) (*pbv2.GetObservationsResponse, error) {
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
 	}
 
 	filter, err := parseDateFilter(in.GetDate(), in.GetDateRangeStart(), in.GetDateRangeEnd())
@@ -54,240 +177,621 @@ func (s *Service) GetObservations(
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
-	// Fetch Core Observation Data
-	obsReq := buildObservationRequest(in, filter.dateType)
-	obsResp, err := s.mixer.V2Observation(ctx, obsReq)
+	sdmxReq, err := buildSdmxDataQuery(in)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to fetch V2Observation: %v", err)
+		return nil, err
+	}
+	sdmxResult, err := s.mixer.SdmxData(ctx, sdmxReq)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to execute SDMX data query: %v", err)
 	}
 
-	// Metadata Enrichment (Single V2Node Lookup)
-	metadata, err := s.enrichMetadata(ctx, in.GetVariableDcid(), in.GetPlaceDcid(), obsResp)
-	if err != nil {
-		log.Printf("Agent GetObservations: failed to enrich metadata: %v", err)
-		// Proceed with empty metadata; statistical data is the primary payload.
-		if metadata == nil {
-			metadata = make(map[string]*nodeMetadata)
+	allowedSlots := make(map[string]bool)
+	for slot := range in.GetEntities() {
+		allowedSlots[slot] = true
+	}
+	entityDcids, provenanceDcids := extractEntityAndProvenanceDcids(sdmxResult, allowedSlots)
+
+	var entityProps map[string]*nodeProperties
+	var provProps map[string]*provenanceProperties
+
+	g, gCtx := errgroup.WithContext(ctx)
+
+	g.Go(func() error {
+		var err error
+		entityBatch := append([]string{in.GetVariableDcid()}, entityDcids...)
+		entityProps, err = s.fetchEntityProperties(gCtx, entityBatch)
+		if err != nil {
+			if gCtx.Err() != nil {
+				return gCtx.Err()
+			}
+			log.Printf("Agent getObservationsSdmx: entity metadata enrichment failed: %v", err)
+			entityProps = make(map[string]*nodeProperties)
+			return nil
 		}
+		return nil
+	})
+
+	g.Go(func() error {
+		var err error
+		provProps, err = s.fetchProvenanceProperties(gCtx, provenanceDcids)
+		if err != nil {
+			if gCtx.Err() != nil {
+				return gCtx.Err()
+			}
+			log.Printf("Agent getObservationsSdmx: provenance metadata enrichment failed: %v", err)
+			provProps = make(map[string]*provenanceProperties)
+			return nil
+		}
+		return nil
+	})
+
+	if err := g.Wait(); err != nil {
+		if ctx.Err() != nil {
+			return nil, ctx.Err()
+		}
+		return nil, status.Errorf(codes.Internal, "metadata enrichment failed: %v", err)
 	}
 
-	// Primary Source Selection (Ranking) & Date Filtering
-	var variableData *pbv2.VariableObservation
-	if obsResp != nil && obsResp.GetByVariable() != nil {
-		variableData = obsResp.GetByVariable()[in.GetVariableDcid()]
+	entityMetaTable, err := buildEntityMetadataTable(entityDcids, entityProps)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to build entity metadata table: %v", err)
 	}
-	sourceResult := selectPrimarySource(variableData, in.GetSourceOverride(), filter)
 
-	// Assemble Final Response
-	return s.buildFinalResponse(in, obsResp, metadata, sourceResult)
+	return s.buildSdmxResponse(in, sdmxResult, entityMetaTable, filter, entityProps, provProps)
 }
 
-// buildObservationRequest constructs the V2 Observation request from the agent request.
-func buildObservationRequest(in *pbv2.GetObservationsRequest, dateType string) *pbv2.ObservationRequest {
-	var entity pbv2.DcidOrExpression
-	if in.GetChildPlaceType() != "" {
-		entity.Expression = fmt.Sprintf("%s<-containedInPlace+{typeOf:%s}", in.GetPlaceDcid(), in.GetChildPlaceType())
-	} else {
-		entity.Dcids = []string{in.GetPlaceDcid()}
+// buildSdmxDataQuery maps agent request constraints into an SDMX data query, including native facetId pushdown.
+func buildSdmxDataQuery(in *pbv2.GetObservationsRequest) (*sdmxpb.SdmxDataQuery, error) {
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: makeSdmxConstraint(in.GetVariableDcid()),
 	}
 
-	dateRequest := ""
-	if dateType == dateTypeLatest {
-		dateRequest = "LATEST"
-	}
+	var parentCount int
+	for slot, val := range in.GetEntities() {
+		if slot == "" {
+			return nil, status.Error(codes.InvalidArgument, "entity slot name cannot be empty")
+		}
+		if _, isReserved := reservedSlotDimensions[slot]; isReserved {
+			return nil, status.Errorf(codes.InvalidArgument, "entity slot name %q is a reserved component dimension", slot)
+		}
+		dcids, parentSpec, err := parseEntityConstraint(val)
+		if err != nil {
+			return nil, status.Errorf(codes.InvalidArgument, "slot %q: %v", slot, err)
+		}
 
-	obsReq := &pbv2.ObservationRequest{
-		Variable: &pbv2.DcidOrExpression{
-			Dcids: []string{in.GetVariableDcid()},
-		},
-		Entity: &entity,
-		Date:   dateRequest,
-		Select: []string{"variable", "entity", "date", "value", "facet"},
+		c := &sdmxpb.SdmxComponentConstraint{}
+
+		if len(dcids) > 0 {
+			c.Predicates = makeSdmxPredicates(dcids...)
+		}
+
+		if parentSpec != nil {
+			parentCount++
+			if parentCount > 1 {
+				return nil, status.Error(codes.InvalidArgument, "at most 1 parent entity can be expanded per request")
+			}
+
+			c.PropertyConstraints = map[string]*sdmxpb.SdmxPropertyConstraint{
+				"containedInPlace": {
+					Transitive: true,
+					Predicates: makeSdmxPredicates(parentSpec.parentDcid),
+				},
+				"typeOf": {
+					Predicates: makeSdmxPredicates(parentSpec.childType),
+				},
+			}
+		}
+
+		constraints[slot] = c
 	}
 
 	if in.GetSourceOverride() != "" {
-		obsReq.Filter = &pbv2.FacetFilter{
-			FacetIds: []string{in.GetSourceOverride()},
-		}
+		constraints[datacommons.ComponentFacetID] = makeSdmxConstraint(in.GetSourceOverride())
 	}
-
-	return obsReq
+	return &sdmxpb.SdmxDataQuery{Constraints: constraints}, nil
 }
 
-// enrichMetadata performs a single V2Node call to fetch names and types for all entities.
-func (s *Service) enrichMetadata(
-	ctx context.Context,
-	variableDcid string,
-	parentDcid string,
-	obsResp *pbv2.ObservationResponse,
-) (map[string]*nodeMetadata, error) {
-	// Collect all DCIDs
-	dcidsSet := make(map[string]bool)
-	dcidsSet[variableDcid] = true
-	dcidsSet[parentDcid] = true
+// makeSdmxPredicates constructs a slice of SdmxPredicates from string values.
+func makeSdmxPredicates(values ...string) []*sdmxpb.SdmxPredicate {
+	preds := make([]*sdmxpb.SdmxPredicate, 0, len(values))
+	for _, v := range values {
+		preds = append(preds, &sdmxpb.SdmxPredicate{Value: v})
+	}
+	return preds
+}
 
-	if obsResp != nil && obsResp.GetByVariable() != nil {
-		if varData, ok := obsResp.GetByVariable()[variableDcid]; ok {
-			for placeDcid := range varData.GetByEntity() {
-				dcidsSet[placeDcid] = true
+// makeSdmxConstraint constructs an SdmxComponentConstraint from a slice of string values.
+func makeSdmxConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
+	return &sdmxpb.SdmxComponentConstraint{Predicates: makeSdmxPredicates(values...)}
+}
+
+// extractEntityAndProvenanceDcids separates target spatial entities and provenance node DCIDs from the SDMX result.
+func extractEntityAndProvenanceDcids(
+	result *sdmxpb.SdmxDataResult,
+	allowedSlots map[string]bool,
+) ([]string, []string) {
+	if result == nil {
+		return nil, nil
+	}
+	entitySet := make(map[string]bool)
+	provSet := make(map[string]bool)
+	for _, series := range result.GetSeries() {
+		// Collect target entities only from slots present in request entities
+		for dimKey, dimVal := range series.GetDimensions() {
+			if allowedSlots[dimKey] && dimVal != "" {
+				entitySet[dimVal] = true
 			}
+		}
+		// Collect provenance DCIDs
+		if prov, ok := series.GetDimensions()[datacommons.ComponentProvenance]; ok && prov != "" {
+			provSet[prov] = true
 		}
 	}
 
-	var allDcids []string
-	for dcid := range dcidsSet {
-		allDcids = append(allDcids, dcid)
+	entities := make([]string, 0, len(entitySet))
+	for dcid := range entitySet {
+		entities = append(entities, dcid)
 	}
-	sort.Strings(allDcids)
+	sort.Strings(entities)
+
+	provenances := make([]string, 0, len(provSet))
+	for dcid := range provSet {
+		provenances = append(provenances, dcid)
+	}
+	sort.Strings(provenances)
+
+	return entities, provenances
+}
+
+type nodeProperties struct {
+	name   string
+	typeOf []string
+}
+
+type provenanceProperties struct {
+	provenanceUrl string
+}
+
+// fetchEntityProperties performs a single V2Node call to resolve names and typeOfs for spatial entities and variables.
+func (s *Service) fetchEntityProperties(ctx context.Context, dcids []string) (map[string]*nodeProperties, error) {
+	props := make(map[string]*nodeProperties)
+	if len(dcids) == 0 {
+		return props, nil
+	}
 
 	nodeReq := &pbv2.NodeRequest{
-		Nodes:    allDcids,
-		Property: nodePropertiesQuery,
+		Nodes:    dcids,
+		Property: "->[name, typeOf]",
 	}
-
 	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
 	if err != nil {
 		return nil, err
 	}
 
-	// Parse response
-	metadataMap := make(map[string]*nodeMetadata)
-	for _, dcid := range allDcids {
-		meta := &nodeMetadata{dcid: dcid}
+	for _, dcid := range dcids {
+		p := &nodeProperties{}
 		if nodeResp != nil && nodeResp.GetData() != nil {
 			if graph, ok := nodeResp.GetData()[dcid]; ok && graph.GetArcs() != nil {
-				// Parse Name
-				if names, ok := graph.GetArcs()["name"]; ok && len(names.GetNodes()) > 0 {
-					meta.name = names.GetNodes()[0].GetValue()
+				if names, ok := graph.GetArcs()[arcName]; ok && len(names.GetNodes()) > 0 {
+					p.name = names.GetNodes()[0].GetValue()
 				}
-				// Parse TypeOf
-				if types, ok := graph.GetArcs()["typeOf"]; ok {
-					var typeOf []string
-					for _, typeNode := range types.GetNodes() {
-						typeOf = append(typeOf, typeNode.GetDcid())
-					}
-					meta.typeOf = typeOf
+				if types, ok := graph.GetArcs()[arcTypeOf]; ok {
+					p.typeOf = extractUniqueNodeDcids(types.GetNodes())
 				}
 			}
 		}
-		metadataMap[dcid] = meta
+		props[dcid] = p
 	}
-
-	return metadataMap, nil
+	return props, nil
 }
 
-// buildFinalResponse compiles all processed data and metadata into the final response protobuf.
-func (s *Service) buildFinalResponse(
+// extractUniqueNodeDcids extracts non-empty, deduplicated DCIDs from protobuf entity nodes.
+func extractUniqueNodeDcids(nodes []*pb.EntityInfo) []string {
+	if len(nodes) == 0 {
+		return nil
+	}
+	var result []string
+	seen := make(map[string]bool)
+	for _, node := range nodes {
+		dcid := node.GetDcid()
+		if dcid != "" && !seen[dcid] {
+			seen[dcid] = true
+			result = append(result, dcid)
+		}
+	}
+	return result
+}
+
+// fetchProvenanceProperties performs a single V2Node call to resolve URLs for provenances.
+func (s *Service) fetchProvenanceProperties(ctx context.Context, dcids []string) (map[string]*provenanceProperties, error) {
+	props := make(map[string]*provenanceProperties)
+	if len(dcids) == 0 {
+		return props, nil
+	}
+
+	nodeReq := &pbv2.NodeRequest{
+		Nodes:    dcids,
+		Property: "->[url]",
+	}
+	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, dcid := range dcids {
+		p := &provenanceProperties{}
+		if nodeResp != nil && nodeResp.GetData() != nil {
+			if graph, ok := nodeResp.GetData()[dcid]; ok && graph.GetArcs() != nil {
+				if urls, ok := graph.GetArcs()["url"]; ok && len(urls.GetNodes()) > 0 {
+					p.provenanceUrl = urls.GetNodes()[0].GetValue()
+				}
+			}
+		}
+		props[dcid] = p
+	}
+	return props, nil
+}
+
+// buildEntityMetadataTable compiles names and types for spatial entities into a flat metadata Table.
+func buildEntityMetadataTable(dcids []string, props map[string]*nodeProperties) (*pbv2.Table, error) {
+	table := &pbv2.Table{
+		Columns: []string{colDcid, colName, colTypeOf},
+	}
+	for _, dcid := range dcids {
+		var name string
+		typeOfVals := []interface{}{}
+
+		if p, ok := props[dcid]; ok {
+			name = p.name
+			for _, t := range p.typeOf {
+				typeOfVals = append(typeOfVals, t)
+			}
+		}
+
+		row, err := structpb.NewList([]interface{}{
+			dcid,
+			name,
+			typeOfVals,
+		})
+		if err != nil {
+			return nil, fmt.Errorf("buildEntityMetadataTable: failed to serialize row for %s: %w", dcid, err)
+		}
+		table.Rows = append(table.Rows, row)
+	}
+	return table, nil
+}
+
+
+type facetStats struct {
+	facetID          string
+	placesFoundCount int
+	dateCount        int
+	latestDate       time.Time
+	staticScore      int
+}
+
+// buildSdmxResponse compiles SDMX data result into GetObservationsResponse with dual tables.
+func (s *Service) buildSdmxResponse(
 	in *pbv2.GetObservationsRequest,
-	obsResp *pbv2.ObservationResponse,
-	metadata map[string]*nodeMetadata,
-	sourceResult *sourceProcessingResult,
+	result *sdmxpb.SdmxDataResult,
+	entityMetaTable *pbv2.Table,
+	filter *dateFilter,
+	entityProps map[string]*nodeProperties,
+	provProps map[string]*provenanceProperties,
 ) (*pbv2.GetObservationsResponse, error) {
 	resp := &pbv2.GetObservationsResponse{
-		ChildPlaceType: in.GetChildPlaceType(),
+		Variable:       &pbv2.GetObservationsResponse_Node{Dcid: in.GetVariableDcid()},
+		EntityMetadata: entityMetaTable,
+		Data:           &pbv2.Table{},
 	}
 
-	// Map variable Node
-	resp.Variable = toResponseNode(in.GetVariableDcid(), metadata)
-
-	// Map resolved parent place (for hierarchy mode)
-	if in.GetChildPlaceType() != "" {
-		resp.ResolvedParentPlace = toResponseNode(in.GetPlaceDcid(), metadata)
+	// Enrich Variable Node Metadata
+	if p, ok := entityProps[in.GetVariableDcid()]; ok {
+		resp.Variable.Name = p.name
+		resp.Variable.TypeOf = p.typeOf
 	}
 
-	// Map primary source metadata
-	primarySourceID := sourceResult.primarySourceID
-	if primarySourceID != "" && obsResp != nil && obsResp.GetFacets() != nil {
-		if facet, ok := obsResp.GetFacets()[primarySourceID]; ok {
-			resp.SourceMetadata = toFacetMetadata(primarySourceID, facet)
-		}
-	}
-	if resp.SourceMetadata == nil {
-		resp.SourceMetadata = &pbv2.GetObservationsResponse_FacetMetadata{
-			SourceId: "unknown",
-		}
+	if result == nil || len(result.GetSeries()) == 0 {
+		return resp, nil
 	}
 
-	// Map alternative sources
-	if obsResp != nil && obsResp.GetFacets() != nil {
-		var altSourceIDs []string
-		for altSourceID := range sourceResult.alternativeSourceCounts {
-			altSourceIDs = append(altSourceIDs, altSourceID)
-		}
-		sort.Strings(altSourceIDs)
+	dimSlots := extractDimensionSlots(result)
+	resp.Data.Columns = append(append([]string{}, dimSlots...), colDate, colValue)
 
-		for _, altSourceID := range altSourceIDs {
-			count := sourceResult.alternativeSourceCounts[altSourceID]
-			if facet, ok := obsResp.GetFacets()[altSourceID]; ok {
-				alt := &pbv2.GetObservationsResponse_AlternativeSource{
-					SourceMetadata: toFacetMetadata(altSourceID, facet),
-				}
-				// Only populate count for child-place queries where there are multiple places
-				if len(sourceResult.processedDataByPlace) > 1 {
-					c := int32(count)
-					alt.PlacesFoundCount = &c
-				}
-				resp.AlternativeSources = append(resp.AlternativeSources, alt)
-			}
-		}
+	primaryFacetID, facetsMap, statsMap := rankSdmxFacets(in, result, filter, provProps)
+	if primaryFacetID == "" {
+		return resp, nil
 	}
 
-	// Map place observations
-	var placesList []string
-	if obsResp != nil && obsResp.GetByVariable() != nil {
-		if varData, ok := obsResp.GetByVariable()[in.GetVariableDcid()]; ok {
-			for placeDcid := range varData.GetByEntity() {
-				placesList = append(placesList, placeDcid)
-			}
-		}
+	rows, err := buildSdmxDataRows(result, primaryFacetID, dimSlots, filter)
+	if err != nil {
+		return nil, err
 	}
-	sort.Strings(placesList)
+	resp.Data.Rows = rows
 
-	for _, placeDcid := range placesList {
-		placeObs := &pbv2.GetObservationsResponse_PlaceObservation{
-			Place: toResponseNode(placeDcid, metadata),
-		}
-
-		if processed, ok := sourceResult.processedDataByPlace[placeDcid]; ok {
-			for _, pt := range processed.observations {
-				placeObs.TimeSeries = append(placeObs.TimeSeries, &pbv2.GetObservationsResponse_TimeSeriesPoint{
-					Date:  pt.GetDate(),
-					Value: pt.GetValue(),
-				})
-			}
-		}
-		resp.PlaceObservations = append(resp.PlaceObservations, placeObs)
-	}
+	sourceMetadata, altSources := buildSourceMetadata(primaryFacetID, facetsMap, statsMap, len(entityMetaTable.GetRows()))
+	resp.SourceMetadata = sourceMetadata
+	resp.AlternativeSources = altSources
 
 	return resp, nil
 }
 
-// toFacetMetadata maps core protobuf Facet into internal GetObservationsResponse_FacetMetadata message.
-func toFacetMetadata(sourceID string, facet *pb.Facet) *pbv2.GetObservationsResponse_FacetMetadata {
-	if facet == nil {
-		return &pbv2.GetObservationsResponse_FacetMetadata{
-			SourceId: sourceID,
+// extractDimensionSlots extracts and sorts non-metadata dimension slot column names.
+func extractDimensionSlots(result *sdmxpb.SdmxDataResult) []string {
+	dimSlotsSet := make(map[string]bool)
+	for _, series := range result.GetSeries() {
+		for dimKey := range series.GetDimensions() {
+			if _, isReserved := reservedSlotDimensions[dimKey]; !isReserved {
+				dimSlotsSet[dimKey] = true
+			}
 		}
 	}
+	return util.SortedStringKeys(dimSlotsSet)
+}
+
+// filterPointsByDate filters series data points based on the specified date configuration.
+func filterPointsByDate(points []*sdmxpb.SdmxDataPoint, filter *dateFilter) []*sdmxpb.SdmxDataPoint {
+	var targetPoints []*sdmxpb.SdmxDataPoint
+	if filter != nil && filter.dateType == dateTypeLatest {
+		if latest := findLatestPoint(points); latest != nil {
+			targetPoints = append(targetPoints, latest)
+		}
+	} else {
+		for _, point := range points {
+			if isDateInInterval(point.GetTimePeriod(), filter) {
+				targetPoints = append(targetPoints, point)
+			}
+		}
+	}
+	return targetPoints
+}
+
+// buildFacetMetadata constructs a FacetMetadata struct from a time series.
+func buildFacetMetadata(series *sdmxpb.SdmxTimeSeries, facetID string, provProps map[string]*provenanceProperties) *pbv2.GetObservationsResponse_FacetMetadata {
+	provDcid := series.GetDimensions()[datacommons.ComponentProvenance]
+	var provUrl string
+	if p, ok := provProps[provDcid]; ok {
+		provUrl = p.provenanceUrl
+	}
+
+	unit := series.GetAttributes()[datacommons.ComponentUnit]
+	if unit == "" {
+		unit = series.GetDimensions()[datacommons.ComponentUnit]
+	}
+
 	return &pbv2.GetObservationsResponse_FacetMetadata{
-		SourceId:          sourceID,
-		ImportName:        facet.GetImportName(),
-		MeasurementMethod: facet.GetMeasurementMethod(),
-		ObservationPeriod: facet.GetObservationPeriod(),
-		ProvenanceUrl:     facet.GetProvenanceUrl(),
-		Unit:              facet.GetUnit(),
+		SourceId:          facetID,
+		MeasurementMethod: series.GetDimensions()[datacommons.ComponentMeasurementMethod],
+		ObservationPeriod: series.GetDimensions()[datacommons.ComponentObservationPeriod],
+		ProvenanceUrl:     provUrl,
+		Unit:              unit,
 	}
 }
 
-// toResponseNode constructs a response Node, always populating the DCID,
-// and conditionally enriching it with name and type if metadata is available.
-func toResponseNode(dcid string, metadata map[string]*nodeMetadata) *pbv2.GetObservationsResponse_Node {
-	node := &pbv2.GetObservationsResponse_Node{
-		Dcid: dcid,
+// rankSdmxFacets evaluates and ranks all facets present in the SDMX result.
+func rankSdmxFacets(
+	in *pbv2.GetObservationsRequest,
+	result *sdmxpb.SdmxDataResult,
+	filter *dateFilter,
+	provProps map[string]*provenanceProperties,
+) (string, map[string]*pbv2.GetObservationsResponse_FacetMetadata, map[string]*facetStats) {
+	facetsMap := make(map[string]*pbv2.GetObservationsResponse_FacetMetadata)
+	statsMap := make(map[string]*facetStats)
+	placesByFacet := make(map[string]map[string]bool)
+
+	slots := util.SortedStringKeys(in.GetEntities())
+
+	for _, series := range result.GetSeries() {
+		facetID := series.GetAttributes()[attrFacetID]
+		if facetID == "" {
+			facetID = "unknown"
+		}
+
+		if _, ok := facetsMap[facetID]; !ok {
+			facetsMap[facetID] = buildFacetMetadata(series, facetID, provProps)
+		}
+
+		// Track places found count across all requested slots
+		for _, slot := range slots {
+			if val, ok := series.GetDimensions()[slot]; ok && val != "" {
+				if _, ok := placesByFacet[facetID]; !ok {
+					placesByFacet[facetID] = make(map[string]bool)
+				}
+				placesByFacet[facetID][val] = true
+			}
+		}
+
+		targetPoints := filterPointsByDate(series.GetPoints(), filter)
+		if len(targetPoints) > 0 {
+			if _, ok := statsMap[facetID]; !ok {
+				statsMap[facetID] = &facetStats{facetID: facetID}
+			}
+			statsMap[facetID].dateCount += len(targetPoints)
+
+			for _, pt := range targetPoints {
+				t, _, err := parseDateStringToInterval(pt.GetTimePeriod())
+				if err == nil && t.After(statsMap[facetID].latestDate) {
+					statsMap[facetID].latestDate = t
+				}
+			}
+		}
 	}
-	if meta, ok := metadata[dcid]; ok {
-		node.Name = meta.name
-		node.TypeOf = meta.typeOf
+
+	if len(facetsMap) == 0 {
+		return "", facetsMap, statsMap
 	}
-	return node
+
+	var statsList []*facetStats
+	for facetID, stats := range statsMap {
+		stats.placesFoundCount = len(placesByFacet[facetID])
+		stats.staticScore = computeFacetScore(facetsMap[facetID])
+		statsList = append(statsList, stats)
+	}
+
+	if len(statsList) == 0 {
+		for facetID := range facetsMap {
+			statsList = append(statsList, &facetStats{
+				facetID:     facetID,
+				staticScore: computeFacetScore(facetsMap[facetID]),
+			})
+		}
+	}
+
+	sortFacetStats(statsList)
+	return statsList[0].facetID, facetsMap, statsMap
+}
+
+// sortFacetStats orders facet statistics using multi-tier evaluation heuristics.
+func sortFacetStats(statsList []*facetStats) {
+	// Sort stats according to heuristics:
+	// - Most places found (higher is better)
+	// - Most observation points (higher is better)
+	// - Most recent data (latest date, later is better)
+	// - Static rank score (higher is better)
+	// - Final tie-breaker: string comparison of source ID
+	sort.Slice(statsList, func(i, j int) bool {
+		si, sj := statsList[i], statsList[j]
+		if si.placesFoundCount != sj.placesFoundCount {
+			return si.placesFoundCount > sj.placesFoundCount
+		}
+		if si.dateCount != sj.dateCount {
+			return si.dateCount > sj.dateCount
+		}
+		if !si.latestDate.Equal(sj.latestDate) {
+			return si.latestDate.After(sj.latestDate)
+		}
+		if si.staticScore != sj.staticScore {
+			return si.staticScore > sj.staticScore
+		}
+		return si.facetID < sj.facetID
+	})
+}
+
+// buildSdmxDataRows constructs table rows for observation data matching the primary facet.
+func buildSdmxDataRows(
+	result *sdmxpb.SdmxDataResult,
+	primaryFacetID string,
+	dimSlots []string,
+	filter *dateFilter,
+) ([]*structpb.ListValue, error) {
+	var rows []*structpb.ListValue
+
+	for _, series := range result.GetSeries() {
+		facetID := series.GetAttributes()[attrFacetID]
+		if facetID == "" {
+			facetID = "unknown"
+		}
+		if facetID != primaryFacetID {
+			continue
+		}
+
+		var dimVals []interface{}
+		for _, slot := range dimSlots {
+			dimVals = append(dimVals, series.GetDimensions()[slot])
+		}
+
+		targetPoints := filterPointsByDate(series.GetPoints(), filter)
+		for _, point := range targetPoints {
+			val, err := strconv.ParseFloat(point.GetObservationValue(), 64)
+			var parsedVal interface{} = val
+			if err != nil {
+				parsedVal = point.GetObservationValue()
+			}
+
+			rowVals := make([]interface{}, 0, len(dimVals)+2)
+			rowVals = append(rowVals, dimVals...)
+			rowVals = append(rowVals, point.GetTimePeriod(), parsedVal)
+
+			row, err := structpb.NewList(rowVals)
+			if err != nil {
+				return nil, fmt.Errorf("buildSdmxDataRows: failed to serialize data row: %w", err)
+			}
+			rows = append(rows, row)
+		}
+	}
+
+	sortSdmxRows(rows)
+	return rows, nil
+}
+
+// buildSourceMetadata constructs the primary and alternative source metadata for response.
+func buildSourceMetadata(
+	primaryFacetID string,
+	facetsMap map[string]*pbv2.GetObservationsResponse_FacetMetadata,
+	statsMap map[string]*facetStats,
+	entityRowCount int,
+) (*pbv2.GetObservationsResponse_FacetMetadata, []*pbv2.GetObservationsResponse_AlternativeSource) {
+	if primaryFacetID == "" {
+		return nil, nil
+	}
+
+	sourceMetadata := facetsMap[primaryFacetID]
+
+	var altIDs []string
+	for id := range facetsMap {
+		if id != primaryFacetID {
+			altIDs = append(altIDs, id)
+		}
+	}
+	sort.Strings(altIDs)
+
+	var altSources []*pbv2.GetObservationsResponse_AlternativeSource
+	for _, id := range altIDs {
+		alt := &pbv2.GetObservationsResponse_AlternativeSource{
+			SourceMetadata: facetsMap[id],
+		}
+		if entityRowCount > 1 && statsMap[id] != nil {
+			c := int32(statsMap[id].placesFoundCount)
+			alt.PlacesFoundCount = &c
+		}
+		altSources = append(altSources, alt)
+	}
+
+	return sourceMetadata, altSources
+}
+
+// computeFacetScore maps response facet metadata to core pb.Facet and fetches its ranking score.
+func computeFacetScore(f *pbv2.GetObservationsResponse_FacetMetadata) int {
+	pbFacet := &pb.Facet{
+		MeasurementMethod: f.MeasurementMethod,
+		ObservationPeriod: f.ObservationPeriod,
+		Unit:              f.Unit,
+		ImportName:        f.ImportName,
+	}
+	return ranking.GetFacetScore(pbFacet)
+}
+
+// findLatestPoint identifies the temporally latest point in a series using parseDateStringToInterval.
+func findLatestPoint(points []*sdmxpb.SdmxDataPoint) *sdmxpb.SdmxDataPoint {
+	var latestPoint *sdmxpb.SdmxDataPoint
+	var latestTime time.Time
+	for _, point := range points {
+		t, _, err := parseDateStringToInterval(point.GetTimePeriod())
+		if err != nil {
+			continue
+		}
+		if latestPoint == nil || t.After(latestTime) {
+			latestPoint = point
+			latestTime = t
+		}
+	}
+	return latestPoint
+}
+
+// sortSdmxRows sorts SDMX data table rows lexicographically on dimension values and date keys.
+func sortSdmxRows(rows []*structpb.ListValue) {
+	sort.SliceStable(rows, func(i, j int) bool {
+		rowI := rows[i].GetValues()
+		rowJ := rows[j].GetValues()
+		limit := len(rowI) - 1
+		for k := 0; k < limit; k++ {
+			valI := rowI[k].GetStringValue()
+			valJ := rowJ[k].GetStringValue()
+			if valI != valJ {
+				return valI < valJ
+			}
+		}
+		return false
+	})
 }

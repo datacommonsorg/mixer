@@ -7,4 +7,4 @@ flags:
   EnableEmbeddingsResolver: false
   EnableSpannerSearchEmbeddings: true
   UseNewIngestionHistorySchema: false
-  UseSpannerKeyValueStore: false
+  UseSpannerKeyValueStore: true

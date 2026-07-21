@@ -94,12 +94,23 @@ type spannerDatabaseClient struct {
 	dbInitialized atomic.Bool
 }
 
+// MultiEntityQueryConfig controls query-planning behavior for the multi-entity schema.
+type MultiEntityQueryConfig struct {
+	// Child place types whose core contained-in-place observation queries should filter by ancestor before type.
+	ContainedInPlaceAncestorFirstTypes []string
+	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
+	// requested variables that selects the entity1 range-scan plan for core
+	// contained-in-place queries. Zero disables the optimization.
+	ContainedInPlaceEntityScanMinVariables int
+}
+
 // SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
 type SpannerClientOptions struct {
 	DatabaseOverride             string
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	UseSpannerKeyValueStore      bool
+	MultiEntityQueryConfig       MultiEntityQueryConfig
 	SpannerEmulatorCompatibility bool
 }
 
@@ -199,7 +210,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	}
 	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 
-	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
+	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg, opts.MultiEntityQueryConfig)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.

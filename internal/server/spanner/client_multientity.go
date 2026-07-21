@@ -22,13 +22,13 @@ type multiEntityClient struct {
 	queryBuilder *multiEntityQueryBuilder
 }
 
-// newMultiEntityClient initializes the client from a base SpannerClient with a table configuration.
-func newMultiEntityClient(client SpannerClient, cfg TableConfig) (*multiEntityClient, error) {
+// newMultiEntityClient initializes the client from a base SpannerClient with table and query configuration.
+func newMultiEntityClient(client SpannerClient, tableConfig TableConfig, queryConfig MultiEntityQueryConfig) (*multiEntityClient, error) {
 	sc, ok := client.(*spannerDatabaseClient)
 	if !ok {
 		return nil, fmt.Errorf("newMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
 	}
-	queryBuilder, err := NewMultiEntityQueryBuilder(cfg)
+	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, queryConfig)
 	if err != nil {
 		return nil, fmt.Errorf("newMultiEntityClient: %w", err)
 	}

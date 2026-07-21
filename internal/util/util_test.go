@@ -483,3 +483,16 @@ func TestToStringListValue(t *testing.T) {
 		})
 	}
 }
+
+func TestSortedStringKeys(t *testing.T) {
+	input := map[string]int{
+		"recipient":          1,
+		"donor":              2,
+		"observationAbout":   3,
+	}
+	want := []string{"donor", "observationAbout", "recipient"}
+	got := SortedStringKeys(input)
+	if diff := cmp.Diff(got, want); diff != "" {
+		t.Errorf("SortedStringKeys mismatch (-got +want):\n%s", diff)
+	}
+}
