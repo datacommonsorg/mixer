@@ -34,7 +34,7 @@ func TestMultiEntityGetObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -52,7 +52,7 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -70,7 +70,7 @@ func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -88,7 +88,10 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{
+					ContainedInPlaceAncestorFirstTypes:     c.ancestorFirstTypes,
+					ContainedInPlaceEntityScanMinVariables: c.entityScanMinVars,
+				})
 				if err != nil {
 					return nil, err
 				}
@@ -109,7 +112,7 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -127,7 +130,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -146,7 +149,7 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -164,7 +167,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -180,7 +183,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -311,7 +314,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -328,7 +331,7 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 }
 
 func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -359,9 +362,12 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	cfg := spanner.DefaultTableConfig()
 	cfg.TimeSeriesTable = "CustomTsTable"
 	cfg.ObservationTable = "CustomObsTable"
+	cfg.TimeSeriesByEntity1Index = "CustomEntity1Index"
 	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
 	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
-	builder, err := spanner.NewMultiEntityQueryBuilder(cfg)
+	builder, err := spanner.NewMultiEntityQueryBuilder(cfg, spanner.MultiEntityQueryConfig{
+		ContainedInPlaceEntityScanMinVariables: 1,
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -399,7 +405,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, containedInStmt.SQL,
 		"CustomObsTable",
-		"CustomTsTable@{FORCE_INDEX=_BASE_TABLE}",
+		"CustomTsTable@{FORCE_INDEX=CustomEntity1Index, SEEKABLE_KEY_SIZE=1}",
 	)
 
 	existenceStmt, err := builder.GetStatVarsByEntityQuery(
@@ -499,7 +505,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 		c := c
 		t.Run(c.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, c.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -516,7 +522,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 
 func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	runQueryBuilderGoldenTest(t, "get_sdmx_availability_filtered_destination_country.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 		if err != nil {
 			return nil, err
 		}
@@ -538,7 +544,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
