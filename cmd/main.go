@@ -430,11 +430,11 @@ func main() {
 	// Embedder: Generates vector embeddings for Spanner vector search.
 	var embedderClient embedder.Embedder
 	if spannerClient != nil {
-		embedderClient, err = embedder.NewEmbedder(ctx, spannerClient.Id())
+		embedderClient, err = embedder.NewEmbedder(ctx, metadata.HostProject, "")
 		if err != nil {
 			slog.Error("Failed to initialize GenAI Embedder", "error", err)
 		} else {
-			slog.Info("Successfully initialized GenAI Embedder")
+			slog.Info("Successfully initialized GenAI Embedder", "project", metadata.HostProject)
 		}
 	}
 

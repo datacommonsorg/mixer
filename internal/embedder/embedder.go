@@ -17,7 +17,6 @@ package embedder
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"google.golang.org/genai"
 	"google.golang.org/grpc/codes"
@@ -51,7 +50,7 @@ func (e *genAIEmbedder) Embed(ctx context.Context, endpoint, taskType, text stri
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to get term embedding for %s via GenAI SDK: %v", text, err)
 	}
-	if len(res.Embeddings) > 0 {
+	if len(res.Embeddings) > 0 && res.Embeddings[0] != nil {
 		embeddings := make([]float64, len(res.Embeddings[0].Values))
 		for idx, val := range res.Embeddings[0].Values {
 			embeddings[idx] = float64(val)
@@ -62,30 +61,20 @@ func (e *genAIEmbedder) Embed(ctx context.Context, endpoint, taskType, text stri
 }
 
 // NewEmbedder creates a new Embedder instance wrapping Google GenAI SDK client.
-func NewEmbedder(ctx context.Context, dbURI string, location ...string) (Embedder, error) {
-	project, _, _, err := parseDatabaseURI(dbURI)
-	if err != nil || project == "" {
-		return nil, fmt.Errorf("invalid or missing project ID in database URI: %q", dbURI)
+func NewEmbedder(ctx context.Context, projectID, location string) (Embedder, error) {
+	if projectID == "" {
+		return nil, fmt.Errorf("projectID is required")
 	}
-	loc := defaultGenAILocation
-	if len(location) > 0 && location[0] != "" {
-		loc = location[0]
+	if location == "" {
+		location = defaultGenAILocation
 	}
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		Project:  project,
-		Location: loc,
+		Project:  projectID,
+		Location: location,
 		Backend:  genai.BackendVertexAI,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to initialize GenAI client: %w", err)
 	}
 	return &genAIEmbedder{client: client}, nil
-}
-
-func parseDatabaseURI(uri string) (project, instance, database string, err error) {
-	parts := strings.Split(uri, "/")
-	if len(parts) == 6 && parts[0] == "projects" && parts[2] == "instances" && parts[4] == "databases" {
-		return parts[1], parts[3], parts[5], nil
-	}
-	return "", "", "", fmt.Errorf("invalid Spanner database URI format: %q", uri)
 }
