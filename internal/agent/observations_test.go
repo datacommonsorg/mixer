@@ -1212,6 +1212,25 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 	})
 
+	t.Run("Validation Failure: Context Cancellation", func(t *testing.T) {
+		ctx, cancel := context.WithCancel(context.Background())
+		cancel()
+
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(ctx, &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if err == nil {
+			t.Errorf("expected error on canceled context, got nil")
+		}
+	})
+
 	t.Run("SDMX Path Date Filtering (Specific Year)", func(t *testing.T) {
 		mock := &obsMockMixer{
 			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {

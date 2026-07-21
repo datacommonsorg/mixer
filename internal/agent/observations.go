@@ -164,6 +164,10 @@ func (s *Service) getObservationsSdmx(
 	ctx context.Context,
 	in *pbv2.GetObservationsRequest,
 ) (*pbv2.GetObservationsResponse, error) {
+	if ctx.Err() != nil {
+		return nil, ctx.Err()
+	}
+
 	filter, err := parseDateFilter(in.GetDate(), in.GetDateRangeStart(), in.GetDateRangeEnd())
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())
@@ -197,12 +201,9 @@ func (s *Service) getObservationsSdmx(
 			if gCtx.Err() != nil {
 				return gCtx.Err()
 			}
-			if _, isStatusErr := status.FromError(err); isStatusErr {
-				log.Printf("Agent getObservationsSdmx: entity metadata enrichment failed: %v", err)
-				entityProps = make(map[string]*nodeProperties)
-				return nil
-			}
-			return err
+			log.Printf("Agent getObservationsSdmx: entity metadata enrichment failed: %v", err)
+			entityProps = make(map[string]*nodeProperties)
+			return nil
 		}
 		return nil
 	})
@@ -214,18 +215,18 @@ func (s *Service) getObservationsSdmx(
 			if gCtx.Err() != nil {
 				return gCtx.Err()
 			}
-			if _, isStatusErr := status.FromError(err); isStatusErr {
-				log.Printf("Agent getObservationsSdmx: provenance metadata enrichment failed: %v", err)
-				provProps = make(map[string]*provenanceProperties)
-				return nil
-			}
-			return err
+			log.Printf("Agent getObservationsSdmx: provenance metadata enrichment failed: %v", err)
+			provProps = make(map[string]*provenanceProperties)
+			return nil
 		}
 		return nil
 	})
 
 	if err := g.Wait(); err != nil {
-		return nil, status.Errorf(codes.Internal, "metadata enrichment serialization failed: %v", err)
+		if ctx.Err() != nil {
+			return nil, ctx.Err()
+		}
+		return nil, status.Errorf(codes.Internal, "metadata enrichment failed: %v", err)
 	}
 
 	entityMetaTable, err := buildEntityMetadataTable(entityDcids, entityProps)
