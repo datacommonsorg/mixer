@@ -12,12 +12,21 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+type mockEmbedder struct {
+	embeddingsRes []float64
+	err           error
+}
+
+func (m *mockEmbedder) Embed(ctx context.Context, endpoint, taskType, text string) ([]float64, error) {
+	return m.embeddingsRes, m.err
+}
+
 func TestResolveEmbeddingsEmpty(t *testing.T) {
 	t.Parallel()
 
-	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
-		embeddingsRes: []float64{},
-	}, nil)
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{}},
+	})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"California"},
@@ -45,7 +54,6 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 	t.Parallel()
 
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
-		embeddingsRes: []float64{0.1, 0.2},
 		vectorSearchRes: []*VectorSearchResult{
 			{
 				SubjectID:        "dc/topic/Climate",
@@ -54,7 +62,9 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil)
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate"},
@@ -91,7 +101,6 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 	t.Parallel()
 
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
-		embeddingsRes: []float64{0.1, 0.2},
 		vectorSearchRes: []*VectorSearchResult{
 			{
 				SubjectID:        "dc/topic/Climate",
@@ -100,7 +109,10 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil)
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
+
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate", "Environment", "Weather"},

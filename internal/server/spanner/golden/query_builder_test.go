@@ -253,17 +253,6 @@ func TestGetFilteredTopicChildren(t *testing.T) {
 	}
 }
 
-func TestGetTermEmbeddingQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range embeddingFromQueryTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetTermEmbeddingQuery(c.modelName, c.searchLabel, c.taskType), nil
-		})
-	}
-}
 
 func TestVectorSearchQuery(t *testing.T) {
 	t.Parallel()

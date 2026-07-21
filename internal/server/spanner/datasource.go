@@ -23,6 +23,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/embedder"
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -63,6 +64,7 @@ type SpannerDataSource struct {
 	mapsClient      internalmaps.MapsClient
 	searchConfig    *SpannerSearchConfig
 	topicExpander   resolvev2.TopicExpander
+	embedder        embedder.Embedder
 }
 
 const (
@@ -75,6 +77,7 @@ type SpannerDataSourceOptions struct {
 	RecogPlaceStore *files.RecogPlaceStore
 	MapsClient      internalmaps.MapsClient
 	TopicExpander   resolvev2.TopicExpander
+	Embedder        embedder.Embedder
 }
 
 func NewSpannerDataSource(
@@ -90,7 +93,9 @@ func NewSpannerDataSource(
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
 		sds.topicExpander = opts.TopicExpander
+		sds.embedder = opts.Embedder
 	}
+
 	return sds
 }
 
@@ -551,6 +556,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
 
+	if sds.embedder == nil {
+		return nil, status.Errorf(codes.Internal, "Embedder is not initialized in SpannerDataSource")
+	}
+	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
+		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
+	}
+
 	for i, node := range nodes {
 		i, node := i, node // Capture loop variables
 		errGroup.Go(func() error {
@@ -559,14 +571,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			embeddings, err := sds.client.GetTermEmbeddingQuery(
-				errCtx,
-				cfg.SearchConfig.EmbeddingModel,
-				node,
-				string(cfg.SearchConfig.QueryTaskType),
-			)
+			embeddings, err := sds.embedder.Embed(errCtx, cfg.SearchConfig.EmbeddingModelEndpoint, string(cfg.SearchConfig.QueryTaskType), node)
 			if err != nil {
-				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+				return err
 			}
 			if len(embeddings) == 0 {
 				resolveResponse.Entities[i] = entity

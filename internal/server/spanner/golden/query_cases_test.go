@@ -637,19 +637,6 @@ var getFilteredSVGChildrenTestCases = []struct {
 	},
 }
 
-var embeddingFromQueryTestCases = []struct {
-	modelName   string
-	searchLabel string
-	taskType    string
-	golden      string
-}{
-	{
-		modelName:   "test_model",
-		searchLabel: "test_query",
-		taskType:    "RETRIEVAL_QUERY",
-		golden:      "get_embedding_from_query",
-	},
-}
 
 var vectorSearchNodeTestCases = []struct {
 	tableName      string
@@ -741,25 +728,6 @@ var getFilteredTopicTestCases = []struct {
 	},
 }
 
-var getTermEmbeddingsTestCases = []struct {
-	modelName   string
-	searchLabel string
-	taskType    string
-	golden      string
-}{
-	{
-		modelName:   "text_embeddings",
-		searchLabel: "California",
-		taskType:    "RETRIEVAL_QUERY",
-		golden:      "get_term_embeddings_california",
-	},
-	{
-		modelName:   "text_embeddings",
-		searchLabel: "NonExistentTerm12345",
-		taskType:    "RETRIEVAL_QUERY",
-		golden:      "get_term_embeddings_empty",
-	},
-}
 
 var vectorSearchQueryTestCases = []struct {
 	tableName      string
