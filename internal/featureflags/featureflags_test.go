@@ -38,6 +38,12 @@ func expectedFlags(mods ...func(*Flags)) *Flags {
 	return f
 }
 
+func TestDefaultSDMXRemotePlaceExpansionLimit(t *testing.T) {
+	if got, want := setDefaultValues().SDMXRemotePlaceExpansionLimit, 10000; got != want {
+		t.Fatalf("SDMXRemotePlaceExpansionLimit = %d, want %d", got, want)
+	}
+}
+
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -78,6 +84,35 @@ flags:
 				f.UseMultiEntitySchema = true
 			}),
 			wantErr: false,
+		},
+		{
+			name: "remote SDMX place expansion limit",
+			fileContent: `
+flags:
+  SDMXRemotePlaceExpansionLimit: 5000
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.SDMXRemotePlaceExpansionLimit = 5000
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - zero remote SDMX place expansion limit",
+			fileContent: `
+flags:
+  SDMXRemotePlaceExpansionLimit: 0
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "validation error - negative remote SDMX place expansion limit",
+			fileContent: `
+flags:
+  SDMXRemotePlaceExpansionLimit: -1
+`,
+			want:    nil,
+			wantErr: true,
 		},
 		{
 			name: "all flags",

@@ -14,8 +14,36 @@
 
 package dispatcher
 
+import (
+	"context"
+
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
+)
+
 // Custom unexported type for context keys prevents collisions across packages.
 type contextKey string
 
 // RelationExpressionExpandedEntities is the context key for expanded entities from pre-processed relation expressions.
 const RelationExpressionExpandedEntities contextKey = "RelationExpressionExpandedEntities"
+
+const sdmxContainedInPlaceToRemoteDCIDsKey contextKey = "SdmxContainedInPlaceToRemoteDCIDs"
+
+// SdmxContainedInPlaceToRemoteDCIDs maps an SDMX containment relation to the
+// remote child places resolved for it.
+type SdmxContainedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string
+
+// WithSdmxContainedInPlaceToRemoteDCIDs stores remote SDMX containment
+// expansions in the request context.
+func WithSdmxContainedInPlaceToRemoteDCIDs(
+	ctx context.Context,
+	containedInPlaceToRemoteDCIDs SdmxContainedInPlaceToRemoteDCIDs,
+) context.Context {
+	return context.WithValue(ctx, sdmxContainedInPlaceToRemoteDCIDsKey, containedInPlaceToRemoteDCIDs)
+}
+
+// SdmxContainedInPlaceToRemoteDCIDsFromContext returns remote SDMX
+// containment expansions stored by RelationExpressionProcessor.
+func SdmxContainedInPlaceToRemoteDCIDsFromContext(ctx context.Context) SdmxContainedInPlaceToRemoteDCIDs {
+	containedInPlaceToRemoteDCIDs, _ := ctx.Value(sdmxContainedInPlaceToRemoteDCIDsKey).(SdmxContainedInPlaceToRemoteDCIDs)
+	return containedInPlaceToRemoteDCIDs
+}

@@ -26,6 +26,7 @@ import (
 
 	"cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
@@ -562,7 +563,11 @@ func prepareSdmxObservationsQuery(
 		return nil, err
 	}
 
-	statement, err := queryBuilder.GetSdmxObservationsQuery(constraints, preparedShape.observationPropertyToEntitySlot)
+	statement, err := queryBuilder.GetSdmxObservationsQuery(
+		constraints,
+		preparedShape.observationPropertyToEntitySlot,
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDsFromContext(ctx),
+	)
 	if err != nil {
 		return nil, err
 	}
