@@ -296,6 +296,7 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	observationPropertyToEntitySlot map[string]string,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
 	containedInPlaceConstraints, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
@@ -310,6 +311,7 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 			containedInPlaceConstraints,
 			observationPropertyToEntitySlot,
 			compiled,
+			containedInPlaceToRemoteDCIDs,
 		)
 		if err != nil {
 			return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
@@ -462,6 +464,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	constraints map[string]datacommons.ContainedInPlaceConstraint,
 	observationPropertyToEntitySlot map[string]string,
 	compiled *compiledSdmxConstraints,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
@@ -484,20 +487,13 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		return resolved[i].entityColumn < resolved[j].entityColumn
 	})
 
-	type relationKey struct {
-		ancestor       string
-		childPlaceType string
-	}
-	relationToCTE := map[relationKey]string{}
+	relationToCTE := map[datacommons.ContainedInPlaceConstraint]string{}
 	cteDefinitions := []string{}
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
 	for i := range resolved {
-		key := relationKey{
-			ancestor:       resolved[i].relation.Ancestor,
-			childPlaceType: resolved[i].relation.ChildPlaceType,
-		}
+		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]
 		if !ok {
 			cteIndex := len(relationToCTE)
@@ -505,35 +501,78 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 			relationToCTE[key] = cteName
 			ancestorParam := fmt.Sprintf("containment_%d_ancestor", cteIndex)
 			childPlaceTypeParam := fmt.Sprintf("containment_%d_child_place_type", cteIndex)
-			params[ancestorParam] = key.ancestor
-			params[childPlaceTypeParam] = key.childPlaceType
-			cteDefinitions = append(cteDefinitions, fmt.Sprintf(
-				b.statements.sdmxContainedPlacesCTE,
-				cteName,
-				containedRule.GraphPredicate,
-				ancestorParam,
-				typeRule.GraphPredicate,
-				childPlaceTypeParam,
-			))
+			params[ancestorParam] = key.Ancestor
+			params[childPlaceTypeParam] = key.ChildPlaceType
+			remoteDCIDs := containedInPlaceToRemoteDCIDs[key]
+			if len(remoteDCIDs) > 0 {
+				remotePlacesParam := fmt.Sprintf("containment_%d_remote_places", cteIndex)
+				params[remotePlacesParam] = remoteDCIDs
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesWithRemoteCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+					remotePlacesParam,
+				))
+			} else {
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+				))
+			}
 		}
 		resolved[i].cteName = cteName
 	}
 
+	// The anchor is the containment-constrained entity used to drive the
+	// contained_places-to-TimeSeries join. Its entity slot selects the access
+	// path; remaining containment constraints are applied as semi-join filters.
 	anchor := resolved[0]
 	index := "_BASE_TABLE"
-	statementHint := ""
+	// TODO: Move SDMX containment statement hints into the statement templates
+	// after the time-period query variants land, so every variant shares the same
+	// production and emulator hint policy.
+	// Production containment queries favor total scan and join throughput.
+	statementHints := []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"}
+	if b.tableConfig.spannerEmulatorCompatibility {
+		// The emulator cannot validate null-filtered index behavior. Apply its
+		// per-query bypass uniformly to this query family; production never
+		// receives this hint.
+		statementHints = []string{"spanner_emulator.disable_query_null_filtered_index_check=true"}
+	}
 	whereClauses := []string{}
+	// An entity3 anchor also requires entity2 to be non-null, which may overlap
+	// with a separate entity2 containment constraint.
+	addedNotNullFilters := map[string]struct{}{}
+	appendNotNullFilter := func(entityColumn string) {
+		if entityColumn != "entity2" && entityColumn != "entity3" {
+			return
+		}
+		if _, added := addedNotNullFilters[entityColumn]; added {
+			return
+		}
+		addedNotNullFilters[entityColumn] = struct{}{}
+		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IS NOT NULL", entityColumn))
+	}
 	switch anchor.entityColumn {
 	case "entity2":
 		index = b.tableConfig.TimeSeriesByEntity2Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity2")
 	case "entity3":
 		index = b.tableConfig.TimeSeriesByEntity3Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity3 IS NOT NULL", "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity3")
+		appendNotNullFilter("entity2")
 	}
+	// Make null rejection explicit for nullable entity filters instead of relying
+	// on Spanner to infer it from IN when considering null-filtered indexes.
 	for _, constraint := range resolved[1:] {
+		appendNotNullFilter(constraint.entityColumn)
 		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IN (SELECT place_id FROM %s)", constraint.entityColumn, constraint.cteName))
 	}
 	where := ""
@@ -550,6 +589,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		where,
 	)
 
+	statementHint := fmt.Sprintf("@{%s}\n\t\t", strings.Join(statementHints, ", "))
 	sql := fmt.Sprintf(
 		b.statements.getSdmxContainedInPlace,
 		statementHint,
@@ -561,6 +601,9 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 }
 
 func sdmxContainmentAnchorPriority(entityColumn string) int {
+	// Prefer entity1's base-table path. If entity1 is unavailable, prefer entity3
+	// over entity2 because TimeSeriesByEntity3 also stores entity2, allowing an
+	// entity2 filter before fetching base-table rows.
 	switch entityColumn {
 	case "entity1":
 		return 0

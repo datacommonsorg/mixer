@@ -25,6 +25,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/google/go-cmp/cmp"
@@ -583,6 +584,60 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, interpolatedSQL)
 		}
 	}
+	if strings.Contains(prepared.statement.SQL, "remote_places") {
+		t.Fatalf("prepareSdmxObservationsQuery() local-only SQL contains remote places parameter:\n%s", prepared.statement.SQL)
+	}
+}
+
+func TestPrepareSdmxObservationsQueryWithRemoteContainedInPlace(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "country/USA", ChildPlaceType: "State"}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+		"containedAncestor0":                  sdmxComponentConstraint("country/CAN"),
+		"sourceCountry":                       sdmxContainedInPlaceConstraint(relation.Ancestor, relation.ChildPlaceType),
+	}
+	ctx := dispatcher.WithSdmxContainedInPlaceToRemoteDCIDs(
+		context.Background(),
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDs{
+			relation: {"country/MEX", "country/USA"},
+		},
+	)
+	prepared, err := prepareSdmxObservationsQuery(
+		ctx,
+		constraints,
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Migration": observationPropertiesEdges("containedAncestor0", "sourceCountry"),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if err != nil {
+		t.Fatalf("prepareSdmxObservationsQuery() error = %v", err)
+	}
+	wantParams := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
+		"filter_entity1":                      []string{"country/CAN"},
+		"containment_0_ancestor":              relation.Ancestor,
+		"containment_0_child_place_type":      relation.ChildPlaceType,
+		"containment_0_remote_places":         []string{"country/MEX", "country/USA"},
+	}
+	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
+		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
+	}
+	for _, fragment := range []string{
+		"UNION DISTINCT",
+		"FROM UNNEST(@containment_0_remote_places) AS place_id",
+		"ON t.entity2 = anchor.place_id",
+	} {
+		if !strings.Contains(prepared.statement.SQL, fragment) {
+			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, prepared.statement.SQL)
+		}
+	}
 }
 
 func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.T) {
@@ -633,6 +688,7 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 				directComponent:    "entity1",
 				containedComponent: "entity2",
 			},
+			nil,
 		)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
@@ -647,6 +703,34 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 	}
 	if diff := cmp.Diff(first.Params, second.Params); diff != "" {
 		t.Fatalf("GetSdmxObservationsQuery() params depend on observation property names (-want +got):\n%s", diff)
+	}
+}
+
+func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
+	cfg := DefaultTableConfig()
+	cfg.spannerEmulatorCompatibility = true
+	queryBuilder, err := NewMultiEntityQueryBuilder(cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := queryBuilder.GetSdmxObservationsQuery(
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			"region":                              sdmxContainedInPlaceConstraint("northamerica", "Country"),
+		},
+		map[string]string{"region": "entity1"},
+		nil,
+	)
+	if err != nil {
+		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+	}
+	if !strings.Contains(statement.SQL, "spanner_emulator.disable_query_null_filtered_index_check=true") {
+		t.Errorf("GetSdmxObservationsQuery() SQL does not contain the emulator compatibility hint:\n%s", statement.SQL)
+	}
+	for _, hint := range []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"} {
+		if strings.Contains(statement.SQL, hint) {
+			t.Errorf("GetSdmxObservationsQuery() SQL contains unsupported emulator hint %q:\n%s", hint, statement.SQL)
+		}
 	}
 }
 

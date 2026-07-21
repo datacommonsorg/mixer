@@ -7,6 +7,9 @@
 				AND contained.object_id = 'country/USA'
 				AND typed.predicate = 'typeOf'
 				AND typed.object_id = 'State'
+			UNION DISTINCT
+			SELECT place_id
+			FROM UNNEST(['country/CAN','country/USA']) AS place_id
 		),
 		series AS (
 			SELECT
@@ -18,10 +21,12 @@
 				t.facet,
 				t.entities
 			FROM contained_places_0 anchor
-			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=TimeSeriesByEntity2} t
-				ON t.entity2 = anchor.place_id
-				AND t.variable_measured = 'var1' AND t.entity1 = 'country/CAN'
-			WHERE t.entity2 IS NOT NULL
+			JOIN@{JOIN_METHOD=APPLY_JOIN} TimeSeries@{FORCE_INDEX=TimeSeriesByEntity3} t
+				ON t.entity3 = anchor.place_id
+				AND t.variable_measured = 'var1'
+			WHERE t.entity3 IS NOT NULL
+				AND t.entity2 IS NOT NULL
+				AND t.entity2 IN (SELECT place_id FROM contained_places_0)
 		)
 		SELECT
 			t.variable_measured,

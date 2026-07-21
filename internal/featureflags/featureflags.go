@@ -49,6 +49,8 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
+	// Maximum number of unique places returned by one remote SDMX containedInPlace+ expansion.
+	SDMXRemotePlaceExpansionLimit int `yaml:"SDMXRemotePlaceExpansionLimit"`
 	// Whether to default indicator resolution to Spanner.
 	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
@@ -71,6 +73,7 @@ func setDefaultValues() *Flags {
 		V2DivertFraction:              0.0,
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
+		SDMXRemotePlaceExpansionLimit: 10000,
 		EnableSpannerSearchEmbeddings: false,
 		UseNewIngestionHistorySchema:  false,
 		UseSpannerKeyValueStore:       false,
@@ -107,6 +110,9 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
 		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
+	}
+	if f.SDMXRemotePlaceExpansionLimit <= 0 {
+		return fmt.Errorf("SDMXRemotePlaceExpansionLimit must be positive")
 	}
 	return nil
 }

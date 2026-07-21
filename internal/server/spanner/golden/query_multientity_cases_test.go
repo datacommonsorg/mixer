@@ -16,6 +16,7 @@ package golden
 
 import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
 func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
@@ -316,6 +317,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	name                            string
 	constraints                     map[string]*sdmxpb.SdmxComponentConstraint
 	observationPropertyToEntitySlot map[string]string
+	containedInPlaceToRemoteDCIDs   map[datacommons.ContainedInPlaceConstraint][]string
 	golden                          string
 }{
 	{
@@ -432,10 +434,26 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_obs_contained_entity3_before_entity2",
 	},
 	{
-		name: "entity1 anchors multiple place sets",
+		name: "entity3 anchors before entity2 and reuses remote place set",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"middle":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+			{Ancestor: "country/USA", ChildPlaceType: "State"}: {"country/CAN", "country/USA"},
+		},
+		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote",
+	},
+	{
+		name: "entity1 anchors entity2 and entity3 place sets",
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
 			"first":            sdmxContainedInPlaceConstraint("country/CAN", "Province"),
+			"middle":           sdmxContainedInPlaceConstraint("northamerica", "Country"),
 			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
 		},
 		observationPropertyToEntitySlot: map[string]string{
