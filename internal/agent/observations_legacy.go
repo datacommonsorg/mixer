@@ -33,6 +33,8 @@ type nodeMetadata struct {
 }
 
 // getObservationsLegacy encapsulates the legacy V2Observation execution path for backward compatibility.
+//
+//nolint:staticcheck // Legacy path accesses deprecated fields for backward compatibility
 func (s *Service) getObservationsLegacy(
 	ctx context.Context,
 	in *pbv2.GetObservationsRequest,
@@ -74,6 +76,8 @@ func (s *Service) getObservationsLegacy(
 }
 
 // buildObservationRequest constructs the V2 Observation request from the agent request.
+//
+//nolint:staticcheck // Legacy request builder uses deprecated place fields
 func buildObservationRequest(in *pbv2.GetObservationsRequest, dateType string) *pbv2.ObservationRequest {
 	var entity pbv2.DcidOrExpression
 	if in.GetChildPlaceType() != "" {
@@ -164,6 +168,8 @@ func (s *Service) enrichMetadata(
 }
 
 // buildFinalResponse compiles all processed data and metadata into the final response protobuf.
+//
+//nolint:staticcheck // Legacy response builder populates deprecated response fields
 func (s *Service) buildFinalResponse(
 	in *pbv2.GetObservationsRequest,
 	obsResp *pbv2.ObservationResponse,

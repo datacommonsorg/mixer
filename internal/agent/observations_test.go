@@ -428,6 +428,7 @@ func (m *obsMockMixer) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (
 	return nil, nil
 }
 
+//nolint:staticcheck // Legacy test cases access deprecated fields for backward compatibility testing
 func TestGetObservations(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),

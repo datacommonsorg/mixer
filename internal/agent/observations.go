@@ -74,6 +74,7 @@ func (s *Service) GetObservations(
 		log.Printf("Agent GetObservations: routing to SDMX engine (variable=%s, entities_count=%d)", in.GetVariableDcid(), len(in.GetEntities()))
 		return s.getObservationsSdmx(ctx, in)
 	}
+	//nolint:staticcheck // Deprecated field checked for backward compatibility routing
 	if in.GetPlaceDcid() != "" {
 		log.Printf("Agent GetObservations: routing to legacy V2Observation engine (variable=%s, place=%s)", in.GetVariableDcid(), in.GetPlaceDcid())
 		return s.getObservationsLegacy(ctx, in)
@@ -450,12 +451,6 @@ func buildEntityMetadataTable(dcids []string, props map[string]*nodeProperties) 
 	return table, nil
 }
 
-// emptyEntityMetadataTable creates a clean empty metadata Table struct.
-func emptyEntityMetadataTable() *pbv2.Table {
-	return &pbv2.Table{
-		Columns: []string{colDcid, colName, colTypeOf},
-	}
-}
 
 type facetStats struct {
 	facetID          string
