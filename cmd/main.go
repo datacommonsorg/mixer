@@ -215,6 +215,10 @@ func main() {
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
 			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+			MultiEntityQueryConfig: spanner.MultiEntityQueryConfig{
+				ContainedInPlaceAncestorFirstTypes:     flags.ContainedInPlaceAncestorFirstTypes,
+				ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
+			},
 		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
