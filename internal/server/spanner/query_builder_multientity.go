@@ -535,6 +535,9 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	// path; remaining containment constraints are applied as semi-join filters.
 	anchor := resolved[0]
 	index := "_BASE_TABLE"
+	// TODO: Move SDMX containment statement hints into the statement templates
+	// after the time-period query variants land, so every variant shares the same
+	// production and emulator hint policy.
 	// Production containment queries favor total scan and join throughput.
 	statementHints := []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"}
 	if b.tableConfig.spannerEmulatorCompatibility {

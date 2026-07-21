@@ -22,6 +22,7 @@ import (
 	"log/slog"
 	"maps"
 	"slices"
+	"sync"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -104,6 +105,8 @@ func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, e
 	return Continue, nil
 }
 
+// TODO: Break this orchestration into reusable helpers when remote containment
+// expansion is added to SDMX Availability.
 func (p *RelationExpressionProcessor) preProcessSdmxData(rc *RequestContext) (Outcome, error) {
 	if p.source == nil {
 		return Continue, nil
@@ -217,7 +220,11 @@ type sdmxRemoteExpansionSource struct {
 	datasource.DataSource
 	relation datacommons.ContainedInPlaceConstraint
 	limit    int
-	dcids    map[string]struct{}
+	// NodeFetchAll currently pages single-ancestor requests sequentially, but
+	// guard the accumulator against future parallel pagination. The lock is cheap
+	// because it covers only in-memory response processing, not the remote call.
+	mu    sync.Mutex
+	dcids map[string]struct{}
 }
 
 func (s *sdmxRemoteExpansionSource) Node(
@@ -229,6 +236,8 @@ func (s *sdmxRemoteExpansionSource) Node(
 	if err != nil {
 		return nil, err
 	}
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	for _, graph := range resp.GetData() {
 		for _, nodes := range graph.GetArcs() {
 			for _, node := range nodes.GetNodes() {
