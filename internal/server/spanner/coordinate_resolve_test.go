@@ -31,7 +31,6 @@ import (
 type coordinateMockSpannerClient struct {
 	getNodeEdgesByProp map[string]map[string][]*Edge
 	assertGetNodeEdges func(ids []string, arc *v2.Arc, pageSize, offset int)
-	embeddingsRes      []float64
 	vectorSearchRes    []*VectorSearchResult
 }
 
