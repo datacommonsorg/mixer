@@ -21,11 +21,13 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/testing/protocmp"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 func TestObservationsDate(t *testing.T) {
@@ -400,18 +402,33 @@ func TestSelectPrimarySource(t *testing.T) {
 
 type obsMockMixer struct {
 	Mixer
-	v2ObsFn  func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
-	v2NodeFn func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	v2ObsFn    func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
+	v2NodeFn   func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	sdmxDataFn func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
 }
 
 func (m *obsMockMixer) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	return m.v2ObsFn(ctx, in)
+	if m.v2ObsFn != nil {
+		return m.v2ObsFn(ctx, in)
+	}
+	return nil, nil
 }
 
 func (m *obsMockMixer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	return m.v2NodeFn(ctx, in)
+	if m.v2NodeFn != nil {
+		return m.v2NodeFn(ctx, in)
+	}
+	return nil, nil
 }
 
+func (m *obsMockMixer) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	if m.sdmxDataFn != nil {
+		return m.sdmxDataFn(ctx, in)
+	}
+	return nil, nil
+}
+
+//nolint:staticcheck // Legacy test cases access deprecated fields for backward compatibility testing
 func TestGetObservations(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
@@ -902,3 +919,652 @@ func ptrString(s string) *string {
 func ptrFloat64(f float64) *float64 {
 	return &f
 }
+
+func mustListValue(vals ...interface{}) *structpb.ListValue {
+	l, err := structpb.NewList(vals)
+	if err != nil {
+		panic(err)
+	}
+	return l
+}
+
+func TestGetObservations_Sdmx(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	t.Run("Multi-entity SDMX Query with Dual Tables", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Attributes: map[string]string{
+								"facetId": "178129038",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2020", ObservationValue: "1671329"},
+								{TimePeriod: "2021", ObservationValue: "1682353"},
+							},
+						},
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06003",
+							},
+							Attributes: map[string]string{
+								"facetId": "178129038",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2020", ObservationValue: "1204"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+						"geoId/06003": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alpine County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001", "geoId/06003")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if err != nil {
+			t.Fatalf("GetObservations SDMX path failed: %v", err)
+		}
+
+		want := &pbv2.GetObservationsResponse{
+			Variable: &pbv2.GetObservationsResponse_Node{
+				Dcid: "Count_Person",
+			},
+			EntityMetadata: &pbv2.Table{
+				Columns: []string{"dcid", "name", "typeOf"},
+				Rows: []*structpb.ListValue{
+					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
+					mustListValue("geoId/06003", "Alpine County", []interface{}{"County"}),
+				},
+			},
+			Data: &pbv2.Table{
+				Columns: []string{"observationAbout", "date", "value"},
+				Rows: []*structpb.ListValue{
+					mustListValue("geoId/06001", "2021", float64(1682353)),
+					mustListValue("geoId/06003", "2020", float64(1204)),
+				},
+			},
+			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
+				SourceId: "178129038",
+			},
+		}
+
+		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
+			t.Errorf("GetObservations SDMX response mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("Parent Place Expansion (ContainedInPlace)", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				// Verify property constraints are generated correctly on query
+				c, ok := in.GetConstraints()["observationAbout"]
+				if !ok {
+					t.Fatalf("missing constraint for observationAbout")
+				}
+				containedIn, ok := c.GetPropertyConstraints()["containedInPlace"]
+				if !ok || !containedIn.GetTransitive() || containedIn.GetPredicates()[0].GetValue() != "geoId/06" {
+					t.Errorf("invalid containedInPlace property constraint: %+v", containedIn)
+				}
+				typeOf, ok := c.GetPropertyConstraints()["typeOf"]
+				if !ok || typeOf.GetPredicates()[0].GetValue() != "County" {
+					t.Errorf("invalid typeOf property constraint: %+v", typeOf)
+				}
+
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Attributes: map[string]string{
+								"facetId": "178129038",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2020", ObservationValue: "1671329"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		parentSpec, err := structpb.NewStruct(map[string]interface{}{
+			"parent_dcid": "geoId/06",
+			"child_type":  "County",
+		})
+		if err != nil {
+			t.Fatalf("failed to create parent spec struct: %v", err)
+		}
+
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewStructValue(parentSpec),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if err != nil {
+			t.Fatalf("GetObservations SDMX parent path failed: %v", err)
+		}
+
+		want := &pbv2.GetObservationsResponse{
+			Variable: &pbv2.GetObservationsResponse_Node{
+				Dcid: "Count_Person",
+			},
+			EntityMetadata: &pbv2.Table{
+				Columns: []string{"dcid", "name", "typeOf"},
+				Rows: []*structpb.ListValue{
+					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
+				},
+			},
+			Data: &pbv2.Table{
+				Columns: []string{"observationAbout", "date", "value"},
+				Rows: []*structpb.ListValue{
+					mustListValue("geoId/06001", "2020", float64(1671329)),
+				},
+			},
+			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
+				SourceId: "178129038",
+			},
+		}
+
+		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
+			t.Errorf("GetObservations SDMX parent response mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("Validation Failure: Multi-Parent Expansion Limit", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		p1, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/06", "child_type": "County"})
+		p2, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/48", "child_type": "County"})
+
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewStructValue(p1),
+			"comparisonPlace":  structpb.NewStructValue(p2),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for multi-parent expansion, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Invalid Entities JSON Type", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		// Passing boolean kind inside list value to trigger type validation error (Finding 1)
+		listVal, _ := structpb.NewList([]interface{}{"geoId/06", true})
+
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for invalid entities list type, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Empty Struct Value Fields", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		// Passing empty parent_dcid string to trigger blank check validation (Finding 2)
+		parentSpec, _ := structpb.NewStruct(map[string]interface{}{
+			"parent_dcid": "",
+			"child_type":  "County",
+		})
+
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewStructValue(parentSpec),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for empty parent spec fields, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Empty Entity List", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		emptyList, _ := structpb.NewList([]interface{}{})
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(emptyList),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for empty entity list, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Empty Slot Name", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
+		entitiesMap := map[string]*structpb.Value{
+			"": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for empty entity slot name, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Reserved Slot Name", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"Median_Age_Person"})
+		entitiesMap := map[string]*structpb.Value{
+			"variableMeasured": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for reserved entity slot name, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Context Cancellation", func(t *testing.T) {
+		ctx, cancel := context.WithCancel(context.Background())
+		cancel()
+
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(ctx, &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if err == nil {
+			t.Errorf("expected error on canceled context, got nil")
+		}
+	})
+
+	t.Run("SDMX Path Date Filtering (Specific Year)", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2019", ObservationValue: "10"},
+								{TimePeriod: "2020", ObservationValue: "12"},
+								{TimePeriod: "2021", ObservationValue: "14"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+			Date:         ptrString("2020"),
+		})
+		if err != nil {
+			t.Fatalf("GetObservations failed: %v", err)
+		}
+
+		wantRows := []*structpb.ListValue{
+			mustListValue("geoId/06001", "2020", float64(12)),
+		}
+
+		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
+			t.Errorf("SDMX Date Filter rows mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("SDMX Path Date Filtering (All)", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2019", ObservationValue: "10"},
+								{TimePeriod: "2020", ObservationValue: "12"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+			Date:         ptrString("all"),
+		})
+		if err != nil {
+			t.Fatalf("GetObservations failed: %v", err)
+		}
+
+		wantRows := []*structpb.ListValue{
+			mustListValue("geoId/06001", "2019", float64(10)),
+			mustListValue("geoId/06001", "2020", float64(12)),
+		}
+
+		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
+			t.Errorf("SDMX 'all' Date Filter rows mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("SDMX Path Date Filtering (Range)", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2018", ObservationValue: "8"},
+								{TimePeriod: "2019", ObservationValue: "10"},
+								{TimePeriod: "2020", ObservationValue: "12"},
+								{TimePeriod: "2021", ObservationValue: "14"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid:    "Count_Person",
+			Entities:        entitiesMap,
+			Date:            ptrString("range"),
+			DateRangeStart: ptrString("2019"),
+			DateRangeEnd:   ptrString("2020"),
+		})
+		if err != nil {
+			t.Fatalf("GetObservations failed: %v", err)
+		}
+
+		wantRows := []*structpb.ListValue{
+			mustListValue("geoId/06001", "2019", float64(10)),
+			mustListValue("geoId/06001", "2020", float64(12)),
+		}
+
+		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
+			t.Errorf("SDMX 'range' Date Filter rows mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("SDMX Path Date Filtering (Latest)", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2019-12", ObservationValue: "10"},
+								{TimePeriod: "2020-01", ObservationValue: "12"},
+								{TimePeriod: "2018-06", ObservationValue: "8"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06001": {
+							Arcs: map[string]*pbv2.Nodes{
+								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
+								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+							},
+						},
+					},
+				}, nil
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+			Date:         ptrString("latest"),
+		})
+		if err != nil {
+			t.Fatalf("GetObservations failed: %v", err)
+		}
+
+		wantRows := []*structpb.ListValue{
+			mustListValue("geoId/06001", "2020-01", float64(12)),
+		}
+
+		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
+			t.Errorf("SDMX 'latest' Date Filter rows mismatch (-got +want):\n%s", diff)
+		}
+	})
+
+	t.Run("SDMX Path Metadata Enrichment Network Fallback", func(t *testing.T) {
+		mock := &obsMockMixer{
+			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+				return &sdmxpb.SdmxDataResult{
+					Series: []*sdmxpb.SdmxTimeSeries{
+						{
+							Dimensions: map[string]string{
+								"variableMeasured": "Count_Person",
+								"observationAbout": "geoId/06001",
+							},
+							Points: []*sdmxpb.SdmxDataPoint{
+								{TimePeriod: "2020", ObservationValue: "12"},
+							},
+						},
+					},
+				}, nil
+			},
+			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				// Simulate downstream gRPC failure
+				return nil, status.Error(codes.Unavailable, "V2Node service temporarily unavailable")
+			},
+		}
+
+		svc := NewService(mock, nil)
+		entitiesMap := map[string]*structpb.Value{
+			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
+		}
+
+		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+			Date:         ptrString("latest"),
+		})
+		if err != nil {
+			t.Fatalf("GetObservations failed on metadata fallback test: %v", err)
+		}
+
+		// Ensure result succeeded but returns empty metadata fields for entities
+		wantRow, err := structpb.NewList([]interface{}{"geoId/06001", "", []interface{}{}})
+		if err != nil {
+			t.Fatalf("failed to build expected row: %v", err)
+		}
+		wantMeta := &pbv2.Table{
+			Columns: []string{"dcid", "name", "typeOf"},
+			Rows:    []*structpb.ListValue{wantRow},
+		}
+
+		if diff := cmp.Diff(got.EntityMetadata, wantMeta, cmpOpts); diff != "" {
+			t.Errorf("SDMX network fallback metadata mismatch (-got +want):\n%s", diff)
+		}
+	})
+}
+
+func TestFetchEntityProperties_Deduplication(t *testing.T) {
+	mock := &obsMockMixer{
+		v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+			return &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"country/AFG": {
+						Arcs: map[string]*pbv2.Nodes{
+							"name": {Nodes: []*pb.EntityInfo{{Value: "Afghanistan"}}},
+							"typeOf": {
+								Nodes: []*pb.EntityInfo{
+									{Dcid: "Country", ProvenanceId: "dc/base/Provenance1"},
+									{Dcid: "Country", ProvenanceId: "dc/base/Provenance2"},
+									{Dcid: "Place", ProvenanceId: "dc/base/Provenance3"},
+								},
+							},
+						},
+					},
+				},
+			}, nil
+		},
+	}
+
+	svc := NewService(mock, nil)
+	props, err := svc.fetchEntityProperties(context.Background(), []string{"country/AFG"})
+	if err != nil {
+		t.Fatalf("fetchEntityProperties failed: %v", err)
+	}
+
+	wantProps := map[string]*nodeProperties{
+		"country/AFG": {
+			name:   "Afghanistan",
+			typeOf: []string{"Country", "Place"},
+		},
+	}
+
+	if diff := cmp.Diff(props, wantProps, cmp.AllowUnexported(nodeProperties{})); diff != "" {
+		t.Errorf("fetchEntityProperties typeOf deduplication mismatch (-got +want):\n%s", diff)
+	}
+}
+
