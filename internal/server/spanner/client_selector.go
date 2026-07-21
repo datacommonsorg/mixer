@@ -183,8 +183,8 @@ func (s *schemaSelectorClient) GetSdmxAvailability(ctx context.Context, req *sdm
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or multi-entity client.
-func NewSchemaSelectorClient(baseClient SpannerClient, useMultiEntitySchema bool, cfg TableConfig, containedInPlaceAncestorFirstTypes []string) (SpannerClient, error) {
-	multiEntityClient, err := newMultiEntityClient(baseClient, cfg, containedInPlaceAncestorFirstTypes)
+func NewSchemaSelectorClient(baseClient SpannerClient, useMultiEntitySchema bool, tableConfig TableConfig, queryConfig MultiEntityQueryConfig) (SpannerClient, error) {
+	multiEntityClient, err := newMultiEntityClient(baseClient, tableConfig, queryConfig)
 	if err != nil {
 		return nil, err
 	}

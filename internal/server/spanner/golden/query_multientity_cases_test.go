@@ -131,6 +131,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 	ancestor           string
 	childPlaceType     string
 	ancestorFirstTypes []string
+	entityScanMinVars  int
 	date               string
 	golden             string
 }{
@@ -187,6 +188,33 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes: []string{"Place"},
 		date:               "2015",
 		golden:             "get_multientity_obs_contained_in_place_ancestor_first_date",
+	},
+	{
+		name:              "contained in place entity scan with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_both",
+	},
+	{
+		name:              "contained in place entity scan latest date with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "latest",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_latest",
+	},
+	{
+		name:              "contained in place entity scan specific date with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "2015",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_date",
 	},
 }
 

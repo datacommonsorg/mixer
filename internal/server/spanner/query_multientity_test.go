@@ -345,7 +345,7 @@ func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *tes
 }
 
 func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -382,6 +382,171 @@ func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
 		if diff := cmp.Diff(wantEntities, statements[name].Params["entities"]); diff != "" {
 			t.Errorf("%s entities mismatch (-want +got):\n%s", name, diff)
 		}
+	}
+}
+
+func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *testing.T) {
+	const (
+		variableSeekHint = "FORCE_INDEX=_BASE_TABLE"
+		entityScanHint   = "FORCE_INDEX=TimeSeriesByEntity1, SEEKABLE_KEY_SIZE=1"
+	)
+
+	for _, tc := range []struct {
+		name                 string
+		variables            []string
+		date                 string
+		queryConfig          MultiEntityQueryConfig
+		childPlaceType       string
+		wantEntityScan       bool
+		wantAncestorFirstCTE bool
+	}{
+		{
+			name:           "disabled",
+			variables:      []string{"var1", "var2", "var3"},
+			queryConfig:    MultiEntityQueryConfig{},
+			childPlaceType: "County",
+		},
+		{
+			name:      "below threshold",
+			variables: []string{"var1", "var2"},
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+		},
+		{
+			name:      "duplicates do not reach threshold",
+			variables: []string{"var1", "var2", "var2"},
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+		},
+		{
+			name:      "all dates at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "latest at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			date:      "latest",
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "exact date at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			date:      "2020",
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "ancestor first at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType:       "Place",
+			wantEntityScan:       true,
+			wantAncestorFirstCTE: true,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig)
+			if err != nil {
+				t.Fatal(err)
+			}
+			stmt, err := queryBuilder.GetObservationsContainedInPlaceQuery(
+				tc.variables,
+				&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: tc.childPlaceType},
+				tc.date,
+			)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			if got := strings.Contains(stmt.SQL, entityScanHint); got != tc.wantEntityScan {
+				t.Errorf("entity scan hint present = %t, want %t\nSQL:\n%s", got, tc.wantEntityScan, stmt.SQL)
+			}
+			if got := strings.Contains(stmt.SQL, variableSeekHint); got == tc.wantEntityScan {
+				t.Errorf("variable seek hint present = %t, want %t\nSQL:\n%s", got, !tc.wantEntityScan, stmt.SQL)
+			}
+			ancestorFirstCTE := "FROM Edge contained\n\t\t\tJOIN@{FORCE_JOIN_ORDER=TRUE} Edge typed"
+			if got := strings.Contains(stmt.SQL, ancestorFirstCTE); got != tc.wantAncestorFirstCTE {
+				t.Errorf("ancestor-first CTE present = %t, want %t\nSQL:\n%s", got, tc.wantAncestorFirstCTE, stmt.SQL)
+			}
+		})
+	}
+}
+
+func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{
+		ContainedInPlaceEntityScanMinVariables: 1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	stmt, err := queryBuilder.GetObservationsQuery([]string{"var1"}, []string{"geoId/06"}, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(stmt.SQL, "SEEKABLE_KEY_SIZE") {
+		t.Errorf("direct observation SQL unexpectedly contains contained-in-place access hint:\n%s", stmt.SQL)
+	}
+}
+
+func TestNewMultiEntityQueryBuilderValidatesAndClonesQueryConfig(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		queryConfig MultiEntityQueryConfig
+	}{
+		{
+			name: "negative entity scan threshold",
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceEntityScanMinVariables: -1,
+			},
+		},
+		{
+			name: "empty ancestor first type",
+			queryConfig: MultiEntityQueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{" "},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if _, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig); err == nil {
+				t.Fatal("NewMultiEntityQueryBuilder() error = nil, want error")
+			}
+		})
+	}
+
+	ancestorFirstTypes := []string{"Place"}
+	queryConfig := MultiEntityQueryConfig{
+		ContainedInPlaceAncestorFirstTypes:     ancestorFirstTypes,
+		ContainedInPlaceEntityScanMinVariables: 50,
+	}
+	client, err := newMultiEntityClient(&spannerDatabaseClient{}, DefaultTableConfig(), queryConfig)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ancestorFirstTypes[0] = "County"
+	if diff := cmp.Diff(queryConfig.ContainedInPlaceEntityScanMinVariables, client.queryBuilder.queryConfig.ContainedInPlaceEntityScanMinVariables); diff != "" {
+		t.Errorf("entity scan threshold mismatch (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff([]string{"Place"}, client.queryBuilder.queryConfig.ContainedInPlaceAncestorFirstTypes); diff != "" {
+		t.Errorf("ancestor-first types were not cloned (-want +got):\n%s", diff)
 	}
 }
 
@@ -538,7 +703,7 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 }
 
 func TestPrepareSdmxObservationsQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -631,7 +796,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryWithRemoteContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -712,7 +877,7 @@ func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.
 }
 
 func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropertyNames(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -750,7 +915,7 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
 	cfg := DefaultTableConfig()
 	cfg.spannerEmulatorCompatibility = true
-	queryBuilder, err := NewMultiEntityQueryBuilder(cfg)
+	queryBuilder, err := NewMultiEntityQueryBuilder(cfg, MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -776,7 +941,7 @@ func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -823,7 +988,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservationProperties(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -846,7 +1011,7 @@ func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservation
 }
 
 func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -919,7 +1084,7 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}

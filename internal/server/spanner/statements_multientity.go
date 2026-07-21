@@ -27,8 +27,8 @@ type MultiEntityStatements struct {
 	getObsEntitiesOnly                             string
 	getObsEntitiesOnlyWithDate                     string
 	getObsEntitiesOnlyLatest                       string
-	getObsByContainedInPlaceTypeFirst              containedInPlaceStatements
-	getObsByContainedInPlaceAncestorFirst          containedInPlaceStatements
+	getObsByContainedInPlaceTypeFirst              containedInPlaceAccessPathStatements
+	getObsByContainedInPlaceAncestorFirst          containedInPlaceAccessPathStatements
 	getSdmxObs                                     string
 	getSdmxAvailability                            string
 	getSdmxContainedInPlace                        string
@@ -61,13 +61,18 @@ type containedInPlaceStatements struct {
 	latest   string
 }
 
+type containedInPlaceAccessPathStatements struct {
+	variableSeek containedInPlaceStatements
+	entityScan   containedInPlaceStatements
+}
+
 // NewMultiEntityStatements builds multi-entity SQL templates from table configuration.
 func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	if err := validateMultiEntityTableConfig(cfg); err != nil {
 		return nil, err
 	}
-	typeFirstContainedInPlace := newContainedInPlaceStatements(cfg, typeFirstPlacesCTE)
-	ancestorFirstContainedInPlace := newContainedInPlaceStatements(cfg, ancestorFirstPlacesCTE)
+	typeFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, typeFirstPlacesCTE)
+	ancestorFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, ancestorFirstPlacesCTE)
 
 	return &MultiEntityStatements{
 		// Retrieve observations where both variables and entities are present (full series)
@@ -646,7 +651,25 @@ const ancestorFirstPlacesCTE = `places AS (
 				AND typed.object_id = @childPlaceType
 		)`
 
-func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedInPlaceStatements {
+func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) containedInPlaceAccessPathStatements {
+	return containedInPlaceAccessPathStatements{
+		variableSeek: newContainedInPlaceStatements(
+			cfg,
+			placesCTE,
+			fmt.Sprintf("%s@{FORCE_INDEX=_BASE_TABLE}", cfg.TimeSeriesTable),
+		),
+		// Limit the seekable index prefix to entity1 so variable_measured is
+		// evaluated as a residual filter instead of producing one sparse range
+		// lookup for every place-variable pair.
+		entityScan: newContainedInPlaceStatements(
+			cfg,
+			placesCTE,
+			fmt.Sprintf("%s@{FORCE_INDEX=%s, SEEKABLE_KEY_SIZE=1}", cfg.TimeSeriesTable, cfg.TimeSeriesByEntity1Index),
+		),
+	}
+}
+
+func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource string) containedInPlaceStatements {
 	return containedInPlaceStatements{
 		// Join all dates before aggregation to optimize total result throughput.
 		all: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
@@ -660,7 +683,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 				ON t.variable_measured IN UNNEST(@variables)
 				AND t.entity1 = p.place_id
 		)
@@ -683,7 +706,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 			t.variable_measured,
 			t.entity1,
 			t.extra_entities_id,
-			t.facet_id`, cfg.ObservationTable, cfg.TimeSeriesTable, placesCTE),
+			t.facet_id`, cfg.ObservationTable, timeSeriesSource, placesCTE),
 
 		// Join to Observation so TimeSeries without the requested date are
 		// discarded in Spanner.
@@ -698,7 +721,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 				ON t.variable_measured IN UNNEST(@variables)
 				AND t.entity1 = p.place_id
 		)
@@ -716,7 +739,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 		FROM series t
 		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable, placesCTE),
+		WHERE o.date = @date`, cfg.ObservationTable, timeSeriesSource, placesCTE),
 
 		// Use a correlated full-key lookup so the date-descending child scan can
 		// stop after one row.
@@ -731,7 +754,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 				t.provenance,
 				t.facet
 			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
 				ON t.variable_measured IN UNNEST(@variables)
 				AND t.entity1 = p.place_id
 		)
@@ -764,7 +787,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE string) containedI
 				)
 			) AS dates_and_values,
 			t.facet AS facets
-		FROM series t`, cfg.ObservationTable, cfg.TimeSeriesTable, placesCTE),
+		FROM series t`, cfg.ObservationTable, timeSeriesSource, placesCTE),
 	}
 }
 
