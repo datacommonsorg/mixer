@@ -895,3 +895,13 @@ func ToStringListValue(list []string) *structpb.ListValue {
 	}
 	return &structpb.ListValue{Values: values}
 }
+
+// SortedStringKeys returns an alphabetically sorted slice of keys from a map with string keys.
+func SortedStringKeys[V any, M ~map[string]V](m M) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
