@@ -180,21 +180,24 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return nil, fmt.Errorf("variable must be specified for entity.expression")
 	}
 
-	var observations []*Observation
-	var err error
-
 	qo := selectFieldsToQueryOptions(req.Select)
 
-	// Check if this is an existence-only request:
-	// 1. Only 'variable' and 'entity' are requested (no date, value, or facet).
-	// 2. A simple list of entities is provided (no complex entity expression).
-	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
+	// A request without date/value is existence-only unless facets were
+	// requested for explicitly specified variables.
+	isExistenceRequest := entityExpr == "" &&
+		!qo.date &&
+		!qo.value &&
+		(!qo.facet || len(variables) == 0)
 
-	if isExistenceRequest {
+	switch {
+	case isExistenceRequest:
 		return sds.handleExistenceRequest(ctx, req, variables, entities)
+	case len(variables) == 0:
+		// Match legacy behavior: observation fields without variables return no data.
+		return &pbv2.ObservationResponse{}, nil
 	}
 
-	observations, err = sds.fetchObservations(ctx, req)
+	observations, err := sds.fetchObservations(ctx, req)
 	if err != nil {
 		return nil, err
 	}

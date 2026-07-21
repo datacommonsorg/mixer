@@ -51,6 +51,7 @@ type mockSpannerClient struct {
 	checkVariableSourceExistenceErr    error
 	filterNodesByTypeRes               map[string][]string
 	getObservationsRes                 []*spanner.Observation
+	getObservationsCalls               int
 	getObservationsContainedInPlaceRes []*spanner.Observation
 }
 
@@ -66,6 +67,7 @@ func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, 
 	return m.getNodeEdgesRes, nil
 }
 func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*spanner.Observation, error) {
+	m.getObservationsCalls++
 	return m.getObservationsRes, nil
 }
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
@@ -498,6 +500,20 @@ func TestSpannerObservation(t *testing.T) {
 			goldenFile: "observation_existence_no_vars.json",
 		},
 		{
+			desc: "No variables requested with facet (returns all vars for entity)",
+			req: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity", "facet"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
+			goldenFile: "observation_existence_no_vars.json",
+		},
+		{
 			desc: "Single entity existence check",
 			req: &pbv2.ObservationRequest{
 				Variable: &pbv2.DcidOrExpression{
@@ -601,6 +617,26 @@ func TestSpannerObservation(t *testing.T) {
 		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
 			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
 		}
+	}
+}
+
+func TestSpannerObservationNoVariablesDoesNotFetchValues(t *testing.T) {
+	t.Parallel()
+
+	client := &mockSpannerClient{}
+	ds := spanner.NewSpannerDataSource(client, nil)
+	got, err := ds.Observation(context.Background(), &pbv2.ObservationRequest{
+		Entity: &pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}},
+		Select: []string{"variable", "entity", "date", "value"},
+	})
+	if err != nil {
+		t.Fatalf("Observation() returned error: %v", err)
+	}
+	if client.getObservationsCalls != 0 {
+		t.Fatalf("GetObservations() called %d times, want 0", client.getObservationsCalls)
+	}
+	if diff := cmp.Diff(&pbv2.ObservationResponse{}, got, protocmp.Transform()); diff != "" {
+		t.Errorf("Observation() response mismatch (-want +got):\n%s", diff)
 	}
 }
 
