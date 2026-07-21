@@ -321,9 +321,9 @@ type GetObservationsRequest struct {
 	DateRangeEnd   *string `protobuf:"bytes,7,opt,name=date_range_end,json=dateRangeEnd,proto3,oneof" json:"date_range_end,omitempty"`
 	// Map of entity dimension keys (e.g. "observationAbout", "sourceCountry") to entity specifications.
 	// The value is a google.protobuf.Value representing either:
-	//  1. Direct DCIDs list: a JSON array of strings.
+	//   - Direct DCIDs list: a JSON array of strings.
 	//     Example: "observationAbout": ["geoId/06", "geoId/48"]
-	//  2. Parent place constraint: a JSON object containing "parent_dcid" and "child_type" keys.
+	//   - Parent place constraint: a JSON object containing "parent_dcid" and "child_type" keys.
 	//     Example: "observationAbout": {"parent_dcid": "geoId/06", "child_type": "County"}
 	Entities      map[string]*structpb.Value `protobuf:"bytes,8,rep,name=entities,proto3" json:"entities,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
