@@ -96,6 +96,7 @@ type spannerDatabaseClient struct {
 
 // MultiEntityQueryConfig controls query-planning behavior for the multi-entity schema.
 type MultiEntityQueryConfig struct {
+	// Child place types whose core contained-in-place observation queries should filter by ancestor before type.
 	ContainedInPlaceAncestorFirstTypes []string
 	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
 	// requested variables that selects the entity1 range-scan plan for core
