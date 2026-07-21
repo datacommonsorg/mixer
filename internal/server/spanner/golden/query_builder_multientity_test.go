@@ -168,7 +168,11 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 				if err != nil {
 					return nil, err
 				}
-				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
+				stmt, err := builder.GetSdmxObservationsQuery(
+					c.constraints,
+					c.observationPropertyToEntitySlot,
+					c.containedInPlaceToRemoteDCIDs,
+				)
 				return stmt, err
 			})
 		})
@@ -190,7 +194,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	observationPropertyToEntitySlot := map[string]string{
 		"observationAbout": "entity1",
 	}
-	_, err = builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot)
+	_, err = builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot, nil)
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -295,7 +299,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.observationPropertyToEntitySlot)
+			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.observationPropertyToEntitySlot, nil)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxObservationsQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
@@ -313,7 +317,7 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 	}
 
 	for _, c := range multiEntitySdmxObservationsTestCases {
-		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
+		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot, nil)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
 		}
@@ -338,6 +342,7 @@ func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *
 			"destinationCountry": "entity1",
 			"observationAbout":   "entity2",
 		},
+		nil,
 	)
 	if err != nil {
 		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
@@ -377,6 +382,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 			"source":           sdmxContainedInPlaceConstraint("country/USA", "State"),
 		},
 		map[string]string{"source": "entity2"},
+		nil,
 	)
 	if err != nil {
 		t.Fatalf("GetSdmxObservationsQuery() returned error: %v", err)

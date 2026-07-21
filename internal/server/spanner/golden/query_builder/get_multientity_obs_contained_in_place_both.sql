@@ -1,12 +1,12 @@
 		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = 'geoId/10'
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = 'County'
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE typed.predicate = 'typeOf'
+				AND typed.object_id = 'County'
+				AND contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = 'geoId/10'
 		),
 		series AS (
 			SELECT

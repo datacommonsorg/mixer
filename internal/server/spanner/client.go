@@ -99,6 +99,7 @@ type SpannerClientOptions struct {
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	UseSpannerKeyValueStore      bool
+	SpannerEmulatorCompatibility bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
@@ -142,12 +143,13 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Sp
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
 type TableConfig struct {
-	TimeSeriesTable             string
-	ObservationTable            string
-	TimeSeriesByEntity1Index    string
-	TimeSeriesByEntity2Index    string
-	TimeSeriesByEntity3Index    string
-	TimeSeriesByProvenanceIndex string
+	TimeSeriesTable              string
+	ObservationTable             string
+	TimeSeriesByEntity1Index     string
+	TimeSeriesByEntity2Index     string
+	TimeSeriesByEntity3Index     string
+	TimeSeriesByProvenanceIndex  string
+	spannerEmulatorCompatibility bool
 }
 
 // DefaultTableConfig returns the default suffix-less table and index configuration for multi-entity Spanner tables.
@@ -194,6 +196,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	if cfg.TimeSeriesByProvenanceIndex != nil {
 		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
+	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 
 	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
 }
