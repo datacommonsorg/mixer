@@ -1212,6 +1212,22 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 	})
 
+	t.Run("Validation Failure: Reserved Slot Name", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil)
+		listVal, _ := structpb.NewList([]interface{}{"Median_Age_Person"})
+		entitiesMap := map[string]*structpb.Value{
+			"variableMeasured": structpb.NewListValue(listVal),
+		}
+
+		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities:     entitiesMap,
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error for reserved entity slot name, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
 	t.Run("Validation Failure: Context Cancellation", func(t *testing.T) {
 		ctx, cancel := context.WithCancel(context.Background())
 		cancel()

@@ -45,12 +45,16 @@ const (
 	arcTypeOf   = "typeOf"
 )
 
-var metadataDimensions = map[string]struct{}{
+var reservedSlotDimensions = map[string]struct{}{
 	datacommons.ComponentVariableMeasured:  {},
 	datacommons.ComponentProvenance:        {},
 	datacommons.ComponentMeasurementMethod: {},
 	datacommons.ComponentObservationPeriod: {},
 	datacommons.ComponentUnit:              {},
+	datacommons.ComponentTimePeriod:        {},
+	datacommons.ComponentObservationValue:  {},
+	datacommons.ComponentScalingFactor:     {},
+	datacommons.ComponentFacetID:           {},
 }
 
 // GetObservations aggregates and formats observations for statistical variables.
@@ -247,6 +251,9 @@ func buildSdmxDataQuery(in *pbv2.GetObservationsRequest) (*sdmxpb.SdmxDataQuery,
 	for slot, val := range in.GetEntities() {
 		if slot == "" {
 			return nil, status.Error(codes.InvalidArgument, "entity slot name cannot be empty")
+		}
+		if _, isReserved := reservedSlotDimensions[slot]; isReserved {
+			return nil, status.Errorf(codes.InvalidArgument, "entity slot name %q is a reserved component dimension", slot)
 		}
 		dcids, parentSpec, err := parseEntityConstraint(val)
 		if err != nil {
@@ -515,7 +522,7 @@ func extractDimensionSlots(result *sdmxpb.SdmxDataResult) []string {
 	dimSlotsSet := make(map[string]bool)
 	for _, series := range result.GetSeries() {
 		for dimKey := range series.GetDimensions() {
-			if _, isMetadata := metadataDimensions[dimKey]; !isMetadata {
+			if _, isReserved := reservedSlotDimensions[dimKey]; !isReserved {
 				dimSlotsSet[dimKey] = true
 			}
 		}
