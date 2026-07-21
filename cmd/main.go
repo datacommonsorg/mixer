@@ -69,8 +69,9 @@ const (
 var (
 	// Server config
 	port           = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject    = flag.String("host_project", "", "The GCP project to run the mixer instance.")
-	writeUsageLogs = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
+	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
+	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
 	bigQueryDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
@@ -430,11 +431,11 @@ func main() {
 	// Embedder: Generates vector embeddings for Spanner vector search.
 	var embedderClient embedder.Embedder
 	if spannerClient != nil {
-		embedderClient, err = embedder.NewEmbedder(ctx, metadata.HostProject, "")
+		embedderClient, err = embedder.NewEmbedder(ctx, *hostProject, *genAIClientLocation)
 		if err != nil {
 			slog.Error("Failed to initialize GenAI Embedder", "error", err)
 		} else {
-			slog.Info("Successfully initialized GenAI Embedder", "project", metadata.HostProject)
+			slog.Info("Successfully initialized GenAI Embedder", "project", *hostProject, "location", *genAIClientLocation)
 		}
 	}
 
