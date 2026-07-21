@@ -835,9 +835,14 @@ func isCuratedHierarchy(svg string) bool {
 	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
 }
 
+// isCustomHierarchy checks if the SVG is part of a non-base DC.
+func isCustomHierarchy(svg string) bool {
+	return !strings.HasPrefix(svg, "dc/")
+}
+
 // getSpecializedEntity returns the specialized entity for a child SVG given its parent SVG.
 func getSpecializedEntity(parent, child, childName string) string {
-	if !strings.Contains(child, "_") || isCuratedHierarchy(child) { // Child is likely curated.
+	if childName != "" && (!strings.Contains(child, "_") || isCuratedHierarchy(child) || isCustomHierarchy(child)) { // Child is likely curated.
 		return childName
 	}
 	parentParts := processSvgId(parent)
