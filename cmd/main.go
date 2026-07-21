@@ -209,10 +209,11 @@ func main() {
 	if shouldUseSpannerGraph {
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
-			DatabaseOverride:             flags.SpannerGraphDatabase,
-			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
-			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
-			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+			DatabaseOverride:                   flags.SpannerGraphDatabase,
+			UseMultiEntitySchema:               flags.UseMultiEntitySchema,
+			UseNewIngestionHistorySchema:       flags.UseNewIngestionHistorySchema,
+			UseSpannerKeyValueStore:            flags.UseSpannerKeyValueStore,
+			ContainedInPlaceAncestorFirstTypes: flags.ContainedInPlaceAncestorFirstTypes,
 		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)

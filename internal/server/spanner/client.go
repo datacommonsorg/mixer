@@ -96,11 +96,12 @@ type spannerDatabaseClient struct {
 
 // SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
 type SpannerClientOptions struct {
-	DatabaseOverride             string
-	UseMultiEntitySchema         bool
-	UseNewIngestionHistorySchema bool
-	UseSpannerKeyValueStore      bool
-	SpannerEmulatorCompatibility bool
+	DatabaseOverride                   string
+	UseMultiEntitySchema               bool
+	UseNewIngestionHistorySchema       bool
+	UseSpannerKeyValueStore            bool
+	ContainedInPlaceAncestorFirstTypes []string
+	SpannerEmulatorCompatibility       bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
@@ -199,7 +200,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	}
 	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 
-	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
+	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg, opts.ContainedInPlaceAncestorFirstTypes)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.

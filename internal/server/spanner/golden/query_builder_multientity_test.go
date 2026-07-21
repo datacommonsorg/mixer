@@ -88,7 +88,7 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), c.ancestorFirstTypes...)
 				if err != nil {
 					return nil, err
 				}

@@ -344,6 +344,47 @@ func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *tes
 	}
 }
 
+func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	variables := []string{"var2", "var1", "var2"}
+	entities := []string{"geoId/10", "geoId/06", "geoId/10"}
+	statements := map[string]*cloudspanner.Statement{}
+	statements["observations"], err = queryBuilder.GetObservationsQuery(variables, entities, "")
+	if err != nil {
+		t.Fatalf("GetObservationsQuery() error = %v", err)
+	}
+	statements["contained in place"], err = queryBuilder.GetObservationsContainedInPlaceQuery(
+		variables,
+		&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+		"",
+	)
+	if err != nil {
+		t.Fatalf("GetObservationsContainedInPlaceQuery() error = %v", err)
+	}
+	statements["variable existence"], err = queryBuilder.GetStatVarsByEntityQuery(variables, entities)
+	if err != nil {
+		t.Fatalf("GetStatVarsByEntityQuery() error = %v", err)
+	}
+
+	wantVariables := []string{"var1", "var2"}
+	for name, stmt := range statements {
+		if diff := cmp.Diff(wantVariables, stmt.Params["variables"]); diff != "" {
+			t.Errorf("%s variables mismatch (-want +got):\n%s", name, diff)
+		}
+	}
+
+	wantEntities := []string{"geoId/06", "geoId/10"}
+	for _, name := range []string{"observations", "variable existence"} {
+		if diff := cmp.Diff(wantEntities, statements[name].Params["entities"]); diff != "" {
+			t.Errorf("%s entities mismatch (-want +got):\n%s", name, diff)
+		}
+	}
+}
+
 func TestValidateObservationsRequiresProvenance(t *testing.T) {
 	for _, tc := range []struct {
 		name       string

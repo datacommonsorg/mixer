@@ -44,6 +44,12 @@ func TestDefaultSDMXRemotePlaceExpansionLimit(t *testing.T) {
 	}
 }
 
+func TestDefaultContainedInPlaceAncestorFirstTypes(t *testing.T) {
+	if diff := cmp.Diff([]string{"Place"}, setDefaultValues().ContainedInPlaceAncestorFirstTypes); diff != "" {
+		t.Fatalf("ContainedInPlaceAncestorFirstTypes mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -84,6 +90,39 @@ flags:
 				f.UseMultiEntitySchema = true
 			}),
 			wantErr: false,
+		},
+		{
+			name: "contained in place ancestor first types override",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes:
+    - County
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceAncestorFirstTypes = []string{"County"}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "contained in place ancestor first types disabled",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes: []
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceAncestorFirstTypes = []string{}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - empty contained in place ancestor first type",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes:
+    - " "
+`,
+			want:    nil,
+			wantErr: true,
 		},
 		{
 			name: "remote SDMX place expansion limit",
