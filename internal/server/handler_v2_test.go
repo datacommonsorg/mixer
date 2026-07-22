@@ -33,7 +33,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -446,3 +448,40 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 		})
 	}
 }
+
+func TestV2InvalidPropertyStatusCode(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{}
+
+	for _, tc := range []struct {
+		desc     string
+		property string
+	}{
+		{"malformed property", "invalid property expression"},
+		{"malformed arc", "<-foo->"},
+	} {
+		t.Run(tc.desc, func(t *testing.T) {
+			_, err := s.V2NodeCore(ctx, &pbv2.NodeRequest{
+				Property: tc.property,
+			})
+			if err == nil {
+				t.Fatalf("V2NodeCore(%q) expected error, got nil", tc.property)
+			}
+			if status.Code(err) != codes.InvalidArgument {
+				t.Errorf("V2NodeCore(%q) status code = %v, want %v", tc.property, status.Code(err), codes.InvalidArgument)
+			}
+
+			_, err = s.V2EventCore(ctx, &pbv2.EventRequest{
+				Property: tc.property,
+			})
+			if err == nil {
+				t.Fatalf("V2EventCore(%q) expected error, got nil", tc.property)
+			}
+			if status.Code(err) != codes.InvalidArgument {
+				t.Errorf("V2EventCore(%q) status code = %v, want %v", tc.property, status.Code(err), codes.InvalidArgument)
+			}
+		})
+	}
+}
+
+
