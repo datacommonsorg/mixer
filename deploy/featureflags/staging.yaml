@@ -10,4 +10,3 @@ flags:
   UseMultiEntitySchema: true
   EnableSDMXDataApi: true
   UseSpannerKeyValueStore: true
-  V2DivertFraction: 1.0
