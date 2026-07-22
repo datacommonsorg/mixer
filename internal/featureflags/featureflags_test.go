@@ -131,6 +131,16 @@ flags:
 			wantErr: true,
 		},
 		{
+			name: "validation error - padded contained in place ancestor first type",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes:
+    - " Place "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
 			name: "contained in place entity scan threshold override",
 			fileContent: `
 flags:

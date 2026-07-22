@@ -129,7 +129,43 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	}
 }
 
-func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
+// GetNodeEdgesByIDQuery plans and builds a Node edge query.
+func GetNodeEdgesByIDQuery(
+	ids []string,
+	arc *v2.Arc,
+	pageSize, offset int,
+	queryConfig QueryConfig,
+) (*spanner.Statement, error) {
+	plan, err := planNodeQuery(arc, queryConfig)
+	if err != nil {
+		return nil, err
+	}
+	return buildNodeEdgesByIDQuery(ids, arc, pageSize, offset, plan)
+}
+
+func buildNodeEdgesByIDQuery(
+	ids []string,
+	arc *v2.Arc,
+	pageSize, offset int,
+	plan nodeQueryPlan,
+) (*spanner.Statement, error) {
+	containedInPlace := false
+	typeFirst := false
+	switch plan.kind {
+	case nodeQueryGeneric:
+	case nodeQueryContainedInPlace:
+		containedInPlace = true
+		switch plan.accessPath {
+		case containedInPlaceTypeFirst:
+			typeFirst = true
+		case containedInPlaceAncestorFirst:
+		default:
+			return nil, fmt.Errorf("unsupported contained-in-place access path: %d", plan.accessPath)
+		}
+	default:
+		return nil, fmt.Errorf("unsupported node query kind: %d", plan.kind)
+	}
+
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
@@ -182,7 +218,11 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 			if len(filterVal) > 0 {
 				indexHint = "@{FORCE_INDEX=InEdge}"
 			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
+			nodeLabel := ""
+			if typeFirst {
+				nodeLabel = ":Node"
+			}
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter, nodeLabel))
 			i++
 		}
 	}
@@ -245,7 +285,11 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	}
-	subqueries = append([]string{subquery}, subqueries...)
+	if typeFirst {
+		subqueries = append(subqueries, subquery)
+	} else {
+		subqueries = append([]string{subquery}, subqueries...)
+	}
 
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
@@ -262,19 +306,25 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		}
 	}
 
-	template := prefix + strings.Join(subqueries, ",\n\t\t") + returnEdges
-
-	// Apply pagination.
-	if offset > 0 {
-		template += fmt.Sprintf(statements.applyOffset, offset)
+	separator := ",\n\t\t"
+	if containedInPlace {
+		separator += "@{FORCE_JOIN_ORDER=TRUE}\n\t\t"
 	}
-	// Request pageSize+1 rows to determine whether to generate nextToken.
-	template += fmt.Sprintf(statements.applyLimit, pageSize+1)
+	template := prefix + strings.Join(subqueries, separator) + returnEdges
+	template = applyNodeQueryPagination(template, pageSize, offset)
 
 	return &spanner.Statement{
 		SQL:    template,
 		Params: params,
+	}, nil
+}
+
+func applyNodeQueryPagination(query string, pageSize, offset int) string {
+	if offset > 0 {
+		query += fmt.Sprintf(statements.applyOffset, offset)
 	}
+	// Request pageSize+1 rows to determine whether to generate nextToken.
+	return query + fmt.Sprintf(statements.applyLimit, pageSize+1)
 }
 
 func GetObservationsQuery(variables []string, entities []string) *spanner.Statement {
