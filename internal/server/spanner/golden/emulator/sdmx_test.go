@@ -73,26 +73,6 @@ func TestSDMXData(t *testing.T) {
 			golden: "data_fallback_observation_about.csv",
 		},
 		{
-			name:   "explicit time period list",
-			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2022,2023",
-			golden: "data_time_period_date_list.csv",
-		},
-		{
-			name:   "single time period omits unmatched series",
-			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020",
-			golden: "data_time_period_single_date.csv",
-		},
-		{
-			name:   "latest time period per series",
-			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=LATEST",
-			golden: "data_time_period_latest.csv",
-		},
-		{
-			name:   "contained observation about with latest time period",
-			query:  "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[TIME_PERIOD]=latest",
-			golden: "data_time_period_latest.csv",
-		},
-		{
 			name:   "three observation properties",
 			query:  "c[variableMeasured]=Count_MigrationByTransportMode&c[destinationCountry]=country%2FCAN&c[sourceCountry]=country%2FUSA&c[transportMode]=Air&c[unit]=Count&c[measurementMethod]=Census&c[observationPeriod]=P1Y&c[provenance]=dc%2Fbase%2FHumanReadableStatVars",
 			golden: "data_three_entities.csv",
@@ -165,6 +145,78 @@ func TestSDMXData(t *testing.T) {
 			}
 			compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
 		})
+	}
+}
+
+func TestSDMXDataTimePeriods(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	paths := []struct {
+		name     string
+		selector string
+	}{
+		{
+			name:     "direct",
+			selector: "c[observationAbout]=country%2FUSA",
+		},
+		{
+			name:     "contained",
+			selector: "c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country",
+		},
+	}
+	timeSelections := []struct {
+		name   string
+		filter string
+		golden string
+	}{
+		{
+			name:   "all",
+			golden: "data_time_period_all.csv",
+		},
+		{
+			name:   "latest",
+			filter: "LATEST",
+			golden: "data_time_period_latest.csv",
+		},
+		{
+			name:   "one_date",
+			filter: "2020",
+			golden: "data_time_period_single_date.csv",
+		},
+		{
+			name:   "two_dates",
+			filter: "2020,2022",
+			golden: "data_time_period_two_dates.csv",
+		},
+		{
+			name:   "ten_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2020,2022,2023",
+			golden: "data_time_period_date_list.csv",
+		},
+		{
+			name:   "eleven_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2020,2022,2023",
+			golden: "data_time_period_date_list.csv",
+		},
+	}
+
+	for _, path := range paths {
+		for _, selection := range timeSelections {
+			t.Run(path.name+"/"+selection.name, func(t *testing.T) {
+				t.Parallel()
+				query := "c[variableMeasured]=Count_TimeSeries&" + path.selector
+				if selection.filter != "" {
+					query += "&c[TIME_PERIOD]=" + selection.filter
+				}
+				response, err := sdmxService.Data(context.Background(), emulatorDataRequest(query))
+				if err != nil {
+					t.Fatalf("Data() error = %v", err)
+				}
+				if response.ContentType != sdmxformat.CSVContentType {
+					t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
+				}
+				compareEmulatorCSVGolden(t, selection.golden, string(response.Body))
+			})
+		}
 	}
 }
 
@@ -422,24 +474,6 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_variable_measured.json",
 		},
 		{
-			name:      "single time period",
-			component: "measurementMethod",
-			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=2020",
-			golden:    "availability_time_period_single_date.json",
-		},
-		{
-			name:      "time period list",
-			component: "measurementMethod",
-			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=2020,2023",
-			golden:    "availability_time_period_date_list.json",
-		},
-		{
-			name:      "time period list with series constraint",
-			component: "measurementMethod",
-			query:     "c[variableMeasured]=Count_TimeSeries&c[unit]=Count&c[TIME_PERIOD]=2020,2023",
-			golden:    "availability_time_period_date_list.json",
-		},
-		{
 			name:      "unmatched time period",
 			component: "measurementMethod",
 			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=1999",
@@ -464,6 +498,85 @@ func TestSDMXAvailability(t *testing.T) {
 			}
 			compareEmulatorJSONGolden(t, testCase.golden, string(response.Body))
 		})
+	}
+}
+
+func TestSDMXAvailabilityTimePeriods(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	paths := []struct {
+		name       string
+		constraint string
+	}{
+		{name: "broad"},
+		{
+			name:       "filtered",
+			constraint: "&c[unit]=Count",
+		},
+	}
+	timeSelections := []struct {
+		name     string
+		filter   string
+		golden   string
+		wantCode codes.Code
+	}{
+		{
+			name:   "all",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:     "latest",
+			filter:   "LATEST",
+			wantCode: codes.InvalidArgument,
+		},
+		{
+			name:   "one_date",
+			filter: "2020",
+			golden: "availability_time_period_single_date.json",
+		},
+		{
+			name:   "two_dates",
+			filter: "2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:   "ten_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:   "eleven_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2018,2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+	}
+
+	for _, path := range paths {
+		for _, selection := range timeSelections {
+			t.Run(path.name+"/"+selection.name, func(t *testing.T) {
+				t.Parallel()
+				query := "c[variableMeasured]=Count_TimeSeries" + path.constraint
+				if selection.filter != "" {
+					query += "&c[TIME_PERIOD]=" + selection.filter
+				}
+				response, err := sdmxService.Availability(
+					context.Background(),
+					emulatorAvailabilityRequest("measurementMethod", query),
+				)
+				if status.Code(err) != selection.wantCode {
+					t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), selection.wantCode, err)
+				}
+				if selection.wantCode != codes.OK {
+					if !strings.Contains(status.Convert(err).Message(), "LATEST is not valid for availability") {
+						t.Fatalf("Availability() message = %q, want LATEST validation error", status.Convert(err).Message())
+					}
+					return
+				}
+				if response.ContentType != sdmxformat.StructureJSONType {
+					t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+				}
+				compareEmulatorJSONGolden(t, selection.golden, string(response.Body))
+			})
+		}
 	}
 }
 
