@@ -44,6 +44,18 @@ func TestDefaultSDMXRemotePlaceExpansionLimit(t *testing.T) {
 	}
 }
 
+func TestDefaultContainedInPlaceAncestorFirstTypes(t *testing.T) {
+	if diff := cmp.Diff([]string{"Place"}, setDefaultValues().ContainedInPlaceAncestorFirstTypes); diff != "" {
+		t.Fatalf("ContainedInPlaceAncestorFirstTypes mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestDefaultContainedInPlaceEntityScanMinVariables(t *testing.T) {
+	if got, want := setDefaultValues().ContainedInPlaceEntityScanMinVariables, 50; got != want {
+		t.Fatalf("ContainedInPlaceEntityScanMinVariables = %d, want %d", got, want)
+	}
+}
+
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -84,6 +96,70 @@ flags:
 				f.UseMultiEntitySchema = true
 			}),
 			wantErr: false,
+		},
+		{
+			name: "contained in place ancestor first types override",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes:
+    - County
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceAncestorFirstTypes = []string{"County"}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "contained in place ancestor first types disabled",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes: []
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceAncestorFirstTypes = []string{}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - empty contained in place ancestor first type",
+			fileContent: `
+flags:
+  ContainedInPlaceAncestorFirstTypes:
+    - " "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "contained in place entity scan threshold override",
+			fileContent: `
+flags:
+  ContainedInPlaceEntityScanMinVariables: 25
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceEntityScanMinVariables = 25
+			}),
+			wantErr: false,
+		},
+		{
+			name: "contained in place entity scan disabled",
+			fileContent: `
+flags:
+  ContainedInPlaceEntityScanMinVariables: 0
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlaceEntityScanMinVariables = 0
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - negative contained in place entity scan threshold",
+			fileContent: `
+flags:
+  ContainedInPlaceEntityScanMinVariables: -1
+`,
+			want:    nil,
+			wantErr: true,
 		},
 		{
 			name: "remote SDMX place expansion limit",

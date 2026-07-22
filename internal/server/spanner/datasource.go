@@ -23,6 +23,7 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/embedder"
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -63,6 +64,7 @@ type SpannerDataSource struct {
 	mapsClient      internalmaps.MapsClient
 	searchConfig    *SpannerSearchConfig
 	topicExpander   resolvev2.TopicExpander
+	embedder        embedder.Embedder
 }
 
 const (
@@ -75,6 +77,7 @@ type SpannerDataSourceOptions struct {
 	RecogPlaceStore *files.RecogPlaceStore
 	MapsClient      internalmaps.MapsClient
 	TopicExpander   resolvev2.TopicExpander
+	Embedder        embedder.Embedder
 }
 
 func NewSpannerDataSource(
@@ -90,7 +93,9 @@ func NewSpannerDataSource(
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
 		sds.topicExpander = opts.TopicExpander
+		sds.embedder = opts.Embedder
 	}
+
 	return sds
 }
 
@@ -175,21 +180,24 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return nil, fmt.Errorf("variable must be specified for entity.expression")
 	}
 
-	var observations []*Observation
-	var err error
-
 	qo := selectFieldsToQueryOptions(req.Select)
 
-	// Check if this is an existence-only request:
-	// 1. Only 'variable' and 'entity' are requested (no date, value, or facet).
-	// 2. A simple list of entities is provided (no complex entity expression).
-	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
+	// A request without date/value is existence-only unless facets were
+	// requested for explicitly specified variables.
+	isExistenceRequest := entityExpr == "" &&
+		!qo.date &&
+		!qo.value &&
+		(!qo.facet || len(variables) == 0)
 
-	if isExistenceRequest {
+	switch {
+	case isExistenceRequest:
 		return sds.handleExistenceRequest(ctx, req, variables, entities)
+	case len(variables) == 0:
+		// Match legacy behavior: observation fields without variables return no data.
+		return &pbv2.ObservationResponse{}, nil
 	}
 
-	observations, err = sds.fetchObservations(ctx, req)
+	observations, err := sds.fetchObservations(ctx, req)
 	if err != nil {
 		return nil, err
 	}
@@ -548,6 +556,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
 
+	if sds.embedder == nil {
+		return nil, status.Errorf(codes.Internal, "Embedder is not initialized in SpannerDataSource")
+	}
+	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
+		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
+	}
+
 	for i, node := range nodes {
 		i, node := i, node // Capture loop variables
 		errGroup.Go(func() error {
@@ -556,14 +571,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			embeddings, err := sds.client.GetTermEmbeddingQuery(
-				errCtx,
-				cfg.SearchConfig.EmbeddingModel,
-				node,
-				string(cfg.SearchConfig.QueryTaskType),
-			)
+			embeddings, err := sds.embedder.Embed(errCtx, cfg.SearchConfig.EmbeddingModelEndpoint, string(cfg.SearchConfig.QueryTaskType), node)
 			if err != nil {
-				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+				return err
 			}
 			if len(embeddings) == 0 {
 				resolveResponse.Entities[i] = entity

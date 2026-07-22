@@ -34,15 +34,30 @@ import (
 type multiEntityQueryBuilder struct {
 	statements  *MultiEntityStatements
 	tableConfig TableConfig
+	queryConfig MultiEntityQueryConfig
 }
 
-// NewMultiEntityQueryBuilder builds a query builder using table-config-specific SQL templates.
-func NewMultiEntityQueryBuilder(cfg TableConfig) (*multiEntityQueryBuilder, error) {
-	stmts, err := NewMultiEntityStatements(cfg)
+// NewMultiEntityQueryBuilder builds a query builder using table and query configuration.
+func NewMultiEntityQueryBuilder(tableConfig TableConfig, queryConfig MultiEntityQueryConfig) (*multiEntityQueryBuilder, error) {
+	if queryConfig.ContainedInPlaceEntityScanMinVariables < 0 {
+		return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceEntityScanMinVariables must be non-negative")
+	}
+	for _, placeType := range queryConfig.ContainedInPlaceAncestorFirstTypes {
+		if strings.TrimSpace(placeType) == "" {
+			return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceAncestorFirstTypes must not contain empty values")
+		}
+	}
+	queryConfig.ContainedInPlaceAncestorFirstTypes = slices.Clone(queryConfig.ContainedInPlaceAncestorFirstTypes)
+
+	stmts, err := NewMultiEntityStatements(tableConfig)
 	if err != nil {
 		return nil, err
 	}
-	return &multiEntityQueryBuilder{statements: stmts, tableConfig: cfg}, nil
+	return &multiEntityQueryBuilder{
+		statements:  stmts,
+		tableConfig: tableConfig,
+		queryConfig: queryConfig,
+	}, nil
 }
 
 // GetObservationsQuery builds the observation lookup query with optional date filter.
@@ -51,11 +66,13 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("GetObservationsQuery: entities must be specified")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
+	uniqueEntities := sortedUniqueStrings(entities)
 
 	var sql string
 	params := map[string]interface{}{}
 
-	if len(variables) > 0 {
+	if len(uniqueVariables) > 0 {
 		switch strings.ToUpper(date) {
 		case "":
 			sql = stmts.getObsBoth
@@ -65,8 +82,8 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 			sql = stmts.getObsBothWithDate
 			params["date"] = date
 		}
-		params["variables"] = variables
-		params["entities"] = entities
+		params["variables"] = uniqueVariables
+		params["entities"] = uniqueEntities
 	} else {
 		switch strings.ToUpper(date) {
 		case "":
@@ -77,7 +94,7 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 			sql = stmts.getObsEntitiesOnlyWithDate
 			params["date"] = date
 		}
-		params["entities"] = entities
+		params["entities"] = uniqueEntities
 	}
 
 	return &spanner.Statement{
@@ -92,21 +109,23 @@ func (b *multiEntityQueryBuilder) GetStatVarsByEntityQuery(variables []string, e
 	if len(variables) == 0 && len(entities) == 0 {
 		return nil, fmt.Errorf("GetStatVarsByEntityQuery: must be called with at least one variable or entity")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
+	uniqueEntities := sortedUniqueStrings(entities)
 
 	var sql string
 	params := map[string]interface{}{}
 
 	switch {
-	case len(variables) > 0 && len(entities) > 0:
+	case len(uniqueVariables) > 0 && len(uniqueEntities) > 0:
 		sql = stmts.getStatVarsByEntityBoth
-		params["variables"] = variables
-		params["entities"] = entities
-	case len(variables) > 0:
+		params["variables"] = uniqueVariables
+		params["entities"] = uniqueEntities
+	case len(uniqueVariables) > 0:
 		sql = stmts.getStatVarsByEntityVarsOnly
-		params["variables"] = variables
+		params["variables"] = uniqueVariables
 	default:
 		sql = stmts.getStatVarsByEntityEntitiesOnly
-		params["entities"] = entities
+		params["entities"] = uniqueEntities
 	}
 
 	return &spanner.Statement{
@@ -137,21 +156,38 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	if containedInPlace == nil {
 		return nil, fmt.Errorf("GetObservationsContainedInPlaceQuery: containedInPlace must be specified")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
 
 	params := map[string]interface{}{
 		"ancestor":       containedInPlace.Ancestor,
 		"childPlaceType": containedInPlace.ChildPlaceType,
-		"variables":      variables,
+		"variables":      uniqueVariables,
+	}
+
+	containedInPlaceStatements := stmts.getObsByContainedInPlaceTypeFirst
+	if slices.Contains(b.queryConfig.ContainedInPlaceAncestorFirstTypes, containedInPlace.ChildPlaceType) {
+		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
+	}
+
+	selectedStatements := containedInPlaceStatements.variableSeek
+	minVariables := b.queryConfig.ContainedInPlaceEntityScanMinVariables
+	if minVariables > 0 && len(uniqueVariables) >= minVariables {
+		// The base-table plan performs one sparse seek per place-variable pair.
+		// For broad variable lists, scanning each entity1 index range once and
+		// applying variable_measured as a residual filter can be cheaper. This
+		// threshold is a heuristic because the builder does not know how many
+		// TimeSeries rows belong to each selected place.
+		selectedStatements = containedInPlaceStatements.entityScan
 	}
 
 	var sql string
 	switch strings.ToUpper(date) {
 	case "":
-		sql = stmts.getObsByContainedInPlaceBoth
+		sql = selectedStatements.all
 	case shared.LATEST:
-		sql = stmts.getObsByContainedInPlaceBothLatest
+		sql = selectedStatements.latest
 	default:
-		sql = stmts.getObsByContainedInPlaceBothWithDate
+		sql = selectedStatements.withDate
 		params["date"] = date
 	}
 
@@ -518,6 +554,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
+	// TODO: Apply ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
 	for i := range resolved {
 		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]

@@ -427,22 +427,6 @@ func sortObservations(results []*spanner.Observation) {
 	})
 }
 
-func TestGetTermEmbeddings(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range getTermEmbeddingsTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetTermEmbeddingQuery(ctx, c.modelName, c.searchLabel, c.taskType)
-		})
-	}
-}
 
 func TestVectorSearch(t *testing.T) {
 	client := test.NewSpannerClient()

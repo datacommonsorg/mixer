@@ -55,7 +55,6 @@ type SpannerClient interface {
 	GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
 	VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error)
-	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
 	FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error)
 	GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
 	GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
@@ -94,12 +93,23 @@ type spannerDatabaseClient struct {
 	dbInitialized atomic.Bool
 }
 
+// MultiEntityQueryConfig controls query-planning behavior for the multi-entity schema.
+type MultiEntityQueryConfig struct {
+	// Child place types whose core contained-in-place observation queries should filter by ancestor before type.
+	ContainedInPlaceAncestorFirstTypes []string
+	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
+	// requested variables that selects the entity1 range-scan plan for core
+	// contained-in-place queries. Zero disables the optimization.
+	ContainedInPlaceEntityScanMinVariables int
+}
+
 // SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
 type SpannerClientOptions struct {
 	DatabaseOverride             string
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	UseSpannerKeyValueStore      bool
+	MultiEntityQueryConfig       MultiEntityQueryConfig
 	SpannerEmulatorCompatibility bool
 }
 
@@ -199,7 +209,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	}
 	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 
-	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
+	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg, opts.MultiEntityQueryConfig)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
