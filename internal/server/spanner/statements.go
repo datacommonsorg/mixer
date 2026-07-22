@@ -432,7 +432,7 @@ OR CreationTimestamp > (
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -494,7 +494,7 @@ OR CreationTimestamp > (
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -635,7 +635,7 @@ OR CreationTimestamp > (
 		JOIN (
 			SELECT
 				e.object_id AS subject_id,
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
 			%s
 			WHERE e.predicate = 'linkedMemberOf'
@@ -653,7 +653,7 @@ OR CreationTimestamp > (
 			ON n.subject_id = e_counts.subject_id`,
 	getFilteredTopic: `		SELECT
 			e.object_id AS subject_id,
-			COUNT(e.subject_id) AS descendent_stat_var_count
+			COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		%[1]s
 		WHERE e.predicate = 'linkedMember'
