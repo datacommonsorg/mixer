@@ -53,7 +53,7 @@ func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 				c.arc,
 				datasources.DefaultPageSize,
 				c.offset,
-				spanner.ContainedInPlaceQueryConfig{},
+				spanner.QueryConfig{},
 			), nil
 		})
 	}
@@ -71,7 +71,7 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 				c.arc,
 				datasources.DefaultPageSize,
 				c.offset,
-				spanner.ContainedInPlaceQueryConfig{},
+				spanner.QueryConfig{},
 			), nil
 		})
 	}
@@ -83,7 +83,7 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 	for _, tc := range []struct {
 		name        string
 		placeType   string
-		queryConfig spanner.ContainedInPlaceQueryConfig
+		queryConfig spanner.QueryConfig
 		golden      string
 	}{
 		{
@@ -94,8 +94,8 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 		{
 			name:      "ancestor first",
 			placeType: "Place",
-			queryConfig: spanner.ContainedInPlaceQueryConfig{
-				AncestorFirstTypes: []string{"Place"},
+			queryConfig: spanner.QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
 			},
 			golden: "get_node_edges_linked_contained_in_place_ancestor_first",
 		},

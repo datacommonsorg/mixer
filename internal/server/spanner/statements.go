@@ -242,7 +242,7 @@ OR CreationTimestamp > (
 			object_id`,
 	returnFilterEdges: `
 		RETURN
-		  	m.subject_id,
+			m.subject_id,
 			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
@@ -250,7 +250,7 @@ OR CreationTimestamp > (
 		WHERE
 		  n.subject_id = object_id
 		RETURN
-		  	subject_id,
+			subject_id,
 			predicate,
 			provenance,
 			IFNULL(ANY_VALUE(n.value), '') AS value,

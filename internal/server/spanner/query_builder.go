@@ -133,13 +133,13 @@ func GetNodeEdgesByIDQuery(
 	ids []string,
 	arc *v2.Arc,
 	pageSize, offset int,
-	containedInPlaceQueryConfig ContainedInPlaceQueryConfig,
+	queryConfig QueryConfig,
 ) *spanner.Statement {
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
-	containedInPlaceAccessPath, optimizeContainedInPlace := nodeContainedInPlaceAccessPath(arc, containedInPlaceQueryConfig)
+	containedInPlaceAccessPath, optimizeContainedInPlace := nodeContainedInPlaceAccessPath(arc, queryConfig)
 
 	// Attach predicates.
 	filterPredicate := ""
@@ -307,7 +307,7 @@ func GetNodeEdgesByIDQuery(
 
 func nodeContainedInPlaceAccessPath(
 	arc *v2.Arc,
-	config ContainedInPlaceQueryConfig,
+	config QueryConfig,
 ) (containedInPlaceAccessPath, bool) {
 	if arc == nil ||
 		arc.Out ||
@@ -322,7 +322,7 @@ func nodeContainedInPlaceAccessPath(
 	if !ok || len(typeValues) != 1 || strings.TrimSpace(typeValues[0]) == "" {
 		return containedInPlaceTypeFirst, false
 	}
-	return config.accessPath(typeValues[0]), true
+	return config.containedInPlaceAccessPath(typeValues[0]), true
 }
 
 func GetObservationsQuery(variables []string, entities []string) *spanner.Statement {

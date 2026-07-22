@@ -209,18 +209,22 @@ func main() {
 	// Spanner Graph.
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
+		queryConfig := spanner.QueryConfig{
+			ContainedInPlaceAncestorFirstTypes:     flags.ContainedInPlaceAncestorFirstTypes,
+			ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
+		}
+		if err := queryConfig.Validate(); err != nil {
+			slog.Error("Invalid Spanner query config", "error", err)
+			os.Exit(1)
+		}
+
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
 			DatabaseOverride:             flags.SpannerGraphDatabase,
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
 			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
-			ContainedInPlaceQueryConfig: spanner.ContainedInPlaceQueryConfig{
-				AncestorFirstTypes: flags.ContainedInPlaceAncestorFirstTypes,
-			},
-			MultiEntityQueryConfig: spanner.MultiEntityQueryConfig{
-				ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
-			},
+			QueryConfig:                  queryConfig,
 		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)

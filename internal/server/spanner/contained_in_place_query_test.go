@@ -18,40 +18,55 @@ import (
 	"testing"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"github.com/google/go-cmp/cmp"
 )
 
-func TestContainedInPlaceQueryConfig(t *testing.T) {
-	ancestorFirstTypes := []string{"Place"}
-	config, err := validateAndCloneContainedInPlaceQueryConfig(ContainedInPlaceQueryConfig{
-		AncestorFirstTypes: ancestorFirstTypes,
-	})
-	if err != nil {
+func TestQueryConfig(t *testing.T) {
+	config := QueryConfig{ContainedInPlaceAncestorFirstTypes: []string{"Place"}}
+	if err := config.Validate(); err != nil {
 		t.Fatal(err)
 	}
-	ancestorFirstTypes[0] = "County"
-	if diff := cmp.Diff([]string{"Place"}, config.AncestorFirstTypes); diff != "" {
-		t.Errorf("AncestorFirstTypes were not cloned (-want +got):\n%s", diff)
+	if got := config.containedInPlaceAccessPath("Place"); got != containedInPlaceAncestorFirst {
+		t.Errorf("containedInPlaceAccessPath(Place) = %v, want ancestor first", got)
 	}
-	if got := config.accessPath("Place"); got != containedInPlaceAncestorFirst {
-		t.Errorf("accessPath(Place) = %v, want ancestor first", got)
-	}
-	if got := config.accessPath("County"); got != containedInPlaceTypeFirst {
-		t.Errorf("accessPath(County) = %v, want type first", got)
+	if got := config.containedInPlaceAccessPath("County"); got != containedInPlaceTypeFirst {
+		t.Errorf("containedInPlaceAccessPath(County) = %v, want type first", got)
 	}
 }
 
-func TestContainedInPlaceQueryConfigRejectsEmptyType(t *testing.T) {
-	_, err := validateAndCloneContainedInPlaceQueryConfig(ContainedInPlaceQueryConfig{
-		AncestorFirstTypes: []string{" "},
-	})
-	if err == nil {
-		t.Fatal("validateAndCloneContainedInPlaceQueryConfig() error = nil, want error")
+func TestQueryConfigValidation(t *testing.T) {
+	for _, tc := range []struct {
+		name   string
+		config QueryConfig
+	}{
+		{
+			name: "empty ancestor-first type",
+			config: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{" "},
+			},
+		},
+		{
+			name: "padded ancestor-first type",
+			config: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{" Place "},
+			},
+		},
+		{
+			name: "negative entity scan threshold",
+			config: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: -1,
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if err := tc.config.Validate(); err == nil {
+				t.Fatal("Validate() error = nil, want error")
+			}
+		})
 	}
 }
 
 func TestNodeContainedInPlaceAccessPath(t *testing.T) {
-	config := ContainedInPlaceQueryConfig{AncestorFirstTypes: []string{"Place"}}
+	config := QueryConfig{ContainedInPlaceAncestorFirstTypes: []string{"Place"}}
 	for _, tc := range []struct {
 		name     string
 		arc      *v2.Arc
@@ -120,8 +135,8 @@ func TestNodeContainedInPlaceAccessPathFromPropertyExpression(t *testing.T) {
 	}
 	addOptimizationsToNodeRequest(arcs[0])
 
-	gotPath, gotOK := nodeContainedInPlaceAccessPath(arcs[0], ContainedInPlaceQueryConfig{
-		AncestorFirstTypes: []string{"Place"},
+	gotPath, gotOK := nodeContainedInPlaceAccessPath(arcs[0], QueryConfig{
+		ContainedInPlaceAncestorFirstTypes: []string{"Place"},
 	})
 	if gotPath != containedInPlaceTypeFirst || !gotOK {
 		t.Errorf("nodeContainedInPlaceAccessPath() = (%v, %t), want (%v, true)", gotPath, gotOK, containedInPlaceTypeFirst)
