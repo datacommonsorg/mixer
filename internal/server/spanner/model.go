@@ -28,7 +28,9 @@ import (
 type KeyValueStoreType string
 
 const (
-	TypeProvenanceSummary = "ProvenanceSummary"
+	TypeProvenanceSummary   = "ProvenanceSummary"
+	TypeStatisticalVariable = "StatisticalVariable"
+	TypeTopic               = "Topic"
 )
 
 // Property struct represents a subset of a row in the Edge table.

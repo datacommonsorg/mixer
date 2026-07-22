@@ -542,10 +542,10 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	}
 	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
-		typeOfs = []string{"StatisticalVariable", "Topic"}
+		typeOfs = []string{TypeStatisticalVariable, TypeTopic}
 	} else {
 		for _, t := range typeOfs {
-			if t != "StatisticalVariable" && t != "Topic" {
+			if t != TypeStatisticalVariable && t != TypeTopic {
 				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
 				return &pbv2.ResolveResponse{}, nil
 			}
@@ -597,16 +597,23 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 
 			// 3. Build candidates
 			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			var svDcids []string
 			for _, res := range searchResults {
-				candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				c := &pbv2.ResolveResponse_Entity_Candidate{
 					Dcid:   res.SubjectID,
+					Name:   res.Name,
 					TypeOf: res.Types,
 					Metadata: map[string]string{
 						"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
 						"sentence": res.Name,
 					},
-				})
+				}
+				candidates = append(candidates, c)
+				if slices.Contains(res.Types, TypeStatisticalVariable) {
+					svDcids = append(svDcids, res.SubjectID)
+				}
 			}
+			sds.populateObservationProperties(errCtx, candidates, svDcids)
 			entity.Candidates = candidates
 			resolveResponse.Entities[i] = entity
 			return nil
@@ -619,6 +626,27 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 
 	return resolveResponse, nil
 }
+
+func (sds *SpannerDataSource) populateObservationProperties(
+	ctx context.Context,
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+	svDcids []string,
+) {
+	if sds.topicExpander == nil || len(svDcids) == 0 {
+		return
+	}
+	svInfos, err := sds.topicExpander.GetSVPropertyInfos(ctx, svDcids)
+	if err != nil {
+		slog.Warn("Failed to fetch SV property infos during vector search", "error", err)
+		return
+	}
+	for _, c := range candidates {
+		if info, ok := svInfos[c.GetDcid()]; ok {
+			c.ObservationProperties = info.ObservationProperties
+		}
+	}
+}
+
 
 // Sparql executes a SPARQL query against the Spanner data source.
 func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
