@@ -384,7 +384,7 @@ func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -437,7 +437,7 @@ func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
 }
 
 func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
