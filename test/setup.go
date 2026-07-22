@@ -199,6 +199,7 @@ func setupInternal(
 		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
 			RecogPlaceStore: st.RecogPlaceStore,
 			MapsClient:      mapsClient,
+			Embedder:        nil, // Not testing live GenAI embeddings in integration setup
 		})
 		sources = append(sources, spannerDataSource)
 	}

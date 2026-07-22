@@ -45,6 +45,7 @@ message SearchIndicatorsResponse {
     repeated string places_with_data = 2;
     string description = 3;
     repeated string alternate_descriptions = 4;
+    repeated string observation_properties = 5;
   }
 
   message ResolvedPlace {
@@ -61,15 +62,38 @@ message SearchIndicatorsResponse {
   ResolvedPlace resolved_parent_place = 6;
 }
 
+message EntityList {
+  repeated string dcids = 1;
+}
+
+// Generic tabular structure for token-efficient data delivery.
+message Table {
+  repeated string columns = 1;
+  repeated google.protobuf.ListValue rows = 2;
+}
+
 // Request payload for the get_observations tool endpoint.
 message GetObservationsRequest {
   string variable_dcid = 1;
-  string place_dcid = 2;
-  optional string child_place_type = 3;
+
+  // Deprecated: Use 'entities' map for specifying target places or multi-entity slots.
+  string place_dcid = 2 [deprecated = true];
+
+  // Deprecated: Legacy single-place expansion. Multi-slot child expansion will specify target slots once native SDMX hierarchy resolution is implemented.
+  optional string child_place_type = 3 [deprecated = true];
+
   optional string source_override = 4;
   optional string date = 5;              // accepts "latest", "all", "range", or specific date string.
   optional string date_range_start = 6;
   optional string date_range_end = 7;
+
+  // Map of entity dimension keys (e.g. "observationAbout", "sourceCountry") to entity specifications.
+  // The value is a google.protobuf.Value representing either:
+  // - Direct DCIDs list: a JSON array of strings.
+  //    Example: "observationAbout": ["geoId/06", "geoId/48"]
+  // - Parent place constraint: a JSON object containing "parent_dcid" and "child_type" keys.
+  //    Example: "observationAbout": {"parent_dcid": "geoId/06", "child_type": "County"}
+  map<string, google.protobuf.Value> entities = 8;
 }
 
 // Response payload for the get_observations tool endpoint.
@@ -100,14 +124,28 @@ message GetObservationsResponse {
   }
 
   message PlaceObservation {
-    Node place = 1;
+    Node place = 1 [deprecated = true];
     repeated TimeSeriesPoint time_series = 2;
   }
 
   Node variable = 1;
-  Node resolved_parent_place = 2;
-  string child_place_type = 3;
-  repeated PlaceObservation place_observations = 4;
+
+  // Deprecated: Parent place info will be represented as standard entity DCIDs in entity_metadata once child place resolution in SDMX is available.
+  Node resolved_parent_place = 2 [deprecated = true];
+
+  // Deprecated: Child place resolution will be handled natively in SDMX once available; use explicit entity DCIDs in 'entities' for now.
+  string child_place_type = 3 [deprecated = true];
+
+  // Shared flat entity metadata table across all entities (columns: ["dcid", "name", "typeOf"]).
+  // Encodes name and typeOf for all returned places and entities uniformly.
+  Table entity_metadata = 7;
+
+  // Observation time-series Table (columns: ["observationAbout", "date", "value"] or multi-slot names)
+  Table data = 8;
+
+  // Deprecated: Use 'data' Table and 'entity_metadata' Table instead.
+  repeated PlaceObservation place_observations = 4 [deprecated = true];
+
   FacetMetadata source_metadata = 5;
   repeated AlternativeSource alternative_sources = 6;
 }

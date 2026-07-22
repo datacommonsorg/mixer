@@ -10,7 +10,7 @@
 			filter1.predicate = 'subClassOf'
 			AND filter1.object_id IN ('AdministrativeArea','AdministrativeAr:WXALAhw8j+Uz/Tw7uR3ClTolVepyj0tjRCKr6Xkw60s=')]->
 		RETURN
-		  	m.subject_id,
+			m.subject_id,
 			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
@@ -18,7 +18,7 @@
 		WHERE
 		  n.subject_id = object_id
 		RETURN
-		  	subject_id,
+			subject_id,
 			predicate,
 			provenance,
 			IFNULL(ANY_VALUE(n.value), '') AS value,

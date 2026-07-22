@@ -54,8 +54,9 @@ const (
 // SearchConfig holds the configuration for the parameters necessary to search.
 type SearchConfig struct {
 	SearchAlgorithm  SearchMethod     `json:"search_algorithm" yaml:"search_algorithm"`
-	EmbeddingModel   string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
-	EmbeddingTable   string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
+	EmbeddingModel         string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
+	EmbeddingModelEndpoint string           `json:"embedding_model_endpoint" yaml:"embedding_model_endpoint"`
+	EmbeddingTable         string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
 	QueryTaskType    QueryTaskType    `json:"query_task_type" yaml:"query_task_type"`
 	EmbeddingLabel   string           `json:"embedding_label" yaml:"embedding_label"`
 	VectorSearchAlgo VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`

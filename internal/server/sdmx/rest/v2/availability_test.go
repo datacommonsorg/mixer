@@ -52,6 +52,16 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 			want:        map[string][]string{"variableMeasured": {"Count_Person", "Count_Household"}},
 		},
 		{
+			name:        "time period date list",
+			tail:        availabilityTail("observationAbout"),
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020,2022"),
+			wantPath:    availabilityPath("observationAbout"),
+			want: map[string][]string{
+				"variableMeasured": {"Count_Person"},
+				"TIME_PERIOD":      {"2020", "2022"},
+			},
+		},
+		{
 			name: "dynamic target with dimension filters",
 			tail: availabilityTail("destinationCountry"),
 			originalURI: availabilityURI("destinationCountry", "c[variableMeasured]=Count_Person_Migrated,Count_Refugee&"+
@@ -196,9 +206,14 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 			wantCode:    codes.Unimplemented,
 		},
 		{
-			name:        "filter time period unsupported",
-			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=2020"),
-			wantCode:    codes.Unimplemented,
+			name:        "latest time period invalid",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=latest"),
+			wantCode:    codes.InvalidArgument,
+		},
+		{
+			name:        "latest mixed with date invalid",
+			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[TIME_PERIOD]=LATEST,2020"),
+			wantCode:    codes.InvalidArgument,
 		},
 		{
 			name:        "filter attribute unsupported",

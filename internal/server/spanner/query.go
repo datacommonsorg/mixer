@@ -140,10 +140,15 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 		edges[id] = []*Edge{}
 	}
 
-	err := queryStructs(
+	stmt, err := GetNodeEdgesByIDQuery(ids, arc, pageSize, offset, sc.queryConfig)
+	if err != nil {
+		return nil, fmt.Errorf("error building node edges query: %w", err)
+	}
+
+	err = queryStructs(
 		ctx,
 		sc,
-		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
+		*stmt,
 		func() interface{} {
 			return &Edge{}
 		},
@@ -718,21 +723,6 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	return results, nil
 }
 
-// GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
-func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
-	embeddings := []float64{}
-	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
-		row, err := iter.Next()
-		if err == iterator.Done {
-			return nil
-		}
-		if err != nil {
-			return err
-		}
-		return row.Column(0, &embeddings)
-	})
-	return embeddings, err
-}
 
 // FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
 func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {

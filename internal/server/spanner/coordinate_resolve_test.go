@@ -31,7 +31,6 @@ import (
 type coordinateMockSpannerClient struct {
 	getNodeEdgesByProp map[string]map[string][]*Edge
 	assertGetNodeEdges func(ids []string, arc *v2.Arc, pageSize, offset int)
-	embeddingsRes      []float64
 	vectorSearchRes    []*VectorSearchResult
 }
 
@@ -123,9 +122,6 @@ func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tab
 	return m.vectorSearchRes, nil
 }
 
-func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
-	return m.embeddingsRes, nil
-}
 
 func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	return nil, nil

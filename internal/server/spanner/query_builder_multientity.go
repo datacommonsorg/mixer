@@ -34,15 +34,23 @@ import (
 type multiEntityQueryBuilder struct {
 	statements  *MultiEntityStatements
 	tableConfig TableConfig
+	queryConfig QueryConfig
 }
 
-// NewMultiEntityQueryBuilder builds a query builder using table-config-specific SQL templates.
-func NewMultiEntityQueryBuilder(cfg TableConfig) (*multiEntityQueryBuilder, error) {
-	stmts, err := NewMultiEntityStatements(cfg)
+// NewMultiEntityQueryBuilder builds a query builder using table and query configuration.
+func NewMultiEntityQueryBuilder(
+	tableConfig TableConfig,
+	queryConfig QueryConfig,
+) (*multiEntityQueryBuilder, error) {
+	stmts, err := NewMultiEntityStatements(tableConfig)
 	if err != nil {
 		return nil, err
 	}
-	return &multiEntityQueryBuilder{statements: stmts, tableConfig: cfg}, nil
+	return &multiEntityQueryBuilder{
+		statements:  stmts,
+		tableConfig: tableConfig,
+		queryConfig: queryConfig,
+	}, nil
 }
 
 // GetObservationsQuery builds the observation lookup query with optional date filter.
@@ -51,11 +59,13 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("GetObservationsQuery: entities must be specified")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
+	uniqueEntities := sortedUniqueStrings(entities)
 
 	var sql string
 	params := map[string]interface{}{}
 
-	if len(variables) > 0 {
+	if len(uniqueVariables) > 0 {
 		switch strings.ToUpper(date) {
 		case "":
 			sql = stmts.getObsBoth
@@ -65,8 +75,8 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 			sql = stmts.getObsBothWithDate
 			params["date"] = date
 		}
-		params["variables"] = variables
-		params["entities"] = entities
+		params["variables"] = uniqueVariables
+		params["entities"] = uniqueEntities
 	} else {
 		switch strings.ToUpper(date) {
 		case "":
@@ -77,7 +87,7 @@ func (b *multiEntityQueryBuilder) GetObservationsQuery(variables []string, entit
 			sql = stmts.getObsEntitiesOnlyWithDate
 			params["date"] = date
 		}
-		params["entities"] = entities
+		params["entities"] = uniqueEntities
 	}
 
 	return &spanner.Statement{
@@ -92,21 +102,23 @@ func (b *multiEntityQueryBuilder) GetStatVarsByEntityQuery(variables []string, e
 	if len(variables) == 0 && len(entities) == 0 {
 		return nil, fmt.Errorf("GetStatVarsByEntityQuery: must be called with at least one variable or entity")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
+	uniqueEntities := sortedUniqueStrings(entities)
 
 	var sql string
 	params := map[string]interface{}{}
 
 	switch {
-	case len(variables) > 0 && len(entities) > 0:
+	case len(uniqueVariables) > 0 && len(uniqueEntities) > 0:
 		sql = stmts.getStatVarsByEntityBoth
-		params["variables"] = variables
-		params["entities"] = entities
-	case len(variables) > 0:
+		params["variables"] = uniqueVariables
+		params["entities"] = uniqueEntities
+	case len(uniqueVariables) > 0:
 		sql = stmts.getStatVarsByEntityVarsOnly
-		params["variables"] = variables
+		params["variables"] = uniqueVariables
 	default:
 		sql = stmts.getStatVarsByEntityEntitiesOnly
-		params["entities"] = entities
+		params["entities"] = uniqueEntities
 	}
 
 	return &spanner.Statement{
@@ -137,21 +149,38 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	if containedInPlace == nil {
 		return nil, fmt.Errorf("GetObservationsContainedInPlaceQuery: containedInPlace must be specified")
 	}
+	uniqueVariables := sortedUniqueStrings(variables)
 
 	params := map[string]interface{}{
 		"ancestor":       containedInPlace.Ancestor,
 		"childPlaceType": containedInPlace.ChildPlaceType,
-		"variables":      variables,
+		"variables":      uniqueVariables,
+	}
+
+	containedInPlaceStatements := stmts.getObsByContainedInPlaceTypeFirst
+	if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
+		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
+	}
+
+	selectedStatements := containedInPlaceStatements.variableSeek
+	minVariables := b.queryConfig.ContainedInPlaceEntityScanMinVariables
+	if minVariables > 0 && len(uniqueVariables) >= minVariables {
+		// The base-table plan performs one sparse seek per place-variable pair.
+		// For broad variable lists, scanning each entity1 index range once and
+		// applying variable_measured as a residual filter can be cheaper. This
+		// threshold is a heuristic because the builder does not know how many
+		// TimeSeries rows belong to each selected place.
+		selectedStatements = containedInPlaceStatements.entityScan
 	}
 
 	var sql string
 	switch strings.ToUpper(date) {
 	case "":
-		sql = stmts.getObsByContainedInPlaceBoth
+		sql = selectedStatements.all
 	case shared.LATEST:
-		sql = stmts.getObsByContainedInPlaceBothLatest
+		sql = selectedStatements.latest
 	default:
-		sql = stmts.getObsByContainedInPlaceBothWithDate
+		sql = selectedStatements.withDate
 		params["date"] = date
 	}
 
@@ -296,12 +325,22 @@ var constraintKeyRegex = regexp.MustCompile(`^[a-zA-Z0-9_]+$`)
 func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	observationPropertyToEntitySlot map[string]string,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
+	// TODO: Parse SDMX constraints in prepareSdmxObservationsQuery and pass the
+	// classified time and containment selections into this builder instead of
+	// revalidating the raw constraint map.
+	timeSelection, err := datacommons.ClassifyTimePeriod(constraints)
+	if err != nil {
+		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
+	}
 	containedInPlaceConstraints, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
-	compiled, err := compileSdmxConstraints(constraints, observationPropertyToEntitySlot)
+	seriesConstraints := maps.Clone(constraints)
+	delete(seriesConstraints, datacommons.ComponentTimePeriod)
+	compiled, err := compileSdmxConstraints(seriesConstraints, observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
@@ -310,6 +349,8 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 			containedInPlaceConstraints,
 			observationPropertyToEntitySlot,
 			compiled,
+			containedInPlaceToRemoteDCIDs,
+			timeSelection,
 		)
 		if err != nil {
 			return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
@@ -317,10 +358,25 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 		return statement, nil
 	}
 
-	return &spanner.Statement{
-		SQL:    b.statements.getSdmxObs + compiled.where,
-		Params: compiled.params,
-	}, nil
+	switch timeSelection.Mode {
+	case datacommons.TimePeriodExplicit:
+		params := maps.Clone(compiled.params)
+		params["time_periods"] = timeSelection.Dates
+		return &spanner.Statement{
+			SQL:    fmt.Sprintf(b.statements.getSdmxObsWithDates, compiled.where),
+			Params: params,
+		}, nil
+	case datacommons.TimePeriodLatest:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObsLatest + compiled.where,
+			Params: compiled.params,
+		}, nil
+	default:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObs + compiled.where,
+			Params: compiled.params,
+		}, nil
+	}
 }
 
 type compiledSdmxConstraints struct {
@@ -462,6 +518,8 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	constraints map[string]datacommons.ContainedInPlaceConstraint,
 	observationPropertyToEntitySlot map[string]string,
 	compiled *compiledSdmxConstraints,
+	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
+	timeSelection datacommons.TimePeriodSelection,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
@@ -484,20 +542,14 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		return resolved[i].entityColumn < resolved[j].entityColumn
 	})
 
-	type relationKey struct {
-		ancestor       string
-		childPlaceType string
-	}
-	relationToCTE := map[relationKey]string{}
+	relationToCTE := map[datacommons.ContainedInPlaceConstraint]string{}
 	cteDefinitions := []string{}
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
+	// TODO: Apply QueryConfig.ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
 	for i := range resolved {
-		key := relationKey{
-			ancestor:       resolved[i].relation.Ancestor,
-			childPlaceType: resolved[i].relation.ChildPlaceType,
-		}
+		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]
 		if !ok {
 			cteIndex := len(relationToCTE)
@@ -505,35 +557,78 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 			relationToCTE[key] = cteName
 			ancestorParam := fmt.Sprintf("containment_%d_ancestor", cteIndex)
 			childPlaceTypeParam := fmt.Sprintf("containment_%d_child_place_type", cteIndex)
-			params[ancestorParam] = key.ancestor
-			params[childPlaceTypeParam] = key.childPlaceType
-			cteDefinitions = append(cteDefinitions, fmt.Sprintf(
-				b.statements.sdmxContainedPlacesCTE,
-				cteName,
-				containedRule.GraphPredicate,
-				ancestorParam,
-				typeRule.GraphPredicate,
-				childPlaceTypeParam,
-			))
+			params[ancestorParam] = key.Ancestor
+			params[childPlaceTypeParam] = key.ChildPlaceType
+			remoteDCIDs := containedInPlaceToRemoteDCIDs[key]
+			if len(remoteDCIDs) > 0 {
+				remotePlacesParam := fmt.Sprintf("containment_%d_remote_places", cteIndex)
+				params[remotePlacesParam] = remoteDCIDs
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesWithRemoteCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+					remotePlacesParam,
+				))
+			} else {
+				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
+					b.statements.sdmxContainedPlacesCTE,
+					cteName,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+				))
+			}
 		}
 		resolved[i].cteName = cteName
 	}
 
+	// The anchor is the containment-constrained entity used to drive the
+	// contained_places-to-TimeSeries join. Its entity slot selects the access
+	// path; remaining containment constraints are applied as semi-join filters.
 	anchor := resolved[0]
 	index := "_BASE_TABLE"
-	statementHint := ""
+	// TODO: Move SDMX containment statement hints into the statement templates
+	// after the time-period query variants land, so every variant shares the same
+	// production and emulator hint policy.
+	// Production containment queries favor total scan and join throughput.
+	statementHints := []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"}
+	if b.tableConfig.spannerEmulatorCompatibility {
+		// The emulator cannot validate null-filtered index behavior. Apply its
+		// per-query bypass uniformly to this query family; production never
+		// receives this hint.
+		statementHints = []string{"spanner_emulator.disable_query_null_filtered_index_check=true"}
+	}
 	whereClauses := []string{}
+	// An entity3 anchor also requires entity2 to be non-null, which may overlap
+	// with a separate entity2 containment constraint.
+	addedNotNullFilters := map[string]struct{}{}
+	appendNotNullFilter := func(entityColumn string) {
+		if entityColumn != "entity2" && entityColumn != "entity3" {
+			return
+		}
+		if _, added := addedNotNullFilters[entityColumn]; added {
+			return
+		}
+		addedNotNullFilters[entityColumn] = struct{}{}
+		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IS NOT NULL", entityColumn))
+	}
 	switch anchor.entityColumn {
 	case "entity2":
 		index = b.tableConfig.TimeSeriesByEntity2Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity2")
 	case "entity3":
 		index = b.tableConfig.TimeSeriesByEntity3Index
-		statementHint = "@{spanner_emulator.disable_query_null_filtered_index_check=true}\n\t\t"
-		whereClauses = append(whereClauses, "t.entity3 IS NOT NULL", "t.entity2 IS NOT NULL")
+		appendNotNullFilter("entity3")
+		appendNotNullFilter("entity2")
 	}
+	// Make null rejection explicit for nullable entity filters instead of relying
+	// on Spanner to infer it from IN when considering null-filtered indexes.
 	for _, constraint := range resolved[1:] {
+		appendNotNullFilter(constraint.entityColumn)
 		whereClauses = append(whereClauses, fmt.Sprintf("t.%s IN (SELECT place_id FROM %s)", constraint.entityColumn, constraint.cteName))
 	}
 	where := ""
@@ -550,8 +645,17 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 		where,
 	)
 
+	statementHint := fmt.Sprintf("@{%s}\n\t\t", strings.Join(statementHints, ", "))
+	queryTemplate := b.statements.getSdmxContainedInPlace
+	switch timeSelection.Mode {
+	case datacommons.TimePeriodExplicit:
+		queryTemplate = b.statements.getSdmxContainedInPlaceWithDates
+		params["time_periods"] = timeSelection.Dates
+	case datacommons.TimePeriodLatest:
+		queryTemplate = b.statements.getSdmxContainedInPlaceLatest
+	}
 	sql := fmt.Sprintf(
-		b.statements.getSdmxContainedInPlace,
+		queryTemplate,
 		statementHint,
 		strings.Join(cteDefinitions, ",\n\t\t"),
 		seriesCTE,
@@ -561,6 +665,9 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 }
 
 func sdmxContainmentAnchorPriority(entityColumn string) int {
+	// Prefer entity1's base-table path. If entity1 is unavailable, prefer entity3
+	// over entity2 because TimeSeriesByEntity3 also stores entity2, allowing an
+	// entity2 filter before fetching base-table rows.
 	switch entityColumn {
 	case "entity1":
 		return 0
@@ -569,6 +676,48 @@ func sdmxContainmentAnchorPriority(entityColumn string) int {
 	default:
 		return 2
 	}
+}
+
+type sdmxAvailabilityDateJoinPlan int
+
+const (
+	sdmxAvailabilityDateJoinAutomatic sdmxAvailabilityDateJoinPlan = iota
+	sdmxAvailabilityDateJoinMergeBaseTable
+)
+
+type sdmxAvailabilityDateJoinContext struct {
+	seriesOrderedByFullKey bool
+	broadSeriesScan        bool
+}
+
+// selectSdmxAvailabilityDateJoinPlan chooses the physical join strategy at the
+// TimeSeries-to-Observation boundary. A merge join is safe only when both inputs
+// can be kept in (variable_measured, entity1, extra_entities_id, facet_id)
+// order. Direct queries can guarantee that by forcing both base tables. A
+// secondary index, containment anchor, candidate-series CTE, or local/remote
+// union must be treated as unordered until a production query plan proves that
+// it preserves the complete key order. Future containment builders should
+// construct this context after choosing their series access path and default to
+// automatic planning. Do not run a COUNT query to make this choice; if reliable
+// cardinality metadata becomes available, add it to this context instead.
+func selectSdmxAvailabilityDateJoinPlan(
+	joinContext sdmxAvailabilityDateJoinContext,
+) sdmxAvailabilityDateJoinPlan {
+	if joinContext.seriesOrderedByFullKey && joinContext.broadSeriesScan {
+		return sdmxAvailabilityDateJoinMergeBaseTable
+	}
+	return sdmxAvailabilityDateJoinAutomatic
+}
+
+func isBroadSdmxAvailabilitySeriesScan(
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
+) bool {
+	for componentID := range constraints {
+		if componentID != datacommons.ComponentVariableMeasured && componentID != datacommons.ComponentTimePeriod {
+			return false
+		}
+	}
+	return true
 }
 
 // GetSdmxAvailabilityQuery builds the SDMX availability lookup.
@@ -582,7 +731,13 @@ func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	if err := datacommons.ValidateAvailabilityConstraints(req.GetConstraints()); err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
 	}
-	compiled, err := compileSdmxConstraints(req.GetConstraints(), observationPropertyToEntitySlot)
+	timeSelection, err := datacommons.ClassifyTimePeriod(req.GetConstraints())
+	if err != nil {
+		return nil, status.Errorf(status.Code(err), "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
+	}
+	seriesConstraints := maps.Clone(req.GetConstraints())
+	delete(seriesConstraints, datacommons.ComponentTimePeriod)
+	compiled, err := compileSdmxConstraints(seriesConstraints, observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
 	}
@@ -591,9 +746,26 @@ func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 		return nil, err
 	}
 
+	queryTemplate := b.statements.getSdmxAvailability
+	params := compiled.params
+	if timeSelection.Mode == datacommons.TimePeriodExplicit {
+		queryTemplate = b.statements.getSdmxAvailabilityWithDates
+		joinPlan := selectSdmxAvailabilityDateJoinPlan(sdmxAvailabilityDateJoinContext{
+			// The merge variant forces both base tables, which share the full
+			// time-series key prefix required by the merge join.
+			seriesOrderedByFullKey: true,
+			broadSeriesScan:        isBroadSdmxAvailabilitySeriesScan(req.GetConstraints()),
+		})
+		if joinPlan == sdmxAvailabilityDateJoinMergeBaseTable {
+			queryTemplate = b.statements.getSdmxAvailabilityWithDatesMergeBaseTable
+		}
+		params = maps.Clone(compiled.params)
+		params["time_periods"] = timeSelection.Dates
+	}
+
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(b.statements.getSdmxAvailability, valueExpression, compiled.where),
-		Params: compiled.params,
+		SQL:    fmt.Sprintf(queryTemplate, valueExpression, compiled.where),
+		Params: params,
 	}, nil
 }
 

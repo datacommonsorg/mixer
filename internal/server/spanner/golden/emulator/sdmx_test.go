@@ -17,14 +17,21 @@ package emulator
 import (
 	"context"
 	"encoding/json"
+	"fmt"
+	"maps"
 	"path/filepath"
 	"slices"
 	"strings"
+	"sync"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	sdmxformat "github.com/datacommonsorg/mixer/internal/server/sdmx/format"
 	service "github.com/datacommonsorg/mixer/internal/server/sdmx/service"
 	mixerspanner "github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -33,6 +40,20 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
+
+type sdmxRemoteDataSource struct {
+	datasource.DataSource
+	nodeFunc func(context.Context, *pbv2.NodeRequest, int) (*pbv2.NodeResponse, error)
+}
+
+func (s *sdmxRemoteDataSource) Type() datasource.DataSourceType { return datasource.TypeRemote }
+func (s *sdmxRemoteDataSource) Id() string                      { return "sdmx-remote" }
+func (s *sdmxRemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	return s.nodeFunc(ctx, req, pageSize)
+}
+func (s *sdmxRemoteDataSource) SdmxData(context.Context, *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return &sdmxpb.SdmxDataResult{}, nil
+}
 
 func TestSDMXData(t *testing.T) {
 	sdmxService := newSDMXService(requireSuite(t).spannerClient)
@@ -127,6 +148,264 @@ func TestSDMXData(t *testing.T) {
 	}
 }
 
+func TestSDMXDataTimePeriods(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	paths := []struct {
+		name     string
+		selector string
+	}{
+		{
+			name:     "direct",
+			selector: "c[observationAbout]=country%2FUSA",
+		},
+		{
+			name:     "contained",
+			selector: "c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country",
+		},
+	}
+	timeSelections := []struct {
+		name   string
+		filter string
+		golden string
+	}{
+		{
+			name:   "all",
+			golden: "data_time_period_all.csv",
+		},
+		{
+			name:   "latest",
+			filter: "LATEST",
+			golden: "data_time_period_latest.csv",
+		},
+		{
+			name:   "one_date",
+			filter: "2020",
+			golden: "data_time_period_single_date.csv",
+		},
+		{
+			name:   "two_dates",
+			filter: "2020,2022",
+			golden: "data_time_period_two_dates.csv",
+		},
+		{
+			name:   "ten_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2020,2022,2023",
+			golden: "data_time_period_date_list.csv",
+		},
+		{
+			name:   "eleven_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2020,2022,2023",
+			golden: "data_time_period_date_list.csv",
+		},
+	}
+
+	for _, path := range paths {
+		for _, selection := range timeSelections {
+			t.Run(path.name+"/"+selection.name, func(t *testing.T) {
+				t.Parallel()
+				query := "c[variableMeasured]=Count_TimeSeries&" + path.selector
+				if selection.filter != "" {
+					query += "&c[TIME_PERIOD]=" + selection.filter
+				}
+				response, err := sdmxService.Data(context.Background(), emulatorDataRequest(query))
+				if err != nil {
+					t.Fatalf("Data() error = %v", err)
+				}
+				if response.ContentType != sdmxformat.CSVContentType {
+					t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
+				}
+				compareEmulatorCSVGolden(t, selection.golden, string(response.Body))
+			})
+		}
+	}
+}
+
+func TestSDMXDataUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
+	earthCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
+	northAmericaCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "northamerica", ChildPlaceType: "Country"}
+	europeCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "europe", ChildPlaceType: "Country"}
+	usaStates := datacommons.ContainedInPlaceConstraint{Ancestor: "country/USA", ChildPlaceType: "State"}
+	expansions := map[datacommons.ContainedInPlaceConstraint][]string{
+		earthCountries:        {"country/BLZ", "country/CAN", "country/FRA", "country/GBR", "country/IND", "country/MEX", "country/USA"},
+		northAmericaCountries: {"country/BLZ", "country/CAN", "country/MEX", "country/USA"},
+		europeCountries:       {"country/FRA", "country/GBR"},
+		usaStates:             {"geoId/06"},
+	}
+	tests := []struct {
+		name             string
+		query            string
+		golden           string
+		wantRelations    []datacommons.ContainedInPlaceConstraint
+		verifyLocalEmpty bool
+	}{
+		{
+			name: "remote-only entity1 containment",
+			query: "c[variableMeasured]=Count_Migration&" +
+				"c[destinationCountry.containedInPlace+]=Earth&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry]=country%2FUSA",
+			golden:           "data_two_entities.csv",
+			wantRelations:    []datacommons.ContainedInPlaceConstraint{earthCountries},
+			verifyLocalEmpty: true,
+		},
+		{
+			name: "remote-only entity2 containment",
+			query: "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN&" +
+				"c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			golden:        "data_two_entities.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{earthCountries},
+		},
+		{
+			name: "remote-only entity3 containment",
+			query: "c[variableMeasured]=Count_MigrationByObservationAbout&" +
+				"c[destinationCountry]=country%2FCAN&c[observationAbout]=country%2FMEX&" +
+				"c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			golden:        "data_explicit_observation_about.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{earthCountries},
+		},
+		{
+			name: "distinct destination and source relations",
+			query: "c[variableMeasured]=Count_Migration&" +
+				"c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			golden:        "data_two_entities.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{earthCountries, northAmericaCountries},
+		},
+		{
+			name: "shared relation across components and variables",
+			query: "c[variableMeasured]=Count_Migration,Count_Refugee&" +
+				"c[destinationCountry.containedInPlace+]=Earth&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			golden:        "data_compatible_stat_vars.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{earthCountries},
+		},
+		{
+			name: "mixed relations across three entity slots",
+			query: "c[variableMeasured]=Count_MigrationByObservationAbout&" +
+				"c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&" +
+				"c[observationAbout.containedInPlace+]=Earth&c[observationAbout.typeOf]=Country&" +
+				"c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			golden:        "data_explicit_observation_about.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{earthCountries, northAmericaCountries},
+		},
+		{
+			name: "state containment",
+			query: "c[variableMeasured]=Count_Household&" +
+				"c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf]=State",
+			golden:        "data_remote_containment_state.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{usaStates},
+		},
+		{
+			name: "local and remote containment union",
+			query: "c[variableMeasured]=Count_RemoteMigration&" +
+				"c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry]=country%2FUSA",
+			golden:        "data_remote_containment_union.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{northAmericaCountries},
+		},
+		{
+			name: "empty intersection of distinct relations",
+			query: "c[variableMeasured]=Count_Migration&" +
+				"c[destinationCountry.containedInPlace+]=europe&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden:        "data_empty.csv",
+			wantRelations: []datacommons.ContainedInPlaceConstraint{europeCountries, northAmericaCountries},
+		},
+	}
+
+	for _, testCase := range tests {
+		t.Run(testCase.name, func(t *testing.T) {
+			if testCase.verifyLocalEmpty {
+				response, err := newSDMXService(requireSuite(t).spannerClient).Data(
+					context.Background(), emulatorDataRequest(testCase.query),
+				)
+				if err != nil {
+					t.Fatalf("local Data() error = %v", err)
+				}
+				compareEmulatorCSVGolden(t, "data_empty.csv", string(response.Body))
+			}
+
+			var mu sync.Mutex
+			calls := map[datacommons.ContainedInPlaceConstraint]int{}
+			var requestErrors []string
+			remoteSource := &sdmxRemoteDataSource{
+				nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+					relation, err := matchSdmxRemoteExpansion(req, expansions)
+					if err != nil {
+						mu.Lock()
+						requestErrors = append(requestErrors, err.Error())
+						mu.Unlock()
+						return nil, err
+					}
+					mu.Lock()
+					calls[relation]++
+					mu.Unlock()
+					return sdmxRemoteNodeResponse(relation, expansions[relation]), nil
+				},
+			}
+			sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
+			response, err := sdmxService.Data(context.Background(), emulatorDataRequest(testCase.query))
+			if err != nil {
+				t.Fatalf("Data() error = %v", err)
+			}
+
+			mu.Lock()
+			gotCalls := maps.Clone(calls)
+			gotRequestErrors := slices.Clone(requestErrors)
+			mu.Unlock()
+			if len(gotRequestErrors) > 0 {
+				t.Fatalf("unexpected remote Node requests: %v", gotRequestErrors)
+			}
+			wantCalls := map[datacommons.ContainedInPlaceConstraint]int{}
+			for _, relation := range testCase.wantRelations {
+				wantCalls[relation] = 1
+			}
+			if diff := cmp.Diff(wantCalls, gotCalls); diff != "" {
+				t.Fatalf("Node() calls mismatch (-want +got):\n%s", diff)
+			}
+			if response.ContentType != sdmxformat.CSVContentType {
+				t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
+			}
+			compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
+		})
+	}
+}
+
+func matchSdmxRemoteExpansion(
+	req *pbv2.NodeRequest,
+	expansions map[datacommons.ContainedInPlaceConstraint][]string,
+) (datacommons.ContainedInPlaceConstraint, error) {
+	for relation := range expansions {
+		wantProperty := fmt.Sprintf("<-containedInPlace+{typeOf:%s}", relation.ChildPlaceType)
+		if slices.Equal(req.GetNodes(), []string{relation.Ancestor}) && req.GetProperty() == wantProperty {
+			return relation, nil
+		}
+	}
+	return datacommons.ContainedInPlaceConstraint{}, fmt.Errorf(
+		"Node() request = nodes %v, property %q; no expansion configured",
+		req.GetNodes(),
+		req.GetProperty(),
+	)
+}
+
+func sdmxRemoteNodeResponse(
+	relation datacommons.ContainedInPlaceConstraint,
+	dcids []string,
+) *pbv2.NodeResponse {
+	nodes := make([]*pb.EntityInfo, 0, len(dcids))
+	for _, dcid := range dcids {
+		nodes = append(nodes, &pb.EntityInfo{Dcid: dcid})
+	}
+	return &pbv2.NodeResponse{
+		Data: map[string]*pbv2.LinkedGraph{
+			relation.Ancestor: {
+				Arcs: map[string]*pbv2.Nodes{
+					"containedInPlace+": {Nodes: nodes},
+				},
+			},
+		},
+	}
+}
+
 func TestSDMXDataRequiresObservationProperty(t *testing.T) {
 	sdmxService := newSDMXService(requireSuite(t).spannerClient)
 	_, err := sdmxService.Data(context.Background(), emulatorDataRequest(
@@ -195,6 +474,12 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_variable_measured.json",
 		},
 		{
+			name:      "unmatched time period",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[TIME_PERIOD]=1999",
+			golden:    "availability_empty.json",
+		},
+		{
 			name:      "empty result",
 			component: "sourceCountry",
 			query:     "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",
@@ -213,6 +498,85 @@ func TestSDMXAvailability(t *testing.T) {
 			}
 			compareEmulatorJSONGolden(t, testCase.golden, string(response.Body))
 		})
+	}
+}
+
+func TestSDMXAvailabilityTimePeriods(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	paths := []struct {
+		name       string
+		constraint string
+	}{
+		{name: "broad"},
+		{
+			name:       "filtered",
+			constraint: "&c[unit]=Count",
+		},
+	}
+	timeSelections := []struct {
+		name     string
+		filter   string
+		golden   string
+		wantCode codes.Code
+	}{
+		{
+			name:   "all",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:     "latest",
+			filter:   "LATEST",
+			wantCode: codes.InvalidArgument,
+		},
+		{
+			name:   "one_date",
+			filter: "2020",
+			golden: "availability_time_period_single_date.json",
+		},
+		{
+			name:   "two_dates",
+			filter: "2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:   "ten_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+		{
+			name:   "eleven_dates",
+			filter: "2010,2011,2012,2013,2014,2015,2016,2017,2018,2020,2023",
+			golden: "availability_time_period_date_list.json",
+		},
+	}
+
+	for _, path := range paths {
+		for _, selection := range timeSelections {
+			t.Run(path.name+"/"+selection.name, func(t *testing.T) {
+				t.Parallel()
+				query := "c[variableMeasured]=Count_TimeSeries" + path.constraint
+				if selection.filter != "" {
+					query += "&c[TIME_PERIOD]=" + selection.filter
+				}
+				response, err := sdmxService.Availability(
+					context.Background(),
+					emulatorAvailabilityRequest("measurementMethod", query),
+				)
+				if status.Code(err) != selection.wantCode {
+					t.Fatalf("Availability() code = %v, want %v; err = %v", status.Code(err), selection.wantCode, err)
+				}
+				if selection.wantCode != codes.OK {
+					if !strings.Contains(status.Convert(err).Message(), "LATEST is not valid for availability") {
+						t.Fatalf("Availability() message = %q, want LATEST validation error", status.Convert(err).Message())
+					}
+					return
+				}
+				if response.ContentType != sdmxformat.StructureJSONType {
+					t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+				}
+				compareEmulatorJSONGolden(t, selection.golden, string(response.Body))
+			})
+		}
 	}
 }
 
@@ -258,6 +622,16 @@ func newSDMXService(client mixerspanner.SpannerClient) *service.Service {
 	spannerSource := mixerspanner.NewSpannerDataSource(client, nil)
 	sources := datasources.NewDataSources([]datasource.DataSource{spannerSource}, nil)
 	return service.New(dispatcher.NewDispatcher(nil, sources))
+}
+
+func newSDMXServiceWithRemote(
+	client mixerspanner.SpannerClient,
+	remoteSource datasource.DataSource,
+) *service.Service {
+	spannerSource := mixerspanner.NewSpannerDataSource(client, nil)
+	sources := datasources.NewDataSources([]datasource.DataSource{spannerSource, remoteSource}, remoteSource)
+	var relationProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteSource, 10000)
+	return service.New(dispatcher.NewDispatcher([]*dispatcher.Processor{&relationProcessor}, sources))
 }
 
 func emulatorDataRequest(query string) service.Request {

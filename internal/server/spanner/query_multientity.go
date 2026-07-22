@@ -26,6 +26,7 @@ import (
 
 	"cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
@@ -562,7 +563,11 @@ func prepareSdmxObservationsQuery(
 		return nil, err
 	}
 
-	statement, err := queryBuilder.GetSdmxObservationsQuery(constraints, preparedShape.observationPropertyToEntitySlot)
+	statement, err := queryBuilder.GetSdmxObservationsQuery(
+		constraints,
+		preparedShape.observationPropertyToEntitySlot,
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDsFromContext(ctx),
+	)
 	if err != nil {
 		return nil, err
 	}
@@ -670,7 +675,7 @@ func validateSdmxAvailabilityConstraintComponents(
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	shape *sdmxpb.SdmxDataShape,
 ) error {
-	return validateSdmxConstraintComponents(constraints, sdmxFilterableDimensions(shape), "dimensions")
+	return validateSdmxConstraintComponents(constraints, sdmxFilterableAvailabilityConstraints(shape), "dimensions")
 }
 
 func validateSdmxConstraintComponents(
@@ -732,8 +737,15 @@ func sdmxFilterableDimensions(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 	return filterableDimensions
 }
 
+func sdmxFilterableAvailabilityConstraints(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
+	filterableComponents := sdmxFilterableDimensions(shape)
+	filterableComponents[datacommons.ComponentTimePeriod] = struct{}{}
+	return filterableComponents
+}
+
 func sdmxFilterableDataComponents(shape *sdmxpb.SdmxDataShape) map[string]struct{} {
 	filterableComponents := sdmxFilterableDimensions(shape)
+	filterableComponents[datacommons.ComponentTimePeriod] = struct{}{}
 	for componentID := range datacommons.FilterableAttributes {
 		filterableComponents[componentID] = struct{}{}
 	}
@@ -789,6 +801,9 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 ) (*sdmxpb.SdmxAvailabilityResult, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX availability request cannot be nil")
+	}
+	if req.GetComponentId() == datacommons.ComponentTimePeriod {
+		return nil, status.Error(codes.Unimplemented, "SDMX TIME_PERIOD availability is not implemented yet")
 	}
 	if req.Constraints == nil {
 		return nil, status.Error(codes.InvalidArgument, "SDMX availability request constraints cannot be nil")

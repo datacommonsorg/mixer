@@ -55,7 +55,6 @@ type SpannerClient interface {
 	GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error)
 	VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error)
-	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
 	FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error)
 	GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
 	GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
@@ -71,13 +70,14 @@ const (
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
-	client    *spanner.Client
-	timestamp atomic.Int64
-	ticker    Ticker
-	stopCh    chan struct{}
-	startOnce sync.Once
-	stopOnce  sync.Once
-	wg        sync.WaitGroup
+	client      *spanner.Client
+	queryConfig QueryConfig
+	timestamp   atomic.Int64
+	ticker      Ticker
+	stopCh      chan struct{}
+	startOnce   sync.Once
+	stopOnce    sync.Once
+	wg          sync.WaitGroup
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
@@ -100,6 +100,8 @@ type SpannerClientOptions struct {
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	UseSpannerKeyValueStore      bool
+	QueryConfig                  QueryConfig
+	SpannerEmulatorCompatibility bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
@@ -109,6 +111,7 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 	}
 	sc := &spannerDatabaseClient{
 		client:                       client,
+		queryConfig:                  opts.QueryConfig,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
 		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
@@ -138,17 +141,23 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Sp
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client, opts)
+	rawClient, err := newSpannerDatabaseClient(client, opts)
+	if err != nil {
+		client.Close()
+		return nil, err
+	}
+	return rawClient, nil
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
 type TableConfig struct {
-	TimeSeriesTable             string
-	ObservationTable            string
-	TimeSeriesByEntity1Index    string
-	TimeSeriesByEntity2Index    string
-	TimeSeriesByEntity3Index    string
-	TimeSeriesByProvenanceIndex string
+	TimeSeriesTable              string
+	ObservationTable             string
+	TimeSeriesByEntity1Index     string
+	TimeSeriesByEntity2Index     string
+	TimeSeriesByEntity3Index     string
+	TimeSeriesByProvenanceIndex  string
+	spannerEmulatorCompatibility bool
 }
 
 // DefaultTableConfig returns the default suffix-less table and index configuration for multi-entity Spanner tables.
@@ -195,6 +204,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	if cfg.TimeSeriesByProvenanceIndex != nil {
 		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
+	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 
 	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
 }

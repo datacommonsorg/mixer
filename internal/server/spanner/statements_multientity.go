@@ -27,13 +27,19 @@ type MultiEntityStatements struct {
 	getObsEntitiesOnly                             string
 	getObsEntitiesOnlyWithDate                     string
 	getObsEntitiesOnlyLatest                       string
-	getObsByContainedInPlaceBoth                   string
-	getObsByContainedInPlaceBothWithDate           string
-	getObsByContainedInPlaceBothLatest             string
+	getObsByContainedInPlaceTypeFirst              containedInPlaceAccessPathStatements
+	getObsByContainedInPlaceAncestorFirst          containedInPlaceAccessPathStatements
 	getSdmxObs                                     string
+	getSdmxObsWithDates                            string
+	getSdmxObsLatest                               string
 	getSdmxAvailability                            string
+	getSdmxAvailabilityWithDates                   string
+	getSdmxAvailabilityWithDatesMergeBaseTable     string
 	getSdmxContainedInPlace                        string
+	getSdmxContainedInPlaceWithDates               string
+	getSdmxContainedInPlaceLatest                  string
 	sdmxContainedPlacesCTE                         string
+	sdmxContainedPlacesWithRemoteCTE               string
 	sdmxContainedSeriesCTE                         string
 	getStatVarsByEntityBoth                        string
 	getStatVarsByEntityVarsOnly                    string
@@ -55,11 +61,39 @@ type MultiEntityStatements struct {
 	filterEntity3Exists                            string
 }
 
+type containedInPlaceStatements struct {
+	all      string
+	withDate string
+	latest   string
+}
+
+type containedInPlaceAccessPathStatements struct {
+	variableSeek containedInPlaceStatements
+	entityScan   containedInPlaceStatements
+}
+
 // NewMultiEntityStatements builds multi-entity SQL templates from table configuration.
 func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	if err := validateMultiEntityTableConfig(cfg); err != nil {
 		return nil, err
 	}
+	sdmxDateStatementHint := "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n\t\t"
+	if cfg.spannerEmulatorCompatibility {
+		sdmxDateStatementHint = "\t\t"
+	}
+	buildSdmxAvailabilityWithDates := func(timeSeriesTable, observationTable, joinHint string) string {
+		return fmt.Sprintf(`%[1]sSELECT DISTINCT %%[1]s AS value
+		FROM %[2]s t
+		JOIN%[4]s %[3]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE (%%[2]s)
+			AND o.date IN UNNEST(@time_periods)
+			AND %%[1]s IS NOT NULL
+			AND %%[1]s != ''
+		ORDER BY value`, sdmxDateStatementHint, timeSeriesTable, observationTable, joinHint) + "\n"
+	}
+	typeFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, typeFirstPlacesCTE)
+	ancestorFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, ancestorFirstPlacesCTE)
 
 	return &MultiEntityStatements{
 		// Retrieve observations where both variables and entities are present (full series)
@@ -230,147 +264,8 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM %[2]s t
 		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
-		// Join all dates before aggregation to optimize total result throughput.
-		getObsByContainedInPlaceBoth: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
-		),
-		series AS (
-			SELECT
-				t.variable_measured,
-				t.entity1,
-				t.extra_entities_id,
-				t.facet_id,
-				t.provenance,
-				t.facet
-			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN UNNEST(@variables)
-				AND t.entity1 = p.place_id
-		)
-		SELECT
-			t.variable_measured,
-			t.entity1 AS observation_about,
-			t.facet_id,
-			ANY_VALUE(t.provenance) AS provenance,
-			ARRAY_AGG(
-				STRUCT(
-					o.date AS date,
-					o.value AS str_value
-				)
-			) AS dates_and_values,
-			ANY_VALUE(t.facet) AS facets
-		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
-		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		GROUP BY
-			t.variable_measured,
-			t.entity1,
-			t.extra_entities_id,
-			t.facet_id`, cfg.ObservationTable, cfg.TimeSeriesTable),
-
-		// Join the exact-date query to Observation so TimeSeries without the
-		// requested date are discarded in Spanner.
-		getObsByContainedInPlaceBothWithDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
-		),
-		series AS (
-			SELECT
-				t.variable_measured,
-				t.entity1,
-				t.extra_entities_id,
-				t.facet_id,
-				t.provenance,
-				t.facet
-			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN UNNEST(@variables)
-				AND t.entity1 = p.place_id
-		)
-		SELECT
-			t.variable_measured,
-			t.entity1 AS observation_about,
-			t.facet_id,
-			t.provenance,
-			ARRAY(
-				SELECT AS STRUCT
-					o.date AS date,
-					o.value AS str_value
-			) AS dates_and_values,
-			t.facet AS facets
-		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
-		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable),
-
-		// Retrieve the latest observation with a correlated full-key lookup so the
-		// date-descending child scan can stop after one row.
-		getObsByContainedInPlaceBothLatest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH places AS (
-			SELECT DISTINCT e.subject_id AS place_id
-			FROM Edge e
-			JOIN Edge e2 ON e.subject_id = e2.subject_id
-			WHERE e.predicate = 'linkedContainedInPlace'
-				AND e.object_id = @ancestor
-				AND e2.predicate = 'typeOf'
-				AND e2.object_id = @childPlaceType
-		),
-		series AS (
-			SELECT
-				t.variable_measured,
-				t.entity1,
-				t.extra_entities_id,
-				t.facet_id,
-				t.provenance,
-				t.facet
-			FROM places p
-			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s@{FORCE_INDEX=_BASE_TABLE} t
-				ON t.variable_measured IN UNNEST(@variables)
-				AND t.entity1 = p.place_id
-		)
-		SELECT
-			t.variable_measured,
-			t.entity1 AS observation_about,
-			t.facet_id,
-			t.provenance,
-			COALESCE(
-				(
-					SELECT ARRAY(
-						SELECT AS STRUCT
-							o.date AS date,
-							o.value AS str_value
-						FROM %[1]s o
-						WHERE o.variable_measured = t.variable_measured
-							AND o.entity1 = t.entity1
-							AND o.extra_entities_id = t.extra_entities_id
-							AND o.facet_id = t.facet_id
-						ORDER BY o.date DESC
-						LIMIT 1
-					)
-				),
-				ARRAY(
-					SELECT AS STRUCT
-						CAST(NULL AS STRING) AS date,
-						CAST(NULL AS STRING) AS str_value
-					FROM UNNEST([1])
-					WHERE FALSE
-				)
-			) AS dates_and_values,
-			t.facet AS facets
-		FROM series t`, cfg.ObservationTable, cfg.TimeSeriesTable),
+		getObsByContainedInPlaceTypeFirst:     typeFirstContainedInPlace,
+		getObsByContainedInPlaceAncestorFirst: ancestorFirstContainedInPlace,
 		getSdmxObs: fmt.Sprintf("\t\tSELECT \n"+`			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
@@ -391,6 +286,66 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM %[2]s t
 		WHERE `, cfg.ObservationTable, cfg.TimeSeriesTable),
 
+		getSdmxObsWithDates: fmt.Sprintf(`%[3]sWITH series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet,
+				t.entities
+			FROM %[2]s t
+			WHERE %%s
+		)
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			COALESCE(
+				ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets,
+			ANY_VALUE(t.entities) AS entities
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE o.date IN UNNEST(@time_periods)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable, cfg.TimeSeriesTable, sdmxDateStatementHint),
+
+		getSdmxObsLatest: fmt.Sprintf(`		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			COALESCE(
+				(
+					SELECT ARRAY(
+						SELECT AS STRUCT
+							o.date AS date,
+							o.value AS str_value
+						FROM %[1]s o
+						WHERE o.variable_measured = t.variable_measured
+							AND o.entity1 = t.entity1
+							AND o.extra_entities_id = t.extra_entities_id
+							AND o.facet_id = t.facet_id
+						ORDER BY o.date DESC
+						LIMIT 1
+					)
+				),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			t.facet AS facets,
+			t.entities
+		FROM %[2]s t
+		WHERE `, cfg.ObservationTable, cfg.TimeSeriesTable),
+
 		getSdmxAvailability: fmt.Sprintf(`		SELECT DISTINCT %%[1]s AS value
 		FROM %[1]s t
 		WHERE (%%[2]s)
@@ -398,14 +353,42 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			AND %%[1]s != ''
 		ORDER BY value`, cfg.TimeSeriesTable) + "\n",
 
+		getSdmxAvailabilityWithDates: buildSdmxAvailabilityWithDates(
+			cfg.TimeSeriesTable,
+			cfg.ObservationTable,
+			"",
+		),
+
+		getSdmxAvailabilityWithDatesMergeBaseTable: buildSdmxAvailabilityWithDates(
+			cfg.TimeSeriesTable+"@{FORCE_INDEX=_BASE_TABLE}",
+			cfg.ObservationTable+"@{FORCE_INDEX=_BASE_TABLE}",
+			"@{JOIN_METHOD=MERGE_JOIN}",
+		),
+
+		// Force typeOf edges as the left input so Spanner filters by place type
+		// before containment. A broad containment lookup can return every place
+		// under an ancestor and usually produces a larger intermediate result.
 		sdmxContainedPlacesCTE: `%[1]s AS (
 			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge contained
-			JOIN Edge typed ON contained.subject_id = typed.subject_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
 			WHERE contained.predicate = '%[2]s'
 				AND contained.object_id = @%[3]s
 				AND typed.predicate = '%[4]s'
 				AND typed.object_id = @%[5]s
+		)`,
+
+		sdmxContainedPlacesWithRemoteCTE: `%[1]s AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE contained.predicate = '%[2]s'
+				AND contained.object_id = @%[3]s
+				AND typed.predicate = '%[4]s'
+				AND typed.object_id = @%[5]s
+			UNION DISTINCT
+			SELECT place_id
+			FROM UNNEST(@%[6]s) AS place_id
 		)`,
 
 		sdmxContainedSeriesCTE: fmt.Sprintf(`series AS (
@@ -418,7 +401,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 				t.facet,
 				t.entities
 			FROM %%[1]s anchor
-			JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s@{FORCE_INDEX=%%[2]s} t
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %s@{FORCE_INDEX=%%[2]s} t
 				ON t.%%[3]s = anchor.place_id
 				AND %%[4]s%%[5]s
 		)`, cfg.TimeSeriesTable),
@@ -430,17 +413,71 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			t.entity1 AS observation_about,
 			t.facet_id,
 			ANY_VALUE(t.provenance) AS provenance,
-			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value)) AS dates_and_values,
+			COALESCE(
+				ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value)),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
 			ANY_VALUE(t.facet) AS facets,
 			ANY_VALUE(t.entities) AS entities
 		FROM series t
-		JOIN@{JOIN_METHOD=APPLY_JOIN, FORCE_JOIN_ORDER=TRUE} %s o
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
 		GROUP BY
 			t.variable_measured,
 			t.entity1,
 			t.extra_entities_id,
 			t.facet_id`, cfg.ObservationTable),
+
+		getSdmxContainedInPlaceWithDates: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+		%%[3]s
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			COALESCE(
+				ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets,
+			ANY_VALUE(t.entities) AS entities
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE o.date IN UNNEST(@time_periods)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable),
+
+		getSdmxContainedInPlaceLatest: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+		%%[3]s
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			COALESCE(
+				(
+					SELECT ARRAY(
+						SELECT AS STRUCT
+							o.date AS date,
+							o.value AS str_value
+						FROM %s o
+						WHERE o.variable_measured = t.variable_measured
+							AND o.entity1 = t.entity1
+							AND o.extra_entities_id = t.extra_entities_id
+							AND o.facet_id = t.facet_id
+						ORDER BY o.date DESC
+						LIMIT 1
+					)
+				),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
+			t.facet AS facets,
+			t.entities
+		FROM series t`, cfg.ObservationTable),
 
 		// Check existence when both variables and entities are specified
 		getStatVarsByEntityBoth: fmt.Sprintf(`		WITH
@@ -739,6 +776,166 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
 	}, nil
+}
+
+const typeFirstPlacesCTE = `places AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE typed.predicate = 'typeOf'
+				AND typed.object_id = @childPlaceType
+				AND contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = @ancestor
+		)`
+
+const ancestorFirstPlacesCTE = `places AS (
+			SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge contained
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge typed ON typed.subject_id = contained.subject_id
+			WHERE contained.predicate = 'linkedContainedInPlace'
+				AND contained.object_id = @ancestor
+				AND typed.predicate = 'typeOf'
+				AND typed.object_id = @childPlaceType
+		)`
+
+func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) containedInPlaceAccessPathStatements {
+	return containedInPlaceAccessPathStatements{
+		variableSeek: newContainedInPlaceStatements(
+			cfg,
+			placesCTE,
+			fmt.Sprintf("%s@{FORCE_INDEX=_BASE_TABLE}", cfg.TimeSeriesTable),
+		),
+		// Limit the seekable index prefix to entity1 so variable_measured is
+		// evaluated as a residual filter instead of producing one sparse range
+		// lookup for every place-variable pair.
+		entityScan: newContainedInPlaceStatements(
+			cfg,
+			placesCTE,
+			fmt.Sprintf("%s@{FORCE_INDEX=%s, SEEKABLE_KEY_SIZE=1}", cfg.TimeSeriesTable, cfg.TimeSeriesByEntity1Index),
+		),
+	}
+}
+
+func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource string) containedInPlaceStatements {
+	return containedInPlaceStatements{
+		// Join all dates before aggregation to optimize total result throughput.
+		all: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH %[3]s,
+		series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet
+			FROM places p
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
+				ON t.variable_measured IN UNNEST(@variables)
+				AND t.entity1 = p.place_id
+		)
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			ANY_VALUE(t.provenance) AS provenance,
+			ARRAY_AGG(
+				STRUCT(
+					o.date AS date,
+					o.value AS str_value
+				)
+			) AS dates_and_values,
+			ANY_VALUE(t.facet) AS facets
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		GROUP BY
+			t.variable_measured,
+			t.entity1,
+			t.extra_entities_id,
+			t.facet_id`, cfg.ObservationTable, timeSeriesSource, placesCTE),
+
+		// Join to Observation so TimeSeries without the requested date are
+		// discarded in Spanner.
+		withDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH %[3]s,
+		series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet
+			FROM places p
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
+				ON t.variable_measured IN UNNEST(@variables)
+				AND t.entity1 = p.place_id
+		)
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			ARRAY(
+				SELECT AS STRUCT
+					o.date AS date,
+					o.value AS str_value
+			) AS dates_and_values,
+			t.facet AS facets
+		FROM series t
+		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
+		USING (variable_measured, entity1, extra_entities_id, facet_id)
+		WHERE o.date = @date`, cfg.ObservationTable, timeSeriesSource, placesCTE),
+
+		// Use a correlated full-key lookup so the date-descending child scan can
+		// stop after one row.
+		latest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
+		WITH %[3]s,
+		series AS (
+			SELECT
+				t.variable_measured,
+				t.entity1,
+				t.extra_entities_id,
+				t.facet_id,
+				t.provenance,
+				t.facet
+			FROM places p
+			JOIN@{JOIN_METHOD=APPLY_JOIN} %[2]s t
+				ON t.variable_measured IN UNNEST(@variables)
+				AND t.entity1 = p.place_id
+		)
+		SELECT
+			t.variable_measured,
+			t.entity1 AS observation_about,
+			t.facet_id,
+			t.provenance,
+			COALESCE(
+				(
+					SELECT ARRAY(
+						SELECT AS STRUCT
+							o.date AS date,
+							o.value AS str_value
+						FROM %[1]s o
+						WHERE o.variable_measured = t.variable_measured
+							AND o.entity1 = t.entity1
+							AND o.extra_entities_id = t.extra_entities_id
+							AND o.facet_id = t.facet_id
+						ORDER BY o.date DESC
+						LIMIT 1
+					)
+				),
+				ARRAY(
+					SELECT AS STRUCT
+						CAST(NULL AS STRING) AS date,
+						CAST(NULL AS STRING) AS str_value
+					FROM UNNEST([1])
+					WHERE FALSE
+				)
+			) AS dates_and_values,
+			t.facet AS facets
+		FROM series t`, cfg.ObservationTable, timeSeriesSource, placesCTE),
+	}
 }
 
 func validateMultiEntityTableConfig(cfg TableConfig) error {
