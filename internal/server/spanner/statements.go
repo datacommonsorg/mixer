@@ -191,7 +191,7 @@ OR CreationTimestamp > (
 			e.predicate = @predicate]->{1,%[2]d}(n:Node)%[3]s`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)<-[%[4]se:Edge%[2]s]-(n:Node)%[3]s`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)%[3]s`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
 			m.subject_id %[1]s)<-[e:Edge
@@ -203,7 +203,7 @@ OR CreationTimestamp > (
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n%[4]s)-[%[2]sfilter%[1]d:Edge
+	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `

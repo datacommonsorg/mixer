@@ -24,7 +24,6 @@ import (
 	cloudSpanner "cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
-	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
@@ -53,7 +52,6 @@ func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 				c.arc,
 				datasources.DefaultPageSize,
 				c.offset,
-				spanner.QueryConfig{},
 			), nil
 		})
 	}
@@ -71,7 +69,6 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 				c.arc,
 				datasources.DefaultPageSize,
 				c.offset,
-				spanner.QueryConfig{},
 			), nil
 		})
 	}
@@ -102,14 +99,9 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, tc.golden+".sql", func(ctx context.Context) (interface{}, error) {
-				return spanner.GetNodeEdgesByIDQuery(
+				return spanner.GetNodeContainedInPlaceEdgesByIDQuery(
 					[]string{"country/USA", "country/IND"},
-					&v2.Arc{
-						SingleProp: "linkedContainedInPlace",
-						Filter: map[string][]string{
-							"typeOf": {tc.placeType},
-						},
-					},
+					tc.placeType,
 					datasources.DefaultPageSize,
 					0,
 					tc.queryConfig,

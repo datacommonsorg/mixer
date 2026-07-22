@@ -5,7 +5,7 @@
 		@{FORCE_JOIN_ORDER=TRUE}
 		(m:Node
 		WHERE
-			m.subject_id IN ('country/USA','country/IND'))<-[@{FORCE_INDEX=_BASE_TABLE}e:Edge
+			m.subject_id IN ('country/USA','country/IND'))<-[e:Edge
 		WHERE
 			e.predicate = 'linkedContainedInPlace']-(n:Node)
 		RETURN

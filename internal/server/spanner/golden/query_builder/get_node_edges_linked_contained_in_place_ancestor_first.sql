@@ -1,10 +1,10 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN ('country/USA','country/IND'))<-[@{FORCE_INDEX=InEdge}e:Edge
+			m.subject_id IN ('country/USA','country/IND'))<-[e:Edge
 		WHERE
 			e.predicate = 'linkedContainedInPlace']-(n:Node),
 		@{FORCE_JOIN_ORDER=TRUE}
-		(n)-[@{FORCE_INDEX=_BASE_TABLE}filter0:Edge
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
 			AND filter0.object_id IN ('Place','Place:6UY9zPBUGpd4WJaRVD/Wkkl1nV3mqXzVfWQgw+XZK6o=')]->

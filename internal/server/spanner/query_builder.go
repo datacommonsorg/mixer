@@ -129,17 +129,12 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	}
 }
 
-func GetNodeEdgesByIDQuery(
-	ids []string,
-	arc *v2.Arc,
-	pageSize, offset int,
-	queryConfig QueryConfig,
-) *spanner.Statement {
+// GetNodeEdgesByIDQuery builds a generic Node edge query without access-path optimizations.
+func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
-	containedInPlaceAccessPath, optimizeContainedInPlace := nodeContainedInPlaceAccessPath(arc, queryConfig)
 
 	// Attach predicates.
 	filterPredicate := ""
@@ -187,15 +182,8 @@ func GetNodeEdgesByIDQuery(
 			indexHint := ""
 			if len(filterVal) > 0 {
 				indexHint = "@{FORCE_INDEX=InEdge}"
-				if optimizeContainedInPlace && containedInPlaceAccessPath == containedInPlaceAncestorFirst {
-					indexHint = "@{FORCE_INDEX=_BASE_TABLE}"
-				}
 			}
-			nodeLabel := ""
-			if optimizeContainedInPlace && containedInPlaceAccessPath == containedInPlaceTypeFirst {
-				nodeLabel = ":Node"
-			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter, nodeLabel))
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
 			i++
 		}
 	}
@@ -255,21 +243,10 @@ func GetNodeEdgesByIDQuery(
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			edgeIndexHint := ""
-			if optimizeContainedInPlace {
-				edgeIndexHint = "@{FORCE_INDEX=_BASE_TABLE}"
-				if containedInPlaceAccessPath == containedInPlaceAncestorFirst {
-					edgeIndexHint = "@{FORCE_INDEX=InEdge}"
-				}
-			}
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr, edgeIndexHint)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	}
-	if optimizeContainedInPlace && containedInPlaceAccessPath == containedInPlaceTypeFirst {
-		subqueries = append(subqueries, subquery)
-	} else {
-		subqueries = append([]string{subquery}, subqueries...)
-	}
+	subqueries = append([]string{subquery}, subqueries...)
 
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
@@ -286,43 +263,13 @@ func GetNodeEdgesByIDQuery(
 		}
 	}
 
-	separator := ",\n\t\t"
-	if optimizeContainedInPlace {
-		separator += "@{FORCE_JOIN_ORDER=TRUE}\n\t\t"
-	}
-	template := prefix + strings.Join(subqueries, separator) + returnEdges
-
-	// Apply pagination.
-	if offset > 0 {
-		template += fmt.Sprintf(statements.applyOffset, offset)
-	}
-	// Request pageSize+1 rows to determine whether to generate nextToken.
-	template += fmt.Sprintf(statements.applyLimit, pageSize+1)
+	template := prefix + strings.Join(subqueries, ",\n\t\t") + returnEdges
+	template = applyNodeQueryPagination(template, pageSize, offset)
 
 	return &spanner.Statement{
 		SQL:    template,
 		Params: params,
 	}
-}
-
-func nodeContainedInPlaceAccessPath(
-	arc *v2.Arc,
-	config QueryConfig,
-) (containedInPlaceAccessPath, bool) {
-	if arc == nil ||
-		arc.Out ||
-		arc.SingleProp != "linkedContainedInPlace" ||
-		arc.Decorator != "" ||
-		len(arc.BracketProps) > 0 ||
-		len(arc.BracketFilters) > 0 ||
-		len(arc.Filter) != 1 {
-		return containedInPlaceTypeFirst, false
-	}
-	typeValues, ok := arc.Filter["typeOf"]
-	if !ok || len(typeValues) != 1 || strings.TrimSpace(typeValues[0]) == "" {
-		return containedInPlaceTypeFirst, false
-	}
-	return config.containedInPlaceAccessPath(typeValues[0]), true
 }
 
 func GetObservationsQuery(variables []string, entities []string) *spanner.Statement {
