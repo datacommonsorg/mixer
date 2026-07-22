@@ -22,6 +22,7 @@ import (
 
 	cloudSpanner "cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/grpc/codes"
@@ -863,66 +864,71 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
-	if err != nil {
-		t.Fatal(err)
-	}
+	t.Parallel()
+	earthCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
 
 	for _, tc := range []struct {
-		name        string
-		timePeriods []string
-		contains    []string
-		excludes    []string
+		name                            string
+		componentID                     string
+		constraints                     map[string]*sdmxpb.SdmxComponentConstraint
+		observationPropertyToEntitySlot map[string]string
+		containedInPlaceToRemoteDCIDs   map[datacommons.ContainedInPlaceConstraint][]string
+		golden                          string
 	}{
 		{
-			name: "all dates",
-			contains: []string{
-				"WITH contained_places_0 AS",
-				"t.entity1 AS value",
-				"SELECT DISTINCT t.value AS value",
-			},
-			excludes: []string{"JOIN Observation o", "@time_periods"},
-		},
-		{
-			name:        "explicit dates use automatic observation join",
-			timePeriods: []string{"2022", "2020"},
-			contains: []string{
-				"t.variable_measured",
-				"JOIN Observation o",
-				"WHERE o.date IN UNNEST(@time_periods)",
-			},
-			excludes: []string{"JOIN@{JOIN_METHOD=MERGE_JOIN} Observation", "MERGE_JOIN"},
-		},
-	} {
-		t.Run(tc.name, func(t *testing.T) {
-			constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+			name:        "entity1 all dates",
+			componentID: "observationAbout",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured": sdmxComponentConstraint("var1"),
 				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
-			}
-			if len(tc.timePeriods) > 0 {
-				constraints["TIME_PERIOD"] = sdmxComponentConstraint(tc.timePeriods...)
-			}
-			statement, err := builder.GetSdmxAvailabilityQuery(
-				&sdmxpb.SdmxAvailabilityQuery{
-					ComponentId: "observationAbout",
-					Constraints: constraints,
-				},
-				map[string]string{"observationAbout": "entity1"},
-				nil,
-			)
-			if err != nil {
-				t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
-			}
-			for _, substring := range tc.contains {
-				if !strings.Contains(statement.SQL, substring) {
-					t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+			},
+			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+			golden:                          "get_sdmx_availability_contained_entity1.sql",
+		},
+		{
+			name:        "entity1 explicit time periods",
+			componentID: "observationAbout",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2022", "2020"),
+			},
+			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+			golden:                          "get_sdmx_availability_contained_entity1_explicit_time_periods.sql",
+		},
+		{
+			name:        "remote entity2",
+			componentID: "destinationCountry",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"sourceCountry":    sdmxContainedInPlaceConstraint(earthCountries.Ancestor, earthCountries.ChildPlaceType),
+			},
+			observationPropertyToEntitySlot: map[string]string{
+				"destinationCountry": "entity1",
+				"sourceCountry":      "entity2",
+			},
+			containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+				earthCountries: {"country/USA"},
+			},
+			golden: "get_sdmx_availability_contained_entity2_remote.sql",
+		},
+	} {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, tc.golden, func(ctx context.Context) (interface{}, error) {
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+				if err != nil {
+					return nil, err
 				}
-			}
-			for _, substring := range tc.excludes {
-				if strings.Contains(statement.SQL, substring) {
-					t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
-				}
-			}
+				return builder.GetSdmxAvailabilityQuery(
+					&sdmxpb.SdmxAvailabilityQuery{
+						ComponentId: tc.componentID,
+						Constraints: tc.constraints,
+					},
+					tc.observationPropertyToEntitySlot,
+					tc.containedInPlaceToRemoteDCIDs,
+				)
+			})
 		})
 	}
 }

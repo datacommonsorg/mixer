@@ -483,24 +483,6 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_empty.json",
 		},
 		{
-			name:      "contained observation about",
-			component: "observationAbout",
-			query:     "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country",
-			golden:    "availability_fallback_observation_about.json",
-		},
-		{
-			name:      "contained observation about with time period",
-			component: "measurementMethod",
-			query:     "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[TIME_PERIOD]=2020",
-			golden:    "availability_time_period_single_date.json",
-		},
-		{
-			name:      "empty containment result",
-			component: "destinationCountry",
-			query:     "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
-			golden:    "availability_empty.json",
-		},
-		{
 			name:      "empty result",
 			component: "sourceCountry",
 			query:     "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",
@@ -511,6 +493,54 @@ func TestSDMXAvailability(t *testing.T) {
 		t.Run(testCase.name, func(t *testing.T) {
 			t.Parallel()
 			response, err := sdmxService.Availability(context.Background(), emulatorAvailabilityRequest(testCase.component, testCase.query))
+			if err != nil {
+				t.Fatalf("Availability() error = %v", err)
+			}
+			if response.ContentType != sdmxformat.StructureJSONType {
+				t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+			}
+			compareEmulatorJSONGolden(t, testCase.golden, string(response.Body))
+		})
+	}
+}
+
+func TestSDMXAvailabilityContainedInPlace(t *testing.T) {
+	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	baseQuery := "c[variableMeasured]=Count_Migration,Count_Refugee&" +
+		"c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country"
+	tests := []struct {
+		name      string
+		component string
+		query     string
+		golden    string
+	}{
+		{
+			name:      "nonempty entity2",
+			component: "destinationCountry",
+			query:     baseQuery,
+			golden:    "availability_contained_source_country.json",
+		},
+		{
+			name:      "nonempty entity2 with time periods",
+			component: "destinationCountry",
+			query:     baseQuery + "&c[TIME_PERIOD]=2023,2024",
+			golden:    "availability_contained_source_country_with_time_periods.json",
+		},
+		{
+			name:      "empty entity2",
+			component: "destinationCountry",
+			query:     "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
+			golden:    "availability_contained_empty.json",
+		},
+	}
+	for _, testCase := range tests {
+		testCase := testCase
+		t.Run(testCase.name, func(t *testing.T) {
+			t.Parallel()
+			response, err := sdmxService.Availability(
+				context.Background(),
+				emulatorAvailabilityRequest(testCase.component, testCase.query),
+			)
 			if err != nil {
 				t.Fatalf("Availability() error = %v", err)
 			}
@@ -619,8 +649,8 @@ func TestSDMXAvailabilityUsesRemoteContainedInPlaceWithLocalObservations(t *test
 	}
 	sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
 	response, err := sdmxService.Availability(context.Background(), emulatorAvailabilityRequest(
-		"observationAbout",
-		"c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=Earth&c[observationAbout.typeOf]=Country",
+		"destinationCountry",
+		"c[variableMeasured]=Count_Migration,Count_Refugee&c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
 	))
 	if err != nil {
 		t.Fatalf("Availability() error = %v", err)
@@ -631,7 +661,7 @@ func TestSDMXAvailabilityUsesRemoteContainedInPlaceWithLocalObservations(t *test
 	if response.ContentType != sdmxformat.StructureJSONType {
 		t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
 	}
-	compareEmulatorJSONGolden(t, "availability_fallback_observation_about.json", string(response.Body))
+	compareEmulatorJSONGolden(t, "availability_remote_contained_source_country.json", string(response.Body))
 }
 
 func TestSDMXRejectsIncompatibleStatVariableShapes(t *testing.T) {
