@@ -601,8 +601,14 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 
 			// 3. Build candidates with deduplication by SubjectID (highest score first)
 			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			seen := make(map[string]bool)
 			var svDcids []string
 			for _, res := range searchResults {
+				if seen[res.SubjectID] {
+					continue
+				}
+				seen[res.SubjectID] = true
+
 				c := &pbv2.ResolveResponse_Entity_Candidate{
 					Dcid:   res.SubjectID,
 					Name:   res.Name,
@@ -615,6 +621,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				candidates = append(candidates, c)
 				if slices.Contains(res.Types, TypeStatisticalVariable) {
 					svDcids = append(svDcids, res.SubjectID)
+				}
+				if cfg.SearchConfig.Limit > 0 && len(candidates) >= cfg.SearchConfig.Limit {
+					break
 				}
 			}
 			sds.populateObservationProperties(errCtx, candidates, svDcids)
