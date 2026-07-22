@@ -256,7 +256,7 @@ var statements = struct {
 		WHERE lookup_key = :key;
 	`,
 	getAllStatVarGroups: `
-		SELECT DISTINCT t1.subject_id svg_id, t2.object_value svg_name, t3.object_id svg_parent_id
+		SELECT t1.subject_id svg_id, t2.object_value svg_name, t3.object_id svg_parent_id
 		FROM 
 			triples t1 
 			JOIN triples t2 ON t1.subject_id = t2.subject_id
@@ -268,7 +268,7 @@ var statements = struct {
 			AND t3.predicate="specializationOf";
 	`,
 	getAllStatVars: `
-		SELECT DISTINCT t1.subject_id sv_id, t2.object_value sv_name, t3.object_id AS svg_id, COALESCE(t4.object_value, '') sv_description
+		SELECT t1.subject_id sv_id, t2.object_value sv_name, t3.object_id AS svg_id, COALESCE(t4.object_value, '') sv_description
 		FROM 
 			triples t1
 			JOIN triples t2 ON t1.subject_id = t2.subject_id
