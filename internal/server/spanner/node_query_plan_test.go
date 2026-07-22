@@ -17,7 +17,6 @@ package spanner
 import (
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/google/go-cmp/cmp"
 )
@@ -26,26 +25,42 @@ func TestPlanNodeQuery(t *testing.T) {
 	containedInPlaceArc := func() *v2.Arc {
 		return &v2.Arc{
 			SingleProp: linkedContainedInPlaceProperty,
-			Filter:     map[string][]string{typeOfProperty: {"County"}},
+			Filter:     map[string][]string{predTypeOf: {"County"}},
 		}
 	}
 
 	for _, tc := range []struct {
-		name string
-		arc  *v2.Arc
-		want nodeQueryPlan
+		name        string
+		arc         *v2.Arc
+		queryConfig QueryConfig
+		want        nodeQueryPlan
+		wantErr     bool
 	}{
 		{
-			name: "contained in place",
+			name: "contained in place type first",
 			arc:  containedInPlaceArc(),
 			want: nodeQueryPlan{
-				kind:           nodeQueryContainedInPlace,
-				childPlaceType: "County",
+				kind:       nodeQueryContainedInPlace,
+				accessPath: containedInPlaceTypeFirst,
 			},
 		},
 		{
-			name: "nil arc",
-			want: nodeQueryPlan{kind: nodeQueryGeneric},
+			name: "contained in place ancestor first",
+			arc: &v2.Arc{
+				SingleProp: linkedContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"Place"}},
+			},
+			queryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+			},
+			want: nodeQueryPlan{
+				kind:       nodeQueryContainedInPlace,
+				accessPath: containedInPlaceAncestorFirst,
+			},
+		},
+		{
+			name:    "nil arc",
+			wantErr: true,
 		},
 		{
 			name: "outgoing",
@@ -61,7 +76,7 @@ func TestPlanNodeQuery(t *testing.T) {
 			arc: &v2.Arc{
 				SingleProp: v2.ContainedInPlaceProperty,
 				Decorator:  "+",
-				Filter:     map[string][]string{typeOfProperty: {"County"}},
+				Filter:     map[string][]string{predTypeOf: {"County"}},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
@@ -78,7 +93,7 @@ func TestPlanNodeQuery(t *testing.T) {
 			name: "unrelated property",
 			arc: &v2.Arc{
 				SingleProp: "memberOf",
-				Filter:     map[string][]string{typeOfProperty: {"County"}},
+				Filter:     map[string][]string{predTypeOf: {"County"}},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
@@ -105,8 +120,8 @@ func TestPlanNodeQuery(t *testing.T) {
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
 				Filter: map[string][]string{
-					"name":         {"x"},
-					typeOfProperty: {"County"},
+					"name":     {"x"},
+					predTypeOf: {"County"},
 				},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
@@ -123,7 +138,7 @@ func TestPlanNodeQuery(t *testing.T) {
 			name: "no type values",
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
-				Filter:     map[string][]string{typeOfProperty: nil},
+				Filter:     map[string][]string{predTypeOf: nil},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
@@ -131,7 +146,7 @@ func TestPlanNodeQuery(t *testing.T) {
 			name: "multiple types",
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
-				Filter:     map[string][]string{typeOfProperty: {"County", "City"}},
+				Filter:     map[string][]string{predTypeOf: {"County", "City"}},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
@@ -139,13 +154,23 @@ func TestPlanNodeQuery(t *testing.T) {
 			name: "blank type",
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
-				Filter:     map[string][]string{typeOfProperty: {" "}},
+				Filter:     map[string][]string{predTypeOf: {" "}},
 			},
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			if diff := cmp.Diff(tc.want, planNodeQuery(tc.arc), cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
+			got, err := planNodeQuery(tc.arc, tc.queryConfig)
+			if tc.wantErr {
+				if err == nil {
+					t.Fatal("planNodeQuery() expected error, got nil")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("planNodeQuery() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(tc.want, got, cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
 				t.Errorf("planNodeQuery() mismatch (-want +got):\n%s", diff)
 			}
 		})
@@ -163,36 +188,28 @@ func TestPlanNodeQueryFromPropertyExpression(t *testing.T) {
 	addOptimizationsToNodeRequest(arcs[0])
 
 	want := nodeQueryPlan{
-		kind:           nodeQueryContainedInPlace,
-		childPlaceType: "County",
+		kind:       nodeQueryContainedInPlace,
+		accessPath: containedInPlaceTypeFirst,
 	}
-	if diff := cmp.Diff(want, planNodeQuery(arcs[0]), cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
+	got, err := planNodeQuery(arcs[0], QueryConfig{})
+	if err != nil {
+		t.Fatalf("planNodeQuery() unexpected error: %v", err)
+	}
+	if diff := cmp.Diff(want, got, cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
 		t.Errorf("planNodeQuery() mismatch (-want +got):\n%s", diff)
 	}
 }
 
-func TestBuildPlannedNodeEdgesByIDQuery(t *testing.T) {
-	ids := []string{"country/USA", "country/IND"}
-	config := QueryConfig{ContainedInPlaceAncestorFirstTypes: []string{"Place"}}
+func TestGetNodeEdgesByIDQueryRejectsNilArc(t *testing.T) {
+	if _, err := GetNodeEdgesByIDQuery(nil, nil, 1, 0, QueryConfig{}); err == nil {
+		t.Fatal("GetNodeEdgesByIDQuery() expected error, got nil")
+	}
+}
 
-	t.Run("contained in place", func(t *testing.T) {
-		arc := &v2.Arc{
-			SingleProp: linkedContainedInPlaceProperty,
-			Filter:     map[string][]string{typeOfProperty: {"County"}},
-		}
-		got := buildPlannedNodeEdgesByIDQuery(ids, arc, datasources.DefaultPageSize, 0, config)
-		want := GetNodeContainedInPlaceEdgesByIDQuery(ids, "County", datasources.DefaultPageSize, 0, config)
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("buildPlannedNodeEdgesByIDQuery() mismatch (-want +got):\n%s", diff)
-		}
-	})
-
-	t.Run("generic", func(t *testing.T) {
-		arc := &v2.Arc{SingleProp: "name"}
-		got := buildPlannedNodeEdgesByIDQuery(ids, arc, datasources.DefaultPageSize, 0, config)
-		want := GetNodeEdgesByIDQuery(ids, arc, datasources.DefaultPageSize, 0)
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("buildPlannedNodeEdgesByIDQuery() mismatch (-want +got):\n%s", diff)
-		}
-	})
+func TestBuildNodeEdgesByIDQueryRejectsUnsupportedPlan(t *testing.T) {
+	arc := &v2.Arc{SingleProp: "name"}
+	plan := nodeQueryPlan{kind: nodeQueryKind(100)}
+	if _, err := buildNodeEdgesByIDQuery(nil, arc, 1, 0, plan); err == nil {
+		t.Fatal("buildNodeEdgesByIDQuery() expected error, got nil")
+	}
 }

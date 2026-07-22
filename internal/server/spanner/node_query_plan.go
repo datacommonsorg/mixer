@@ -15,13 +15,11 @@
 package spanner
 
 import (
+	"fmt"
 	"strings"
 
-	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
-
-const typeOfProperty = "typeOf"
 
 type nodeQueryKind int
 
@@ -31,19 +29,23 @@ const (
 )
 
 type nodeQueryPlan struct {
-	kind           nodeQueryKind
-	childPlaceType string
+	kind       nodeQueryKind
+	accessPath containedInPlaceAccessPath
 }
 
-func planNodeQuery(arc *v2.Arc) nodeQueryPlan {
+func planNodeQuery(arc *v2.Arc, queryConfig QueryConfig) (nodeQueryPlan, error) {
+	if arc == nil {
+		return nodeQueryPlan{}, fmt.Errorf("node query arc must not be nil")
+	}
+
 	childPlaceType, ok := matchNodeContainedInPlace(arc)
 	if !ok {
-		return nodeQueryPlan{kind: nodeQueryGeneric}
+		return nodeQueryPlan{kind: nodeQueryGeneric}, nil
 	}
 	return nodeQueryPlan{
-		kind:           nodeQueryContainedInPlace,
-		childPlaceType: childPlaceType,
-	}
+		kind:       nodeQueryContainedInPlace,
+		accessPath: queryConfig.containedInPlaceAccessPath(childPlaceType),
+	}, nil
 }
 
 func matchNodeContainedInPlace(arc *v2.Arc) (string, bool) {
@@ -55,7 +57,7 @@ func matchNodeContainedInPlace(arc *v2.Arc) (string, bool) {
 		len(arc.BracketFilters) > 0 {
 		return "", false
 	}
-	return singleFilterValue(arc.Filter, typeOfProperty)
+	return singleFilterValue(arc.Filter, predTypeOf)
 }
 
 func singleFilterValue(filters map[string][]string, property string) (string, bool) {
@@ -67,27 +69,4 @@ func singleFilterValue(filters map[string][]string, property string) (string, bo
 		return "", false
 	}
 	return values[0], true
-}
-
-func buildPlannedNodeEdgesByIDQuery(
-	ids []string,
-	arc *v2.Arc,
-	pageSize, offset int,
-	queryConfig QueryConfig,
-) *spanner.Statement {
-	plan := planNodeQuery(arc)
-	switch plan.kind {
-	case nodeQueryContainedInPlace:
-		return GetNodeContainedInPlaceEdgesByIDQuery(
-			ids,
-			plan.childPlaceType,
-			pageSize,
-			offset,
-			queryConfig,
-		)
-	case nodeQueryGeneric:
-		return GetNodeEdgesByIDQuery(ids, arc, pageSize, offset)
-	default:
-		panic("unsupported node query kind")
-	}
 }

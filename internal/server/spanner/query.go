@@ -140,10 +140,15 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 		edges[id] = []*Edge{}
 	}
 
-	err := queryStructs(
+	stmt, err := GetNodeEdgesByIDQuery(ids, arc, pageSize, offset, sc.queryConfig)
+	if err != nil {
+		return nil, fmt.Errorf("error building node edges query: %w", err)
+	}
+
+	err = queryStructs(
 		ctx,
 		sc,
-		*buildPlannedNodeEdgesByIDQuery(ids, arc, pageSize, offset, sc.queryConfig),
+		*stmt,
 		func() interface{} {
 			return &Edge{}
 		},

@@ -203,7 +203,7 @@ OR CreationTimestamp > (
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
+	filterProperty: `(n%[4]s)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `
