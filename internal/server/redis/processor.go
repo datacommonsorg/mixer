@@ -97,6 +97,8 @@ func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error)
 		return &sdmxpb.SdmxDataResult{}, nil
 	case dispatcher.TypeSdmxAvailability:
 		return &sdmxpb.SdmxAvailabilityResult{}, nil
+	case dispatcher.TypeFilterStatVarsByEntity:
+		return &pb.FilterStatVarsByEntityResponse{}, nil
 	default:
 		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}
