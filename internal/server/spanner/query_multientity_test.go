@@ -1212,6 +1212,82 @@ func TestSdmxBackendError(t *testing.T) {
 	}
 }
 
+func TestSelectSdmxAvailabilityDateJoinPlan(t *testing.T) {
+	for _, tc := range []struct {
+		name    string
+		context sdmxAvailabilityDateJoinContext
+		want    sdmxAvailabilityDateJoinPlan
+	}{
+		{
+			name: "ordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinMergeBaseTable,
+		},
+		{
+			name: "ordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        false,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name: "unordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: false,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name:    "unordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{},
+			want:    sdmxAvailabilityDateJoinAutomatic,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := selectSdmxAvailabilityDateJoinPlan(tc.context); got != tc.want {
+				t.Fatalf("selectSdmxAvailabilityDateJoinPlan() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestIsBroadSdmxAvailabilitySeriesScan(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+		want        bool
+	}{
+		{
+			name: "multiple variables and time period",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1", "var2"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020", "2023"),
+			},
+			want: true,
+		},
+		{
+			name: "additional series constraint",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
+				"unit":                                sdmxComponentConstraint("Count"),
+			},
+			want: false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := isBroadSdmxAvailabilitySeriesScan(tc.constraints); got != tc.want {
+				t.Fatalf("isBroadSdmxAvailabilitySeriesScan() = %t, want %t", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string
@@ -1252,6 +1328,36 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
 	if got, want := status.Convert(err).Message(), "SDMX availability request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentTimePeriod,
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD availability is not implemented yet"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			datacommons.ComponentTimePeriod:       sdmxComponentConstraint("latest"),
+		},
+	})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"; got != want {
 		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
 	}
 }
@@ -1754,7 +1860,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationAbout: sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "unknown dynamic filter fails",
@@ -1762,15 +1868,14 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				"customEntity":                        sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
-			name: "time period fails",
+			name: "time period passes",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
 			},
-			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "measure fails",
@@ -1778,7 +1883,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationValue: sdmxComponentConstraint("10"),
 			},
-			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "attribute fails",
@@ -1786,7 +1891,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentScalingFactor:    sdmxComponentConstraint("0"),
 			},
-			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 	}
 
@@ -1807,6 +1912,38 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 			}
 			if got := status.Convert(err).Message(); got != tt.wantError {
 				t.Fatalf("validateSdmxDataConstraintComponents() message = %q, want %q", got, tt.wantError)
+			}
+		})
+	}
+}
+
+func TestValidateSdmxAvailabilityConstraintComponents(t *testing.T) {
+	shape := sdmxDataShape([]string{"destinationCountry", "sourceCountry"})
+	for _, tc := range []struct {
+		name        string
+		componentID string
+		wantError   bool
+	}{
+		{name: "time period", componentID: datacommons.ComponentTimePeriod},
+		{name: "dynamic dimension", componentID: "destinationCountry"},
+		{name: "unknown component", componentID: "customEntity", wantError: true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := validateSdmxAvailabilityConstraintComponents(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+					tc.componentID:                        sdmxComponentConstraint("value"),
+				},
+				shape,
+			)
+			if tc.wantError {
+				if status.Code(err) != codes.InvalidArgument {
+					t.Fatalf("validateSdmxAvailabilityConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("validateSdmxAvailabilityConstraintComponents() error = %v, want nil", err)
 			}
 		})
 	}

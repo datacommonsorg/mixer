@@ -260,6 +260,14 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			want: "GetSdmxObservationsQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
+			name: "latest mixed with explicit date",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"TIME_PERIOD":      sdmxComponentConstraint("LATEST", "2020"),
+			},
+			want: "GetSdmxObservationsQuery: SDMX TIME_PERIOD filter cannot combine LATEST with explicit dates",
+		},
+		{
 			name: "unsupported dynamic key",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured": sdmxComponentConstraint("var1"),
@@ -308,6 +316,66 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			}
 			if got := status.Convert(err).Message(); got != tc.want {
 				t.Fatalf("GetSdmxObservationsQuery() message = %q, want %q", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tc := range []struct {
+		name       string
+		timeValues []string
+		contains   []string
+		excludes   []string
+	}{
+		{
+			name:       "explicit dates use observation join",
+			timeValues: []string{"2020", "2022"},
+			contains: []string{
+				"JOIN@{JOIN_METHOD=APPLY_JOIN} Observation o",
+				"WHERE o.date IN UNNEST(@time_periods)",
+				"ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date)",
+			},
+			excludes: []string{"LIMIT 1"},
+		},
+		{
+			name:       "latest uses full-key correlated lookup",
+			timeValues: []string{"LATEST"},
+			contains: []string{
+				"AND o.extra_entities_id = t.extra_entities_id",
+				"AND o.facet_id = t.facet_id",
+				"ORDER BY o.date DESC",
+				"LIMIT 1",
+			},
+			excludes: []string{"@time_periods"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			statement, err := builder.GetSdmxObservationsQuery(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("var1"),
+					"TIME_PERIOD":      sdmxComponentConstraint(tc.timeValues...),
+				},
+				nil,
+				nil,
+			)
+			if err != nil {
+				t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+			}
+			for _, substring := range tc.contains {
+				if !strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL missing %q:\n%s", substring, statement.SQL)
+				}
+			}
+			for _, substring := range tc.excludes {
+				if strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+				}
 			}
 		})
 	}
@@ -543,6 +611,104 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	})
 }
 
+func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
+	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "measurementMethod",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020", "2020"),
+			},
+		}, nil)
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *testing.T) {
+	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods_and_unit.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "measurementMethod",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020"),
+				"unit":             sdmxComponentConstraint("Count"),
+			},
+		}, nil)
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "measurementMethod",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
+		},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+	}
+	for _, substring := range []string{
+		"SELECT DISTINCT t.measurement_method AS value",
+		"FROM TimeSeries@{FORCE_INDEX=_BASE_TABLE} t",
+		"JOIN@{JOIN_METHOD=MERGE_JOIN} Observation@{FORCE_INDEX=_BASE_TABLE} o",
+		"USING (variable_measured, entity1, extra_entities_id, facet_id)",
+		"o.date IN UNNEST(@time_periods)",
+	} {
+		if !strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+		}
+	}
+	for _, substring := range []string{"APPLY_JOIN", "GROUP BY", "LIMIT 1", "TIME_PERIOD"} {
+		if strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+		}
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "measurementMethod",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
+			"unit":             sdmxComponentConstraint("Count"),
+		},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+	}
+	for _, substring := range []string{
+		"FROM TimeSeries t",
+		"JOIN Observation o",
+		"o.date IN UNNEST(@time_periods)",
+	} {
+		if !strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+		}
+	}
+	for _, substring := range []string{"JOIN_METHOD", "FORCE_INDEX"} {
+		if strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
 	if err != nil {
@@ -613,6 +779,17 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 				},
 			},
 			want: `unsupported SDMX availability component "TIME_PERIOD"`,
+		},
+		{
+			name: "latest time period",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("Count_Person"),
+					"TIME_PERIOD":      sdmxComponentConstraint("latest"),
+				},
+			},
+			want: "GetSdmxAvailabilityQuery: SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates",
 		},
 		{
 			name: "unsupported constraint",

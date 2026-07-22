@@ -451,6 +451,30 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_obs_single_entity",
 	},
 	{
+		name: "explicit time periods",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2022", "2020", "2022"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"observationAbout": "entity1",
+		},
+		golden: "get_sdmx_obs_explicit_time_periods",
+	},
+	{
+		name: "latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
+			"TIME_PERIOD":      sdmxComponentConstraint("latest"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"observationAbout": "entity1",
+		},
+		golden: "get_sdmx_obs_latest_time_period",
+	},
+	{
 		name: "contained observation about on entity1",
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
@@ -458,6 +482,26 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		},
 		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
 		golden:                          "get_sdmx_obs_contained_entity1",
+	},
+	{
+		name: "contained observation about with explicit time periods",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2022"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+		golden:                          "get_sdmx_obs_contained_entity1_explicit_time_periods",
+	},
+	{
+		name: "contained observation about with latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			"TIME_PERIOD":      sdmxComponentConstraint("LATEST"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+		golden:                          "get_sdmx_obs_contained_entity1_latest_time_period",
 	},
 	{
 		name: "contained source on entity2 with direct entity1 filter",
@@ -506,6 +550,22 @@ var multiEntitySdmxObservationsTestCases = []struct {
 			{Ancestor: "country/USA", ChildPlaceType: "State"}: {"country/CAN", "country/USA"},
 		},
 		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote",
+	},
+	{
+		name: "entity3 remote place set with latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"middle":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"TIME_PERIOD":      sdmxComponentConstraint("LATEST"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+			{Ancestor: "country/USA", ChildPlaceType: "State"}: {"country/CAN", "country/USA"},
+		},
+		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote_latest_time_period",
 	},
 	{
 		name: "entity1 anchors entity2 and entity3 place sets",

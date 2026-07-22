@@ -334,11 +334,20 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	observationPropertyToEntitySlot map[string]string,
 	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
+	// TODO: Parse SDMX constraints in prepareSdmxObservationsQuery and pass the
+	// classified time and containment selections into this builder instead of
+	// revalidating the raw constraint map.
+	timeSelection, err := datacommons.ClassifyTimePeriod(constraints)
+	if err != nil {
+		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
+	}
 	containedInPlaceConstraints, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
-	compiled, err := compileSdmxConstraints(constraints, observationPropertyToEntitySlot)
+	seriesConstraints := maps.Clone(constraints)
+	delete(seriesConstraints, datacommons.ComponentTimePeriod)
+	compiled, err := compileSdmxConstraints(seriesConstraints, observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
 	}
@@ -348,6 +357,7 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 			observationPropertyToEntitySlot,
 			compiled,
 			containedInPlaceToRemoteDCIDs,
+			timeSelection,
 		)
 		if err != nil {
 			return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())
@@ -355,10 +365,25 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 		return statement, nil
 	}
 
-	return &spanner.Statement{
-		SQL:    b.statements.getSdmxObs + compiled.where,
-		Params: compiled.params,
-	}, nil
+	switch timeSelection.Mode {
+	case datacommons.TimePeriodExplicit:
+		params := maps.Clone(compiled.params)
+		params["time_periods"] = timeSelection.Dates
+		return &spanner.Statement{
+			SQL:    fmt.Sprintf(b.statements.getSdmxObsWithDates, compiled.where),
+			Params: params,
+		}, nil
+	case datacommons.TimePeriodLatest:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObsLatest + compiled.where,
+			Params: compiled.params,
+		}, nil
+	default:
+		return &spanner.Statement{
+			SQL:    b.statements.getSdmxObs + compiled.where,
+			Params: compiled.params,
+		}, nil
+	}
 }
 
 type compiledSdmxConstraints struct {
@@ -501,6 +526,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	observationPropertyToEntitySlot map[string]string,
 	compiled *compiledSdmxConstraints,
 	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
+	timeSelection datacommons.TimePeriodSelection,
 ) (*spanner.Statement, error) {
 	resolved := make([]resolvedSdmxContainedInPlace, 0, len(constraints))
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
@@ -627,8 +653,16 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	)
 
 	statementHint := fmt.Sprintf("@{%s}\n\t\t", strings.Join(statementHints, ", "))
+	queryTemplate := b.statements.getSdmxContainedInPlace
+	switch timeSelection.Mode {
+	case datacommons.TimePeriodExplicit:
+		queryTemplate = b.statements.getSdmxContainedInPlaceWithDates
+		params["time_periods"] = timeSelection.Dates
+	case datacommons.TimePeriodLatest:
+		queryTemplate = b.statements.getSdmxContainedInPlaceLatest
+	}
 	sql := fmt.Sprintf(
-		b.statements.getSdmxContainedInPlace,
+		queryTemplate,
 		statementHint,
 		strings.Join(cteDefinitions, ",\n\t\t"),
 		seriesCTE,
@@ -651,6 +685,48 @@ func sdmxContainmentAnchorPriority(entityColumn string) int {
 	}
 }
 
+type sdmxAvailabilityDateJoinPlan int
+
+const (
+	sdmxAvailabilityDateJoinAutomatic sdmxAvailabilityDateJoinPlan = iota
+	sdmxAvailabilityDateJoinMergeBaseTable
+)
+
+type sdmxAvailabilityDateJoinContext struct {
+	seriesOrderedByFullKey bool
+	broadSeriesScan        bool
+}
+
+// selectSdmxAvailabilityDateJoinPlan chooses the physical join strategy at the
+// TimeSeries-to-Observation boundary. A merge join is safe only when both inputs
+// can be kept in (variable_measured, entity1, extra_entities_id, facet_id)
+// order. Direct queries can guarantee that by forcing both base tables. A
+// secondary index, containment anchor, candidate-series CTE, or local/remote
+// union must be treated as unordered until a production query plan proves that
+// it preserves the complete key order. Future containment builders should
+// construct this context after choosing their series access path and default to
+// automatic planning. Do not run a COUNT query to make this choice; if reliable
+// cardinality metadata becomes available, add it to this context instead.
+func selectSdmxAvailabilityDateJoinPlan(
+	joinContext sdmxAvailabilityDateJoinContext,
+) sdmxAvailabilityDateJoinPlan {
+	if joinContext.seriesOrderedByFullKey && joinContext.broadSeriesScan {
+		return sdmxAvailabilityDateJoinMergeBaseTable
+	}
+	return sdmxAvailabilityDateJoinAutomatic
+}
+
+func isBroadSdmxAvailabilitySeriesScan(
+	constraints map[string]*sdmxpb.SdmxComponentConstraint,
+) bool {
+	for componentID := range constraints {
+		if componentID != datacommons.ComponentVariableMeasured && componentID != datacommons.ComponentTimePeriod {
+			return false
+		}
+	}
+	return true
+}
+
 // GetSdmxAvailabilityQuery builds the SDMX availability lookup.
 func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	req *sdmxpb.SdmxAvailabilityQuery,
@@ -662,7 +738,13 @@ func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 	if err := datacommons.ValidateAvailabilityConstraints(req.GetConstraints()); err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
 	}
-	compiled, err := compileSdmxConstraints(req.GetConstraints(), observationPropertyToEntitySlot)
+	timeSelection, err := datacommons.ClassifyTimePeriod(req.GetConstraints())
+	if err != nil {
+		return nil, status.Errorf(status.Code(err), "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
+	}
+	seriesConstraints := maps.Clone(req.GetConstraints())
+	delete(seriesConstraints, datacommons.ComponentTimePeriod)
+	compiled, err := compileSdmxConstraints(seriesConstraints, observationPropertyToEntitySlot)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "GetSdmxAvailabilityQuery: %s", status.Convert(err).Message())
 	}
@@ -671,9 +753,26 @@ func (b *multiEntityQueryBuilder) GetSdmxAvailabilityQuery(
 		return nil, err
 	}
 
+	queryTemplate := b.statements.getSdmxAvailability
+	params := compiled.params
+	if timeSelection.Mode == datacommons.TimePeriodExplicit {
+		queryTemplate = b.statements.getSdmxAvailabilityWithDates
+		joinPlan := selectSdmxAvailabilityDateJoinPlan(sdmxAvailabilityDateJoinContext{
+			// The merge variant forces both base tables, which share the full
+			// time-series key prefix required by the merge join.
+			seriesOrderedByFullKey: true,
+			broadSeriesScan:        isBroadSdmxAvailabilitySeriesScan(req.GetConstraints()),
+		})
+		if joinPlan == sdmxAvailabilityDateJoinMergeBaseTable {
+			queryTemplate = b.statements.getSdmxAvailabilityWithDatesMergeBaseTable
+		}
+		params = maps.Clone(compiled.params)
+		params["time_periods"] = timeSelection.Dates
+	}
+
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(b.statements.getSdmxAvailability, valueExpression, compiled.where),
-		Params: compiled.params,
+		SQL:    fmt.Sprintf(queryTemplate, valueExpression, compiled.where),
+		Params: params,
 	}, nil
 }
 
