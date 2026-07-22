@@ -16,9 +16,11 @@ package golden
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"testing"
 
+	cloudSpanner "cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -378,6 +380,157 @@ func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	timeSelections := []struct {
+		name   string
+		values []string
+	}{
+		{name: "all"},
+		{name: "explicit", values: []string{"2020", "2022"}},
+		{name: "latest", values: []string{"LATEST"}},
+	}
+	for _, contained := range []bool{false, true} {
+		pathName := "direct"
+		if contained {
+			pathName = "contained"
+		}
+		for _, selection := range timeSelections {
+			t.Run(pathName+"/"+selection.name, func(t *testing.T) {
+				constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("var1"),
+				}
+				observationPropertyToEntitySlot := map[string]string{}
+				if contained {
+					constraints["observationAbout"] = sdmxContainedInPlaceConstraint("northamerica", "Country")
+					observationPropertyToEntitySlot["observationAbout"] = "entity1"
+				} else {
+					constraints["observationAbout"] = sdmxComponentConstraint("country/USA")
+					observationPropertyToEntitySlot["observationAbout"] = "entity1"
+				}
+				if len(selection.values) > 0 {
+					constraints["TIME_PERIOD"] = sdmxComponentConstraint(selection.values...)
+				}
+
+				statement, err := builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot, nil)
+				if err != nil {
+					t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+				}
+				for _, substring := range []string{
+					"COALESCE(",
+					"ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)",
+				} {
+					if !strings.Contains(statement.SQL, substring) {
+						t.Errorf("GetSdmxObservationsQuery() SQL missing %q:\n%s", substring, statement.SQL)
+					}
+				}
+			})
+		}
+	}
+}
+
+func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	paths := []struct {
+		name  string
+		build func([]string) (*cloudSpanner.Statement, error)
+	}{
+		{
+			name: "data/direct",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxObservationsQuery(
+					map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"observationAbout": sdmxComponentConstraint("country/USA"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+					map[string]string{"observationAbout": "entity1"},
+					nil,
+				)
+			},
+		},
+		{
+			name: "data/contained",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxObservationsQuery(
+					map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"observationAbout": sdmxContainedInPlaceConstraint("northamerica", "Country"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+					map[string]string{"observationAbout": "entity1"},
+					nil,
+				)
+			},
+		},
+		{
+			name: "availability/broad",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "measurementMethod",
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+				}, nil)
+			},
+		},
+		{
+			name: "availability/filtered",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "measurementMethod",
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+						"unit":             sdmxComponentConstraint("Count"),
+					},
+				}, nil)
+			},
+		},
+	}
+	allDates := []string{"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010"}
+	for _, path := range paths {
+		for _, count := range []int{1, 2, 10, 11} {
+			t.Run(path.name+"/"+strconv.Itoa(count), func(t *testing.T) {
+				statement, err := path.build(allDates[:count])
+				if err != nil {
+					t.Fatalf("build SDMX statement error = %v", err)
+				}
+				spanner.UnrollParameters(statement)
+
+				switch count {
+				case 1:
+					if !strings.Contains(statement.SQL, "o.date = @time_periods_0") {
+						t.Errorf("unrolled SQL missing single-date equality:\n%s", statement.SQL)
+					}
+				case 2, 10:
+					dateParams := make([]string, count)
+					for i := range count {
+						dateParams[i] = "@time_periods_" + strconv.Itoa(i)
+					}
+					want := "o.date IN (" + strings.Join(dateParams, ",") + ")"
+					if !strings.Contains(statement.SQL, want) {
+						t.Errorf("unrolled SQL missing explicit date list:\n%s", statement.SQL)
+					}
+				case 11:
+					if !strings.Contains(statement.SQL, "o.date IN UNNEST(@time_periods)") {
+						t.Errorf("SQL unexpectedly unrolled 11 dates:\n%s", statement.SQL)
+					}
+				}
+			})
+		}
 	}
 }
 
