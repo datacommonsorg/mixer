@@ -16,7 +16,10 @@
 			t.entity1 AS observation_about,
 			t.facet_id,
 			ANY_VALUE(t.provenance) AS provenance,
-			ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date) AS dates_and_values,
+			COALESCE(
+				ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date),
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+			) AS dates_and_values,
 			ANY_VALUE(t.facet) AS facets,
 			ANY_VALUE(t.entities) AS entities
 		FROM series t
