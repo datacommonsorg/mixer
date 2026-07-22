@@ -600,8 +600,8 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 3. Build candidates with deduplication by SubjectID (highest score first)
-			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
-			seen := make(map[string]bool)
+			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, cfg.SearchConfig.Limit)
+			seen := make(map[string]bool, len(searchResults))
 			var svDcids []string
 			for _, res := range searchResults {
 				if seen[res.SubjectID] {
@@ -659,7 +659,6 @@ func (sds *SpannerDataSource) populateObservationProperties(
 		}
 	}
 }
-
 
 // Sparql executes a SPARQL query against the Spanner data source.
 func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
