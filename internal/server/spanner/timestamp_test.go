@@ -17,6 +17,7 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"strings"
 	"testing"
 	"time"
 
@@ -130,6 +131,14 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	expectedTimestamp := startTime
 	if timestamp != expectedTimestamp {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
+	}
+}
+
+func TestIngestionHistoryTimestampQueryFiltersPreprocessing(t *testing.T) {
+	stmt := GetCompletionTimestampQuery(true)
+	expectedSubstring := "(Stage IS NULL OR Stage != 'preprocessing')"
+	if !strings.Contains(stmt.SQL, expectedSubstring) {
+		t.Fatalf("Expected GetCompletionTimestampQuery(true) SQL to contain %q, but got SQL:\n%s", expectedSubstring, stmt.SQL)
 	}
 }
 
