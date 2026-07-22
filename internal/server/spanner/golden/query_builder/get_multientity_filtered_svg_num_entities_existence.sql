@@ -6,7 +6,7 @@
 		JOIN (
 			SELECT
 				e.object_id AS subject_id,
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
 			JOIN@{JOIN_TYPE=HASH_JOIN} (
 					SELECT ts.variable_measured
