@@ -483,7 +483,7 @@ func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
 						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
 					},
-				}, nil)
+				}, nil, nil)
 			},
 		},
 		{
@@ -496,7 +496,7 @@ func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
 						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
 						"unit":             sdmxComponentConstraint("Count"),
 					},
-				}, nil)
+				}, nil, nil)
 			},
 		},
 	}
@@ -656,7 +656,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 		},
 	}, map[string]string{
 		"observationAbout": "entity1",
-	})
+	}, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() returned error: %v", err)
 	}
@@ -735,7 +735,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 						"variableMeasured": sdmxComponentConstraint("Count_Person", "Count_Household"),
 					},
-				}, c.observationPropertyToEntitySlot)
+				}, c.observationPropertyToEntitySlot, nil)
 			})
 		})
 	}
@@ -760,7 +760,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 			},
 		}, map[string]string{
 			"destinationCountry": "entity1", "sourceCountry": "entity2",
-		})
+		}, nil)
 	})
 }
 
@@ -776,7 +776,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
 				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020", "2020"),
 			},
-		}, nil)
+		}, nil, nil)
 	})
 }
 
@@ -793,7 +793,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *te
 				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020"),
 				"unit":             sdmxComponentConstraint("Count"),
 			},
-		}, nil)
+		}, nil, nil)
 	})
 }
 
@@ -808,7 +808,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
 			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
 		},
-	}, nil)
+	}, nil, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
 	}
@@ -842,7 +842,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
 			"unit":             sdmxComponentConstraint("Count"),
 		},
-	}, nil)
+	}, nil, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
 	}
@@ -859,6 +859,71 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 		if strings.Contains(statement.SQL, substring) {
 			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
 		}
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tc := range []struct {
+		name        string
+		timePeriods []string
+		contains    []string
+		excludes    []string
+	}{
+		{
+			name: "all dates",
+			contains: []string{
+				"WITH contained_places_0 AS",
+				"t.entity1 AS value",
+				"SELECT DISTINCT t.value AS value",
+			},
+			excludes: []string{"JOIN Observation o", "@time_periods"},
+		},
+		{
+			name:        "explicit dates use automatic observation join",
+			timePeriods: []string{"2022", "2020"},
+			contains: []string{
+				"t.variable_measured",
+				"JOIN Observation o",
+				"WHERE o.date IN UNNEST(@time_periods)",
+			},
+			excludes: []string{"JOIN@{JOIN_METHOD=MERGE_JOIN} Observation", "MERGE_JOIN"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			}
+			if len(tc.timePeriods) > 0 {
+				constraints["TIME_PERIOD"] = sdmxComponentConstraint(tc.timePeriods...)
+			}
+			statement, err := builder.GetSdmxAvailabilityQuery(
+				&sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "observationAbout",
+					Constraints: constraints,
+				},
+				map[string]string{"observationAbout": "entity1"},
+				nil,
+			)
+			if err != nil {
+				t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+			}
+			for _, substring := range tc.contains {
+				if !strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+				}
+			}
+			for _, substring := range tc.excludes {
+				if strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+				}
+			}
+		})
 	}
 }
 
@@ -967,7 +1032,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.observationPropertyToEntitySlot)
+			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.observationPropertyToEntitySlot, nil)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxAvailabilityQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}

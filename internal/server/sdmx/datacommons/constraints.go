@@ -51,7 +51,7 @@ type constraintConfig struct {
 	propertyRules map[string]PropertyRule
 }
 
-var dataConstraintConfig = constraintConfig{
+var supportedConstraintConfig = constraintConfig{
 	propertyRules: map[string]PropertyRule{
 		PropertyContainedInPlace: {
 			Scope:          ComponentScopeObservationProperty,
@@ -65,8 +65,6 @@ var dataConstraintConfig = constraintConfig{
 		},
 	},
 }
-
-var availabilityConstraintConfig = constraintConfig{propertyRules: map[string]PropertyRule{}}
 
 type ContainedInPlaceConstraint struct {
 	Ancestor       string
@@ -86,10 +84,10 @@ type TimePeriodSelection struct {
 	Dates []string
 }
 
-// DataPropertyRule returns the rule used to validate and compile an SDMX data
+// PropertyRuleForID returns the rule used to validate and compile an SDMX
 // property constraint.
-func DataPropertyRule(propertyID string) (PropertyRule, bool) {
-	rule, ok := dataConstraintConfig.propertyRules[propertyID]
+func PropertyRuleForID(propertyID string) (PropertyRule, bool) {
+	rule, ok := supportedConstraintConfig.propertyRules[propertyID]
 	return rule, ok
 }
 
@@ -99,7 +97,16 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 	if err := validateComponentPredicates(constraints); err != nil {
 		return err
 	}
+	if err := validatePropertyConstraints(constraints); err != nil {
+		return err
+	}
+	if _, err := ClassifyTimePeriod(constraints); err != nil {
+		return err
+	}
+	return validateRequiredVariableMeasured(constraints)
+}
 
+func validatePropertyConstraints(constraints map[string]*sdmxpb.SdmxComponentConstraint) error {
 	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
 		constraint := constraints[componentID]
 		properties := constraint.GetPropertyConstraints()
@@ -117,7 +124,7 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 
 		for _, propertyID := range slices.Sorted(maps.Keys(properties)) {
 			propertyConstraint := properties[propertyID]
-			rule, ok := DataPropertyRule(propertyID)
+			rule, ok := PropertyRuleForID(propertyID)
 			if !ok {
 				return status.Errorf(codes.Unimplemented, "SDMX property constraint %q is not implemented yet", propertyID)
 			}
@@ -132,10 +139,7 @@ func ValidateDataConstraints(constraints map[string]*sdmxpb.SdmxComponentConstra
 			return status.Errorf(codes.InvalidArgument, "SDMX property filters on component %q require containedInPlace+ and typeOf", componentID)
 		}
 	}
-	if _, err := ClassifyTimePeriod(constraints); err != nil {
-		return err
-	}
-	return validateRequiredVariableMeasured(constraints)
+	return nil
 }
 
 // ClassifyTimePeriod returns the request's time selection mode.
@@ -179,16 +183,8 @@ func ValidateAvailabilityConstraints(constraints map[string]*sdmxpb.SdmxComponen
 	if err := validateComponentPredicates(constraints); err != nil {
 		return err
 	}
-	for _, componentID := range slices.Sorted(maps.Keys(constraints)) {
-		for _, propertyID := range slices.Sorted(maps.Keys(constraints[componentID].GetPropertyConstraints())) {
-			rule, ok := availabilityConstraintConfig.propertyRules[propertyID]
-			if !ok {
-				return status.Error(codes.Unimplemented, "SDMX property constraints are not implemented for availability yet")
-			}
-			if err := validatePropertyConstraint(componentID, propertyID, constraints[componentID].GetPropertyConstraints()[propertyID], rule); err != nil {
-				return err
-			}
-		}
+	if err := validatePropertyConstraints(constraints); err != nil {
+		return err
 	}
 	timeSelection, err := ClassifyTimePeriod(constraints)
 	if err != nil {
@@ -203,7 +199,7 @@ func ValidateAvailabilityConstraints(constraints map[string]*sdmxpb.SdmxComponen
 // ContainedInPlaceConstraints returns the validated containment pair for each
 // constrained component.
 func ContainedInPlaceConstraints(constraints map[string]*sdmxpb.SdmxComponentConstraint) (map[string]ContainedInPlaceConstraint, error) {
-	if err := ValidateDataConstraints(constraints); err != nil {
+	if err := validatePropertyConstraints(constraints); err != nil {
 		return nil, err
 	}
 	result := map[string]ContainedInPlaceConstraint{}

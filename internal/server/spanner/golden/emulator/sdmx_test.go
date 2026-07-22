@@ -54,6 +54,9 @@ func (s *sdmxRemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, 
 func (s *sdmxRemoteDataSource) SdmxData(context.Context, *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	return &sdmxpb.SdmxDataResult{}, nil
 }
+func (s *sdmxRemoteDataSource) SdmxAvailability(context.Context, *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return &sdmxpb.SdmxAvailabilityResult{}, nil
+}
 
 func TestSDMXData(t *testing.T) {
 	sdmxService := newSDMXService(requireSuite(t).spannerClient)
@@ -480,6 +483,24 @@ func TestSDMXAvailability(t *testing.T) {
 			golden:    "availability_empty.json",
 		},
 		{
+			name:      "contained observation about",
+			component: "observationAbout",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country",
+			golden:    "availability_fallback_observation_about.json",
+		},
+		{
+			name:      "contained observation about with time period",
+			component: "measurementMethod",
+			query:     "c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[TIME_PERIOD]=2020",
+			golden:    "availability_time_period_single_date.json",
+		},
+		{
+			name:      "empty containment result",
+			component: "destinationCountry",
+			query:     "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
+			golden:    "availability_empty.json",
+		},
+		{
 			name:      "empty result",
 			component: "sourceCountry",
 			query:     "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",
@@ -578,6 +599,39 @@ func TestSDMXAvailabilityTimePeriods(t *testing.T) {
 			})
 		}
 	}
+}
+
+func TestSDMXAvailabilityUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
+	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
+	expansions := map[datacommons.ContainedInPlaceConstraint][]string{
+		relation: {"country/USA"},
+	}
+	var calls int
+	remoteSource := &sdmxRemoteDataSource{
+		nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+			got, err := matchSdmxRemoteExpansion(req, expansions)
+			if err != nil {
+				return nil, err
+			}
+			calls++
+			return sdmxRemoteNodeResponse(got, expansions[got]), nil
+		},
+	}
+	sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
+	response, err := sdmxService.Availability(context.Background(), emulatorAvailabilityRequest(
+		"observationAbout",
+		"c[variableMeasured]=Count_TimeSeries&c[observationAbout.containedInPlace+]=Earth&c[observationAbout.typeOf]=Country",
+	))
+	if err != nil {
+		t.Fatalf("Availability() error = %v", err)
+	}
+	if calls != 1 {
+		t.Fatalf("Node() calls = %d, want 1", calls)
+	}
+	if response.ContentType != sdmxformat.StructureJSONType {
+		t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+	}
+	compareEmulatorJSONGolden(t, "availability_fallback_observation_about.json", string(response.Body))
 }
 
 func TestSDMXRejectsIncompatibleStatVariableShapes(t *testing.T) {

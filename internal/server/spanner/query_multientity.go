@@ -845,13 +845,20 @@ func prepareSdmxAvailabilityQuery(
 	if err != nil {
 		return nil, err
 	}
+	if err := validateSdmxPropertyConstraintScopes(req.GetConstraints(), preparedShape.observationPropertyToEntitySlot); err != nil {
+		return nil, err
+	}
 	if err := validateSdmxAvailabilityConstraintComponents(req.GetConstraints(), preparedShape.shape); err != nil {
 		return nil, err
 	}
 	if err := validateSdmxAvailabilityComponent(req.GetComponentId(), preparedShape.shape); err != nil {
 		return nil, err
 	}
-	return queryBuilder.GetSdmxAvailabilityQuery(req, preparedShape.observationPropertyToEntitySlot)
+	return queryBuilder.GetSdmxAvailabilityQuery(
+		req,
+		preparedShape.observationPropertyToEntitySlot,
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDsFromContext(ctx),
+	)
 }
 
 func resolveSdmxEntityShape(

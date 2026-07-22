@@ -704,6 +704,41 @@ func TestAvailabilitySuccess(t *testing.T) {
 	}
 }
 
+func TestAvailabilityPreservesPropertyConstraints(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/CAN"}},
+	}
+	svc := newSdmxTestService(ds)
+
+	_, err := svc.Availability(context.Background(), sdmxAvailabilityRequest(
+		"destinationCountry",
+		"c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=country%2FUSA&c[sourceCountry.typeOf]=State",
+	))
+	if err != nil {
+		t.Fatalf("Availability() error = %v", err)
+	}
+	wantQuery := &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "destinationCountry",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_Migration"),
+			"sourceCountry": {
+				PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+					datacommons.PropertyContainedInPlace: {
+						Predicates: []*sdmxpb.SdmxPredicate{{Value: "country/USA"}},
+						Transitive: true,
+					},
+					datacommons.PropertyTypeOf: {
+						Predicates: []*sdmxpb.SdmxPredicate{{Value: "State"}},
+					},
+				},
+			},
+		},
+	}
+	if diff := cmp.Diff(wantQuery, ds.gotAvailability, protocmp.Transform()); diff != "" {
+		t.Fatalf("dispatcher query mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestAvailabilitySelectsOtherDimension(t *testing.T) {
 	ds := &sdmxDataSource{
 		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"Person"}},

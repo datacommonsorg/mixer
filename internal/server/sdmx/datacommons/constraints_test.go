@@ -224,12 +224,22 @@ func TestContainedInPlaceConstraints(t *testing.T) {
 	}
 }
 
-func TestValidateAvailabilityConstraintsRejectsProperties(t *testing.T) {
-	err := ValidateAvailabilityConstraints(map[string]*sdmxpb.SdmxComponentConstraint{
-		"observationAbout": testContainedInPlaceConstraint("country/USA", "County"),
-	})
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+func TestValidateAvailabilityConstraintsPropertyConstraints(t *testing.T) {
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		ComponentVariableMeasured: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+		ComponentObservationAbout: testContainedInPlaceConstraint("country/USA", "County"),
+	}
+	if err := ValidateAvailabilityConstraints(constraints); err != nil {
+		t.Fatalf("ValidateAvailabilityConstraints() error = %v, want nil", err)
+	}
+
+	constraints[ComponentObservationAbout] = &sdmxpb.SdmxComponentConstraint{
+		PropertyConstraints: map[string]*sdmxpb.SdmxPropertyConstraint{
+			PropertyTypeOf: {Predicates: []*sdmxpb.SdmxPredicate{{Value: "County"}}},
+		},
+	}
+	if err := ValidateAvailabilityConstraints(constraints); status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("ValidateAvailabilityConstraints() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
 }
 
