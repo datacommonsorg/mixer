@@ -76,10 +76,11 @@ func TestObservationsDate(t *testing.T) {
 				wantType: dateTypeAll,
 			},
 			{
-				desc:    "all with start error",
-				date:    dateTypeAll,
-				start:   "2020",
-				wantErr: true,
+				desc:     "all with start date ignores start and returns all",
+				date:     dateTypeAll,
+				start:    "2020",
+				wantType: dateTypeAll,
+				wantErr:  false,
 			},
 			{
 				desc:      "specific year",
