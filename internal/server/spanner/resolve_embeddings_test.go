@@ -81,6 +81,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 					{
 						Dcid:   "dc/topic/Climate",
+						Name:   "Climate Change",
 						TypeOf: []string{"Topic"},
 						Metadata: map[string]string{
 							"score":    "0.8500",
@@ -129,6 +130,7 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 					{
 						Dcid:   "dc/topic/Climate",
+						Name:   "Climate Change",
 						TypeOf: []string{"Topic"},
 						Metadata: map[string]string{
 							"score":    "0.8500",
@@ -142,6 +144,7 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 					{
 						Dcid:   "dc/topic/Climate",
+						Name:   "Climate Change",
 						TypeOf: []string{"Topic"},
 						Metadata: map[string]string{
 							"score":    "0.8500",
@@ -155,6 +158,7 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 					{
 						Dcid:   "dc/topic/Climate",
+						Name:   "Climate Change",
 						TypeOf: []string{"Topic"},
 						Metadata: map[string]string{
 							"score":    "0.8500",

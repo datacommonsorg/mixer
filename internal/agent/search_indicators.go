@@ -658,9 +658,9 @@ func translateVariableCandidate(
 	resp *pbv2.SearchIndicatorsResponse,
 ) {
 	resp.Variables = append(resp.Variables, &pbv2.SearchIndicatorsResponse_Variable{
-		Dcid:           c.GetDcid(),
-		PlacesWithData: placesWithData,
-		Description:    c.GetName(),
+		Dcid:                  c.GetDcid(),
+		PlacesWithData:        placesWithData,
+		ObservationProperties: c.GetObservationProperties(),
 	})
 }
 
