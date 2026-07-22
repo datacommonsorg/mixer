@@ -392,13 +392,14 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 	)
 
 	for _, tc := range []struct {
-		name                 string
-		variables            []string
-		date                 string
-		queryConfig          MultiEntityQueryConfig
-		childPlaceType       string
-		wantEntityScan       bool
-		wantAncestorFirstCTE bool
+		name                   string
+		variables              []string
+		date                   string
+		queryConfig            MultiEntityQueryConfig
+		containedInPlaceConfig ContainedInPlaceQueryConfig
+		childPlaceType         string
+		wantEntityScan         bool
+		wantAncestorFirstCTE   bool
 	}{
 		{
 			name:           "disabled",
@@ -455,8 +456,10 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			name:      "ancestor first at threshold",
 			variables: []string{"var1", "var2", "var3"},
 			queryConfig: MultiEntityQueryConfig{
-				ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
 				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			containedInPlaceConfig: ContainedInPlaceQueryConfig{
+				AncestorFirstTypes: []string{"Place"},
 			},
 			childPlaceType:       "Place",
 			wantEntityScan:       true,
@@ -464,7 +467,11 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig)
+			queryBuilder, err := NewMultiEntityQueryBuilder(
+				DefaultTableConfig(),
+				tc.queryConfig,
+				tc.containedInPlaceConfig,
+			)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -509,8 +516,9 @@ func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testin
 
 func TestNewMultiEntityQueryBuilderValidatesAndClonesQueryConfig(t *testing.T) {
 	for _, tc := range []struct {
-		name        string
-		queryConfig MultiEntityQueryConfig
+		name                   string
+		queryConfig            MultiEntityQueryConfig
+		containedInPlaceConfig ContainedInPlaceQueryConfig
 	}{
 		{
 			name: "negative entity scan threshold",
@@ -520,13 +528,17 @@ func TestNewMultiEntityQueryBuilderValidatesAndClonesQueryConfig(t *testing.T) {
 		},
 		{
 			name: "empty ancestor first type",
-			queryConfig: MultiEntityQueryConfig{
-				ContainedInPlaceAncestorFirstTypes: []string{" "},
+			containedInPlaceConfig: ContainedInPlaceQueryConfig{
+				AncestorFirstTypes: []string{" "},
 			},
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			if _, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig); err == nil {
+			if _, err := NewMultiEntityQueryBuilder(
+				DefaultTableConfig(),
+				tc.queryConfig,
+				tc.containedInPlaceConfig,
+			); err == nil {
 				t.Fatal("NewMultiEntityQueryBuilder() error = nil, want error")
 			}
 		})
@@ -534,18 +546,21 @@ func TestNewMultiEntityQueryBuilderValidatesAndClonesQueryConfig(t *testing.T) {
 
 	ancestorFirstTypes := []string{"Place"}
 	queryConfig := MultiEntityQueryConfig{
-		ContainedInPlaceAncestorFirstTypes:     ancestorFirstTypes,
 		ContainedInPlaceEntityScanMinVariables: 50,
 	}
-	client, err := newMultiEntityClient(&spannerDatabaseClient{}, DefaultTableConfig(), queryConfig)
+	queryBuilder, err := NewMultiEntityQueryBuilder(
+		DefaultTableConfig(),
+		queryConfig,
+		ContainedInPlaceQueryConfig{AncestorFirstTypes: ancestorFirstTypes},
+	)
 	if err != nil {
 		t.Fatal(err)
 	}
 	ancestorFirstTypes[0] = "County"
-	if diff := cmp.Diff(queryConfig.ContainedInPlaceEntityScanMinVariables, client.queryBuilder.queryConfig.ContainedInPlaceEntityScanMinVariables); diff != "" {
+	if diff := cmp.Diff(queryConfig.ContainedInPlaceEntityScanMinVariables, queryBuilder.queryConfig.ContainedInPlaceEntityScanMinVariables); diff != "" {
 		t.Errorf("entity scan threshold mismatch (-want +got):\n%s", diff)
 	}
-	if diff := cmp.Diff([]string{"Place"}, client.queryBuilder.queryConfig.ContainedInPlaceAncestorFirstTypes); diff != "" {
+	if diff := cmp.Diff([]string{"Place"}, queryBuilder.containedInPlaceQueryConfig.AncestorFirstTypes); diff != "" {
 		t.Errorf("ancestor-first types were not cloned (-want +got):\n%s", diff)
 	}
 }

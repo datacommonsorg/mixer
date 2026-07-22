@@ -58,7 +58,7 @@ type Flags struct {
 	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
 	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
 	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
-	// Child place types whose core contained-in-place observation queries should filter by ancestor before type.
+	// Child place types whose contained-in-place queries should filter by ancestor before type.
 	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
 	// Minimum number of unique variables that selects an entity1 range scan for core contained-in-place observation queries. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`

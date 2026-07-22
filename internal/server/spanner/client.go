@@ -70,13 +70,14 @@ const (
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
-	client    *spanner.Client
-	timestamp atomic.Int64
-	ticker    Ticker
-	stopCh    chan struct{}
-	startOnce sync.Once
-	stopOnce  sync.Once
-	wg        sync.WaitGroup
+	client                      *spanner.Client
+	containedInPlaceQueryConfig ContainedInPlaceQueryConfig
+	timestamp                   atomic.Int64
+	ticker                      Ticker
+	stopCh                      chan struct{}
+	startOnce                   sync.Once
+	stopOnce                    sync.Once
+	wg                          sync.WaitGroup
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
@@ -95,8 +96,6 @@ type spannerDatabaseClient struct {
 
 // MultiEntityQueryConfig controls query-planning behavior for the multi-entity schema.
 type MultiEntityQueryConfig struct {
-	// Child place types whose core contained-in-place observation queries should filter by ancestor before type.
-	ContainedInPlaceAncestorFirstTypes []string
 	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
 	// requested variables that selects the entity1 range-scan plan for core
 	// contained-in-place queries. Zero disables the optimization.
@@ -109,6 +108,7 @@ type SpannerClientOptions struct {
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	UseSpannerKeyValueStore      bool
+	ContainedInPlaceQueryConfig  ContainedInPlaceQueryConfig
 	MultiEntityQueryConfig       MultiEntityQueryConfig
 	SpannerEmulatorCompatibility bool
 }
@@ -118,8 +118,13 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 	if opts == nil {
 		opts = &SpannerClientOptions{}
 	}
+	containedInPlaceQueryConfig, err := validateAndCloneContainedInPlaceQueryConfig(opts.ContainedInPlaceQueryConfig)
+	if err != nil {
+		return nil, fmt.Errorf("newSpannerDatabaseClient: %w", err)
+	}
 	sc := &spannerDatabaseClient{
 		client:                       client,
+		containedInPlaceQueryConfig:  containedInPlaceQueryConfig,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
 		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),

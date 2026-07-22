@@ -215,8 +215,10 @@ func main() {
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
 			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+			ContainedInPlaceQueryConfig: spanner.ContainedInPlaceQueryConfig{
+				AncestorFirstTypes: flags.ContainedInPlaceAncestorFirstTypes,
+			},
 			MultiEntityQueryConfig: spanner.MultiEntityQueryConfig{
-				ContainedInPlaceAncestorFirstTypes:     flags.ContainedInPlaceAncestorFirstTypes,
 				ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
 			},
 		})

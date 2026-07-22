@@ -28,7 +28,7 @@ func newMultiEntityClient(client SpannerClient, tableConfig TableConfig, queryCo
 	if !ok {
 		return nil, fmt.Errorf("newMultiEntityClient: expected *spannerDatabaseClient, got %T", client)
 	}
-	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, queryConfig)
+	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, queryConfig, sc.containedInPlaceQueryConfig)
 	if err != nil {
 		return nil, fmt.Errorf("newMultiEntityClient: %w", err)
 	}

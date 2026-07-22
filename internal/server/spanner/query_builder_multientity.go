@@ -32,31 +32,42 @@ import (
 )
 
 type multiEntityQueryBuilder struct {
-	statements  *MultiEntityStatements
-	tableConfig TableConfig
-	queryConfig MultiEntityQueryConfig
+	statements                  *MultiEntityStatements
+	tableConfig                 TableConfig
+	queryConfig                 MultiEntityQueryConfig
+	containedInPlaceQueryConfig ContainedInPlaceQueryConfig
 }
 
 // NewMultiEntityQueryBuilder builds a query builder using table and query configuration.
-func NewMultiEntityQueryBuilder(tableConfig TableConfig, queryConfig MultiEntityQueryConfig) (*multiEntityQueryBuilder, error) {
+func NewMultiEntityQueryBuilder(
+	tableConfig TableConfig,
+	queryConfig MultiEntityQueryConfig,
+	containedInPlaceConfigs ...ContainedInPlaceQueryConfig,
+) (*multiEntityQueryBuilder, error) {
 	if queryConfig.ContainedInPlaceEntityScanMinVariables < 0 {
 		return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceEntityScanMinVariables must be non-negative")
 	}
-	for _, placeType := range queryConfig.ContainedInPlaceAncestorFirstTypes {
-		if strings.TrimSpace(placeType) == "" {
-			return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceAncestorFirstTypes must not contain empty values")
-		}
+	if len(containedInPlaceConfigs) > 1 {
+		return nil, fmt.Errorf("NewMultiEntityQueryBuilder: at most one ContainedInPlaceQueryConfig may be specified")
 	}
-	queryConfig.ContainedInPlaceAncestorFirstTypes = slices.Clone(queryConfig.ContainedInPlaceAncestorFirstTypes)
+	containedInPlaceQueryConfig := ContainedInPlaceQueryConfig{}
+	if len(containedInPlaceConfigs) == 1 {
+		containedInPlaceQueryConfig = containedInPlaceConfigs[0]
+	}
+	containedInPlaceQueryConfig, err := validateAndCloneContainedInPlaceQueryConfig(containedInPlaceQueryConfig)
+	if err != nil {
+		return nil, fmt.Errorf("NewMultiEntityQueryBuilder: %w", err)
+	}
 
 	stmts, err := NewMultiEntityStatements(tableConfig)
 	if err != nil {
 		return nil, err
 	}
 	return &multiEntityQueryBuilder{
-		statements:  stmts,
-		tableConfig: tableConfig,
-		queryConfig: queryConfig,
+		statements:                  stmts,
+		tableConfig:                 tableConfig,
+		queryConfig:                 queryConfig,
+		containedInPlaceQueryConfig: containedInPlaceQueryConfig,
 	}, nil
 }
 
@@ -165,7 +176,7 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	}
 
 	containedInPlaceStatements := stmts.getObsByContainedInPlaceTypeFirst
-	if slices.Contains(b.queryConfig.ContainedInPlaceAncestorFirstTypes, containedInPlace.ChildPlaceType) {
+	if b.containedInPlaceQueryConfig.accessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
 	}
 
@@ -554,7 +565,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
-	// TODO: Apply ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
+	// TODO: Apply ContainedInPlaceQueryConfig to SDMX containment CTEs.
 	for i := range resolved {
 		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]

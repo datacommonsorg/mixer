@@ -143,7 +143,7 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 	err := queryStructs(
 		ctx,
 		sc,
-		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
+		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset, sc.containedInPlaceQueryConfig),
 		func() interface{} {
 			return &Edge{}
 		},
