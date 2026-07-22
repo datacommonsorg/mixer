@@ -45,6 +45,7 @@ message SearchIndicatorsResponse {
     repeated string places_with_data = 2;
     string description = 3;
     repeated string alternate_descriptions = 4;
+    repeated string observation_properties = 5;
   }
 
   message ResolvedPlace {

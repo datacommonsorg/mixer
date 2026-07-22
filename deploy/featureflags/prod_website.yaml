@@ -4,9 +4,10 @@ clusters:
   - projects/datcom-website-prod/locations/us-west1/clusters/website-us-west1
 liveUrl: https://datacommons.org
 flags:
-  EnableV3: true
-  V3MirrorFraction: 0.8
+  V3MirrorFraction: 0.1
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
-  SpannerGraphDatabase: dc_graph_2026_01_27
-  UseStaleReads: true
+  SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-prod/databases/dc_graph
+  UseMultiEntitySchema: true
+  EnableSDMXDataApi: true
+  UseSpannerKeyValueStore: true

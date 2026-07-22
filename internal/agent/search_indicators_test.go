@@ -158,6 +158,35 @@ func TestSearchIndicators_Basic(t *testing.T) {
 		expectedError string
 	}{
 		{
+			desc: "Multi-entity variable populates observation_properties",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "gross oda aid",
+				PerSearchLimit: 5,
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"gross oda aid": {
+					{
+						Dcid:                  "Amount_EconomicActivity_GrossODA",
+						TypeOf:                []string{"StatisticalVariable"},
+						Name:                  "Gross ODA Aid",
+						ObservationProperties: []string{"donor", "recipient"},
+					},
+				},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"Amount_EconomicActivity_GrossODA": "Gross ODA Aid",
+				},
+				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+					{
+						Dcid:                  "Amount_EconomicActivity_GrossODA",
+						ObservationProperties: []string{"donor", "recipient"},
+					},
+				},
+			},
+		},
+		{
 			desc: "Basic indicator search without place constraints",
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "health in america",
@@ -202,7 +231,6 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
 					{
 						Dcid:        "Count_Person_WithDiabetes",
-						Description: "People with Diabetes",
 					},
 				},
 			},
@@ -303,11 +331,9 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
 					{
 						Dcid:        "Count_Person_WithAsthma",
-						Description: "People with Asthma",
 					},
 					{
 						Dcid:        "Count_Person_WithDiabetes",
-						Description: "People with Diabetes",
 					},
 				},
 			},
@@ -395,7 +421,6 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
 					{
 						Dcid:        "Count_Person_WithDiabetes",
-						Description: "People with Diabetes",
 					},
 				},
 			},
@@ -428,7 +453,6 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
 					{
 						Dcid:        "Count_Person_WithAsthma",
-						Description: "People with Asthma",
 					},
 				},
 			},

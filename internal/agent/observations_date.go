@@ -77,9 +77,6 @@ func parseDateFilter(date string, startStr string, endStr string) (*dateFilter, 
 
 	dateLower := date
 	if dateLower == dateTypeLatest || dateLower == dateTypeAll {
-		if startStr != "" || endStr != "" {
-			return nil, fmt.Errorf("cannot specify start/end range if date is %q", date)
-		}
 		return &dateFilter{dateType: dateLower}, nil
 	}
 
