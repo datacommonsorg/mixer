@@ -298,6 +298,9 @@ func (b *multiEntityQueryBuilder) GetSdmxObservationsQuery(
 	observationPropertyToEntitySlot map[string]string,
 	containedInPlaceToRemoteDCIDs map[datacommons.ContainedInPlaceConstraint][]string,
 ) (*spanner.Statement, error) {
+	// TODO: Parse SDMX constraints in prepareSdmxObservationsQuery and pass the
+	// classified time and containment selections into this builder instead of
+	// revalidating the raw constraint map.
 	timeSelection, err := datacommons.ClassifyTimePeriod(constraints)
 	if err != nil {
 		return nil, status.Errorf(status.Code(err), "GetSdmxObservationsQuery: %s", status.Convert(err).Message())

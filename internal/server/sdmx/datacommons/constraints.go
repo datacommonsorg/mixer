@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -154,7 +155,7 @@ func ClassifyTimePeriod(constraints map[string]*sdmxpb.SdmxComponentConstraint) 
 			return TimePeriodSelection{}, err
 		}
 		value := strings.TrimSpace(predicate.GetValue())
-		if strings.EqualFold(value, "LATEST") {
+		if strings.EqualFold(value, shared.LATEST) {
 			latest = true
 			continue
 		}
