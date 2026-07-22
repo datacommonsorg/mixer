@@ -1,14 +1,15 @@
-		GRAPH DCGraph MATCH (m:Node
+		GRAPH DCGraph MATCH (n:Node)-[@{FORCE_INDEX=InEdge}filter0:Edge
+		WHERE
+			filter0.predicate = 'typeOf'
+			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->,
+		@{FORCE_JOIN_ORDER=TRUE}
+		(m:Node
 		WHERE
 			m.subject_id = 'country/USA')<-[e:Edge
 		WHERE
-			e.predicate = 'linkedContainedInPlace']-(n:Node),
-		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
-		WHERE
-			filter0.predicate = 'typeOf'
-			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->
+			e.predicate = 'linkedContainedInPlace']-(n:Node)
 		RETURN
-		  	m.subject_id,
+			m.subject_id,
 			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
@@ -16,7 +17,7 @@
 		WHERE
 		  n.subject_id = object_id
 		RETURN
-		  	subject_id,
+			subject_id,
 			predicate,
 			provenance,
 			IFNULL(ANY_VALUE(n.value), '') AS value,

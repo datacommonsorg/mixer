@@ -1,14 +1,13 @@
-		GRAPH DCGraph MATCH (m:Node
+		GRAPH DCGraph MATCH (n:Node)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
-			m.subject_id = 'nuts/UKI1')-[e:Edge]->(n:Node),
-		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
+			filter0.predicate = 'typeOf'
+			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->,
+		@{FORCE_JOIN_ORDER=TRUE}
+		(m:Node
 		WHERE
-			filter0.predicate = 'name'
-			AND filter0.object_id IN ('AdministrativeArea2','AdministrativeAr:4cB0ui47vrAeY7MO/uBAvpsajxkYlJo3EW8fStdW4ko=')]->,
-		(n)-[@{FORCE_INDEX=InEdge}filter1:Edge
+			m.subject_id IN ('country/USA','country/IND'))<-[e:Edge
 		WHERE
-			filter1.predicate = 'subClassOf'
-			AND filter1.object_id IN ('AdministrativeArea','AdministrativeAr:WXALAhw8j+Uz/Tw7uR3ClTolVepyj0tjRCKr6Xkw60s=')]->
+			e.predicate = 'linkedContainedInPlace']-(n:Node)
 		RETURN
 			m.subject_id,
 			n.subject_id AS object_id,

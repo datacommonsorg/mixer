@@ -34,21 +34,14 @@ import (
 type multiEntityQueryBuilder struct {
 	statements  *MultiEntityStatements
 	tableConfig TableConfig
-	queryConfig MultiEntityQueryConfig
+	queryConfig QueryConfig
 }
 
 // NewMultiEntityQueryBuilder builds a query builder using table and query configuration.
-func NewMultiEntityQueryBuilder(tableConfig TableConfig, queryConfig MultiEntityQueryConfig) (*multiEntityQueryBuilder, error) {
-	if queryConfig.ContainedInPlaceEntityScanMinVariables < 0 {
-		return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceEntityScanMinVariables must be non-negative")
-	}
-	for _, placeType := range queryConfig.ContainedInPlaceAncestorFirstTypes {
-		if strings.TrimSpace(placeType) == "" {
-			return nil, fmt.Errorf("NewMultiEntityQueryBuilder: ContainedInPlaceAncestorFirstTypes must not contain empty values")
-		}
-	}
-	queryConfig.ContainedInPlaceAncestorFirstTypes = slices.Clone(queryConfig.ContainedInPlaceAncestorFirstTypes)
-
+func NewMultiEntityQueryBuilder(
+	tableConfig TableConfig,
+	queryConfig QueryConfig,
+) (*multiEntityQueryBuilder, error) {
 	stmts, err := NewMultiEntityStatements(tableConfig)
 	if err != nil {
 		return nil, err
@@ -165,7 +158,7 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	}
 
 	containedInPlaceStatements := stmts.getObsByContainedInPlaceTypeFirst
-	if slices.Contains(b.queryConfig.ContainedInPlaceAncestorFirstTypes, containedInPlace.ChildPlaceType) {
+	if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
 	}
 
@@ -554,7 +547,7 @@ func (b *multiEntityQueryBuilder) getSdmxContainedInPlaceObservationsQuery(
 	params := maps.Clone(compiled.params)
 	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
 	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
-	// TODO: Apply ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
+	// TODO: Apply QueryConfig.ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
 	for i := range resolved {
 		key := resolved[i].relation
 		cteName, ok := relationToCTE[key]
