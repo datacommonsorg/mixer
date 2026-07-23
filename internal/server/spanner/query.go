@@ -723,7 +723,6 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	return results, nil
 }
 
-
 // FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
 func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	if len(nodes) == 0 {
@@ -1086,7 +1085,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		}
 
 		// Log slow Spanner queries that timed out or were canceled.
-		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL)
+		maybeLogSpannerTimeout(queryCtx, err, duration, "Spanner query", "sql", stmt.SQL, "params", stmt.Params)
 
 		if err != nil && !sc.dbInitialized.Load() && IsTableNotFoundError(err) {
 			slog.Warn("Spanner table not found on uninitialized database, treating as empty results", "sql", stmt.SQL, "error", err)
