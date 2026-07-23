@@ -22,6 +22,7 @@ import (
 
 	cloudSpanner "cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/grpc/codes"
@@ -483,7 +484,7 @@ func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
 						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
 					},
-				}, nil)
+				}, nil, nil)
 			},
 		},
 		{
@@ -496,7 +497,7 @@ func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
 						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
 						"unit":             sdmxComponentConstraint("Count"),
 					},
-				}, nil)
+				}, nil, nil)
 			},
 		},
 	}
@@ -656,7 +657,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 		},
 	}, map[string]string{
 		"observationAbout": "entity1",
-	})
+	}, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() returned error: %v", err)
 	}
@@ -735,7 +736,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 						"variableMeasured": sdmxComponentConstraint("Count_Person", "Count_Household"),
 					},
-				}, c.observationPropertyToEntitySlot)
+				}, c.observationPropertyToEntitySlot, nil)
 			})
 		})
 	}
@@ -760,7 +761,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 			},
 		}, map[string]string{
 			"destinationCountry": "entity1", "sourceCountry": "entity2",
-		})
+		}, nil)
 	})
 }
 
@@ -776,7 +777,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
 				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020", "2020"),
 			},
-		}, nil)
+		}, nil, nil)
 	})
 }
 
@@ -793,7 +794,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *te
 				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020"),
 				"unit":             sdmxComponentConstraint("Count"),
 			},
-		}, nil)
+		}, nil, nil)
 	})
 }
 
@@ -808,7 +809,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
 			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
 			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
 		},
-	}, nil)
+	}, nil, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
 	}
@@ -842,7 +843,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
 			"unit":             sdmxComponentConstraint("Count"),
 		},
-	}, nil)
+	}, nil, nil)
 	if err != nil {
 		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
 	}
@@ -859,6 +860,76 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 		if strings.Contains(statement.SQL, substring) {
 			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
 		}
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
+	t.Parallel()
+	earthCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
+
+	for _, tc := range []struct {
+		name                            string
+		componentID                     string
+		constraints                     map[string]*sdmxpb.SdmxComponentConstraint
+		observationPropertyToEntitySlot map[string]string
+		containedInPlaceToRemoteDCIDs   map[datacommons.ContainedInPlaceConstraint][]string
+		golden                          string
+	}{
+		{
+			name:        "entity1 all dates",
+			componentID: "observationAbout",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			},
+			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+			golden:                          "get_sdmx_availability_contained_entity1.sql",
+		},
+		{
+			name:        "entity1 explicit time periods",
+			componentID: "observationAbout",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2022", "2020"),
+			},
+			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+			golden:                          "get_sdmx_availability_contained_entity1_explicit_time_periods.sql",
+		},
+		{
+			name:        "remote entity2",
+			componentID: "destinationCountry",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"sourceCountry":    sdmxContainedInPlaceConstraint(earthCountries.Ancestor, earthCountries.ChildPlaceType),
+			},
+			observationPropertyToEntitySlot: map[string]string{
+				"destinationCountry": "entity1",
+				"sourceCountry":      "entity2",
+			},
+			containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+				earthCountries: {"country/USA"},
+			},
+			golden: "get_sdmx_availability_contained_entity2_remote.sql",
+		},
+	} {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, tc.golden, func(ctx context.Context) (interface{}, error) {
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				if err != nil {
+					return nil, err
+				}
+				return builder.GetSdmxAvailabilityQuery(
+					&sdmxpb.SdmxAvailabilityQuery{
+						ComponentId: tc.componentID,
+						Constraints: tc.constraints,
+					},
+					tc.observationPropertyToEntitySlot,
+					tc.containedInPlaceToRemoteDCIDs,
+				)
+			})
+		})
 	}
 }
 
@@ -967,7 +1038,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.observationPropertyToEntitySlot)
+			_, err := builder.GetSdmxAvailabilityQuery(tc.req, tc.observationPropertyToEntitySlot, nil)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxAvailabilityQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}

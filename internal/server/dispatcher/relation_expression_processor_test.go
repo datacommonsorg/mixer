@@ -243,6 +243,21 @@ func sdmxDataQueryWithContainedInPlace(
 	return &sdmxpb.SdmxDataQuery{Constraints: constraints}
 }
 
+func sdmxAvailabilityQueryWithContainedInPlace(
+	componentToContainedInPlace map[string]*sdmxpb.SdmxComponentConstraint,
+) *sdmxpb.SdmxAvailabilityQuery {
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+	}
+	for component, constraint := range componentToContainedInPlace {
+		constraints[component] = constraint
+	}
+	return &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentUnit,
+		Constraints: constraints,
+	}
+}
+
 func sdmxNodeResponse(subject string, dcids []string, nextToken string) *pbv2.NodeResponse {
 	nodes := make([]*pb.EntityInfo, 0, len(dcids))
 	for _, dcid := range dcids {
@@ -308,6 +323,38 @@ func TestRelationExpressionProcessorPreProcessSdmxDataDeduplicatesRelationsAndPa
 	got := SdmxContainedInPlaceToRemoteDCIDsFromContext(rc.Context)
 	if !slices.Equal(got[relation], want[relation]) || len(got) != len(want) {
 		t.Fatalf("remote expansions = %v, want %v", got, want)
+	}
+}
+
+func TestRelationExpressionProcessorPreProcessSdmxAvailability(t *testing.T) {
+	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "northamerica", ChildPlaceType: "Country"}
+	remoteSource := &mockSource{
+		nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+			if got, want := req.GetProperty(), "<-containedInPlace+{typeOf:Country}"; got != want {
+				return nil, fmt.Errorf("Node() property = %q, want %q", got, want)
+			}
+			return sdmxNodeResponse(relation.Ancestor, []string{"country/USA", "country/CAN"}, ""), nil
+		},
+	}
+	processor := NewRelationExpressionProcessor(remoteSource, 10)
+	rc := &RequestContext{
+		Context: context.Background(),
+		Type:    TypeSdmxAvailability,
+		CurrentRequest: sdmxAvailabilityQueryWithContainedInPlace(map[string]*sdmxpb.SdmxComponentConstraint{
+			"sourceCountry": sdmxContainedInPlaceComponentConstraint(relation.Ancestor, relation.ChildPlaceType),
+		}),
+	}
+
+	outcome, err := processor.PreProcess(rc)
+	if err != nil {
+		t.Fatalf("PreProcess() error = %v", err)
+	}
+	if outcome != Continue {
+		t.Fatalf("PreProcess() outcome = %v, want %v", outcome, Continue)
+	}
+	got := SdmxContainedInPlaceToRemoteDCIDsFromContext(rc.Context)
+	if want := []string{"country/CAN", "country/USA"}; !slices.Equal(got[relation], want) {
+		t.Fatalf("remote expansion = %v, want %v", got[relation], want)
 	}
 }
 

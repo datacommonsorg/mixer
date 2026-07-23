@@ -140,6 +140,27 @@ func TestParseAvailabilityRequest_Constraints(t *testing.T) {
 	}
 }
 
+func TestParseAvailabilityRequest_PropertyConstraints(t *testing.T) {
+	for _, query := range []string{
+		"c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=country%2FUSA&c[sourceCountry.typeOf]=State",
+		"c%5BvariableMeasured%5D=Count_Migration&c%5BsourceCountry.containedInPlace%2B%5D=country%2FUSA&c%5BsourceCountry.typeOf%5D=State",
+	} {
+		got, err := ParseAvailabilityRequest(availabilityTail("destinationCountry"), availabilityURI("destinationCountry", query))
+		if err != nil {
+			t.Fatalf("ParseAvailabilityRequest() error = %v", err)
+		}
+		constraint := got.Constraints["sourceCountry"]
+		containedIn := constraint.GetPropertyConstraints()["containedInPlace"]
+		if !containedIn.GetTransitive() || containedIn.GetPredicates()[0].GetValue() != "country/USA" {
+			t.Fatalf("containedInPlace constraint = %v", containedIn)
+		}
+		typeOf := constraint.GetPropertyConstraints()["typeOf"]
+		if typeOf.GetTransitive() || typeOf.GetPredicates()[0].GetValue() != "State" {
+			t.Fatalf("typeOf constraint = %v", typeOf)
+		}
+	}
+}
+
 func TestParseAvailabilityRequest_Errors(t *testing.T) {
 	tests := []struct {
 		name        string
@@ -248,11 +269,6 @@ func TestParseAvailabilityRequest_Errors(t *testing.T) {
 		{
 			name:        "operator unsupported",
 			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=ge:2020"),
-			wantCode:    codes.Unimplemented,
-		},
-		{
-			name:        "property constraint unsupported",
-			originalURI: availabilityURI("observationAbout", "c[variableMeasured]=Count_Person&c[observationAbout.containedInPlace+]=country%2FUSA&c[observationAbout.typeOf]=County"),
 			wantCode:    codes.Unimplemented,
 		},
 		{
