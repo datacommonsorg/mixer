@@ -28,6 +28,7 @@ import (
 	"runtime/pprof"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/embedder"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
@@ -68,8 +69,9 @@ const (
 var (
 	// Server config
 	port           = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject    = flag.String("host_project", "", "The GCP project to run the mixer instance.")
-	writeUsageLogs = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
+	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
+	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
 	bigQueryDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
@@ -212,12 +214,22 @@ func main() {
 	// Spanner Graph.
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
+		queryConfig := spanner.QueryConfig{
+			ContainedInPlaceAncestorFirstTypes:     flags.ContainedInPlaceAncestorFirstTypes,
+			ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
+		}
+		if err := queryConfig.Validate(); err != nil {
+			slog.Error("Invalid Spanner query config", "error", err)
+			os.Exit(1)
+		}
+
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
 			DatabaseOverride:             flags.SpannerGraphDatabase,
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
 			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
+			QueryConfig:                  queryConfig,
 		})
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
@@ -431,6 +443,17 @@ func main() {
 		}
 	}
 
+	// Embedder: Generates vector embeddings for Spanner vector search.
+	var embedderClient embedder.Embedder
+	if spannerClient != nil {
+		embedderClient, err = embedder.NewEmbedder(ctx, *hostProject, *genAIClientLocation)
+		if err != nil {
+			slog.Error("Failed to initialize GenAI Embedder", "error", err)
+		} else {
+			slog.Info("Successfully initialized GenAI Embedder", "project", *hostProject, "location", *genAIClientLocation)
+		}
+	}
+
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
@@ -438,6 +461,7 @@ func main() {
 			RecogPlaceStore:  store.RecogPlaceStore,
 			MapsClient:       mapsClient,
 			TopicExpander:    topicExpander,
+			Embedder:         embedderClient,
 			SearchConfigPath: *spannerSearchConfigPath,
 		})
 		if *spannerSearchConfigPath != "" && spannerDS.SearchConfig() == nil {
@@ -479,7 +503,10 @@ func main() {
 		// Relation Expression Processor
 		if remoteDataSource != nil {
 			slog.Info("remoteDataSource is configured, setting up relation expression processor")
-			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(
+				remoteDataSource,
+				flags.SDMXRemotePlaceExpansionLimit,
+			)
 			processors = append(processors, &relationExpressionProcessor)
 		}
 

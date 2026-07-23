@@ -25,6 +25,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/google/go-cmp/cmp"
@@ -343,6 +344,183 @@ func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *tes
 	}
 }
 
+func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	variables := []string{"var2", "var1", "var2"}
+	entities := []string{"geoId/10", "geoId/06", "geoId/10"}
+	statements := map[string]*cloudspanner.Statement{}
+	statements["observations"], err = queryBuilder.GetObservationsQuery(variables, entities, "")
+	if err != nil {
+		t.Fatalf("GetObservationsQuery() error = %v", err)
+	}
+	statements["contained in place"], err = queryBuilder.GetObservationsContainedInPlaceQuery(
+		variables,
+		&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+		"",
+	)
+	if err != nil {
+		t.Fatalf("GetObservationsContainedInPlaceQuery() error = %v", err)
+	}
+	statements["variable existence"], err = queryBuilder.GetStatVarsByEntityQuery(variables, entities)
+	if err != nil {
+		t.Fatalf("GetStatVarsByEntityQuery() error = %v", err)
+	}
+
+	wantVariables := []string{"var1", "var2"}
+	for name, stmt := range statements {
+		if diff := cmp.Diff(wantVariables, stmt.Params["variables"]); diff != "" {
+			t.Errorf("%s variables mismatch (-want +got):\n%s", name, diff)
+		}
+	}
+
+	wantEntities := []string{"geoId/06", "geoId/10"}
+	for _, name := range []string{"observations", "variable existence"} {
+		if diff := cmp.Diff(wantEntities, statements[name].Params["entities"]); diff != "" {
+			t.Errorf("%s entities mismatch (-want +got):\n%s", name, diff)
+		}
+	}
+}
+
+func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *testing.T) {
+	const (
+		variableSeekHint = "FORCE_INDEX=_BASE_TABLE"
+		entityScanHint   = "FORCE_INDEX=TimeSeriesByEntity1, SEEKABLE_KEY_SIZE=1"
+	)
+
+	for _, tc := range []struct {
+		name                 string
+		variables            []string
+		date                 string
+		queryConfig          QueryConfig
+		childPlaceType       string
+		wantEntityScan       bool
+		wantAncestorFirstCTE bool
+	}{
+		{
+			name:           "disabled",
+			variables:      []string{"var1", "var2", "var3"},
+			queryConfig:    QueryConfig{},
+			childPlaceType: "County",
+		},
+		{
+			name:      "below threshold",
+			variables: []string{"var1", "var2"},
+			queryConfig: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+		},
+		{
+			name:      "duplicates do not reach threshold",
+			variables: []string{"var1", "var2", "var2"},
+			queryConfig: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+		},
+		{
+			name:      "all dates at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "latest at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			date:      "latest",
+			queryConfig: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "exact date at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			date:      "2020",
+			queryConfig: QueryConfig{
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType: "County",
+			wantEntityScan: true,
+		},
+		{
+			name:      "ancestor first at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables: 3,
+			},
+			childPlaceType:       "Place",
+			wantEntityScan:       true,
+			wantAncestorFirstCTE: true,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig)
+			if err != nil {
+				t.Fatal(err)
+			}
+			stmt, err := queryBuilder.GetObservationsContainedInPlaceQuery(
+				tc.variables,
+				&v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: tc.childPlaceType},
+				tc.date,
+			)
+			if err != nil {
+				t.Fatal(err)
+			}
+
+			if got := strings.Contains(stmt.SQL, entityScanHint); got != tc.wantEntityScan {
+				t.Errorf("entity scan hint present = %t, want %t\nSQL:\n%s", got, tc.wantEntityScan, stmt.SQL)
+			}
+			if got := strings.Contains(stmt.SQL, variableSeekHint); got == tc.wantEntityScan {
+				t.Errorf("variable seek hint present = %t, want %t\nSQL:\n%s", got, !tc.wantEntityScan, stmt.SQL)
+			}
+			ancestorFirstCTE := "FROM Edge contained\n\t\t\tJOIN@{FORCE_JOIN_ORDER=TRUE} Edge typed"
+			if got := strings.Contains(stmt.SQL, ancestorFirstCTE); got != tc.wantAncestorFirstCTE {
+				t.Errorf("ancestor-first CTE present = %t, want %t\nSQL:\n%s", got, tc.wantAncestorFirstCTE, stmt.SQL)
+			}
+		})
+	}
+}
+
+func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{
+		ContainedInPlaceEntityScanMinVariables: 1,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	stmt, err := queryBuilder.GetObservationsQuery([]string{"var1"}, []string{"geoId/06"}, "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(stmt.SQL, "SEEKABLE_KEY_SIZE") {
+		t.Errorf("direct observation SQL unexpectedly contains contained-in-place access hint:\n%s", stmt.SQL)
+	}
+}
+
+func TestNewMultiEntityClientUsesSharedQueryConfig(t *testing.T) {
+	queryConfig := QueryConfig{
+		ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
+		ContainedInPlaceEntityScanMinVariables: 50,
+	}
+	client, err := newMultiEntityClient(&spannerDatabaseClient{queryConfig: queryConfig}, DefaultTableConfig())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if diff := cmp.Diff(queryConfig, client.queryBuilder.queryConfig); diff != "" {
+		t.Errorf("query config mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestValidateObservationsRequiresProvenance(t *testing.T) {
 	for _, tc := range []struct {
 		name       string
@@ -496,7 +674,7 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 }
 
 func TestPrepareSdmxObservationsQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -583,6 +761,60 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, interpolatedSQL)
 		}
 	}
+	if strings.Contains(prepared.statement.SQL, "remote_places") {
+		t.Fatalf("prepareSdmxObservationsQuery() local-only SQL contains remote places parameter:\n%s", prepared.statement.SQL)
+	}
+}
+
+func TestPrepareSdmxObservationsQueryWithRemoteContainedInPlace(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "country/USA", ChildPlaceType: "State"}
+	constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+		datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+		"containedAncestor0":                  sdmxComponentConstraint("country/CAN"),
+		"sourceCountry":                       sdmxContainedInPlaceConstraint(relation.Ancestor, relation.ChildPlaceType),
+	}
+	ctx := dispatcher.WithSdmxContainedInPlaceToRemoteDCIDs(
+		context.Background(),
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDs{
+			relation: {"country/MEX", "country/USA"},
+		},
+	)
+	prepared, err := prepareSdmxObservationsQuery(
+		ctx,
+		constraints,
+		func(_ context.Context, ids []string, arc *v2.Arc, pageSize int, offset int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Migration": observationPropertiesEdges("containedAncestor0", "sourceCountry"),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if err != nil {
+		t.Fatalf("prepareSdmxObservationsQuery() error = %v", err)
+	}
+	wantParams := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
+		"filter_entity1":                      []string{"country/CAN"},
+		"containment_0_ancestor":              relation.Ancestor,
+		"containment_0_child_place_type":      relation.ChildPlaceType,
+		"containment_0_remote_places":         []string{"country/MEX", "country/USA"},
+	}
+	if diff := cmp.Diff(wantParams, prepared.statement.Params); diff != "" {
+		t.Fatalf("prepareSdmxObservationsQuery() params mismatch (-want +got):\n%s", diff)
+	}
+	for _, fragment := range []string{
+		"UNION DISTINCT",
+		"FROM UNNEST(@containment_0_remote_places) AS place_id",
+		"ON t.entity2 = anchor.place_id",
+	} {
+		if !strings.Contains(prepared.statement.SQL, fragment) {
+			t.Errorf("prepareSdmxObservationsQuery() SQL does not contain %q:\n%s", fragment, prepared.statement.SQL)
+		}
+	}
 }
 
 func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.T) {
@@ -616,7 +848,7 @@ func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.
 }
 
 func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropertyNames(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -633,6 +865,7 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 				directComponent:    "entity1",
 				containedComponent: "entity2",
 			},
+			nil,
 		)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
@@ -650,8 +883,36 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 	}
 }
 
+func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
+	cfg := DefaultTableConfig()
+	cfg.spannerEmulatorCompatibility = true
+	queryBuilder, err := NewMultiEntityQueryBuilder(cfg, QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := queryBuilder.GetSdmxObservationsQuery(
+		map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			"region":                              sdmxContainedInPlaceConstraint("northamerica", "Country"),
+		},
+		map[string]string{"region": "entity1"},
+		nil,
+	)
+	if err != nil {
+		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+	}
+	if !strings.Contains(statement.SQL, "spanner_emulator.disable_query_null_filtered_index_check=true") {
+		t.Errorf("GetSdmxObservationsQuery() SQL does not contain the emulator compatibility hint:\n%s", statement.SQL)
+	}
+	for _, hint := range []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"} {
+		if strings.Contains(statement.SQL, hint) {
+			t.Errorf("GetSdmxObservationsQuery() SQL contains unsupported emulator hint %q:\n%s", hint, statement.SQL)
+		}
+	}
+}
+
 func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -698,7 +959,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservationProperties(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -721,7 +982,7 @@ func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservation
 }
 
 func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -794,7 +1055,7 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig())
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -922,6 +1183,82 @@ func TestSdmxBackendError(t *testing.T) {
 	}
 }
 
+func TestSelectSdmxAvailabilityDateJoinPlan(t *testing.T) {
+	for _, tc := range []struct {
+		name    string
+		context sdmxAvailabilityDateJoinContext
+		want    sdmxAvailabilityDateJoinPlan
+	}{
+		{
+			name: "ordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinMergeBaseTable,
+		},
+		{
+			name: "ordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: true,
+				broadSeriesScan:        false,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name: "unordered broad scan",
+			context: sdmxAvailabilityDateJoinContext{
+				seriesOrderedByFullKey: false,
+				broadSeriesScan:        true,
+			},
+			want: sdmxAvailabilityDateJoinAutomatic,
+		},
+		{
+			name:    "unordered selective scan",
+			context: sdmxAvailabilityDateJoinContext{},
+			want:    sdmxAvailabilityDateJoinAutomatic,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := selectSdmxAvailabilityDateJoinPlan(tc.context); got != tc.want {
+				t.Fatalf("selectSdmxAvailabilityDateJoinPlan() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestIsBroadSdmxAvailabilitySeriesScan(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		constraints map[string]*sdmxpb.SdmxComponentConstraint
+		want        bool
+	}{
+		{
+			name: "multiple variables and time period",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1", "var2"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020", "2023"),
+			},
+			want: true,
+		},
+		{
+			name: "additional series constraint",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
+				"unit":                                sdmxComponentConstraint("Count"),
+			},
+			want: false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := isBroadSdmxAvailabilitySeriesScan(tc.constraints); got != tc.want {
+				t.Fatalf("isBroadSdmxAvailabilitySeriesScan() = %t, want %t", got, tc.want)
+			}
+		})
+	}
+}
+
 func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 	for _, tc := range []struct {
 		name                            string
@@ -962,6 +1299,36 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
 	if got, want := status.Convert(err).Message(), "SDMX availability request cannot be nil"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentTimePeriod,
+	})
+	if status.Code(err) != codes.Unimplemented {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD availability is not implemented yet"; got != want {
+		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
+	client := &multiEntityClient{}
+	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+			datacommons.ComponentTimePeriod:       sdmxComponentConstraint("latest"),
+		},
+	})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	if got, want := status.Convert(err).Message(), "SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates"; got != want {
 		t.Fatalf("GetSdmxAvailability() message = %q, want %q", got, want)
 	}
 }
@@ -1464,7 +1831,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationAbout: sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"observationAbout\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "unknown dynamic filter fails",
@@ -1472,15 +1839,14 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				"customEntity":                        sdmxComponentConstraint("country/USA"),
 			},
-			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"customEntity\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
-			name: "time period fails",
+			name: "time period passes",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentTimePeriod:       sdmxComponentConstraint("2020"),
 			},
-			wantError: "unsupported SDMX component filter \"TIME_PERIOD\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "measure fails",
@@ -1488,7 +1854,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentObservationValue: sdmxComponentConstraint("10"),
 			},
-			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"OBS_VALUE\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 		{
 			name: "attribute fails",
@@ -1496,7 +1862,7 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
 				datacommons.ComponentScalingFactor:    sdmxComponentConstraint("0"),
 			},
-			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
+			wantError: "unsupported SDMX component filter \"scalingFactor\"; filterable components are [TIME_PERIOD destinationCountry facetId measurementMethod observationPeriod provenance sourceCountry unit variableMeasured]",
 		},
 	}
 
@@ -1517,6 +1883,38 @@ func TestValidateSdmxDataConstraintComponents(t *testing.T) {
 			}
 			if got := status.Convert(err).Message(); got != tt.wantError {
 				t.Fatalf("validateSdmxDataConstraintComponents() message = %q, want %q", got, tt.wantError)
+			}
+		})
+	}
+}
+
+func TestValidateSdmxAvailabilityConstraintComponents(t *testing.T) {
+	shape := sdmxDataShape([]string{"destinationCountry", "sourceCountry"})
+	for _, tc := range []struct {
+		name        string
+		componentID string
+		wantError   bool
+	}{
+		{name: "time period", componentID: datacommons.ComponentTimePeriod},
+		{name: "dynamic dimension", componentID: "destinationCountry"},
+		{name: "unknown component", componentID: "customEntity", wantError: true},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			err := validateSdmxAvailabilityConstraintComponents(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("var1"),
+					tc.componentID:                        sdmxComponentConstraint("value"),
+				},
+				shape,
+			)
+			if tc.wantError {
+				if status.Code(err) != codes.InvalidArgument {
+					t.Fatalf("validateSdmxAvailabilityConstraintComponents() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("validateSdmxAvailabilityConstraintComponents() error = %v, want nil", err)
 			}
 		})
 	}

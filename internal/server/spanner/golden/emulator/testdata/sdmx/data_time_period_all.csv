@@ -1,0 +1,5 @@
+STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId
+dataflow,DC:DF_OBS(1.0.0),I,Count_TimeSeries,country/USA,Count,Census,P1Y,dc/base/HumanReadableStatVars,2020,10,,facet-a
+dataflow,DC:DF_OBS(1.0.0),I,Count_TimeSeries,country/USA,Count,Census,P1Y,dc/base/HumanReadableStatVars,2022,12,,facet-a
+dataflow,DC:DF_OBS(1.0.0),I,Count_TimeSeries,country/USA,Count,Survey,P1Y,dc/base/HumanReadableStatVars,2021,20,,facet-b
+dataflow,DC:DF_OBS(1.0.0),I,Count_TimeSeries,country/USA,Count,Survey,P1Y,dc/base/HumanReadableStatVars,2023,23,,facet-b

@@ -121,8 +121,6 @@ var statements = struct {
 	filterDescendentStatVarsByImport string
 	// Filter descendent stat vars by num_entities_existences.
 	filterDescendentStatVarsByNumEntitiesExistence string
-	// Extract embedding values for a retrieval query.
-	getEmbeddingFromQuery string
 	// Search nodes using vector search.
 	vectorSearchNode string
 	// Filter nodes by type.
@@ -205,7 +203,7 @@ OR CreationTimestamp > (
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
+	filterProperty: `(n%[4]s)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `
@@ -244,7 +242,7 @@ OR CreationTimestamp > (
 			object_id`,
 	returnFilterEdges: `
 		RETURN
-		  	m.subject_id,
+			m.subject_id,
 			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
@@ -252,7 +250,7 @@ OR CreationTimestamp > (
 		WHERE
 		  n.subject_id = object_id
 		RETURN
-		  	subject_id,
+			subject_id,
 			predicate,
 			provenance,
 			IFNULL(ANY_VALUE(n.value), '') AS value,
@@ -434,7 +432,7 @@ OR CreationTimestamp > (
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -496,7 +494,7 @@ OR CreationTimestamp > (
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -637,7 +635,7 @@ OR CreationTimestamp > (
 		JOIN (
 			SELECT
 				e.object_id AS subject_id,
-				COUNT(e.subject_id) AS descendent_stat_var_count
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
 			%s
 			WHERE e.predicate = 'linkedMemberOf'
@@ -655,7 +653,7 @@ OR CreationTimestamp > (
 			ON n.subject_id = e_counts.subject_id`,
 	getFilteredTopic: `		SELECT
 			e.object_id AS subject_id,
-			COUNT(e.subject_id) AS descendent_stat_var_count
+			COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		%[1]s
 		WHERE e.predicate = 'linkedMember'
@@ -674,8 +672,6 @@ OR CreationTimestamp > (
 					AND e1.object_id = @import`,
 	filterDescendentStatVarsByNumEntitiesExistence: `
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
-	getEmbeddingFromQuery: `		SELECT embeddings.values
-		FROM ML.PREDICT(MODEL %s, (SELECT @search_label AS content, @task_type AS task_type))`,
 	filterNodesByTypes: `		SELECT subject_id, ARRAY(SELECT t FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters)) AS matched_types
 		FROM Node
 		WHERE subject_id IN UNNEST(@nodes)

@@ -55,11 +55,13 @@ const (
 	FACET    = "facet"
 )
 
+const linkedContainedInPlaceProperty = "linkedContainedInPlace"
+
 // Map of original chained property to optimized property.
 // These are chained node properties that can be replaced with optimized versions before fetching from Spanner.
 var optimizedChainProps = map[string]string{
-	"containedInPlace":       "linkedContainedInPlace",
-	"linkedContainedInPlace": "linkedContainedInPlace",
+	v2.ContainedInPlaceProperty:    linkedContainedInPlaceProperty,
+	linkedContainedInPlaceProperty: linkedContainedInPlaceProperty,
 }
 
 // Struct to hold optimizations made to Node requests.

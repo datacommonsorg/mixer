@@ -84,6 +84,9 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if cfg.SearchConfig.EmbeddingModel != "NodeEmbeddingModel" {
 		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", cfg.SearchConfig.EmbeddingModel)
 	}
+	if cfg.SearchConfig.EmbeddingModelEndpoint != "text-embedding-005" {
+		t.Errorf("Expected EmbeddingModelEndpoint=text-embedding-005, got %s", cfg.SearchConfig.EmbeddingModelEndpoint)
+	}
 	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
 		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
 	}

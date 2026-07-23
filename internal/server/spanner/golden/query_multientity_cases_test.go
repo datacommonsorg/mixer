@@ -16,6 +16,7 @@ package golden
 
 import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
 
 func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
@@ -125,36 +126,95 @@ var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
 }
 
 var multiEntityObservationsContainedInPlaceTestCases = []struct {
-	name           string
-	variables      []string
-	ancestor       string
-	childPlaceType string
-	date           string
-	golden         string
+	name               string
+	variables          []string
+	ancestor           string
+	childPlaceType     string
+	ancestorFirstTypes []string
+	entityScanMinVars  int
+	date               string
+	golden             string
 }{
 	{
-		name:           "contained in place with variables",
-		variables:      []string{"AirPollutant_Cancer_Risk"},
-		ancestor:       "geoId/10",
-		childPlaceType: "County",
-		date:           "",
-		golden:         "get_multientity_obs_contained_in_place_both",
+		name:               "contained in place with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "County",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "",
+		golden:             "get_multientity_obs_contained_in_place_both",
 	},
 	{
-		name:           "contained in place latest date with variables",
-		variables:      []string{"AirPollutant_Cancer_Risk"},
-		ancestor:       "geoId/10",
-		childPlaceType: "County",
-		date:           "latest",
-		golden:         "get_multientity_obs_contained_in_place_latest",
+		name:               "contained in place latest date with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "County",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "latest",
+		golden:             "get_multientity_obs_contained_in_place_latest",
 	},
 	{
-		name:           "contained in place specific date with variables",
-		variables:      []string{"AirPollutant_Cancer_Risk", "Count_Person"},
-		ancestor:       "geoId/10",
-		childPlaceType: "County",
-		date:           "2015",
-		golden:         "get_multientity_obs_contained_in_place_date",
+		name:               "contained in place specific date with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "County",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "2015",
+		golden:             "get_multientity_obs_contained_in_place_date",
+	},
+	{
+		name:               "contained in place ancestor first with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "Place",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "",
+		golden:             "get_multientity_obs_contained_in_place_ancestor_first_both",
+	},
+	{
+		name:               "contained in place ancestor first latest date with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "Place",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "latest",
+		golden:             "get_multientity_obs_contained_in_place_ancestor_first_latest",
+	},
+	{
+		name:               "contained in place ancestor first specific date with variables",
+		variables:          []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:           "geoId/10",
+		childPlaceType:     "Place",
+		ancestorFirstTypes: []string{"Place"},
+		date:               "2015",
+		golden:             "get_multientity_obs_contained_in_place_ancestor_first_date",
+	},
+	{
+		name:              "contained in place entity scan with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_both",
+	},
+	{
+		name:              "contained in place entity scan latest date with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "latest",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_latest",
+	},
+	{
+		name:              "contained in place entity scan specific date with variables",
+		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:          "geoId/10",
+		childPlaceType:    "County",
+		entityScanMinVars: 2,
+		date:              "2015",
+		golden:            "get_multientity_obs_contained_in_place_entity_scan_date",
 	},
 }
 
@@ -316,6 +376,7 @@ var multiEntitySdmxObservationsTestCases = []struct {
 	name                            string
 	constraints                     map[string]*sdmxpb.SdmxComponentConstraint
 	observationPropertyToEntitySlot map[string]string
+	containedInPlaceToRemoteDCIDs   map[datacommons.ContainedInPlaceConstraint][]string
 	golden                          string
 }{
 	{
@@ -390,6 +451,30 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_obs_single_entity",
 	},
 	{
+		name: "explicit time periods",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2022", "2020", "2022"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"observationAbout": "entity1",
+		},
+		golden: "get_sdmx_obs_explicit_time_periods",
+	},
+	{
+		name: "latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxComponentConstraint("wikidataId/Q119158"),
+			"TIME_PERIOD":      sdmxComponentConstraint("latest"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"observationAbout": "entity1",
+		},
+		golden: "get_sdmx_obs_latest_time_period",
+	},
+	{
 		name: "contained observation about on entity1",
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
@@ -397,6 +482,26 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		},
 		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
 		golden:                          "get_sdmx_obs_contained_entity1",
+	},
+	{
+		name: "contained observation about with explicit time periods",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2022"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+		golden:                          "get_sdmx_obs_contained_entity1_explicit_time_periods",
+	},
+	{
+		name: "contained observation about with latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			"TIME_PERIOD":      sdmxComponentConstraint("LATEST"),
+		},
+		observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+		golden:                          "get_sdmx_obs_contained_entity1_latest_time_period",
 	},
 	{
 		name: "contained source on entity2 with direct entity1 filter",
@@ -432,10 +537,42 @@ var multiEntitySdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_obs_contained_entity3_before_entity2",
 	},
 	{
-		name: "entity1 anchors multiple place sets",
+		name: "entity3 anchors before entity2 and reuses remote place set",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"middle":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+			{Ancestor: "country/USA", ChildPlaceType: "State"}: {"country/CAN", "country/USA"},
+		},
+		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote",
+	},
+	{
+		name: "entity3 remote place set with latest time period",
+		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("var1"),
+			"middle":           sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
+			"TIME_PERIOD":      sdmxComponentConstraint("LATEST"),
+		},
+		observationPropertyToEntitySlot: map[string]string{
+			"first": "entity1", "middle": "entity2", "last": "entity3",
+		},
+		containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+			{Ancestor: "country/USA", ChildPlaceType: "State"}: {"country/CAN", "country/USA"},
+		},
+		golden: "get_sdmx_obs_contained_entity3_before_entity2_remote_latest_time_period",
+	},
+	{
+		name: "entity1 anchors entity2 and entity3 place sets",
 		constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			"variableMeasured": sdmxComponentConstraint("var1"),
 			"first":            sdmxContainedInPlaceConstraint("country/CAN", "Province"),
+			"middle":           sdmxContainedInPlaceConstraint("northamerica", "Country"),
 			"last":             sdmxContainedInPlaceConstraint("country/USA", "State"),
 		},
 		observationPropertyToEntitySlot: map[string]string{

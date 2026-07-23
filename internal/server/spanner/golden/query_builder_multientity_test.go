@@ -16,9 +16,11 @@ package golden
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"testing"
 
+	cloudSpanner "cloud.google.com/go/spanner"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -34,7 +36,7 @@ func TestMultiEntityGetObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -52,7 +54,7 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -70,7 +72,7 @@ func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -88,7 +90,10 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+					ContainedInPlaceAncestorFirstTypes:     c.ancestorFirstTypes,
+					ContainedInPlaceEntityScanMinVariables: c.entityScanMinVars,
+				})
 				if err != nil {
 					return nil, err
 				}
@@ -109,7 +114,7 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -127,7 +132,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -146,7 +151,7 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -164,11 +169,15 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
-				stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
+				stmt, err := builder.GetSdmxObservationsQuery(
+					c.constraints,
+					c.observationPropertyToEntitySlot,
+					c.containedInPlaceToRemoteDCIDs,
+				)
 				return stmt, err
 			})
 		})
@@ -176,7 +185,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -190,7 +199,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	observationPropertyToEntitySlot := map[string]string{
 		"observationAbout": "entity1",
 	}
-	_, err = builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot)
+	_, err = builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot, nil)
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -253,6 +262,14 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 			want: "GetSdmxObservationsQuery: missing required SDMX component filter variableMeasured",
 		},
 		{
+			name: "latest mixed with explicit date",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"TIME_PERIOD":      sdmxComponentConstraint("LATEST", "2020"),
+			},
+			want: "GetSdmxObservationsQuery: SDMX TIME_PERIOD filter cannot combine LATEST with explicit dates",
+		},
+		{
 			name: "unsupported dynamic key",
 			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 				"variableMeasured": sdmxComponentConstraint("var1"),
@@ -295,7 +312,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.observationPropertyToEntitySlot)
+			_, err := builder.GetSdmxObservationsQuery(tc.constraints, tc.observationPropertyToEntitySlot, nil)
 			if status.Code(err) != codes.InvalidArgument {
 				t.Fatalf("GetSdmxObservationsQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 			}
@@ -306,14 +323,225 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}
 }
 
+func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tc := range []struct {
+		name       string
+		timeValues []string
+		contains   []string
+		excludes   []string
+	}{
+		{
+			name:       "explicit dates use observation join",
+			timeValues: []string{"2020", "2022"},
+			contains: []string{
+				"JOIN@{JOIN_METHOD=APPLY_JOIN} Observation o",
+				"WHERE o.date IN UNNEST(@time_periods)",
+				"ARRAY_AGG(STRUCT(o.date AS date, o.value AS str_value) ORDER BY o.date)",
+			},
+			excludes: []string{"LIMIT 1"},
+		},
+		{
+			name:       "latest uses full-key correlated lookup",
+			timeValues: []string{"LATEST"},
+			contains: []string{
+				"AND o.extra_entities_id = t.extra_entities_id",
+				"AND o.facet_id = t.facet_id",
+				"ORDER BY o.date DESC",
+				"LIMIT 1",
+			},
+			excludes: []string{"@time_periods"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			statement, err := builder.GetSdmxObservationsQuery(
+				map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("var1"),
+					"TIME_PERIOD":      sdmxComponentConstraint(tc.timeValues...),
+				},
+				nil,
+				nil,
+			)
+			if err != nil {
+				t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+			}
+			for _, substring := range tc.contains {
+				if !strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL missing %q:\n%s", substring, statement.SQL)
+				}
+			}
+			for _, substring := range tc.excludes {
+				if strings.Contains(statement.SQL, substring) {
+					t.Errorf("GetSdmxObservationsQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+				}
+			}
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	timeSelections := []struct {
+		name   string
+		values []string
+	}{
+		{name: "all"},
+		{name: "explicit", values: []string{"2020", "2022"}},
+		{name: "latest", values: []string{"LATEST"}},
+	}
+	for _, contained := range []bool{false, true} {
+		pathName := "direct"
+		if contained {
+			pathName = "contained"
+		}
+		for _, selection := range timeSelections {
+			t.Run(pathName+"/"+selection.name, func(t *testing.T) {
+				constraints := map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("var1"),
+				}
+				observationPropertyToEntitySlot := map[string]string{}
+				if contained {
+					constraints["observationAbout"] = sdmxContainedInPlaceConstraint("northamerica", "Country")
+					observationPropertyToEntitySlot["observationAbout"] = "entity1"
+				} else {
+					constraints["observationAbout"] = sdmxComponentConstraint("country/USA")
+					observationPropertyToEntitySlot["observationAbout"] = "entity1"
+				}
+				if len(selection.values) > 0 {
+					constraints["TIME_PERIOD"] = sdmxComponentConstraint(selection.values...)
+				}
+
+				statement, err := builder.GetSdmxObservationsQuery(constraints, observationPropertyToEntitySlot, nil)
+				if err != nil {
+					t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
+				}
+				for _, substring := range []string{
+					"COALESCE(",
+					"ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)",
+				} {
+					if !strings.Contains(statement.SQL, substring) {
+						t.Errorf("GetSdmxObservationsQuery() SQL missing %q:\n%s", substring, statement.SQL)
+					}
+				}
+			})
+		}
+	}
+}
+
+func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	paths := []struct {
+		name  string
+		build func([]string) (*cloudSpanner.Statement, error)
+	}{
+		{
+			name: "data/direct",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxObservationsQuery(
+					map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"observationAbout": sdmxComponentConstraint("country/USA"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+					map[string]string{"observationAbout": "entity1"},
+					nil,
+				)
+			},
+		},
+		{
+			name: "data/contained",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxObservationsQuery(
+					map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"observationAbout": sdmxContainedInPlaceConstraint("northamerica", "Country"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+					map[string]string{"observationAbout": "entity1"},
+					nil,
+				)
+			},
+		},
+		{
+			name: "availability/broad",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "measurementMethod",
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+					},
+				}, nil)
+			},
+		},
+		{
+			name: "availability/filtered",
+			build: func(dates []string) (*cloudSpanner.Statement, error) {
+				return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+					ComponentId: "measurementMethod",
+					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+						"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+						"TIME_PERIOD":      sdmxComponentConstraint(dates...),
+						"unit":             sdmxComponentConstraint("Count"),
+					},
+				}, nil)
+			},
+		},
+	}
+	allDates := []string{"2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010"}
+	for _, path := range paths {
+		for _, count := range []int{1, 2, 10, 11} {
+			t.Run(path.name+"/"+strconv.Itoa(count), func(t *testing.T) {
+				statement, err := path.build(allDates[:count])
+				if err != nil {
+					t.Fatalf("build SDMX statement error = %v", err)
+				}
+				spanner.UnrollParameters(statement)
+
+				switch count {
+				case 1:
+					if !strings.Contains(statement.SQL, "o.date = @time_periods_0") {
+						t.Errorf("unrolled SQL missing single-date equality:\n%s", statement.SQL)
+					}
+				case 2, 10:
+					dateParams := make([]string, count)
+					for i := range count {
+						dateParams[i] = "@time_periods_" + strconv.Itoa(i)
+					}
+					want := "o.date IN (" + strings.Join(dateParams, ",") + ")"
+					if !strings.Contains(statement.SQL, want) {
+						t.Errorf("unrolled SQL missing explicit date list:\n%s", statement.SQL)
+					}
+				case 11:
+					if !strings.Contains(statement.SQL, "o.date IN UNNEST(@time_periods)") {
+						t.Errorf("SQL unexpectedly unrolled 11 dates:\n%s", statement.SQL)
+					}
+				}
+			})
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	for _, c := range multiEntitySdmxObservationsTestCases {
-		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot)
+		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot, nil)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
 		}
@@ -324,7 +552,7 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 }
 
 func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -338,6 +566,7 @@ func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *
 			"destinationCountry": "entity1",
 			"observationAbout":   "entity2",
 		},
+		nil,
 	)
 	if err != nil {
 		t.Fatalf("GetSdmxObservationsQuery() error = %v", err)
@@ -354,9 +583,12 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	cfg := spanner.DefaultTableConfig()
 	cfg.TimeSeriesTable = "CustomTsTable"
 	cfg.ObservationTable = "CustomObsTable"
+	cfg.TimeSeriesByEntity1Index = "CustomEntity1Index"
 	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
 	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
-	builder, err := spanner.NewMultiEntityQueryBuilder(cfg)
+	builder, err := spanner.NewMultiEntityQueryBuilder(cfg, spanner.QueryConfig{
+		ContainedInPlaceEntityScanMinVariables: 1,
+	})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -377,6 +609,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 			"source":           sdmxContainedInPlaceConstraint("country/USA", "State"),
 		},
 		map[string]string{"source": "entity2"},
+		nil,
 	)
 	if err != nil {
 		t.Fatalf("GetSdmxObservationsQuery() returned error: %v", err)
@@ -393,7 +626,7 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	}
 	assertSQLContains(t, containedInStmt.SQL,
 		"CustomObsTable",
-		"CustomTsTable@{FORCE_INDEX=_BASE_TABLE}",
+		"CustomTsTable@{FORCE_INDEX=CustomEntity1Index, SEEKABLE_KEY_SIZE=1}",
 	)
 
 	existenceStmt, err := builder.GetStatVarsByEntityQuery(
@@ -493,7 +726,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 		c := c
 		t.Run(c.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, c.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -510,7 +743,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 
 func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	runQueryBuilderGoldenTest(t, "get_sdmx_availability_filtered_destination_country.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 		if err != nil {
 			return nil, err
 		}
@@ -531,8 +764,106 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	})
 }
 
+func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
+	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "measurementMethod",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020", "2020"),
+			},
+		}, nil)
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *testing.T) {
+	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods_and_unit.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "measurementMethod",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+				"TIME_PERIOD":      sdmxComponentConstraint("2023", "2020"),
+				"unit":             sdmxComponentConstraint("Count"),
+			},
+		}, nil)
+	})
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "measurementMethod",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
+		},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+	}
+	for _, substring := range []string{
+		"SELECT DISTINCT t.measurement_method AS value",
+		"FROM TimeSeries@{FORCE_INDEX=_BASE_TABLE} t",
+		"JOIN@{JOIN_METHOD=MERGE_JOIN} Observation@{FORCE_INDEX=_BASE_TABLE} o",
+		"USING (variable_measured, entity1, extra_entities_id, facet_id)",
+		"o.date IN UNNEST(@time_periods)",
+	} {
+		if !strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+		}
+	}
+	for _, substring := range []string{"APPLY_JOIN", "GROUP BY", "LIMIT 1", "TIME_PERIOD"} {
+		if strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+		}
+	}
+}
+
+func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	statement, err := builder.GetSdmxAvailabilityQuery(&sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: "measurementMethod",
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			"variableMeasured": sdmxComponentConstraint("Count_TimeSeries"),
+			"TIME_PERIOD":      sdmxComponentConstraint("2020", "2023"),
+			"unit":             sdmxComponentConstraint("Count"),
+		},
+	}, nil)
+	if err != nil {
+		t.Fatalf("GetSdmxAvailabilityQuery() error = %v", err)
+	}
+	for _, substring := range []string{
+		"FROM TimeSeries t",
+		"JOIN Observation o",
+		"o.date IN UNNEST(@time_periods)",
+	} {
+		if !strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL missing %q:\n%s", substring, statement.SQL)
+		}
+	}
+	for _, substring := range []string{"JOIN_METHOD", "FORCE_INDEX"} {
+		if strings.Contains(statement.SQL, substring) {
+			t.Errorf("GetSdmxAvailabilityQuery() SQL unexpectedly contains %q:\n%s", substring, statement.SQL)
+		}
+	}
+}
+
 func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig())
+	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -601,6 +932,17 @@ func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
 				},
 			},
 			want: `unsupported SDMX availability component "TIME_PERIOD"`,
+		},
+		{
+			name: "latest time period",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "observationAbout",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					"variableMeasured": sdmxComponentConstraint("Count_Person"),
+					"TIME_PERIOD":      sdmxComponentConstraint("latest"),
+				},
+			},
+			want: "GetSdmxAvailabilityQuery: SDMX TIME_PERIOD filter LATEST is not valid for availability; use explicit dates",
 		},
 		{
 			name: "unsupported constraint",

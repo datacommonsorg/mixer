@@ -49,6 +49,8 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
+	// Maximum number of unique places returned by one remote SDMX containedInPlace+ expansion.
+	SDMXRemotePlaceExpansionLimit int `yaml:"SDMXRemotePlaceExpansionLimit"`
 	// Whether to default indicator resolution to Spanner.
 	// If false, default requests go to legacy remote service.
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
@@ -56,24 +58,31 @@ type Flags struct {
 	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
 	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
 	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
+	// Child place types whose core Observation and Node contained-in-place queries should filter by ancestor before type.
+	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
+	// Minimum number of unique variables that selects an entity1 range scan for core contained-in-place observation queries. Zero disables the optimization.
+	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                      false,
-		V3MirrorFraction:              0.0,
-		UseSpannerGraph:               false,
-		UseMultiEntitySchema:          false,
-		SpannerGraphDatabase:          "",
-		UseStaleReads:                 false,
-		EnableEmbeddingsResolver:      true,
-		V2DivertFraction:              0.0,
-		UseStatisticalCalculation:     false,
-		EnableSDMXDataApi:             false,
-		EnableSpannerSearchEmbeddings: false,
-		UseNewIngestionHistorySchema:  false,
-		UseSpannerKeyValueStore:       false,
+		EnableV3:                               false,
+		V3MirrorFraction:                       0.0,
+		UseSpannerGraph:                        false,
+		UseMultiEntitySchema:                   false,
+		SpannerGraphDatabase:                   "",
+		UseStaleReads:                          false,
+		EnableEmbeddingsResolver:               true,
+		V2DivertFraction:                       0.0,
+		UseStatisticalCalculation:              false,
+		EnableSDMXDataApi:                      false,
+		SDMXRemotePlaceExpansionLimit:          10000,
+		EnableSpannerSearchEmbeddings:          false,
+		UseNewIngestionHistorySchema:           false,
+		UseSpannerKeyValueStore:                false,
+		ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
+		ContainedInPlaceEntityScanMinVariables: 50,
 	}
 }
 
@@ -107,6 +116,21 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
 		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
+	}
+	if f.SDMXRemotePlaceExpansionLimit <= 0 {
+		return fmt.Errorf("SDMXRemotePlaceExpansionLimit must be positive")
+	}
+	for _, placeType := range f.ContainedInPlaceAncestorFirstTypes {
+		trimmed := strings.TrimSpace(placeType)
+		if trimmed == "" {
+			return fmt.Errorf("ContainedInPlaceAncestorFirstTypes must not contain empty values")
+		}
+		if trimmed != placeType {
+			return fmt.Errorf("ContainedInPlaceAncestorFirstTypes must not contain surrounding whitespace")
+		}
+	}
+	if f.ContainedInPlaceEntityScanMinVariables < 0 {
+		return fmt.Errorf("ContainedInPlaceEntityScanMinVariables must be non-negative")
 	}
 	return nil
 }
