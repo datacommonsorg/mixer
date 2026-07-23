@@ -580,11 +580,15 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				return nil
 			}
 
-			// 2. Vector search
+			// 2. Vector search (fetch 2x limit to ensure unique candidates count reaches limit after deduplication)
+			fetchLimit := cfg.SearchConfig.Limit * 2
+			if fetchLimit <= 0 {
+				fetchLimit = cfg.SearchConfig.Limit
+			}
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
 				cfg.SearchConfig.EmbeddingTable,
-				cfg.SearchConfig.Limit,
+				fetchLimit,
 				embeddings,
 				cfg.SearchConfig.NumLeaves,
 				cfg.SearchConfig.Threshold,
@@ -595,10 +599,16 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
 			}
 
-			// 3. Build candidates
-			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			// 3. Build candidates with deduplication by SubjectID (highest score first)
+			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, cfg.SearchConfig.Limit)
+			seen := make(map[string]bool, len(searchResults))
 			var svDcids []string
 			for _, res := range searchResults {
+				if seen[res.SubjectID] {
+					continue
+				}
+				seen[res.SubjectID] = true
+
 				c := &pbv2.ResolveResponse_Entity_Candidate{
 					Dcid:   res.SubjectID,
 					Name:   res.Name,
@@ -611,6 +621,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				candidates = append(candidates, c)
 				if slices.Contains(res.Types, TypeStatisticalVariable) {
 					svDcids = append(svDcids, res.SubjectID)
+				}
+				if cfg.SearchConfig.Limit > 0 && len(candidates) >= cfg.SearchConfig.Limit {
+					break
 				}
 			}
 			sds.populateObservationProperties(errCtx, candidates, svDcids)
@@ -646,7 +659,6 @@ func (sds *SpannerDataSource) populateObservationProperties(
 		}
 	}
 }
-
 
 // Sparql executes a SPARQL query against the Spanner data source.
 func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
