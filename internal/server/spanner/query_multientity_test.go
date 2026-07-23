@@ -1055,7 +1055,7 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxAvailabilityQueryWithRemoteContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), MultiEntityQueryConfig{})
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}

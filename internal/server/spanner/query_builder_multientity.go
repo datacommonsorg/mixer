@@ -601,8 +601,8 @@ func (b *multiEntityQueryBuilder) buildSdmxContainedSeriesPlan(
 	relationToCTE := map[datacommons.ContainedInPlaceConstraint]string{}
 	cteDefinitions := []string{}
 	params := maps.Clone(compiled.params)
-	containedRule, _ := datacommons.DataPropertyRule(datacommons.PropertyContainedInPlace)
-	typeRule, _ := datacommons.DataPropertyRule(datacommons.PropertyTypeOf)
+	containedRule, _ := datacommons.PropertyRuleForID(datacommons.PropertyContainedInPlace)
+	typeRule, _ := datacommons.PropertyRuleForID(datacommons.PropertyTypeOf)
 	// TODO: Apply QueryConfig.ContainedInPlaceAncestorFirstTypes to SDMX containment CTEs.
 	for i := range resolved {
 		key := resolved[i].relation

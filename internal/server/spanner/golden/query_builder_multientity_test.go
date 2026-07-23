@@ -916,7 +916,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, tc.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.MultiEntityQueryConfig{})
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
