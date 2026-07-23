@@ -1,12 +1,14 @@
+		@{SCAN_METHOD=COLUMNAR}
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
 			m.subject_id IN ('country/USA','country/IND'))<-[e:Edge
 		WHERE
 			e.predicate = 'linkedContainedInPlace']-(n:Node),
+		@{FORCE_JOIN_ORDER=TRUE}
 		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
-			AND filter0.object_id = 'County']->
+			AND filter0.object_id IN ('County','Place')]->
 		RETURN
 			m.subject_id,
 			n.subject_id AS object_id,

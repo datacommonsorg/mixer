@@ -29,7 +29,11 @@ const (
 )
 
 type nodeQueryPlan struct {
-	kind       nodeQueryKind
+	kind             nodeQueryKind
+	containedInPlace containedInPlacePlan
+}
+
+type containedInPlacePlan struct {
 	accessPath containedInPlaceAccessPath
 }
 
@@ -38,35 +42,36 @@ func planNodeQuery(arc *v2.Arc, queryConfig QueryConfig) (nodeQueryPlan, error) 
 		return nodeQueryPlan{}, fmt.Errorf("node query arc must not be nil")
 	}
 
-	childPlaceType, ok := matchNodeContainedInPlace(arc)
-	if !ok {
-		return nodeQueryPlan{kind: nodeQueryGeneric}, nil
+	if childPlaceTypes, ok := matchNodeContainedInPlace(arc); ok {
+		return nodeQueryPlan{
+			kind: nodeQueryContainedInPlace,
+			containedInPlace: containedInPlacePlan{
+				accessPath: queryConfig.containedInPlaceAccessPath(childPlaceTypes...),
+			},
+		}, nil
 	}
-	return nodeQueryPlan{
-		kind:       nodeQueryContainedInPlace,
-		accessPath: queryConfig.containedInPlaceAccessPath(childPlaceType),
-	}, nil
+
+	return nodeQueryPlan{kind: nodeQueryGeneric}, nil
 }
 
-func matchNodeContainedInPlace(arc *v2.Arc) (string, bool) {
+func matchNodeContainedInPlace(arc *v2.Arc) ([]string, bool) {
 	if arc == nil ||
 		arc.Out ||
 		arc.SingleProp != linkedContainedInPlaceProperty ||
 		arc.Decorator != "" ||
 		len(arc.BracketProps) > 0 ||
-		len(arc.BracketFilters) > 0 {
-		return "", false
+		len(arc.BracketFilters) > 0 ||
+		len(arc.Filter) != 1 {
+		return nil, false
 	}
-	return singleFilterValue(arc.Filter, predTypeOf)
-}
-
-func singleFilterValue(filters map[string][]string, property string) (string, bool) {
-	if len(filters) != 1 {
-		return "", false
+	childPlaceTypes, ok := arc.Filter[predTypeOf]
+	if !ok || len(childPlaceTypes) == 0 {
+		return nil, false
 	}
-	values, ok := filters[property]
-	if !ok || len(values) != 1 || strings.TrimSpace(values[0]) == "" {
-		return "", false
+	for _, childPlaceType := range childPlaceTypes {
+		if strings.TrimSpace(childPlaceType) == "" {
+			return nil, false
+		}
 	}
-	return values[0], true
+	return childPlaceTypes, true
 }
