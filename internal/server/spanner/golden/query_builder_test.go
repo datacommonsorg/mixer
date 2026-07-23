@@ -82,22 +82,30 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 
 	for _, tc := range []struct {
 		name        string
-		placeType   string
+		placeTypes  []string
 		queryConfig spanner.QueryConfig
 		golden      string
 	}{
 		{
-			name:      "type first",
-			placeType: "County",
-			golden:    "get_node_edges_linked_contained_in_place_type_first",
+			name:       "legacy fallback",
+			placeTypes: []string{"County"},
+			golden:     "get_node_edges_linked_contained_in_place_type_first",
 		},
 		{
-			name:      "ancestor first",
-			placeType: "Place",
+			name:       "ancestor first",
+			placeTypes: []string{"Place"},
 			queryConfig: spanner.QueryConfig{
 				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
 			},
 			golden: "get_node_edges_linked_contained_in_place_ancestor_first",
+		},
+		{
+			name:       "ancestor first when any type matches",
+			placeTypes: []string{"County", "Place"},
+			queryConfig: spanner.QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+			},
+			golden: "get_node_edges_linked_contained_in_place_ancestor_first_multiple_types",
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -107,7 +115,7 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 					&v2.Arc{
 						SingleProp: "linkedContainedInPlace",
 						Filter: map[string][]string{
-							"typeOf": {tc.placeType},
+							"typeOf": tc.placeTypes,
 						},
 					},
 					datasources.DefaultPageSize,

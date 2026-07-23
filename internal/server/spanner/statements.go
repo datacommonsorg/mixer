@@ -33,6 +33,12 @@ var statements = struct {
 	graphPrefix string
 	// Prefix for a graph query that matches any path.
 	graphPrefixAny string
+	// Statement hint for columnar graph execution.
+	graphColumnarScanHint string
+	// Separator between graph match patterns.
+	graphPatternSeparator string
+	// Separator that forces graph patterns to execute in textual order.
+	graphPatternForceJoinOrder string
 	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
 	// Fetch Edges for out arcs with chaining.
@@ -179,8 +185,11 @@ OR CreationTimestamp > (
 		ORDER BY
 			subject_id,
 			predicate`,
-	graphPrefix:    `		GRAPH DCGraph MATCH `,
-	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
+	graphPrefix:                `		GRAPH DCGraph MATCH `,
+	graphPrefixAny:             `		GRAPH DCGraph MATCH ANY `,
+	graphColumnarScanHint:      "\t\t@{SCAN_METHOD=COLUMNAR}\n",
+	graphPatternSeparator:      ",\n\t\t",
+	graphPatternForceJoinOrder: ",\n\t\t@{FORCE_JOIN_ORDER=TRUE}\n\t\t",
 	getEdgesBySubjectID: `(m:Node
 		WHERE
 			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)%[3]s`,
@@ -203,7 +212,7 @@ OR CreationTimestamp > (
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
-	filterProperty: `(n%[4]s)-[%[2]sfilter%[1]d:Edge
+	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `
