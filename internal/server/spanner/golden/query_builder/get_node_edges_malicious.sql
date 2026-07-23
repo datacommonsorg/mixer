@@ -8,7 +8,7 @@
 			filter0.predicate = 'foo OR 1=1;'
 			AND filter0.object_id IN ('foo OR 1=1;','foo OR 1=1;:OG7012T2qe10jzYRBvG6dgUEx5fj7uIxT+RkGvxpn/U=')]->
 		RETURN
-		  	m.subject_id,
+			m.subject_id,
 			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
@@ -16,7 +16,7 @@
 		WHERE
 		  n.subject_id = object_id
 		RETURN
-		  	subject_id,
+			subject_id,
 			predicate,
 			provenance,
 			IFNULL(ANY_VALUE(n.value), '') AS value,

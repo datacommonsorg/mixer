@@ -739,6 +739,7 @@ type SearchIndicatorsResponse_Variable struct {
 	PlacesWithData        []string               `protobuf:"bytes,2,rep,name=places_with_data,json=placesWithData,proto3" json:"places_with_data,omitempty"`
 	Description           string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	AlternateDescriptions []string               `protobuf:"bytes,4,rep,name=alternate_descriptions,json=alternateDescriptions,proto3" json:"alternate_descriptions,omitempty"`
+	ObservationProperties []string               `protobuf:"bytes,5,rep,name=observation_properties,json=observationProperties,proto3" json:"observation_properties,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -797,6 +798,13 @@ func (x *SearchIndicatorsResponse_Variable) GetDescription() string {
 func (x *SearchIndicatorsResponse_Variable) GetAlternateDescriptions() []string {
 	if x != nil {
 		return x.AlternateDescriptions
+	}
+	return nil
+}
+
+func (x *SearchIndicatorsResponse_Variable) GetObservationProperties() []string {
+	if x != nil {
+		return x.ObservationProperties
 	}
 	return nil
 }
@@ -1492,7 +1500,7 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\x0einclude_topics\x18\x05 \x01(\bH\x00R\rincludeTopics\x88\x01\x01\x12(\n" +
 	"\rexpand_topics\x18\x06 \x01(\bH\x01R\fexpandTopics\x88\x01\x01B\x11\n" +
 	"\x0f_include_topicsB\x10\n" +
-	"\x0e_expand_topics\"\xb5\t\n" +
+	"\x0e_expand_topics\"\xec\t\n" +
 	"\x18SearchIndicatorsResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12l\n" +
 	"\x12dcid_name_mappings\x18\x02 \x03(\v2>.datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntryR\x10dcidNameMappings\x12|\n" +
@@ -1506,12 +1514,13 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\x10member_variables\x18\x03 \x03(\tR\x0fmemberVariables\x12(\n" +
 	"\x10places_with_data\x18\x04 \x03(\tR\x0eplacesWithData\x12 \n" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x125\n" +
-	"\x16alternate_descriptions\x18\x06 \x03(\tR\x15alternateDescriptions\x1a\xa1\x01\n" +
+	"\x16alternate_descriptions\x18\x06 \x03(\tR\x15alternateDescriptions\x1a\xd8\x01\n" +
 	"\bVariable\x12\x12\n" +
 	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12(\n" +
 	"\x10places_with_data\x18\x02 \x03(\tR\x0eplacesWithData\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x125\n" +
-	"\x16alternate_descriptions\x18\x04 \x03(\tR\x15alternateDescriptions\x1aP\n" +
+	"\x16alternate_descriptions\x18\x04 \x03(\tR\x15alternateDescriptions\x125\n" +
+	"\x16observation_properties\x18\x05 \x03(\tR\x15observationProperties\x1aP\n" +
 	"\rResolvedPlace\x12\x12\n" +
 	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x17\n" +

@@ -542,10 +542,10 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	}
 	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
-		typeOfs = []string{"StatisticalVariable", "Topic"}
+		typeOfs = []string{TypeStatisticalVariable, TypeTopic}
 	} else {
 		for _, t := range typeOfs {
-			if t != "StatisticalVariable" && t != "Topic" {
+			if t != TypeStatisticalVariable && t != TypeTopic {
 				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
 				return &pbv2.ResolveResponse{}, nil
 			}
@@ -580,11 +580,15 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				return nil
 			}
 
-			// 2. Vector search
+			// 2. Vector search (fetch 2x limit to ensure unique candidates count reaches limit after deduplication)
+			fetchLimit := cfg.SearchConfig.Limit * 2
+			if fetchLimit <= 0 {
+				fetchLimit = cfg.SearchConfig.Limit
+			}
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
 				cfg.SearchConfig.EmbeddingTable,
-				cfg.SearchConfig.Limit,
+				fetchLimit,
 				embeddings,
 				cfg.SearchConfig.NumLeaves,
 				cfg.SearchConfig.Threshold,
@@ -595,18 +599,34 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
 			}
 
-			// 3. Build candidates
-			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			// 3. Build candidates with deduplication by SubjectID (highest score first)
+			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, cfg.SearchConfig.Limit)
+			seen := make(map[string]bool, len(searchResults))
+			var svDcids []string
 			for _, res := range searchResults {
-				candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				if seen[res.SubjectID] {
+					continue
+				}
+				seen[res.SubjectID] = true
+
+				c := &pbv2.ResolveResponse_Entity_Candidate{
 					Dcid:   res.SubjectID,
+					Name:   res.Name,
 					TypeOf: res.Types,
 					Metadata: map[string]string{
 						"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
 						"sentence": res.Name,
 					},
-				})
+				}
+				candidates = append(candidates, c)
+				if slices.Contains(res.Types, TypeStatisticalVariable) {
+					svDcids = append(svDcids, res.SubjectID)
+				}
+				if cfg.SearchConfig.Limit > 0 && len(candidates) >= cfg.SearchConfig.Limit {
+					break
+				}
 			}
+			sds.populateObservationProperties(errCtx, candidates, svDcids)
 			entity.Candidates = candidates
 			resolveResponse.Entities[i] = entity
 			return nil
@@ -618,6 +638,26 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	}
 
 	return resolveResponse, nil
+}
+
+func (sds *SpannerDataSource) populateObservationProperties(
+	ctx context.Context,
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+	svDcids []string,
+) {
+	if sds.topicExpander == nil || len(svDcids) == 0 {
+		return
+	}
+	svInfos, err := sds.topicExpander.GetSVPropertyInfos(ctx, svDcids)
+	if err != nil {
+		slog.Warn("Failed to fetch SV property infos during vector search", "error", err)
+		return
+	}
+	for _, c := range candidates {
+		if info, ok := svInfos[c.GetDcid()]; ok {
+			c.ObservationProperties = info.ObservationProperties
+		}
+	}
 }
 
 // Sparql executes a SPARQL query against the Spanner data source.
