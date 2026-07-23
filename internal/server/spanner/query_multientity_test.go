@@ -1054,6 +1054,56 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 	}
 }
 
+func TestPrepareSdmxAvailabilityQueryWithRemoteContainedInPlace(t *testing.T) {
+	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "northamerica", ChildPlaceType: "Country"}
+	ctx := dispatcher.WithSdmxContainedInPlaceToRemoteDCIDs(
+		context.Background(),
+		dispatcher.SdmxContainedInPlaceToRemoteDCIDs{relation: {"country/CAN", "country/USA"}},
+	)
+	stmt, err := prepareSdmxAvailabilityQuery(
+		ctx,
+		&sdmxpb.SdmxAvailabilityQuery{
+			ComponentId: "destinationCountry",
+			Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Migration"),
+				"sourceCountry":                       sdmxContainedInPlaceConstraint(relation.Ancestor, relation.ChildPlaceType),
+			},
+		},
+		func(context.Context, []string, *v2.Arc, int, int) (map[string][]*Edge, error) {
+			return map[string][]*Edge{
+				"Count_Migration": observationPropertiesEdges("destinationCountry", "sourceCountry"),
+			}, nil
+		},
+		queryBuilder,
+	)
+	if err != nil {
+		t.Fatalf("prepareSdmxAvailabilityQuery() error = %v", err)
+	}
+	wantParams := map[string]interface{}{
+		datacommons.ComponentVariableMeasured: []string{"Count_Migration"},
+		"containment_0_ancestor":              relation.Ancestor,
+		"containment_0_child_place_type":      relation.ChildPlaceType,
+		"containment_0_remote_places":         []string{"country/CAN", "country/USA"},
+	}
+	if diff := cmp.Diff(wantParams, stmt.Params); diff != "" {
+		t.Fatalf("prepareSdmxAvailabilityQuery() params mismatch (-want +got):\n%s", diff)
+	}
+	for _, fragment := range []string{
+		"UNION DISTINCT",
+		"FROM UNNEST(@containment_0_remote_places) AS place_id",
+		"ON t.entity2 = anchor.place_id",
+		"SELECT DISTINCT t.value AS value",
+	} {
+		if !strings.Contains(stmt.SQL, fragment) {
+			t.Errorf("prepareSdmxAvailabilityQuery() SQL does not contain %q:\n%s", fragment, stmt.SQL)
+		}
+	}
+}
+
 func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
@@ -1393,7 +1443,7 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 	}
 }
 
-func TestMultiEntitySdmxAvailabilityRejectsPropertyConstraints(t *testing.T) {
+func TestMultiEntitySdmxAvailabilityRejectsIncompletePropertyConstraints(t *testing.T) {
 	_, err := (&multiEntityClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
 		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
@@ -1405,8 +1455,8 @@ func TestMultiEntitySdmxAvailabilityRejectsPropertyConstraints(t *testing.T) {
 			},
 		},
 	})
-	if status.Code(err) != codes.Unimplemented {
-		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
 	}
 }
 

@@ -261,6 +261,14 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		golden:               "get_multientity_filtered_sv_places",
 	},
 	{
+		name:                 "stat vars filtered by place threshold",
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		numEntitiesExistence: 2,
+		golden:               "get_multientity_filtered_sv_num_entities_existence",
+	},
+	{
 		name:                 "stat var groups filtered by places",
 		template:             "SVG",
 		node:                 "dc/g/Demographics",

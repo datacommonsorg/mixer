@@ -27,6 +27,12 @@ func TestQueryConfig(t *testing.T) {
 	if got := config.containedInPlaceAccessPath("County"); got != containedInPlaceTypeFirst {
 		t.Errorf("containedInPlaceAccessPath(County) = %v, want type first", got)
 	}
+	if got := config.containedInPlaceAccessPath("County", "Place"); got != containedInPlaceAncestorFirst {
+		t.Errorf("containedInPlaceAccessPath(County, Place) = %v, want ancestor first", got)
+	}
+	if got := config.containedInPlaceAccessPath("County", "City"); got != containedInPlaceTypeFirst {
+		t.Errorf("containedInPlaceAccessPath(County, City) = %v, want type first", got)
+	}
 }
 
 func TestQueryConfigValidation(t *testing.T) {

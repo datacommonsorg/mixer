@@ -149,18 +149,16 @@ func buildNodeEdgesByIDQuery(
 	pageSize, offset int,
 	plan nodeQueryPlan,
 ) (*spanner.Statement, error) {
-	containedInPlace := false
-	typeFirst := false
+	useContainedInPlaceAncestorFirst := false
 	switch plan.kind {
 	case nodeQueryGeneric:
 	case nodeQueryContainedInPlace:
-		containedInPlace = true
-		switch plan.accessPath {
+		switch plan.containedInPlace.accessPath {
 		case containedInPlaceTypeFirst:
-			typeFirst = true
 		case containedInPlaceAncestorFirst:
+			useContainedInPlaceAncestorFirst = true
 		default:
-			return nil, fmt.Errorf("unsupported contained-in-place access path: %d", plan.accessPath)
+			return nil, fmt.Errorf("unsupported contained-in-place access path: %d", plan.containedInPlace.accessPath)
 		}
 	default:
 		return nil, fmt.Errorf("unsupported node query kind: %d", plan.kind)
@@ -209,7 +207,7 @@ func buildNodeEdgesByIDQuery(
 			// 2. Standard Property Processing
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
-			filterVal := addObjectValues(arc.Filter[prop])
+			filterVal := objectFilterValues(prop, arc.Filter[prop])
 			if len(filterVal) > 0 {
 				objectFilter = fmt.Sprintf(statements.filterValues, i)
 				params["val"+strconv.Itoa(i)] = filterVal
@@ -218,11 +216,7 @@ func buildNodeEdgesByIDQuery(
 			if len(filterVal) > 0 {
 				indexHint = "@{FORCE_INDEX=InEdge}"
 			}
-			nodeLabel := ""
-			if typeFirst {
-				nodeLabel = ":Node"
-			}
-			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter, nodeLabel))
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, indexHint, objectFilter))
 			i++
 		}
 	}
@@ -285,11 +279,7 @@ func buildNodeEdgesByIDQuery(
 			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	}
-	if typeFirst {
-		subqueries = append(subqueries, subquery)
-	} else {
-		subqueries = append([]string{subquery}, subqueries...)
-	}
+	subqueries = append([]string{subquery}, subqueries...)
 
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
@@ -305,10 +295,10 @@ func buildNodeEdgesByIDQuery(
 			returnEdges = statements.returnEdges
 		}
 	}
-
-	separator := ",\n\t\t"
-	if containedInPlace {
-		separator += "@{FORCE_JOIN_ORDER=TRUE}\n\t\t"
+	separator := statements.graphPatternSeparator
+	if useContainedInPlaceAncestorFirst {
+		prefix = statements.graphColumnarScanHint + prefix
+		separator = statements.graphPatternForceJoinOrder
 	}
 	template := prefix + strings.Join(subqueries, separator) + returnEdges
 	template = applyNodeQueryPagination(template, pageSize, offset)
@@ -477,8 +467,8 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 			default:
 				return nil, fmt.Errorf("unsupported object type: %T", q.Obj)
 			}
-			if q.Pred != "typeOf" && q.Pred != "dcid" { // typeOf has reference object.
-				vals = addObjectValues(vals)
+			if q.Pred != "dcid" {
+				vals = objectFilterValues(q.Pred, vals)
 			}
 			if q.Pred == "dcid" {
 				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
@@ -710,6 +700,13 @@ func addObjectValues(input []string) []string {
 		result = append(result, generateObjectValue(v))
 	}
 	return result
+}
+
+func objectFilterValues(predicate string, input []string) []string {
+	if predicate == predTypeOf {
+		return input
+	}
+	return addObjectValues(input)
 }
 
 // getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter.

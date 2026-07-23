@@ -37,11 +37,13 @@ func TestPlanNodeQuery(t *testing.T) {
 		wantErr     bool
 	}{
 		{
-			name: "contained in place type first",
+			name: "contained in place legacy fallback",
 			arc:  containedInPlaceArc(),
 			want: nodeQueryPlan{
-				kind:       nodeQueryContainedInPlace,
-				accessPath: containedInPlaceTypeFirst,
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceTypeFirst,
+				},
 			},
 		},
 		{
@@ -54,8 +56,26 @@ func TestPlanNodeQuery(t *testing.T) {
 				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
 			},
 			want: nodeQueryPlan{
-				kind:       nodeQueryContainedInPlace,
-				accessPath: containedInPlaceAncestorFirst,
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceAncestorFirst,
+				},
+			},
+		},
+		{
+			name: "contained in place ancestor first when any type matches",
+			arc: &v2.Arc{
+				SingleProp: linkedContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"County", "Place"}},
+			},
+			queryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+			},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceAncestorFirst,
+				},
 			},
 		},
 		{
@@ -148,7 +168,12 @@ func TestPlanNodeQuery(t *testing.T) {
 				SingleProp: linkedContainedInPlaceProperty,
 				Filter:     map[string][]string{predTypeOf: {"County", "City"}},
 			},
-			want: nodeQueryPlan{kind: nodeQueryGeneric},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceTypeFirst,
+				},
+			},
 		},
 		{
 			name: "blank type",
@@ -170,7 +195,7 @@ func TestPlanNodeQuery(t *testing.T) {
 			if err != nil {
 				t.Fatalf("planNodeQuery() unexpected error: %v", err)
 			}
-			if diff := cmp.Diff(tc.want, got, cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
+			if diff := cmp.Diff(tc.want, got, cmp.AllowUnexported(nodeQueryPlan{}, containedInPlacePlan{})); diff != "" {
 				t.Errorf("planNodeQuery() mismatch (-want +got):\n%s", diff)
 			}
 		})
@@ -178,7 +203,7 @@ func TestPlanNodeQuery(t *testing.T) {
 }
 
 func TestPlanNodeQueryFromPropertyExpression(t *testing.T) {
-	arcs, err := v2.ParseProperty("<-containedInPlace+{typeOf:County}")
+	arcs, err := v2.ParseProperty("<-containedInPlace+{typeOf:[County,Place]}")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -188,14 +213,18 @@ func TestPlanNodeQueryFromPropertyExpression(t *testing.T) {
 	addOptimizationsToNodeRequest(arcs[0])
 
 	want := nodeQueryPlan{
-		kind:       nodeQueryContainedInPlace,
-		accessPath: containedInPlaceTypeFirst,
+		kind: nodeQueryContainedInPlace,
+		containedInPlace: containedInPlacePlan{
+			accessPath: containedInPlaceAncestorFirst,
+		},
 	}
-	got, err := planNodeQuery(arcs[0], QueryConfig{})
+	got, err := planNodeQuery(arcs[0], QueryConfig{
+		ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+	})
 	if err != nil {
 		t.Fatalf("planNodeQuery() unexpected error: %v", err)
 	}
-	if diff := cmp.Diff(want, got, cmp.AllowUnexported(nodeQueryPlan{})); diff != "" {
+	if diff := cmp.Diff(want, got, cmp.AllowUnexported(nodeQueryPlan{}, containedInPlacePlan{})); diff != "" {
 		t.Errorf("planNodeQuery() mismatch (-want +got):\n%s", diff)
 	}
 }
@@ -209,6 +238,19 @@ func TestGetNodeEdgesByIDQueryRejectsNilArc(t *testing.T) {
 func TestBuildNodeEdgesByIDQueryRejectsUnsupportedPlan(t *testing.T) {
 	arc := &v2.Arc{SingleProp: "name"}
 	plan := nodeQueryPlan{kind: nodeQueryKind(100)}
+	if _, err := buildNodeEdgesByIDQuery(nil, arc, 1, 0, plan); err == nil {
+		t.Fatal("buildNodeEdgesByIDQuery() expected error, got nil")
+	}
+}
+
+func TestBuildNodeEdgesByIDQueryRejectsUnsupportedContainedInPlacePlan(t *testing.T) {
+	arc := &v2.Arc{SingleProp: linkedContainedInPlaceProperty}
+	plan := nodeQueryPlan{
+		kind: nodeQueryContainedInPlace,
+		containedInPlace: containedInPlacePlan{
+			accessPath: containedInPlaceAccessPath(100),
+		},
+	}
 	if _, err := buildNodeEdgesByIDQuery(nil, arc, 1, 0, plan); err == nil {
 		t.Fatal("buildNodeEdgesByIDQuery() expected error, got nil")
 	}

@@ -38,6 +38,8 @@ type MultiEntityStatements struct {
 	getSdmxContainedInPlace                        string
 	getSdmxContainedInPlaceWithDates               string
 	getSdmxContainedInPlaceLatest                  string
+	getSdmxContainedAvailability                   string
+	getSdmxContainedAvailabilityWithDates          string
 	sdmxContainedPlacesCTE                         string
 	sdmxContainedPlacesWithRemoteCTE               string
 	sdmxContainedSeriesCTE                         string
@@ -48,6 +50,7 @@ type MultiEntityStatements struct {
 	getStatVarGroupNode                            string
 	getStatVarGroupNodeWithDefinitions             string
 	filterDescendentStatVarsByTimeSeries           string
+	filterDescendentStatVarsByTimeSeriesBuildRight string
 	selectDescendentStatVarsFromTimeSeries         string
 	selectDescendentStatVarsFromEntitySlots        string
 	joinDescendentStatVarsByProvenance             string
@@ -393,13 +396,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		sdmxContainedSeriesCTE: fmt.Sprintf(`series AS (
 			SELECT
-				t.variable_measured,
-				t.entity1,
-				t.extra_entities_id,
-				t.facet_id,
-				t.provenance,
-				t.facet,
-				t.entities
+				%%[6]s
 			FROM %%[1]s anchor
 			JOIN@{JOIN_METHOD=APPLY_JOIN} %s@{FORCE_INDEX=%%[2]s} t
 				ON t.%%[3]s = anchor.place_id
@@ -478,6 +475,27 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			t.facet AS facets,
 			t.entities
 		FROM series t`, cfg.ObservationTable),
+
+		getSdmxContainedAvailability: `		%[1]sWITH %[2]s,
+			%[3]s
+			SELECT DISTINCT t.value AS value
+			FROM series t
+			WHERE t.value IS NOT NULL
+				AND t.value != ''
+			ORDER BY value
+`,
+
+		getSdmxContainedAvailabilityWithDates: fmt.Sprintf(`		%%[1]sWITH %%[2]s,
+			%%[3]s
+			SELECT DISTINCT t.value AS value
+			FROM series t
+			JOIN %s o
+			USING (variable_measured, entity1, extra_entities_id, facet_id)
+			WHERE o.date IN UNNEST(@time_periods)
+				AND t.value IS NOT NULL
+				AND t.value != ''
+			ORDER BY value
+`, cfg.ObservationTable),
 
 		// Check existence when both variables and entities are specified
 		getStatVarsByEntityBoth: fmt.Sprintf(`		WITH
@@ -731,6 +749,15 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			ON n.subject_id = sv.child_sv`, cfg.TimeSeriesTable),
 
 		filterDescendentStatVarsByTimeSeries: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+					SELECT ts.variable_measured
+					FROM %s%s%s
+					GROUP BY ts.variable_measured%s
+				) o ON o.variable_measured = e.subject_id`,
+
+		filterDescendentStatVarsByTimeSeriesBuildRight: `JOIN@{
+					JOIN_METHOD=HASH_JOIN,
+					HASH_JOIN_BUILD_SIDE=BUILD_RIGHT
+				} (
 					SELECT ts.variable_measured
 					FROM %s%s%s
 					GROUP BY ts.variable_measured%s

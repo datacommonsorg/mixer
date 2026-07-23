@@ -61,8 +61,8 @@ func NewRelationExpressionProcessor(
 // TODO: Mark local-only responses caused by remote expansion failures as
 // non-cacheable so transient failures are not cached by Redis.
 func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, error) {
-	if rc.Type == TypeSdmxData {
-		return p.preProcessSdmxData(rc)
+	if rc.Type == TypeSdmxData || rc.Type == TypeSdmxAvailability {
+		return p.preProcessSdmx(rc)
 	}
 
 	// Only process observation requests.
@@ -105,19 +105,23 @@ func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, e
 	return Continue, nil
 }
 
-// TODO: Break this orchestration into reusable helpers when remote containment
-// expansion is added to SDMX Availability.
-func (p *RelationExpressionProcessor) preProcessSdmxData(rc *RequestContext) (Outcome, error) {
+func (p *RelationExpressionProcessor) preProcessSdmx(rc *RequestContext) (Outcome, error) {
 	if p.source == nil {
 		return Continue, nil
 	}
-	req, ok := rc.CurrentRequest.(*sdmx.SdmxDataQuery)
-	if !ok {
-		slog.Error("RelationExpressionProcessor: failed to cast request to SdmxDataQuery", "type", rc.Type)
-		return Continue, fmt.Errorf("failed to cast request to SdmxDataQuery")
+
+	var constraints map[string]*sdmx.SdmxComponentConstraint
+	switch req := rc.CurrentRequest.(type) {
+	case *sdmx.SdmxDataQuery:
+		constraints = req.GetConstraints()
+	case *sdmx.SdmxAvailabilityQuery:
+		constraints = req.GetConstraints()
+	default:
+		slog.Error("RelationExpressionProcessor: failed to cast SDMX request", "type", rc.Type)
+		return Continue, fmt.Errorf("failed to cast SDMX request")
 	}
 
-	componentToContainedInPlace, err := datacommons.ContainedInPlaceConstraints(req.GetConstraints())
+	componentToContainedInPlace, err := datacommons.ContainedInPlaceConstraints(constraints)
 	if err != nil {
 		return Continue, err
 	}
