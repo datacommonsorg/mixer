@@ -1,17 +1,13 @@
 		SELECT
 			n.subject_id,
 			IFNULL(n.name, '') AS name,
-			e_counts.descendent_stat_var_count
+			'' AS definition
 		FROM Node n
 		JOIN (
 			SELECT
-				e.object_id AS subject_id,
-				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
+				e.subject_id AS subject_id
 			FROM Edge e
-			JOIN@{
-					JOIN_METHOD=HASH_JOIN,
-					HASH_JOIN_BUILD_SIDE=BUILD_RIGHT
-				} (
+			JOIN@{JOIN_TYPE=HASH_JOIN} (
 					SELECT ts.variable_measured
 					FROM (
 						SELECT t.variable_measured, t.entity1 AS entity, t.provenance
@@ -32,16 +28,13 @@
 					GROUP BY ts.variable_measured
 					HAVING COUNT(DISTINCT ts.entity) >= 2
 				) o ON o.variable_measured = e.subject_id
-			WHERE e.predicate = 'linkedMemberOf'
-				AND e.object_id IN (
-					SELECT DISTINCT subject_id
-					FROM Edge
-					WHERE object_id = 'dc/g/Demographics'
-						AND predicate = 'specializationOf'
-					UNION ALL
-					SELECT 'dc/g/Demographics' AS subject_id
-				)
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = 'dc/g/Demographics'
+					AND predicate = 'memberOf'
+			)
 			GROUP BY
-				e.object_id
-		) e_counts
-			ON n.subject_id = e_counts.subject_id
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id

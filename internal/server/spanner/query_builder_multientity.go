@@ -210,7 +210,7 @@ func (b *multiEntityQueryBuilder) GetStatVarGroupNodeQuery(nodes []string, inclu
 	}, nil
 }
 
-func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, stmts *MultiEntityStatements) *spanner.Statement {
+func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, useBuildRight bool, stmts *MultiEntityStatements) *spanner.Statement {
 	params := map[string]interface{}{}
 	useEntitySlots := len(constrainedPlaces) > 0 || (constrainedProvenance == "" && numEntitiesExistence > 1)
 
@@ -250,10 +250,14 @@ func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constr
 		)
 		params["numEntitiesExistence"] = numEntitiesExistence
 	}
+	filterStatement := stmts.filterDescendentStatVarsByTimeSeries
+	if useBuildRight {
+		filterStatement = stmts.filterDescendentStatVarsByTimeSeriesBuildRight
+	}
 
 	return &spanner.Statement{
 		SQL: fmt.Sprintf(
-			stmts.filterDescendentStatVarsByTimeSeries,
+			filterStatement,
 			timeSeriesSource,
 			provenanceJoin,
 			provenanceFilterSQL,
@@ -284,7 +288,8 @@ func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *MultiEntity
 // GetFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
 func (b *multiEntityQueryBuilder) GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool) (*spanner.Statement, error) {
 	stmts := b.statements
-	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
+	useBuildRight := template == templateSVG && len(constrainedPlaces) > 0 && numEntitiesExistence > 1 && constrainedProvenance == ""
+	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, useBuildRight, stmts)
 	subquery.Params["node"] = node
 
 	var baseStatement string
@@ -308,7 +313,7 @@ func (b *multiEntityQueryBuilder) GetFilteredSVGChildrenQuery(template string, n
 // GetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
 func (b *multiEntityQueryBuilder) GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int) (*spanner.Statement, error) {
 	stmts := b.statements
-	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, stmts)
+	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, false, stmts)
 
 	nodeFilter, nodeVal := getParamStatement("node", nodes)
 	subquery.Params["node"] = nodeVal
