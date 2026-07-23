@@ -196,10 +196,12 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
+		searchCfg, _ := spanner.LoadSpannerSearchConfig("")
 		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
 			RecogPlaceStore: st.RecogPlaceStore,
 			MapsClient:      mapsClient,
 			Embedder:        nil, // Not testing live GenAI embeddings in integration setup
+			SearchConfig:    searchCfg,
 		})
 		sources = append(sources, spannerDataSource)
 	}

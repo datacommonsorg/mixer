@@ -95,21 +95,27 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 
 func TestLoadSpannerSearchConfig(t *testing.T) {
 	// Test empty path defaults to "default" config
-	defaultCfg, err := loadSpannerSearchConfig("")
+	defaultCfg, err := LoadSpannerSearchConfig("")
 	if err != nil {
-		t.Fatalf("loadSpannerSearchConfig(\"\") failed: %v", err)
+		t.Fatalf("LoadSpannerSearchConfig(\"\") failed: %v", err)
 	}
 	if defaultCfg.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
 		t.Errorf("Expected default EmbeddingLabel=nl_stat_var_embedding, got %s", defaultCfg.SearchConfig.EmbeddingLabel)
 	}
 
-	// Test "dcp" config
-	dcpCfg, err := loadSpannerSearchConfig("dcp")
+	// Test inline YAML content
+	inlineYaml := `
+search_config:
+  search_algorithm: "vector_search"
+  embedding_model: "CustomModel"
+  embedding_label: "custom_embedding"
+`
+	inlineCfg, err := LoadSpannerSearchConfig(inlineYaml)
 	if err != nil {
-		t.Fatalf("loadSpannerSearchConfig(\"dcp\") failed: %v", err)
+		t.Fatalf("LoadSpannerSearchConfig(inlineYaml) failed: %v", err)
 	}
-	if dcpCfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected dcp EmbeddingLabel=base_text_embedding, got %s", dcpCfg.SearchConfig.EmbeddingLabel)
+	if inlineCfg.SearchConfig.EmbeddingLabel != "custom_embedding" {
+		t.Errorf("Expected inline EmbeddingLabel=custom_embedding, got %s", inlineCfg.SearchConfig.EmbeddingLabel)
 	}
 }
 

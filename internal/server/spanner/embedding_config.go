@@ -88,15 +88,35 @@ func GetSpannerSearchConfigPath(env string) string {
 	return filepath.Join(dir, "spanner_config", env+".yaml")
 }
 
+// ParseSpannerSearchConfig unmarshals raw YAML bytes into a SpannerSearchConfig struct.
+func ParseSpannerSearchConfig(data []byte) (*SpannerSearchConfig, error) {
+	var cfg SpannerSearchConfig
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return nil, fmt.Errorf("failed to unmarshal YAML: %w", err)
+	}
+	return &cfg, nil
+}
+
 // ReadSpannerSearchConfig reads YAML into the SpannerSearchConfig from the path string.
 func ReadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read config file: %w", err)
 	}
-	var cfg SpannerSearchConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf("failed to unmarshal YAML: %w", err)
+	return ParseSpannerSearchConfig(data)
+}
+
+// LoadSpannerSearchConfig loads the search config for Spanner.
+// If configStr is empty, it loads default.yaml.
+// If configStr is non-empty, it parses the YAML string directly.
+func LoadSpannerSearchConfig(configStr string) (*SpannerSearchConfig, error) {
+	if configStr == "" {
+		cfgPath := GetSpannerSearchConfigPath("default")
+		if cfgPath == "" {
+			return nil, fmt.Errorf("failed to get search config path for default")
+		}
+		return ReadSpannerSearchConfig(cfgPath)
 	}
-	return &cfg, nil
+
+	return ParseSpannerSearchConfig([]byte(configStr))
 }

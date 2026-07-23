@@ -21,11 +21,14 @@ func (m *mockEmbedder) Embed(ctx context.Context, endpoint, taskType, text strin
 	return m.embeddingsRes, m.err
 }
 
+var testSearchCfg, _ = LoadSpannerSearchConfig("")
+
 func TestResolveEmbeddingsEmpty(t *testing.T) {
 	t.Parallel()
 
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
-		Embedder: &mockEmbedder{embeddingsRes: []float64{}},
+		Embedder:     &mockEmbedder{embeddingsRes: []float64{}},
+		SearchConfig: testSearchCfg,
 	})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
@@ -63,7 +66,8 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 			},
 		},
 	}, &SpannerDataSourceOptions{
-		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		Embedder:     &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		SearchConfig: testSearchCfg,
 	})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
@@ -111,7 +115,8 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 			},
 		},
 	}, &SpannerDataSourceOptions{
-		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		Embedder:     &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		SearchConfig: testSearchCfg,
 	})
 
 

@@ -62,8 +62,6 @@ type Flags struct {
 	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
 	// Minimum number of unique variables that selects an entity1 range scan for core contained-in-place observation queries. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
-	// Path or name for Spanner resolve search config file.
-	SpannerResolveConfigPath string `yaml:"SpannerResolveConfigPath"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -85,7 +83,6 @@ func setDefaultValues() *Flags {
 		UseSpannerKeyValueStore:                false,
 		ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables: 50,
-		SpannerResolveConfigPath:               "",
 	}
 }
 

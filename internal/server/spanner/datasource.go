@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"log/slog"
 	"maps"
-	"os"
 	"slices"
 	"sort"
 	"strings"
@@ -75,34 +74,26 @@ const (
 )
 
 type SpannerDataSourceOptions struct {
-	RecogPlaceStore          *files.RecogPlaceStore
-	MapsClient               internalmaps.MapsClient
-	TopicExpander            resolvev2.TopicExpander
-	Embedder                 embedder.Embedder
-	SpannerResolveConfigPath string
+	RecogPlaceStore *files.RecogPlaceStore
+	MapsClient      internalmaps.MapsClient
+	TopicExpander   resolvev2.TopicExpander
+	Embedder        embedder.Embedder
+	SearchConfig    *SpannerSearchConfig
 }
 
 func NewSpannerDataSource(
 	client SpannerClient,
 	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
-	var configPath string
-	if opts != nil {
-		configPath = opts.SpannerResolveConfigPath
-	}
-	cfg, err := loadSpannerSearchConfig(configPath)
-	if err != nil {
-		slog.Error("Failed to load Spanner search config", "configPath", configPath, "error", err)
-	}
 	sds := &SpannerDataSource{
-		client:       client,
-		searchConfig: cfg,
+		client: client,
 	}
 	if opts != nil {
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
 		sds.topicExpander = opts.TopicExpander
 		sds.embedder = opts.Embedder
+		sds.searchConfig = opts.SearchConfig
 	}
 
 	return sds
@@ -525,22 +516,6 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	default:
 		return sds.resolveID(ctx, normalizedResolveRequest)
 	}
-}
-
-// loadSpannerSearchConfig loads the search config for Spanner from a given path or name.
-// If pathOrName is empty, it defaults to "default" (loading default.yaml).
-func loadSpannerSearchConfig(pathOrName string) (*SpannerSearchConfig, error) {
-	if pathOrName == "" {
-		pathOrName = "default"
-	}
-	cfgPath := pathOrName
-	if _, err := os.Stat(pathOrName); os.IsNotExist(err) {
-		cfgPath = GetSpannerSearchConfigPath(pathOrName)
-	}
-	if cfgPath == "" {
-		return nil, fmt.Errorf("failed to get search config path for %s", pathOrName)
-	}
-	return ReadSpannerSearchConfig(cfgPath)
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.

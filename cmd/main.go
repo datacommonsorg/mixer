@@ -104,8 +104,9 @@ var (
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
 	// Spanner Graph
-	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Cloud Spanner Graph as database.")
-	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
+	useSpannerGraph      = flag.Bool("use_spanner_graph", false, "Use Cloud Spanner Graph as database.")
+	spannerGraphInfo     = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
+	spannerResolveConfig = flag.String("spanner_resolve_config", "", "Yaml formatted text containing information for Spanner resolve configuration.")
 	// Redis.
 	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
 	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
@@ -452,12 +453,16 @@ func main() {
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
+		spannerSearchCfg, err := spanner.LoadSpannerSearchConfig(*spannerResolveConfig)
+		if err != nil {
+			slog.Error("Failed to load Spanner search config", "config", *spannerResolveConfig, "error", err)
+		}
 		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
-			RecogPlaceStore:          store.RecogPlaceStore,
-			MapsClient:               mapsClient,
-			TopicExpander:            topicExpander,
-			Embedder:                 embedderClient,
-			SpannerResolveConfigPath: flags.SpannerResolveConfigPath,
+			RecogPlaceStore: store.RecogPlaceStore,
+			MapsClient:      mapsClient,
+			TopicExpander:   topicExpander,
+			Embedder:        embedderClient,
+			SearchConfig:    spannerSearchCfg,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
