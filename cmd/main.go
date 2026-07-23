@@ -128,6 +128,11 @@ var (
 		"",
 		"Comma separated list of indexes to use for embeddings resolution.",
 	)
+	spannerSearchConfigPath = flag.String(
+		"spanner_search_config_path",
+		"",
+		"Path to Spanner search config YAML file.",
+	)
 )
 
 func main() {
@@ -430,9 +435,10 @@ func main() {
 	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
 		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
-			RecogPlaceStore: store.RecogPlaceStore,
-			MapsClient:      mapsClient,
-			TopicExpander:   topicExpander,
+			RecogPlaceStore:  store.RecogPlaceStore,
+			MapsClient:       mapsClient,
+			TopicExpander:    topicExpander,
+			SearchConfigPath: *spannerSearchConfigPath,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)

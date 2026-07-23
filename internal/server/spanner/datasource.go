@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"maps"
+	"os"
 	"slices"
 	"sort"
 	"strings"
@@ -72,16 +73,24 @@ const (
 )
 
 type SpannerDataSourceOptions struct {
-	RecogPlaceStore *files.RecogPlaceStore
-	MapsClient      internalmaps.MapsClient
-	TopicExpander   resolvev2.TopicExpander
+	RecogPlaceStore  *files.RecogPlaceStore
+	MapsClient       internalmaps.MapsClient
+	TopicExpander    resolvev2.TopicExpander
+	SearchConfigPath string
 }
 
 func NewSpannerDataSource(
 	client SpannerClient,
 	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
-	cfg, _ := loadSpannerSearchConfig()
+	var searchConfigPath string
+	if opts != nil {
+		searchConfigPath = opts.SearchConfigPath
+	}
+	cfg, err := loadSpannerSearchConfig(searchConfigPath)
+	if err != nil {
+		slog.Error("Failed to load Spanner search config", "path", searchConfigPath, "error", err)
+	}
 	sds := &SpannerDataSource{
 		client:       client,
 		searchConfig: cfg,
@@ -510,13 +519,18 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 }
 
-// loadSpannerSearchConfig loads the default search config for Spanner.
-func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
-	cfgPath := GetSpannerSearchConfigPath("default")
-	if cfgPath == "" {
+// loadSpannerSearchConfig loads the search config for Spanner.
+func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
+	if path == "" {
+		path = os.Getenv("SPANNER_SEARCH_CONFIG_PATH")
+	}
+	if path == "" {
+		path = GetSpannerSearchConfigPath("default")
+	}
+	if path == "" {
 		return nil, fmt.Errorf("failed to get search config path")
 	}
-	return ReadSpannerSearchConfig(cfgPath)
+	return ReadSpannerSearchConfig(path)
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.

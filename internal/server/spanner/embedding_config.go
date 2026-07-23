@@ -79,6 +79,9 @@ type SpannerSearchConfig struct {
 
 // GetSpannerSearchConfigPath returns the absolute path to the YAML configuration file for a given environment.
 func GetSpannerSearchConfigPath(env string) string {
+	if env == "" {
+		env = "default"
+	}
 	_, filename, _, ok := runtime.Caller(0)
 	if !ok {
 		return ""

@@ -62,6 +62,16 @@ func TestGetSpannerSearchConfigPath(t *testing.T) {
 	if !strings.HasSuffix(path, "internal/server/spanner/spanner_config/default.yaml") {
 		t.Errorf("Unexpected path suffix: %s", path)
 	}
+
+	emptyEnvPath := GetSpannerSearchConfigPath("")
+	if !strings.HasSuffix(emptyEnvPath, "internal/server/spanner/spanner_config/default.yaml") {
+		t.Errorf("Unexpected empty env path suffix: %s", emptyEnvPath)
+	}
+
+	dcpPath := GetSpannerSearchConfigPath("dcp_default")
+	if !strings.HasSuffix(dcpPath, "internal/server/spanner/spanner_config/dcp_default.yaml") {
+		t.Errorf("Unexpected dcp_default path suffix: %s", dcpPath)
+	}
 }
 
 func TestReadSpannerSearchConfig(t *testing.T) {
@@ -89,3 +99,15 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
 	}
 }
+
+func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
+	path := GetSpannerSearchConfigPath("dcp_default")
+	cfg, err := ReadSpannerSearchConfig(path)
+	if err != nil {
+		t.Fatalf("Failed to read DCP default SpannerSearchConfig: %v", err)
+	}
+	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	}
+}
+
