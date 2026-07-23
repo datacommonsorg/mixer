@@ -984,9 +984,9 @@ func sdmxProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponent
 }
 
 func observationPropertiesPageSize(variableCount int) int {
-	// Fetch one more property per variable than the schema supports so unsupported
-	// metadata is detected before SQL generation.
-	pageSize := variableCount * (maxObservationPropertyEntitySlots + 1)
+	// Fetch observationProperties, overflow detector, and typeOf edges per variable
+	// so unsupported metadata is detected before SQL generation.
+	pageSize := variableCount * (maxObservationPropertyEntitySlots + 3)
 	if pageSize < minObservationPropertiesPageSize {
 		return minObservationPropertiesPageSize
 	}

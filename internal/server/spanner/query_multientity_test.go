@@ -2287,13 +2287,13 @@ func TestObservationPropertiesEntityMappingPageSize(t *testing.T) {
 		},
 		{
 			name:          "uses minimum page size at boundary",
-			variableCount: 25,
+			variableCount: 16,
 			want:          minObservationPropertiesPageSize,
 		},
 		{
 			name:          "scales past minimum",
 			variableCount: 26,
-			want:          104,
+			want:          156,
 		},
 	}
 
