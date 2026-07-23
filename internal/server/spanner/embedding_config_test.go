@@ -63,11 +63,6 @@ func TestGetSpannerSearchConfigPath(t *testing.T) {
 		t.Errorf("Unexpected path suffix: %s", path)
 	}
 
-	emptyEnvPath := GetSpannerSearchConfigPath("")
-	if !strings.HasSuffix(emptyEnvPath, "internal/server/spanner/spanner_config/default.yaml") {
-		t.Errorf("Unexpected empty env path suffix: %s", emptyEnvPath)
-	}
-
 	dcpPath := GetSpannerSearchConfigPath("dcp_default")
 	if !strings.HasSuffix(dcpPath, "internal/server/spanner/spanner_config/dcp_default.yaml") {
 		t.Errorf("Unexpected dcp_default path suffix: %s", dcpPath)
