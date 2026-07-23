@@ -519,18 +519,23 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 }
 
+func resolveSearchConfigPath(path string) string {
+	if path != "" {
+		return path
+	}
+	if envPath := os.Getenv("SPANNER_SEARCH_CONFIG_PATH"); envPath != "" {
+		return envPath
+	}
+	return GetSpannerSearchConfigPath("default")
+}
+
 // loadSpannerSearchConfig loads the search config for Spanner.
 func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
-	if path == "" {
-		path = os.Getenv("SPANNER_SEARCH_CONFIG_PATH")
-	}
-	if path == "" {
-		path = GetSpannerSearchConfigPath("default")
-	}
-	if path == "" {
+	resolvedPath := resolveSearchConfigPath(path)
+	if resolvedPath == "" {
 		return nil, fmt.Errorf("failed to get search config path")
 	}
-	return ReadSpannerSearchConfig(path)
+	return ReadSpannerSearchConfig(resolvedPath)
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.
