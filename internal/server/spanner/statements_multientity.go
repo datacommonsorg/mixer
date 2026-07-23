@@ -50,6 +50,7 @@ type MultiEntityStatements struct {
 	getStatVarGroupNode                            string
 	getStatVarGroupNodeWithDefinitions             string
 	filterDescendentStatVarsByTimeSeries           string
+	filterDescendentStatVarsByTimeSeriesBuildRight string
 	selectDescendentStatVarsFromTimeSeries         string
 	selectDescendentStatVarsFromEntitySlots        string
 	joinDescendentStatVarsByProvenance             string
@@ -748,6 +749,15 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			ON n.subject_id = sv.child_sv`, cfg.TimeSeriesTable),
 
 		filterDescendentStatVarsByTimeSeries: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+					SELECT ts.variable_measured
+					FROM %s%s%s
+					GROUP BY ts.variable_measured%s
+				) o ON o.variable_measured = e.subject_id`,
+
+		filterDescendentStatVarsByTimeSeriesBuildRight: `JOIN@{
+					JOIN_METHOD=HASH_JOIN,
+					HASH_JOIN_BUILD_SIDE=BUILD_RIGHT
+				} (
 					SELECT ts.variable_measured
 					FROM %s%s%s
 					GROUP BY ts.variable_measured%s
