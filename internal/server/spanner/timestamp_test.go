@@ -170,3 +170,65 @@ func TestTimestampResetOnNull(t *testing.T) {
 		t.Fatalf("Expected error when staleness timestamp is zero, but got nil")
 	}
 }
+
+func TestSetOnIngestionUpdate_TriggersOnTimestampChange(t *testing.T) {
+	t.Parallel()
+	mockTicker := NewMockTicker()
+	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updatedTime := startTime.Add(1 * time.Hour)
+
+	sc := &spannerDatabaseClient{
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
+	}
+	sc.timestamp.Store(startTime.UnixNano())
+	sc.dbInitialized.Store(true)
+
+	callbackCalled := make(chan bool, 1)
+	sc.SetOnIngestionUpdate(func(ctx context.Context) {
+		callbackCalled <- true
+	})
+
+	err := sc.processStalenessTimestamp(context.Background(), spanner.NullTime{Valid: true, Time: updatedTime})
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	select {
+	case <-callbackCalled:
+		// Success: callback was reactively invoked.
+	case <-time.After(1 * time.Second):
+		t.Fatalf("Timed out waiting for SetOnIngestionUpdate callback to be invoked")
+	}
+}
+
+func TestSetOnIngestionUpdate_UnchangedTimestampNoTrigger(t *testing.T) {
+	t.Parallel()
+	mockTicker := NewMockTicker()
+	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+
+	sc := &spannerDatabaseClient{
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
+	}
+	sc.timestamp.Store(startTime.UnixNano())
+	sc.dbInitialized.Store(true)
+
+	callbackCalled := make(chan bool, 1)
+	sc.SetOnIngestionUpdate(func(ctx context.Context) {
+		callbackCalled <- true
+	})
+
+	err := sc.processStalenessTimestamp(context.Background(), spanner.NullTime{Valid: true, Time: startTime})
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	select {
+	case <-callbackCalled:
+		t.Fatalf("Callback should NOT have been invoked when timestamp did not change")
+	case <-time.After(100 * time.Millisecond):
+		// Success: callback was NOT invoked.
+	}
+}
+
