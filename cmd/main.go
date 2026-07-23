@@ -572,9 +572,14 @@ func main() {
 	// Bind reactive ingestion callback and start background Spanner polling ONLY after server components are initialized
 	if spannerClient != nil {
 		spannerClient.SetOnIngestionUpdate(func(ctx context.Context) {
-			slog.Info("Executing reactive periodic hooks triggered by Spanner ingestion state change")
-			if err := mixerServer.RunPeriodicHooks(ctx); err != nil {
-				slog.Error("Reactive RunPeriodicHooks failed during Spanner sync", "error", err)
+			slog.Info("Executing reactive cache reloads triggered by Spanner ingestion state change")
+			if topicCacheManager != nil {
+				if _, err := topicCacheManager.LoadHierarchy(ctx); err != nil && !spanner.IsTableNotFoundError(err) {
+					slog.Error("Failed to reload topic cache hierarchy on Spanner ingestion update", "error", err)
+				}
+			}
+			if agentSvc := mixerServer.AgentService(); agentSvc != nil {
+				agentSvc.Reset()
 			}
 		})
 		spannerClient.Start()
