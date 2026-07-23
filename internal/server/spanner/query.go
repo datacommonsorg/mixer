@@ -70,15 +70,16 @@ const (
 	ApiTimeoutBuffer = 2 * time.Second
 
 	// Special edge predicates.
-	predAffectedPlace      = "affectedPlace"
-	predStartDate          = "startDate"
-	predStartLocation      = "startLocation"
-	predProvenance         = "provenance"
-	predTypeOf             = "typeOf"
-	predGeoJsonCoordinates = "geoJsonCoordinates"
-	predName               = "name"
-	predUrl                = "url"
-	predDomain             = "domain"
+	predAffectedPlace         = "affectedPlace"
+	predStartDate             = "startDate"
+	predStartLocation         = "startLocation"
+	predProvenance            = "provenance"
+	predTypeOf                = "typeOf"
+	predObservationProperties = "observationProperties"
+	predGeoJsonCoordinates    = "geoJsonCoordinates"
+	predName                  = "name"
+	predUrl                   = "url"
+	predDomain                = "domain"
 
 	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
 	maxConcurrentFilteredSVGGoroutines = 10
