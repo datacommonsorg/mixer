@@ -116,13 +116,10 @@ func TestLoadSpannerSearchConfig(t *testing.T) {
 		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfgProfile.SearchConfig.EmbeddingLabel)
 	}
 
-	// Test fallback to default on invalid path
-	cfgFallback, err := loadSpannerSearchConfig("/non/existent/path.yaml")
-	if err != nil {
-		t.Fatalf("Expected fallback to default config, got error: %v", err)
-	}
-	if cfgFallback.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
-		t.Errorf("Expected fallback EmbeddingLabel=nl_stat_var_embedding, got %s", cfgFallback.SearchConfig.EmbeddingLabel)
+	// Test error on invalid path
+	_, err = loadSpannerSearchConfig("/non/existent/path.yaml")
+	if err == nil {
+		t.Fatalf("Expected error when loading non-existent search config path, got nil")
 	}
 }
 

@@ -440,6 +440,10 @@ func main() {
 			TopicExpander:    topicExpander,
 			SearchConfigPath: *spannerSearchConfigPath,
 		})
+		if *spannerSearchConfigPath != "" && spannerDS.SearchConfig() == nil {
+			slog.Error("Failed to load specified Spanner search config, exiting", "path", *spannerSearchConfigPath)
+			os.Exit(1)
+		}
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}

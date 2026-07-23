@@ -103,6 +103,14 @@ func NewSpannerDataSource(
 	return sds
 }
 
+// SearchConfig returns the loaded Spanner search config.
+func (sds *SpannerDataSource) SearchConfig() *SpannerSearchConfig {
+	if sds == nil {
+		return nil
+	}
+	return sds.searchConfig
+}
+
 // Type returns the type of the data source.
 func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 	return datasource.TypeSpanner
@@ -541,12 +549,6 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 		return nil, fmt.Errorf("failed to resolve search config path")
 	}
 	cfg, err := ReadSpannerSearchConfig(resolvedPath)
-	if err != nil && path != "" {
-		slog.Warn("Failed to load custom Spanner search config, falling back to default", "path", path, "resolvedPath", resolvedPath, "error", err)
-		defaultPath := GetSpannerSearchConfigPath("default")
-		cfg, err = ReadSpannerSearchConfig(defaultPath)
-		resolvedPath = defaultPath
-	}
 	if err != nil {
 		return nil, fmt.Errorf("failed to load search config from %s: %w", resolvedPath, err)
 	}
