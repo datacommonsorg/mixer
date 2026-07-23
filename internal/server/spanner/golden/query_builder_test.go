@@ -127,6 +127,44 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 	}
 }
 
+func TestGetNodeDirectContainedInPlaceQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, tc := range []struct {
+		name       string
+		placeTypes []string
+		golden     string
+	}{
+		{
+			name:       "single type remains unforced",
+			placeTypes: []string{"County"},
+			golden:     "get_node_edges_contained_in_place_single_type",
+		},
+		{
+			name:       "multiple types use ancestor first",
+			placeTypes: []string{"County", "City"},
+			golden:     "get_node_edges_contained_in_place_multiple_types_ancestor_first",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, tc.golden+".sql", func(ctx context.Context) (interface{}, error) {
+				return spanner.GetNodeEdgesByIDQuery(
+					[]string{"geoId/5508971700"},
+					&v2.Arc{
+						SingleProp: v2.ContainedInPlaceProperty,
+						Filter: map[string][]string{
+							"typeOf": tc.placeTypes,
+						},
+					},
+					datasources.DefaultPageSize,
+					0,
+					spanner.QueryConfig{},
+				)
+			})
+		})
+	}
+}
+
 func TestGetObservationsQuery(t *testing.T) {
 	t.Parallel()
 
