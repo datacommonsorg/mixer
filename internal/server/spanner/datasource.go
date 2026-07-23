@@ -542,13 +542,13 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 	}
 	cfg, err := ReadSpannerSearchConfig(resolvedPath)
 	if err != nil && path != "" {
-		slog.Warn("Failed to load custom Spanner search config, falling back to default", "path", path, "error", err)
+		slog.Warn("Failed to load custom Spanner search config, falling back to default", "path", path, "resolvedPath", resolvedPath, "error", err)
 		defaultPath := GetSpannerSearchConfigPath("default")
 		cfg, err = ReadSpannerSearchConfig(defaultPath)
 		resolvedPath = defaultPath
 	}
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to load search config from %s: %w", resolvedPath, err)
 	}
 	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
 	return cfg, nil
