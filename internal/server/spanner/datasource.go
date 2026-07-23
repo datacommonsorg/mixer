@@ -526,7 +526,12 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 	if path == "" {
 		return nil, fmt.Errorf("failed to resolve search config path")
 	}
-	return ReadSpannerSearchConfig(path)
+	cfg, err := ReadSpannerSearchConfig(path)
+	if err != nil {
+		return nil, err
+	}
+	slog.Info("Loaded Spanner search config", "path", path, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
+	return cfg, nil
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.
