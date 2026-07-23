@@ -1051,7 +1051,9 @@ func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, 
 						targetTs := sc.timestamp.Load()
 						sc.hookMutex.Unlock()
 
-						hook(context.Background())
+						hookCtx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+						hook(hookCtx)
+						cancel()
 
 						sc.hookMutex.Lock()
 						if sc.timestamp.Load() == targetTs {
