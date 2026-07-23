@@ -43,35 +43,64 @@ func planNodeQuery(arc *v2.Arc, queryConfig QueryConfig) (nodeQueryPlan, error) 
 	}
 
 	if childPlaceTypes, ok := matchNodeContainedInPlace(arc); ok {
-		return nodeQueryPlan{
-			kind: nodeQueryContainedInPlace,
-			containedInPlace: containedInPlacePlan{
-				accessPath: queryConfig.containedInPlaceAccessPath(childPlaceTypes...),
-			},
-		}, nil
+		accessPath := containedInPlaceTypeFirst
+		if len(childPlaceTypes) > 1 {
+			accessPath = containedInPlaceAncestorFirst
+		}
+		return newNodeContainedInPlacePlan(accessPath), nil
+	}
+
+	if childPlaceTypes, ok := matchNodeLinkedContainedInPlace(arc); ok {
+		return newNodeContainedInPlacePlan(
+			queryConfig.containedInPlaceAccessPath(childPlaceTypes...),
+		), nil
 	}
 
 	return nodeQueryPlan{kind: nodeQueryGeneric}, nil
 }
 
+func newNodeContainedInPlacePlan(accessPath containedInPlaceAccessPath) nodeQueryPlan {
+	return nodeQueryPlan{
+		kind: nodeQueryContainedInPlace,
+		containedInPlace: containedInPlacePlan{
+			accessPath: accessPath,
+		},
+	}
+}
+
 func matchNodeContainedInPlace(arc *v2.Arc) ([]string, bool) {
+	return matchNodeContainmentProperty(arc, v2.ContainedInPlaceProperty)
+}
+
+func matchNodeLinkedContainedInPlace(arc *v2.Arc) ([]string, bool) {
+	return matchNodeContainmentProperty(arc, linkedContainedInPlaceProperty)
+}
+
+func matchNodeContainmentProperty(arc *v2.Arc, property string) ([]string, bool) {
 	if arc == nil ||
 		arc.Out ||
-		arc.SingleProp != linkedContainedInPlaceProperty ||
+		arc.SingleProp != property ||
 		arc.Decorator != "" ||
 		len(arc.BracketProps) > 0 ||
 		len(arc.BracketFilters) > 0 ||
 		len(arc.Filter) != 1 {
 		return nil, false
 	}
-	childPlaceTypes, ok := arc.Filter[predTypeOf]
-	if !ok || len(childPlaceTypes) == 0 {
+	values, ok := arc.Filter[predTypeOf]
+	if !ok || len(values) == 0 {
 		return nil, false
 	}
-	for _, childPlaceType := range childPlaceTypes {
+	childPlaceTypes := make([]string, 0, len(values))
+	seen := make(map[string]struct{}, len(values))
+	for _, childPlaceType := range values {
 		if strings.TrimSpace(childPlaceType) == "" {
 			return nil, false
 		}
+		if _, ok := seen[childPlaceType]; ok {
+			continue
+		}
+		seen[childPlaceType] = struct{}{}
+		childPlaceTypes = append(childPlaceTypes, childPlaceType)
 	}
 	return childPlaceTypes, true
 }

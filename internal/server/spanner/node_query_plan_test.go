@@ -47,6 +47,48 @@ func TestPlanNodeQuery(t *testing.T) {
 			},
 		},
 		{
+			name: "direct contained in place single type remains unforced",
+			arc: &v2.Arc{
+				SingleProp: v2.ContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"County"}},
+			},
+			queryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"County"},
+			},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceTypeFirst,
+				},
+			},
+		},
+		{
+			name: "direct contained in place multiple types uses ancestor first",
+			arc: &v2.Arc{
+				SingleProp: v2.ContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"County", "City"}},
+			},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceAncestorFirst,
+				},
+			},
+		},
+		{
+			name: "direct contained in place duplicate type remains unforced",
+			arc: &v2.Arc{
+				SingleProp: v2.ContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"County", "County"}},
+			},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceTypeFirst,
+				},
+			},
+		},
+		{
 			name: "contained in place ancestor first",
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
@@ -147,6 +189,17 @@ func TestPlanNodeQuery(t *testing.T) {
 			want: nodeQueryPlan{kind: nodeQueryGeneric},
 		},
 		{
+			name: "direct contained in place with multiple filters",
+			arc: &v2.Arc{
+				SingleProp: v2.ContainedInPlaceProperty,
+				Filter: map[string][]string{
+					"name":     {"x"},
+					predTypeOf: {"County", "City"},
+				},
+			},
+			want: nodeQueryPlan{kind: nodeQueryGeneric},
+		},
+		{
 			name: "missing type filter",
 			arc: &v2.Arc{
 				SingleProp: linkedContainedInPlaceProperty,
@@ -221,6 +274,30 @@ func TestPlanNodeQueryFromPropertyExpression(t *testing.T) {
 	got, err := planNodeQuery(arcs[0], QueryConfig{
 		ContainedInPlaceAncestorFirstTypes: []string{"Place"},
 	})
+	if err != nil {
+		t.Fatalf("planNodeQuery() unexpected error: %v", err)
+	}
+	if diff := cmp.Diff(want, got, cmp.AllowUnexported(nodeQueryPlan{}, containedInPlacePlan{})); diff != "" {
+		t.Errorf("planNodeQuery() mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestPlanDirectContainedInPlaceQueryFromPropertyExpression(t *testing.T) {
+	arcs, err := v2.ParseProperty("<-containedInPlace{typeOf:[County,City]}")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(arcs) != 1 {
+		t.Fatalf("ParseProperty() returned %d arcs, want 1", len(arcs))
+	}
+
+	want := nodeQueryPlan{
+		kind: nodeQueryContainedInPlace,
+		containedInPlace: containedInPlacePlan{
+			accessPath: containedInPlaceAncestorFirst,
+		},
+	}
+	got, err := planNodeQuery(arcs[0], QueryConfig{})
 	if err != nil {
 		t.Fatalf("planNodeQuery() unexpected error: %v", err)
 	}
