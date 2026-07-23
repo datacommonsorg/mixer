@@ -106,3 +106,37 @@ func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
 	}
 }
 
+func TestLoadSpannerSearchConfig(t *testing.T) {
+	// Test loading via short profile name
+	cfgProfile, err := loadSpannerSearchConfig("dcp_default")
+	if err != nil {
+		t.Fatalf("Failed to load search config via profile name: %v", err)
+	}
+	if cfgProfile.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfgProfile.SearchConfig.EmbeddingLabel)
+	}
+
+	// Test fallback to default on invalid path
+	cfgFallback, err := loadSpannerSearchConfig("/non/existent/path.yaml")
+	if err != nil {
+		t.Fatalf("Expected fallback to default config, got error: %v", err)
+	}
+	if cfgFallback.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
+		t.Errorf("Expected fallback EmbeddingLabel=nl_stat_var_embedding, got %s", cfgFallback.SearchConfig.EmbeddingLabel)
+	}
+}
+
+func TestNewSpannerDataSource_SearchConfigPath(t *testing.T) {
+	opts := &SpannerDataSourceOptions{
+		SearchConfigPath: "dcp_default",
+	}
+	ds := NewSpannerDataSource(nil, opts)
+	if ds.searchConfig == nil {
+		t.Fatalf("Expected searchConfig to be initialized, got nil")
+	}
+	if ds.searchConfig.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", ds.searchConfig.SearchConfig.EmbeddingLabel)
+	}
+}
+
+

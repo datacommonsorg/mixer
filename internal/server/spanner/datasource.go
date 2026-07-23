@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"maps"
+	"os"
 	"slices"
 	"sort"
 	"strings"
@@ -518,19 +519,38 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 }
 
+func resolveSearchConfigPath(path string) string {
+	if path != "" {
+		if _, err := os.Stat(path); err == nil {
+			return path
+		}
+		if profilePath := GetSpannerSearchConfigPath(path); profilePath != "" {
+			if _, err := os.Stat(profilePath); err == nil {
+				return profilePath
+			}
+		}
+		return path
+	}
+	return GetSpannerSearchConfigPath("default")
+}
+
 // loadSpannerSearchConfig loads the search config for Spanner.
 func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
-	if path == "" {
-		path = GetSpannerSearchConfigPath("default")
-	}
-	if path == "" {
+	resolvedPath := resolveSearchConfigPath(path)
+	if resolvedPath == "" {
 		return nil, fmt.Errorf("failed to resolve search config path")
 	}
-	cfg, err := ReadSpannerSearchConfig(path)
+	cfg, err := ReadSpannerSearchConfig(resolvedPath)
+	if err != nil && path != "" {
+		slog.Warn("Failed to load custom Spanner search config, falling back to default", "path", path, "error", err)
+		defaultPath := GetSpannerSearchConfigPath("default")
+		cfg, err = ReadSpannerSearchConfig(defaultPath)
+		resolvedPath = defaultPath
+	}
 	if err != nil {
 		return nil, err
 	}
-	slog.Info("Loaded Spanner search config", "path", path, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
+	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
 	return cfg, nil
 }
 
