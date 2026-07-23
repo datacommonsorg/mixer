@@ -90,7 +90,10 @@ func NewSpannerDataSource(
 	if opts != nil {
 		configPath = opts.SpannerResolveConfigPath
 	}
-	cfg, _ := loadSpannerSearchConfig(configPath)
+	cfg, err := loadSpannerSearchConfig(configPath)
+	if err != nil {
+		slog.Error("Failed to load Spanner search config", "configPath", configPath, "error", err)
+	}
 	sds := &SpannerDataSource{
 		client:       client,
 		searchConfig: cfg,
