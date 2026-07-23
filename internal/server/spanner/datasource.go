@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"maps"
+	"os"
 	"slices"
 	"sort"
 	"strings"
@@ -74,17 +75,22 @@ const (
 )
 
 type SpannerDataSourceOptions struct {
-	RecogPlaceStore *files.RecogPlaceStore
-	MapsClient      internalmaps.MapsClient
-	TopicExpander   resolvev2.TopicExpander
-	Embedder        embedder.Embedder
+	RecogPlaceStore          *files.RecogPlaceStore
+	MapsClient               internalmaps.MapsClient
+	TopicExpander            resolvev2.TopicExpander
+	Embedder                 embedder.Embedder
+	SpannerResolveConfigPath string
 }
 
 func NewSpannerDataSource(
 	client SpannerClient,
 	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
-	cfg, _ := loadSpannerSearchConfig()
+	var configPath string
+	if opts != nil {
+		configPath = opts.SpannerResolveConfigPath
+	}
+	cfg, _ := loadSpannerSearchConfig(configPath)
 	sds := &SpannerDataSource{
 		client:       client,
 		searchConfig: cfg,
@@ -518,11 +524,18 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 }
 
-// loadSpannerSearchConfig loads the default search config for Spanner.
-func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
-	cfgPath := GetSpannerSearchConfigPath("default")
+// loadSpannerSearchConfig loads the search config for Spanner from a given path or name.
+// If pathOrName is empty, it defaults to "default" (loading default.yaml).
+func loadSpannerSearchConfig(pathOrName string) (*SpannerSearchConfig, error) {
+	if pathOrName == "" {
+		pathOrName = "default"
+	}
+	cfgPath := pathOrName
+	if _, err := os.Stat(pathOrName); os.IsNotExist(err) {
+		cfgPath = GetSpannerSearchConfigPath(pathOrName)
+	}
 	if cfgPath == "" {
-		return nil, fmt.Errorf("failed to get search config path")
+		return nil, fmt.Errorf("failed to get search config path for %s", pathOrName)
 	}
 	return ReadSpannerSearchConfig(cfgPath)
 }

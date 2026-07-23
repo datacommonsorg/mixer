@@ -8,3 +8,4 @@ flags:
   EnableSpannerSearchEmbeddings: true
   UseNewIngestionHistorySchema: false
   UseSpannerKeyValueStore: true
+  SpannerResolveConfigPath: "dcp"

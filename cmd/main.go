@@ -453,10 +453,11 @@ func main() {
 	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
 		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
-			RecogPlaceStore: store.RecogPlaceStore,
-			MapsClient:      mapsClient,
-			TopicExpander:   topicExpander,
-			Embedder:        embedderClient,
+			RecogPlaceStore:          store.RecogPlaceStore,
+			MapsClient:               mapsClient,
+			TopicExpander:            topicExpander,
+			Embedder:                 embedderClient,
+			SpannerResolveConfigPath: flags.SpannerResolveConfigPath,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)

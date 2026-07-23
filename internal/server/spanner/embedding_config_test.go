@@ -92,3 +92,24 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
 	}
 }
+
+func TestLoadSpannerSearchConfig(t *testing.T) {
+	// Test empty path defaults to "default" config
+	defaultCfg, err := loadSpannerSearchConfig("")
+	if err != nil {
+		t.Fatalf("loadSpannerSearchConfig(\"\") failed: %v", err)
+	}
+	if defaultCfg.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
+		t.Errorf("Expected default EmbeddingLabel=nl_stat_var_embedding, got %s", defaultCfg.SearchConfig.EmbeddingLabel)
+	}
+
+	// Test "dcp" config
+	dcpCfg, err := loadSpannerSearchConfig("dcp")
+	if err != nil {
+		t.Fatalf("loadSpannerSearchConfig(\"dcp\") failed: %v", err)
+	}
+	if dcpCfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected dcp EmbeddingLabel=base_text_embedding, got %s", dcpCfg.SearchConfig.EmbeddingLabel)
+	}
+}
+
