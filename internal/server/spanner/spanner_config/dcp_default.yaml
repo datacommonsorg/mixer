@@ -1,4 +1,4 @@
-# this file get reads by v2/resolve when we set resolver to use spanner and an feature flag to experiment for resolution experimentation
+# Spanner search configuration profile for DCP custom instances (using base_text_embedding)
 search_config:
   search_algorithm: "vector_search"
   embedding_model: "NodeEmbeddingModel"

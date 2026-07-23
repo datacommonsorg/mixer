@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"maps"
+	"os"
 	"slices"
 	"sort"
 	"strings"
@@ -74,17 +75,25 @@ const (
 )
 
 type SpannerDataSourceOptions struct {
-	RecogPlaceStore *files.RecogPlaceStore
-	MapsClient      internalmaps.MapsClient
-	TopicExpander   resolvev2.TopicExpander
-	Embedder        embedder.Embedder
+	RecogPlaceStore  *files.RecogPlaceStore
+	MapsClient       internalmaps.MapsClient
+	TopicExpander    resolvev2.TopicExpander
+	Embedder         embedder.Embedder
+	SearchConfigPath string
 }
 
 func NewSpannerDataSource(
 	client SpannerClient,
 	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
-	cfg, _ := loadSpannerSearchConfig()
+	var searchConfigPath string
+	if opts != nil {
+		searchConfigPath = opts.SearchConfigPath
+	}
+	cfg, err := loadSpannerSearchConfig(searchConfigPath)
+	if err != nil {
+		slog.Error("Failed to load Spanner search config", "path", searchConfigPath, "error", err)
+	}
 	sds := &SpannerDataSource{
 		client:       client,
 		searchConfig: cfg,
@@ -97,6 +106,14 @@ func NewSpannerDataSource(
 	}
 
 	return sds
+}
+
+// SearchConfig returns the loaded Spanner search config.
+func (sds *SpannerDataSource) SearchConfig() *SpannerSearchConfig {
+	if sds == nil {
+		return nil
+	}
+	return sds.searchConfig
 }
 
 // Type returns the type of the data source.
@@ -518,13 +535,33 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 }
 
-// loadSpannerSearchConfig loads the default search config for Spanner.
-func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
-	cfgPath := GetSpannerSearchConfigPath("default")
-	if cfgPath == "" {
-		return nil, fmt.Errorf("failed to get search config path")
+func resolveSearchConfigPath(path string) string {
+	if path != "" {
+		if _, err := os.Stat(path); err == nil {
+			return path
+		}
+		if profilePath := GetSpannerSearchConfigPath(path); profilePath != "" {
+			if _, err := os.Stat(profilePath); err == nil {
+				return profilePath
+			}
+		}
+		return path
 	}
-	return ReadSpannerSearchConfig(cfgPath)
+	return GetSpannerSearchConfigPath("default")
+}
+
+// loadSpannerSearchConfig loads the search config for Spanner.
+func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
+	resolvedPath := resolveSearchConfigPath(path)
+	if resolvedPath == "" {
+		return nil, fmt.Errorf("failed to resolve search config path")
+	}
+	cfg, err := ReadSpannerSearchConfig(resolvedPath)
+	if err != nil {
+		return nil, fmt.Errorf("failed to load search config from %s: %w", resolvedPath, err)
+	}
+	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
+	return cfg, nil
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.

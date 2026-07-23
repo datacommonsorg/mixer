@@ -62,6 +62,11 @@ func TestGetSpannerSearchConfigPath(t *testing.T) {
 	if !strings.HasSuffix(path, "internal/server/spanner/spanner_config/default.yaml") {
 		t.Errorf("Unexpected path suffix: %s", path)
 	}
+
+	dcpPath := GetSpannerSearchConfigPath("dcp_default")
+	if !strings.HasSuffix(dcpPath, "internal/server/spanner/spanner_config/dcp_default.yaml") {
+		t.Errorf("Unexpected dcp_default path suffix: %s", dcpPath)
+	}
 }
 
 func TestReadSpannerSearchConfig(t *testing.T) {
@@ -92,3 +97,46 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
 	}
 }
+
+func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
+	path := GetSpannerSearchConfigPath("dcp_default")
+	cfg, err := ReadSpannerSearchConfig(path)
+	if err != nil {
+		t.Fatalf("Failed to read DCP default SpannerSearchConfig: %v", err)
+	}
+	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	}
+}
+
+func TestLoadSpannerSearchConfig(t *testing.T) {
+	// Test loading via short profile name
+	cfgProfile, err := loadSpannerSearchConfig("dcp_default")
+	if err != nil {
+		t.Fatalf("Failed to load search config via profile name: %v", err)
+	}
+	if cfgProfile.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfgProfile.SearchConfig.EmbeddingLabel)
+	}
+
+	// Test error on invalid path
+	_, err = loadSpannerSearchConfig("/non/existent/path.yaml")
+	if err == nil {
+		t.Fatalf("Expected error when loading non-existent search config path, got nil")
+	}
+}
+
+func TestNewSpannerDataSource_SearchConfigPath(t *testing.T) {
+	opts := &SpannerDataSourceOptions{
+		SearchConfigPath: "dcp_default",
+	}
+	ds := NewSpannerDataSource(nil, opts)
+	if ds.searchConfig == nil {
+		t.Fatalf("Expected searchConfig to be initialized, got nil")
+	}
+	if ds.searchConfig.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", ds.searchConfig.SearchConfig.EmbeddingLabel)
+	}
+}
+
+
