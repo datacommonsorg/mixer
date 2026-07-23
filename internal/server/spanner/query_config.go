@@ -23,8 +23,8 @@ import (
 // QueryConfig controls Spanner query-planning behavior.
 type QueryConfig struct {
 	// ContainedInPlaceAncestorFirstTypes contains child place types that
-	// should filter by ancestor before type. Other child place types filter by
-	// type first.
+	// should filter by ancestor before type when the query builder supports
+	// that access path.
 	ContainedInPlaceAncestorFirstTypes []string
 	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
 	// requested variables that selects the entity1 range-scan plan for core
@@ -56,9 +56,11 @@ func (config QueryConfig) Validate() error {
 	return nil
 }
 
-func (config QueryConfig) containedInPlaceAccessPath(childPlaceType string) containedInPlaceAccessPath {
-	if slices.Contains(config.ContainedInPlaceAncestorFirstTypes, childPlaceType) {
-		return containedInPlaceAncestorFirst
+func (config QueryConfig) containedInPlaceAccessPath(childPlaceTypes ...string) containedInPlaceAccessPath {
+	for _, childPlaceType := range childPlaceTypes {
+		if slices.Contains(config.ContainedInPlaceAncestorFirstTypes, childPlaceType) {
+			return containedInPlaceAncestorFirst
+		}
 	}
 	return containedInPlaceTypeFirst
 }

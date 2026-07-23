@@ -1,13 +1,12 @@
-		GRAPH DCGraph MATCH (n:Node)-[@{FORCE_INDEX=InEdge}filter0:Edge
-		WHERE
-			filter0.predicate = 'typeOf'
-			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]->,
-		@{FORCE_JOIN_ORDER=TRUE}
-		(m:Node
+		GRAPH DCGraph MATCH (m:Node
 		WHERE
 			m.subject_id = 'country/USA')<-[e:Edge
 		WHERE
-			e.predicate = 'linkedContainedInPlace']-(n:Node)
+			e.predicate = 'linkedContainedInPlace']-(n:Node),
+		(n)-[@{FORCE_INDEX=InEdge}filter0:Edge
+		WHERE
+			filter0.predicate = 'typeOf'
+			AND filter0.object_id = 'County']->
 		RETURN
 			m.subject_id,
 			n.subject_id AS object_id,
