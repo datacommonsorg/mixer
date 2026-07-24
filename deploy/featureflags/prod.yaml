@@ -9,3 +9,4 @@ flags:
   UseMultiEntitySchema: true
   EnableSDMXDataApi: true
   UseSpannerKeyValueStore: true
+  UseNewIngestionHistorySchema: true
