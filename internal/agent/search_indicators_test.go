@@ -40,10 +40,16 @@ type mockMixerServer struct {
 	// obsMockData maps a place DCID string to the slice of variable DCIDs
 	// that have active observation series data available for that place.
 	obsMockData map[string][]string
+
+	// lastCandidateResolveReq records the ResolveRequest passed for candidate resolution.
+	lastCandidateResolveReq *pbv2.ResolveRequest
 }
 
 // V2Resolve dynamically maps input query nodes to candidates from its resolveMockData map.
 func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+	if in.GetResolver() == ResolverIndicator || (in.GetResolver() == ResolverTopic && len(in.GetNodes()) > 0 && in.GetNodes()[0] != "geoId/06") {
+		m.lastCandidateResolveReq = in
+	}
 	resp := &pbv2.ResolveResponse{}
 
 	// Default empty query browsing maps to empty string lookup key
@@ -557,6 +563,96 @@ func TestSearchIndicators_Basic(t *testing.T) {
 
 			if diff := cmp.Diff(got, tc.wantResponse, cmpOpts); diff != "" {
 				t.Errorf("SearchIndicators returned unexpected response (-got +want):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestSearchIndicators_Target(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		request    *pbv2.SearchIndicatorsRequest
+		wantTarget string
+		wantErr    string
+	}{
+		{
+			name: "custom_only target",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:  "health",
+				Places: []string{"geoId/06"},
+				Target: proto.String("custom_only"),
+			},
+			wantTarget: "custom_only",
+		},
+		{
+			name: "base_only target",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:  "health",
+				Places: []string{"geoId/06"},
+				Target: proto.String("base_only"),
+			},
+			wantTarget: "base_only",
+		},
+		{
+			name: "unspecified target",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:  "health",
+				Places: []string{"geoId/06"},
+			},
+			wantTarget: "",
+		},
+		{
+			name: "invalid target returns error",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:  "health",
+				Target: proto.String("invalid_target"),
+			},
+			wantErr: "rpc error: code = InvalidArgument desc = invalid target: invalid_target, valid values are 'base_and_custom', 'base_only', 'custom_only'",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockMixerServer{
+				resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+					"health": {
+						{
+							Dcid:         "Count_Person",
+							DominantType: "StatisticalVariable",
+							Name:         "Population",
+						},
+					},
+					"geoId/06": {
+						{
+							Dcid:         "geoId/06",
+							DominantType: "State",
+						},
+					},
+				},
+				obsMockData: map[string][]string{
+					"geoId/06": {"Count_Person"},
+				},
+			}
+
+			cache := NewCache(mock)
+			svc := NewService(mock, cache)
+
+			_, err := svc.SearchIndicators(context.Background(), tc.request)
+			if tc.wantErr != "" {
+				if err == nil || err.Error() != tc.wantErr {
+					t.Fatalf("SearchIndicators error = %v, want: %s", err, tc.wantErr)
+				}
+				return
+			}
+
+			if err != nil {
+				t.Fatalf("SearchIndicators failed unexpectedly: %v", err)
+			}
+
+			if mock.lastCandidateResolveReq == nil {
+				t.Fatalf("expected V2Resolve candidate search to be called, but lastCandidateResolveReq is nil")
+			}
+
+			if gotTarget := mock.lastCandidateResolveReq.GetTarget(); gotTarget != tc.wantTarget {
+				t.Errorf("V2Resolve target = %q, want: %q", gotTarget, tc.wantTarget)
 			}
 		})
 	}

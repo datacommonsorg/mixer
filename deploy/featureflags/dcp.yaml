@@ -6,7 +6,7 @@ flags:
   EnableSDMXDataApi: true
   EnableEmbeddingsResolver: false
   EnableSpannerSearchEmbeddings: true
-  UseNewIngestionHistorySchema: false
+  UseNewIngestionHistorySchema: true
   UseSpannerKeyValueStore: true
   EnableReactiveInMemoryCacheRefresh: true
 

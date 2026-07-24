@@ -45,8 +45,10 @@ type SearchIndicatorsRequest struct {
 	PerSearchLimit int32                  `protobuf:"varint,4,opt,name=per_search_limit,json=perSearchLimit,proto3" json:"per_search_limit,omitempty"`
 	IncludeTopics  *bool                  `protobuf:"varint,5,opt,name=include_topics,json=includeTopics,proto3,oneof" json:"include_topics,omitempty"`
 	ExpandTopics   *bool                  `protobuf:"varint,6,opt,name=expand_topics,json=expandTopics,proto3,oneof" json:"expand_topics,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// Optional target for indicator resolution ("custom_only", "base_only", "base_and_custom").
+	Target        *string `protobuf:"bytes,7,opt,name=target,proto3,oneof" json:"target,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SearchIndicatorsRequest) Reset() {
@@ -119,6 +121,13 @@ func (x *SearchIndicatorsRequest) GetExpandTopics() bool {
 		return *x.ExpandTopics
 	}
 	return false
+}
+
+func (x *SearchIndicatorsRequest) GetTarget() string {
+	if x != nil && x.Target != nil {
+		return *x.Target
+	}
+	return ""
 }
 
 // Response payload for the search_indicators tool endpoint.
@@ -1491,16 +1500,18 @@ var File_v2_agent_proto protoreflect.FileDescriptor
 
 const file_v2_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\x8f\x02\n" +
+	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\xb7\x02\n" +
 	"\x17SearchIndicatorsRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
 	"\x06places\x18\x02 \x03(\tR\x06places\x12!\n" +
 	"\fparent_place\x18\x03 \x01(\tR\vparentPlace\x12(\n" +
 	"\x10per_search_limit\x18\x04 \x01(\x05R\x0eperSearchLimit\x12*\n" +
 	"\x0einclude_topics\x18\x05 \x01(\bH\x00R\rincludeTopics\x88\x01\x01\x12(\n" +
-	"\rexpand_topics\x18\x06 \x01(\bH\x01R\fexpandTopics\x88\x01\x01B\x11\n" +
+	"\rexpand_topics\x18\x06 \x01(\bH\x01R\fexpandTopics\x88\x01\x01\x12\x1b\n" +
+	"\x06target\x18\a \x01(\tH\x02R\x06target\x88\x01\x01B\x11\n" +
 	"\x0f_include_topicsB\x10\n" +
-	"\x0e_expand_topics\"\xec\t\n" +
+	"\x0e_expand_topicsB\t\n" +
+	"\a_target\"\xec\t\n" +
 	"\x18SearchIndicatorsResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12l\n" +
 	"\x12dcid_name_mappings\x18\x02 \x03(\v2>.datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntryR\x10dcidNameMappings\x12|\n" +
