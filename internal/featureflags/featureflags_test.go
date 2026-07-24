@@ -315,6 +315,17 @@ flags:
 			}),
 			wantErr: false,
 		},
+		{
+			name: "enable reactive in memory cache refresh flag",
+			fileContent: `
+flags:
+  EnableReactiveInMemoryCacheRefresh: true
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.EnableReactiveInMemoryCacheRefresh = true
+			}),
+			wantErr: false,
+		},
 	}
 
 	for _, tc := range testCases {

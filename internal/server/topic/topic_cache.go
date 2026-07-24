@@ -243,6 +243,11 @@ func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarc
 	}
 	if len(hierarchy.GetTopics()) == 0 {
 		slog.Warn("Loaded empty topic hierarchy.")
+		// Fail-safe preservation: never overwrite an existing functional L1 cache with an empty structure
+		if existing := m.CachedHierarchy(); len(existing.GetTopics()) > 0 {
+			slog.Warn("Retaining existing fully populated topic cache (fail-safe preservation against empty yield)")
+			return existing, nil
+		}
 	}
 
 	m.Update(hierarchy)
@@ -258,3 +263,45 @@ func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarc
 
 	return hierarchy, nil
 }
+
+// ReloadHierarchy forces a synchronous reload of the TopicHierarchy from the KG,
+// bypassing any L2 Redis cache read, and updates both L1 memory and L2 Redis caches.
+func (m *TopicCacheManager) ReloadHierarchy(ctx context.Context) (*pb.TopicHierarchy, error) {
+	defer util.TimeTrack(time.Now(), "topic: ReloadHierarchy")
+	if m.fetcher == nil {
+		return nil, fmt.Errorf("topic cache manager uninitialized: fetcher is nil")
+	}
+
+	slog.Info("Reloading topic cache synchronously from KG (bypassing Redis cache read)")
+	hierarchy, err := m.FetchTopicsFromKG(ctx)
+	if err != nil {
+		slog.Error("Failed to reload topic cache from KG", "error", err)
+		return nil, fmt.Errorf("failed to reload topic cache from KG: %w", err)
+	}
+
+	if hierarchy == nil {
+		hierarchy = &pb.TopicHierarchy{}
+	}
+	if len(hierarchy.GetTopics()) == 0 {
+		slog.Warn("Loaded empty topic hierarchy during reload.")
+		// Fail-safe preservation: never overwrite an existing functional L1 cache with an empty structure
+		if existing := m.CachedHierarchy(); len(existing.GetTopics()) > 0 {
+			slog.Warn("Retaining existing fully populated topic cache (fail-safe preservation against empty yield)")
+			return existing, nil
+		}
+	}
+
+	m.Update(hierarchy)
+
+	// Populate Redis warm L2 cache
+	if m.redisClient != nil && len(hierarchy.GetTopics()) > 0 {
+		if err := m.redisClient.CacheResponse(ctx, redisCacheKeyProto, hierarchy); err != nil {
+			slog.Error("Failed to write topic cache to Redis", "error", err)
+		} else {
+			slog.Info("Saved topic cache in Redis successfully")
+		}
+	}
+
+	return hierarchy, nil
+}
+
