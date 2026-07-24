@@ -571,17 +571,20 @@ func main() {
 
 	// Bind reactive ingestion callback and start background Spanner polling ONLY after server components are initialized
 	if spannerClient != nil {
-		spannerClient.SetOnIngestionUpdate(func(ctx context.Context) {
-			slog.Info("Executing reactive cache reloads triggered by Spanner ingestion state change")
-			if topicCacheManager != nil {
-				if _, err := topicCacheManager.LoadHierarchy(ctx); err != nil && !spanner.IsTableNotFoundError(err) {
-					slog.Error("Failed to reload topic cache hierarchy on Spanner ingestion update", "error", err)
+		if flags.EnableReactiveInMemoryCacheRefresh {
+			slog.Info("Enabling reactive in-memory cache reloads on Spanner ingestion state changes")
+			spannerClient.SetOnIngestionUpdate(func(ctx context.Context) {
+				slog.Info("Executing reactive in-memory cache reloads triggered by Spanner ingestion state change")
+				if topicCacheManager != nil {
+					if _, err := topicCacheManager.ReloadHierarchy(ctx); err != nil && !spanner.IsTableNotFoundError(err) {
+						slog.Error("Failed to reload topic cache hierarchy on Spanner ingestion update", "error", err)
+					}
 				}
-			}
-			if agentSvc := mixerServer.AgentService(); agentSvc != nil {
-				agentSvc.Reset()
-			}
-		})
+				if agentSvc := mixerServer.AgentService(); agentSvc != nil {
+					agentSvc.Reset()
+				}
+			})
+		}
 		spannerClient.Start()
 	}
 

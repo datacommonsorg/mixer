@@ -8,3 +8,5 @@ flags:
   EnableSpannerSearchEmbeddings: true
   UseNewIngestionHistorySchema: false
   UseSpannerKeyValueStore: true
+  EnableReactiveInMemoryCacheRefresh: true
+

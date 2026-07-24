@@ -232,3 +232,71 @@ func TestSetOnIngestionUpdate_UnchangedTimestampNoTrigger(t *testing.T) {
 	}
 }
 
+func TestSetOnIngestionUpdate_DrainsSubsequentUpdate(t *testing.T) {
+	t.Parallel()
+	mockTicker := NewMockTicker()
+	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updatedTime1 := startTime.Add(1 * time.Hour)
+	updatedTime2 := startTime.Add(2 * time.Hour)
+
+	sc := &spannerDatabaseClient{
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
+	}
+	sc.timestamp.Store(startTime.UnixNano())
+	sc.dbInitialized.Store(true)
+
+	firstHookStarted := make(chan struct{})
+	allowFirstHookToFinish := make(chan struct{})
+	hookCallCount := make(chan int, 10)
+
+	var callNum int
+	sc.SetOnIngestionUpdate(func(ctx context.Context) {
+		callNum++
+		currentCall := callNum
+		if currentCall == 1 {
+			close(firstHookStarted)
+			<-allowFirstHookToFinish
+		}
+		hookCallCount <- currentCall
+	})
+
+	// First timestamp update triggers first execution of hook
+	err := sc.processStalenessTimestamp(context.Background(), spanner.NullTime{Valid: true, Time: updatedTime1})
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	// Wait until hook has entered execution
+	<-firstHookStarted
+
+	// While hook 1 is still executing, send a second timestamp update
+	err = sc.processStalenessTimestamp(context.Background(), spanner.NullTime{Valid: true, Time: updatedTime2})
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	// Now allow hook 1 to finish
+	close(allowFirstHookToFinish)
+
+	// Verify hook was executed twice (once for initial trigger, once for drained update)
+	select {
+	case c := <-hookCallCount:
+		if c != 1 {
+			t.Fatalf("Expected first hook call to be 1, got %d", c)
+		}
+	case <-time.After(1 * time.Second):
+		t.Fatalf("Timed out waiting for first hook call")
+	}
+
+	select {
+	case c := <-hookCallCount:
+		if c != 2 {
+			t.Fatalf("Expected second hook call to be 2, got %d", c)
+		}
+	case <-time.After(1 * time.Second):
+		t.Fatalf("Timed out waiting for second drained hook call")
+	}
+}
+
+
