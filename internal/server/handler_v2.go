@@ -160,14 +160,14 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 				}
-				return true, nil
+				return s.shouldDivertV2(ctx), nil
 			} else {
 				// Force Legacy
 				return false, nil
 			}
 		}
 		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.isSpannerEnabled(), nil
+		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.shouldDivertV2(ctx), nil
 	}
 
 	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
