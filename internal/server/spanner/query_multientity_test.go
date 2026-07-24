@@ -18,6 +18,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"slices"
 	"strings"
 	"testing"
 
@@ -696,8 +697,8 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 			if diff := cmp.Diff([]string{"var1", "var2"}, ids); diff != "" {
 				t.Fatalf("GetNodeEdgesByID() ids mismatch (-want +got):\n%s", diff)
 			}
-			if arc == nil || !arc.Out || arc.SingleProp != "observationProperties" {
-				t.Fatalf("GetNodeEdgesByID() arc = %+v, want outgoing observationProperties", arc)
+			if arc == nil || !arc.Out || !slices.Equal(arc.BracketProps, []string{predObservationProperties, predTypeOf}) {
+				t.Fatalf("GetNodeEdgesByID() arc = %+v, want outgoing observationProperties and typeOf", arc)
 			}
 			if pageSize != minObservationPropertiesPageSize {
 				t.Fatalf("GetNodeEdgesByID() pageSize = %d, want %d", pageSize, minObservationPropertiesPageSize)
@@ -1006,8 +1007,8 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 			if diff := cmp.Diff([]string{"var1", "var2"}, ids); diff != "" {
 				t.Fatalf("GetNodeEdgesByID() ids mismatch (-want +got):\n%s", diff)
 			}
-			if arc == nil || !arc.Out || arc.SingleProp != "observationProperties" {
-				t.Fatalf("GetNodeEdgesByID() arc = %+v, want outgoing observationProperties", arc)
+			if arc == nil || !arc.Out || !slices.Equal(arc.BracketProps, []string{predObservationProperties, predTypeOf}) {
+				t.Fatalf("GetNodeEdgesByID() arc = %+v, want outgoing observationProperties and typeOf", arc)
 			}
 			if pageSize != minObservationPropertiesPageSize || offset != 0 {
 				t.Fatalf("GetNodeEdgesByID() pageSize, offset = %d, %d, want %d, 0", pageSize, offset, minObservationPropertiesPageSize)
@@ -1113,6 +1114,7 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 		name       string
 		req        *sdmxpb.SdmxAvailabilityQuery
 		edges      map[string][]*Edge
+		wantCode   codes.Code
 		wantErrSub string
 	}{
 		{
@@ -1124,6 +1126,7 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 				},
 			},
 			edges:      map[string][]*Edge{"var1": observationPropertiesEdges("destinationCountry", "sourceCountry")},
+			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX availability component \"observationAbout\"",
 		},
 		{
@@ -1136,6 +1139,7 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 				},
 			},
 			edges:      map[string][]*Edge{"var1": observationPropertiesEdges("destinationCountry", "sourceCountry")},
+			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX component filter \"customEntity\"",
 		},
 		{
@@ -1147,7 +1151,8 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 					datacommons.ComponentFacetID:          sdmxComponentConstraint("facet"),
 				},
 			},
-			edges:      map[string][]*Edge{"var1": nil},
+			edges:      map[string][]*Edge{"var1": observationPropertiesEdges(datacommons.ComponentObservationAbout)},
+			wantCode:   codes.InvalidArgument,
 			wantErrSub: "unsupported SDMX component filter \"facetId\"",
 		},
 		{
@@ -1160,9 +1165,22 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 			},
 			edges: map[string][]*Edge{
 				"var1": observationPropertiesEdges("destinationCountry", "sourceCountry"),
-				"var2": nil,
+				"var2": observationPropertiesEdges("destinationCountry", "originCountry"),
 			},
+			wantCode:   codes.InvalidArgument,
 			wantErrSub: "incompatible observationProperties",
+		},
+		{
+			name: "variable measured does not exist",
+			req: &sdmxpb.SdmxAvailabilityQuery{
+				ComponentId: "destinationCountry",
+				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+					datacommons.ComponentVariableMeasured: sdmxComponentConstraint("unknownVar"),
+				},
+			},
+			edges:      map[string][]*Edge{},
+			wantCode:   codes.NotFound,
+			wantErrSub: "requested variableMeasured \"unknownVar\" does not exist",
 		},
 	}
 
@@ -1179,8 +1197,12 @@ func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
 			if err == nil {
 				t.Fatal("prepareSdmxAvailabilityQuery() error = nil, want error")
 			}
-			if status.Code(err) != codes.InvalidArgument {
-				t.Fatalf("prepareSdmxAvailabilityQuery() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+			wantCode := tt.wantCode
+			if wantCode == codes.OK {
+				wantCode = codes.InvalidArgument
+			}
+			if status.Code(err) != wantCode {
+				t.Fatalf("prepareSdmxAvailabilityQuery() code = %v, want %v; err = %v", status.Code(err), wantCode, err)
 			}
 			if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
 				t.Fatalf("prepareSdmxAvailabilityQuery() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
@@ -2265,13 +2287,13 @@ func TestObservationPropertiesEntityMappingPageSize(t *testing.T) {
 		},
 		{
 			name:          "uses minimum page size at boundary",
-			variableCount: 25,
+			variableCount: 16,
 			want:          minObservationPropertiesPageSize,
 		},
 		{
 			name:          "scales past minimum",
 			variableCount: 26,
-			want:          104,
+			want:          156,
 		},
 	}
 

@@ -589,14 +589,26 @@ func prepareSdmxShape(
 	statVarIDs := sortedUniqueStrings(sdmxConstraintValues(constraints[datacommons.ComponentVariableMeasured]))
 
 	arc := &v2.Arc{
-		Out:        true,
-		SingleProp: "observationProperties",
+		Out:          true,
+		BracketProps: []string{predObservationProperties, predTypeOf},
 	}
-	statVarToObservationPropertyEdges, err := getNodeEdgesByID(ctx, statVarIDs, arc, observationPropertiesPageSize(len(statVarIDs)), 0)
+	statVarEdges, err := getNodeEdgesByID(ctx, statVarIDs, arc, observationPropertiesPageSize(len(statVarIDs)), 0)
 	if err != nil {
 		return nil, sdmxBackendError("failed to fetch observationProperties", err)
 	}
-	observationProperties, observationPropertyToEntitySlot, err := resolveSdmxEntityShape(statVarIDs, statVarToObservationPropertyEdges)
+
+	for _, statVarID := range statVarIDs {
+		edges, ok := statVarEdges[statVarID]
+		if !ok || len(edges) == 0 {
+			return nil, status.Errorf(
+				codes.NotFound,
+				"requested variableMeasured %q does not exist",
+				statVarID,
+			)
+		}
+	}
+
+	observationProperties, observationPropertyToEntitySlot, err := resolveSdmxEntityShape(statVarIDs, statVarEdges)
 	if err != nil {
 		return nil, err
 	}
@@ -872,7 +884,7 @@ func resolveSdmxEntityShape(
 			if edge == nil {
 				continue
 			}
-			if edge.Predicate != "observationProperties" {
+			if edge.Predicate != predObservationProperties {
 				continue
 			}
 			property := strings.TrimSpace(edge.Value)
@@ -972,9 +984,9 @@ func sdmxProtoComponentKind(kind datacommons.ComponentKind) sdmxpb.SdmxComponent
 }
 
 func observationPropertiesPageSize(variableCount int) int {
-	// Fetch one more property per variable than the schema supports so unsupported
-	// metadata is detected before SQL generation.
-	pageSize := variableCount * (maxObservationPropertyEntitySlots + 1)
+	// Fetch observationProperties, overflow detector, and typeOf edges per variable
+	// so unsupported metadata is detected before SQL generation.
+	pageSize := variableCount * (maxObservationPropertyEntitySlots + 3)
 	if pageSize < minObservationPropertiesPageSize {
 		return minObservationPropertiesPageSize
 	}
