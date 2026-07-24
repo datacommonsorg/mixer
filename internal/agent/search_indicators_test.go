@@ -573,6 +573,7 @@ func TestSearchIndicators_Target(t *testing.T) {
 		name       string
 		request    *pbv2.SearchIndicatorsRequest
 		wantTarget string
+		wantErr    string
 	}{
 		{
 			name: "custom_only target",
@@ -599,6 +600,14 @@ func TestSearchIndicators_Target(t *testing.T) {
 				Places: []string{"geoId/06"},
 			},
 			wantTarget: "",
+		},
+		{
+			name: "invalid target returns error",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:  "health",
+				Target: proto.String("invalid_target"),
+			},
+			wantErr: "rpc error: code = InvalidArgument desc = invalid target: invalid_target, valid values are 'base_and_custom', 'base_only', 'custom_only'",
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
@@ -627,6 +636,13 @@ func TestSearchIndicators_Target(t *testing.T) {
 			svc := NewService(mock, cache)
 
 			_, err := svc.SearchIndicators(context.Background(), tc.request)
+			if tc.wantErr != "" {
+				if err == nil || err.Error() != tc.wantErr {
+					t.Fatalf("SearchIndicators error = %v, want: %s", err, tc.wantErr)
+				}
+				return
+			}
+
 			if err != nil {
 				t.Fatalf("SearchIndicators failed unexpectedly: %v", err)
 			}
