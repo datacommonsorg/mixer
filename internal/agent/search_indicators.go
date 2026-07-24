@@ -79,7 +79,7 @@ func (s *Service) SearchIndicators(
 
 	g.Go(func() error {
 		var err error
-		resolvedPlaces, parentPlaceDcid, err = s.resolvePlaces(gCtx, places, req.GetParentPlace())
+		resolvedPlaces, parentPlaceDcid, err = s.resolvePlaces(gCtx, places, req.GetParentPlace(), req.GetTarget())
 		return err
 	})
 
@@ -87,7 +87,7 @@ func (s *Service) SearchIndicators(
 		var err error
 		oversampledLimit := limit * 2
 		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
-		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics)
+		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics, req.GetTarget())
 		if err != nil {
 			return err
 		}
@@ -113,7 +113,7 @@ func (s *Service) SearchIndicators(
 		}
 		if len(placeDcids) > 0 {
 			var err error
-			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids)
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.GetTarget())
 			return err
 		}
 		return nil
@@ -145,6 +145,9 @@ func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
 	if req.GetParentPlace() != "" && len(req.GetPlaces()) == 0 {
 		return status.Errorf(codes.InvalidArgument, "places must be specified when parent_place is provided")
 	}
+	if target := req.GetTarget(); target != "" && !slices.Contains(validTargets, target) {
+		return status.Errorf(codes.InvalidArgument, "invalid target: %s, valid values are '%s'", target, strings.Join(validTargets, "', '"))
+	}
 	return nil
 }
 
@@ -161,6 +164,7 @@ func (s *Service) resolvePlaces(
 	ctx context.Context,
 	places []string,
 	parentPlaceName string,
+	target string,
 ) (resolvedMap map[string]*resolvedPlaceInfo, parentPlaceDcid string, err error) {
 	defer util.TimeTrack(time.Now(), "Agent: resolvePlaces")
 	var placesToResolve []string
@@ -176,6 +180,7 @@ func (s *Service) resolvePlaces(
 	resolveReq := &pbv2.ResolveRequest{
 		Nodes:    placesToResolve,
 		Property: PropDescription,
+		Target:   target,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
@@ -217,6 +222,7 @@ func (s *Service) fetchCandidates(
 	query string,
 	limit int32,
 	expandTopics bool,
+	target string,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: fetchCandidates")
 	// Map empty queries to browse root topics
@@ -234,6 +240,7 @@ func (s *Service) fetchCandidates(
 		Nodes:        nodes,
 		Resolver:     resolver,
 		ExpandTopics: expandTopics,
+		Target:       target,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
@@ -262,6 +269,7 @@ func (s *Service) filterByPlaceExistence(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
+	target string,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: filterByPlaceExistence")
 	slog.Info("Filtering indicators by place existence", "candidatesCount", len(candidates), "placesCount", len(placeDcids))
@@ -274,7 +282,7 @@ func (s *Service) filterByPlaceExistence(
 	topicDcids, directVarDcids := collectSubtopicsAndDirectVars(candidates)
 
 	// Fetch descendant variables of all topics concurrently in a single batch
-	topicDescendants, err := s.fetchDescendantVariables(ctx, topicDcids)
+	topicDescendants, err := s.fetchDescendantVariables(ctx, topicDcids, target)
 	if err != nil {
 		return nil, err
 	}
@@ -500,6 +508,7 @@ func setPlacesWithDataMetadata(c *pbv2.ResolveResponse_Entity_Candidate, places 
 func (s *Service) fetchDescendantVariables(
 	ctx context.Context,
 	topicDcids []string,
+	target string,
 ) (map[string][]string, error) {
 	defer util.TimeTrack(time.Now(), "Agent: fetchDescendantVariables")
 	if len(topicDcids) == 0 {
@@ -510,6 +519,7 @@ func (s *Service) fetchDescendantVariables(
 		Nodes:        topicDcids,
 		Resolver:     ResolverTopic,
 		ExpandTopics: true,
+		Target:       target,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)

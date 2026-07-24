@@ -27,6 +27,9 @@ message SearchIndicatorsRequest {
   int32 per_search_limit = 4;
   optional bool include_topics = 5;
   optional bool expand_topics = 6;
+
+  // Optional target for indicator resolution ("custom_only", "base_only", "base_and_custom").
+  optional string target = 7;
 }
 
 // Response payload for the search_indicators tool endpoint.
