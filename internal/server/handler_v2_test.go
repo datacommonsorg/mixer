@@ -344,6 +344,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 		},
 		{
 			desc:                   "Indicator resolver - Force Spanner (true) via Feature Flag, Spanner enabled -> route",
+			useSpannerGraph:        true,
 			useSpannerGraphFlag:    true,
 			resolver:               resolve.ResolveResolverIndicator,
 			indicatorSpannerHeader: "true",
