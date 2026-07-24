@@ -4,7 +4,7 @@ clusters:
   - projects/datcom-website-prod/locations/us-west1/clusters/website-us-west1
 liveUrl: https://datacommons.org
 flags:
-  V3MirrorFraction: 0.25
+  V3MirrorFraction: 0.50
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-prod/databases/dc_graph
