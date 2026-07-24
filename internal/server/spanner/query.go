@@ -981,8 +981,6 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		maybeLogSpannerTimeout(queryCtx, err, time.Since(startTime), "Spanner timestamp polling")
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
-	sc.dbInitialized.Store(true)
-
 	var nullTime spanner.NullTime
 	if err := row.Column(0, &nullTime); err != nil {
 		return fmt.Errorf("failed to read Timestamp column: %w", err)
@@ -1010,14 +1008,14 @@ func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, 
 		return nil
 	}
 
-	timestamp := nullTime.Time
-
 	now := time.Now()
+	wasInitialized := sc.dbInitialized.Swap(true)
 	prevNano := sc.timestamp.Load()
-	newNano := timestamp.UnixNano()
+	newNano := nullTime.Time.UnixNano()
 
-	if prevNano == 0 || prevNano != newNano {
+	if !wasInitialized || prevNano == 0 || prevNano != newNano {
 		sc.timestamp.Store(newNano)
+		sc.maybeTriggerReload(prevNano, newNano, wasInitialized)
 	}
 
 	if sc.tracker != nil {
@@ -1027,6 +1025,68 @@ func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, 
 	}
 
 	return nil
+}
+
+func (sc *spannerDatabaseClient) maybeTriggerReload(prevNano, newNano int64, wasInitialized bool) {
+	sc.hookMutex.Lock()
+	hook := sc.onIngestionUpdate
+	isReloading := sc.isReloading.Load()
+	if hook != nil && !isReloading {
+		sc.isReloading.Store(true)
+	}
+	sc.hookMutex.Unlock()
+
+	if hook == nil {
+		return
+	}
+
+	if isReloading {
+		slog.Info("Reactive cache refresh already in progress; active drain loop will pick up timestamp",
+			"new_timestamp", newNano)
+		return
+	}
+
+	slog.Info("Spanner ingestion state change detected; initiating reactive cache refresh",
+		"prev_timestamp", prevNano,
+		"new_timestamp", newNano,
+		"was_initialized", wasInitialized)
+
+	go sc.runIngestionReloadLoop(hook)
+}
+
+func (sc *spannerDatabaseClient) runIngestionReloadLoop(hook func(context.Context)) {
+	var cleanExit bool
+	defer func() {
+		if !cleanExit {
+			sc.hookMutex.Lock()
+			sc.isReloading.Store(false)
+			sc.hookMutex.Unlock()
+			if r := recover(); r != nil {
+				slog.Error("Panic occurred inside reactive ingestion callback; reset reloading state", "panic", r)
+			}
+		}
+	}()
+
+	for {
+		sc.hookMutex.Lock()
+		targetTs := sc.timestamp.Load()
+		sc.hookMutex.Unlock()
+
+		hookCtx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
+		hook(hookCtx)
+		cancel()
+
+		sc.hookMutex.Lock()
+		if sc.timestamp.Load() == targetTs {
+			sc.isReloading.Store(false)
+			cleanExit = true
+			sc.hookMutex.Unlock()
+			break
+		}
+		sc.hookMutex.Unlock()
+
+		slog.Info("Additional Spanner timestamp change observed during reload; draining subsequent update")
+	}
 }
 
 func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {

@@ -235,7 +235,6 @@ func main() {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		spannerClient.Start()
 		defer spannerClient.Close()
 	}
 	slog.Info("After Spanner client creation")
@@ -568,6 +567,25 @@ func main() {
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
 		slog.Error("Failed to initialize server components during startup", "error", err)
 		os.Exit(1)
+	}
+
+	// Bind reactive ingestion callback and start background Spanner polling ONLY after server components are initialized
+	if spannerClient != nil {
+		if flags.EnableReactiveInMemoryCacheRefresh {
+			slog.Info("Enabling reactive in-memory cache reloads on Spanner ingestion state changes")
+			spannerClient.SetOnIngestionUpdate(func(ctx context.Context) {
+				slog.Info("Executing reactive in-memory cache reloads triggered by Spanner ingestion state change")
+				if topicCacheManager != nil {
+					if _, err := topicCacheManager.ReloadHierarchy(ctx); err != nil && !spanner.IsTableNotFoundError(err) {
+						slog.Error("Failed to reload topic cache hierarchy on Spanner ingestion update", "error", err)
+					}
+				}
+				if agentSvc := mixerServer.AgentService(); agentSvc != nil {
+					agentSvc.Reset()
+				}
+			})
+		}
+		spannerClient.Start()
 	}
 
 	// Start the periodic scheduler

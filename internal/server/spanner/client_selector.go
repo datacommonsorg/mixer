@@ -196,6 +196,13 @@ func NewSchemaSelectorClient(baseClient SpannerClient, useMultiEntitySchema bool
 	}, nil
 }
 
+// SetOnIngestionUpdate forwards the callback to the embedded default Spanner client.
+func (s *schemaSelectorClient) SetOnIngestionUpdate(hook func(ctx context.Context)) {
+	if s.SpannerClient != nil {
+		s.SpannerClient.SetOnIngestionUpdate(hook)
+	}
+}
+
 func (s *schemaSelectorClient) selectSchema(ctx context.Context) (context.Context, bool) {
 	useMultiEntity := s.useMultiEntitySchema(ctx)
 	schemaName := legacySchemaName

@@ -61,6 +61,7 @@ type SpannerClient interface {
 	Id() string
 	Start()
 	Close()
+	SetOnIngestionUpdate(hook func(ctx context.Context))
 }
 
 const (
@@ -92,6 +93,10 @@ type spannerDatabaseClient struct {
 
 	// Flag to dynamically track if the Spanner schema has been initialized.
 	dbInitialized atomic.Bool
+
+	onIngestionUpdate func(ctx context.Context)
+	hookMutex         sync.Mutex
+	isReloading       atomic.Bool
 }
 
 // SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
@@ -265,6 +270,13 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 	}
 
 	return &cfg, nil
+}
+
+// SetOnIngestionUpdate sets a callback to execute whenever a new ingestion timestamp or DB initialization is detected.
+func (sc *spannerDatabaseClient) SetOnIngestionUpdate(hook func(ctx context.Context)) {
+	sc.hookMutex.Lock()
+	defer sc.hookMutex.Unlock()
+	sc.onIngestionUpdate = hook
 }
 
 func (sc *spannerDatabaseClient) Id() string {
