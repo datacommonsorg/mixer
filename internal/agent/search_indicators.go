@@ -87,7 +87,7 @@ func (s *Service) SearchIndicators(
 		var err error
 		oversampledLimit := limit * 2
 		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
-		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics)
+		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics, req.GetTarget())
 		if err != nil {
 			return err
 		}
@@ -217,6 +217,7 @@ func (s *Service) fetchCandidates(
 	query string,
 	limit int32,
 	expandTopics bool,
+	target string,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: fetchCandidates")
 	// Map empty queries to browse root topics
@@ -234,6 +235,7 @@ func (s *Service) fetchCandidates(
 		Nodes:        nodes,
 		Resolver:     resolver,
 		ExpandTopics: expandTopics,
+		Target:       target,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
