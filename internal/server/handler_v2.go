@@ -54,7 +54,7 @@ func (s *Server) V2Resolve(
 	if err != nil {
 		return nil, err
 	}
-	if useDispatcher {
+	if useDispatcher && s.shouldDivertV2(ctx) {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
@@ -139,7 +139,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// Place and Topic resolvers use standard diversion logic
 	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
-		return s.shouldDivertV2(ctx), nil
+		return true, nil
 	}
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling
