@@ -50,6 +50,7 @@ type emulatorSuite struct {
 	instanceAdmin *instanceadmin.InstanceAdminClient
 	databaseAdmin *databaseadmin.DatabaseAdminClient
 	spannerClient mixerspanner.SpannerClient
+	spannerConfig string
 	instanceName  string
 	databaseNames []string
 	provisionMu   sync.Mutex
@@ -162,14 +163,20 @@ func newEmulatorSuite(ctx context.Context) (_ *emulatorSuite, err error) {
 	}
 
 	config := fmt.Sprintf("project: %s\ninstance: %s\ndatabase: %s\n", emulatorProjectID, instanceID, databaseID)
-	resources.spannerClient, err = mixerspanner.NewSpannerClient(ctx, config, &mixerspanner.SpannerClientOptions{
-		UseMultiEntitySchema:         true,
-		SpannerEmulatorCompatibility: true,
-	})
+	resources.spannerConfig = config
+	resources.spannerClient, err = resources.newSpannerClient(ctx, mixerspanner.QueryConfig{})
 	if err != nil {
 		return nil, err
 	}
 	return resources, nil
+}
+
+func (s *emulatorSuite) newSpannerClient(ctx context.Context, queryConfig mixerspanner.QueryConfig) (mixerspanner.SpannerClient, error) {
+	return mixerspanner.NewSpannerClient(ctx, s.spannerConfig, &mixerspanner.SpannerClientOptions{
+		UseMultiEntitySchema:         true,
+		QueryConfig:                  queryConfig,
+		SpannerEmulatorCompatibility: true,
+	})
 }
 
 func (s *emulatorSuite) close(ctx context.Context) error {

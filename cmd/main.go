@@ -215,8 +215,9 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
 		queryConfig := spanner.QueryConfig{
-			ContainedInPlaceAncestorFirstTypes:     flags.ContainedInPlaceAncestorFirstTypes,
-			ContainedInPlaceEntityScanMinVariables: flags.ContainedInPlaceEntityScanMinVariables,
+			ContainedInPlaceAncestorFirstTypes:             flags.ContainedInPlaceAncestorFirstTypes,
+			ContainedInPlacePreferTimeSeriesScanPlaceTypes: flags.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
+			ContainedInPlaceEntityScanMinVariables:         flags.ContainedInPlaceEntityScanMinVariables,
 		}
 		if err := queryConfig.Validate(); err != nil {
 			slog.Error("Invalid Spanner query config", "error", err)

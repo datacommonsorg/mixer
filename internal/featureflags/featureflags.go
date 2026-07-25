@@ -60,29 +60,32 @@ type Flags struct {
 	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 	// Child place types whose core Observation and Node contained-in-place queries should filter by ancestor before type.
 	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
-	// Minimum number of unique variables that selects an entity1 range scan for core contained-in-place observation queries. Zero disables the optimization.
+	// Child place types eligible for a TimeSeriesByEntity1 range scan in core contained-in-place observation queries.
+	ContainedInPlacePreferTimeSeriesScanPlaceTypes []string `yaml:"ContainedInPlacePreferTimeSeriesScanPlaceTypes"`
+	// Minimum number of unique variables that selects an entity1 range scan for eligible child place types. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                               false,
-		V3MirrorFraction:                       0.0,
-		UseSpannerGraph:                        false,
-		UseMultiEntitySchema:                   false,
-		SpannerGraphDatabase:                   "",
-		UseStaleReads:                          false,
-		EnableEmbeddingsResolver:               true,
-		V2DivertFraction:                       0.0,
-		UseStatisticalCalculation:              false,
-		EnableSDMXDataApi:                      false,
-		SDMXRemotePlaceExpansionLimit:          10000,
-		EnableSpannerSearchEmbeddings:          false,
-		UseNewIngestionHistorySchema:           false,
-		UseSpannerKeyValueStore:                false,
-		ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
-		ContainedInPlaceEntityScanMinVariables: 50,
+		EnableV3:                                       false,
+		V3MirrorFraction:                               0.0,
+		UseSpannerGraph:                                false,
+		UseMultiEntitySchema:                           false,
+		SpannerGraphDatabase:                           "",
+		UseStaleReads:                                  false,
+		EnableEmbeddingsResolver:                       true,
+		V2DivertFraction:                               0.0,
+		UseStatisticalCalculation:                      false,
+		EnableSDMXDataApi:                              false,
+		SDMXRemotePlaceExpansionLimit:                  10000,
+		EnableSpannerSearchEmbeddings:                  false,
+		UseNewIngestionHistorySchema:                   false,
+		UseSpannerKeyValueStore:                        false,
+		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
+		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+		ContainedInPlaceEntityScanMinVariables:         50,
 	}
 }
 
@@ -127,6 +130,15 @@ func (f *Flags) validateFlagValues() error {
 		}
 		if trimmed != placeType {
 			return fmt.Errorf("ContainedInPlaceAncestorFirstTypes must not contain surrounding whitespace")
+		}
+	}
+	for _, placeType := range f.ContainedInPlacePreferTimeSeriesScanPlaceTypes {
+		trimmed := strings.TrimSpace(placeType)
+		if trimmed == "" {
+			return fmt.Errorf("ContainedInPlacePreferTimeSeriesScanPlaceTypes must not contain empty values")
+		}
+		if trimmed != placeType {
+			return fmt.Errorf("ContainedInPlacePreferTimeSeriesScanPlaceTypes must not contain surrounding whitespace")
 		}
 	}
 	if f.ContainedInPlaceEntityScanMinVariables < 0 {
