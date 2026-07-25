@@ -907,6 +907,15 @@ func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []s
 		counts[node] = 0
 	}
 
+	// Skip if requesting more matched entities than provided.
+	numConstrainedEntities := len(constrainedPlaces)
+	if constrainedImport != "" {
+		numConstrainedEntities += 1
+	}
+	if numEntitiesExistence > numConstrainedEntities {
+		return counts, nil
+	}
+
 	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
 	err := sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
 		for {

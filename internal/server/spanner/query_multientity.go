@@ -241,6 +241,15 @@ func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []strin
 		counts[node] = 0
 	}
 
+	// Skip if requesting more matched entities than provided.
+	numConstrainedEntities := len(constrainedPlaces)
+	if constrainedImport != "" {
+		numConstrainedEntities += 1
+	}
+	if numEntitiesExistence > numConstrainedEntities {
+		return counts, nil
+	}
+
 	stmt, err := nc.queryBuilder.GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
 	if err != nil {
 		return counts, err
