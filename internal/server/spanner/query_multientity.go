@@ -180,41 +180,48 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 		)
 	})
 
-	errGroup.Go(func() error {
-		stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
-		if err != nil {
-			return err
-		}
-		return queryStructs(
-			errCtx,
-			nc.sc,
-			*stmt,
-			func() interface{} {
-				return &ChildSV{}
-			},
-			func(rowStruct interface{}) {
-				childSVs = append(childSVs, rowStruct.(*ChildSV))
-			},
-		)
-	})
+	// Skip if requesting more matched entities than provided.
+	numConstrainedEntities := len(constrainedPlaces)
+	if constrainedImport != "" {
+		numConstrainedEntities += 1
+	}
+	if numEntitiesExistence <= numConstrainedEntities {
+		errGroup.Go(func() error {
+			stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			if err != nil {
+				return err
+			}
+			return queryStructs(
+				errCtx,
+				nc.sc,
+				*stmt,
+				func() interface{} {
+					return &ChildSV{}
+				},
+				func(rowStruct interface{}) {
+					childSVs = append(childSVs, rowStruct.(*ChildSV))
+				},
+			)
+		})
 
-	errGroup.Go(func() error {
-		stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
-		if err != nil {
-			return err
-		}
-		return queryStructs(
-			errCtx,
-			nc.sc,
-			*stmt,
-			func() interface{} {
-				return &ChildSVG{}
-			},
-			func(rowStruct interface{}) {
-				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
-			},
-		)
-	})
+		errGroup.Go(func() error {
+			stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			if err != nil {
+				return err
+			}
+			return queryStructs(
+				errCtx,
+				nc.sc,
+				*stmt,
+				func() interface{} {
+					return &ChildSVG{}
+				},
+				func(rowStruct interface{}) {
+					childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
+				},
+			)
+		})
+	}
 
 	if err := errGroup.Wait(); err != nil {
 		return nil, err

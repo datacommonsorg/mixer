@@ -584,16 +584,25 @@ func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statemen
 	}
 }
 
-// filterDescentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
-func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+// filterDescendentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
+func filterDescendentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
 	var params = map[string]interface{}{}
 
 	var entityFilter string
 	distinct := "observation_about"
 	if constrainedImport != "" {
-		entityFilter = statements.filterDescendentStatVarsByImport
 		params["predicate"] = getImportFilterPredicate(constrainedImport)
 		params["import"] = constrainedImport
+		// Optimization when filtering only by import (and no places).
+		// This allows reading from aggregated ProvenanceSummary.
+		// TODO: Confirm whether we'd ever want to filter by import AND place.
+		if len(constrainedPlaces) == 0 {
+			return &spanner.Statement{
+				SQL:    statements.filterDescendentStatVarsByOnlyImport,
+				Params: params,
+			}
+		}
+		entityFilter = statements.filterDescendentStatVarsByImport
 		distinct = "e1.subject_id"
 	}
 	if len(constrainedPlaces) > 0 {
@@ -620,7 +629,7 @@ func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport st
 
 // GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
 func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
-	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
 	subquery.Params["node"] = node
 
 	var baseStatement string
@@ -643,7 +652,7 @@ func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces
 
 // GetFilteredTopicChildren returns a query to get children for given topics filtered by constrained entities and existence threshold.
 func GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
-	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
 
 	nodeFilter, nodeVal := getParamStatement("node", nodes)
 	subquery.Params["node"] = nodeVal
@@ -753,7 +762,6 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 		},
 	}
 }
-
 
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {
