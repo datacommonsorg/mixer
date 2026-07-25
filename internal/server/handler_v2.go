@@ -160,7 +160,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 				}
-				return s.shouldDivertV2(ctx), nil
+				return true, nil
 			} else {
 				// Force Legacy
 				return false, nil
