@@ -862,6 +862,9 @@ func getSpecializedEntity(parent, child, childName string) (string, string) {
 	}
 	parentParts := processSvgId(parent)
 	childParts := processSvgId(child)
+	if len(childParts) == 0 {
+		return childName, ""
+	}
 
 	isBasic := isBasicPopulationType(childParts[0])
 	displayPopType := childParts[0]
@@ -905,9 +908,12 @@ func processSpecializedEntities(parentID string, node *pb.StatVarGroupNode) {
 	}
 
 	info := make([]childEntityInfo, len(node.ChildStatVarGroups))
-	counts := make(map[string]int)
+	counts := make(map[string]int, len(node.ChildStatVarGroups))
 
 	for i, child := range node.ChildStatVarGroups {
+		if child == nil {
+			continue
+		}
 		specEntity, displayPopType := getSpecializedEntity(parentID, child.Id, child.DisplayName)
 		info[i] = childEntityInfo{
 			specEntity:     specEntity,
@@ -917,6 +923,9 @@ func processSpecializedEntities(parentID string, node *pb.StatVarGroupNode) {
 	}
 
 	for i, child := range node.ChildStatVarGroups {
+		if child == nil {
+			continue
+		}
 		specEntity := info[i].specEntity
 		popType := info[i].displayPopType
 
