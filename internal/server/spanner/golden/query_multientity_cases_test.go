@@ -126,14 +126,15 @@ var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
 }
 
 var multiEntityObservationsContainedInPlaceTestCases = []struct {
-	name               string
-	variables          []string
-	ancestor           string
-	childPlaceType     string
-	ancestorFirstTypes []string
-	entityScanMinVars  int
-	date               string
-	golden             string
+	name                           string
+	variables                      []string
+	ancestor                       string
+	childPlaceType                 string
+	ancestorFirstTypes             []string
+	preferTimeSeriesScanPlaceTypes []string
+	entityScanMinVars              int
+	date                           string
+	golden                         string
 }{
 	{
 		name:               "contained in place with variables",
@@ -152,6 +153,17 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes: []string{"Place"},
 		date:               "latest",
 		golden:             "get_multientity_obs_contained_in_place_latest",
+	},
+	{
+		name:                           "contained in place non-preferred type uses variable seeks",
+		variables:                      []string{"Count_Person", "Count_TimeSeries"},
+		ancestor:                       "Earth",
+		childPlaceType:                 "Country",
+		ancestorFirstTypes:             []string{"Place"},
+		preferTimeSeriesScanPlaceTypes: []string{"Place"},
+		entityScanMinVars:              2,
+		date:                           "latest",
+		golden:                         "get_multientity_obs_contained_in_place_non_preferred_type_latest",
 	},
 	{
 		name:               "contained in place specific date with variables",
@@ -190,31 +202,34 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		golden:             "get_multientity_obs_contained_in_place_ancestor_first_date",
 	},
 	{
-		name:              "contained in place entity scan with variables",
-		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
-		ancestor:          "geoId/10",
-		childPlaceType:    "County",
-		entityScanMinVars: 2,
-		date:              "",
-		golden:            "get_multientity_obs_contained_in_place_entity_scan_both",
+		name:                           "contained in place entity scan with variables",
+		variables:                      []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:                       "geoId/10",
+		childPlaceType:                 "County",
+		preferTimeSeriesScanPlaceTypes: []string{"County"},
+		entityScanMinVars:              2,
+		date:                           "",
+		golden:                         "get_multientity_obs_contained_in_place_entity_scan_both",
 	},
 	{
-		name:              "contained in place entity scan latest date with variables",
-		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
-		ancestor:          "geoId/10",
-		childPlaceType:    "County",
-		entityScanMinVars: 2,
-		date:              "latest",
-		golden:            "get_multientity_obs_contained_in_place_entity_scan_latest",
+		name:                           "contained in place entity scan latest date with variables",
+		variables:                      []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:                       "geoId/10",
+		childPlaceType:                 "County",
+		preferTimeSeriesScanPlaceTypes: []string{"County"},
+		entityScanMinVars:              2,
+		date:                           "latest",
+		golden:                         "get_multientity_obs_contained_in_place_entity_scan_latest",
 	},
 	{
-		name:              "contained in place entity scan specific date with variables",
-		variables:         []string{"AirPollutant_Cancer_Risk", "Count_Person"},
-		ancestor:          "geoId/10",
-		childPlaceType:    "County",
-		entityScanMinVars: 2,
-		date:              "2015",
-		golden:            "get_multientity_obs_contained_in_place_entity_scan_date",
+		name:                           "contained in place entity scan specific date with variables",
+		variables:                      []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:                       "geoId/10",
+		childPlaceType:                 "County",
+		preferTimeSeriesScanPlaceTypes: []string{"County"},
+		entityScanMinVars:              2,
+		date:                           "2015",
+		golden:                         "get_multientity_obs_contained_in_place_entity_scan_date",
 	},
 }
 

@@ -164,12 +164,19 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 
 	selectedStatements := containedInPlaceStatements.variableSeek
 	minVariables := b.queryConfig.ContainedInPlaceEntityScanMinVariables
-	if minVariables > 0 && len(uniqueVariables) >= minVariables {
-		// The base-table plan performs one sparse seek per place-variable pair.
-		// For broad variable lists, scanning each entity1 index range once and
-		// applying variable_measured as a residual filter can be cheaper. This
-		// threshold is a heuristic because the builder does not know how many
-		// TimeSeries rows belong to each selected place.
+	preferTimeSeriesScan := slices.Contains(
+		b.queryConfig.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
+		containedInPlace.ChildPlaceType,
+	)
+	if preferTimeSeriesScan && minVariables > 0 && len(uniqueVariables) >= minVariables {
+		// Choose between two TimeSeries access paths. The base table performs sparse
+		// seeks for each (variable, place) pair. The entity1 index instead scans each
+		// place's TimeSeries range and applies variable_measured as a residual filter.
+		//
+		// Neither path is always cheaper. Scanning helped sparse Place entities under
+		// nuts/DE40, while targeted seeks were faster for dense Country entities under
+		// Earth. Use the scan only for an explicitly configured child place type and
+		// a broad variable list.
 		selectedStatements = containedInPlaceStatements.entityScan
 	}
 

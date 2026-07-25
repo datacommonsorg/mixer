@@ -50,6 +50,12 @@ func TestDefaultContainedInPlaceAncestorFirstTypes(t *testing.T) {
 	}
 }
 
+func TestDefaultContainedInPlacePreferTimeSeriesScanPlaceTypes(t *testing.T) {
+	if diff := cmp.Diff([]string{"Place"}, setDefaultValues().ContainedInPlacePreferTimeSeriesScanPlaceTypes); diff != "" {
+		t.Fatalf("ContainedInPlacePreferTimeSeriesScanPlaceTypes mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestDefaultContainedInPlaceEntityScanMinVariables(t *testing.T) {
 	if got, want := setDefaultValues().ContainedInPlaceEntityScanMinVariables, 50; got != want {
 		t.Fatalf("ContainedInPlaceEntityScanMinVariables = %d, want %d", got, want)
@@ -135,6 +141,49 @@ flags:
 			fileContent: `
 flags:
   ContainedInPlaceAncestorFirstTypes:
+    - " Place "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "contained in place TimeSeries scan place types override",
+			fileContent: `
+flags:
+  ContainedInPlacePreferTimeSeriesScanPlaceTypes:
+    - County
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlacePreferTimeSeriesScanPlaceTypes = []string{"County"}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "contained in place TimeSeries scan place types disabled",
+			fileContent: `
+flags:
+  ContainedInPlacePreferTimeSeriesScanPlaceTypes: []
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.ContainedInPlacePreferTimeSeriesScanPlaceTypes = []string{}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - empty contained in place TimeSeries scan place type",
+			fileContent: `
+flags:
+  ContainedInPlacePreferTimeSeriesScanPlaceTypes:
+    - " "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "validation error - padded contained in place TimeSeries scan place type",
+			fileContent: `
+flags:
+  ContainedInPlacePreferTimeSeriesScanPlaceTypes:
     - " Place "
 `,
 			want:    nil,
