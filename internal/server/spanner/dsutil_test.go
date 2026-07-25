@@ -379,3 +379,149 @@ func TestDatedExpressionResponseOmitsMetadataAndPreservesFacetRanking(t *testing
 		t.Errorf("direct response metadata = (%d, %q, %q), want populated", directFacet.ObsCount, directFacet.EarliestDate, directFacet.LatestDate)
 	}
 }
+
+func TestProcessSpecializedEntities(t *testing.T) {
+	tests := []struct {
+		name     string
+		parentID string
+		node     *pb.StatVarGroupNode
+		want     []string // Expected SpecializedEntity values for children in order (after processing)
+	}{
+		{
+			name:     "unique child specialized entities remain unchanged",
+			parentID: "dc/g/Demographics",
+			node: &pb.StatVarGroupNode{
+				ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+					{Id: "dc/g/Person_Female", DisplayName: "Female"},
+					{Id: "dc/g/Person_Male", DisplayName: "Male"},
+				},
+			},
+			want: []string{"Female", "Male"},
+		},
+		{
+			name:     "duplicate child specialized entities get appended with displayPopType",
+			parentID: "dc/g/Demographics",
+			node: &pb.StatVarGroupNode{
+				ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+					{Id: "dc/g/Person_Female", DisplayName: "Female"},
+					{Id: "dc/g/USCWorker_Female", DisplayName: "Female"},
+					{Id: "dc/g/Person_Male", DisplayName: "Male"},
+				},
+			},
+			want: []string{"Female (Individual)", "Female (USC Worker)", "Male"},
+		},
+		{
+			name:     "curated hierarchy child is not modified",
+			parentID: "dc/g/Root",
+			node: &pb.StatVarGroupNode{
+				ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+					{Id: "dc/g/SDG_1", DisplayName: "1: No Poverty"},
+					{Id: "dc/g/SDG_2", DisplayName: "2: Zero Hunger"},
+				},
+			},
+			want: []string{"1: No Poverty", "2: Zero Hunger"},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			processSpecializedEntities(tc.parentID, tc.node)
+			sortSVGNode(tc.node)
+			var got []string
+			for _, child := range tc.node.ChildStatVarGroups {
+				got = append(got, child.SpecializedEntity)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("processSpecializedEntities() (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestGetSpecializedEntity(t *testing.T) {
+	tests := []struct {
+		name        string
+		parent      string
+		child       string
+		childName   string
+		wantSpec    string
+		wantPopType string
+	}{
+		{
+			name:        "age bucket child under age vertical",
+			parent:      "dc/g/Person_Age",
+			child:       "dc/g/Person_Age-Years86",
+			childName:   "Person With Age = Years 86",
+			wantSpec:    "Years 86",
+			wantPopType: "Individual",
+		},
+		{
+			name:        "age range child under age vertical",
+			parent:      "dc/g/Person_Age",
+			child:       "dc/g/Person_Age-Years90To94",
+			childName:   "Person With Age = Years 90 To 94",
+			wantSpec:    "Years 90 To 94",
+			wantPopType: "Individual",
+		},
+		{
+			name:        "open ended age child under age vertical",
+			parent:      "dc/g/Person_Age",
+			child:       "dc/g/Person_Age-Years90Onwards",
+			childName:   "Person With Age = Years 90 Onwards",
+			wantSpec:    "Years 90 Onwards",
+			wantPopType: "Individual",
+		},
+		{
+			name:        "non-basic population type direct child",
+			parent:      "dc/g/Child",
+			child:       "dc/g/Child_BenefitsStatus",
+			childName:   "Child With Benefits Status",
+			wantSpec:    "Benefits Status",
+			wantPopType: "Child",
+		},
+		{
+			name:        "nested non-basic population type child",
+			parent:      "dc/g/Child",
+			child:       "dc/g/Child_FoodSecurityStatus-FoodInSecure",
+			childName:   "Child With Food Security Status = Food In Secure",
+			wantSpec:    "Food In Secure",
+			wantPopType: "Child",
+		},
+		{
+			name:        "basic population type female child",
+			parent:      "dc/g/Demographics",
+			child:       "dc/g/Person_Female",
+			childName:   "Female",
+			wantSpec:    "Female",
+			wantPopType: "Individual",
+		},
+		{
+			name:        "worker population type female child",
+			parent:      "dc/g/Demographics",
+			child:       "dc/g/USCWorker_Female",
+			childName:   "Female",
+			wantSpec:    "Female",
+			wantPopType: "USC Worker",
+		},
+		{
+			name:        "curated SDG hierarchy child",
+			parent:      "dc/g/Root",
+			child:       "dc/g/SDG_1",
+			childName:   "SDG 1",
+			wantSpec:    "SDG 1",
+			wantPopType: "",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotSpec, gotPopType := getSpecializedEntity(tc.parent, tc.child, tc.childName)
+			if gotSpec != tc.wantSpec {
+				t.Errorf("getSpecializedEntity(%q, %q, %q) spec = %q, want %q", tc.parent, tc.child, tc.childName, gotSpec, tc.wantSpec)
+			}
+			if gotPopType != tc.wantPopType {
+				t.Errorf("getSpecializedEntity(%q, %q, %q) popType = %q, want %q", tc.parent, tc.child, tc.childName, gotPopType, tc.wantPopType)
+			}
+		})
+	}
+}

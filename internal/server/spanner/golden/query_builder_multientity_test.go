@@ -92,8 +92,9 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
-					ContainedInPlaceAncestorFirstTypes:     c.ancestorFirstTypes,
-					ContainedInPlaceEntityScanMinVariables: c.entityScanMinVars,
+					ContainedInPlaceAncestorFirstTypes:             c.ancestorFirstTypes,
+					ContainedInPlacePreferTimeSeriesScanPlaceTypes: c.preferTimeSeriesScanPlaceTypes,
+					ContainedInPlaceEntityScanMinVariables:         c.entityScanMinVars,
 				})
 				if err != nil {
 					return nil, err
@@ -588,7 +589,8 @@ func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
 	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
 	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
 	builder, err := spanner.NewMultiEntityQueryBuilder(cfg, spanner.QueryConfig{
-		ContainedInPlaceEntityScanMinVariables: 1,
+		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+		ContainedInPlaceEntityScanMinVariables:         1,
 	})
 	if err != nil {
 		t.Fatal(err)
