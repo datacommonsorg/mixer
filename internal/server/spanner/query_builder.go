@@ -116,7 +116,16 @@ func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
 	}
 }
 
-func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
+func GetNodePropsQuery(ids []string, out bool, queryConfigs ...QueryConfig) *spanner.Statement {
+	var queryConfig QueryConfig
+	if len(queryConfigs) > 0 {
+		queryConfig = queryConfigs[0]
+	}
+	hint := statements.graphColumnarScanHint
+	if queryConfig.SpannerEmulatorCompatibility {
+		hint = ""
+	}
+
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
@@ -130,12 +139,12 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    statements.graphColumnarScanHint + fmt.Sprintf(statements.getPropsBySubjectID, idFilter, filterPredicate),
+			SQL:    hint + fmt.Sprintf(statements.getPropsBySubjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    statements.graphColumnarScanHint + fmt.Sprintf(statements.getPropsByObjectID, idFilter, filterPredicate),
+			SQL:    hint + fmt.Sprintf(statements.getPropsByObjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	}
@@ -299,13 +308,17 @@ func buildNodeEdgesByIDQuery(
 	pagination := getNodeQueryPagination(pageSize, offset)
 
 	// Generate prefix and return statement.
+	hint := statements.graphColumnarScanHint
+	if plan.spannerEmulatorCompatibility {
+		hint = ""
+	}
 	var prefix, returnEdges string
 	switch arc.Decorator {
 	case v3.Chain:
-		prefix = statements.graphColumnarScanHint + statements.graphPrefixAny
+		prefix = hint + statements.graphPrefixAny
 		returnEdges = fmt.Sprintf(statements.returnChainedEdges, pagination)
 	default:
-		prefix = statements.graphColumnarScanHint + statements.graphPrefix
+		prefix = hint + statements.graphPrefix
 		if len(arc.Filter) > 0 {
 			returnEdges += fmt.Sprintf(statements.returnFilterEdges, pagination)
 		} else {

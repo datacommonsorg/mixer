@@ -113,7 +113,7 @@ func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string,
 	err := queryStructs(
 		ctx,
 		sc,
-		*GetNodePropsQuery(ids, out),
+		*GetNodePropsQuery(ids, out, sc.queryConfig),
 		func() interface{} {
 			return &Property{}
 		},

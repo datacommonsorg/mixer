@@ -109,9 +109,11 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 	if opts == nil {
 		opts = &SpannerClientOptions{}
 	}
+	queryConfig := opts.QueryConfig
+	queryConfig.SpannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 	sc := &spannerDatabaseClient{
 		client:                       client,
-		queryConfig:                  opts.QueryConfig,
+		queryConfig:                  queryConfig,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
 		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),

@@ -29,8 +29,9 @@ const (
 )
 
 type nodeQueryPlan struct {
-	kind             nodeQueryKind
-	containedInPlace containedInPlacePlan
+	kind                         nodeQueryKind
+	containedInPlace             containedInPlacePlan
+	spannerEmulatorCompatibility bool
 }
 
 type containedInPlacePlan struct {
@@ -47,24 +48,26 @@ func planNodeQuery(arc *v2.Arc, queryConfig QueryConfig) (nodeQueryPlan, error) 
 		if len(childPlaceTypes) > 1 {
 			accessPath = containedInPlaceAncestorFirst
 		}
-		return newNodeContainedInPlacePlan(accessPath), nil
+		return newNodeContainedInPlacePlan(accessPath, queryConfig.SpannerEmulatorCompatibility), nil
 	}
 
 	if childPlaceTypes, ok := matchNodeLinkedContainedInPlace(arc); ok {
 		return newNodeContainedInPlacePlan(
 			queryConfig.containedInPlaceAccessPath(childPlaceTypes...),
+			queryConfig.SpannerEmulatorCompatibility,
 		), nil
 	}
 
-	return nodeQueryPlan{kind: nodeQueryGeneric}, nil
+	return nodeQueryPlan{kind: nodeQueryGeneric, spannerEmulatorCompatibility: queryConfig.SpannerEmulatorCompatibility}, nil
 }
 
-func newNodeContainedInPlacePlan(accessPath containedInPlaceAccessPath) nodeQueryPlan {
+func newNodeContainedInPlacePlan(accessPath containedInPlaceAccessPath, spannerEmulatorCompatibility bool) nodeQueryPlan {
 	return nodeQueryPlan{
 		kind: nodeQueryContainedInPlace,
 		containedInPlace: containedInPlacePlan{
 			accessPath: accessPath,
 		},
+		spannerEmulatorCompatibility: spannerEmulatorCompatibility,
 	}
 }
 
