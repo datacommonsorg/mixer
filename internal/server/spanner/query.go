@@ -835,15 +835,13 @@ func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context
 
 // getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
 func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
-	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	svgChildChan := make(chan []*SVGChild, 1)
-	childSVChan := make(chan []*ChildSV, 1)
-	childSVGChan := make(chan []*ChildSVG, 1)
+	var svgChildren []*SVGChild
+	var childSVs []*ChildSV
+	var childSVGs []*ChildSVG
 
 	errGroup.Go(func() error {
-		var svgChildren []*SVGChild
-		err := queryStructs(
+		return queryStructs(
 			errCtx,
 			sc,
 			*GetSVGChildrenQuery(node, includeDefinitions),
@@ -854,66 +852,52 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
 			},
 		)
-		if err != nil {
-			return err
-		}
-		svgChildChan <- svgChildren
-		return nil
 	})
 
-	errGroup.Go(func() error {
-		var childSVs []*ChildSV
-		err := queryStructs(
-			errCtx,
-			sc,
-			*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
-			func() interface{} {
-				return &ChildSV{}
-			},
-			func(rowStruct interface{}) {
-				childSVs = append(childSVs, rowStruct.(*ChildSV))
-			},
-		)
-		if err != nil {
-			return err
-		}
-		childSVChan <- childSVs
-		return nil
-	})
+	// Skip if requesting more matched entities than provided.
+	numConstrainedEntities := len(constrainedPlaces)
+	if constrainedImport != "" {
+		numConstrainedEntities += 1
+	}
+	if numEntitiesExistence <= numConstrainedEntities {
+		errGroup.Go(func() error {
+			return queryStructs(
+				errCtx,
+				sc,
+				*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+				func() interface{} {
+					return &ChildSV{}
+				},
+				func(rowStruct interface{}) {
+					childSVs = append(childSVs, rowStruct.(*ChildSV))
+				},
+			)
+		})
 
-	errGroup.Go(func() error {
-		var childSVGs []*ChildSVG
-		err := queryStructs(
-			errCtx,
-			sc,
-			*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
-			func() interface{} {
-				return &ChildSVG{}
-			},
-			func(rowStruct interface{}) {
-				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
-			},
-		)
-		if err != nil {
-			return err
-		}
-		childSVGChan <- childSVGs
-		return nil
-	})
-
-	if err := errGroup.Wait(); err != nil {
-		return filteredStatVarGroupNode, err
+		errGroup.Go(func() error {
+			return queryStructs(
+				errCtx,
+				sc,
+				*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+				func() interface{} {
+					return &ChildSVG{}
+				},
+				func(rowStruct interface{}) {
+					childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
+				},
+			)
+		})
 	}
 
-	close(svgChildChan)
-	close(childSVChan)
-	close(childSVGChan)
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
 
-	filteredStatVarGroupNode.SVGChild = <-svgChildChan
-	filteredStatVarGroupNode.ChildSV = <-childSVChan
-	filteredStatVarGroupNode.ChildSVG = <-childSVGChan
-
-	return filteredStatVarGroupNode, nil
+	return &FilteredStatVarGroupNode{
+		SVGChild: svgChildren,
+		ChildSV:  childSVs,
+		ChildSVG: childSVGs,
+	}, nil
 }
 
 // GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
@@ -921,6 +905,15 @@ func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []s
 	counts := make(map[string]int, len(nodes))
 	for _, node := range nodes {
 		counts[node] = 0
+	}
+
+	// Skip if requesting more matched entities than provided.
+	numConstrainedEntities := len(constrainedPlaces)
+	if constrainedImport != "" {
+		numConstrainedEntities += 1
+	}
+	if numEntitiesExistence > numConstrainedEntities {
+		return counts, nil
 	}
 
 	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)

@@ -125,6 +125,8 @@ var statements = struct {
 	filterDescendentStatVars string
 	// Filter descendent stat vars by import.
 	filterDescendentStatVarsByImport string
+	// Filter descendent stat vars by ONLY ONE import.
+	filterDescendentStatVarsByOnlyImport string
 	// Filter descendent stat vars by num_entities_existences.
 	filterDescendentStatVarsByNumEntitiesExistence string
 	// Search nodes using vector search.
@@ -679,6 +681,17 @@ OR CreationTimestamp > (
 				ON import_name = SUBSTR(e1.subject_id, 9)
 				WHERE e1.predicate = @predicate
 					AND e1.object_id = @import`,
+	filterDescendentStatVarsByOnlyImport: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT summary.key AS variable_measured
+				FROM Edge@{FORCE_INDEX=InEdge} AS provenance_edge
+				JOIN KeyValueStore@{FORCE_INDEX=KeyValueStoreByProvenance} AS summary
+				ON summary.provenance = provenance_edge.subject_id
+				WHERE provenance_edge.predicate = @predicate
+					AND provenance_edge.object_id = @import
+					AND summary.type = 'ProvenanceSummary'
+				GROUP BY summary.key
+			) AS o
+				ON o.variable_measured = e.subject_id`,
 	filterDescendentStatVarsByNumEntitiesExistence: `
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 	filterNodesByTypes: `		SELECT subject_id, ARRAY(SELECT t FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters)) AS matched_types

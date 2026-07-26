@@ -309,14 +309,6 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		golden:                "get_multientity_filtered_sv_place_import",
 	},
 	{
-		name:                  "stat var groups filtered by source threshold",
-		template:              "SVG",
-		node:                  "dc/g/Demographics",
-		constrainedProvenance: "dc/s/WorldBank",
-		numEntitiesExistence:  2,
-		golden:                "get_multientity_filtered_svg_import_num_entities_existence",
-	},
-	{
 		name:                 "stat var groups filtered by place threshold",
 		template:             "SVG",
 		node:                 "dc/g/Demographics",
@@ -363,13 +355,6 @@ var multiEntityFilteredTopicTestCases = []struct {
 		constrainedProvenance: "dc/s/WorldBank",
 		numEntitiesExistence:  1,
 		golden:                "get_multientity_filtered_topic_import",
-	},
-	{
-		name:                  "topic filtered by source threshold",
-		nodes:                 []string{"dc/topic/Demographics"},
-		constrainedProvenance: "dc/s/WorldBank",
-		numEntitiesExistence:  2,
-		golden:                "get_multientity_filtered_topic_import_num_entities_existence",
 	},
 	{
 		name:                  "topic filtered by dataset",
