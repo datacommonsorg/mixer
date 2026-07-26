@@ -14,6 +14,11 @@
             e.predicate,
             n.subject_id AS object_id,
             e.provenance
+		GROUP BY
+            m.subject_id,
+            e.predicate,
+            n.subject_id,
+            e.provenance
         ORDER BY
             subject_id,
             predicate,
@@ -27,15 +32,10 @@
             subject_id,
             predicate,
             provenance,
-            IFNULL(ANY_VALUE(n.value), '') AS value,
-            ANY_VALUE(n.bytes) AS bytes,
-            IFNULL(ANY_VALUE(n.name), '') AS name,
-            IFNULL(ANY_VALUE(n.types), []) AS types
-        GROUP BY
-            subject_id,
-            predicate,
-            object_id,
-            provenance
+            IFNULL(n.value, '') AS value,
+            n.bytes AS bytes,
+            IFNULL(n.name, '') AS name,
+            IFNULL(n.types, []) AS types
         ORDER BY
             subject_id,
             predicate,
