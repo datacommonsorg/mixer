@@ -234,13 +234,22 @@ func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constr
 	var provenanceJoin string
 	var provenanceFilters []string
 	if constrainedProvenance != "" {
+		params["predicate"] = getImportFilterPredicate(constrainedProvenance)
+		params["provenance"] = constrainedProvenance
+		// Optimization when filtering only by provenance (and no places).
+		// This allows reading from aggregated ProvenanceSummary.
+		// TODO: Confirm whether we'd ever want to filter by provenance AND place.
+		if len(constrainedPlaces) == 0 {
+			return &spanner.Statement{
+				SQL:    stmts.filterDescendentStatVarsByOnlyProvenance,
+				Params: params,
+			}
+		}
 		provenanceJoin = stmts.joinDescendentStatVarsByProvenance
 		provenanceFilters = append(provenanceFilters,
 			stmts.filterDescendentStatVarsByProvenancePredicate,
 			stmts.filterDescendentStatVarsByProvenanceObject,
 		)
-		params["predicate"] = getImportFilterPredicate(constrainedProvenance)
-		params["provenance"] = constrainedProvenance
 		distinctExistenceKey = "e1.subject_id"
 	}
 

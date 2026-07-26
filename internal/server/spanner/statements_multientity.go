@@ -56,6 +56,7 @@ type MultiEntityStatements struct {
 	joinDescendentStatVarsByProvenance             string
 	filterDescendentStatVarsByProvenancePredicate  string
 	filterDescendentStatVarsByProvenanceObject     string
+	filterDescendentStatVarsByOnlyProvenance       string
 	filterDescendentStatVarsByNumEntitiesExistence string
 	filterEntity1ByPlaces                          string
 	filterEntity2ByPlaces                          string
@@ -786,6 +787,18 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		filterDescendentStatVarsByProvenancePredicate: "e1.predicate = @predicate",
 
 		filterDescendentStatVarsByProvenanceObject: "e1.object_id = @provenance",
+
+		filterDescendentStatVarsByOnlyProvenance: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+					SELECT summary.key AS variable_measured
+					FROM Edge@{FORCE_INDEX=InEdge} AS provenance_edge
+					JOIN KeyValueStore@{FORCE_INDEX=KeyValueStoreByProvenance} AS summary
+					ON summary.provenance = provenance_edge.subject_id
+					WHERE provenance_edge.predicate = @predicate
+						AND provenance_edge.object_id = @provenance
+						AND summary.type = 'ProvenanceSummary'
+					GROUP BY summary.key
+				) AS o
+					ON o.variable_measured = e.subject_id`,
 
 		filterDescendentStatVarsByNumEntitiesExistence: `
 					HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
