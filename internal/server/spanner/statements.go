@@ -15,6 +15,11 @@
 // Query statements used by the SpannerClient.
 package spanner
 
+import (
+	"fmt"
+	"strings"
+)
+
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
 	// Fetch latest CompletionTimestamp from IngestionHistory table (legacy schema).
@@ -51,6 +56,8 @@ var statements = struct {
 	filterPredicate string
 	// Subquery to filter edges by multiple predicates.
 	filterPredicates string
+	// Subquery to filter edges by predicate blocklist.
+	filterPredicateBlocklist string
 	// Subquery to filter edges by object properties.
 	filterProperty string
 	// Subquery to filter edges by multiple object values.
@@ -169,20 +176,18 @@ OR CreationTimestamp > (
 );
 `,
 	getParams: `IN UNNEST(@%s)`,
-	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
-		WHERE
-			e.subject_id %s]->
+	getPropsBySubjectID: `		GRAPH DCGraph MATCH (m:Node
+		WHERE m.subject_id %[1]s)-[e:Edge%[2]s]->
 		RETURN DISTINCT
-			e.subject_id,
+			m.subject_id,
 			e.predicate
 		ORDER BY
-			e.subject_id,
-			e.predicate`,
-	getPropsByObjectID: `		GRAPH DCGraph MATCH -[e:Edge
-		WHERE
-			e.object_id %s]->
+			subject_id,
+			predicate`,
+	getPropsByObjectID: `		GRAPH DCGraph MATCH (m:Node
+		WHERE m.subject_id %[1]s)<-[e:Edge%[2]s]-
 		RETURN DISTINCT
-			e.object_id AS subject_id,
+			m.subject_id,
 			e.predicate
 		ORDER BY
 			subject_id,
@@ -214,70 +219,95 @@ OR CreationTimestamp > (
 	filterPredicates: `
 		WHERE
 			e.predicate IN UNNEST(@predicate)`,
+	filterPredicateBlocklist: fmt.Sprintf(`
+		WHERE
+			e.predicate NOT IN (%s)`,
+		"'"+strings.Join(blocklistEdgePredicates, "','")+"'"),
 	filterProperty: `(n)-[%[2]sfilter%[1]d:Edge
 		WHERE
 			filter%[1]d.predicate = @prop%[1]d%[3]s]->`,
 	filterValues: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
-	returnEdges: `
-		RETURN
-			m.subject_id,
-			e.predicate,
-			e.provenance,
-			IFNULL(n.value, '') AS value,
-			n.bytes,
-			IFNULL(n.name, '') AS name,
-			IFNULL(n.types, []) AS types
-		ORDER BY
-			subject_id,
-			predicate,
-			n.subject_id,
-			provenance`,
+	returnEdges: `  
+        RETURN
+            m.subject_id,
+            e.predicate,
+            n.subject_id as object_id,
+            e.provenance
+        ORDER BY
+            subject_id, 
+            predicate,
+            object_id,
+            provenance%s
+        NEXT MATCH (n)
+        WHERE
+          n.subject_id = object_id
+        RETURN
+            subject_id,
+            predicate,
+            provenance,
+            IFNULL(n.value, '') AS value,
+            n.bytes,
+            IFNULL(n.name, '') AS name,
+            IFNULL(n.types, []) AS types
+        ORDER BY
+            subject_id,
+            predicate,
+            n.subject_id,
+            provenance`,
 	returnChainedEdges: `
-		RETURN DISTINCT
-			m.subject_id,
-			n.subject_id AS object_id
-		NEXT MATCH (n)
-		WHERE
-		  n.subject_id = object_id
-		RETURN
-		  	subject_id,
-			@result_predicate AS predicate,
-			'' AS provenance,
-			IFNULL(n.value, '') AS value,
-			n.bytes,
-			IFNULL(n.name, '') AS name,
-			IFNULL(n.types, []) AS types
-		ORDER BY
-			subject_id,
-			object_id`,
+        RETURN DISTINCT
+            m.subject_id,
+            n.subject_id AS object_id
+        ORDER BY
+            subject_id,
+            object_id%s
+        NEXT MATCH (n)
+        WHERE
+          n.subject_id = object_id
+        RETURN
+            subject_id,
+            @result_predicate AS predicate,
+            '' AS provenance,
+            IFNULL(n.value, '') AS value,
+            n.bytes,
+            IFNULL(n.name, '') AS name,
+            IFNULL(n.types, []) AS types
+        ORDER BY
+            subject_id,
+            object_id`,
 	returnFilterEdges: `
-		RETURN
-			m.subject_id,
-			n.subject_id AS object_id,
-			e.predicate,
-			e.provenance
-		NEXT MATCH (n)
-		WHERE
-		  n.subject_id = object_id
-		RETURN
-			subject_id,
-			predicate,
-			provenance,
-			IFNULL(ANY_VALUE(n.value), '') AS value,
-			ANY_VALUE(n.bytes) AS bytes,
-			IFNULL(ANY_VALUE(n.name), '') AS name,
-			IFNULL(ANY_VALUE(n.types), []) AS types
-		GROUP BY
-			subject_id,
-			predicate,
-			object_id,
-			provenance
-		ORDER BY
-			subject_id,
-			predicate,
-			object_id,
-			provenance`,
+        RETURN
+            m.subject_id,
+            e.predicate,
+            n.subject_id AS object_id,
+            e.provenance
+        ORDER BY
+            subject_id,
+            predicate,
+            object_id,
+            provenance%s
+        NEXT MATCH (n)
+        WHERE
+            n.subject_id = object_id
+        RETURN
+            subject_id,
+            predicate,
+            provenance,
+            IFNULL(ANY_VALUE(n.value), '') AS value,
+            ANY_VALUE(n.bytes) AS bytes,
+            IFNULL(ANY_VALUE(n.name), '') AS name,
+            IFNULL(ANY_VALUE(n.types), []) AS types
+        GROUP BY
+            subject_id,
+            predicate,
+            object_id,
+            provenance
+        ORDER BY
+            subject_id,
+            predicate,
+            object_id,
+            provenance`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: `
