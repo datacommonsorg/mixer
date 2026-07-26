@@ -239,7 +239,7 @@ OR CreationTimestamp > (
             predicate,
             object_id,
             provenance%s
-        NEXT MATCH (n)
+        NEXT MATCH (n:Node)
         WHERE
           n.subject_id = object_id
         RETURN
@@ -262,7 +262,7 @@ OR CreationTimestamp > (
         ORDER BY
             subject_id,
             object_id%s
-        NEXT MATCH (n)
+        NEXT MATCH (n:Node)
         WHERE
           n.subject_id = object_id
         RETURN
@@ -292,7 +292,7 @@ OR CreationTimestamp > (
             predicate,
             object_id,
             provenance%s
-        NEXT MATCH (n)
+        NEXT MATCH (n:Node)
         WHERE
             n.subject_id = object_id
         RETURN

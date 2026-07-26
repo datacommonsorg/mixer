@@ -12,7 +12,7 @@
             object_id
 		OFFSET 500
 		LIMIT 501
-        NEXT MATCH (n)
+        NEXT MATCH (n:Node)
         WHERE
           n.subject_id = object_id
         RETURN

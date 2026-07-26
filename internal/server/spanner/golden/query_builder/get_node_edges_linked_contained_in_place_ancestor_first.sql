@@ -25,7 +25,7 @@
             object_id,
             provenance
 		LIMIT 501
-        NEXT MATCH (n)
+        NEXT MATCH (n:Node)
         WHERE
             n.subject_id = object_id
         RETURN
