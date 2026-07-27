@@ -1038,10 +1038,6 @@
               "facet": "2825511676"
             },
             {
-              "count": 43,
-              "facet": "1456184638"
-            },
-            {
               "count": 8,
               "facet": "2458695583"
             }
@@ -1053,10 +1049,6 @@
             {
               "count": 58,
               "facet": "2458695583"
-            },
-            {
-              "count": 13,
-              "facet": "1456184638"
             }
           ]
         },
@@ -1150,15 +1142,23 @@
             {
               "count": 58,
               "facet": "2390551605"
+            },
+            {
+              "count": 58,
+              "facet": "1964317807"
             }
           ]
         },
         {
-          "date": "2024-07-01",
+          "date": "2025",
           "entity_count": [
             {
-              "count": 1,
-              "facet": "1456184638"
+              "count": 58,
+              "facet": "2176550201"
+            },
+            {
+              "count": 58,
+              "facet": "2390551605"
             }
           ]
         }
@@ -1179,11 +1179,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
@@ -1191,7 +1186,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {

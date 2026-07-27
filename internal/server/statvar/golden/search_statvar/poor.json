@@ -133,6 +133,22 @@
       "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban"
     },
     {
+      "name": "Percentage receiving poor social support among citizen outside EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among foreign born outside EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornOutsideEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among foreign born within EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornWithinEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among within EU27 and not a citizen population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU27AndNotACitizen"
+    },
+    {
       "name": "Number of female students with poor performance in the Kenya certificate of secondary education",
       "dcid": "Count_Student_KenyaCertificateSecondaryEducation_Female_PoorPerformance"
     },
@@ -283,6 +299,38 @@
     {
       "name": "Percentage of children aged 5 to 11 years who are working and belong to the poorest households.",
       "dcid": "Count_Person_5To11Years_InLaborForce_LowestWealthIndex_AsAFractionOf_Count_Person_5To11Years_LowestWealthIndex"
+    },
+    {
+      "name": "Percentage receiving poor social support among citizen outside EU27, female population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU27_Female"
+    },
+    {
+      "name": "Percentage receiving poor social support among citizen outside EU27, male population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU27_Male"
+    },
+    {
+      "name": "Percentage receiving poor social support among female, foreign born outside EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among female, foreign born within EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornWithinEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among male, foreign born outside EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornOutsideEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among male, foreign born within EU27 population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornWithinEU27"
+    },
+    {
+      "name": "Percentage receiving poor social support among within EU27 and not a citizen, female population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU27AndNotACitizen_Female"
+    },
+    {
+      "name": "Percentage receiving poor social support among within EU27 and not a citizen, male population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU27AndNotACitizen_Male"
     },
     {
       "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",

@@ -29,6 +29,10 @@
       "dcid": "Count_Person_DiabetesMellitus"
     },
     {
+      "name": "Count of people with tuberculosis and HIV",
+      "dcid": "Count_Person_ConditionTuberculosisAndHIV"
+    },
+    {
       "name": "Count of person with bachelor's degree in accounting and taxation major",
       "dcid": "Count_Person_BachelorOfAccountingAndTaxationMajor"
     },
@@ -331,6 +335,10 @@
     {
       "name": "Number of people aged 104 years",
       "dcid": "Count_Person_Years104"
+    },
+    {
+      "name": "Number of people aged 105 years",
+      "dcid": "Count_Person_Years105"
     },
     {
       "name": "Number of people aged 17 to 64 years",
@@ -3441,6 +3449,14 @@
       "dcid": "Count_Person_NonNigerian_VeterinaryCouncilOccupation"
     },
     {
+      "name": "Count of females aged 10 to 14 years",
+      "dcid": "Count_Person_10To14Years_Female"
+    },
+    {
+      "name": "Count of females aged 15 to 19 years",
+      "dcid": "Count_Person_15To19Years_Female"
+    },
+    {
       "name": "Count of number of person not a motor vehicle occupant involved in crash",
       "dcid": "Count_Person_InvolvedInCrash_NotMotorVehicleOccupant"
     },
@@ -3983,22 +3999,6 @@
     {
       "name": "Hispanic-Asian/Pacific Islander Male Population",
       "dcid": "Count_Person_Male_HispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Alone Male Population",
-      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Male Population",
-      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Hispanic-White Alone Male Population",
-      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Hispanic-White Male Population",
-      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [

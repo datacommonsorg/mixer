@@ -34,7 +34,8 @@
       "2020": 4260043501000,
       "2021": 4374676380000,
       "2022": 4495368112000,
-      "2023": 4458417904000
+      "2023": 4452539312000,
+      "2024": 4343668092000
     },
     "placeName": "United States",
     "provenanceUrl": "https://unstats.un.org/unsd/energystats/data/"
@@ -64,7 +65,8 @@
       "2021": 197165105640,
       "2022": 203383856840,
       "2023": 216628794790,
-      "2024": 214191383340
+      "2024": 214191383340,
+      "2025": 205884379660
     },
     "placeName": "California",
     "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity"

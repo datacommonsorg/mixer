@@ -9,15 +9,6 @@
             {
               "series": [
                 {
-                  "date": "2024-01-01",
-                  "value": 378561
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "2013",
                   "value": 402119
                 },
@@ -57,15 +48,6 @@
         {
           "entity": "country/GUF",
           "series_by_facet": [
-            {
-              "series": [
-                {
-                  "date": "2025-01",
-                  "value": 292354
-                }
-              ],
-              "facet": "1456184638"
-            },
             {
               "series": [
                 {
@@ -139,15 +121,6 @@
             {
               "series": [
                 {
-                  "date": "2024-01-01",
-                  "value": 349925
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "2014",
                   "value": 383806
                 },
@@ -190,15 +163,6 @@
             {
               "series": [
                 {
-                  "date": "2024-01",
-                  "value": 320901
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "2017",
                   "value": 256518
                 },
@@ -214,15 +178,6 @@
         {
           "entity": "country/REU",
           "series_by_facet": [
-            {
-              "series": [
-                {
-                  "date": "2025-01",
-                  "value": 896175
-                }
-              ],
-              "facet": "1456184638"
-            },
             {
               "series": [
                 {
@@ -357,11 +312,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 2092813
+                  "value": 2103778
                 },
                 {
                   "date": "2024",
-                  "value": 2070806
+                  "value": 2084894
+                },
+                {
+                  "date": "2025",
+                  "value": 2065560
                 }
               ],
               "facet": "1733625304"
@@ -539,15 +498,6 @@
             {
               "series": [
                 {
-                  "date": "2025-01",
-                  "value": 2048472
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "1990",
                   "value": 2152423
                 },
@@ -679,11 +629,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1461552
+                  "value": 1468108
                 },
                 {
                   "date": "2024",
-                  "value": 1470763
+                  "value": 1479706
+                },
+                {
+                  "date": "2025",
+                  "value": 1490900
                 }
               ],
               "facet": "1733625304"
@@ -959,11 +913,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1477228
+                  "value": 1485086
                 },
                 {
                   "date": "2024",
-                  "value": 1483576
+                  "value": 1495123
+                },
+                {
+                  "date": "2025",
+                  "value": 1504565
                 }
               ],
               "facet": "1733625304"
@@ -1239,11 +1197,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1331182
+                  "value": 1338485
                 },
                 {
                   "date": "2024",
-                  "value": 1337492
+                  "value": 1347483
+                },
+                {
+                  "date": "2025",
+                  "value": 1356114
                 }
               ],
               "facet": "1733625304"
@@ -1519,11 +1481,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1653212
+                  "value": 1654712
                 },
                 {
                   "date": "2024",
-                  "value": 1658614
+                  "value": 1661465
+                },
+                {
+                  "date": "2025",
+                  "value": 1668275
                 }
               ],
               "facet": "1733625304"
@@ -1799,11 +1765,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1692115
+                  "value": 1704316
                 },
                 {
                   "date": "2024",
-                  "value": 1702158
+                  "value": 1718265
+                },
+                {
+                  "date": "2025",
+                  "value": 1731789
                 }
               ],
               "facet": "1733625304"
@@ -2079,11 +2049,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1422186
+                  "value": 1426929
                 },
                 {
                   "date": "2024",
-                  "value": 1424361
+                  "value": 1430965
+                },
+                {
+                  "date": "2025",
+                  "value": 1434875
                 }
               ],
               "facet": "1733625304"
@@ -2359,11 +2333,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 1277071
+                  "value": 1281653
                 },
                 {
                   "date": "2024",
-                  "value": 1282581
+                  "value": 1289641
+                },
+                {
+                  "date": "2025",
+                  "value": 1297210
                 }
               ],
               "facet": "1733625304"
@@ -2717,15 +2695,6 @@
         {
           "entity": "nuts/FR22",
           "series_by_facet": [
-            {
-              "series": [
-                {
-                  "date": "2016",
-                  "value": 1932422
-                }
-              ],
-              "facet": "1456184638"
-            },
             {
               "series": [
                 {
@@ -3709,15 +3678,6 @@
             {
               "series": [
                 {
-                  "date": "2021-01",
-                  "value": 1919745
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "2013",
                   "value": 1868183
                 }
@@ -3797,15 +3757,6 @@
         {
           "entity": "nuts/FR43",
           "series_by_facet": [
-            {
-              "series": [
-                {
-                  "date": "2021-01-01",
-                  "value": 1179601
-                }
-              ],
-              "facet": "1456184638"
-            },
             {
               "series": [
                 {
@@ -5332,15 +5283,6 @@
             {
               "series": [
                 {
-                  "date": "2022",
-                  "value": 474369
-                }
-              ],
-              "facet": "1456184638"
-            },
-            {
-              "series": [
-                {
                   "date": "2015",
                   "value": 451317
                 },
@@ -6266,11 +6208,15 @@
                 },
                 {
                   "date": "2023",
-                  "value": 332080
+                  "value": 333602
                 },
                 {
                   "date": "2024",
-                  "value": 332318
+                  "value": 334441
+                },
+                {
+                  "date": "2025",
+                  "value": 334995
                 }
               ],
               "facet": "1733625304"
@@ -21098,11 +21044,6 @@
     }
   ],
   "facets": {
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",

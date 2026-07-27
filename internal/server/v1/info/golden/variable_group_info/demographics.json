@@ -185,7 +185,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 33022
+        "descendentStatVarCount": 33030
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -233,7 +233,7 @@
         "id": "dc/g/Person_CitizenshipStatus",
         "specializedEntity": "Citizenship Status",
         "displayName": "Person by Citizenship Status",
-        "descendentStatVarCount": 1607
+        "descendentStatVarCount": 1757
       },
       {
         "id": "dc/g/CivicStructure",
@@ -359,7 +359,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 29114
+        "descendentStatVarCount": 29332
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -419,7 +419,7 @@
         "id": "dc/g/ImmigrationAndCitizenship",
         "specializedEntity": "Immigration and Citizenship",
         "displayName": "Immigration and Citizenship",
-        "descendentStatVarCount": 4022
+        "descendentStatVarCount": 4322
       },
       {
         "id": "dc/g/Person_Income",
@@ -551,7 +551,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 4422
+        "descendentStatVarCount": 4440
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -587,7 +587,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 6162
+        "descendentStatVarCount": 6180
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -632,7 +632,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 53517,
+    "descendentStatVarCount": 53843,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

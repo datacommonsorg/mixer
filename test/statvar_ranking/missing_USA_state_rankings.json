@@ -26,6 +26,30 @@
     }
   },
   {
+    "title": "COVID-19 cumulative cases",
+    "statsVars": [
+      "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+      ]
+    }
+  },
+  {
+    "title": "COVID-19 cumulative deaths",
+    "statsVars": [
+      "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"
+      ]
+    }
+  },
+  {
     "title": "Carbon dioxide emissions per capita",
     "statsVars": [
       "Amount_Emissions_CarbonDioxide_PerCapita"

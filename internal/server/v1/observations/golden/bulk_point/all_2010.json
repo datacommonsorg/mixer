@@ -16,13 +16,13 @@
             },
             {
               "date": "2010",
-              "value": 64612939,
-              "facet": "2911625765"
+              "value": 64658856,
+              "facet": "1733625304"
             },
             {
               "date": "2010",
-              "value": 64658856,
-              "facet": "1733625304"
+              "value": 64612939,
+              "facet": "2911625765"
             },
             {
               "date": "2010",
@@ -56,13 +56,13 @@
             },
             {
               "date": "2010",
-              "value": 309321666,
-              "facet": "4181918134"
+              "value": 303965272,
+              "facet": "1964317807"
             },
             {
               "date": "2010",
-              "value": 303965272,
-              "facet": "1964317807"
+              "value": 309321666,
+              "facet": "4181918134"
             },
             {
               "date": "2010",
@@ -101,13 +101,13 @@
             },
             {
               "date": "2010",
-              "value": 37319502,
-              "facet": "4181918134"
+              "value": 36637290,
+              "facet": "1964317807"
             },
             {
               "date": "2010",
-              "value": 36637290,
-              "facet": "1964317807"
+              "value": 37319502,
+              "facet": "4181918134"
             },
             {
               "date": "2010",
@@ -255,11 +255,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
@@ -278,12 +273,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {

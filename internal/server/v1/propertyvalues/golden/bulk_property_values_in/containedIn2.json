@@ -52,7 +52,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Aguadilla-Isabela, PR Metro Area",
+          "name": "Aguadilla, PR Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -73,6 +73,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C10460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Alamosa, CO Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C10480",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -228,6 +236,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Amherst Town-Northampton, MA Metro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C11200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Amsterdam, NY Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -241,6 +257,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C11260",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Anderson Creek, NC Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C11360",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -268,7 +292,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Anniston-Oxford-Jacksonville, AL Metro Area",
+          "name": "Anniston-Oxford, AL Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -468,7 +492,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Austin-Round Rock, TX Metro Area",
+          "name": "Austin-Round Rock-San Marcos, TX Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -484,7 +508,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bakersfield, CA Metro Area",
+          "name": "Baker City, OR Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C12520",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bakersfield-Delano, CA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -676,7 +708,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bend-Redmond, OR Metro Area",
+          "name": "Bend, OR Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -748,11 +780,19 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Birmingham-Hoover, AL Metro Area",
+          "name": "Birmingham, AL Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C13820",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bishop, CA Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C13860",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -796,7 +836,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bloomsburg-Berwick, PA Metro Area",
+          "name": "Bloomsburg-Berwick, PA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -892,7 +932,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bozeman, MT Micro Area",
+          "name": "Bozeman, MT Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -924,6 +964,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Brattleboro, VT Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C14710",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Breckenridge, CO Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -932,7 +980,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bremerton-Silverdale, WA Metro Area",
+          "name": "Bremerton-Silverdale-Port Orchard, WA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -956,11 +1004,19 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Bridgeport-Stamford-Norwalk, CT Metro Area",
+          "name": "Bridgeport-Stamford-Danbury, CT Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C14860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Brigham City, UT-ID Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C14940",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -1012,7 +1068,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Brunswick, GA Metro Area",
+          "name": "Brunswick-St. Simons, GA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1028,7 +1084,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Buffalo-Cheektowaga-Niagara Falls, NY Metro Area",
+          "name": "Buffalo-Cheektowaga, NY Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1132,7 +1188,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Cañon City, CO Micro Area",
+          "name": "CaÃ±on City, CO Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1172,7 +1228,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Carbondale-Marion, IL Metro Area",
+          "name": "Carbondale, IL Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1268,7 +1324,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Chambersburg-Waynesboro, PA Metro Area",
+          "name": "Chambersburg, PA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1340,7 +1396,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area",
+          "name": "Chicago-Naperville-Elgin, IL-IN Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1420,6 +1476,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Cleveland, OH Metro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C17410",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Cleveland, TN Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -1473,6 +1537,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C17640",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cody, WY Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C17650",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -1596,11 +1668,19 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Coos Bay, OR Micro Area",
+          "name": "Coos Bay-North Bend, OR Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C18300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Corbin, KY Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C18340",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -1732,7 +1812,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Cumberland, MD-WV Metro Area",
+          "name": "Cumberland, MD-WV Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1756,7 +1836,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Danville, IL Metro Area",
+          "name": "Danville, IL Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1809,6 +1889,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C19420",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Dayton-Kettering-Beavercreek, OH Metro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C19430",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -1868,7 +1956,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Denver-Aurora-Lakewood, CO Metro Area",
+          "name": "Denver-Aurora-Centennial, CO Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -1889,6 +1977,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C19780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Detroit Lakes, MN Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C19810",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -2036,7 +2132,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Eagle Pass, TX Micro Area",
+          "name": "Eagle Pass, TX Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2052,7 +2148,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "East Stroudsburg, PA Metro Area",
+          "name": "East Stroudsburg, PA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2116,7 +2212,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Elizabethtown-Fort Knox, KY Metro Area",
+          "name": "Elizabethtown, KY Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2220,7 +2316,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Española, NM Micro Area",
+          "name": "EspaÃ±ola, NM Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2236,7 +2332,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Eugene, OR Metro Area",
+          "name": "Eugene-Springfield, OR Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2244,7 +2340,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Eureka-Arcata-Fortuna, CA Micro Area",
+          "name": "Eureka-Arcata, CA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2252,7 +2348,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Evanston, WY Micro Area",
+          "name": "Evanston, WY-UT Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2260,7 +2356,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Evansville, IN-KY Metro Area",
+          "name": "Evansville, IN Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2268,7 +2364,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Fairbanks, AK Metro Area",
+          "name": "Fairbanks-College, AK Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2348,7 +2444,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Fayetteville-Springdale-Rogers, AR-MO Metro Area",
+          "name": "Fayetteville, TN Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C22190",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Fayetteville-Springdale-Rogers, AR Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2444,7 +2548,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Fort Collins, CO Metro Area",
+          "name": "Fort Collins-Loveland, CO Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2468,7 +2572,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Fort Madison-Keokuk, IA-IL-MO Micro Area",
+          "name": "Fort Madison, IA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2529,6 +2633,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C23180",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Franklin, KY Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C23190",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -2620,6 +2732,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Gallipolis, OH Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C23680",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Gallup, NM Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -2636,7 +2756,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Gardnerville Ranchos, NV Micro Area",
+          "name": "Gardnerville Ranchos, NV-CA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2708,6 +2828,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Granbury, TX Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C24180",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Grand Forks, ND-MN Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -2740,7 +2868,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Grand Rapids-Wyoming, MI Metro Area",
+          "name": "Grand Rapids-Wyoming-Kentwood, MI Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2796,6 +2924,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Greencastle, IN Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C24600",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Greeneville, TN Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -2804,7 +2940,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Greenfield Town, MA Micro Area",
+          "name": "Greenfield, MA Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2852,7 +2988,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Greenville-Anderson-Mauldin, SC Metro Area",
+          "name": "Greenville-Anderson-Greer, SC Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -2892,7 +3028,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Gulfport-Biloxi-Pascagoula, MS Metro Area",
+          "name": "Gulfport-Biloxi, MS Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3012,7 +3148,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Helena, MT Micro Area",
+          "name": "Helena, MT Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3025,6 +3161,22 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C25760",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hemlock Farms, PA Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C25770",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Henderson, KY Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C25775",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -3052,6 +3204,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Hermitage, PA Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C25850",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Hickory-Lenoir-Morganton, NC Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -3068,7 +3228,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Hilo, HI Micro Area",
+          "name": "Hilo-Kailua, HI Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3076,7 +3236,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Hilton Head Island-Bluffton-Beaufort, SC Metro Area",
+          "name": "Hilton Head Island-Bluffton-Port Royal, SC Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3148,7 +3308,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Houma-Thibodaux, LA Metro Area",
+          "name": "Houma-Bayou Cane-Thibodaux, LA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3156,7 +3316,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Houston-The Woodlands-Sugar Land, TX Metro Area",
+          "name": "Houston-Pasadena-The Woodlands, TX Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3252,7 +3412,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Indianapolis-Carmel-Anderson, IN Metro Area",
+          "name": "Indianapolis-Carmel-Greenwood, IN Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3380,7 +3540,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Jamestown-Dunkirk-Fredonia, NY Micro Area",
+          "name": "Jamestown-Dunkirk, NY Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3468,7 +3628,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Joplin, MO Metro Area",
+          "name": "Joplin, MO-KS Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3492,7 +3652,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Kahului-Wailuku-Lahaina, HI Metro Area",
+          "name": "Kahului-Wailuku, HI Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3580,6 +3740,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Kenosha, WI Metro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C28450",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Kerrville, TX Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
@@ -3596,7 +3764,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Key West, FL Micro Area",
+          "name": "Key West-Key Largo, FL Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3620,7 +3788,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Kingsport-Bristol-Bristol, TN-VA Metro Area",
+          "name": "Kingsland, GA Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C28680",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kingsport-Bristol, TN-VA Metro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3657,6 +3833,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C28860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY Metro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C28880",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -3724,7 +3908,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "LaGrange, GA Micro Area",
+          "name": "LaGrange, GA-AL Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
@@ -3761,6 +3945,14 @@
             "CensusCoreBasedStatisticalArea"
           ],
           "dcid": "geoId/C29460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake of the Woods, VA Micro Area",
+          "types": [
+            "CensusCoreBasedStatisticalArea"
+          ],
+          "dcid": "geoId/C29470",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -3804,203 +3996,11 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Las Cruces, NM Metro Area",
+          "name": "Lares, PR Micro Area",
           "types": [
             "CensusCoreBasedStatisticalArea"
           ],
-          "dcid": "geoId/C29740",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Las Vegas, NM Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29780",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Las Vegas-Henderson-Paradise, NV Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29820",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Laurel, MS Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29860",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Laurinburg, NC Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29900",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lawrence, KS Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29940",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lawrenceburg, TN Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C29980",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lawton, OK Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30020",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lebanon, MO Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30060",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lebanon, PA Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30140",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Levelland, TX Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30220",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lewisburg, PA Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30260",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lewisburg, TN Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30280",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lewiston, ID-WA Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30300",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lewiston-Auburn, ME Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30340",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lewistown, PA Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30380",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lexington, NE Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30420",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lexington-Fayette, KY Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30460",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Liberal, KS Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30580",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lima, OH Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30620",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lincoln, IL Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30660",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lincoln, NE Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30700",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Little Rock-North Little Rock-Conway, AR Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30780",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Lock Haven, PA Micro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30820",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Logan, UT-ID Metro Area",
-          "types": [
-            "CensusCoreBasedStatisticalArea"
-          ],
-          "dcid": "geoId/C30860",
+          "dcid": "geoId/C29720",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -35181,7 +35181,7 @@
             "City"
           ],
           "dcid": "geoId/0600296",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Census Tract 100, Alpine County, California",
@@ -36217,7 +36217,7 @@
             "City"
           ],
           "dcid": "geoId/0601514",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Amador Pines",
@@ -36281,7 +36281,7 @@
             "City"
           ],
           "dcid": "geoId/0602168",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Antelope",
@@ -36297,7 +36297,7 @@
             "City"
           ],
           "dcid": "geoId/0602252",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Anza",
@@ -36337,7 +36337,7 @@
             "City"
           ],
           "dcid": "geoId/0602462",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Arcata",
@@ -36409,7 +36409,7 @@
             "City"
           ],
           "dcid": "geoId/0602924",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Ashland",
@@ -36593,7 +36593,7 @@
             "City"
           ],
           "dcid": "geoId/0603820",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Barstow",
@@ -36873,7 +36873,7 @@
             "City"
           ],
           "dcid": "geoId/0606406",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Big Bear Lake",
@@ -37153,7 +37153,7 @@
             "City"
           ],
           "dcid": "geoId/0607652",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Boulevard",
@@ -37201,7 +37201,7 @@
             "City"
           ],
           "dcid": "geoId/0608058",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Brea",
@@ -37417,7 +37417,7 @@
             "City"
           ],
           "dcid": "geoId/0609598",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Calexico",
@@ -37433,7 +37433,7 @@
             "City"
           ],
           "dcid": "geoId/0609780",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "California Hot Springs",
@@ -37473,7 +37473,7 @@
             "City"
           ],
           "dcid": "geoId/0609878",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Calistoga",
@@ -37545,7 +37545,7 @@
             "City"
           ],
           "dcid": "geoId/0610074",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cambrian Park",
@@ -37601,6 +37601,14 @@
             "City"
           ],
           "dcid": "geoId/0610508",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Campo Seco",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0610536",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -37753,7 +37761,7 @@
             "City"
           ],
           "dcid": "geoId/0611530",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cartago",
@@ -37865,7 +37873,7 @@
             "City"
           ],
           "dcid": "geoId/0612048",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Catheys Valley",
@@ -37953,7 +37961,7 @@
             "City"
           ],
           "dcid": "geoId/0612552",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Chalfant",
@@ -38081,7 +38089,7 @@
             "City"
           ],
           "dcid": "geoId/0613214",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Choctaw Valley",
@@ -38433,7 +38441,7 @@
             "City"
           ],
           "dcid": "geoId/0616224",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Corning",
@@ -38625,7 +38633,7 @@
             "City"
           ],
           "dcid": "geoId/0617274",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Cromberg",
@@ -38793,7 +38801,7 @@
             "City"
           ],
           "dcid": "geoId/0618394",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Del Dios",
@@ -39084,6 +39092,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Douglas Flat",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0619738",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Downey",
           "types": [
             "City"
@@ -39129,7 +39145,7 @@
             "City"
           ],
           "dcid": "geoId/0620018",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Ducor",
@@ -39225,7 +39241,7 @@
             "City"
           ],
           "dcid": "geoId/0620802",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "East Nicolaus",
@@ -39532,6 +39548,14 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "El Modena",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0622188",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "El Monte",
           "types": [
             "City"
@@ -39825,7 +39849,7 @@
             "City"
           ],
           "dcid": "geoId/0623910",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Fetters Hot Springs-Agua Caliente",
@@ -39929,30 +39953,6 @@
             "City"
           ],
           "dcid": "geoId/0624680",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Foothill Farms",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0624722",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Foothill Ranch",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0624730",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Forbestown",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0624750",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -40681,6 +40681,14 @@
             "SchoolDistrict"
           ],
           "dcid": "geoId/sch0602450",
+          "provenanceId": "dc/base/NCES_SchoolDistrict"
+        },
+        {
+          "name": "Banta Unified",
+          "types": [
+            "SchoolDistrict"
+          ],
+          "dcid": "geoId/sch0602571",
           "provenanceId": "dc/base/NCES_SchoolDistrict"
         },
         {
@@ -43490,7 +43498,7 @@
             "SchoolDistrict"
           ],
           "dcid": "geoId/sch0620130",
-          "provenanceId": "dc/base/NCES_SchoolDistrict"
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "La Habra City Elementary",

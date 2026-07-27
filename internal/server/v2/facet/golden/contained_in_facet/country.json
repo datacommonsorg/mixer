@@ -56,9 +56,6 @@
               "facet_id": "723406962"
             },
             {
-              "facet_id": "1836477334"
-            },
-            {
               "facet_id": "678784946"
             },
             {
@@ -72,9 +69,6 @@
             },
             {
               "facet_id": "2708675871"
-            },
-            {
-              "facet_id": "2590504623"
             },
             {
               "facet_id": "2052219360"
@@ -164,9 +158,6 @@
               "facet_id": "473499523"
             },
             {
-              "facet_id": "1456184638"
-            },
-            {
               "facet_id": "2458695583"
             }
           ]
@@ -247,11 +238,6 @@
       "import_name": "New_Zealand_Census",
       "provenance_url": "https://www.stats.govt.nz/"
     },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
@@ -267,10 +253,6 @@
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
     },
-    "1836477334": {
-      "import_name": "Mongolia_Education",
-      "provenance_url": "https://www.1212.mn/en/statcate"
-    },
     "1897073702": {
       "import_name": "SouthAfrica_Census",
       "provenance_url": "https://southafrica.opendataforafrica.org/"
@@ -285,12 +267,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2018634167": {
@@ -356,10 +338,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
     },
-    "2590504623": {
-      "import_name": "Vietnam_Census",
-      "provenance_url": "https://www.gso.gov.vn/en/homepage/"
-    },
     "2645850372": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "provenance_url": "https://www.census.gov/",
@@ -416,7 +394,7 @@
     },
     "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2024.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
@@ -490,7 +468,7 @@
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }

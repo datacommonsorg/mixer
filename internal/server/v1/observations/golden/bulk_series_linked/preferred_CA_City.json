@@ -6976,6 +6976,9 @@
           ]
         },
         {
+          "entity": "geoId/0610536"
+        },
+        {
           "entity": "geoId/0610554",
           "series_by_facet": [
             {
@@ -12809,6 +12812,9 @@
           ]
         },
         {
+          "entity": "geoId/0619738"
+        },
+        {
           "entity": "geoId/0619766",
           "series_by_facet": [
             {
@@ -14480,6 +14486,9 @@
         },
         {
           "entity": "geoId/0622146"
+        },
+        {
+          "entity": "geoId/0622188"
         },
         {
           "entity": "geoId/0622230",
@@ -18162,6 +18171,9 @@
           ]
         },
         {
+          "entity": "geoId/0629714"
+        },
+        {
           "entity": "geoId/0630000",
           "series_by_facet": [
             {
@@ -19670,6 +19682,9 @@
         },
         {
           "entity": "geoId/0632408"
+        },
+        {
+          "entity": "geoId/0632436"
         },
         {
           "entity": "geoId/0632506",
@@ -34147,6 +34162,9 @@
           ]
         },
         {
+          "entity": "geoId/0654064"
+        },
+        {
           "entity": "geoId/0654092",
           "series_by_facet": [
             {
@@ -35365,6 +35383,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0655310"
         },
         {
           "entity": "geoId/0655380"
@@ -44426,6 +44447,9 @@
           "entity": "geoId/0671246"
         },
         {
+          "entity": "geoId/0671302"
+        },
+        {
           "entity": "geoId/0671362"
         },
         {
@@ -52052,6 +52076,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0685810"
         },
         {
           "entity": "geoId/0685866"

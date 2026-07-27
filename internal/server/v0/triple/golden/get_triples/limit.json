@@ -945,7 +945,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/01005",
@@ -975,7 +975,7 @@
       "objectTypes": [
         "Class"
       ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "subjectId": "geoId/01009",

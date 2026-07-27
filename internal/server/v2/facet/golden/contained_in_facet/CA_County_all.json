@@ -8,7 +8,7 @@
               "facet_id": "2176550201",
               "obs_count": 58,
               "earliest_date": "1970",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1145703171",
@@ -26,13 +26,13 @@
               "facet_id": "2390551605",
               "obs_count": 58,
               "earliest_date": "2020",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1964317807",
               "obs_count": 58,
               "earliest_date": "2010",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "2564251937",
@@ -59,12 +59,6 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "1456184638",
-              "obs_count": 57,
-              "earliest_date": "2020",
-              "latest_date": "2024-07-01"
-            },
-            {
               "facet_id": "2458695583",
               "obs_count": 58,
               "earliest_date": "1850",
@@ -88,7 +82,7 @@
               "facet_id": "815809675",
               "obs_count": 58,
               "earliest_date": "2010",
-              "latest_date": "2023"
+              "latest_date": "2024"
             }
           ]
         }
@@ -106,11 +100,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
@@ -118,7 +107,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -159,7 +148,7 @@
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }
