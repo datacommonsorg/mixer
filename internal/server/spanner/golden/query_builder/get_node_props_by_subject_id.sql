@@ -1,9 +1,11 @@
-		GRAPH DCGraph MATCH -[e:Edge
+		@{SCAN_METHOD=COLUMNAR}
+		GRAPH DCGraph MATCH (m:Node
+		WHERE m.subject_id IN ('Count_Person','Person','foo'))-[e:Edge
 		WHERE
-			e.subject_id IN ('Count_Person','Person','foo')]->
+			e.predicate NOT IN ('linkedContainedInPlace','linkedMemberOf','linkedMember')]->
 		RETURN DISTINCT
-			e.subject_id,
+			m.subject_id,
 			e.predicate
 		ORDER BY
-			e.subject_id,
-			e.predicate
+			subject_id,
+			predicate

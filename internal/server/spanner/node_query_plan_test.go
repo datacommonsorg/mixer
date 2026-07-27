@@ -15,6 +15,7 @@
 package spanner
 
 import (
+	"strings"
 	"testing"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -330,5 +331,37 @@ func TestBuildNodeEdgesByIDQueryRejectsUnsupportedContainedInPlacePlan(t *testin
 	}
 	if _, err := buildNodeEdgesByIDQuery(nil, arc, 1, 0, plan); err == nil {
 		t.Fatal("buildNodeEdgesByIDQuery() expected error, got nil")
+	}
+}
+
+func TestGraphQueriesOmitColumnarHintInEmulatorMode(t *testing.T) {
+	arc := &v2.Arc{Out: true, SingleProp: "name"}
+
+	// Production mode: includes SCAN_METHOD=COLUMNAR.
+	prodStmt, err := GetNodeEdgesByIDQuery([]string{"geoId/06"}, arc, 10, 0, QueryConfig{SpannerEmulatorCompatibility: false})
+	if err != nil {
+		t.Fatalf("GetNodeEdgesByIDQuery() unexpected error: %v", err)
+	}
+	if !strings.Contains(prodStmt.SQL, "SCAN_METHOD=COLUMNAR") {
+		t.Errorf("Production query SQL should contain SCAN_METHOD=COLUMNAR, got:\n%s", prodStmt.SQL)
+	}
+
+	prodPropsStmt := GetNodePropsQuery([]string{"geoId/06"}, true, QueryConfig{SpannerEmulatorCompatibility: false})
+	if !strings.Contains(prodPropsStmt.SQL, "SCAN_METHOD=COLUMNAR") {
+		t.Errorf("Production GetNodePropsQuery SQL should contain SCAN_METHOD=COLUMNAR, got:\n%s", prodPropsStmt.SQL)
+	}
+
+	// Emulator mode: omits SCAN_METHOD=COLUMNAR.
+	emuStmt, err := GetNodeEdgesByIDQuery([]string{"geoId/06"}, arc, 10, 0, QueryConfig{SpannerEmulatorCompatibility: true})
+	if err != nil {
+		t.Fatalf("GetNodeEdgesByIDQuery() unexpected error: %v", err)
+	}
+	if strings.Contains(emuStmt.SQL, "SCAN_METHOD=COLUMNAR") {
+		t.Errorf("Emulator query SQL should not contain SCAN_METHOD=COLUMNAR, got:\n%s", emuStmt.SQL)
+	}
+
+	emuPropsStmt := GetNodePropsQuery([]string{"geoId/06"}, true, QueryConfig{SpannerEmulatorCompatibility: true})
+	if strings.Contains(emuPropsStmt.SQL, "SCAN_METHOD=COLUMNAR") {
+		t.Errorf("Emulator GetNodePropsQuery SQL should not contain SCAN_METHOD=COLUMNAR, got:\n%s", emuPropsStmt.SQL)
 	}
 }
