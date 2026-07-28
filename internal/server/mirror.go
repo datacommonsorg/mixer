@@ -81,6 +81,11 @@ func (s *Server) mirrorV3(
 		v3WaitGroup.Add(1)
 	}
 
+	// Deep clone request and response synchronously before returning to the caller
+	// to prevent data races and go-cmp determinism panics during background diffing.
+	reqClone := proto.Clone(originalReq)
+	respClone := proto.Clone(originalResp)
+
 	// This is run in a separate goroutine to not block the response to the original
 	// request.
 	go func() {
@@ -97,7 +102,7 @@ func (s *Server) mirrorV3(
 		defer cancel()
 
 		// Call without skipping cache to simulate production behavior, which will have a cache.
-		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, false /* skipCache */)
+		s.doMirror(mirrorCtx, reqClone, respClone, originalLatency, v3Call, cmpOpts, false /* skipCache */)
 	}()
 }
 
