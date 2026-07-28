@@ -37,6 +37,8 @@ type StatVarLog struct {
 	StatVarDCID string      `json:"stat_var_dcid"`
 	// List of all facets that provided results for the given statVar.
 	Facets      []*FacetLog `json:"facets"`
+	// The number of entities included in this statVar's results. 
+	NumSeries 	int        `json:"num_series"`
 }
 
 // Full log with all information for the current query.
@@ -123,6 +125,8 @@ func MakeStatVarLogs(observationResponse *pbv2.ObservationResponse) ([]*StatVarL
 		if _, ok := statVarsByDcid[variable]; !ok {
 			statVarsByDcid[variable] = &StatVarLog{
 				StatVarDCID: variable,
+				// capturing the number of entities for this statVar
+				NumSeries: len(varObs.ByEntity),
 			}
 		}
 

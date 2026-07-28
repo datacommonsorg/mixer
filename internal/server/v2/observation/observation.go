@@ -167,13 +167,13 @@ func ObservationCore(
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				res, err := Existence(
 					ctx, store, cachedata, variable.GetDcids(), entity.GetDcids())
-				return res, shared.QueryTypeExistence, err
+				return res, shared.QueryTypeExistenceByVar, err
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
 			res, err := Variable(ctx, store, entity.GetDcids())
 
-			return res, shared.QueryTypeExistence, err
+			return res, shared.QueryTypeExistenceByEntity, err
 		}
 	}
 	return &pbv2.ObservationResponse{}, "", nil
