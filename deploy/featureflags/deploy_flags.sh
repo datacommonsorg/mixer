@@ -35,6 +35,20 @@
 
 set -e
 
+# If this script is NOT running on Cloud Build, show a warning and require confirmation.
+if [[ -z "$BUILD_ID" ]]; then
+  echo "WARNING: This script is not running on Cloud Build."
+  echo "Feature flags should only be updated via build trigger after careful PR review."
+  echo ""
+  echo "Please coordinate with the oncaller before updating production servers."
+  echo "Remember to additionally announce this on the oncall thread."
+  read -r -p "Proceed with UNSAFE deployment? (y/N) " response
+  if [[ ! "$response" =~ ^([yY])$ ]]; then
+    echo "Deployment aborted."
+    exit 1
+  fi
+fi
+
 if [[ "$#" -lt 1 || "$#" -gt 2 ]]; then
   echo "Usage: $0 <config_dir> [environment]"
   echo "  <config_dir>: Directory containing the feature flag YAML files."
@@ -44,21 +58,6 @@ fi
 
 CONFIG_DIR=$1
 TARGET_ENV=$2
-
-# If this script is NOT running on Cloud Build, show a warning and require confirmation.
-if [[ -z "$BUILD_ID" ]]; then
-  echo "WARNING: This script is not running on Cloud Build."
-  echo "Feature flags should only be updated via build trigger after PR review."
-  if [[ "$TARGET_ENV" == *"prod"* || -z "$TARGET_ENV" ]]; then
-    echo "Please conduct a careful review before restarting production servers & coordinate with the oncaller."
-    echo "Remember to additionally announce this on the oncall thread."
-  fi
-  read -r -p "Proceed with UNSAFE deployment? (y/N) " response
-  if [[ ! "$response" =~ ^([yY])$ ]]; then
-    echo "Deployment aborted."
-    exit 1
-  fi
-fi
 
 # Source cluster iterator from the same directory as this script.
 source "$(dirname "${BASH_SOURCE[0]}")/cluster_iterator.sh"
