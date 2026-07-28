@@ -77,9 +77,18 @@ func (s *Server) mirrorV3(
 	cmpOpts []cmp.Option,
 	v3WaitGroup *sync.WaitGroup,
 ) {
+	if originalReq == nil || originalResp == nil {
+		return
+	}
+
 	if v3WaitGroup != nil {
 		v3WaitGroup.Add(1)
 	}
+
+	// Deep clone request and response synchronously before returning to the caller
+	// to prevent data races and go-cmp determinism panics during background diffing.
+	reqClone := proto.Clone(originalReq)
+	respClone := proto.Clone(originalResp)
 
 	// This is run in a separate goroutine to not block the response to the original
 	// request.
@@ -97,7 +106,7 @@ func (s *Server) mirrorV3(
 		defer cancel()
 
 		// Call without skipping cache to simulate production behavior, which will have a cache.
-		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, false /* skipCache */)
+		s.doMirror(mirrorCtx, reqClone, respClone, originalLatency, v3Call, cmpOpts, false /* skipCache */)
 	}()
 }
 
@@ -114,8 +123,6 @@ func (s *Server) doMirror(
 	cmpOpts []cmp.Option,
 	skipCache bool,
 ) {
-	reqClone := proto.Clone(originalReq)
-
 	v3StartTime := time.Now()
 	var v3Resp proto.Message
 	var v3Err error
@@ -123,7 +130,7 @@ func (s *Server) doMirror(
 	if skipCache {
 		v3Ctx = metadata.NewIncomingContext(v3Ctx, metadata.Pairs(string(util.XSkipCache), "true"))
 	}
-	v3Resp, v3Err = v3Call(v3Ctx, reqClone)
+	v3Resp, v3Err = v3Call(v3Ctx, originalReq)
 	v3Latency := time.Since(v3StartTime)
 
 	latencyDiff := v3Latency - originalLatency
