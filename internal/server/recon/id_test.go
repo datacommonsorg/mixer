@@ -30,6 +30,10 @@ func TestResolveIds_InvalidInput(t *testing.T) {
 		req  *pb.ResolveIdsRequest
 	}{
 		{
+			name: "NilRequest",
+			req:  nil,
+		},
+		{
 			name: "EmptyInProp",
 			req:  &pb.ResolveIdsRequest{InProp: "", OutProp: "dcid", Ids: []string{"geoId/06"}},
 		},

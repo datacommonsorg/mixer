@@ -30,6 +30,10 @@ func TestBulkFindEntities_InvalidInput(t *testing.T) {
 		req  *pb.BulkFindEntitiesRequest
 	}{
 		{
+			name: "NilRequest",
+			req:  nil,
+		},
+		{
 			name: "EmptyEntities",
 			req:  &pb.BulkFindEntitiesRequest{Entities: nil},
 		},
