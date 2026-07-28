@@ -77,6 +77,10 @@ func (s *Server) mirrorV3(
 	cmpOpts []cmp.Option,
 	v3WaitGroup *sync.WaitGroup,
 ) {
+	if originalReq == nil || originalResp == nil {
+		return
+	}
+
 	if v3WaitGroup != nil {
 		v3WaitGroup.Add(1)
 	}
@@ -119,8 +123,6 @@ func (s *Server) doMirror(
 	cmpOpts []cmp.Option,
 	skipCache bool,
 ) {
-	reqClone := proto.Clone(originalReq)
-
 	v3StartTime := time.Now()
 	var v3Resp proto.Message
 	var v3Err error
@@ -128,7 +130,7 @@ func (s *Server) doMirror(
 	if skipCache {
 		v3Ctx = metadata.NewIncomingContext(v3Ctx, metadata.Pairs(string(util.XSkipCache), "true"))
 	}
-	v3Resp, v3Err = v3Call(v3Ctx, reqClone)
+	v3Resp, v3Err = v3Call(v3Ctx, originalReq)
 	v3Latency := time.Since(v3StartTime)
 
 	latencyDiff := v3Latency - originalLatency
