@@ -684,3 +684,31 @@ func TestMirrorV3_FallsBackToDefaultDeadline(t *testing.T) {
 		t.Errorf("Expected v3Call to be executed exactly 1 time, got %d", callCount)
 	}
 }
+
+func TestMirrorV3_NilInput(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0,
+		},
+	}
+	var mirrorWg sync.WaitGroup
+	callCount := 0
+	v3Call := func(v3Ctx context.Context, req proto.Message) (proto.Message, error) {
+		callCount++
+		return &pbv2.NodeResponse{}, nil
+	}
+
+	// Test nil request
+	s.mirrorV3(ctx, nil, &pbv2.NodeResponse{}, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+	// Test nil response
+	s.mirrorV3(ctx, &pbv2.NodeRequest{}, nil, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+	// Test both nil
+	s.mirrorV3(ctx, nil, nil, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+
+	mirrorWg.Wait()
+	if callCount != 0 {
+		t.Errorf("Expected v3Call to not be executed when request or response is nil, got %d", callCount)
+	}
+}
+
