@@ -15,7 +15,6 @@
 package observation
 
 import (
-	"fmt"
 	"go/ast"
 	"go/token"
 	"strconv"
@@ -24,6 +23,8 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -122,11 +123,11 @@ func evalOp(
 		return x * y, nil
 	case token.QUO:
 		if y == 0 {
-			return 0, fmt.Errorf("denominator cannot be zero")
+			return 0, status.Errorf(codes.InvalidArgument, "denominator cannot be zero")
 		}
 		return x / y, nil
 	default:
-		return 0, fmt.Errorf("unsupported op (token) %v", op)
+		return 0, status.Errorf(codes.InvalidArgument, "unsupported op (token) %v", op)
 	}
 }
 
@@ -281,7 +282,7 @@ func evalBinaryExpr(
 		}
 		return &intermediateObsResponse{constantObs: &val}, nil
 	}
-	return nil, fmt.Errorf("invalid binary expr")
+	return nil, status.Errorf(codes.InvalidArgument, "invalid binary expr")
 }
 
 // Evaluate a calculation given a formula and input observations.
@@ -295,7 +296,7 @@ func EvalExpr(
 		return nil, err
 	}
 	if intermediateResp.variableObs == nil {
-		return nil, fmt.Errorf("nil calculation response")
+		return nil, status.Errorf(codes.InvalidArgument, "nil calculation response")
 	}
 
 	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
@@ -336,7 +337,7 @@ func evalExpr(
 	case *ast.ParenExpr:
 		return evalExpr(t.X, leafData, inputResp)
 	default:
-		return nil, fmt.Errorf("unsupported ast type %T", t)
+		return nil, status.Errorf(codes.InvalidArgument, "unsupported ast type %T", t)
 	}
 }
 
@@ -364,7 +365,7 @@ func formatCalculatedResponse(
 			}
 			oldFacet, ok := inputFacets[oldFacetId]
 			if !ok {
-				return nil, fmt.Errorf("missing facet id %s", oldFacetId)
+				return nil, status.Errorf(codes.InvalidArgument, "missing facet id %s", oldFacetId)
 			}
 			newFacet := proto.Clone(oldFacet).(*pb.Facet)
 			newFacet.IsDcAggregate = true
