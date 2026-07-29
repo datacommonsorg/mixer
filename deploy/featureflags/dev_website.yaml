@@ -11,3 +11,4 @@ flags:
   UseMultiEntitySchema: true
   V2DivertFraction: 1.0
   UseSpannerKeyValueStore: true
+  UseNewIngestionHistorySchema: true
