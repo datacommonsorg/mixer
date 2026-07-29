@@ -18,7 +18,7 @@ mixer:
 
 esp:
   transcodingIgnoreUnknownQueryParameters: true
-  transcodingQueryParametersDisableUnescapePlus: true
+  transcodingQueryParametersDisableUnescapePlus: false
 
 ingress:
   enabled: true
