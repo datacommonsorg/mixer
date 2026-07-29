@@ -10,3 +10,4 @@ flags:
   EnableSpannerSearchEmbeddings: true
   UseMultiEntitySchema: true
   UseSpannerKeyValueStore: true
+  UseNewIngestionHistorySchema: true
