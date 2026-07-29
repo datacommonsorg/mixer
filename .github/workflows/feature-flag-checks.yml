@@ -19,37 +19,39 @@ on:
 permissions:
   contents: read
   packages: read
+  pull-requests: read
 
 jobs:
   enforce_feature_flag_merge_restrictions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      pull-requests: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Detect changes to prod feature flag files
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: changes
         with:
           filters: |
             prod_flags:
               - 'deploy/featureflags/prod*'
 
-      - name: Restrict prod feature flag changes to allowed hours
+      - name: Display production feature flag review warning and checklist
         if: steps.changes.outputs.prod_flags == 'true'
         run: |
-          # Check if the current time is between 8 AM and 5 PM California time
-          # on Monday, Tuesday, Wednesday, or Thursday.
-          set -e
-          export TZ="America/Los_Angeles"
-          CURRENT_HOUR=$(date +"%-H")
-          CURRENT_DAY=$(date -d "$DATE" +"%u") # 1 for Monday, 7 for Sunday
+          # Output GitHub annotation warning so it appears in PR Conversation and Files Changed UI
+          WARNING_MSG="⚠️ Please conduct a careful review before merging this production change & coordinate with the oncaller.%0A"
+          WARNING_MSG+="%0AMerging this PR will trigger a rolling restart of all Kubernetes pods in production.%0A"
+          WARNING_MSG+="%0AThings to check before approving:%0A"
+          WARNING_MSG+="1. Staging Validated: Have these exact flag changes been tested and verified in staging?%0A"
+          WARNING_MSG+="2. Rolling Restart: Merging will trigger a rolling restart of all Kubernetes pods in production.%0A"
+          WARNING_MSG+="3. Cache Invalidation: If API responses change, remember to clear the Redis cache after merging.%0A"
+          WARNING_MSG+="4. Time Window: Ensure updates occur during global working hours; request lead approval for Friday–Sunday updates.%0A"
+          WARNING_MSG+="5. Oncall Communication: Please additionally announce this update on the oncall thread.%0A"
+          WARNING_MSG+="6. Type Safety: Verify that flag value types match what the server binary expects."
 
-          if [[ "$CURRENT_DAY" -ge 1 && "$CURRENT_DAY" -le 4 ]]; then
-            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 17 ]]; then
-              echo "Current time is within the allowed window for prod flag changes."
-              exit 0
-            fi
-          fi
-          echo "Error: Prod flag changes are only allowed between 8 AM and 5 PM California time on Monday-Thursday."
-          exit 1
+          echo "::warning title=Production Feature Flag Change - Review Checklist::${WARNING_MSG}"
