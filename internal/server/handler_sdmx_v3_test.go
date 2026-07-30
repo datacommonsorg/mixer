@@ -327,7 +327,7 @@ func TestSdmxAvailabilityValidation(t *testing.T) {
 	}
 }
 
-func TestV3InternalSdmxDataForwardsRequest(t *testing.T) {
+func TestV2InternalSdmxDataForwardsRequest(t *testing.T) {
 	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout})}
 	server := newSdmxHandlerTestServer(ds)
 	request := &sdmxpb.SdmxDataQuery{
@@ -336,19 +336,19 @@ func TestV3InternalSdmxDataForwardsRequest(t *testing.T) {
 		},
 	}
 
-	got, err := server.V3InternalSdmxData(context.Background(), request)
+	got, err := server.V2InternalSdmxData(context.Background(), request)
 	if err != nil {
-		t.Fatalf("V3InternalSdmxData() error = %v", err)
+		t.Fatalf("V2InternalSdmxData() error = %v", err)
 	}
 	if !proto.Equal(ds.dataRequest, request) {
-		t.Fatalf("V3InternalSdmxData() request = %v, want %v", ds.dataRequest, request)
+		t.Fatalf("V2InternalSdmxData() request = %v, want %v", ds.dataRequest, request)
 	}
 	if !proto.Equal(got, ds.result) {
-		t.Fatalf("V3InternalSdmxData() response = %v, want %v", got, ds.result)
+		t.Fatalf("V2InternalSdmxData() response = %v, want %v", got, ds.result)
 	}
 }
 
-func TestV3InternalSdmxAvailabilityForwardsRequest(t *testing.T) {
+func TestV2InternalSdmxAvailabilityForwardsRequest(t *testing.T) {
 	ds := &sdmxDataSource{
 		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
 	}
@@ -360,15 +360,15 @@ func TestV3InternalSdmxAvailabilityForwardsRequest(t *testing.T) {
 		},
 	}
 
-	got, err := server.V3InternalSdmxAvailability(context.Background(), request)
+	got, err := server.V2InternalSdmxAvailability(context.Background(), request)
 	if err != nil {
-		t.Fatalf("V3InternalSdmxAvailability() error = %v", err)
+		t.Fatalf("V2InternalSdmxAvailability() error = %v", err)
 	}
 	if !proto.Equal(ds.availabilityRequest, request) {
-		t.Fatalf("V3InternalSdmxAvailability() request = %v, want %v", ds.availabilityRequest, request)
+		t.Fatalf("V2InternalSdmxAvailability() request = %v, want %v", ds.availabilityRequest, request)
 	}
 	if !proto.Equal(got, ds.availabilityResult) {
-		t.Fatalf("V3InternalSdmxAvailability() response = %v, want %v", got, ds.availabilityResult)
+		t.Fatalf("V2InternalSdmxAvailability() response = %v, want %v", got, ds.availabilityResult)
 	}
 }
 

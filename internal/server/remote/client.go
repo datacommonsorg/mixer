@@ -143,7 +143,7 @@ func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityReq
 
 func (rc *RemoteClient) SdmxData(req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	resp := &sdmxpb.SdmxDataResult{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/internal/sdmx/data", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/data", req, resp)
 	if err != nil {
 		return nil, err
 	}
@@ -152,7 +152,7 @@ func (rc *RemoteClient) SdmxData(req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataRes
 
 func (rc *RemoteClient) SdmxAvailability(req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	resp := &sdmxpb.SdmxAvailabilityResult{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/internal/sdmx/availability", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/availability", req, resp)
 	if err != nil {
 		return nil, err
 	}

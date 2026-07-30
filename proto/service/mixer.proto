@@ -70,18 +70,18 @@ service Mixer {
     };
   }
 
-  rpc V3InternalSdmxData(datacommons.sdmx.SdmxDataQuery)
+  rpc V2InternalSdmxData(datacommons.sdmx.SdmxDataQuery)
       returns (datacommons.sdmx.SdmxDataResult) {
     option (google.api.http) = {
-      post : "/v3/internal/sdmx/data"
+      post : "/v2/internal/sdmx/data"
       body : "*"
     };
   }
 
-  rpc V3InternalSdmxAvailability(datacommons.sdmx.SdmxAvailabilityQuery)
+  rpc V2InternalSdmxAvailability(datacommons.sdmx.SdmxAvailabilityQuery)
       returns (datacommons.sdmx.SdmxAvailabilityResult) {
     option (google.api.http) = {
-      post : "/v3/internal/sdmx/availability"
+      post : "/v2/internal/sdmx/availability"
       body : "*"
     };
   }
