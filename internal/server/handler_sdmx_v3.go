@@ -99,3 +99,13 @@ func (s *Server) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabili
 	}
 	return s.dispatcher.SdmxAvailability(ctx, in)
 }
+
+// V3InternalSdmxData handles internal structured SDMX Data requests.
+func (s *Server) V3InternalSdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return s.SdmxData(ctx, in)
+}
+
+// V3InternalSdmxAvailability handles internal structured SDMX Availability requests.
+func (s *Server) V3InternalSdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return s.SdmxAvailability(ctx, in)
+}

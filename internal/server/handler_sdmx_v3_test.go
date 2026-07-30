@@ -327,6 +327,51 @@ func TestSdmxAvailabilityValidation(t *testing.T) {
 	}
 }
 
+func TestV3InternalSdmxDataForwardsRequest(t *testing.T) {
+	ds := &sdmxDataSource{result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout})}
+	server := newSdmxHandlerTestServer(ds)
+	request := &sdmxpb.SdmxDataQuery{
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+		},
+	}
+
+	got, err := server.V3InternalSdmxData(context.Background(), request)
+	if err != nil {
+		t.Fatalf("V3InternalSdmxData() error = %v", err)
+	}
+	if !proto.Equal(ds.dataRequest, request) {
+		t.Fatalf("V3InternalSdmxData() request = %v, want %v", ds.dataRequest, request)
+	}
+	if !proto.Equal(got, ds.result) {
+		t.Fatalf("V3InternalSdmxData() response = %v, want %v", got, ds.result)
+	}
+}
+
+func TestV3InternalSdmxAvailabilityForwardsRequest(t *testing.T) {
+	ds := &sdmxDataSource{
+		availabilityResult: &sdmxpb.SdmxAvailabilityResult{Values: []string{"country/USA"}},
+	}
+	server := newSdmxHandlerTestServer(ds)
+	request := &sdmxpb.SdmxAvailabilityQuery{
+		ComponentId: datacommons.ComponentObservationAbout,
+		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
+		},
+	}
+
+	got, err := server.V3InternalSdmxAvailability(context.Background(), request)
+	if err != nil {
+		t.Fatalf("V3InternalSdmxAvailability() error = %v", err)
+	}
+	if !proto.Equal(ds.availabilityRequest, request) {
+		t.Fatalf("V3InternalSdmxAvailability() request = %v, want %v", ds.availabilityRequest, request)
+	}
+	if !proto.Equal(got, ds.availabilityResult) {
+		t.Fatalf("V3InternalSdmxAvailability() response = %v, want %v", got, ds.availabilityResult)
+	}
+}
+
 func newSdmxHandlerTestServer(ds *sdmxDataSource) *Server {
 	sources := datasources.NewDataSources([]datasource.DataSource{ds}, nil)
 	return &Server{

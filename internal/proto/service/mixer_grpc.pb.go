@@ -47,6 +47,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
 	Mixer_V3SdmxAvailability_FullMethodName           = "/datacommons.Mixer/V3SdmxAvailability"
+	Mixer_V3InternalSdmxData_FullMethodName           = "/datacommons.Mixer/V3InternalSdmxData"
+	Mixer_V3InternalSdmxAvailability_FullMethodName   = "/datacommons.Mixer/V3InternalSdmxAvailability"
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
@@ -122,6 +124,8 @@ const (
 type MixerClient interface {
 	V3SdmxData(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[httpbody.HttpBody], error)
 	V3SdmxAvailability(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
+	V3InternalSdmxData(ctx context.Context, in *sdmx.SdmxDataQuery, opts ...grpc.CallOption) (*sdmx.SdmxDataResult, error)
+	V3InternalSdmxAvailability(ctx context.Context, in *sdmx.SdmxAvailabilityQuery, opts ...grpc.CallOption) (*sdmx.SdmxAvailabilityResult, error)
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
@@ -257,6 +261,26 @@ func (c *mixerClient) V3SdmxAvailability(ctx context.Context, in *sdmx.SdmxRestR
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(httpbody.HttpBody)
 	err := c.cc.Invoke(ctx, Mixer_V3SdmxAvailability_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3InternalSdmxData(ctx context.Context, in *sdmx.SdmxDataQuery, opts ...grpc.CallOption) (*sdmx.SdmxDataResult, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(sdmx.SdmxDataResult)
+	err := c.cc.Invoke(ctx, Mixer_V3InternalSdmxData_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3InternalSdmxAvailability(ctx context.Context, in *sdmx.SdmxAvailabilityQuery, opts ...grpc.CallOption) (*sdmx.SdmxAvailabilityResult, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(sdmx.SdmxAvailabilityResult)
+	err := c.cc.Invoke(ctx, Mixer_V3InternalSdmxAvailability_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -940,6 +964,8 @@ func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImpor
 type MixerServer interface {
 	V3SdmxData(*sdmx.SdmxRestRequest, grpc.ServerStreamingServer[httpbody.HttpBody]) error
 	V3SdmxAvailability(context.Context, *sdmx.SdmxRestRequest) (*httpbody.HttpBody, error)
+	V3InternalSdmxData(context.Context, *sdmx.SdmxDataQuery) (*sdmx.SdmxDataResult, error)
+	V3InternalSdmxAvailability(context.Context, *sdmx.SdmxAvailabilityQuery) (*sdmx.SdmxAvailabilityResult, error)
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
@@ -1056,6 +1082,12 @@ func (UnimplementedMixerServer) V3SdmxData(*sdmx.SdmxRestRequest, grpc.ServerStr
 }
 func (UnimplementedMixerServer) V3SdmxAvailability(context.Context, *sdmx.SdmxRestRequest) (*httpbody.HttpBody, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3SdmxAvailability not implemented")
+}
+func (UnimplementedMixerServer) V3InternalSdmxData(context.Context, *sdmx.SdmxDataQuery) (*sdmx.SdmxDataResult, error) {
+	return nil, status.Error(codes.Unimplemented, "method V3InternalSdmxData not implemented")
+}
+func (UnimplementedMixerServer) V3InternalSdmxAvailability(context.Context, *sdmx.SdmxAvailabilityQuery) (*sdmx.SdmxAvailabilityResult, error) {
+	return nil, status.Error(codes.Unimplemented, "method V3InternalSdmxAvailability not implemented")
 }
 func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3Node not implemented")
@@ -1303,6 +1335,42 @@ func _Mixer_V3SdmxAvailability_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3SdmxAvailability(ctx, req.(*sdmx.SdmxRestRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3InternalSdmxData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(sdmx.SdmxDataQuery)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3InternalSdmxData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3InternalSdmxData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3InternalSdmxData(ctx, req.(*sdmx.SdmxDataQuery))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3InternalSdmxAvailability_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(sdmx.SdmxAvailabilityQuery)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3InternalSdmxAvailability(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3InternalSdmxAvailability_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3InternalSdmxAvailability(ctx, req.(*sdmx.SdmxAvailabilityQuery))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2523,6 +2591,14 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V3SdmxAvailability",
 			Handler:    _Mixer_V3SdmxAvailability_Handler,
+		},
+		{
+			MethodName: "V3InternalSdmxData",
+			Handler:    _Mixer_V3InternalSdmxData_Handler,
+		},
+		{
+			MethodName: "V3InternalSdmxAvailability",
+			Handler:    _Mixer_V3InternalSdmxAvailability_Handler,
 		},
 		{
 			MethodName: "V3Node",
