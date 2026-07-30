@@ -23,41 +23,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
-// Package-level constants representing standard resolver, property, metadata, and boundary literals.
-const (
-	ResolverPlace          = "place"
-	ResolverIndicator      = "indicator"
-	ResolverTopic          = "topic"
-	PropDescription        = "<-description->dcid"
-	DateLatest             = "LATEST"
-	DefaultPlaceWorld      = "World"
-	StatusSuccess          = "SUCCESS"
-	MetadataPlacesWithData = "places_with_data"
-	DcidSeparator          = ","
-	DcidTypeTopic          = "Topic"
-	DcidTypeVariable       = "StatisticalVariable"
-	DefaultSearchLimit     = 10
-	MaxSearchLimit         = 100
-	MinSearchLimit         = 0
-
-	TargetCustomOnly    = "custom_only"
-	TargetBaseOnly      = "base_only"
-	TargetBaseAndCustom = "base_and_custom"
-
-	dateTypeLatest = "latest"
-	dateTypeAll    = "all"
-	dateTypeRange  = "range"
-
-	nodePropertiesQuery = "->[name, typeOf]"
-)
-
-// validTargets contains the sorted set of supported resolution target identifiers.
-var validTargets = []string{
-	TargetBaseAndCustom,
-	TargetBaseOnly,
-	TargetCustomOnly,
-}
-
 // Mixer defines the strict subset of Mixer API capabilities
 // required by the agent package in-process.
 type Mixer interface {

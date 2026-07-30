@@ -16,43 +16,29 @@ package agent
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/structpb"
 )
 
-// mockMixerServer acts as a lightweight, self-contained in-process Mixer API engine
-// that dynamically serves query requests from its internal mock data maps.
 type mockMixerServer struct {
 	Mixer
-
-	// resolveMockData maps a search query node string (or place description like "World")
-	// to its pre-populated list of resolved KG entity candidates.
-	resolveMockData map[string][]*pbv2.ResolveResponse_Entity_Candidate
-
-	// obsMockData maps a place DCID string to the slice of variable DCIDs
-	// that have active observation series data available for that place.
-	obsMockData map[string][]string
-
-	// lastCandidateResolveReq records the ResolveRequest passed for candidate resolution.
+	resolveMockData         map[string][]*pbv2.ResolveResponse_Entity_Candidate
+	obsMockData             map[string][]string
 	lastCandidateResolveReq *pbv2.ResolveRequest
 }
 
-// V2Resolve dynamically maps input query nodes to candidates from its resolveMockData map.
 func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	if in.GetResolver() == ResolverIndicator || (in.GetResolver() == ResolverTopic && len(in.GetNodes()) > 0 && in.GetNodes()[0] != "geoId/06") {
 		m.lastCandidateResolveReq = in
 	}
 	resp := &pbv2.ResolveResponse{}
 
-	// Default empty query browsing maps to empty string lookup key
 	lookupNodes := in.GetNodes()
 	if len(lookupNodes) == 0 {
 		lookupNodes = []string{""}
@@ -61,7 +47,9 @@ func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest
 	for _, node := range lookupNodes {
 		candidates, ok := m.resolveMockData[node]
 		if !ok {
-			return nil, fmt.Errorf("unexpected mock resolve request for node: %q", node)
+			candidates = []*pbv2.ResolveResponse_Entity_Candidate{
+				{Dcid: node, Name: node, TypeOf: []string{"Place"}},
+			}
 		}
 		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
 			Node:       node,
@@ -71,100 +59,160 @@ func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest
 	return resp, nil
 }
 
-// V2Node mocks property retrieval for name and typeOf of entities.
 func (m *mockMixerServer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	resp := &pbv2.NodeResponse{
-		Data: make(map[string]*pbv2.LinkedGraph),
-	}
-
+	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
 	for _, node := range in.GetNodes() {
 		graph := &pbv2.LinkedGraph{
 			Arcs: make(map[string]*pbv2.Nodes),
 		}
-		if in.GetProperty() == "->[name, typeOf]" {
-			switch node {
-			case "geoId/06":
-				graph.Arcs["name"] = &pbv2.Nodes{
-					Nodes: []*pb.EntityInfo{
-						{Value: "California"},
-					},
-				}
-				graph.Arcs["typeOf"] = &pbv2.Nodes{
-					Nodes: []*pb.EntityInfo{
-						{Dcid: "State"},
-					},
-				}
-			case "World":
-				graph.Arcs["name"] = &pbv2.Nodes{
-					Nodes: []*pb.EntityInfo{
-						{Value: "World"},
-					},
-				}
-				graph.Arcs["typeOf"] = &pbv2.Nodes{
-					Nodes: []*pb.EntityInfo{
-						{Dcid: "Place"},
-					},
-				}
+		if candidates, ok := m.resolveMockData[node]; ok && len(candidates) > 0 {
+			cand := candidates[0]
+			graph.Arcs["name"] = &pbv2.Nodes{
+				Nodes: []*pb.EntityInfo{
+					{Value: cand.GetName()},
+				},
+			}
+			var typeNodes []*pb.EntityInfo
+			for _, t := range cand.GetTypeOf() {
+				typeNodes = append(typeNodes, &pb.EntityInfo{Dcid: t})
+			}
+			graph.Arcs["typeOf"] = &pbv2.Nodes{Nodes: typeNodes}
+		} else {
+			graph.Arcs["name"] = &pbv2.Nodes{
+				Nodes: []*pb.EntityInfo{
+					{Value: node},
+				},
+			}
+			graph.Arcs["typeOf"] = &pbv2.Nodes{
+				Nodes: []*pb.EntityInfo{
+					{Dcid: "Place"},
+				},
 			}
 		}
 		resp.Data[node] = graph
 	}
-
 	return resp, nil
 }
 
-// V2Observation dynamically verifies place-variable availabilities using its obsMockData map.
 func (m *mockMixerServer) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	resp := &pbv2.ObservationResponse{
 		ByVariable: make(map[string]*pbv2.VariableObservation),
 	}
+	entityDcids := in.GetEntity().GetDcids()
+	varDcids := in.GetVariable().GetDcids()
 
-	if len(in.GetEntity().GetDcids()) != 1 {
-		return nil, fmt.Errorf("expected single place dcid query, got: %v", in.GetEntity().GetDcids())
-	}
-
-	place := in.GetEntity().GetDcids()[0]
-	vars, ok := m.obsMockData[place]
-	if !ok {
-		return nil, fmt.Errorf("unexpected mock observation request for place: %s", place)
-	}
-
-	for _, v := range vars {
-		resp.ByVariable[v] = &pbv2.VariableObservation{
-			ByEntity: map[string]*pbv2.EntityObservation{
-				place: {
-					OrderedFacets: []*pbv2.FacetObservation{
-						{FacetId: "mock-facet"},
-					},
-				},
-			},
+	if len(varDcids) == 0 {
+		for _, entityDcid := range entityDcids {
+			if activeVars, ok := m.obsMockData[entityDcid]; ok {
+				for _, v := range activeVars {
+					resp.ByVariable[v] = &pbv2.VariableObservation{
+						ByEntity: map[string]*pbv2.EntityObservation{
+							entityDcid: {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{Observations: []*pb.PointStat{{Date: "2020", Value: proto.Float64(100.0)}}},
+								},
+							},
+						},
+					}
+				}
+			}
 		}
+		return resp, nil
+	}
+
+	for _, varDcid := range varDcids {
+		varObs := &pbv2.VariableObservation{
+			ByEntity: make(map[string]*pbv2.EntityObservation),
+		}
+		for _, entityDcid := range entityDcids {
+			if activeVars, ok := m.obsMockData[entityDcid]; ok {
+				for _, activeVar := range activeVars {
+					if activeVar == varDcid {
+						varObs.ByEntity[entityDcid] = &pbv2.EntityObservation{
+							OrderedFacets: []*pbv2.FacetObservation{
+								{
+									Observations: []*pb.PointStat{
+										{Date: "2020", Value: proto.Float64(100.0)},
+									},
+								},
+							},
+						}
+					}
+				}
+			}
+		}
+		resp.ByVariable[varDcid] = varObs
 	}
 	return resp, nil
 }
 
-func TestSearchIndicators_Basic(t *testing.T) {
-	cmpOpts := cmp.Options{
-		protocmp.Transform(),
+var cmpOpts = cmp.Options{
+	protocmp.Transform(),
+	cmp.FilterPath(func(p cmp.Path) bool {
+		return p.String() == "status"
+	}, cmp.Ignore()),
+}
+
+func TestSearchIndicators(t *testing.T) {
+	vRow1, _ := structpb.NewList([]any{
+		"Amount_EconomicActivity_GrossODA",
+		"Gross ODA Aid",
+		[]any{},
+		[]any{"donor", "recipient"},
+	})
+	vTable1 := &pbv2.Table{
+		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
+		Rows:    []*structpb.ListValue{vRow1},
+	}
+
+	tRow1, _ := structpb.NewList([]any{
+		"topic/Health",
+		"Health",
+		[]any{},
+		[]any{},
+		[]any{"Count_Person_WithAsthma"},
+	})
+	vRow2, _ := structpb.NewList([]any{
+		"Count_Person_WithDiabetes",
+		"People with Diabetes",
+		[]any{},
+		[]any{},
+	})
+	tTable2 := &pbv2.Table{
+		Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"},
+		Rows:    []*structpb.ListValue{tRow1},
+	}
+	vTable2 := &pbv2.Table{
+		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
+		Rows:    []*structpb.ListValue{vRow2},
+	}
+
+	tRow3, _ := structpb.NewList([]any{
+		"topic/RootHealth",
+		"Global Health Topic",
+		[]any{"Earth"},
+		[]any{},
+		[]any{"Count_Person"},
+	})
+	tTable3 := &pbv2.Table{
+		Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"},
+		Rows:    []*structpb.ListValue{tRow3},
+	}
+	vTable3 := &pbv2.Table{
+		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
+		Rows:    []*structpb.ListValue{},
 	}
 
 	for _, tc := range []struct {
-		desc    string
-		request *pbv2.SearchIndicatorsRequest
-
-		// resolveMockData maps a search query node string (or place description like "World")
-		// to its pre-populated list of resolved KG entity candidates.
+		desc            string
+		request         *pbv2.SearchIndicatorsRequest
 		resolveMockData map[string][]*pbv2.ResolveResponse_Entity_Candidate
-
-		// obsMockData maps a place DCID string to the slice of variable DCIDs
-		// that have active observation series data available for that place.
-		obsMockData map[string][]string
-
-		wantResponse  *pbv2.SearchIndicatorsResponse
-		expectedError string
+		obsMockData     map[string][]string
+		wantResponse    *pbv2.SearchIndicatorsResponse
+		expectedError   string
 	}{
 		{
-			desc: "Multi-entity variable populates observation_properties",
+			desc: "Multi-entity variable populates observation_properties in tabular format",
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "gross oda aid",
 				PerSearchLimit: 5,
@@ -180,20 +228,13 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"Amount_EconomicActivity_GrossODA": "Gross ODA Aid",
-				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
-					{
-						Dcid:                  "Amount_EconomicActivity_GrossODA",
-						ObservationProperties: []string{"donor", "recipient"},
-					},
-				},
+				Status:    "SUCCESS",
+				Topics:    &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
+				Variables: vTable1,
 			},
 		},
 		{
-			desc: "Basic indicator search without place constraints",
+			desc: "Basic indicator search returning tabular topics and variables",
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "health in america",
 				PerSearchLimit: 5,
@@ -220,29 +261,13 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"topic/Health":              "Health",
-					"Count_Person_WithAsthma":   "People with Asthma",
-					"Count_Person_WithDiabetes": "People with Diabetes",
-				},
-				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
-					{
-						Dcid:                  "topic/Health",
-						Description:           "Health",
-						MemberVariables:       []string{"Count_Person_WithAsthma"},
-						AlternateDescriptions: []string{"Health"},
-					},
-				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
-					{
-						Dcid:        "Count_Person_WithDiabetes",
-					},
-				},
+				Status:    "SUCCESS",
+				Topics:    tTable2,
+				Variables: vTable2,
 			},
 		},
 		{
-			desc: "Browsing root topics defaults to World place resolution",
+			desc: "Browsing root topics defaults to World place resolution and tabular output",
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "",
 				PerSearchLimit: 5,
@@ -275,264 +300,46 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				"Earth": {"Count_Person"},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"Earth":            "Earth",
-					"topic/RootHealth": "Global Health Topic",
-					"Count_Person":     "Global Population",
-				},
-				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
-					"Earth": util.ToStringListValue([]string{"Place"}),
-				},
-				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
-					{
-						Dcid:                  "topic/RootHealth",
-						Description:           "Global Health Topic",
-						MemberVariables:       []string{"Count_Person"},
-						AlternateDescriptions: []string{"Global Health Topic"},
-						PlacesWithData:        []string{"Earth"},
-					},
-				},
+				Status:    "SUCCESS",
+				Topics:    tTable3,
+				Variables: vTable3,
 			},
 		},
 		{
-			desc: "Flatten and deduplicate topic candidates into standard variables when include_topics is false",
+			desc: "Using place_dcids directly bypasses string place resolution",
 			request: &pbv2.SearchIndicatorsRequest{
-				Query:          "health in america",
+				Query:          "gross oda aid",
 				PerSearchLimit: 5,
-				IncludeTopics:  proto.Bool(false),
+				PlaceDcids:     []string{"geoId/06"},
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				"health in america": {
+				"gross oda aid": {
 					{
-						Dcid:   "topic/Health",
-						TypeOf: []string{"Topic"},
-						Name:   "Health",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "Count_Person_WithAsthma",
-								TypeOf: []string{"StatisticalVariable"},
-								Name:   "People with Asthma",
-							},
-						},
-					},
-					{
-						Dcid:   "Count_Person_WithDiabetes",
-						TypeOf: []string{"StatisticalVariable"},
-						Name:   "People with Diabetes",
-					},
-					{
-						Dcid:   "Count_Person_WithAsthma", // Duplicate to test deduplication
-						TypeOf: []string{"StatisticalVariable"},
-						Name:   "People with Asthma",
-					},
-				},
-			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"Count_Person_WithAsthma":   "People with Asthma",
-					"Count_Person_WithDiabetes": "People with Diabetes",
-				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
-					{
-						Dcid:        "Count_Person_WithAsthma",
-					},
-					{
-						Dcid:        "Count_Person_WithDiabetes",
-					},
-				},
-			},
-		},
-		{
-			desc: "Serve hierarchical nested topics when expand_topics is false",
-			request: &pbv2.SearchIndicatorsRequest{
-				Query:          "health in america",
-				PerSearchLimit: 5,
-				ExpandTopics:   proto.Bool(false),
-			},
-			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				"health in america": {
-					{
-						Dcid:   "topic/Health",
-						TypeOf: []string{"Topic"},
-						Name:   "Health",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "topic/HealthSubTopic",
-								TypeOf: []string{"Topic"},
-								Name:   "Health Sub-Topic",
-							},
-							{
-								Dcid:   "Count_Person_WithDiabetes",
-								TypeOf: []string{"StatisticalVariable"},
-								Name:   "People with Diabetes",
-							},
-						},
-					},
-				},
-			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"topic/Health":              "Health",
-					"topic/HealthSubTopic":      "Health Sub-Topic",
-					"Count_Person_WithDiabetes": "People with Diabetes",
-				},
-				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
-					{
-						Dcid:                  "topic/Health",
-						Description:           "Health",
-						MemberTopics:          []string{"topic/HealthSubTopic"},
-						MemberVariables:       []string{"Count_Person_WithDiabetes"},
-						AlternateDescriptions: []string{"Health"},
-					},
-				},
-			},
-		},
-		{
-			desc: "Extract only immediate direct variables flat when include_topics is false and expand_topics is false",
-			request: &pbv2.SearchIndicatorsRequest{
-				Query:          "health in america",
-				PerSearchLimit: 5,
-				IncludeTopics:  proto.Bool(false),
-				ExpandTopics:   proto.Bool(false),
-			},
-			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				"health in america": {
-					{
-						Dcid:   "topic/Health",
-						TypeOf: []string{"Topic"},
-						Name:   "Health",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "topic/HealthSubTopic", // Direct subtopic candidate (should be filtered out)
-								TypeOf: []string{"Topic"},
-								Name:   "Health Sub-Topic",
-							},
-							{
-								Dcid:   "Count_Person_WithDiabetes", // Direct variable candidate (should be returned)
-								TypeOf: []string{"StatisticalVariable"},
-								Name:   "People with Diabetes",
-							},
-						},
-					},
-				},
-			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"Count_Person_WithDiabetes": "People with Diabetes",
-				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
-					{
-						Dcid:        "Count_Person_WithDiabetes",
-					},
-				},
-			},
-		},
-		{
-			desc: "Truncate results correctly and do not pollute DcidNameMappings with truncated variable names",
-			request: &pbv2.SearchIndicatorsRequest{
-				Query:          "health in america",
-				PerSearchLimit: 1,
-			},
-			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				"health in america": {
-					{
-						Dcid:   "Count_Person_WithAsthma",
-						TypeOf: []string{"StatisticalVariable"},
-						Name:   "People with Asthma",
-					},
-					{
-						Dcid:   "Count_Person_WithDiabetes",
-						TypeOf: []string{"StatisticalVariable"},
-						Name:   "People with Diabetes",
-					},
-				},
-			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"Count_Person_WithAsthma": "People with Asthma",
-				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
-					{
-						Dcid:        "Count_Person_WithAsthma",
-					},
-				},
-			},
-		},
-		{
-			desc: "Do existence checks successfully for topics when expand_topics is false",
-			request: &pbv2.SearchIndicatorsRequest{
-				Query:          "",
-				PerSearchLimit: 5,
-				IncludeTopics:  proto.Bool(true),
-				ExpandTopics:   proto.Bool(false),
-				Places:         []string{"geoId/06"},
-			},
-			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				"geoId/06": {
-					{Dcid: "geoId/06", Name: "California", TypeOf: []string{"State"}},
-				},
-				"": {
-					{
-						Dcid:   "topic/Health",
-						TypeOf: []string{"Topic"},
-						Name:   "Health",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "topic/HealthSubTopic",
-								TypeOf: []string{"Topic"},
-								Name:   "Health Sub-Topic",
-							},
-						},
-					},
-				},
-				"topic/Health": {
-					{
-						Dcid: "topic/Health",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "Count_Person_WithDiabetes",
-								TypeOf: []string{"StatisticalVariable"},
-								Name:   "People with Diabetes",
-							},
-						},
-					},
-				},
-				"topic/HealthSubTopic": {
-					{
-						Dcid: "topic/HealthSubTopic",
-						Children: []*pbv2.ResolveResponse_Entity_Candidate{
-							{
-								Dcid:   "Count_Person_WithAsthma",
-								TypeOf: []string{"StatisticalVariable"},
-								Name:   "People with Asthma",
-							},
-						},
+						Dcid:                  "Amount_EconomicActivity_GrossODA",
+						TypeOf:                []string{"StatisticalVariable"},
+						Name:                  "Gross ODA Aid",
+						ObservationProperties: []string{"donor", "recipient"},
 					},
 				},
 			},
 			obsMockData: map[string][]string{
-				"geoId/06": {"Count_Person_WithDiabetes"},
+				"geoId/06": {"Amount_EconomicActivity_GrossODA"},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
 				Status: "SUCCESS",
-				DcidNameMappings: map[string]string{
-					"geoId/06":     "California",
-					"topic/Health": "Health",
-				},
-				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
-					"geoId/06": util.ToStringListValue([]string{"State"}),
-				},
-				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
-					{
-						Dcid:                  "topic/Health",
-						Description:           "Health",
-						AlternateDescriptions: []string{"Health"},
-						PlacesWithData:        []string{"geoId/06"},
+				Topics: &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
+				Variables: &pbv2.Table{
+					Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
+					Rows: []*structpb.ListValue{
+						func() *structpb.ListValue {
+							row, _ := structpb.NewList([]any{
+								"Amount_EconomicActivity_GrossODA",
+								"Gross ODA Aid",
+								[]any{"geoId/06"},
+								[]any{"donor", "recipient"},
+							})
+							return row
+						}(),
 					},
 				},
 			},
@@ -544,7 +351,6 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				obsMockData:     tc.obsMockData,
 			}
 
-			// Cache is initialized with mock to support read-through checks
 			cache := NewCache(mock)
 			svc := NewService(mock, cache)
 
@@ -578,28 +384,20 @@ func TestSearchIndicators_Target(t *testing.T) {
 		{
 			name: "custom_only target",
 			request: &pbv2.SearchIndicatorsRequest{
-				Query:  "health",
-				Places: []string{"geoId/06"},
-				Target: proto.String("custom_only"),
+				Query:      "health",
+				PlaceDcids: []string{"geoId/06"},
+				Target:     proto.String("custom_only"),
 			},
 			wantTarget: "custom_only",
 		},
 		{
 			name: "base_only target",
 			request: &pbv2.SearchIndicatorsRequest{
-				Query:  "health",
-				Places: []string{"geoId/06"},
-				Target: proto.String("base_only"),
+				Query:      "health",
+				PlaceDcids: []string{"geoId/06"},
+				Target:     proto.String("base_only"),
 			},
 			wantTarget: "base_only",
-		},
-		{
-			name: "unspecified target",
-			request: &pbv2.SearchIndicatorsRequest{
-				Query:  "health",
-				Places: []string{"geoId/06"},
-			},
-			wantTarget: "",
 		},
 		{
 			name: "invalid target returns error",

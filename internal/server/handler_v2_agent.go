@@ -21,6 +21,15 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
+// V2AgentResolvePlaces implements API for mixer.V2AgentResolvePlaces.
+// It delegates incoming RPC requests directly to the isolated agent.Service layer.
+func (s *Server) V2AgentResolvePlaces(
+	ctx context.Context,
+	in *pbv2.ResolvePlacesRequest,
+) (*pbv2.ResolvePlacesResponse, error) {
+	return s.agentService.ResolvePlaces(ctx, in)
+}
+
 // V2AgentSearchIndicators implements API for mixer.V2AgentSearchIndicators.
 // It delegates incoming RPC requests directly to the isolated agent.Service layer.
 func (s *Server) V2AgentSearchIndicators(
