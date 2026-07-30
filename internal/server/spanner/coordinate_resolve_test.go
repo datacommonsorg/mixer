@@ -16,7 +16,9 @@ package spanner
 
 import (
 	"context"
+	"fmt"
 	"testing"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -130,6 +132,9 @@ func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, no
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
 func (m *coordinateMockSpannerClient) Start()     {}
 func (m *coordinateMockSpannerClient) Close()     {}
+func (m *coordinateMockSpannerClient) SpannerStalenessTimestamp() (time.Time, error) {
+	return time.Time{}, fmt.Errorf("Spanner staleness timestamp not available")
+}
 
 func TestResolveCoordinate(t *testing.T) {
 	t.Parallel()
