@@ -124,7 +124,11 @@ const (
 type MixerClient interface {
 	V3SdmxData(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (Mixer_V3SdmxDataClient, error)
 	V3SdmxAvailability(ctx context.Context, in *sdmx.SdmxRestRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
+	// Internal endpoint for structured SDMX data queries between remote data sources.
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxData(ctx context.Context, in *sdmx.SdmxDataQuery, opts ...grpc.CallOption) (*sdmx.SdmxDataResult, error)
+	// Internal endpoint for structured SDMX availability queries between remote data sources.
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxAvailability(ctx context.Context, in *sdmx.SdmxAvailabilityQuery, opts ...grpc.CallOption) (*sdmx.SdmxAvailabilityResult, error)
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
@@ -907,7 +911,11 @@ func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImpor
 type MixerServer interface {
 	V3SdmxData(*sdmx.SdmxRestRequest, Mixer_V3SdmxDataServer) error
 	V3SdmxAvailability(context.Context, *sdmx.SdmxRestRequest) (*httpbody.HttpBody, error)
+	// Internal endpoint for structured SDMX data queries between remote data sources.
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxData(context.Context, *sdmx.SdmxDataQuery) (*sdmx.SdmxDataResult, error)
+	// Internal endpoint for structured SDMX availability queries between remote data sources.
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxAvailability(context.Context, *sdmx.SdmxAvailabilityQuery) (*sdmx.SdmxAvailabilityResult, error)
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)

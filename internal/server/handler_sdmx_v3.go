@@ -101,11 +101,15 @@ func (s *Server) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabili
 }
 
 // V2InternalSdmxData handles internal structured SDMX Data requests.
+// Note: /v2/internal path prefix is used (instead of /v3) to ensure remote inter-instance
+// calls succeed across existing proxy policies (e.g. Apigee) that block /v3 routes.
 func (s *Server) V2InternalSdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 	return s.SdmxData(ctx, in)
 }
 
 // V2InternalSdmxAvailability handles internal structured SDMX Availability requests.
+// Note: /v2/internal path prefix is used (instead of /v3) to ensure remote inter-instance
+// calls succeed across existing proxy policies (e.g. Apigee) that block /v3 routes.
 func (s *Server) V2InternalSdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	return s.SdmxAvailability(ctx, in)
 }
