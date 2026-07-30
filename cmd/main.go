@@ -538,12 +538,13 @@ func main() {
 		dispatcher,
 		flags,
 		&server.MixerServerOptions{
-			CacheData:               c,
-			MapsClient:              mapsClient,
-			WriteUsageLogs:          *writeUsageLogs,
-			EmbeddingsServiceClient: embeddingsServiceClient,
-			UseSpannerGraph:         *useSpannerGraph,
-			TopicExpander:           topicExpander,
+			CacheData:                         c,
+			SpannerStalenessTimestampProvider: spannerClient,
+			MapsClient:                        mapsClient,
+			WriteUsageLogs:                    *writeUsageLogs,
+			EmbeddingsServiceClient:           embeddingsServiceClient,
+			UseSpannerGraph:                   *useSpannerGraph,
+			TopicExpander:                     topicExpander,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)

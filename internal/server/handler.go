@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Query implements API for Mixer.Query.
@@ -223,13 +224,20 @@ func (s *Server) GetVersion(
 	if err != nil {
 		return nil, err
 	}
+	var spannerStalenessTimestamp *timestamppb.Timestamp
+	if s.spannerStalenessTimestampProvider != nil {
+		if timestamp, err := s.spannerStalenessTimestampProvider.SpannerStalenessTimestamp(); err == nil {
+			spannerStalenessTimestamp = timestamppb.New(timestamp)
+		}
+	}
 	return &pb.GetVersionResponse{
-		Tables:            tableNames,
-		Bigquery:          s.metadata.BigQueryDataset,
-		GitHash:           os.Getenv("MIXER_HASH"),
-		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
-		FeatureFlags:      string(featureFlagsJson),
-		DataSourceIds:     s.dispatcher.GetSources(),
+		Tables:                    tableNames,
+		Bigquery:                  s.metadata.BigQueryDataset,
+		GitHash:                   os.Getenv("MIXER_HASH"),
+		RemoteMixerDomain:         s.metadata.RemoteMixerDomain,
+		FeatureFlags:              string(featureFlagsJson),
+		DataSourceIds:             s.dispatcher.GetSources(),
+		SpannerStalenessTimestamp: spannerStalenessTimestamp,
 	}, nil
 }
 
