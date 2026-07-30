@@ -80,13 +80,11 @@ func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv
 }
 
 func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
-	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
-	return &sdmxpb.SdmxDataResult{}, nil
+	return rds.client.SdmxData(req)
 }
 
 func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
-	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
-	return &sdmxpb.SdmxAvailabilityResult{}, nil
+	return rds.client.SdmxAvailability(req)
 }
 
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
