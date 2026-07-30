@@ -46,37 +46,37 @@ func (rds *RemoteDataSource) Id() string {
 
 func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	// The remote datasource currently calls V2 node, which does not use custom pageSize.
-	// TODO: Propagate ctx through RemoteClient and FetchRemote and configure a
-	// bounded HTTP timeout so remote requests honor cancellation and deadlines.
-	return rds.client.Node(req)
+	// TODO: Configure a bounded HTTP timeout in FetchRemote so remote requests honor
+	// cancellation and deadlines.
+	return rds.client.Node(ctx, req)
 }
 
 func (rds *RemoteDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	return rds.client.Observation(req)
+	return rds.client.Observation(ctx, req)
 }
 
 func (rds *RemoteDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
-	return rds.client.NodeSearch(req)
+	return rds.client.NodeSearch(ctx, req)
 }
 
 func (rds *RemoteDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	return rds.client.Resolve(req)
+	return rds.client.Resolve(ctx, req)
 }
 
 func (rds *RemoteDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
-	return rds.client.Sparql(req)
+	return rds.client.Sparql(ctx, req)
 }
 
 func (rds *RemoteDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
-	return rds.client.Event(req)
+	return rds.client.Event(ctx, req)
 }
 
 func (rds *RemoteDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
-	return rds.client.BulkVariableInfo(req)
+	return rds.client.BulkVariableInfo(ctx, req)
 }
 
 func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	return rds.client.BulkVariableGroupInfo(req)
+	return rds.client.BulkVariableGroupInfo(ctx, req)
 }
 
 func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
@@ -88,5 +88,5 @@ func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.S
 }
 
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
-	return rds.client.FilterStatVarsByEntity(req)
+	return rds.client.FilterStatVarsByEntity(ctx, req)
 }

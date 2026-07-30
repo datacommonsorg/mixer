@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
@@ -369,53 +370,61 @@ func (s *Server) handleV2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.Observation(ctx, in)
-	}
-
-	v2StartTime := time.Now()
-
+	var v2Resp *pbv2.ObservationResponse
+	var queryType shared.QueryType
+	var err error
 	surface, toRemote := util.GetMetadata(ctx)
 
-	initialResp, queryType, err := v2observation.ObservationInternal(
-		ctx,
-		s.store,
-		s.cachedata.Load(),
-		s.metadata,
-		s.httpClient,
-		in,
-		surface)
-	if err != nil {
-		return nil, err
-	}
-	calculatedResps, err := v2observation.MaybeCalculateHoles(
-		ctx,
-		s.store,
-		s.cachedata.Load(),
-		s.metadata,
-		s.httpClient,
-		in,
-		initialResp,
-		surface,
-	)
-	if err != nil {
-		return nil, err
-	}
-	// initialResp is preferred over any calculated response.
-	combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
-	v2Resp := merger.MergeMultiObservation(combinedResp)
-	v2Latency := time.Since(v2StartTime)
+	if s.shouldDivertV2(ctx) {
+		v2Resp, err = s.dispatcher.Observation(ctx, in)
+		if err != nil {
+			return nil, err
+		}
+		queryType = v2observation.GetQueryType(in)
+	} else {
+		v2StartTime := time.Now()
 
-	s.maybeMirrorV3(
-		ctx,
-		in,
-		v2Resp,
-		v2Latency,
-		func(ctx context.Context, req proto.Message) (proto.Message, error) {
-			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
-		},
-		GetV2ObservationCmpOpts(),
-	)
+		initialResp, qt, err := v2observation.ObservationInternal(
+			ctx,
+			s.store,
+			s.cachedata.Load(),
+			s.metadata,
+			s.httpClient,
+			in,
+			surface)
+		if err != nil {
+			return nil, err
+		}
+		queryType = qt
+		calculatedResps, err := v2observation.MaybeCalculateHoles(
+			ctx,
+			s.store,
+			s.cachedata.Load(),
+			s.metadata,
+			s.httpClient,
+			in,
+			initialResp,
+			surface,
+		)
+		if err != nil {
+			return nil, err
+		}
+		// initialResp is preferred over any calculated response.
+		combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
+		v2Resp = merger.MergeMultiObservation(combinedResp)
+		v2Latency := time.Since(v2StartTime)
+
+		s.maybeMirrorV3(
+			ctx,
+			in,
+			v2Resp,
+			v2Latency,
+			func(ctx context.Context, req proto.Message) (proto.Message, error) {
+				return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
+			},
+			GetV2ObservationCmpOpts(),
+		)
+	}
 
 	// Create a new ID to return as a header on the response.
 	// This is used for usage logging and in the website to log cached usage.

@@ -16,6 +16,7 @@
 package remote
 
 import (
+	"context"
 	"fmt"
 	"log/slog"
 	"net/http"
@@ -48,14 +49,22 @@ func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 	}, nil
 }
 
-func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+func getSurface(ctx context.Context) string {
+	if ctx == nil {
+		return ""
+	}
+	surface, _ := util.GetMetadata(ctx)
+	return surface
+}
+
+func (rc *RemoteClient) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	err := updateNodeRequestNextToken(req, rc.id)
 	if err != nil {
 		return nil, err
 	}
 
 	resp := &pbv2.NodeResponse{}
-	err = util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", req, resp)
+	err = util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
@@ -68,72 +77,72 @@ func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) 
 	return resp, nil
 }
 
-func (rc *RemoteClient) Observation(req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
+func (rc *RemoteClient) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	resp := &pbv2.ObservationResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) NodeSearch(req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
+func (rc *RemoteClient) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
 	resp := &pbv2.NodeSearchResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/node_search", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/node_search", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) Resolve(req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+func (rc *RemoteClient) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	resp := &pbv2.ResolveResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) Sparql(req *pb.SparqlRequest) (*pb.QueryResponse, error) {
+func (rc *RemoteClient) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
 	resp := &pb.QueryResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/sparql", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/sparql", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) Event(req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+func (rc *RemoteClient) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
 	resp := &pbv2.EventResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/event", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/event", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+func (rc *RemoteClient) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
 	resp := &pbv1.BulkVariableInfoResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) BulkVariableGroupInfo(req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+func (rc *RemoteClient) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	resp := &pbv1.BulkVariableGroupInfoResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable-group", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable-group", req, resp, getSurface(ctx))
 	if err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
-func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+func (rc *RemoteClient) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	resp := &pb.FilterStatVarsByEntityResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp, getSurface(ctx))
 	if err != nil {
 		slog.Error("Failed to fetch remote variable filter", "error", err)
 		return nil, err
