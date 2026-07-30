@@ -52,15 +52,16 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store                   *store.Store
-	metadata                *resource.Metadata
-	cachedata               atomic.Pointer[cache.Cache]
-	mapsClient              maps.MapsClient
-	httpClient              *http.Client
-	dispatcher              *dispatcher.Dispatcher
-	flags                   *featureflags.Flags
-	writeUsageLogs          bool
-	embeddingsServiceClient *resolve.EmbeddingsServiceClient
+	store                             *store.Store
+	metadata                          *resource.Metadata
+	cachedata                         atomic.Pointer[cache.Cache]
+	spannerStalenessTimestampProvider SpannerStalenessTimestampProvider
+	mapsClient                        maps.MapsClient
+	httpClient                        *http.Client
+	dispatcher                        *dispatcher.Dispatcher
+	flags                             *featureflags.Flags
+	writeUsageLogs                    bool
+	embeddingsServiceClient           *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph bool
 	topicExpander   resolve.TopicExpander
@@ -75,6 +76,11 @@ type Server struct {
 	stopPeriodicCh chan struct{}
 	periodicWg     sync.WaitGroup
 	periodicOnce   sync.Once
+}
+
+// SpannerStalenessTimestampProvider provides the timestamp used for stale Spanner reads.
+type SpannerStalenessTimestampProvider interface {
+	SpannerStalenessTimestamp() (time.Time, error)
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -293,12 +299,13 @@ func (s *Server) ClosePeriodicRefresher() {
 }
 
 type MixerServerOptions struct {
-	CacheData               *cache.Cache
-	MapsClient              maps.MapsClient
-	WriteUsageLogs          bool
-	EmbeddingsServiceClient *resolve.EmbeddingsServiceClient
-	UseSpannerGraph         bool
-	TopicExpander           resolve.TopicExpander
+	CacheData                         *cache.Cache
+	SpannerStalenessTimestampProvider SpannerStalenessTimestampProvider
+	MapsClient                        maps.MapsClient
+	WriteUsageLogs                    bool
+	EmbeddingsServiceClient           *resolve.EmbeddingsServiceClient
+	UseSpannerGraph                   bool
+	TopicExpander                     resolve.TopicExpander
 }
 
 // NewMixerServer creates a new mixer server instance.
@@ -319,6 +326,7 @@ func NewMixerServer(
 	}
 	if opts != nil {
 		s.mapsClient = opts.MapsClient
+		s.spannerStalenessTimestampProvider = opts.SpannerStalenessTimestampProvider
 		s.writeUsageLogs = opts.WriteUsageLogs
 		s.embeddingsServiceClient = opts.EmbeddingsServiceClient
 		s.useSpannerGraph = opts.UseSpannerGraph
