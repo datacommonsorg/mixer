@@ -22,6 +22,7 @@ import (
 	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -144,6 +145,24 @@ func (rc *RemoteClient) FilterStatVarsByEntity(ctx context.Context, req *pb.Filt
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp, getSurface(ctx))
 	if err != nil {
 		slog.Error("Failed to fetch remote variable filter", "error", err)
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) SdmxData(req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	resp := &sdmxpb.SdmxDataResult{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/data", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) SdmxAvailability(req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	resp := &sdmxpb.SdmxAvailabilityResult{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/availability", req, resp)
+	if err != nil {
 		return nil, err
 	}
 	return resp, nil
