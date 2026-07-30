@@ -373,6 +373,7 @@ func (s *Server) V2Observation(
 	var v2Resp *pbv2.ObservationResponse
 	var queryType shared.QueryType
 	var err error
+	surface, toRemote := util.GetMetadata(ctx)
 
 	if s.shouldDivertV2(ctx) {
 		v2Resp, err = s.dispatcher.Observation(ctx, in)
@@ -382,8 +383,6 @@ func (s *Server) V2Observation(
 		queryType = v2observation.GetQueryType(in)
 	} else {
 		v2StartTime := time.Now()
-
-		surface, _ := util.GetMetadata(ctx)
 
 		initialResp, qt, err := v2observation.ObservationInternal(
 			ctx,
@@ -426,8 +425,6 @@ func (s *Server) V2Observation(
 			GetV2ObservationCmpOpts(),
 		)
 	}
-
-	surface, toRemote := util.GetMetadata(ctx)
 
 	// Create a new ID to return as a header on the response.
 	// This is used for usage logging and in the website to log cached usage.

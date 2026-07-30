@@ -66,7 +66,7 @@ func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
 		receivedRemote = r.Header.Get("X-Remote")
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{}`))
+		_, _ = w.Write([]byte(`{}`))
 	}))
 	defer ts.Close()
 
