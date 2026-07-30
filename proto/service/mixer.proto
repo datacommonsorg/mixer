@@ -70,6 +70,26 @@ service Mixer {
     };
   }
 
+  // Internal endpoint for structured SDMX data queries between remote data sources.
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
+  rpc V2InternalSdmxData(datacommons.sdmx.SdmxDataQuery)
+      returns (datacommons.sdmx.SdmxDataResult) {
+    option (google.api.http) = {
+      post : "/v2/internal/sdmx/data"
+      body : "*"
+    };
+  }
+
+  // Internal endpoint for structured SDMX availability queries between remote data sources.
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
+  rpc V2InternalSdmxAvailability(datacommons.sdmx.SdmxAvailabilityQuery)
+      returns (datacommons.sdmx.SdmxAvailabilityResult) {
+    option (google.api.http) = {
+      post : "/v2/internal/sdmx/availability"
+      body : "*"
+    };
+  }
+
   // ======================  V3   V3   V3   V3  ======================
 
   rpc V3Node(datacommons.v2.NodeRequest) returns (datacommons.v2.NodeResponse) {
