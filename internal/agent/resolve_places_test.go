@@ -132,4 +132,28 @@ func TestResolvePlaces(t *testing.T) {
 			t.Errorf("ResolvePlaces() diff (-want +got):\n%s", diff)
 		}
 	})
+
+	t.Run("UnresolvedPlaces", func(t *testing.T) {
+		req := &pbv2.ResolvePlacesRequest{
+			Places: []string{"California", "NonExistentPlace"},
+		}
+		got, err := service.ResolvePlaces(ctx, req)
+		if err != nil {
+			t.Fatalf("ResolvePlaces failed: %v", err)
+		}
+
+		r1, _ := structpb.NewList([]any{"California", "geoId/06", "California", []any{"State"}})
+		r2, _ := structpb.NewList([]any{"NonExistentPlace", "", "", []any{}})
+
+		want := &pbv2.ResolvePlacesResponse{
+			Status: StatusSuccess,
+			ResolvedPlaces: &pbv2.Table{
+				Columns: []string{"query", "dcid", "name", "typeOf"},
+				Rows:    []*structpb.ListValue{r1, r2},
+			},
+		}
+		if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+			t.Errorf("ResolvePlaces() diff (-want +got):\n%s", diff)
+		}
+	})
 }

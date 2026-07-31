@@ -95,7 +95,14 @@ func (s *Service) SearchIndicators(
 	}
 
 	// Tabular Response Assembly
-	return s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
+	resp, err := s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
+	if err != nil {
+		return nil, err
+	}
+
+	slog.Info("SearchIndicators completed", "query", req.GetQuery(), "topicsCount", len(resp.GetTopics().GetRows()), "variablesCount", len(resp.GetVariables().GetRows()))
+
+	return resp, nil
 }
 
 // acquirePlaceDcids resolves place names or returns explicit place DCIDs.
@@ -112,8 +119,12 @@ func (s *Service) acquirePlaceDcids(
 			return nil, nil, "", err
 		}
 		var dcids []string
-		for _, info := range resolvedMap {
-			dcids = append(dcids, info.Dcid)
+		for _, name := range req.GetPlaces() {
+			if info, ok := resolvedMap[name]; ok && info.Dcid != "" {
+				if !slices.Contains(dcids, info.Dcid) {
+					dcids = append(dcids, info.Dcid)
+				}
+			}
 		}
 		return dcids, resolvedMap, parentDcid, nil
 	}
@@ -479,19 +490,19 @@ func hasPlacesWithData(
 	return places
 }
 
-// pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic itself has data.
+// pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic or any child has data.
 func pruneSingleTopic(
 	c *pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
 	topicDescendants map[string][]string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	parentPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
-	if len(parentPlaces) == 0 {
-		return nil, false
-	}
+	directPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
 
 	var keptChildren []*pbv2.ResolveResponse_Entity_Candidate
+	var allPlaces []string
+	allPlaces = append(allPlaces, directPlaces...)
+
 	for _, child := range c.GetChildren() {
 		var childPlaces []string
 		if isTopic(child) {
@@ -503,15 +514,21 @@ func pruneSingleTopic(
 		if len(childPlaces) > 0 {
 			setPlacesWithDataMetadata(child, childPlaces)
 			keptChildren = append(keptChildren, child)
+			for _, p := range childPlaces {
+				if !slices.Contains(allPlaces, p) {
+					allPlaces = append(allPlaces, p)
+				}
+			}
 		}
 	}
 
-	c.Children = keptChildren
-
-	if len(parentPlaces) > 0 {
-		setPlacesWithDataMetadata(c, parentPlaces)
+	if len(allPlaces) == 0 {
+		return nil, false
 	}
 
+	c.Children = keptChildren
+	slices.Sort(allPlaces)
+	setPlacesWithDataMetadata(c, allPlaces)
 	return c, true
 }
 
@@ -587,7 +604,9 @@ func (s *Service) fetchDescendantVariables(
 			for _, cand := range entity.GetCandidates() {
 				var vars []string
 				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
+					if !isTopic(child) && child.GetDcid() != "" {
+						vars = append(vars, child.GetDcid())
+					}
 				}
 				res[cand.GetDcid()] = vars
 			}
@@ -596,7 +615,9 @@ func (s *Service) fetchDescendantVariables(
 			var vars []string
 			for _, cand := range entity.GetCandidates() {
 				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
+					if !isTopic(child) && child.GetDcid() != "" {
+						vars = append(vars, child.GetDcid())
+					}
 				}
 			}
 			res[node] = vars
@@ -779,15 +800,21 @@ func (s *Service) enrichPlaceNamesAndTypes(
 		Nodes:    dcids,
 		Property: "->[name, typeOf]",
 	}
-	if nodeResp, err := s.mixer.V2Node(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
-		for _, info := range resolvedMap {
-			if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
-				if name := getPropValue(nodeData, "name"); name != "" {
-					info.Name = name
-				}
-				if types := getPropDcids(nodeData, "typeOf"); len(types) > 0 {
-					info.TypeOf = types
-				}
+	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	if err != nil {
+		slog.Warn("Failed to enrich resolved place names and types via V2Node", "error", err)
+		return
+	}
+	if nodeResp == nil || nodeResp.GetData() == nil {
+		return
+	}
+	for _, info := range resolvedMap {
+		if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
+			if name := getPropValue(nodeData, "name"); name != "" {
+				info.Name = name
+			}
+			if types := getPropDcids(nodeData, "typeOf"); len(types) > 0 {
+				info.TypeOf = types
 			}
 		}
 	}

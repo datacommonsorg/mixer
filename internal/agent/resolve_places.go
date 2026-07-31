@@ -73,6 +73,8 @@ func (s *Service) ResolvePlaces(
 		return nil, err
 	}
 
+	slog.Info("ResolvePlaces completed", "placesCount", len(req.GetPlaces()), "rowsCount", len(table.GetRows()))
+
 	return &pbv2.ResolvePlacesResponse{
 		Status:         StatusSuccess,
 		ResolvedPlaces: table,
@@ -106,7 +108,10 @@ func parseResolvedPlaceEntries(entities []*pbv2.ResolveResponse_Entity) ([]*reso
 
 	for _, entity := range entities {
 		query := entity.GetNode()
-		for _, candidate := range entity.GetCandidates() {
+		candidates := entity.GetCandidates()
+		addedCount := 0
+
+		for _, candidate := range candidates {
 			dcid := candidate.GetDcid()
 			if dcid == "" {
 				continue
@@ -118,11 +123,24 @@ func parseResolvedPlaceEntries(entities []*pbv2.ResolveResponse_Entity) ([]*reso
 				typeOf: candidate.GetTypeOf(),
 			}
 			entries = append(entries, entry)
+			addedCount++
 
 			if !slices.Contains(dcidsToEnrich, dcid) {
 				dcidsToEnrich = append(dcidsToEnrich, dcid)
 			}
 			dcidToEntries[dcid] = append(dcidToEntries[dcid], entry)
+		}
+
+		// If no valid candidates were resolved for this query, append an empty placeholder entry.
+		// This guarantees 1:1 row alignment between input place queries and output table rows,
+		// allowing conversational assistant callers to determine which requested queries failed to resolve.
+		if addedCount == 0 {
+			entries = append(entries, &resolvedPlaceEntry{
+				query:  query,
+				dcid:   "",
+				name:   "",
+				typeOf: []string{},
+			})
 		}
 	}
 	return entries, dcidsToEnrich, dcidToEntries
@@ -141,7 +159,11 @@ func (s *Service) enrichPlaceEntries(
 		Property: nodePropertiesQuery,
 	}
 	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
-	if err != nil || nodeResp == nil || nodeResp.GetData() == nil {
+	if err != nil {
+		slog.Warn("Failed to enrich place entries via V2Node", "error", err, "dcidsCount", len(dcidsToEnrich))
+		return
+	}
+	if nodeResp == nil || nodeResp.GetData() == nil {
 		return
 	}
 	for dcid, targetEntries := range dcidToEntries {

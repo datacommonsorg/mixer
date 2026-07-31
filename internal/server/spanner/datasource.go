@@ -654,6 +654,16 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 						"sentence": res.Name,
 					},
 				}
+				if slices.Contains(res.Types, TypeTopic) && sds.topicExpander != nil {
+					if name := sds.topicExpander.GetTopicDisplayName(errCtx, res.SubjectID); name != "" {
+						c.Name = name
+					}
+					children, err := sds.topicExpander.ExpandTopic(errCtx, res.SubjectID, req.Request.GetExpandTopics())
+					if err != nil {
+						slog.Error("Failed to expand topic during Spanner embedding resolution", "topic", res.SubjectID, "error", err)
+					}
+					c.Children = children
+				}
 				candidates = append(candidates, c)
 				if slices.Contains(res.Types, TypeStatisticalVariable) {
 					svDcids = append(svDcids, res.SubjectID)
