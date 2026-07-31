@@ -39,6 +39,7 @@ func (s *Service) SearchIndicators(
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
 	defer util.TimeTrack(time.Now(), "Agent: SearchIndicators")
+	//nolint:staticcheck // Deprecated place fields logged for diagnostic tracking
 	slog.Info("SearchIndicators started", "query", req.GetQuery(), "places", req.GetPlaces(), "placeDcids", req.GetPlaceDcids(), "parentPlace", req.GetParentPlace())
 
 	// Validate request parameters
@@ -113,6 +114,7 @@ func (s *Service) acquirePlaceDcids(
 	if len(req.GetPlaceDcids()) > 0 {
 		return req.GetPlaceDcids(), nil, "", nil
 	}
+	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
 	if len(req.GetPlaces()) > 0 || req.GetParentPlace() != "" {
 		resolvedMap, parentDcid, err := s.resolvePlaces(ctx, req.GetPlaces(), req.GetParentPlace(), req.GetTarget())
 		if err != nil {
@@ -197,6 +199,7 @@ func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
 	if limit < MinSearchLimit || limit > MaxSearchLimit {
 		return status.Errorf(codes.InvalidArgument, "per_search_limit must be between %d and %d, got: %d", MinSearchLimit, MaxSearchLimit, limit)
 	}
+	//nolint:staticcheck // Legacy request validation checks deprecated parent_place field
 	if req.GetParentPlace() != "" {
 		if len(req.GetPlaces()) == 0 {
 			return status.Errorf(codes.InvalidArgument, "places must be specified when parent_place is provided")
@@ -644,7 +647,7 @@ func buildTopicsTable(
 			break
 		}
 		var placesWithData []string
-		if pStr, ok := c.Metadata[MetadataPlacesWithData]; ok && pStr != "" {
+		if pStr, ok := c.GetMetadata()[MetadataPlacesWithData]; ok && pStr != "" {
 			placesWithData = strings.Split(pStr, DcidSeparator)
 		}
 		var memberTopics []string
@@ -694,7 +697,7 @@ func buildVariablesTable(
 			break
 		}
 		var placesWithData []string
-		if pStr, ok := c.Metadata[MetadataPlacesWithData]; ok && pStr != "" {
+		if pStr, ok := c.GetMetadata()[MetadataPlacesWithData]; ok && pStr != "" {
 			placesWithData = strings.Split(pStr, DcidSeparator)
 		}
 		placesList := util.ToStringListValue(placesWithData)
@@ -745,6 +748,7 @@ func (s *Service) translateToTabularResponse(
 }
 
 // populatePlaceMetadata aggregates place information and registers parent place structures.
+//nolint:staticcheck // Legacy response builder populates deprecated response fields
 func populatePlaceMetadata(
 	resp *pbv2.SearchIndicatorsResponse,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
