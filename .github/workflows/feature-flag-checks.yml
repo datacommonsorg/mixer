@@ -10,6 +10,7 @@ name: Feature flag checks
 
 # zizmor: ignore[dangerous-triggers] - {Must grant permission to write to the PR.}
 on:
+  # zizmor: ignore[dangerous-triggers,excessive-permissions] - {Must grant permission to write to the PR.}
   pull_request_target:
     branches: ["master"]
 
