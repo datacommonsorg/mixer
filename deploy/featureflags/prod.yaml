@@ -11,3 +11,4 @@ flags:
   EnableSDMXDataApi: true
   UseSpannerKeyValueStore: true
   UseNewIngestionHistorySchema: true
+  V2DivertFraction: 1.0
