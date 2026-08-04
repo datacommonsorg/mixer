@@ -73,16 +73,17 @@ message SearchIndicatorsResponse {
   }
 
   string status = 1;
+  map<string, string> dcid_name_mappings = 2 [deprecated = true];
+  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 3 [deprecated = true];
+  repeated Topic topics = 4 [deprecated = true];
+  repeated Variable variables = 5 [deprecated = true];
+  ResolvedPlace resolved_parent_place = 6 [deprecated = true];
 
   // Topics Table (columns: ["dcid", "name", "placesWithData", "memberTopics", "memberVariables"])
-  Table topics = 2;
+  Table topic_candidates = 7;
 
   // Variables Table (columns: ["dcid", "name", "placesWithData", "observationProperties"])
-  Table variables = 3;
-
-  map<string, string> dcid_name_mappings = 4 [deprecated = true];
-  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 5 [deprecated = true];
-  ResolvedPlace resolved_parent_place = 6 [deprecated = true];
+  Table variable_candidates = 8;
 }
 
 message EntityList {

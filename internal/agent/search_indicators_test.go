@@ -228,9 +228,9 @@ func TestSearchIndicators(t *testing.T) {
 				},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status:    "SUCCESS",
-				Topics:    &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
-				Variables: vTable1,
+				Status:             "SUCCESS",
+				TopicCandidates:    &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
+				VariableCandidates: vTable1,
 			},
 		},
 		{
@@ -261,9 +261,9 @@ func TestSearchIndicators(t *testing.T) {
 				},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status:    "SUCCESS",
-				Topics:    tTable2,
-				Variables: vTable2,
+				Status:             "SUCCESS",
+				TopicCandidates:    tTable2,
+				VariableCandidates: vTable2,
 			},
 		},
 		{
@@ -300,9 +300,9 @@ func TestSearchIndicators(t *testing.T) {
 				"Earth": {"Count_Person"},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status:    "SUCCESS",
-				Topics:    tTable3,
-				Variables: vTable3,
+				Status:             "SUCCESS",
+				TopicCandidates:    tTable3,
+				VariableCandidates: vTable3,
 			},
 		},
 		{
@@ -326,9 +326,9 @@ func TestSearchIndicators(t *testing.T) {
 				"geoId/06": {"Amount_EconomicActivity_GrossODA"},
 			},
 			wantResponse: &pbv2.SearchIndicatorsResponse{
-				Status: "SUCCESS",
-				Topics: &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
-				Variables: &pbv2.Table{
+				Status:          "SUCCESS",
+				TopicCandidates: &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
+				VariableCandidates: &pbv2.Table{
 					Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
 					Rows: []*structpb.ListValue{
 						func() *structpb.ListValue {
@@ -340,6 +340,53 @@ func TestSearchIndicators(t *testing.T) {
 							})
 							return row
 						}(),
+					},
+				},
+			},
+		},
+		{
+			desc: "Legacy request with places string populates legacy response fields for backward compatibility",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "gross oda aid",
+				Places:         []string{"California"},
+				PerSearchLimit: 5,
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"California": {
+					{Dcid: "geoId/06", Name: "California", TypeOf: []string{"State"}},
+				},
+				"geoId/06": {
+					{Dcid: "geoId/06", Name: "California", TypeOf: []string{"State"}},
+				},
+				"gross oda aid": {
+					{
+						Dcid:                  "Amount_EconomicActivity_GrossODA",
+						TypeOf:                []string{"StatisticalVariable"},
+						Name:                  "Gross ODA Aid",
+						ObservationProperties: []string{"donor", "recipient"},
+					},
+				},
+			},
+			obsMockData: map[string][]string{
+				"geoId/06": {"Amount_EconomicActivity_GrossODA"},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"Amount_EconomicActivity_GrossODA": "Gross ODA Aid",
+					"geoId/06":                          "California",
+				},
+				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
+					"geoId/06": func() *structpb.ListValue {
+						v, _ := structpb.NewList([]any{"State"})
+						return v
+					}(),
+				},
+				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+					{
+						Dcid:                  "Amount_EconomicActivity_GrossODA",
+						PlacesWithData:        []string{"geoId/06"},
+						ObservationProperties: []string{"donor", "recipient"},
 					},
 				},
 			},

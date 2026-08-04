@@ -65,12 +65,12 @@ func (s *Service) SearchIndicators(
 		expandTopics = req.GetExpandTopics()
 	}
 
+	// Phase 1: Resolve place names and fetch similarity candidates in parallel
 	var placeDcids []string
 	var resolvedPlaces map[string]*resolvedPlaceInfo
 	var parentPlaceDcid string
 	var candidates []*pbv2.ResolveResponse_Entity_Candidate
 
-	// Concurrent Place Acquisition & Candidate Search
 	g, gCtx := errgroup.WithContext(ctx)
 
 	g.Go(func() error {
@@ -81,105 +81,15 @@ func (s *Service) SearchIndicators(
 
 	g.Go(func() error {
 		var err error
-		candidates, err = s.fetchAndProcessCandidates(gCtx, req.GetQuery(), limit, includeTopics, expandTopics, req.GetTarget())
-		return err
-	})
-
-	if err := g.Wait(); err != nil {
-		return nil, err
-	}
-
-	// Concurrent Filtering & Legacy Place Enrichment
-	candidates, err := s.filterAndEnrichCandidates(ctx, candidates, placeDcids, resolvedPlaces, req.GetTarget())
-	if err != nil {
-		return nil, err
-	}
-
-	// Tabular Response Assembly
-	resp, err := s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
-	if err != nil {
-		return nil, err
-	}
-
-	slog.Info("SearchIndicators completed", "query", req.GetQuery(), "topicsCount", len(resp.GetTopics().GetRows()), "variablesCount", len(resp.GetVariables().GetRows()))
-
-	return resp, nil
-}
-
-// acquirePlaceDcids resolves place names or returns explicit place DCIDs.
-func (s *Service) acquirePlaceDcids(
-	ctx context.Context,
-	req *pbv2.SearchIndicatorsRequest,
-) ([]string, map[string]*resolvedPlaceInfo, string, error) {
-	if len(req.GetPlaceDcids()) > 0 {
-		return req.GetPlaceDcids(), nil, "", nil
-	}
-	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
-	if len(req.GetPlaces()) > 0 || req.GetParentPlace() != "" {
-		resolvedMap, parentDcid, err := s.resolvePlaces(ctx, req.GetPlaces(), req.GetParentPlace(), req.GetTarget())
+		oversampledLimit := limit * 2
+		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
+		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics, req.GetTarget())
 		if err != nil {
-			return nil, nil, "", err
-		}
-		var dcids []string
-		for _, name := range req.GetPlaces() {
-			if info, ok := resolvedMap[name]; ok && info.Dcid != "" {
-				if !slices.Contains(dcids, info.Dcid) {
-					dcids = append(dcids, info.Dcid)
-				}
-			}
-		}
-		return dcids, resolvedMap, parentDcid, nil
-	}
-	if req.GetQuery() == "" {
-		return []string{DefaultPlaceDcidWorld}, nil, "", nil
-	}
-	return nil, nil, "", nil
-}
-
-// fetchAndProcessCandidates executes vector search and applies topic expansion options.
-func (s *Service) fetchAndProcessCandidates(
-	ctx context.Context,
-	query string,
-	limit int32,
-	includeTopics bool,
-	expandTopics bool,
-	target string,
-) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
-	oversampledLimit := limit * 2
-	candidates, err := s.fetchCandidates(ctx, query, oversampledLimit, expandTopics, target)
-	if err != nil {
-		return nil, err
-	}
-	if !includeTopics {
-		candidates = expandTopicCandidates(candidates)
-	}
-	return candidates, nil
-}
-
-// filterAndEnrichCandidates concurrently filters candidates by place existence and enriches resolved place metadata.
-func (s *Service) filterAndEnrichCandidates(
-	ctx context.Context,
-	candidates []*pbv2.ResolveResponse_Entity_Candidate,
-	placeDcids []string,
-	resolvedPlaces map[string]*resolvedPlaceInfo,
-	target string,
-) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
-	g, gCtx := errgroup.WithContext(ctx)
-
-	var filteredCandidates []*pbv2.ResolveResponse_Entity_Candidate
-	g.Go(func() error {
-		if len(placeDcids) > 0 {
-			var err error
-			filteredCandidates, err = s.filterByPlaceExistence(gCtx, candidates, placeDcids, target)
 			return err
 		}
-		filteredCandidates = candidates
-		return nil
-	})
-
-	g.Go(func() error {
-		if resolvedPlaces != nil {
-			s.enrichPlaceNamesAndTypes(gCtx, resolvedPlaces)
+		// If includeTopics is false, expand and deduplicate topic candidates into standard variables
+		if !includeTopics {
+			candidates = expandTopicCandidates(candidates)
 		}
 		return nil
 	})
@@ -187,7 +97,40 @@ func (s *Service) filterAndEnrichCandidates(
 	if err := g.Wait(); err != nil {
 		return nil, err
 	}
-	return filteredCandidates, nil
+
+	// Phase 2: Run place existence filtering and place metadata enrichment in parallel
+	g2, g2Ctx := errgroup.WithContext(ctx)
+
+	// Goroutine A: Filter candidate indicators by place existence checking
+	g2.Go(func() error {
+		if len(placeDcids) > 0 {
+			var err error
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.GetTarget())
+			return err
+		}
+		return nil
+	})
+
+	// Goroutine B: Fetch and enrich names and types of resolved places in parallel
+	g2.Go(func() error {
+		if resolvedPlaces != nil {
+			s.enrichPlaceNamesAndTypes(g2Ctx, resolvedPlaces)
+		}
+		return nil
+	})
+
+	if err := g2.Wait(); err != nil {
+		return nil, err
+	}
+
+	// If place_dcids is explicitly specified, or if no legacy place fields are passed, return tabular payload.
+	//nolint:staticcheck // Legacy check for places and parentPlace
+	if len(req.GetPlaceDcids()) > 0 || (len(req.GetPlaces()) == 0 && req.GetParentPlace() == "") {
+		return s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
+	}
+
+	// Assemble and format legacy response payload for backward compatibility
+	return s.translateToResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
 }
 
 // validateRequest checks the validity of the incoming request constraints.
@@ -199,8 +142,9 @@ func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
 	if limit < MinSearchLimit || limit > MaxSearchLimit {
 		return status.Errorf(codes.InvalidArgument, "per_search_limit must be between %d and %d, got: %d", MinSearchLimit, MaxSearchLimit, limit)
 	}
-	//nolint:staticcheck // Legacy request validation checks deprecated parent_place field
+	//nolint:staticcheck // Legacy parent_place check
 	if req.GetParentPlace() != "" {
+		//nolint:staticcheck
 		if len(req.GetPlaces()) == 0 {
 			return status.Errorf(codes.InvalidArgument, "places must be specified when parent_place is provided")
 		}
@@ -212,6 +156,49 @@ func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
 		return status.Errorf(codes.InvalidArgument, "invalid target: %s, valid values are '%s'", target, strings.Join(validTargets, "', '"))
 	}
 	return nil
+}
+
+// acquirePlaceDcids returns direct place_dcids if provided, or resolves legacy places/parentPlace strings.
+func (s *Service) acquirePlaceDcids(
+	ctx context.Context,
+	req *pbv2.SearchIndicatorsRequest,
+) ([]string, map[string]*resolvedPlaceInfo, string, error) {
+	if len(req.GetPlaceDcids()) > 0 {
+		return req.GetPlaceDcids(), nil, "", nil
+	}
+
+	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
+	places := req.GetPlaces()
+	isImplicitWorld := false
+
+	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
+	if len(places) == 0 && req.GetParentPlace() == "" {
+		if req.GetQuery() == "" {
+			places = []string{DefaultPlaceWorld}
+			isImplicitWorld = true
+		} else {
+			return nil, nil, "", nil
+		}
+	}
+
+	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
+	resolvedMap, parentDcid, err := s.resolvePlaces(ctx, places, req.GetParentPlace(), req.GetTarget())
+	if err != nil {
+		return nil, nil, "", err
+	}
+	var dcids []string
+	for _, name := range places {
+		if info, ok := resolvedMap[name]; ok && info.Dcid != "" {
+			if !slices.Contains(dcids, info.Dcid) {
+				dcids = append(dcids, info.Dcid)
+			}
+		}
+	}
+
+	if isImplicitWorld {
+		return dcids, nil, "", nil
+	}
+	return dcids, resolvedMap, parentDcid, nil
 }
 
 // resolvedPlaceInfo holds resolved place metadata.
@@ -493,19 +480,19 @@ func hasPlacesWithData(
 	return places
 }
 
-// pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic or any child has data.
+// pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic itself has data.
 func pruneSingleTopic(
 	c *pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
 	topicDescendants map[string][]string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	directPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
+	parentPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
+	if len(parentPlaces) == 0 {
+		return nil, false
+	}
 
 	var keptChildren []*pbv2.ResolveResponse_Entity_Candidate
-	var allPlaces []string
-	allPlaces = append(allPlaces, directPlaces...)
-
 	for _, child := range c.GetChildren() {
 		var childPlaces []string
 		if isTopic(child) {
@@ -517,21 +504,15 @@ func pruneSingleTopic(
 		if len(childPlaces) > 0 {
 			setPlacesWithDataMetadata(child, childPlaces)
 			keptChildren = append(keptChildren, child)
-			for _, p := range childPlaces {
-				if !slices.Contains(allPlaces, p) {
-					allPlaces = append(allPlaces, p)
-				}
-			}
 		}
 	}
 
-	if len(allPlaces) == 0 {
-		return nil, false
+	c.Children = keptChildren
+
+	if len(parentPlaces) > 0 {
+		setPlacesWithDataMetadata(c, parentPlaces)
 	}
 
-	c.Children = keptChildren
-	slices.Sort(allPlaces)
-	setPlacesWithDataMetadata(c, allPlaces)
 	return c, true
 }
 
@@ -607,9 +588,7 @@ func (s *Service) fetchDescendantVariables(
 			for _, cand := range entity.GetCandidates() {
 				var vars []string
 				for _, child := range cand.GetChildren() {
-					if !isTopic(child) && child.GetDcid() != "" {
-						vars = append(vars, child.GetDcid())
-					}
+					vars = append(vars, child.GetDcid())
 				}
 				res[cand.GetDcid()] = vars
 			}
@@ -618,9 +597,7 @@ func (s *Service) fetchDescendantVariables(
 			var vars []string
 			for _, cand := range entity.GetCandidates() {
 				for _, child := range cand.GetChildren() {
-					if !isTopic(child) && child.GetDcid() != "" {
-						vars = append(vars, child.GetDcid())
-					}
+					vars = append(vars, child.GetDcid())
 				}
 			}
 			res[node] = vars
@@ -629,7 +606,6 @@ func (s *Service) fetchDescendantVariables(
 	return res, nil
 }
 
-// buildTopicsTable formats topic candidates into a tabular Table proto payload.
 func buildTopicsTable(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	limit int32,
@@ -679,7 +655,6 @@ func buildTopicsTable(
 	return table, nil
 }
 
-// buildVariablesTable formats variable candidates into a tabular Table proto payload.
 func buildVariablesTable(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	limit int32,
@@ -718,7 +693,6 @@ func buildVariablesTable(
 	return table, nil
 }
 
-// translateToTabularResponse assembles the tabular SearchIndicatorsResponse payload.
 func (s *Service) translateToTabularResponse(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
@@ -735,9 +709,9 @@ func (s *Service) translateToTabularResponse(
 	}
 
 	resp := &pbv2.SearchIndicatorsResponse{
-		Status:    StatusSuccess,
-		Topics:    topicsTable,
-		Variables: variablesTable,
+		Status:             StatusSuccess,
+		TopicCandidates:    topicsTable,
+		VariableCandidates: variablesTable,
 	}
 
 	if resolvedPlaces != nil {
@@ -747,8 +721,63 @@ func (s *Service) translateToTabularResponse(
 	return resp, nil
 }
 
-// populatePlaceMetadata aggregates place information and registers parent place structures.
+// translateToResponse formats and translates candidate lists into the final RPC payload.
 //nolint:staticcheck // Legacy response builder populates deprecated response fields
+func (s *Service) translateToResponse(
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+	resolvedPlaces map[string]*resolvedPlaceInfo,
+	parentPlaceDcid string,
+	limit int32,
+) (*pbv2.SearchIndicatorsResponse, error) {
+	resp := &pbv2.SearchIndicatorsResponse{
+		Status:                StatusSuccess,
+		DcidNameMappings:      make(map[string]string),
+		DcidPlaceTypeMappings: make(map[string]*structpb.ListValue),
+	}
+
+	// Populate place metadata mappings
+	populatePlaceMetadata(resp, resolvedPlaces, parentPlaceDcid)
+
+	// Populate topics and variables lists up to requested limit
+	topicCount := int32(0)
+	varCount := int32(0)
+
+	for _, c := range candidates {
+		var placesWithData []string
+		if pStr, ok := c.Metadata[MetadataPlacesWithData]; ok && pStr != "" {
+			placesWithData = strings.Split(pStr, DcidSeparator)
+		}
+
+		if isTopic(c) {
+			if topicCount >= limit {
+				continue
+			}
+			resp.DcidNameMappings[c.GetDcid()] = c.GetName()
+			translateTopicCandidate(c, placesWithData, resp)
+			topicCount++
+		} else {
+			if varCount >= limit {
+				continue
+			}
+			resp.DcidNameMappings[c.GetDcid()] = c.GetName()
+			translateVariableCandidate(c, placesWithData, resp)
+			varCount++
+		}
+	}
+
+	// Keep the slices sorted consistently to ensure deterministic test runs
+	slices.SortFunc(resp.Topics, func(a, b *pbv2.SearchIndicatorsResponse_Topic) int {
+		return strings.Compare(a.Dcid, b.Dcid)
+	})
+	slices.SortFunc(resp.Variables, func(a, b *pbv2.SearchIndicatorsResponse_Variable) int {
+		return strings.Compare(a.Dcid, b.Dcid)
+	})
+
+	return resp, nil
+}
+
+// populatePlaceMetadata aggregates place information and registers parent place structures.
+//nolint:staticcheck // Legacy place metadata builder populates deprecated response fields
 func populatePlaceMetadata(
 	resp *pbv2.SearchIndicatorsResponse,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
@@ -776,6 +805,49 @@ func populatePlaceMetadata(
 	}
 }
 
+// translateTopicCandidate converts a topic candidate and registers all member variable/topic names.
+//nolint:staticcheck // Legacy topic candidate translator populates deprecated response fields
+func translateTopicCandidate(
+	c *pbv2.ResolveResponse_Entity_Candidate,
+	placesWithData []string,
+	resp *pbv2.SearchIndicatorsResponse,
+) {
+	var memberTopics []string
+	var memberVariables []string
+
+	for _, child := range c.GetChildren() {
+		resp.DcidNameMappings[child.GetDcid()] = child.GetName()
+		if isTopic(child) {
+			memberTopics = append(memberTopics, child.GetDcid())
+		} else {
+			memberVariables = append(memberVariables, child.GetDcid())
+		}
+	}
+
+	resp.Topics = append(resp.Topics, &pbv2.SearchIndicatorsResponse_Topic{
+		Dcid:                  c.GetDcid(),
+		MemberTopics:          memberTopics,
+		MemberVariables:       memberVariables,
+		PlacesWithData:        placesWithData,
+		Description:           c.GetName(),
+		AlternateDescriptions: []string{c.GetName()}, // Fallback alt description
+	})
+}
+
+// translateVariableCandidate converts a variable candidate and maps its name.
+//nolint:staticcheck // Legacy variable candidate translator populates deprecated response fields
+func translateVariableCandidate(
+	c *pbv2.ResolveResponse_Entity_Candidate,
+	placesWithData []string,
+	resp *pbv2.SearchIndicatorsResponse,
+) {
+	resp.Variables = append(resp.Variables, &pbv2.SearchIndicatorsResponse_Variable{
+		Dcid:                  c.GetDcid(),
+		PlacesWithData:        placesWithData,
+		ObservationProperties: c.GetObservationProperties(),
+	})
+}
+
 // isTopic returns true if the candidate is classified as a Topic in TypeOf or DominantType.
 func isTopic(c *pbv2.ResolveResponse_Entity_Candidate) bool {
 	if c.GetDominantType() == DcidTypeTopic {
@@ -783,6 +855,7 @@ func isTopic(c *pbv2.ResolveResponse_Entity_Candidate) bool {
 	}
 	return slices.Contains(c.GetTypeOf(), DcidTypeTopic)
 }
+
 
 // enrichPlaceNamesAndTypes retrieves and populates the canonical names and types of resolved places.
 func (s *Service) enrichPlaceNamesAndTypes(
@@ -804,21 +877,15 @@ func (s *Service) enrichPlaceNamesAndTypes(
 		Nodes:    dcids,
 		Property: "->[name, typeOf]",
 	}
-	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
-	if err != nil {
-		slog.Warn("Failed to enrich resolved place names and types via V2Node", "error", err)
-		return
-	}
-	if nodeResp == nil || nodeResp.GetData() == nil {
-		return
-	}
-	for _, info := range resolvedMap {
-		if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
-			if name := getPropValue(nodeData, "name"); name != "" {
-				info.Name = name
-			}
-			if types := getPropDcids(nodeData, "typeOf"); len(types) > 0 {
-				info.TypeOf = types
+	if nodeResp, err := s.mixer.V2Node(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
+		for _, info := range resolvedMap {
+			if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
+				if name := getPropValue(nodeData, "name"); name != "" {
+					info.Name = name
+				}
+				if types := getPropDcids(nodeData, "typeOf"); len(types) > 0 {
+					info.TypeOf = types
+				}
 			}
 		}
 	}
