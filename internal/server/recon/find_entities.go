@@ -17,7 +17,6 @@ package recon
 
 import (
 	"context"
-	"fmt"
 	"sort"
 	"strings"
 
@@ -58,9 +57,10 @@ func BulkFindEntities(
 	mapsClient internalmaps.MapsClient,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	if l := len(in.GetEntities()); l == 0 {
-		return nil, fmt.Errorf("empty input")
+		return nil, status.Errorf(codes.InvalidArgument, "empty input")
 	} else if l > maxNumEntitiesPerRequest {
-		return nil, fmt.Errorf(
+		return nil, status.Errorf(
+			codes.InvalidArgument,
 			"exceeded max number of entities per request (%d): %d",
 			maxNumEntitiesPerRequest, l)
 	}

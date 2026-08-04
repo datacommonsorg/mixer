@@ -22,6 +22,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -436,5 +438,63 @@ func TestEvalExpr(t *testing.T) {
 			t.Errorf("evalExpr(%v, %v, %v) = %v, want %v",
 				c.inputExpr, c.leafData, c.inputResp, got, c.want)
 		}
+	}
+}
+
+func TestEvalExpr_InvalidInput(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		inputExpr string
+		leafData  map[string]*formula.ASTNode
+		inputResp *pbv2.ObservationResponse
+	}{
+		{
+			name:      "DivisionByZero",
+			inputExpr: "a / b",
+			leafData: map[string]*formula.ASTNode{
+				"a": {StatVar: "a"},
+				"b": {StatVar: "b"},
+			},
+			inputResp: &pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"a": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "1",
+							Observations: []*pb.PointStat{{
+								Date:  "2020",
+								Value: proto.Float64(10),
+							}},
+						}}},
+					}},
+					"b": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "1",
+							Observations: []*pb.PointStat{{
+								Date:  "2020",
+								Value: proto.Float64(0),
+							}},
+						}}},
+					}},
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			f, err := formula.NewVariableFormula(tc.inputExpr)
+			if err != nil {
+				t.Fatalf("NewVariableFormula(%s) error: %v", tc.name, err)
+			}
+			_, err = evalExpr(f.Expr, tc.leafData, tc.inputResp)
+			if err == nil {
+				t.Fatalf("evalExpr(%s) expected error, got nil", tc.name)
+			}
+			st, ok := status.FromError(err)
+			if !ok {
+				t.Fatalf("evalExpr(%s) returned non-gRPC error: %v", tc.name, err)
+			}
+			if st.Code() != codes.InvalidArgument {
+				t.Errorf("evalExpr(%s) code = %v, want %v", tc.name, st.Code(), codes.InvalidArgument)
+			}
+		})
 	}
 }
