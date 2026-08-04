@@ -74,6 +74,13 @@ const (
 	filterLang = "$lang"
 )
 
+// Internal-only (generated) predicates that should not be returned via Node APIs unless specifically requested.
+var blocklistEdgePredicates = []string{
+	"linkedContainedInPlace",
+	"linkedMemberOf",
+	"linkedMember",
+}
+
 // QueryOperatorHandler defines the signature for processing meta-filters.
 // It returns the generated SQL condition and mutates the params map directly.
 type QueryOperatorHandler func(prefix string, values []string, params map[string]interface{}) string
@@ -109,21 +116,35 @@ func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
 	}
 }
 
-func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
+func GetNodePropsQuery(ids []string, out bool, queryConfigs ...QueryConfig) *spanner.Statement {
+	var queryConfig QueryConfig
+	if len(queryConfigs) > 0 {
+		queryConfig = queryConfigs[0]
+	}
+	hint := statements.graphColumnarScanHint
+	if queryConfig.SpannerEmulatorCompatibility {
+		hint = ""
+	}
+
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
 
+	var filterPredicate string
+	if len(blocklistEdgePredicates) > 0 {
+		filterPredicate = statements.filterPredicateBlocklist
+	}
+
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, idFilter),
+			SQL:    hint + fmt.Sprintf(statements.getPropsBySubjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsByObjectID, idFilter),
+			SQL:    hint + fmt.Sprintf(statements.getPropsByObjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	}
@@ -177,6 +198,8 @@ func buildNodeEdgesByIDQuery(
 	} else if len(arc.BracketProps) > 0 {
 		filterPredicate = statements.filterPredicates
 		params["predicate"] = arc.BracketProps
+	} else if len(blocklistEdgePredicates) > 0 { // Use default blocklist.
+		filterPredicate = statements.filterPredicateBlocklist
 	}
 
 	// Generate filters.
@@ -281,27 +304,33 @@ func buildNodeEdgesByIDQuery(
 	}
 	subqueries = append([]string{subquery}, subqueries...)
 
+	// Pagination.
+	pagination := getNodeQueryPagination(pageSize, offset)
+
 	// Generate prefix and return statement.
+	hint := statements.graphColumnarScanHint
+	if plan.spannerEmulatorCompatibility {
+		hint = ""
+	}
 	var prefix, returnEdges string
 	switch arc.Decorator {
 	case v3.Chain:
-		prefix = statements.graphPrefixAny
-		returnEdges = statements.returnChainedEdges
+		prefix = hint + statements.graphPrefixAny
+		returnEdges = fmt.Sprintf(statements.returnChainedEdges, pagination)
 	default:
-		prefix = statements.graphPrefix
+		prefix = hint + statements.graphPrefix
 		if len(arc.Filter) > 0 {
-			returnEdges += statements.returnFilterEdges
+			returnEdges += fmt.Sprintf(statements.returnFilterEdges, pagination)
 		} else {
-			returnEdges = statements.returnEdges
+			returnEdges = fmt.Sprintf(statements.returnEdges, pagination)
 		}
 	}
 	separator := statements.graphPatternSeparator
 	if useContainedInPlaceAncestorFirst {
-		prefix = statements.graphColumnarScanHint + prefix
 		separator = statements.graphPatternForceJoinOrder
 	}
-	template := prefix + strings.Join(subqueries, separator) + returnEdges
-	template = applyNodeQueryPagination(template, pageSize, offset)
+	template := prefix + strings.Join(subqueries, separator)
+	template += returnEdges
 
 	return &spanner.Statement{
 		SQL:    template,
@@ -309,7 +338,8 @@ func buildNodeEdgesByIDQuery(
 	}, nil
 }
 
-func applyNodeQueryPagination(query string, pageSize, offset int) string {
+func getNodeQueryPagination(pageSize, offset int) string {
+	query := ""
 	if offset > 0 {
 		query += fmt.Sprintf(statements.applyOffset, offset)
 	}

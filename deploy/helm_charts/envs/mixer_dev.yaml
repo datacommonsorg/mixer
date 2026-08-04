@@ -33,7 +33,7 @@ ingress:
 esp:
   v2_resolve_allow_unregistered: false
   transcodingIgnoreUnknownQueryParameters: true
-  transcodingQueryParametersDisableUnescapePlus: true
+  transcodingQueryParametersDisableUnescapePlus: false
 
 # GCP level config
 ip: 35.244.157.41

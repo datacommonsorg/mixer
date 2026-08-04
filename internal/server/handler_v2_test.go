@@ -26,6 +26,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
@@ -204,45 +207,82 @@ func TestObservationInternal(t *testing.T) {
 	}
 }
 
+type mockObservationDataSource struct {
+	datasource.DataSource
+}
+
+func (m *mockObservationDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
+	return &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"Count_Person": {
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"country/USA": {},
+				},
+			},
+		},
+	}, nil
+}
+func (m *mockObservationDataSource) ID() string { return "mock" }
+
 func TestV2Observation_UsageLog(t *testing.T) {
-	ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
-	s := &Server{
-		store:          &store.Store{},
-		metadata:       &resource.Metadata{},
-		flags:          &featureflags.Flags{},
-		writeUsageLogs: true,
-	}
-	s.cachedata.Store(&cache.Cache{})
-	req := &pbv2.ObservationRequest{
-		Select: []string{"variable", "entity", "date", "value"},
-		Variable: &pbv2.DcidOrExpression{
-			Dcids: []string{"Count_Person"},
+	tests := []struct {
+		name            string
+		useSpannerGraph bool
+	}{
+		{
+			name:            "legacy",
+			useSpannerGraph: false,
 		},
-		Entity: &pbv2.DcidOrExpression{
-			Dcids: []string{"country/USA"},
+		{
+			name:            "diverted to dispatcher",
+			useSpannerGraph: true,
 		},
 	}
 
-	// Capture slog output
-	var buf bytes.Buffer
-	handler := slog.NewTextHandler(&buf, nil)
-	logger := slog.New(handler)
-	originalLogger := slog.Default()
-	slog.SetDefault(logger)
-	defer slog.SetDefault(originalLogger)
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
+			s := &Server{
+				store:           &store.Store{},
+				metadata:        &resource.Metadata{},
+				flags:           &featureflags.Flags{},
+				writeUsageLogs:  true,
+				useSpannerGraph: tc.useSpannerGraph,
+				dispatcher:      dispatcher.NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{&mockObservationDataSource{}}, nil)),
+			}
+			s.cachedata.Store(&cache.Cache{})
+			req := &pbv2.ObservationRequest{
+				Select: []string{"variable", "entity", "date", "value"},
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"country/USA"},
+				},
+			}
 
-	_, _ = s.V2Observation(ctx, req)
+			// Capture slog output
+			var buf bytes.Buffer
+			handler := slog.NewTextHandler(&buf, nil)
+			logger := slog.New(handler)
+			originalLogger := slog.Default()
+			slog.SetDefault(logger)
+			defer slog.SetDefault(originalLogger)
 
-	outStr := strings.TrimSpace(buf.String())
+			_, _ = s.V2Observation(ctx, req)
 
-	// Use regex to match the log message, ignoring the timestamp and pointer address.
-	wantLogRegex := `time=\S+ level=INFO msg=new_query usage_log.feature="{IsRemote:false Surface:}" usage_log.place_types=\[\] usage_log.query_type=value usage_log.stat_vars=\[0x[0-9a-f]+\] usage_log.response_id=\S+`
-	matched, err := regexp.MatchString(wantLogRegex, outStr)
-	if err != nil {
-		t.Fatalf("Failed to compile regex: %v", err)
-	}
-	if !matched {
-		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
+			outStr := strings.TrimSpace(buf.String())
+
+			// Use regex to match the log message, ignoring the timestamp and pointer address.
+			wantLogRegex := `time=\S+ level=INFO msg=new_query usage_log.feature="{IsRemote:false Surface:}" usage_log.place_types=\[\] usage_log.query_type=value usage_log.stat_vars=\[0x[0-9a-f]+\] usage_log.response_id=\S+`
+			matched, err := regexp.MatchString(wantLogRegex, outStr)
+			if err != nil {
+				t.Fatalf("Failed to compile regex: %v", err)
+			}
+			if !matched {
+				t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
+			}
+		})
 	}
 }
 

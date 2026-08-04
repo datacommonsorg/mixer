@@ -22,6 +22,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -141,6 +142,9 @@ func (m *mockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()     {}
 func (m *mockSpannerClient) Close()     {}
+func (m *mockSpannerClient) SpannerStalenessTimestamp() (time.Time, error) {
+	return time.Time{}, errors.New("Spanner staleness timestamp not available")
+}
 
 func TestSpannerResolve(t *testing.T) {
 	client := test.NewSpannerClient()

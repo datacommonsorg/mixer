@@ -33,6 +33,62 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// GetQueryType determines the QueryType from an ObservationRequest.
+func GetQueryType(in *pbv2.ObservationRequest) shared.QueryType {
+	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
+	for _, item := range in.GetSelect() {
+		switch item {
+		case "date":
+			queryDate = true
+		case "value":
+			queryValue = true
+		case "variable":
+			queryVariable = true
+		case "entity":
+			queryEntity = true
+		case "facet":
+			queryFacet = true
+		}
+	}
+	if !queryVariable || !queryEntity {
+		return ""
+	}
+
+	variable := in.GetVariable()
+	entity := in.GetEntity()
+
+	// Observation date and value query.
+	if queryDate && queryValue {
+		// Series or Collection.
+		if (len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0) ||
+			(len(variable.GetDcids()) > 0 && entity.GetExpression() != "") {
+			return shared.QueryTypeValue
+		}
+		// Derived series.
+		if variable.GetFormula() != "" && len(entity.GetDcids()) > 0 {
+			return shared.QueryTypeDerived
+		}
+	}
+
+	// Get facet information for <variable, entity> pair.
+	if !queryDate && !queryValue && queryFacet {
+		// Series or Collection.
+		if (len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0) ||
+			(len(variable.GetDcids()) > 0 && entity.GetExpression() != "") {
+			return shared.QueryTypeFacet
+		}
+	}
+
+	// Get existence of <variable, entity> pair.
+	if !queryDate && !queryValue {
+		if len(entity.GetDcids()) > 0 {
+			return shared.QueryTypeExistence
+		}
+	}
+
+	return ""
+}
+
 func ObservationCore(
 	ctx context.Context,
 	store *store.Store,
@@ -65,6 +121,8 @@ func ObservationCore(
 	variable := in.GetVariable()
 	entity := in.GetEntity()
 
+	queryType := GetQueryType(in)
+
 	// Observation date and value query.
 	if queryDate && queryValue {
 		// Series.
@@ -79,7 +137,7 @@ func ObservationCore(
 				in.GetFilter(),
 			)
 
-			return result, shared.QueryTypeValue, err
+			return result, queryType, err
 		}
 
 		// Collection.
@@ -105,7 +163,7 @@ func ObservationCore(
 				in.GetDate(),
 				in.GetFilter(),
 			)
-			return res, shared.QueryTypeValue, err
+			return res, queryType, err
 		}
 
 		// Derived series.
@@ -117,7 +175,7 @@ func ObservationCore(
 				entity.GetDcids(),
 			)
 
-			return res, shared.QueryTypeDerived, err
+			return res, queryType, err
 		}
 	}
 
@@ -133,7 +191,7 @@ func ObservationCore(
 				entity.GetDcids(),
 			)
 
-			return res, shared.QueryTypeFacet, err
+			return res, queryType, err
 		}
 		// Collection
 		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
@@ -156,7 +214,7 @@ func ObservationCore(
 				in.GetDate(),
 			)
 
-			return res, shared.QueryTypeFacet, err
+			return res, queryType, err
 		}
 	}
 
@@ -167,13 +225,13 @@ func ObservationCore(
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				res, err := Existence(
 					ctx, store, cachedata, variable.GetDcids(), entity.GetDcids())
-				return res, shared.QueryTypeExistence, err
+				return res, queryType, err
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
 			res, err := Variable(ctx, store, entity.GetDcids())
 
-			return res, shared.QueryTypeExistence, err
+			return res, queryType, err
 		}
 	}
 	return &pbv2.ObservationResponse{}, "", nil

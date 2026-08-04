@@ -2,10 +2,13 @@ clusters:
   - projects/datcom-mixer/locations/us-central1/clusters/mixer-us-central1
 liveUrl: https://api.datacommons.org
 flags:
-  V3MirrorFraction: 0.1
+  V3MirrorFraction: 1.0
   SpannerGraphDatabase: projects/datcom-store/instances/dc-graph-prod/databases/dc_graph
+  EnableSpannerSearchEmbeddings: true
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   UseMultiEntitySchema: true
   EnableSDMXDataApi: true
   UseSpannerKeyValueStore: true
+  UseNewIngestionHistorySchema: true
+  V2DivertFraction: 1.0

@@ -34,6 +34,9 @@ type QueryConfig struct {
 	// requested variables that selects the entity1 range-scan plan for eligible
 	// child place types. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int
+	// SpannerEmulatorCompatibility indicates whether queries should be
+	// formatted for Cloud Spanner Emulator (e.g. omitting unsupported hints).
+	SpannerEmulatorCompatibility bool
 }
 
 type containedInPlaceAccessPath int

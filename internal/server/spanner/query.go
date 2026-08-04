@@ -113,7 +113,7 @@ func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string,
 	err := queryStructs(
 		ctx,
 		sc,
-		*GetNodePropsQuery(ids, out),
+		*GetNodePropsQuery(ids, out, sc.queryConfig),
 		func() interface{} {
 			return &Property{}
 		},
@@ -1022,7 +1022,8 @@ func (sc *spannerDatabaseClient) processStalenessTimestamp(ctx context.Context, 
 	return nil
 }
 
-func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
+// SpannerStalenessTimestamp returns the timestamp used for stale Spanner reads.
+func (sc *spannerDatabaseClient) SpannerStalenessTimestamp() (time.Time, error) {
 	val := sc.timestamp.Load()
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
@@ -1087,7 +1088,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		return err
 	}
 
-	ts, err := sc.getStalenessTimestamp()
+	ts, err := sc.SpannerStalenessTimestamp()
 	if err != nil {
 		return runQuery(spanner.ExactStaleness(defaultStalenessDuration))
 	}

@@ -9,30 +9,35 @@
 		WHERE
 			filter0.predicate = 'typeOf'
 			AND filter0.object_id IN ('County','Place')]->
-		RETURN
-			m.subject_id,
-			n.subject_id AS object_id,
-			e.predicate,
-			e.provenance
-		NEXT MATCH (n)
-		WHERE
-		  n.subject_id = object_id
-		RETURN
-			subject_id,
-			predicate,
-			provenance,
-			IFNULL(ANY_VALUE(n.value), '') AS value,
-			ANY_VALUE(n.bytes) AS bytes,
-			IFNULL(ANY_VALUE(n.name), '') AS name,
-			IFNULL(ANY_VALUE(n.types), []) AS types
+        RETURN
+            m.subject_id,
+            e.predicate,
+            n.subject_id AS object_id,
+            e.provenance
 		GROUP BY
-			subject_id,
-			predicate,
-			object_id,
-			provenance
-		ORDER BY
-			subject_id,
-			predicate,
-			object_id,
-			provenance
+            m.subject_id,
+            e.predicate,
+            n.subject_id,
+            e.provenance
+        ORDER BY
+            subject_id,
+            predicate,
+            object_id,
+            provenance
 		LIMIT 501
+        NEXT MATCH (n:Node)
+        WHERE
+            n.subject_id = object_id
+        RETURN
+            subject_id,
+            predicate,
+            provenance,
+            IFNULL(n.value, '') AS value,
+            n.bytes AS bytes,
+            IFNULL(n.name, '') AS name,
+            IFNULL(n.types, []) AS types
+        ORDER BY
+            subject_id,
+            predicate,
+            object_id,
+            provenance
