@@ -296,7 +296,7 @@ func EvalExpr(
 		return nil, err
 	}
 	if intermediateResp.variableObs == nil {
-		return nil, status.Errorf(codes.InvalidArgument, "nil calculation response")
+		return nil, status.Errorf(codes.Internal, "nil calculation response")
 	}
 
 	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
