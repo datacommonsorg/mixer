@@ -331,6 +331,9 @@ func TestDataCSVSuccess(t *testing.T) {
 	if response.ContentType != sdmxformat.CSVContentType {
 		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
 	}
+	if response.ContentDisposition != `attachment; filename="data.csv"` {
+		t.Errorf("ContentDisposition = %q, want attachment filename", response.ContentDisposition)
+	}
 
 	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor,facetId\r\n" +
 		"dataflow,DC:DF_OBS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0,stored-facet-id\r\n"

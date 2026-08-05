@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	"strings"
 	"testing"
 
@@ -42,8 +43,10 @@ func sdmxComponentConstraint(values ...string) *sdmxpb.SdmxComponentConstraint {
 }
 
 type sdmxDataStream struct {
-	ctx  context.Context
-	sent []*httpbody.HttpBody
+	ctx       context.Context
+	header    metadata.MD
+	headerErr error
+	sent      []*httpbody.HttpBody
 }
 
 func (s *sdmxDataStream) Context() context.Context {
@@ -55,7 +58,11 @@ func (s *sdmxDataStream) Send(body *httpbody.HttpBody) error {
 	return nil
 }
 
-func (s *sdmxDataStream) SetHeader(metadata.MD) error {
+func (s *sdmxDataStream) SetHeader(header metadata.MD) error {
+	if s.headerErr != nil {
+		return s.headerErr
+	}
+	s.header = metadata.Join(s.header, header)
 	return nil
 }
 
@@ -144,8 +151,29 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	if stream.sent[0].GetContentType() != sdmxformat.CSVContentType {
 		t.Fatalf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxformat.CSVContentType)
 	}
+	if got := stream.header.Get("content-disposition"); len(got) != 1 || got[0] != `attachment; filename="data.csv"` {
+		t.Fatalf("Content-Disposition = %v, want attachment filename", got)
+	}
 	if got := string(stream.sent[0].GetData()); !strings.HasPrefix(got, "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout") {
 		t.Fatalf("Data = %q, want SDMX CSV header", got)
+	}
+}
+
+func TestV3SdmxDataContinuesWhenContentDispositionHeaderFails(t *testing.T) {
+	server := newSdmxHandlerTestServer(&sdmxDataSource{
+		result: testSdmxDataResult([]string{datacommons.ComponentObservationAbout}),
+	})
+	stream := &sdmxDataStream{
+		ctx:       sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA")),
+		headerErr: errors.New("set header failed"),
+	}
+
+	err := server.V3SdmxData(&sdmxpb.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v, want nil", err)
+	}
+	if len(stream.sent) != 1 {
+		t.Fatalf("sent %d HttpBody messages, want 1", len(stream.sent))
 	}
 }
 

@@ -26,6 +26,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const csvContentDisposition = `attachment; filename="data.csv"`
+
 func (s *Service) Data(ctx context.Context, request Request) (*Response, error) {
 	restRequest, err := restv2.ParseDataRequest(request.Tail, request.OriginalURI)
 	if err != nil {
@@ -86,8 +88,9 @@ func (s *Service) Data(ctx context.Context, request Request) (*Response, error) 
 			return nil, status.Error(codes.Internal, "Internal mapping error occurred.")
 		}
 		return &Response{
-			ContentType: sdmxformat.CSVContentType,
-			Body:        []byte(payload),
+			ContentType:        sdmxformat.CSVContentType,
+			ContentDisposition: csvContentDisposition,
+			Body:               []byte(payload),
 		}, nil
 	}
 
