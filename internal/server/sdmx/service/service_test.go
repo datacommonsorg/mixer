@@ -331,7 +331,7 @@ func TestDataCSVSuccess(t *testing.T) {
 	if response.ContentType != sdmxformat.CSVContentType {
 		t.Errorf("ContentType = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
 	}
-	if response.ContentDisposition != `attachment; filename="data.csv"` {
+	if response.ContentDisposition != `attachment; filename="dc_data.csv"` {
 		t.Errorf("ContentDisposition = %q, want attachment filename", response.ContentDisposition)
 	}
 

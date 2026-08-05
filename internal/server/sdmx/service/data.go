@@ -26,7 +26,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-const csvContentDisposition = `attachment; filename="data.csv"`
+const csvContentDisposition = `attachment; filename="dc_data.csv"`
 
 func (s *Service) Data(ctx context.Context, request Request) (*Response, error) {
 	restRequest, err := restv2.ParseDataRequest(request.Tail, request.OriginalURI)

@@ -151,7 +151,7 @@ func TestV3SdmxDataWrapsServiceResponse(t *testing.T) {
 	if stream.sent[0].GetContentType() != sdmxformat.CSVContentType {
 		t.Fatalf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxformat.CSVContentType)
 	}
-	if got := stream.header.Get("content-disposition"); len(got) != 1 || got[0] != `attachment; filename="data.csv"` {
+	if got := stream.header.Get("content-disposition"); len(got) != 1 || got[0] != `attachment; filename="dc_data.csv"` {
 		t.Fatalf("Content-Disposition = %v, want attachment filename", got)
 	}
 	if got := string(stream.sent[0].GetData()); !strings.HasPrefix(got, "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout") {
