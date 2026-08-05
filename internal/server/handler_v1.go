@@ -29,11 +29,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
-	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
-	"github.com/datacommonsorg/mixer/internal/server/v1/triples"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
-	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 )
@@ -45,34 +42,6 @@ func (s *Server) QueryV1(
 	ctx context.Context, in *pb.QueryRequest,
 ) (*pb.QueryResponse, error) {
 	return translator.Query(ctx, in, s.metadata, s.store)
-}
-
-// Properties implements API for mixer.Properties.
-func (s *Server) Properties(
-	ctx context.Context, in *pbv1.PropertiesRequest,
-) (*pbv1.PropertiesResponse, error) {
-	return properties.Properties(ctx, in, s.store)
-}
-
-// BulkProperties implements API for mixer.BulkProperties.
-func (s *Server) BulkProperties(
-	ctx context.Context, in *pbv1.BulkPropertiesRequest,
-) (*pbv1.BulkPropertiesResponse, error) {
-	return properties.BulkProperties(ctx, in, s.store)
-}
-
-// PropertyValues implements API for mixer.PropertyValues.
-func (s *Server) PropertyValues(
-	ctx context.Context, in *pbv1.PropertyValuesRequest,
-) (*pbv1.PropertyValuesResponse, error) {
-	return propertyvalues.PropertyValues(ctx, in, s.store)
-}
-
-// LinkedPropertyValues implements API for mixer.LinkedPropertyValues.
-func (s *Server) LinkedPropertyValues(
-	ctx context.Context, in *pbv1.LinkedPropertyValuesRequest,
-) (*pbv1.PropertyValuesResponse, error) {
-	return propertyvalues.LinkedPropertyValues(ctx, in, s.store)
 }
 
 // BulkLinkedPropertyValues implements API for mixer.BulkLinkedPropertyValues.
@@ -87,34 +56,6 @@ func (s *Server) BulkPropertyValues(
 	ctx context.Context, in *pbv1.BulkPropertyValuesRequest,
 ) (*pbv1.BulkPropertyValuesResponse, error) {
 	return propertyvalues.BulkPropertyValues(ctx, in, s.store)
-}
-
-// Triples implements API for mixer.Triples.
-func (s *Server) Triples(
-	ctx context.Context, in *pbv1.TriplesRequest,
-) (*pbv1.TriplesResponse, error) {
-	return triples.Triples(ctx, in, s.store, s.metadata)
-}
-
-// BulkTriples implements API for mixer.BulkTriples.
-func (s *Server) BulkTriples(
-	ctx context.Context, in *pbv1.BulkTriplesRequest,
-) (*pbv1.BulkTriplesResponse, error) {
-	return triples.BulkTriples(ctx, in, s.store, s.metadata)
-}
-
-// Variables implements API for mixer.Variables.
-func (s *Server) Variables(
-	ctx context.Context, in *pbv1.VariablesRequest,
-) (*pbv1.VariablesResponse, error) {
-	return variables.Variables(ctx, in, s.store)
-}
-
-// PlaceInfo implements API for mixer.PlaceInfo.
-func (s *Server) PlaceInfo(
-	ctx context.Context, in *pbv1.PlaceInfoRequest,
-) (*pbv1.PlaceInfoResponse, error) {
-	return info.PlaceInfo(ctx, in, s.store)
 }
 
 // BulkPlaceInfo implements API for mixer.BulkPlaceInfo.
@@ -167,13 +108,6 @@ func (s *Server) BulkPlaceInfo(
 	return result, nil
 }
 
-// VariableInfo implements API for mixer.VariableInfo.
-func (s *Server) VariableInfo(
-	ctx context.Context, in *pbv1.VariableInfoRequest,
-) (*pbv1.VariableInfoResponse, error) {
-	return info.VariableInfo(ctx, in, s.store)
-}
-
 // BulkVariableInfo implements API for mixer.BulkVariableInfo.
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
@@ -214,13 +148,6 @@ func (s *Server) BulkVariableInfo(
 
 	result := merger.MergeBulkVariableInfoResponse(<-localResponseChan, <-remoteResponseChan)
 	return result, nil
-}
-
-// VariableGroupInfo implements API for mixer.VariableGroupInfo.
-func (s *Server) VariableGroupInfo(
-	ctx context.Context, in *pbv1.VariableGroupInfoRequest,
-) (*pbv1.VariableGroupInfoResponse, error) {
-	return info.VariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 }
 
 // BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
@@ -338,25 +265,11 @@ func (s *Server) BulkVariableGroupInfo(
 	return result, nil
 }
 
-// ObservationsPoint implements API for mixer.ObservationsPoint.
-func (s *Server) ObservationsPoint(
-	ctx context.Context, in *pbv1.ObservationsPointRequest,
-) (*pb.PointStat, error) {
-	return observations.Point(ctx, in, s.store)
-}
-
 // BulkObservationsPoint implements API for mixer.BulkObservationsPoint.
 func (s *Server) BulkObservationsPoint(
 	ctx context.Context, in *pbv1.BulkObservationsPointRequest,
 ) (*pbv1.BulkObservationsPointResponse, error) {
 	return observations.BulkPoint(ctx, in, s.store)
-}
-
-// ObservationsSeries implements API for mixer.ObservationsSeries.
-func (s *Server) ObservationsSeries(
-	ctx context.Context, in *pbv1.ObservationsSeriesRequest,
-) (*pbv1.ObservationsSeriesResponse, error) {
-	return observations.Series(ctx, in, s.store)
 }
 
 // BulkObservationsSeries implements API for mixer.BulkObservationsSeries.

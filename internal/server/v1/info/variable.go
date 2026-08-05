@@ -25,27 +25,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// VariableInfo implements API for Mixer.VariableInfo.
-func VariableInfo(
-	ctx context.Context,
-	in *pbv1.VariableInfoRequest,
-	store *store.Store,
-) (*pbv1.VariableInfoResponse, error) {
-	node := in.GetNode()
-	if err := util.CheckValidDCIDs([]string{node}); err != nil {
-		return nil, err
-	}
-	statVarToSummary, err := statvar.GetStatVarSummaryHelper(ctx, []string{node}, store)
-	if err != nil {
-		return nil, err
-	}
-	resp := &pbv1.VariableInfoResponse{Node: node}
-	if summary, ok := statVarToSummary[node]; ok {
-		resp.Info = summary
-	}
-	return resp, nil
-}
-
 // BulkVariableInfo implements API for Mixer.BulkVariableInfo.
 func BulkVariableInfo(
 	ctx context.Context,

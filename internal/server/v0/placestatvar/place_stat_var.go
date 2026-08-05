@@ -48,10 +48,3 @@ func GetPlaceStatVars(
 
 	return resp, nil
 }
-
-// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
-func GetEntityStatVarsUnionV1(
-	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest, store *store.Store,
-) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return nil, nil
-}

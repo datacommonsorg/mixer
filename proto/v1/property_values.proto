@@ -69,14 +69,6 @@ message BulkPropertyValuesResponse {
   string next_token = 2;
 }
 
-
-// Note this API request only supports property "containedInPlace" now.
-// This is effectively used to query containing places for certain type.
-message LinkedPropertyValuesRequest {
-  string node_property = 1;
-  string value_node_type = 3;
-}
-
 // Note this API request only supports property "containedInPlace" now.
 // This is effectively used to query containing places for certain type.
 message BulkLinkedPropertyValuesRequest {
