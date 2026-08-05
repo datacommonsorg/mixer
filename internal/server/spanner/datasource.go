@@ -21,7 +21,6 @@ import (
 	"maps"
 	"os"
 	"slices"
-	"sort"
 	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/embedder"
@@ -836,7 +835,8 @@ func (sds *SpannerDataSource) resolveDescription(
 		resEntity := &pbv2.ResolveResponse_Entity{
 			Node: node,
 		}
-		candidateSet := map[string]struct{}{}
+		// Deduplicate without changing the population-ranked order from ResolveDCIDs.
+		seen := map[string]struct{}{}
 		for _, typeOf := range typeOfs {
 			e := recon.EntityInfo{Description: node, TypeOf: typeOf}
 			if dcids, ok := entityInfoToDCIDs[e]; ok {
@@ -851,19 +851,16 @@ func (sds *SpannerDataSource) resolveDescription(
 							continue
 						}
 					}
-					candidateSet[dcid] = struct{}{}
+					if _, ok := seen[dcid]; ok {
+						continue
+					}
+					seen[dcid] = struct{}{}
+					resEntity.Candidates = append(resEntity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
+						Dcid: dcid,
+					})
 				}
 			}
 		}
-		for candidate := range candidateSet {
-			resEntity.Candidates = append(resEntity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
-				Dcid: candidate,
-			})
-		}
-		// Sort candidates for determinism.
-		sort.Slice(resEntity.Candidates, func(i, j int) bool {
-			return resEntity.Candidates[i].Dcid < resEntity.Candidates[j].Dcid
-		})
 		resp.Entities = append(resp.Entities, resEntity)
 	}
 
