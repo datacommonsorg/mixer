@@ -17,15 +17,6 @@ package datacommons.v1;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 
-message VariablesRequest {
-  string entity = 1;
-}
-
-message VariablesResponse {
-  string entity = 1;
-  repeated string variables = 2;
-}
-
 message VariableAncestorsRequest {
   // DCID of a stat var (group)
   string node = 1;

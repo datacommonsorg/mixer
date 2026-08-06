@@ -25,29 +25,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// PlaceInfo implements API for Mixer.PlaceInfo.
-func PlaceInfo(
-	ctx context.Context,
-	in *pbv1.PlaceInfoRequest,
-	store *store.Store,
-) (*pbv1.PlaceInfoResponse, error) {
-	node := in.GetNode()
-	if err := util.CheckValidDCIDs([]string{node}); err != nil {
-		return nil, err
-	}
-	placeToMetadata, err := place.GetPlaceMetadataHelper(ctx, []string{node}, store)
-	if err != nil {
-		return nil, err
-	}
-
-	resp := &pbv1.PlaceInfoResponse{Node: node}
-	if metadata, ok := placeToMetadata[node]; ok {
-		resp.Info = metadata
-	}
-
-	return resp, nil
-}
-
 // BulkPlaceInfo implements API for Mixer.BulkPlaceInfo.
 func BulkPlaceInfo(
 	ctx context.Context,

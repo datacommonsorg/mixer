@@ -26,7 +26,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
@@ -151,13 +150,6 @@ func (s *Server) GetPlaceStatVars(
 	ctx context.Context, in *pb.GetPlaceStatVarsRequest,
 ) (*pb.GetPlaceStatVarsResponse, error) {
 	return placestatvar.GetPlaceStatVars(ctx, in, s.store)
-}
-
-// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
-func (s *Server) GetEntityStatVarsUnionV1(
-	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
-) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cachedata.Load())
 }
 
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
