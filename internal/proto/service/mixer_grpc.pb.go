@@ -77,8 +77,6 @@ const (
 	Mixer_GetPlacesIn_FullMethodName                  = "/datacommons.Mixer/GetPlacesIn"
 	Mixer_GetStats_FullMethodName                     = "/datacommons.Mixer/GetStats"
 	Mixer_GetStatValue_FullMethodName                 = "/datacommons.Mixer/GetStatValue"
-	Mixer_GetStatSeries_FullMethodName                = "/datacommons.Mixer/GetStatSeries"
-	Mixer_GetStatAll_FullMethodName                   = "/datacommons.Mixer/GetStatAll"
 	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
@@ -158,12 +156,6 @@ type MixerClient interface {
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
 	GetStatValue(ctx context.Context, in *proto.GetStatValueRequest, opts ...grpc.CallOption) (*proto.GetStatValueResponse, error)
-	// Get a series of stat value with dates, given the place and statistical
-	// variable.
-	GetStatSeries(ctx context.Context, in *proto.GetStatSeriesRequest, opts ...grpc.CallOption) (*proto.GetStatSeriesResponse, error)
-	// Get all stat series given a list of places and a list of statistical
-	// variables.
-	GetStatAll(ctx context.Context, in *proto.GetStatAllRequest, opts ...grpc.CallOption) (*proto.GetStatAllResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
@@ -525,24 +517,6 @@ func (c *mixerClient) GetStatValue(ctx context.Context, in *proto.GetStatValueRe
 	return out, nil
 }
 
-func (c *mixerClient) GetStatSeries(ctx context.Context, in *proto.GetStatSeriesRequest, opts ...grpc.CallOption) (*proto.GetStatSeriesResponse, error) {
-	out := new(proto.GetStatSeriesResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetStatSeries_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatAll(ctx context.Context, in *proto.GetStatAllRequest, opts ...grpc.CallOption) (*proto.GetStatAllResponse, error) {
-	out := new(proto.GetStatAllResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetStatAll_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error) {
 	out := new(proto.GetLocationsRankingsResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetLocationsRankings_FullMethodName, in, out, opts...)
@@ -813,12 +787,6 @@ type MixerServer interface {
 	// Get a single stat value given a place, a statistical variable and a date.
 	// If no date is given, the latest statistical variable will be returned.
 	GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error)
-	// Get a series of stat value with dates, given the place and statistical
-	// variable.
-	GetStatSeries(context.Context, *proto.GetStatSeriesRequest) (*proto.GetStatSeriesResponse, error)
-	// Get all stat series given a list of places and a list of statistical
-	// variables.
-	GetStatAll(context.Context, *proto.GetStatAllRequest) (*proto.GetStatAllResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
@@ -960,12 +928,6 @@ func (UnimplementedMixerServer) GetStats(context.Context, *proto.GetStatsRequest
 }
 func (UnimplementedMixerServer) GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatValue not implemented")
-}
-func (UnimplementedMixerServer) GetStatSeries(context.Context, *proto.GetStatSeriesRequest) (*proto.GetStatSeriesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatSeries not implemented")
-}
-func (UnimplementedMixerServer) GetStatAll(context.Context, *proto.GetStatAllRequest) (*proto.GetStatAllResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatAll not implemented")
 }
 func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLocationsRankings not implemented")
@@ -1630,42 +1592,6 @@ func _Mixer_GetStatValue_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetStatSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetStatSeriesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatSeries(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetStatSeries_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatSeries(ctx, req.(*proto.GetStatSeriesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetStatAllRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatAll(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetStatAll_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatAll(ctx, req.(*proto.GetStatAllRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_GetLocationsRankings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.GetLocationsRankingsRequest)
 	if err := dec(in); err != nil {
@@ -2228,14 +2154,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatValue",
 			Handler:    _Mixer_GetStatValue_Handler,
-		},
-		{
-			MethodName: "GetStatSeries",
-			Handler:    _Mixer_GetStatSeries_Handler,
-		},
-		{
-			MethodName: "GetStatAll",
-			Handler:    _Mixer_GetStatAll_Handler,
 		},
 		{
 			MethodName: "GetLocationsRankings",

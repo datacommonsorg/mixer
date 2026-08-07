@@ -53,29 +53,12 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	return statpoint.GetStatValue(ctx, in, s.store)
 }
 
-// GetStatSeries implements API for Mixer.GetStatSeries.
-// Endpoint: /stat/series
-// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
-	*pb.GetStatSeriesResponse, error,
-) {
-	return stat.GetStatSeries(ctx, in, s.store)
-}
-
 // GetStats implements API for Mixer.GetStats.
 // Endpoint: /stat/set/series
 // Endpoint: /bulk/stats
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 ) (*pb.GetStatsResponse, error) {
 	return stat.GetStats(ctx, in, s.store)
-}
-
-// GetStatAll implements API for Mixer.GetStatAll.
-// Endpoint: /stat/set/series/all
-// Endpoint: /stat/all
-func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest,
-) (*pb.GetStatAllResponse, error) {
-	return stat.GetStatAll(ctx, in, s.store)
 }
 
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
