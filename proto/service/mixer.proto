@@ -318,24 +318,6 @@ service Mixer {
     };
   }
 
-  // Get a series of stat value with dates, given the place and statistical
-  // variable.
-  rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
-    option (google.api.http) = {
-      get : "/stat/series"
-      additional_bindings : {post : "/stat/series" body : "*"}
-    };
-  }
-
-  // Get all stat series given a list of places and a list of statistical
-  // variables.
-  rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
-    option (google.api.http) = {
-      get : "/stat/all"
-      additional_bindings : {post : "/stat/all" body : "*"}
-    };
-  }
-
   // Get rankings for given stat var DCIDs.
   rpc GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {

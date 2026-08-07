@@ -1242,300 +1242,6 @@ func (x *GetStatValueResponse) GetValue() float64 {
 	return 0
 }
 
-// Request for GetStatSeries service.
-type GetStatSeriesRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// dcid of the place.
-	Place string `protobuf:"bytes,1,opt,name=place,proto3" json:"place,omitempty"`
-	// dcid of the stat var.
-	StatVar string `protobuf:"bytes,2,opt,name=stat_var,json=statVar,proto3" json:"stat_var,omitempty"`
-	// (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
-	MeasurementMethod string `protobuf:"bytes,3,opt,name=measurement_method,json=measurementMethod,proto3" json:"measurement_method,omitempty"`
-	// (optional) observation period of the observation, ex: "P1Y".
-	ObservationPeriod string `protobuf:"bytes,4,opt,name=observation_period,json=observationPeriod,proto3" json:"observation_period,omitempty"`
-	// (optional) unit of the observation.
-	Unit string `protobuf:"bytes,5,opt,name=unit,proto3" json:"unit,omitempty"`
-	// (optional) scaling factor of the observation.
-	ScalingFactor string `protobuf:"bytes,6,opt,name=scaling_factor,json=scalingFactor,proto3" json:"scaling_factor,omitempty"`
-}
-
-func (x *GetStatSeriesRequest) Reset() {
-	*x = GetStatSeriesRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetStatSeriesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetStatSeriesRequest) ProtoMessage() {}
-
-func (x *GetStatSeriesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetStatSeriesRequest.ProtoReflect.Descriptor instead.
-func (*GetStatSeriesRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *GetStatSeriesRequest) GetPlace() string {
-	if x != nil {
-		return x.Place
-	}
-	return ""
-}
-
-func (x *GetStatSeriesRequest) GetStatVar() string {
-	if x != nil {
-		return x.StatVar
-	}
-	return ""
-}
-
-func (x *GetStatSeriesRequest) GetMeasurementMethod() string {
-	if x != nil {
-		return x.MeasurementMethod
-	}
-	return ""
-}
-
-func (x *GetStatSeriesRequest) GetObservationPeriod() string {
-	if x != nil {
-		return x.ObservationPeriod
-	}
-	return ""
-}
-
-func (x *GetStatSeriesRequest) GetUnit() string {
-	if x != nil {
-		return x.Unit
-	}
-	return ""
-}
-
-func (x *GetStatSeriesRequest) GetScalingFactor() string {
-	if x != nil {
-		return x.ScalingFactor
-	}
-	return ""
-}
-
-// Response for GetStatSeries service.
-type GetStatSeriesResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// A map from ISO date to stat value.
-	Series map[string]float64 `protobuf:"bytes,1,rep,name=series,proto3" json:"series,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"fixed64,2,opt,name=value,proto3"`
-}
-
-func (x *GetStatSeriesResponse) Reset() {
-	*x = GetStatSeriesResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetStatSeriesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetStatSeriesResponse) ProtoMessage() {}
-
-func (x *GetStatSeriesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetStatSeriesResponse.ProtoReflect.Descriptor instead.
-func (*GetStatSeriesResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *GetStatSeriesResponse) GetSeries() map[string]float64 {
-	if x != nil {
-		return x.Series
-	}
-	return nil
-}
-
-// Request for GetStatAll service.
-type GetStatAllRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// dcids of the place.
-	Places []string `protobuf:"bytes,1,rep,name=places,proto3" json:"places,omitempty"`
-	// dcids of the stat var.
-	StatVars []string `protobuf:"bytes,2,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
-}
-
-func (x *GetStatAllRequest) Reset() {
-	*x = GetStatAllRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[18]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetStatAllRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetStatAllRequest) ProtoMessage() {}
-
-func (x *GetStatAllRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[18]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetStatAllRequest.ProtoReflect.Descriptor instead.
-func (*GetStatAllRequest) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *GetStatAllRequest) GetPlaces() []string {
-	if x != nil {
-		return x.Places
-	}
-	return nil
-}
-
-func (x *GetStatAllRequest) GetStatVars() []string {
-	if x != nil {
-		return x.StatVars
-	}
-	return nil
-}
-
-// Response for GetStatAll service.
-//
-// The response is a two level map, with the first level keyed by place dcid,
-// and the second level keyed by the stat var dcid.
-// Each leaf object contains multiple source series with <date, value> object
-// and observation metadata.
-//
-// The response is transcoded by esp:
-// https://cloud.google.com/endpoints/docs/grpc/grpc-service-config Example
-// response after esp transcoding is like below.
-//
-//	{
-//	  placeData: {
-//	    "geoId/01": {
-//	      statVarData: {
-//	        "statvar1": {
-//	          "placeName": "City of Mountain View",
-//	          "sourceSeries": [
-//	            {
-//	              "val": {
-//	                "2008": 2116,
-//	                "2009": 2155,
-//	                "2010": 1633,
-//	                "2011": 1509,
-//	                "2012": 1581,
-//	                "2013": 1867,
-//	                "2014": 1770,
-//	                "2015": 2201,
-//	                "2016": 1913,
-//	                "2017": 2138
-//	              },
-//	              "observationPeriod": "P1Y",
-//	              "importName": "FBIGovCrime",
-//	              "provenanceDomain": "fbi.gov"
-//	            }
-//	          ]
-//	        },
-//	      }
-//	    },
-//	    "geoId/02": {
-//	      statVarData: {
-//	        "statvar3": {...},
-//	      }
-//	    }
-//	  }
-//	}
-type GetStatAllResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	PlaceData map[string]*PlaceStat `protobuf:"bytes,1,rep,name=place_data,json=placeData,proto3" json:"place_data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-}
-
-func (x *GetStatAllResponse) Reset() {
-	*x = GetStatAllResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[19]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetStatAllResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetStatAllResponse) ProtoMessage() {}
-
-func (x *GetStatAllResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[19]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetStatAllResponse.ProtoReflect.Descriptor instead.
-func (*GetStatAllResponse) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *GetStatAllResponse) GetPlaceData() map[string]*PlaceStat {
-	if x != nil {
-		return x.PlaceData
-	}
-	return nil
-}
-
 type StatDate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1549,7 +1255,7 @@ type StatDate struct {
 func (x *StatDate) Reset() {
 	*x = StatDate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[20]
+		mi := &file_stat_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1562,7 +1268,7 @@ func (x *StatDate) String() string {
 func (*StatDate) ProtoMessage() {}
 
 func (x *StatDate) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[20]
+	mi := &file_stat_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1575,7 +1281,7 @@ func (x *StatDate) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatDate.ProtoReflect.Descriptor instead.
 func (*StatDate) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{20}
+	return file_stat_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *StatDate) GetDatePlaceCount() map[string]float64 {
@@ -1603,7 +1309,7 @@ type StatDateList struct {
 func (x *StatDateList) Reset() {
 	*x = StatDateList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[21]
+		mi := &file_stat_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1616,7 +1322,7 @@ func (x *StatDateList) String() string {
 func (*StatDateList) ProtoMessage() {}
 
 func (x *StatDateList) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[21]
+	mi := &file_stat_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1629,7 +1335,7 @@ func (x *StatDateList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StatDateList.ProtoReflect.Descriptor instead.
 func (*StatDateList) Descriptor() ([]byte, []int) {
-	return file_stat_proto_rawDescGZIP(), []int{21}
+	return file_stat_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *StatDateList) GetStatDate() []*StatDate {
@@ -1651,7 +1357,7 @@ type ObsCollection_PlaceTypes struct {
 func (x *ObsCollection_PlaceTypes) Reset() {
 	*x = ObsCollection_PlaceTypes{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_proto_msgTypes[26]
+		mi := &file_stat_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1664,7 +1370,7 @@ func (x *ObsCollection_PlaceTypes) String() string {
 func (*ObsCollection_PlaceTypes) ProtoMessage() {}
 
 func (x *ObsCollection_PlaceTypes) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_proto_msgTypes[26]
+	mi := &file_stat_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1907,69 +1613,28 @@ var file_stat_proto_rawDesc = []byte{
 	0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
 	0x6e, 0x73, 0x65, 0x12, 0x19, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x01, 0x48, 0x00, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x88, 0x01, 0x01, 0x42, 0x08,
-	0x0a, 0x06, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0xe0, 0x01, 0x0a, 0x14, 0x47, 0x65, 0x74,
-	0x53, 0x74, 0x61, 0x74, 0x53, 0x65, 0x72, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x73, 0x74, 0x61, 0x74, 0x5f,
-	0x76, 0x61, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x74, 0x61, 0x74, 0x56,
-	0x61, 0x72, 0x12, 0x2d, 0x0a, 0x12, 0x6d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x6d, 0x65, 0x6e,
-	0x74, 0x5f, 0x6d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11,
-	0x6d, 0x65, 0x61, 0x73, 0x75, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x4d, 0x65, 0x74, 0x68, 0x6f,
-	0x64, 0x12, 0x2d, 0x0a, 0x12, 0x6f, 0x62, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x5f, 0x70, 0x65, 0x72, 0x69, 0x6f, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x6f,
-	0x62, 0x73, 0x65, 0x72, 0x76, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x50, 0x65, 0x72, 0x69, 0x6f, 0x64,
-	0x12, 0x12, 0x0a, 0x04, 0x75, 0x6e, 0x69, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x75, 0x6e, 0x69, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x73, 0x63, 0x61, 0x6c, 0x69, 0x6e, 0x67, 0x5f,
-	0x66, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x73, 0x63,
-	0x61, 0x6c, 0x69, 0x6e, 0x67, 0x46, 0x61, 0x63, 0x74, 0x6f, 0x72, 0x22, 0x9a, 0x01, 0x0a, 0x15,
-	0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x53, 0x65, 0x72, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x46, 0x0a, 0x06, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x53, 0x65, 0x72, 0x69, 0x65,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x53, 0x65, 0x72, 0x69, 0x65, 0x73,
-	0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x73, 0x65, 0x72, 0x69, 0x65, 0x73, 0x1a, 0x39, 0x0a,
-	0x0b, 0x53, 0x65, 0x72, 0x69, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03,
-	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14,
-	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52, 0x05, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x48, 0x0a, 0x11, 0x47, 0x65, 0x74, 0x53,
-	0x74, 0x61, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a,
-	0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x1b, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61,
-	0x72, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61,
-	0x72, 0x73, 0x22, 0xb9, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x41, 0x6c,
-	0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4d, 0x0a, 0x0a, 0x70, 0x6c, 0x61,
-	0x63, 0x65, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e, 0x2e,
-	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x53,
-	0x74, 0x61, 0x74, 0x41, 0x6c, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x50,
-	0x6c, 0x61, 0x63, 0x65, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x09, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x44, 0x61, 0x74, 0x61, 0x1a, 0x54, 0x0a, 0x0e, 0x50, 0x6c, 0x61, 0x63,
-	0x65, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65,
-	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x2c, 0x0a, 0x05,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x53,
-	0x74, 0x61, 0x74, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xd2,
-	0x01, 0x0a, 0x08, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x64,
-	0x61, 0x74, 0x65, 0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x2e, 0x44, 0x61, 0x74,
-	0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79,
-	0x52, 0x0e, 0x64, 0x61, 0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74,
-	0x12, 0x2e, 0x0a, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x12, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
-	0x2e, 0x46, 0x61, 0x63, 0x65, 0x74, 0x52, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
-	0x1a, 0x41, 0x0a, 0x13, 0x44, 0x61, 0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75,
-	0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x01, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
-	0x02, 0x38, 0x01, 0x22, 0x42, 0x0a, 0x0c, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x4c,
-	0x69, 0x73, 0x74, 0x12, 0x32, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x65,
-	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x52, 0x08, 0x73,
-	0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
-	0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72,
-	0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x0a, 0x06, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22, 0xd2, 0x01, 0x0a, 0x08, 0x53, 0x74, 0x61,
+	0x74, 0x44, 0x61, 0x74, 0x65, 0x12, 0x53, 0x0a, 0x10, 0x64, 0x61, 0x74, 0x65, 0x5f, 0x70, 0x6c,
+	0x61, 0x63, 0x65, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x29, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x74,
+	0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x2e, 0x44, 0x61, 0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65,
+	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0e, 0x64, 0x61, 0x74, 0x65,
+	0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x2e, 0x0a, 0x08, 0x6d, 0x65,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x64,
+	0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x46, 0x61, 0x63, 0x65, 0x74,
+	0x52, 0x08, 0x6d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x1a, 0x41, 0x0a, 0x13, 0x44, 0x61,
+	0x74, 0x65, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x45, 0x6e, 0x74, 0x72,
+	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
+	0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
+	0x28, 0x01, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x42, 0x0a,
+	0x0c, 0x53, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x32, 0x0a,
+	0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x15, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53,
+	0x74, 0x61, 0x74, 0x44, 0x61, 0x74, 0x65, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x44, 0x61, 0x74,
+	0x65, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d,
+	0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1984,7 +1649,7 @@ func file_stat_proto_rawDescGZIP() []byte {
 	return file_stat_proto_rawDescData
 }
 
-var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_stat_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_stat_proto_goTypes = []interface{}{
 	(*Facet)(nil),                    // 0: datacommons.Facet
 	(*Facets)(nil),                   // 1: datacommons.Facets
@@ -2002,55 +1667,46 @@ var file_stat_proto_goTypes = []interface{}{
 	(*GetStatsResponse)(nil),         // 13: datacommons.GetStatsResponse
 	(*GetStatValueRequest)(nil),      // 14: datacommons.GetStatValueRequest
 	(*GetStatValueResponse)(nil),     // 15: datacommons.GetStatValueResponse
-	(*GetStatSeriesRequest)(nil),     // 16: datacommons.GetStatSeriesRequest
-	(*GetStatSeriesResponse)(nil),    // 17: datacommons.GetStatSeriesResponse
-	(*GetStatAllRequest)(nil),        // 18: datacommons.GetStatAllRequest
-	(*GetStatAllResponse)(nil),       // 19: datacommons.GetStatAllResponse
-	(*StatDate)(nil),                 // 20: datacommons.StatDate
-	(*StatDateList)(nil),             // 21: datacommons.StatDateList
-	nil,                              // 22: datacommons.PointStat.AttributesEntry
-	nil,                              // 23: datacommons.SourceSeries.ValEntry
-	nil,                              // 24: datacommons.SourceSeries.PlaceToLatestDateEntry
-	nil,                              // 25: datacommons.Series.ValEntry
-	(*ObsCollection_PlaceTypes)(nil), // 26: datacommons.ObsCollection.PlaceTypes
-	nil,                              // 27: datacommons.ObsCollection.PlaceDcidToTypesEntry
-	nil,                              // 28: datacommons.PlaceStat.StatVarDataEntry
-	nil,                              // 29: datacommons.StatVarSeries.DataEntry
-	nil,                              // 30: datacommons.GetStatSeriesResponse.SeriesEntry
-	nil,                              // 31: datacommons.GetStatAllResponse.PlaceDataEntry
-	nil,                              // 32: datacommons.StatDate.DatePlaceCountEntry
+	(*StatDate)(nil),                 // 16: datacommons.StatDate
+	(*StatDateList)(nil),             // 17: datacommons.StatDateList
+	nil,                              // 18: datacommons.PointStat.AttributesEntry
+	nil,                              // 19: datacommons.SourceSeries.ValEntry
+	nil,                              // 20: datacommons.SourceSeries.PlaceToLatestDateEntry
+	nil,                              // 21: datacommons.Series.ValEntry
+	(*ObsCollection_PlaceTypes)(nil), // 22: datacommons.ObsCollection.PlaceTypes
+	nil,                              // 23: datacommons.ObsCollection.PlaceDcidToTypesEntry
+	nil,                              // 24: datacommons.PlaceStat.StatVarDataEntry
+	nil,                              // 25: datacommons.StatVarSeries.DataEntry
+	nil,                              // 26: datacommons.StatDate.DatePlaceCountEntry
 }
 var file_stat_proto_depIdxs = []int32{
 	0,  // 0: datacommons.Facets.facets:type_name -> datacommons.Facet
 	0,  // 1: datacommons.PlaceVariableFacet.facet:type_name -> datacommons.Facet
 	2,  // 2: datacommons.PlaceVariableFacets.place_variable_facets:type_name -> datacommons.PlaceVariableFacet
 	0,  // 3: datacommons.PointStat.metadata:type_name -> datacommons.Facet
-	22, // 4: datacommons.PointStat.attributes:type_name -> datacommons.PointStat.AttributesEntry
-	23, // 5: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
-	24, // 6: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
-	25, // 7: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
+	18, // 4: datacommons.PointStat.attributes:type_name -> datacommons.PointStat.AttributesEntry
+	19, // 5: datacommons.SourceSeries.val:type_name -> datacommons.SourceSeries.ValEntry
+	20, // 6: datacommons.SourceSeries.place_to_latest_date:type_name -> datacommons.SourceSeries.PlaceToLatestDateEntry
+	21, // 7: datacommons.Series.val:type_name -> datacommons.Series.ValEntry
 	0,  // 8: datacommons.Series.metadata:type_name -> datacommons.Facet
 	5,  // 9: datacommons.ObsTimeSeries.source_series:type_name -> datacommons.SourceSeries
 	5,  // 10: datacommons.ObsCollection.source_cohorts:type_name -> datacommons.SourceSeries
-	27, // 11: datacommons.ObsCollection.place_dcid_to_types:type_name -> datacommons.ObsCollection.PlaceDcidToTypesEntry
+	23, // 11: datacommons.ObsCollection.place_dcid_to_types:type_name -> datacommons.ObsCollection.PlaceDcidToTypesEntry
 	7,  // 12: datacommons.ChartStore.obs_time_series:type_name -> datacommons.ObsTimeSeries
 	8,  // 13: datacommons.ChartStore.obs_collection:type_name -> datacommons.ObsCollection
-	28, // 14: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
-	29, // 15: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
-	30, // 16: datacommons.GetStatSeriesResponse.series:type_name -> datacommons.GetStatSeriesResponse.SeriesEntry
-	31, // 17: datacommons.GetStatAllResponse.place_data:type_name -> datacommons.GetStatAllResponse.PlaceDataEntry
-	32, // 18: datacommons.StatDate.date_place_count:type_name -> datacommons.StatDate.DatePlaceCountEntry
-	0,  // 19: datacommons.StatDate.metadata:type_name -> datacommons.Facet
-	20, // 20: datacommons.StatDateList.stat_date:type_name -> datacommons.StatDate
-	26, // 21: datacommons.ObsCollection.PlaceDcidToTypesEntry.value:type_name -> datacommons.ObsCollection.PlaceTypes
-	7,  // 22: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
-	6,  // 23: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
-	10, // 24: datacommons.GetStatAllResponse.PlaceDataEntry.value:type_name -> datacommons.PlaceStat
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	24, // 14: datacommons.PlaceStat.stat_var_data:type_name -> datacommons.PlaceStat.StatVarDataEntry
+	25, // 15: datacommons.StatVarSeries.data:type_name -> datacommons.StatVarSeries.DataEntry
+	26, // 16: datacommons.StatDate.date_place_count:type_name -> datacommons.StatDate.DatePlaceCountEntry
+	0,  // 17: datacommons.StatDate.metadata:type_name -> datacommons.Facet
+	16, // 18: datacommons.StatDateList.stat_date:type_name -> datacommons.StatDate
+	22, // 19: datacommons.ObsCollection.PlaceDcidToTypesEntry.value:type_name -> datacommons.ObsCollection.PlaceTypes
+	7,  // 20: datacommons.PlaceStat.StatVarDataEntry.value:type_name -> datacommons.ObsTimeSeries
+	6,  // 21: datacommons.StatVarSeries.DataEntry.value:type_name -> datacommons.Series
+	22, // [22:22] is the sub-list for method output_type
+	22, // [22:22] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_stat_proto_init() }
@@ -2252,54 +1908,6 @@ func file_stat_proto_init() {
 			}
 		}
 		file_stat_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatSeriesRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_stat_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatSeriesResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_stat_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatAllRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_stat_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetStatAllResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_stat_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatDate); i {
 			case 0:
 				return &v.state
@@ -2311,7 +1919,7 @@ func file_stat_proto_init() {
 				return nil
 			}
 		}
-		file_stat_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatDateList); i {
 			case 0:
 				return &v.state
@@ -2323,7 +1931,7 @@ func file_stat_proto_init() {
 				return nil
 			}
 		}
-		file_stat_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ObsCollection_PlaceTypes); i {
 			case 0:
 				return &v.state
@@ -2348,7 +1956,7 @@ func file_stat_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_stat_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
