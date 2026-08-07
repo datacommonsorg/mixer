@@ -224,6 +224,14 @@ service Mixer {
 
   // ======================  V2 Agent  ======================
 
+  rpc V2AgentResolvePlaces(datacommons.v2.ResolvePlacesRequest)
+      returns (datacommons.v2.ResolvePlacesResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/resolve_places"
+      additional_bindings : {post : "/v2/agent/resolve_places" body : "*"}
+    };
+  }
+
   rpc V2AgentSearchIndicators(datacommons.v2.SearchIndicatorsRequest)
       returns (datacommons.v2.SearchIndicatorsResponse) {
     option (google.api.http) = {

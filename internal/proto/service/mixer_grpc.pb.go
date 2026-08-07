@@ -66,6 +66,7 @@ const (
 	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
 	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
 	Mixer_V2BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V2BulkVariableGroupInfo"
+	Mixer_V2AgentResolvePlaces_FullMethodName         = "/datacommons.Mixer/V2AgentResolvePlaces"
 	Mixer_V2AgentSearchIndicators_FullMethodName      = "/datacommons.Mixer/V2AgentSearchIndicators"
 	Mixer_V2AgentGetObservations_FullMethodName       = "/datacommons.Mixer/V2AgentGetObservations"
 	Mixer_V2AgentGetVariableMetadata_FullMethodName   = "/datacommons.Mixer/V2AgentGetVariableMetadata"
@@ -134,6 +135,7 @@ type MixerClient interface {
 	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
 	V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
+	V2AgentResolvePlaces(ctx context.Context, in *v2.ResolvePlacesRequest, opts ...grpc.CallOption) (*v2.ResolvePlacesResponse, error)
 	V2AgentSearchIndicators(ctx context.Context, in *v2.SearchIndicatorsRequest, opts ...grpc.CallOption) (*v2.SearchIndicatorsResponse, error)
 	V2AgentGetObservations(ctx context.Context, in *v2.GetObservationsRequest, opts ...grpc.CallOption) (*v2.GetObservationsResponse, error)
 	V2AgentGetVariableMetadata(ctx context.Context, in *v2.GetVariableMetadataRequest, opts ...grpc.CallOption) (*v2.GetVariableMetadataResponse, error)
@@ -412,6 +414,15 @@ func (c *mixerClient) V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariabl
 func (c *mixerClient) V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error) {
 	out := new(v1.BulkVariableGroupInfoResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2BulkVariableGroupInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2AgentResolvePlaces(ctx context.Context, in *v2.ResolvePlacesRequest, opts ...grpc.CallOption) (*v2.ResolvePlacesResponse, error) {
+	out := new(v2.ResolvePlacesResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2AgentResolvePlaces_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -765,6 +776,7 @@ type MixerServer interface {
 	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
 	V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
+	V2AgentResolvePlaces(context.Context, *v2.ResolvePlacesRequest) (*v2.ResolvePlacesResponse, error)
 	V2AgentSearchIndicators(context.Context, *v2.SearchIndicatorsRequest) (*v2.SearchIndicatorsResponse, error)
 	V2AgentGetObservations(context.Context, *v2.GetObservationsRequest) (*v2.GetObservationsResponse, error)
 	V2AgentGetVariableMetadata(context.Context, *v2.GetVariableMetadataRequest) (*v2.GetVariableMetadataResponse, error)
@@ -895,6 +907,9 @@ func (UnimplementedMixerServer) V2BulkVariableInfo(context.Context, *v1.BulkVari
 }
 func (UnimplementedMixerServer) V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2BulkVariableGroupInfo not implemented")
+}
+func (UnimplementedMixerServer) V2AgentResolvePlaces(context.Context, *v2.ResolvePlacesRequest) (*v2.ResolvePlacesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2AgentResolvePlaces not implemented")
 }
 func (UnimplementedMixerServer) V2AgentSearchIndicators(context.Context, *v2.SearchIndicatorsRequest) (*v2.SearchIndicatorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2AgentSearchIndicators not implemented")
@@ -1390,6 +1405,24 @@ func _Mixer_V2BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2BulkVariableGroupInfo(ctx, req.(*v1.BulkVariableGroupInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2AgentResolvePlaces_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.ResolvePlacesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2AgentResolvePlaces(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2AgentResolvePlaces_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2AgentResolvePlaces(ctx, req.(*v2.ResolvePlacesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2110,6 +2143,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2BulkVariableGroupInfo",
 			Handler:    _Mixer_V2BulkVariableGroupInfo_Handler,
+		},
+		{
+			MethodName: "V2AgentResolvePlaces",
+			Handler:    _Mixer_V2AgentResolvePlaces_Handler,
 		},
 		{
 			MethodName: "V2AgentSearchIndicators",
