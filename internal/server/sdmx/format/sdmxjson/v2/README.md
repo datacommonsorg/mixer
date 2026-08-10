@@ -55,8 +55,8 @@ internal/server/sdmx/format/sdmxjson/v2/golden/availability_time_period_empty.js
 
 - Use the structure-message schema for Availability API responses.
 - Do not validate availability responses against the SDMX data-message schema.
-- Availability responses include a top-level `$schema` field pointing to the
-  canonical schema URL. Do not emit `meta.schema` unless the response also
-  includes the other SDMX-required `meta` fields.
+- Availability responses include `meta.schema` pointing to the canonical schema
+  URL. When `meta` is present, it also includes the SDMX-required `id`,
+  `prepared`, and `sender.id` fields.
 - The formatter intentionally omits `values: []` for empty availability
   results. The schema requires non-empty `values` when that field is present.

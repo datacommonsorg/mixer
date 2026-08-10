@@ -775,13 +775,25 @@ func normalizeCSV(_ *testing.T, value string) string {
 
 func normalizedJSON(t *testing.T, value string) string {
 	t.Helper()
-	var decoded interface{}
+	var decoded map[string]interface{}
 	if err := json.Unmarshal([]byte(value), &decoded); err != nil {
 		t.Fatalf("invalid JSON response: %v", err)
+	}
+	if meta, ok := decoded["meta"].(map[string]interface{}); ok {
+		delete(meta, "prepared")
 	}
 	formatted, err := json.MarshalIndent(decoded, "", "  ")
 	if err != nil {
 		t.Fatalf("format JSON response: %v", err)
 	}
 	return string(formatted)
+}
+
+func TestNormalizedJSONIgnoresPrepared(t *testing.T) {
+	first := normalizedJSON(t, `{"meta":{"id":"message","prepared":"2026-08-10T12:34:56Z"},"data":{}}`)
+	second := normalizedJSON(t, `{"meta":{"id":"message","prepared":"2026-08-10T12:35:56Z"},"data":{}}`)
+
+	if diff := cmp.Diff(first, second); diff != "" {
+		t.Errorf("normalized JSON differs by meta.prepared (-first +second):\n%s", diff)
+	}
 }

@@ -18,13 +18,17 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 )
 
+var availabilityTestTime = time.Date(2026, time.August, 10, 12, 34, 56, 0, time.UTC)
+
 func TestAvailabilityJSONFormatter_Format(t *testing.T) {
-	formatter := &AvailabilityJSONFormatter{}
+	formatter := newTestAvailabilityJSONFormatter()
 
 	got, err := formatter.Format("observationAbout", []string{"country/USA", "geoId/06"})
 	if err != nil {
@@ -32,10 +36,14 @@ func TestAvailabilityJSONFormatter_Format(t *testing.T) {
 	}
 
 	assertAvailabilityGolden(t, "availability_observation_about.json", got)
+	assertAvailabilityComponentValues(t, got, []availabilityComponentValue{
+		{Value: "country/USA"},
+		{Value: "geoId/06"},
+	})
 }
 
 func TestAvailabilityJSONFormatter_EmptyValues(t *testing.T) {
-	formatter := &AvailabilityJSONFormatter{}
+	formatter := newTestAvailabilityJSONFormatter()
 
 	got, err := formatter.Format("TIME_PERIOD", nil)
 	if err != nil {
@@ -46,7 +54,7 @@ func TestAvailabilityJSONFormatter_EmptyValues(t *testing.T) {
 }
 
 func TestAvailabilityJSONFormatter_MultipleComponents(t *testing.T) {
-	formatter := &AvailabilityJSONFormatter{}
+	formatter := newTestAvailabilityJSONFormatter()
 
 	got, err := formatter.FormatComponents([]AvailabilityComponentValues{
 		{ID: "observationAbout", Values: []string{"country/USA", "geoId/06"}},
@@ -59,8 +67,15 @@ func TestAvailabilityJSONFormatter_MultipleComponents(t *testing.T) {
 	assertAvailabilityGolden(t, "availability_multiple_components.json", got)
 }
 
+func newTestAvailabilityJSONFormatter() *AvailabilityJSONFormatter {
+	return &AvailabilityJSONFormatter{
+		now: func() time.Time { return availabilityTestTime },
+	}
+}
+
 func assertAvailabilityGolden(t *testing.T, goldenFile string, got string) {
 	t.Helper()
+	assertAvailabilityMeta(t, got)
 
 	var gotMap map[string]interface{}
 	if err := json.Unmarshal([]byte(got), &gotMap); err != nil {
@@ -92,5 +107,54 @@ func assertAvailabilityGolden(t *testing.T, goldenFile string, got string) {
 
 	if diff := cmp.Diff(wantMap, gotMap); diff != "" {
 		t.Errorf("Formatter output mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func assertAvailabilityMeta(t *testing.T, got string) {
+	t.Helper()
+
+	if !strings.HasPrefix(got, `{"meta":`) {
+		t.Errorf("Formatter output does not start with meta: %s", got)
+	}
+
+	var message availabilityMessage
+	if err := json.Unmarshal([]byte(got), &message); err != nil {
+		t.Fatalf("Failed to unmarshal output as availability message: %v", err)
+	}
+	want := availabilityMeta{
+		Schema:   StructureJSONSchema,
+		ID:       "DF_OBS_AVAILABILITY",
+		Prepared: availabilityTestTime.Format(time.RFC3339),
+		Sender:   availabilitySender{ID: "DC"},
+	}
+	if diff := cmp.Diff(want, message.Meta); diff != "" {
+		t.Errorf("Availability meta mismatch (-want +got):\n%s", diff)
+	}
+	if _, err := time.Parse(time.RFC3339, message.Meta.Prepared); err != nil {
+		t.Errorf("meta.prepared = %q, want RFC3339 timestamp: %v", message.Meta.Prepared, err)
+	}
+	if !strings.HasSuffix(message.Meta.Prepared, "Z") {
+		t.Errorf("meta.prepared = %q, want UTC timestamp", message.Meta.Prepared)
+	}
+
+	var topLevel map[string]json.RawMessage
+	if err := json.Unmarshal([]byte(got), &topLevel); err != nil {
+		t.Fatalf("Failed to unmarshal top-level output: %v", err)
+	}
+	if _, found := topLevel["$schema"]; found {
+		t.Errorf("Formatter output contains deprecated top-level $schema: %s", got)
+	}
+}
+
+func assertAvailabilityComponentValues(t *testing.T, got string, want []availabilityComponentValue) {
+	t.Helper()
+
+	var message availabilityMessage
+	if err := json.Unmarshal([]byte(got), &message); err != nil {
+		t.Fatalf("Failed to unmarshal component values as objects: %v", err)
+	}
+	values := message.Data.DataConstraints[0].CubeRegions[0].KeyValues[0].Values
+	if diff := cmp.Diff(want, values); diff != "" {
+		t.Errorf("Availability component values mismatch (-want +got):\n%s", diff)
 	}
 }
