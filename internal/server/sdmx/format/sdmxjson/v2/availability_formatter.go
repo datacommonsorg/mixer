@@ -16,6 +16,7 @@ package sdmxjsonv2
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/server/sdmx/datacommons"
 )
@@ -29,6 +30,7 @@ type AvailabilityJSONFormatter struct {
 	AgencyID   string
 	ResourceID string
 	Version    string
+	now        func() time.Time
 }
 
 type AvailabilityComponentValues struct {
@@ -37,8 +39,19 @@ type AvailabilityComponentValues struct {
 }
 
 type availabilityMessage struct {
-	Schema string           `json:"$schema,omitempty"`
-	Data   availabilityData `json:"data"`
+	Meta availabilityMeta `json:"meta"`
+	Data availabilityData `json:"data"`
+}
+
+type availabilityMeta struct {
+	Schema   string             `json:"schema"`
+	ID       string             `json:"id"`
+	Prepared string             `json:"prepared"`
+	Sender   availabilitySender `json:"sender"`
+}
+
+type availabilitySender struct {
+	ID string `json:"id"`
 }
 
 type availabilityData struct {
@@ -60,9 +73,13 @@ type availabilityCubeRegion struct {
 }
 
 type availabilityCubeRegionValue struct {
-	ID      string   `json:"id"`
-	Include bool     `json:"include"`
-	Values  []string `json:"values,omitempty"`
+	ID      string                       `json:"id"`
+	Include bool                         `json:"include"`
+	Values  []availabilityComponentValue `json:"values,omitempty"`
+}
+
+type availabilityComponentValue struct {
+	Value string `json:"value"`
 }
 
 func (f *AvailabilityJSONFormatter) Format(componentID string, values []string) (string, error) {
@@ -85,10 +102,14 @@ func (f *AvailabilityJSONFormatter) FormatComponents(components []AvailabilityCo
 		if len(component.Values) == 0 {
 			continue
 		}
+		values := make([]availabilityComponentValue, len(component.Values))
+		for i, value := range component.Values {
+			values[i] = availabilityComponentValue{Value: value}
+		}
 		keyValues = append(keyValues, availabilityCubeRegionValue{
 			ID:      component.ID,
 			Include: true,
-			Values:  component.Values,
+			Values:  values,
 		})
 	}
 	if len(keyValues) > 0 {
@@ -99,8 +120,19 @@ func (f *AvailabilityJSONFormatter) FormatComponents(components []AvailabilityCo
 			},
 		}
 	}
+	now := time.Now
+	if f.now != nil {
+		now = f.now
+	}
 	payload := availabilityMessage{
-		Schema: StructureJSONSchema,
+		Meta: availabilityMeta{
+			Schema:   StructureJSONSchema,
+			ID:       constraint.ID,
+			Prepared: now().UTC().Format(time.RFC3339),
+			Sender: availabilitySender{
+				ID: datacommons.DataflowAgencyID,
+			},
+		},
 		Data: availabilityData{
 			DataConstraints: []availabilityDataConstraint{constraint},
 		},

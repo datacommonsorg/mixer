@@ -1,5 +1,12 @@
 {
-  "$schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+  "meta": {
+    "schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+    "id": "DF_OBS_AVAILABILITY",
+    "prepared": "2026-08-10T12:34:56Z",
+    "sender": {
+      "id": "DC"
+    }
+  },
   "data": {
     "dataConstraints": [
       {
@@ -12,8 +19,12 @@
                 "id": "destinationCountry",
                 "include": true,
                 "values": [
-                  "country/CAN",
-                  "country/MEX"
+                  {
+                    "value": "country/CAN"
+                  },
+                  {
+                    "value": "country/MEX"
+                  }
                 ]
               }
             ]

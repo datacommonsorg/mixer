@@ -1,5 +1,12 @@
 {
-  "$schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+  "meta": {
+    "schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+    "id": "DF_OBS_AVAILABILITY",
+    "prepared": "2026-08-10T12:34:56Z",
+    "sender": {
+      "id": "DC"
+    }
+  },
   "data": {
     "dataConstraints": [
       {
@@ -12,16 +19,24 @@
                 "id": "observationAbout",
                 "include": true,
                 "values": [
-                  "country/USA",
-                  "geoId/06"
+                  {
+                    "value": "country/USA"
+                  },
+                  {
+                    "value": "geoId/06"
+                  }
                 ]
               },
               {
                 "id": "TIME_PERIOD",
                 "include": true,
                 "values": [
-                  "2020",
-                  "2021"
+                  {
+                    "value": "2020"
+                  },
+                  {
+                    "value": "2021"
+                  }
                 ]
               }
             ]
