@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CORS continueOnError="false" enabled="true" name="add-cors">
+  <DisplayName>Add CORS</DisplayName>
+  <AllowOrigins>*</AllowOrigins>
+  <AllowMethods>GET,POST,PUT,DELETE,OPTIONS</AllowMethods>
+  <AllowHeaders>Authorization,Content-Type,Accept,Origin,X-Requested-With,X-Api-Key</AllowHeaders>
+  <MaxAge>3600</MaxAge>
+  <GeneratePreflightResponse>true</GeneratePreflightResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</CORS>

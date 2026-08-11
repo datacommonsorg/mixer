@@ -2,6 +2,7 @@ project_id: datcom-apigee
 proxies:
   - name: api
     policies:
+      - add-cors
       - copy-key-param-to-header
       - verify-api-key-in-header
       - rewrite-missing-key-message
