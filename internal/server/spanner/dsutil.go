@@ -827,7 +827,7 @@ func processSvgId(svg string) []string {
 
 // isCuratedHierarchy checks if the SVG is part of a curated hierarchy, which have different naming conventions that do not follow the standard specialization pattern.
 func isCuratedHierarchy(svg string) bool {
-	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
+	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG") || strings.HasPrefix(svg, "undata/g")
 }
 
 // isBasicPopulationType checks if the SVG has a basic populationType and thus will roll up to populationType_constraintProperty.
