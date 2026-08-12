@@ -164,12 +164,19 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 
 	selectedStatements := containedInPlaceStatements.variableSeek
 	minVariables := b.queryConfig.ContainedInPlaceEntityScanMinVariables
-	if minVariables > 0 && len(uniqueVariables) >= minVariables {
-		// The base-table plan performs one sparse seek per place-variable pair.
-		// For broad variable lists, scanning each entity1 index range once and
-		// applying variable_measured as a residual filter can be cheaper. This
-		// threshold is a heuristic because the builder does not know how many
-		// TimeSeries rows belong to each selected place.
+	preferTimeSeriesScan := slices.Contains(
+		b.queryConfig.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
+		containedInPlace.ChildPlaceType,
+	)
+	if preferTimeSeriesScan && minVariables > 0 && len(uniqueVariables) >= minVariables {
+		// Choose between two TimeSeries access paths. The base table performs sparse
+		// seeks for each (variable, place) pair. The entity1 index instead scans each
+		// place's TimeSeries range and applies variable_measured as a residual filter.
+		//
+		// Neither path is always cheaper. Scanning helped sparse Place entities under
+		// nuts/DE40, while targeted seeks were faster for dense Country entities under
+		// Earth. Use the scan only for an explicitly configured child place type and
+		// a broad variable list.
 		selectedStatements = containedInPlaceStatements.entityScan
 	}
 
@@ -227,13 +234,22 @@ func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constr
 	var provenanceJoin string
 	var provenanceFilters []string
 	if constrainedProvenance != "" {
+		params["predicate"] = getImportFilterPredicate(constrainedProvenance)
+		params["provenance"] = constrainedProvenance
+		// Optimization when filtering only by provenance (and no places).
+		// This allows reading from aggregated ProvenanceSummary.
+		// TODO: Confirm whether we'd ever want to filter by provenance AND place.
+		if len(constrainedPlaces) == 0 {
+			return &spanner.Statement{
+				SQL:    stmts.filterDescendentStatVarsByOnlyProvenance,
+				Params: params,
+			}
+		}
 		provenanceJoin = stmts.joinDescendentStatVarsByProvenance
 		provenanceFilters = append(provenanceFilters,
 			stmts.filterDescendentStatVarsByProvenancePredicate,
 			stmts.filterDescendentStatVarsByProvenanceObject,
 		)
-		params["predicate"] = getImportFilterPredicate(constrainedProvenance)
-		params["provenance"] = constrainedProvenance
 		distinctExistenceKey = "e1.subject_id"
 	}
 

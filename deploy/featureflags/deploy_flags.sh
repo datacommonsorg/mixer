@@ -38,7 +38,10 @@ set -e
 # If this script is NOT running on Cloud Build, show a warning and require confirmation.
 if [[ -z "$BUILD_ID" ]]; then
   echo "WARNING: This script is not running on Cloud Build."
-  echo "Feature flags should only be updated via build trigger after PR review."
+  echo "Feature flags should only be updated via build trigger after careful PR review."
+  echo ""
+  echo "Please coordinate with the oncaller before updating production servers."
+  echo "Remember to additionally announce this on the oncall thread."
   read -r -p "Proceed with UNSAFE deployment? (y/N) " response
   if [[ ! "$response" =~ ^([yY])$ ]]; then
     echo "Deployment aborted."

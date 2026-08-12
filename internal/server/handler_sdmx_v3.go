@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbsvc "github.com/datacommonsorg/mixer/internal/proto/service"
@@ -23,8 +24,11 @@ import (
 	sdmxgrpc "github.com/datacommonsorg/mixer/internal/server/sdmx/transport/grpc"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
+
+const contentDispositionHeader = "content-disposition"
 
 // V3SdmxData handles SDMX Data requests.
 func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
@@ -42,6 +46,12 @@ func (s *Server) V3SdmxData(in *sdmxpb.SdmxRestRequest, stream pbsvc.Mixer_V3Sdm
 	response, err := service.New(s.dispatcher).Data(stream.Context(), req)
 	if err != nil {
 		return err
+	}
+	// Suggest a filename for SDMX-CSV downloads.
+	if response.ContentDisposition != "" {
+		if err := stream.SetHeader(metadata.Pairs(contentDispositionHeader, response.ContentDisposition)); err != nil {
+			slog.Warn("Failed to set SDMX Content-Disposition header", "error", err)
+		}
 	}
 	return stream.Send(&httpbody.HttpBody{
 		ContentType: response.ContentType,
@@ -98,4 +108,18 @@ func (s *Server) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabili
 		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
 	return s.dispatcher.SdmxAvailability(ctx, in)
+}
+
+// V2InternalSdmxData handles internal structured SDMX Data requests.
+// Note: /v2/internal path prefix is used (instead of /v3) to ensure remote inter-instance
+// calls succeed across existing proxy policies (e.g. Apigee) that block /v3 routes.
+func (s *Server) V2InternalSdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+	return s.SdmxData(ctx, in)
+}
+
+// V2InternalSdmxAvailability handles internal structured SDMX Availability requests.
+// Note: /v2/internal path prefix is used (instead of /v3) to ensure remote inter-instance
+// calls succeed across existing proxy policies (e.g. Apigee) that block /v3 routes.
+func (s *Server) V2InternalSdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
+	return s.SdmxAvailability(ctx, in)
 }

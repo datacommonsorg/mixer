@@ -58,6 +58,7 @@ type SpannerClient interface {
 	FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error)
 	GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
 	GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
+	SpannerStalenessTimestamp() (time.Time, error)
 	Id() string
 	Start()
 	Close()
@@ -109,9 +110,11 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 	if opts == nil {
 		opts = &SpannerClientOptions{}
 	}
+	queryConfig := opts.QueryConfig
+	queryConfig.SpannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 	sc := &spannerDatabaseClient{
 		client:                       client,
-		queryConfig:                  opts.QueryConfig,
+		queryConfig:                  queryConfig,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
 		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),

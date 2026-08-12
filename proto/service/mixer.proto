@@ -36,14 +36,12 @@ import "stat.proto";
 import "stat_var.proto";
 import "recon.proto";
 
-import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/observation_dates.proto";
 import "v1/page.proto";
-import "v1/triples.proto";
 
 import "v2/event.proto";
 import "v2/node.proto";
@@ -67,6 +65,26 @@ service Mixer {
     option (google.api.http) = {
       get : "/sdmx/v3/availability/{tail=**}"
       additional_bindings : {get : "/sdmx/v3/availability"}
+    };
+  }
+
+  // Internal endpoint for structured SDMX data queries between remote data sources.
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
+  rpc V2InternalSdmxData(datacommons.sdmx.SdmxDataQuery)
+      returns (datacommons.sdmx.SdmxDataResult) {
+    option (google.api.http) = {
+      post : "/v2/internal/sdmx/data"
+      body : "*"
+    };
+  }
+
+  // Internal endpoint for structured SDMX availability queries between remote data sources.
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
+  rpc V2InternalSdmxAvailability(datacommons.sdmx.SdmxAvailabilityQuery)
+      returns (datacommons.sdmx.SdmxAvailabilityResult) {
+    option (google.api.http) = {
+      post : "/v2/internal/sdmx/availability"
+      body : "*"
     };
   }
 
@@ -206,6 +224,14 @@ service Mixer {
 
   // ======================  V2 Agent  ======================
 
+  rpc V2AgentResolvePlaces(datacommons.v2.ResolvePlacesRequest)
+      returns (datacommons.v2.ResolvePlacesResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/resolve_places"
+      additional_bindings : {post : "/v2/agent/resolve_places" body : "*"}
+    };
+  }
+
   rpc V2AgentSearchIndicators(datacommons.v2.SearchIndicatorsRequest)
       returns (datacommons.v2.SearchIndicatorsResponse) {
     option (google.api.http) = {
@@ -300,24 +326,6 @@ service Mixer {
     };
   }
 
-  // Get a series of stat value with dates, given the place and statistical
-  // variable.
-  rpc GetStatSeries(GetStatSeriesRequest) returns (GetStatSeriesResponse) {
-    option (google.api.http) = {
-      get : "/stat/series"
-      additional_bindings : {post : "/stat/series" body : "*"}
-    };
-  }
-
-  // Get all stat series given a list of places and a list of statistical
-  // variables.
-  rpc GetStatAll(GetStatAllRequest) returns (GetStatAllResponse) {
-    option (google.api.http) = {
-      get : "/stat/all"
-      additional_bindings : {post : "/stat/all" body : "*"}
-    };
-  }
-
   // Get rankings for given stat var DCIDs.
   rpc GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {
@@ -353,16 +361,6 @@ service Mixer {
     };
   }
 
-  // Given a list of entity dcids, returns the union of available
-  // statistical variables for the entities.
-  rpc GetEntityStatVarsUnionV1(GetEntityStatVarsUnionRequest)
-      returns (GetEntityStatVarsUnionResponse) {
-    option (google.api.http) = {
-      get : "/v1/place/stat-vars/union"
-      additional_bindings : {post : "/v1/place/stat-vars/union" body : "*"}
-    };
-  }
-
   // ======================  V1   V1   V1   V1  ======================
 
   // Query DataCommons Graph with Sparql.
@@ -370,38 +368,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/query"
       additional_bindings : {post : "/v1/query" body : "*"}
-    };
-  }
-
-  rpc Properties(datacommons.v1.PropertiesRequest)
-      returns (datacommons.v1.PropertiesResponse) {
-    option (google.api.http) = {
-      get : "/v1/properties/{direction}/{node=**}"
-    };
-  }
-
-  rpc BulkProperties(datacommons.v1.BulkPropertiesRequest)
-      returns (datacommons.v1.BulkPropertiesResponse) {
-    option (google.api.http) = {
-      get : "/v1/bulk/properties/{direction}"
-      additional_bindings : {
-        post : "/v1/bulk/properties/{direction}"
-        body : "*"
-      }
-    };
-  }
-
-  rpc PropertyValues(datacommons.v1.PropertyValuesRequest)
-      returns (datacommons.v1.PropertyValuesResponse) {
-    option (google.api.http) = {
-      get : "/v1/property/values/{direction}/{node_property=**}"
-    };
-  }
-
-  rpc LinkedPropertyValues(datacommons.v1.LinkedPropertyValuesRequest)
-      returns (datacommons.v1.PropertyValuesResponse) {
-    option (google.api.http) = {
-      get : "/v1/property/values/in/linked/{node_property=**}"
     };
   }
 
@@ -427,47 +393,11 @@ service Mixer {
     };
   }
 
-  rpc Triples(datacommons.v1.TriplesRequest)
-      returns (datacommons.v1.TriplesResponse) {
-    option (google.api.http) = {
-      get : "/v1/triples/{direction}/{node=**}"
-    };
-  }
-
-  rpc BulkTriples(datacommons.v1.BulkTriplesRequest)
-      returns (datacommons.v1.BulkTriplesResponse) {
-    option (google.api.http) = {
-      get : "/v1/bulk/triples/{direction}"
-      additional_bindings : {post : "/v1/bulk/triples/{direction}" body : "*"}
-    };
-  }
-
-  rpc Variables(datacommons.v1.VariablesRequest)
-      returns (datacommons.v1.VariablesResponse) {
-    option (google.api.http) = {
-      get : "/v1/variables/{entity=**}"
-    };
-  }
-
-  rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
-      returns (datacommons.v1.PlaceInfoResponse) {
-    option (google.api.http) = {
-      get : "/v1/info/place/{node=**}"
-    };
-  }
-
   rpc BulkPlaceInfo(datacommons.v1.BulkPlaceInfoRequest)
       returns (datacommons.v1.BulkPlaceInfoResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/info/place"
       additional_bindings : {post : "/v1/bulk/info/place" body : "*"}
-    };
-  }
-
-  rpc VariableInfo(datacommons.v1.VariableInfoRequest)
-      returns (datacommons.v1.VariableInfoResponse) {
-    option (google.api.http) = {
-      get : "/v1/info/variable/{node=**}"
     };
   }
 
@@ -479,13 +409,6 @@ service Mixer {
     };
   }
 
-  rpc VariableGroupInfo(datacommons.v1.VariableGroupInfoRequest)
-      returns (datacommons.v1.VariableGroupInfoResponse) {
-    option (google.api.http) = {
-      get : "/v1/info/variable-group/{node=**}"
-    };
-  }
-
   rpc BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
       returns (datacommons.v1.BulkVariableGroupInfoResponse) {
     option (google.api.http) = {
@@ -494,25 +417,11 @@ service Mixer {
     };
   }
 
-  rpc ObservationsPoint(datacommons.v1.ObservationsPointRequest)
-      returns (PointStat) {
-    option (google.api.http) = {
-      get : "/v1/observations/point/{entity_variable=**}"
-    };
-  }
-
   rpc BulkObservationsPoint(datacommons.v1.BulkObservationsPointRequest)
       returns (datacommons.v1.BulkObservationsPointResponse) {
     option (google.api.http) = {
       get : "/v1/bulk/observations/point"
       additional_bindings : {post : "/v1/bulk/observations/point" body : "*"}
-    };
-  }
-
-  rpc ObservationsSeries(datacommons.v1.ObservationsSeriesRequest)
-      returns (datacommons.v1.ObservationsSeriesResponse) {
-    option (google.api.http) = {
-      get : "/v1/observations/series/{entity_variable=**}"
     };
   }
 

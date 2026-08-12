@@ -144,16 +144,6 @@ message GetPlaceStatVarsResponse {
   map<string, StatVars> places = 1;
 }
 
-// Request message for GetEntityStatVarsUnionV1 API.
-message GetEntityStatVarsUnionRequest {
-  // DCIDs of the entities.
-  repeated string dcids = 1;
-  // (optional) DCID of stat vars to filter for
-  repeated string stat_vars = 2;
-}
-// Response message for GetEntityStatVarsUnionV1 API.
-message GetEntityStatVarsUnionResponse { repeated string stat_vars = 1; }
-
 // Metadata of a place. This is the raw cache data.
 message PlaceMetadataCache {
   message PlaceInfo {

@@ -4,6 +4,7 @@
   <Description/>
   <BasePaths>/api</BasePaths>
   <Policies>
+    <Policy>add-cors</Policy>
     <Policy>copy-key-param-to-header</Policy>
     <Policy>verify-api-key-in-header</Policy>
     <Policy>rewrite-missing-key-message</Policy>

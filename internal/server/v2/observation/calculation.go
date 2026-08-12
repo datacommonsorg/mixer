@@ -17,7 +17,6 @@ package observation
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -25,6 +24,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type Equation struct {
@@ -49,7 +50,7 @@ func Calculate(
 		return nil, err
 	}
 	if len(variableFormula.StatVars) == 0 {
-		return nil, fmt.Errorf("formula missing variables")
+		return nil, status.Errorf(codes.InvalidArgument, "formula missing variables")
 	}
 	newReq := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: variableFormula.StatVars},

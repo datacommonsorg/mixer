@@ -35,9 +35,6 @@ import (
 )
 
 const (
-	colDcid     = "dcid"
-	colName     = "name"
-	colTypeOf   = "typeOf"
 	colDate     = "date"
 	colValue    = "value"
 	attrFacetID = "facetId"
@@ -461,7 +458,6 @@ func buildEntityMetadataTable(dcids []string, props map[string]*nodeProperties) 
 	}
 	return table, nil
 }
-
 
 type facetStats struct {
 	facetID          string

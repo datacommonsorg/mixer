@@ -817,16 +817,9 @@ func splitPascalCase(s string) string {
 	return builder.String()
 }
 
-// processSvgId removes the SVG prefix up through the population type and splits into pvs.
+// processSvgId removes the SVG prefix and splits into components.
 func processSvgId(svg string) []string {
-	var trimmed string
-	_, after, found := strings.Cut(svg, "_")
-	if found {
-		trimmed = after
-	} else {
-		trimmed = strings.TrimPrefix(svg, prefixSVG)
-	}
-
+	trimmed := strings.TrimPrefix(svg, prefixSVG)
 	return strings.FieldsFunc(trimmed, func(r rune) bool {
 		return r == '_' || r == '-'
 	})
@@ -837,21 +830,111 @@ func isCuratedHierarchy(svg string) bool {
 	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG") || strings.HasPrefix(svg, "undata/g")
 }
 
-// getSpecializedEntity returns the specialized entity for a child SVG given its parent SVG.
-func getSpecializedEntity(parent, child, childName string) string {
+// isBasicPopulationType checks if the SVG has a basic populationType and thus will roll up to populationType_constraintProperty.
+// Should be kept in sync with IsBasicPopulationType in the SVG generation (pipeline/workflow/aggregation-helper/aggregation/stat_var_group_generator.py)
+// Based on the legacy Prophet IsBasicPopulationType.
+func isBasicPopulationType(popType string) bool {
+	switch popType {
+	case "Person", "BLSWorker", "USCWorker", "Thing", "Household", "HousingUnit", "Place", "Energy":
+		return true
+	default:
+		return false
+	}
+}
+
+// renameBasicPopulationType returns the specialized display populationType for basic population types.
+// Based on the the legacy Prophet ApplySpecializedEntityRenaming.
+func renameBasicPopulationType(popType string) string {
+	switch popType {
+	case "Person":
+		return "Individual"
+	case "Place":
+		return "Location"
+	default:
+		return splitPascalCase(popType)
+	}
+}
+
+// getSpecializedEntity returns the specialized entity and display population type for a child SVG given its parent SVG.
+func getSpecializedEntity(parent, child, childName string) (string, string) {
 	if !strings.Contains(child, "_") || isCuratedHierarchy(child) { // Child is likely curated.
-		return childName
+		return childName, ""
 	}
 	parentParts := processSvgId(parent)
 	childParts := processSvgId(child)
+	if len(childParts) == 0 {
+		return childName, ""
+	}
+
+	isBasic := isBasicPopulationType(childParts[0])
+	displayPopType := childParts[0]
+	if isBasic {
+		displayPopType = renameBasicPopulationType(childParts[0])
+	}
+
+	// Child is vertical or population.
+	if len(childParts) == 1 {
+		return splitPascalCase(childParts[0]), displayPopType
+	}
+
+	// Child is direct descendant of vertical.
+	if len(parentParts) == 1 && parentParts[0] != childParts[0] {
+		if isBasicPopulationType(childParts[0]) && len(childParts) > 1 {
+			return splitPascalCase(childParts[1]), displayPopType
+		}
+		return splitPascalCase(childParts[0]), displayPopType
+	}
 
 	for i := 0; i < len(parentParts) && i < len(childParts); i++ {
 		if parentParts[i] != childParts[i] {
-			return splitPascalCase(childParts[i])
+			return splitPascalCase(childParts[i]), displayPopType
 		}
 	}
 
-	return splitPascalCase(childParts[len(childParts)-1])
+	return splitPascalCase(childParts[len(childParts)-1]), displayPopType
+}
+
+type childEntityInfo struct {
+	specEntity     string
+	displayPopType string
+}
+
+// processSpecializedEntities sets the SpecializedEntity for each child SVG of a StatVarGroupNode.
+// If multiple child groups under the same parent share the same specialized entity name,
+// displayPopType is appended to disambiguate them (e.g. "Female (Individual)").
+func processSpecializedEntities(parentID string, node *pb.StatVarGroupNode) {
+	if node == nil || len(node.ChildStatVarGroups) == 0 {
+		return
+	}
+
+	info := make([]childEntityInfo, len(node.ChildStatVarGroups))
+	counts := make(map[string]int, len(node.ChildStatVarGroups))
+
+	for i, child := range node.ChildStatVarGroups {
+		if child == nil {
+			continue
+		}
+		specEntity, displayPopType := getSpecializedEntity(parentID, child.Id, child.DisplayName)
+		info[i] = childEntityInfo{
+			specEntity:     specEntity,
+			displayPopType: displayPopType,
+		}
+		counts[specEntity]++
+	}
+
+	for i, child := range node.ChildStatVarGroups {
+		if child == nil {
+			continue
+		}
+		specEntity := info[i].specEntity
+		popType := info[i].displayPopType
+
+		if counts[specEntity] > 1 && popType != "" && popType != specEntity {
+			child.SpecializedEntity = fmt.Sprintf("%s (%s)", specEntity, popType)
+		} else {
+			child.SpecializedEntity = specEntity
+		}
+	}
 }
 
 // sortSVGNode sorts the child SVGs and SVs of a StatVarGroupNode. Child SVGs are sorted by specialized entity, with special handling for curated hierarchies, and child SVs are sorted by display name.
@@ -898,7 +981,6 @@ func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes [
 			}
 			childSVG := &pb.StatVarGroupNode_ChildSVG{
 				Id:                     row.SubjectID,
-				SpecializedEntity:      getSpecializedEntity(row.SVG, row.SubjectID, name),
 				DisplayName:            name,
 				DescendentStatVarCount: int32(row.DescendentStatVarCount),
 			}
@@ -916,6 +998,7 @@ func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes [
 
 	// Sort results.
 	for node, svgNode := range nodeToSVG {
+		processSpecializedEntities(node, svgNode)
 		sortSVGNode(svgNode)
 		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
 			Node: node,
@@ -962,7 +1045,6 @@ func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node s
 		}
 		svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
 			Id:                     row.SubjectID,
-			SpecializedEntity:      getSpecializedEntity(node, row.SubjectID, name),
 			DisplayName:            name,
 			DescendentStatVarCount: int32(row.DescendentStatVarCount),
 		})
@@ -990,9 +1072,8 @@ func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node s
 		switch row.Predicate {
 		case predicateSpecializationOf:
 			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
-				Id:                row.SubjectID,
-				SpecializedEntity: getSpecializedEntity(node, row.SubjectID, name),
-				DisplayName:       name,
+				Id:          row.SubjectID,
+				DisplayName: name,
 			})
 		case predicateMemberOf:
 			svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
@@ -1003,6 +1084,7 @@ func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node s
 		}
 	}
 
+	processSpecializedEntities(node, svgNode)
 	sortSVGNode(svgNode)
 
 	return svgNode

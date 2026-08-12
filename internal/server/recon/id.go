@@ -21,6 +21,8 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"google.golang.org/protobuf/proto"
@@ -34,7 +36,8 @@ func ResolveIds(
 	outProp := in.GetOutProp()
 	ids := in.GetIds()
 	if inProp == "" || outProp == "" || len(ids) == 0 {
-		return nil, fmt.Errorf(
+		return nil, status.Errorf(
+			codes.InvalidArgument,
 			"invalid input: in_prop: %s, out_prop: %s, ids: %v", inProp, outProp, ids)
 	}
 

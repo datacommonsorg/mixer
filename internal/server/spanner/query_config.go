@@ -26,10 +26,17 @@ type QueryConfig struct {
 	// should filter by ancestor before type when the query builder supports
 	// that access path.
 	ContainedInPlaceAncestorFirstTypes []string
+	// ContainedInPlacePreferTimeSeriesScanPlaceTypes contains child place types
+	// eligible for the TimeSeriesByEntity1 range-scan plan. The variable-count
+	// threshold must also be reached before Mixer selects this access path.
+	ContainedInPlacePreferTimeSeriesScanPlaceTypes []string
 	// ContainedInPlaceEntityScanMinVariables is the minimum number of unique
-	// requested variables that selects the entity1 range-scan plan for core
-	// contained-in-place queries. Zero disables the optimization.
+	// requested variables that selects the entity1 range-scan plan for eligible
+	// child place types. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int
+	// SpannerEmulatorCompatibility indicates whether queries should be
+	// formatted for Cloud Spanner Emulator (e.g. omitting unsupported hints).
+	SpannerEmulatorCompatibility bool
 }
 
 type containedInPlaceAccessPath int
@@ -51,6 +58,15 @@ func (config QueryConfig) Validate() error {
 		}
 		if trimmed != placeType {
 			return fmt.Errorf("QueryConfig: ContainedInPlaceAncestorFirstTypes must not contain surrounding whitespace")
+		}
+	}
+	for _, placeType := range config.ContainedInPlacePreferTimeSeriesScanPlaceTypes {
+		trimmed := strings.TrimSpace(placeType)
+		if trimmed == "" {
+			return fmt.Errorf("QueryConfig: ContainedInPlacePreferTimeSeriesScanPlaceTypes must not contain empty values")
+		}
+		if trimmed != placeType {
+			return fmt.Errorf("QueryConfig: ContainedInPlacePreferTimeSeriesScanPlaceTypes must not contain surrounding whitespace")
 		}
 	}
 	return nil

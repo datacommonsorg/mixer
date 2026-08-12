@@ -58,6 +58,18 @@ func TestQueryConfigValidation(t *testing.T) {
 				ContainedInPlaceEntityScanMinVariables: -1,
 			},
 		},
+		{
+			name: "empty TimeSeries scan place type",
+			config: QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{" "},
+			},
+		},
+		{
+			name: "padded TimeSeries scan place type",
+			config: QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{" Place "},
+			},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			if err := tc.config.Validate(); err == nil {

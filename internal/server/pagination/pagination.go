@@ -15,28 +15,28 @@
 package pagination
 
 import (
-	"fmt"
-
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
 	if s == "" {
-		return nil, fmt.Errorf("empty pagination token string")
+		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
 	}
 
 	data, err := util.UnzipAndDecode(s)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
 	result := &pbv1.PaginationInfo{}
 	err = proto.Unmarshal(data, result)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
 	}
 	return result, nil
 }
@@ -44,17 +44,17 @@ func Decode(s string) (*pbv1.PaginationInfo, error) {
 // Decode decodes a compressed token string into Pagination.
 func DecodeNextToken(s string) (*pbv2.Pagination, error) {
 	if s == "" {
-		return nil, fmt.Errorf("empty pagination token string")
+		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
 	}
 
 	data, err := util.UnzipAndDecode(s)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
 	result := &pbv2.Pagination{}
 	err = proto.Unmarshal(data, result)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
 	}
 	return result, nil
 }

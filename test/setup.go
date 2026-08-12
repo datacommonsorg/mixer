@@ -242,7 +242,7 @@ func setupInternal(
 		spannerCleanup()
 	}
 
-	return newClient(st, tables, metadata, c, mapsClient, dispatcher, cleanup)
+	return newClient(st, tables, metadata, c, mapsClient, dispatcher, spannerClient, cleanup)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -273,7 +273,7 @@ func SetupBqOnly() (pbs.MixerClient, func(), error) {
 	if err != nil {
 		return nil, func() {}, err
 	}
-	return newClient(st, nil, metadata, nil, nil, nil, func() {})
+	return newClient(st, nil, metadata, nil, nil, nil, nil, func() {})
 }
 
 func newClient(
@@ -283,6 +283,7 @@ func newClient(
 	cachedata *cache.Cache,
 	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
+	spannerStalenessTimestampProvider server.SpannerStalenessTimestampProvider,
 	cleanup func(),
 ) (pbs.MixerClient, func(), error) {
 	flags, err := featureflags.NewFlags("")
@@ -298,10 +299,11 @@ func newClient(
 		dispatcher,
 		flags,
 		&server.MixerServerOptions{
-			CacheData:               cachedata,
-			MapsClient:              mapsClient,
-			EmbeddingsServiceClient: embeddingsServiceClient,
-			TopicExpander:           nil, // Not testing topics in standard integration tests
+			CacheData:                         cachedata,
+			SpannerStalenessTimestampProvider: spannerStalenessTimestampProvider,
+			MapsClient:                        mapsClient,
+			EmbeddingsServiceClient:           embeddingsServiceClient,
+			TopicExpander:                     nil, // Not testing topics in standard integration tests
 		},
 	)
 	srv := grpc.NewServer()

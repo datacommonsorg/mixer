@@ -26,7 +26,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
@@ -36,6 +35,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Query implements API for Mixer.Query.
@@ -53,29 +53,12 @@ func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	return statpoint.GetStatValue(ctx, in, s.store)
 }
 
-// GetStatSeries implements API for Mixer.GetStatSeries.
-// Endpoint: /stat/series
-// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func (s *Server) GetStatSeries(ctx context.Context, in *pb.GetStatSeriesRequest) (
-	*pb.GetStatSeriesResponse, error,
-) {
-	return stat.GetStatSeries(ctx, in, s.store)
-}
-
 // GetStats implements API for Mixer.GetStats.
 // Endpoint: /stat/set/series
 // Endpoint: /bulk/stats
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 ) (*pb.GetStatsResponse, error) {
 	return stat.GetStats(ctx, in, s.store)
-}
-
-// GetStatAll implements API for Mixer.GetStatAll.
-// Endpoint: /stat/set/series/all
-// Endpoint: /stat/all
-func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest,
-) (*pb.GetStatAllResponse, error) {
-	return stat.GetStatAll(ctx, in, s.store)
 }
 
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
@@ -152,13 +135,6 @@ func (s *Server) GetPlaceStatVars(
 	return placestatvar.GetPlaceStatVars(ctx, in, s.store)
 }
 
-// GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
-func (s *Server) GetEntityStatVarsUnionV1(
-	ctx context.Context, in *pb.GetEntityStatVarsUnionRequest,
-) (*pb.GetEntityStatVarsUnionResponse, error) {
-	return statvar.GetEntityStatVarsUnionV1(ctx, in, s.store, s.cachedata.Load())
-}
-
 // GetPropertyLabels implements API for Mixer.GetPropertyLabels.
 func (s *Server) GetPropertyLabels(
 	ctx context.Context, in *pb.GetPropertyLabelsRequest,
@@ -223,13 +199,20 @@ func (s *Server) GetVersion(
 	if err != nil {
 		return nil, err
 	}
+	var spannerStalenessTimestamp *timestamppb.Timestamp
+	if s.spannerStalenessTimestampProvider != nil {
+		if timestamp, err := s.spannerStalenessTimestampProvider.SpannerStalenessTimestamp(); err == nil {
+			spannerStalenessTimestamp = timestamppb.New(timestamp)
+		}
+	}
 	return &pb.GetVersionResponse{
-		Tables:            tableNames,
-		Bigquery:          s.metadata.BigQueryDataset,
-		GitHash:           os.Getenv("MIXER_HASH"),
-		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
-		FeatureFlags:      string(featureFlagsJson),
-		DataSourceIds:     s.dispatcher.GetSources(),
+		Tables:                    tableNames,
+		Bigquery:                  s.metadata.BigQueryDataset,
+		GitHash:                   os.Getenv("MIXER_HASH"),
+		RemoteMixerDomain:         s.metadata.RemoteMixerDomain,
+		FeatureFlags:              string(featureFlagsJson),
+		DataSourceIds:             s.dispatcher.GetSources(),
+		SpannerStalenessTimestamp: spannerStalenessTimestamp,
 	}, nil
 }
 

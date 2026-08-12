@@ -20,6 +20,8 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -241,6 +243,34 @@ func TestDecodeNextToken(t *testing.T) {
 		}
 		if diff := cmp.Diff(info, c.info, protocmp.Transform()); diff != "" {
 			t.Errorf("DecodeNextToken(%v) got diff: %s", c.token, diff)
+		}
+	}
+}
+
+func TestDecode_InvalidInput(t *testing.T) {
+	for _, token := range []string{"", "invalid-base64!!!", "aW52YWxpZC1nemlw"} {
+		_, err := Decode(token)
+		if err == nil {
+			t.Errorf("Decode(%q) expected error, got nil", token)
+			continue
+		}
+		st, ok := status.FromError(err)
+		if !ok || st.Code() != codes.InvalidArgument {
+			t.Errorf("Decode(%q) code = %v, want %v", token, st.Code(), codes.InvalidArgument)
+		}
+	}
+}
+
+func TestDecodeNextToken_InvalidInput(t *testing.T) {
+	for _, token := range []string{"", "invalid-base64!!!", "aW52YWxpZC1nemlw", "SoME_veRy_L0ng_STrIng"} {
+		_, err := DecodeNextToken(token)
+		if err == nil {
+			t.Errorf("DecodeNextToken(%q) expected error, got nil", token)
+			continue
+		}
+		st, ok := status.FromError(err)
+		if !ok || st.Code() != codes.InvalidArgument {
+			t.Errorf("DecodeNextToken(%q) code = %v, want %v", token, st.Code(), codes.InvalidArgument)
 		}
 	}
 }

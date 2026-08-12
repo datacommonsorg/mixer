@@ -1,0 +1,4 @@
+# Specific rule for a particular file:
+# This line should come AFTER the general rule.
+# The last matching pattern takes precedence.
+deploy/featureflags/prod* @datacommonsorg/oncallers

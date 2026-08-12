@@ -56,6 +56,7 @@ type MultiEntityStatements struct {
 	joinDescendentStatVarsByProvenance             string
 	filterDescendentStatVarsByProvenancePredicate  string
 	filterDescendentStatVarsByProvenanceObject     string
+	filterDescendentStatVarsByOnlyProvenance       string
 	filterDescendentStatVarsByNumEntitiesExistence string
 	filterEntity1ByPlaces                          string
 	filterEntity2ByPlaces                          string
@@ -787,6 +788,18 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		filterDescendentStatVarsByProvenanceObject: "e1.object_id = @provenance",
 
+		filterDescendentStatVarsByOnlyProvenance: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+					SELECT summary.key AS variable_measured
+					FROM Edge@{FORCE_INDEX=InEdge} AS provenance_edge
+					JOIN KeyValueStore@{FORCE_INDEX=KeyValueStoreByProvenance} AS summary
+					ON summary.provenance = provenance_edge.subject_id
+					WHERE provenance_edge.predicate = @predicate
+						AND provenance_edge.object_id = @provenance
+						AND summary.type = 'ProvenanceSummary'
+					GROUP BY summary.key
+				) AS o
+					ON o.variable_measured = e.subject_id`,
+
 		filterDescendentStatVarsByNumEntitiesExistence: `
 					HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 
@@ -826,6 +839,16 @@ const ancestorFirstPlacesCTE = `places AS (
 		)`
 
 func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) containedInPlaceAccessPathStatements {
+	entityScanSource := fmt.Sprintf(
+		"%s@{FORCE_INDEX=%s, SEEKABLE_KEY_SIZE=1}",
+		cfg.TimeSeriesTable,
+		cfg.TimeSeriesByEntity1Index,
+	)
+	if cfg.spannerEmulatorCompatibility {
+		// The emulator does not implement SEEKABLE_KEY_SIZE. FORCE_INDEX still
+		// exercises the entity1 index while production keeps the seekable prefix.
+		entityScanSource = fmt.Sprintf("%s@{FORCE_INDEX=%s}", cfg.TimeSeriesTable, cfg.TimeSeriesByEntity1Index)
+	}
 	return containedInPlaceAccessPathStatements{
 		variableSeek: newContainedInPlaceStatements(
 			cfg,
@@ -838,16 +861,19 @@ func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) 
 		entityScan: newContainedInPlaceStatements(
 			cfg,
 			placesCTE,
-			fmt.Sprintf("%s@{FORCE_INDEX=%s, SEEKABLE_KEY_SIZE=1}", cfg.TimeSeriesTable, cfg.TimeSeriesByEntity1Index),
+			entityScanSource,
 		),
 	}
 }
 
 func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource string) containedInPlaceStatements {
+	statementHint := "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n"
+	if cfg.spannerEmulatorCompatibility {
+		statementHint = ""
+	}
 	return containedInPlaceStatements{
 		// Join all dates before aggregation to optimize total result throughput.
-		all: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH %[3]s,
+		all: statementHint + fmt.Sprintf(`		WITH %[3]s,
 		series AS (
 			SELECT
 				t.variable_measured,
@@ -884,8 +910,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource 
 
 		// Join to Observation so TimeSeries without the requested date are
 		// discarded in Spanner.
-		withDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH %[3]s,
+		withDate: statementHint + fmt.Sprintf(`		WITH %[3]s,
 		series AS (
 			SELECT
 				t.variable_measured,
@@ -917,8 +942,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource 
 
 		// Use a correlated full-key lookup so the date-descending child scan can
 		// stop after one row.
-		latest: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH %[3]s,
+		latest: statementHint + fmt.Sprintf(`		WITH %[3]s,
 		series AS (
 			SELECT
 				t.variable_measured,

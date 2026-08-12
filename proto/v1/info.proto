@@ -20,10 +20,6 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 import "place.proto";
 import "stat_var.proto";
 
-message PlaceInfoRequest {
-  string node = 1;
-}
-
 message PlaceInfoResponse {
   string node = 1;
   datacommons.PlaceMetadata info = 2;
@@ -35,10 +31,6 @@ message BulkPlaceInfoRequest {
 
 message BulkPlaceInfoResponse {
   repeated PlaceInfoResponse data = 1;
-}
-
-message VariableInfoRequest {
-  string node = 1;
 }
 
 message VariableInfoResponse {

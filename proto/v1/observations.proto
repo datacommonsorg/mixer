@@ -38,11 +38,6 @@ message VariableObservations {
 
 // --------------  Observations Points
 
-message ObservationsPointRequest {
-  string entity_variable = 1;
-  string date = 3;
-}
-
 message BulkObservationsPointRequest {
   repeated string entities = 1;
   repeated string variables = 2;
@@ -57,15 +52,6 @@ message BulkObservationsPointResponse {
 }
 
 // ------------  Observations Series
-message ObservationsSeriesRequest {
-  string entity_variable = 1;
-}
-
-message ObservationsSeriesResponse {
-  repeated datacommons.PointStat observations = 1;
-  datacommons.Facet facet = 2;
-}
-
 message BulkObservationsSeriesRequest {
   repeated string entities = 1;
   repeated string variables = 2;

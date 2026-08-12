@@ -28,8 +28,9 @@ type Request struct {
 }
 
 type Response struct {
-	ContentType string
-	Body        []byte
+	ContentType        string
+	ContentDisposition string
+	Body               []byte
 }
 
 type Service struct {

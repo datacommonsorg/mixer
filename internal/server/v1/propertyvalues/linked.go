@@ -16,7 +16,6 @@ package propertyvalues
 
 import (
 	"context"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -26,73 +25,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
-
-// LinkedPropertyValues implements mixer.LinkedPropertyValues handler.
-func LinkedPropertyValues(
-	ctx context.Context,
-	in *pbv1.LinkedPropertyValuesRequest,
-	store *store.Store,
-) (*pbv1.PropertyValuesResponse, error) {
-	nodeProperty := in.GetNodeProperty()
-	parts := strings.Split(nodeProperty, "/")
-	if len(parts) < 2 {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid request URI")
-	}
-	property := parts[len(parts)-1]
-	node := strings.Join(parts[0:len(parts)-1], "/")
-	valueNodeType := in.GetValueNodeType()
-	// Check arguments
-	if property != "containedInPlace" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "only support property 'containedInPlace'")
-	}
-	if valueNodeType == "" {
-		return nil, status.Errorf(
-			codes.InvalidArgument, "missing argument: value_node_type")
-	}
-	if err := util.CheckValidDCIDs([]string{node}); err != nil {
-		return nil, err
-	}
-	resp, err := placein.GetPlacesIn(
-		ctx,
-		store,
-		[]string{node},
-		valueNodeType,
-	)
-	if err != nil {
-		return nil, err
-	}
-	valueDcids := resp[node]
-	// Fetch names
-	data, _, err := Fetch(
-		ctx,
-		store,
-		valueDcids,
-		[]string{"name"},
-		0,
-		"",
-		"out",
-	)
-	if err != nil {
-		return nil, err
-	}
-	result := &pbv1.PropertyValuesResponse{}
-	for _, dcid := range valueDcids {
-		var name string
-		if nameValues, ok := data[dcid]["name"]; ok {
-			if vals, ok := nameValues[""]; ok && len(vals) > 0 {
-				name = vals[0].Value
-			}
-		}
-		result.Values = append(result.Values,
-			&pb.EntityInfo{
-				Dcid: dcid,
-				Name: name,
-			},
-		)
-	}
-	return result, nil
-}
 
 // BulkLinkedPropertyValues implements mixer.BulkLinkedPropertyValues handler.
 func BulkLinkedPropertyValues(

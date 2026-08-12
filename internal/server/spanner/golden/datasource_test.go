@@ -22,6 +22,7 @@ import (
 	"slices"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -141,6 +142,9 @@ func (m *mockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()     {}
 func (m *mockSpannerClient) Close()     {}
+func (m *mockSpannerClient) SpannerStalenessTimestamp() (time.Time, error) {
+	return time.Time{}, errors.New("Spanner staleness timestamp not available")
+}
 
 func TestSpannerResolve(t *testing.T) {
 	client := test.NewSpannerClient()
@@ -219,6 +223,66 @@ func TestSpannerResolve(t *testing.T) {
 		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
 			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
 		}
+	}
+}
+
+func TestSpannerResolveDescriptionPreservesPopulationOrder(t *testing.T) {
+	const (
+		mountainViewCalifornia = "geoId/0649670"
+		mountainViewArkansas   = "geoId/0547540"
+	)
+
+	recogPlaceStore := &files.RecogPlaceStore{
+		DcidToNames: map[string][]string{
+			mountainViewCalifornia: {"Mountain View"},
+			mountainViewArkansas:   {"Mountain View"},
+		},
+		RecogPlaceMap: map[string]*pb.RecogPlaces{
+			"mountain": {
+				Places: []*pb.RecogPlace{
+					{
+						Dcid:       mountainViewArkansas,
+						Population: 10,
+						Names: []*pb.RecogPlace_Name{
+							{Parts: []string{"mountain", "view"}},
+						},
+					},
+					{
+						Dcid:       mountainViewCalifornia,
+						Population: 100,
+						Names: []*pb.RecogPlace_Name{
+							{Parts: []string{"mountain", "view"}},
+						},
+					},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(&mockSpannerClient{}, &spanner.SpannerDataSourceOptions{
+		RecogPlaceStore: recogPlaceStore,
+		MapsClient:      &maps.FakeMapsClient{},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Mountain View"},
+		Property: "<-description->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "Mountain View",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{Dcid: mountainViewCalifornia},
+					{Dcid: mountainViewArkansas},
+				},
+			},
+		},
+	}
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Errorf("Resolve() mismatch (-want +got):\n%s", diff)
 	}
 }
 

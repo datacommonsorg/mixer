@@ -385,7 +385,7 @@ func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
 	}
 }
 
-func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *testing.T) {
+func TestMultiEntityContainedInPlaceSelectsAccessPathByPlaceTypeAndUniqueVariableCount(t *testing.T) {
 	const (
 		variableSeekHint = "FORCE_INDEX=_BASE_TABLE"
 		entityScanHint   = "FORCE_INDEX=TimeSeriesByEntity1, SEEKABLE_KEY_SIZE=1"
@@ -407,10 +407,11 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			childPlaceType: "County",
 		},
 		{
-			name:      "below threshold",
+			name:      "configured type below threshold",
 			variables: []string{"var1", "var2"},
 			queryConfig: QueryConfig{
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+				ContainedInPlaceEntityScanMinVariables:         3,
 			},
 			childPlaceType: "County",
 		},
@@ -418,7 +419,25 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			name:      "duplicates do not reach threshold",
 			variables: []string{"var1", "var2", "var2"},
 			queryConfig: QueryConfig{
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+				ContainedInPlaceEntityScanMinVariables:         3,
+			},
+			childPlaceType: "County",
+		},
+		{
+			name:      "unconfigured type at threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables:         3,
+			},
+			childPlaceType: "Country",
+		},
+		{
+			name:      "configured type with disabled threshold",
+			variables: []string{"var1", "var2", "var3"},
+			queryConfig: QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
 			},
 			childPlaceType: "County",
 		},
@@ -426,7 +445,8 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			name:      "all dates at threshold",
 			variables: []string{"var1", "var2", "var3"},
 			queryConfig: QueryConfig{
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+				ContainedInPlaceEntityScanMinVariables:         3,
 			},
 			childPlaceType: "County",
 			wantEntityScan: true,
@@ -436,7 +456,8 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			variables: []string{"var1", "var2", "var3"},
 			date:      "latest",
 			queryConfig: QueryConfig{
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+				ContainedInPlaceEntityScanMinVariables:         3,
 			},
 			childPlaceType: "County",
 			wantEntityScan: true,
@@ -446,7 +467,8 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			variables: []string{"var1", "var2", "var3"},
 			date:      "2020",
 			queryConfig: QueryConfig{
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+				ContainedInPlaceEntityScanMinVariables:         3,
 			},
 			childPlaceType: "County",
 			wantEntityScan: true,
@@ -455,8 +477,9 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 			name:      "ancestor first at threshold",
 			variables: []string{"var1", "var2", "var3"},
 			queryConfig: QueryConfig{
-				ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
-				ContainedInPlaceEntityScanMinVariables: 3,
+				ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables:         3,
 			},
 			childPlaceType:       "Place",
 			wantEntityScan:       true,
@@ -491,9 +514,44 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByUniqueVariableCount(t *te
 	}
 }
 
+func TestMultiEntityContainedInPlaceUsesEmulatorCompatibleHints(t *testing.T) {
+	tableConfig := DefaultTableConfig()
+	tableConfig.spannerEmulatorCompatibility = true
+	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, QueryConfig{
+		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Country"},
+		ContainedInPlaceEntityScanMinVariables:         2,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, date := range []string{"", "latest", "2020"} {
+		stmt, err := queryBuilder.GetObservationsContainedInPlaceQuery(
+			[]string{"var1", "var2"},
+			&v2.ContainedInPlace{Ancestor: "Earth", ChildPlaceType: "Country"},
+			date,
+		)
+		if err != nil {
+			t.Fatal(err)
+		}
+		for _, unsupportedHint := range []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"} {
+			if strings.Contains(stmt.SQL, unsupportedHint) {
+				t.Errorf("date %q SQL contains unsupported emulator hint %q:\n%s", date, unsupportedHint, stmt.SQL)
+			}
+		}
+		if !strings.Contains(stmt.SQL, "FORCE_INDEX=TimeSeriesByEntity1") {
+			t.Errorf("date %q SQL does not retain the selected entity-scan access path:\n%s", date, stmt.SQL)
+		}
+		if strings.Contains(stmt.SQL, "SEEKABLE_KEY_SIZE") {
+			t.Errorf("date %q SQL contains unsupported emulator hint SEEKABLE_KEY_SIZE:\n%s", date, stmt.SQL)
+		}
+	}
+}
+
 func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{
-		ContainedInPlaceEntityScanMinVariables: 1,
+		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
+		ContainedInPlaceEntityScanMinVariables:         1,
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -509,8 +567,9 @@ func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testin
 
 func TestNewMultiEntityClientUsesSharedQueryConfig(t *testing.T) {
 	queryConfig := QueryConfig{
-		ContainedInPlaceAncestorFirstTypes:     []string{"Place"},
-		ContainedInPlaceEntityScanMinVariables: 50,
+		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
+		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+		ContainedInPlaceEntityScanMinVariables:         50,
 	}
 	client, err := newMultiEntityClient(&spannerDatabaseClient{queryConfig: queryConfig}, DefaultTableConfig())
 	if err != nil {

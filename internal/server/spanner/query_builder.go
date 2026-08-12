@@ -74,6 +74,13 @@ const (
 	filterLang = "$lang"
 )
 
+// Internal-only (generated) predicates that should not be returned via Node APIs unless specifically requested.
+var blocklistEdgePredicates = []string{
+	"linkedContainedInPlace",
+	"linkedMemberOf",
+	"linkedMember",
+}
+
 // QueryOperatorHandler defines the signature for processing meta-filters.
 // It returns the generated SQL condition and mutates the params map directly.
 type QueryOperatorHandler func(prefix string, values []string, params map[string]interface{}) string
@@ -109,21 +116,35 @@ func GetCompletionTimestampQuery(useNewSchema bool) *spanner.Statement {
 	}
 }
 
-func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
+func GetNodePropsQuery(ids []string, out bool, queryConfigs ...QueryConfig) *spanner.Statement {
+	var queryConfig QueryConfig
+	if len(queryConfigs) > 0 {
+		queryConfig = queryConfigs[0]
+	}
+	hint := statements.graphColumnarScanHint
+	if queryConfig.SpannerEmulatorCompatibility {
+		hint = ""
+	}
+
 	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
 
+	var filterPredicate string
+	if len(blocklistEdgePredicates) > 0 {
+		filterPredicate = statements.filterPredicateBlocklist
+	}
+
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, idFilter),
+			SQL:    hint + fmt.Sprintf(statements.getPropsBySubjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsByObjectID, idFilter),
+			SQL:    hint + fmt.Sprintf(statements.getPropsByObjectID, idFilter, filterPredicate),
 			Params: params,
 		}
 	}
@@ -177,6 +198,8 @@ func buildNodeEdgesByIDQuery(
 	} else if len(arc.BracketProps) > 0 {
 		filterPredicate = statements.filterPredicates
 		params["predicate"] = arc.BracketProps
+	} else if len(blocklistEdgePredicates) > 0 { // Use default blocklist.
+		filterPredicate = statements.filterPredicateBlocklist
 	}
 
 	// Generate filters.
@@ -281,27 +304,33 @@ func buildNodeEdgesByIDQuery(
 	}
 	subqueries = append([]string{subquery}, subqueries...)
 
+	// Pagination.
+	pagination := getNodeQueryPagination(pageSize, offset)
+
 	// Generate prefix and return statement.
+	hint := statements.graphColumnarScanHint
+	if plan.spannerEmulatorCompatibility {
+		hint = ""
+	}
 	var prefix, returnEdges string
 	switch arc.Decorator {
 	case v3.Chain:
-		prefix = statements.graphPrefixAny
-		returnEdges = statements.returnChainedEdges
+		prefix = hint + statements.graphPrefixAny
+		returnEdges = fmt.Sprintf(statements.returnChainedEdges, pagination)
 	default:
-		prefix = statements.graphPrefix
+		prefix = hint + statements.graphPrefix
 		if len(arc.Filter) > 0 {
-			returnEdges += statements.returnFilterEdges
+			returnEdges += fmt.Sprintf(statements.returnFilterEdges, pagination)
 		} else {
-			returnEdges = statements.returnEdges
+			returnEdges = fmt.Sprintf(statements.returnEdges, pagination)
 		}
 	}
 	separator := statements.graphPatternSeparator
 	if useContainedInPlaceAncestorFirst {
-		prefix = statements.graphColumnarScanHint + prefix
 		separator = statements.graphPatternForceJoinOrder
 	}
-	template := prefix + strings.Join(subqueries, separator) + returnEdges
-	template = applyNodeQueryPagination(template, pageSize, offset)
+	template := prefix + strings.Join(subqueries, separator)
+	template += returnEdges
 
 	return &spanner.Statement{
 		SQL:    template,
@@ -309,7 +338,8 @@ func buildNodeEdgesByIDQuery(
 	}, nil
 }
 
-func applyNodeQueryPagination(query string, pageSize, offset int) string {
+func getNodeQueryPagination(pageSize, offset int) string {
+	query := ""
 	if offset > 0 {
 		query += fmt.Sprintf(statements.applyOffset, offset)
 	}
@@ -584,16 +614,25 @@ func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statemen
 	}
 }
 
-// filterDescentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
-func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+// filterDescendentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
+func filterDescendentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
 	var params = map[string]interface{}{}
 
 	var entityFilter string
 	distinct := "observation_about"
 	if constrainedImport != "" {
-		entityFilter = statements.filterDescendentStatVarsByImport
 		params["predicate"] = getImportFilterPredicate(constrainedImport)
 		params["import"] = constrainedImport
+		// Optimization when filtering only by import (and no places).
+		// This allows reading from aggregated ProvenanceSummary.
+		// TODO: Confirm whether we'd ever want to filter by import AND place.
+		if len(constrainedPlaces) == 0 {
+			return &spanner.Statement{
+				SQL:    statements.filterDescendentStatVarsByOnlyImport,
+				Params: params,
+			}
+		}
+		entityFilter = statements.filterDescendentStatVarsByImport
 		distinct = "e1.subject_id"
 	}
 	if len(constrainedPlaces) > 0 {
@@ -620,7 +659,7 @@ func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport st
 
 // GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
 func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
-	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
 	subquery.Params["node"] = node
 
 	var baseStatement string
@@ -643,7 +682,7 @@ func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces
 
 // GetFilteredTopicChildren returns a query to get children for given topics filtered by constrained entities and existence threshold.
 func GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
-	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
 
 	nodeFilter, nodeVal := getParamStatement("node", nodes)
 	subquery.Params["node"] = nodeVal
@@ -753,7 +792,6 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 		},
 	}
 }
-
 
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {

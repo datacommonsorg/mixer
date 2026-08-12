@@ -16,6 +16,10 @@ mixer:
           port: "6379"
   enableOtlp: true
 
+esp:
+  transcodingIgnoreUnknownQueryParameters: true
+  transcodingQueryParametersDisableUnescapePlus: false
+
 ingress:
   enabled: true
   name: mixer-ingress-prod

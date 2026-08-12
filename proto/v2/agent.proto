@@ -19,14 +19,32 @@ import "google/protobuf/struct.proto";
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
+// Request payload for the resolve_places tool endpoint.
+message ResolvePlacesRequest {
+  repeated string places = 1;
+  optional string target = 2;
+}
+
+// Response payload for the resolve_places tool endpoint.
+message ResolvePlacesResponse {
+  string status = 1;
+  Table resolved_places = 2;
+}
+
 // Request payload for the search_indicators tool endpoint.
 message SearchIndicatorsRequest {
   string query = 1;
-  repeated string places = 2;
-  string parent_place = 3;
+  repeated string places = 2 [deprecated = true];
+  string parent_place = 3 [deprecated = true];
   int32 per_search_limit = 4;
   optional bool include_topics = 5;
   optional bool expand_topics = 6;
+
+  // Optional target for indicator resolution ("custom_only", "base_only", "base_and_custom").
+  optional string target = 7;
+
+  // Resolved place DCIDs for indicator data availability filtering.
+  repeated string place_dcids = 8;
 }
 
 // Response payload for the search_indicators tool endpoint.
@@ -55,11 +73,17 @@ message SearchIndicatorsResponse {
   }
 
   string status = 1;
-  map<string, string> dcid_name_mappings = 2;
-  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 3;
-  repeated Topic topics = 4;
-  repeated Variable variables = 5;
-  ResolvedPlace resolved_parent_place = 6;
+  map<string, string> dcid_name_mappings = 2 [deprecated = true];
+  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 3 [deprecated = true];
+  repeated Topic topics = 4 [deprecated = true];
+  repeated Variable variables = 5 [deprecated = true];
+  ResolvedPlace resolved_parent_place = 6 [deprecated = true];
+
+  // Topics Table (columns: ["dcid", "name", "placesWithData", "memberTopics", "memberVariables"])
+  Table topic_candidates = 7;
+
+  // Variables Table (columns: ["dcid", "name", "placesWithData", "observationProperties"])
+  Table variable_candidates = 8;
 }
 
 message EntityList {

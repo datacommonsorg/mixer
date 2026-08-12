@@ -19,12 +19,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"log/slog"
-	"sort"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/model"
-	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -35,83 +33,6 @@ func logIfDurationTooLong(t time.Time, thresholdSec float32, msg string) {
 	if duration > float64(thresholdSec) {
 		slog.Warn("GetStats took too long", "duration", duration, "message", msg, "thresholdSec", thresholdSec)
 	}
-}
-
-// GetStatSeries implements API for Mixer.GetStatSeries.
-// TODO(shifucun): consilidate and dedup the logic among these similar APIs.
-func GetStatSeries(
-	ctx context.Context, in *pb.GetStatSeriesRequest, store *store.Store) (
-	*pb.GetStatSeriesResponse, error) {
-	place := in.GetPlace()
-	statVar := in.GetStatVar()
-	if place == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: place")
-	}
-	if statVar == "" {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: stat_var")
-	}
-	filterProp := &model.StatObsProp{
-		MeasurementMethod: in.GetMeasurementMethod(),
-		ObservationPeriod: in.GetObservationPeriod(),
-		Unit:              in.GetUnit(),
-		ScalingFactor:     in.GetScalingFactor(),
-	}
-
-	btData, err := ReadStats(ctx, store.BtGroup, []string{place}, []string{statVar})
-	if err != nil {
-		return nil, err
-	}
-	series := btData[place][statVar].SourceSeries
-	series = FilterSeries(series, filterProp)
-	sort.Sort(ranking.ByRank(series))
-	resp := pb.GetStatSeriesResponse{Series: map[string]float64{}}
-	if len(series) > 0 {
-		resp.Series = series[0].Val
-	}
-	return &resp, nil
-}
-
-// GetStatAll implements API for Mixer.GetStatAll.
-func GetStatAll(ctx context.Context, in *pb.GetStatAllRequest, store *store.Store) (
-	*pb.GetStatAllResponse, error) {
-
-	places := in.GetPlaces()
-	statVars := in.GetStatVars()
-	if len(places) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: place")
-	}
-	if len(statVars) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"Missing required argument: stat_var")
-	}
-
-	// Initialize result with place and stat var dcids.
-	result := &pb.GetStatAllResponse{PlaceData: make(map[string]*pb.PlaceStat)}
-	for _, place := range places {
-		result.PlaceData[place] = &pb.PlaceStat{
-			StatVarData: make(map[string]*pb.ObsTimeSeries),
-		}
-		for _, statVar := range statVars {
-			result.PlaceData[place].StatVarData[statVar] = nil
-		}
-	}
-
-	cacheData, err := ReadStatsPb(ctx, store.BtGroup, places, statVars)
-	if err != nil {
-		return nil, err
-	}
-	for place, placeData := range cacheData {
-		for statVar, data := range placeData {
-			if data != nil && data.SourceSeries != nil {
-				sort.Sort(ranking.SeriesByRank(data.SourceSeries))
-			}
-			result.PlaceData[place].StatVarData[statVar] = data
-		}
-	}
-	return result, nil
 }
 
 // GetStats implements API for Mixer.GetStats.

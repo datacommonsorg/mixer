@@ -49,6 +49,20 @@ func (mt *MockTicker) Tick() {
 	}
 }
 
+func TestSpannerStalenessTimestamp(t *testing.T) {
+	want := time.Date(2026, time.July, 29, 10, 21, 34, 123456000, time.UTC)
+	sc := &spannerDatabaseClient{}
+
+	if got, err := sc.SpannerStalenessTimestamp(); err == nil || !got.IsZero() {
+		t.Fatalf("SpannerStalenessTimestamp() = (%v, %v), want (zero, error)", got, err)
+	}
+
+	sc.timestamp.Store(want.UnixNano())
+	if got, err := sc.SpannerStalenessTimestamp(); err != nil || !got.Equal(want) {
+		t.Fatalf("SpannerStalenessTimestamp() = (%v, %v), want (%v, nil)", got, err, want)
+	}
+}
+
 func TestTimestampUpdated(t *testing.T) {
 	var updateCount int
 	mockTicker := NewMockTicker()
@@ -80,7 +94,7 @@ func TestTimestampUpdated(t *testing.T) {
 	if updateCount != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", updateCount)
 	}
-	timestamp, err := sc.getStalenessTimestamp()
+	timestamp, err := sc.SpannerStalenessTimestamp()
 	if err != nil {
 		t.Fatalf("Error getting staleness timestamp")
 	}
@@ -121,7 +135,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	if count != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", count)
 	}
-	timestamp, err := sc.getStalenessTimestamp()
+	timestamp, err := sc.SpannerStalenessTimestamp()
 	if err != nil {
 		t.Fatalf("Error getting staleness timestamp")
 	}
@@ -135,7 +149,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 
 // Test: Timestamp reset on null or completed run.
 // Situation: The client previously held an active ingestion timestamp when the database transitioned to returning null on run completion.
-// Expectation: The helper zeros out the timestamp in production code so getStalenessTimestamp returns an error to trigger exact staleness reads.
+// Expectation: The helper zeros out the timestamp in production code so SpannerStalenessTimestamp returns an error to trigger exact staleness reads.
 func TestTimestampResetOnNull(t *testing.T) {
 	mockTicker := NewMockTicker()
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
@@ -165,8 +179,8 @@ func TestTimestampResetOnNull(t *testing.T) {
 		t.Fatalf("Expected sc.timestamp to be reset to 0, but got %d", val)
 	}
 
-	// Expect getStalenessTimestamp to return an error when zero so executeQuery invokes exact staleness fallback reads.
-	if _, err := sc.getStalenessTimestamp(); err == nil {
+	// Expect SpannerStalenessTimestamp to return an error when zero so executeQuery invokes exact staleness fallback reads.
+	if _, err := sc.SpannerStalenessTimestamp(); err == nil {
 		t.Fatalf("Expected error when staleness timestamp is zero, but got nil")
 	}
 }
