@@ -14,6 +14,7 @@
 		LIMIT 501
         NEXT LET dest = (
 			SELECT AS STRUCT
+				TRUE AS resolved,
 				n.value,
 				n.bytes,
 				n.name,
@@ -26,6 +27,7 @@
             'specializationOf+' AS predicate,
 			object_id,
             '' AS provenance,
+			IFNULL(dest.resolved, FALSE) AS resolved,
             IFNULL(dest.value, '') AS value,
             dest.bytes,
             IFNULL(dest.name, '') AS name,

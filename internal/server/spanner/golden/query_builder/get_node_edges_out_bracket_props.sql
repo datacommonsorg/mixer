@@ -17,6 +17,7 @@
 		LIMIT 501
         NEXT LET dest = (
 			SELECT AS STRUCT
+				TRUE AS resolved,
 				n.value,
 				n.bytes,
 				n.name,
@@ -29,6 +30,7 @@
             predicate,
 			object_id,
             provenance,
+			IFNULL(dest.resolved, FALSE) AS resolved,
             IFNULL(dest.value, '') AS value,
             dest.bytes,
             IFNULL(dest.name, '') AS name,

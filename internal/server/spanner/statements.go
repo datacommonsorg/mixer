@@ -241,6 +241,7 @@ OR CreationTimestamp > (
             provenance%s
         NEXT LET dest = (
 			SELECT AS STRUCT
+				TRUE AS resolved,
 				n.value,
 				n.bytes,
 				n.name,
@@ -253,6 +254,7 @@ OR CreationTimestamp > (
             predicate,
 			object_id,
             provenance,
+			IFNULL(dest.resolved, FALSE) AS resolved,
             IFNULL(dest.value, '') AS value,
             dest.bytes,
             IFNULL(dest.name, '') AS name,
@@ -271,6 +273,7 @@ OR CreationTimestamp > (
             object_id%s
         NEXT LET dest = (
 			SELECT AS STRUCT
+				TRUE AS resolved,
 				n.value,
 				n.bytes,
 				n.name,
@@ -283,6 +286,7 @@ OR CreationTimestamp > (
             @result_predicate AS predicate,
 			object_id,
             '' AS provenance,
+			IFNULL(dest.resolved, FALSE) AS resolved,
             IFNULL(dest.value, '') AS value,
             dest.bytes,
             IFNULL(dest.name, '') AS name,
@@ -308,6 +312,7 @@ OR CreationTimestamp > (
             provenance%s
         NEXT LET dest = (
 			SELECT AS STRUCT
+				TRUE AS resolved,
 				n.value,
 				n.bytes,
 				n.name,
@@ -320,6 +325,7 @@ OR CreationTimestamp > (
             predicate,
 			object_id,
             provenance,
+			IFNULL(dest.resolved, FALSE) AS resolved,
             IFNULL(dest.value, '') AS value,
             dest.bytes,
             IFNULL(dest.name, '') AS name,

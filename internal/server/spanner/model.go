@@ -45,6 +45,7 @@ type Edge struct {
 	Predicate  string   `spanner:"predicate"`
 	ObjectID   string   `spanner:"object_id"`
 	Provenance string   `spanner:"provenance"`
+	Resolved   bool     `spanner:"resolved"`
 	Value      string   `spanner:"value"`
 	Bytes      []byte   `spanner:"bytes"`
 	Name       string   `spanner:"name"`

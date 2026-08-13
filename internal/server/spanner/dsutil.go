@@ -247,7 +247,7 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 			ProvenanceId: edge.Provenance,
 		}
 
-		if len(edge.Types) == 0 && edge.Value == "" && edge.Bytes == nil { // If a node has no types, value, bytes, treat it as unresolved.
+		if !edge.Resolved {
 			// Set the node object to the edge object.
 			// Literals should be resolved locally, so unresolved nodes should be references.
 			node.Dcid = edge.ObjectID
