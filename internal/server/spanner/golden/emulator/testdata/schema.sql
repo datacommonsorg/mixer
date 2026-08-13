@@ -11,9 +11,10 @@ CREATE TABLE Edge (
   subject_id STRING(1024) NOT NULL,
   predicate STRING(1024) NOT NULL,
   object_id STRING(1024) NOT NULL,
-  provenance STRING(1024) NOT NULL
+  provenance STRING(1024) NOT NULL,
+  CONSTRAINT FKObject FOREIGN KEY(object_id) REFERENCES Node(subject_id) NOT ENFORCED
 ) PRIMARY KEY(subject_id, predicate, object_id, provenance),
-INTERLEAVE IN Node;
+INTERLEAVE IN PARENT Node ON DELETE NO ACTION;
 
 CREATE TABLE TimeSeries (
   variable_measured STRING(1024) NOT NULL,
