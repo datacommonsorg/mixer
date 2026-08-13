@@ -43,6 +43,7 @@ type Property struct {
 type Edge struct {
 	SubjectID  string   `spanner:"subject_id"`
 	Predicate  string   `spanner:"predicate"`
+	ObjectID   string   `spanner:"object_id"`
 	Provenance string   `spanner:"provenance"`
 	Value      string   `spanner:"value"`
 	Bytes      []byte   `spanner:"bytes"`
