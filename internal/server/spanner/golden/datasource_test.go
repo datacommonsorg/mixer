@@ -151,7 +151,7 @@ func TestSpannerResolve(t *testing.T) {
 	if client == nil {
 		client = &mockSpannerClient{
 			getNodeEdgesRes: map[string][]*spanner.Edge{
-				"geoId/06": {{SubjectID: "geoId/06", Value: "State"}},
+				"geoId/06": {{SubjectID: "geoId/06", Value: "State", Resolved: true}},
 			},
 		}
 	}
@@ -739,7 +739,7 @@ func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://resolved.test/source"},
+				{Predicate: "url", Value: "https://resolved.test/source", Resolved: true},
 			},
 		},
 		getObservationsRes: []*spanner.Observation{
@@ -838,10 +838,10 @@ func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://source.example.org/data"},
+				{Predicate: "url", Value: "https://source.example.org/data", Resolved: true},
 			},
 			"dc/base/prov-2": {
-				{Predicate: "url", Value: "https://other.test/data"},
+				{Predicate: "url", Value: "https://other.test/data", Resolved: true},
 			},
 		},
 		getObservationsRes: []*spanner.Observation{
@@ -886,7 +886,7 @@ func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) 
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://contained.test/source"},
+				{Predicate: "url", Value: "https://contained.test/source", Resolved: true},
 			},
 		},
 		getObservationsContainedInPlaceRes: []*spanner.Observation{
