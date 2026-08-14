@@ -39,7 +39,6 @@ VALUES
 	('Count_MigrationByObservationAbout', 'observationProperties', 'destinationCountry', 'dc/base/HumanReadableStatVars'),
 	('Count_RemoteMigration', 'observationProperties', 'destinationCountry', 'dc/base/HumanReadableStatVars'),
 	('Count_RemoteMigration', 'observationProperties', 'sourceCountry', 'dc/base/HumanReadableStatVars'),
-	('country/BLZ', 'specializationOf', 'unresolved_geo_entity', 'dc/base/WikidataOtherIdGeos'),
 	('country/BLZ', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
 	('country/CAN', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
 	('country/CAN', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
