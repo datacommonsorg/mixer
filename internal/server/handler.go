@@ -109,8 +109,8 @@ func (s *Server) GetRelatedLocations(
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
-func (s *Server) GetLocationsRankings(
-	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+func (s *Server) fetchGetLocationsRankings(
+	ctx context.Context, in *pb.GetLocationsRankingsRequest, remoteAPIPath string,
 ) (*pb.GetLocationsRankingsResponse, error) {
 	localResp, err := place.GetLocationsRankings(ctx, in, s.store)
 	if err != nil {
@@ -120,12 +120,19 @@ func (s *Server) GetLocationsRankings(
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetLocationsRankingsResponse{}
 		if err := util.FetchRemote(
-			s.metadata, s.httpClient, "/v1/place/ranking", in, remoteResp); err != nil {
+			s.metadata, s.httpClient, remoteAPIPath, in, remoteResp); err != nil {
 			return nil, err
 		}
 		return remoteResp, nil
 	}
 	return localResp, nil
+}
+
+// GetLocationsRankings implements API for Mixer.GetLocationsRankings.
+func (s *Server) GetLocationsRankings(
+	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+) (*pb.GetLocationsRankingsResponse, error) {
+	return s.fetchGetLocationsRankings(ctx, in, "/v1/place/ranking")
 }
 
 // GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.

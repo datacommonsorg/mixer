@@ -557,8 +557,8 @@ func (s *Server) V2BulkVariableInfo(
 
 	v2StartTime := time.Now()
 
-	// Use the V1 implementation for now.
-	v2Resp, err := s.BulkVariableInfo(ctx, in)
+	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	v2Resp, err := s.fetchAndMergeBulkVariableInfo(ctx, in, "/v2/bulk/info/variable")
 	if err != nil {
 		return nil, err
 	}
@@ -608,8 +608,8 @@ func (s *Server) V2BulkVariableGroupInfo(
 
 	v2StartTime := time.Now()
 
-	// Use the V1 implementation for now.
-	v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	v1Resp, err := s.fetchAndMergeBulkVariableGroupInfo(ctx, in, "/v2/bulk/info/variable-group")
 	if err != nil {
 		return nil, err
 	}
@@ -654,8 +654,8 @@ func (s *Server) V2GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
 
-	// Use the V1 implementation for now.
-	v1Resp, err := s.GetLocationsRankings(ctx, in)
+	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	v1Resp, err := s.fetchGetLocationsRankings(ctx, in, "/v2/place/ranking")
 	if err != nil {
 		return nil, err
 	}

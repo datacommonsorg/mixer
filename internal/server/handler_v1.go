@@ -108,9 +108,8 @@ func (s *Server) BulkPlaceInfo(
 	return result, nil
 }
 
-// BulkVariableInfo implements API for mixer.BulkVariableInfo.
-func (s *Server) BulkVariableInfo(
-	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
+func (s *Server) fetchAndMergeBulkVariableInfo(
+	ctx context.Context, in *pbv1.BulkVariableInfoRequest, remoteAPIPath string,
 ) (*pbv1.BulkVariableInfoResponse, error) {
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
@@ -129,7 +128,7 @@ func (s *Server) BulkVariableInfo(
 
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
-			remoteResponse, err := remoteBulkVariableInfoFunc(s, in)
+			remoteResponse, err := remoteBulkVariableInfoFunc(s, in, remoteAPIPath)
 			if err != nil {
 				return err
 			}
@@ -150,9 +149,15 @@ func (s *Server) BulkVariableInfo(
 	return result, nil
 }
 
-// BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
-func (s *Server) BulkVariableGroupInfo(
-	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
+// BulkVariableInfo implements API for mixer.BulkVariableInfo.
+func (s *Server) BulkVariableInfo(
+	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
+) (*pbv1.BulkVariableInfoResponse, error) {
+	return s.fetchAndMergeBulkVariableInfo(ctx, in, "/v1/bulk/info/variable")
+}
+
+func (s *Server) fetchAndMergeBulkVariableGroupInfo(
+	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest, remoteAPIPath string,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
@@ -175,7 +180,7 @@ func (s *Server) BulkVariableGroupInfo(
 		if err := util.FetchRemote(
 			s.metadata,
 			s.httpClient,
-			"/v1/bulk/info/variable-group",
+			remoteAPIPath,
 			in,
 			remoteResp,
 		); err != nil {
@@ -263,6 +268,13 @@ func (s *Server) BulkVariableGroupInfo(
 		return result.Data[i].Node < result.Data[j].Node
 	})
 	return result, nil
+}
+
+// BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
+func (s *Server) BulkVariableGroupInfo(
+	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
+) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	return s.fetchAndMergeBulkVariableGroupInfo(ctx, in, "/v1/bulk/info/variable-group")
 }
 
 // BulkObservationsPoint implements API for mixer.BulkObservationsPoint.

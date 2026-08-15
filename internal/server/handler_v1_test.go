@@ -222,7 +222,7 @@ func TestBulkVariableInfo(t *testing.T) {
 		localBulkVariableInfoFunc = func(_ context.Context, _ *pbv1.BulkVariableInfoRequest, _ *store.Store) (*pbv1.BulkVariableInfoResponse, error) {
 			return tc.localResponse, nil
 		}
-		remoteBulkVariableInfoFunc = func(_ *Server, _ *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+		remoteBulkVariableInfoFunc = func(_ *Server, _ *pbv1.BulkVariableInfoRequest, _ string) (*pbv1.BulkVariableInfoResponse, error) {
 			return tc.remoteResponse, nil
 		}
 		s.metadata.RemoteMixerDomain = tc.remoteMixer
