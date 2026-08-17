@@ -661,7 +661,7 @@ func (s *Server) V2GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
 
-	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	// Fetch local location rankings, falling back to the remote mixer using the v2 API path for remote fetch.
 	v2Resp, err := s.fetchGetLocationsRankings(ctx, in, "/v2/place/ranking")
 	if err != nil {
 		return nil, err

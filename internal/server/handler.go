@@ -108,7 +108,7 @@ func (s *Server) GetRelatedLocations(
 	return localResp, nil
 }
 
-// GetLocationsRankings implements API for Mixer.GetLocationsRankings.
+// fetchGetLocationsRankings fetches local location rankings, falling back to remote mixer if local data is empty.
 func (s *Server) fetchGetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest, remoteAPIPath string,
 ) (*pb.GetLocationsRankingsResponse, error) {
