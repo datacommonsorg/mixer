@@ -557,11 +557,15 @@ func (s *Server) V2BulkVariableInfo(
 
 	v2StartTime := time.Now()
 
-	// Use the V1 implementation for now.
-	v2Resp, err := s.BulkVariableInfo(ctx, in)
+	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	v2Resp, err := s.fetchAndMergeBulkVariableInfo(ctx, in, "/v2/bulk/info/variable")
 	if err != nil {
 		return nil, err
 	}
+	if v2Resp == nil {
+		return &pbv1.BulkVariableInfoResponse{}, nil
+	}
+	v2Resp = proto.Clone(v2Resp).(*pbv1.BulkVariableInfoResponse)
 
 	// The new response will not contain all legacy V1 fields.
 	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
@@ -608,12 +612,15 @@ func (s *Server) V2BulkVariableGroupInfo(
 
 	v2StartTime := time.Now()
 
-	// Use the V1 implementation for now.
-	v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	// Fetch and merge local data and remote data, using the v2 API path for remote fetch.
+	v2Resp, err := s.fetchAndMergeBulkVariableGroupInfo(ctx, in, "/v2/bulk/info/variable-group")
 	if err != nil {
 		return nil, err
 	}
-	v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
+	if v2Resp == nil {
+		return &pbv1.BulkVariableGroupInfoResponse{}, nil
+	}
+	v2Resp = proto.Clone(v2Resp).(*pbv1.BulkVariableGroupInfoResponse)
 
 	convertV1ToV2BulkVariableGroupInfo(v2Resp)
 
@@ -654,15 +661,15 @@ func (s *Server) V2GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
 
-	// Use the V1 implementation for now.
-	v1Resp, err := s.GetLocationsRankings(ctx, in)
+	// Fetch local location rankings, falling back to the remote mixer using the v2 API path for remote fetch.
+	v2Resp, err := s.getLocationsRankings(ctx, in, "/v2/place/ranking")
 	if err != nil {
 		return nil, err
 	}
-	if v1Resp == nil {
+	if v2Resp == nil {
 		return &pb.GetLocationsRankingsResponse{}, nil
 	}
-	v2Resp := proto.Clone(v1Resp).(*pb.GetLocationsRankingsResponse)
+	v2Resp = proto.Clone(v2Resp).(*pb.GetLocationsRankingsResponse)
 
 	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
 	v2Resp.Legacy = true
