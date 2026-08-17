@@ -109,6 +109,7 @@ func (s *Server) BulkPlaceInfo(
 }
 
 // fetchAndMergeBulkVariableInfo fetches and merges local and remote BulkVariableInfo responses.
+// This helper function is used by both the V1 and V2 BulkVariableInfo handlers.
 func (s *Server) fetchAndMergeBulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest, remoteAPIPath string,
 ) (*pbv1.BulkVariableInfoResponse, error) {
@@ -158,6 +159,7 @@ func (s *Server) BulkVariableInfo(
 }
 
 // fetchAndMergeBulkVariableGroupInfo fetches and merges local and remote BulkVariableGroupInfo responses.
+// This helper function is used by both the V1 and V2 BulkVariableGroupInfo handlers.
 func (s *Server) fetchAndMergeBulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest, remoteAPIPath string,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
