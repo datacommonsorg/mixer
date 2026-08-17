@@ -662,7 +662,7 @@ func (s *Server) V2GetLocationsRankings(
 ) (*pb.GetLocationsRankingsResponse, error) {
 
 	// Fetch local location rankings, falling back to the remote mixer using the v2 API path for remote fetch.
-	v2Resp, err := s.fetchGetLocationsRankings(ctx, in, "/v2/place/ranking")
+	v2Resp, err := s.getLocationsRankings(ctx, in, "/v2/place/ranking")
 	if err != nil {
 		return nil, err
 	}

@@ -108,8 +108,8 @@ func (s *Server) GetRelatedLocations(
 	return localResp, nil
 }
 
-// fetchGetLocationsRankings fetches local location rankings, falling back to remote mixer if local data is empty.
-func (s *Server) fetchGetLocationsRankings(
+// getLocationsRankings fetches local location rankings, falling back to remote mixer if local data is empty.
+func (s *Server) getLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest, remoteAPIPath string,
 ) (*pb.GetLocationsRankingsResponse, error) {
 	localResp, err := place.GetLocationsRankings(ctx, in, s.store)
@@ -132,7 +132,7 @@ func (s *Server) fetchGetLocationsRankings(
 func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-	return s.fetchGetLocationsRankings(ctx, in, "/v1/place/ranking")
+	return s.getLocationsRankings(ctx, in, "/v1/place/ranking")
 }
 
 // GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
