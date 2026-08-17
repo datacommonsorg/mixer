@@ -27,12 +27,13 @@ var localBulkVariableInfoFunc = info.BulkVariableInfo
 var remoteBulkVariableInfoFunc = func(
 	s *Server,
 	remoteReq *pbv1.BulkVariableInfoRequest,
+	remoteAPIPath string,
 ) (*pbv1.BulkVariableInfoResponse, error) {
 	remoteResp := &pbv1.BulkVariableInfoResponse{}
 	return remoteResp, util.FetchRemote(
 		s.metadata,
 		s.httpClient,
-		"/v1/bulk/info/variable",
+		remoteAPIPath,
 		remoteReq,
 		remoteResp,
 	)
