@@ -21,6 +21,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -521,6 +522,211 @@ func TestGetSpecializedEntity(t *testing.T) {
 			}
 			if gotPopType != tc.wantPopType {
 				t.Errorf("getSpecializedEntity(%q, %q, %q) popType = %q, want %q", tc.parent, tc.child, tc.childName, gotPopType, tc.wantPopType)
+			}
+		})
+	}
+}
+
+func TestNodeEdgesToLinkedGraph(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	compressedBytes, err := util.Zip([]byte("Compressed description text"))
+	if err != nil {
+		t.Fatalf("util.Zip() failed: %v", err)
+	}
+
+	tests := []struct {
+		name    string
+		edges   []*Edge
+		want    *pbv2.LinkedGraph
+		wantErr bool
+	}{
+		{
+			name:  "empty edges",
+			edges: []*Edge{},
+			want: &pbv2.LinkedGraph{
+				Arcs: make(map[string]*pbv2.Nodes),
+			},
+		},
+		{
+			name: "unresolved reference node",
+			edges: []*Edge{
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "specializationOf",
+					ObjectID:   "country/UNRESOLVED_GEO",
+					Provenance: "dc/base/WikidataOtherIdGeos",
+					Resolved:   false,
+					Value:      "",
+					Bytes:      nil,
+					Name:       "",
+					Types:      nil,
+				},
+			},
+			want: &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"specializationOf": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Dcid:         "country/UNRESOLVED_GEO",
+								Types:        []string{"Thing"},
+								ProvenanceId: "dc/base/WikidataOtherIdGeos",
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "resolved reference node",
+			edges: []*Edge{
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "typeOf",
+					ObjectID:   "Country",
+					Provenance: "dc/base/WikidataOtherIdGeos",
+					Resolved:   true,
+					Value:      "Country",
+					Name:       "Country",
+					Types:      []string{"Class"},
+				},
+			},
+			want: &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"typeOf": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Dcid:         "Country",
+								Name:         "Country",
+								Types:        []string{"Class"},
+								ProvenanceId: "dc/base/WikidataOtherIdGeos",
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "terminal literal string value",
+			edges: []*Edge{
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "name",
+					ObjectID:   generateObjectValue("UnitedStates"),
+					Provenance: "dc/base/HumanReadableStatVars",
+					Resolved:   true,
+					Value:      "United States",
+					Types:      nil,
+				},
+			},
+			want: &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"name": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Value:        "United States",
+								ProvenanceId: "dc/base/HumanReadableStatVars",
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "terminal literal compressed bytes",
+			edges: []*Edge{
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "description",
+					ObjectID:   "desc_object",
+					Provenance: "dc/base/HumanReadableStatVars",
+					Resolved:   true,
+					Bytes:      compressedBytes,
+					Types:      nil,
+				},
+			},
+			want: &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"description": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Value:        "Compressed description text",
+								ProvenanceId: "dc/base/HumanReadableStatVars",
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "multiple arcs with mixed resolved, unresolved, and literal nodes with deterministic sorting",
+			edges: []*Edge{
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "containedInPlace",
+					ObjectID:   "place/Z_Unresolved",
+					Provenance: "dc/base/WikidataOtherIdGeos",
+					Resolved:   false,
+				},
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "containedInPlace",
+					ObjectID:   "northamerica",
+					Provenance: "dc/base/WikidataOtherIdGeos",
+					Resolved:   true,
+					Value:      "northamerica",
+					Name:       "North America",
+					Types:      []string{"Continent"},
+				},
+				{
+					SubjectID:  "country/USA",
+					Predicate:  "name",
+					ObjectID:   generateObjectValue("United States"),
+					Provenance: "dc/base/HumanReadableStatVars",
+					Resolved:   true,
+					Value:      "United States",
+				},
+			},
+			want: &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{
+					"containedInPlace": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Dcid:         "northamerica",
+								Name:         "North America",
+								Types:        []string{"Continent"},
+								ProvenanceId: "dc/base/WikidataOtherIdGeos",
+							},
+							{
+								Dcid:         "place/Z_Unresolved",
+								Types:        []string{"Thing"},
+								ProvenanceId: "dc/base/WikidataOtherIdGeos",
+							},
+						},
+					},
+					"name": {
+						Nodes: []*pb.EntityInfo{
+							{
+								Value:        "United States",
+								ProvenanceId: "dc/base/HumanReadableStatVars",
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got, err := nodeEdgesToLinkedGraph(tc.edges)
+			if (err != nil) != tc.wantErr {
+				t.Fatalf("nodeEdgesToLinkedGraph() error = %v, wantErr %v", err, tc.wantErr)
+			}
+			if diff := cmp.Diff(tc.want, got, cmpOpts); diff != "" {
+				t.Errorf("nodeEdgesToLinkedGraph() mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}

@@ -44,6 +44,9 @@ import (
 const (
 	// Used for Facet responses with an entity expression.
 	entityPlaceholder = ""
+
+	// Default type for unresolved nodes.
+	typeThing = "Thing"
 )
 
 // Select options for Observation.
@@ -244,7 +247,15 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 			ProvenanceId: edge.Provenance,
 		}
 
-		if len(edge.Types) == 0 { // If a node has no types, it's a terminal value.
+		if !edge.Resolved {
+			// Set the node object to the edge object.
+			// Literals should be resolved locally, so unresolved nodes should be references.
+			node.Dcid = edge.ObjectID
+			// For now, set type to default "Thing".
+			// This is consistent with the behavior in legacy custom DC.
+			// TODO: Federate the request to get node metadata.
+			node.Types = []string{typeThing}
+		} else if len(edge.Types) == 0 { // Otherwise, assume the node is local. If a node has no types, it's a terminal value.
 			if edge.Bytes != nil { // Use bytes if set.
 				bytes, err := util.Unzip(edge.Bytes)
 				if err != nil {
@@ -255,7 +266,7 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 				node.Value = edge.Value
 			}
 		} else { // Otherwise, it's a reference node with a dcid.
-			node.Dcid = edge.Value
+			node.Dcid = edge.ObjectID
 		}
 
 		nodes.Nodes = append(nodes.Nodes, node)

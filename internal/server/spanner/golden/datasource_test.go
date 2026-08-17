@@ -151,7 +151,7 @@ func TestSpannerResolve(t *testing.T) {
 	if client == nil {
 		client = &mockSpannerClient{
 			getNodeEdgesRes: map[string][]*spanner.Edge{
-				"geoId/06": {{SubjectID: "geoId/06", Value: "State"}},
+				"geoId/06": {{SubjectID: "geoId/06", Value: "State", Resolved: true}},
 			},
 		}
 	}
@@ -739,7 +739,7 @@ func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://resolved.test/source"},
+				{Predicate: "url", Value: "https://resolved.test/source", Resolved: true},
 			},
 		},
 		getObservationsRes: []*spanner.Observation{
@@ -838,10 +838,10 @@ func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://source.example.org/data"},
+				{Predicate: "url", Value: "https://source.example.org/data", Resolved: true},
 			},
 			"dc/base/prov-2": {
-				{Predicate: "url", Value: "https://other.test/data"},
+				{Predicate: "url", Value: "https://other.test/data", Resolved: true},
 			},
 		},
 		getObservationsRes: []*spanner.Observation{
@@ -886,7 +886,7 @@ func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) 
 	client := &mockSpannerClient{
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"dc/base/prov-1": {
-				{Predicate: "url", Value: "https://contained.test/source"},
+				{Predicate: "url", Value: "https://contained.test/source", Resolved: true},
 			},
 		},
 		getObservationsContainedInPlaceRes: []*spanner.Observation{
@@ -1264,5 +1264,52 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 				t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
 			}
 		})
+	}
+}
+
+func TestSpannerNode_DanglingEdges(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"geoId/06": {
+				{
+					SubjectID: "geoId/06",
+					Predicate: "containedInPlace",
+					ObjectID:  "unresolved_geo_entity",
+					Resolved:  false,
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	req := &pbv2.NodeRequest{
+		Nodes:    []string{"geoId/06"},
+		Property: "->containedInPlace",
+	}
+
+	got, err := ds.Node(ctx, req, 100)
+	if err != nil {
+		t.Fatalf("Node failed: %v", err)
+	}
+
+	if got == nil {
+		t.Fatal("Expected non-nil response")
+	}
+
+	nodes := got.Data["geoId/06"].Arcs["containedInPlace"].Nodes
+	if len(nodes) != 1 {
+		t.Fatalf("Expected 1 node, got %d", len(nodes))
+	}
+
+	if nodes[0].Dcid != "unresolved_geo_entity" {
+		t.Errorf("Expected Dcid 'unresolved_geo_entity', got '%s'", nodes[0].Dcid)
+	}
+	
+	if len(nodes[0].Types) != 1 || nodes[0].Types[0] != "Thing" {
+		t.Errorf("Expected Types ['Thing'], got %v", nodes[0].Types)
 	}
 }
