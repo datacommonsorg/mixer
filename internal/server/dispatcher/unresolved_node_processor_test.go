@@ -75,6 +75,7 @@ func TestUnresolvedNodeProcessor_PostProcess(t *testing.T) {
 								Nodes: []*pb.EntityInfo{
 									{Dcid: "Place"},
 									{Dcid: "AdministrativeArea"},
+									{Dcid: "Place"},
 								},
 							},
 						},

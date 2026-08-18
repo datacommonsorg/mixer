@@ -151,10 +151,12 @@ func extractEntityInfo(resp *pbv2.NodeResponse) map[string]*entityInfo {
 
 		if typeArc, ok := graph.GetArcs()[predicateTypeOf]; ok {
 			for _, node := range typeArc.GetNodes() {
-				if typeDcid := node.GetDcid(); typeDcid != "" {
-					info.types = append(info.types, typeDcid)
-				} else if val := node.GetValue(); val != "" {
-					info.types = append(info.types, val)
+				typeStr := node.GetDcid()
+				if typeStr == "" {
+					typeStr = node.GetValue()
+				}
+				if typeStr != "" && !slices.Contains(info.types, typeStr) {
+					info.types = append(info.types, typeStr)
 				}
 			}
 		}
