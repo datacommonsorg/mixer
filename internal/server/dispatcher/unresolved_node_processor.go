@@ -112,6 +112,8 @@ func collectUnresolvedDCIDs(resp *pbv2.NodeResponse) []string {
 		}
 	}
 
+	// Sort DCIDs for deterministic request order and cache stability.
+	slices.Sort(dcids)
 	return dcids
 }
 
