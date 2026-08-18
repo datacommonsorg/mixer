@@ -16,19 +16,28 @@
             provenance
 		OFFSET 500
 		LIMIT 501
-        NEXT MATCH (n:Node)
-        WHERE
-          n.subject_id = object_id
+        NEXT LET dest = (
+			SELECT AS STRUCT
+				TRUE AS resolved,
+				n.value,
+				n.bytes,
+				n.name,
+				n.types,
+			FROM Node n
+			WHERE n.subject_id = object_id
+		)
         RETURN
             subject_id,
             predicate,
+			object_id,
             provenance,
-            IFNULL(n.value, '') AS value,
-            n.bytes,
-            IFNULL(n.name, '') AS name,
-            IFNULL(n.types, []) AS types
+			IFNULL(dest.resolved, FALSE) AS resolved,
+            IFNULL(dest.value, '') AS value,
+            dest.bytes,
+            IFNULL(dest.name, '') AS name,
+            IFNULL(dest.types, []) AS types
         ORDER BY
             subject_id,
             predicate,
-            n.subject_id,
+            object_id,
             provenance

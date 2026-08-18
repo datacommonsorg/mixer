@@ -17,6 +17,7 @@ package server
 import (
 	"bytes"
 	"context"
+	"io"
 	"log/slog"
 	"net/http"
 	"regexp"
@@ -24,6 +25,8 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -484,5 +487,58 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 				t.Errorf("shouldRouteResolveToDispatcher() = %v, want %v", gotRoute, tc.wantRoute)
 			}
 		})
+	}
+}
+
+type mockRemoteTransport struct {
+	lastPath string
+}
+
+func (m *mockRemoteTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	m.lastPath = req.URL.Path
+	return &http.Response{
+		StatusCode: http.StatusOK,
+		Body:       io.NopCloser(strings.NewReader(`{}`)),
+	}, nil
+}
+
+func TestV2RemoteAPIPaths(t *testing.T) {
+	ctx := context.Background()
+	transport := &mockRemoteTransport{}
+	s := &Server{
+		store:      &store.Store{},
+		metadata:   &resource.Metadata{RemoteMixerDomain: "http://mock-remote"},
+		flags:      &featureflags.Flags{},
+		httpClient: &http.Client{
+			Transport: transport,
+		},
+	}
+	s.cachedata.Store(&cache.Cache{})
+
+	// Temporarily override local fetch to avoid nil panics during test.
+	oldLocalInfo := localBulkVariableInfoFunc
+	localBulkVariableInfoFunc = func(_ context.Context, _ *pbv1.BulkVariableInfoRequest, _ *store.Store) (*pbv1.BulkVariableInfoResponse, error) {
+		return &pbv1.BulkVariableInfoResponse{}, nil
+	}
+	defer func() { localBulkVariableInfoFunc = oldLocalInfo }()
+
+	// 1. V2BulkVariableInfo
+	_, _ = s.V2BulkVariableInfo(ctx, &pbv1.BulkVariableInfoRequest{Nodes: []string{"node1"}})
+	if transport.lastPath != "/v2/bulk/info/variable" {
+		t.Errorf("V2BulkVariableInfo passed remote path %q, want %q", transport.lastPath, "/v2/bulk/info/variable")
+	}
+
+	// 2. V2BulkVariableGroupInfo
+	// Empty Nodes slice safely bypasses local fetch and triggers remote fetch.
+	_, _ = s.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{Nodes: []string{}})
+	if transport.lastPath != "/v2/bulk/info/variable-group" {
+		t.Errorf("V2BulkVariableGroupInfo passed remote path %q, want %q", transport.lastPath, "/v2/bulk/info/variable-group")
+	}
+
+	// 3. V2GetLocationsRankings
+	// Must provide PlaceType and StatVarDcids to avoid early argument error.
+	_, _ = s.V2GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{PlaceType: "City", StatVarDcids: []string{"Count_Person"}})
+	if transport.lastPath != "/v2/place/ranking" {
+		t.Errorf("V2GetLocationsRankings passed remote path %q, want %q", transport.lastPath, "/v2/place/ranking")
 	}
 }
