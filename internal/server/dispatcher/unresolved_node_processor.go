@@ -170,6 +170,9 @@ func hydrateNodeResponse(resp *pbv2.NodeResponse, infoByDcid map[string]*entityI
 	for _, graph := range resp.GetData() {
 		for _, arc := range graph.GetArcs() {
 			for _, node := range arc.GetNodes() {
+				if node == nil {
+					continue
+				}
 				info, ok := infoByDcid[node.GetDcid()]
 				if !ok {
 					continue
