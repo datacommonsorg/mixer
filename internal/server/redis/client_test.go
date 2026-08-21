@@ -20,6 +20,7 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/go-redis/redismock/v8"
@@ -85,6 +86,28 @@ func TestCacheClient(t *testing.T) {
 
 	// Ensure all expectations were met
 	assert.NoError(t, mock.ExpectationsWereMet())
+}
+
+func TestGenerateCacheKeyDeterministicForMapRequest(t *testing.T) {
+	request := &sdmxpb.SdmxDataQuery{Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+		"variableMeasured": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "Count_Person"}}},
+		"observationAbout": {Predicates: []*sdmxpb.SdmxPredicate{{Value: "country/USA"}}},
+		"TIME_PERIOD":      {Predicates: []*sdmxpb.SdmxPredicate{{Value: "2020"}}},
+	}}
+
+	want, err := generateCacheKey(request)
+	if err != nil {
+		t.Fatalf("generateCacheKey() error = %v", err)
+	}
+	for i := 0; i < 100; i++ {
+		got, err := generateCacheKey(request)
+		if err != nil {
+			t.Fatalf("generateCacheKey() error = %v", err)
+		}
+		if got != want {
+			t.Fatalf("generateCacheKey() = %q, want %q", got, want)
+		}
+	}
 }
 
 func TestCompressionSize(t *testing.T) {

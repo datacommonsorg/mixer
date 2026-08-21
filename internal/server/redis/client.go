@@ -83,7 +83,7 @@ func (c *RedisCacheClient) Close() error {
 
 // generateCacheKey generates a unique cache key from a protobuf request.
 func generateCacheKey(request proto.Message) (string, error) {
-	marshaled, err := proto.Marshal(request)
+	marshaled, err := proto.MarshalOptions{Deterministic: true}.Marshal(request)
 	if err != nil {
 		return "", fmt.Errorf("failed to marshal request: %w", err)
 	}
