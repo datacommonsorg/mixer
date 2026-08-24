@@ -152,10 +152,12 @@ func (s *Server) fetchAndMergeBulkVariableInfo(
 }
 
 // BulkVariableInfo implements API for mixer.BulkVariableInfo.
+// Note: This endpoint is deprecated and now wraps the V2 implementation.
+// It will be removed once all custom instances are updated.
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
 ) (*pbv1.BulkVariableInfoResponse, error) {
-	return s.fetchAndMergeBulkVariableInfo(ctx, in, "/v1/bulk/info/variable")
+	return s.V2BulkVariableInfo(ctx, in)
 }
 
 // fetchAndMergeBulkVariableGroupInfo fetches and merges local and remote BulkVariableGroupInfo responses.
@@ -275,10 +277,12 @@ func (s *Server) fetchAndMergeBulkVariableGroupInfo(
 }
 
 // BulkVariableGroupInfo implements API for mixer.BulkVariableGroupInfo.
+// Note: This endpoint is deprecated and now wraps the V2 implementation.
+// It will be removed once all custom instances are updated.
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	return s.fetchAndMergeBulkVariableGroupInfo(ctx, in, "/v1/bulk/info/variable-group")
+	return s.V2BulkVariableGroupInfo(ctx, in)
 }
 
 // BulkObservationsPoint implements API for mixer.BulkObservationsPoint.

@@ -129,10 +129,12 @@ func (s *Server) getLocationsRankings(
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
+// Note: This endpoint is deprecated and now wraps the V2 implementation.
+// It will be removed once all custom instances are updated.
 func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-	return s.getLocationsRankings(ctx, in, "/v1/place/ranking")
+	return s.V2GetLocationsRankings(ctx, in)
 }
 
 // GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
