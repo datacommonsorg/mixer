@@ -72,7 +72,8 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	default:
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"arc string should start with arrow (-> or <-) but got %s",
+			"invalid property arc %q: expression must start with a direction arrow (e.g. ->name for outgoing properties, or <-containedInPlace for incoming properties), but got %q",
+			arrow,
 			arrow,
 		)
 	}
@@ -141,6 +142,14 @@ func parseArc(arrow, expr string) (*Arc, error) {
 
 // ParseProperty parses an expression string into a list of Arcs.
 func ParseProperty(expr string) ([]*Arc, error) {
+	trimmed := spaceNewLineReplacer.Replace(expr)
+	if trimmed != "" && !strings.HasPrefix(trimmed, "->") && !strings.HasPrefix(trimmed, "<-") {
+		return nil, status.Errorf(
+			codes.InvalidArgument,
+			"invalid property expression %q: property expressions must start with a direction arrow (e.g. ->name for outgoing properties, or <-containedInPlace for incoming properties)",
+			expr,
+		)
+	}
 	parts := splitExpr(expr)
 	if len(parts) == 1 {
 		// Handle "->" query, which is to get all properties
