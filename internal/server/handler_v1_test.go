@@ -238,7 +238,7 @@ func TestBulkVariableInfo(t *testing.T) {
 		}
 		got, _ := s.BulkVariableInfo(ctx, &request)
 		if diff := cmp.Diff(got, tc.want, protocmp.Transform()); diff != "" {
-			t.Errorf("Unexpected diff (-want +got):\n%s", diff)
+			t.Errorf("%s: Unexpected diff (-want +got):\n%s", tc.desc, diff)
 		}
 	}
 }
