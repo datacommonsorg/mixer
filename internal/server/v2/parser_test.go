@@ -338,6 +338,16 @@ func TestParseProperty(t *testing.T) {
 			},
 			true,
 		},
+		{
+			"name",
+			nil,
+			false,
+		},
+		{
+			"[name, description]",
+			nil,
+			false,
+		},
 	} {
 		result, err := ParseProperty(c.expr)
 		if !c.valid {
