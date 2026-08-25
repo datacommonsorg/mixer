@@ -603,39 +603,3 @@ func TestSplitQueryBySpan(t *testing.T) {
 		}
 	}
 }
-
-func TestGetItemsForSpans(t *testing.T) {
-	// this transforms protobuf messages to be used in cmp.Diff
-	cmpOpts := cmp.Options{
-		protocmp.Transform(),
-	}
-	span2Item := map[string]*pb.RecognizeEntitiesResponse_Item{
-		"a^b":    {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}},
-		"cd, ef": {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}},
-	}
-	for _, c := range []struct {
-		query string
-		want  []*pb.RecognizeEntitiesResponse_Item
-	}{
-		// no spans recognized
-		{
-			"ab cd ef g",
-			[]*pb.RecognizeEntitiesResponse_Item{{Span: "ab cd ef g"}},
-		},
-		// one span recognized in two spots
-		{
-			"a^b cd ef a^b",
-			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}},
-		},
-		// two different spans recognized in the query
-		{
-			"a^b cd, ef g",
-			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}}, {Span: "g"}},
-		},
-	} {
-		got := getItemsForSpans([]string{"cd, ef", "a^b"}, c.query, span2Item)
-		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("GetItemsForSpans for query %s got diff: %s", c.query, diff)
-		}
-	}
-}

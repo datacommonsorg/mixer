@@ -26,10 +26,8 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
 import "google/api/httpbody.proto";
-import "common.proto";
 import "custom.proto";
 import "misc.proto";
-import "node.proto";
 import "place.proto";
 import "query.proto";
 import "stat.proto";
@@ -275,38 +273,6 @@ service Mixer {
     };
   }
 
-  // Fetch property labels adjacent of nodes
-  rpc GetPropertyLabels(GetPropertyLabelsRequest) returns (PayloadResponse) {
-    option (google.api.http) = {
-      get : "/node/property-labels"
-      additional_bindings : {post : "/node/property-labels" body : "*"}
-    };
-  }
-
-  // Fetch nodes that linked to source nodes with a given property.
-  rpc GetPropertyValues(GetPropertyValuesRequest) returns (PayloadResponse) {
-    option (google.api.http) = {
-      get : "/node/property-values"
-      additional_bindings : {post : "/node/property-values" body : "*"}
-    };
-  }
-
-  // Fetch triples that have the given nodes as subject or object.
-  rpc GetTriples(GetTriplesRequest) returns (PayloadResponse) {
-    option (google.api.http) = {
-      get : "/node/triples"
-      additional_bindings : {post : "/node/triples" body : "*"}
-    };
-  }
-
-  // Get places contained in parent places.
-  rpc GetPlacesIn(GetPlacesInRequest) returns (GetPlacesInResponse) {
-    option (google.api.http) = {
-      get : "/node/places-in"
-      additional_bindings : {post : "/node/places-in" body : "*"}
-    };
-  }
-
   // Get stats of places by StatisticalVariable. If multiple time series data
   // are avaialable, the highest ranked one by measurement method and import
   // will be returned.
@@ -314,15 +280,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/bulk/stats"
       additional_bindings : {post : "/bulk/stats" body : "*"}
-    };
-  }
-
-  // Get a single stat value given a place, a statistical variable and a date.
-  // If no date is given, the latest statistical variable will be returned.
-  rpc GetStatValue(GetStatValueRequest) returns (GetStatValueResponse) {
-    option (google.api.http) = {
-      get : "/stat/value"
-      additional_bindings : {post : "/stat/value" body : "*"}
     };
   }
 
@@ -351,25 +308,7 @@ service Mixer {
     };
   }
 
-  // Give a list of place dcids, return all the statistical variables for each
-  // place.
-  rpc GetPlaceStatVars(GetPlaceStatVarsRequest)
-      returns (GetPlaceStatVarsResponse) {
-    option (google.api.http) = {
-      get : "/place/stat-vars"
-      additional_bindings : {post : "/place/stat-vars" body : "*"}
-    };
-  }
-
   // ======================  V1   V1   V1   V1  ======================
-
-  // Query DataCommons Graph with Sparql.
-  rpc QueryV1(QueryRequest) returns (QueryResponse) {
-    option (google.api.http) = {
-      get : "/v1/query"
-      additional_bindings : {post : "/v1/query" body : "*"}
-    };
-  }
 
   rpc BulkPropertyValues(datacommons.v1.BulkPropertyValuesRequest)
       returns (datacommons.v1.BulkPropertyValuesResponse) {
@@ -524,16 +463,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/recognize/places"
       additional_bindings : {post : "/v1/recognize/places" body : "*"}
-    };
-  }
-
-  // Recognize non-place entities from a NL query.
-  rpc RecognizeEntities(RecognizeEntitiesRequest)
-      returns (RecognizeEntitiesResponse) {
-    option deprecated = true;
-    option (google.api.http) = {
-      get : "/v1/recognize/entities"
-      additional_bindings : {post : "/v1/recognize/entities" body : "*"}
     };
   }
 

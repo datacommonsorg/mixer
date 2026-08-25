@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
-	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
@@ -36,13 +35,6 @@ import (
 )
 
 const foldedSvgRoot = "dc/g/Folded_Root"
-
-// QueryV1 implements API for Mixer.Query.
-func (s *Server) QueryV1(
-	ctx context.Context, in *pb.QueryRequest,
-) (*pb.QueryResponse, error) {
-	return translator.Query(ctx, in, s.metadata, s.store)
-}
 
 // BulkLinkedPropertyValues implements API for mixer.BulkLinkedPropertyValues.
 func (s *Server) BulkLinkedPropertyValues(
@@ -400,13 +392,6 @@ func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,
 ) (*pb.RecognizePlacesResponse, error) {
 	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
-}
-
-// RecognizeEntities implements API for Mixer.RecognizeEntities.
-func (s *Server) RecognizeEntities(
-	ctx context.Context, in *pb.RecognizeEntitiesRequest,
-) (*pb.RecognizeEntitiesResponse, error) {
-	return recon.RecognizeEntities(ctx, in, s.store)
 }
 
 // SearchStatVar implements API for Mixer.SearchStatVar.

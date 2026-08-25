@@ -17,13 +17,6 @@
 //  The proto of BT data has to match exactly the g3 proto, including tag
 //  number.
 
-// REST API URL from the proto in this file:
-// ========================================
-//    /node/property-labels
-//    /node/property-values
-//    /node/triples
-// ========================================
-
 syntax = "proto3";
 package datacommons;
 
@@ -61,55 +54,6 @@ message Triples {
 message PropertyLabels {
   repeated string in_labels = 1;
   repeated string out_labels = 2;
-}
-
-// Request to get property labels.
-message GetPropertyLabelsRequest {
-  // The dcids of nodes.
-  repeated string dcids = 1;
-}
-
-// Response returned by GetPropertyLabels.
-message GetPropertyLabelsResponse { map<string, PropertyLabels> data = 1; }
-
-// Request to get all neighboring nodes along an edge labeled by a property.
-message GetPropertyValuesRequest {
-  // The dcids of nodes to query for.
-  repeated string dcids = 1;
-
-  // The type of the neighboring node to query for.
-  string value_type = 2;
-
-  // The property to get adjacent nodes for.
-  string property = 3;
-
-  // Maximum number of nodes to query for. When set to 0 or non-specified,
-  // no limit is applied.
-  int32 limit = 4;
-
-  // Direction, "in" or "out". When not specified, return results for both.
-  string direction = 5;
-}
-
-// ArcNodes represents property and linked nodes.
-message ArcNodes {
-  // Key is property
-  repeated EntityInfo in = 1;
-  repeated EntityInfo out = 2;
-}
-
-// Response returned by GetPropertyValues.
-message GetPropertyValuesResponse {
-  // Key is dcid.
-  map<string, ArcNodes> data = 1;
-}
-
-// Request to get all triples linking to the given nodes.
-message GetTriplesRequest {
-  // The dcids of the nodes to query for.
-  repeated string dcids = 1;
-  // Maximum number of triples for each property and type of the neighbor.
-  int32 limit = 2;
 }
 
 // Response returned by GetTriples.

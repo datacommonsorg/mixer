@@ -44,6 +44,3 @@ message GraphNode {
   // Value of the node, could be dcid or node string value.
   string value = 2;
 }
-
-// PayloadResponse represents API response with encoded payload string
-message PayloadResponse { string payload = 1; }

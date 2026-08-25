@@ -17,9 +17,6 @@ package propertyvalue
 import (
 	"context"
 
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -27,77 +24,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 )
-
-// GetPropertyValues implements API for Mixer.GetPropertyValues.
-func GetPropertyValues(
-	ctx context.Context,
-	in *pb.GetPropertyValuesRequest,
-	store *store.Store,
-) (*pb.GetPropertyValuesResponse, error) {
-	dcids := in.GetDcids()
-	prop := in.GetProperty()
-	typ := in.GetValueType()
-	direction := in.GetDirection()
-	limit := int(in.GetLimit())
-
-	// Check arguments
-	if prop == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required argument: property")
-	}
-	if len(dcids) == 0 {
-		return nil, status.Errorf(codes.InvalidArgument, "missing required arguments: dcids")
-	}
-	if err := util.CheckValidDCIDs(dcids); err != nil {
-		return nil, err
-	}
-
-	// Get in, out or both direction
-	var (
-		inArc  = true
-		outArc = true
-		inRes  = map[string][]*pb.EntityInfo{}
-		outRes = map[string][]*pb.EntityInfo{}
-	)
-	var err error
-	switch direction {
-	case util.DirectionIn:
-		outArc = false
-	case util.DirectionOut:
-		inArc = false
-	}
-
-	if inArc {
-		inRes, err = GetPropertyValuesHelper(ctx, store, dcids, prop, false)
-		if err != nil {
-			return nil, err
-		}
-	}
-	if outArc {
-		outRes, err = GetPropertyValuesHelper(ctx, store, dcids, prop, true)
-		if err != nil {
-			return nil, err
-		}
-	}
-
-	result := &pb.GetPropertyValuesResponse{Data: map[string]*pb.ArcNodes{}}
-	for _, dcid := range dcids {
-		result.Data[dcid] = &pb.ArcNodes{}
-	}
-	for dcid, entities := range inRes {
-		entities = filterEntities(entities, typ, limit)
-		if len(entities) > 0 {
-			result.Data[dcid].In = entities
-
-		}
-	}
-	for dcid, entities := range outRes {
-		entities = filterEntities(entities, typ, limit)
-		if len(entities) > 0 {
-			result.Data[dcid].Out = entities
-		}
-	}
-	return result, nil
-}
 
 // GetPropertyValuesHelper get property values.
 func GetPropertyValuesHelper(

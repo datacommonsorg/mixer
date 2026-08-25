@@ -23,7 +23,6 @@ import (
 	"sync"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 )
 
@@ -79,109 +78,6 @@ func RecognizePlaces(
 	}
 
 	return resp, nil
-}
-
-// RecognizeEntities implements API for Mixer.RecognizeEntities.
-func RecognizeEntities(
-	ctx context.Context,
-	in *pb.RecognizeEntitiesRequest,
-	store *store.Store,
-) (*pb.RecognizeEntitiesResponse, error) {
-
-	resp := &pb.RecognizeEntitiesResponse{
-		QueryItems: map[string]*pb.RecognizeEntitiesResponse_Items{},
-	}
-
-	// TODO: parallelize queries
-	for _, query := range in.GetQueries() {
-		query = strings.ToLower(query)
-		id2spans := getId2Span(query)
-		if id2spans == nil {
-			continue
-		}
-		idsToResolve := []string{}
-		for id := range id2spans {
-			idsToResolve = append(idsToResolve, id)
-		}
-		resolvedIdEntities, err := GetResolvedIdEntities(ctx, store, nameReconInProp, idsToResolve, nameReconOutProp)
-		if err != nil {
-			continue
-		}
-
-		// go through the resolved entities and create a map of spans to the entity
-		// it resolved to
-		span2item := map[string]*pb.RecognizeEntitiesResponse_Item{}
-		for _, entity := range resolvedIdEntities.GetEntities() {
-			entities := []*pb.RecognizeEntitiesResponse_Entity{}
-			for _, id := range entity.GetOutIds() {
-				// TODO: add types to the response
-				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
-			}
-			for span := range id2spans[entity.GetInId()] {
-				if types, ok := store.RecogPlaceStore.CommonWordReconNameToTypes[entity.GetInId()]; ok {
-					// If the recognized name has required types that it can resolve for,
-					// add the type in front of the span so only spans that include the
-					// type will resolve.
-					for _, t := range types {
-						span_with_type := strings.ToLower(t) + " " + span
-						span2item[span_with_type] = &pb.RecognizeEntitiesResponse_Item{Span: span_with_type, Entities: entities}
-					}
-				} else {
-					span2item[span] = &pb.RecognizeEntitiesResponse_Item{Span: span, Entities: entities}
-				}
-			}
-		}
-
-		// get the list of resolved spans and sort them by more words first. If two
-		// spans have the same number of words, sort alphabetically.
-		spans := []string{}
-		span2count := map[string]int{}
-		for span := range span2item {
-			spans = append(spans, span)
-			span2count[span] = strings.Count(span, " ")
-		}
-		sort.Slice(spans, func(i, j int) bool {
-			if span2count[spans[i]] > span2count[spans[j]] {
-				return true
-			} else if span2count[spans[j]] > span2count[spans[i]] {
-				return false
-			} else {
-				return spans[i] < spans[j]
-			}
-		})
-
-		// Get the response items
-		queryRespItems := getItemsForSpans(spans, query, span2item)
-		resp.QueryItems[query] = &pb.RecognizeEntitiesResponse_Items{Items: queryRespItems}
-	}
-	return resp, nil
-}
-
-// Takes a query and list of spans and gets the corresponding list of recognize
-// places response items. With the list of spans, we want the response items to
-// have a subset of non-overlapping spans. We do that with a greedy approach of
-// matching the longest span in query, getting the remaining query parts, and
-// recursively doing the match.
-func getItemsForSpans(spans []string, query string, span2item map[string]*pb.RecognizeEntitiesResponse_Item) []*pb.RecognizeEntitiesResponse_Item {
-	queryRespItems := []*pb.RecognizeEntitiesResponse_Item{}
-	// If empty query, return empty list
-	if len(query) == 0 {
-		return queryRespItems
-	}
-	// If empty list of spans, return the query as the only item
-	if len(spans) == 0 {
-		return append(queryRespItems, &pb.RecognizeEntitiesResponse_Item{Span: query})
-	}
-	span := spans[0]
-	queryParts := splitQueryBySpan(query, span)
-	for _, part := range queryParts {
-		if part == span {
-			queryRespItems = append(queryRespItems, span2item[span])
-		} else {
-			queryRespItems = append(queryRespItems, getItemsForSpans(spans[1:], part, span2item)...)
-		}
-	}
-	return queryRespItems
 }
 
 // Splits a query by a span into a list of parts like: non-span part, span part,
@@ -463,7 +359,7 @@ func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 
 func combineTokenSpans(spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
-	
+
 	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
 	for i := 1; i < numSpans; i++ {
 		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
@@ -486,7 +382,7 @@ func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.Token
 // - DCIDs of nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
 func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
-	nextContainingPlaceToStartDcid :=map[string][]string{}
+	nextContainingPlaceToStartDcid := map[string][]string{}
 
 	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
@@ -510,10 +406,10 @@ func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.Re
 }
 
 func combineContainedInTokens(
-	res *pb.TokenSpans_Span, 
+	res *pb.TokenSpans_Span,
 	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
-	nextSpan, nextSpanIndex :=  getNextPlaceTokenSpan(spans, startIdx+1)
+	nextSpan, nextSpanIndex := getNextPlaceTokenSpan(spans, startIdx+1)
 
 	startingDcids := []string{}
 	for _, v := range startSpan.GetPlaces() {
