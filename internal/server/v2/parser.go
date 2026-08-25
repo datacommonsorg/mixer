@@ -72,8 +72,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	default:
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"invalid property arc %q: expression must start with a direction arrow (e.g. ->name for outgoing properties, or <-containedInPlace for incoming properties), but got %q",
-			arrow,
+			"invalid property arc %q: expression must start with a direction arrow (e.g. ->name for outgoing properties, or <-containedInPlace for incoming properties)",
 			arrow,
 		)
 	}
