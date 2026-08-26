@@ -26,38 +26,6 @@ import (
 	"google.golang.org/grpc/metadata"
 )
 
-func TestGetSurface(t *testing.T) {
-	tests := []struct {
-		name string
-		ctx  context.Context
-		want string
-	}{
-		{
-			name: "nil context",
-			ctx:  nil,
-			want: "",
-		},
-		{
-			name: "empty background context",
-			ctx:  context.Background(),
-			want: "",
-		},
-		{
-			name: "context with x-surface header",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs("x-surface", "mcp-server")),
-			want: "mcp-server",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			if got := getSurface(tc.ctx); got != tc.want {
-				t.Errorf("getSurface(%v) = %q, want %q", tc.ctx, got, tc.want)
-			}
-		})
-	}
-}
-
 func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
 	var receivedSurface string
 	var receivedRemote string
@@ -136,7 +104,7 @@ func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
 				t.Fatalf("NewRemoteClient failed: %v", err)
 			}
 
-			got, err := client.SdmxData(&sdmxpb.SdmxDataQuery{})
+			got, err := client.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})
 			if err != nil {
 				t.Fatalf("client.SdmxData() unexpected error = %v", err)
 			}

@@ -15,13 +15,19 @@
 package util
 
 import (
+	"context"
+	"net/http"
+	"net/http/httptest"
 	"reflect"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/structpb"
@@ -494,5 +500,121 @@ func TestSortedStringKeys(t *testing.T) {
 	got := SortedStringKeys(input)
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("SortedStringKeys mismatch (-got +want):\n%s", diff)
+	}
+}
+
+func TestFetchRemote(t *testing.T) {
+	cancelledCtx, cancel := context.WithCancel(context.Background())
+	cancel()
+
+	largeErrorBody := strings.Repeat("A", 10000)
+
+	tests := []struct {
+		name              string
+		ctx               context.Context
+		statusCode        int
+		responseBody      string
+		wantErr           bool
+		errContains       string
+		checkHeader       bool
+		wantSurfaceHeader string
+		wantRemoteHeader  string
+		wantNodeName      string
+	}{
+		{
+			name:         "success 200",
+			ctx:          context.Background(),
+			statusCode:   http.StatusOK,
+			responseBody: `{"data":{"geoId/06":{"arcs":{"name":{"nodes":[{"name":"California"}]}}}}}`,
+			wantErr:      false,
+			wantNodeName: "California",
+		},
+		{
+			name:         "error 400 with json body",
+			ctx:          context.Background(),
+			statusCode:   http.StatusBadRequest,
+			responseBody: `{"error":"invalid argument: place not found"}`,
+			wantErr:      true,
+			errContains:  "remote mixer response not ok: 400 Bad Request, body: {\"error\":\"invalid argument: place not found\"}",
+		},
+		{
+			name:         "error 500 with truncated body",
+			ctx:          context.Background(),
+			statusCode:   http.StatusInternalServerError,
+			responseBody: largeErrorBody,
+			wantErr:      true,
+			errContains:  "... (truncated)",
+		},
+		{
+			name:        "context canceled",
+			ctx:         cancelledCtx,
+			statusCode:  http.StatusOK,
+			wantErr:     true,
+			errContains: "context canceled",
+		},
+		{
+			name:              "surface header forwarded from context",
+			ctx:               metadata.NewIncomingContext(context.Background(), metadata.Pairs("x-surface", "mcp-server")),
+			statusCode:        http.StatusOK,
+			responseBody:      `{}`,
+			wantErr:           false,
+			checkHeader:       true,
+			wantSurfaceHeader: "mcp-server",
+			wantRemoteHeader:  "true",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			var gotSurfaceHeader, gotRemoteHeader string
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				gotSurfaceHeader = r.Header.Get("X-Surface")
+				gotRemoteHeader = r.Header.Get("X-Remote")
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(tc.statusCode)
+				_, _ = w.Write([]byte(tc.responseBody))
+			}))
+			defer ts.Close()
+
+			meta := &resource.Metadata{
+				RemoteMixerDomain: ts.URL,
+				RemoteMixerAPIKey: "test-api-key",
+			}
+			httpClient := ts.Client()
+
+			req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
+			resp := &pbv2.NodeResponse{}
+
+			err := FetchRemote(tc.ctx, meta, httpClient, "/v2/node", req, resp)
+			if tc.wantErr {
+				if err == nil {
+					t.Fatalf("FetchRemote() expected error, got nil")
+				}
+				if tc.errContains != "" && !strings.Contains(err.Error(), tc.errContains) {
+					t.Errorf("FetchRemote() error = %q, want containing %q", err.Error(), tc.errContains)
+				}
+				return
+			}
+
+			if err != nil {
+				t.Fatalf("FetchRemote() unexpected error = %v", err)
+			}
+
+			if tc.checkHeader {
+				if gotSurfaceHeader != tc.wantSurfaceHeader {
+					t.Errorf("got X-Surface header %q, want %q", gotSurfaceHeader, tc.wantSurfaceHeader)
+				}
+				if gotRemoteHeader != tc.wantRemoteHeader {
+					t.Errorf("got X-Remote header %q, want %q", gotRemoteHeader, tc.wantRemoteHeader)
+				}
+			}
+
+			if tc.wantNodeName != "" {
+				nodes := resp.GetData()["geoId/06"].GetArcs()["name"].GetNodes()
+				if len(nodes) == 0 || nodes[0].GetName() != tc.wantNodeName {
+					t.Errorf("FetchRemote() parsed resp = %v, want name %q", resp, tc.wantNodeName)
+				}
+			}
+		})
 	}
 }

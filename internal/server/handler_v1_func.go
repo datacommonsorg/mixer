@@ -17,6 +17,8 @@
 package server
 
 import (
+	"context"
+
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -25,12 +27,14 @@ import (
 var localBulkVariableInfoFunc = info.BulkVariableInfo
 
 var remoteBulkVariableInfoFunc = func(
+	ctx context.Context,
 	s *Server,
 	remoteReq *pbv1.BulkVariableInfoRequest,
 	remoteAPIPath string,
 ) (*pbv1.BulkVariableInfoResponse, error) {
 	remoteResp := &pbv1.BulkVariableInfoResponse{}
 	return remoteResp, util.FetchRemote(
+		ctx,
 		s.metadata,
 		s.httpClient,
 		remoteAPIPath,

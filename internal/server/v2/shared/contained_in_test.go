@@ -95,7 +95,7 @@ func TestFetchChildPlaces(t *testing.T) {
 		getPlacesIn = func(_ context.Context, _ *store.Store, _ []string, _ string) (map[string][]string, error) {
 			return tc.storeResponse, nil
 		}
-		fetchRemote = func(_ *resource.Metadata, _ *http.Client, _ string, _ *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+		fetchRemote = func(_ context.Context, _ *resource.Metadata, _ *http.Client, _ string, _ *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 			return tc.remoteMixerResponse, nil
 		}
 		if got, _ := FetchChildPlaces(ctx, s, metadata, httpClient, tc.remoteMixer, tc.ancestor, tc.childType); !reflect.DeepEqual(got, tc.want) {

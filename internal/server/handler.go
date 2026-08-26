@@ -100,7 +100,7 @@ func (s *Server) GetRelatedLocations(
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetRelatedLocationsResponse{}
 		if err := util.FetchRemote(
-			s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
+			ctx, s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
 			return nil, err
 		}
 		return remoteResp, nil
@@ -120,7 +120,7 @@ func (s *Server) getLocationsRankings(
 		s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pb.GetLocationsRankingsResponse{}
 		if err := util.FetchRemote(
-			s.metadata, s.httpClient, remoteAPIPath, in, remoteResp); err != nil {
+			ctx, s.metadata, s.httpClient, remoteAPIPath, in, remoteResp); err != nil {
 			return nil, err
 		}
 		return remoteResp, nil
