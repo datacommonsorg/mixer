@@ -17,7 +17,10 @@ package spanner
 import "testing"
 
 func TestQueryConfig(t *testing.T) {
-	config := QueryConfig{ContainedInPlaceAncestorFirstTypes: []string{"Place"}}
+	config := QueryConfig{
+		BulkSVGBuildRightNodes:             []string{"dc/g/Root"},
+		ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+	}
 	if err := config.Validate(); err != nil {
 		t.Fatal(err)
 	}
@@ -40,6 +43,18 @@ func TestQueryConfigValidation(t *testing.T) {
 		name   string
 		config QueryConfig
 	}{
+		{
+			name: "empty bulk SVG build-right node",
+			config: QueryConfig{
+				BulkSVGBuildRightNodes: []string{" "},
+			},
+		},
+		{
+			name: "padded bulk SVG build-right node",
+			config: QueryConfig{
+				BulkSVGBuildRightNodes: []string{" dc/g/Root "},
+			},
+		},
 		{
 			name: "empty ancestor-first type",
 			config: QueryConfig{
