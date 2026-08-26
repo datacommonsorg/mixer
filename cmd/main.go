@@ -215,6 +215,7 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
 		queryConfig := spanner.QueryConfig{
+			BulkSVGBuildRightNodes:                         flags.BulkSVGBuildRightNodes,
 			ContainedInPlaceAncestorFirstTypes:             flags.ContainedInPlaceAncestorFirstTypes,
 			ContainedInPlacePreferTimeSeriesScanPlaceTypes: flags.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
 			ContainedInPlaceEntityScanMinVariables:         flags.ContainedInPlaceEntityScanMinVariables,

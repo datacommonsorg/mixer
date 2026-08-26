@@ -62,6 +62,12 @@ func TestDefaultContainedInPlaceEntityScanMinVariables(t *testing.T) {
 	}
 }
 
+func TestDefaultBulkSVGBuildRightNodes(t *testing.T) {
+	if diff := cmp.Diff([]string{"dc/g/Root"}, setDefaultValues().BulkSVGBuildRightNodes); diff != "" {
+		t.Fatalf("BulkSVGBuildRightNodes mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -216,6 +222,49 @@ flags:
 			fileContent: `
 flags:
   ContainedInPlaceEntityScanMinVariables: -1
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "bulk SVG build-right nodes override",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - dc/g/Demographics
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.BulkSVGBuildRightNodes = []string{"dc/g/Demographics"}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "bulk SVG build-right nodes disabled",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes: []
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.BulkSVGBuildRightNodes = []string{}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - empty bulk SVG build-right node",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - " "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "validation error - padded bulk SVG build-right node",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - " dc/g/Root "
 `,
 			want:    nil,
 			wantErr: true,
