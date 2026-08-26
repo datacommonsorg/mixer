@@ -17,6 +17,7 @@ package remote
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"net/http"
@@ -154,7 +155,13 @@ func (rc *RemoteClient) SdmxData(req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataRes
 	resp := &sdmxpb.SdmxDataResult{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/data", req, resp)
 	if err != nil {
-		return nil, err
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return nil, err
+		}
+		// Suppress non-cancellation errors from remote mixer so that upstream failures
+		// (e.g. 400 constraint mismatch, 404, or 500) do not cancel concurrent local data sources.
+		slog.Warn("RemoteClient: failed to fetch remote SDMX data, ignoring remote error", "error", err)
+		return nil, nil
 	}
 	return resp, nil
 }
@@ -163,7 +170,13 @@ func (rc *RemoteClient) SdmxAvailability(req *sdmxpb.SdmxAvailabilityQuery) (*sd
 	resp := &sdmxpb.SdmxAvailabilityResult{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/internal/sdmx/availability", req, resp)
 	if err != nil {
-		return nil, err
+		if errors.Is(err, context.Canceled) || errors.Is(err, context.DeadlineExceeded) {
+			return nil, err
+		}
+		// Suppress non-cancellation errors from remote mixer so that upstream failures
+		// (e.g. 400 constraint mismatch, 404, or 500) do not cancel concurrent local data sources.
+		slog.Warn("RemoteClient: failed to fetch remote SDMX availability, ignoring remote error", "error", err)
+		return nil, nil
 	}
 	return resp, nil
 }

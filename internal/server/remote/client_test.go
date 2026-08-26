@@ -20,6 +20,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"google.golang.org/grpc/metadata"
@@ -93,5 +94,58 @@ func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
 	}
 	if receivedRemote != "true" {
 		t.Errorf("expected X-Remote header %q, got %q", "true", receivedRemote)
+	}
+}
+
+func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
+	tests := []struct {
+		name       string
+		statusCode int
+		body       string
+		wantNil    bool
+	}{
+		{
+			name:       "success 200",
+			statusCode: http.StatusOK,
+			body:       `{"series":[{"dimensions":{"variableMeasured":"Count_Person"}}]}`,
+			wantNil:    false,
+		},
+		{
+			name:       "remote error 400",
+			statusCode: http.StatusBadRequest,
+			body:       `{"error":"unsupported component filter"}`,
+			wantNil:    true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(tc.statusCode)
+				_, _ = w.Write([]byte(tc.body))
+			}))
+			defer ts.Close()
+
+			meta := &resource.Metadata{
+				RemoteMixerDomain: ts.URL,
+				RemoteMixerAPIKey: "test-api-key",
+			}
+			client, err := NewRemoteClient(meta)
+			if err != nil {
+				t.Fatalf("NewRemoteClient failed: %v", err)
+			}
+
+			got, err := client.SdmxData(&sdmxpb.SdmxDataQuery{})
+			if err != nil {
+				t.Fatalf("client.SdmxData() unexpected error = %v", err)
+			}
+			if tc.wantNil && got != nil {
+				t.Errorf("client.SdmxData() = %v, want nil", got)
+			}
+			if !tc.wantNil && got == nil {
+				t.Errorf("client.SdmxData() = nil, want non-nil result")
+			}
+		})
 	}
 }
