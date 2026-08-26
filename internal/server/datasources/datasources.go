@@ -254,6 +254,10 @@ func (ds *DataSources) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvai
 		func(all []*sdmxpb.SdmxAvailabilityResult) (*sdmxpb.SdmxAvailabilityResult, error) {
 			values := map[string]bool{}
 			for _, result := range all {
+				// Skip nil results from data sources that encountered non-fatal errors or returned no data.
+				if result == nil {
+					continue
+				}
 				for _, value := range result.GetValues() {
 					if value != "" {
 						values[value] = true
