@@ -19,11 +19,13 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
-	"github.com/go-test/deep"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestBulkVariableInfo(t *testing.T) {
@@ -33,6 +35,7 @@ func TestBulkVariableInfo(t *testing.T) {
 	s := Server{
 		store:      &store.Store{},
 		metadata:   &resource.Metadata{},
+		flags:      &featureflags.Flags{},
 		httpClient: &http.Client{},
 	}
 
@@ -52,18 +55,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v1",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T1": {PlaceCount: 1},
-							"T2": {PlaceCount: 2},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T1": {ObservationCount: 1},
+							"T2": {ObservationCount: 2},
 						},
 					},
 				},
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T3": {PlaceCount: 3},
-							"T4": {PlaceCount: 4},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T3": {ObservationCount: 3},
+							"T4": {ObservationCount: 4},
 						},
 					},
 				},
@@ -74,18 +77,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v1",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T1": {PlaceCount: 1},
-							"T2": {PlaceCount: 2},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T1": {ObservationCount: 1},
+							"T2": {ObservationCount: 2},
 						},
 					},
 				},
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T3": {PlaceCount: 3},
-							"T4": {PlaceCount: 4},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T3": {ObservationCount: 3},
+							"T4": {ObservationCount: 4},
 						},
 					},
 				},
@@ -100,18 +103,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR1": {PlaceCount: 11},
-							"TR2": {PlaceCount: 12},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR1": {ObservationCount: 11},
+							"TR2": {ObservationCount: 12},
 						},
 					},
 				},
 				{
 					Node: "v3",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR3": {PlaceCount: 13},
-							"TR4": {PlaceCount: 14},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR3": {ObservationCount: 13},
+							"TR4": {ObservationCount: 14},
 						},
 					},
 				},
@@ -122,18 +125,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR1": {PlaceCount: 11},
-							"TR2": {PlaceCount: 12},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR1": {ObservationCount: 11},
+							"TR2": {ObservationCount: 12},
 						},
 					},
 				},
 				{
 					Node: "v3",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR3": {PlaceCount: 13},
-							"TR4": {PlaceCount: 14},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR3": {ObservationCount: 13},
+							"TR4": {ObservationCount: 14},
 						},
 					},
 				},
@@ -148,18 +151,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v1",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T1": {PlaceCount: 1},
-							"T2": {PlaceCount: 2},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T1": {ObservationCount: 1},
+							"T2": {ObservationCount: 2},
 						},
 					},
 				},
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T3": {PlaceCount: 3},
-							"T4": {PlaceCount: 4},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T3": {ObservationCount: 3},
+							"T4": {ObservationCount: 4},
 						},
 					},
 				},
@@ -170,18 +173,18 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR1": {PlaceCount: 11},
-							"TR2": {PlaceCount: 12},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR1": {ObservationCount: 11},
+							"TR2": {ObservationCount: 12},
 						},
 					},
 				},
 				{
 					Node: "v3",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR3": {PlaceCount: 13},
-							"TR4": {PlaceCount: 14},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR3": {ObservationCount: 13},
+							"TR4": {ObservationCount: 14},
 						},
 					},
 				},
@@ -192,27 +195,27 @@ func TestBulkVariableInfo(t *testing.T) {
 				{
 					Node: "v1",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T1": {PlaceCount: 1},
-							"T2": {PlaceCount: 2},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T1": {ObservationCount: 1},
+							"T2": {ObservationCount: 2},
 						},
 					},
 				},
 				{
 					Node: "v2",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"T3": {PlaceCount: 3},
-							"T4": {PlaceCount: 4},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"T3": {ObservationCount: 3},
+							"T4": {ObservationCount: 4},
 						},
 					},
 				},
 				{
 					Node: "v3",
 					Info: &proto.StatVarSummary{
-						PlaceTypeSummary: map[string]*proto.StatVarSummary_PlaceTypeSummary{
-							"TR3": {PlaceCount: 13},
-							"TR4": {PlaceCount: 14},
+						ProvenanceSummary: map[string]*proto.StatVarSummary_ProvenanceSummary{
+							"TR3": {ObservationCount: 13},
+							"TR4": {ObservationCount: 14},
 						},
 					},
 				},
@@ -223,7 +226,7 @@ func TestBulkVariableInfo(t *testing.T) {
 			return tc.localResponse, nil
 		}
 		remoteBulkVariableInfoFunc = func(_ *Server, _ *pbv1.BulkVariableInfoRequest, remoteAPIPath string) (*pbv1.BulkVariableInfoResponse, error) {
-			expectedPath := "/v1/bulk/info/variable"
+			expectedPath := "/v2/bulk/info/variable"
 			if remoteAPIPath != expectedPath {
 				t.Errorf("%s: expected remoteAPIPath to be %s, got %s", tc.desc, expectedPath, remoteAPIPath)
 			}
@@ -234,8 +237,8 @@ func TestBulkVariableInfo(t *testing.T) {
 			Nodes: tc.statvars,
 		}
 		got, _ := s.BulkVariableInfo(ctx, &request)
-		if diff := deep.Equal(got, tc.want); diff != nil {
-			t.Errorf("%s: Unexpected diff: %v", tc.desc, diff)
+		if diff := cmp.Diff(got, tc.want, protocmp.Transform()); diff != "" {
+			t.Errorf("%s: Unexpected diff (-want +got):\n%s", tc.desc, diff)
 		}
 	}
 }
