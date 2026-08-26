@@ -497,7 +497,7 @@ func (s *Server) FilterStatVarsByEntity(
 	remoteResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
 
 	errGroup.Go(func() error {
-		localResponse, err := search.FilterStatVarsByEntity(ctx, in, s.store, s.cachedata.Load())
+		localResponse, err := search.FilterStatVarsByEntity(errCtx, in, s.store, s.cachedata.Load())
 		if err != nil {
 			return err
 		}

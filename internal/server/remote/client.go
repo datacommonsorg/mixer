@@ -156,7 +156,7 @@ func (rc *RemoteClient) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery)
 			"error", err,
 			"path", "/v2/internal/sdmx/data",
 		)
-		return nil, nil
+		return &sdmxpb.SdmxDataResult{}, nil
 	}
 	return resp, nil
 }
@@ -174,7 +174,7 @@ func (rc *RemoteClient) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAv
 			"error", err,
 			"path", "/v2/internal/sdmx/availability",
 		)
-		return nil, nil
+		return &sdmxpb.SdmxAvailabilityResult{}, nil
 	}
 	return resp, nil
 }

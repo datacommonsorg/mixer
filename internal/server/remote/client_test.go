@@ -70,19 +70,19 @@ func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
 		name       string
 		statusCode int
 		body       string
-		wantNil    bool
+		wantSeries int
 	}{
 		{
 			name:       "success 200",
 			statusCode: http.StatusOK,
 			body:       `{"series":[{"dimensions":{"variableMeasured":"Count_Person"}}]}`,
-			wantNil:    false,
+			wantSeries: 1,
 		},
 		{
 			name:       "remote error 400",
 			statusCode: http.StatusBadRequest,
 			body:       `{"error":"unsupported component filter"}`,
-			wantNil:    true,
+			wantSeries: 0,
 		},
 	}
 
@@ -108,11 +108,11 @@ func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
 			if err != nil {
 				t.Fatalf("client.SdmxData() unexpected error = %v", err)
 			}
-			if tc.wantNil && got != nil {
-				t.Errorf("client.SdmxData() = %v, want nil", got)
+			if got == nil {
+				t.Fatalf("client.SdmxData() returned nil result, want non-nil")
 			}
-			if !tc.wantNil && got == nil {
-				t.Errorf("client.SdmxData() = nil, want non-nil result")
+			if len(got.GetSeries()) != tc.wantSeries {
+				t.Errorf("len(client.SdmxData().GetSeries()) = %d, want %d", len(got.GetSeries()), tc.wantSeries)
 			}
 		})
 	}

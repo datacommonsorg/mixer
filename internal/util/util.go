@@ -711,10 +711,10 @@ func FetchRemote(
 	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
-		bodyBytes, _ := io.ReadAll(io.LimitReader(response.Body, maxRemoteErrorBodyBytes))
+		bodyBytes, _ := io.ReadAll(io.LimitReader(response.Body, maxRemoteErrorBodyBytes+1))
 		bodyStr := strings.TrimSpace(string(bodyBytes))
-		if len(bodyBytes) == maxRemoteErrorBodyBytes {
-			bodyStr += " ... (truncated)"
+		if len(bodyBytes) > maxRemoteErrorBodyBytes {
+			bodyStr = strings.TrimSpace(string(bodyBytes[:maxRemoteErrorBodyBytes])) + " ... (truncated)"
 		}
 		if bodyStr != "" {
 			return fmt.Errorf("remote mixer response not ok: %s, body: %s", response.Status, bodyStr)
