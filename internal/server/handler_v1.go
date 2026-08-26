@@ -83,6 +83,7 @@ func (s *Server) BulkPlaceInfo(
 		if len(in.Nodes) > 0 {
 			remoteResp := &pbv1.BulkPlaceInfoResponse{}
 			if err := util.FetchRemote(
+				ctx,
 				s.metadata,
 				s.httpClient,
 				"/v1/bulk/info/place",
@@ -130,7 +131,7 @@ func (s *Server) fetchAndMergeBulkVariableInfo(
 
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
-			remoteResponse, err := remoteBulkVariableInfoFunc(s, in, remoteAPIPath)
+			remoteResponse, err := remoteBulkVariableInfoFunc(errCtx, s, in, remoteAPIPath)
 			if err != nil {
 				return err
 			}
@@ -182,6 +183,7 @@ func (s *Server) fetchAndMergeBulkVariableGroupInfo(
 		}
 		remoteResp := &pbv1.BulkVariableGroupInfoResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			remoteAPIPath,
@@ -325,7 +327,7 @@ func (s *Server) BulkObservationDatesLinked(
 		errGroup.Go(func() error {
 			remoteResp := &pbv1.BulkObservationDatesLinkedResponse{}
 			err := util.FetchRemote(
-				s.metadata, s.httpClient, "/v1/bulk/observation-dates/linked", in, remoteResp)
+				errCtx, s.metadata, s.httpClient, "/v1/bulk/observation-dates/linked", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -355,6 +357,7 @@ func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 	if len(localResp.GetStatVarSeries()) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/internal/page/place",
@@ -379,6 +382,7 @@ func (s *Server) VariableAncestors(
 	if len(localResp.Ancestors) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.VariableAncestorsResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/variable/ancestors",
@@ -421,6 +425,7 @@ func (s *Server) SearchStatVar(
 	remoteResp := &pb.SearchStatVarResponse{}
 	if s.metadata.RemoteMixerDomain != "" {
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/variable/search",

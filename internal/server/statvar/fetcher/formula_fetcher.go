@@ -134,7 +134,7 @@ func FetchFormulas(
 					NextToken: nextToken,
 				}
 				statCalResp := &pbv2.NodeResponse{}
-				err := util.FetchRemote(metadata, &http.Client{}, v2node, statCalReq, statCalResp)
+				err := util.FetchRemote(errCtx, metadata, &http.Client{}, v2node, statCalReq, statCalResp)
 				if err != nil {
 					return err
 				}
@@ -156,7 +156,7 @@ func FetchFormulas(
 					Property:  "->[" + outputProperty + ", " + inputPropertyExpression + "]",
 					NextToken: nextToken,
 				}
-				err := util.FetchRemote(metadata, &http.Client{}, v2node, propReq, currResp)
+				err := util.FetchRemote(errCtx, metadata, &http.Client{}, v2node, propReq, currResp)
 				if err != nil {
 					return err
 				}

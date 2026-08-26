@@ -671,21 +671,26 @@ func StringSliceToSet(s []string) map[string]struct{} {
 	return res
 }
 
+const maxRemoteErrorBodyBytes = 8192
+
 func FetchRemote(
+	ctx context.Context,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	apiPath string,
 	in proto.Message,
 	out proto.Message,
-	surfaceHeaderValue ...string,
 ) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
 
 	url := metadata.RemoteMixerDomain + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
 		return err
 	}
-	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	request, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(jsonValue))
 	if err != nil {
 		return err
 	}
@@ -694,9 +699,9 @@ func FetchRemote(
 	// X-Remote indicates that the mixer call is made to a remote mixer
 	// which is typically from a Custom DC instance.
 	request.Header.Set("X-Remote", "true")
-	// Pass in the surfaceHeaderValue from the call to remote mixer.
-	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
-		request.Header.Set("X-Surface", surfaceHeaderValue[0])
+	// Pass in the surface header from the incoming request context if present.
+	if surface, _ := GetMetadata(ctx); surface != "" {
+		request.Header.Set("X-Surface", surface)
 	}
 	slog.Info(fmt.Sprintf("[DC][RemoteMixerCall] url=%s", url), "url", url)
 	response, err := httpClient.Do(request)
@@ -705,12 +710,18 @@ func FetchRemote(
 	}
 	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer response.Body.Close()
-	// Read response body
-	var responseBodyBytes []byte
 	if response.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(io.LimitReader(response.Body, maxRemoteErrorBodyBytes+1))
+		bodyStr := strings.TrimSpace(string(bodyBytes))
+		if len(bodyBytes) > maxRemoteErrorBodyBytes {
+			bodyStr = strings.TrimSpace(string(bodyBytes[:maxRemoteErrorBodyBytes])) + " ... (truncated)"
+		}
+		if bodyStr != "" {
+			return fmt.Errorf("remote mixer response not ok: %s, body: %s", response.Status, bodyStr)
+		}
 		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
 	}
-	responseBodyBytes, err = io.ReadAll(response.Body)
+	responseBodyBytes, err := io.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}
