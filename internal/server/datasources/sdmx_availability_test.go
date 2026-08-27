@@ -79,6 +79,22 @@ func TestSdmxAvailabilityMergesValues(t *testing.T) {
 	}
 }
 
+func TestSdmxAvailabilityMergesLocalResultWithNilRemoteResult(t *testing.T) {
+	ds := NewDataSources([]datasource.DataSource{
+		&availabilityDataSource{id: "local", values: []string{"country/USA", "geoId/06"}},
+		&availabilityDataSource{id: "remote", values: nil},
+	}, nil)
+
+	got, err := ds.SdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
+	if err != nil {
+		t.Fatalf("SdmxAvailability() error = %v", err)
+	}
+	want := []string{"country/USA", "geoId/06"}
+	if diff := cmp.Diff(want, got.GetValues()); diff != "" {
+		t.Fatalf("SdmxAvailability() values mismatch (-want +got):\n%s", diff)
+	}
+}
+
 func TestSdmxDataMergesIdenticalShapes(t *testing.T) {
 	shape := testSdmxShape([]string{datacommons.ComponentObservationAbout})
 	ds := NewDataSources([]datasource.DataSource{
@@ -125,6 +141,28 @@ func TestSdmxDataMergesLocalResultWithEmptyRemoteResult(t *testing.T) {
 	ds := NewDataSources([]datasource.DataSource{
 		&sdmxDataSource{id: "local", result: localResult},
 		&sdmxDataSource{id: "remote", result: &sdmxpb.SdmxDataResult{}},
+	}, nil)
+
+	got, err := ds.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})
+	if err != nil {
+		t.Fatalf("SdmxData() error = %v", err)
+	}
+	if diff := cmp.Diff(localResult, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("SdmxData() mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestSdmxDataMergesLocalResultWithNilRemoteResult(t *testing.T) {
+	shape := testSdmxShape([]string{datacommons.ComponentObservationAbout})
+	localResult := &sdmxpb.SdmxDataResult{
+		Shape: shape,
+		Series: []*sdmxpb.SdmxTimeSeries{
+			{Dimensions: map[string]string{datacommons.ComponentVariableMeasured: "Count_Person"}},
+		},
+	}
+	ds := NewDataSources([]datasource.DataSource{
+		&sdmxDataSource{id: "local", result: localResult},
+		&sdmxDataSource{id: "remote", result: nil},
 	}, nil)
 
 	got, err := ds.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})

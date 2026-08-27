@@ -144,6 +144,108 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 	}
 }
 
+func TestMultiEntityGetFilteredSVGChildrenQueryConfiguredBuildRight(t *testing.T) {
+	t.Parallel()
+
+	runQueryBuilderGoldenTest(t, "get_multientity_filtered_svg_default_existence_build_right.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+			BulkSVGBuildRightNodes: []string{"dc/g/Root"},
+		})
+		if err != nil {
+			return nil, err
+		}
+		return builder.GetFilteredSVGChildrenQuery(
+			"SVG",
+			"dc/g/Root",
+			[]string{"fireEvent/2026-03-26_0x2de63b0000000000"},
+			"",
+			0,
+			false,
+		)
+	})
+}
+
+func TestMultiEntityGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T) {
+	t.Parallel()
+
+	for _, tc := range []struct {
+		name                  string
+		template              string
+		node                  string
+		constrainedProvenance string
+		numEntitiesExistence  int
+		wantBuildRight        bool
+	}{
+		{
+			name:                 "configured node with default threshold",
+			template:             "SVG",
+			node:                 "dc/g/Root",
+			numEntitiesExistence: 0,
+			wantBuildRight:       true,
+		},
+		{
+			name:                 "configured node with threshold one",
+			template:             "SVG",
+			node:                 "dc/g/Root",
+			numEntitiesExistence: 1,
+			wantBuildRight:       true,
+		},
+		{
+			name:                 "unconfigured node with threshold one",
+			template:             "SVG",
+			node:                 "dc/g/AboutDataCommons",
+			numEntitiesExistence: 1,
+			wantBuildRight:       false,
+		},
+		{
+			name:                 "unconfigured node above threshold one",
+			template:             "SVG",
+			node:                 "dc/g/AboutDataCommons",
+			numEntitiesExistence: 2,
+			wantBuildRight:       true,
+		},
+		{
+			name:                 "configured node with direct StatVar template",
+			template:             "SV",
+			node:                 "dc/g/Root",
+			numEntitiesExistence: 1,
+			wantBuildRight:       false,
+		},
+		{
+			name:                  "configured node with provenance",
+			template:              "SVG",
+			node:                  "dc/g/Root",
+			constrainedProvenance: "dc/s/WorldBank",
+			numEntitiesExistence:  1,
+			wantBuildRight:        false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+				BulkSVGBuildRightNodes: []string{"dc/g/Root"},
+			})
+			if err != nil {
+				t.Fatal(err)
+			}
+			stmt, err := builder.GetFilteredSVGChildrenQuery(
+				tc.template,
+				tc.node,
+				[]string{"country/USA"},
+				tc.constrainedProvenance,
+				tc.numEntitiesExistence,
+				false,
+			)
+			if err != nil {
+				t.Fatal(err)
+			}
+			gotBuildRight := strings.Contains(stmt.SQL, "HASH_JOIN_BUILD_SIDE=BUILD_RIGHT")
+			if gotBuildRight != tc.wantBuildRight {
+				t.Errorf("build-right selected = %t, want %t\nSQL:\n%s", gotBuildRight, tc.wantBuildRight, stmt.SQL)
+			}
+		})
+	}
+}
+
 // TestMultiEntityGetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
 func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 	t.Parallel()

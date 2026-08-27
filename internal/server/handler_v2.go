@@ -89,7 +89,7 @@ func (s *Server) V2Resolve(
 	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
+			err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -206,7 +206,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 		if s.metadata.RemoteMixerDomain != "" {
 			errGroup.Go(func() error {
 				remoteResp := &pbv2.NodeResponse{}
-				err := util.FetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+				err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/node", in, remoteResp)
 				if err != nil {
 					return err
 				}
@@ -256,7 +256,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 				// Call remote.
 				remoteResp := &pbv2.NodeResponse{}
 				if err := util.FetchRemote(
-					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					errCtx, s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
 					return err
 				}
 				remoteRespChan <- remoteResp
@@ -346,7 +346,7 @@ func (s *Server) handleV2Event(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.EventResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+			err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/event", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -491,13 +491,13 @@ func (s *Server) FilterStatVarsByEntity(
 
 	v2StartTime := time.Now()
 
-	errGroup, _ := errgroup.WithContext(ctx)
+	errGroup, errCtx := errgroup.WithContext(ctx)
 
 	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
 	remoteResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
 
 	errGroup.Go(func() error {
-		localResponse, err := search.FilterStatVarsByEntity(ctx, in, s.store, s.cachedata.Load())
+		localResponse, err := search.FilterStatVarsByEntity(errCtx, in, s.store, s.cachedata.Load())
 		if err != nil {
 			return err
 		}
@@ -509,6 +509,7 @@ func (s *Server) FilterStatVarsByEntity(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			if err := util.FetchRemote(
+				errCtx,
 				s.metadata,
 				s.httpClient,
 				"/v2/variable/filter",

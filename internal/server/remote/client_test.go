@@ -20,42 +20,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"google.golang.org/grpc/metadata"
 )
-
-func TestGetSurface(t *testing.T) {
-	tests := []struct {
-		name string
-		ctx  context.Context
-		want string
-	}{
-		{
-			name: "nil context",
-			ctx:  nil,
-			want: "",
-		},
-		{
-			name: "empty background context",
-			ctx:  context.Background(),
-			want: "",
-		},
-		{
-			name: "context with x-surface header",
-			ctx:  metadata.NewIncomingContext(context.Background(), metadata.Pairs("x-surface", "mcp-server")),
-			want: "mcp-server",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			if got := getSurface(tc.ctx); got != tc.want {
-				t.Errorf("getSurface(%v) = %q, want %q", tc.ctx, got, tc.want)
-			}
-		})
-	}
-}
 
 func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
 	var receivedSurface string
@@ -93,5 +62,58 @@ func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
 	}
 	if receivedRemote != "true" {
 		t.Errorf("expected X-Remote header %q, got %q", "true", receivedRemote)
+	}
+}
+
+func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
+	tests := []struct {
+		name       string
+		statusCode int
+		body       string
+		wantSeries int
+	}{
+		{
+			name:       "success 200",
+			statusCode: http.StatusOK,
+			body:       `{"series":[{"dimensions":{"variableMeasured":"Count_Person"}}]}`,
+			wantSeries: 1,
+		},
+		{
+			name:       "remote error 400",
+			statusCode: http.StatusBadRequest,
+			body:       `{"error":"unsupported component filter"}`,
+			wantSeries: 0,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(tc.statusCode)
+				_, _ = w.Write([]byte(tc.body))
+			}))
+			defer ts.Close()
+
+			meta := &resource.Metadata{
+				RemoteMixerDomain: ts.URL,
+				RemoteMixerAPIKey: "test-api-key",
+			}
+			client, err := NewRemoteClient(meta)
+			if err != nil {
+				t.Fatalf("NewRemoteClient failed: %v", err)
+			}
+
+			got, err := client.SdmxData(context.Background(), &sdmxpb.SdmxDataQuery{})
+			if err != nil {
+				t.Fatalf("client.SdmxData() unexpected error = %v", err)
+			}
+			if got == nil {
+				t.Fatalf("client.SdmxData() returned nil result, want non-nil")
+			}
+			if len(got.GetSeries()) != tc.wantSeries {
+				t.Errorf("len(client.SdmxData().GetSeries()) = %d, want %d", len(got.GetSeries()), tc.wantSeries)
+			}
+		})
 	}
 }

@@ -64,6 +64,8 @@ type Flags struct {
 	ContainedInPlacePreferTimeSeriesScanPlaceTypes []string `yaml:"ContainedInPlacePreferTimeSeriesScanPlaceTypes"`
 	// Minimum number of unique variables that selects an entity1 range scan for eligible child place types. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
+	// StatVarGroup nodes that should build the TimeSeries side of filtered child-SVG hash joins for N <= 1 requests.
+	BulkSVGBuildRightNodes []string `yaml:"BulkSVGBuildRightNodes"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -86,6 +88,7 @@ func setDefaultValues() *Flags {
 		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables:         50,
+		BulkSVGBuildRightNodes:                         []string{"dc/g/Root"},
 	}
 }
 
@@ -143,6 +146,15 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.ContainedInPlaceEntityScanMinVariables < 0 {
 		return fmt.Errorf("ContainedInPlaceEntityScanMinVariables must be non-negative")
+	}
+	for _, node := range f.BulkSVGBuildRightNodes {
+		trimmed := strings.TrimSpace(node)
+		if trimmed == "" {
+			return fmt.Errorf("BulkSVGBuildRightNodes must not contain empty values")
+		}
+		if trimmed != node {
+			return fmt.Errorf("BulkSVGBuildRightNodes must not contain surrounding whitespace")
+		}
 	}
 	return nil
 }

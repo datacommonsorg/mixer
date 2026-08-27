@@ -62,13 +62,14 @@ var (
 )
 
 func fetchRemoteWrapper(
+	ctx context.Context,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	apiPath string,
 	remoteReq *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
 	remoteResp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
+	err := util.FetchRemote(ctx, metadata, httpClient, apiPath, remoteReq, remoteResp)
 	if err != nil {
 		return nil, err
 	}
@@ -84,6 +85,7 @@ func storeFetchChildPlaces(
 }
 
 func remoteMixerFetchChildPlaces(
+	ctx context.Context,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	ancestor, childType string,
@@ -92,7 +94,7 @@ func remoteMixerFetchChildPlaces(
 		Nodes:    []string{ancestor},
 		Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
 	}
-	return fetchRemote(metadata, httpClient, "/v2/node", remoteReq)
+	return fetchRemote(ctx, metadata, httpClient, "/v2/node", remoteReq)
 }
 
 // FetchChildPlaces fetches child places
@@ -119,7 +121,7 @@ func FetchChildPlaces(
 
 	if remoteMixer != "" {
 		errGroup.Go(func() error {
-			remoteMixerResponse, err := remoteMixerFetchChildPlaces(metadata, httpClient, ancestor, childType)
+			remoteMixerResponse, err := remoteMixerFetchChildPlaces(errCtx, metadata, httpClient, ancestor, childType)
 			if err != nil {
 				return err
 			}

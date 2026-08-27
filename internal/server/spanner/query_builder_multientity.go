@@ -304,7 +304,10 @@ func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *MultiEntity
 // GetFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
 func (b *multiEntityQueryBuilder) GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool) (*spanner.Statement, error) {
 	stmts := b.statements
-	useBuildRight := template == templateSVG && len(constrainedPlaces) > 0 && numEntitiesExistence > 1 && constrainedProvenance == ""
+	useBuildRight := template == templateSVG &&
+		len(constrainedPlaces) > 0 &&
+		constrainedProvenance == "" &&
+		(numEntitiesExistence > 1 || slices.Contains(b.queryConfig.BulkSVGBuildRightNodes, node))
 	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence, useBuildRight, stmts)
 	subquery.Params["node"] = node
 
