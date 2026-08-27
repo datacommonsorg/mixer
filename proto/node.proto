@@ -55,9 +55,3 @@ message PropertyLabels {
   repeated string in_labels = 1;
   repeated string out_labels = 2;
 }
-
-// Response returned by GetTriples.
-message GetTriplesResponse {
-  // Key is entity dcid.
-  map<string, Triples> triples = 1;
-}

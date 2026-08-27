@@ -289,55 +289,6 @@ func (x *PropertyLabels) GetOutLabels() []string {
 	return nil
 }
 
-// Response returned by GetTriples.
-type GetTriplesResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Key is entity dcid.
-	Triples map[string]*Triples `protobuf:"bytes,1,rep,name=triples,proto3" json:"triples,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-}
-
-func (x *GetTriplesResponse) Reset() {
-	*x = GetTriplesResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_node_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GetTriplesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetTriplesResponse) ProtoMessage() {}
-
-func (x *GetTriplesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_node_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetTriplesResponse.ProtoReflect.Descriptor instead.
-func (*GetTriplesResponse) Descriptor() ([]byte, []int) {
-	return file_node_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GetTriplesResponse) GetTriples() map[string]*Triples {
-	if x != nil {
-		return x.Triples
-	}
-	return nil
-}
-
 var File_node_proto protoreflect.FileDescriptor
 
 var file_node_proto_rawDesc = []byte{
@@ -395,21 +346,10 @@ var file_node_proto_rawDesc = []byte{
 	0x65, 0x6c, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x69, 0x6e, 0x4c, 0x61, 0x62,
 	0x65, 0x6c, 0x73, 0x12, 0x1d, 0x0a, 0x0a, 0x6f, 0x75, 0x74, 0x5f, 0x6c, 0x61, 0x62, 0x65, 0x6c,
 	0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x6f, 0x75, 0x74, 0x4c, 0x61, 0x62, 0x65,
-	0x6c, 0x73, 0x22, 0xae, 0x01, 0x0a, 0x12, 0x47, 0x65, 0x74, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x46, 0x0a, 0x07, 0x74, 0x72, 0x69,
-	0x70, 0x6c, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2c, 0x2e, 0x64, 0x61, 0x74,
-	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72, 0x69, 0x70,
-	0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x54, 0x72, 0x69, 0x70,
-	0x6c, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x74, 0x72, 0x69, 0x70, 0x6c, 0x65,
-	0x73, 0x1a, 0x50, 0x0a, 0x0c, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x6b, 0x65, 0x79, 0x12, 0x2a, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x14, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73,
-	0x2e, 0x54, 0x72, 0x69, 0x70, 0x6c, 0x65, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a,
-	0x02, 0x38, 0x01, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67,
-	0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x73, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
+	0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f,
+	0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -424,30 +364,26 @@ func file_node_proto_rawDescGZIP() []byte {
 	return file_node_proto_rawDescData
 }
 
-var file_node_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_node_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_node_proto_goTypes = []interface{}{
 	(*Triple)(nil),               // 0: datacommons.Triple
 	(*Triples)(nil),              // 1: datacommons.Triples
 	(*PropertyLabels)(nil),       // 2: datacommons.PropertyLabels
-	(*GetTriplesResponse)(nil),   // 3: datacommons.GetTriplesResponse
-	nil,                          // 4: datacommons.Triples.InNodesEntry
-	nil,                          // 5: datacommons.Triples.OutNodesEntry
-	nil,                          // 6: datacommons.GetTriplesResponse.TriplesEntry
-	(*EntityInfoCollection)(nil), // 7: datacommons.EntityInfoCollection
+	nil,                          // 3: datacommons.Triples.InNodesEntry
+	nil,                          // 4: datacommons.Triples.OutNodesEntry
+	(*EntityInfoCollection)(nil), // 5: datacommons.EntityInfoCollection
 }
 var file_node_proto_depIdxs = []int32{
 	0, // 0: datacommons.Triples.triples:type_name -> datacommons.Triple
-	4, // 1: datacommons.Triples.in_nodes:type_name -> datacommons.Triples.InNodesEntry
-	5, // 2: datacommons.Triples.out_nodes:type_name -> datacommons.Triples.OutNodesEntry
-	6, // 3: datacommons.GetTriplesResponse.triples:type_name -> datacommons.GetTriplesResponse.TriplesEntry
-	7, // 4: datacommons.Triples.InNodesEntry.value:type_name -> datacommons.EntityInfoCollection
-	7, // 5: datacommons.Triples.OutNodesEntry.value:type_name -> datacommons.EntityInfoCollection
-	1, // 6: datacommons.GetTriplesResponse.TriplesEntry.value:type_name -> datacommons.Triples
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	3, // 1: datacommons.Triples.in_nodes:type_name -> datacommons.Triples.InNodesEntry
+	4, // 2: datacommons.Triples.out_nodes:type_name -> datacommons.Triples.OutNodesEntry
+	5, // 3: datacommons.Triples.InNodesEntry.value:type_name -> datacommons.EntityInfoCollection
+	5, // 4: datacommons.Triples.OutNodesEntry.value:type_name -> datacommons.EntityInfoCollection
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_node_proto_init() }
@@ -493,18 +429,6 @@ func file_node_proto_init() {
 				return nil
 			}
 		}
-		file_node_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetTriplesResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -512,7 +436,7 @@ func file_node_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_node_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

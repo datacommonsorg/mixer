@@ -17,7 +17,6 @@ package recon
 
 import (
 	"context"
-	"math"
 	"sort"
 	"strings"
 	"sync"
@@ -32,13 +31,7 @@ const (
 	// places, for the rest, only pick the places with
 	// population >= minPopulationOverMaxPlaceCandidates.
 	minPopulationOverMaxPlaceCandidates = 2000
-	nameReconInProp                     = "reconName"
-	nameReconOutProp                    = "dcid"
 	reconNGramLimit                     = 10
-)
-
-var (
-	wordSeparators = map[byte]bool{' ': true, ',': true, ';': true, '.': true}
 )
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
@@ -78,100 +71,6 @@ func RecognizePlaces(
 	}
 
 	return resp, nil
-}
-
-// Splits a query by a span into a list of parts like: non-span part, span part,
-// non-span part, span part, etc. and should only split on complete words. If
-// the query does not contain the span, returns a list with the query as the
-// only item.
-// Examples
-// query: "ab cd ef ab g", span: "ab", result: ["ab", "cd ef", "ab", "g"]
-// query: "ab cd ef g", span: "jk", result: ["ab cd ef g"]
-func splitQueryBySpan(query string, span string) []string {
-	i := 0
-	parts := []string{""}
-
-	for i < len(query) {
-		// a valid span match is one that starts at the beginning of the query or
-		// after a word separator
-		if i == 0 || wordSeparators[query[i-1]] {
-			if strings.HasPrefix(query[i:], span) {
-				endIdx := i + len(span)
-				// a valid span match is one that ends at the end of the query or before
-				// a word separator
-				if endIdx == len(query) || wordSeparators[query[endIdx]] {
-					// valid span match is found so add the span to the list of parts
-					parts = append(parts, span)
-					// add an empty span to start the possibly next non-span part
-					parts = append(parts, "")
-					// move on to search the next part of the query after the span we just
-					// found
-					i = endIdx
-					continue
-				}
-			}
-		}
-		// this current index in the query is not part of a valid span match so just
-		// add the current character to the current non-span part
-		parts[len(parts)-1] += string(query[i])
-		// move on to search from the next index in the query
-		i += 1
-	}
-
-	// trim spaces and filter out empty parts
-	filteredParts := []string{}
-	for _, part := range parts {
-		trimmedPart := strings.TrimSpace(part)
-		if len(trimmedPart) == 0 {
-			continue
-		}
-		filteredParts = append(filteredParts, trimmedPart)
-	}
-	return filteredParts
-}
-
-// Gets the reconName for a span.
-// The logic here should correspond to the logic for processing name into
-// reconName in flume (https://source.corp.google.com/piper///depot/google3/datacommons/prophet/flume_generator/triple_helper.cc;l=168-173)
-// TODO: also clean up consecutive spaces
-func getReconName(span string) string {
-	reconName := strings.ReplaceAll(span, " ,", "")
-	reconName = strings.ReplaceAll(reconName, ",", "")
-	reconName = strings.ReplaceAll(reconName, "^", "")
-	reconName = strings.ToLower(reconName)
-	reconName = strings.TrimSpace(reconName)
-	return reconName
-}
-
-// Takes a query and returns a map of id to use for resolution to the
-// original span (part of the query) for that id.
-// A single id can have multiple spans because we process a span by removing
-// certain characters to get an id:
-// E.g., "a^b" and "ab" would both have the id "ab"
-func getId2Span(query string) map[string]map[string]struct{} {
-	id2spans := map[string]map[string]struct{}{}
-	spanTokens := strings.Split(query, " ")
-	for i := range spanTokens {
-		span := ""
-		// This is the index in the list of tokens to end at when making n-grams,
-		// which should be either the end of the list of tokens or when the max n is
-		// reached for the n-grams, whichever comes first.
-		maxNGramIdx := int(math.Min(float64(len(spanTokens)), float64(reconNGramLimit+i)))
-		// make n-grams from the span tokens
-		for j := i; j < maxNGramIdx; j++ {
-			span = span + " " + spanTokens[j]
-			span = strings.TrimSpace(span)
-			id := getReconName(span)
-			if len(id) < 1 {
-				continue
-			}
-			if _, ok := id2spans[id]; !ok {
-				id2spans[id] = map[string]struct{}{}
-			}
-			id2spans[id][span] = struct{}{}
-		}
-	}
-	return id2spans
 }
 
 func tokenize(query string) []string {

@@ -57,26 +57,3 @@ func GetPropertyValuesHelper(
 	}
 	return result, nil
 }
-
-func filterEntities(in []*pb.EntityInfo, typ string, limit int) []*pb.EntityInfo {
-	if limit == 0 && typ == "" {
-		return in
-	}
-	result := []*pb.EntityInfo{}
-	for _, entity := range in {
-		if typ == "" {
-			result = append(result, entity)
-		} else {
-			for _, t := range entity.Types {
-				if t == typ {
-					result = append(result, entity)
-					break
-				}
-			}
-		}
-		if limit > 0 && len(result) == limit {
-			break
-		}
-	}
-	return result
-}
