@@ -18,23 +18,14 @@ import (
 	"context"
 	"encoding/json"
 	"os"
-	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/place"
-	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
-	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
-	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
-	"github.com/datacommonsorg/mixer/internal/server/v0/statpoint"
-	"github.com/datacommonsorg/mixer/internal/server/v0/triple"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -45,47 +36,12 @@ func (s *Server) Query(ctx context.Context, in *pb.QueryRequest) (
 	return translator.Query(ctx, in, s.metadata, s.store)
 }
 
-// GetStatValue implements API for Mixer.GetStatValue.
-// Endpoint: /stat (/stat/value)
-func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
-	*pb.GetStatValueResponse, error,
-) {
-	return statpoint.GetStatValue(ctx, in, s.store)
-}
-
 // GetStats implements API for Mixer.GetStats.
 // Endpoint: /stat/set/series
 // Endpoint: /bulk/stats
 func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 ) (*pb.GetStatsResponse, error) {
 	return stat.GetStats(ctx, in, s.store)
-}
-
-// GetPlacesIn implements API for Mixer.GetPlacesIn.
-func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
-) (*pb.GetPlacesInResponse, error) {
-	// Current places in response is not ideal.
-	placesInData, err := placein.GetPlacesIn(ctx, s.store, in.GetDcids(), in.GetPlaceType())
-	if err != nil {
-		return nil, err
-	}
-	// (TODO): In next version of API, should simply return placesInData in the final response.
-	result := []map[string]string{}
-	parents := []string{}
-	for dcid := range placesInData {
-		parents = append(parents, dcid)
-	}
-	sort.Strings(parents)
-	for _, parent := range parents {
-		for _, child := range placesInData[parent] {
-			result = append(result, map[string]string{"dcid": parent, "place": child})
-		}
-	}
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.GetPlacesInResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.
@@ -133,65 +89,6 @@ func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
 	return s.getLocationsRankings(ctx, in, "/v1/place/ranking")
-}
-
-// GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
-func (s *Server) GetPlaceStatVars(
-	ctx context.Context, in *pb.GetPlaceStatVarsRequest,
-) (*pb.GetPlaceStatVarsResponse, error) {
-	return placestatvar.GetPlaceStatVars(ctx, in, s.store)
-}
-
-// GetPropertyLabels implements API for Mixer.GetPropertyLabels.
-func (s *Server) GetPropertyLabels(
-	ctx context.Context, in *pb.GetPropertyLabelsRequest,
-) (*pb.PayloadResponse, error) {
-	resp, err := propertylabel.GetPropertyLabels(ctx, in, s.store)
-	if err != nil {
-		return nil, err
-	}
-	jsonRaw, err := protojson.Marshal(resp)
-	if err != nil {
-		return nil, err
-	}
-	// To make the API response backward compatible. This is to remove the outer
-	// level `{\"data\":` and trailing `}`
-	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
-
-	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
-}
-
-// GetPropertyValues implements API for Mixer.GetPropertyValues.
-func (s *Server) GetPropertyValues(
-	ctx context.Context, in *pb.GetPropertyValuesRequest,
-) (*pb.PayloadResponse, error) {
-	resp, err := propertyvalue.GetPropertyValues(ctx, in, s.store)
-	if err != nil {
-		return nil, err
-	}
-	jsonRaw, err := protojson.Marshal(resp)
-	if err != nil {
-		return nil, err
-	}
-	// To make the API response backward compatible. This is to remove the outer
-	// level `{\"data\":` and trailing `}`
-	jsonRaw = jsonRaw[8 : len(jsonRaw)-1]
-	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
-}
-
-// GetTriples implements API for Mixer.GetTriples.
-func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
-) (*pb.PayloadResponse, error) {
-	resp, err := triple.GetTriples(ctx, in, s.store, s.metadata)
-	if err != nil {
-		return nil, err
-	}
-	result := convert.ToLegacyResult(resp)
-	jsonRaw, err := json.Marshal(result)
-	if err != nil {
-		return nil, err
-	}
-	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
 // GetVersion implements API for Mixer.GetVersion.

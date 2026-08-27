@@ -22,7 +22,6 @@
 //    /bulk/stats
 //    /stat/all
 //    /stat/series
-//    /stat/value
 // ========================================
 
 syntax = "proto3";
@@ -190,26 +189,6 @@ message GetStatsResponse {
   // The JSON payload.
   string payload = 2;
 }
-
-// Request for GetStat service.
-message GetStatValueRequest {
-  // dcid of the place.
-  string place = 1;
-  // dcid of the stat var.
-  string stat_var = 2;
-  // (optional) date of the stat. The latest date will be used if unspecified.
-  string date = 3;
-  // (optional) measurement method of the observation, ex: "CensusACS5yrSurvey".
-  string measurement_method = 4;
-  // (optional) observation period of the observation, ex: "P1Y".
-  string observation_period = 5;
-  // (optional) unit of the observation.
-  string unit = 6;
-  // (optional) scaling factor of the observation.
-  string scaling_factor = 7;
-}
-
-message GetStatValueResponse { optional double value = 1; }
 
 message StatDate {
   // Map from date to the number of places.

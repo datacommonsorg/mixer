@@ -43,19 +43,9 @@ usage:
   rules:
   # V0 APIs can be called without an API Key.
   # This will be removed once the V0 users are fully migrated.
-  - selector: "datacommons.Mixer.GetPropertyLabels"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPropertyValues"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetTriples"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPlacesIn"
-    allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStats"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStatSetSeries"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetStatValue"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStatSetWithinPlace"
     allow_unregistered_calls: true
@@ -74,8 +64,6 @@ usage:
   - selector: "datacommons.Mixer.Search"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetVersion"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPlaceStatVars"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetPlaceStatDateWithinPlace"
     allow_unregistered_calls: true
