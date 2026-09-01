@@ -1783,6 +1783,75 @@ func TestResolveSdmxEntityShape(t *testing.T) {
 	}
 }
 
+func TestResolveSdmxEntityShapeExternalProperties(t *testing.T) {
+	tests := []struct {
+		name                              string
+		statVarIDs                        []string
+		statVarToObservationPropertyEdges map[string][]*Edge
+		wantProperties                    []string
+		wantSlots                         map[string]string
+	}{
+		{
+			name:       "resolves mixed local and external reference edges",
+			statVarIDs: []string{"HealthAidFunding"},
+			statVarToObservationPropertyEdges: map[string][]*Edge{
+				"HealthAidFunding": {
+					{Predicate: "observationProperties", ObjectID: "donorPlace", Value: "donorPlace", Resolved: true},
+					{Predicate: "observationProperties", ObjectID: "medicalCondition", Value: "", Resolved: false},
+					{Predicate: "observationProperties", ObjectID: "recipientPlace", Value: "recipientPlace", Resolved: true},
+				},
+			},
+			wantProperties: []string{"donorPlace", "medicalCondition", "recipientPlace"},
+			wantSlots: map[string]string{
+				"donorPlace":       "entity1",
+				"medicalCondition": "entity2",
+				"recipientPlace":   "entity3",
+			},
+		},
+		{
+			name:       "resolves external reference with whitespace in object_id",
+			statVarIDs: []string{"var1"},
+			statVarToObservationPropertyEdges: map[string][]*Edge{
+				"var1": {
+					{Predicate: "observationProperties", ObjectID: "  medicalCondition  ", Value: ""},
+				},
+			},
+			wantProperties: []string{"medicalCondition"},
+			wantSlots: map[string]string{
+				"medicalCondition": "entity1",
+			},
+		},
+		{
+			name:       "falls back to value when object_id is whitespace",
+			statVarIDs: []string{"var1"},
+			statVarToObservationPropertyEdges: map[string][]*Edge{
+				"var1": {
+					{Predicate: "observationProperties", ObjectID: "   ", Value: "  sourceCountry  "},
+				},
+			},
+			wantProperties: []string{"sourceCountry"},
+			wantSlots: map[string]string{
+				"sourceCountry": "entity1",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			gotProps, gotSlots, err := resolveSdmxEntityShape(tc.statVarIDs, tc.statVarToObservationPropertyEdges)
+			if err != nil {
+				t.Fatalf("resolveSdmxEntityShape() unexpected error = %v", err)
+			}
+			if diff := cmp.Diff(tc.wantProperties, gotProps); diff != "" {
+				t.Errorf("observationProperties mismatch (-want +got):\n%s", diff)
+			}
+			if diff := cmp.Diff(tc.wantSlots, gotSlots); diff != "" {
+				t.Errorf("entity slot mapping mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestResolveSdmxEntityShapeAcceptsSameTwoEntityShapeDifferentOrder(t *testing.T) {
 	statVarToObservationPropertyEdges := map[string][]*Edge{
 		"var1": observationPropertiesEdges("sourceCountry", "destinationCountry"),
