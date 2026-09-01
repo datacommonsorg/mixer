@@ -413,6 +413,29 @@ flags:
 			}),
 			wantErr: false,
 		},
+		{
+			name: "validation error - UseMaterializedContainedInPlace without UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: false
+  UseMaterializedContainedInPlace: true
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "valid UseMaterializedContainedInPlace with UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: true
+  UseMaterializedContainedInPlace: true
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.UseSpannerGraph = true
+				f.UseMaterializedContainedInPlace = true
+			}),
+			wantErr: false,
+		},
 	}
 
 	for _, tc := range testCases {

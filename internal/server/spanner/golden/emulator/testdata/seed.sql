@@ -84,3 +84,12 @@ VALUES
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-air', 'facet', '2024', '7', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-sea', 'facet', '2024', '3', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByObservationAbout', 'country/CAN', 'migration-about', 'facet', '2024', '5', PENDING_COMMIT_TIMESTAMP());
+
+INSERT INTO ContainedInPlace (ancestor, child_type, child, provenance)
+VALUES
+  ('northamerica', 'Country', 'country/CAN', 'dc/base/WikidataOtherIdGeos'),
+  ('northamerica', 'Country', 'country/MEX', 'dc/base/WikidataOtherIdGeos'),
+  ('northamerica', 'Country', 'country/USA', 'dc/base/WikidataOtherIdGeos'),
+  ('europe', 'Country', 'country/FRA', 'dc/base/WikidataOtherIdGeos'),
+  ('europe', 'Country', 'country/GBR', 'dc/base/WikidataOtherIdGeos'),
+  ('asia', 'Country', 'country/IND', 'dc/base/WikidataOtherIdGeos');

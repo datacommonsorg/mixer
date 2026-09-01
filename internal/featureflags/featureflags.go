@@ -159,6 +159,9 @@ func (f *Flags) validateFlagValues() error {
 			return fmt.Errorf("BulkSVGBuildRightNodes must not contain surrounding whitespace")
 		}
 	}
+	if f.UseMaterializedContainedInPlace && !f.UseSpannerGraph {
+		return fmt.Errorf("UseMaterializedContainedInPlace requires UseSpannerGraph to be true")
+	}
 	return nil
 }
 
