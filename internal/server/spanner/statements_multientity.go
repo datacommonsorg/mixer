@@ -29,6 +29,7 @@ type MultiEntityStatements struct {
 	getObsEntitiesOnlyLatest                       string
 	getObsByContainedInPlaceTypeFirst              containedInPlaceAccessPathStatements
 	getObsByContainedInPlaceAncestorFirst          containedInPlaceAccessPathStatements
+	getObsByContainedInPlaceMaterialized           containedInPlaceAccessPathStatements
 	getSdmxObs                                     string
 	getSdmxObsWithDates                            string
 	getSdmxObsLatest                               string
@@ -98,6 +99,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	}
 	typeFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, typeFirstPlacesCTE)
 	ancestorFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, ancestorFirstPlacesCTE)
+	materializedContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, materializedPlacesCTE)
 
 	return &MultiEntityStatements{
 		// Retrieve observations where both variables and entities are present (full series)
@@ -270,6 +272,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 
 		getObsByContainedInPlaceTypeFirst:     typeFirstContainedInPlace,
 		getObsByContainedInPlaceAncestorFirst: ancestorFirstContainedInPlace,
+		getObsByContainedInPlaceMaterialized:  materializedContainedInPlace,
 		getSdmxObs: fmt.Sprintf("\t\tSELECT \n"+`			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facet_id,
@@ -836,6 +839,13 @@ const ancestorFirstPlacesCTE = `places AS (
 				AND contained.object_id = @ancestor
 				AND typed.predicate = 'typeOf'
 				AND typed.object_id = @childPlaceType
+		)`
+
+const materializedPlacesCTE = `places AS (
+			SELECT DISTINCT child AS place_id
+			FROM ContainedInPlace
+			WHERE ancestor = @ancestor
+			AND child_type = @childPlaceType
 		)`
 
 func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) containedInPlaceAccessPathStatements {

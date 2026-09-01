@@ -76,10 +76,26 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 			},
 		},
 		{
+			name: "variable seeks for non-preferred place type with materialized table",
+			queryConfig: mixerspanner.QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables:         2,
+				UseMaterializedContainedInPlace:                true,
+			},
+		},
+		{
 			name: "entity scan for preferred place type",
 			queryConfig: mixerspanner.QueryConfig{
 				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Country"},
 				ContainedInPlaceEntityScanMinVariables:         2,
+			},
+		},
+		{
+			name: "entity scan for preferred place type with materialized table",
+			queryConfig: mixerspanner.QueryConfig{
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Country"},
+				ContainedInPlaceEntityScanMinVariables:         2,
+				UseMaterializedContainedInPlace:                true,
 			},
 		},
 	}

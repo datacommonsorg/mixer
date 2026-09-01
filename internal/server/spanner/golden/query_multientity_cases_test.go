@@ -126,15 +126,16 @@ var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
 }
 
 var multiEntityObservationsContainedInPlaceTestCases = []struct {
-	name                           string
-	variables                      []string
-	ancestor                       string
-	childPlaceType                 string
-	ancestorFirstTypes             []string
-	preferTimeSeriesScanPlaceTypes []string
-	entityScanMinVars              int
-	date                           string
-	golden                         string
+	name                            string
+	variables                       []string
+	ancestor                        string
+	childPlaceType                  string
+	ancestorFirstTypes              []string
+	preferTimeSeriesScanPlaceTypes  []string
+	entityScanMinVars               int
+	useMaterializedContainedInPlace bool
+	date                            string
+	golden                          string
 }{
 	{
 		name:               "contained in place with variables",
@@ -146,6 +147,16 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		golden:             "get_multientity_obs_contained_in_place_both",
 	},
 	{
+		name:                            "contained in place materialized with variables",
+		variables:                       []string{"AirPollutant_Cancer_Risk"},
+		ancestor:                        "geoId/10",
+		childPlaceType:                  "County",
+		ancestorFirstTypes:              []string{"Place"},
+		useMaterializedContainedInPlace: true,
+		date:                            "",
+		golden:                          "get_multientity_obs_contained_in_place_materialized_both",
+	},
+	{
 		name:               "contained in place latest date with variables",
 		variables:          []string{"AirPollutant_Cancer_Risk"},
 		ancestor:           "geoId/10",
@@ -153,6 +164,16 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes: []string{"Place"},
 		date:               "latest",
 		golden:             "get_multientity_obs_contained_in_place_latest",
+	},
+	{
+		name:                            "contained in place materialized latest date with variables",
+		variables:                       []string{"AirPollutant_Cancer_Risk"},
+		ancestor:                        "geoId/10",
+		childPlaceType:                  "County",
+		ancestorFirstTypes:              []string{"Place"},
+		useMaterializedContainedInPlace: true,
+		date:                            "latest",
+		golden:                          "get_multientity_obs_contained_in_place_materialized_latest",
 	},
 	{
 		name:                           "contained in place non-preferred type uses variable seeks",
@@ -173,6 +194,16 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes: []string{"Place"},
 		date:               "2015",
 		golden:             "get_multientity_obs_contained_in_place_date",
+	},
+	{
+		name:                            "contained in place materialized specific date with variables",
+		variables:                       []string{"AirPollutant_Cancer_Risk", "Count_Person"},
+		ancestor:                        "geoId/10",
+		childPlaceType:                  "County",
+		ancestorFirstTypes:              []string{"Place"},
+		useMaterializedContainedInPlace: true,
+		date:                            "2015",
+		golden:                          "get_multientity_obs_contained_in_place_materialized_date",
 	},
 	{
 		name:               "contained in place ancestor first with variables",

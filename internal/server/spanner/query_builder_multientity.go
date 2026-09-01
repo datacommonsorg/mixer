@@ -157,9 +157,13 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 		"variables":      uniqueVariables,
 	}
 
-	containedInPlaceStatements := stmts.getObsByContainedInPlaceTypeFirst
-	if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
+	var containedInPlaceStatements containedInPlaceAccessPathStatements
+	if b.queryConfig.UseMaterializedContainedInPlace {
+		containedInPlaceStatements = stmts.getObsByContainedInPlaceMaterialized
+	} else if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
+	} else {
+		containedInPlaceStatements = stmts.getObsByContainedInPlaceTypeFirst
 	}
 
 	selectedStatements := containedInPlaceStatements.variableSeek

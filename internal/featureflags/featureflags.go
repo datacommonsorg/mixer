@@ -66,6 +66,8 @@ type Flags struct {
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
 	// StatVarGroup nodes that should build the TimeSeries side of filtered child-SVG hash joins for N <= 1 requests.
 	BulkSVGBuildRightNodes []string `yaml:"BulkSVGBuildRightNodes"`
+	// Use materialized ContainedInPlace table.
+	UseMaterializedContainedInPlace bool `yaml:"UseMaterializedContainedInPlace"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -89,6 +91,7 @@ func setDefaultValues() *Flags {
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables:         50,
 		BulkSVGBuildRightNodes:                         []string{"dc/g/Root"},
+		UseMaterializedContainedInPlace:                false,
 	}
 }
 
