@@ -891,7 +891,7 @@ func resolveSdmxEntityShape(
 			if edge.Predicate != "observationProperties" {
 				continue
 			}
-			property := strings.TrimSpace(edge.Value)
+			property := edgeObservationProperty(edge)
 			if property == "" {
 				continue
 			}
@@ -1003,4 +1003,17 @@ func sortedUniqueStrings(values []string) []string {
 		seen[value] = struct{}{}
 	}
 	return slices.Sorted(maps.Keys(seen))
+}
+
+// edgeObservationProperty returns the observation property name from an edge,
+// preferring Value for locally resolved nodes and falling back to ObjectID
+// for external reference nodes not materialized in the local Node table.
+func edgeObservationProperty(edge *Edge) string {
+	if edge == nil {
+		return ""
+	}
+	if val := strings.TrimSpace(edge.Value); val != "" {
+		return val
+	}
+	return strings.TrimSpace(edge.ObjectID)
 }
