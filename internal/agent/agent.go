@@ -49,16 +49,32 @@ type Mixer interface {
 // Service orchestrates the aggregation and formatting of lower-level API data in response
 // to conversational assistant/agent queries.
 type Service struct {
-	mixer Mixer
-	cache *Cache
+	mixer               Mixer
+	cache               *Cache
+	defaultExpandTopics bool
+}
+
+// ServiceOption configures a Service instance during construction.
+type ServiceOption func(*Service)
+
+// WithDefaultExpandTopics sets the default topic expansion behavior for search indicators.
+func WithDefaultExpandTopics(expand bool) ServiceOption {
+	return func(s *Service) {
+		s.defaultExpandTopics = expand
+	}
 }
 
 // NewService constructs a new Service instance backed by the provided Mixer and Cache.
-func NewService(mixer Mixer, cache *Cache) *Service {
-	return &Service{
-		mixer: mixer,
-		cache: cache,
+func NewService(mixer Mixer, cache *Cache, opts ...ServiceOption) *Service {
+	s := &Service{
+		mixer:               mixer,
+		cache:               cache,
+		defaultExpandTopics: true,
 	}
+	for _, opt := range opts {
+		opt(s)
+	}
+	return s
 }
 
 // Reset flushes all cached state inside the service L1 Cache atomically,
@@ -67,4 +83,9 @@ func (s *Service) Reset() {
 	if s.cache != nil {
 		s.cache.Reset()
 	}
+}
+
+// DefaultExpandTopics returns the configured default topic expansion behavior.
+func (s *Service) DefaultExpandTopics() bool {
+	return s.defaultExpandTopics
 }

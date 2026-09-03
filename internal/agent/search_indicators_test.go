@@ -502,3 +502,79 @@ func TestSearchIndicators_Target(t *testing.T) {
 		})
 	}
 }
+
+func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
+	for _, tc := range []struct {
+		name             string
+		serviceOpts      []ServiceOption
+		request          *pbv2.SearchIndicatorsRequest
+		wantExpandTopics bool
+	}{
+		{
+			name:             "default service option expands topics when unspecified in request",
+			serviceOpts:      nil,
+			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			wantExpandTopics: true,
+		},
+		{
+			name:             "service option false does not expand topics when unspecified in request",
+			serviceOpts:      []ServiceOption{WithDefaultExpandTopics(false)},
+			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			wantExpandTopics: false,
+		},
+		{
+			name:             "service option true expands topics when unspecified in request",
+			serviceOpts:      []ServiceOption{WithDefaultExpandTopics(true)},
+			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			wantExpandTopics: true,
+		},
+		{
+			name:        "request override true takes precedence over service option false",
+			serviceOpts: []ServiceOption{WithDefaultExpandTopics(false)},
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:        "health",
+				ExpandTopics: proto.Bool(true),
+			},
+			wantExpandTopics: true,
+		},
+		{
+			name:        "request override false takes precedence over service option true",
+			serviceOpts: []ServiceOption{WithDefaultExpandTopics(true)},
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:        "health",
+				ExpandTopics: proto.Bool(false),
+			},
+			wantExpandTopics: false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockMixerServer{
+				resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+					"health": {
+						{
+							Dcid:         "dc/topic/Health",
+							DominantType: "Topic",
+							Name:         "Health",
+						},
+					},
+				},
+			}
+
+			cache := NewCache(mock)
+			svc := NewService(mock, cache, tc.serviceOpts...)
+
+			_, err := svc.SearchIndicators(context.Background(), tc.request)
+			if err != nil {
+				t.Fatalf("SearchIndicators failed unexpectedly: %v", err)
+			}
+
+			if mock.lastCandidateResolveReq == nil {
+				t.Fatalf("expected V2Resolve candidate search to be called, but lastCandidateResolveReq is nil")
+			}
+
+			if got := mock.lastCandidateResolveReq.GetExpandTopics(); got != tc.wantExpandTopics {
+				t.Errorf("V2Resolve expand_topics = %v, want %v", got, tc.wantExpandTopics)
+			}
+		})
+	}
+}
