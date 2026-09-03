@@ -1809,29 +1809,29 @@ func TestResolveSdmxEntityShapeExternalProperties(t *testing.T) {
 			},
 		},
 		{
-			name:       "resolves external reference with whitespace in object_id",
+			name:       "prefers value when populated",
 			statVarIDs: []string{"var1"},
 			statVarToObservationPropertyEdges: map[string][]*Edge{
 				"var1": {
-					{Predicate: "observationProperties", ObjectID: "  medicalCondition  ", Value: ""},
+					{Predicate: "observationProperties", ObjectID: "donorPlace", Value: "  donorPlace  "},
+				},
+			},
+			wantProperties: []string{"donorPlace"},
+			wantSlots: map[string]string{
+				"donorPlace": "entity1",
+			},
+		},
+		{
+			name:       "falls back to object_id when value is empty or whitespace",
+			statVarIDs: []string{"var1"},
+			statVarToObservationPropertyEdges: map[string][]*Edge{
+				"var1": {
+					{Predicate: "observationProperties", ObjectID: "  medicalCondition  ", Value: "   "},
 				},
 			},
 			wantProperties: []string{"medicalCondition"},
 			wantSlots: map[string]string{
 				"medicalCondition": "entity1",
-			},
-		},
-		{
-			name:       "falls back to value when object_id is whitespace",
-			statVarIDs: []string{"var1"},
-			statVarToObservationPropertyEdges: map[string][]*Edge{
-				"var1": {
-					{Predicate: "observationProperties", ObjectID: "   ", Value: "  sourceCountry  "},
-				},
-			},
-			wantProperties: []string{"sourceCountry"},
-			wantSlots: map[string]string{
-				"sourceCountry": "entity1",
 			},
 		},
 	}

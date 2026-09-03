@@ -1006,13 +1006,14 @@ func sortedUniqueStrings(values []string) []string {
 }
 
 // edgeObservationProperty returns the observation property name from an edge,
-// preferring ObjectID for external reference nodes and falling back to Value.
+// preferring Value for locally resolved nodes and falling back to ObjectID
+// for external reference nodes not materialized in the local Node table.
 func edgeObservationProperty(edge *Edge) string {
 	if edge == nil {
 		return ""
 	}
-	if id := strings.TrimSpace(edge.ObjectID); id != "" {
-		return id
+	if val := strings.TrimSpace(edge.Value); val != "" {
+		return val
 	}
-	return strings.TrimSpace(edge.Value)
+	return strings.TrimSpace(edge.ObjectID)
 }
