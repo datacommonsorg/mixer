@@ -399,7 +399,7 @@ func TestSearchIndicators(t *testing.T) {
 			}
 
 			cache := NewCache(mock)
-			svc := NewService(mock, cache)
+			svc := NewService(mock, cache, nil)
 
 			got, err := svc.SearchIndicators(context.Background(), tc.request)
 
@@ -478,7 +478,7 @@ func TestSearchIndicators_Target(t *testing.T) {
 			}
 
 			cache := NewCache(mock)
-			svc := NewService(mock, cache)
+			svc := NewService(mock, cache, nil)
 
 			_, err := svc.SearchIndicators(context.Background(), tc.request)
 			if tc.wantErr != "" {
@@ -506,7 +506,7 @@ func TestSearchIndicators_Target(t *testing.T) {
 func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 	for _, tc := range []struct {
 		name             string
-		serviceOpts      []ServiceOption
+		serviceOpts      *ServiceOptions
 		request          *pbv2.SearchIndicatorsRequest
 		wantExpandTopics bool
 	}{
@@ -517,20 +517,26 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			wantExpandTopics: true,
 		},
 		{
-			name:             "service option false does not expand topics when unspecified in request",
-			serviceOpts:      []ServiceOption{WithDefaultExpandTopics(false)},
+			name: "service option false does not expand topics when unspecified in request",
+			serviceOpts: &ServiceOptions{
+				DefaultExpandTopics: proto.Bool(false),
+			},
 			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
 			wantExpandTopics: false,
 		},
 		{
-			name:             "service option true expands topics when unspecified in request",
-			serviceOpts:      []ServiceOption{WithDefaultExpandTopics(true)},
+			name: "service option true expands topics when unspecified in request",
+			serviceOpts: &ServiceOptions{
+				DefaultExpandTopics: proto.Bool(true),
+			},
 			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
 			wantExpandTopics: true,
 		},
 		{
-			name:        "request override true takes precedence over service option false",
-			serviceOpts: []ServiceOption{WithDefaultExpandTopics(false)},
+			name: "request override true takes precedence over service option false",
+			serviceOpts: &ServiceOptions{
+				DefaultExpandTopics: proto.Bool(false),
+			},
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:        "health",
 				ExpandTopics: proto.Bool(true),
@@ -538,8 +544,10 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			wantExpandTopics: true,
 		},
 		{
-			name:        "request override false takes precedence over service option true",
-			serviceOpts: []ServiceOption{WithDefaultExpandTopics(true)},
+			name: "request override false takes precedence over service option true",
+			serviceOpts: &ServiceOptions{
+				DefaultExpandTopics: proto.Bool(true),
+			},
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:        "health",
 				ExpandTopics: proto.Bool(false),
@@ -561,7 +569,7 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			}
 
 			cache := NewCache(mock)
-			svc := NewService(mock, cache, tc.serviceOpts...)
+			svc := NewService(mock, cache, tc.serviceOpts)
 
 			_, err := svc.SearchIndicators(context.Background(), tc.request)
 			if err != nil {

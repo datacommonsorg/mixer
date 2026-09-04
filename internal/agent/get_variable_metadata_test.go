@@ -234,7 +234,7 @@ func TestGetVariableMetadata(t *testing.T) {
 				obsData:  tc.obsData,
 				obsErr:   tc.obsErr,
 			}
-			svc := NewService(mock, NewCache(mock))
+			svc := NewService(mock, NewCache(mock), nil)
 
 			got, err := svc.GetVariableMetadata(context.Background(), tc.req)
 			if tc.wantErr {

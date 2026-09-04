@@ -54,27 +54,22 @@ type Service struct {
 	defaultExpandTopics bool
 }
 
-// ServiceOption configures a Service instance during construction.
-type ServiceOption func(*Service)
-
-// WithDefaultExpandTopics sets the default topic expansion behavior for search indicators.
-func WithDefaultExpandTopics(expand bool) ServiceOption {
-	return func(s *Service) {
-		s.defaultExpandTopics = expand
-	}
+// ServiceOptions holds optional configuration for agent.Service.
+type ServiceOptions struct {
+	DefaultExpandTopics *bool
 }
 
 // NewService constructs a new Service instance backed by the provided Mixer and Cache.
-func NewService(mixer Mixer, cache *Cache, opts ...ServiceOption) *Service {
-	s := &Service{
+func NewService(mixer Mixer, cache *Cache, opts *ServiceOptions) *Service {
+	defaultExpandTopics := true
+	if opts != nil && opts.DefaultExpandTopics != nil {
+		defaultExpandTopics = *opts.DefaultExpandTopics
+	}
+	return &Service{
 		mixer:               mixer,
 		cache:               cache,
-		defaultExpandTopics: true,
+		defaultExpandTopics: defaultExpandTopics,
 	}
-	for _, opt := range opts {
-		opt(s)
-	}
-	return s
 }
 
 // Reset flushes all cached state inside the service L1 Cache atomically,
