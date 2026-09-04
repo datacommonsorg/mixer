@@ -437,7 +437,7 @@ func TestGetObservations(t *testing.T) {
 
 	t.Run("Validation Failures", func(t *testing.T) {
 		mock := &obsMockMixer{}
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 
 		tests := []struct {
 			desc    string
@@ -577,7 +577,7 @@ func TestGetObservations(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
 			VariableDcid: "Count_Person",
 			PlaceDcid:    "geoId/06",
@@ -705,7 +705,7 @@ func TestGetObservations(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
 			VariableDcid:   "Count_Person",
 			PlaceDcid:      "geoId/06",
@@ -826,7 +826,7 @@ func TestGetObservations(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
 			VariableDcid: "Count_Person",
 			PlaceDcid:    "geoId/06",
@@ -894,7 +894,7 @@ func TestGetObservations(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
 			VariableDcid:   "Count_Person",
 			PlaceDcid:      "geoId/06",
@@ -987,7 +987,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001", "geoId/06003")),
 		}
@@ -1076,7 +1076,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		parentSpec, err := structpb.NewStruct(map[string]interface{}{
 			"parent_dcid": "geoId/06",
 			"child_type":  "County",
@@ -1124,7 +1124,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Multi-Parent Expansion Limit", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		p1, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/06", "child_type": "County"})
 		p2, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/48", "child_type": "County"})
 
@@ -1143,7 +1143,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Invalid Entities JSON Type", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		// Passing boolean kind inside list value to trigger type validation error (Finding 1)
 		listVal, _ := structpb.NewList([]interface{}{"geoId/06", true})
 
@@ -1161,7 +1161,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Empty Struct Value Fields", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		// Passing empty parent_dcid string to trigger blank check validation (Finding 2)
 		parentSpec, _ := structpb.NewStruct(map[string]interface{}{
 			"parent_dcid": "",
@@ -1182,7 +1182,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Empty Entity List", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		emptyList, _ := structpb.NewList([]interface{}{})
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(emptyList),
@@ -1198,7 +1198,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Empty Slot Name", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
 		entitiesMap := map[string]*structpb.Value{
 			"": structpb.NewListValue(listVal),
@@ -1214,7 +1214,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 
 	t.Run("Validation Failure: Reserved Slot Name", func(t *testing.T) {
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		listVal, _ := structpb.NewList([]interface{}{"Median_Age_Person"})
 		entitiesMap := map[string]*structpb.Value{
 			"variableMeasured": structpb.NewListValue(listVal),
@@ -1233,7 +1233,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		ctx, cancel := context.WithCancel(context.Background())
 		cancel()
 
-		svc := NewService(&obsMockMixer{}, nil)
+		svc := NewService(&obsMockMixer{}, nil, nil)
 		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(listVal),
@@ -1281,7 +1281,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
 		}
@@ -1336,7 +1336,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
 		}
@@ -1394,7 +1394,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
 		}
@@ -1453,7 +1453,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
 		}
@@ -1499,7 +1499,7 @@ func TestGetObservations_Sdmx(t *testing.T) {
 			},
 		}
 
-		svc := NewService(mock, nil)
+		svc := NewService(mock, nil, nil)
 		entitiesMap := map[string]*structpb.Value{
 			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
 		}
@@ -1551,7 +1551,7 @@ func TestFetchEntityProperties_Deduplication(t *testing.T) {
 		},
 	}
 
-	svc := NewService(mock, nil)
+	svc := NewService(mock, nil, nil)
 	props, err := svc.fetchEntityProperties(context.Background(), []string{"country/AFG"})
 	if err != nil {
 		t.Fatalf("fetchEntityProperties failed: %v", err)

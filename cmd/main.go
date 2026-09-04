@@ -135,6 +135,11 @@ var (
 		"",
 		"Path to Spanner search config YAML file.",
 	)
+	agentDefaultExpandTopics = flag.Bool(
+		"agent_default_expand_topics",
+		true,
+		"Default value for expand_topics in agent search_indicators if not specified in request.",
+	)
 )
 
 func main() {
@@ -553,6 +558,7 @@ func main() {
 			EmbeddingsServiceClient:           embeddingsServiceClient,
 			UseSpannerGraph:                   *useSpannerGraph,
 			TopicExpander:                     topicExpander,
+			AgentDefaultExpandTopics:          agentDefaultExpandTopics,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
