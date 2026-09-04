@@ -447,14 +447,14 @@ func TestEmulatorSchemaStatements(t *testing.T) {
 	if err != nil {
 		t.Fatalf("emulatorSchemaStatements() error = %v", err)
 	}
-	if len(statements) != 10 {
-		t.Fatalf("emulatorSchemaStatements() returned %d statements, want 10", len(statements))
+	if len(statements) != 11 {
+		t.Fatalf("emulatorSchemaStatements() returned %d statements, want 11", len(statements))
 	}
 	if !strings.HasPrefix(statements[0], "CREATE TABLE Node") {
 		t.Errorf("first schema statement = %q, want CREATE TABLE Node", statements[0])
 	}
-	if !strings.HasPrefix(statements[len(statements)-1], "CREATE PROPERTY GRAPH DCGraph") {
-		t.Errorf("last schema statement = %q, want CREATE PROPERTY GRAPH DCGraph", statements[len(statements)-1])
+	if !strings.HasPrefix(statements[len(statements)-1], "CREATE TABLE ContainedInPlace") {
+		t.Errorf("last schema statement = %q, want CREATE TABLE ContainedInPlace", statements[len(statements)-1])
 	}
 }
 
@@ -516,13 +516,13 @@ func TestEmulatorSeedStatements(t *testing.T) {
 	if err != nil {
 		t.Fatalf("emulatorSeedStatements() error = %v", err)
 	}
-	if len(statements) != 4 {
-		t.Fatalf("emulatorSeedStatements() returned %d statements, want 4", len(statements))
+	if len(statements) != 5 {
+		t.Fatalf("emulatorSeedStatements() returned %d statements, want 5", len(statements))
 	}
 	if !strings.HasPrefix(statements[0], "INSERT INTO Node") {
 		t.Errorf("first seed statement = %q, want INSERT INTO Node", statements[0])
 	}
-	if !strings.HasPrefix(statements[len(statements)-1], "INSERT INTO Observation") {
-		t.Errorf("last seed statement = %q, want INSERT INTO Observation", statements[len(statements)-1])
+	if !strings.HasPrefix(statements[len(statements)-1], "INSERT INTO ContainedInPlace") {
+		t.Errorf("last seed statement = %q, want INSERT INTO ContainedInPlace", statements[len(statements)-1])
 	}
 }

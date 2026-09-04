@@ -68,7 +68,7 @@ const (
 
 var (
 	// Server config
-	port           = flag.Int("port", 12345, "Port on which to run the server.")
+	port                = flag.Int("port", 12345, "Port on which to run the server.")
 	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
@@ -224,6 +224,7 @@ func main() {
 			ContainedInPlaceAncestorFirstTypes:             flags.ContainedInPlaceAncestorFirstTypes,
 			ContainedInPlacePreferTimeSeriesScanPlaceTypes: flags.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
 			ContainedInPlaceEntityScanMinVariables:         flags.ContainedInPlaceEntityScanMinVariables,
+			UseMaterializedContainedInPlace:                flags.UseMaterializedContainedInPlace,
 		}
 		if err := queryConfig.Validate(); err != nil {
 			slog.Error("Invalid Spanner query config", "error", err)
