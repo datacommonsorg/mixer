@@ -453,8 +453,8 @@ func TestEmulatorSchemaStatements(t *testing.T) {
 	if !strings.HasPrefix(statements[0], "CREATE TABLE Node") {
 		t.Errorf("first schema statement = %q, want CREATE TABLE Node", statements[0])
 	}
-	if !strings.HasPrefix(statements[len(statements)-1], "CREATE TABLE ContainedInPlace") {
-		t.Errorf("last schema statement = %q, want CREATE TABLE ContainedInPlace", statements[len(statements)-1])
+	if !strings.HasPrefix(statements[len(statements)-1], "CREATE TABLE LinkedEdge") {
+		t.Errorf("last schema statement = %q, want CREATE TABLE LinkedEdge", statements[len(statements)-1])
 	}
 }
 
