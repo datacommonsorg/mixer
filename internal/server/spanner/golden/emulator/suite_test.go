@@ -522,7 +522,7 @@ func TestEmulatorSeedStatements(t *testing.T) {
 	if !strings.HasPrefix(statements[0], "INSERT INTO Node") {
 		t.Errorf("first seed statement = %q, want INSERT INTO Node", statements[0])
 	}
-	if !strings.HasPrefix(statements[len(statements)-1], "INSERT INTO ContainedInPlace") {
-		t.Errorf("last seed statement = %q, want INSERT INTO ContainedInPlace", statements[len(statements)-1])
+	if !strings.HasPrefix(statements[len(statements)-1], "INSERT INTO LinkedEdge") {
+		t.Errorf("last seed statement = %q, want INSERT INTO LinkedEdge", statements[len(statements)-1])
 	}
 }
