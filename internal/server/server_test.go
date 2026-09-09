@@ -21,6 +21,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/proto"
 )
 
 func TestShouldDivertV2(t *testing.T) {
@@ -137,6 +138,49 @@ func TestShouldDivertV2(t *testing.T) {
 			got := s.shouldDivertV2(ctx)
 			if got != tt.expected {
 				t.Errorf("shouldDivertV2() = %v, want %v", got, tt.expected)
+			}
+		})
+	}
+}
+
+func TestNewMixerServer_AgentDefaultExpandTopics(t *testing.T) {
+	for _, tc := range []struct {
+		name             string
+		opts             *MixerServerOptions
+		wantExpandTopics bool
+	}{
+		{
+			name:             "nil opts defaults to true",
+			opts:             nil,
+			wantExpandTopics: true,
+		},
+		{
+			name:             "unspecified option defaults to true",
+			opts:             &MixerServerOptions{},
+			wantExpandTopics: true,
+		},
+		{
+			name: "explicit false option",
+			opts: &MixerServerOptions{
+				AgentDefaultExpandTopics: proto.Bool(false),
+			},
+			wantExpandTopics: false,
+		},
+		{
+			name: "explicit true option",
+			opts: &MixerServerOptions{
+				AgentDefaultExpandTopics: proto.Bool(true),
+			},
+			wantExpandTopics: true,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			s := NewMixerServer(nil, nil, nil, nil, tc.opts)
+			if s.AgentService() == nil {
+				t.Fatalf("AgentService() is nil, expected initialized service")
+			}
+			if got := s.AgentService().DefaultExpandTopics(); got != tc.wantExpandTopics {
+				t.Errorf("DefaultExpandTopics() = %v, want %v", got, tc.wantExpandTopics)
 			}
 		})
 	}

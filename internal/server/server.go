@@ -177,8 +177,8 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 }
 
 // initAgentService initializes the decoupled agent.Service using Go's implicit satisfaction wiring.
-func (s *Server) initAgentService() {
-	s.agentService = agent.NewService(s, agent.NewCache(s))
+func (s *Server) initAgentService(opts *agent.ServiceOptions) {
+	s.agentService = agent.NewService(s, agent.NewCache(s), opts)
 }
 
 // RegisterLifecycle registers the startup and periodic callbacks for a component under a single name key.
@@ -306,6 +306,7 @@ type MixerServerOptions struct {
 	EmbeddingsServiceClient           *resolve.EmbeddingsServiceClient
 	UseSpannerGraph                   bool
 	TopicExpander                     resolve.TopicExpander
+	AgentDefaultExpandTopics          *bool
 }
 
 // NewMixerServer creates a new mixer server instance.
@@ -324,6 +325,7 @@ func NewMixerServer(
 		dispatcher: dispatcher,
 		flags:      flags,
 	}
+	var agentOpts *agent.ServiceOptions
 	if opts != nil {
 		s.mapsClient = opts.MapsClient
 		s.spannerStalenessTimestampProvider = opts.SpannerStalenessTimestampProvider
@@ -332,8 +334,13 @@ func NewMixerServer(
 		s.useSpannerGraph = opts.UseSpannerGraph
 		s.topicExpander = opts.TopicExpander
 		s.cachedata.Store(opts.CacheData)
+		if opts.AgentDefaultExpandTopics != nil {
+			agentOpts = &agent.ServiceOptions{
+				DefaultExpandTopics: opts.AgentDefaultExpandTopics,
+			}
+		}
 	}
-	s.initAgentService()
+	s.initAgentService(agentOpts)
 
 	return s
 }

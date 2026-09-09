@@ -59,8 +59,8 @@ func (s *Service) SearchIndicators(
 		includeTopics = req.GetIncludeTopics()
 	}
 
-	// Determine expand_topics default: true unless explicitly set to false
-	expandTopics := true
+	// Determine expand_topics default: service default unless explicitly set
+	expandTopics := s.defaultExpandTopics
 	if req.ExpandTopics != nil {
 		expandTopics = req.GetExpandTopics()
 	}
