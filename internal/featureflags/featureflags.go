@@ -66,8 +66,8 @@ type Flags struct {
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
 	// StatVarGroup nodes that should build the TimeSeries side of filtered child-SVG hash joins for N <= 1 requests.
 	BulkSVGBuildRightNodes []string `yaml:"BulkSVGBuildRightNodes"`
-	// Use materialized ContainedInPlace table.
-	UseMaterializedContainedInPlace bool `yaml:"UseMaterializedContainedInPlace"`
+	// Use materialized LinkedEdge table.
+	UseMaterializedLinkedEdge bool `yaml:"UseMaterializedLinkedEdge"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -91,7 +91,7 @@ func setDefaultValues() *Flags {
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables:         50,
 		BulkSVGBuildRightNodes:                         []string{"dc/g/Root"},
-		UseMaterializedContainedInPlace:                false,
+		UseMaterializedLinkedEdge:                      false,
 	}
 }
 
@@ -159,8 +159,8 @@ func (f *Flags) validateFlagValues() error {
 			return fmt.Errorf("BulkSVGBuildRightNodes must not contain surrounding whitespace")
 		}
 	}
-	if f.UseMaterializedContainedInPlace && !f.UseSpannerGraph {
-		return fmt.Errorf("UseMaterializedContainedInPlace requires UseSpannerGraph to be true")
+	if f.UseMaterializedLinkedEdge && !f.UseSpannerGraph {
+		return fmt.Errorf("UseMaterializedLinkedEdge requires UseSpannerGraph to be true")
 	}
 	return nil
 }

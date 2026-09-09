@@ -1,8 +1,9 @@
 		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
 		WITH places AS (
 			SELECT DISTINCT child AS place_id
-			FROM ContainedInPlace
-			WHERE ancestor = 'geoId/10'
+			FROM LinkedEdge
+			WHERE predicate = 'containedInPlace'
+			AND ancestor = 'geoId/10'
 			AND child_type = 'County'
 		),
 		series AS (

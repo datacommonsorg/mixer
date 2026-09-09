@@ -80,7 +80,7 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 			queryConfig: mixerspanner.QueryConfig{
 				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 				ContainedInPlaceEntityScanMinVariables:         2,
-				UseMaterializedContainedInPlace:                true,
+				UseMaterializedLinkedEdge:                      true,
 			},
 		},
 		{
@@ -95,7 +95,7 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 			queryConfig: mixerspanner.QueryConfig{
 				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Country"},
 				ContainedInPlaceEntityScanMinVariables:         2,
-				UseMaterializedContainedInPlace:                true,
+				UseMaterializedLinkedEdge:                      true,
 			},
 		},
 	}

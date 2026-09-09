@@ -843,8 +843,9 @@ const ancestorFirstPlacesCTE = `places AS (
 
 const materializedPlacesCTE = `places AS (
 			SELECT DISTINCT child AS place_id
-			FROM ContainedInPlace
-			WHERE ancestor = @ancestor
+			FROM LinkedEdge
+			WHERE predicate = 'containedInPlace'
+			AND ancestor = @ancestor
 			AND child_type = @childPlaceType
 		)`
 

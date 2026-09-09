@@ -158,7 +158,7 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	}
 
 	var containedInPlaceStatements containedInPlaceAccessPathStatements
-	if b.queryConfig.UseMaterializedContainedInPlace {
+	if b.queryConfig.UseMaterializedLinkedEdge {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceMaterialized
 	} else if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst

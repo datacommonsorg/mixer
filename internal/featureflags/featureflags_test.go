@@ -414,25 +414,25 @@ flags:
 			wantErr: false,
 		},
 		{
-			name: "validation error - UseMaterializedContainedInPlace without UseSpannerGraph",
+			name: "validation error - UseMaterializedLinkedEdge without UseSpannerGraph",
 			fileContent: `
 flags:
   UseSpannerGraph: false
-  UseMaterializedContainedInPlace: true
+  UseMaterializedLinkedEdge: true
 `,
 			want:    nil,
 			wantErr: true,
 		},
 		{
-			name: "valid UseMaterializedContainedInPlace with UseSpannerGraph",
+			name: "valid UseMaterializedLinkedEdge with UseSpannerGraph",
 			fileContent: `
 flags:
   UseSpannerGraph: true
-  UseMaterializedContainedInPlace: true
+  UseMaterializedLinkedEdge: true
 `,
 			want: expectedFlags(func(f *Flags) {
 				f.UseSpannerGraph = true
-				f.UseMaterializedContainedInPlace = true
+				f.UseMaterializedLinkedEdge = true
 			}),
 			wantErr: false,
 		},
