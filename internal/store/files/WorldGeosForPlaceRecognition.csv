@@ -104058,7 +104058,8 @@ undata-geo/G01100260,GeoRegion,"MDG Region: Western Asia",Earth,579000000
 undata-geo/G01100270,GeoRegion,"MDG Region: Caucasus and Central Asia",Earth,579000000
 undata-geo/G01100280,GeoRegion,"MDG Region: Oceania",Earth,579000000
 undata-geo/G01100290,GeoRegion,"MDG Region: Latin America and the Caribbean",Earth,579000000
-undata-geo/G99999999,GeoRegion,Source geographies without a corresponding geography in UNdata region,Earth,579000000asgs3/101,ABSStatisticalAreaLevel4,Capital Region,"Earth,country/AUS,oceania,wikidataId/Q3224",248376
+undata-geo/G99999999,GeoRegion,Source geographies without a corresponding geography in UNdata region,Earth,579000000
+asgs3/101,ABSStatisticalAreaLevel4,Capital Region,"Earth,country/AUS,oceania,wikidataId/Q3224",248376
 asgs3/102,ABSStatisticalAreaLevel4,Central Coast,"Earth,country/AUS,oceania,wikidataId/Q3224",357816
 asgs3/103,ABSStatisticalAreaLevel4,Central West,"Earth,country/AUS,oceania,wikidataId/Q3224",216979
 asgs3/104,ABSStatisticalAreaLevel4,Coffs Harbour - Grafton,"Earth,country/AUS,oceania,wikidataId/Q3224",152331
