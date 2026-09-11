@@ -357,6 +357,9 @@ OR CreationTimestamp > (
 				AND child_type IN UNNEST(@child_type)%s
 		)e
 		LEFT JOIN Node dest ON e.object_id = dest.subject_id
+		ORDER BY
+            subject_id,
+            object_id,
 	`,
 	applyOffset: `
 		OFFSET %d`,
