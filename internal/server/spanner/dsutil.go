@@ -108,28 +108,38 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
-// getOffset returns the offset for a given Spanner data source id.
-func getOffset(nextToken, dataSourceID string) (int, error) {
+// getOffset returns the read offset for a given Spanner data source id, and
+// reports whether that source has already returned all of its rows.
+//
+// MergeMultiNode drops a source from the merged token once that source stops
+// returning a cursor, so a non-empty nextToken with no entry for dataSourceID
+// means the source finished on an earlier page. Callers must check isExhausted
+// before using offset: without it the source falls back to offset 0 and
+// replays its first page.
+//
+// An empty nextToken is the first page, which every source participates in, so
+// it reports offset 0 and isExhausted false.
+func getOffset(nextToken, dataSourceID string) (offset int, isExhausted bool, err error) {
 	if nextToken == "" {
-		return 0, nil
+		return 0, false, nil
 	}
 
 	info, err := pagination.DecodeNextToken(nextToken)
 	if err != nil {
-		return 0, err
+		return 0, false, err
 	}
 
 	for _, dataSourceInfo := range info.Info {
 		if dataSourceInfo.GetId() == dataSourceID {
 			spannerInfo, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_SpannerInfo)
 			if !ok {
-				return 0, fmt.Errorf("found different data source info for spanner data source id: %s", dataSourceID)
+				return 0, false, fmt.Errorf("found different data source info for spanner data source id: %s", dataSourceID)
 			}
-			return int(spannerInfo.SpannerInfo.GetOffset()), nil
+			return int(spannerInfo.SpannerInfo.GetOffset()), false, nil
 		}
 	}
 
-	return 0, nil
+	return 0, true, nil
 }
 
 // getNextToken encodes next offset in a nextToken string.
