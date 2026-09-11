@@ -103953,7 +103953,7 @@ NorthWesternEurope,UNGeoRegion,"North-Western Europe,North Western Europe,Northw
 NorthernAfrica,UNGeoRegion,Northern Africa,"Earth,africa",579000000
 NorthernEurope,UNGeoRegion,Northern Europe,"Earth,europe",579000000
 NorthernWesternEurope,UNGeoRegion,Northern and Western Europe,"Earth,europe",579000000
-OtherThanAsiaEuropeLatinAmerica,UNGeoRegion,"Other than Asia Europe or Latin America region",Earth,579000000
+OtherThanAsiaEuropeLatinAmerica,UNGeoRegion,Other than Asia Europe or Latin America region,Earth,579000000
 Polynesia,UNGeoRegion,Polynesia,"Earth,oceania",579000000
 SouthCentralAsia,UNGeoRegion,South Central Asia,"Earth,asia",579000000
 SouthEasternAsia,UNGeoRegion,"South-Eastern Asia,South Eastern Asia,Southeastern Asia","Earth,asia",579000000
@@ -103972,20 +103972,20 @@ undata-geo/G00100200,GeoRegion,World: Low and middle income region,Earth,5790000
 undata-geo/G00100400,GeoRegion,World: Upper-middle income region,"Earth,undata-geo/G00100200",579000000
 undata-geo/G00100500,GeoRegion,World: Lower-middle income region,"Earth,undata-geo/G00100200",579000000
 undata-geo/G00100600,GeoRegion,World: Low income region,"Earth,undata-geo/G00100200",579000000
-undata-geo/G00100900,GeoRegion,"World not elsewhere specified region",Earth,579000000
-undata-geo/G00101200,GeoRegion,"Africa: Low and middle income","Earth,africa",579000000
+undata-geo/G00100900,GeoRegion,World not elsewhere specified region,Earth,579000000
+undata-geo/G00101200,GeoRegion,Africa: Low and middle income,"Earth,africa",579000000
 undata-geo/G00103000,GeoRegion,Northern Africa and Western Asia,Earth,579000000
 undata-geo/G00107000,GeoRegion,Eastern and Southern Africa,Earth,579000000
 undata-geo/G00111000,GeoRegion,West and Central Africa,Earth,579000000
 undata-geo/G00116000,GeoRegion,Central and Southern Asia,Earth,579000000
 undata-geo/G00117000,GeoRegion,Central Asia and Europe,Earth,579000000
 undata-geo/G00121000,GeoRegion,Eastern Mediterranean,Earth,579000000
-undata-geo/G00121200,GeoRegion,"Eastern Mediterranean: Low and middle income countries","Earth,undata-geo/G00121000",579000000
+undata-geo/G00121200,GeoRegion,Eastern Mediterranean: Low and middle income countries,"Earth,undata-geo/G00121000",579000000
 undata-geo/G00122000,GeoRegion,Eastern and South-eastern Asia,"Earth,asia",579000000
-undata-geo/G00124200,GeoRegion,"South-eastern Asia: Low and middle income","Earth,asia,SouthEasternAsia",579000000
+undata-geo/G00124200,GeoRegion,South-eastern Asia: Low and middle income,"Earth,asia,SouthEasternAsia",579000000
 undata-geo/G00126000,GeoRegion,Europe and Northern America,Earth,579000000
 undata-geo/G00134000,GeoRegion,Americas,Earth,579000000
-undata-geo/G00134200,GeoRegion,"Americas: Low and middle income","Earth,undata-geo/G00134000",579000000
+undata-geo/G00134200,GeoRegion,Americas: Low and middle income,"Earth,undata-geo/G00134000",579000000
 undata-geo/G00136000,GeoRegion,Northern America,"Earth,undata-geo/G00134000",579000000
 undata-geo/G00145000,GeoRegion,Oceania excluding Australia and New Zealand,"Earth,oceania",579000000
 undata-geo/G00151000,GeoRegion,Middle East,"Earth,undata-geo/G00152000",579000000
@@ -103994,7 +103994,7 @@ undata-geo/G00154000,GeoRegion,Asia and the Pacific,Earth,579000000
 undata-geo/G00157000,GeoRegion,Eastern Asia and the Pacific,Earth,579000000
 undata-geo/G00158000,GeoRegion,South Asia,Earth,579000000
 undata-geo/G00160000,GeoRegion,Western Pacific,Earth,579000000
-undata-geo/G00160200,GeoRegion,"Western Pacific: Low and middle income","Earth,undata-geo/G00160000",579000000
+undata-geo/G00160200,GeoRegion,Western Pacific: Low and middle income,"Earth,undata-geo/G00160000",579000000
 undata-geo/G00162000,GeoRegion,Central and Eastern Europe,Earth,579000000
 undata-geo/G00163000,GeoRegion,Central Asia and Southern Asia,Earth,579000000
 undata-geo/G00401000,GeoRegion,Developed economies region,Earth,579000000
@@ -104015,17 +104015,17 @@ undata-geo/G00405200,GeoRegion,Small Island Developing States (SIDS): Americas r
 undata-geo/G00405300,GeoRegion,Small Island Developing States (SIDS): Asia region,"Earth,asia,undata-geo/G00405000",579000000
 undata-geo/G00405400,GeoRegion,Small Island Developing States (SIDS): Oceania region,"Earth,oceania,undata-geo/G00405000",579000000
 undata-geo/G00406000,GeoRegion,"Organisation for Economic Co-operation and Development (OECD),OECD",Earth,579000000
-undata-geo/G00406200,GeoRegion,"OECD: Europe","Earth,undata-geo/G00406000",579000000
-undata-geo/G00406300,GeoRegion,"OECD: Americas","Earth,undata-geo/G00406000",579000000
-undata-geo/G00406500,GeoRegion,"OECD: Western Pacific",Earth,579000000
-undata-geo/G00407100,GeoRegion,"Non-OECD: Africa","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407200,GeoRegion,"Non-OECD: Americas","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407300,GeoRegion,"Non-OECD: Asia","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407400,GeoRegion,"Non-OECD: Eastern Mediterranean","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407500,GeoRegion,"Non-OECD: Europe","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407700,GeoRegion,"Non-OECD: South-East Asia",Earth,579000000
-undata-geo/G00407800,GeoRegion,"Non-OECD: Western Pacific",Earth,579000000
-undata-geo/G00500164,GeoRegion,"Commonwealth of Independent States (CIS): Europe",Earth,579000000
+undata-geo/G00406200,GeoRegion,OECD: Europe,"Earth,undata-geo/G00406000",579000000
+undata-geo/G00406300,GeoRegion,OECD: Americas,"Earth,undata-geo/G00406000",579000000
+undata-geo/G00406500,GeoRegion,OECD: Western Pacific,Earth,579000000
+undata-geo/G00407100,GeoRegion,Non-OECD: Africa,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407200,GeoRegion,Non-OECD: Americas,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407300,GeoRegion,Non-OECD: Asia,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407400,GeoRegion,Non-OECD: Eastern Mediterranean,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407500,GeoRegion,Non-OECD: Europe,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407700,GeoRegion,Non-OECD: South-East Asia,Earth,579000000
+undata-geo/G00407800,GeoRegion,Non-OECD: Western Pacific,Earth,579000000
+undata-geo/G00500164,GeoRegion,Commonwealth of Independent States (CIS): Europe,Earth,579000000
 undata-geo/G00500200,GeoRegion,Development Assistance Committee (DAC) region,Earth,579000000
 undata-geo/G00500360,GeoRegion,European Union (EU) Institutions region,"Earth,EuropeanUnion",579000000
 undata-geo/G00600000,GeoRegion,"United Nations Member States,UN Member states",Earth,579000000
@@ -104044,20 +104044,20 @@ undata-geo/G00800100,GeoRegion,Caucasus and Central Asia,Earth,579000000
 undata-geo/G00800130,GeoRegion,Southern Asia (excl. India) region,"Earth,SouthernAsia,asia",579000000
 undata-geo/G00800150,GeoRegion,Eastern Asia (excl. Japan and China) region,"Earth,EasternAsia,asia",579000000
 undata-geo/G00800160,GeoRegion,Eastern Asia (excl. Japan) region,"Earth,EasternAsia,asia",579000000
-undata-geo/G00800370,GeoRegion,"Western Asia (excl. Armenia Azerbaijan Cyprus Israel and Georgia) region","Earth,WesternAsia,asia",579000000
+undata-geo/G00800370,GeoRegion,Western Asia (excl. Armenia Azerbaijan Cyprus Israel and Georgia) region,"Earth,WesternAsia,asia",579000000
 undata-geo/G00800480,GeoRegion,Northern Africa (excl. Sudan) region,"Earth,NorthernAfrica,africa",579000000
 undata-geo/G00800500,GeoRegion,Sub-Saharan Africa (incl. Sudan) region,"Earth,SubSaharanAfrica,africa",579000000
-undata-geo/G01100100,GeoRegion,"MDG Region: Developed regions",Earth,579000000
-undata-geo/G01100200,GeoRegion,"MDG Region: Developing regions",Earth,579000000
-undata-geo/G01100210,GeoRegion,"MDG Region: Northern Africa",Earth,579000000
-undata-geo/G01100220,GeoRegion,"MDG Region: Sub-Saharan Africa",Earth,579000000
-undata-geo/G01100230,GeoRegion,"MDG Region: South-eastern Asia",Earth,579000000
-undata-geo/G01100240,GeoRegion,"MDG Region: Eastern Asia",Earth,579000000
-undata-geo/G01100250,GeoRegion,"MDG Region: Southern Asia",Earth,579000000
-undata-geo/G01100260,GeoRegion,"MDG Region: Western Asia",Earth,579000000
-undata-geo/G01100270,GeoRegion,"MDG Region: Caucasus and Central Asia",Earth,579000000
-undata-geo/G01100280,GeoRegion,"MDG Region: Oceania",Earth,579000000
-undata-geo/G01100290,GeoRegion,"MDG Region: Latin America and the Caribbean",Earth,579000000
+undata-geo/G01100100,GeoRegion,MDG Region: Developed regions,Earth,579000000
+undata-geo/G01100200,GeoRegion,MDG Region: Developing regions,Earth,579000000
+undata-geo/G01100210,GeoRegion,MDG Region: Northern Africa,Earth,579000000
+undata-geo/G01100220,GeoRegion,MDG Region: Sub-Saharan Africa,Earth,579000000
+undata-geo/G01100230,GeoRegion,MDG Region: South-eastern Asia,Earth,579000000
+undata-geo/G01100240,GeoRegion,MDG Region: Eastern Asia,Earth,579000000
+undata-geo/G01100250,GeoRegion,MDG Region: Southern Asia,Earth,579000000
+undata-geo/G01100260,GeoRegion,MDG Region: Western Asia,Earth,579000000
+undata-geo/G01100270,GeoRegion,MDG Region: Caucasus and Central Asia,Earth,579000000
+undata-geo/G01100280,GeoRegion,MDG Region: Oceania,Earth,579000000
+undata-geo/G01100290,GeoRegion,MDG Region: Latin America and the Caribbean,Earth,579000000
 undata-geo/G99999999,GeoRegion,Source geographies without a corresponding geography in UNdata region,Earth,579000000
 asgs3/101,ABSStatisticalAreaLevel4,Capital Region,"Earth,country/AUS,oceania,wikidataId/Q3224",248376
 asgs3/102,ABSStatisticalAreaLevel4,Central Coast,"Earth,country/AUS,oceania,wikidataId/Q3224",357816
@@ -104087,8 +104087,6 @@ asgs3/125,ABSStatisticalAreaLevel4,Sydney - Parramatta,"Earth,country/AUS,oceani
 asgs3/126,ABSStatisticalAreaLevel4,Sydney - Ryde,"Earth,country/AUS,oceania,wikidataId/Q3224",218606
 asgs3/127,ABSStatisticalAreaLevel4,Sydney - South West,"Earth,country/AUS,oceania,wikidataId/Q3224",527701
 asgs3/128,ABSStatisticalAreaLevel4,Sydney - Sutherland,"Earth,country/AUS,oceania,wikidataId/Q3224",240174
-asgs3/197,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (NSW),"Earth,country/AUS,oceania,wikidataId/Q3224",0
-asgs3/199,ABSStatisticalAreaLevel4,No usual address (NSW),"Earth,country/AUS,oceania,wikidataId/Q3224",0
 asgs3/201,ABSStatisticalAreaLevel4,Ballarat,"Earth,country/AUS,oceania,wikidataId/Q36687",184285
 asgs3/202,ABSStatisticalAreaLevel4,Bendigo,"Earth,country/AUS,oceania,wikidataId/Q36687",173769
 asgs3/203,ABSStatisticalAreaLevel4,Geelong,"Earth,country/AUS,oceania,wikidataId/Q36687",355990
@@ -104106,8 +104104,6 @@ asgs3/214,ABSStatisticalAreaLevel4,Mornington Peninsula,"Earth,country/AUS,ocean
 asgs3/215,ABSStatisticalAreaLevel4,North West,"Earth,country/AUS,oceania,wikidataId/Q36687",153762
 asgs3/216,ABSStatisticalAreaLevel4,Shepparton,"Earth,country/AUS,oceania,wikidataId/Q36687",138645
 asgs3/217,ABSStatisticalAreaLevel4,Warrnambool and South West,"Earth,country/AUS,oceania,wikidataId/Q36687",128320
-asgs3/297,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (Vic.),"Earth,country/AUS,oceania,wikidataId/Q36687",0
-asgs3/299,ABSStatisticalAreaLevel4,No usual address (Vic.),"Earth,country/AUS,oceania,wikidataId/Q36687",0
 asgs3/301,ABSStatisticalAreaLevel4,Brisbane - East,"Earth,country/AUS,oceania,wikidataId/Q36074",258510
 asgs3/302,ABSStatisticalAreaLevel4,Brisbane - North,"Earth,country/AUS,oceania,wikidataId/Q36074",244037
 asgs3/303,ABSStatisticalAreaLevel4,Brisbane - South,"Earth,country/AUS,oceania,wikidataId/Q36074",412436
@@ -104127,8 +104123,6 @@ asgs3/316,ABSStatisticalAreaLevel4,Sunshine Coast,"Earth,country/AUS,oceania,wik
 asgs3/317,ABSStatisticalAreaLevel4,Toowoomba,"Earth,country/AUS,oceania,wikidataId/Q36074",175707
 asgs3/318,ABSStatisticalAreaLevel4,Townsville,"Earth,country/AUS,oceania,wikidataId/Q36074",249097
 asgs3/319,ABSStatisticalAreaLevel4,Wide Bay,"Earth,country/AUS,oceania,wikidataId/Q36074",335670
-asgs3/397,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (Qld),"Earth,country/AUS,oceania,wikidataId/Q36074",0
-asgs3/399,ABSStatisticalAreaLevel4,No usual address (Qld),"Earth,country/AUS,oceania,wikidataId/Q36074",0
 asgs3/401,ABSStatisticalAreaLevel4,Adelaide - Central and Hills,"Earth,country/AUS,oceania,wikidataId/Q35715",338950
 asgs3/402,ABSStatisticalAreaLevel4,Adelaide - North,"Earth,country/AUS,oceania,wikidataId/Q35715",492185
 asgs3/403,ABSStatisticalAreaLevel4,Adelaide - South,"Earth,country/AUS,oceania,wikidataId/Q35715",396764
@@ -104136,8 +104130,6 @@ asgs3/404,ABSStatisticalAreaLevel4,Adelaide - West,"Earth,country/AUS,oceania,wi
 asgs3/405,ABSStatisticalAreaLevel4,Barossa - Yorke - Mid North,"Earth,country/AUS,oceania,wikidataId/Q35715",120651
 asgs3/406,ABSStatisticalAreaLevel4,South Australia - Outback,"Earth,country/AUS,oceania,wikidataId/Q35715",85925
 asgs3/407,ABSStatisticalAreaLevel4,South Australia - South East,"Earth,country/AUS,oceania,wikidataId/Q35715",205074
-asgs3/497,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (SA),"Earth,country/AUS,oceania,wikidataId/Q35715",0
-asgs3/499,ABSStatisticalAreaLevel4,No usual address (SA),"Earth,country/AUS,oceania,wikidataId/Q35715",0
 asgs3/501,ABSStatisticalAreaLevel4,Bunbury,"Earth,country/AUS,oceania,wikidataId/Q3206",210962
 asgs3/502,ABSStatisticalAreaLevel4,Mandurah,"Earth,country/AUS,oceania,wikidataId/Q3206",127502
 asgs3/503,ABSStatisticalAreaLevel4,Perth - Inner,"Earth,country/AUS,oceania,wikidataId/Q3206",212390
@@ -104148,25 +104140,13 @@ asgs3/507,ABSStatisticalAreaLevel4,Perth - South West,"Earth,country/AUS,oceania
 asgs3/509,ABSStatisticalAreaLevel4,Western Australia - Wheat Belt,"Earth,country/AUS,oceania,wikidataId/Q3206",149617
 asgs3/510,ABSStatisticalAreaLevel4,Western Australia - Outback (North),"Earth,country/AUS,oceania,wikidataId/Q3206",102732
 asgs3/511,ABSStatisticalAreaLevel4,Western Australia - Outback (South),"Earth,country/AUS,oceania,wikidataId/Q3206",128306
-asgs3/597,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (WA),"Earth,country/AUS,oceania,wikidataId/Q3206",0
-asgs3/599,ABSStatisticalAreaLevel4,No usual address (WA),"Earth,country/AUS,oceania,wikidataId/Q3206",0
 asgs3/601,ABSStatisticalAreaLevel4,Hobart,"Earth,country/AUS,oceania,wikidataId/Q34366",255250
 asgs3/602,ABSStatisticalAreaLevel4,Launceston and North East,"Earth,country/AUS,oceania,wikidataId/Q34366",156393
 asgs3/603,ABSStatisticalAreaLevel4,South East,"Earth,country/AUS,oceania,wikidataId/Q34366",44527
 asgs3/604,ABSStatisticalAreaLevel4,West and North West,"Earth,country/AUS,oceania,wikidataId/Q34366",120091
-asgs3/697,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (Tas.),"Earth,country/AUS,oceania,wikidataId/Q34366",0
-asgs3/699,ABSStatisticalAreaLevel4,No usual address (Tas.),"Earth,country/AUS,oceania,wikidataId/Q34366",0
 asgs3/701,ABSStatisticalAreaLevel4,Darwin,"Earth,country/AUS,oceania,wikidataId/Q3235",159284
 asgs3/702,ABSStatisticalAreaLevel4,Northern Territory - Outback,"Earth,country/AUS,oceania,wikidataId/Q3235",105272
-asgs3/797,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (NT),"Earth,country/AUS,oceania,wikidataId/Q3235",0
-asgs3/799,ABSStatisticalAreaLevel4,No usual address (NT),"Earth,country/AUS,oceania,wikidataId/Q3235",0
 asgs3/801,ABSStatisticalAreaLevel4,Australian Capital Territory,"Earth,country/AUS,oceania,wikidataId/Q3258",484630
-asgs3/897,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (ACT),"Earth,country/AUS,oceania,wikidataId/Q3258",0
-asgs3/899,ABSStatisticalAreaLevel4,No usual address (ACT),"Earth,country/AUS,oceania,wikidataId/Q3258",0
-asgs3/901,ABSStatisticalAreaLevel4,Other Territories,"Earth,country/AUS,oceania,asgs3/9",5013
-asgs3/997,ABSStatisticalAreaLevel4,Migratory - Offshore - Shipping (OT),"Earth,country/AUS,oceania,asgs3/9",0
-asgs3/999,ABSStatisticalAreaLevel4,No usual address (OT),"Earth,country/AUS,oceania,asgs3/9",0
-asgs3/ZZZ,ABSStatisticalAreaLevel4,Outside Australia,"Earth,oceania",0
 asgs3/10102,ABSStatisticalAreaLevel3,Queanbeyan,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",69504
 asgs3/10103,ABSStatisticalAreaLevel3,Snowy Mountains,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",21352
 asgs3/10104,ABSStatisticalAreaLevel3,South Coast,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",78583
@@ -104259,8 +104239,6 @@ asgs3/12702,ABSStatisticalAreaLevel3,Fairfield,"Earth,country/AUS,oceania,wikida
 asgs3/12703,ABSStatisticalAreaLevel3,Liverpool,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/127",149912
 asgs3/12801,ABSStatisticalAreaLevel3,Cronulla - Miranda - Caringbah,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/128",125196
 asgs3/12802,ABSStatisticalAreaLevel3,Sutherland - Menai - Heathcote,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/128",114978
-asgs3/19797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (NSW),"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/197",0
-asgs3/19999,ABSStatisticalAreaLevel3,No usual address (NSW),"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/199",0
 asgs3/20101,ABSStatisticalAreaLevel3,Ballarat,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",125189
 asgs3/20102,ABSStatisticalAreaLevel3,Creswick - Daylesford - Ballan,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",31707
 asgs3/20103,ABSStatisticalAreaLevel3,Maryborough - Pyrenees,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",27389
@@ -104327,8 +104305,6 @@ asgs3/21603,ABSStatisticalAreaLevel3,Shepparton,"Earth,country/AUS,oceania,wikid
 asgs3/21701,ABSStatisticalAreaLevel3,Glenelg - Southern Grampians,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",36401
 asgs3/21703,ABSStatisticalAreaLevel3,Colac - Corangamite,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",37848
 asgs3/21704,ABSStatisticalAreaLevel3,Warrnambool,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",54071
-asgs3/29797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (Vic.),"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/297",0
-asgs3/29999,ABSStatisticalAreaLevel3,No usual address (Vic.),"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/299",0
 asgs3/30101,ABSStatisticalAreaLevel3,Capalaba,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",77038
 asgs3/30102,ABSStatisticalAreaLevel3,Cleveland - Stradbroke,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",103758
 asgs3/30103,ABSStatisticalAreaLevel3,Wynnum - Manly,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",77714
@@ -104411,8 +104387,6 @@ asgs3/31902,ABSStatisticalAreaLevel3,Burnett,"Earth,country/AUS,oceania,wikidata
 asgs3/31903,ABSStatisticalAreaLevel3,Gympie - Cooloola,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",58405
 asgs3/31904,ABSStatisticalAreaLevel3,Hervey Bay,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",71199
 asgs3/31905,ABSStatisticalAreaLevel3,Maryborough,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",51798
-asgs3/39797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (Qld),"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/397",0
-asgs3/39999,ABSStatisticalAreaLevel3,No usual address (Qld),"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/399",0
 asgs3/40101,ABSStatisticalAreaLevel3,Adelaide City,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",30173
 asgs3/40102,ABSStatisticalAreaLevel3,Adelaide Hills,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",87601
 asgs3/40103,ABSStatisticalAreaLevel3,Burnside,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",48257
@@ -104441,8 +104415,6 @@ asgs3/40602,ABSStatisticalAreaLevel3,Outback - North and East,"Earth,country/AUS
 asgs3/40701,ABSStatisticalAreaLevel3,Fleurieu - Kangaroo Island,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",60395
 asgs3/40702,ABSStatisticalAreaLevel3,Limestone Coast,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",69717
 asgs3/40703,ABSStatisticalAreaLevel3,Murray and Mallee,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",74962
-asgs3/49797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (SA),"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/497",0
-asgs3/49999,ABSStatisticalAreaLevel3,No usual address (SA),"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/499",0
 asgs3/50101,ABSStatisticalAreaLevel3,Augusta - Margaret River - Busselton,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",66190
 asgs3/50102,ABSStatisticalAreaLevel3,Bunbury,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",118776
 asgs3/50103,ABSStatisticalAreaLevel3,Manjimup,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",25996
@@ -104477,8 +104449,6 @@ asgs3/51101,ABSStatisticalAreaLevel3,Esperance,"Earth,country/AUS,oceania,wikida
 asgs3/51102,ABSStatisticalAreaLevel3,Gascoyne,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",10725
 asgs3/51103,ABSStatisticalAreaLevel3,Goldfields,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",41107
 asgs3/51104,ABSStatisticalAreaLevel3,Mid West,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",59498
-asgs3/59797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (WA),"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/597",0
-asgs3/59999,ABSStatisticalAreaLevel3,No usual address (WA),"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/599",0
 asgs3/60101,ABSStatisticalAreaLevel3,Brighton,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",21026
 asgs3/60102,ABSStatisticalAreaLevel3,Hobart - North East,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",61734
 asgs3/60103,ABSStatisticalAreaLevel3,Hobart - North West,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",58446
@@ -104494,8 +104464,6 @@ asgs3/60303,ABSStatisticalAreaLevel3,South East Coast,"Earth,country/AUS,oceania
 asgs3/60401,ABSStatisticalAreaLevel3,Burnie - Ulverstone,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",51413
 asgs3/60402,ABSStatisticalAreaLevel3,Devonport,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",50445
 asgs3/60403,ABSStatisticalAreaLevel3,West Coast,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",18233
-asgs3/69797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (Tas.),"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/697",0
-asgs3/69999,ABSStatisticalAreaLevel3,No usual address (Tas.),"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/699",0
 asgs3/70101,ABSStatisticalAreaLevel3,Darwin City,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",31021
 asgs3/70102,ABSStatisticalAreaLevel3,Darwin Suburbs,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",60925
 asgs3/70103,ABSStatisticalAreaLevel3,Litchfield,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",24332
@@ -104505,8 +104473,6 @@ asgs3/70202,ABSStatisticalAreaLevel3,Barkly,"Earth,country/AUS,oceania,wikidataI
 asgs3/70203,ABSStatisticalAreaLevel3,Daly - Tiwi - West Arnhem,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",18716
 asgs3/70204,ABSStatisticalAreaLevel3,East Arnhem,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",14913
 asgs3/70205,ABSStatisticalAreaLevel3,Katherine,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",22026
-asgs3/79797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (NT),"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/797",0
-asgs3/79999,ABSStatisticalAreaLevel3,No usual address (NT),"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/799",0
 asgs3/80101,ABSStatisticalAreaLevel3,Belconnen,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",110132
 asgs3/80103,ABSStatisticalAreaLevel3,Canberra East,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",2034
 asgs3/80104,ABSStatisticalAreaLevel3,Gungahlin,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",94130
@@ -104517,12 +104483,3 @@ asgs3/80108,ABSStatisticalAreaLevel3,Weston Creek,"Earth,country/AUS,oceania,wik
 asgs3/80109,ABSStatisticalAreaLevel3,Woden Valley,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",41600
 asgs3/80110,ABSStatisticalAreaLevel3,Molonglo,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",18064
 asgs3/80111,ABSStatisticalAreaLevel3,Uriarra - Namadgi,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",628
-asgs3/89797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (ACT),"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/897",0
-asgs3/89999,ABSStatisticalAreaLevel3,No usual address (ACT),"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/899",0
-asgs3/90101,ABSStatisticalAreaLevel3,Christmas Island,"Earth,country/AUS,oceania,asgs3/9,asgs3/901",1889
-asgs3/90102,ABSStatisticalAreaLevel3,Cocos (Keeling) Islands,"Earth,country/AUS,oceania,asgs3/9,asgs3/901",626
-asgs3/90103,ABSStatisticalAreaLevel3,Jervis Bay,"Earth,country/AUS,oceania,asgs3/9,asgs3/901",305
-asgs3/90104,ABSStatisticalAreaLevel3,Norfolk Island,"Earth,country/AUS,oceania,asgs3/9,asgs3/901",2193
-asgs3/99797,ABSStatisticalAreaLevel3,Migratory - Offshore - Shipping (OT),"Earth,country/AUS,oceania,asgs3/9,asgs3/997",0
-asgs3/99999,ABSStatisticalAreaLevel3,No usual address (OT),"Earth,country/AUS,oceania,asgs3/9,asgs3/999",0
-asgs3/ZZZZZ,ABSStatisticalAreaLevel3,Outside Australia,"Earth,oceania,asgs3/ZZZ",0
