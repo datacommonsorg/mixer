@@ -354,12 +354,15 @@ OR CreationTimestamp > (
 			FROM LinkedEdge
 			WHERE ancestor IN UNNEST(@ancestor)
 				AND predicate = 'containedInPlace'
-				AND child_type IN UNNEST(@child_type)%s
+				AND child_type IN UNNEST(@child_type)
+			ORDER BY
+				subject_id,
+				object_id%s
 		)e
 		LEFT JOIN Node dest ON e.object_id = dest.subject_id
 		ORDER BY
             subject_id,
-            object_id,
+            object_id
 	`,
 	applyOffset: `
 		OFFSET %d`,

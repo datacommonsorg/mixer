@@ -17,10 +17,13 @@
 			WHERE ancestor = 'country/USA'
 				AND predicate = 'containedInPlace'
 				AND child_type = 'County'
+			ORDER BY
+				subject_id,
+				object_id
 		LIMIT 501
 		)e
 		LEFT JOIN Node dest ON e.object_id = dest.subject_id
 		ORDER BY
             subject_id,
-            object_id,
+            object_id
 	
