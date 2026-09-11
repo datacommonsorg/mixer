@@ -731,3 +731,71 @@ func TestNodeEdgesToLinkedGraph(t *testing.T) {
 		})
 	}
 }
+
+func TestGetOffset(t *testing.T) {
+	const dataSourceID = "spanner-test-db"
+
+	tokenForThisSource, err := getNextToken(100, dataSourceID)
+	if err != nil {
+		t.Fatalf("getNextToken(100, %q) error = %v", dataSourceID, err)
+	}
+	tokenForOtherSource, err := getNextToken(100, "spanner-other-db")
+	if err != nil {
+		t.Fatalf("getNextToken(100, %q) error = %v", "spanner-other-db", err)
+	}
+	tokenWithRemoteInfo, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id:             dataSourceID,
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{StringInfo: "remote cursor"},
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("util.EncodeProto() error = %v", err)
+	}
+
+	tests := []struct {
+		name            string
+		nextToken       string
+		wantOffset      int
+		wantIsExhausted bool
+		wantErr         bool
+	}{
+		{
+			name: "first page",
+		},
+		{
+			name:       "cursor for this source",
+			nextToken:  tokenForThisSource,
+			wantOffset: 100,
+		},
+		{
+			name:            "source dropped from token",
+			nextToken:       tokenForOtherSource,
+			wantIsExhausted: true,
+		},
+		{
+			name:      "non-spanner info for this source",
+			nextToken: tokenWithRemoteInfo,
+			wantErr:   true,
+		},
+		{
+			name:      "malformed token",
+			nextToken: "!!!",
+			wantErr:   true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			offset, isExhausted, err := getOffset(tc.nextToken, dataSourceID)
+			if (err != nil) != tc.wantErr {
+				t.Fatalf("getOffset(%q, %q) error = %v, wantErr %v", tc.nextToken, dataSourceID, err, tc.wantErr)
+			}
+			if offset != tc.wantOffset || isExhausted != tc.wantIsExhausted {
+				t.Errorf("getOffset(%q, %q) = (%d, %t), want (%d, %t)", tc.nextToken, dataSourceID, offset, isExhausted, tc.wantOffset, tc.wantIsExhausted)
+			}
+		})
+	}
+}

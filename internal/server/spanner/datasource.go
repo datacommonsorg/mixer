@@ -143,6 +143,17 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
+	// A source that has returned all of its rows is dropped from the merged
+	// pagination token, so a token with no entry for this source means there is
+	// nothing left to return. Querying anyway would restart at offset 0.
+	offset, isExhausted, err := getOffset(req.GetNextToken(), sds.Id())
+	if err != nil {
+		return nil, fmt.Errorf("error decoding pagination info: %v", err)
+	}
+	if isExhausted {
+		return &pbv2.NodeResponse{}, nil
+	}
+
 	artifacts := addOptimizationsToNodeRequest(arc)
 	var resp *pbv2.NodeResponse
 	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
@@ -152,10 +163,6 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		}
 		resp = nodePropsToNodeResponse(props)
 	} else {
-		offset, err := getOffset(req.NextToken, sds.Id())
-		if err != nil {
-			return nil, fmt.Errorf("error decoding pagination info: %v", err)
-		}
 		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, pageSize, offset)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)

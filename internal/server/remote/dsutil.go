@@ -24,28 +24,41 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// updateNodeRequestNextToken updates the NodeRequest nextToken for a remote data source.
-func updateNodeRequestNextToken(req *pbv2.NodeRequest, id string) error {
-	if req.GetNextToken() != "" {
-		info, err := pagination.DecodeNextToken(req.GetNextToken())
-		if err != nil {
-			return err
-		}
+// updateNodeRequestNextToken rewrites req.NextToken to the cursor this remote
+// source issued on the previous page, and reports whether that source has
+// already returned all of its rows.
+//
+// MergeMultiNode drops a source from the merged token once that source stops
+// returning a cursor, so a non-empty caller token with no entry for id means
+// the source finished on an earlier page. Callers must not query a source
+// reported as exhausted: doing so replays its first page.
+//
+// An empty caller token is the first page, so req.NextToken is left empty and
+// isExhausted is false. On the exhausted path req is left untouched, so it
+// still carries the caller's merged token: callers must not issue it.
+func updateNodeRequestNextToken(req *pbv2.NodeRequest, id string) (isExhausted bool, err error) {
+	if req.GetNextToken() == "" {
+		return false, nil
+	}
 
-		req.NextToken = ""
-		for _, dataSourceInfo := range info.Info {
-			if dataSourceInfo.GetId() == id {
-				string_info, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_StringInfo)
-				if !ok {
-					return fmt.Errorf("found different data source info for remote data source id: %s", id)
-				}
+	info, err := pagination.DecodeNextToken(req.GetNextToken())
+	if err != nil {
+		return false, err
+	}
 
-				req.NextToken = string_info.StringInfo
-				return nil
+	for _, dataSourceInfo := range info.Info {
+		if dataSourceInfo.GetId() == id {
+			stringInfo, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_StringInfo)
+			if !ok {
+				return false, fmt.Errorf("found different data source info for remote data source id: %s", id)
 			}
+
+			req.NextToken = stringInfo.StringInfo
+			return false, nil
 		}
 	}
-	return nil
+
+	return true, nil
 }
 
 // updateNodeResponseNextToken updates the NodeResponse nextToken from a remote data source.
