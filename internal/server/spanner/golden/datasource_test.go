@@ -35,6 +35,7 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -1311,5 +1312,50 @@ func TestSpannerNode_DanglingEdges(t *testing.T) {
 	
 	if len(nodes[0].Types) != 1 || nodes[0].Types[0] != "Thing" {
 		t.Errorf("Expected Types ['Thing'], got %v", nodes[0].Types)
+	}
+}
+
+func TestSpannerNode_ExhaustedSourceDoesNotRestart(t *testing.T) {
+	ctx := context.Background()
+
+	client := &mockSpannerClient{}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	// MergeMultiNode drops a source from the merged token once it stops
+	// returning a cursor, so a later page carries a cursor for other sources
+	// only. This source must return nothing rather than restart at offset 0.
+	nextToken, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: "spanner-other",
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+					SpannerInfo: &pbv2.SpannerInfo{Offset: 100},
+				},
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("util.EncodeProto() error = %v", err)
+	}
+
+	req := &pbv2.NodeRequest{
+		Nodes:     []string{"geoId/06"},
+		Property:  "->containedInPlace",
+		NextToken: nextToken,
+	}
+
+	got, err := ds.Node(ctx, req, 100)
+	if err != nil {
+		t.Fatalf("Node() error = %v", err)
+	}
+
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+	if diff := cmp.Diff(got, &pbv2.NodeResponse{}, cmpOpts); diff != "" {
+		t.Errorf("Node() payload mismatch:\n%v", diff)
+	}
+	if client.getNodeEdgesCalls != 0 {
+		t.Errorf("Node() issued %d edge queries, want 0", client.getNodeEdgesCalls)
 	}
 }

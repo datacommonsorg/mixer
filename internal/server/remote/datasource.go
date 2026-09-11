@@ -40,6 +40,11 @@ func (rds *RemoteDataSource) Type() datasource.DataSourceType {
 }
 
 // Id returns the id of the data source.
+//
+// Note this is not the id RemoteClient keys its pagination token entries by,
+// which is the bare remote mixer domain. The two are self-consistent today
+// because the client both writes and reads that entry, but the divergence
+// means token entries cannot be matched against DataSource.Id().
 func (rds *RemoteDataSource) Id() string {
 	return fmt.Sprintf("%s-%s", string(rds.Type()), rds.client.id)
 }
