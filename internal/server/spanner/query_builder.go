@@ -175,6 +175,8 @@ func buildNodeEdgesByIDQuery(
 	case nodeQueryGeneric:
 	case nodeQueryContainedInPlace:
 		switch plan.containedInPlace.accessPath {
+		case containedInPlaceLinkedEdge:
+			return buildContainedInPlaceQuery(ids, arc, pageSize, offset, plan), nil
 		case containedInPlaceTypeFirst:
 		case containedInPlaceAncestorFirst:
 			useContainedInPlaceAncestorFirst = true
@@ -336,6 +338,31 @@ func buildNodeEdgesByIDQuery(
 		SQL:    template,
 		Params: params,
 	}, nil
+}
+
+// buildContainedInPlaceQuery returns a query for fetching containedInPlace edges.
+func buildContainedInPlaceQuery(
+	ids []string,
+	arc *v2.Arc,
+	pageSize, offset int,
+	plan nodeQueryPlan,
+) *spanner.Statement {
+	params := map[string]interface{}{
+		"ancestor": ids,
+		// Filter has already been validated.
+		"child_type": arc.Filter["typeOf"],
+	}
+	hint := statements.graphColumnarScanHint
+	if plan.spannerEmulatorCompatibility {
+		hint = ""
+	}
+	pagination := getNodeQueryPagination(pageSize, offset)
+	sql := hint + fmt.Sprintf(statements.getEdgesContainedInPlace, pagination)
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}
+
 }
 
 func getNodeQueryPagination(pageSize, offset int) string {
