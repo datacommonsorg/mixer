@@ -41,6 +41,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
@@ -64,6 +65,10 @@ const (
 	MapsAPIKeyID = "maps-api-key"
 	// Mixer API key
 	MixerAPIKeyID = "mixer-api-key"
+
+	// Upper limit for API response sizes.
+	MaxResponseSize         = 100 * 1024 * 1024 // 100 MB
+	maxResponseSizeErrorMsg = "Response payload exceeds maximum allowed size (100MB). Please narrow your request parameters."
 )
 
 var childTypeDenyList = map[string]struct{}{
@@ -915,4 +920,33 @@ func SortedStringKeys[V any, M ~map[string]V](m M) []string {
 	}
 	sort.Strings(keys)
 	return keys
+}
+
+// ResponseSizeLimiterUnaryInterceptor blocks unary RPC responses that exceed the limit.
+func ResponseSizeLimiterUnaryInterceptor(limit int) grpc.UnaryServerInterceptor {
+	return func(
+		ctx context.Context,
+		req any,
+		info *grpc.UnaryServerInfo,
+		handler grpc.UnaryHandler,
+	) (any, error) {
+		resp, err := handler(ctx, req)
+		if err != nil {
+			return resp, err
+		}
+
+		if p, ok := resp.(proto.Message); ok {
+			size := proto.Size(p)
+			if size > limit {
+				slog.Error("Blocked large response payload",
+					"method", info.FullMethod,
+					"sizeBytes", size,
+					"limitBytes", limit,
+				)
+				return nil, status.Errorf(codes.ResourceExhausted, maxResponseSizeErrorMsg)
+			}
+		}
+
+		return resp, nil
+	}
 }
