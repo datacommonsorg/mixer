@@ -636,7 +636,7 @@ func TestResponseSizeLimiterUnaryInterceptor(t *testing.T) {
 	}{
 		{
 			name:         "Under limit - succeeds normally",
-			responseSize: 50, // 50 < 100
+responseSize: 50, // 50 < 500
 			expectError:  false,
 		},
 		{
