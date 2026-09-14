@@ -68,6 +68,8 @@ var statements = struct {
 	returnChainedEdges string
 	// Subquery to return Edges with filters.
 	returnFilterEdges string
+	// Fetch Edges for containedInPlace requests.
+	getEdgesContainedInPlace string
 	// Subquery to apply page offset.
 	applyOffset string
 	// Subquery to apply page limit.
@@ -335,6 +337,33 @@ OR CreationTimestamp > (
             predicate,
             object_id,
             provenance`,
+	getEdgesContainedInPlace: `		SELECT
+			e.subject_id,
+			'containedInPlace+' as predicate,
+			e.object_id,
+			'' AS provenance,
+			IF (dest.subject_id IS NULL, FALSE, TRUE) AS resolved,
+            IFNULL(dest.value, '') AS value,
+            dest.bytes,
+            IFNULL(dest.name, '') AS name,
+            IFNULL(dest.types, []) AS types
+		FROM (
+			SELECT DISTINCT 
+				ancestor AS subject_id, 
+				child AS object_id 
+			FROM LinkedEdge
+			WHERE ancestor IN UNNEST(@ancestor)
+				AND predicate = 'containedInPlace'
+				AND child_type IN UNNEST(@child_type)
+			ORDER BY
+				subject_id,
+				object_id%s
+		)e
+		LEFT JOIN Node dest ON e.object_id = dest.subject_id
+		ORDER BY
+            subject_id,
+            object_id
+	`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: `

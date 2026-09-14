@@ -25,8 +25,10 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
@@ -181,5 +183,60 @@ func TestRemoteClientNodeKeepsCallerPaginationToken(t *testing.T) {
 	}
 	if sentNextToken != remoteToken {
 		t.Errorf("remote received next token = %q, want %q", sentNextToken, remoteToken)
+	}
+}
+
+// MergeMultiNode drops a source from the merged token once it stops returning a
+// cursor, so a later page carries a cursor for other sources only. Node must
+// skip the RPC rather than refetch the remote's first page.
+func TestRemoteClientNodeSkipsExhaustedSource(t *testing.T) {
+	var remoteCalls int
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		remoteCalls++
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{}`))
+	}))
+	defer ts.Close()
+
+	client, err := NewRemoteClient(&resource.Metadata{
+		RemoteMixerDomain: ts.URL,
+		RemoteMixerAPIKey: "test-api-key",
+	})
+	if err != nil {
+		t.Fatalf("NewRemoteClient() error = %v", err)
+	}
+
+	callerToken, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{{
+			Id: "spanner-other",
+			DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+				SpannerInfo: &pbv2.SpannerInfo{Offset: 100},
+			},
+		}},
+	})
+	if err != nil {
+		t.Fatalf("EncodeProto() error = %v", err)
+	}
+
+	req := &pbv2.NodeRequest{
+		Nodes:     []string{"geoId/06"},
+		Property:  "->name",
+		NextToken: callerToken,
+	}
+	got, err := client.Node(context.Background(), req)
+	if err != nil {
+		t.Fatalf("Node() error = %v", err)
+	}
+
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+	if diff := cmp.Diff(got, &pbv2.NodeResponse{}, cmpOpts); diff != "" {
+		t.Errorf("Node() payload mismatch:\n%v", diff)
+	}
+	if remoteCalls != 0 {
+		t.Errorf("Node() issued %d remote calls, want 0", remoteCalls)
 	}
 }

@@ -116,10 +116,11 @@ var nodeOutEdgesByIDTestCases = []struct {
 }
 
 var nodeInEdgesByIDTestCases = []struct {
-	ids    []string
-	arc    *v2.Arc
-	offset int
-	golden string
+	ids                       []string
+	arc                       *v2.Arc
+	offset                    int
+	useMaterializedLinkedEdge bool
+	golden                    string
 }{
 	{
 		ids: []string{"FireIncidentTypeEnum", "FoodTypeEnum"},
@@ -230,6 +231,18 @@ var nodeInEdgesByIDTestCases = []struct {
 			},
 		},
 		golden: "get_node_edges_linked_contained_in_place",
+	},
+	{
+		ids: []string{"country/USA"},
+		arc: &v2.Arc{
+			Out:        false,
+			SingleProp: "linkedContainedInPlace",
+			Filter: map[string][]string{
+				"typeOf": {"County"},
+			},
+		},
+		useMaterializedLinkedEdge: true,
+		golden:                    "get_node_edges_linked_contained_in_place_materialized",
 	},
 }
 
@@ -637,7 +650,6 @@ var getFilteredSVGChildrenTestCases = []struct {
 	},
 }
 
-
 var vectorSearchNodeTestCases = []struct {
 	tableName      string
 	limit          int
@@ -727,7 +739,6 @@ var getFilteredTopicTestCases = []struct {
 		golden:               "get_filtered_topic_places_multiple_topics",
 	},
 }
-
 
 var vectorSearchQueryTestCases = []struct {
 	tableName      string

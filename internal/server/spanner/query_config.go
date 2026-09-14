@@ -48,7 +48,8 @@ type QueryConfig struct {
 type containedInPlaceAccessPath int
 
 const (
-	containedInPlaceTypeFirst containedInPlaceAccessPath = iota
+	containedInPlaceLinkedEdge containedInPlaceAccessPath = iota
+	containedInPlaceTypeFirst
 	containedInPlaceAncestorFirst
 )
 

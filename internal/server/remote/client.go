@@ -55,9 +55,12 @@ func (rc *RemoteClient) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.
 	// |req| belongs to the caller and is shared across the concurrent data source
 	// fan-out, so peel the per-source |next_token| out of a private copy.
 	req = proto.Clone(req).(*pbv2.NodeRequest)
-	err := updateNodeRequestNextToken(req, rc.id)
+	isExhausted, err := updateNodeRequestNextToken(req, rc.id)
 	if err != nil {
 		return nil, err
+	}
+	if isExhausted {
+		return &pbv2.NodeResponse{}, nil
 	}
 
 	resp := &pbv2.NodeResponse{}
