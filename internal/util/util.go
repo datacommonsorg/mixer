@@ -65,10 +65,8 @@ const (
 	MapsAPIKeyID = "maps-api-key"
 	// Mixer API key
 	MixerAPIKeyID = "mixer-api-key"
-
 	// Upper limit for API response sizes.
-	MaxResponseSize         = 100 * 1024 * 1024 // 100 MB
-	maxResponseSizeErrorMsg = "Response payload exceeds maximum allowed size (100MB). Please narrow your request parameters."
+	MaxResponseSize = 100 * 1024 * 1024 // 100 MB
 )
 
 var childTypeDenyList = map[string]struct{}{
@@ -924,6 +922,11 @@ func SortedStringKeys[V any, M ~map[string]V](m M) []string {
 
 // ResponseSizeLimiterUnaryInterceptor blocks unary RPC responses that exceed the limit.
 func ResponseSizeLimiterUnaryInterceptor(limit int) grpc.UnaryServerInterceptor {
+	limitMB := float64(limit) / 1024 / 1024
+	limitError := status.Error(
+		codes.ResourceExhausted,
+		fmt.Sprintf("Response payload exceeds maximum allowed size of %.2f MB. Please narrow your request parameters.", limitMB),
+	)
 	return func(
 		ctx context.Context,
 		req any,
@@ -943,7 +946,7 @@ func ResponseSizeLimiterUnaryInterceptor(limit int) grpc.UnaryServerInterceptor 
 					"sizeBytes", size,
 					"limitBytes", limit,
 				)
-				return nil, status.Errorf(codes.ResourceExhausted, maxResponseSizeErrorMsg)
+				return nil, limitError
 			}
 		}
 
