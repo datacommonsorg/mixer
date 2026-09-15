@@ -79,6 +79,37 @@ func TestNodeFetchAllFunc(t *testing.T) {
 			want: makeNodeResponse("", "geoId/06001", "geoId/06002", "geoId/06003"),
 		},
 		{
+			// Spanner pages by edge-row offset, so an entity straddling the page
+			// boundary gets some of its arcs on one page and the rest on the next.
+			name: "EntitySplitAcrossPages",
+			responses: []*pbv2.NodeResponse{
+				{
+					NextToken: "token1",
+					Data: map[string]*pbv2.LinkedGraph{
+						"country/MSR": {Arcs: map[string]*pbv2.Nodes{
+							"name": {Nodes: []*pb.EntityInfo{{Value: "Montserrat"}}},
+						}},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"country/MSR": {Arcs: map[string]*pbv2.Nodes{
+							"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "AdministrativeArea1"}, {Dcid: "Country"}}},
+						}},
+					},
+				},
+			},
+			errs: []error{nil, nil},
+			want: &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"country/MSR": {Arcs: map[string]*pbv2.Nodes{
+						"name":   {Nodes: []*pb.EntityInfo{{Value: "Montserrat"}}},
+						"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "AdministrativeArea1"}, {Dcid: "Country"}}},
+					}},
+				},
+			},
+		},
+		{
 			name:      "FetchError",
 			responses: []*pbv2.NodeResponse{nil},
 			errs:      []error{errors.New("fetch error")},
