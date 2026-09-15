@@ -16,7 +16,10 @@ package agent
 
 import (
 	"context"
+	"fmt"
+	"slices"
 	"sort"
+	"sync"
 	"testing"
 	"time"
 
@@ -1569,3 +1572,92 @@ func TestFetchEntityProperties_Deduplication(t *testing.T) {
 	}
 }
 
+// truncatingNodeMixer fakes the way V2Node truncates. It sorts the requested nodes,
+// fills in only the ones that fit on the page, and returns an empty LinkedGraph for
+// the rest plus a NextToken. So a caller that ignores the token sees blank names,
+// not missing entries.
+type truncatingNodeMixer struct {
+	Mixer
+
+	nodesPerPage int
+
+	mu    sync.Mutex
+	calls int
+}
+
+func (m *truncatingNodeMixer) V2Node(_ context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	m.mu.Lock()
+	m.calls++
+	m.mu.Unlock()
+
+	sorted := slices.Clone(req.GetNodes())
+	sort.Strings(sorted)
+
+	start := 0
+	if token := req.GetNextToken(); token != "" {
+		if _, err := fmt.Sscanf(token, "offset:%d", &start); err != nil {
+			return nil, fmt.Errorf("malformed test token %q: %w", token, err)
+		}
+	}
+	end := min(start+m.nodesPerPage, len(sorted))
+
+	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
+	for i, dcid := range sorted {
+		if i < start || i >= end {
+			resp.Data[dcid] = &pbv2.LinkedGraph{}
+			continue
+		}
+		resp.Data[dcid] = &pbv2.LinkedGraph{
+			Arcs: map[string]*pbv2.Nodes{
+				arcName:   {Nodes: []*pb.EntityInfo{{Value: dcid + " Name"}}},
+				arcTypeOf: {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+			},
+		}
+	}
+	if end < len(sorted) {
+		resp.NextToken = fmt.Sprintf("offset:%d", end)
+	}
+	return resp, nil
+}
+
+func TestFetchEntityPropertiesPagination(t *testing.T) {
+	tests := []struct {
+		name         string
+		entityCount  int
+		nodesPerPage int
+	}{
+		{
+			name:         "SinglePageNeedsNoPagination",
+			entityCount:  10,
+			nodesPerPage: 150,
+		},
+		{
+			name:         "EntitiesPastTheFirstPageAreStillResolved",
+			entityCount:  300,
+			nodesPerPage: 150,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			dcids := make([]string, 0, test.entityCount)
+			want := make(map[string]*nodeProperties, test.entityCount)
+			for i := range test.entityCount {
+				dcid := fmt.Sprintf("geoId/%05d", i)
+				dcids = append(dcids, dcid)
+				want[dcid] = &nodeProperties{name: dcid + " Name", typeOf: []string{"County"}}
+			}
+
+			svc := NewService(&truncatingNodeMixer{nodesPerPage: test.nodesPerPage}, nil, nil)
+
+			got, err := svc.fetchEntityProperties(context.Background(), dcids)
+			if err != nil {
+				t.Fatalf("fetchEntityProperties() unexpected error: %v", err)
+			}
+
+			if diff := cmp.Diff(want, got, cmp.AllowUnexported(nodeProperties{})); diff != "" {
+				t.Errorf("fetchEntityProperties() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
