@@ -644,26 +644,37 @@ func (b *multiEntityQueryBuilder) buildSdmxContainedSeriesPlan(
 			params[ancestorParam] = key.Ancestor
 			params[childPlaceTypeParam] = key.ChildPlaceType
 			remoteDCIDs := containedInPlaceToRemoteDCIDs[key]
+			var containedPlaces string
+			if b.queryConfig.UseMaterializedLinkedEdge {
+				containedPlaces = fmt.Sprintf(
+					b.statements.sdmxContainedPlacesLinkedEdge,
+					datacommons.PropertyContainedInPlace,
+					ancestorParam,
+					childPlaceTypeParam,
+				)
+			} else {
+				containedPlaces = fmt.Sprintf(
+					b.statements.sdmxContainedPlacesEdge,
+					containedRule.GraphPredicate,
+					ancestorParam,
+					typeRule.GraphPredicate,
+					childPlaceTypeParam,
+				)
+			}
 			if len(remoteDCIDs) > 0 {
 				remotePlacesParam := fmt.Sprintf("containment_%d_remote_places", cteIndex)
 				params[remotePlacesParam] = remoteDCIDs
 				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
 					b.statements.sdmxContainedPlacesWithRemoteCTE,
 					cteName,
-					containedRule.GraphPredicate,
-					ancestorParam,
-					typeRule.GraphPredicate,
-					childPlaceTypeParam,
+					containedPlaces,
 					remotePlacesParam,
 				))
 			} else {
 				cteDefinitions = append(cteDefinitions, fmt.Sprintf(
 					b.statements.sdmxContainedPlacesCTE,
 					cteName,
-					containedRule.GraphPredicate,
-					ancestorParam,
-					typeRule.GraphPredicate,
-					childPlaceTypeParam,
+					containedPlaces,
 				))
 			}
 		}
