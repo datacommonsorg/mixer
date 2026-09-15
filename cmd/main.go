@@ -50,6 +50,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -207,6 +208,7 @@ func main() {
 	srv := grpc.NewServer(
 		grpc.ChainUnaryInterceptor(
 			metrics.InjectMethodNameUnaryInterceptor,
+			util.ResponseSizeLimiterUnaryInterceptor(util.MaxResponseSize),
 		),
 		grpc.ChainStreamInterceptor(
 			metrics.InjectMethodNameStreamInterceptor,
