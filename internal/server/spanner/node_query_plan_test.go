@@ -122,6 +122,23 @@ func TestPlanNodeQuery(t *testing.T) {
 			},
 		},
 		{
+			name: "contained in place linked edge",
+			arc: &v2.Arc{
+				SingleProp: linkedContainedInPlaceProperty,
+				Filter:     map[string][]string{predTypeOf: {"County", "Place"}},
+			},
+			queryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes: []string{"Place"},
+				UseMaterializedLinkedEdge:          true,
+			},
+			want: nodeQueryPlan{
+				kind: nodeQueryContainedInPlace,
+				containedInPlace: containedInPlacePlan{
+					accessPath: containedInPlaceLinkedEdge,
+				},
+			},
+		},
+		{
 			name:    "nil arc",
 			wantErr: true,
 		},

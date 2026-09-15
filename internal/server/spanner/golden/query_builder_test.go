@@ -71,7 +71,9 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 				c.arc,
 				datasources.DefaultPageSize,
 				c.offset,
-				spanner.QueryConfig{},
+				spanner.QueryConfig{
+					UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge,
+				},
 			)
 		})
 	}
@@ -353,7 +355,6 @@ func TestGetFilteredTopicChildren(t *testing.T) {
 		})
 	}
 }
-
 
 func TestVectorSearchQuery(t *testing.T) {
 	t.Parallel()

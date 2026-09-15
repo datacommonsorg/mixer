@@ -350,7 +350,7 @@ type provenanceProperties struct {
 	provenanceUrl string
 }
 
-// fetchEntityProperties performs a single V2Node call to resolve names and typeOfs for spatial entities and variables.
+// fetchEntityProperties resolves names and typeOfs for spatial entities and variables.
 func (s *Service) fetchEntityProperties(ctx context.Context, dcids []string) (map[string]*nodeProperties, error) {
 	props := make(map[string]*nodeProperties)
 	if len(dcids) == 0 {
@@ -361,7 +361,7 @@ func (s *Service) fetchEntityProperties(ctx context.Context, dcids []string) (ma
 		Nodes:    dcids,
 		Property: "->[name, typeOf]",
 	}
-	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	nodeResp, err := s.fetchAllNodes(ctx, nodeReq)
 	if err != nil {
 		return nil, err
 	}
@@ -400,7 +400,7 @@ func extractUniqueNodeDcids(nodes []*pb.EntityInfo) []string {
 	return result
 }
 
-// fetchProvenanceProperties performs a single V2Node call to resolve URLs for provenances.
+// fetchProvenanceProperties resolves URLs for provenances.
 func (s *Service) fetchProvenanceProperties(ctx context.Context, dcids []string) (map[string]*provenanceProperties, error) {
 	props := make(map[string]*provenanceProperties)
 	if len(dcids) == 0 {
@@ -411,7 +411,7 @@ func (s *Service) fetchProvenanceProperties(ctx context.Context, dcids []string)
 		Nodes:    dcids,
 		Property: "->[url]",
 	}
-	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	nodeResp, err := s.fetchAllNodes(ctx, nodeReq)
 	if err != nil {
 		return nil, err
 	}

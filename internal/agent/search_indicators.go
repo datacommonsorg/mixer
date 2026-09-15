@@ -877,7 +877,7 @@ func (s *Service) enrichPlaceNamesAndTypes(
 		Nodes:    dcids,
 		Property: "->[name, typeOf]",
 	}
-	if nodeResp, err := s.mixer.V2Node(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
+	if nodeResp, err := s.fetchAllNodes(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
 		for _, info := range resolvedMap {
 			if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
 				if name := getPropValue(nodeData, "name"); name != "" {
