@@ -109,7 +109,7 @@ func buildObservationRequest(in *pbv2.GetObservationsRequest, dateType string) *
 	return obsReq
 }
 
-// enrichMetadata performs a single V2Node call to fetch names and types for all entities.
+// enrichMetadata fetches names and types for all entities.
 func (s *Service) enrichMetadata(
 	ctx context.Context,
 	variableDcid string,
@@ -139,7 +139,7 @@ func (s *Service) enrichMetadata(
 		Property: nodePropertiesQuery,
 	}
 
-	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	nodeResp, err := s.fetchAllNodes(ctx, nodeReq)
 	if err != nil {
 		return nil, err
 	}

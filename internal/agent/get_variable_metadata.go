@@ -293,7 +293,7 @@ func (s *Service) fetchRawProvenances(ctx context.Context, raw *rawFetchResult) 
 // fetchNodeGraph fetches wildcard outbound properties (->*) for a single node.
 func (s *Service) fetchNodeGraph(ctx context.Context, dcid string) (*pbv2.LinkedGraph, error) {
 	req := &pbv2.NodeRequest{Nodes: []string{dcid}, Property: wildcardPropertyQuery}
-	resp, err := s.mixer.V2Node(ctx, req)
+	resp, err := s.fetchAllNodes(ctx, req)
 	if err != nil {
 		return nil, err
 	}
