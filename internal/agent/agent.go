@@ -18,6 +18,7 @@ package agent
 import (
 	"context"
 
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -83,4 +84,13 @@ func (s *Service) Reset() {
 // DefaultExpandTopics returns the configured default topic expansion behavior.
 func (s *Service) DefaultExpandTopics() bool {
 	return s.defaultExpandTopics
+}
+
+// fetchAllNodes fetches all pages of a V2Node request. Large node lists are split
+// into chunks that are fetched in parallel.
+//
+// If any chunk fails the whole call fails, so callers that log and continue get
+// nothing back instead of a partial result.
+func (s *Service) fetchAllNodes(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	return nodefetcher.NodeFetchAllChunkedFunc(ctx, s.mixer.V2Node, req)
 }
