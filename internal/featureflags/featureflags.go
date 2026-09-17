@@ -68,6 +68,8 @@ type Flags struct {
 	BulkSVGBuildRightNodes []string `yaml:"BulkSVGBuildRightNodes"`
 	// Use materialized LinkedEdge table.
 	UseMaterializedLinkedEdge bool `yaml:"UseMaterializedLinkedEdge"`
+	// Whether to enable the non-place entity resolver.
+	EnableNonPlaceEntityResolver bool `yaml:"EnableNonPlaceEntityResolver"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -92,6 +94,7 @@ func setDefaultValues() *Flags {
 		ContainedInPlaceEntityScanMinVariables:         50,
 		BulkSVGBuildRightNodes:                         []string{"dc/g/Root"},
 		UseMaterializedLinkedEdge:                      false,
+		EnableNonPlaceEntityResolver:                   false,
 	}
 }
 

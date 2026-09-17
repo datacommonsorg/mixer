@@ -138,6 +138,8 @@ var statements = struct {
 	filterDescendentStatVarsByOnlyImport string
 	// Filter descendent stat vars by num_entities_existences.
 	filterDescendentStatVarsByNumEntitiesExistence string
+	// Filter nodes by existence in node_types.
+	nodeTypeExistence string
 	// Search nodes using vector search.
 	vectorSearchNode string
 	// Filter nodes by type.
@@ -784,6 +786,9 @@ OR CreationTimestamp > (
 		FROM Node
 		WHERE subject_id IN UNNEST(@nodes)
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
+	nodeTypeExistence: `EXISTS (
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
+			)`,
 	vectorSearchNode: `		SELECT
 			subject_id,
 			JSON_VALUE(embedding_content.name) AS name,
@@ -795,9 +800,7 @@ OR CreationTimestamp > (
 			embeddings IS NOT NULL
 			AND embedding_label = @embedding_label
 			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
-			AND EXISTS (
-				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
-			)
+			AND %[4]s
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
 		LIMIT @limit`,

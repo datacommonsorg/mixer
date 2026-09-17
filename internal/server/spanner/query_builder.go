@@ -823,14 +823,19 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {
 	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
+	nodeTypeCondition := "TRUE"
+	params := map[string]interface{}{
+		"embeddings":      embeddings,
+		"limit":           limit,
+		"embedding_label": embeddingLabel,
+	}
+	if len(nodeTypes) > 0 {
+		nodeTypeCondition = statements.nodeTypeExistence
+		params["node_types"] = nodeTypes
+	}
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
-		Params: map[string]interface{}{
-			"embeddings":      embeddings,
-			"limit":           limit,
-			"node_types":      nodeTypes,
-			"embedding_label": embeddingLabel,
-		},
+		SQL:    fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold), nodeTypeCondition),
+		Params: params,
 	}
 }
 

@@ -347,15 +347,38 @@ func TestV2Observation_UsageLog(t *testing.T) {
 func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
 		desc                   string
-		useSpannerGraph        bool // CLI flag
-		useSpannerGraphFlag    bool // Feature flag
-		enableEmbeddings       bool // flags.EnableSpannerSearchEmbeddings
-		resolver               string
-		indicatorSpannerHeader string // X-V2Resolve-Indicator-Spanner header
-		disableSpannerHeader   string // X-Disable-Spanner header
-		wantRoute              bool
-		wantErr                bool
+		useSpannerGraph              bool // CLI flag
+		useSpannerGraphFlag          bool // Feature flag
+		enableEmbeddings             bool // flags.EnableSpannerSearchEmbeddings
+		enableNonPlaceEntityResolver bool // flags.EnableNonPlaceEntityResolver
+		resolver                     string
+		indicatorSpannerHeader       string // X-V2Resolve-Indicator-Spanner header
+		disableSpannerHeader         string // X-Disable-Spanner header
+		wantRoute                    bool
+		wantErr                      bool
 	}{
+		// Non-place entity resolver
+		{
+			desc:                         "Non-place entity resolver with flag enabled and Spanner enabled -> route",
+			useSpannerGraph:              true,
+			enableNonPlaceEntityResolver: true,
+			resolver:                     resolve.ResolveResolverNonPlaceEntity,
+			wantRoute:                    true,
+		},
+		{
+			desc:                         "Non-place entity resolver with flag disabled -> don't route",
+			useSpannerGraph:              true,
+			enableNonPlaceEntityResolver: false,
+			resolver:                     resolve.ResolveResolverNonPlaceEntity,
+			wantRoute:                    false,
+		},
+		{
+			desc:                         "Non-place entity resolver with flag enabled but Spanner disabled -> don't route",
+			useSpannerGraph:              false,
+			enableNonPlaceEntityResolver: true,
+			resolver:                     resolve.ResolveResolverNonPlaceEntity,
+			wantRoute:                    false,
+		},
 		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
 			desc:            "Place resolver with Spanner enabled -> route",
@@ -516,6 +539,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 				flags: &featureflags.Flags{
 					UseSpannerGraph:               tc.useSpannerGraphFlag,
 					EnableSpannerSearchEmbeddings: tc.enableEmbeddings,
+					EnableNonPlaceEntityResolver:  tc.enableNonPlaceEntityResolver,
 				},
 			}
 

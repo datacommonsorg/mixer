@@ -48,6 +48,8 @@ const (
 	ResolveResolverIndicator = "indicator"
 	// ResolveResolverTopic is the resolver name for explicit topic tree navigation.
 	ResolveResolverTopic = "topic"
+	// ResolveResolverNonPlaceEntity is the resolver name for non-place entity resolution.
+	ResolveResolverNonPlaceEntity = "non_place_entity"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"
@@ -358,6 +360,19 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 			}
 		case ResolveResolverTopic:
 			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
+		case ResolveResolverNonPlaceEntity:
+			// Non-place entity resolution only supports description as inArc.
+			if inProp != DescriptionProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: non_place_entity resolution only supports '%s' as input property",
+					DescriptionProperty))
+			}
+			// Non-place entity resolution only supports dcid as outArc.
+			if outProp != DcidProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: non_place_entity resolution only supports '%s' as output property",
+					DcidProperty))
+			}
 		}
 	}
 
@@ -398,15 +413,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic:
+	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic, ResolveResolverNonPlaceEntity:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic, ResolveResolverNonPlaceEntity)
 	}
 }
 

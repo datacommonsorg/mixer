@@ -114,7 +114,6 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
 	})
 
-
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate", "Environment", "Weather"},
 		Resolver: "indicator",
@@ -257,3 +256,124 @@ func TestResolveTopic_Success(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
+
+func TestResolveEmbeddings_NonPlaceEntity(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		vectorSearchRes: []*VectorSearchResult{
+			{
+				SubjectID:        "dc/school/LincolnElementary",
+				Name:             "Lincoln Elementary School",
+				CosineSimilarity: 0.95,
+				Types:            []string{"School", "ElementarySchool"},
+			},
+		},
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Lincoln Elementary School"},
+		Resolver: "non_place_entity",
+		Property: "<-description{typeOf:ElementarySchool}->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "Lincoln Elementary School",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{
+						Dcid:   "dc/school/LincolnElementary",
+						Name:   "Lincoln Elementary School",
+						TypeOf: []string{"School", "ElementarySchool"},
+						Metadata: map[string]string{
+							"score":    "0.9500",
+							"sentence": "Lincoln Elementary School",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestResolveEmbeddings_NonPlaceEntity_InvalidType(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Some Entity"},
+		Resolver: "non_place_entity",
+		Property: "<-description{typeOf:StatisticalVariable}->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{}
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestResolveEmbeddings_NonPlaceEntity_NoTypeOf(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		vectorSearchRes: []*VectorSearchResult{
+			{
+				SubjectID:        "dc/school/LincolnElementary",
+				Name:             "Lincoln Elementary School",
+				CosineSimilarity: 0.95,
+				Types:            []string{"School", "ElementarySchool"},
+			},
+		},
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Lincoln Elementary School"},
+		Resolver: "non_place_entity",
+		Property: "<-description->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "Lincoln Elementary School",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{
+						Dcid:   "dc/school/LincolnElementary",
+						Name:   "Lincoln Elementary School",
+						TypeOf: []string{"School", "ElementarySchool"},
+						Metadata: map[string]string{
+							"score":    "0.9500",
+							"sentence": "Lincoln Elementary School",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
