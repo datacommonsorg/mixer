@@ -65,9 +65,20 @@ const (
 	MapsAPIKeyID = "maps-api-key"
 	// Mixer API key
 	MixerAPIKeyID = "mixer-api-key"
-	// Upper limit for API response sizes.
-	MaxResponseSize = 100 * 1024 * 1024 // 100 MB
 )
+
+const (
+	// Upper limit for API response sizes.
+	MaxResponseSize = 20 * 1024 * 1024 // 20 MB
+	// Base response message for exceeding response size limits.
+	defaultResponseSizeErrorMsg = "Response payload exceeds maximum allowed size of %.2f MB. Please narrow your request parameters."
+)
+
+// Endpoint-specific hints for narrowing request.
+var responseSizeHints = map[string]string{
+	"/datacommons.Mixer/V2Observation":          "Try requesting a specific date or reducing the number of variables or entities. Refer to the API documentation in https://docs.datacommons.org/api/rest/v2/observation.",
+	"/datacommons.Mixer/BulkObservationsSeries": "Try reducing the number of variables or entities.",
+}
 
 var childTypeDenyList = map[string]struct{}{
 	"Place":               {},
@@ -923,10 +934,6 @@ func SortedStringKeys[V any, M ~map[string]V](m M) []string {
 // ResponseSizeLimiterUnaryInterceptor blocks unary RPC responses that exceed the limit.
 func ResponseSizeLimiterUnaryInterceptor(limit int) grpc.UnaryServerInterceptor {
 	limitMB := float64(limit) / 1024 / 1024
-	limitError := status.Error(
-		codes.ResourceExhausted,
-		fmt.Sprintf("Response payload exceeds maximum allowed size of %.2f MB. Please narrow your request parameters.", limitMB),
-	)
 	return func(
 		ctx context.Context,
 		req any,
@@ -941,12 +948,35 @@ func ResponseSizeLimiterUnaryInterceptor(limit int) grpc.UnaryServerInterceptor 
 		if p, ok := resp.(proto.Message); ok {
 			size := proto.Size(p)
 			if size > limit {
+				// Safely attempt to serialize the request for debug.
+				var reqPayload string
+				if reqProto, ok := req.(proto.Message); ok {
+					bytes, _ := protojson.MarshalOptions{
+						UseProtoNames:   true,
+						EmitUnpopulated: false,
+					}.Marshal(reqProto)
+					reqPayload = string(bytes)
+					if len(reqPayload) > 1024 {
+						reqPayload = reqPayload[:1024] + " ... [truncated]"
+					}
+				}
+
 				slog.Error("Blocked large response payload",
 					"method", info.FullMethod,
 					"sizeBytes", size,
 					"limitBytes", limit,
+					"request", reqPayload,
 				)
-				return nil, limitError
+
+				limitMsg := fmt.Sprintf(defaultResponseSizeErrorMsg, limitMB)
+				hint, ok := responseSizeHints[info.FullMethod]
+				if ok {
+					limitMsg += " " + hint
+				}
+				return nil, status.Error(
+					codes.InvalidArgument,
+					limitMsg,
+				)
 			}
 		}
 

@@ -640,10 +640,10 @@ responseSize: 50, // 50 < 500
 			expectError:  false,
 		},
 		{
-			name:         "Over limit - returns ResourceExhausted error",
+			name:         "Over limit - returns InvalidArgument error",
 			responseSize: 600, // 600 > 500
 			expectError:  true,
-			expectCode:   codes.ResourceExhausted,
+			expectCode:   codes.InvalidArgument,
 		},
 	}
 
