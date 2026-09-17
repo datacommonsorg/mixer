@@ -517,6 +517,9 @@ var resolverToSpannerConfigKey = map[string]string{
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+	if req == nil {
+		return nil, status.Errorf(codes.InvalidArgument, "request is nil")
+	}
 	normalizedResolveRequest, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
