@@ -16,6 +16,7 @@ package remote
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -23,7 +24,9 @@ import (
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func TestRemoteClient_Observation_SurfaceHeader(t *testing.T) {
@@ -115,5 +118,68 @@ func TestRemoteClient_Sdmx_ErrorTolerance(t *testing.T) {
 				t.Errorf("len(client.SdmxData().GetSeries()) = %d, want %d", len(got.GetSeries()), tc.wantSeries)
 			}
 		})
+	}
+}
+
+// Node peels the per-source continuation token out of the composite token it is
+// given. The request belongs to the caller and is shared across the concurrent
+// data source fan-out, so that peel must not be visible to the caller.
+func TestRemoteClientNodeKeepsCallerPaginationToken(t *testing.T) {
+	const remoteToken = "remote-page-two"
+	var sentNextToken string
+
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		body, err := io.ReadAll(r.Body)
+		if err != nil {
+			t.Errorf("reading remote request body: %v", err)
+			return
+		}
+		sentReq := &pbv2.NodeRequest{}
+		if err := protojson.Unmarshal(body, sentReq); err != nil {
+			t.Errorf("unmarshaling remote request: %v", err)
+			return
+		}
+		sentNextToken = sentReq.GetNextToken()
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{}`))
+	}))
+	defer ts.Close()
+
+	client, err := NewRemoteClient(&resource.Metadata{
+		RemoteMixerDomain: ts.URL,
+		RemoteMixerAPIKey: "test-api-key",
+	})
+	if err != nil {
+		t.Fatalf("NewRemoteClient() error = %v", err)
+	}
+
+	// The remote data source keys its pagination info by the remote mixer domain.
+	callerToken, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{{
+			Id: ts.URL,
+			DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+				StringInfo: remoteToken,
+			},
+		}},
+	})
+	if err != nil {
+		t.Fatalf("EncodeProto() error = %v", err)
+	}
+
+	req := &pbv2.NodeRequest{
+		Nodes:     []string{"geoId/06"},
+		Property:  "->name",
+		NextToken: callerToken,
+	}
+	if _, err := client.Node(context.Background(), req); err != nil {
+		t.Fatalf("Node() error = %v", err)
+	}
+
+	if got := req.GetNextToken(); got != callerToken {
+		t.Errorf("caller request next token = %q, want %q", got, callerToken)
+	}
+	if sentNextToken != remoteToken {
+		t.Errorf("remote received next token = %q, want %q", sentNextToken, remoteToken)
 	}
 }

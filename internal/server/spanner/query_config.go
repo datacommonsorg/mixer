@@ -40,6 +40,9 @@ type QueryConfig struct {
 	// SpannerEmulatorCompatibility indicates whether queries should be
 	// formatted for Cloud Spanner Emulator (e.g. omitting unsupported hints).
 	SpannerEmulatorCompatibility bool
+	// UseMaterializedLinkedEdge indicates whether queries should use the
+	// LinkedEdge table.
+	UseMaterializedLinkedEdge bool
 }
 
 type containedInPlaceAccessPath int

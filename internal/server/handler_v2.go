@@ -247,16 +247,15 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 			errGroup.Go(func() error {
 				// Update |next_token| before sending the request to remote.
 				// Peel off one layer of |remote_pagination_info| hierarchy.
-				remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
+				remoteReq, err := remoteNodeRequest(in, remotePaginationInfo)
 				if err != nil {
 					return err
 				}
-				in.NextToken = remoteReqNextToken
 
 				// Call remote.
 				remoteResp := &pbv2.NodeResponse{}
 				if err := util.FetchRemote(
-					errCtx, s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					errCtx, s.metadata, s.httpClient, "/v2/node", remoteReq, remoteResp); err != nil {
 					return err
 				}
 				remoteRespChan <- remoteResp
@@ -292,6 +291,21 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	)
 
 	return v2Resp, nil
+}
+
+// remoteNodeRequest returns a private request for the continuation-page remote call.
+// It clones |in| so that the concurrent local call and the V3 mirror still observe
+// the caller's composite |next_token|.
+func remoteNodeRequest(
+	in *pbv2.NodeRequest, remotePaginationInfo *pbv1.PaginationInfo,
+) (*pbv2.NodeRequest, error) {
+	nextToken, err := util.EncodeProto(remotePaginationInfo)
+	if err != nil {
+		return nil, err
+	}
+	remoteReq := proto.Clone(in).(*pbv2.NodeRequest)
+	remoteReq.NextToken = nextToken
+	return remoteReq, nil
 }
 
 // V2Event implements API for mixer.V2Event.

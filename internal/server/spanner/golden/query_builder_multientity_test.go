@@ -95,6 +95,7 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 					ContainedInPlaceAncestorFirstTypes:             c.ancestorFirstTypes,
 					ContainedInPlacePreferTimeSeriesScanPlaceTypes: c.preferTimeSeriesScanPlaceTypes,
 					ContainedInPlaceEntityScanMinVariables:         c.entityScanMinVars,
+					UseMaterializedLinkedEdge:                      c.useMaterializedLinkedEdge,
 				})
 				if err != nil {
 					return nil, err

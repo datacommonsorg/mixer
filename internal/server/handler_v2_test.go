@@ -40,6 +40,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -85,6 +86,60 @@ func TestUseMetadata(t *testing.T) {
 		if diff := cmp.Diff(toRemote, c.wantToRemote); diff != "" {
 			t.Errorf("%s: unexpected toRemote diff %v", c.desc, diff)
 		}
+	}
+}
+
+// The continuation-page remote call rewrites |next_token| to the remote's nested
+// token. It runs concurrently with the local read, which needs the caller's
+// composite token, so the rewrite must happen on a private copy.
+func TestV2NodeKeepsCallerPaginationToken(t *testing.T) {
+	remotePaginationInfo := &pbv1.PaginationInfo{
+		CursorGroups: []*pbv1.CursorGroup{{
+			Keys:    []string{"remote"},
+			Cursors: []*pbv1.Cursor{{Item: 20}},
+		}},
+	}
+	callerToken, err := util.EncodeProto(&pbv1.PaginationInfo{
+		CursorGroups: []*pbv1.CursorGroup{{
+			Keys:    []string{"local"},
+			Cursors: []*pbv1.Cursor{{Item: 10}},
+		}},
+		RemotePaginationInfo: remotePaginationInfo,
+	})
+	if err != nil {
+		t.Fatalf("EncodeProto() error = %v", err)
+	}
+	wantRemoteToken, err := util.EncodeProto(remotePaginationInfo)
+	if err != nil {
+		t.Fatalf("EncodeProto() error = %v", err)
+	}
+
+	transport := &mockRemoteTransport{}
+	s := &Server{
+		store:    &store.Store{},
+		metadata: &resource.Metadata{RemoteMixerDomain: "http://mock-remote"},
+		flags:    &featureflags.Flags{},
+		httpClient: &http.Client{
+			Transport: transport,
+		},
+	}
+	s.cachedata.Store(&cache.Cache{})
+
+	// An empty |property| lets the local read return without touching the store.
+	in := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}, NextToken: callerToken}
+	if _, err := s.V2Node(context.Background(), in); err != nil {
+		t.Fatalf("V2Node() error = %v", err)
+	}
+
+	if got := in.GetNextToken(); got != callerToken {
+		t.Errorf("caller request next token = %q, want %q", got, callerToken)
+	}
+	sentReq := &pbv2.NodeRequest{}
+	if err := protojson.Unmarshal(transport.lastBody, sentReq); err != nil {
+		t.Fatalf("unmarshaling remote request: %v", err)
+	}
+	if got := sentReq.GetNextToken(); got != wantRemoteToken {
+		t.Errorf("remote received next token = %q, want %q", got, wantRemoteToken)
 	}
 }
 
@@ -492,10 +547,18 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 
 type mockRemoteTransport struct {
 	lastPath string
+	lastBody []byte
 }
 
 func (m *mockRemoteTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	m.lastPath = req.URL.Path
+	if req.Body != nil {
+		body, err := io.ReadAll(req.Body)
+		if err != nil {
+			return nil, err
+		}
+		m.lastBody = body
+	}
 	return &http.Response{
 		StatusCode: http.StatusOK,
 		Body:       io.NopCloser(strings.NewReader(`{}`)),
@@ -506,9 +569,9 @@ func TestV2RemoteAPIPaths(t *testing.T) {
 	ctx := context.Background()
 	transport := &mockRemoteTransport{}
 	s := &Server{
-		store:      &store.Store{},
-		metadata:   &resource.Metadata{RemoteMixerDomain: "http://mock-remote"},
-		flags:      &featureflags.Flags{},
+		store:    &store.Store{},
+		metadata: &resource.Metadata{RemoteMixerDomain: "http://mock-remote"},
+		flags:    &featureflags.Flags{},
 		httpClient: &http.Client{
 			Transport: transport,
 		},

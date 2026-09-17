@@ -68,7 +68,7 @@ const (
 
 var (
 	// Server config
-	port           = flag.Int("port", 12345, "Port on which to run the server.")
+	port                = flag.Int("port", 12345, "Port on which to run the server.")
 	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
@@ -134,6 +134,11 @@ var (
 		"spanner_search_config_path",
 		"",
 		"Path to Spanner search config YAML file.",
+	)
+	agentDefaultExpandTopics = flag.Bool(
+		"agent_default_expand_topics",
+		true,
+		"Default value for expand_topics in agent search_indicators if not specified in request.",
 	)
 )
 
@@ -219,6 +224,7 @@ func main() {
 			ContainedInPlaceAncestorFirstTypes:             flags.ContainedInPlaceAncestorFirstTypes,
 			ContainedInPlacePreferTimeSeriesScanPlaceTypes: flags.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
 			ContainedInPlaceEntityScanMinVariables:         flags.ContainedInPlaceEntityScanMinVariables,
+			UseMaterializedLinkedEdge:                      flags.UseMaterializedLinkedEdge,
 		}
 		if err := queryConfig.Validate(); err != nil {
 			slog.Error("Invalid Spanner query config", "error", err)
@@ -553,6 +559,7 @@ func main() {
 			EmbeddingsServiceClient:           embeddingsServiceClient,
 			UseSpannerGraph:                   *useSpannerGraph,
 			TopicExpander:                     topicExpander,
+			AgentDefaultExpandTopics:          agentDefaultExpandTopics,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)

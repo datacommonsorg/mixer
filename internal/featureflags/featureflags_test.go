@@ -413,6 +413,29 @@ flags:
 			}),
 			wantErr: false,
 		},
+		{
+			name: "validation error - UseMaterializedLinkedEdge without UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: false
+  UseMaterializedLinkedEdge: true
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "valid UseMaterializedLinkedEdge with UseSpannerGraph",
+			fileContent: `
+flags:
+  UseSpannerGraph: true
+  UseMaterializedLinkedEdge: true
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.UseSpannerGraph = true
+				f.UseMaterializedLinkedEdge = true
+			}),
+			wantErr: false,
+		},
 	}
 
 	for _, tc := range testCases {
