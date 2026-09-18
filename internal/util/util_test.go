@@ -492,9 +492,9 @@ func TestToStringListValue(t *testing.T) {
 
 func TestSortedStringKeys(t *testing.T) {
 	input := map[string]int{
-		"recipient":        1,
-		"donor":            2,
-		"observationAbout": 3,
+		"recipient":          1,
+		"donor":              2,
+		"observationAbout":   3,
 	}
 	want := []string{"donor", "observationAbout", "recipient"}
 	got := SortedStringKeys(input)
@@ -618,4 +618,3 @@ func TestFetchRemote(t *testing.T) {
 		})
 	}
 }
-

@@ -206,7 +206,6 @@ func main() {
 
 	// Create grpc server.
 	srv := grpc.NewServer(
-		grpc.MaxSendMsgSize(util.MaxResponseSize),
 		grpc.ChainUnaryInterceptor(
 			metrics.InjectMethodNameUnaryInterceptor,
 		),
@@ -510,6 +509,10 @@ func main() {
 			processors = append(processors, &redisProcessor)
 		}
 
+		// Response Size Limiter Processor.
+		var sizeLimiter dispatcher.Processor = dispatcher.NewResponseSizeLimiterProcessor(util.MaxResponseSize)
+		processors = append(processors, &sizeLimiter)
+
 		if remoteDataSource != nil {
 			// Relation Expression Processor
 			slog.Info("remoteDataSource is configured, setting up relation expression processor")
@@ -535,10 +538,6 @@ func main() {
 
 		}
 	}
-
-	// Response Size Limiter Processor
-	var sizeLimiter dispatcher.Processor = dispatcher.NewResponseSizeLimiterProcessor(util.MaxResponseSize)
-	processors = append(processors, &sizeLimiter)
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)

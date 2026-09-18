@@ -17,6 +17,7 @@ package dispatcher
 import (
 	"fmt"
 	"log/slog"
+	"unicode/utf8"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -24,59 +25,96 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var responseSizeHints = map[RequestType]string{
-	TypeObservation: "Try requesting a specific date or reducing the number of variables or entities.",
-}
+const (
+	bytesPerMB            = 1024 * 1024
+	maxLoggedRequestBytes = 1024
+	truncatedSuffix       = " ... [truncated]"
+)
 
-// ResponseSizeLimiterProcessor checks the size of the response and aborts if it exceeds the limit.
+var (
+	logMarshalOptions = protojson.MarshalOptions{
+		UseProtoNames:   true,
+		EmitUnpopulated: false,
+	}
+
+	responseSizeHints = map[RequestType]string{
+		TypeObservation: "Try requesting a specific date or reducing the number of variables or entities.",
+	}
+)
+
+// ResponseSizeLimiterProcessor checks the serialized protobuf size of the
+// response and aborts post-processing with codes.InvalidArgument if it exceeds
+// limitBytes.
 type ResponseSizeLimiterProcessor struct {
 	limitBytes int
 }
 
+// NewResponseSizeLimiterProcessor creates a processor that enforces limitBytes
+// on response payloads.
 func NewResponseSizeLimiterProcessor(limitBytes int) *ResponseSizeLimiterProcessor {
 	return &ResponseSizeLimiterProcessor{limitBytes: limitBytes}
 }
 
+// PreProcess is a no-op for ResponseSizeLimiterProcessor.
 func (p *ResponseSizeLimiterProcessor) PreProcess(rc *RequestContext) (Outcome, error) {
 	return Continue, nil
 }
 
+// PostProcess checks the size of rc.CurrentResponse and returns an
+// InvalidArgument error if it exceeds p.limitBytes.
 func (p *ResponseSizeLimiterProcessor) PostProcess(rc *RequestContext) (Outcome, error) {
-	if rc.CurrentResponse == nil {
+	if rc == nil || rc.CurrentResponse == nil || p.limitBytes <= 0 {
 		return Continue, nil
 	}
 
 	size := proto.Size(rc.CurrentResponse)
-	if size > p.limitBytes {
-		limitMB := float64(p.limitBytes) / 1024 / 1024
-
-		// Safely attempt to serialize the request for debug.
-		var reqPayload string
-		if rc.OriginalRequest != nil {
-			bytes, _ := protojson.MarshalOptions{
-				UseProtoNames:   true,
-				EmitUnpopulated: false,
-			}.Marshal(rc.OriginalRequest)
-			reqPayload = string(bytes)
-			if len(reqPayload) > 1024 {
-				reqPayload = reqPayload[:1024] + " ... [truncated]"
-			}
-		}
-
-		slog.Error("Blocked large response payload",
-			"requestType", rc.Type,
-			"sizeBytes", size,
-			"limitBytes", p.limitBytes,
-			"request", reqPayload,
-		)
-
-		limitMsg := fmt.Sprintf("Response payload exceeds maximum allowed size of %.2f MB. Please narrow your request parameters.", limitMB)
-		if hint, ok := responseSizeHints[rc.Type]; ok {
-			limitMsg += " " + hint
-		}
-		limitError := status.New(codes.InvalidArgument, limitMsg)
-		return Continue, limitError.Err()
+	if size <= p.limitBytes {
+		return Continue, nil
 	}
 
-	return Continue, nil
+	req := rc.OriginalRequest
+	if req == nil {
+		req = rc.CurrentRequest
+	}
+
+	slog.Error("Blocked large response payload",
+		"requestType", rc.Type,
+		"sizeBytes", size,
+		"limitBytes", p.limitBytes,
+		"request", formatRequestForLog(req),
+	)
+
+	return Continue, status.Error(codes.InvalidArgument, buildLimitExceededMessage(rc.Type, p.limitBytes))
+}
+
+// formatRequestForLog serializes req to compact JSON for debug logging,
+// truncating payloads larger than maxLoggedRequestBytes on a valid UTF-8 rune
+// boundary without allocating a full-size string copy first.
+func formatRequestForLog(req proto.Message) string {
+	if req == nil {
+		return ""
+	}
+	bytes, err := logMarshalOptions.Marshal(req)
+	if err != nil {
+		return ""
+	}
+	if len(bytes) <= maxLoggedRequestBytes {
+		return string(bytes)
+	}
+	end := maxLoggedRequestBytes
+	for end > 0 && !utf8.RuneStart(bytes[end]) {
+		end--
+	}
+	return string(bytes[:end]) + truncatedSuffix
+}
+
+// buildLimitExceededMessage constructs the user-facing error message with any
+// request-type-specific hint.
+func buildLimitExceededMessage(reqType RequestType, limitBytes int) string {
+	limitMB := float64(limitBytes) / bytesPerMB
+	msg := fmt.Sprintf("Response payload exceeds maximum allowed size of %.2f MB. Please narrow your request parameters.", limitMB)
+	if hint, ok := responseSizeHints[reqType]; ok {
+		msg += " " + hint
+	}
+	return msg
 }
