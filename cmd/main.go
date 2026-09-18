@@ -206,9 +206,9 @@ func main() {
 
 	// Create grpc server.
 	srv := grpc.NewServer(
+		grpc.MaxSendMsgSize(util.MaxResponseSize),
 		grpc.ChainUnaryInterceptor(
 			metrics.InjectMethodNameUnaryInterceptor,
-			util.ResponseSizeLimiterUnaryInterceptor(util.MaxResponseSize),
 		),
 		grpc.ChainStreamInterceptor(
 			metrics.InjectMethodNameStreamInterceptor,
@@ -535,6 +535,10 @@ func main() {
 
 		}
 	}
+
+	// Response Size Limiter Processor
+	var sizeLimiter dispatcher.Processor = dispatcher.NewResponseSizeLimiterProcessor(util.MaxResponseSize)
+	processors = append(processors, &sizeLimiter)
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)

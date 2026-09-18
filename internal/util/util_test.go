@@ -27,14 +27,10 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/structpb"
-	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -623,65 +619,3 @@ func TestFetchRemote(t *testing.T) {
 	}
 }
 
-func TestResponseSizeLimiterUnaryInterceptor(t *testing.T) {
-	const limit = 500
-	interceptor := ResponseSizeLimiterUnaryInterceptor(limit)
-	info := &grpc.UnaryServerInfo{FullMethod: "/TestService/TestMethod"}
-
-	tests := []struct {
-		name         string
-		responseSize int
-		expectError  bool
-		expectCode   codes.Code
-	}{
-		{
-			name:         "Under limit - succeeds normally",
-responseSize: 50, // 50 < 500
-			expectError:  false,
-		},
-		{
-			name:         "Over limit - returns InvalidArgument error",
-			responseSize: 600, // 600 > 500
-			expectError:  true,
-			expectCode:   codes.InvalidArgument,
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			mockHandler := func(ctx context.Context, req any) (any, error) {
-				return &wrapperspb.BytesValue{
-					Value: make([]byte, tc.responseSize),
-				}, nil
-			}
-
-			ctx := context.Background()
-
-			resp, err := interceptor(ctx, nil, info, mockHandler)
-
-			if tc.expectError {
-				if err == nil {
-					t.Fatalf("expected an error, but got nil")
-				}
-				st, ok := status.FromError(err)
-				if !ok {
-					t.Fatalf("expected a gRPC status error, got %v", err)
-				}
-				if st.Code() != tc.expectCode {
-					t.Errorf("expected error code %v, got %v", tc.expectCode, st.Code())
-				}
-				if resp != nil {
-					t.Errorf("expected response to be nil on error, got %v", resp)
-				}
-				return
-			}
-
-			if err != nil {
-				t.Fatalf("expected no error, but got %v", err)
-			}
-			if resp == nil {
-				t.Fatalf("expected a response, got nil")
-			}
-		})
-	}
-}
