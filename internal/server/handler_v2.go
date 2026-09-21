@@ -144,7 +144,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 	}
 
 	// Non-place entity resolver
-	if resolver == resolve.ResolveResolverNonPlaceEntity {
+	if resolver == resolve.ResolveResolverNonPlace {
 		if s.flags != nil && s.flags.EnableNonPlaceEntityResolver {
 			return s.shouldDivertV2(ctx), nil
 		}

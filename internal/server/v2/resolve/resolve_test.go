@@ -218,7 +218,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place_entity'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -227,7 +227,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place_entity'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
 		},
 		{
 			desc: "invalid property expression",
@@ -253,14 +253,14 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			wantTypeOfValues: nil,
 		},
 		{
-			desc: "valid non_place_entity resolver",
+			desc: "valid non_place resolver",
 			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverNonPlaceEntity,
+				Resolver: ResolveResolverNonPlace,
 				Property: "<-description{typeOf:ElementarySchool}->dcid",
 			},
 			wantReq: &pbv2.ResolveRequest{
 				Target:   ResolveTargetBaseAndCustom,
-				Resolver: ResolveResolverNonPlaceEntity,
+				Resolver: ResolveResolverNonPlace,
 				Property: "<-description{typeOf:ElementarySchool}->dcid",
 			},
 			wantInProp:       "description",
@@ -268,22 +268,22 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			wantTypeOfValues: []string{"ElementarySchool"},
 		},
 		{
-			desc: "invalid property for non_place_entity resolver (inProp)",
+			desc: "invalid property for non_place resolver (inProp)",
 			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverNonPlaceEntity,
+				Resolver: ResolveResolverNonPlace,
 				Property: "<-geoCoordinate->dcid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place_entity resolution only supports 'description' as input property",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place resolution only supports 'description' as input property",
 		},
 		{
-			desc: "invalid property for non_place_entity resolver (outProp)",
+			desc: "invalid property for non_place resolver (outProp)",
 			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverNonPlaceEntity,
+				Resolver: ResolveResolverNonPlace,
 				Property: "<-description->nutsCode",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place_entity resolution only supports 'dcid' as output property",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place resolution only supports 'dcid' as output property",
 		},
 		{
 			desc: "invalid property for indicator resolver (inProp)",

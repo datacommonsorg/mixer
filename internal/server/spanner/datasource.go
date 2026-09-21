@@ -511,8 +511,25 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 }
 
 var resolverToSpannerConfigKey = map[string]string{
-	resolvev2.ResolveResolverIndicator:      "indicator",
-	resolvev2.ResolveResolverNonPlaceEntity: "non_place_entity",
+	resolvev2.ResolveResolverIndicator: "indicator",
+	resolvev2.ResolveResolverNonPlace:  "non_place_entity",
+}
+
+func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedResolveRequest) bool {
+	if normalizedResolveRequest == nil || normalizedResolveRequest.Request == nil {
+		return false
+	}
+	resolver := normalizedResolveRequest.Request.GetResolver()
+	if resolver == "" {
+		return false
+	}
+	if resolver == resolvev2.ResolveResolverIndicator {
+		return true
+	}
+	if resolver == resolvev2.ResolveResolverNonPlace {
+		return true
+	}
+	return false
 }
 
 // Resolve searches for nodes in the graph.
@@ -525,10 +542,11 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		return nil, err
 	}
 
-	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator || resolver == resolvev2.ResolveResolverNonPlaceEntity {
+	if useVectorSearchResolution(normalizedResolveRequest) {
+		resolver := normalizedResolveRequest.Request.GetResolver()
 		spannerConfigKey, ok := resolverToSpannerConfigKey[resolver]
 		if !ok {
-			return nil, status.Errorf(codes.InvalidArgument, "unsupported resolver for Spanner search: %s", resolver)
+			return nil, status.Errorf(codes.InvalidArgument, "unsupported resolver: %s", resolver)
 		}
 		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "spannerConfigKey", spannerConfigKey, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest, spannerConfigKey)
@@ -601,7 +619,7 @@ func validateAndNormalizeVectorSearchTypes(resolver string, typeOfs []string) ([
 			}
 		}
 		return typeOfs, true
-	case resolvev2.ResolveResolverNonPlaceEntity:
+	case resolvev2.ResolveResolverNonPlace:
 		for _, t := range typeOfs {
 			if t == TypeStatisticalVariable || t == TypeTopic {
 				slog.Warn("Non-place entity embeddings resolution requested for unsupported type.", "type", t)
@@ -627,12 +645,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 
 	searchConfig, ok := cfg.SearchConfigs[spannerConfigKey]
 	if !ok {
-		return nil, fmt.Errorf("no matching SearchConfig found for spanner config key: %s", spannerConfigKey)
+		slog.Warn("No matching SearchConfig found for spanner config key.", "spannerConfigKey", spannerConfigKey)
+		return &pbv2.ResolveResponse{}, nil
 	}
 
 	typeOfs, ok := validateAndNormalizeVectorSearchTypes(req.Request.GetResolver(), req.TypeOfValues)
 	if !ok {
-		return &pbv2.ResolveResponse{}, nil
+		return nil, fmt.Errorf("invalid typeOfs %v for resolver %s", req.TypeOfValues, req.Request.GetResolver())
 	}
 
 	resolveResponse := &pbv2.ResolveResponse{

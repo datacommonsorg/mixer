@@ -786,9 +786,15 @@ OR CreationTimestamp > (
 		FROM Node
 		WHERE subject_id IN UNNEST(@nodes)
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
-	nodeTypeExistence: `EXISTS (
+	nodeTypeExistence: `
+			AND EXISTS (
 				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
 			)`,
+	// vectorSearchNode searches for nodes using vector similarity.
+	// %[1]s: Embedding table name (e.g., `NodeEmbedding`).
+	// %[2]s: JSON options for APPROX_COSINE_DISTANCE (e.g., {"num_leaves_to_search": 20}).
+	// %[3]s: Cosine similarity threshold formatted as float (e.g., 0.60).
+	// %[4]s: Optional node type filter clause (nodeTypeExistence when nodeTypes is non-empty, or "" otherwise).
 	vectorSearchNode: `		SELECT
 			subject_id,
 			JSON_VALUE(embedding_content.name) AS name,
@@ -799,8 +805,7 @@ OR CreationTimestamp > (
 		WHERE
 			embeddings IS NOT NULL
 			AND embedding_label = @embedding_label
-			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
-			AND %[4]s
+			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s%[4]s
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
 		LIMIT @limit`,

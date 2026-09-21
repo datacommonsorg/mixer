@@ -2,6 +2,7 @@ package spanner
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -275,7 +276,7 @@ func TestResolveEmbeddings_NonPlaceEntity(t *testing.T) {
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Lincoln Elementary School"},
-		Resolver: "non_place_entity",
+		Resolver: resolve.ResolveResolverNonPlace,
 		Property: "<-description{typeOf:ElementarySchool}->dcid",
 	})
 	if err != nil {
@@ -313,18 +314,14 @@ func TestResolveEmbeddings_NonPlaceEntity_InvalidType(t *testing.T) {
 		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
 	})
 
-	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+	_, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Some Entity"},
-		Resolver: "non_place_entity",
+		Resolver: resolve.ResolveResolverNonPlace,
 		Property: "<-description{typeOf:StatisticalVariable}->dcid",
 	})
-	if err != nil {
-		t.Fatalf("Resolve() error: %v", err)
-	}
-
-	want := &pbv2.ResolveResponse{}
-	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
-		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	wantErr := "invalid typeOfs [StatisticalVariable] for resolver non_place"
+	if err == nil || !strings.Contains(err.Error(), wantErr) {
+		t.Fatalf("Resolve() expected error containing %q, got: %v", wantErr, err)
 	}
 }
 
@@ -346,7 +343,7 @@ func TestResolveEmbeddings_NonPlaceEntity_NoTypeOf(t *testing.T) {
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Lincoln Elementary School"},
-		Resolver: "non_place_entity",
+		Resolver: resolve.ResolveResolverNonPlace,
 		Property: "<-description->dcid",
 	})
 	if err != nil {
@@ -376,4 +373,29 @@ func TestResolveEmbeddings_NonPlaceEntity_NoTypeOf(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
+
+func TestResolveEmbeddings_MissingSearchConfig(t *testing.T) {
+	t.Parallel()
+
+	// dcp_default only defines the "indicator" search config, not "non_place_entity".
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
+		Embedder:         &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		SearchConfigPath: "dcp_default",
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Lincoln Elementary School"},
+		Resolver: resolve.ResolveResolverNonPlace,
+		Property: "<-description->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() unexpected error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{}
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
 

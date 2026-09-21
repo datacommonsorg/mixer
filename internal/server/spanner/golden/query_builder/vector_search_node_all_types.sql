@@ -9,7 +9,6 @@
 			embeddings IS NOT NULL
 			AND embedding_label = 'base_text_embedding'
 			AND COSINE_DISTANCE([0.1,0.2,0.3], embeddings) <= 1 - 0.60
-			AND TRUE
 		ORDER BY
 			APPROX_COSINE_DISTANCE([0.1,0.2,0.3], embeddings, options => JSON '{"num_leaves_to_search": 20}')
 		LIMIT 5
