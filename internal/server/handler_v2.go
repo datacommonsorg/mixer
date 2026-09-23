@@ -59,6 +59,8 @@ func (s *Server) V2Resolve(
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
+	//TODO: (Fixit) shouldRouteResolveToDispatcher is always returning true. removing the logic to invoke legacy v2 resolve
+	//TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
 	v2StartTime := time.Now()
 
 	normalizedResolveRequest, err := resolve.ValidateAndParseResolveInputs(in)
@@ -124,11 +126,6 @@ func (s *Server) V2Resolve(
 	)
 
 	return v2Resp, nil
-}
-
-// isSpannerEnabled returns true if the Spanner backend has been enabled.
-func (s *Server) isSpannerEnabled() bool {
-	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
 }
 
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
