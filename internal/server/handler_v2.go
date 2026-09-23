@@ -143,6 +143,14 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		return s.shouldDivertV2(ctx), nil
 	}
 
+	// Non-place entity resolver
+	if resolver == resolve.ResolveResolverNonPlace {
+		if s.flags != nil && s.flags.EnableNonPlaceEntityResolver {
+			return s.shouldDivertV2(ctx), nil
+		}
+		return false, nil
+	}
+
 	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
 		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
