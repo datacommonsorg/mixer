@@ -243,11 +243,12 @@ func fetchBT(
 	if err != nil {
 		return nil, nil, err
 	}
+	numTables := len(btGroup.Tables(nil))
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pbv1.CursorGroup
 	if token == "" {
 		cursorGroups = buildDefaultCursorGroups(
-			nodes, properties, propType, len(btGroup.Tables(nil)),
+			nodes, properties, propType, numTables,
 		)
 	} else {
 		pi, err := pagination.Decode(token)
@@ -259,22 +260,9 @@ func fetchBT(
 	if limit <= 0 || limit > defaultLimit {
 		limit = defaultLimit
 	}
-	cursorGroup := map[string]map[string]map[string][]*pbv1.Cursor{}
-	for _, g := range cursorGroups {
-		keys := g.GetKeys()
-		// Key is  [node, property, type]
-		if len(keys) != 3 {
-			return nil, nil, status.Errorf(
-				codes.Internal, "cursor should have three keys, cursor: %s", g)
-		}
-		n, p, t := keys[0], keys[1], keys[2]
-		if _, ok := cursorGroup[n]; !ok {
-			cursorGroup[n] = map[string]map[string][]*pbv1.Cursor{}
-		}
-		if _, ok := cursorGroup[n][p]; !ok {
-			cursorGroup[n][p] = map[string][]*pbv1.Cursor{}
-		}
-		cursorGroup[n][p][t] = g.GetCursors()
+	cursorGroup, err := buildValidatedCursorGroupMap(cursorGroups, nodes, properties, numTables)
+	if err != nil {
+		return nil, nil, err
 	}
 	if direction == util.DirectionOut {
 		s := &outState{}
@@ -580,4 +568,60 @@ func nextIn(ctx context.Context, s *inState, btGroup *bigtable.Group) (bool, err
 		}
 	}
 	return hasNext, nil
+}
+
+func buildValidatedCursorGroupMap(
+	cursorGroups []*pbv1.CursorGroup,
+	nodes []string,
+	properties []string,
+	numTables int,
+) (map[string]map[string]map[string][]*pbv1.Cursor, error) {
+	nodeSet := make(map[string]struct{}, len(nodes))
+	for _, n := range nodes {
+		nodeSet[n] = struct{}{}
+	}
+	propSet := make(map[string]struct{}, len(properties))
+	for _, p := range properties {
+		propSet[p] = struct{}{}
+	}
+	cursorGroup := map[string]map[string]map[string][]*pbv1.Cursor{}
+	for _, g := range cursorGroups {
+		if g == nil {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: nil cursor group")
+		}
+		keys := g.GetKeys()
+		// Key is  [node, property, type]
+		if len(keys) != 3 {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: cursor should have three keys, got %d", len(keys))
+		}
+		n, p, t := keys[0], keys[1], keys[2]
+		if _, ok := nodeSet[n]; !ok {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: unexpected node %q in cursor", n)
+		}
+		if _, ok := propSet[p]; !ok {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: unexpected property %q in cursor", p)
+		}
+		cursors := g.GetCursors()
+		if len(cursors) < numTables {
+			return nil, status.Errorf(
+				codes.InvalidArgument, "invalid pagination token: expected at least %d cursors, got %d", numTables, len(cursors))
+		}
+		for i, c := range cursors {
+			if c == nil || int(c.GetImportGroup()) != i || c.GetPage() < 0 || c.GetItem() < 0 {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid pagination token: invalid cursor at import group %d", i)
+			}
+		}
+		if _, ok := cursorGroup[n]; !ok {
+			cursorGroup[n] = map[string]map[string][]*pbv1.Cursor{}
+		}
+		if _, ok := cursorGroup[n][p]; !ok {
+			cursorGroup[n][p] = map[string][]*pbv1.Cursor{}
+		}
+		cursorGroup[n][p][t] = cursors
+	}
+	return cursorGroup, nil
 }

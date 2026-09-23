@@ -23,6 +23,11 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// maxRemotePaginationDepth bounds recursive nesting of RemotePaginationInfo.
+	maxRemotePaginationDepth = 5
+)
+
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
 	if s == "" {
@@ -37,6 +42,9 @@ func Decode(s string) (*pbv1.PaginationInfo, error) {
 	err = proto.Unmarshal(data, result)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
+	}
+	if err := validatePaginationInfo(result, 0); err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
 	return result, nil
 }
@@ -56,5 +64,56 @@ func DecodeNextToken(s string) (*pbv2.Pagination, error) {
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
 	}
+	if err := validatePagination(result); err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
+	}
 	return result, nil
+}
+
+func validatePaginationInfo(pi *pbv1.PaginationInfo, depth int) error {
+	if pi == nil {
+		return nil
+	}
+	if depth > maxRemotePaginationDepth {
+		return status.Errorf(codes.InvalidArgument, "remote pagination info exceeds maximum depth of %d", maxRemotePaginationDepth)
+	}
+	for _, cg := range pi.GetCursorGroups() {
+		if cg == nil {
+			return status.Errorf(codes.InvalidArgument, "cursor group must not be nil")
+		}
+		for _, c := range cg.GetCursors() {
+			if c == nil {
+				return status.Errorf(codes.InvalidArgument, "cursor must not be nil")
+			}
+			if c.GetImportGroup() < 0 || c.GetPage() < 0 || c.GetItem() < 0 || c.GetOffset() < 0 {
+				return status.Errorf(codes.InvalidArgument, "cursor values must be non-negative")
+			}
+		}
+	}
+	if pi.GetRemotePaginationInfo() != nil {
+		return validatePaginationInfo(pi.GetRemotePaginationInfo(), depth+1)
+	}
+	return nil
+}
+
+func validatePagination(p *pbv2.Pagination) error {
+	if p == nil {
+		return nil
+	}
+	for _, dsi := range p.GetInfo() {
+		if dsi == nil {
+			return status.Errorf(codes.InvalidArgument, "data source info must not be nil")
+		}
+		switch info := dsi.GetDataSourceInfo().(type) {
+		case *pbv2.Pagination_DataSourceInfo_SpannerInfo:
+			if info.SpannerInfo == nil || info.SpannerInfo.GetOffset() < 0 {
+				return status.Errorf(codes.InvalidArgument, "spanner offset must be non-negative")
+			}
+		case *pbv2.Pagination_DataSourceInfo_BigtableInfo:
+			if err := validatePaginationInfo(info.BigtableInfo, 0); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
