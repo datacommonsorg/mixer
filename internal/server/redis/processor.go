@@ -90,6 +90,9 @@ func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dis
 	if rc == nil || rc.OriginalRequest == nil || rc.CurrentResponse == nil {
 		return dispatcher.Continue, nil
 	}
+	if skipCache(rc.Context) {
+		return dispatcher.Continue, nil
+	}
 	if processor.maxResponseBytes > 0 {
 		size := proto.Size(rc.CurrentResponse)
 		if size > processor.maxResponseBytes {
@@ -101,9 +104,6 @@ func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dis
 			)
 			return dispatcher.Continue, nil
 		}
-	}
-	if skipCache(rc.Context) {
-		return dispatcher.Continue, nil
 	}
 	if err := processor.client.CacheResponse(rc.Context, rc.OriginalRequest, rc.CurrentResponse); err != nil {
 		// Log the error but continue processing.
