@@ -670,6 +670,16 @@ var vectorSearchNodeTestCases = []struct {
 		embeddingLabel: "base_text_embedding",
 		golden:         "vector_search_node",
 	},
+	{
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.6,
+		nodeTypes:      []string{},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search_node_all_types",
+	},
 }
 var getFilteredStatVarGroupNodeTestCases = []struct {
 	nodes                []string

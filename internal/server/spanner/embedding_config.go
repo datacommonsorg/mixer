@@ -53,16 +53,16 @@ const (
 
 // SearchConfig holds the configuration for the parameters necessary to search.
 type SearchConfig struct {
-	SearchAlgorithm  SearchMethod     `json:"search_algorithm" yaml:"search_algorithm"`
+	SearchAlgorithm        SearchMethod     `json:"search_algorithm" yaml:"search_algorithm"`
 	EmbeddingModel         string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
 	EmbeddingModelEndpoint string           `json:"embedding_model_endpoint" yaml:"embedding_model_endpoint"`
 	EmbeddingTable         string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
-	QueryTaskType    QueryTaskType    `json:"query_task_type" yaml:"query_task_type"`
-	EmbeddingLabel   string           `json:"embedding_label" yaml:"embedding_label"`
-	VectorSearchAlgo VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`
-	Limit            int              `json:"limit" yaml:"limit"`
-	NumLeaves        int              `json:"num_leaves" yaml:"num_leaves"`
-	Threshold        float64          `json:"threshold" yaml:"threshold"`
+	QueryTaskType          QueryTaskType    `json:"query_task_type" yaml:"query_task_type"`
+	EmbeddingLabel         string           `json:"embedding_label" yaml:"embedding_label"`
+	VectorSearchAlgo       VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`
+	Limit                  int              `json:"limit" yaml:"limit"`
+	NumLeaves              int              `json:"num_leaves" yaml:"num_leaves"`
+	Threshold              float64          `json:"threshold" yaml:"threshold"`
 }
 
 // PostprocessingType defines post-processing steps applied to search results. Currently only have no prostprocessing setup.
@@ -74,8 +74,8 @@ const (
 
 // SpannerSearchConfig holds the full configuration for Spanner search operations.
 type SpannerSearchConfig struct {
-	SearchConfig   SearchConfig         `json:"search_config" yaml:"search_config"`
-	Postprocessing []PostprocessingType `json:"postprocessing" yaml:"postprocessing"` // list of postprocessing steps to apply to search results
+	SearchConfigs  map[string]SearchConfig `json:"search_configs" yaml:"search_configs"`
+	Postprocessing []PostprocessingType    `json:"postprocessing" yaml:"postprocessing"` // list of postprocessing steps to apply to search results
 }
 
 // GetSpannerSearchConfigPath returns the absolute path to the YAML configuration file for a given environment.
