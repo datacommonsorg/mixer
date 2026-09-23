@@ -799,3 +799,80 @@ func TestGetOffset(t *testing.T) {
 		})
 	}
 }
+
+func TestOrderedFacetsRankingByProvenanceWithoutImportName(t *testing.T) {
+	const (
+		variable = "Count_Person"
+		entity   = "country/USA"
+	)
+	observations := []*Observation{
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wikidata",
+			ProvenanceID:      "dc/base/WikidataPopulation",
+			MeasurementMethod: "WikidataPopulation",
+			Observations:      TimeSeries{{Date: "2026", Value: "345000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wdi",
+			ProvenanceID:      "dc/base/WorldDevelopmentIndicators",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2025", Value: "340000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "acs",
+			ProvenanceID:      "dc/base/CensusACS5YearSurvey",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			Observations:      TimeSeries{{Date: "2024", Value: "335000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "pep",
+			ProvenanceID:      "dc/base/USCensusPEP_Annual_Population",
+			MeasurementMethod: "CensusPEPSurvey",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2023", Value: "334000000"}},
+		},
+	}
+
+	// 1. All dates request: includes all facets ranked by ProvenanceId (pep -> acs -> wdi -> wikidata).
+	allDatesReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+	}
+	allResp := obsToObsResponse(allDatesReq, observations)
+	var gotAllIDs []string
+	for _, f := range allResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotAllIDs = append(gotAllIDs, f.FacetId)
+	}
+	wantAllIDs := []string{"pep", "acs", "wdi", "wikidata"}
+	if diff := cmp.Diff(wantAllIDs, gotAllIDs); diff != "" {
+		t.Errorf("all dates OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+
+	// 2. LATEST request: filters out inferior facet (wikidata) even though it has the newest date (2026).
+	latestReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+		Date:     "LATEST",
+	}
+	latestResp := obsToObsResponse(latestReq, observations)
+	var gotLatestIDs []string
+	for _, f := range latestResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotLatestIDs = append(gotLatestIDs, f.FacetId)
+	}
+	wantLatestIDs := []string{"pep", "acs", "wdi"}
+	if diff := cmp.Diff(wantLatestIDs, gotLatestIDs); diff != "" {
+		t.Errorf("LATEST OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+	if _, exists := latestResp.Facets["wikidata"]; exists {
+		t.Errorf("expected inferior facet 'wikidata' to be removed from Facets map on LATEST request")
+	}
+}
+

@@ -132,3 +132,166 @@ func TestSeriesByRank(t *testing.T) {
 		}
 	}
 }
+
+func TestGetFacetScoreProvenanceAndFallback(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		facet *pb.Facet
+		want  int
+	}{
+		{
+			name: "provenanceId only",
+			facet: &pb.Facet{
+				ProvenanceId:      "dc/base/USCensusPEP_Annual_Population",
+				MeasurementMethod: "CensusPEPSurvey",
+				ObservationPeriod: "P1Y",
+			},
+			want: 0,
+		},
+		{
+			name: "provenanceId takes precedence when importName is human-readable",
+			facet: &pb.Facet{
+				ProvenanceId:      "dc/base/CensusACS5YearSurvey",
+				ImportName:        "U.S. Census American Community Survey 5-Year",
+				MeasurementMethod: "CensusACS5yrSurvey",
+			},
+			want: 1,
+		},
+		{
+			name: "fallback to importName when provenanceId is empty (legacy Bigtable)",
+			facet: &pb.Facet{
+				ImportName:        "WorldDevelopmentIndicators",
+				ObservationPeriod: "P1Y",
+			},
+			want: 4,
+		},
+		{
+			name: "fallback to importName when provenanceId is unknown",
+			facet: &pb.Facet{
+				ProvenanceId:      "custom/unranked_prov",
+				ImportName:        "IndiaCensus_Primary",
+				ObservationPeriod: "P1Y",
+			},
+			want: 5,
+		},
+		{
+			name: "inferior facet via provenanceId only",
+			facet: &pb.Facet{
+				ProvenanceId:      "dc/base/WikidataPopulation",
+				MeasurementMethod: "WikidataPopulation",
+			},
+			want: 1003,
+		},
+		{
+			name: "neither provenanceId nor importName matches returns BaseRank",
+			facet: &pb.Facet{
+				ProvenanceId: "dc/base/UnrankedImport",
+			},
+			want: BaseRank,
+		},
+		{
+			name:  "nil facet returns BaseRank",
+			facet: nil,
+			want:  BaseRank,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := GetFacetScore(tc.facet); got != tc.want {
+				t.Errorf("GetFacetScore() = %d, want %d", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestProvenanceAndStatsRankingParity(t *testing.T) {
+	for importName, rkMap := range StatsRanking {
+		provID := "dc/base/" + importName
+		for rk := range rkMap {
+			mm, op, unit := "", "", ""
+			if rk.MM != nil {
+				mm = *rk.MM
+			}
+			if rk.OP != nil {
+				op = *rk.OP
+			}
+			if rk.Unit != nil {
+				unit = *rk.Unit
+			}
+			importScore := GetFacetScore(&pb.Facet{
+				ImportName:        importName,
+				MeasurementMethod: mm,
+				ObservationPeriod: op,
+				Unit:              unit,
+			})
+			provScore := GetFacetScore(&pb.Facet{
+				ProvenanceId:      provID,
+				MeasurementMethod: mm,
+				ObservationPeriod: op,
+				Unit:              unit,
+			})
+			if provScore != importScore {
+				t.Errorf("score mismatch for %q vs %q (rk=%+v): provScore=%d, importScore=%d", provID, importName, rk, provScore, importScore)
+			}
+		}
+	}
+}
+
+func TestFacetByRankWithProvenanceId(t *testing.T) {
+	facets := []*pb.PlaceVariableFacet{
+		{
+			FacetId:    "wikidata",
+			LatestDate: "2025",
+			ObsCount:   50,
+			Facet: &pb.Facet{
+				ProvenanceId:      "dc/base/WikidataPopulation",
+				MeasurementMethod: "WikidataPopulation",
+			},
+		},
+		{
+			FacetId:    "unranked_b",
+			LatestDate: "2024",
+			ObsCount:   10,
+			Facet: &pb.Facet{
+				ProvenanceId: "dc/base/Unranked_B",
+			},
+		},
+		{
+			FacetId:    "unranked_a",
+			LatestDate: "2024",
+			ObsCount:   10,
+			Facet: &pb.Facet{
+				ProvenanceId: "dc/base/Unranked_A",
+			},
+		},
+		{
+			FacetId:    "acs5yr",
+			LatestDate: "2024",
+			ObsCount:   14,
+			Facet: &pb.Facet{
+				ProvenanceId:      "dc/base/CensusACS5YearSurvey",
+				MeasurementMethod: "CensusACS5yrSurvey",
+			},
+		},
+		{
+			FacetId:    "pep",
+			LatestDate: "2023",
+			ObsCount:   10,
+			Facet: &pb.Facet{
+				ProvenanceId:      "dc/base/USCensusPEP_Annual_Population",
+				MeasurementMethod: "CensusPEPSurvey",
+				ObservationPeriod: "P1Y",
+			},
+		},
+	}
+
+	sort.Sort(FacetByRank(facets))
+
+	var gotIDs []string
+	for _, f := range facets {
+		gotIDs = append(gotIDs, f.FacetId)
+	}
+	wantIDs := []string{"pep", "acs5yr", "unranked_a", "unranked_b", "wikidata"}
+	if diff := cmp.Diff(wantIDs, gotIDs); diff != "" {
+		t.Errorf("FacetByRank order mismatch (-want +got):\n%s", diff)
+	}
+}

@@ -155,6 +155,24 @@ var StatsRanking = map[string]map[RankKey]int{
 	"EarthquakeUSGS_Agg": {{OP: s("P1Y")}: 0},
 }
 
+// ProvenanceRanking is used to rank multiple source series for the same
+// StatisticalVariable by ProvenanceId (e.g. "dc/base/<ImportName>"), where
+// lower value means higher ranking.
+// Entries explicitly defined here take precedence; all entries in StatsRanking
+// are also automatically registered under "dc/base/<ImportName>" during init().
+var ProvenanceRanking = map[string]map[RankKey]int{}
+
+const dcBasePrefix = "dc/base/"
+
+func init() {
+	for importName, rankMap := range StatsRanking {
+		provID := dcBasePrefix + importName
+		if _, exists := ProvenanceRanking[provID]; !exists {
+			ProvenanceRanking[provID] = rankMap
+		}
+	}
+}
+
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
 // prefered, it should be given a score higher than BaseRank in StatsRanking
@@ -167,27 +185,10 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
-// GetScoreRk derives the ranking score for a source series.
-//
-// The score depends on ImportName and other SVObs properties, by checking the
-// StatsRanking dict. To get the score, ImportName is required, and a RankKey
-// with these optional fields:
-// - MM: MeasurementMethod
-// - OP: ObservationPeriod
-//
-// When there are exact match of the properties in StatsRanking, then use that
-// score, otherwise can also match to wildcard options (indicated by a nil
-// pointer).
-//
-// If no entry is found, a BaseRank is assigned to the source series.
-func GetScoreRk(importName string, rk RankKey) int {
-	importNameStatsRanking, ok := StatsRanking[importName]
-	if !ok {
-		return BaseRank
-	}
+func computeScore(rankMap map[RankKey]int, rk RankKey) int {
 	rankScore := BaseRank
 	mostMatches := -1
-	for k, score := range importNameStatsRanking {
+	for k, score := range rankMap {
 		matches := 0
 		isMatch := true
 		if k.MM != nil && rk.MM != nil {
@@ -231,24 +232,68 @@ func GetScoreRk(importName string, rk RankKey) int {
 	return rankScore
 }
 
-// GetScorePb is a GetScoreRk adapter for pb.SourceSeries
+// GetScoreByProvenanceOrImport derives the ranking score using ProvenanceId first
+// (via ProvenanceRanking), falling back to ImportName (via StatsRanking) if
+// ProvenanceId is empty or not found in ProvenanceRanking.
+func GetScoreByProvenanceOrImport(provenanceID, importName string, rk RankKey) int {
+	if provenanceID != "" {
+		if rankMap, ok := ProvenanceRanking[provenanceID]; ok {
+			return computeScore(rankMap, rk)
+		}
+	}
+	if importName != "" {
+		if rankMap, ok := StatsRanking[importName]; ok {
+			return computeScore(rankMap, rk)
+		}
+	}
+	return BaseRank
+}
+
+// GetScoreRk derives the ranking score for a source series.
+//
+// The score depends on ImportName and other SVObs properties, by checking the
+// StatsRanking dict. To get the score, ImportName is required, and a RankKey
+// with these optional fields:
+// - MM: MeasurementMethod
+// - OP: ObservationPeriod
+//
+// When there are exact match of the properties in StatsRanking, then use that
+// score, otherwise can also match to wildcard options (indicated by a nil
+// pointer).
+//
+// If no entry is found, a BaseRank is assigned to the source series.
+func GetScoreRk(importName string, rk RankKey) int {
+	importNameStatsRanking, ok := StatsRanking[importName]
+	if !ok {
+		return BaseRank
+	}
+	return computeScore(importNameStatsRanking, rk)
+}
+
+// GetScorePb is a GetScoreByProvenanceOrImport adapter for pb.SourceSeries
 func GetScorePb(ss *pb.SourceSeries) int {
+	if ss == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(ss.MeasurementMethod),
 		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
 	}
-	return GetScoreRk(ss.ImportName, rk)
+	return GetScoreByProvenanceOrImport(ss.ProvenanceId, ss.ImportName, rk)
 }
 
-// GetFacetScore is a GetScoreRk adapter for pb.Facet
+// GetFacetScore is a GetScoreByProvenanceOrImport adapter for pb.Facet
 func GetFacetScore(m *pb.Facet) int {
+	if m == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(m.MeasurementMethod),
 		OP:   s(m.ObservationPeriod),
 		Unit: s(m.Unit),
 	}
-	return GetScoreRk(m.ImportName, rk)
+	return GetScoreByProvenanceOrImport(m.ProvenanceId, m.ImportName, rk)
 }
 
 func (a CohortByRank) Len() int {
@@ -285,7 +330,13 @@ func (a CohortByRank) Less(i, j int) bool {
 	if oi.ProvenanceUrl != oj.ProvenanceUrl {
 		return oi.ProvenanceUrl < oj.ProvenanceUrl
 	}
-	return true
+	if oi.ProvenanceId != oj.ProvenanceId {
+		return oi.ProvenanceId < oj.ProvenanceId
+	}
+	if oi.ImportName != oj.ImportName {
+		return oi.ImportName < oj.ImportName
+	}
+	return false
 }
 
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
@@ -334,6 +385,9 @@ func (a SeriesByRank) Less(i, j int) bool {
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.ProvenanceId != oj.ProvenanceId {
+		return oi.ProvenanceId < oj.ProvenanceId
+	}
 	if oi.ImportName != oj.ImportName {
 		return oi.ImportName < oj.ImportName
 	}
@@ -352,7 +406,7 @@ func (a SeriesByRank) Less(i, j int) bool {
 	if oi.ProvenanceUrl != oj.ProvenanceUrl {
 		return oi.ProvenanceUrl < oj.ProvenanceUrl
 	}
-	return true
+	return false
 }
 
 // GetScore is a GetScoreRk adapter for model.SourceSeries
@@ -424,7 +478,7 @@ func (a ByRank) Less(i, j int) bool {
 	if oi.ProvenanceURL != oj.ProvenanceURL {
 		return oi.ProvenanceURL < oj.ProvenanceURL
 	}
-	return true
+	return false
 }
 
 // FacetByRank implements sort.Interface for []*Facet based on
@@ -473,8 +527,11 @@ func (a FacetByRank) Less(i, j int) bool {
 	if oi.Facet.ProvenanceUrl != oj.Facet.ProvenanceUrl {
 		return oi.Facet.ProvenanceUrl < oj.Facet.ProvenanceUrl
 	}
+	if oi.Facet.ProvenanceId != oj.Facet.ProvenanceId {
+		return oi.Facet.ProvenanceId < oj.Facet.ProvenanceId
+	}
 	if oi.Facet.ImportName != oj.Facet.ImportName {
 		return oi.Facet.ImportName < oj.Facet.ImportName
 	}
-	return true
+	return oi.FacetId < oj.FacetId
 }
