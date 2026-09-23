@@ -23,13 +23,19 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// maxPaginationTokenBytes is the maximum allowed size (1 MB) for a
+	// pagination token, protecting against zip bomb attacks.
+	maxPaginationTokenBytes = 1024 * 1024
+)
+
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
 	if s == "" {
 		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
 	}
 
-	data, err := util.UnzipAndDecode(s)
+	data, err := util.UnzipAndDecodeWithLimit(s, maxPaginationTokenBytes)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
@@ -47,7 +53,7 @@ func DecodeNextToken(s string) (*pbv2.Pagination, error) {
 		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
 	}
 
-	data, err := util.UnzipAndDecode(s)
+	data, err := util.UnzipAndDecodeWithLimit(s, maxPaginationTokenBytes)
 	if err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
