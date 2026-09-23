@@ -362,6 +362,17 @@ func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "missing_data_source_info_oneof",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id:             "bigtable",
+						DataSourceInfo: nil,
+					},
+				},
+			},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			token, err := util.EncodeProto(tc.info)
@@ -372,5 +383,21 @@ func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
 				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
 			}
 		})
+	}
+
+	// Also verify in-memory nil BigtableInfo (since proto.Marshal converts a nil
+	// oneof submessage pointer into an empty submessage on the wire).
+	err := validatePagination(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: "bigtable",
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+					BigtableInfo: nil,
+				},
+			},
+		},
+	})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Errorf("validatePagination(nil BigtableInfo) status code = %v, want %v (err: %v)", status.Code(err), codes.InvalidArgument, err)
 	}
 }

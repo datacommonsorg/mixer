@@ -72,7 +72,7 @@ func DecodeNextToken(s string) (*pbv2.Pagination, error) {
 
 func validatePaginationInfo(pi *pbv1.PaginationInfo, depth int) error {
 	if pi == nil {
-		return nil
+		return status.Errorf(codes.InvalidArgument, "pagination info must not be nil")
 	}
 	if depth > maxRemotePaginationDepth {
 		return status.Errorf(codes.InvalidArgument, "remote pagination info exceeds maximum depth of %d", maxRemotePaginationDepth)
@@ -98,7 +98,7 @@ func validatePaginationInfo(pi *pbv1.PaginationInfo, depth int) error {
 
 func validatePagination(p *pbv2.Pagination) error {
 	if p == nil {
-		return nil
+		return status.Errorf(codes.InvalidArgument, "pagination must not be nil")
 	}
 	for _, dsi := range p.GetInfo() {
 		if dsi == nil {
@@ -110,9 +110,16 @@ func validatePagination(p *pbv2.Pagination) error {
 				return status.Errorf(codes.InvalidArgument, "spanner offset must be non-negative")
 			}
 		case *pbv2.Pagination_DataSourceInfo_BigtableInfo:
+			if info.BigtableInfo == nil {
+				return status.Errorf(codes.InvalidArgument, "bigtable pagination info must not be nil")
+			}
 			if err := validatePaginationInfo(info.BigtableInfo, 0); err != nil {
 				return err
 			}
+		case *pbv2.Pagination_DataSourceInfo_StringInfo:
+			// Validated by the target data source when decoded.
+		default:
+			return status.Errorf(codes.InvalidArgument, "data source info must specify a valid source type")
 		}
 	}
 	return nil
