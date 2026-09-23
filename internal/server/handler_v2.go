@@ -59,8 +59,6 @@ func (s *Server) V2Resolve(
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
-	//TODO: (Fixit) shouldRouteResolveToDispatcher is always returning true. removing the logic to invoke legacy v2 resolve
-	//TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
 	v2StartTime := time.Now()
 
 	normalizedResolveRequest, err := resolve.ValidateAndParseResolveInputs(in)
@@ -128,10 +126,35 @@ func (s *Server) V2Resolve(
 	return v2Resp, nil
 }
 
+// isSpannerEnabled returns true if the Spanner backend has been enabled.
+func (s *Server) isSpannerEnabled() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
 // It returns an error if the request explicitly asks for an unavailable backend.
 func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {
-	return true, nil
+	if resolver == "" {
+		resolver = resolve.ResolveResolverPlace // Default
+	}
+
+	// Place and Topic resolvers use standard diversion logic
+	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
+		return s.shouldDivertV2(ctx), nil
+	}
+
+	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
+	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
+	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace {
+		if !s.isSpannerEnabled() {
+			slog.Error("Spanner backend required for indicator and nonplace resolvers")
+			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator and nonplace resolvers")
+		}
+		return true, nil
+	}
+
+	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
+	return false, nil
 }
 
 // V2Node implements API for mixer.V2Node.
