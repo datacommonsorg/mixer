@@ -409,15 +409,18 @@ func (a SeriesByRank) Less(i, j int) bool {
 	return false
 }
 
-// GetScore is a GetScoreRk adapter for model.SourceSeries
+// GetScore is a GetScoreByProvenanceOrImport adapter for model.SourceSeries
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
 func GetScore(ss *model.SourceSeries) int {
+	if ss == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(ss.MeasurementMethod),
 		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
 	}
-	return GetScoreRk(ss.ImportName, rk)
+	return GetScoreByProvenanceOrImport(ss.ProvenanceID, ss.ImportName, rk)
 }
 
 // ByRank implements sort.Interface for []*SourceSeries based on
@@ -477,6 +480,12 @@ func (a ByRank) Less(i, j int) bool {
 	}
 	if oi.ProvenanceURL != oj.ProvenanceURL {
 		return oi.ProvenanceURL < oj.ProvenanceURL
+	}
+	if oi.ProvenanceID != oj.ProvenanceID {
+		return oi.ProvenanceID < oj.ProvenanceID
+	}
+	if oi.ImportName != oj.ImportName {
+		return oi.ImportName < oj.ImportName
 	}
 	return false
 }
