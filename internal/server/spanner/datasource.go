@@ -510,16 +510,46 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 	return searchNodesToNodeSearchResponse(nodes), nil
 }
 
+var resolverToSpannerConfigKey = map[string]string{
+	resolvev2.ResolveResolverIndicator: "indicator",
+	resolvev2.ResolveResolverNonPlace:  "non_place_entity",
+}
+
+func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedResolveRequest) bool {
+	if normalizedResolveRequest == nil || normalizedResolveRequest.Request == nil {
+		return false
+	}
+	resolver := normalizedResolveRequest.Request.GetResolver()
+	if resolver == "" {
+		return false
+	}
+	if resolver == resolvev2.ResolveResolverIndicator {
+		return true
+	}
+	if resolver == resolvev2.ResolveResolverNonPlace {
+		return true
+	}
+	return false
+}
+
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+	if req == nil {
+		return nil, status.Errorf(codes.InvalidArgument, "request is nil")
+	}
 	normalizedResolveRequest, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
 	}
 
-	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
-		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	if useVectorSearchResolution(normalizedResolveRequest) {
+		resolver := normalizedResolveRequest.Request.GetResolver()
+		spannerConfigKey, ok := resolverToSpannerConfigKey[resolver]
+		if !ok {
+			return nil, status.Errorf(codes.InvalidArgument, "unsupported resolver: %s", resolver)
+		}
+		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "spannerConfigKey", spannerConfigKey, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
+		return sds.vectorSearchResolution(ctx, normalizedResolveRequest, spannerConfigKey)
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
@@ -566,33 +596,66 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to load search config from %s: %w", resolvedPath, err)
 	}
-	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
+	embeddingLabels := make(map[string]string, len(cfg.SearchConfigs))
+	for k, sc := range cfg.SearchConfigs {
+		embeddingLabels[k] = sc.EmbeddingLabel
+	}
+	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabels", embeddingLabels)
 	return cfg, nil
+}
+
+// validateAndNormalizeVectorSearchTypes validates and returns the typeOfs filter for vector search.
+// Returns normalized types and a boolean indicating whether resolution should continue.
+func validateAndNormalizeVectorSearchTypes(resolver string, typeOfs []string) ([]string, bool) {
+	switch resolver {
+	case resolvev2.ResolveResolverIndicator:
+		if len(typeOfs) == 0 {
+			return []string{TypeStatisticalVariable, TypeTopic}, true
+		}
+		for _, t := range typeOfs {
+			if t != TypeStatisticalVariable && t != TypeTopic {
+				slog.Warn("Indicator embeddings resolution requested for unsupported type. Supported types are StatisticalVariable and Topic.", "type", t)
+				return nil, false
+			}
+		}
+		return typeOfs, true
+	case resolvev2.ResolveResolverNonPlace:
+		for _, t := range typeOfs {
+			if t == TypeStatisticalVariable || t == TypeTopic {
+				slog.Warn("Non-place entity embeddings resolution requested for unsupported type.", "type", t)
+				return nil, false
+			}
+		}
+		return typeOfs, true
+	default:
+		return typeOfs, true
+	}
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.
 func (sds *SpannerDataSource) vectorSearchResolution(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
+	spannerConfigKey string,
 ) (*pbv2.ResolveResponse, error) {
 	cfg := sds.searchConfig
 	if cfg == nil {
 		return nil, status.Errorf(codes.Internal, "failed to load search config")
 	}
 
+	searchConfig, ok := cfg.SearchConfigs[spannerConfigKey]
+	if !ok {
+		slog.Warn("No matching SearchConfig found for spanner config key.", "spannerConfigKey", spannerConfigKey)
+		return &pbv2.ResolveResponse{}, nil
+	}
+
+	typeOfs, ok := validateAndNormalizeVectorSearchTypes(req.Request.GetResolver(), req.TypeOfValues)
+	if !ok {
+		return nil, fmt.Errorf("invalid typeOfs %v for resolver %s", req.TypeOfValues, req.Request.GetResolver())
+	}
+
 	resolveResponse := &pbv2.ResolveResponse{
 		Entities: []*pbv2.ResolveResponse_Entity{},
-	}
-	typeOfs := req.TypeOfValues
-	if len(typeOfs) == 0 {
-		typeOfs = []string{TypeStatisticalVariable, TypeTopic}
-	} else {
-		for _, t := range typeOfs {
-			if t != TypeStatisticalVariable && t != TypeTopic {
-				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
-				return &pbv2.ResolveResponse{}, nil
-			}
-		}
 	}
 
 	nodes := req.Request.GetNodes()
@@ -602,7 +665,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	if sds.embedder == nil {
 		return nil, status.Errorf(codes.Internal, "Embedder is not initialized in SpannerDataSource")
 	}
-	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
+	if searchConfig.EmbeddingModelEndpoint == "" {
 		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
 	}
 
@@ -614,7 +677,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			embeddings, err := sds.embedder.Embed(errCtx, cfg.SearchConfig.EmbeddingModelEndpoint, string(cfg.SearchConfig.QueryTaskType), node)
+			embeddings, err := sds.embedder.Embed(errCtx, searchConfig.EmbeddingModelEndpoint, string(searchConfig.QueryTaskType), node)
 			if err != nil {
 				return err
 			}
@@ -624,26 +687,27 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 2. Vector search (fetch 2x limit to ensure unique candidates count reaches limit after deduplication)
-			fetchLimit := cfg.SearchConfig.Limit * 2
+			fetchLimit := searchConfig.Limit * 2
 			if fetchLimit <= 0 {
-				fetchLimit = cfg.SearchConfig.Limit
+				fetchLimit = searchConfig.Limit
 			}
+
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
-				cfg.SearchConfig.EmbeddingTable,
+				searchConfig.EmbeddingTable,
 				fetchLimit,
 				embeddings,
-				cfg.SearchConfig.NumLeaves,
-				cfg.SearchConfig.Threshold,
+				searchConfig.NumLeaves,
+				searchConfig.Threshold,
 				typeOfs,
-				cfg.SearchConfig.EmbeddingLabel,
+				searchConfig.EmbeddingLabel,
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
 			}
 
 			// 3. Build candidates with deduplication by SubjectID (highest score first)
-			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, cfg.SearchConfig.Limit)
+			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, searchConfig.Limit)
 			seen := make(map[string]bool, len(searchResults))
 			var svDcids []string
 			for _, res := range searchResults {
@@ -675,7 +739,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				if slices.Contains(res.Types, TypeStatisticalVariable) {
 					svDcids = append(svDcids, res.SubjectID)
 				}
-				if cfg.SearchConfig.Limit > 0 && len(candidates) >= cfg.SearchConfig.Limit {
+				if searchConfig.Limit > 0 && len(candidates) >= searchConfig.Limit {
 					break
 				}
 			}
