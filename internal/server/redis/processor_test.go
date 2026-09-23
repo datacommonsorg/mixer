@@ -370,7 +370,6 @@ func TestCacheProcessorPostProcess_ResponseSizeLimit(t *testing.T) {
 		name              string
 		limitBytes        int
 		originalReq       proto.Message
-		currentReq        proto.Message
 		currentResp       proto.Message
 		nilRequestContext bool
 		wantCached        bool
@@ -397,11 +396,10 @@ func TestCacheProcessorPostProcess_ResponseSizeLimit(t *testing.T) {
 			wantCached:  false,
 		},
 		{
-			name:        "Over limit with nil OriginalRequest - falls back to CurrentRequest and skips cache",
-			limitBytes:  exactLimit - 1,
+			name:        "Nil OriginalRequest - skips cache",
+			limitBytes:  exactLimit,
 			originalReq: nil,
-			currentReq:  &wrapperspb.StringValue{Value: "fallback-current-request"},
-			currentResp: exactBoundaryResp,
+			currentResp: &wrapperspb.BytesValue{Value: make([]byte, 50)},
 			wantCached:  false,
 		},
 		{
@@ -423,7 +421,6 @@ func TestCacheProcessorPostProcess_ResponseSizeLimit(t *testing.T) {
 					Context:         context.Background(),
 					Type:            dispatcher.TypeObservation,
 					OriginalRequest: tc.originalReq,
-					CurrentRequest:  tc.currentReq,
 					CurrentResponse: tc.currentResp,
 				}
 			}

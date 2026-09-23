@@ -87,21 +87,17 @@ func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (disp
 // the response size does not exceed maxResponseBytes. Responses exceeding the
 // limit are logged and returned to the caller without caching.
 func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
-	if rc == nil || rc.CurrentResponse == nil {
+	if rc == nil || rc.OriginalRequest == nil || rc.CurrentResponse == nil {
 		return dispatcher.Continue, nil
 	}
 	if processor.maxResponseBytes > 0 {
 		size := proto.Size(rc.CurrentResponse)
 		if size > processor.maxResponseBytes {
-			req := rc.OriginalRequest
-			if req == nil {
-				req = rc.CurrentRequest
-			}
 			slog.Warn("Skipping Redis cache for large response payload",
 				"requestType", rc.Type,
 				"sizeBytes", size,
 				"limitBytes", processor.maxResponseBytes,
-				"request", formatRequestForLog(req),
+				"request", formatRequestForLog(rc.OriginalRequest),
 			)
 			return dispatcher.Continue, nil
 		}
