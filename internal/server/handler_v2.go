@@ -134,53 +134,7 @@ func (s *Server) isSpannerEnabled() bool {
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
 // It returns an error if the request explicitly asks for an unavailable backend.
 func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {
-	if resolver == "" {
-		resolver = resolve.ResolveResolverPlace // Default
-	}
-
-	// Place and Topic resolvers use standard diversion logic
-	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
-		return s.shouldDivertV2(ctx), nil
-	}
-
-	// Non-place entity resolver
-	if resolver == resolve.ResolveResolverNonPlace {
-		if s.flags != nil && s.flags.EnableNonPlaceEntityResolver {
-			return s.shouldDivertV2(ctx), nil
-		}
-		return false, nil
-	}
-
-	// Indicator resolver (embeddings-based) has custom request-time toggling
-	if resolver == resolve.ResolveResolverIndicator {
-		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
-		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
-			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
-			return false, nil
-		}
-		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
-		if err != nil {
-			return false, err
-		}
-		if divertVal != nil {
-			if *divertVal {
-				// Force Spanner: Fail fast if Spanner backend is not configured
-				if !s.isSpannerEnabled() {
-					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
-					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
-				}
-				return true, nil
-			} else {
-				// Force Legacy
-				return false, nil
-			}
-		}
-		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.shouldDivertV2(ctx), nil
-	}
-
-	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
-	return false, nil
+	return true, nil
 }
 
 // V2Node implements API for mixer.V2Node.
