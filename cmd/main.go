@@ -50,7 +50,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
 
 	"cloud.google.com/go/bigquery"
@@ -508,10 +507,6 @@ func main() {
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
-
-		// Response Size Limiter Processor.
-		var sizeLimiter dispatcher.Processor = dispatcher.NewResponseSizeLimiterProcessor(util.MaxResponseSize)
-		processors = append(processors, &sizeLimiter)
 
 		if remoteDataSource != nil {
 			// Relation Expression Processor

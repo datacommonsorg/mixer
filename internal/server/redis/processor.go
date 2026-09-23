@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"unicode/utf8"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -26,16 +27,38 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// maxCacheResponseBytes is the upper size limit (20 MB) for caching API
+	// response payloads in Redis.
+	maxCacheResponseBytes = 20 * 1024 * 1024 // 20 MB
+	maxLoggedRequestBytes = 1024
+	truncatedSuffix       = " ... [truncated]"
+)
+
+var logMarshalOptions = protojson.MarshalOptions{
+	UseProtoNames:   true,
+	EmitUnpopulated: false,
+}
+
 // CacheProcessor implements the dispatcher.Processor interface for performing caching operations.
 type CacheProcessor struct {
-	client CacheClient
+	client           CacheClient
+	maxResponseBytes int
 }
 
 func NewCacheProcessor(client CacheClient) *CacheProcessor {
-	return &CacheProcessor{client: client}
+	return newCacheProcessorWithLimit(client, maxCacheResponseBytes)
+}
+
+func newCacheProcessorWithLimit(client CacheClient, maxResponseBytes int) *CacheProcessor {
+	return &CacheProcessor{
+		client:           client,
+		maxResponseBytes: maxResponseBytes,
+	}
 }
 
 func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
@@ -60,18 +83,58 @@ func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (disp
 	return dispatcher.Continue, nil
 }
 
-// Stores the returned response in Redis if caching is enabled for the request.
+// PostProcess stores the returned response in Redis if caching is enabled and
+// the response size does not exceed maxResponseBytes. Responses exceeding the
+// limit are logged and returned to the caller without caching.
 func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
+	if rc == nil || rc.CurrentResponse == nil {
+		return dispatcher.Continue, nil
+	}
+	if processor.maxResponseBytes > 0 {
+		size := proto.Size(rc.CurrentResponse)
+		if size > processor.maxResponseBytes {
+			req := rc.OriginalRequest
+			if req == nil {
+				req = rc.CurrentRequest
+			}
+			slog.Warn("Skipping Redis cache for large response payload",
+				"requestType", rc.Type,
+				"sizeBytes", size,
+				"limitBytes", processor.maxResponseBytes,
+				"request", formatRequestForLog(req),
+			)
+			return dispatcher.Continue, nil
+		}
+	}
 	if skipCache(rc.Context) {
 		return dispatcher.Continue, nil
 	}
-	if rc.CurrentResponse != nil {
-		if err := processor.client.CacheResponse(rc.Context, rc.OriginalRequest, rc.CurrentResponse); err != nil {
-			// Log the error but continue processing.
-			slog.Error("Error caching response", "error", err)
-		}
+	if err := processor.client.CacheResponse(rc.Context, rc.OriginalRequest, rc.CurrentResponse); err != nil {
+		// Log the error but continue processing.
+		slog.Error("Error caching response", "error", err)
 	}
 	return dispatcher.Continue, nil
+}
+
+// formatRequestForLog serializes req to compact JSON for debug logging,
+// truncating payloads larger than maxLoggedRequestBytes on a valid UTF-8 rune
+// boundary without allocating a full-size string copy first.
+func formatRequestForLog(req proto.Message) string {
+	if req == nil {
+		return ""
+	}
+	bytes, err := logMarshalOptions.Marshal(req)
+	if err != nil {
+		return ""
+	}
+	if len(bytes) <= maxLoggedRequestBytes {
+		return string(bytes)
+	}
+	end := maxLoggedRequestBytes
+	for end > 0 && !utf8.RuneStart(bytes[end]) {
+		end--
+	}
+	return string(bytes[:end]) + truncatedSuffix
 }
 
 // newEmptyResponse returns a new empty response for the given request type.

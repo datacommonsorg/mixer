@@ -66,11 +66,6 @@ const (
 	MixerAPIKeyID = "mixer-api-key"
 )
 
-const (
-	// Upper limit for API response sizes.
-	MaxResponseSize = 20 * 1024 * 1024 // 20 MB
-)
-
 var childTypeDenyList = map[string]struct{}{
 	"Place":               {},
 	"CensusBlockGroup":    {},
