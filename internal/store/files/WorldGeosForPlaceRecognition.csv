@@ -103953,7 +103953,7 @@ NorthWesternEurope,UNGeoRegion,"North-Western Europe,North Western Europe,Northw
 NorthernAfrica,UNGeoRegion,Northern Africa,"Earth,africa",579000000
 NorthernEurope,UNGeoRegion,Northern Europe,"Earth,europe",579000000
 NorthernWesternEurope,UNGeoRegion,Northern and Western Europe,"Earth,europe",579000000
-OtherThanAsiaEuropeLatinAmerica,UNGeoRegion,"Other than Asia Europe or Latin America region",Earth,579000000
+OtherThanAsiaEuropeLatinAmerica,UNGeoRegion,Other than Asia Europe or Latin America region,Earth,579000000
 Polynesia,UNGeoRegion,Polynesia,"Earth,oceania",579000000
 SouthCentralAsia,UNGeoRegion,South Central Asia,"Earth,asia",579000000
 SouthEasternAsia,UNGeoRegion,"South-Eastern Asia,South Eastern Asia,Southeastern Asia","Earth,asia",579000000
@@ -103972,20 +103972,20 @@ undata-geo/G00100200,GeoRegion,World: Low and middle income region,Earth,5790000
 undata-geo/G00100400,GeoRegion,World: Upper-middle income region,"Earth,undata-geo/G00100200",579000000
 undata-geo/G00100500,GeoRegion,World: Lower-middle income region,"Earth,undata-geo/G00100200",579000000
 undata-geo/G00100600,GeoRegion,World: Low income region,"Earth,undata-geo/G00100200",579000000
-undata-geo/G00100900,GeoRegion,"World not elsewhere specified region",Earth,579000000
-undata-geo/G00101200,GeoRegion,"Africa: Low and middle income","Earth,africa",579000000
+undata-geo/G00100900,GeoRegion,World not elsewhere specified region,Earth,579000000
+undata-geo/G00101200,GeoRegion,Africa: Low and middle income,"Earth,africa",579000000
 undata-geo/G00103000,GeoRegion,Northern Africa and Western Asia,Earth,579000000
 undata-geo/G00107000,GeoRegion,Eastern and Southern Africa,Earth,579000000
 undata-geo/G00111000,GeoRegion,West and Central Africa,Earth,579000000
 undata-geo/G00116000,GeoRegion,Central and Southern Asia,Earth,579000000
 undata-geo/G00117000,GeoRegion,Central Asia and Europe,Earth,579000000
 undata-geo/G00121000,GeoRegion,Eastern Mediterranean,Earth,579000000
-undata-geo/G00121200,GeoRegion,"Eastern Mediterranean: Low and middle income countries","Earth,undata-geo/G00121000",579000000
+undata-geo/G00121200,GeoRegion,Eastern Mediterranean: Low and middle income countries,"Earth,undata-geo/G00121000",579000000
 undata-geo/G00122000,GeoRegion,Eastern and South-eastern Asia,"Earth,asia",579000000
-undata-geo/G00124200,GeoRegion,"South-eastern Asia: Low and middle income","Earth,asia,SouthEasternAsia",579000000
+undata-geo/G00124200,GeoRegion,South-eastern Asia: Low and middle income,"Earth,asia,SouthEasternAsia",579000000
 undata-geo/G00126000,GeoRegion,Europe and Northern America,Earth,579000000
 undata-geo/G00134000,GeoRegion,Americas,Earth,579000000
-undata-geo/G00134200,GeoRegion,"Americas: Low and middle income","Earth,undata-geo/G00134000",579000000
+undata-geo/G00134200,GeoRegion,Americas: Low and middle income,"Earth,undata-geo/G00134000",579000000
 undata-geo/G00136000,GeoRegion,Northern America,"Earth,undata-geo/G00134000",579000000
 undata-geo/G00145000,GeoRegion,Oceania excluding Australia and New Zealand,"Earth,oceania",579000000
 undata-geo/G00151000,GeoRegion,Middle East,"Earth,undata-geo/G00152000",579000000
@@ -103994,7 +103994,7 @@ undata-geo/G00154000,GeoRegion,Asia and the Pacific,Earth,579000000
 undata-geo/G00157000,GeoRegion,Eastern Asia and the Pacific,Earth,579000000
 undata-geo/G00158000,GeoRegion,South Asia,Earth,579000000
 undata-geo/G00160000,GeoRegion,Western Pacific,Earth,579000000
-undata-geo/G00160200,GeoRegion,"Western Pacific: Low and middle income","Earth,undata-geo/G00160000",579000000
+undata-geo/G00160200,GeoRegion,Western Pacific: Low and middle income,"Earth,undata-geo/G00160000",579000000
 undata-geo/G00162000,GeoRegion,Central and Eastern Europe,Earth,579000000
 undata-geo/G00163000,GeoRegion,Central Asia and Southern Asia,Earth,579000000
 undata-geo/G00401000,GeoRegion,Developed economies region,Earth,579000000
@@ -104015,17 +104015,17 @@ undata-geo/G00405200,GeoRegion,Small Island Developing States (SIDS): Americas r
 undata-geo/G00405300,GeoRegion,Small Island Developing States (SIDS): Asia region,"Earth,asia,undata-geo/G00405000",579000000
 undata-geo/G00405400,GeoRegion,Small Island Developing States (SIDS): Oceania region,"Earth,oceania,undata-geo/G00405000",579000000
 undata-geo/G00406000,GeoRegion,"Organisation for Economic Co-operation and Development (OECD),OECD",Earth,579000000
-undata-geo/G00406200,GeoRegion,"OECD: Europe","Earth,undata-geo/G00406000",579000000
-undata-geo/G00406300,GeoRegion,"OECD: Americas","Earth,undata-geo/G00406000",579000000
-undata-geo/G00406500,GeoRegion,"OECD: Western Pacific",Earth,579000000
-undata-geo/G00407100,GeoRegion,"Non-OECD: Africa","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407200,GeoRegion,"Non-OECD: Americas","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407300,GeoRegion,"Non-OECD: Asia","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407400,GeoRegion,"Non-OECD: Eastern Mediterranean","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407500,GeoRegion,"Non-OECD: Europe","Earth,undata-geo/G00407000",579000000
-undata-geo/G00407700,GeoRegion,"Non-OECD: South-East Asia",Earth,579000000
-undata-geo/G00407800,GeoRegion,"Non-OECD: Western Pacific",Earth,579000000
-undata-geo/G00500164,GeoRegion,"Commonwealth of Independent States (CIS): Europe",Earth,579000000
+undata-geo/G00406200,GeoRegion,OECD: Europe,"Earth,undata-geo/G00406000",579000000
+undata-geo/G00406300,GeoRegion,OECD: Americas,"Earth,undata-geo/G00406000",579000000
+undata-geo/G00406500,GeoRegion,OECD: Western Pacific,Earth,579000000
+undata-geo/G00407100,GeoRegion,Non-OECD: Africa,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407200,GeoRegion,Non-OECD: Americas,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407300,GeoRegion,Non-OECD: Asia,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407400,GeoRegion,Non-OECD: Eastern Mediterranean,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407500,GeoRegion,Non-OECD: Europe,"Earth,undata-geo/G00407000",579000000
+undata-geo/G00407700,GeoRegion,Non-OECD: South-East Asia,Earth,579000000
+undata-geo/G00407800,GeoRegion,Non-OECD: Western Pacific,Earth,579000000
+undata-geo/G00500164,GeoRegion,Commonwealth of Independent States (CIS): Europe,Earth,579000000
 undata-geo/G00500200,GeoRegion,Development Assistance Committee (DAC) region,Earth,579000000
 undata-geo/G00500360,GeoRegion,European Union (EU) Institutions region,"Earth,EuropeanUnion",579000000
 undata-geo/G00600000,GeoRegion,"United Nations Member States,UN Member states",Earth,579000000
@@ -104044,18 +104044,442 @@ undata-geo/G00800100,GeoRegion,Caucasus and Central Asia,Earth,579000000
 undata-geo/G00800130,GeoRegion,Southern Asia (excl. India) region,"Earth,SouthernAsia,asia",579000000
 undata-geo/G00800150,GeoRegion,Eastern Asia (excl. Japan and China) region,"Earth,EasternAsia,asia",579000000
 undata-geo/G00800160,GeoRegion,Eastern Asia (excl. Japan) region,"Earth,EasternAsia,asia",579000000
-undata-geo/G00800370,GeoRegion,"Western Asia (excl. Armenia Azerbaijan Cyprus Israel and Georgia) region","Earth,WesternAsia,asia",579000000
+undata-geo/G00800370,GeoRegion,Western Asia (excl. Armenia Azerbaijan Cyprus Israel and Georgia) region,"Earth,WesternAsia,asia",579000000
 undata-geo/G00800480,GeoRegion,Northern Africa (excl. Sudan) region,"Earth,NorthernAfrica,africa",579000000
 undata-geo/G00800500,GeoRegion,Sub-Saharan Africa (incl. Sudan) region,"Earth,SubSaharanAfrica,africa",579000000
-undata-geo/G01100100,GeoRegion,"MDG Region: Developed regions",Earth,579000000
-undata-geo/G01100200,GeoRegion,"MDG Region: Developing regions",Earth,579000000
-undata-geo/G01100210,GeoRegion,"MDG Region: Northern Africa",Earth,579000000
-undata-geo/G01100220,GeoRegion,"MDG Region: Sub-Saharan Africa",Earth,579000000
-undata-geo/G01100230,GeoRegion,"MDG Region: South-eastern Asia",Earth,579000000
-undata-geo/G01100240,GeoRegion,"MDG Region: Eastern Asia",Earth,579000000
-undata-geo/G01100250,GeoRegion,"MDG Region: Southern Asia",Earth,579000000
-undata-geo/G01100260,GeoRegion,"MDG Region: Western Asia",Earth,579000000
-undata-geo/G01100270,GeoRegion,"MDG Region: Caucasus and Central Asia",Earth,579000000
-undata-geo/G01100280,GeoRegion,"MDG Region: Oceania",Earth,579000000
-undata-geo/G01100290,GeoRegion,"MDG Region: Latin America and the Caribbean",Earth,579000000
+undata-geo/G01100100,GeoRegion,MDG Region: Developed regions,Earth,579000000
+undata-geo/G01100200,GeoRegion,MDG Region: Developing regions,Earth,579000000
+undata-geo/G01100210,GeoRegion,MDG Region: Northern Africa,Earth,579000000
+undata-geo/G01100220,GeoRegion,MDG Region: Sub-Saharan Africa,Earth,579000000
+undata-geo/G01100230,GeoRegion,MDG Region: South-eastern Asia,Earth,579000000
+undata-geo/G01100240,GeoRegion,MDG Region: Eastern Asia,Earth,579000000
+undata-geo/G01100250,GeoRegion,MDG Region: Southern Asia,Earth,579000000
+undata-geo/G01100260,GeoRegion,MDG Region: Western Asia,Earth,579000000
+undata-geo/G01100270,GeoRegion,MDG Region: Caucasus and Central Asia,Earth,579000000
+undata-geo/G01100280,GeoRegion,MDG Region: Oceania,Earth,579000000
+undata-geo/G01100290,GeoRegion,MDG Region: Latin America and the Caribbean,Earth,579000000
 undata-geo/G99999999,GeoRegion,Source geographies without a corresponding geography in UNdata region,Earth,579000000
+asgs3/101,ABSStatisticalAreaLevel4,Capital Region,"Earth,country/AUS,oceania,wikidataId/Q3224",248376
+asgs3/102,ABSStatisticalAreaLevel4,Central Coast,"Earth,country/AUS,oceania,wikidataId/Q3224",357816
+asgs3/103,ABSStatisticalAreaLevel4,Central West,"Earth,country/AUS,oceania,wikidataId/Q3224",216979
+asgs3/104,ABSStatisticalAreaLevel4,Coffs Harbour - Grafton,"Earth,country/AUS,oceania,wikidataId/Q3224",152331
+asgs3/105,ABSStatisticalAreaLevel4,Far West and Orana,"Earth,country/AUS,oceania,wikidataId/Q3224",118372
+asgs3/106,ABSStatisticalAreaLevel4,Hunter Valley exc Newcastle,"Earth,country/AUS,oceania,wikidataId/Q3224",316250
+asgs3/107,ABSStatisticalAreaLevel4,Illawarra,"Earth,country/AUS,oceania,wikidataId/Q3224",330469
+asgs3/108,ABSStatisticalAreaLevel4,Mid North Coast,"Earth,country/AUS,oceania,wikidataId/Q3224",239566
+asgs3/109,ABSStatisticalAreaLevel4,Murray,"Earth,country/AUS,oceania,wikidataId/Q3224",130078
+asgs3/110,ABSStatisticalAreaLevel4,New England and North West,"Earth,country/AUS,oceania,wikidataId/Q3224",191401
+asgs3/111,ABSStatisticalAreaLevel4,Newcastle and Lake Macquarie,"Earth,country/AUS,oceania,wikidataId/Q3224",412359
+asgs3/112,ABSStatisticalAreaLevel4,Richmond - Tweed,"Earth,country/AUS,oceania,wikidataId/Q3224",265824
+asgs3/113,ABSStatisticalAreaLevel4,Riverina,"Earth,country/AUS,oceania,wikidataId/Q3224",166404
+asgs3/114,ABSStatisticalAreaLevel4,Southern Highlands and Shoalhaven,"Earth,country/AUS,oceania,wikidataId/Q3224",165285
+asgs3/115,ABSStatisticalAreaLevel4,Sydney - Baulkham Hills and Hawkesbury,"Earth,country/AUS,oceania,wikidataId/Q3224",295667
+asgs3/116,ABSStatisticalAreaLevel4,Sydney - Blacktown,"Earth,country/AUS,oceania,wikidataId/Q3224",452374
+asgs3/117,ABSStatisticalAreaLevel4,Sydney - City and Inner South,"Earth,country/AUS,oceania,wikidataId/Q3224",369674
+asgs3/118,ABSStatisticalAreaLevel4,Sydney - Eastern Suburbs,"Earth,country/AUS,oceania,wikidataId/Q3224",280449
+asgs3/119,ABSStatisticalAreaLevel4,Sydney - Inner South West,"Earth,country/AUS,oceania,wikidataId/Q3224",642157
+asgs3/120,ABSStatisticalAreaLevel4,Sydney - Inner West,"Earth,country/AUS,oceania,wikidataId/Q3224",324297
+asgs3/121,ABSStatisticalAreaLevel4,Sydney - North Sydney and Hornsby,"Earth,country/AUS,oceania,wikidataId/Q3224",447312
+asgs3/122,ABSStatisticalAreaLevel4,Sydney - Northern Beaches,"Earth,country/AUS,oceania,wikidataId/Q3224",272656
+asgs3/123,ABSStatisticalAreaLevel4,Sydney - Outer South West,"Earth,country/AUS,oceania,wikidataId/Q3224",323758
+asgs3/124,ABSStatisticalAreaLevel4,Sydney - Outer West and Blue Mountains,"Earth,country/AUS,oceania,wikidataId/Q3224",350649
+asgs3/125,ABSStatisticalAreaLevel4,Sydney - Parramatta,"Earth,country/AUS,oceania,wikidataId/Q3224",535540
+asgs3/126,ABSStatisticalAreaLevel4,Sydney - Ryde,"Earth,country/AUS,oceania,wikidataId/Q3224",218606
+asgs3/127,ABSStatisticalAreaLevel4,Sydney - South West,"Earth,country/AUS,oceania,wikidataId/Q3224",527701
+asgs3/128,ABSStatisticalAreaLevel4,Sydney - Sutherland,"Earth,country/AUS,oceania,wikidataId/Q3224",240174
+asgs3/201,ABSStatisticalAreaLevel4,Ballarat,"Earth,country/AUS,oceania,wikidataId/Q36687",184285
+asgs3/202,ABSStatisticalAreaLevel4,Bendigo,"Earth,country/AUS,oceania,wikidataId/Q36687",173769
+asgs3/203,ABSStatisticalAreaLevel4,Geelong,"Earth,country/AUS,oceania,wikidataId/Q36687",355990
+asgs3/204,ABSStatisticalAreaLevel4,Hume,"Earth,country/AUS,oceania,wikidataId/Q36687",189765
+asgs3/205,ABSStatisticalAreaLevel4,Latrobe - Gippsland,"Earth,country/AUS,oceania,wikidataId/Q36687",313733
+asgs3/206,ABSStatisticalAreaLevel4,Melbourne - Inner,"Earth,country/AUS,oceania,wikidataId/Q36687",713493
+asgs3/207,ABSStatisticalAreaLevel4,Melbourne - Inner East,"Earth,country/AUS,oceania,wikidataId/Q36687",405012
+asgs3/208,ABSStatisticalAreaLevel4,Melbourne - Inner South,"Earth,country/AUS,oceania,wikidataId/Q36687",454338
+asgs3/209,ABSStatisticalAreaLevel4,Melbourne - North East,"Earth,country/AUS,oceania,wikidataId/Q36687",596605
+asgs3/210,ABSStatisticalAreaLevel4,Melbourne - North West,"Earth,country/AUS,oceania,wikidataId/Q36687",473116
+asgs3/211,ABSStatisticalAreaLevel4,Melbourne - Outer East,"Earth,country/AUS,oceania,wikidataId/Q36687",536368
+asgs3/212,ABSStatisticalAreaLevel4,Melbourne - South East,"Earth,country/AUS,oceania,wikidataId/Q36687",958772
+asgs3/213,ABSStatisticalAreaLevel4,Melbourne - West,"Earth,country/AUS,oceania,wikidataId/Q36687",980300
+asgs3/214,ABSStatisticalAreaLevel4,Mornington Peninsula,"Earth,country/AUS,oceania,wikidataId/Q36687",317586
+asgs3/215,ABSStatisticalAreaLevel4,North West,"Earth,country/AUS,oceania,wikidataId/Q36687",153762
+asgs3/216,ABSStatisticalAreaLevel4,Shepparton,"Earth,country/AUS,oceania,wikidataId/Q36687",138645
+asgs3/217,ABSStatisticalAreaLevel4,Warrnambool and South West,"Earth,country/AUS,oceania,wikidataId/Q36687",128320
+asgs3/301,ABSStatisticalAreaLevel4,Brisbane - East,"Earth,country/AUS,oceania,wikidataId/Q36074",258510
+asgs3/302,ABSStatisticalAreaLevel4,Brisbane - North,"Earth,country/AUS,oceania,wikidataId/Q36074",244037
+asgs3/303,ABSStatisticalAreaLevel4,Brisbane - South,"Earth,country/AUS,oceania,wikidataId/Q36074",412436
+asgs3/304,ABSStatisticalAreaLevel4,Brisbane - West,"Earth,country/AUS,oceania,wikidataId/Q36074",204443
+asgs3/305,ABSStatisticalAreaLevel4,Brisbane Inner City,"Earth,country/AUS,oceania,wikidataId/Q36074",335571
+asgs3/306,ABSStatisticalAreaLevel4,Cairns,"Earth,country/AUS,oceania,wikidataId/Q36074",271408
+asgs3/307,ABSStatisticalAreaLevel4,Darling Downs - Maranoa,"Earth,country/AUS,oceania,wikidataId/Q36074",134169
+asgs3/308,ABSStatisticalAreaLevel4,Central Queensland,"Earth,country/AUS,oceania,wikidataId/Q36074",244220
+asgs3/309,ABSStatisticalAreaLevel4,Gold Coast,"Earth,country/AUS,oceania,wikidataId/Q36074",708085
+asgs3/310,ABSStatisticalAreaLevel4,Ipswich,"Earth,country/AUS,oceania,wikidataId/Q36074",419370
+asgs3/311,ABSStatisticalAreaLevel4,Logan - Beaudesert,"Earth,country/AUS,oceania,wikidataId/Q36074",420157
+asgs3/312,ABSStatisticalAreaLevel4,Mackay - Isaac - Whitsunday,"Earth,country/AUS,oceania,wikidataId/Q36074",193813
+asgs3/313,ABSStatisticalAreaLevel4,Moreton Bay - North,"Earth,country/AUS,oceania,wikidataId/Q36074",300041
+asgs3/314,ABSStatisticalAreaLevel4,Moreton Bay - South,"Earth,country/AUS,oceania,wikidataId/Q36074",238959
+asgs3/315,ABSStatisticalAreaLevel4,Queensland - Outback,"Earth,country/AUS,oceania,wikidataId/Q36074",82563
+asgs3/316,ABSStatisticalAreaLevel4,Sunshine Coast,"Earth,country/AUS,oceania,wikidataId/Q36074",441508
+asgs3/317,ABSStatisticalAreaLevel4,Toowoomba,"Earth,country/AUS,oceania,wikidataId/Q36074",175707
+asgs3/318,ABSStatisticalAreaLevel4,Townsville,"Earth,country/AUS,oceania,wikidataId/Q36074",249097
+asgs3/319,ABSStatisticalAreaLevel4,Wide Bay,"Earth,country/AUS,oceania,wikidataId/Q36074",335670
+asgs3/401,ABSStatisticalAreaLevel4,Adelaide - Central and Hills,"Earth,country/AUS,oceania,wikidataId/Q35715",338950
+asgs3/402,ABSStatisticalAreaLevel4,Adelaide - North,"Earth,country/AUS,oceania,wikidataId/Q35715",492185
+asgs3/403,ABSStatisticalAreaLevel4,Adelaide - South,"Earth,country/AUS,oceania,wikidataId/Q35715",396764
+asgs3/404,ABSStatisticalAreaLevel4,Adelaide - West,"Earth,country/AUS,oceania,wikidataId/Q35715",263116
+asgs3/405,ABSStatisticalAreaLevel4,Barossa - Yorke - Mid North,"Earth,country/AUS,oceania,wikidataId/Q35715",120651
+asgs3/406,ABSStatisticalAreaLevel4,South Australia - Outback,"Earth,country/AUS,oceania,wikidataId/Q35715",85925
+asgs3/407,ABSStatisticalAreaLevel4,South Australia - South East,"Earth,country/AUS,oceania,wikidataId/Q35715",205074
+asgs3/501,ABSStatisticalAreaLevel4,Bunbury,"Earth,country/AUS,oceania,wikidataId/Q3206",210962
+asgs3/502,ABSStatisticalAreaLevel4,Mandurah,"Earth,country/AUS,oceania,wikidataId/Q3206",127502
+asgs3/503,ABSStatisticalAreaLevel4,Perth - Inner,"Earth,country/AUS,oceania,wikidataId/Q3206",212390
+asgs3/504,ABSStatisticalAreaLevel4,Perth - North East,"Earth,country/AUS,oceania,wikidataId/Q3206",324644
+asgs3/505,ABSStatisticalAreaLevel4,Perth - North West,"Earth,country/AUS,oceania,wikidataId/Q3206",657092
+asgs3/506,ABSStatisticalAreaLevel4,Perth - South East,"Earth,country/AUS,oceania,wikidataId/Q3206",611748
+asgs3/507,ABSStatisticalAreaLevel4,Perth - South West,"Earth,country/AUS,oceania,wikidataId/Q3206",519389
+asgs3/509,ABSStatisticalAreaLevel4,Western Australia - Wheat Belt,"Earth,country/AUS,oceania,wikidataId/Q3206",149617
+asgs3/510,ABSStatisticalAreaLevel4,Western Australia - Outback (North),"Earth,country/AUS,oceania,wikidataId/Q3206",102732
+asgs3/511,ABSStatisticalAreaLevel4,Western Australia - Outback (South),"Earth,country/AUS,oceania,wikidataId/Q3206",128306
+asgs3/601,ABSStatisticalAreaLevel4,Hobart,"Earth,country/AUS,oceania,wikidataId/Q34366",255250
+asgs3/602,ABSStatisticalAreaLevel4,Launceston and North East,"Earth,country/AUS,oceania,wikidataId/Q34366",156393
+asgs3/603,ABSStatisticalAreaLevel4,South East,"Earth,country/AUS,oceania,wikidataId/Q34366",44527
+asgs3/604,ABSStatisticalAreaLevel4,West and North West,"Earth,country/AUS,oceania,wikidataId/Q34366",120091
+asgs3/701,ABSStatisticalAreaLevel4,Darwin,"Earth,country/AUS,oceania,wikidataId/Q3235",159284
+asgs3/702,ABSStatisticalAreaLevel4,Northern Territory - Outback,"Earth,country/AUS,oceania,wikidataId/Q3235",105272
+asgs3/801,ABSStatisticalAreaLevel4,Australian Capital Territory,"Earth,country/AUS,oceania,wikidataId/Q3258",484630
+asgs3/10102,ABSStatisticalAreaLevel3,Queanbeyan,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",69504
+asgs3/10103,ABSStatisticalAreaLevel3,Snowy Mountains,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",21352
+asgs3/10104,ABSStatisticalAreaLevel3,South Coast,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",78583
+asgs3/10105,ABSStatisticalAreaLevel3,Goulburn - Mulwaree,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",40058
+asgs3/10106,ABSStatisticalAreaLevel3,Young - Yass,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/101",38879
+asgs3/10201,ABSStatisticalAreaLevel3,Gosford,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/102",182791
+asgs3/10202,ABSStatisticalAreaLevel3,Wyong,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/102",175025
+asgs3/10301,ABSStatisticalAreaLevel3,Bathurst,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/103",50971
+asgs3/10302,ABSStatisticalAreaLevel3,Lachlan Valley,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/103",54318
+asgs3/10303,ABSStatisticalAreaLevel3,Lithgow - Mudgee,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/103",48484
+asgs3/10304,ABSStatisticalAreaLevel3,Orange,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/103",63206
+asgs3/10401,ABSStatisticalAreaLevel3,Clarence Valley,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/104",56566
+asgs3/10402,ABSStatisticalAreaLevel3,Coffs Harbour,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/104",95765
+asgs3/10501,ABSStatisticalAreaLevel3,Bourke - Cobar - Coonamble,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/105",21882
+asgs3/10502,ABSStatisticalAreaLevel3,Broken Hill and Far West,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/105",19817
+asgs3/10503,ABSStatisticalAreaLevel3,Dubbo,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/105",76673
+asgs3/10601,ABSStatisticalAreaLevel3,Lower Hunter,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/106",107560
+asgs3/10602,ABSStatisticalAreaLevel3,Maitland,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/106",97111
+asgs3/10603,ABSStatisticalAreaLevel3,Port Stephens,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/106",80297
+asgs3/10604,ABSStatisticalAreaLevel3,Upper Hunter,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/106",31282
+asgs3/10701,ABSStatisticalAreaLevel3,Dapto - Port Kembla,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/107",83206
+asgs3/10702,ABSStatisticalAreaLevel3,Illawarra Catchment Reserve,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/107",5
+asgs3/10703,ABSStatisticalAreaLevel3,Kiama - Shellharbour,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/107",106310
+asgs3/10704,ABSStatisticalAreaLevel3,Wollongong,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/107",140948
+asgs3/10801,ABSStatisticalAreaLevel3,Great Lakes,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/108",34161
+asgs3/10802,ABSStatisticalAreaLevel3,Kempsey - Nambucca,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/108",53201
+asgs3/10803,ABSStatisticalAreaLevel3,Lord Howe Island,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/108",442
+asgs3/10804,ABSStatisticalAreaLevel3,Port Macquarie,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/108",92449
+asgs3/10805,ABSStatisticalAreaLevel3,Taree - Gloucester,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/108",59313
+asgs3/10901,ABSStatisticalAreaLevel3,Albury,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/109",71112
+asgs3/10902,ABSStatisticalAreaLevel3,Lower Murray,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/109",13555
+asgs3/10903,ABSStatisticalAreaLevel3,Upper Murray exc. Albury,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/109",45411
+asgs3/11001,ABSStatisticalAreaLevel3,Armidale,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/110",38292
+asgs3/11002,ABSStatisticalAreaLevel3,Inverell - Tenterfield,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/110",39666
+asgs3/11003,ABSStatisticalAreaLevel3,Moree - Narrabri,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/110",24835
+asgs3/11004,ABSStatisticalAreaLevel3,Tamworth - Gunnedah,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/110",88608
+asgs3/11101,ABSStatisticalAreaLevel3,Lake Macquarie - East,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/111",130288
+asgs3/11102,ABSStatisticalAreaLevel3,Lake Macquarie - West,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/111",91855
+asgs3/11103,ABSStatisticalAreaLevel3,Newcastle,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/111",190216
+asgs3/11201,ABSStatisticalAreaLevel3,Richmond Valley - Coastal,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/112",93063
+asgs3/11202,ABSStatisticalAreaLevel3,Richmond Valley - Hinterland,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/112",71717
+asgs3/11203,ABSStatisticalAreaLevel3,Tweed Valley,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/112",101044
+asgs3/11301,ABSStatisticalAreaLevel3,Griffith - Murrumbidgee (West),"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/113",50175
+asgs3/11302,ABSStatisticalAreaLevel3,Tumut - Tumbarumba,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/113",14996
+asgs3/11303,ABSStatisticalAreaLevel3,Wagga Wagga,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/113",101233
+asgs3/11401,ABSStatisticalAreaLevel3,Shoalhaven,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/114",111404
+asgs3/11402,ABSStatisticalAreaLevel3,Southern Highlands,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/114",53881
+asgs3/11501,ABSStatisticalAreaLevel3,Baulkham Hills,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/115",161748
+asgs3/11502,ABSStatisticalAreaLevel3,Dural - Wisemans Ferry,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/115",28477
+asgs3/11503,ABSStatisticalAreaLevel3,Hawkesbury,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/115",25296
+asgs3/11504,ABSStatisticalAreaLevel3,Rouse Hill - McGraths Hill,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/115",80146
+asgs3/11601,ABSStatisticalAreaLevel3,Blacktown,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/116",148179
+asgs3/11602,ABSStatisticalAreaLevel3,Blacktown - North,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/116",184728
+asgs3/11603,ABSStatisticalAreaLevel3,Mount Druitt,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/116",119467
+asgs3/11701,ABSStatisticalAreaLevel3,Botany,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/117",63029
+asgs3/11702,ABSStatisticalAreaLevel3,Marrickville - Sydenham - Petersham,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/117",58057
+asgs3/11703,ABSStatisticalAreaLevel3,Sydney Inner City,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/117",248588
+asgs3/11801,ABSStatisticalAreaLevel3,Eastern Suburbs - North,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/118",133974
+asgs3/11802,ABSStatisticalAreaLevel3,Eastern Suburbs - South,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/118",146475
+asgs3/11901,ABSStatisticalAreaLevel3,Bankstown,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/119",195635
+asgs3/11902,ABSStatisticalAreaLevel3,Canterbury,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/119",147918
+asgs3/11903,ABSStatisticalAreaLevel3,Hurstville,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/119",140730
+asgs3/11904,ABSStatisticalAreaLevel3,Kogarah - Rockdale,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/119",157874
+asgs3/12001,ABSStatisticalAreaLevel3,Canada Bay,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/120",91180
+asgs3/12002,ABSStatisticalAreaLevel3,Leichhardt,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/120",58703
+asgs3/12003,ABSStatisticalAreaLevel3,Strathfield - Burwood - Ashfield,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/120",174414
+asgs3/12101,ABSStatisticalAreaLevel3,Chatswood - Lane Cove,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/121",126253
+asgs3/12102,ABSStatisticalAreaLevel3,Hornsby,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/121",91335
+asgs3/12103,ABSStatisticalAreaLevel3,Ku-ring-gai,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/121",129228
+asgs3/12104,ABSStatisticalAreaLevel3,North Sydney - Mosman,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/121",100496
+asgs3/12201,ABSStatisticalAreaLevel3,Manly,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/122",45505
+asgs3/12202,ABSStatisticalAreaLevel3,Pittwater,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/122",64840
+asgs3/12203,ABSStatisticalAreaLevel3,Warringah,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/122",162311
+asgs3/12301,ABSStatisticalAreaLevel3,Camden,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/123",78632
+asgs3/12302,ABSStatisticalAreaLevel3,Campbelltown (NSW),"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/123",192503
+asgs3/12303,ABSStatisticalAreaLevel3,Wollondilly,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/123",52623
+asgs3/12401,ABSStatisticalAreaLevel3,Blue Mountains,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/124",79132
+asgs3/12402,ABSStatisticalAreaLevel3,Blue Mountains - South,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/124",7
+asgs3/12403,ABSStatisticalAreaLevel3,Penrith,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/124",171995
+asgs3/12404,ABSStatisticalAreaLevel3,Richmond - Windsor,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/124",39856
+asgs3/12405,ABSStatisticalAreaLevel3,St Marys,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/124",59659
+asgs3/12501,ABSStatisticalAreaLevel3,Auburn,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/125",116341
+asgs3/12502,ABSStatisticalAreaLevel3,Carlingford,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/125",79376
+asgs3/12503,ABSStatisticalAreaLevel3,Merrylands - Guildford,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/125",175606
+asgs3/12504,ABSStatisticalAreaLevel3,Parramatta,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/125",164217
+asgs3/12601,ABSStatisticalAreaLevel3,Pennant Hills - Epping,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/126",57771
+asgs3/12602,ABSStatisticalAreaLevel3,Ryde - Hunters Hill,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/126",160835
+asgs3/12701,ABSStatisticalAreaLevel3,Bringelly - Green Valley,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/127",179203
+asgs3/12702,ABSStatisticalAreaLevel3,Fairfield,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/127",198586
+asgs3/12703,ABSStatisticalAreaLevel3,Liverpool,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/127",149912
+asgs3/12801,ABSStatisticalAreaLevel3,Cronulla - Miranda - Caringbah,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/128",125196
+asgs3/12802,ABSStatisticalAreaLevel3,Sutherland - Menai - Heathcote,"Earth,country/AUS,oceania,wikidataId/Q3224,asgs3/128",114978
+asgs3/20101,ABSStatisticalAreaLevel3,Ballarat,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",125189
+asgs3/20102,ABSStatisticalAreaLevel3,Creswick - Daylesford - Ballan,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",31707
+asgs3/20103,ABSStatisticalAreaLevel3,Maryborough - Pyrenees,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/201",27389
+asgs3/20201,ABSStatisticalAreaLevel3,Bendigo,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/202",106493
+asgs3/20202,ABSStatisticalAreaLevel3,Heathcote - Castlemaine - Kyneton,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/202",54540
+asgs3/20203,ABSStatisticalAreaLevel3,Loddon - Elmore,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/202",12736
+asgs3/20301,ABSStatisticalAreaLevel3,Barwon - West,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/203",24428
+asgs3/20302,ABSStatisticalAreaLevel3,Geelong,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/203",227294
+asgs3/20303,ABSStatisticalAreaLevel3,Surf Coast - Bellarine Peninsula,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/203",104268
+asgs3/20401,ABSStatisticalAreaLevel3,Upper Goulburn Valley,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/204",62686
+asgs3/20402,ABSStatisticalAreaLevel3,Wangaratta - Benalla,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/204",48879
+asgs3/20403,ABSStatisticalAreaLevel3,Wodonga - Alpine,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/204",78200
+asgs3/20501,ABSStatisticalAreaLevel3,Baw Baw,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/205",62878
+asgs3/20502,ABSStatisticalAreaLevel3,Gippsland - East,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/205",49816
+asgs3/20503,ABSStatisticalAreaLevel3,Gippsland - South West,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/205",75613
+asgs3/20504,ABSStatisticalAreaLevel3,Latrobe Valley,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/205",79022
+asgs3/20505,ABSStatisticalAreaLevel3,Wellington,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/205",46404
+asgs3/20601,ABSStatisticalAreaLevel3,Brunswick - Coburg,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",101655
+asgs3/20602,ABSStatisticalAreaLevel3,Darebin - South,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",56978
+asgs3/20603,ABSStatisticalAreaLevel3,Essendon,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",74613
+asgs3/20604,ABSStatisticalAreaLevel3,Melbourne City,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",194710
+asgs3/20605,ABSStatisticalAreaLevel3,Port Phillip,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",114206
+asgs3/20606,ABSStatisticalAreaLevel3,Stonnington - West,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",68973
+asgs3/20607,ABSStatisticalAreaLevel3,Yarra,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/206",102358
+asgs3/20701,ABSStatisticalAreaLevel3,Boroondara,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/207",178601
+asgs3/20702,ABSStatisticalAreaLevel3,Manningham - West,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/207",105925
+asgs3/20703,ABSStatisticalAreaLevel3,Whitehorse - West,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/207",120486
+asgs3/20801,ABSStatisticalAreaLevel3,Bayside,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/208",107164
+asgs3/20802,ABSStatisticalAreaLevel3,Glen Eira,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/208",171157
+asgs3/20803,ABSStatisticalAreaLevel3,Kingston,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/208",130201
+asgs3/20804,ABSStatisticalAreaLevel3,Stonnington - East,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/208",45816
+asgs3/20901,ABSStatisticalAreaLevel3,Banyule,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/209",132770
+asgs3/20902,ABSStatisticalAreaLevel3,Darebin - North,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/209",105518
+asgs3/20903,ABSStatisticalAreaLevel3,Nillumbik - Kinglake,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/209",68216
+asgs3/20904,ABSStatisticalAreaLevel3,Whittlesea - Wallan,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/209",290101
+asgs3/21001,ABSStatisticalAreaLevel3,Keilor,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/210",64619
+asgs3/21002,ABSStatisticalAreaLevel3,Macedon Ranges,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/210",35730
+asgs3/21003,ABSStatisticalAreaLevel3,Moreland - North,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/210",86451
+asgs3/21004,ABSStatisticalAreaLevel3,Sunbury,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/210",51978
+asgs3/21005,ABSStatisticalAreaLevel3,Tullamarine - Broadmeadows,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/210",234338
+asgs3/21101,ABSStatisticalAreaLevel3,Knox,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/211",163794
+asgs3/21102,ABSStatisticalAreaLevel3,Manningham - East,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/211",27123
+asgs3/21103,ABSStatisticalAreaLevel3,Maroondah,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/211",119768
+asgs3/21104,ABSStatisticalAreaLevel3,Whitehorse - East,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/211",65684
+asgs3/21105,ABSStatisticalAreaLevel3,Yarra Ranges,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/211",159999
+asgs3/21201,ABSStatisticalAreaLevel3,Cardinia,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/212",133598
+asgs3/21202,ABSStatisticalAreaLevel3,Casey - North,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/212",145600
+asgs3/21203,ABSStatisticalAreaLevel3,Casey - South,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/212",269329
+asgs3/21204,ABSStatisticalAreaLevel3,Dandenong,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/212",206544
+asgs3/21205,ABSStatisticalAreaLevel3,Monash,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/212",203701
+asgs3/21301,ABSStatisticalAreaLevel3,Brimbank,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/213",189452
+asgs3/21302,ABSStatisticalAreaLevel3,Hobsons Bay,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/213",92066
+asgs3/21303,ABSStatisticalAreaLevel3,Maribyrnong,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/213",94672
+asgs3/21304,ABSStatisticalAreaLevel3,Melton - Bacchus Marsh,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/213",251315
+asgs3/21305,ABSStatisticalAreaLevel3,Wyndham,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/213",352795
+asgs3/21401,ABSStatisticalAreaLevel3,Frankston,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/214",145369
+asgs3/21402,ABSStatisticalAreaLevel3,Mornington Peninsula,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/214",172217
+asgs3/21501,ABSStatisticalAreaLevel3,Grampians,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/215",59293
+asgs3/21502,ABSStatisticalAreaLevel3,Mildura,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/215",57309
+asgs3/21503,ABSStatisticalAreaLevel3,Murray River - Swan Hill,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/215",37160
+asgs3/21601,ABSStatisticalAreaLevel3,Campaspe,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/216",38046
+asgs3/21602,ABSStatisticalAreaLevel3,Moira,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/216",30866
+asgs3/21603,ABSStatisticalAreaLevel3,Shepparton,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/216",69733
+asgs3/21701,ABSStatisticalAreaLevel3,Glenelg - Southern Grampians,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",36401
+asgs3/21703,ABSStatisticalAreaLevel3,Colac - Corangamite,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",37848
+asgs3/21704,ABSStatisticalAreaLevel3,Warrnambool,"Earth,country/AUS,oceania,wikidataId/Q36687,asgs3/217",54071
+asgs3/30101,ABSStatisticalAreaLevel3,Capalaba,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",77038
+asgs3/30102,ABSStatisticalAreaLevel3,Cleveland - Stradbroke,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",103758
+asgs3/30103,ABSStatisticalAreaLevel3,Wynnum - Manly,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/301",77714
+asgs3/30201,ABSStatisticalAreaLevel3,Bald Hills - Everton Park,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/302",50961
+asgs3/30202,ABSStatisticalAreaLevel3,Chermside,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/302",79963
+asgs3/30203,ABSStatisticalAreaLevel3,Nundah,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/302",47467
+asgs3/30204,ABSStatisticalAreaLevel3,Sandgate,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/302",65646
+asgs3/30301,ABSStatisticalAreaLevel3,Carindale,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",58612
+asgs3/30302,ABSStatisticalAreaLevel3,Holland Park - Yeronga,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",86785
+asgs3/30303,ABSStatisticalAreaLevel3,Mt Gravatt,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",87898
+asgs3/30304,ABSStatisticalAreaLevel3,Nathan,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",44184
+asgs3/30305,ABSStatisticalAreaLevel3,Rocklea - Acacia Ridge,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",79376
+asgs3/30306,ABSStatisticalAreaLevel3,Sunnybank,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/303",55581
+asgs3/30401,ABSStatisticalAreaLevel3,Centenary,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/304",33991
+asgs3/30402,ABSStatisticalAreaLevel3,Kenmore - Brookfield - Moggill,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/304",50266
+asgs3/30403,ABSStatisticalAreaLevel3,Sherwood - Indooroopilly,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/304",61850
+asgs3/30404,ABSStatisticalAreaLevel3,The Gap - Enoggera,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/304",58336
+asgs3/30501,ABSStatisticalAreaLevel3,Brisbane Inner,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/305",107618
+asgs3/30502,ABSStatisticalAreaLevel3,Brisbane Inner - East,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/305",48814
+asgs3/30503,ABSStatisticalAreaLevel3,Brisbane Inner - North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/305",112992
+asgs3/30504,ABSStatisticalAreaLevel3,Brisbane Inner - West,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/305",66147
+asgs3/30601,ABSStatisticalAreaLevel3,Cairns - North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/306",63376
+asgs3/30602,ABSStatisticalAreaLevel3,Cairns - South,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/306",112192
+asgs3/30603,ABSStatisticalAreaLevel3,Innisfail - Cassowary Coast,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/306",37101
+asgs3/30604,ABSStatisticalAreaLevel3,Port Douglas - Daintree,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/306",13052
+asgs3/30605,ABSStatisticalAreaLevel3,Tablelands (East) - Kuranda,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/306",45687
+asgs3/30701,ABSStatisticalAreaLevel3,Darling Downs (West) - Maranoa,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/307",45733
+asgs3/30702,ABSStatisticalAreaLevel3,Darling Downs - East,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/307",44805
+asgs3/30703,ABSStatisticalAreaLevel3,Granite Belt,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/307",43631
+asgs3/30801,ABSStatisticalAreaLevel3,Central Highlands (Qld),"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/308",30568
+asgs3/30803,ABSStatisticalAreaLevel3,Rockhampton,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/308",129462
+asgs3/30804,ABSStatisticalAreaLevel3,Biloela,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/308",15144
+asgs3/30805,ABSStatisticalAreaLevel3,Gladstone,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/308",69046
+asgs3/30901,ABSStatisticalAreaLevel3,Broadbeach - Burleigh,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",73565
+asgs3/30902,ABSStatisticalAreaLevel3,Coolangatta,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",62922
+asgs3/30903,ABSStatisticalAreaLevel3,Gold Coast - North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",74123
+asgs3/30904,ABSStatisticalAreaLevel3,Gold Coast Hinterland,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",21542
+asgs3/30905,ABSStatisticalAreaLevel3,Mudgeeraba - Tallebudgera,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",38492
+asgs3/30906,ABSStatisticalAreaLevel3,Nerang,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",74051
+asgs3/30907,ABSStatisticalAreaLevel3,Ormeau - Oxenford,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",183755
+asgs3/30908,ABSStatisticalAreaLevel3,Robina,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",58233
+asgs3/30909,ABSStatisticalAreaLevel3,Southport,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",69158
+asgs3/30910,ABSStatisticalAreaLevel3,Surfers Paradise,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/309",52244
+asgs3/31001,ABSStatisticalAreaLevel3,Forest Lake - Oxley,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/310",86280
+asgs3/31002,ABSStatisticalAreaLevel3,Ipswich Hinterland,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/310",75127
+asgs3/31003,ABSStatisticalAreaLevel3,Ipswich Inner,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/310",133614
+asgs3/31004,ABSStatisticalAreaLevel3,Springfield - Redbank,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/310",124349
+asgs3/31101,ABSStatisticalAreaLevel3,Beaudesert,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",16642
+asgs3/31102,ABSStatisticalAreaLevel3,Beenleigh,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",53653
+asgs3/31103,ABSStatisticalAreaLevel3,Browns Plains,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",115668
+asgs3/31104,ABSStatisticalAreaLevel3,Jimboomba,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",80552
+asgs3/31105,ABSStatisticalAreaLevel3,Loganlea - Carbrook,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",69513
+asgs3/31106,ABSStatisticalAreaLevel3,Springwood - Kingston,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/311",84129
+asgs3/31201,ABSStatisticalAreaLevel3,Bowen Basin - North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/312",38460
+asgs3/31202,ABSStatisticalAreaLevel3,Mackay,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/312",129253
+asgs3/31203,ABSStatisticalAreaLevel3,Whitsunday,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/312",26100
+asgs3/31301,ABSStatisticalAreaLevel3,Bribie - Beachmere,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/313",39948
+asgs3/31302,ABSStatisticalAreaLevel3,Caboolture,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/313",94807
+asgs3/31303,ABSStatisticalAreaLevel3,Caboolture Hinterland,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/313",17022
+asgs3/31304,ABSStatisticalAreaLevel3,Narangba - Burpengary,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/313",79517
+asgs3/31305,ABSStatisticalAreaLevel3,Redcliffe,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/313",68747
+asgs3/31401,ABSStatisticalAreaLevel3,The Hills District,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/314",96323
+asgs3/31402,ABSStatisticalAreaLevel3,North Lakes,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/314",99191
+asgs3/31403,ABSStatisticalAreaLevel3,Strathpine,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/314",43445
+asgs3/31501,ABSStatisticalAreaLevel3,Far North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/315",33934
+asgs3/31502,ABSStatisticalAreaLevel3,Outback - North,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/315",30954
+asgs3/31503,ABSStatisticalAreaLevel3,Outback - South,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/315",17675
+asgs3/31601,ABSStatisticalAreaLevel3,Buderim,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",63569
+asgs3/31602,ABSStatisticalAreaLevel3,Caloundra,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",109371
+asgs3/31603,ABSStatisticalAreaLevel3,Maroochy,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",68634
+asgs3/31605,ABSStatisticalAreaLevel3,Noosa,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",49435
+asgs3/31606,ABSStatisticalAreaLevel3,Sunshine Coast Hinterland,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",69179
+asgs3/31607,ABSStatisticalAreaLevel3,Nambour,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",55069
+asgs3/31608,ABSStatisticalAreaLevel3,Noosa Hinterland,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/316",26251
+asgs3/31701,ABSStatisticalAreaLevel3,Toowoomba,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/317",175707
+asgs3/31801,ABSStatisticalAreaLevel3,Charters Towers - Ayr - Ingham,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/318",42831
+asgs3/31802,ABSStatisticalAreaLevel3,Townsville,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/318",206266
+asgs3/31901,ABSStatisticalAreaLevel3,Bundaberg,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",101433
+asgs3/31902,ABSStatisticalAreaLevel3,Burnett,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",52835
+asgs3/31903,ABSStatisticalAreaLevel3,Gympie - Cooloola,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",58405
+asgs3/31904,ABSStatisticalAreaLevel3,Hervey Bay,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",71199
+asgs3/31905,ABSStatisticalAreaLevel3,Maryborough,"Earth,country/AUS,oceania,wikidataId/Q36074,asgs3/319",51798
+asgs3/40101,ABSStatisticalAreaLevel3,Adelaide City,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",30173
+asgs3/40102,ABSStatisticalAreaLevel3,Adelaide Hills,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",87601
+asgs3/40103,ABSStatisticalAreaLevel3,Burnside,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",48257
+asgs3/40104,ABSStatisticalAreaLevel3,Campbelltown (SA),"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",59211
+asgs3/40105,ABSStatisticalAreaLevel3,Norwood - Payneham - St Peters,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",40845
+asgs3/40106,ABSStatisticalAreaLevel3,Prospect - Walkerville,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",32132
+asgs3/40107,ABSStatisticalAreaLevel3,Unley,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/401",40731
+asgs3/40201,ABSStatisticalAreaLevel3,Gawler - Two Wells,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/402",42715
+asgs3/40202,ABSStatisticalAreaLevel3,Playford,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/402",116485
+asgs3/40203,ABSStatisticalAreaLevel3,Port Adelaide - East,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/402",82993
+asgs3/40204,ABSStatisticalAreaLevel3,Salisbury,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/402",149718
+asgs3/40205,ABSStatisticalAreaLevel3,Tea Tree Gully,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/402",100274
+asgs3/40301,ABSStatisticalAreaLevel3,Holdfast Bay,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/403",37690
+asgs3/40302,ABSStatisticalAreaLevel3,Marion,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/403",102980
+asgs3/40303,ABSStatisticalAreaLevel3,Mitcham,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/403",69892
+asgs3/40304,ABSStatisticalAreaLevel3,Onkaparinga,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/403",186202
+asgs3/40401,ABSStatisticalAreaLevel3,Charles Sturt,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/404",127211
+asgs3/40402,ABSStatisticalAreaLevel3,Port Adelaide - West,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/404",65723
+asgs3/40403,ABSStatisticalAreaLevel3,West Torrens,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/404",70182
+asgs3/40501,ABSStatisticalAreaLevel3,Barossa,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/405",40719
+asgs3/40502,ABSStatisticalAreaLevel3,Lower North,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/405",23321
+asgs3/40503,ABSStatisticalAreaLevel3,Mid North,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/405",27762
+asgs3/40504,ABSStatisticalAreaLevel3,Yorke Peninsula,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/405",28849
+asgs3/40601,ABSStatisticalAreaLevel3,Eyre Peninsula and South West,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/406",59399
+asgs3/40602,ABSStatisticalAreaLevel3,Outback - North and East,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/406",26526
+asgs3/40701,ABSStatisticalAreaLevel3,Fleurieu - Kangaroo Island,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",60395
+asgs3/40702,ABSStatisticalAreaLevel3,Limestone Coast,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",69717
+asgs3/40703,ABSStatisticalAreaLevel3,Murray and Mallee,"Earth,country/AUS,oceania,wikidataId/Q35715,asgs3/407",74962
+asgs3/50101,ABSStatisticalAreaLevel3,Augusta - Margaret River - Busselton,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",66190
+asgs3/50102,ABSStatisticalAreaLevel3,Bunbury,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",118776
+asgs3/50103,ABSStatisticalAreaLevel3,Manjimup,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/501",25996
+asgs3/50201,ABSStatisticalAreaLevel3,Mandurah,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/502",127502
+asgs3/50301,ABSStatisticalAreaLevel3,Cottesloe - Claremont,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/503",82064
+asgs3/50302,ABSStatisticalAreaLevel3,Perth City,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/503",130326
+asgs3/50401,ABSStatisticalAreaLevel3,Bayswater - Bassendean,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/504",94025
+asgs3/50402,ABSStatisticalAreaLevel3,Mundaring,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/504",49370
+asgs3/50403,ABSStatisticalAreaLevel3,Swan,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/504",181249
+asgs3/50501,ABSStatisticalAreaLevel3,Joondalup,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/505",177531
+asgs3/50502,ABSStatisticalAreaLevel3,Stirling,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/505",234302
+asgs3/50503,ABSStatisticalAreaLevel3,Wanneroo,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/505",245259
+asgs3/50601,ABSStatisticalAreaLevel3,Armadale,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",113003
+asgs3/50602,ABSStatisticalAreaLevel3,Belmont - Victoria Park,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",86946
+asgs3/50603,ABSStatisticalAreaLevel3,Canning,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",112984
+asgs3/50604,ABSStatisticalAreaLevel3,Gosnells,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",144475
+asgs3/50605,ABSStatisticalAreaLevel3,Kalamunda,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",65007
+asgs3/50606,ABSStatisticalAreaLevel3,Serpentine - Jarrahdale,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",40557
+asgs3/50607,ABSStatisticalAreaLevel3,South Perth,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/506",48776
+asgs3/50701,ABSStatisticalAreaLevel3,Cockburn,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/507",137089
+asgs3/50702,ABSStatisticalAreaLevel3,Fremantle,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/507",46112
+asgs3/50703,ABSStatisticalAreaLevel3,Kwinana,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/507",57422
+asgs3/50704,ABSStatisticalAreaLevel3,Melville,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/507",118832
+asgs3/50705,ABSStatisticalAreaLevel3,Rockingham,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/507",159934
+asgs3/50901,ABSStatisticalAreaLevel3,Albany,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/509",67146
+asgs3/50902,ABSStatisticalAreaLevel3,Wheat Belt - North,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/509",62062
+asgs3/50903,ABSStatisticalAreaLevel3,Wheat Belt - South,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/509",20409
+asgs3/51001,ABSStatisticalAreaLevel3,Kimberley,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/510",40562
+asgs3/51002,ABSStatisticalAreaLevel3,East Pilbara,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/510",28406
+asgs3/51003,ABSStatisticalAreaLevel3,West Pilbara,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/510",33764
+asgs3/51101,ABSStatisticalAreaLevel3,Esperance,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",16976
+asgs3/51102,ABSStatisticalAreaLevel3,Gascoyne,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",10725
+asgs3/51103,ABSStatisticalAreaLevel3,Goldfields,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",41107
+asgs3/51104,ABSStatisticalAreaLevel3,Mid West,"Earth,country/AUS,oceania,wikidataId/Q3206,asgs3/511",59498
+asgs3/60101,ABSStatisticalAreaLevel3,Brighton,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",21026
+asgs3/60102,ABSStatisticalAreaLevel3,Hobart - North East,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",61734
+asgs3/60103,ABSStatisticalAreaLevel3,Hobart - North West,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",58446
+asgs3/60104,ABSStatisticalAreaLevel3,Hobart - South and West,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",38081
+asgs3/60105,ABSStatisticalAreaLevel3,Hobart Inner,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",55960
+asgs3/60106,ABSStatisticalAreaLevel3,Sorell - Dodges Ferry,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/601",20003
+asgs3/60201,ABSStatisticalAreaLevel3,Launceston,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/602",89165
+asgs3/60202,ABSStatisticalAreaLevel3,Meander Valley - West Tamar,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/602",25572
+asgs3/60203,ABSStatisticalAreaLevel3,North East,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/602",41656
+asgs3/60301,ABSStatisticalAreaLevel3,Central Highlands (Tas.),"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/603",12963
+asgs3/60302,ABSStatisticalAreaLevel3,Huon - Bruny Island,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/603",23523
+asgs3/60303,ABSStatisticalAreaLevel3,South East Coast,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/603",8041
+asgs3/60401,ABSStatisticalAreaLevel3,Burnie - Ulverstone,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",51413
+asgs3/60402,ABSStatisticalAreaLevel3,Devonport,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",50445
+asgs3/60403,ABSStatisticalAreaLevel3,West Coast,"Earth,country/AUS,oceania,wikidataId/Q34366,asgs3/604",18233
+asgs3/70101,ABSStatisticalAreaLevel3,Darwin City,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",31021
+asgs3/70102,ABSStatisticalAreaLevel3,Darwin Suburbs,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",60925
+asgs3/70103,ABSStatisticalAreaLevel3,Litchfield,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",24332
+asgs3/70104,ABSStatisticalAreaLevel3,Palmerston,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/701",43006
+asgs3/70201,ABSStatisticalAreaLevel3,Alice Springs,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",43434
+asgs3/70202,ABSStatisticalAreaLevel3,Barkly,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",6183
+asgs3/70203,ABSStatisticalAreaLevel3,Daly - Tiwi - West Arnhem,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",18716
+asgs3/70204,ABSStatisticalAreaLevel3,East Arnhem,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",14913
+asgs3/70205,ABSStatisticalAreaLevel3,Katherine,"Earth,country/AUS,oceania,wikidataId/Q3235,asgs3/702",22026
+asgs3/80101,ABSStatisticalAreaLevel3,Belconnen,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",110132
+asgs3/80103,ABSStatisticalAreaLevel3,Canberra East,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",2034
+asgs3/80104,ABSStatisticalAreaLevel3,Gungahlin,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",94130
+asgs3/80105,ABSStatisticalAreaLevel3,North Canberra,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",68290
+asgs3/80106,ABSStatisticalAreaLevel3,South Canberra,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",34483
+asgs3/80107,ABSStatisticalAreaLevel3,Tuggeranong,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",90199
+asgs3/80108,ABSStatisticalAreaLevel3,Weston Creek,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",25070
+asgs3/80109,ABSStatisticalAreaLevel3,Woden Valley,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",41600
+asgs3/80110,ABSStatisticalAreaLevel3,Molonglo,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",18064
+asgs3/80111,ABSStatisticalAreaLevel3,Uriarra - Namadgi,"Earth,country/AUS,oceania,wikidataId/Q3258,asgs3/801",628
