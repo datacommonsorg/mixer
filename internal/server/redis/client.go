@@ -22,7 +22,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"log/slog"
-	"os"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -52,27 +51,35 @@ type RedisCacheClient struct {
 	expiration  time.Duration
 }
 
-// NewCacheClient creates a new RedisCacheClient from a yaml config string.
-func NewCacheClient(redisConfigYaml string) (*RedisCacheClient, error) {
+// CacheClientOptions configures Redis connection authentication and TLS.
+type CacheClientOptions struct {
+	Password string
+	CaCert   string
+}
+
+// NewCacheClient creates a new RedisCacheClient from a yaml config string and options.
+func NewCacheClient(redisConfigYaml string, opts *CacheClientOptions) (*RedisCacheClient, error) {
 	redisAddress, err := GetRedisAddress(redisConfigYaml)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get Redis address: %w", err)
 	}
 
 	options := &redis.Options{
-		Addr:     redisAddress,
-		Password: os.Getenv("REDIS_PASSWORD"),
+		Addr: redisAddress,
 		// Use default DB.
 		DB: 0,
 	}
-	if caCert := os.Getenv("REDIS_CA_CERT"); caCert != "" {
-		certPool := x509.NewCertPool()
-		if !certPool.AppendCertsFromPEM([]byte(caCert)) {
-			return nil, fmt.Errorf("failed to parse REDIS_CA_CERT PEM certificate")
-		}
-		options.TLSConfig = &tls.Config{
-			RootCAs:    certPool,
-			MinVersion: tls.VersionTLS12,
+	if opts != nil {
+		options.Password = opts.Password
+		if opts.CaCert != "" {
+			certPool := x509.NewCertPool()
+			if !certPool.AppendCertsFromPEM([]byte(opts.CaCert)) {
+				return nil, fmt.Errorf("failed to parse REDIS_CA_CERT PEM certificate")
+			}
+			options.TLSConfig = &tls.Config{
+				RootCAs:    certPool,
+				MinVersion: tls.VersionTLS12,
+			}
 		}
 	}
 
