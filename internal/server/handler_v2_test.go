@@ -346,39 +346,14 @@ func TestV2Observation_UsageLog(t *testing.T) {
 
 func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
-		desc                   string
-		useSpannerGraph              bool // CLI flag
-		useSpannerGraphFlag          bool // Feature flag
-		enableEmbeddings             bool // flags.EnableSpannerSearchEmbeddings
-		enableNonPlaceEntityResolver bool // flags.EnableNonPlaceEntityResolver
-		resolver                     string
-		indicatorSpannerHeader       string // X-V2Resolve-Indicator-Spanner header
-		disableSpannerHeader         string // X-Disable-Spanner header
-		wantRoute                    bool
-		wantErr                      bool
+		desc                 string
+		useSpannerGraph      bool // CLI flag
+		useSpannerGraphFlag  bool // Feature flag
+		resolver             string
+		disableSpannerHeader string // X-Disable-Spanner header
+		wantRoute            bool
+		wantErr              bool
 	}{
-		// Non-place entity resolver
-		{
-			desc:                         "Non-place entity resolver with flag enabled and Spanner enabled -> route",
-			useSpannerGraph:              true,
-			enableNonPlaceEntityResolver: true,
-			resolver:                     resolve.ResolveResolverNonPlace,
-			wantRoute:                    true,
-		},
-		{
-			desc:                         "Non-place entity resolver with flag disabled -> don't route",
-			useSpannerGraph:              true,
-			enableNonPlaceEntityResolver: false,
-			resolver:                     resolve.ResolveResolverNonPlace,
-			wantRoute:                    false,
-		},
-		{
-			desc:                         "Non-place entity resolver with flag enabled but Spanner disabled -> don't route",
-			useSpannerGraph:              false,
-			enableNonPlaceEntityResolver: true,
-			resolver:                     resolve.ResolveResolverNonPlace,
-			wantRoute:                    false,
-		},
 		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
 			desc:            "Place resolver with Spanner enabled -> route",
@@ -425,110 +400,44 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:       true,
 		},
 
-		// Indicator resolver - Default path (no header)
+		// Indicator resolver - always routes to Spanner when enabled, errors when disabled
 		{
-			desc:             "Indicator resolver - Spanner enabled & flag true -> route",
-			useSpannerGraph:  true,
-			enableEmbeddings: true,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        true,
+			desc:            "Indicator resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverIndicator,
+			wantRoute:       true,
 		},
 		{
-			desc:             "Indicator resolver - Spanner enabled & flag false -> don't route",
-			useSpannerGraph:  true,
-			enableEmbeddings: false,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        false,
+			desc:                "Indicator resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverIndicator,
+			wantRoute:           true,
 		},
 		{
-			desc:             "Indicator resolver - Spanner disabled & flag true -> don't route",
-			useSpannerGraph:  false,
-			enableEmbeddings: true,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        false,
+			desc:            "Indicator resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverIndicator,
+			wantErr:         true,
 		},
 
-		// Indicator resolver - Header override: true (force Spanner)
+		// Non-place resolver - always routes to Spanner when enabled, errors when disabled
 		{
-			desc:                   "Indicator resolver - Force Spanner (true), Spanner enabled -> route",
-			useSpannerGraph:        true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantRoute:              true,
+			desc:            "Non-place resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverNonPlace,
+			wantRoute:       true,
 		},
 		{
-			desc:                   "Indicator resolver - Force Spanner (true), Spanner disabled -> error (fail-fast)",
-			useSpannerGraph:        false,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantErr:                true,
+			desc:                "Non-place resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverNonPlace,
+			wantRoute:           true,
 		},
 		{
-			desc:                   "Indicator resolver - Force Spanner (true) via Feature Flag, Spanner enabled -> route",
-			useSpannerGraphFlag:    true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantRoute:              true,
-		},
-
-		// Indicator resolver - Header override: false (force Legacy)
-		{
-			desc:                   "Indicator resolver - Force Legacy (false), Spanner enabled & flag true -> don't route",
-			useSpannerGraph:        true,
-			enableEmbeddings:       true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			wantRoute:              false,
-		},
-		{
-			desc:                   "Indicator resolver - Force Legacy (false), Spanner disabled -> don't route",
-			useSpannerGraph:        false,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			wantRoute:              false,
-		},
-
-		// Indicator resolver - X-Disable-Spanner global override
-		{
-			desc:                 "Indicator resolver - X-Disable-Spanner overrides default routing (flag true)",
-			useSpannerGraph:      true,
-			enableEmbeddings:     true,
-			resolver:             resolve.ResolveResolverIndicator,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
-		},
-		{
-			desc:                   "Indicator resolver - X-Disable-Spanner overrides force Spanner header",
-			useSpannerGraph:        true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			disableSpannerHeader:   "true",
-			wantRoute:              false,
-		},
-		{
-			desc:                   "Indicator resolver - X-Disable-Spanner true with force Legacy header",
-			useSpannerGraph:        true,
-			enableEmbeddings:       true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			disableSpannerHeader:   "true",
-			wantRoute:              false,
-		},
-		{
-			desc:                 "Indicator resolver - X-Disable-Spanner false does not prevent routing",
-			useSpannerGraph:      true,
-			enableEmbeddings:     true,
-			resolver:             resolve.ResolveResolverIndicator,
-			disableSpannerHeader: "false",
-			wantRoute:            true,
-		},
-
-		// Invalid header values
-		{
-			desc:                   "Indicator resolver - Invalid header value -> error",
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "invalid_value",
-			wantErr:                true,
+			desc:            "Non-place resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverNonPlace,
+			wantErr:         true,
 		},
 	}
 
@@ -537,17 +446,12 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			s := &Server{
 				useSpannerGraph: tc.useSpannerGraph,
 				flags: &featureflags.Flags{
-					UseSpannerGraph:               tc.useSpannerGraphFlag,
-					EnableSpannerSearchEmbeddings: tc.enableEmbeddings,
-					EnableNonPlaceEntityResolver:  tc.enableNonPlaceEntityResolver,
+					UseSpannerGraph: tc.useSpannerGraphFlag,
 				},
 			}
 
 			ctx := context.Background()
 			md := metadata.MD{}
-			if tc.indicatorSpannerHeader != "" {
-				md.Set(util.XV2ResolveIndicatorSpanner, tc.indicatorSpannerHeader)
-			}
 			if tc.disableSpannerHeader != "" {
 				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
 			}
