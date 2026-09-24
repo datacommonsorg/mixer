@@ -20,6 +20,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"log/slog"
+	"os"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -57,7 +58,8 @@ func NewCacheClient(redisConfigYaml string) (*RedisCacheClient, error) {
 	}
 
 	redisClient := redis.NewClient(&redis.Options{
-		Addr: redisAddress,
+		Addr:     redisAddress,
+		Password: os.Getenv("REDIS_PASSWORD"),
 		// Use default DB.
 		DB: 0,
 	})
