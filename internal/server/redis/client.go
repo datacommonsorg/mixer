@@ -17,6 +17,8 @@ package redis
 import (
 	"context"
 	"crypto/sha256"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/hex"
 	"fmt"
 	"log/slog"
@@ -57,12 +59,24 @@ func NewCacheClient(redisConfigYaml string) (*RedisCacheClient, error) {
 		return nil, fmt.Errorf("failed to get Redis address: %w", err)
 	}
 
-	redisClient := redis.NewClient(&redis.Options{
+	options := &redis.Options{
 		Addr:     redisAddress,
 		Password: os.Getenv("REDIS_PASSWORD"),
 		// Use default DB.
 		DB: 0,
-	})
+	}
+	if caCert := os.Getenv("REDIS_CA_CERT"); caCert != "" {
+		certPool := x509.NewCertPool()
+		if !certPool.AppendCertsFromPEM([]byte(caCert)) {
+			return nil, fmt.Errorf("failed to parse REDIS_CA_CERT PEM certificate")
+		}
+		options.TLSConfig = &tls.Config{
+			RootCAs:    certPool,
+			MinVersion: tls.VersionTLS12,
+		}
+	}
+
+	redisClient := redis.NewClient(options)
 	if _, err := redisClient.Ping(context.Background()).Result(); err != nil {
 		return nil, fmt.Errorf("failed to connect to Redis: %w", err)
 	}
