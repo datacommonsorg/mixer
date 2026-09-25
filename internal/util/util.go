@@ -199,6 +199,8 @@ func UnzipAndDecodeWithLimit(content string, maxBytes int64) ([]byte, error) {
 	if maxBytes <= 0 {
 		return nil, fmt.Errorf("maxBytes must be positive, got %d", maxBytes)
 	}
+	// Intentionally reuse maxBytes (the max decompressed size) as an upper bound
+	// for the compressed size to avoid allocating a large buffer before unzipping.
 	if int64(base64.StdEncoding.DecodedLen(len(content))) > maxBytes {
 		return nil, fmt.Errorf("encoded data exceeds maximum allowed size of %d bytes", maxBytes)
 	}
