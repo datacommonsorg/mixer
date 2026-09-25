@@ -57,6 +57,70 @@ func TestZipAndEndocde(t *testing.T) {
 	}
 }
 
+func TestUnzipWithLimit(t *testing.T) {
+	payload := []byte(strings.Repeat("a", 1024))
+	compressed, err := Zip(payload)
+	if err != nil {
+		t.Fatalf("Zip() unexpected error: %v", err)
+	}
+
+	// Exact limit succeeds.
+	got, err := UnzipWithLimit(compressed, 1024)
+	if err != nil {
+		t.Fatalf("UnzipWithLimit(exact) unexpected error: %v", err)
+	}
+	if len(got) != 1024 {
+		t.Errorf("UnzipWithLimit(exact) len = %d, want 1024", len(got))
+	}
+
+	// Decompressed payload exceeding limit by 1 byte fails.
+	if _, err := UnzipWithLimit(compressed, 1023); err == nil {
+		t.Errorf("UnzipWithLimit(1023) expected error for 1024-byte payload, got nil")
+	}
+
+	// Non-positive maxBytes fails closed.
+	for _, invalidLimit := range []int64{0, -1} {
+		if _, err := UnzipWithLimit(compressed, invalidLimit); err == nil {
+			t.Errorf("UnzipWithLimit(%d) expected error, got nil", invalidLimit)
+		}
+	}
+}
+
+func TestUnzipAndDecodeWithLimit(t *testing.T) {
+	payload := []byte(strings.Repeat("z", 2048))
+	encoded, err := ZipAndEncode(payload)
+	if err != nil {
+		t.Fatalf("ZipAndEncode() unexpected error: %v", err)
+	}
+
+	// Exact decompressed limit succeeds.
+	got, err := UnzipAndDecodeWithLimit(encoded, 2048)
+	if err != nil {
+		t.Fatalf("UnzipAndDecodeWithLimit(exact) unexpected error: %v", err)
+	}
+	if len(got) != 2048 {
+		t.Errorf("UnzipAndDecodeWithLimit(exact) len = %d, want 2048", len(got))
+	}
+
+	// Zip bomb: small base64 string whose decompressed payload exceeds limit.
+	if _, err := UnzipAndDecodeWithLimit(encoded, 1024); err == nil {
+		t.Errorf("UnzipAndDecodeWithLimit(zip bomb) expected error, got nil")
+	}
+
+	// Oversized input string rejected before base64 decoding.
+	oversizedInput := strings.Repeat("A", 4096)
+	if _, err := UnzipAndDecodeWithLimit(oversizedInput, 1024); err == nil {
+		t.Errorf("UnzipAndDecodeWithLimit(oversized input) expected error, got nil")
+	}
+
+	// Non-positive maxBytes fails closed.
+	for _, invalidLimit := range []int64{0, -1} {
+		if _, err := UnzipAndDecodeWithLimit(encoded, invalidLimit); err == nil {
+			t.Errorf("UnzipAndDecodeWithLimit(%d) expected error, got nil", invalidLimit)
+		}
+	}
+}
+
 func TestSnakeToCamel(t *testing.T) {
 	for _, c := range []struct {
 		input string
