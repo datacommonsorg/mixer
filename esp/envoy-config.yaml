@@ -35,6 +35,16 @@ static_resources:
                       domains: ["*"]
                       routes:
                         - match:
+                            prefix: "/mcp2"
+                          route:
+                            cluster: mcp_http_server
+                            timeout: 300s
+                        - match:
+                            prefix: "/mcp"
+                          route:
+                            cluster: mcp_http_server
+                            timeout: 300s
+                        - match:
                             prefix: "/"
                           route:
                             cluster: grpcserver
@@ -55,6 +65,20 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 
   clusters:
+    - name: mcp_http_server
+      connect_timeout: 60s
+      type: logical_dns
+      lb_policy: round_robin
+      dns_lookup_family: V4_ONLY
+      load_assignment:
+        cluster_name: mcp_http_server
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 0.0.0.0
+                      port_value: 12346
     - name: grpcserver
       connect_timeout: 60s
       # Response buffer size limit
