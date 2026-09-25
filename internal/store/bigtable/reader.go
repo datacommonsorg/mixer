@@ -23,6 +23,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // BtRow contains the BT read key tokens and the cache data.
@@ -131,6 +133,12 @@ func ReadWithGroupRowList(
 	}
 	rowListMap := map[int]cbt.RowList{}
 	for _, acc := range accs {
+		if acc.ImportGroup < 0 {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid import group index %d", acc.ImportGroup)
+		}
+		if acc.ImportGroup >= len(tables) {
+			continue
+		}
 		rowListMap[acc.ImportGroup] = append(
 			rowListMap[acc.ImportGroup],
 			BuildRowList(prefix, acc.Body)...,
