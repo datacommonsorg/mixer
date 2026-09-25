@@ -29,6 +29,13 @@ import (
 // keeping the mask this narrow keeps the call in the cheapest SKU.
 const placeIDFieldMask = "places.id"
 
+// maxResultCount caps Text Search at a single candidate. The caller in
+// findPlaceIDsForEntity keeps only placeIDs[0] ("the rest ones are usually much
+// less accurate"), and Text Search would otherwise return up to 20 results that
+// are paid for, serialised and then discarded. Legacy Find Place returned a
+// single candidate, so this also preserves the previous behaviour.
+const maxResultCount = 1
+
 // MapsClient is a thin facade over the Places API for ease of testing.
 // If more methods are used, they can be added to the interface as needed.
 // See FakeMapsClient for an impl for use in tests.
@@ -44,7 +51,10 @@ func (c *mapsClient) FindPlaceIDsFromText(ctx context.Context, query string) ([]
 	// Text Search requires the field mask to be set outside the request proto.
 	ctx = metadata.AppendToOutgoingContext(ctx, "x-goog-fieldmask", placeIDFieldMask)
 
-	resp, err := c.client.SearchText(ctx, &placespb.SearchTextRequest{TextQuery: query})
+	resp, err := c.client.SearchText(ctx, &placespb.SearchTextRequest{
+		TextQuery:      query,
+		MaxResultCount: maxResultCount,
+	})
 	if err != nil {
 		return nil, err
 	}
