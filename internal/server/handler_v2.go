@@ -143,40 +143,14 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		return s.shouldDivertV2(ctx), nil
 	}
 
-	// Non-place entity resolver
-	if resolver == resolve.ResolveResolverNonPlace {
-		if s.flags != nil && s.flags.EnableNonPlaceEntityResolver {
-			return s.shouldDivertV2(ctx), nil
+	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
+	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
+	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace {
+		if !s.isSpannerEnabled() {
+			slog.Error("Spanner backend required for indicator and nonplace resolvers")
+			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator and nonplace resolvers")
 		}
-		return false, nil
-	}
-
-	// Indicator resolver (embeddings-based) has custom request-time toggling
-	if resolver == resolve.ResolveResolverIndicator {
-		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
-		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
-			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
-			return false, nil
-		}
-		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
-		if err != nil {
-			return false, err
-		}
-		if divertVal != nil {
-			if *divertVal {
-				// Force Spanner: Fail fast if Spanner backend is not configured
-				if !s.isSpannerEnabled() {
-					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
-					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
-				}
-				return true, nil
-			} else {
-				// Force Legacy
-				return false, nil
-			}
-		}
-		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.shouldDivertV2(ctx), nil
+		return true, nil
 	}
 
 	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
