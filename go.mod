@@ -17,7 +17,6 @@ require (
 	github.com/go-test/deep v1.1.1
 	github.com/golang/geo v0.0.0-20250723132703-4547674171cb
 	github.com/google/go-cmp v0.7.0
-	github.com/google/jsonschema-go v0.4.2
 	github.com/google/pprof v0.0.0-20250630185457-6e76a2b096b5
 	github.com/google/uuid v1.6.0
 	github.com/grpc-ecosystem/go-grpc-middleware v1.4.0
@@ -27,17 +26,6 @@ require (
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.37.0
 	go.opentelemetry.io/otel/exporters/prometheus v0.59.1
-<<<<<<< Updated upstream
-	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.36.0
-	go.opentelemetry.io/otel/metric v1.39.0
-	go.opentelemetry.io/otel/sdk/metric v1.39.0
-	golang.org/x/oauth2 v0.35.0
-	golang.org/x/sync v0.19.0
-	golang.org/x/text v0.33.0
-	google.golang.org/api v0.265.0
-	google.golang.org/genproto/googleapis/api v0.0.0-20260203192932-546029d2fa20
-	google.golang.org/grpc v1.79.3
-=======
 	go.opentelemetry.io/otel/exporters/stdout/stdoutmetric v1.38.0
 	go.opentelemetry.io/otel/metric v1.44.0
 	go.opentelemetry.io/otel/sdk/metric v1.44.0
@@ -48,8 +36,7 @@ require (
 	google.golang.org/genai v1.63.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20260706201446-f0a921348800
 	google.golang.org/grpc v1.84.0
->>>>>>> Stashed changes
-	google.golang.org/protobuf v1.36.11
+	google.golang.org/protobuf v1.36.12
 	googlemaps.github.io/maps v1.7.0
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.38.0
@@ -106,13 +93,7 @@ require (
 	github.com/prometheus/otlptranslator v0.0.0-20250717125610-8549f4ab4f8f // indirect
 	github.com/prometheus/procfs v0.17.0 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec // indirect
-<<<<<<< Updated upstream
-	github.com/spiffe/go-spiffe/v2 v2.6.0 // indirect
-=======
-	github.com/spf13/cast v1.7.1 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.8.1 // indirect
-	github.com/yosida95/uritemplate/v3 v3.0.2 // indirect
->>>>>>> Stashed changes
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.einride.tech/aip v0.73.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
@@ -126,20 +107,14 @@ require (
 	golang.org/x/crypto v0.57.0 // indirect
 	golang.org/x/exp v0.0.0-20250408133849-7e4ce0ab07d0 // indirect
 	golang.org/x/mod v0.41.0 // indirect
-	golang.org/x/net v0.58.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/telemetry v0.0.0-20260811182544-a038080d80e5 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.49.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
-<<<<<<< Updated upstream
-	google.golang.org/genai v1.63.0 // indirect
-	google.golang.org/genproto v0.0.0-20260128011058-8636f8732409 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260203192932-546029d2fa20 // indirect
-=======
 	google.golang.org/genproto v0.0.0-20260319201613-d00831a3d3e7 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260706201446-f0a921348800 // indirect
->>>>>>> Stashed changes
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260921155816-b14227669459 // indirect
 	modernc.org/libc v1.65.10 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
