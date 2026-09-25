@@ -875,4 +875,3 @@ func TestOrderedFacetsRankingByProvenanceWithoutImportName(t *testing.T) {
 		t.Errorf("expected inferior facet 'wikidata' to be removed from Facets map on LATEST request")
 	}
 }
-

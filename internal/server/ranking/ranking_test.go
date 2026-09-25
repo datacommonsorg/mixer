@@ -16,6 +16,7 @@ package ranking
 
 import (
 	"sort"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -204,8 +205,8 @@ func TestGetFacetScoreProvenanceAndFallback(t *testing.T) {
 }
 
 func TestProvenanceAndStatsRankingParity(t *testing.T) {
-	for importName, rkMap := range StatsRanking {
-		provID := "dc/base/" + importName
+	for provID, rkMap := range StatsRanking {
+		importName := strings.TrimPrefix(provID, dcBasePrefix)
 		for rk := range rkMap {
 			mm, op, unit := "", "", ""
 			if rk.MM != nil {
