@@ -669,6 +669,9 @@ func startMCPServer(ctx context.Context, mixerServer *server.Server) {
 		)
 
 		mux := http.NewServeMux()
+		// /mcp2 is a temporary path to validate the Mixer MCP server in staging and
+		// prod while Apigee still routes /mcp to the standalone Cloud Run server.
+		// TODO: Remove /mcp2 once Apigee routes /mcp to Mixer.
 		for _, prefix := range []string{"/mcp", "/mcp2"} {
 			handler := http.StripPrefix(prefix, mcpServer)
 			mux.Handle(prefix, handler)
