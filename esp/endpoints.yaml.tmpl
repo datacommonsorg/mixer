@@ -28,6 +28,7 @@ title:
 
 apis:
   - name: datacommons.Mixer
+  - name: datacommons.HttpProxyService
 
 endpoints:
 - target:
@@ -38,6 +39,18 @@ backend:
     # Default timeout for the ESP and mixer GRPC server.
     - selector: "datacommons.Mixer.*"
       deadline: 60
+    # Route /mcp and /mcp2 to the HTTP service on port 12346
+    - selector: "datacommons.HttpProxyService.HttpProxy"
+      address: "http://127.0.0.1:12346"
+      path_translation: APPEND_PATH_TO_ADDRESS
+      deadline: 300
+      overrides_by_request_protocol:
+        http:
+          selector: "datacommons.HttpProxyService.HttpProxy"
+          address: "http://127.0.0.1:12346"
+          path_translation: APPEND_PATH_TO_ADDRESS
+          protocol: "http/1.1"
+          deadline: 300
 
 usage:
   rules:

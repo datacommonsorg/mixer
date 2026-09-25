@@ -41,6 +41,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/mcp"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -68,8 +69,11 @@ const (
 
 var (
 	// Server config
-	port                = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	port               = flag.Int("port", 12345, "Port on which to run the server.")
+	httpPort           = flag.Int("http_port", 12346, "Port on which to run the HTTP server.")
+	mcpInstructionsDir = flag.String("mcp_instructions_dir", os.Getenv("DC_INSTRUCTIONS_DIR"), "Custom directory path (local or gs://) for MCP server/tool/skill instructions.")
+	mcpSearchScope     = flag.String("mcp_search_scope", os.Getenv("DC_SEARCH_SCOPE"), "Optional search scope target for MCP indicator searches (e.g. custom_only, base_only, base_and_custom).")
+	hostProject          = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
@@ -637,6 +641,8 @@ func main() {
 			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
+	startMCPServer(ctx, mixerServer)
+
 	slog.Info("About to listen")
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
@@ -649,6 +655,44 @@ func main() {
 		slog.Error("Failed to serve", "error", err)
 		os.Exit(1)
 	}
+}
+
+func startMCPServer(ctx context.Context, mixerServer *server.Server) {
+	go func() {
+		slog.Info("Starting MCP HTTP server", "port", *httpPort)
+		var agentBackend mcp.AgentBackend
+		if agentSvc := mixerServer.AgentService(); agentSvc != nil {
+			agentBackend = agentSvc
+		}
+		mcpServer := mcp.NewDcMcpServer(
+			ctx,
+			agentBackend,
+			*mcpInstructionsDir,
+			*mcpSearchScope,
+		)
+
+		mux := http.NewServeMux()
+		// /mcp2 is a temporary path to validate the Mixer MCP server in staging and
+		// prod while Apigee still routes /mcp to the standalone Cloud Run server.
+		// TODO: Remove /mcp2 once Apigee routes /mcp to Mixer.
+		for _, prefix := range []string{"/mcp", "/mcp2"} {
+			handler := http.StripPrefix(prefix, mcpServer)
+			mux.Handle(prefix, handler)
+			mux.Handle(prefix+"/", handler)
+		}
+
+		httpSrv := &http.Server{
+			Addr:              fmt.Sprintf(":%d", *httpPort),
+			Handler:           mux,
+			ReadHeaderTimeout: 10 * time.Second,
+			ReadTimeout:       30 * time.Second,
+			WriteTimeout:      300 * time.Second,
+			IdleTimeout:       120 * time.Second,
+		}
+		if err := httpSrv.ListenAndServe(); err != nil {
+			slog.Error("Failed to start MCP HTTP server", "error", err)
+		}
+	}()
 }
 
 func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
