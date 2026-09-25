@@ -425,7 +425,10 @@ func main() {
 	var redisCacheClient redis.CacheClient
 	if *useRedis && *redisInfo != "" {
 		slog.Info("Setting up Redis cache client")
-		client, err := redis.NewCacheClient(*redisInfo)
+		client, err := redis.NewCacheClient(*redisInfo, &redis.CacheClientOptions{
+			Password: os.Getenv("REDIS_PASSWORD"),
+			CaCert:   os.Getenv("REDIS_CA_CERT"),
+		})
 		if err != nil {
 			slog.Error("Failed to create Redis client", "error", err)
 			os.Exit(1)
