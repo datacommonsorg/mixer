@@ -16,22 +16,16 @@ package maps
 
 import (
 	"context"
-
-	"googlemaps.github.io/maps"
 )
 
 // Implements MapsClient for testing.
 type FakeMapsClient struct{}
 
 // Returns a result for query "Hawaii"; empty otherwise.
-func (*FakeMapsClient) FindPlaceFromText(ctx context.Context, r *maps.FindPlaceFromTextRequest) (maps.FindPlaceFromTextResponse, error) {
-	if r.Input == "Hawaii" {
-		return maps.FindPlaceFromTextResponse{
-			Candidates: []maps.PlacesSearchResult{
-				{PlaceID: "hawaii_place_id"},
-			},
-		}, nil
+func (*FakeMapsClient) FindPlaceIDsFromText(ctx context.Context, query string) ([]string, error) {
+	if query == "Hawaii" {
+		return []string{"hawaii_place_id"}, nil
 	}
 
-	return maps.FindPlaceFromTextResponse{}, nil
+	return []string{}, nil
 }

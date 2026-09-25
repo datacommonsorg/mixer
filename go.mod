@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go/bigquery v1.72.0
 	cloud.google.com/go/bigtable v1.41.0
 	cloud.google.com/go/cloudsqlconn v1.17.3
+	cloud.google.com/go/maps v1.28.0
 	cloud.google.com/go/profiler v0.4.3
 	cloud.google.com/go/pubsub/v2 v2.0.0
 	cloud.google.com/go/secretmanager v1.16.0
@@ -38,7 +39,6 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20260203192932-546029d2fa20
 	google.golang.org/grpc v1.79.3
 	google.golang.org/protobuf v1.36.11
-	googlemaps.github.io/maps v1.7.0
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.38.0
 )
