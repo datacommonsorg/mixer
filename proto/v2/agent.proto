@@ -160,8 +160,8 @@ message GetObservationsResponse {
   // Deprecated: Child place resolution will be handled natively in SDMX once available; use explicit entity DCIDs in 'entities' for now.
   string child_place_type = 3 [deprecated = true];
 
-  // Shared flat entity metadata table across all entities (columns: ["dcid", "name", "typeOf"]).
-  // Encodes name and typeOf for all returned places and entities uniformly.
+  // Shared flat entity metadata table (columns: ["dcid", "name"]).
+  // Encodes names for the entities that appear in the 'data' table rows.
   Table entity_metadata = 7;
 
   // Observation time-series Table (columns: ["observationAbout", "date", "value"] or multi-slot names)

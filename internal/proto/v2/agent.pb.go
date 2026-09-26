@@ -609,8 +609,8 @@ type GetObservationsResponse struct {
 	//
 	// Deprecated: Marked as deprecated in v2/agent.proto.
 	ChildPlaceType string `protobuf:"bytes,3,opt,name=child_place_type,json=childPlaceType,proto3" json:"child_place_type,omitempty"`
-	// Shared flat entity metadata table across all entities (columns: ["dcid", "name", "typeOf"]).
-	// Encodes name and typeOf for all returned places and entities uniformly.
+	// Shared flat entity metadata table (columns: ["dcid", "name"]).
+	// Encodes names for the entities that appear in the 'data' table rows.
 	EntityMetadata *Table `protobuf:"bytes,7,opt,name=entity_metadata,json=entityMetadata,proto3" json:"entity_metadata,omitempty"`
 	// Observation time-series Table (columns: ["observationAbout", "date", "value"] or multi-slot names)
 	Data *Table `protobuf:"bytes,8,opt,name=data,proto3" json:"data,omitempty"`
