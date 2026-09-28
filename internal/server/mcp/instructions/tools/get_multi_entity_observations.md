@@ -6,7 +6,7 @@ Fetches time-series observations for multi-entity relationship statistical varia
 - `parent_entity_property` (optional, string): Entity property name for child place expansion (e.g. `"recipient"`).
 - `parent_entity_dcid` (optional, string): Parent place DCID for child place expansion (e.g. `"Earth"`).
 - `child_entity_type` (optional, string): Child place type for child place expansion (e.g. `"Country"`).
-- `source_override` (optional, string): Filter by a specific data source provenance DCID.
+- `source_override` (optional, string): Restrict results to one source. Use a `sourceId` value from `sourceMetadata` or `alternativeSources` in a previous response.
 - `date` (optional, string): Specific date (e.g., `"2024"`), `"all"` (for complete historical time series), or `"latest"` (default).
 - `date_range_start` / `date_range_end` (optional, string): Date range boundaries.
 
