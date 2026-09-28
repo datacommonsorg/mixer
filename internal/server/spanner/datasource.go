@@ -148,7 +148,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 	// nothing left to return. Querying anyway would restart at offset 0.
 	offset, isExhausted, err := getOffset(req.GetNextToken(), sds.Id())
 	if err != nil {
-		return nil, fmt.Errorf("error decoding pagination info: %v", err)
+		return nil, fmt.Errorf("error decoding pagination info: %w", err)
 	}
 	if isExhausted {
 		return &pbv2.NodeResponse{}, nil
