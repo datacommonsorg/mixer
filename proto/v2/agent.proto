@@ -161,7 +161,7 @@ message GetObservationsResponse {
   string child_place_type = 3 [deprecated = true];
 
   // Shared flat entity metadata table (columns: ["dcid", "name"]).
-  // Encodes names for the entities that appear in the 'data' table rows.
+  // Encodes names for requested entities that appear in the 'data' table rows.
   Table entity_metadata = 7;
 
   // Observation time-series Table (columns: ["observationAbout", "date", "value"] or multi-slot names)

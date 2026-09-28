@@ -58,7 +58,7 @@ To fetch observations across child places for a target property (e.g. UAE aid to
 ## 4. Processing Multi-Entity Responses
 
 All observation responses return a uniform dual-table structure:
-1. **`entityMetadata`**: Maps entity DCIDs in the `data` rows to human-readable names (e.g., `"country/ARE"` -> `"United Arab Emirates"`).
+1. **`entityMetadata`**: Maps requested entity DCIDs that appear in the `data` rows to human-readable names (e.g., `"country/ARE"` -> `"United Arab Emirates"`).
 2. **`data` Table**: Matrix of observations containing columns for each entity property, `date`, and `value`.
 
 Requested entities absent from `entityMetadata` and `data` had no observations for the selected source and date.

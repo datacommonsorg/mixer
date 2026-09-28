@@ -1535,28 +1535,20 @@ func TestGetObservations_Sdmx(t *testing.T) {
 
 func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 	nodeNames := map[string]string{
-		"Count_Person":        "Total Population",
-		"geoId/06001":         "Alameda County",
-		"geoId/06003":         "Alpine County",
-		"geoId/06005":         "Amador County",
-		"country/USA":         "United States",
-		"country/AFG":         "Afghanistan",
-		"country/IND":         "India",
-		"dc/prov/census_acs5": "CensusACS5YearSurvey",
-	}
-	nodeURLs := map[string]string{
-		"dc/prov/census_acs5": "https://www.census.gov/",
+		"Count_Person": "Total Population",
+		"geoId/06001":  "Alameda County",
+		"geoId/06003":  "Alpine County",
+		"geoId/06005":  "Amador County",
 	}
 
 	tests := []struct {
-		desc             string
-		entities         map[string][]interface{}
-		date             string
-		dateRangeStart   string
-		dateRangeEnd     string
-		series           []*sdmxpb.SdmxTimeSeries
-		wantEntityLookup []string
-		want             *pbv2.GetObservationsResponse
+		desc           string
+		entities       map[string][]interface{}
+		date           string
+		dateRangeStart string
+		dateRangeEnd   string
+		series         []*sdmxpb.SdmxTimeSeries
+		want           *pbv2.GetObservationsResponse
 	}{
 		{
 			desc:     "entity metadata only includes entities in data rows",
@@ -1567,7 +1559,6 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f1", "2019"),
 				newTestSeries(map[string]string{"observationAbout": "geoId/06005"}, "f2", "2019"),
 			},
-			wantEntityLookup: []string{"Count_Person", "geoId/06001"},
 			want: &pbv2.GetObservationsResponse{
 				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
 				EntityMetadata: &pbv2.Table{
@@ -1585,51 +1576,24 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 			},
 		},
 		{
-			desc:     "entity metadata covers unconstrained slots that appear in data rows",
-			entities: map[string][]interface{}{"donor": {"country/USA"}},
+			// Two places are requested, but the primary facet only covers one of them, so alternative
+			// place counts are omitted (legacy gates on the primary source's place count).
+			desc:     "alternative place counts are gated on the primary facet's place count",
+			entities: map[string][]interface{}{"observationAbout": {"geoId/06001", "geoId/06003"}},
 			date:     "2020",
 			series: []*sdmxpb.SdmxTimeSeries{
-				newTestSeries(map[string]string{"donor": "country/USA", "recipient": "country/AFG"}, "f1", "2020"),
-				newTestSeries(map[string]string{"donor": "country/USA", "recipient": "country/IND"}, "f1", "2019"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2020"),
 			},
-			wantEntityLookup: []string{"Count_Person", "country/AFG", "country/USA"},
 			want: &pbv2.GetObservationsResponse{
 				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
 				EntityMetadata: &pbv2.Table{
 					Columns: []string{"dcid", "name"},
-					Rows: []*structpb.ListValue{
-						mustListValue("country/AFG", "Afghanistan"),
-						mustListValue("country/USA", "United States"),
-					},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "Alameda County")},
 				},
 				Data: &pbv2.Table{
-					Columns: []string{"donor", "recipient", "date", "value"},
-					Rows:    []*structpb.ListValue{mustListValue("country/USA", "country/AFG", "2020", float64(1))},
-				},
-				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
-			},
-		},
-		{
-			desc:     "alternative place counts are gated on requested-slot coverage of the primary facet",
-			entities: map[string][]interface{}{"donor": {"country/USA"}},
-			date:     "2020",
-			series: []*sdmxpb.SdmxTimeSeries{
-				newTestSeries(map[string]string{"donor": "country/USA", "recipient": "country/AFG"}, "f1", "2020"),
-				newTestSeries(map[string]string{"donor": "country/USA", "recipient": "country/AFG"}, "f2", "2020"),
-			},
-			wantEntityLookup: []string{"Count_Person", "country/AFG", "country/USA"},
-			want: &pbv2.GetObservationsResponse{
-				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
-				EntityMetadata: &pbv2.Table{
-					Columns: []string{"dcid", "name"},
-					Rows: []*structpb.ListValue{
-						mustListValue("country/AFG", "Afghanistan"),
-						mustListValue("country/USA", "United States"),
-					},
-				},
-				Data: &pbv2.Table{
-					Columns: []string{"donor", "recipient", "date", "value"},
-					Rows:    []*structpb.ListValue{mustListValue("country/USA", "country/AFG", "2020", float64(1))},
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "2020", float64(1))},
 				},
 				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
 				AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
@@ -1638,13 +1602,12 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 			},
 		},
 		{
-			desc:     "no data in the date window looks up only the variable",
+			desc:     "no data in the date window returns no entity metadata rows",
 			entities: map[string][]interface{}{"observationAbout": {"geoId/06001"}},
 			date:     "2020",
 			series: []*sdmxpb.SdmxTimeSeries{
 				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2019"),
 			},
-			wantEntityLookup: []string{"Count_Person"},
 			want: &pbv2.GetObservationsResponse{
 				Variable:       &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
 				EntityMetadata: &pbv2.Table{Columns: []string{"dcid", "name"}},
@@ -1664,7 +1627,6 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f2", "2020"),
 				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2019"),
 			},
-			wantEntityLookup: []string{"Count_Person", "geoId/06001", "geoId/06003"},
 			want: &pbv2.GetObservationsResponse{
 				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
 				EntityMetadata: &pbv2.Table{
@@ -1690,67 +1652,16 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 				},
 			},
 		},
-		{
-			// f2's provenance DCID does not follow the dc/base/ convention, so its ImportName can only
-			// come from the provenance node's name arc. f1 exercises the dc/base/ DCID fallback.
-			desc:     "lower static rank score wins ties and import name is resolved from provenance",
-			entities: map[string][]interface{}{"observationAbout": {"geoId/06001"}},
-			date:     "2020",
-			series: []*sdmxpb.SdmxTimeSeries{
-				newTestSeries(map[string]string{
-					"observationAbout":  "geoId/06001",
-					"provenance":        "dc/base/SomeUnrankedImport",
-					"measurementMethod": "CensusACS5yrSurvey",
-				}, "f1", "2020"),
-				newTestSeries(map[string]string{
-					"observationAbout":  "geoId/06001",
-					"provenance":        "dc/prov/census_acs5",
-					"measurementMethod": "CensusACS5yrSurvey",
-				}, "f2", "2020"),
-			},
-			wantEntityLookup: []string{"Count_Person", "geoId/06001"},
-			want: &pbv2.GetObservationsResponse{
-				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
-				EntityMetadata: &pbv2.Table{
-					Columns: []string{"dcid", "name"},
-					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "Alameda County")},
-				},
-				Data: &pbv2.Table{
-					Columns: []string{"observationAbout", "date", "value"},
-					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "2020", float64(1))},
-				},
-				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-					SourceId:          "f2",
-					ImportName:        "CensusACS5YearSurvey",
-					MeasurementMethod: "CensusACS5yrSurvey",
-					ProvenanceUrl:     "https://www.census.gov/",
-				},
-				AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
-					{
-						SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-							SourceId:          "f1",
-							ImportName:        "SomeUnrankedImport",
-							MeasurementMethod: "CensusACS5yrSurvey",
-						},
-					},
-				},
-			},
-		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.desc, func(t *testing.T) {
-			var gotEntityLookup []string
 			mock := &obsMockMixer{
 				sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
 					return &sdmxpb.SdmxDataResult{Series: test.series}, nil
 				},
 				v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-					// Entity lookups request only the name arc; provenance lookups also request url.
-					if in.GetProperty() == "->name" {
-						gotEntityLookup = append(gotEntityLookup, in.GetNodes()...)
-					}
-					return newTestNodeResponse(in.GetNodes(), nodeNames, nodeURLs), nil
+					return newTestNodeResponse(in.GetNodes(), nodeNames), nil
 				},
 			}
 
@@ -1775,9 +1686,6 @@ func TestGetObservationsSdmxFacetSelection(t *testing.T) {
 			if diff := cmp.Diff(test.want, got, protocmp.Transform()); diff != "" {
 				t.Errorf("GetObservations() mismatch (-want +got):\n%s", diff)
 			}
-			if diff := cmp.Diff(test.wantEntityLookup, gotEntityLookup); diff != "" {
-				t.Errorf("entity V2Node lookup mismatch (-want +got):\n%s", diff)
-			}
 		})
 	}
 }
@@ -1797,16 +1705,13 @@ func newTestSeries(dims map[string]string, facetID string, dates ...string) *sdm
 	return series
 }
 
-// newTestNodeResponse returns name and url arcs for the requested nodes found in the given maps.
-func newTestNodeResponse(nodes []string, names, urls map[string]string) *pbv2.NodeResponse {
+// newTestNodeResponse returns name arcs for the requested nodes found in names.
+func newTestNodeResponse(nodes []string, names map[string]string) *pbv2.NodeResponse {
 	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
 	for _, dcid := range nodes {
 		arcs := make(map[string]*pbv2.Nodes)
 		if name, ok := names[dcid]; ok {
 			arcs[arcName] = &pbv2.Nodes{Nodes: []*pb.EntityInfo{{Value: name}}}
-		}
-		if url, ok := urls[dcid]; ok {
-			arcs[arcURL] = &pbv2.Nodes{Nodes: []*pb.EntityInfo{{Value: url}}}
 		}
 		resp.Data[dcid] = &pbv2.LinkedGraph{Arcs: arcs}
 	}
