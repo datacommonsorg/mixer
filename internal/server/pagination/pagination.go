@@ -23,38 +23,34 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// maxPaginationTokenBytes is the maximum allowed size (1 MB) for a
+	// pagination token, protecting against zip bomb attacks.
+	maxPaginationTokenBytes = 1024 * 1024
+)
+
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
-	if s == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
-	}
-
-	data, err := util.UnzipAndDecode(s)
-	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
-	}
-	result := &pbv1.PaginationInfo{}
-	err = proto.Unmarshal(data, result)
-	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
-	}
-	return result, nil
+	return decodeToken(s, &pbv1.PaginationInfo{})
 }
 
-// Decode decodes a compressed token string into Pagination.
+// DecodeNextToken decodes a compressed token string into Pagination.
 func DecodeNextToken(s string) (*pbv2.Pagination, error) {
+	return decodeToken(s, &pbv2.Pagination{})
+}
+
+func decodeToken[T proto.Message](s string, dst T) (T, error) {
+	var zero T
 	if s == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
+		return zero, status.Errorf(codes.InvalidArgument, "empty pagination token string")
 	}
 
-	data, err := util.UnzipAndDecode(s)
+	data, err := util.UnzipAndDecodeWithLimit(s, maxPaginationTokenBytes)
 	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
+		return zero, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
-	result := &pbv2.Pagination{}
-	err = proto.Unmarshal(data, result)
-	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
+	if err := proto.Unmarshal(data, dst); err != nil {
+		return zero, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
 	}
-	return result, nil
+	return dst, nil
 }
