@@ -1,6 +1,6 @@
 module github.com/datacommonsorg/mixer
 
-go 1.26.0
+go 1.24.0
 
 require (
 	cloud.google.com/go/bigquery v1.74.0
