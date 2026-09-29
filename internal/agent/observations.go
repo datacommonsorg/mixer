@@ -484,6 +484,9 @@ func (s *Service) buildSdmxResponse(
 func filterEntityMetadataRows(rows []*structpb.ListValue, dcids map[string]bool) []*structpb.ListValue {
 	var kept []*structpb.ListValue
 	for _, row := range rows {
+		if len(row.GetValues()) == 0 {
+			continue
+		}
 		if dcids[row.GetValues()[0].GetStringValue()] {
 			kept = append(kept, row)
 		}
