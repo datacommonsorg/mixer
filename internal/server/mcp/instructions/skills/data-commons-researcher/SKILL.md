@@ -203,16 +203,17 @@ When `date="range"` is used in `get_observations`, the date ranges are evaluated
 ## 8. Processing `get_observations` Responses
 
 All observation responses return a uniform dual-table structure:
-1. **`entityMetadata`**: Maps entity DCIDs to human-readable names and types using tabular `columns` and `rows`.
+1. **`entityMetadata`**: Maps entity DCIDs in the `data` rows to human-readable names using tabular `columns` and `rows`.
 2. **`data` Table**: Matrix of observations containing columns `["observationAbout", "date", "value"]` and tabular `rows`.
+
+Requested entities absent from `entityMetadata` and `data` had no observations for the selected source and date.
 
 ### A. Response Structure Reference
 ```json
 {
   "variable": {
     "dcid": "Count_Person",
-    "name": "Total population",
-    "typeOf": ["StatisticalVariable"]
+    "name": "Total population"
   },
   "sourceMetadata": {
     "sourceId": "2911625765",
@@ -222,9 +223,9 @@ All observation responses return a uniform dual-table structure:
   },
   "alternativeSources": [],
   "entityMetadata": {
-    "columns": ["dcid", "name", "typeOf"],
+    "columns": ["dcid", "name"],
     "rows": [
-      ["country/FRA", "France", ["Country"]]
+      ["country/FRA", "France"]
     ]
   },
   "data": {
@@ -239,8 +240,8 @@ All observation responses return a uniform dual-table structure:
 ### B. Field Mapping Rules
 * **`variable`**: Details about the statistical variable requested.
 * **`entityMetadata`**: Matrix of entity metadata:
-  * `columns`: Array of column names (`dcid`, `name`, `typeOf`).
-  * `rows`: Tabular arrays of `[entity_dcid, entity_name, entity_types]`.
+  * `columns`: Array of column names (`dcid`, `name`).
+  * `rows`: Tabular arrays of `[entity_dcid, entity_name]`.
 * **`data`**: Matrix of observations:
   * `columns`: Array of column names (`observationAbout`, `date`, `value`).
   * `rows`: Tabular arrays of `[entity_dcid, date, value]`.
