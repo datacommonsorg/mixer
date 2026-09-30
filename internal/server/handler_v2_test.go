@@ -439,6 +439,26 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			resolver:        resolve.ResolveResolverNonPlace,
 			wantErr:         true,
 		},
+
+		// Type resolver - always routes to Spanner when enabled, errors when disabled
+		{
+			desc:            "Type resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverType,
+			wantRoute:       true,
+		},
+		{
+			desc:                "Type resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverType,
+			wantRoute:           true,
+		},
+		{
+			desc:            "Type resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverType,
+			wantErr:         true,
+		},
 	}
 
 	for _, tc := range tests {

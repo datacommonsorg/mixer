@@ -50,6 +50,8 @@ const (
 	ResolveResolverTopic = "topic"
 	// ResolveResolverNonPlace is the resolver name for non-place entity resolution.
 	ResolveResolverNonPlace = "non_place"
+	// ResolveResolverType is the resolver name for type resolution.
+	ResolveResolverType = "type"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"
@@ -373,6 +375,19 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 					"Invalid 'property' expression: non_place resolution only supports '%s' as output property",
 					DcidProperty))
 			}
+		case ResolveResolverType:
+			// Type resolution only supports description as inArc.
+			if inProp != DescriptionProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: type resolution only supports '%s' as input property",
+					DescriptionProperty))
+			}
+			// Type resolution only supports dcid as outArc.
+			if outProp != DcidProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: type resolution only supports '%s' as output property",
+					DcidProperty))
+			}
 		}
 	}
 
@@ -413,15 +428,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic, ResolveResolverNonPlace:
+	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic, ResolveResolverNonPlace, ResolveResolverType:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic, ResolveResolverNonPlace)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s', '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic, ResolveResolverNonPlace, ResolveResolverType)
 	}
 }
 

@@ -218,7 +218,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -227,7 +227,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid property expression",
@@ -284,6 +284,39 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			},
 			wantErr:    true,
 			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place resolution only supports 'dcid' as output property",
+		},
+		{
+			desc: "valid type resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
+			},
+			wantInProp:       "description",
+			wantOutProp:      "dcid",
+			wantTypeOfValues: nil,
+		},
+		{
+			desc: "invalid property for type resolver (inProp)",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverType,
+				Property: "<-geoCoordinate->dcid",
+			},
+			wantErr:    true,
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: type resolution only supports 'description' as input property",
+		},
+		{
+			desc: "invalid property for type resolver (outProp)",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverType,
+				Property: "<-description->nutsCode",
+			},
+			wantErr:    true,
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: type resolution only supports 'dcid' as output property",
 		},
 		{
 			desc: "invalid property for indicator resolver (inProp)",

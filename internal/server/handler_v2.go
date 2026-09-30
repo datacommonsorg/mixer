@@ -145,10 +145,10 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
 	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
-	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace {
+	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace || resolver == resolve.ResolveResolverType {
 		if !s.isSpannerEnabled() {
-			slog.Error("Spanner backend required for indicator and nonplace resolvers")
-			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator and nonplace resolvers")
+			slog.Error("Spanner backend required for indicator, nonplace, and type resolvers")
+			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator, nonplace, and type resolvers")
 		}
 		return true, nil
 	}

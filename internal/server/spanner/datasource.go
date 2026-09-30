@@ -513,6 +513,7 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 var resolverToSpannerConfigKey = map[string]string{
 	resolvev2.ResolveResolverIndicator: "indicator",
 	resolvev2.ResolveResolverNonPlace:  "non_place_entity",
+	resolvev2.ResolveResolverType:      "type",
 }
 
 func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedResolveRequest) bool {
@@ -527,6 +528,9 @@ func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedRes
 		return true
 	}
 	if resolver == resolvev2.ResolveResolverNonPlace {
+		return true
+	}
+	if resolver == resolvev2.ResolveResolverType {
 		return true
 	}
 	return false
@@ -623,6 +627,17 @@ func validateAndNormalizeVectorSearchTypes(resolver string, typeOfs []string) ([
 		for _, t := range typeOfs {
 			if t == TypeStatisticalVariable || t == TypeTopic {
 				slog.Warn("Non-place entity embeddings resolution requested for unsupported type.", "type", t)
+				return nil, false
+			}
+		}
+		return typeOfs, true
+	case resolvev2.ResolveResolverType:
+		if len(typeOfs) == 0 {
+			return []string{TypeClass}, true
+		}
+		for _, t := range typeOfs {
+			if t != TypeClass {
+				slog.Warn("Type embeddings resolution requested for unsupported type. Supported type is Class.", "type", t)
 				return nil, false
 			}
 		}

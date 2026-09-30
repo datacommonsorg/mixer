@@ -64,6 +64,8 @@ func (s *Server) V2ResolveCore(
 			return nil, status.Errorf(codes.Unimplemented, "Resolving non-place entities is not enabled for this environment.")
 		}
 		return nil, status.Errorf(codes.Unimplemented, "Non-place entity resolution is only supported with Spanner backend.")
+	case resolve.ResolveResolverType:
+		return nil, status.Errorf(codes.Unimplemented, "Type resolution is only supported with Spanner backend.")
 	}
 
 	// Resolve places based on property expression
