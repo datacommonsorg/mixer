@@ -16,6 +16,7 @@ package maps
 
 import (
 	"context"
+	"fmt"
 
 	places "cloud.google.com/go/maps/places/apiv1"
 	"cloud.google.com/go/maps/places/apiv1/placespb"
@@ -56,12 +57,14 @@ func (c *mapsClient) FindPlaceIDsFromText(ctx context.Context, query string) ([]
 		MaxResultCount: maxResultCount,
 	})
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to search text via Places API: %w", err)
 	}
 
 	placeIDs := make([]string, 0, len(resp.GetPlaces()))
 	for _, place := range resp.GetPlaces() {
-		placeIDs = append(placeIDs, place.GetId())
+		if id := place.GetId(); id != "" {
+			placeIDs = append(placeIDs, id)
+		}
 	}
 
 	return placeIDs, nil
