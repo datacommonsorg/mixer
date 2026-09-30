@@ -447,7 +447,7 @@ serviceGroups:
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/v1/recon/*"
       - "/v2/resolve"
@@ -489,7 +489,7 @@ serviceGroups:
       cpuRequest: "300m"
     cacheSVG: true
   default:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/*"
     replicas: 1

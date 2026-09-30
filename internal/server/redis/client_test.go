@@ -171,3 +171,20 @@ func repeat(s string, n int) []string {
 	}
 	return out
 }
+func TestNewCacheClientInvalidCaCert(t *testing.T) {
+	yamlConfig := `
+instances:
+  - region: us-central1
+    host: 127.0.0.1
+    port: "6379"
+`
+	opts := &CacheClientOptions{
+		Password: "secret-pass",
+		CaCert:   "invalid-pem-certificate-string",
+	}
+
+	client, err := NewCacheClient(yamlConfig, opts)
+	assert.Nil(t, client)
+	assert.Error(t, err)
+	assert.Contains(t, err.Error(), "failed to parse REDIS_CA_CERT PEM certificate")
+}
