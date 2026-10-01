@@ -19,7 +19,6 @@ proxies:
       - api
     target_endpoints:
       - api
-      - mcp
   - name: nl
     policies:
       - copy-key-param-to-header

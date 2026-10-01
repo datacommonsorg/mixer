@@ -21,17 +21,11 @@
 
 ### **MCP Endpoints**
 
-For MCP (Model Context Protocol) services running on Cloud Run, the Apigee proxy acts as a secure facade.
+The MCP (Model Context Protocol) server runs inside Mixer and is served by the same Cloud Endpoints (ESP) service as the Mixer API.
 
-* **Routing**: Requests are routed to the MCP backend if the path suffix matches /mcp or /mcp/\*\*.  
-* **Security**: Access is governed by an API Key (passed as x-api-key header or key query parameter).  
-* **Identity**: Apigee uses a **Google ID Token (OIDC)** to authenticate with Cloud Run.  
-  * **Audience**: The \<Audience\> field in the HTTPTargetConnection must exactly match the Cloud Run Service URL.  
-  * **Service Account**: The DEPLOYMENT_SERVICE_ACCOUNT email must be configured in the .env file.  
-* **Permissions**: The DEPLOYMENT_SERVICE_ACCOUNT must have:  
-  1. roles/run.invoker on the MCP Cloud Run service (to "knock on the door").  
-  2. roles/iam.serviceAccountTokenCreator in the Apigee host project (to allow Apigee to "mint" the ID token).  
-* **Timeouts**: The connection is configured with a high io.timeout.millis (300,000ms / 5 minutes) and response.streaming.enabled set to true to handle long-running data fetches.
+* **Routing**: /mcp and /mcp/\*\* have no dedicated route. They fall through to the api target like any other Mixer API path.  
+* **Security**: Same as the Mixer API. An API key is required (x-api-key header or key query parameter), and the trial key quota applies.  
+* **Timeouts**: Same as the Mixer API. The api target uses the default Apigee read timeout (55s), so a tool call that has not started responding within 55s returns 504.
 
 ## **Apigee resource deployment (local command line)**
 
