@@ -159,7 +159,8 @@ function copy_file() {
         echo "No value set for ${var_name}. Edit ${ENV_DATA} and re-run."
         exit 1
       fi
-      sed -i "" "s/REPLACE_WITH_${var_name}/${!var_name}/g" "$write_file"
+      sed -i.bak "s/REPLACE_WITH_${var_name}/${!var_name}/g" "$write_file"
+      rm "$write_file.bak"
     done
   else
     echo "Not found: $source_dir/$source_file.xml"
