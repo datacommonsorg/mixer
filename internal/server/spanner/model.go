@@ -28,6 +28,7 @@ import (
 type KeyValueStoreType string
 
 const (
+	TypeClass               = "Class"
 	TypeProvenanceSummary   = "ProvenanceSummary"
 	TypeStatisticalVariable = "StatisticalVariable"
 	TypeTopic               = "Topic"
