@@ -212,23 +212,15 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 
 	var existenceQueryStmt spanner.Statement
 	if predicate == "" {
-		sql := statements.checkSVSourceExistence
-		if sc.useSpannerKeyValueStore {
-			sql = statements.checkSVSourceExistenceFromKV
-		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: sql,
+			SQL: statements.checkSVSourceExistence,
 			Params: map[string]interface{}{
 				"variables": variables,
 			},
 		}
 	} else {
-		sql := statements.checkGroupSourceExistence
-		if sc.useSpannerKeyValueStore {
-			sql = statements.checkGroupSourceExistenceFromKV
-		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: sql,
+			SQL: statements.checkGroupSourceExistence,
 			Params: map[string]interface{}{
 				"variables": variables,
 				"predicate": predicate,
