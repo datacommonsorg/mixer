@@ -274,7 +274,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge})
 				if err != nil {
 					return nil, err
 				}
@@ -978,6 +978,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 		constraints                     map[string]*sdmxpb.SdmxComponentConstraint
 		observationPropertyToEntitySlot map[string]string
 		containedInPlaceToRemoteDCIDs   map[datacommons.ContainedInPlaceConstraint][]string
+		useMaterializedLinkedEdge       bool
 		golden                          string
 	}{
 		{
@@ -989,6 +990,17 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 			},
 			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
 			golden:                          "get_sdmx_availability_contained_entity1.sql",
+		},
+		{
+			name:        "entity1 all dates (materialized LinkedEdge)",
+			componentID: "observationAbout",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"observationAbout": sdmxContainedInPlaceConstraint("country/USA", "County"),
+			},
+			observationPropertyToEntitySlot: map[string]string{"observationAbout": "entity1"},
+			useMaterializedLinkedEdge:       true,
+			golden:                          "get_sdmx_availability_contained_materialized_entity1.sql",
 		},
 		{
 			name:        "entity1 explicit time periods",
@@ -1017,11 +1029,28 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 			},
 			golden: "get_sdmx_availability_contained_entity2_remote.sql",
 		},
+		{
+			name:        "remote entity2 (materialized LinkedEdge)",
+			componentID: "destinationCountry",
+			constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				"variableMeasured": sdmxComponentConstraint("var1"),
+				"sourceCountry":    sdmxContainedInPlaceConstraint(earthCountries.Ancestor, earthCountries.ChildPlaceType),
+			},
+			observationPropertyToEntitySlot: map[string]string{
+				"destinationCountry": "entity1",
+				"sourceCountry":      "entity2",
+			},
+			containedInPlaceToRemoteDCIDs: map[datacommons.ContainedInPlaceConstraint][]string{
+				earthCountries: {"country/USA"},
+			},
+			useMaterializedLinkedEdge: true,
+			golden:                    "get_sdmx_availability_contained_materialized_entity2_remote.sql",
+		},
 	} {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, tc.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: tc.useMaterializedLinkedEdge})
 				if err != nil {
 					return nil, err
 				}

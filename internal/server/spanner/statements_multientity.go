@@ -41,6 +41,8 @@ type MultiEntityStatements struct {
 	getSdmxContainedInPlaceLatest                  string
 	getSdmxContainedAvailability                   string
 	getSdmxContainedAvailabilityWithDates          string
+	sdmxContainedPlacesEdge                        string
+	sdmxContainedPlacesLinkedEdge                  string
 	sdmxContainedPlacesCTE                         string
 	sdmxContainedPlacesWithRemoteCTE               string
 	sdmxContainedSeriesCTE                         string
@@ -372,30 +374,32 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			"@{JOIN_METHOD=MERGE_JOIN}",
 		),
 
+		sdmxContainedPlacesEdge: `SELECT DISTINCT contained.subject_id AS place_id
+			FROM Edge typed
+			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
+			WHERE contained.predicate = '%[1]s'
+				AND contained.object_id = @%[2]s
+				AND typed.predicate = '%[3]s'
+				AND typed.object_id = @%[4]s`,
+
+		sdmxContainedPlacesLinkedEdge: `SELECT DISTINCT child AS place_id
+			FROM LinkedEdge
+			WHERE predicate = '%[1]s'
+				AND ancestor = @%[2]s
+				AND child_type = @%[3]s`,
+
 		// Force typeOf edges as the left input so Spanner filters by place type
 		// before containment. A broad containment lookup can return every place
 		// under an ancestor and usually produces a larger intermediate result.
 		sdmxContainedPlacesCTE: `%[1]s AS (
-			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge typed
-			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
-			WHERE contained.predicate = '%[2]s'
-				AND contained.object_id = @%[3]s
-				AND typed.predicate = '%[4]s'
-				AND typed.object_id = @%[5]s
+			%[2]s
 		)`,
 
 		sdmxContainedPlacesWithRemoteCTE: `%[1]s AS (
-			SELECT DISTINCT contained.subject_id AS place_id
-			FROM Edge typed
-			JOIN@{FORCE_JOIN_ORDER=TRUE} Edge contained ON contained.subject_id = typed.subject_id
-			WHERE contained.predicate = '%[2]s'
-				AND contained.object_id = @%[3]s
-				AND typed.predicate = '%[4]s'
-				AND typed.object_id = @%[5]s
+			%[2]s
 			UNION DISTINCT
 			SELECT place_id
-			FROM UNNEST(@%[6]s) AS place_id
+			FROM UNNEST(@%[3]s) AS place_id
 		)`,
 
 		sdmxContainedSeriesCTE: fmt.Sprintf(`series AS (
