@@ -306,3 +306,129 @@ func TestDecode_ZipBombAndOversizedLimits(t *testing.T) {
 		})
 	}
 }
+
+func TestDecode_TamperedCursorValidation(t *testing.T) {
+	deepRemote := &pbv1.PaginationInfo{}
+	curr := deepRemote
+	for i := 0; i <= maxRemotePaginationDepth+1; i++ {
+		curr.RemotePaginationInfo = &pbv1.PaginationInfo{}
+		curr = curr.RemotePaginationInfo
+	}
+
+	for _, tc := range []struct {
+		name string
+		info *pbv1.PaginationInfo
+	}{
+		{
+			name: "negative_import_group",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{ImportGroup: -1}}}},
+			},
+		},
+		{
+			name: "negative_page",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Page: -1}}}},
+			},
+		},
+		{
+			name: "negative_item",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Item: -1}}}},
+			},
+		},
+		{
+			name: "negative_offset",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Offset: -1}}}},
+			},
+		},
+		{
+			name: "excessive_remote_nesting_depth",
+			info: deepRemote,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			token, err := util.EncodeProto(tc.info)
+			if err != nil {
+				t.Fatalf("EncodeProto() unexpected error: %v", err)
+			}
+			if _, err := Decode(token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("Decode(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+		})
+	}
+}
+
+func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		info *pbv2.Pagination
+	}{
+		{
+			name: "negative_spanner_offset",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "spanner",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{Offset: -5},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "negative_nested_bigtable_item",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "bigtable",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+							BigtableInfo: &pbv1.PaginationInfo{
+								CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Item: -1}}}},
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "missing_data_source_info_oneof",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id:             "bigtable",
+						DataSourceInfo: nil,
+					},
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			token, err := util.EncodeProto(tc.info)
+			if err != nil {
+				t.Fatalf("EncodeProto() unexpected error: %v", err)
+			}
+			if _, err := DecodeNextToken(token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+		})
+	}
+
+	// Also verify in-memory nil BigtableInfo (since proto.Marshal converts a nil
+	// oneof submessage pointer into an empty submessage on the wire).
+	err := validatePagination(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: "bigtable",
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+					BigtableInfo: nil,
+				},
+			},
+		},
+	})
+	if status.Code(err) != codes.InvalidArgument {
+		t.Errorf("validatePagination(nil BigtableInfo) status code = %v, want %v (err: %v)", status.Code(err), codes.InvalidArgument, err)
+	}
+}

@@ -23,6 +23,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // state holds raw and processed data for property values API.
@@ -194,7 +196,13 @@ func (s *inState) init(
 				// Init the min heap
 				heap.Init(s.heap[n][p][t])
 				for idx, nodeList := range typedNodeList {
+					if idx >= len(cursorGroup[n][p][t]) || cursorGroup[n][p][t][idx] == nil {
+						return status.Errorf(codes.InvalidArgument, "invalid pagination token: missing cursor for import group %d", idx)
+					}
 					cursor := cursorGroup[n][p][t][idx]
+					if cursor.GetItem() < 0 || (len(nodeList) > 0 && int(cursor.GetItem()) >= len(nodeList)) {
+						return status.Errorf(codes.InvalidArgument, "invalid pagination token: cursor item %d out of bounds (len %d)", cursor.GetItem(), len(nodeList))
+					}
 					if int(cursor.GetItem()) < len(nodeList) {
 						elem := &heapElem{
 							ig:   idx,
@@ -232,8 +240,15 @@ func (s *outState) init(
 			for t := range s.rawNodes[n][p] {
 				for idx, data := range s.rawNodes[n][p][t] {
 					if len(data) > 0 {
+						if idx >= len(cursorGroup[n][p][t]) || cursorGroup[n][p][t][idx] == nil {
+							return status.Errorf(codes.InvalidArgument, "invalid pagination token: missing cursor for import group %d", idx)
+						}
+						cursor := cursorGroup[n][p][t][idx]
+						if cursor.GetItem() < 0 || int(cursor.GetItem()) >= len(data) {
+							return status.Errorf(codes.InvalidArgument, "invalid pagination token: cursor item %d out of bounds (len %d)", cursor.GetItem(), len(data))
+						}
 						s.usedImportGroup[n][p][t] = idx
-						s.next[n][p][t] = cursorGroup[n][p][t][idx]
+						s.next[n][p][t] = cursor
 						break
 					}
 				}
