@@ -212,23 +212,15 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 
 	var existenceQueryStmt spanner.Statement
 	if predicate == "" {
-		sql := statements.checkSVSourceExistence
-		if sc.useSpannerKeyValueStore {
-			sql = statements.checkSVSourceExistenceFromKV
-		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: sql,
+			SQL: statements.checkSVSourceExistence,
 			Params: map[string]interface{}{
 				"variables": variables,
 			},
 		}
 	} else {
-		sql := statements.checkGroupSourceExistence
-		if sc.useSpannerKeyValueStore {
-			sql = statements.checkGroupSourceExistenceFromKV
-		}
 		existenceQueryStmt = spanner.Statement{
-			SQL: sql,
+			SQL: statements.checkGroupSourceExistence,
 			Params: map[string]interface{}{
 				"variables": variables,
 				"predicate": predicate,
@@ -711,7 +703,7 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	results, err := queryKeyValueStore(
 		ctx,
 		sc,
-		*GetKeyValueStoreQuery(TypeProvenanceSummary, variables, sc.useSpannerKeyValueStore),
+		*GetKeyValueStoreQuery(TypeProvenanceSummary, variables),
 		func() *pb.StatVarSummary_ProvenanceSummary {
 			return &pb.StatVarSummary_ProvenanceSummary{}
 		},
@@ -1132,7 +1124,7 @@ func queryDynamic(
 	return rowData, err
 }
 
-// queryKeyValueStore executes a query against KeyValueStore (or legacy Cache) and maps the results to a proto.
+// queryKeyValueStore executes a query against KeyValueStore and maps the results to a proto.
 func queryKeyValueStore[T proto.Message](
 	ctx context.Context,
 	sc *spannerDatabaseClient,
