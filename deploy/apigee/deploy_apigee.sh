@@ -109,6 +109,7 @@ function prep_proxies() {
     copy_resources "$proxy_name" "policies" "policies"
     copy_resources "$proxy_name" "proxy_endpoints" "proxies"
     copy_resources "$proxy_name" "target_endpoints" "targets"
+    copy_js_resources "$proxy_name"
     cd "$ENV_TMP_DIR"
     mv "$proxy_name" apiproxy
     # Set a constant modification timestamp on all files so zip archive hash
@@ -117,6 +118,26 @@ function prep_proxies() {
     zip -rX "$proxy_name.zip" "apiproxy/"
     mv apiproxy "$proxy_name"
     cd "$WORKING_DIR"
+  done
+}
+
+# Copies all JavaScript files listed under .jsc in config yaml for the given
+# proxy into apiproxy/resources/jsc/.
+function copy_js_resources() {
+  proxy_name="$1"
+  resources=($(yq eval ".proxies[] | select(.name == \"$proxy_name\") | .jsc[] // \"\"" "$ENV_DATA"))
+  for resource in "${resources[@]}"; do
+    if [[ "$resource" == "" ]]; then
+      continue
+    fi
+    write_dir="$ENV_TMP_DIR/$proxy_name/resources/jsc"
+    mkdir -p "$write_dir"
+    if [[ -f "jsc/$resource.js" ]]; then
+      cp "jsc/$resource.js" "$write_dir/$resource.js"
+    else
+      echo "Not found: jsc/$resource.js"
+      exit 1
+    fi
   done
 }
 

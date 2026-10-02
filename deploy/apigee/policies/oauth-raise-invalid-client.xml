@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault continueOnError="false" enabled="true" name="oauth-raise-invalid-client">
+  <DisplayName>oauth-raise-invalid-client</DisplayName>
+  <FaultResponse>
+    <Set>
+      <Headers>
+        <Header name="Cache-Control">no-store</Header>
+      </Headers>
+      <Payload contentType="application/json">{"error": "invalid_client", "error_description": "Invalid client credentials."}</Payload>
+      <StatusCode>401</StatusCode>
+      <ReasonPhrase>Unauthorized</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota continueOnError="false" enabled="true" name="oauth-enforce-user-quota" type="rollingwindow">
+  <DisplayName>oauth-enforce-user-quota</DisplayName>
+  <Identifier ref="accesstoken.uid"/>
+  <Allow count="REPLACE_WITH_OAUTH_USER_QUOTA_REQUESTS_PER_INTERVAL"/>
+  <Interval>REPLACE_WITH_OAUTH_USER_QUOTA_INTERVAL_MINUTES</Interval>
+  <TimeUnit>minute</TimeUnit>
+  <Distributed>true</Distributed>
+  <Synchronous>false</Synchronous>
+  <EnforcementMode>Enforce</EnforcementMode>
+</Quota>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-rewrite-quota-exceeded">
+  <DisplayName>oauth-rewrite-quota-exceeded</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{"error": "rate_limit_exceeded", "error_description": "Per-user OAuth quota limit exceeded. Please retry later.", "code": 429}</Payload>
+    <StatusCode>429</StatusCode>
+    <ReasonPhrase>Too Many Requests</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault continueOnError="false" enabled="true" name="oauth-raise-not-found">
+  <DisplayName>oauth-raise-not-found</DisplayName>
+  <FaultResponse>
+    <Set>
+      <Payload contentType="application/json">{"error": "not_found", "error_description": "The requested OAuth endpoint or resource does not exist."}</Payload>
+      <StatusCode>404</StatusCode>
+      <ReasonPhrase>Not Found</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-return-revoke-ok">
+  <DisplayName>oauth-return-revoke-ok</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{}</Payload>
+    <StatusCode>200</StatusCode>
+    <ReasonPhrase>OK</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>

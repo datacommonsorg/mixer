@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-strip-auth-headers">
+  <DisplayName>oauth-strip-auth-headers</DisplayName>
+  <Remove>
+    <QueryParams>
+      <QueryParam name="apikey"/>
+      <QueryParam name="key"/>
+    </QueryParams>
+    <Headers>
+      <Header name="Authorization"/>
+      <Header name="x-api-key"/>
+    </Headers>
+  </Remove>
+</AssignMessage>

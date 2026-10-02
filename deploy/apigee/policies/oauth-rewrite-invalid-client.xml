@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-rewrite-invalid-client">
+  <DisplayName>oauth-rewrite-invalid-client</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{"error": "invalid_client", "error_description": "Invalid client_id."}</Payload>
+    <StatusCode>401</StatusCode>
+    <ReasonPhrase>Unauthorized</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>

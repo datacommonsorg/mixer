@@ -58,6 +58,12 @@ resource "apigee_proxy" "nl" {
   bundle_hash = filebase64sha256(".tmp/nl.zip")
 }
 
+resource "apigee_proxy" "oauth" {
+  name        = "oauth"
+  bundle      = ".tmp/oauth.zip"
+  bundle_hash = filebase64sha256(".tmp/oauth.zip")
+}
+
 resource "apigee_proxy_deployment" "dev-api" {
   proxy_name       = apigee_proxy.api.name
   environment_name = "dev"
@@ -69,6 +75,13 @@ resource "apigee_proxy_deployment" "dev-nl" {
   proxy_name       = apigee_proxy.nl.name
   environment_name = "dev"
   revision         = apigee_proxy.nl.revision # Deploy latest
+}
+
+resource "apigee_proxy_deployment" "dev-oauth" {
+  proxy_name       = apigee_proxy.oauth.name
+  environment_name = "dev"
+  revision         = apigee_proxy.oauth.revision # Deploy latest
+  service_account  = var.deployment_service_account
 }
 
 resource "apigee_product" "datacommons-api-staging" {
@@ -102,6 +115,24 @@ resource "apigee_product" "datacommons-nl-api-staging" {
   }
   operation {
     api_source = apigee_proxy.nl.name
+    path       = "/"
+    methods    = [] # Accept all methods
+  }
+}
+
+resource "apigee_product" "datacommons-oauth-staging" {
+  name               = "datacommons-oauth-staging"
+  display_name       = "Data Commons OAuth (Staging)"
+  auto_approval_type = false
+  description        = "${var.api_hostname}/oauth"
+  environments = [
+    "dev",
+  ]
+  attributes = {
+    access = "private"
+  }
+  operation {
+    api_source = apigee_proxy.oauth.name
     path       = "/"
     methods    = [] # Accept all methods
   }

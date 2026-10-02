@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault continueOnError="false" enabled="true" name="oauth-raise-invalid-grant">
+  <DisplayName>oauth-raise-invalid-grant</DisplayName>
+  <FaultResponse>
+    <Set>
+      <Headers>
+        <Header name="Cache-Control">no-store</Header>
+      </Headers>
+      <Payload contentType="application/json">{"error": "invalid_grant", "error_description": "Invalid, expired, or already used authorization code or state."}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="oauth-refresh-access-token">
+  <DisplayName>oauth-refresh-access-token</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>RefreshAccessToken</Operation>
+  <ExpiresIn>3600000</ExpiresIn>
+  <RefreshTokenExpiresIn>31536000000</RefreshTokenExpiresIn>
+  <ReuseRefreshToken>true</ReuseRefreshToken>
+  <RefreshToken>request.formparam.refresh_token</RefreshToken>
+  <GrantType>request.formparam.grant_type</GrantType>
+  <ClientId>request.formparam.client_id</ClientId>
+  <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
+  <GenerateResponse enabled="true"/>
+</OAuthV2>

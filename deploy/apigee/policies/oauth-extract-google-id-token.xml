@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="oauth-extract-google-id-token">
+  <DisplayName>oauth-extract-google-id-token</DisplayName>
+  <Source clearPayload="false">googleTokenResponse</Source>
+  <VariablePrefix>private.oauth</VariablePrefix>
+  <JSONPayload>
+    <Variable name="google_id_token" type="string">
+      <JSONPath>$.id_token</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

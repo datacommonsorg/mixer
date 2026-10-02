@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<BasicAuthentication continueOnError="true" enabled="true" name="oauth-decode-basic-auth">
+  <DisplayName>oauth-decode-basic-auth</DisplayName>
+  <Operation>Decode</Operation>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <User ref="oauth.basic.client_id"/>
+  <Password ref="oauth.basic.client_secret"/>
+  <Source>request.header.Authorization</Source>
+</BasicAuthentication>

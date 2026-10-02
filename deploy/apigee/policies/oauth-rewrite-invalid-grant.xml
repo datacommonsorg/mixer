@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-rewrite-invalid-grant">
+  <DisplayName>oauth-rewrite-invalid-grant</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{"error": "invalid_grant", "error_description": "Invalid, expired, or already used authorization code or state."}</Payload>
+    <StatusCode>400</StatusCode>
+    <ReasonPhrase>Bad Request</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>
