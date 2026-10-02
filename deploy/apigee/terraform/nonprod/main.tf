@@ -128,6 +128,9 @@ resource "apigee_product" "datacommons-oauth-staging" {
   environments = [
     "dev",
   ]
+  scopes = [
+    "mcp",
+  ]
   attributes = {
     access = "private"
   }

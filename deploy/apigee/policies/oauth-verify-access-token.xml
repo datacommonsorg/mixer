@@ -3,7 +3,6 @@
   <DisplayName>oauth-verify-access-token</DisplayName>
   <ExternalAuthorization>false</ExternalAuthorization>
   <Operation>VerifyAccessToken</Operation>
-  <Scope>mcp</Scope>
   <SupportedGrantTypes/>
   <GenerateResponse enabled="true"/>
   <Tokens/>

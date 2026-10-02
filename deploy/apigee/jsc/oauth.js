@@ -53,7 +53,19 @@
   }
 
   function generateCsrfNonce() {
-    return String(java.util.UUID.randomUUID().toString().replace(/-/g, ''));
+    var sha256 = crypto.getSHA256();
+    sha256.update([
+      context.getVariable('messageid') || '',
+      context.getVariable('system.uuid') || '',
+      context.getVariable('system.timestamp') || String(Date.now()),
+      context.getVariable('request.queryparam.code_challenge') || '',
+      context.getVariable('request.queryparam.state') || '',
+      context.getVariable('private.oauth.uid_hmac_key') || ''
+    ].join(':'));
+    return sha256.digest64()
+      .replace(/=+$/, '')
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_');
   }
 
   function getCookieValue(cookieHeader, name) {
