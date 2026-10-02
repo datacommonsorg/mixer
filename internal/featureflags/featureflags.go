@@ -56,8 +56,6 @@ type Flags struct {
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 	// Whether to use the new IngestionHistory schema with Timestamp.
 	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
-	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
-	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 	// Child place types whose core Observation and Node contained-in-place queries should filter by ancestor before type.
 	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
 	// Child place types eligible for a TimeSeriesByEntity1 range scan in core contained-in-place observation queries.
@@ -88,7 +86,6 @@ func setDefaultValues() *Flags {
 		SDMXRemotePlaceExpansionLimit:                  10000,
 		EnableSpannerSearchEmbeddings:                  false,
 		UseNewIngestionHistorySchema:                   false,
-		UseSpannerKeyValueStore:                        false,
 		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables:         50,
@@ -125,9 +122,6 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
-	}
-	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
-		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
 	}
 	if f.SDMXRemotePlaceExpansionLimit <= 0 {
 		return fmt.Errorf("SDMXRemotePlaceExpansionLimit must be positive")
