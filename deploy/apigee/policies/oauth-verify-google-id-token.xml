@@ -8,4 +8,5 @@
   </PublicKey>
   <Issuer>https://accounts.google.com</Issuer>
   <Audience ref="private.oauth.google_client_id"/>
+  <TimeAllowance>60s</TimeAllowance>
 </VerifyJWT>

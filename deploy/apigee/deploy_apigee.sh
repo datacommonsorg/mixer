@@ -125,7 +125,7 @@ function prep_proxies() {
 # proxy into apiproxy/resources/jsc/.
 function copy_js_resources() {
   proxy_name="$1"
-  resources=($(yq eval ".proxies[] | select(.name == \"$proxy_name\") | .jsc[] // \"\"" "$ENV_DATA"))
+  resources=($(yq eval ".proxies[] | select(.name == \"$proxy_name\") | .jsc // [] | .[]" "$ENV_DATA"))
   for resource in "${resources[@]}"; do
     if [[ "$resource" == "" ]]; then
       continue

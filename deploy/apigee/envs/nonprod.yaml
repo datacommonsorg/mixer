@@ -32,47 +32,30 @@ proxies:
     policies:
       - add-cors
       - set-southbound-key
+      - rewrite-quota-exceeded-message
       - oauth-set-config
-      - oauth-return-as-metadata
-      - oauth-return-resource-metadata
+      - oauth-script
       - oauth-verify-client-id
-      - oauth-validate-authorize
       - oauth-generate-state2-code
-      - oauth-redirect-to-google
       - oauth-get-state2-attributes
-      - oauth-validate-callback
       - oauth-delete-state2-code
-      - oauth-build-google-token-request
       - oauth-call-google-token
-      - oauth-extract-google-id-token
       - oauth-verify-google-id-token
       - oauth-compute-uid
       - oauth-generate-auth-code
-      - oauth-redirect-to-app
       - oauth-decode-basic-auth
-      - oauth-normalize-basic-auth
       - oauth-verify-client-form
       - oauth-get-code-attributes
-      - oauth-verify-client-and-pkce
       - oauth-generate-access-token
       - oauth-refresh-access-token
-      - oauth-revoke-token
-      - oauth-return-revoke-ok
       - oauth-verify-access-token
       - oauth-enforce-user-quota
       - oauth-strip-auth-headers
-      - oauth-raise-bad-request
-      - oauth-raise-invalid-client
-      - oauth-raise-invalid-grant
-      - oauth-raise-not-found
+      - oauth-raise-error
+      - oauth-rewrite-error
       - oauth-rewrite-unauthorized-mcp
-      - oauth-rewrite-quota-exceeded
-      - oauth-rewrite-invalid-client
-      - oauth-rewrite-invalid-grant
     jsc:
-      - oauth-validate-authorize
-      - oauth-validate-callback
-      - oauth-verify-client-and-pkce
+      - oauth
     proxy_endpoints:
       - oauth
     target_endpoints:

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OAuthV2 continueOnError="true" enabled="true" name="oauth-revoke-token">
-  <DisplayName>oauth-revoke-token</DisplayName>
-  <Operation>InvalidateToken</Operation>
-  <Tokens>
-    <Token type="refreshtoken" cascade="true">request.formparam.token</Token>
-    <Token type="accesstoken" cascade="true">request.formparam.token</Token>
-  </Tokens>
-</OAuthV2>

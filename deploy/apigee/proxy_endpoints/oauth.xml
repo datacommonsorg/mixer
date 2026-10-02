@@ -2,19 +2,6 @@
 <ProxyEndpoint name="oauth">
   <Description>OAuth 2.0 Authorization Server and OAuth-protected MCP Endpoint</Description>
   <FaultRules>
-    <FaultRule name="handle_InvalidClient">
-      <Step>
-        <Name>oauth-rewrite-invalid-client</Name>
-      </Step>
-      <Condition>
-        (fault.name = "InvalidApiKey") or
-        (fault.name = "FailedToResolveAPIKey") or
-        (fault.name = "InvalidApiKeyForGivenResource") or
-        (fault.name = "DeveloperStatusNotActive") or
-        (fault.name = "invalid_client") or
-        (fault.name = "InvalidClientIdentifier")
-      </Condition>
-    </FaultRule>
     <FaultRule name="handle_UnauthorizedMcp">
       <Step>
         <Name>oauth-rewrite-unauthorized-mcp</Name>
@@ -32,15 +19,24 @@
     </FaultRule>
     <FaultRule name="handle_QuotaExceeded">
       <Step>
-        <Name>oauth-rewrite-quota-exceeded</Name>
+        <Name>rewrite-quota-exceeded-message</Name>
       </Step>
       <Condition>(fault.name = "QuotaViolation")</Condition>
     </FaultRule>
-    <FaultRule name="handle_InvalidGrantOrCallbackFault">
+    <FaultRule name="handle_OAuthFault">
       <Step>
-        <Name>oauth-rewrite-invalid-grant</Name>
+        <Name>oauth-script</Name>
+      </Step>
+      <Step>
+        <Name>oauth-rewrite-error</Name>
       </Step>
       <Condition>
+        (fault.name = "InvalidApiKey") or
+        (fault.name = "FailedToResolveAPIKey") or
+        (fault.name = "InvalidApiKeyForGivenResource") or
+        (fault.name = "DeveloperStatusNotActive") or
+        (fault.name = "invalid_client") or
+        (fault.name = "InvalidClientIdentifier") or
         (fault.name = "InvalidAuthorizationCode") or
         (fault.name = "InvalidRefreshToken") or
         (fault.name = "refresh_token_expired") or
@@ -73,7 +69,7 @@
       <Request/>
       <Response>
         <Step>
-          <Name>oauth-return-as-metadata</Name>
+          <Name>oauth-script</Name>
         </Step>
       </Response>
       <Condition>
@@ -89,7 +85,7 @@
       <Request/>
       <Response>
         <Step>
-          <Name>oauth-return-resource-metadata</Name>
+          <Name>oauth-script</Name>
         </Step>
       </Response>
       <Condition>
@@ -107,11 +103,11 @@
           <Name>oauth-verify-client-id</Name>
         </Step>
         <Step>
-          <Name>oauth-validate-authorize</Name>
+          <Name>oauth-script</Name>
         </Step>
         <Step>
-          <Condition>(oauth.error != null) and (oauth.error != "")</Condition>
-          <Name>oauth-raise-bad-request</Name>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
         </Step>
         <Step>
           <Name>oauth-generate-state2-code</Name>
@@ -119,7 +115,7 @@
       </Request>
       <Response>
         <Step>
-          <Name>oauth-redirect-to-google</Name>
+          <Name>oauth-script</Name>
         </Step>
       </Response>
       <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize")</Condition>
@@ -128,43 +124,27 @@
       <Description>OAuth 2.0 Callback from Google Sign-In</Description>
       <Request>
         <Step>
-          <Condition>
-            (request.queryparam.error != null) or
-            (request.queryparam.state = null) or
-            (request.queryparam.state = "") or
-            (request.queryparam.code = null) or
-            (request.queryparam.code = "")
-          </Condition>
-          <Name>oauth-raise-invalid-grant</Name>
-        </Step>
-        <Step>
           <Name>oauth-get-state2-attributes</Name>
         </Step>
         <Step>
-          <Name>oauth-validate-callback</Name>
+          <Name>oauth-script</Name>
         </Step>
         <Step>
-          <Condition>(oauth.error != null) and (oauth.error != "")</Condition>
-          <Name>oauth-raise-bad-request</Name>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
         </Step>
         <Step>
           <Name>oauth-delete-state2-code</Name>
         </Step>
         <Step>
-          <Name>oauth-build-google-token-request</Name>
-        </Step>
-        <Step>
           <Name>oauth-call-google-token</Name>
         </Step>
         <Step>
-          <Name>oauth-extract-google-id-token</Name>
+          <Name>oauth-script</Name>
         </Step>
         <Step>
-          <Condition>
-            (private.oauth.google_id_token = null) or
-            (private.oauth.google_id_token = "")
-          </Condition>
-          <Name>oauth-raise-invalid-grant</Name>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
         </Step>
         <Step>
           <Name>oauth-verify-google-id-token</Name>
@@ -174,7 +154,7 @@
             (jwt.oauth-verify-google-id-token.decoded.claim.sub = null) or
             (jwt.oauth-verify-google-id-token.decoded.claim.sub = "")
           </Condition>
-          <Name>oauth-raise-invalid-grant</Name>
+          <Name>oauth-raise-error</Name>
         </Step>
         <Step>
           <Name>oauth-compute-uid</Name>
@@ -185,7 +165,7 @@
       </Request>
       <Response>
         <Step>
-          <Name>oauth-redirect-to-app</Name>
+          <Name>oauth-script</Name>
         </Step>
       </Response>
       <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback")</Condition>
@@ -198,10 +178,6 @@
           <Name>oauth-decode-basic-auth</Name>
         </Step>
         <Step>
-          <Condition>(oauth.basic.client_id != null) and (oauth.basic.client_id != "")</Condition>
-          <Name>oauth-normalize-basic-auth</Name>
-        </Step>
-        <Step>
           <Name>oauth-verify-client-form</Name>
         </Step>
         <Step>
@@ -209,15 +185,11 @@
           <Name>oauth-get-code-attributes</Name>
         </Step>
         <Step>
-          <Name>oauth-verify-client-and-pkce</Name>
+          <Name>oauth-script</Name>
         </Step>
         <Step>
-          <Condition>oauth.client_invalid = "true"</Condition>
-          <Name>oauth-raise-invalid-client</Name>
-        </Step>
-        <Step>
-          <Condition>(oauth.error != null) and (oauth.error != "")</Condition>
-          <Name>oauth-raise-bad-request</Name>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
         </Step>
         <Step>
           <Condition>request.formparam.grant_type = "authorization_code"</Condition>
@@ -230,42 +202,6 @@
       </Request>
       <Response/>
       <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token")</Condition>
-    </Flow>
-    <Flow name="revoke">
-      <Description>OAuth 2.0 Token Revocation Endpoint (RFC 7009)</Description>
-      <Request>
-        <Step>
-          <Condition>request.header.Authorization ~~ "^[Bb]asic .+"</Condition>
-          <Name>oauth-decode-basic-auth</Name>
-        </Step>
-        <Step>
-          <Condition>(oauth.basic.client_id != null) and (oauth.basic.client_id != "")</Condition>
-          <Name>oauth-normalize-basic-auth</Name>
-        </Step>
-        <Step>
-          <Name>oauth-verify-client-form</Name>
-        </Step>
-        <Step>
-          <Name>oauth-verify-client-and-pkce</Name>
-        </Step>
-        <Step>
-          <Condition>oauth.client_invalid = "true"</Condition>
-          <Name>oauth-raise-invalid-client</Name>
-        </Step>
-        <Step>
-          <Condition>(oauth.error != null) and (oauth.error != "")</Condition>
-          <Name>oauth-raise-bad-request</Name>
-        </Step>
-        <Step>
-          <Name>oauth-revoke-token</Name>
-        </Step>
-      </Request>
-      <Response>
-        <Step>
-          <Name>oauth-return-revoke-ok</Name>
-        </Step>
-      </Response>
-      <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/revoke")</Condition>
     </Flow>
     <Flow name="mcp-resource">
       <Description>OAuth-protected MCP Endpoint</Description>
@@ -280,14 +216,24 @@
       <Response/>
       <Condition>
         ((proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")) and
-        !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**")
+        !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**") and
+        (request.verb != "OPTIONS")
       </Condition>
+    </Flow>
+    <Flow name="cors-preflight">
+      <Description>CORS Preflight</Description>
+      <Request/>
+      <Response/>
+      <Condition>request.verb = "OPTIONS"</Condition>
     </Flow>
     <Flow name="not-found">
       <Description>Reject all other paths under /oauth</Description>
       <Request>
         <Step>
-          <Name>oauth-raise-not-found</Name>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Name>oauth-raise-error</Name>
         </Step>
       </Request>
       <Response/>
@@ -304,7 +250,8 @@
   <RouteRule name="mcp-target">
     <Condition>
       ((proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")) and
-      !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**")
+      !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**") and
+      (request.verb != "OPTIONS")
     </Condition>
     <TargetEndpoint>oauth</TargetEndpoint>
   </RouteRule>

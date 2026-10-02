@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<GetOAuthV2Info continueOnError="false" enabled="true" name="oauth-get-state2-attributes">
+<GetOAuthV2Info continueOnError="true" enabled="true" name="oauth-get-state2-attributes">
   <DisplayName>oauth-get-state2-attributes</DisplayName>
   <AuthorizationCode ref="request.queryparam.state"/>
 </GetOAuthV2Info>
