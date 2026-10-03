@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="oauth">
+  <DisplayName>Data Commons OAuth &amp; MCP Proxy</DisplayName>
+  <Description>OAuth 2.0 Authorization Server facade and OAuth-protected MCP proxy</Description>
+  <BasePaths>/api/oauth</BasePaths>
+  <Policies>
+    <Policy>add-cors</Policy>
+    <Policy>set-southbound-key</Policy>
+    <Policy>rewrite-quota-exceeded-message</Policy>
+    <Policy>oauth-set-config</Policy>
+    <Policy>oauth-script</Policy>
+    <Policy>oauth-verify-client-id</Policy>
+    <Policy>oauth-generate-state2-code</Policy>
+    <Policy>oauth-get-state2-attributes</Policy>
+    <Policy>oauth-delete-state2-code</Policy>
+    <Policy>oauth-call-google-token</Policy>
+    <Policy>oauth-verify-google-id-token</Policy>
+    <Policy>oauth-compute-uid</Policy>
+    <Policy>oauth-generate-auth-code</Policy>
+    <Policy>oauth-decode-basic-auth</Policy>
+    <Policy>oauth-verify-client-form</Policy>
+    <Policy>oauth-get-code-attributes</Policy>
+    <Policy>oauth-generate-access-token</Policy>
+    <Policy>oauth-refresh-access-token</Policy>
+    <Policy>oauth-verify-access-token</Policy>
+    <Policy>oauth-enforce-user-quota</Policy>
+    <Policy>oauth-strip-auth-headers</Policy>
+    <Policy>oauth-raise-error</Policy>
+    <Policy>oauth-rewrite-error</Policy>
+    <Policy>oauth-rewrite-unauthorized-mcp</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>oauth</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>oauth</TargetEndpoint>
+  </TargetEndpoints>
+  <Resources>
+    <Resource>jsc://oauth.js</Resource>
+  </Resources>
+</APIProxy>
