@@ -91,32 +91,7 @@
   var flowName = context.getVariable('current.flow.name') || '';
   var host = context.getVariable('oauth.public_hostname') || '';
 
-  // 1. FaultRule execution: map Apigee policy faults to OAuth 2.0 JSON error fields.
-  // Guard against soft faults from continueOnError="true" lookup policies before validation completes.
-  var faultName = context.getVariable('fault.name') || '';
-  var clientFaults = {
-    'InvalidApiKey': true,
-    'FailedToResolveAPIKey': true,
-    'InvalidApiKeyForGivenResource': true,
-    'DeveloperStatusNotActive': true,
-    'invalid_client': true,
-    'InvalidClientIdentifier': true
-  };
-  var isClientFault = Boolean(clientFaults[faultName]) || (faultName === 'FailedToDecode' && flowName === 'token');
-  var inFaultRule = isClientFault ||
-    (flowName === 'callback' && context.getVariable('oauth.callback.step') === 'post_token') ||
-    (flowName === 'token' && context.getVariable('oauth.token.validated') === 'true') ||
-    (flowName !== 'callback' && flowName !== 'token');
-  if (faultName && inFaultRule) {
-    if (isClientFault) {
-      fail(401, 'invalid_client', 'Invalid client_id.');
-    } else {
-      fail(400, 'invalid_grant', 'Invalid, expired, or already used authorization code or state.');
-    }
-    return;
-  }
-
-  // 2. Proxy Response Flow: construct discovery JSON or 302 redirects.
+  // 1. Proxy Response Flow: construct discovery JSON, 302 redirects, or jwt-bearer check response.
   if (flowScope === 'PROXY_RESP_FLOW') {
     if (flowName === 'as-metadata') {
       context.setVariable('response.status.code', 200);
@@ -127,7 +102,11 @@
         authorization_endpoint: 'https://' + host + '/oauth/authorize',
         token_endpoint: 'https://' + host + '/oauth/token',
         response_types_supported: ['code'],
-        grant_types_supported: ['authorization_code', 'refresh_token'],
+        grant_types_supported: [
+          'authorization_code',
+          'refresh_token',
+          'urn:ietf:params:oauth:grant-type:jwt-bearer'
+        ],
         token_endpoint_auth_methods_supported: ['client_secret_basic', 'client_secret_post'],
         code_challenge_methods_supported: ['S256'],
         scopes_supported: ['mcp']
@@ -175,6 +154,44 @@
       context.setVariable('response.header.Set-Cookie', 'dc_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/oauth/callback; Max-Age=0');
       context.setVariable('response.header.Cache-Control', 'no-store');
       return;
+    }
+
+    if (flowName === 'token') {
+      if (context.getVariable('oauth.jwt_bearer.intent') === 'check') {
+        context.setVariable('response.status.code', 200);
+        context.setVariable('response.header.Content-Type', 'application/json');
+        context.setVariable('response.header.Cache-Control', 'no-store');
+        context.setVariable('response.content', JSON.stringify({
+          account_found: true
+        }));
+      }
+      return;
+    }
+    return;
+  }
+
+  // 2. FaultRule execution: map Apigee policy faults to OAuth 2.0 JSON error fields.
+  // Guard against soft faults from continueOnError="true" lookup policies before validation completes.
+  var faultName = context.getVariable('fault.name') || '';
+  var clientFaults = {
+    'InvalidApiKey': true,
+    'FailedToResolveAPIKey': true,
+    'InvalidApiKeyForGivenResource': true,
+    'DeveloperStatusNotActive': true,
+    'invalid_client': true,
+    'InvalidClientIdentifier': true
+  };
+  var isClientFault = Boolean(clientFaults[faultName]) ||
+    (faultName === 'FailedToDecode' && flowName === 'token' && context.getVariable('oauth.token.validated') !== 'true');
+  var inFaultRule = isClientFault ||
+    (flowName === 'callback' && context.getVariable('oauth.callback.step') === 'post_token') ||
+    (flowName === 'token' && context.getVariable('oauth.token.validated') === 'true') ||
+    (flowName !== 'callback' && flowName !== 'token');
+  if (faultName && inFaultRule) {
+    if (isClientFault) {
+      fail(401, 'invalid_client', 'Invalid client_id.');
+    } else {
+      fail(400, 'invalid_grant', 'Invalid, expired, or already used authorization code or state.');
     }
     return;
   }
@@ -316,9 +333,21 @@
       return;
     }
 
+    var reqScope = context.getVariable('request.formparam.scope');
+    if (reqScope !== null && reqScope !== undefined && String(reqScope).trim() !== '') {
+      if (String(reqScope).trim() !== 'mcp') {
+        fail(400, 'invalid_scope', 'Only scope=mcp is supported.');
+        return;
+      }
+    }
+    if (typeof context.removeVariable === 'function') {
+      context.removeVariable('request.formparam.scope');
+    }
+
     var grantType = context.getVariable('request.formparam.grant_type') || '';
-    if (grantType !== 'authorization_code' && grantType !== 'refresh_token') {
-      fail(400, 'unsupported_grant_type', 'Only authorization_code and refresh_token grant types are supported.');
+    var jwtBearerGrant = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
+    if (grantType !== 'authorization_code' && grantType !== 'refresh_token' && grantType !== jwtBearerGrant) {
+      fail(400, 'unsupported_grant_type', 'Only authorization_code, refresh_token, and urn:ietf:params:oauth:grant-type:jwt-bearer grant types are supported.');
       return;
     }
     if (grantType === 'refresh_token') {
@@ -327,6 +356,51 @@
         fail(400, 'invalid_grant', 'Missing refresh_token parameter.');
         return;
       }
+      context.setVariable('oauth.token.validated', 'true');
+      return;
+    }
+
+    if (grantType === jwtBearerGrant) {
+      var intent = context.getVariable('request.formparam.intent') || '';
+      if (intent !== 'check' && intent !== 'get' && intent !== 'create') {
+        fail(400, 'invalid_request', 'Invalid or missing intent parameter; must be check, get, or create.');
+        return;
+      }
+      var assertion = context.getVariable('request.formparam.assertion') || '';
+      if (!assertion) {
+        fail(400, 'invalid_grant', 'Missing assertion parameter.');
+        return;
+      }
+      var tokenAllowedCsv = context.getVariable('verifyapikey.oauth-verify-client-form.allowed_redirect_uris') || '';
+      var tokenSingleCallbackUri = context.getVariable('verifyapikey.oauth-verify-client-form.redirection_uris') || '';
+      var syntheticRedirectUri = '';
+      if (String(tokenSingleCallbackUri).trim() !== '') {
+        syntheticRedirectUri = String(tokenSingleCallbackUri).split(',')[0].trim();
+      } else if (String(tokenAllowedCsv).trim() !== '') {
+        syntheticRedirectUri = String(tokenAllowedCsv).split(',')[0].trim();
+      }
+      if (!syntheticRedirectUri) {
+        syntheticRedirectUri = 'https://' + host + '/oauth/callback';
+      }
+
+      var tokenClientId = context.getVariable('request.formparam.client_id') || '';
+      context.setVariable('private.oauth.google_id_token', assertion);
+      context.setVariable('oauth.jwt_bearer.intent', intent);
+      if (intent !== 'check') {
+        context.setVariable('request.queryparam.client_id', tokenClientId);
+        context.setVariable('request.queryparam.response_type', 'code');
+        context.setVariable('request.queryparam.redirect_uri', syntheticRedirectUri);
+        context.setVariable('request.queryparam.scope', 'mcp');
+        context.setVariable('oauth.callback.redirect_uri', syntheticRedirectUri);
+        context.setVariable('oauth.callback.code_challenge', '');
+        context.setVariable('oauth.callback.code_challenge_method', 'S256');
+        context.setVariable('oauth.grant_type', 'authorization_code');
+        context.setVariable('oauth.redirect_uri', syntheticRedirectUri);
+      }
+      // Set default error metadata in case sub claim check fails after VerifyJWT.
+      context.setVariable('oauth.status_code', '400');
+      context.setVariable('oauth.error', 'invalid_grant');
+      context.setVariable('oauth.error_description', 'Invalid Google ID token assertion.');
       context.setVariable('oauth.token.validated', 'true');
       return;
     }
@@ -365,6 +439,10 @@
       fail(400, 'invalid_grant', 'PKCE verification failed.');
       return;
     }
+    context.setVariable('oauth.grant_type', 'authorization_code');
+    context.setVariable('oauth.redirect_uri', providedRedirectUri);
+    context.setVariable('oauth.uid', uid);
+    context.setVariable('oauthv2authcode.oauth-generate-auth-code.code', context.getVariable('request.formparam.code') || '');
     context.setVariable('oauth.token.validated', 'true');
     return;
   }

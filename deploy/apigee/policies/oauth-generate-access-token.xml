@@ -8,14 +8,14 @@
   <SupportedGrantTypes>
     <GrantType>authorization_code</GrantType>
   </SupportedGrantTypes>
-  <GrantType>request.formparam.grant_type</GrantType>
+  <GrantType>oauth.grant_type</GrantType>
   <ClientId>request.formparam.client_id</ClientId>
-  <Code>request.formparam.code</Code>
-  <RedirectUri>request.formparam.redirect_uri</RedirectUri>
-  <AppEndUser>oauthv2authcode.oauth-get-code-attributes.uid</AppEndUser>
+  <Code>oauthv2authcode.oauth-generate-auth-code.code</Code>
+  <RedirectUri>oauth.redirect_uri</RedirectUri>
+  <AppEndUser>oauth.uid</AppEndUser>
   <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
   <GenerateResponse enabled="true"/>
   <Attributes>
-    <Attribute name="uid" ref="oauthv2authcode.oauth-get-code-attributes.uid" display="false"/>
+    <Attribute name="uid" ref="oauth.uid" display="false"/>
   </Attributes>
 </OAuthV2>

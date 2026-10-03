@@ -41,9 +41,12 @@
         (fault.name = "InvalidRefreshToken") or
         (fault.name = "refresh_token_expired") or
         (fault.name = "invalid_refresh_token") or
+        (fault.name = "InvalidScope") or
         (fault.name = "ExecutionFailed") or
         (fault.name = "InvalidClaim") or
         (fault.name = "TokenExpired") or
+        (fault.name = "InvalidToken") or
+        (fault.name = "VerificationException") or
         (fault.name = "FailedToDecode")
       </Condition>
     </FaultRule>
@@ -192,7 +195,32 @@
           <Name>oauth-raise-error</Name>
         </Step>
         <Step>
-          <Condition>request.formparam.grant_type = "authorization_code"</Condition>
+          <Condition>request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer"</Condition>
+          <Name>oauth-verify-google-id-token</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer") and
+            (
+              (jwt.oauth-verify-google-id-token.decoded.claim.sub = null) or
+              (jwt.oauth-verify-google-id-token.decoded.claim.sub = "")
+            )
+          </Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer"</Condition>
+          <Name>oauth-compute-uid</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer") and
+            (oauth.jwt_bearer.intent != "check")
+          </Condition>
+          <Name>oauth-generate-auth-code</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.grant_type = "authorization_code"</Condition>
           <Name>oauth-generate-access-token</Name>
         </Step>
         <Step>
@@ -200,7 +228,12 @@
           <Name>oauth-refresh-access-token</Name>
         </Step>
       </Request>
-      <Response/>
+      <Response>
+        <Step>
+          <Condition>oauth.jwt_bearer.intent = "check"</Condition>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
       <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token")</Condition>
     </Flow>
     <Flow name="mcp-resource">
