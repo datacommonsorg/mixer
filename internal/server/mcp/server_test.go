@@ -65,7 +65,7 @@ func TestDocumentationHeaderHandling(t *testing.T) {
 			if tc.accept != "" {
 				req.Header.Set("Accept", tc.accept)
 			}
-			resp, err := http.DefaultClient.Do(req)
+			resp, err := ts.Client().Do(req)
 			if err != nil {
 				t.Fatalf("GET request failed: %v", err)
 			}
