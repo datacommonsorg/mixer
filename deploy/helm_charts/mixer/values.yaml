@@ -487,6 +487,10 @@ serviceGroups:
       memoryRequest: "12Gi"
       memoryLimit: "12Gi"
       cpuRequest: "300m"
+    espResources:
+      # Higher memory for /v2/node pages of up to 25k edges.
+      memoryRequest: "512Mi"
+      memoryLimit: "2Gi"
     cacheSVG: true
   default:
     enableEmbeddingsSidecar: false

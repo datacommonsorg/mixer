@@ -39,7 +39,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -140,6 +142,92 @@ func TestV2NodeKeepsCallerPaginationToken(t *testing.T) {
 	}
 	if got := sentReq.GetNextToken(); got != wantRemoteToken {
 		t.Errorf("remote received next token = %q, want %q", got, wantRemoteToken)
+	}
+}
+
+// pageSizeRecordingDataSource records the page size the dispatcher passes to Node.
+type pageSizeRecordingDataSource struct {
+	datasource.DataSource
+	calls    int
+	pageSize int
+}
+
+func (m *pageSizeRecordingDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	m.calls++
+	m.pageSize = pageSize
+	return &pbv2.NodeResponse{}, nil
+}
+
+// Diverted V2Node and V3Node are both served by the dispatcher, so they must
+// turn NodeRequest.limit into the same page size.
+func TestNodeLimitSetsPageSize(t *testing.T) {
+	endpoints := []struct {
+		name string
+		call func(*Server, context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	}{
+		{name: "V2Node", call: (*Server).V2Node},
+		{name: "V3Node", call: (*Server).V3Node},
+	}
+
+	for _, tc := range []struct {
+		desc         string
+		limit        int32
+		wantPageSize int
+		wantCode     codes.Code
+	}{
+		{desc: "unset uses default", limit: 0, wantPageSize: datasources.DefaultPageSize},
+		{desc: "smaller limit is honored", limit: 10, wantPageSize: 10},
+		{desc: "limit above max is lowered", limit: datasources.MaxPageSize + 1, wantPageSize: datasources.MaxPageSize},
+		{desc: "negative limit is rejected", limit: -1, wantCode: codes.InvalidArgument},
+	} {
+		for _, endpoint := range endpoints {
+			t.Run(endpoint.name+"/"+tc.desc, func(t *testing.T) {
+				ds := &pageSizeRecordingDataSource{}
+				s := &Server{
+					flags:           &featureflags.Flags{},
+					useSpannerGraph: true,
+					dispatcher:      dispatcher.NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{ds}, nil)),
+				}
+				in := &pbv2.NodeRequest{
+					Nodes:    []string{"geoId/06"},
+					Property: "<-containedInPlace",
+					Limit:    tc.limit,
+				}
+
+				_, err := endpoint.call(s, context.Background(), in)
+				if gotCode := status.Code(err); gotCode != tc.wantCode {
+					t.Fatalf("%s() error code = %v, want %v (err: %v)", endpoint.name, gotCode, tc.wantCode, err)
+				}
+				if tc.wantCode != codes.OK {
+					if ds.calls != 0 {
+						t.Errorf("datasource Node() called %d times, want 0", ds.calls)
+					}
+					return
+				}
+				if ds.calls != 1 {
+					t.Fatalf("datasource Node() called %d times, want 1", ds.calls)
+				}
+				if ds.pageSize != tc.wantPageSize {
+					t.Errorf("datasource Node() pageSize = %d, want %d", ds.pageSize, tc.wantPageSize)
+				}
+			})
+		}
+	}
+}
+
+// A negative limit is rejected on the legacy path too, so partial diversion
+// does not make the same request succeed or fail at random.
+func TestV2NodeLegacyRejectsNegativeLimit(t *testing.T) {
+	s := &Server{
+		store:    &store.Store{},
+		metadata: &resource.Metadata{},
+		flags:    &featureflags.Flags{},
+	}
+	s.cachedata.Store(&cache.Cache{})
+
+	in := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}, Property: "<-containedInPlace", Limit: -1}
+	if _, err := s.V2Node(context.Background(), in); status.Code(err) != codes.InvalidArgument {
+		t.Errorf("V2Node() error = %v, want code %v", err, codes.InvalidArgument)
 	}
 }
 

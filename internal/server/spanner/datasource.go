@@ -30,7 +30,6 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -967,7 +966,7 @@ func (sds *SpannerDataSource) fetchTypes(
 	}
 
 	typeArc := &v2.Arc{SingleProp: "typeOf", Out: true}
-	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, datasources.DefaultPageSize, 0)
+	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, unpaginatedLookupPageSize, 0)
 	if err != nil {
 		return nil, err
 	}

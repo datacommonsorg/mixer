@@ -28,7 +28,11 @@ import (
 func (s *Server) V3Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+	pageSize, err := datasources.NodePageSize(in.GetLimit())
+	if err != nil {
+		return nil, err
+	}
+	return s.dispatcher.Node(ctx, in, pageSize)
 }
 
 // V3Observation implements API for mixer.V3Observation.

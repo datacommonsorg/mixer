@@ -31,7 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -48,8 +47,14 @@ const (
 
 	// Use a large page size for the batch to ensure we get properties for all events.
 	// Since we have up to maxEvents (100) events, and each event might have multiple edges,
-	// DefaultPageSize (500) is too small and truncates the results for events at the end of the batch.
+	// a small page size truncates the results for events at the end of the batch.
 	eventBatchPageSize = 10000
+
+	// unpaginatedLookupPageSize caps internal edge lookups that read one page and
+	// never follow a next token, so rows past the cap are silently dropped. It is
+	// separate from datasources.DefaultPageSize so that changing the public Node
+	// page size does not change these lookups.
+	unpaginatedLookupPageSize = 25000
 
 	// Maximum number of edge hops to traverse for chained properties.
 	maxHops = 10
@@ -427,7 +432,7 @@ func (sc *spannerDatabaseClient) populateProvenanceInfo(ctx context.Context, res
 		Out:          true,
 		BracketProps: []string{predUrl, predName, predDomain},
 	}
-	provEdgesMap, err := sc.GetNodeEdgesByID(ctx, provDcids, provArc, datasources.DefaultPageSize, 0)
+	provEdgesMap, err := sc.GetNodeEdgesByID(ctx, provDcids, provArc, unpaginatedLookupPageSize, 0)
 	if err != nil {
 		return fmt.Errorf("failed to get provenance info: %w", err)
 	}
