@@ -25,7 +25,6 @@ import (
 	"path"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/google/jsonschema-go/jsonschema"
 	"github.com/mark3labs/mcp-go/mcp"
@@ -36,7 +35,6 @@ import (
 const (
 	serverName                = "Data Commons MCP Server"
 	headerEnableDocumentation = "X-DC-Enable-Documentation"
-	defaultHeartbeatInterval  = 30 * time.Second
 )
 
 // docHeaderContextKey is the context key used to propagate the X-DC-Enable-Documentation
@@ -68,7 +66,7 @@ func NewDcMcpServer(
 	httpServer := server.NewStreamableHTTPServer(
 		sdkServer,
 		server.WithStateLess(true),
-		server.WithHeartbeatInterval(defaultHeartbeatInterval),
+		server.WithDisableStreaming(true),
 		server.WithHTTPContextFunc(func(reqCtx context.Context, r *http.Request) context.Context {
 			return context.WithValue(reqCtx, docHeaderContextKey{}, r.Header.Get(headerEnableDocumentation))
 		}),
@@ -81,8 +79,9 @@ func NewDcMcpServer(
 
 // ServeHTTP dispatches non-SSE GET probes to the health handler and all MCP traffic to the Streamable HTTP server.
 func (s *DcMcpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// Per the MCP Streamable HTTP spec, GET requests with "Accept: text/event-stream" open
-	// a Server-Sent Events (SSE) stream handled by s.httpServer; plain GET requests return health status.
+	// Per the MCP Streamable HTTP spec, GET requests with "Accept: text/event-stream" are
+	// routed to s.httpServer (which rejects SSE streaming with 405 Method Not Allowed in stateless mode);
+	// plain GET requests return health status.
 	if r.Method == http.MethodGet && !strings.Contains(r.Header.Get("Accept"), "text/event-stream") {
 		writeHealthResponse(w)
 		return

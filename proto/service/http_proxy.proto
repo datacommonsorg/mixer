@@ -30,13 +30,6 @@ service HttpProxyService {
         post: "/mcp"
         body: "*"
       }
-      additional_bindings: {
-        get: "/mcp2"
-      }
-      additional_bindings: {
-        post: "/mcp2"
-        body: "*"
-      }
     };
   }
 }
