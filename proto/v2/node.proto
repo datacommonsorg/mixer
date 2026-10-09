@@ -42,7 +42,16 @@ message NodeRequest {
   // expression. For example:
   // <-containedInPlace+{typeOf: City}->name
   string property = 2;
-  // Max number of result nodes to be returned for each query node.
+  // Maximum number of property values (edges) to return in one page, counted
+  // across all query nodes and properties. If unset or 0, the server default
+  // (currently 25,000) is used. Larger values are lowered to the maximum
+  // (currently 25,000), and negative values are rejected. A page can contain
+  // fewer values even when more remain, so keep requesting with next_token
+  // until it is empty. Property-label queries ("->" or "<-") are not paginated.
+  // Custom Data Commons instances that also query a remote Data Commons apply
+  // the limit to local and remote results separately, so a page can contain
+  // more values. The legacy Bigtable backend instead applies this limit per
+  // query node, property, and value type, capped at 500.
   int32 limit  = 3;
   // Pagination token
   string next_token = 4;
