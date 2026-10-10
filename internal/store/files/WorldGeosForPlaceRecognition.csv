@@ -657,7 +657,6 @@ geoId/0144608,City,Loxley,"Earth,country/USA,geoId/01,geoId/01003,northamerica,u
 geoId/0144728,City,Luverne,"Earth,country/USA,geoId/01,geoId/0102,geoId/01041,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/36049",2680
 geoId/0144800,City,Lynn,"Earth,country/USA,geoId/01,geoId/01133,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion",617
 geoId/0145208,City,McDonald Chapel,"Earth,country/USA,geoId/01,geoId/01073,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/35224",662
-geoId/0145316,City,Macedonia,"Earth,country/USA,geoId/01,geoId/01107,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/35461",199
 geoId/0145472,City,McIntosh,"Earth,country/USA,geoId/01,geoId/0101,geoId/01129,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/36553",201
 geoId/0145496,City,McKenzie,"Earth,country/USA,geoId/01,geoId/01013,geoId/0102,geoId/01035,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/36456",503
 geoId/0145640,City,McMullen,"Earth,country/USA,geoId/01,geoId/0107,geoId/01107,northamerica,usc/EastSouthCentralDivision,usc/SouthRegion,zip/35442",28
@@ -8752,7 +8751,6 @@ geoId/1745512,City,McClellan Township,"Earth,country/USA,geoId/17,geoId/17081,no
 geoId/1745525,City,McClure,"Earth,country/USA,geoId/17,geoId/17003,geoId/1712,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion,zip/62957",247
 geoId/1745564,City,McCook,"Earth,country/USA,geoId/17,geoId/17031,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",243
 geoId/1745616,City,McCullom Lake,"Earth,country/USA,geoId/17,geoId/1708,geoId/17111,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion,zip/60050",983
-geoId/1745642,City,Macedonia,"Earth,country/USA,geoId/17,geoId/17055,geoId/17065,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion,zip/62860",29
 geoId/1745694,City,McHenry,"Earth,country/USA,geoId/17,geoId/17111,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",27372
 geoId/1745707,City,McHenry Township,"Earth,country/USA,geoId/17,geoId/17111,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",47042
 geoId/1745726,City,Machesney Park,"Earth,country/USA,geoId/17,geoId/17201,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",22709
@@ -12436,7 +12434,6 @@ geoId/1947730,City,Lytton,"Earth,country/USA,geoId/19,geoId/19025,geoId/19161,no
 geoId/1947775,City,McCallsburg,"Earth,country/USA,geoId/19,geoId/1904,geoId/19169,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/50154",360
 geoId/1947820,City,McCausland,"Earth,country/USA,geoId/19,geoId/19163,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision",311
 geoId/1947865,City,McClelland,"Earth,country/USA,geoId/19,geoId/1905,geoId/19155,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/51548",147
-geoId/1947955,City,Macedonia,"Earth,country/USA,geoId/19,geoId/1905,geoId/19155,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/51549",267
 geoId/1948000,City,McGregor,"Earth,country/USA,geoId/19,geoId/1901,geoId/19043,geoId/19043070100,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/52157",723
 geoId/1948045,City,McIntire,"Earth,country/USA,geoId/19,geoId/1904,geoId/19131,geoId/19131560100,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/50455",115
 geoId/1948180,City,Macksburg,"Earth,country/USA,geoId/19,geoId/19121,northamerica,usc/MidwestRegion,usc/WestNorthCentralDivision,zip/50155",100
@@ -33503,7 +33500,6 @@ geoId/3945892,City,McCutchenville,"Earth,country/USA,geoId/39,geoId/3905,geoId/3
 geoId/3945906,City,McDermott,"Earth,country/USA,geoId/39,geoId/3902,geoId/39145,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion,zip/45652",354
 geoId/3945920,City,McDonald Township,"Earth,country/USA,geoId/39,geoId/39065,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",841
 geoId/3945934,City,McDonald,"Earth,country/USA,geoId/39,geoId/39155,geoId/3917,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion,zip/44437",3156
-geoId/3945976,City,Macedonia,"Earth,country/USA,geoId/39,geoId/39153,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",12203
 geoId/3946046,City,McGuffey,"Earth,country/USA,geoId/39,geoId/39065,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",464
 geoId/3946088,City,Mack,"Earth,country/USA,geoId/39,geoId/39061,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",11228
 geoId/3946116,City,McKean Township,"Earth,country/USA,geoId/39,geoId/39089,northamerica,usc/EastNorthCentralDivision,usc/MidwestRegion",1606
