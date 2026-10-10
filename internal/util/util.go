@@ -63,7 +63,7 @@ const (
 	// Maps API key ID
 	MapsAPIKeyID = "maps-api-key"
 	// Mixer API key
-	MixerAPIKeyID = "mixer-api-key"
+	MixerAPIKeyID = "dc-api-key"
 )
 
 var childTypeDenyList = map[string]struct{}{
