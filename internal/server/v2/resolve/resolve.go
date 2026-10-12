@@ -18,6 +18,7 @@ package resolve
 import (
 	"context"
 	"fmt"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -64,6 +65,14 @@ const (
 	// TypeOfProperty is the property name for typeOf.
 	TypeOfProperty = "typeOf"
 )
+
+var validResolveResolvers = []string{
+	ResolveResolverIndicator,
+	ResolveResolverPlace,
+	ResolveResolverTopic,
+	ResolveResolverNonPlace,
+	ResolveResolverType,
+}
 
 type NormalizedResolveRequest struct {
 	Request      *pbv2.ResolveRequest
@@ -363,31 +372,9 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 		case ResolveResolverTopic:
 			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
 		case ResolveResolverNonPlace:
-			// Non-place entity resolution only supports description as inArc.
-			if inProp != DescriptionProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: non_place resolution only supports '%s' as input property",
-					DescriptionProperty))
-			}
-			// Non-place entity resolution only supports dcid as outArc.
-			if outProp != DcidProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: non_place resolution only supports '%s' as output property",
-					DcidProperty))
-			}
+			// Non-place entity resolution uses vector search on input nodes directly; no property restrictions needed.
 		case ResolveResolverType:
-			// Type resolution only supports description as inArc.
-			if inProp != DescriptionProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: type resolution only supports '%s' as input property",
-					DescriptionProperty))
-			}
-			// Type resolution only supports dcid as outArc.
-			if outProp != DcidProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: type resolution only supports '%s' as output property",
-					DcidProperty))
-			}
+			// Type resolution uses vector search on input nodes directly; no property restrictions needed.
 		}
 	}
 
@@ -427,17 +414,19 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // parseAndValidateResolveResolver parses and validates ResolveRequest.Resolver.
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
-	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic, ResolveResolverNonPlace, ResolveResolverType:
-		return ""
-	case "":
+	if req.GetResolver() == "" {
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
-	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s', '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic, ResolveResolverNonPlace, ResolveResolverType)
 	}
+	if slices.Contains(validResolveResolvers, req.GetResolver()) {
+		return ""
+	}
+	quoted := make([]string, len(validResolveResolvers))
+	for i, r := range validResolveResolvers {
+		quoted[i] = fmt.Sprintf("'%s'", r)
+	}
+	return fmt.Sprintf("Invalid 'resolver': valid values are %s", strings.Join(quoted, ", "))
 }
 
 // parseResolvePropertyExpression parses and validates a property expression string.

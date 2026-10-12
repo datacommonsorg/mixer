@@ -11,6 +11,9 @@ search_configs:
     limit: 50
     num_leaves: 10
     threshold: 0.5
+    included_types:
+      - "StatisticalVariable"
+      - "Topic"
   non_place_entity:
     search_algorithm: "vector_search"
     embedding_model: "NodeEmbeddingModel"
@@ -22,6 +25,9 @@ search_configs:
     limit: 50
     num_leaves: 10
     threshold: 0.5
+    excluded_types:
+      - "StatisticalVariable"
+      - "Topic"
   type:
     search_algorithm: "vector_search"
     embedding_model: "NodeEmbeddingModel"
@@ -33,5 +39,7 @@ search_configs:
     limit: 100
     num_leaves: 10
     threshold: 0.0
+    included_types:
+      - "Class"
 postprocessing:
   - "none"

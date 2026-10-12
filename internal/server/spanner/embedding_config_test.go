@@ -107,6 +107,9 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if indicatorCfg.EmbeddingLabel != "nl_stat_var_embedding" {
 		t.Errorf("Expected EmbeddingLabel=nl_stat_var_embedding, got %s", indicatorCfg.EmbeddingLabel)
 	}
+	if len(indicatorCfg.IncludedTypes) != 2 || indicatorCfg.IncludedTypes[0] != "StatisticalVariable" || indicatorCfg.IncludedTypes[1] != "Topic" {
+		t.Errorf("Expected IncludedTypes=[StatisticalVariable, Topic], got %v", indicatorCfg.IncludedTypes)
+	}
 
 	nonPlaceCfg, ok := cfg.SearchConfigs["non_place_entity"]
 	if !ok {
@@ -115,6 +118,9 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if nonPlaceCfg.EmbeddingLabel != "non_place_entity_experimental_embedding" {
 		t.Errorf("Expected EmbeddingLabel=non_place_entity_experimental_embedding, got %s", nonPlaceCfg.EmbeddingLabel)
 	}
+	if len(nonPlaceCfg.ExcludedTypes) != 2 || nonPlaceCfg.ExcludedTypes[0] != "StatisticalVariable" || nonPlaceCfg.ExcludedTypes[1] != "Topic" {
+		t.Errorf("Expected ExcludedTypes=[StatisticalVariable, Topic], got %v", nonPlaceCfg.ExcludedTypes)
+	}
 
 	typeCfg, ok := cfg.SearchConfigs["type"]
 	if !ok {
@@ -122,6 +128,9 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	}
 	if typeCfg.EmbeddingLabel != "type_embedding" {
 		t.Errorf("Expected EmbeddingLabel=type_embedding, got %s", typeCfg.EmbeddingLabel)
+	}
+	if len(typeCfg.IncludedTypes) != 1 || typeCfg.IncludedTypes[0] != "Class" {
+		t.Errorf("Expected IncludedTypes=[Class], got %v", typeCfg.IncludedTypes)
 	}
 
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {

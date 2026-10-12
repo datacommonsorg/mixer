@@ -510,7 +510,7 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 	return searchNodesToNodeSearchResponse(nodes), nil
 }
 
-var resolverToSpannerConfigKey = map[string]string{
+var ResolverToSpannerConfigKey = map[string]string{
 	resolvev2.ResolveResolverIndicator: "indicator",
 	resolvev2.ResolveResolverNonPlace:  "non_place_entity",
 	resolvev2.ResolveResolverType:      "type",
@@ -524,13 +524,9 @@ func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedRes
 	if resolver == "" {
 		return false
 	}
-	if resolver == resolvev2.ResolveResolverIndicator {
-		return true
-	}
-	if resolver == resolvev2.ResolveResolverNonPlace {
-		return true
-	}
-	if resolver == resolvev2.ResolveResolverType {
+	// vector search allowed for type that has spanner search config
+	_, ok := ResolverToSpannerConfigKey[resolver]
+	if ok {
 		return true
 	}
 	return false
@@ -548,7 +544,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 
 	if useVectorSearchResolution(normalizedResolveRequest) {
 		resolver := normalizedResolveRequest.Request.GetResolver()
-		spannerConfigKey, ok := resolverToSpannerConfigKey[resolver]
+		spannerConfigKey, ok := ResolverToSpannerConfigKey[resolver]
 		if !ok {
 			return nil, status.Errorf(codes.InvalidArgument, "unsupported resolver: %s", resolver)
 		}
@@ -610,41 +606,28 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 
 // validateAndNormalizeVectorSearchTypes validates and returns the typeOfs filter for vector search.
 // Returns normalized types and a boolean indicating whether resolution should continue.
-func validateAndNormalizeVectorSearchTypes(resolver string, typeOfs []string) ([]string, bool) {
-	switch resolver {
-	case resolvev2.ResolveResolverIndicator:
+func validateAndNormalizeVectorSearchTypes(searchConfig SearchConfig, typeOfs []string) ([]string, bool) {
+	if len(searchConfig.IncludedTypes) > 0 {
 		if len(typeOfs) == 0 {
-			return []string{TypeStatisticalVariable, TypeTopic}, true
+			// Use the included types from the search config if no typeOfs are provided.
+			return searchConfig.IncludedTypes, true
 		}
 		for _, t := range typeOfs {
-			if t != TypeStatisticalVariable && t != TypeTopic {
-				slog.Warn("Indicator embeddings resolution requested for unsupported type. Supported types are StatisticalVariable and Topic.", "type", t)
+			if !slices.Contains(searchConfig.IncludedTypes, t) {
+				slog.Warn("Embeddings resolution requested for unsupported type.", "type", t, "includedTypes", searchConfig.IncludedTypes)
 				return nil, false
 			}
 		}
-		return typeOfs, true
-	case resolvev2.ResolveResolverNonPlace:
-		for _, t := range typeOfs {
-			if t == TypeStatisticalVariable || t == TypeTopic {
-				slog.Warn("Non-place entity embeddings resolution requested for unsupported type.", "type", t)
-				return nil, false
-			}
-		}
-		return typeOfs, true
-	case resolvev2.ResolveResolverType:
-		if len(typeOfs) == 0 {
-			return []string{TypeClass}, true
-		}
-		for _, t := range typeOfs {
-			if t != TypeClass {
-				slog.Warn("Type embeddings resolution requested for unsupported type. Supported type is Class.", "type", t)
-				return nil, false
-			}
-		}
-		return typeOfs, true
-	default:
-		return typeOfs, true
 	}
+	if len(searchConfig.ExcludedTypes) > 0 {
+		for _, t := range typeOfs {
+			if slices.Contains(searchConfig.ExcludedTypes, t) {
+				slog.Warn("Embeddings resolution requested for excluded type.", "type", t, "excludedTypes", searchConfig.ExcludedTypes)
+				return nil, false
+			}
+		}
+	}
+	return typeOfs, true
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.
@@ -664,7 +647,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 		return &pbv2.ResolveResponse{}, nil
 	}
 
-	typeOfs, ok := validateAndNormalizeVectorSearchTypes(req.Request.GetResolver(), req.TypeOfValues)
+	typeOfs, ok := validateAndNormalizeVectorSearchTypes(searchConfig, req.TypeOfValues)
 	if !ok {
 		return nil, fmt.Errorf("invalid typeOfs %v for resolver %s", req.TypeOfValues, req.Request.GetResolver())
 	}

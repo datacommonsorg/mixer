@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
@@ -145,10 +146,10 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
 	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
-	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace || resolver == resolve.ResolveResolverType {
+	if _, ok := spanner.ResolverToSpannerConfigKey[resolver]; ok {
 		if !s.isSpannerEnabled() {
-			slog.Error("Spanner backend required for indicator, nonplace, and type resolvers")
-			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator, nonplace, and type resolvers")
+			slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
+			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
 		}
 		return true, nil
 	}
