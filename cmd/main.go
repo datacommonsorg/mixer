@@ -240,7 +240,6 @@ func main() {
 			DatabaseOverride:             flags.SpannerGraphDatabase,
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
-			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
 			QueryConfig:                  queryConfig,
 		})
 		if err != nil {
