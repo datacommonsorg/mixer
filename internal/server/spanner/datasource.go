@@ -526,10 +526,7 @@ func useVectorSearchResolution(normalizedResolveRequest *resolvev2.NormalizedRes
 	}
 	// vector search allowed for type that has spanner search config
 	_, ok := ResolverToSpannerConfigKey[resolver]
-	if ok {
-		return true
-	}
-	return false
+	return ok
 }
 
 // Resolve searches for nodes in the graph.
