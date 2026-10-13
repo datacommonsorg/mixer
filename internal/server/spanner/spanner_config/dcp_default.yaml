@@ -14,5 +14,7 @@ search_configs:
     included_types:
       - "StatisticalVariable"
       - "Topic"
+  non_place:
+  type:
 postprocessing:
   - "none"

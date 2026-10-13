@@ -14,7 +14,7 @@ search_configs:
     included_types:
       - "StatisticalVariable"
       - "Topic"
-  non_place_entity:
+  non_place:
     search_algorithm: "vector_search"
     embedding_model: "NodeEmbeddingModel"
     embedding_model_endpoint: "text-embedding-005"
@@ -36,9 +36,9 @@ search_configs:
     query_task_type: "RETRIEVAL_QUERY"
     embedding_label: "type_embedding"
     vector_search_algo: "ANN"
-    limit: 100
+    limit: 50
     num_leaves: 10
-    threshold: 0.0
+    threshold: 0.5
     included_types:
       - "Class"
 postprocessing:

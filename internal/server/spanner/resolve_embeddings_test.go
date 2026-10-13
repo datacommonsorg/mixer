@@ -377,7 +377,7 @@ func TestResolveEmbeddings_NonPlaceEntity_NoTypeOf(t *testing.T) {
 func TestResolveEmbeddings_MissingSearchConfig(t *testing.T) {
 	t.Parallel()
 
-	// dcp_default only defines the "indicator" search config, not "non_place_entity".
+	// dcp_default only defines the "indicator" search config, not "non_place".
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
 		Embedder:         &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
 		SearchConfigPath: "dcp_default",

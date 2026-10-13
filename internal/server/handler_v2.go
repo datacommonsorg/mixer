@@ -28,7 +28,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
@@ -146,16 +145,12 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
 	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
-	if _, ok := spanner.ResolverToSpannerConfigKey[resolver]; ok {
-		if !s.isSpannerEnabled() {
-			slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
-			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
-		}
-		return true, nil
+	// remain resolver will falls back to vector search as default
+	if !s.isSpannerEnabled() {
+		slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
+		return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
 	}
-
-	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
-	return false, nil
+	return true, nil
 }
 
 // V2Node implements API for mixer.V2Node.

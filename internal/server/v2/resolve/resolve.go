@@ -372,7 +372,18 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 		case ResolveResolverTopic:
 			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
 		case ResolveResolverNonPlace:
-			// Non-place entity resolution uses vector search on input nodes directly; no property restrictions needed.
+			// Non-place entity resolution only supports description as inArc.
+			if inProp != DescriptionProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: non_place resolution only supports '%s' as input property",
+					DescriptionProperty))
+			}
+			// Non-place entity resolution only supports dcid as outArc.
+			if outProp != DcidProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: non_place resolution only supports '%s' as output property",
+					DcidProperty))
+			}
 		case ResolveResolverType:
 			// Type resolution uses vector search on input nodes directly; no property restrictions needed.
 		}
