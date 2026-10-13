@@ -161,8 +161,14 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	// Validate the limit before choosing a backend, so a negative limit is
+	// rejected whether or not the request is diverted.
+	pageSize, err := datasources.NodePageSize(in.GetLimit())
+	if err != nil {
+		return nil, err
+	}
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+		return s.dispatcher.Node(ctx, in, pageSize)
 	}
 
 	v2StartTime := time.Now()

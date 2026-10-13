@@ -151,7 +151,16 @@ type NodeRequest struct {
 	// expression. For example:
 	// <-containedInPlace+{typeOf: City}->name
 	Property string `protobuf:"bytes,2,opt,name=property,proto3" json:"property,omitempty"`
-	// Max number of result nodes to be returned for each query node.
+	// Maximum number of property values (edges) to return in one page, counted
+	// across all query nodes and properties. If unset or 0, the server default
+	// (currently 25,000) is used. Larger values are lowered to the maximum
+	// (currently 25,000), and negative values are rejected. A page can contain
+	// fewer values even when more remain, so keep requesting with next_token
+	// until it is empty. Property-label queries ("->" or "<-") are not paginated.
+	// Custom Data Commons instances that also query a remote Data Commons apply
+	// the limit to local and remote results separately, so a page can contain
+	// more values. The legacy Bigtable backend instead applies this limit per
+	// query node, property, and value type, capped at 500.
 	Limit int32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
 	// Pagination token
 	NextToken string `protobuf:"bytes,4,opt,name=next_token,json=nextToken,proto3" json:"next_token,omitempty"`

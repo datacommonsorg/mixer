@@ -34,9 +34,35 @@ import (
 )
 
 const (
-	// Default page size for paginated responses.
-	DefaultPageSize = 500
+	// DefaultPageSize is the default number of edges in one page of a Node
+	// response, counted across all nodes and properties in the request.
+	DefaultPageSize = 25000
+	// MaxPageSize is the largest page size a caller can request with
+	// NodeRequest.limit.
+	MaxPageSize = 25000
 )
+
+// NodePageSize returns the page size for a Node request with the given
+// NodeRequest.limit, following AIP-158: 0 selects DefaultPageSize, values above
+// MaxPageSize are lowered to MaxPageSize, and negative values are rejected.
+func NodePageSize(limit int32) (int, error) {
+	return pageSizeFromLimit(limit, DefaultPageSize, MaxPageSize)
+}
+
+// pageSizeFromLimit implements NodePageSize for the given default and maximum
+// page sizes.
+func pageSizeFromLimit(limit int32, defaultSize, maxSize int) (int, error) {
+	switch {
+	case limit < 0:
+		return 0, status.Errorf(codes.InvalidArgument, "limit must not be negative, got %d", limit)
+	case limit == 0:
+		return defaultSize, nil
+	case int(limit) > maxSize:
+		return maxSize, nil
+	default:
+		return int(limit), nil
+	}
+}
 
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
