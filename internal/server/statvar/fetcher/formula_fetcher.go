@@ -20,6 +20,7 @@ import (
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -235,28 +236,20 @@ func fetchStatisticalCalculationDcids(
 	ctx context.Context,
 	ds *datasources.DataSources,
 ) ([]string, error) {
+	resp, err := fetchAllNodePages(ctx, ds, &pbv2.NodeRequest{
+		Nodes:    []string{StatisticalCalculation},
+		Property: "<-" + typeOf,
+	})
+	if err != nil {
+		return nil, err
+	}
+	nodes, ok := resp.GetData()[StatisticalCalculation].GetArcs()[typeOf]
+	if !ok {
+		return nil, nil
+	}
 	dcids := []string{}
-	nextToken := ""
-	for {
-		req := &pbv2.NodeRequest{
-			Nodes:    []string{StatisticalCalculation},
-			Property: "<-" + typeOf,
-		}
-		resp, err := ds.Node(ctx, req, cachePageSize)
-		if err != nil {
-			return nil, err
-		}
-		nodes, ok := resp.Data[StatisticalCalculation].Arcs[typeOf]
-		if !ok {
-			return nil, nil
-		}
-		for _, node := range nodes.Nodes {
-			dcids = append(dcids, node.Dcid)
-		}
-		nextToken = resp.GetNextToken()
-		if nextToken == "" {
-			break
-		}
+	for _, node := range nodes.GetNodes() {
+		dcids = append(dcids, node.GetDcid())
 	}
 	return dcids, nil
 }
@@ -268,35 +261,30 @@ func fetchStatisticalCalculationProperties(
 	ds *datasources.DataSources,
 	dcids []string,
 ) (map[string][]string, error) {
+	// Read every page before matching properties: a node's two properties can
+	// land on different pages.
+	resp, err := fetchAllNodePages(ctx, ds, &pbv2.NodeRequest{
+		Nodes:    dcids,
+		Property: "->[" + outputProperty + ", " + inputPropertyExpression + "]",
+	})
+	if err != nil {
+		return nil, err
+	}
 	result := map[string][]string{}
-	for {
-		req := &pbv2.NodeRequest{
-			Nodes:    dcids,
-			Property: "->[" + outputProperty + ", " + inputPropertyExpression + "]",
+	for _, props := range resp.GetData() {
+		// Skip nodes missing required properties.
+		if props == nil || props.Arcs == nil {
+			continue
 		}
-		resp, err := ds.Node(ctx, req, cachePageSize)
-		if err != nil {
-			return nil, err
+		_, out := props.Arcs[outputProperty]
+		_, in := props.Arcs[inputPropertyExpression]
+		if !out || !in {
+			continue
 		}
-		for _, props := range resp.Data {
-			// Skip nodes missing required properties.
-			if props == nil || props.Arcs == nil {
-				continue
+		for _, outputNode := range props.Arcs[outputProperty].Nodes {
+			for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
+				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
 			}
-			_, out := props.Arcs[outputProperty]
-			_, in := props.Arcs[inputPropertyExpression]
-			if !out || !in {
-				continue
-			}
-			for _, outputNode := range props.Arcs[outputProperty].Nodes {
-				for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
-					result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-				}
-			}
-		}
-		nextToken := resp.GetNextToken()
-		if nextToken == "" {
-			break
 		}
 	}
 	// Sort for determinism.
@@ -304,4 +292,15 @@ func fetchStatisticalCalculationProperties(
 		sort.Strings(formulas)
 	}
 	return result, nil
+}
+
+// fetchAllNodePages reads every page of a Node request from ds and merges them.
+func fetchAllNodePages(
+	ctx context.Context,
+	ds *datasources.DataSources,
+	req *pbv2.NodeRequest,
+) (*pbv2.NodeResponse, error) {
+	return nodefetcher.NodeFetchAllFunc(ctx, func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+		return ds.Node(ctx, req, cachePageSize)
+	}, req)
 }
