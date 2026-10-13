@@ -33,23 +33,57 @@ func TestDocumentationHeaderHandling(t *testing.T) {
 	ts := httptest.NewServer(srv)
 	defer ts.Close()
 
-	// Verify GET health check returns server name and gitHash.
-	healthResp, err := http.Get(ts.URL)
-	if err != nil {
-		t.Fatalf("GET health request failed: %v", err)
+	getTests := []struct {
+		name       string
+		accept     string
+		wantStatus int
+		wantHealth map[string]string
+	}{
+		{
+			name:       "plain GET returns 200 health JSON",
+			accept:     "",
+			wantStatus: http.StatusOK,
+			wantHealth: map[string]string{
+				"status":  "ok",
+				"service": "Data Commons MCP Server",
+				"gitHash": "dev-test-hash",
+			},
+		},
+		{
+			name:       "SSE GET with Accept text/event-stream returns 405 Method Not Allowed",
+			accept:     "text/event-stream",
+			wantStatus: http.StatusMethodNotAllowed,
+		},
 	}
-	defer func() { _ = healthResp.Body.Close() }()
-	var healthBody map[string]string
-	if err := json.NewDecoder(healthResp.Body).Decode(&healthBody); err != nil {
-		t.Fatalf("failed to decode health response: %v", err)
-	}
-	wantHealth := map[string]string{
-		"status":  "ok",
-		"service": "Data Commons MCP Server",
-		"gitHash": "dev-test-hash",
-	}
-	if diff := cmp.Diff(wantHealth, healthBody); diff != "" {
-		t.Errorf("health response diff (-want +got):\n%s", diff)
+
+	for _, tc := range getTests {
+		t.Run(tc.name, func(t *testing.T) {
+			req, err := http.NewRequest(http.MethodGet, ts.URL, nil)
+			if err != nil {
+				t.Fatalf("failed to create GET request: %v", err)
+			}
+			if tc.accept != "" {
+				req.Header.Set("Accept", tc.accept)
+			}
+			resp, err := ts.Client().Do(req)
+			if err != nil {
+				t.Fatalf("GET request failed: %v", err)
+			}
+			defer func() { _ = resp.Body.Close() }()
+
+			if resp.StatusCode != tc.wantStatus {
+				t.Fatalf("GET status = %d, want %d", resp.StatusCode, tc.wantStatus)
+			}
+			if tc.wantHealth != nil {
+				var healthBody map[string]string
+				if err := json.NewDecoder(resp.Body).Decode(&healthBody); err != nil {
+					t.Fatalf("failed to decode health response: %v", err)
+				}
+				if diff := cmp.Diff(tc.wantHealth, healthBody); diff != "" {
+					t.Errorf("health response diff (-want +got):\n%s", diff)
+				}
+			}
+		})
 	}
 
 	tests := []struct {
