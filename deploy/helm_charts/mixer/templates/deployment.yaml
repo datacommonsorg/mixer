@@ -173,8 +173,13 @@ spec:
                 echo "Dynamic BigQuery version file not found. Using static version."
               fi
 
-              # Start the mixer with the determined configs
-              /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
+              # Start the mixer with the determined configs.
+              # `exec` replaces this shell so mixer runs as PID 1 and receives
+              # SIGTERM directly; otherwise the shell swallows it and every pod
+              # waits out the full termination grace period before SIGKILL.
+              # If a preStop delay is ever added to the esp container, add the
+              # same delay here, or mixer will exit while esp still routes to it.
+              exec /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
               --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
               --host_project="${HOST_PROJECT}" \
               {{- if $.Values.mixer.useBigquery }}
