@@ -83,13 +83,14 @@ read-only tests may run in parallel after setup.
 
 ## Schema and seed data
 
-`testdata/schema.sql` contains the complete emulator DDL and is currently the
-SDMX-required subset of
-`import/pipeline/workflow/ingestion-helper/clients/schema.sql` from the Data
-Commons repo. Every statement must begin with `CREATE` and end with a
-semicolon, either on the same line or a separate line. Semicolons inside SQL
-strings are unsupported. Full-line comments whose trimmed content starts with
-`--` are ignored; inline comments are unsupported.
+`testdata/schema.sql` contains the complete emulator DDL. It is the subset of
+the baseline Spanner schema
+(`packages/datacommons-db/datacommons_db/schema/baseline_schema.sql` in the
+datacommonsorg/datacommons repo) that Mixer's observation, existence, stat var
+group, topic, and SDMX queries need. Every statement must begin with `CREATE`
+and end with a semicolon, either on the same line or a separate line.
+Semicolons inside SQL strings are unsupported. Full-line comments whose trimmed
+content starts with `--` are ignored; inline comments are unsupported.
 
 `testdata/seed.sql` contains one static `INSERT` statement per paragraph. Blank
 lines delimit statements, and blank lines inside a statement are unsupported.

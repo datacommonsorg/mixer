@@ -25,6 +25,20 @@ VALUES
   ('sourceCountry', 'sourceCountry'),
   ('transportMode', 'transportMode');
 
+INSERT INTO Node (subject_id, value, name)
+VALUES
+  ('Area_Farm', 'Area_Farm', 'Area of Farms'),
+  ('Area_Farm_Irrigated', 'Area_Farm_Irrigated', 'Area of Irrigated Farms'),
+  ('Count_Farm', 'Count_Farm', 'Number of Farms'),
+  ('Count_FarmShipment', 'Count_FarmShipment', 'Farm Product Shipments'),
+  ('dc/base/OtherAg', 'dc/base/OtherAg', 'Other Agriculture Import'),
+  ('dc/base/USDA_Census', 'dc/base/USDA_Census', 'USDA Census of Agriculture'),
+  ('dc/g/Farm', 'dc/g/Farm', 'Farms'),
+  ('dc/g/Farm_Area', 'dc/g/Farm_Area', 'Farm Area'),
+  ('dc/topic/Agriculture', 'dc/topic/Agriculture', 'Agriculture'),
+  ('dc/topic/Empty', 'dc/topic/Empty', 'Empty Topic'),
+  ('definition/Count_Farm', 'mp=count,pt=Farm', NULL);
+
 INSERT INTO Edge (subject_id, predicate, object_id, provenance)
 VALUES
   ('Count_Migration', 'observationProperties', 'sourceCountry', 'dc/base/HumanReadableStatVars'),
@@ -51,7 +65,24 @@ VALUES
 	('country/MEX', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
 	('country/MEX', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
 	('country/USA', 'linkedContainedInPlace', 'northamerica', 'dc/base/WikidataOtherIdGeos'),
-	('country/USA', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos');
+	('country/USA', 'typeOf', 'Country', 'dc/base/WikidataOtherIdGeos'),
+  ('dc/g/Farm_Area', 'specializationOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Count_Farm', 'memberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Count_FarmShipment', 'memberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm', 'memberOf', 'dc/g/Farm_Area', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm_Irrigated', 'memberOf', 'dc/g/Farm_Area', 'dc/base/HumanReadableStatVars'),
+  ('Count_Farm', 'linkedMemberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Count_FarmShipment', 'linkedMemberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm', 'linkedMemberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm', 'linkedMemberOf', 'dc/g/Farm_Area', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm_Irrigated', 'linkedMemberOf', 'dc/g/Farm', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm_Irrigated', 'linkedMemberOf', 'dc/g/Farm_Area', 'dc/base/HumanReadableStatVars'),
+  ('Count_Farm', 'linkedMember', 'dc/topic/Agriculture', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm', 'linkedMember', 'dc/topic/Agriculture', 'dc/base/HumanReadableStatVars'),
+  ('Count_Farm', 'definition', 'definition/Count_Farm', 'dc/base/HumanReadableStatVars'),
+  ('dc/base/USDA_Census', 'source', 'dc/s/USDA', 'dc/base/USDA_Census'),
+  ('dc/base/USDA_Census', 'isPartOf', 'dc/d/USDA_AgCensus', 'dc/base/USDA_Census'),
+  ('dc/base/OtherAg', 'source', 'dc/s/Other', 'dc/base/OtherAg');
 
 INSERT INTO TimeSeries (variable_measured, extra_entities_id, facet_id, entities, facet, last_update_timestamp)
 VALUES
@@ -66,7 +97,12 @@ VALUES
 	('Count_TimeSeries', 'time-series-b', 'facet-b', JSON '{"entity1":"country/USA"}', JSON '{"measurementMethod":"Survey","observationPeriod":"P1Y","provenance":"dc/base/HumanReadableStatVars","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'migration-air', 'facet', JSON '{"entity1":"country/CAN","entity2":"country/USA","entity3":"Air"}', JSON '{"measurementMethod":"Census","observationPeriod":"P1Y","provenance":"dc/base/HumanReadableStatVars","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'migration-sea', 'facet', JSON '{"entity1":"country/CAN","entity2":"country/USA","entity3":"Sea"}', JSON '{"measurementMethod":"Census","observationPeriod":"P1Y","provenance":"dc/base/HumanReadableStatVars","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
-  ('Count_MigrationByObservationAbout', 'migration-about', 'facet', JSON '{"entity1":"country/CAN","entity2":"country/MEX","entity3":"country/USA"}', JSON '{"measurementMethod":"Census","observationPeriod":"P1Y","provenance":"dc/base/HumanReadableStatVars","unit":"Count"}', PENDING_COMMIT_TIMESTAMP());
+  ('Count_MigrationByObservationAbout', 'migration-about', 'facet', JSON '{"entity1":"country/CAN","entity2":"country/MEX","entity3":"country/USA"}', JSON '{"measurementMethod":"Census","observationPeriod":"P1Y","provenance":"dc/base/HumanReadableStatVars","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_Farm', 'farm-01', 'farm-census', JSON '{"entity1":"geoId/01"}', JSON '{"importName":"USDA_Census","measurementMethod":"USDA_Census","observationPeriod":"P5Y","provenance":"dc/base/USDA_Census","provenanceUrl":"https://www.nass.usda.gov/AgCensus/","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_Farm', 'farm-02', 'farm-census', JSON '{"entity1":"geoId/02"}', JSON '{"importName":"USDA_Census","measurementMethod":"USDA_Census","observationPeriod":"P5Y","provenance":"dc/base/USDA_Census","provenanceUrl":"https://www.nass.usda.gov/AgCensus/","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
+  ('Area_Farm', 'farm-area-01', 'farm-area', JSON '{"entity1":"geoId/01"}', JSON '{"measurementMethod":"Survey","provenance":"dc/base/OtherAg","unit":"Acre"}', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_FarmShipment', 'farm-shipment-04-01', 'farm-census', JSON '{"entity1":"geoId/04","entity2":"geoId/01"}', JSON '{"importName":"USDA_Census","measurementMethod":"USDA_Census","observationPeriod":"P5Y","provenance":"dc/base/USDA_Census","provenanceUrl":"https://www.nass.usda.gov/AgCensus/","unit":"Count"}', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_FarmShipment', 'farm-shipment-04-05', 'farm-census', JSON '{"entity1":"geoId/04","entity2":"geoId/05"}', JSON '{"importName":"USDA_Census","measurementMethod":"USDA_Census","observationPeriod":"P5Y","provenance":"dc/base/USDA_Census","provenanceUrl":"https://www.nass.usda.gov/AgCensus/","unit":"Count"}', PENDING_COMMIT_TIMESTAMP());
 
 INSERT INTO Observation (variable_measured, entity1, extra_entities_id, facet_id, date, value, last_update_timestamp)
 VALUES
@@ -83,7 +119,19 @@ VALUES
 	('Count_TimeSeries', 'country/USA', 'time-series-b', 'facet-b', '2023', '23', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-air', 'facet', '2024', '7', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-sea', 'facet', '2024', '3', PENDING_COMMIT_TIMESTAMP()),
-  ('Count_MigrationByObservationAbout', 'country/CAN', 'migration-about', 'facet', '2024', '5', PENDING_COMMIT_TIMESTAMP());
+  ('Count_MigrationByObservationAbout', 'country/CAN', 'migration-about', 'facet', '2024', '5', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_Farm', 'geoId/01', 'farm-01', 'farm-census', '2017', '100', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_Farm', 'geoId/01', 'farm-01', 'farm-census', '2022', '90', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_Farm', 'geoId/02', 'farm-02', 'farm-census', '2022', '10', PENDING_COMMIT_TIMESTAMP()),
+  ('Area_Farm', 'geoId/01', 'farm-area-01', 'farm-area', '2022', '5000', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_FarmShipment', 'geoId/04', 'farm-shipment-04-01', 'farm-census', '2022', '3', PENDING_COMMIT_TIMESTAMP()),
+  ('Count_FarmShipment', 'geoId/04', 'farm-shipment-04-05', 'farm-census', '2022', '1', PENDING_COMMIT_TIMESTAMP());
+
+INSERT INTO KeyValueStore (type, key, provenance, value)
+VALUES
+  ('ProvenanceSummary', 'Area_Farm', 'dc/base/OtherAg', JSON '{}'),
+  ('ProvenanceSummary', 'Count_Farm', 'dc/base/USDA_Census', JSON '{}'),
+  ('ProvenanceSummary', 'Count_FarmShipment', 'dc/base/USDA_Census', JSON '{}');
 
 INSERT INTO LinkedEdge (predicate, ancestor, child_type, child, provenance)
 VALUES
