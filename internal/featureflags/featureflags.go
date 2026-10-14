@@ -33,8 +33,6 @@ type Flags struct {
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
 	// Enabled new Spanner-based dispatcher/datasource backend.
 	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
-	// Whether to default Spanner API calls to the multi-entity schema.
-	UseMultiEntitySchema bool `yaml:"UseMultiEntitySchema"`
 	// Spanner Graph database for Spanner DataSource.
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
@@ -76,7 +74,6 @@ func setDefaultValues() *Flags {
 		EnableV3:                                       false,
 		V3MirrorFraction:                               0.0,
 		UseSpannerGraph:                                false,
-		UseMultiEntitySchema:                           true,
 		SpannerGraphDatabase:                           "",
 		UseStaleReads:                                  false,
 		EnableEmbeddingsResolver:                       true,

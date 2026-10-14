@@ -39,17 +39,11 @@ Settings in `locust.conf` can be modified in the web interface:
 
 ## Test Types
 
-Select from 4 benchmark user classes:
+Select from 3 benchmark user classes:
 
 1. **BenchmarkV2**: Tests v2 API endpoints
-2. **BenchmarkV3SkipCache**: Tests v3 API endpoints without cache using the legacy schema
-3. **BenchmarkV3FinalSchemaSkipCache**: Tests v3 API endpoints without cache using the final schema
-4. **BenchmarkV3WithCache**: Tests v3 API endpoints with cache
-
-To compare legacy Spanner schema against final schema for observations, run both
-V3 skip-cache benchmark classes with `requests/observation_requests.json`. Locust
-stats will show separate rows using `_v3_legacy_schema_skip_cache` and
-`_v3_final_schema_skip_cache` request name suffixes.
+2. **BenchmarkV3SkipCache**: Tests v3 API endpoints without cache
+3. **BenchmarkV3WithCache**: Tests v3 API endpoints with cache
 
 ## Request Types
 

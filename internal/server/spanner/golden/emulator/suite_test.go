@@ -173,7 +173,6 @@ func newEmulatorSuite(ctx context.Context) (_ *emulatorSuite, err error) {
 
 func (s *emulatorSuite) newSpannerClient(ctx context.Context, queryConfig mixerspanner.QueryConfig) (mixerspanner.SpannerClient, error) {
 	return mixerspanner.NewSpannerClient(ctx, s.spannerConfig, &mixerspanner.SpannerClientOptions{
-		UseMultiEntitySchema:         true,
 		QueryConfig:                  queryConfig,
 		SpannerEmulatorCompatibility: true,
 	})

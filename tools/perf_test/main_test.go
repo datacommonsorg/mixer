@@ -15,8 +15,14 @@
 package main
 
 import (
+	"context"
+	"errors"
 	"slices"
 	"testing"
+	"time"
+
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/metadata"
 )
 
 func TestValidateInputsBulkVariableGroupInfoMethods(t *testing.T) {
@@ -115,5 +121,68 @@ func TestParseConstrainedEntitiesRejectsMultipleImports(t *testing.T) {
 	_, _, err := parseConstrainedEntities("dc/s/WorldBank,dc/d/Dataset")
 	if err == nil {
 		t.Fatal("parseConstrainedEntities() returned nil error, want error")
+	}
+}
+
+func TestSummarizeDurations(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		durations []time.Duration
+		want      latencySummary
+	}{
+		{
+			name: "empty",
+		},
+		{
+			name:      "odd count",
+			durations: []time.Duration{30 * time.Millisecond, 10 * time.Millisecond, 20 * time.Millisecond},
+			want:      latencySummary{runs: 3, min: 10 * time.Millisecond, median: 20 * time.Millisecond, mean: 20 * time.Millisecond, max: 30 * time.Millisecond},
+		},
+		{
+			name:      "even count",
+			durations: []time.Duration{40 * time.Millisecond, 10 * time.Millisecond, 20 * time.Millisecond, 30 * time.Millisecond},
+			want:      latencySummary{runs: 4, min: 10 * time.Millisecond, median: 25 * time.Millisecond, mean: 25 * time.Millisecond, max: 40 * time.Millisecond},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := summarizeDurations(tc.durations); got != tc.want {
+				t.Fatalf("summarizeDurations() = %+v, want %+v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestRunTimed(t *testing.T) {
+	calls := 0
+	durations, err := runTimed(context.Background(), 3, true, func(ctx context.Context) error {
+		calls++
+		md, ok := metadata.FromIncomingContext(ctx)
+		if !ok || len(md.Get(util.XLogSQL)) == 0 {
+			t.Errorf("call %d: missing %s header", calls, util.XLogSQL)
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatalf("runTimed() error = %v", err)
+	}
+	if calls != 3 || len(durations) != 3 {
+		t.Fatalf("runTimed() made %d calls and returned %d durations, want 3 and 3", calls, len(durations))
+	}
+}
+
+func TestRunTimedStopsOnError(t *testing.T) {
+	calls := 0
+	durations, err := runTimed(context.Background(), 3, false, func(context.Context) error {
+		calls++
+		if calls == 2 {
+			return errors.New("boom")
+		}
+		return nil
+	})
+	if err == nil {
+		t.Fatal("runTimed() error = nil, want error")
+	}
+	if calls != 2 || len(durations) != 1 {
+		t.Fatalf("runTimed() made %d calls and returned %d durations, want 2 and 1", calls, len(durations))
 	}
 }

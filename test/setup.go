@@ -431,10 +431,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	// Use the multi-entity schema, which is what every deployed Mixer serves.
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), &spanner.SpannerClientOptions{
-		UseMultiEntitySchema: true,
-	})
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), nil)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

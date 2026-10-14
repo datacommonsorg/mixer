@@ -68,12 +68,6 @@ func TestDefaultBulkSVGBuildRightNodes(t *testing.T) {
 	}
 }
 
-func TestDefaultUseMultiEntitySchema(t *testing.T) {
-	if !setDefaultValues().UseMultiEntitySchema {
-		t.Fatal("UseMultiEntitySchema = false, want true")
-	}
-}
-
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -105,14 +99,13 @@ flags:
 			wantErr: false,
 		},
 		{
-			name: "multi entity schema flag disabled explicitly",
+			// Flag files written for older binaries may still set the removed flag.
+			name: "removed multi entity schema flag is ignored",
 			fileContent: `
 flags:
-  UseMultiEntitySchema: false
+  UseMultiEntitySchema: true
 `,
-			want: expectedFlags(func(f *Flags) {
-				f.UseMultiEntitySchema = false
-			}),
+			want:    expectedFlags(),
 			wantErr: false,
 		},
 		{

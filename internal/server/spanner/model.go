@@ -15,15 +15,6 @@
 // Model objects related to the spanner graph database.
 package spanner
 
-import (
-	"encoding/base64"
-	"fmt"
-	"sort"
-
-	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"google.golang.org/protobuf/proto"
-)
-
 // KeyValueStoreType represents the type of KeyValueStore data.
 type KeyValueStoreType string
 
@@ -77,33 +68,6 @@ type DateValue struct {
 }
 
 type TimeSeries []*DateValue
-
-// DecodeSpanner decodes the observations field to a TimeSeries value.
-// This is inherited from the spanner Decoder interface to decode from a spanner type to a custom type.
-// Reference: https://cloud.google.com/go/docs/reference/cloud.google.com/go/spanner/latest#cloud_google_com_go_spanner_Decoder
-// Note that the undecoded value is a base64 encoded string.
-func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
-	obs := &pb.Observations{}
-	decodedVal, err := base64.StdEncoding.DecodeString(val.(string))
-	if err != nil {
-		return fmt.Errorf("failed to decode base64 encoded string: (%v)", err)
-	}
-	err = proto.Unmarshal(decodedVal, obs)
-	if err != nil {
-		return fmt.Errorf("failed to decode Observations: (%v)", err)
-	}
-	*ts = []*DateValue{}
-	for date, value := range obs.Values {
-		*ts = append(*ts, &DateValue{
-			Date:  date,
-			Value: value,
-		})
-	}
-	sort.Slice(*ts, func(i, j int) bool {
-		return (*ts)[i].Date < (*ts)[j].Date
-	})
-	return nil
-}
 
 // SearchNode struct represents a single row returned for node searches.
 type SearchNode struct {

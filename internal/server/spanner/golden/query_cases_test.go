@@ -250,69 +250,6 @@ var nodeInEdgesByIDTestCases = []struct {
 	},
 }
 
-var observationsTestCases = []struct {
-	variables []string
-	entities  []string
-	golden    string
-}{
-	{
-		variables: []string{"AirPollutant_Cancer_Risk"},
-		entities:  []string{"geoId/01001", "geoId/02013"},
-		golden:    "get_observations",
-	},
-	{
-		entities: []string{"wikidataId/Q341968"},
-		golden:   "get_observations_entity",
-	},
-}
-
-var observationsContainedInPlaceTestCases = []struct {
-	variables        []string
-	containedInPlace *v2.ContainedInPlace
-	golden           string
-}{
-	{
-		variables:        []string{"Count_Person", "Median_Age_Person"},
-		containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-		golden:           "get_observations_contained_in",
-	},
-}
-
-var filterStatVarsByEntityTestCases = []struct {
-	variables []string
-	entities  []string
-	golden    string
-}{
-	{
-		variables: []string{"Count_Person", "Median_Income_Person"},
-		entities:  []string{"geoId/06"},
-		golden:    "filter_stat_vars_by_entity_multi",
-	},
-	{
-		entities: []string{"geoId/06"},
-		golden:   "filter_stat_vars_by_entity_no_vars",
-	},
-	{
-		variables: []string{"Count_Person"},
-		entities:  []string{"geoId/06"},
-		golden:    "filter_stat_vars_by_entity_single",
-	},
-}
-
-var checkGroupPlaceExistenceTestCases = []struct {
-	variableGroups []string
-	entities       []string
-	predicate      string
-	golden         string
-}{
-	{
-		variableGroups: []string{"dc/g/Demographics"},
-		entities:       []string{"geoId/06"},
-		predicate:      "linkedMemberOf",
-		golden:         "check_group_place_existence",
-	},
-}
-
 var searchNodesTestCases = []struct {
 	query  string
 	types  []string
@@ -558,26 +495,6 @@ var eventCollectionTestCases = []struct {
 	},
 }
 
-var getStatVarGroupNodeTestCases = []struct {
-	nodes              []string
-	includeDefinitions bool
-	golden             string
-}{
-	{
-		nodes:  []string{"dc/g/Demographics"},
-		golden: "get_stat_var_group_node",
-	},
-	{
-		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
-		golden: "get_stat_var_group_node_multi",
-	},
-	{
-		nodes:              []string{"dc/g/Demographics"},
-		includeDefinitions: true,
-		golden:             "get_stat_var_group_node_with_definitions",
-	},
-}
-
 var getSVGChildrenTestCases = []struct {
 	node               string
 	includeDefinitions bool
@@ -591,66 +508,6 @@ var getSVGChildrenTestCases = []struct {
 		node:               "dc/g/Demographics",
 		includeDefinitions: true,
 		golden:             "get_svg_children_with_definitions",
-	},
-}
-
-var getFilteredSVGChildrenTestCases = []struct {
-	template             string
-	node                 string
-	constrainedPlaces    []string
-	constrainedImport    string
-	numEntitiesExistence int
-	includeDefinitions   bool
-	golden               string
-}{
-	{
-		template:             "SV",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{"country/USA", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_sv_places",
-	},
-	{
-		template:             "SVG",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{"country/USA", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_svg_places",
-	},
-	{
-		template:             "SV",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{},
-		constrainedImport:    "dc/s/WorldBank",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_sv_import",
-	},
-	{
-		template:             "SV",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{"country/USA", "country/IND"},
-		constrainedImport:    "dc/s/WorldBank",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_svg_place_import",
-	},
-	{
-		template:             "SVG",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
-		constrainedImport:    "",
-		numEntitiesExistence: 2,
-		golden:               "get_filtered_svg_num_entities_existence",
-	},
-	{
-		template:             "SV",
-		node:                 "dc/g/Demographics",
-		constrainedPlaces:    []string{"country/USA"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		includeDefinitions:   true,
-		golden:               "get_filtered_sv_with_definitions",
 	},
 }
 
@@ -683,29 +540,6 @@ var vectorSearchNodeTestCases = []struct {
 		nodeTypes:      []string{},
 		embeddingLabel: "base_text_embedding",
 		golden:         "vector_search_node_all_types",
-	},
-}
-
-var getFilteredTopicTestCases = []struct {
-	nodes                []string
-	constrainedPlaces    []string
-	constrainedImport    string
-	numEntitiesExistence int
-	golden               string
-}{
-	{
-		nodes:                []string{"dc/topic/Demographics"},
-		constrainedPlaces:    []string{"country/CAN", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_topic_places",
-	},
-	{
-		nodes:                []string{"dc/topic/Demographics", "dc/topic/Economy"},
-		constrainedPlaces:    []string{"country/CAN", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_topic_places_multiple_topics",
 	},
 }
 

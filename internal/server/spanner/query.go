@@ -34,9 +34,9 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
@@ -58,8 +58,6 @@ const (
 
 	// Maximum number of edge hops to traverse for chained properties.
 	maxHops = 10
-	where   = "\n\t\tWHERE\n\t\t\t"
-	and     = "\n\t\t\tAND "
 
 	// Default timeout for timestamp polling.
 	timestampPollingTimeout = 10 * time.Second
@@ -170,42 +168,6 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 	return edges, nil
 }
 
-// GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
-	var observations []*Observation
-	if len(entities) == 0 {
-		return nil, fmt.Errorf("entity must be specified")
-	}
-
-	err := queryStructs(
-		ctx,
-		sc,
-		*GetObservationsQuery(variables, entities),
-		func() interface{} {
-			return &Observation{}
-		},
-		func(rowStruct interface{}) {
-			observation := rowStruct.(*Observation)
-			observations = append(observations, observation)
-		},
-	)
-	if err != nil {
-		return observations, err
-	}
-
-	return observations, nil
-}
-
-// CheckVariableExistence checks for the existence of observations for the given variables and entities.
-// Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	stmt, err := FilterStatVarsByEntityQuery(variables, entities)
-	if err != nil {
-		return nil, err
-	}
-	return queryDynamic(ctx, sc, *stmt)
-}
-
 // CheckVariableSourceExistence checks for the existence of observations for the given variables/variable groups and sources.
 // Returns a slice of rows, where each row contains [variable/variable group, source] that has at least one observation.
 func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
@@ -255,42 +217,6 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 	}
 
 	return result, nil
-}
-
-// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables groups (SVGs or topics) and places.
-// Returns a slice of rows, where each row contains [variable group, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
-	if len(variableGroups) == 0 || len(entities) == 0 {
-		return [][]string{}, nil
-	}
-	stmt := CheckGroupPlaceExistenceQuery(variableGroups, entities, predicate)
-	return queryDynamic(ctx, sc, *stmt)
-}
-
-// GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
-	var observations []*Observation
-	if len(variables) == 0 || containedInPlace == nil {
-		return observations, nil
-	}
-
-	err := queryStructs(
-		ctx,
-		sc,
-		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
-		func() interface{} {
-			return &Observation{}
-		},
-		func(rowStruct interface{}) {
-			observation := rowStruct.(*Observation)
-			observations = append(observations, observation)
-		},
-	)
-	if err != nil {
-		return observations, err
-	}
-
-	return observations, nil
 }
 
 // SearchNodes searches nodes in the graph based on the query and optionally the types.
@@ -769,177 +695,6 @@ func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableNam
 	return results, err
 }
 
-// GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
-	var svgNodes []*StatVarGroupNode
-	if len(nodes) == 0 {
-		return svgNodes, nil
-	}
-
-	err := queryStructs(
-		ctx,
-		sc,
-		*GetStatVarGroupNodeQuery(nodes, includeDefinitions),
-		func() interface{} {
-			return &StatVarGroupNode{}
-		},
-		func(rowStruct interface{}) {
-			svgNodes = append(svgNodes, rowStruct.(*StatVarGroupNode))
-		},
-	)
-	if err != nil {
-		return svgNodes, err
-	}
-
-	return svgNodes, nil
-}
-
-// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
-	response := map[string]*FilteredStatVarGroupNode{}
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
-
-	type nodeResult struct {
-		node string
-		resp *FilteredStatVarGroupNode
-	}
-	resps := make(chan nodeResult, len(nodes))
-
-	for _, node := range nodes {
-		node := node
-		errGroup.Go(func() error {
-			resp, err := sc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
-			if err != nil {
-				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
-			}
-			resps <- nodeResult{node: node, resp: resp}
-			return nil
-		})
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-	close(resps)
-
-	for res := range resps {
-		response[res.node] = res.resp
-	}
-
-	return response, nil
-}
-
-// getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
-func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	var svgChildren []*SVGChild
-	var childSVs []*ChildSV
-	var childSVGs []*ChildSVG
-
-	errGroup.Go(func() error {
-		return queryStructs(
-			errCtx,
-			sc,
-			*GetSVGChildrenQuery(node, includeDefinitions),
-			func() interface{} {
-				return &SVGChild{}
-			},
-			func(rowStruct interface{}) {
-				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
-			},
-		)
-	})
-
-	// Skip if requesting more matched entities than provided.
-	numConstrainedEntities := len(constrainedPlaces)
-	if constrainedImport != "" {
-		numConstrainedEntities += 1
-	}
-	if numEntitiesExistence <= numConstrainedEntities {
-		errGroup.Go(func() error {
-			return queryStructs(
-				errCtx,
-				sc,
-				*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
-				func() interface{} {
-					return &ChildSV{}
-				},
-				func(rowStruct interface{}) {
-					childSVs = append(childSVs, rowStruct.(*ChildSV))
-				},
-			)
-		})
-
-		errGroup.Go(func() error {
-			return queryStructs(
-				errCtx,
-				sc,
-				*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
-				func() interface{} {
-					return &ChildSVG{}
-				},
-				func(rowStruct interface{}) {
-					childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
-				},
-			)
-		})
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-
-	return &FilteredStatVarGroupNode{
-		SVGChild: svgChildren,
-		ChildSV:  childSVs,
-		ChildSVG: childSVGs,
-	}, nil
-}
-
-// GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
-	counts := make(map[string]int, len(nodes))
-	for _, node := range nodes {
-		counts[node] = 0
-	}
-
-	// Skip if requesting more matched entities than provided.
-	numConstrainedEntities := len(constrainedPlaces)
-	if constrainedImport != "" {
-		numConstrainedEntities += 1
-	}
-	if numEntitiesExistence > numConstrainedEntities {
-		return counts, nil
-	}
-
-	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
-	err := sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
-		for {
-			row, err := iter.Next()
-			if err == iterator.Done {
-				break
-			}
-			if err != nil {
-				return err
-			}
-
-			var parent string
-			var count int64
-			if err := row.Columns(&parent, &count); err != nil {
-				return fmt.Errorf("error reading row for filtered Topic children count: %w", err)
-			}
-			counts[parent] = int(count)
-		}
-		return nil
-	})
-	if err != nil {
-		return counts, err
-	}
-
-	return counts, nil
-}
-
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
@@ -1029,6 +784,15 @@ func (sc *spannerDatabaseClient) SpannerStalenessTimestamp() (time.Time, error) 
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
+// shouldLogSQL checks whether to log the full interpolated SQL query based on request header.
+func shouldLogSQL(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XLogSQL)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
+}
+
 func (sc *spannerDatabaseClient) executeQuery(
 	ctx context.Context,
 	stmt spanner.Statement,
@@ -1061,8 +825,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 		if shouldLogSQL(queryCtx) {
 			interpolatedSQL := InterpolateSQL(&stmt)
-			schema := getSchemaName(queryCtx)
-			fmt.Printf("\n=== [%s] Spanner Query (Took %v) ===\n", schema, duration)
+			fmt.Printf("\n=== Spanner Query (Took %v) ===\n", duration)
 			fmt.Println("[Parameterized Query]")
 			for k, v := range stmt.Params {
 				jsonVal, _ := json.Marshal(v)
