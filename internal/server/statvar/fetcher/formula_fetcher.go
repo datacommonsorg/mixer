@@ -139,8 +139,8 @@ func FetchFormulas(
 				if err != nil {
 					return err
 				}
-				for _, node := range statCalResp.Data[StatisticalCalculation].Arcs[typeOf].Nodes {
-					statCalDcids = append(statCalDcids, node.Dcid)
+				for _, node := range statCalResp.GetData()[StatisticalCalculation].GetArcs()[typeOf].GetNodes() {
+					statCalDcids = append(statCalDcids, node.GetDcid())
 				}
 				nextToken = statCalResp.GetNextToken()
 				if nextToken == "" {
@@ -186,31 +186,7 @@ func FetchFormulas(
 	if err != nil {
 		return nil, err
 	}
-	result := map[string][]string{}
-	if mergedResp == nil {
-		return result, nil
-	}
-	for _, props := range mergedResp.Data {
-		// Skip nodes missing required properties.
-		if props == nil || props.Arcs == nil {
-			continue
-		}
-		_, out := props.Arcs[outputProperty]
-		_, in := props.Arcs[inputPropertyExpression]
-		if !out || !in {
-			continue
-		}
-		for _, outputNode := range props.Arcs[outputProperty].Nodes {
-			for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
-				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-			}
-		}
-	}
-	// Sort for determinism.
-	for _, formulas := range result {
-		sort.Strings(formulas)
-	}
-	return result, nil
+	return formulasFromNodeResponse(mergedResp), nil
 }
 
 // FetchSVFormulas returns a map of StatisticalVariable dcids to a slice of corresponding inputPropertyExpressions.
@@ -270,20 +246,21 @@ func fetchStatisticalCalculationProperties(
 	if err != nil {
 		return nil, err
 	}
+	return formulasFromNodeResponse(resp), nil
+}
+
+// formulasFromNodeResponse maps each outputProperty dcid in a
+// StatisticalCalculation Node response to its inputPropertyExpression values.
+// A node missing either property adds nothing: GetNodes returns nil for a
+// missing or nil arc.
+func formulasFromNodeResponse(resp *pbv2.NodeResponse) map[string][]string {
 	result := map[string][]string{}
 	for _, props := range resp.GetData() {
-		// Skip nodes missing required properties.
-		if props == nil || props.Arcs == nil {
-			continue
-		}
-		_, out := props.Arcs[outputProperty]
-		_, in := props.Arcs[inputPropertyExpression]
-		if !out || !in {
-			continue
-		}
-		for _, outputNode := range props.Arcs[outputProperty].Nodes {
-			for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
-				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+		arcs := props.GetArcs()
+		for _, outputNode := range arcs[outputProperty].GetNodes() {
+			dcid := outputNode.GetDcid()
+			for _, inputNode := range arcs[inputPropertyExpression].GetNodes() {
+				result[dcid] = append(result[dcid], inputNode.GetValue())
 			}
 		}
 	}
@@ -291,7 +268,7 @@ func fetchStatisticalCalculationProperties(
 	for _, formulas := range result {
 		sort.Strings(formulas)
 	}
-	return result, nil
+	return result
 }
 
 // fetchAllNodePages reads every page of a Node request from ds and merges them.

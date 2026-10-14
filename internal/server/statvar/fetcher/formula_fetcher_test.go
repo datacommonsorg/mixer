@@ -122,3 +122,42 @@ func TestFetchSVFormulasReadsEveryPage(t *testing.T) {
 		t.Errorf("FetchSVFormulas() mismatch (-want +got):\n%s", diff)
 	}
 }
+
+// Nodes with a nil graph, a nil arc, or only one of the two properties add
+// nothing, and must not panic.
+func TestFormulasFromNodeResponseSkipsIncompleteNodes(t *testing.T) {
+	for _, tc := range []struct {
+		desc string
+		resp *pbv2.NodeResponse
+		want map[string][]string
+	}{
+		{
+			desc: "nil response",
+			want: map[string][]string{},
+		},
+		{
+			desc: "incomplete nodes",
+			resp: &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{
+				"calc1": {Arcs: map[string]*pbv2.Nodes{
+					outputProperty:          {Nodes: []*pb.EntityInfo{{Dcid: "sv1"}}},
+					inputPropertyExpression: {Nodes: []*pb.EntityInfo{{Value: "expr1"}}},
+				}},
+				"nilGraph": nil,
+				"nilArc": {Arcs: map[string]*pbv2.Nodes{
+					outputProperty:          nil,
+					inputPropertyExpression: {Nodes: []*pb.EntityInfo{{Value: "expr2"}}},
+				}},
+				"noInput": {Arcs: map[string]*pbv2.Nodes{
+					outputProperty: {Nodes: []*pb.EntityInfo{{Dcid: "sv3"}}},
+				}},
+			}},
+			want: map[string][]string{"sv1": {"expr1"}},
+		},
+	} {
+		t.Run(tc.desc, func(t *testing.T) {
+			if diff := cmp.Diff(tc.want, formulasFromNodeResponse(tc.resp)); diff != "" {
+				t.Errorf("formulasFromNodeResponse() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
