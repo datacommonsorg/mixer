@@ -22,7 +22,6 @@ import (
 	"testing"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -62,7 +61,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, datasources.DefaultPageSize, c.offset)
+			actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, goldenPageSize, c.offset)
 			if err != nil {
 				return nil, err
 			}
@@ -83,7 +82,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, datasources.DefaultPageSize, c.offset)
+			actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, goldenPageSize, c.offset)
 			if err != nil {
 				return nil, err
 			}

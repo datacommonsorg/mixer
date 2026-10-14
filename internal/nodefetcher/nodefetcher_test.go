@@ -23,6 +23,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -298,5 +299,53 @@ func TestNodeFetchAllChunkedFunc(t *testing.T) {
 				t.Errorf("chunk sizes mismatch (-want +got):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestNodeFetchAllChunkedFuncLimitsConcurrency(t *testing.T) {
+	dcids := sequentialDcids(3 * maxConcurrentChunkFetches * fetchAllChunkSize)
+
+	var mu sync.Mutex
+	inFlight, maxInFlight := 0, 0
+	release := make(chan struct{})
+	var releaseOnce sync.Once
+	releaseAll := func() { releaseOnce.Do(func() { close(release) }) }
+	// If fewer than the cap ever run at once, the release below never fires;
+	// this fallback lets the test fail on maxInFlight instead of hanging.
+	fallback := time.AfterFunc(5*time.Second, releaseAll)
+	defer fallback.Stop()
+
+	// Each fetch blocks until released. Fetches are released as soon as more
+	// than the cap are in flight (the failure case), or shortly after the cap is
+	// reached, which leaves time for any extra fetches to start.
+	fetch := func(_ context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+		mu.Lock()
+		inFlight++
+		maxInFlight = max(maxInFlight, inFlight)
+		switch {
+		case inFlight > maxConcurrentChunkFetches:
+			releaseAll()
+		case inFlight == maxConcurrentChunkFetches:
+			time.AfterFunc(50*time.Millisecond, releaseAll)
+		}
+		mu.Unlock()
+
+		<-release
+
+		mu.Lock()
+		inFlight--
+		mu.Unlock()
+		return namedNodeResponse("", req.GetNodes()...), nil
+	}
+
+	got, err := NodeFetchAllChunkedFunc(context.Background(), fetch, &pbv2.NodeRequest{Nodes: dcids})
+	if err != nil {
+		t.Fatalf("NodeFetchAllChunkedFunc() unexpected error: %v", err)
+	}
+	if maxInFlight != maxConcurrentChunkFetches {
+		t.Errorf("max concurrent chunk fetches = %d, want %d", maxInFlight, maxConcurrentChunkFetches)
+	}
+	if gotNodes, wantNodes := len(got.GetData()), len(dcids); gotNodes != wantNodes {
+		t.Errorf("NodeFetchAllChunkedFunc() returned %d nodes, want %d", gotNodes, wantNodes)
 	}
 }

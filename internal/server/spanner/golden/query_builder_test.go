@@ -22,7 +22,6 @@ import (
 	"testing"
 
 	cloudSpanner "cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
@@ -51,7 +50,7 @@ func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 			return spanner.GetNodeEdgesByIDQuery(
 				c.ids,
 				c.arc,
-				datasources.DefaultPageSize,
+				goldenPageSize,
 				c.offset,
 				spanner.QueryConfig{},
 			)
@@ -69,7 +68,7 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 			return spanner.GetNodeEdgesByIDQuery(
 				c.ids,
 				c.arc,
-				datasources.DefaultPageSize,
+				goldenPageSize,
 				c.offset,
 				spanner.QueryConfig{
 					UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge,
@@ -120,7 +119,7 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 							"typeOf": tc.placeTypes,
 						},
 					},
-					datasources.DefaultPageSize,
+					goldenPageSize,
 					0,
 					tc.queryConfig,
 				)
@@ -158,7 +157,7 @@ func TestGetNodeDirectContainedInPlaceQuery(t *testing.T) {
 							"typeOf": tc.placeTypes,
 						},
 					},
-					datasources.DefaultPageSize,
+					goldenPageSize,
 					0,
 					spanner.QueryConfig{},
 				)
