@@ -31,6 +31,14 @@ ingress:
 serviceGroups:
   svg:
     replicas: 10
+    # svg pods were OOMKilled at the 6Gi default as V1 BulkVariableGroupInfo
+    # traffic grew (Oct 2026); the startup SVG cache keeps RSS at ~3.1GiB, and
+    # with GOGC=100 the GC heap goal (~2x live) reached the limit.
+    # Keep goMemLimit ~10% below memoryLimit when changing either value.
+    resources:
+      memoryRequest: "10Gi"
+      memoryLimit: "10Gi"
+    goMemLimit: "9GiB"
   recon:
     replicas: 90
   node:

@@ -261,6 +261,15 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
+          {{- with $group.goMemLimit }}
+          {{- if not (regexMatch "^[0-9]+(B|KiB|MiB|GiB|TiB)$" (toString .)) }}
+          {{- fail (printf "serviceGroups.%s.goMemLimit must be a Go byte size such as \"9GiB\" (B/KiB/MiB/GiB/TiB, not Kubernetes units like 9Gi); got %v" $serviceName .) }}
+          {{- end }}
+            # Soft memory limit for the Go GC. Keep it below resources.memoryLimit
+            # so the GC collects harder before the container is OOMKilled.
+            - name: GOMEMLIMIT
+              value: {{ . | quote }}
+          {{- end }}
           {{- if eq $.Values.mixer.enableOtlp true}}
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317

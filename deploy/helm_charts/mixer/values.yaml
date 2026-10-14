@@ -429,6 +429,12 @@ kgStoreConfig:
 # To overwrite any portion of serviceGroups, please copy and paste
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
+#
+# Optional per-group field:
+#   goMemLimit: soft memory limit for the Go runtime (sets GOMEMLIMIT), e.g.
+#     "9GiB". Must use Go units (B/KiB/MiB/GiB/TiB), not Kubernetes units
+#     ("9Gi" makes the Go runtime abort at startup; the template rejects it).
+#     Keep it ~10% below resources.memoryLimit. Unset by default.
 serviceGroups:
   svg:
     urlPaths:
