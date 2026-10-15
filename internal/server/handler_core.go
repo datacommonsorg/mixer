@@ -59,11 +59,10 @@ func (s *Server) V2ResolveCore(
 		return s.embeddingsServiceClient.Resolve(ctx, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
 	case resolve.ResolveResolverTopic:
 		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
-	case resolve.ResolveResolverNonPlace:
-		if s.flags != nil && !s.flags.EnableNonPlaceEntityResolver {
-			return nil, status.Errorf(codes.Unimplemented, "Resolving non-place entities is not enabled for this environment.")
-		}
-		return nil, status.Errorf(codes.Unimplemented, "Non-place entity resolution is only supported with Spanner backend.")
+	case resolve.ResolveResolverPlace:
+		// Resolved below based on property expression.
+	default:
+		return nil, status.Errorf(codes.Unimplemented, "%s resolution is only supported with Spanner backend.", resolver)
 	}
 
 	// Resolve places based on property expression
