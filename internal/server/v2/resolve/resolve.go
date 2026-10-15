@@ -370,7 +370,9 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 					DcidProperty))
 			}
 		case ResolveResolverTopic:
-			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
+			// Explicit topic tree navigation accepts default property expressions or topic dcids directly.
+			// No property restrictions needed; force to default property.
+			inProp, outProp, typeOfValues, _ = parseResolvePropertyExpression(ResolveDefaultPropertyExpression)
 		case ResolveResolverNonPlace:
 			// Non-place entity resolution only supports description as inArc.
 			if inProp != DescriptionProperty {
@@ -385,7 +387,9 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 					DcidProperty))
 			}
 		case ResolveResolverType:
-			// Type resolution uses vector search on input nodes directly; no property restrictions needed.
+			// Type resolution uses vector search on input nodes directly.
+			// No property restrictions needed; force to default property.
+			inProp, outProp, typeOfValues, _ = parseResolvePropertyExpression(ResolveDefaultPropertyExpression)
 		}
 	}
 

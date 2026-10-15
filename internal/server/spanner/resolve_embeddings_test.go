@@ -446,21 +446,3 @@ func TestResolveEmbeddings_Type(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
-
-func TestResolveEmbeddings_Type_InvalidType(t *testing.T) {
-	t.Parallel()
-
-	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
-		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
-	})
-
-	_, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
-		Nodes:    []string{"elementary school"},
-		Resolver: resolve.ResolveResolverType,
-		Property: "<-description{typeOf:StatisticalVariable}->dcid",
-	})
-	wantErr := "invalid typeOfs [StatisticalVariable] for resolver type"
-	if err == nil || !strings.Contains(err.Error(), wantErr) {
-		t.Fatalf("Resolve() expected error containing %q, got: %v", wantErr, err)
-	}
-}
