@@ -204,11 +204,14 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
-	// Sort nodes to preserve order from Spanner.
-	sort.Strings(nodes)
+	// Sort nodes to preserve order from Spanner. Sort a copy: nodes is the
+	// request's slice, which other data sources read concurrently. Drop
+	// duplicates: Spanner returns each node's rows once, so counting a repeated
+	// node twice would miscount rows and put the page boundary in the wrong place.
+	sortedNodes := slices.Compact(slices.Sorted(slices.Values(nodes)))
 
 	rows := 0
-	for _, subjectID := range nodes {
+	for _, subjectID := range sortedNodes {
 		edges, ok := edgesBySubjectID[subjectID]
 		if !ok {
 			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
