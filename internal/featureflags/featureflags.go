@@ -76,7 +76,7 @@ func setDefaultValues() *Flags {
 		EnableV3:                                       false,
 		V3MirrorFraction:                               0.0,
 		UseSpannerGraph:                                false,
-		UseMultiEntitySchema:                           false,
+		UseMultiEntitySchema:                           true,
 		SpannerGraphDatabase:                           "",
 		UseStaleReads:                                  false,
 		EnableEmbeddingsResolver:                       true,

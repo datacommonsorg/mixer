@@ -38,6 +38,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
@@ -1309,7 +1311,7 @@ func TestSpannerNode_DanglingEdges(t *testing.T) {
 	if nodes[0].Dcid != "unresolved_geo_entity" {
 		t.Errorf("Expected Dcid 'unresolved_geo_entity', got '%s'", nodes[0].Dcid)
 	}
-	
+
 	if len(nodes[0].Types) != 1 || nodes[0].Types[0] != "Thing" {
 		t.Errorf("Expected Types ['Thing'], got %v", nodes[0].Types)
 	}
@@ -1354,6 +1356,46 @@ func TestSpannerNode_ExhaustedSourceDoesNotRestart(t *testing.T) {
 	}
 	if diff := cmp.Diff(got, &pbv2.NodeResponse{}, cmpOpts); diff != "" {
 		t.Errorf("Node() payload mismatch:\n%v", diff)
+	}
+	if client.getNodeEdgesCalls != 0 {
+		t.Errorf("Node() issued %d edge queries, want 0", client.getNodeEdgesCalls)
+	}
+}
+
+func TestSpannerNode_InvalidNextToken(t *testing.T) {
+	ctx := context.Background()
+
+	client := &mockSpannerClient{}
+	ds := spanner.NewSpannerDataSource(client, nil)
+
+	nextToken, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: ds.Id(),
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+					SpannerInfo: &pbv2.SpannerInfo{Offset: -1},
+				},
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("util.EncodeProto() error = %v", err)
+	}
+
+	req := &pbv2.NodeRequest{
+		Nodes:     []string{"geoId/06"},
+		Property:  "->containedInPlace",
+		NextToken: nextToken,
+	}
+
+	_, err = ds.Node(ctx, req, datasources.DefaultPageSize)
+	st := status.Convert(err)
+	if st.Code() != codes.InvalidArgument {
+		t.Fatalf("Node() code = %v, want %v (err: %v)", st.Code(), codes.InvalidArgument, err)
+	}
+	// The decode error is returned as-is, so the status text is not nested.
+	if want := "invalid pagination token: spanner offset must be non-negative"; st.Message() != want {
+		t.Errorf("Node() message = %q, want %q", st.Message(), want)
 	}
 	if client.getNodeEdgesCalls != 0 {
 		t.Errorf("Node() issued %d edge queries, want 0", client.getNodeEdgesCalls)

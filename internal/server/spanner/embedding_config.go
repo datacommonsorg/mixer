@@ -63,6 +63,8 @@ type SearchConfig struct {
 	Limit                  int              `json:"limit" yaml:"limit"`
 	NumLeaves              int              `json:"num_leaves" yaml:"num_leaves"`
 	Threshold              float64          `json:"threshold" yaml:"threshold"`
+	IncludedTypes          []string         `json:"included_types" yaml:"included_types"`
+	ExcludedTypes          []string         `json:"excluded_types" yaml:"excluded_types"`
 }
 
 // PostprocessingType defines post-processing steps applied to search results. Currently only have no prostprocessing setup.
