@@ -85,8 +85,6 @@ type spannerDatabaseClient struct {
 
 	// Flag to control query logic for IngestionHistory table.
 	useNewIngestionHistorySchema bool
-	// Flag to control reading from KeyValueStore instead of Cache table.
-	useSpannerKeyValueStore bool
 
 	// Logging/State tracking for the timestamp poller.
 	tracker *stalenessTracker
@@ -100,7 +98,6 @@ type SpannerClientOptions struct {
 	DatabaseOverride             string
 	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
-	UseSpannerKeyValueStore      bool
 	QueryConfig                  QueryConfig
 	SpannerEmulatorCompatibility bool
 }
@@ -116,7 +113,6 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 		client:                       client,
 		queryConfig:                  queryConfig,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
-		useSpannerKeyValueStore:      opts.UseSpannerKeyValueStore,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
 	}
 

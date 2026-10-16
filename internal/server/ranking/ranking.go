@@ -39,31 +39,31 @@ func s(str string) *string {
 
 // StatsRanking is used to rank multiple source series for the same
 // StatisticalVariable, where lower value means higher ranking.
-// Outer key is Import Name, inner key is Rank Key, value is score.
+// Outer key is ProvenanceId (e.g. "dc/base/<ImportName>"), inner key is Rank Key, value is score.
 // When making changes to ranking, please also make sure to update golden files.
 var StatsRanking = map[string]map[RankKey]int{
 	// Population
-	"USCensusPEP_Annual_Population": {
+	"dc/base/USCensusPEP_Annual_Population": {
 		{MM: s("CensusPEPSurvey"), OP: s("P1Y")}: 0,
 	},
 
 	// Population
-	"CensusACS5YearSurvey": {
+	"dc/base/CensusACS5YearSurvey": {
 		{MM: s("CensusACS5yrSurvey")}: 1,
 	},
 
 	// Population
-	"CensusACS5YearSurvey_AggCountry": {
+	"dc/base/CensusACS5YearSurvey_AggCountry": {
 		{MM: s("CensusACS5yrSurvey")}: 1,
 	},
 
 	// Population
-	"CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}: 1},
+	"dc/base/CensusUSAMedianAgeIncome": {{MM: s("CensusACS5yrSurvey")}: 1},
 
 	// Population
-	"USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2},
+	"dc/base/USDecennialCensus_RedistrictingRelease": {{MM: s("USDecennialCensus")}: 2},
 
-	"EurostatData": {
+	"dc/base/EurostatData": {
 		// Population
 		{MM: s("EurostatRegionalPopulationData")}: 3,
 		// Unemployment Rate
@@ -71,65 +71,65 @@ var StatsRanking = map[string]map[RankKey]int{
 	},
 
 	// Population
-	"WorldDevelopmentIndicators": {{}: 4},
+	"dc/base/WorldDevelopmentIndicators": {{}: 4},
 
 	// Prefer Indian Census population for Indian states, over something like
 	// OECD.
 	// Population
-	"IndiaCensus_Primary": {{}: 5},
+	"dc/base/IndiaCensus_Primary": {{}: 5},
 
 	// Population
-	"WikipediaStatsData": {{MM: s("Wikipedia")}: 1001},
+	"dc/base/WikipediaStatsData": {{MM: s("Wikipedia")}: 1001},
 
 	// Population
-	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003},
+	"dc/base/WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003},
 
 	// Unemployment Rate
-	"BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0},
+	"dc/base/BLS_LAUS": {{MM: s("BLSSeasonallyUnadjusted")}: 0},
 
 	// Labor Force data ranked higher than WDI (above)}, or Eurostat
-	"BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1},
+	"dc/base/BLS_CPS": {{MM: s("BLSSeasonallyAdjusted")}: 1},
 
 	// Covid
-	"NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0},
+	"dc/base/NYT_COVID19": {{MM: s("NYT_COVID19_GitHub")}: 0},
 
 	// CDC500
-	"CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0},
+	"dc/base/CDC500": {{MM: s("AgeAdjustedPrevalence")}: 0},
 
 	// Electricity
-	"UNEnergy": {{MM: s("")}: 0},
+	"dc/base/UNEnergy": {{MM: s("")}: 0},
 
 	// Electricity
-	"EIA_Electricity": {{}: 1},
+	"dc/base/EIA_Electricity": {{}: 1},
 
 	// Prefer observational weather over gridded over projections
 	// Observational
-	"NOAA_EPA_Observed_Historical_Weather": {{}: 0},
+	"dc/base/NOAA_EPA_Observed_Historical_Weather": {{}: 0},
 
 	// Gridded reanalysis
-	"Copernicus_ECMWF_ERA5_Monthly": {{}: 1},
+	"dc/base/Copernicus_ECMWF_ERA5_Monthly": {{}: 1},
 
 	// IPCC Projections
-	"NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}: 2},
+	"dc/base/NASA_NEXDCP30": {{MM: s("NASA_Mean_CCSM4"), OP: s("P1M")}: 2},
 
 	// IPCC Projections
-	"NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}: 3},
+	"dc/base/NASA_NEXDCP30_AggrDiffStats": {{OP: s("P1M")}: 3},
 
 	// TODO: Remove this once disppears from backend (replaced by
 	// NASA_NEXDCP30_AggrDiffStats).
 	// IPCC Projections
-	"NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4},
+	"dc/base/NASA_NEXDCP30_StatVarSeriesAggr": {{OP: s("P1M")}: 4},
 
 	// Wet bulb year aggregation
-	"NASA_WetBulbComputation_Aggregation": {
+	"dc/base/NASA_WetBulbComputation_Aggregation": {
 		{MM: s("NASA_Mean_HadGEM2-AO")}: 0,
 		{}:                              1,
 	},
 
 	// Wet bulb
-	"NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}: 2},
+	"dc/base/NASA_WetBulbComputation": {{MM: s("NASA_Mean_HadGEM2-AO")}: 2},
 
-	"NASA_NEXGDDP_CMIP6_Subnational_AggrDiffStats_LongRangeProjections": {
+	"dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrDiffStats_LongRangeProjections": {
 		{MM: s("NASA_Mean_CMIP6_GFDL-ESM4")}: 0,
 		{MM: s("NASA_Mean_CMIP6_GFDL-CM4")}:  1,
 	},
@@ -140,20 +140,22 @@ var StatsRanking = map[string]map[RankKey]int{
 	// Note: https://autopush.datacommons.org/tools/timeline#place=geoId%2F06&statsVar=Count_CriminalIncidents_IsHateCrime
 	// Expected data 2004-2010: 1393, 1379, 1297, 1400, 1381, 1015, 1092
 	// FBI Hate Crime Publications
-	"FBIHateCrimePublications": {{}: 0},
+	"dc/base/FBIHateCrimePublications": {{}: 0},
 
 	// FBI Hate Crime Aggregations
-	"FBIHateCrime": {{}: 1},
+	"dc/base/FBIHateCrime": {{}: 1},
 
 	// Prefer USDollar over Risk Score for Expected Annual Loss in FEMA National Risk Index (NRI)
-	"USFEMA_NationalRiskIndex": {
+	"dc/base/USFEMA_NationalRiskIndex": {
 		{Unit: s("USDollar")}:              0,
 		{Unit: s("FemaNationalRiskScore")}: 1,
 	},
 
 	// Disaster
-	"EarthquakeUSGS_Agg": {{OP: s("P1Y")}: 0},
+	"dc/base/EarthquakeUSGS_Agg": {{OP: s("P1Y")}: 0},
 }
+
+const dcBasePrefix = "dc/base/"
 
 // BaseRank is the base ranking score for sources. If a source is prefered, it
 // should be given a score lower than BaseRank in StatsRanking. If a source is not
@@ -167,27 +169,10 @@ const BaseRank = 100
 // cohort instead of time series.
 type CohortByRank []*pb.SourceSeries
 
-// GetScoreRk derives the ranking score for a source series.
-//
-// The score depends on ImportName and other SVObs properties, by checking the
-// StatsRanking dict. To get the score, ImportName is required, and a RankKey
-// with these optional fields:
-// - MM: MeasurementMethod
-// - OP: ObservationPeriod
-//
-// When there are exact match of the properties in StatsRanking, then use that
-// score, otherwise can also match to wildcard options (indicated by a nil
-// pointer).
-//
-// If no entry is found, a BaseRank is assigned to the source series.
-func GetScoreRk(importName string, rk RankKey) int {
-	importNameStatsRanking, ok := StatsRanking[importName]
-	if !ok {
-		return BaseRank
-	}
+func computeScore(rankMap map[RankKey]int, rk RankKey) int {
 	rankScore := BaseRank
 	mostMatches := -1
-	for k, score := range importNameStatsRanking {
+	for k, score := range rankMap {
 		matches := 0
 		isMatch := true
 		if k.MM != nil && rk.MM != nil {
@@ -231,24 +216,60 @@ func GetScoreRk(importName string, rk RankKey) int {
 	return rankScore
 }
 
-// GetScorePb is a GetScoreRk adapter for pb.SourceSeries
+// GetScoreByProvenanceOrImport derives the ranking score using ProvenanceId first,
+// falling back to ImportName (prefixed with "dc/base/") for legacy paths where
+// ProvenanceId is not populated.
+//
+// When there is an exact match of the properties in StatsRanking, that score is
+// used; otherwise wildcard options (indicated by a nil pointer) can also match.
+// If no entry is found, BaseRank is returned.
+func GetScoreByProvenanceOrImport(provenanceID, importName string, rk RankKey) int {
+	if provenanceID != "" {
+		if rankMap, ok := StatsRanking[provenanceID]; ok {
+			return computeScore(rankMap, rk)
+		}
+	}
+	// Deprecated fallback for legacy implementations that only populate ImportName.
+	if importName != "" {
+		if rankMap, ok := StatsRanking[dcBasePrefix+importName]; ok {
+			return computeScore(rankMap, rk)
+		}
+	}
+	return BaseRank
+}
+
+// GetScoreRk derives the ranking score for a source series by ImportName.
+//
+// Deprecated: ImportName is deprecated in favor of ProvenanceId. Use
+// GetScoreByProvenanceOrImport, GetFacetScore, or GetScorePb instead.
+func GetScoreRk(importName string, rk RankKey) int {
+	return GetScoreByProvenanceOrImport("", importName, rk)
+}
+
+// GetScorePb is a GetScoreByProvenanceOrImport adapter for pb.SourceSeries
 func GetScorePb(ss *pb.SourceSeries) int {
+	if ss == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(ss.MeasurementMethod),
 		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
 	}
-	return GetScoreRk(ss.ImportName, rk)
+	return GetScoreByProvenanceOrImport(ss.ProvenanceId, ss.ImportName, rk)
 }
 
-// GetFacetScore is a GetScoreRk adapter for pb.Facet
+// GetFacetScore is a GetScoreByProvenanceOrImport adapter for pb.Facet
 func GetFacetScore(m *pb.Facet) int {
+	if m == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(m.MeasurementMethod),
 		OP:   s(m.ObservationPeriod),
 		Unit: s(m.Unit),
 	}
-	return GetScoreRk(m.ImportName, rk)
+	return GetScoreByProvenanceOrImport(m.ProvenanceId, m.ImportName, rk)
 }
 
 func (a CohortByRank) Len() int {
@@ -285,7 +306,13 @@ func (a CohortByRank) Less(i, j int) bool {
 	if oi.ProvenanceUrl != oj.ProvenanceUrl {
 		return oi.ProvenanceUrl < oj.ProvenanceUrl
 	}
-	return true
+	if oi.ProvenanceId != oj.ProvenanceId {
+		return oi.ProvenanceId < oj.ProvenanceId
+	}
+	if oi.ImportName != oj.ImportName {
+		return oi.ImportName < oj.ImportName
+	}
+	return false
 }
 
 // SeriesByRank implements sort.Interface for []*SourceSeries based on
@@ -334,6 +361,9 @@ func (a SeriesByRank) Less(i, j int) bool {
 	}
 
 	// Compare other fields to get consistent ranking.
+	if oi.ProvenanceId != oj.ProvenanceId {
+		return oi.ProvenanceId < oj.ProvenanceId
+	}
 	if oi.ImportName != oj.ImportName {
 		return oi.ImportName < oj.ImportName
 	}
@@ -352,18 +382,21 @@ func (a SeriesByRank) Less(i, j int) bool {
 	if oi.ProvenanceUrl != oj.ProvenanceUrl {
 		return oi.ProvenanceUrl < oj.ProvenanceUrl
 	}
-	return true
+	return false
 }
 
-// GetScore is a GetScoreRk adapter for model.SourceSeries
+// GetScore is a GetScoreByProvenanceOrImport adapter for model.SourceSeries
 // TODO(shifucun): Remove `SourceSeries` and use pb.SourceSeries everywhere.
 func GetScore(ss *model.SourceSeries) int {
+	if ss == nil {
+		return BaseRank
+	}
 	rk := RankKey{
 		MM:   s(ss.MeasurementMethod),
 		OP:   s(ss.ObservationPeriod),
 		Unit: s(ss.Unit),
 	}
-	return GetScoreRk(ss.ImportName, rk)
+	return GetScoreByProvenanceOrImport(ss.ProvenanceID, ss.ImportName, rk)
 }
 
 // ByRank implements sort.Interface for []*SourceSeries based on
@@ -424,7 +457,13 @@ func (a ByRank) Less(i, j int) bool {
 	if oi.ProvenanceURL != oj.ProvenanceURL {
 		return oi.ProvenanceURL < oj.ProvenanceURL
 	}
-	return true
+	if oi.ProvenanceID != oj.ProvenanceID {
+		return oi.ProvenanceID < oj.ProvenanceID
+	}
+	if oi.ImportName != oj.ImportName {
+		return oi.ImportName < oj.ImportName
+	}
+	return false
 }
 
 // FacetByRank implements sort.Interface for []*Facet based on
@@ -473,8 +512,11 @@ func (a FacetByRank) Less(i, j int) bool {
 	if oi.Facet.ProvenanceUrl != oj.Facet.ProvenanceUrl {
 		return oi.Facet.ProvenanceUrl < oj.Facet.ProvenanceUrl
 	}
+	if oi.Facet.ProvenanceId != oj.Facet.ProvenanceId {
+		return oi.Facet.ProvenanceId < oj.Facet.ProvenanceId
+	}
 	if oi.Facet.ImportName != oj.Facet.ImportName {
 		return oi.Facet.ImportName < oj.Facet.ImportName
 	}
-	return true
+	return false
 }

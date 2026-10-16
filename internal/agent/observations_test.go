@@ -29,6 +29,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/structpb"
 )
@@ -1008,10 +1009,10 @@ func TestGetObservations_Sdmx(t *testing.T) {
 				Dcid: "Count_Person",
 			},
 			EntityMetadata: &pbv2.Table{
-				Columns: []string{"dcid", "name", "typeOf"},
+				Columns: []string{"dcid", "name"},
 				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
-					mustListValue("geoId/06003", "Alpine County", []interface{}{"County"}),
+					mustListValue("geoId/06001", "Alameda County"),
+					mustListValue("geoId/06003", "Alpine County"),
 				},
 			},
 			Data: &pbv2.Table{
@@ -1105,9 +1106,9 @@ func TestGetObservations_Sdmx(t *testing.T) {
 				Dcid: "Count_Person",
 			},
 			EntityMetadata: &pbv2.Table{
-				Columns: []string{"dcid", "name", "typeOf"},
+				Columns: []string{"dcid", "name"},
 				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
+					mustListValue("geoId/06001", "Alameda County"),
 				},
 			},
 			Data: &pbv2.Table{
@@ -1517,12 +1518,12 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		// Ensure result succeeded but returns empty metadata fields for entities
-		wantRow, err := structpb.NewList([]interface{}{"geoId/06001", "", []interface{}{}})
+		wantRow, err := structpb.NewList([]interface{}{"geoId/06001", ""})
 		if err != nil {
 			t.Fatalf("failed to build expected row: %v", err)
 		}
 		wantMeta := &pbv2.Table{
-			Columns: []string{"dcid", "name", "typeOf"},
+			Columns: []string{"dcid", "name"},
 			Rows:    []*structpb.ListValue{wantRow},
 		}
 
@@ -1532,44 +1533,189 @@ func TestGetObservations_Sdmx(t *testing.T) {
 	})
 }
 
-func TestFetchEntityProperties_Deduplication(t *testing.T) {
-	mock := &obsMockMixer{
-		v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-			return &pbv2.NodeResponse{
-				Data: map[string]*pbv2.LinkedGraph{
-					"country/AFG": {
-						Arcs: map[string]*pbv2.Nodes{
-							"name": {Nodes: []*pb.EntityInfo{{Value: "Afghanistan"}}},
-							"typeOf": {
-								Nodes: []*pb.EntityInfo{
-									{Dcid: "Country", ProvenanceId: "dc/base/Provenance1"},
-									{Dcid: "Country", ProvenanceId: "dc/base/Provenance2"},
-									{Dcid: "Place", ProvenanceId: "dc/base/Provenance3"},
-								},
-							},
-						},
+func TestGetObservationsSdmxFacetSelection(t *testing.T) {
+	nodeNames := map[string]string{
+		"Count_Person": "Total Population",
+		"geoId/06001":  "Alameda County",
+		"geoId/06003":  "Alpine County",
+		"geoId/06005":  "Amador County",
+	}
+
+	tests := []struct {
+		desc           string
+		entities       map[string][]interface{}
+		date           string
+		dateRangeStart string
+		dateRangeEnd   string
+		series         []*sdmxpb.SdmxTimeSeries
+		want           *pbv2.GetObservationsResponse
+	}{
+		{
+			desc:     "entity metadata only includes entities in data rows",
+			entities: map[string][]interface{}{"observationAbout": {"geoId/06001", "geoId/06003", "geoId/06005"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f1", "2019"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06005"}, "f2", "2019"),
+			},
+			want: &pbv2.GetObservationsResponse{
+				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &pbv2.Table{
+					Columns: []string{"dcid", "name"},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "Alameda County")},
+				},
+				Data: &pbv2.Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "2020", float64(1))},
+				},
+				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
+				AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
+					{SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f2"}},
+				},
+			},
+		},
+		{
+			// Two places are requested, but the primary facet only covers one of them, so alternative
+			// place counts are omitted (legacy gates on the primary source's place count).
+			desc:     "alternative place counts are gated on the primary facet's place count",
+			entities: map[string][]interface{}{"observationAbout": {"geoId/06001", "geoId/06003"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2020"),
+			},
+			want: &pbv2.GetObservationsResponse{
+				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &pbv2.Table{
+					Columns: []string{"dcid", "name"},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "Alameda County")},
+				},
+				Data: &pbv2.Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    []*structpb.ListValue{mustListValue("geoId/06001", "2020", float64(1))},
+				},
+				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
+				AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
+					{SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f2"}},
+				},
+			},
+		},
+		{
+			desc:     "no data in the date window returns no entity metadata rows",
+			entities: map[string][]interface{}{"observationAbout": {"geoId/06001"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2019"),
+			},
+			want: &pbv2.GetObservationsResponse{
+				Variable:       &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &pbv2.Table{Columns: []string{"dcid", "name"}},
+				Data:           &pbv2.Table{Columns: []string{"observationAbout", "date", "value"}},
+				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
+			},
+		},
+		{
+			desc:           "places without data in the date window do not count toward a facet",
+			entities:       map[string][]interface{}{"observationAbout": {"geoId/06001", "geoId/06003"}},
+			date:           "range",
+			dateRangeStart: "2019",
+			dateRangeEnd:   "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2019", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f1", "2010"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f2", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2019"),
+			},
+			want: &pbv2.GetObservationsResponse{
+				Variable: &pbv2.GetObservationsResponse_Node{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &pbv2.Table{
+					Columns: []string{"dcid", "name"},
+					Rows: []*structpb.ListValue{
+						mustListValue("geoId/06001", "Alameda County"),
+						mustListValue("geoId/06003", "Alpine County"),
 					},
 				},
-			}, nil
+				Data: &pbv2.Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows: []*structpb.ListValue{
+						mustListValue("geoId/06001", "2020", float64(1)),
+						mustListValue("geoId/06003", "2019", float64(1)),
+					},
+				},
+				SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f2"},
+				AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
+					{
+						SourceMetadata:   &pbv2.GetObservationsResponse_FacetMetadata{SourceId: "f1"},
+						PlacesFoundCount: proto.Int32(1),
+					},
+				},
+			},
 		},
 	}
 
-	svc := NewService(mock, nil, nil)
-	props, err := svc.fetchEntityProperties(context.Background(), []string{"country/AFG"})
-	if err != nil {
-		t.Fatalf("fetchEntityProperties failed: %v", err)
-	}
+	for _, test := range tests {
+		t.Run(test.desc, func(t *testing.T) {
+			mock := &obsMockMixer{
+				sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+					return &sdmxpb.SdmxDataResult{Series: test.series}, nil
+				},
+				v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+					return newTestNodeResponse(in.GetNodes(), nodeNames), nil
+				},
+			}
 
-	wantProps := map[string]*nodeProperties{
-		"country/AFG": {
-			name:   "Afghanistan",
-			typeOf: []string{"Country", "Place"},
-		},
-	}
+			entities := make(map[string]*structpb.Value, len(test.entities))
+			for slot, dcids := range test.entities {
+				entities[slot] = structpb.NewListValue(mustListValue(dcids...))
+			}
+			req := &pbv2.GetObservationsRequest{
+				VariableDcid: "Count_Person",
+				Entities:     entities,
+				Date:         ptrString(test.date),
+			}
+			if test.dateRangeStart != "" {
+				req.DateRangeStart = ptrString(test.dateRangeStart)
+				req.DateRangeEnd = ptrString(test.dateRangeEnd)
+			}
 
-	if diff := cmp.Diff(props, wantProps, cmp.AllowUnexported(nodeProperties{})); diff != "" {
-		t.Errorf("fetchEntityProperties typeOf deduplication mismatch (-got +want):\n%s", diff)
+			got, err := NewService(mock, nil, nil).GetObservations(context.Background(), req)
+			if err != nil {
+				t.Fatalf("GetObservations() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(test.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("GetObservations() mismatch (-want +got):\n%s", diff)
+			}
+		})
 	}
+}
+
+// newTestSeries builds a Count_Person series with the given dimensions and a value of "1" at each date.
+func newTestSeries(dims map[string]string, facetID string, dates ...string) *sdmxpb.SdmxTimeSeries {
+	series := &sdmxpb.SdmxTimeSeries{
+		Dimensions: map[string]string{"variableMeasured": "Count_Person"},
+		Attributes: map[string]string{"facetId": facetID},
+	}
+	for k, v := range dims {
+		series.Dimensions[k] = v
+	}
+	for _, d := range dates {
+		series.Points = append(series.Points, &sdmxpb.SdmxDataPoint{TimePeriod: d, ObservationValue: "1"})
+	}
+	return series
+}
+
+// newTestNodeResponse returns name arcs for the requested nodes found in names.
+func newTestNodeResponse(nodes []string, names map[string]string) *pbv2.NodeResponse {
+	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
+	for _, dcid := range nodes {
+		arcs := make(map[string]*pbv2.Nodes)
+		if name, ok := names[dcid]; ok {
+			arcs[arcName] = &pbv2.Nodes{Nodes: []*pb.EntityInfo{{Value: name}}}
+		}
+		resp.Data[dcid] = &pbv2.LinkedGraph{Arcs: arcs}
+	}
+	return resp
 }
 
 // truncatingNodeMixer fakes the way V2Node truncates. It sorts the requested nodes,
@@ -1609,8 +1755,7 @@ func (m *truncatingNodeMixer) V2Node(_ context.Context, req *pbv2.NodeRequest) (
 		}
 		resp.Data[dcid] = &pbv2.LinkedGraph{
 			Arcs: map[string]*pbv2.Nodes{
-				arcName:   {Nodes: []*pb.EntityInfo{{Value: dcid + " Name"}}},
-				arcTypeOf: {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+				arcName: {Nodes: []*pb.EntityInfo{{Value: dcid + " Name"}}},
 			},
 		}
 	}
@@ -1645,7 +1790,7 @@ func TestFetchEntityPropertiesPagination(t *testing.T) {
 			for i := range test.entityCount {
 				dcid := fmt.Sprintf("geoId/%05d", i)
 				dcids = append(dcids, dcid)
-				want[dcid] = &nodeProperties{name: dcid + " Name", typeOf: []string{"County"}}
+				want[dcid] = &nodeProperties{name: dcid + " Name"}
 			}
 
 			svc := NewService(&truncatingNodeMixer{nodesPerPage: test.nodesPerPage}, nil, nil)

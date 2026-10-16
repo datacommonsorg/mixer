@@ -35,11 +35,6 @@ static_resources:
                       domains: ["*"]
                       routes:
                         - match:
-                            prefix: "/mcp2"
-                          route:
-                            cluster: mcp_http_server
-                            timeout: 300s
-                        - match:
                             prefix: "/mcp"
                           route:
                             cluster: mcp_http_server

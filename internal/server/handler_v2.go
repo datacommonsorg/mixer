@@ -145,24 +145,26 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
 	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
-	if resolver == resolve.ResolveResolverIndicator || resolver == resolve.ResolveResolverNonPlace {
-		if !s.isSpannerEnabled() {
-			slog.Error("Spanner backend required for indicator and nonplace resolvers")
-			return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for indicator and nonplace resolvers")
-		}
-		return true, nil
+	// remain resolver will falls back to vector search as default
+	if !s.isSpannerEnabled() {
+		slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
+		return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
 	}
-
-	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
-	return false, nil
+	return true, nil
 }
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	// Validate the limit before choosing a backend, so a negative limit is
+	// rejected whether or not the request is diverted.
+	pageSize, err := datasources.NodePageSize(in.GetLimit())
+	if err != nil {
+		return nil, err
+	}
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+		return s.dispatcher.Node(ctx, in, pageSize)
 	}
 
 	v2StartTime := time.Now()

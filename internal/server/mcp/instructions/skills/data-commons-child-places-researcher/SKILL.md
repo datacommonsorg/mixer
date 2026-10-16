@@ -231,16 +231,17 @@ When `date="range"` is used, the date ranges are evaluated as follows:
 ## 9. Processing `get_child_observations` Responses
 
 All child observation responses return a uniform dual-table structure:
-1. **`entityMetadata`**: Maps child entity DCIDs to human-readable names and types using tabular `columns` and `rows`.
+1. **`entityMetadata`**: Maps child entity DCIDs in the `data` rows to human-readable names using tabular `columns` and `rows`.
 2. **`data` Table**: Matrix of observations containing columns `["observationAbout", "date", "value"]` and tabular `rows`.
+
+Child places absent from `entityMetadata` and `data` had no observations for the selected source and date.
 
 ### A. Response Structure Reference
 ```json
 {
   "variable": {
     "dcid": "UnemploymentRate_Person",
-    "name": "Unemployment Rate",
-    "typeOf": ["StatisticalVariable"]
+    "name": "Unemployment Rate"
   },
   "sourceMetadata": {
     "sourceId": "2176550201",
@@ -250,10 +251,10 @@ All child observation responses return a uniform dual-table structure:
   },
   "alternativeSources": [],
   "entityMetadata": {
-    "columns": ["dcid", "name", "typeOf"],
+    "columns": ["dcid", "name"],
     "rows": [
-      ["geoId/06037", "Los Angeles County", ["AdministrativeArea2", "County", "Place"]],
-      ["geoId/06075", "San Francisco County", ["AdministrativeArea2", "County", "Place"]]
+      ["geoId/06037", "Los Angeles County"],
+      ["geoId/06075", "San Francisco County"]
     ]
   },
   "data": {
@@ -269,8 +270,8 @@ All child observation responses return a uniform dual-table structure:
 ### B. Field Mapping Rules
 * **`variable`**: Details about the statistical variable requested.
 * **`entityMetadata`**: Matrix of child entity metadata:
-  * `columns`: Array of column names (`dcid`, `name`, `typeOf`).
-  * `rows`: Tabular arrays of `[child_dcid, entity_name, entity_types]`.
+  * `columns`: Array of column names (`dcid`, `name`).
+  * `rows`: Tabular arrays of `[child_dcid, entity_name]`.
 * **`data`**: Matrix of child observations:
   * `columns`: Array of column names (`observationAbout`, `date`, `value`).
   * `rows`: Tabular arrays of `[child_dcid, date, value]`.
