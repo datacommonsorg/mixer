@@ -58,18 +58,6 @@ func (s *Service) SearchIndicators(
 		limit = DefaultSearchLimit
 	}
 
-	// Determine include_topics default: true unless explicitly set to false
-	includeTopics := true
-	if req.IncludeTopics != nil {
-		includeTopics = *req.IncludeTopics
-	}
-
-	// Determine expand_topics default: service default unless explicitly set
-	expandTopics := s.defaultExpandTopics
-	if req.ExpandTopics != nil {
-		expandTopics = *req.ExpandTopics
-	}
-
 	// Phase 1: Resolve place names and fetch similarity candidates in parallel
 	var placeDcids []string
 	var resolvedPlaces map[string]*resolvedPlaceInfo
@@ -87,13 +75,13 @@ func (s *Service) SearchIndicators(
 	g.Go(func() error {
 		var err error
 		oversampledLimit := limit * 2
-		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
-		candidates, err = s.fetchCandidates(gCtx, req.Query, oversampledLimit, expandTopics, req.Target)
+		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on s.defaultExpandTopics.
+		candidates, err = s.fetchCandidates(gCtx, req.Query, oversampledLimit, s.defaultExpandTopics, req.Target)
 		if err != nil {
 			return err
 		}
-		// If includeTopics is false, expand and deduplicate topic candidates into standard variables
-		if !includeTopics {
+		// If IncludeTopics is false, expand and deduplicate topic candidates into standard variables
+		if !req.IncludeTopics {
 			candidates = expandTopicCandidates(candidates)
 		}
 		return nil
@@ -631,9 +619,9 @@ func buildTopicsTable(
 		table.Rows = append(table.Rows, []any{
 			c.GetDcid(),
 			c.GetName(),
-			nonNilStringSlice(placesWithData),
-			nonNilStringSlice(memberTopics),
-			nonNilStringSlice(memberVariables),
+			util.NonNilStringSlice(placesWithData),
+			util.NonNilStringSlice(memberTopics),
+			util.NonNilStringSlice(memberVariables),
 		})
 		topicCount++
 	}
@@ -663,8 +651,8 @@ func buildVariablesTable(
 		table.Rows = append(table.Rows, []any{
 			c.GetDcid(),
 			c.GetName(),
-			nonNilStringSlice(placesWithData),
-			nonNilStringSlice(c.GetObservationProperties()),
+			util.NonNilStringSlice(placesWithData),
+			util.NonNilStringSlice(c.GetObservationProperties()),
 		})
 		varCount++
 	}
@@ -760,7 +748,7 @@ func populatePlaceMetadata(
 
 	for _, info := range resolvedPlaces {
 		resp.DcidNameMappings[info.Dcid] = info.Name
-		resp.DcidPlaceTypeMappings[info.Dcid] = nonNilStringSlice(info.TypeOf)
+		resp.DcidPlaceTypeMappings[info.Dcid] = util.NonNilStringSlice(info.TypeOf)
 
 		if info.Dcid == parentPlaceDcid {
 			resp.ResolvedParentPlace = &ResolvedPlace{

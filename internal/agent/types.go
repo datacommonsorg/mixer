@@ -39,8 +39,7 @@ type SearchIndicatorsRequest struct {
 	Places         []string
 	ParentPlace    string
 	PerSearchLimit int32
-	IncludeTopics  *bool
-	ExpandTopics   *bool
+	IncludeTopics  bool
 	Target         string
 	PlaceDcids     []string
 }
@@ -185,12 +184,4 @@ type GetVariableMetadataResponse struct {
 	Status      string                         `json:"status,omitempty"`
 	Variables   map[string]*VariableMetadata   `json:"variables,omitempty"`
 	Provenances map[string]*ProvenanceMetadata `json:"provenances,omitempty"`
-}
-
-// nonNilStringSlice returns s if non-empty, or an empty non-nil slice so JSON marshaling emits [] instead of null.
-func nonNilStringSlice(s []string) []string {
-	if len(s) == 0 {
-		return []string{}
-	}
-	return s
 }

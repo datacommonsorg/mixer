@@ -210,6 +210,7 @@ func TestSearchIndicators(t *testing.T) {
 			request: &SearchIndicatorsRequest{
 				Query:          "gross oda aid",
 				PerSearchLimit: 5,
+				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				"gross oda aid": {
@@ -232,6 +233,7 @@ func TestSearchIndicators(t *testing.T) {
 			request: &SearchIndicatorsRequest{
 				Query:          "health in america",
 				PerSearchLimit: 5,
+				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				"health in america": {
@@ -265,7 +267,7 @@ func TestSearchIndicators(t *testing.T) {
 			request: &SearchIndicatorsRequest{
 				Query:          "",
 				PerSearchLimit: 5,
-				IncludeTopics:  proto.Bool(true),
+				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				DefaultPlaceWorld: {
@@ -305,6 +307,7 @@ func TestSearchIndicators(t *testing.T) {
 				Query:          "gross oda aid",
 				PerSearchLimit: 5,
 				PlaceDcids:     []string{"geoId/06"},
+				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				"gross oda aid": {
@@ -341,6 +344,7 @@ func TestSearchIndicators(t *testing.T) {
 				Query:          "gross oda aid",
 				Places:         []string{"California"},
 				PerSearchLimit: 5,
+				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				"California": {
@@ -499,48 +503,26 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 		wantExpandTopics bool
 	}{
 		{
-			name:             "default service option expands topics when unspecified in request",
+			name:             "default service option expands topics",
 			serviceOpts:      nil,
-			request:          &SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health", IncludeTopics: true},
 			wantExpandTopics: true,
 		},
 		{
-			name: "service option false does not expand topics when unspecified in request",
+			name: "service option false does not expand topics",
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(false),
 			},
-			request:          &SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health", IncludeTopics: true},
 			wantExpandTopics: false,
 		},
 		{
-			name: "service option true expands topics when unspecified in request",
+			name: "service option true expands topics",
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(true),
 			},
-			request:          &SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health", IncludeTopics: true},
 			wantExpandTopics: true,
-		},
-		{
-			name: "request override true takes precedence over service option false",
-			serviceOpts: &ServiceOptions{
-				DefaultExpandTopics: proto.Bool(false),
-			},
-			request: &SearchIndicatorsRequest{
-				Query:        "health",
-				ExpandTopics: proto.Bool(true),
-			},
-			wantExpandTopics: true,
-		},
-		{
-			name: "request override false takes precedence over service option true",
-			serviceOpts: &ServiceOptions{
-				DefaultExpandTopics: proto.Bool(true),
-			},
-			request: &SearchIndicatorsRequest{
-				Query:        "health",
-				ExpandTopics: proto.Bool(false),
-			},
-			wantExpandTopics: false,
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {

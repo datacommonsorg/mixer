@@ -52,13 +52,11 @@ func (t *McpTools) SearchIndicators(ctx context.Context, input SearchIndicatorsI
 	if t.agentService == nil {
 		return nil, fmt.Errorf("agent service is not initialized")
 	}
-	limit := resolveSearchLimit(input.PerSearchLimit)
-	includeTopics := resolveIncludeTopics(input.IncludeTopics)
 	req := &agent.SearchIndicatorsRequest{
 		Query:          input.Query,
 		Places:         input.Places,
-		PerSearchLimit: limit,
-		IncludeTopics:  &includeTopics,
+		PerSearchLimit: resolveSearchLimit(input.PerSearchLimit),
+		IncludeTopics:  resolveIncludeTopics(input.IncludeTopics),
 		Target:         t.searchScope,
 	}
 	return t.agentService.SearchIndicators(ctx, req)
@@ -69,14 +67,12 @@ func (t *McpTools) SearchChildIndicators(ctx context.Context, input SearchChildI
 	if t.agentService == nil {
 		return nil, fmt.Errorf("agent service is not initialized")
 	}
-	limit := resolveSearchLimit(input.PerSearchLimit)
-	includeTopics := resolveIncludeTopics(input.IncludeTopics)
 	req := &agent.SearchIndicatorsRequest{
 		Query:          input.Query,
 		ParentPlace:    input.ParentPlace,
 		Places:         input.SampleChildPlaces,
-		PerSearchLimit: limit,
-		IncludeTopics:  &includeTopics,
+		PerSearchLimit: resolveSearchLimit(input.PerSearchLimit),
+		IncludeTopics:  resolveIncludeTopics(input.IncludeTopics),
 		Target:         t.searchScope,
 	}
 	return t.agentService.SearchIndicators(ctx, req)

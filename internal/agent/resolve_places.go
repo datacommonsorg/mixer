@@ -190,7 +190,7 @@ func buildResolvedPlacesTable(entries []*resolvedPlaceEntry) *Table {
 			entry.query,
 			entry.dcid,
 			entry.name,
-			nonNilStringSlice(entry.typeOf),
+			util.NonNilStringSlice(entry.typeOf),
 		})
 	}
 

@@ -533,6 +533,40 @@ func TestSortedStringKeys(t *testing.T) {
 	}
 }
 
+func TestNonNilStringSlice(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		input []string
+		want  []string
+	}{
+		{
+			name:  "nil slice returns non-nil empty slice",
+			input: nil,
+			want:  []string{},
+		},
+		{
+			name:  "empty slice returns non-nil empty slice",
+			input: []string{},
+			want:  []string{},
+		},
+		{
+			name:  "non-empty slice returned unchanged",
+			input: []string{"country/USA", "geoId/06"},
+			want:  []string{"country/USA", "geoId/06"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NonNilStringSlice(tc.input)
+			if got == nil {
+				t.Fatalf("NonNilStringSlice(%v) returned nil, want non-nil slice", tc.input)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("NonNilStringSlice(%v) mismatch (-want +got):\n%s", tc.input, diff)
+			}
+		})
+	}
+}
+
 func TestFetchRemote(t *testing.T) {
 	cancelledCtx, cancel := context.WithCancel(context.Background())
 	cancel()
