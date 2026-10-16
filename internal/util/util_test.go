@@ -30,7 +30,6 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -521,39 +520,6 @@ func TestShouldIncludeFacet(t *testing.T) {
 	}
 }
 
-func TestToStringListValue(t *testing.T) {
-	for _, c := range []struct {
-		desc  string
-		input []string
-		want  *structpb.ListValue
-	}{
-		{
-			desc:  "non-empty list of strings",
-			input: []string{"Place", "State"},
-			want: &structpb.ListValue{
-				Values: []*structpb.Value{
-					structpb.NewStringValue("Place"),
-					structpb.NewStringValue("State"),
-				},
-			},
-		},
-		{
-			desc:  "empty list of strings",
-			input: []string{},
-			want: &structpb.ListValue{
-				Values: []*structpb.Value{},
-			},
-		},
-	} {
-		t.Run(c.desc, func(t *testing.T) {
-			got := ToStringListValue(c.input)
-			if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
-				t.Errorf("ToStringListValue(%v) returned unexpected diff (-got +want):\n%s", c.input, diff)
-			}
-		})
-	}
-}
-
 func TestSortedStringKeys(t *testing.T) {
 	input := map[string]int{
 		"recipient":          1,
@@ -564,6 +530,40 @@ func TestSortedStringKeys(t *testing.T) {
 	got := SortedStringKeys(input)
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("SortedStringKeys mismatch (-got +want):\n%s", diff)
+	}
+}
+
+func TestNonNilStringSlice(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		input []string
+		want  []string
+	}{
+		{
+			name:  "nil slice returns non-nil empty slice",
+			input: nil,
+			want:  []string{},
+		},
+		{
+			name:  "empty slice returns non-nil empty slice",
+			input: []string{},
+			want:  []string{},
+		},
+		{
+			name:  "non-empty slice returned unchanged",
+			input: []string{"country/USA", "geoId/06"},
+			want:  []string{"country/USA", "geoId/06"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NonNilStringSlice(tc.input)
+			if got == nil {
+				t.Fatalf("NonNilStringSlice(%v) returned nil, want non-nil slice", tc.input)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("NonNilStringSlice(%v) mismatch (-want +got):\n%s", tc.input, diff)
+			}
+		})
 	}
 }
 
