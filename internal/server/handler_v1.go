@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
-	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
@@ -36,13 +35,6 @@ import (
 )
 
 const foldedSvgRoot = "dc/g/Folded_Root"
-
-// QueryV1 implements API for Mixer.Query.
-func (s *Server) QueryV1(
-	ctx context.Context, in *pb.QueryRequest,
-) (*pb.QueryResponse, error) {
-	return translator.Query(ctx, in, s.metadata, s.store)
-}
 
 // BulkLinkedPropertyValues implements API for mixer.BulkLinkedPropertyValues.
 func (s *Server) BulkLinkedPropertyValues(
@@ -83,6 +75,7 @@ func (s *Server) BulkPlaceInfo(
 		if len(in.Nodes) > 0 {
 			remoteResp := &pbv1.BulkPlaceInfoResponse{}
 			if err := util.FetchRemote(
+				ctx,
 				s.metadata,
 				s.httpClient,
 				"/v1/bulk/info/place",
@@ -130,7 +123,7 @@ func (s *Server) fetchAndMergeBulkVariableInfo(
 
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
-			remoteResponse, err := remoteBulkVariableInfoFunc(s, in, remoteAPIPath)
+			remoteResponse, err := remoteBulkVariableInfoFunc(errCtx, s, in, remoteAPIPath)
 			if err != nil {
 				return err
 			}
@@ -184,6 +177,7 @@ func (s *Server) fetchAndMergeBulkVariableGroupInfo(
 		}
 		remoteResp := &pbv1.BulkVariableGroupInfoResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			remoteAPIPath,
@@ -329,7 +323,7 @@ func (s *Server) BulkObservationDatesLinked(
 		errGroup.Go(func() error {
 			remoteResp := &pbv1.BulkObservationDatesLinkedResponse{}
 			err := util.FetchRemote(
-				s.metadata, s.httpClient, "/v1/bulk/observation-dates/linked", in, remoteResp)
+				errCtx, s.metadata, s.httpClient, "/v1/bulk/observation-dates/linked", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -359,6 +353,7 @@ func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 	if len(localResp.GetStatVarSeries()) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.PlacePageResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/internal/page/place",
@@ -383,6 +378,7 @@ func (s *Server) VariableAncestors(
 	if len(localResp.Ancestors) == 0 && s.metadata.RemoteMixerDomain != "" {
 		remoteResp := &pbv1.VariableAncestorsResponse{}
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/variable/ancestors",
@@ -406,13 +402,6 @@ func (s *Server) RecognizePlaces(
 	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
 }
 
-// RecognizeEntities implements API for Mixer.RecognizeEntities.
-func (s *Server) RecognizeEntities(
-	ctx context.Context, in *pb.RecognizeEntitiesRequest,
-) (*pb.RecognizeEntitiesResponse, error) {
-	return recon.RecognizeEntities(ctx, in, s.store)
-}
-
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,
@@ -425,6 +414,7 @@ func (s *Server) SearchStatVar(
 	remoteResp := &pb.SearchStatVarResponse{}
 	if s.metadata.RemoteMixerDomain != "" {
 		if err := util.FetchRemote(
+			ctx,
 			s.metadata,
 			s.httpClient,
 			"/v1/variable/search",

@@ -14,13 +14,13 @@ function update_version() {
 
   yq eval -i 'del(.tables)' deploy/storage/base_bigtable_info.yaml
   yq eval -i '.tables = []' deploy/storage/base_bigtable_info.yaml
-  for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt | grep -v experimental | sort); do
+  for src in $(gcloud storage ls gs://datcom-control/autopush/*_latest_base_cache_version.txt | grep -v experimental | sort); do
     echo "Copying $src"
-    export TABLE="$(gsutil cat "$src")"
+    export TABLE="$(gcloud storage cat "$src")"
      yq eval -i '.tables += [env(TABLE)]' deploy/storage/base_bigtable_info.yaml
   done
 
-  BQ=$(gsutil cat gs://datcom-control/latest_base_bigquery_version.txt)
+  BQ=$(gcloud storage cat gs://datcom-control/latest_base_bigquery_version.txt)
   printf "$BQ" > deploy/storage/bigquery.version
 }
 

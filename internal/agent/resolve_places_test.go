@@ -88,7 +88,7 @@ func TestResolvePlaces(t *testing.T) {
 		},
 	}
 
-	service := NewService(mock, nil)
+	service := NewService(mock, nil, nil)
 
 	t.Run("EmptyPlaces", func(t *testing.T) {
 		req := &pbv2.ResolvePlacesRequest{}

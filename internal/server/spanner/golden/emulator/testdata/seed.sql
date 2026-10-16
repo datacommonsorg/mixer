@@ -84,3 +84,12 @@ VALUES
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-air', 'facet', '2024', '7', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByTransportMode', 'country/CAN', 'migration-sea', 'facet', '2024', '3', PENDING_COMMIT_TIMESTAMP()),
   ('Count_MigrationByObservationAbout', 'country/CAN', 'migration-about', 'facet', '2024', '5', PENDING_COMMIT_TIMESTAMP());
+
+INSERT INTO LinkedEdge (predicate, ancestor, child_type, child, provenance)
+VALUES
+  ('containedInPlace', 'northamerica', 'Country', 'country/CAN', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'northamerica', 'Country', 'country/MEX', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'northamerica', 'Country', 'country/USA', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'europe', 'Country', 'country/FRA', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'europe', 'Country', 'country/GBR', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'asia', 'Country', 'country/IND', 'dc/base/WikidataOtherIdGeos');

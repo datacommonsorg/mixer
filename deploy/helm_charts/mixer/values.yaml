@@ -447,7 +447,7 @@ serviceGroups:
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/v1/recon/*"
       - "/v2/resolve"
@@ -487,9 +487,14 @@ serviceGroups:
       memoryRequest: "12Gi"
       memoryLimit: "12Gi"
       cpuRequest: "300m"
+    espResources:
+      # Higher memory for /v2/node pages of up to 25k edges. The request
+      # equals the limit so ESP memory is reserved rather than overcommitted.
+      memoryRequest: "1Gi"
+      memoryLimit: "1Gi"
     cacheSVG: true
   default:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/*"
     replicas: 1

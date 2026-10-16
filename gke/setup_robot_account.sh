@@ -58,5 +58,5 @@ if [[ $STORE_PROJECT_ID != '' ]]; then
 fi
 
 if [[ $BUCKET != 'null' ]]; then
-  gsutil iam ch serviceAccount:$SERVICE_ACCOUNT:roles/storage.objectViewer gs://$BUCKET
+  gcloud storage buckets add-iam-policy-binding gs://$BUCKET --member=serviceAccount:$SERVICE_ACCOUNT --role=roles/storage.objectViewer
 fi

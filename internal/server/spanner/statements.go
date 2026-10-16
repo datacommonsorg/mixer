@@ -68,6 +68,8 @@ var statements = struct {
 	returnChainedEdges string
 	// Subquery to return Edges with filters.
 	returnFilterEdges string
+	// Fetch Edges for containedInPlace requests.
+	getEdgesContainedInPlace string
 	// Subquery to apply page offset.
 	applyOffset string
 	// Subquery to apply page limit.
@@ -100,8 +102,6 @@ var statements = struct {
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
-	// Get data from legacy Cache table.
-	getCacheData string
 	// Get data from KeyValueStore table.
 	getKeyValueStoreData string
 	// Fetch event dates for a given type and location.
@@ -136,18 +136,16 @@ var statements = struct {
 	filterDescendentStatVarsByOnlyImport string
 	// Filter descendent stat vars by num_entities_existences.
 	filterDescendentStatVarsByNumEntitiesExistence string
+	// Filter nodes by existence in node_types.
+	nodeTypeExistence string
 	// Search nodes using vector search.
 	vectorSearchNode string
 	// Filter nodes by type.
 	filterNodesByTypes string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
-	// Check existence of SVs against sources using KeyValueStore table.
-	checkSVSourceExistenceFromKV string
 	// Check existence of variable groups against sources.
 	checkGroupSourceExistence string
-	// Check existence of variable groups against sources using KeyValueStore table.
-	checkGroupSourceExistenceFromKV string
 	// Check existence of variable groups against places.
 	checkGroupPlaceExistence string
 }{
@@ -335,6 +333,33 @@ OR CreationTimestamp > (
             predicate,
             object_id,
             provenance`,
+	getEdgesContainedInPlace: `		SELECT
+			e.subject_id,
+			'containedInPlace+' as predicate,
+			e.object_id,
+			'' AS provenance,
+			IF (dest.subject_id IS NULL, FALSE, TRUE) AS resolved,
+            IFNULL(dest.value, '') AS value,
+            dest.bytes,
+            IFNULL(dest.name, '') AS name,
+            IFNULL(dest.types, []) AS types
+		FROM (
+			SELECT DISTINCT 
+				ancestor AS subject_id, 
+				child AS object_id 
+			FROM LinkedEdge
+			WHERE ancestor IN UNNEST(@ancestor)
+				AND predicate = 'containedInPlace'
+				AND child_type IN UNNEST(@child_type)
+			ORDER BY
+				subject_id,
+				object_id%s
+		)e
+		LEFT JOIN Node dest ON e.object_id = dest.subject_id
+		ORDER BY
+            subject_id,
+            object_id
+	`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: `
@@ -434,15 +459,6 @@ OR CreationTimestamp > (
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
-	getCacheData: `		SELECT
-			key,
-			provenance,
-			TO_JSON_STRING(value) AS value,
-		FROM
-			Cache
-		WHERE
-			type = @type
-			AND key %s`,
 	getKeyValueStoreData: `		SELECT
 			key,
 			provenance,
@@ -755,6 +771,15 @@ OR CreationTimestamp > (
 		FROM Node
 		WHERE subject_id IN UNNEST(@nodes)
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
+	nodeTypeExistence: `
+			AND EXISTS (
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
+			)`,
+	// vectorSearchNode searches for nodes using vector similarity.
+	// %[1]s: Embedding table name (e.g., `NodeEmbedding`).
+	// %[2]s: JSON options for APPROX_COSINE_DISTANCE (e.g., {"num_leaves_to_search": 20}).
+	// %[3]s: Cosine similarity threshold formatted as float (e.g., 0.60).
+	// %[4]s: Optional node type filter clause (nodeTypeExistence when nodeTypes is non-empty, or "" otherwise).
 	vectorSearchNode: `		SELECT
 			subject_id,
 			JSON_VALUE(embedding_content.name) AS name,
@@ -765,37 +790,18 @@ OR CreationTimestamp > (
 		WHERE
 			embeddings IS NOT NULL
 			AND embedding_label = @embedding_label
-			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
-			AND EXISTS (
-				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
-			)
+			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s%[4]s
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
 		LIMIT @limit`,
 	checkSVSourceExistence: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
-		FROM Cache c
-		JOIN Edge e2 ON c.provenance = e2.subject_id
-		WHERE c.type = 'ProvenanceSummary'
-		  AND e2.predicate IN ('source', 'isPartOf')
-		  AND c.key IN UNNEST(@variables)
-		ORDER BY variable, source`,
-	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
-		FROM Cache c
-		JOIN Edge e2 ON c.provenance = e2.subject_id
-		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
-		WHERE c.type = 'ProvenanceSummary'
-		  AND e2.predicate IN ('source', 'isPartOf')
-		  AND e3.predicate = @predicate
-		  AND e3.object_id IN UNNEST(@variables)
-		ORDER BY variable, source`,
-	checkSVSourceExistenceFromKV: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
 		FROM KeyValueStore c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		WHERE c.type = 'ProvenanceSummary'
 		  AND e2.predicate IN ('source', 'isPartOf')
 		  AND c.key IN UNNEST(@variables)
 		ORDER BY variable, source`,
-	checkGroupSourceExistenceFromKV: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
 		FROM KeyValueStore c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id

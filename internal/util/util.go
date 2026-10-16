@@ -193,6 +193,28 @@ func UnzipAndDecode(content string) ([]byte, error) {
 	return Unzip(decoded)
 }
 
+// UnzipAndDecodeWithLimit decodes the given content from base64 and decompresses
+// it using gzip, rejecting inputs or decompressed payloads that exceed maxBytes.
+func UnzipAndDecodeWithLimit(content string, maxBytes int64) ([]byte, error) {
+	if maxBytes <= 0 {
+		return nil, fmt.Errorf("maxBytes must be positive, got %d", maxBytes)
+	}
+	// Intentionally reuse maxBytes (the max decompressed size) as an upper bound
+	// for the compressed size to avoid allocating a large buffer before unzipping.
+	if int64(base64.StdEncoding.DecodedLen(len(content))) > maxBytes {
+		return nil, fmt.Errorf("encoded data exceeds maximum allowed size of %d bytes", maxBytes)
+	}
+
+	// Decode from base64
+	decoded, err := base64.StdEncoding.DecodeString(content)
+	if err != nil {
+		return nil, err
+	}
+
+	// Unzip the string
+	return UnzipWithLimit(decoded, maxBytes)
+}
+
 // Zip compresses the given content using gzip.
 func Zip(content []byte) ([]byte, error) {
 	// Zip the string
@@ -226,6 +248,31 @@ func Unzip(content []byte) ([]byte, error) {
 	gzResult, err := io.ReadAll(gzReader)
 	if err != nil {
 		return nil, err
+	}
+	return gzResult, nil
+}
+
+// UnzipWithLimit decompresses the given content using gzip, returning an error
+// if maxBytes <= 0 or if the decompressed data exceeds maxBytes.
+func UnzipWithLimit(content []byte, maxBytes int64) ([]byte, error) {
+	if maxBytes <= 0 {
+		return nil, fmt.Errorf("maxBytes must be positive, got %d", maxBytes)
+	}
+
+	gzReader, err := gzip.NewReader(bytes.NewReader(content))
+	if err != nil {
+		return nil, err
+	}
+
+	gzResult, err := io.ReadAll(io.LimitReader(gzReader, maxBytes+1))
+	if closeErr := gzReader.Close(); err == nil && closeErr != nil {
+		err = closeErr
+	}
+	if err != nil {
+		return nil, err
+	}
+	if int64(len(gzResult)) > maxBytes {
+		return nil, fmt.Errorf("decompressed data exceeds maximum allowed size of %d bytes", maxBytes)
 	}
 	return gzResult, nil
 }
@@ -671,21 +718,26 @@ func StringSliceToSet(s []string) map[string]struct{} {
 	return res
 }
 
+const maxRemoteErrorBodyBytes = 8192
+
 func FetchRemote(
+	ctx context.Context,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	apiPath string,
 	in proto.Message,
 	out proto.Message,
-	surfaceHeaderValue ...string,
 ) error {
+	if ctx == nil {
+		ctx = context.Background()
+	}
 
 	url := metadata.RemoteMixerDomain + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
 		return err
 	}
-	request, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))
+	request, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(jsonValue))
 	if err != nil {
 		return err
 	}
@@ -694,9 +746,9 @@ func FetchRemote(
 	// X-Remote indicates that the mixer call is made to a remote mixer
 	// which is typically from a Custom DC instance.
 	request.Header.Set("X-Remote", "true")
-	// Pass in the surfaceHeaderValue from the call to remote mixer.
-	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
-		request.Header.Set("X-Surface", surfaceHeaderValue[0])
+	// Pass in the surface header from the incoming request context if present.
+	if surface, _ := GetMetadata(ctx); surface != "" {
+		request.Header.Set("X-Surface", surface)
 	}
 	slog.Info(fmt.Sprintf("[DC][RemoteMixerCall] url=%s", url), "url", url)
 	response, err := httpClient.Do(request)
@@ -705,12 +757,18 @@ func FetchRemote(
 	}
 	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer response.Body.Close()
-	// Read response body
-	var responseBodyBytes []byte
 	if response.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(io.LimitReader(response.Body, maxRemoteErrorBodyBytes+1))
+		bodyStr := strings.TrimSpace(string(bodyBytes))
+		if len(bodyBytes) > maxRemoteErrorBodyBytes {
+			bodyStr = strings.TrimSpace(string(bodyBytes[:maxRemoteErrorBodyBytes])) + " ... (truncated)"
+		}
+		if bodyStr != "" {
+			return fmt.Errorf("remote mixer response not ok: %s, body: %s", response.Status, bodyStr)
+		}
 		return fmt.Errorf("remote mixer response not ok: %s", response.Status)
 	}
-	responseBodyBytes, err = io.ReadAll(response.Body)
+	responseBodyBytes, err := io.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}

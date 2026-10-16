@@ -62,6 +62,18 @@ func TestDefaultContainedInPlaceEntityScanMinVariables(t *testing.T) {
 	}
 }
 
+func TestDefaultBulkSVGBuildRightNodes(t *testing.T) {
+	if diff := cmp.Diff([]string{"dc/g/Root"}, setDefaultValues().BulkSVGBuildRightNodes); diff != "" {
+		t.Fatalf("BulkSVGBuildRightNodes mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestDefaultUseMultiEntitySchema(t *testing.T) {
+	if !setDefaultValues().UseMultiEntitySchema {
+		t.Fatal("UseMultiEntitySchema = false, want true")
+	}
+}
+
 func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
@@ -93,13 +105,13 @@ flags:
 			wantErr: false,
 		},
 		{
-			name: "multi entity schema flag",
+			name: "multi entity schema flag disabled explicitly",
 			fileContent: `
 flags:
-  UseMultiEntitySchema: true
+  UseMultiEntitySchema: false
 `,
 			want: expectedFlags(func(f *Flags) {
-				f.UseMultiEntitySchema = true
+				f.UseMultiEntitySchema = false
 			}),
 			wantErr: false,
 		},
@@ -216,6 +228,49 @@ flags:
 			fileContent: `
 flags:
   ContainedInPlaceEntityScanMinVariables: -1
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "bulk SVG build-right nodes override",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - dc/g/Demographics
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.BulkSVGBuildRightNodes = []string{"dc/g/Demographics"}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "bulk SVG build-right nodes disabled",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes: []
+`,
+			want: expectedFlags(func(f *Flags) {
+				f.BulkSVGBuildRightNodes = []string{}
+			}),
+			wantErr: false,
+		},
+		{
+			name: "validation error - empty bulk SVG build-right node",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - " "
+`,
+			want:    nil,
+			wantErr: true,
+		},
+		{
+			name: "validation error - padded bulk SVG build-right node",
+			fileContent: `
+flags:
+  BulkSVGBuildRightNodes:
+    - " dc/g/Root "
 `,
 			want:    nil,
 			wantErr: true,
@@ -342,25 +397,25 @@ flags:
 			wantErr: true,
 		},
 		{
-			name: "validation error - UseSpannerKeyValueStore without UseSpannerGraph",
+			name: "validation error - UseMaterializedLinkedEdge without UseSpannerGraph",
 			fileContent: `
 flags:
   UseSpannerGraph: false
-  UseSpannerKeyValueStore: true
+  UseMaterializedLinkedEdge: true
 `,
 			want:    nil,
 			wantErr: true,
 		},
 		{
-			name: "valid UseSpannerKeyValueStore with UseSpannerGraph",
+			name: "valid UseMaterializedLinkedEdge with UseSpannerGraph",
 			fileContent: `
 flags:
   UseSpannerGraph: true
-  UseSpannerKeyValueStore: true
+  UseMaterializedLinkedEdge: true
 `,
 			want: expectedFlags(func(f *Flags) {
 				f.UseSpannerGraph = true
-				f.UseSpannerKeyValueStore = true
+				f.UseMaterializedLinkedEdge = true
 			}),
 			wantErr: false,
 		},

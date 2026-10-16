@@ -158,7 +158,7 @@ func (s *Service) enrichPlaceEntries(
 		Nodes:    dcidsToEnrich,
 		Property: nodePropertiesQuery,
 	}
-	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)
+	nodeResp, err := s.fetchAllNodes(ctx, nodeReq)
 	if err != nil {
 		slog.Warn("Failed to enrich place entries via V2Node", "error", err, "dcidsCount", len(dcidsToEnrich))
 		return

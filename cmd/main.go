@@ -41,6 +41,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/mcp"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -68,8 +69,11 @@ const (
 
 var (
 	// Server config
-	port           = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	port               = flag.Int("port", 12345, "Port on which to run the server.")
+	httpPort           = flag.Int("http_port", 12346, "Port on which to run the HTTP server.")
+	mcpInstructionsDir = flag.String("mcp_instructions_dir", os.Getenv("DC_INSTRUCTIONS_DIR"), "Custom directory path (local or gs://) for MCP server/tool/skill instructions.")
+	mcpSearchScope     = flag.String("mcp_search_scope", os.Getenv("DC_SEARCH_SCOPE"), "Optional search scope target for MCP indicator searches (e.g. custom_only, base_only, base_and_custom).")
+	hostProject          = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
@@ -134,6 +138,11 @@ var (
 		"spanner_search_config_path",
 		"",
 		"Path to Spanner search config YAML file.",
+	)
+	agentDefaultExpandTopics = flag.Bool(
+		"agent_default_expand_topics",
+		true,
+		"Default value for expand_topics in agent search_indicators if not specified in request.",
 	)
 )
 
@@ -215,9 +224,11 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
 		queryConfig := spanner.QueryConfig{
+			BulkSVGBuildRightNodes:                         flags.BulkSVGBuildRightNodes,
 			ContainedInPlaceAncestorFirstTypes:             flags.ContainedInPlaceAncestorFirstTypes,
 			ContainedInPlacePreferTimeSeriesScanPlaceTypes: flags.ContainedInPlacePreferTimeSeriesScanPlaceTypes,
 			ContainedInPlaceEntityScanMinVariables:         flags.ContainedInPlaceEntityScanMinVariables,
+			UseMaterializedLinkedEdge:                      flags.UseMaterializedLinkedEdge,
 		}
 		if err := queryConfig.Validate(); err != nil {
 			slog.Error("Invalid Spanner query config", "error", err)
@@ -229,7 +240,6 @@ func main() {
 			DatabaseOverride:             flags.SpannerGraphDatabase,
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
-			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
 			QueryConfig:                  queryConfig,
 		})
 		if err != nil {
@@ -414,7 +424,10 @@ func main() {
 	var redisCacheClient redis.CacheClient
 	if *useRedis && *redisInfo != "" {
 		slog.Info("Setting up Redis cache client")
-		client, err := redis.NewCacheClient(*redisInfo)
+		client, err := redis.NewCacheClient(*redisInfo, &redis.CacheClientOptions{
+			Password: os.Getenv("REDIS_PASSWORD"),
+			CaCert:   os.Getenv("REDIS_CA_CERT"),
+		})
 		if err != nil {
 			slog.Error("Failed to create Redis client", "error", err)
 			os.Exit(1)
@@ -552,6 +565,7 @@ func main() {
 			EmbeddingsServiceClient:           embeddingsServiceClient,
 			UseSpannerGraph:                   *useSpannerGraph,
 			TopicExpander:                     topicExpander,
+			AgentDefaultExpandTopics:          agentDefaultExpandTopics,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
@@ -626,6 +640,8 @@ func main() {
 			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
+	startMCPServer(ctx, mixerServer)
+
 	slog.Info("About to listen")
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
@@ -638,6 +654,39 @@ func main() {
 		slog.Error("Failed to serve", "error", err)
 		os.Exit(1)
 	}
+}
+
+func startMCPServer(ctx context.Context, mixerServer *server.Server) {
+	go func() {
+		slog.Info("Starting MCP HTTP server", "port", *httpPort)
+		var agentBackend mcp.AgentBackend
+		if agentSvc := mixerServer.AgentService(); agentSvc != nil {
+			agentBackend = agentSvc
+		}
+		mcpServer := mcp.NewDcMcpServer(
+			ctx,
+			agentBackend,
+			*mcpInstructionsDir,
+			*mcpSearchScope,
+		)
+
+		mux := http.NewServeMux()
+		handler := http.StripPrefix("/mcp", mcpServer)
+		mux.Handle("/mcp", handler)
+		mux.Handle("/mcp/", handler)
+
+		httpSrv := &http.Server{
+			Addr:              fmt.Sprintf(":%d", *httpPort),
+			Handler:           mux,
+			ReadHeaderTimeout: 10 * time.Second,
+			ReadTimeout:       30 * time.Second,
+			WriteTimeout:      300 * time.Second,
+			IdleTimeout:       120 * time.Second,
+		}
+		if err := httpSrv.ListenAndServe(); err != nil {
+			slog.Error("Failed to start MCP HTTP server", "error", err)
+		}
+	}()
 }
 
 func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {

@@ -267,12 +267,12 @@ func ObservationInternal(
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ObservationResponse{}
 			err := util.FetchRemote(
+				errCtx,
 				metadata,
 				httpClient,
 				"/v2/observation",
 				in,
 				remoteResp,
-				surface,
 			)
 			if err != nil {
 				return err

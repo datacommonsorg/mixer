@@ -175,6 +175,8 @@ func buildNodeEdgesByIDQuery(
 	case nodeQueryGeneric:
 	case nodeQueryContainedInPlace:
 		switch plan.containedInPlace.accessPath {
+		case containedInPlaceLinkedEdge:
+			return buildContainedInPlaceQuery(ids, arc, pageSize, offset, plan), nil
 		case containedInPlaceTypeFirst:
 		case containedInPlaceAncestorFirst:
 			useContainedInPlaceAncestorFirst = true
@@ -336,6 +338,31 @@ func buildNodeEdgesByIDQuery(
 		SQL:    template,
 		Params: params,
 	}, nil
+}
+
+// buildContainedInPlaceQuery returns a query for fetching containedInPlace edges.
+func buildContainedInPlaceQuery(
+	ids []string,
+	arc *v2.Arc,
+	pageSize, offset int,
+	plan nodeQueryPlan,
+) *spanner.Statement {
+	params := map[string]interface{}{
+		"ancestor": ids,
+		// Filter has already been validated.
+		"child_type": arc.Filter["typeOf"],
+	}
+	hint := statements.graphColumnarScanHint
+	if plan.spannerEmulatorCompatibility {
+		hint = ""
+	}
+	pagination := getNodeQueryPagination(pageSize, offset)
+	sql := hint + fmt.Sprintf(statements.getEdgesContainedInPlace, pagination)
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}
+
 }
 
 func getNodeQueryPagination(pageSize, offset int) string {
@@ -562,21 +589,16 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-// GetKeyValueStoreQuery builds a query targeting KeyValueStore (or legacy Cache table when useKeyValueStore is false).
-func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string, useKeyValueStore bool) *spanner.Statement {
+// GetKeyValueStoreQuery builds a query targeting KeyValueStore.
+func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string) *spanner.Statement {
 	keyFilter, keyVal := getParamStatement("key", keys)
 	params := map[string]interface{}{
 		"type": string(typeFilter),
 		"key":  keyVal,
 	}
 
-	sql := statements.getCacheData
-	if useKeyValueStore {
-		sql = statements.getKeyValueStoreData
-	}
-
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(sql, keyFilter),
+		SQL:    fmt.Sprintf(statements.getKeyValueStoreData, keyFilter),
 		Params: params,
 	}
 }
@@ -796,14 +818,19 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {
 	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
+	params := map[string]interface{}{
+		"embeddings":      embeddings,
+		"limit":           limit,
+		"embedding_label": embeddingLabel,
+	}
+	var nodeTypeCondition string
+	if len(nodeTypes) > 0 {
+		nodeTypeCondition = statements.nodeTypeExistence
+		params["node_types"] = nodeTypes
+	}
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
-		Params: map[string]interface{}{
-			"embeddings":      embeddings,
-			"limit":           limit,
-			"node_types":      nodeTypes,
-			"embedding_label": embeddingLabel,
-		},
+		SQL:    fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold), nodeTypeCondition),
+		Params: params,
 	}
 }
 

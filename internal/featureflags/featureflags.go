@@ -56,14 +56,18 @@ type Flags struct {
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 	// Whether to use the new IngestionHistory schema with Timestamp.
 	UseNewIngestionHistorySchema bool `yaml:"UseNewIngestionHistorySchema"`
-	// Whether to read from KeyValueStore table instead of Cache table in Spanner.
-	UseSpannerKeyValueStore bool `yaml:"UseSpannerKeyValueStore"`
 	// Child place types whose core Observation and Node contained-in-place queries should filter by ancestor before type.
 	ContainedInPlaceAncestorFirstTypes []string `yaml:"ContainedInPlaceAncestorFirstTypes"`
 	// Child place types eligible for a TimeSeriesByEntity1 range scan in core contained-in-place observation queries.
 	ContainedInPlacePreferTimeSeriesScanPlaceTypes []string `yaml:"ContainedInPlacePreferTimeSeriesScanPlaceTypes"`
 	// Minimum number of unique variables that selects an entity1 range scan for eligible child place types. Zero disables the optimization.
 	ContainedInPlaceEntityScanMinVariables int `yaml:"ContainedInPlaceEntityScanMinVariables"`
+	// StatVarGroup nodes that should build the TimeSeries side of filtered child-SVG hash joins for N <= 1 requests.
+	BulkSVGBuildRightNodes []string `yaml:"BulkSVGBuildRightNodes"`
+	// Use materialized LinkedEdge table.
+	UseMaterializedLinkedEdge bool `yaml:"UseMaterializedLinkedEdge"`
+	// Whether to enable the non-place entity resolver.
+	EnableNonPlaceEntityResolver bool `yaml:"EnableNonPlaceEntityResolver"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -72,7 +76,7 @@ func setDefaultValues() *Flags {
 		EnableV3:                                       false,
 		V3MirrorFraction:                               0.0,
 		UseSpannerGraph:                                false,
-		UseMultiEntitySchema:                           false,
+		UseMultiEntitySchema:                           true,
 		SpannerGraphDatabase:                           "",
 		UseStaleReads:                                  false,
 		EnableEmbeddingsResolver:                       true,
@@ -82,10 +86,12 @@ func setDefaultValues() *Flags {
 		SDMXRemotePlaceExpansionLimit:                  10000,
 		EnableSpannerSearchEmbeddings:                  false,
 		UseNewIngestionHistorySchema:                   false,
-		UseSpannerKeyValueStore:                        false,
 		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
 		ContainedInPlaceEntityScanMinVariables:         50,
+		BulkSVGBuildRightNodes:                         []string{"dc/g/Root"},
+		UseMaterializedLinkedEdge:                      false,
+		EnableNonPlaceEntityResolver:                   false,
 	}
 }
 
@@ -117,9 +123,6 @@ func (f *Flags) validateFlagValues() error {
 	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
 		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.UseSpannerKeyValueStore && !f.UseSpannerGraph {
-		return fmt.Errorf("UseSpannerKeyValueStore requires UseSpannerGraph to be true")
-	}
 	if f.SDMXRemotePlaceExpansionLimit <= 0 {
 		return fmt.Errorf("SDMXRemotePlaceExpansionLimit must be positive")
 	}
@@ -143,6 +146,18 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.ContainedInPlaceEntityScanMinVariables < 0 {
 		return fmt.Errorf("ContainedInPlaceEntityScanMinVariables must be non-negative")
+	}
+	for _, node := range f.BulkSVGBuildRightNodes {
+		trimmed := strings.TrimSpace(node)
+		if trimmed == "" {
+			return fmt.Errorf("BulkSVGBuildRightNodes must not contain empty values")
+		}
+		if trimmed != node {
+			return fmt.Errorf("BulkSVGBuildRightNodes must not contain surrounding whitespace")
+		}
+	}
+	if f.UseMaterializedLinkedEdge && !f.UseSpannerGraph {
+		return fmt.Errorf("UseMaterializedLinkedEdge requires UseSpannerGraph to be true")
 	}
 	return nil
 }

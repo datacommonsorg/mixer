@@ -59,8 +59,8 @@ func (s *Service) SearchIndicators(
 		includeTopics = req.GetIncludeTopics()
 	}
 
-	// Determine expand_topics default: true unless explicitly set to false
-	expandTopics := true
+	// Determine expand_topics default: service default unless explicitly set
+	expandTopics := s.defaultExpandTopics
 	if req.ExpandTopics != nil {
 		expandTopics = req.GetExpandTopics()
 	}
@@ -877,7 +877,7 @@ func (s *Service) enrichPlaceNamesAndTypes(
 		Nodes:    dcids,
 		Property: "->[name, typeOf]",
 	}
-	if nodeResp, err := s.mixer.V2Node(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
+	if nodeResp, err := s.fetchAllNodes(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
 		for _, info := range resolvedMap {
 			if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
 				if name := getPropValue(nodeData, "name"); name != "" {

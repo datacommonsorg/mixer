@@ -686,100 +686,6 @@ func (x *RecognizePlacesResponse) GetQueryItems() map[string]*RecognizePlacesRes
 	return nil
 }
 
-type RecognizeEntitiesRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Queries []string `protobuf:"bytes,1,rep,name=queries,proto3" json:"queries,omitempty"`
-}
-
-func (x *RecognizeEntitiesRequest) Reset() {
-	*x = RecognizeEntitiesRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecognizeEntitiesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecognizeEntitiesRequest) ProtoMessage() {}
-
-func (x *RecognizeEntitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecognizeEntitiesRequest.ProtoReflect.Descriptor instead.
-func (*RecognizeEntitiesRequest) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *RecognizeEntitiesRequest) GetQueries() []string {
-	if x != nil {
-		return x.Queries
-	}
-	return nil
-}
-
-type RecognizeEntitiesResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	QueryItems map[string]*RecognizeEntitiesResponse_Items `protobuf:"bytes,1,rep,name=query_items,json=queryItems,proto3" json:"query_items,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-}
-
-func (x *RecognizeEntitiesResponse) Reset() {
-	*x = RecognizeEntitiesResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecognizeEntitiesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecognizeEntitiesResponse) ProtoMessage() {}
-
-func (x *RecognizeEntitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecognizeEntitiesResponse.ProtoReflect.Descriptor instead.
-func (*RecognizeEntitiesResponse) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *RecognizeEntitiesResponse) GetQueryItems() map[string]*RecognizeEntitiesResponse_Items {
-	if x != nil {
-		return x.QueryItems
-	}
-	return nil
-}
-
 // RecogPlace contains info of a place for RecognizePlaces method.
 type RecogPlace struct {
 	state         protoimpl.MessageState
@@ -795,7 +701,7 @@ type RecogPlace struct {
 func (x *RecogPlace) Reset() {
 	*x = RecogPlace{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[15]
+		mi := &file_recon_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -808,7 +714,7 @@ func (x *RecogPlace) String() string {
 func (*RecogPlace) ProtoMessage() {}
 
 func (x *RecogPlace) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[15]
+	mi := &file_recon_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -821,7 +727,7 @@ func (x *RecogPlace) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlace.ProtoReflect.Descriptor instead.
 func (*RecogPlace) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15}
+	return file_recon_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *RecogPlace) GetNames() []*RecogPlace_Name {
@@ -863,7 +769,7 @@ type RecogPlaces struct {
 func (x *RecogPlaces) Reset() {
 	*x = RecogPlaces{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[16]
+		mi := &file_recon_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -876,7 +782,7 @@ func (x *RecogPlaces) String() string {
 func (*RecogPlaces) ProtoMessage() {}
 
 func (x *RecogPlaces) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[16]
+	mi := &file_recon_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -889,7 +795,7 @@ func (x *RecogPlaces) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlaces.ProtoReflect.Descriptor instead.
 func (*RecogPlaces) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{16}
+	return file_recon_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RecogPlaces) GetPlaces() []*RecogPlace {
@@ -910,7 +816,7 @@ type TokenSpans struct {
 func (x *TokenSpans) Reset() {
 	*x = TokenSpans{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[17]
+		mi := &file_recon_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -923,7 +829,7 @@ func (x *TokenSpans) String() string {
 func (*TokenSpans) ProtoMessage() {}
 
 func (x *TokenSpans) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[17]
+	mi := &file_recon_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -936,7 +842,7 @@ func (x *TokenSpans) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TokenSpans.ProtoReflect.Descriptor instead.
 func (*TokenSpans) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{17}
+	return file_recon_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *TokenSpans) GetSpans() []*TokenSpans_Span {
@@ -962,7 +868,7 @@ type ReconEntities_Entity struct {
 func (x *ReconEntities_Entity) Reset() {
 	*x = ReconEntities_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[18]
+		mi := &file_recon_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -975,7 +881,7 @@ func (x *ReconEntities_Entity) String() string {
 func (*ReconEntities_Entity) ProtoMessage() {}
 
 func (x *ReconEntities_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[18]
+	mi := &file_recon_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1017,7 +923,7 @@ type ReconEntities_Entity_ID struct {
 func (x *ReconEntities_Entity_ID) Reset() {
 	*x = ReconEntities_Entity_ID{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[19]
+		mi := &file_recon_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1030,7 +936,7 @@ func (x *ReconEntities_Entity_ID) String() string {
 func (*ReconEntities_Entity_ID) ProtoMessage() {}
 
 func (x *ReconEntities_Entity_ID) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[19]
+	mi := &file_recon_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1075,7 +981,7 @@ type CoordinateRecon_Place struct {
 func (x *CoordinateRecon_Place) Reset() {
 	*x = CoordinateRecon_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[20]
+		mi := &file_recon_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1088,7 +994,7 @@ func (x *CoordinateRecon_Place) String() string {
 func (*CoordinateRecon_Place) ProtoMessage() {}
 
 func (x *CoordinateRecon_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[20]
+	mi := &file_recon_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1137,7 +1043,7 @@ type ResolveEntitiesResponse_ResolvedId struct {
 func (x *ResolveEntitiesResponse_ResolvedId) Reset() {
 	*x = ResolveEntitiesResponse_ResolvedId{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[21]
+		mi := &file_recon_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1150,7 +1056,7 @@ func (x *ResolveEntitiesResponse_ResolvedId) String() string {
 func (*ResolveEntitiesResponse_ResolvedId) ProtoMessage() {}
 
 func (x *ResolveEntitiesResponse_ResolvedId) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[21]
+	mi := &file_recon_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1192,7 +1098,7 @@ type ResolveEntitiesResponse_ResolvedEntity struct {
 func (x *ResolveEntitiesResponse_ResolvedEntity) Reset() {
 	*x = ResolveEntitiesResponse_ResolvedEntity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[22]
+		mi := &file_recon_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1205,7 +1111,7 @@ func (x *ResolveEntitiesResponse_ResolvedEntity) String() string {
 func (*ResolveEntitiesResponse_ResolvedEntity) ProtoMessage() {}
 
 func (x *ResolveEntitiesResponse_ResolvedEntity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[22]
+	mi := &file_recon_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1247,7 +1153,7 @@ type ResolveCoordinatesRequest_Coordinate struct {
 func (x *ResolveCoordinatesRequest_Coordinate) Reset() {
 	*x = ResolveCoordinatesRequest_Coordinate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[23]
+		mi := &file_recon_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1260,7 +1166,7 @@ func (x *ResolveCoordinatesRequest_Coordinate) String() string {
 func (*ResolveCoordinatesRequest_Coordinate) ProtoMessage() {}
 
 func (x *ResolveCoordinatesRequest_Coordinate) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[23]
+	mi := &file_recon_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1302,7 +1208,7 @@ type ResolveCoordinatesResponse_Place struct {
 func (x *ResolveCoordinatesResponse_Place) Reset() {
 	*x = ResolveCoordinatesResponse_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[24]
+		mi := &file_recon_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1315,7 +1221,7 @@ func (x *ResolveCoordinatesResponse_Place) String() string {
 func (*ResolveCoordinatesResponse_Place) ProtoMessage() {}
 
 func (x *ResolveCoordinatesResponse_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[24]
+	mi := &file_recon_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1361,7 +1267,7 @@ type ResolveCoordinatesResponse_PlaceCoordinate struct {
 func (x *ResolveCoordinatesResponse_PlaceCoordinate) Reset() {
 	*x = ResolveCoordinatesResponse_PlaceCoordinate{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[25]
+		mi := &file_recon_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1374,7 +1280,7 @@ func (x *ResolveCoordinatesResponse_PlaceCoordinate) String() string {
 func (*ResolveCoordinatesResponse_PlaceCoordinate) ProtoMessage() {}
 
 func (x *ResolveCoordinatesResponse_PlaceCoordinate) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[25]
+	mi := &file_recon_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1430,7 +1336,7 @@ type ResolveIdsResponse_Entity struct {
 func (x *ResolveIdsResponse_Entity) Reset() {
 	*x = ResolveIdsResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[26]
+		mi := &file_recon_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1443,7 +1349,7 @@ func (x *ResolveIdsResponse_Entity) String() string {
 func (*ResolveIdsResponse_Entity) ProtoMessage() {}
 
 func (x *ResolveIdsResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[26]
+	mi := &file_recon_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1486,7 +1392,7 @@ type BulkFindEntitiesRequest_Entity struct {
 func (x *BulkFindEntitiesRequest_Entity) Reset() {
 	*x = BulkFindEntitiesRequest_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[27]
+		mi := &file_recon_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1499,7 +1405,7 @@ func (x *BulkFindEntitiesRequest_Entity) String() string {
 func (*BulkFindEntitiesRequest_Entity) ProtoMessage() {}
 
 func (x *BulkFindEntitiesRequest_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[27]
+	mi := &file_recon_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1543,7 +1449,7 @@ type BulkFindEntitiesResponse_Entity struct {
 func (x *BulkFindEntitiesResponse_Entity) Reset() {
 	*x = BulkFindEntitiesResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[28]
+		mi := &file_recon_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1556,7 +1462,7 @@ func (x *BulkFindEntitiesResponse_Entity) String() string {
 func (*BulkFindEntitiesResponse_Entity) ProtoMessage() {}
 
 func (x *BulkFindEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[28]
+	mi := &file_recon_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1604,7 +1510,7 @@ type RecognizePlacesResponse_Place struct {
 func (x *RecognizePlacesResponse_Place) Reset() {
 	*x = RecognizePlacesResponse_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[29]
+		mi := &file_recon_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1617,7 +1523,7 @@ func (x *RecognizePlacesResponse_Place) String() string {
 func (*RecognizePlacesResponse_Place) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[29]
+	mi := &file_recon_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1654,7 +1560,7 @@ type RecognizePlacesResponse_Item struct {
 func (x *RecognizePlacesResponse_Item) Reset() {
 	*x = RecognizePlacesResponse_Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[30]
+		mi := &file_recon_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1667,7 +1573,7 @@ func (x *RecognizePlacesResponse_Item) String() string {
 func (*RecognizePlacesResponse_Item) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[30]
+	mi := &file_recon_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1708,7 +1614,7 @@ type RecognizePlacesResponse_Items struct {
 func (x *RecognizePlacesResponse_Items) Reset() {
 	*x = RecognizePlacesResponse_Items{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[31]
+		mi := &file_recon_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1721,7 +1627,7 @@ func (x *RecognizePlacesResponse_Items) String() string {
 func (*RecognizePlacesResponse_Items) ProtoMessage() {}
 
 func (x *RecognizePlacesResponse_Items) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[31]
+	mi := &file_recon_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1744,157 +1650,6 @@ func (x *RecognizePlacesResponse_Items) GetItems() []*RecognizePlacesResponse_It
 	return nil
 }
 
-type RecognizeEntitiesResponse_Entity struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Dcid string `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
-}
-
-func (x *RecognizeEntitiesResponse_Entity) Reset() {
-	*x = RecognizeEntitiesResponse_Entity{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[33]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecognizeEntitiesResponse_Entity) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecognizeEntitiesResponse_Entity) ProtoMessage() {}
-
-func (x *RecognizeEntitiesResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[33]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecognizeEntitiesResponse_Entity.ProtoReflect.Descriptor instead.
-func (*RecognizeEntitiesResponse_Entity) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{14, 0}
-}
-
-func (x *RecognizeEntitiesResponse_Entity) GetDcid() string {
-	if x != nil {
-		return x.Dcid
-	}
-	return ""
-}
-
-type RecognizeEntitiesResponse_Item struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Required. Substring of input query.
-	Span string `protobuf:"bytes,1,opt,name=span,proto3" json:"span,omitempty"`
-	// Optional. Recognized entities.
-	Entities []*RecognizeEntitiesResponse_Entity `protobuf:"bytes,2,rep,name=entities,proto3" json:"entities,omitempty"`
-}
-
-func (x *RecognizeEntitiesResponse_Item) Reset() {
-	*x = RecognizeEntitiesResponse_Item{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[34]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecognizeEntitiesResponse_Item) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecognizeEntitiesResponse_Item) ProtoMessage() {}
-
-func (x *RecognizeEntitiesResponse_Item) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[34]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecognizeEntitiesResponse_Item.ProtoReflect.Descriptor instead.
-func (*RecognizeEntitiesResponse_Item) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{14, 1}
-}
-
-func (x *RecognizeEntitiesResponse_Item) GetSpan() string {
-	if x != nil {
-		return x.Span
-	}
-	return ""
-}
-
-func (x *RecognizeEntitiesResponse_Item) GetEntities() []*RecognizeEntitiesResponse_Entity {
-	if x != nil {
-		return x.Entities
-	}
-	return nil
-}
-
-type RecognizeEntitiesResponse_Items struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Items []*RecognizeEntitiesResponse_Item `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
-}
-
-func (x *RecognizeEntitiesResponse_Items) Reset() {
-	*x = RecognizeEntitiesResponse_Items{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[35]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *RecognizeEntitiesResponse_Items) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*RecognizeEntitiesResponse_Items) ProtoMessage() {}
-
-func (x *RecognizeEntitiesResponse_Items) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[35]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use RecognizeEntitiesResponse_Items.ProtoReflect.Descriptor instead.
-func (*RecognizeEntitiesResponse_Items) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{14, 2}
-}
-
-func (x *RecognizeEntitiesResponse_Items) GetItems() []*RecognizeEntitiesResponse_Item {
-	if x != nil {
-		return x.Items
-	}
-	return nil
-}
-
 type RecogPlace_Name struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1906,7 +1661,7 @@ type RecogPlace_Name struct {
 func (x *RecogPlace_Name) Reset() {
 	*x = RecogPlace_Name{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[37]
+		mi := &file_recon_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1919,7 +1674,7 @@ func (x *RecogPlace_Name) String() string {
 func (*RecogPlace_Name) ProtoMessage() {}
 
 func (x *RecogPlace_Name) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[37]
+	mi := &file_recon_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1932,7 +1687,7 @@ func (x *RecogPlace_Name) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecogPlace_Name.ProtoReflect.Descriptor instead.
 func (*RecogPlace_Name) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{15, 0}
+	return file_recon_proto_rawDescGZIP(), []int{13, 0}
 }
 
 func (x *RecogPlace_Name) GetParts() []string {
@@ -1956,7 +1711,7 @@ type TokenSpans_Span struct {
 func (x *TokenSpans_Span) Reset() {
 	*x = TokenSpans_Span{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_recon_proto_msgTypes[38]
+		mi := &file_recon_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1969,7 +1724,7 @@ func (x *TokenSpans_Span) String() string {
 func (*TokenSpans_Span) ProtoMessage() {}
 
 func (x *TokenSpans_Span) ProtoReflect() protoreflect.Message {
-	mi := &file_recon_proto_msgTypes[38]
+	mi := &file_recon_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1982,7 +1737,7 @@ func (x *TokenSpans_Span) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TokenSpans_Span.ProtoReflect.Descriptor instead.
 func (*TokenSpans_Span) Descriptor() ([]byte, []int) {
-	return file_recon_proto_rawDescGZIP(), []int{17, 0}
+	return file_recon_proto_rawDescGZIP(), []int{15, 0}
 }
 
 func (x *TokenSpans_Span) GetTokens() []string {
@@ -2165,67 +1920,36 @@ var file_recon_proto_rawDesc = []byte{
 	0x20, 0x01, 0x28, 0x0b, 0x32, 0x2a, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
 	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x50, 0x6c, 0x61, 0x63,
 	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73,
-	0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x34, 0x0a, 0x18, 0x52,
-	0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69,
-	0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x71, 0x75, 0x65, 0x72, 0x69, 0x65,
-	0x73, 0x22, 0xb2, 0x03, 0x0a, 0x19, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45,
-	0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12,
-	0x57, 0x0a, 0x0b, 0x71, 0x75, 0x65, 0x72, 0x79, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x36, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69,
-	0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0a, 0x71, 0x75,
-	0x65, 0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x1c, 0x0a, 0x06, 0x45, 0x6e, 0x74, 0x69,
-	0x74, 0x79, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x1a, 0x65, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x12,
-	0x0a, 0x04, 0x73, 0x70, 0x61, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x73, 0x70,
-	0x61, 0x6e, 0x12, 0x49, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x02,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x2d, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69,
-	0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x45, 0x6e, 0x74,
-	0x69, 0x74, 0x79, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x4a, 0x0a,
-	0x05, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x12, 0x41, 0x0a, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x18,
-	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2b, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74,
-	0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74,
-	0x65, 0x6d, 0x52, 0x05, 0x69, 0x74, 0x65, 0x6d, 0x73, 0x1a, 0x6b, 0x0a, 0x0f, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03,
-	0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x42,
-	0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x2c, 0x2e,
-	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f,
-	0x67, 0x6e, 0x69, 0x7a, 0x65, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x73, 0x52, 0x05, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xbf, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x63, 0x6f, 0x67,
-	0x50, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x32, 0x0a, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x2e, 0x4e, 0x61,
-	0x6d, 0x65, 0x52, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69,
-	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63, 0x69, 0x64, 0x12, 0x2b, 0x0a,
-	0x11, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x70, 0x6c, 0x61, 0x63,
-	0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x10, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69,
-	0x6e, 0x69, 0x6e, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x70, 0x6f,
-	0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a,
-	0x70, 0x6f, 0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x1c, 0x0a, 0x04, 0x4e, 0x61,
-	0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
-	0x09, 0x52, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x22, 0x3e, 0x0a, 0x0b, 0x52, 0x65, 0x63, 0x6f,
-	0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65,
-	0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65,
-	0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x22, 0x91, 0x01, 0x0a, 0x0a, 0x54, 0x6f, 0x6b,
-	0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x12, 0x32, 0x0a, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73,
-	0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x2e,
-	0x53, 0x70, 0x61, 0x6e, 0x52, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73, 0x1a, 0x4f, 0x0a, 0x04, 0x53,
-	0x70, 0x61, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x09, 0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x12, 0x2f, 0x0a, 0x06, 0x70,
-	0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50,
-	0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x42, 0x30, 0x5a, 0x2e,
-	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f,
-	0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xbf, 0x01, 0x0a, 0x0a,
+	0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x12, 0x32, 0x0a, 0x05, 0x6e, 0x61,
+	0x6d, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61,
+	0x63, 0x65, 0x2e, 0x4e, 0x61, 0x6d, 0x65, 0x52, 0x05, 0x6e, 0x61, 0x6d, 0x65, 0x73, 0x12, 0x12,
+	0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x63,
+	0x69, 0x64, 0x12, 0x2b, 0x0a, 0x11, 0x63, 0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67,
+	0x5f, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x10, 0x63,
+	0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12,
+	0x1e, 0x0a, 0x0a, 0x70, 0x6f, 0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x70, 0x75, 0x6c, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a,
+	0x1c, 0x0a, 0x04, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73,
+	0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x05, 0x70, 0x61, 0x72, 0x74, 0x73, 0x22, 0x3e, 0x0a,
+	0x0b, 0x52, 0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x12, 0x2f, 0x0a, 0x06,
+	0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64,
+	0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52, 0x65, 0x63, 0x6f, 0x67,
+	0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x22, 0x91, 0x01,
+	0x0a, 0x0a, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53, 0x70, 0x61, 0x6e, 0x73, 0x12, 0x32, 0x0a, 0x05,
+	0x73, 0x70, 0x61, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61,
+	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x53,
+	0x70, 0x61, 0x6e, 0x73, 0x2e, 0x53, 0x70, 0x61, 0x6e, 0x52, 0x05, 0x73, 0x70, 0x61, 0x6e, 0x73,
+	0x1a, 0x4f, 0x0a, 0x04, 0x53, 0x70, 0x61, 0x6e, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65,
+	0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73,
+	0x12, 0x2f, 0x0a, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x52,
+	0x65, 0x63, 0x6f, 0x67, 0x50, 0x6c, 0x61, 0x63, 0x65, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x63, 0x65,
+	0x73, 0x42, 0x30, 0x5a, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d,
+	0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -2240,7 +1964,7 @@ func file_recon_proto_rawDescGZIP() []byte {
 	return file_recon_proto_rawDescData
 }
 
-var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 39)
+var file_recon_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
 var file_recon_proto_goTypes = []interface{}{
 	(*ReconEntities)(nil),                              // 0: datacommons.ReconEntities
 	(*CoordinateRecon)(nil),                            // 1: datacommons.CoordinateRecon
@@ -2255,66 +1979,56 @@ var file_recon_proto_goTypes = []interface{}{
 	(*BulkFindEntitiesResponse)(nil),                   // 10: datacommons.BulkFindEntitiesResponse
 	(*RecognizePlacesRequest)(nil),                     // 11: datacommons.RecognizePlacesRequest
 	(*RecognizePlacesResponse)(nil),                    // 12: datacommons.RecognizePlacesResponse
-	(*RecognizeEntitiesRequest)(nil),                   // 13: datacommons.RecognizeEntitiesRequest
-	(*RecognizeEntitiesResponse)(nil),                  // 14: datacommons.RecognizeEntitiesResponse
-	(*RecogPlace)(nil),                                 // 15: datacommons.RecogPlace
-	(*RecogPlaces)(nil),                                // 16: datacommons.RecogPlaces
-	(*TokenSpans)(nil),                                 // 17: datacommons.TokenSpans
-	(*ReconEntities_Entity)(nil),                       // 18: datacommons.ReconEntities.Entity
-	(*ReconEntities_Entity_ID)(nil),                    // 19: datacommons.ReconEntities.Entity.ID
-	(*CoordinateRecon_Place)(nil),                      // 20: datacommons.CoordinateRecon.Place
-	(*ResolveEntitiesResponse_ResolvedId)(nil),         // 21: datacommons.ResolveEntitiesResponse.ResolvedId
-	(*ResolveEntitiesResponse_ResolvedEntity)(nil),     // 22: datacommons.ResolveEntitiesResponse.ResolvedEntity
-	(*ResolveCoordinatesRequest_Coordinate)(nil),       // 23: datacommons.ResolveCoordinatesRequest.Coordinate
-	(*ResolveCoordinatesResponse_Place)(nil),           // 24: datacommons.ResolveCoordinatesResponse.Place
-	(*ResolveCoordinatesResponse_PlaceCoordinate)(nil), // 25: datacommons.ResolveCoordinatesResponse.PlaceCoordinate
-	(*ResolveIdsResponse_Entity)(nil),                  // 26: datacommons.ResolveIdsResponse.Entity
-	(*BulkFindEntitiesRequest_Entity)(nil),             // 27: datacommons.BulkFindEntitiesRequest.Entity
-	(*BulkFindEntitiesResponse_Entity)(nil),            // 28: datacommons.BulkFindEntitiesResponse.Entity
-	(*RecognizePlacesResponse_Place)(nil),              // 29: datacommons.RecognizePlacesResponse.Place
-	(*RecognizePlacesResponse_Item)(nil),               // 30: datacommons.RecognizePlacesResponse.Item
-	(*RecognizePlacesResponse_Items)(nil),              // 31: datacommons.RecognizePlacesResponse.Items
-	nil,                                                // 32: datacommons.RecognizePlacesResponse.QueryItemsEntry
-	(*RecognizeEntitiesResponse_Entity)(nil),           // 33: datacommons.RecognizeEntitiesResponse.Entity
-	(*RecognizeEntitiesResponse_Item)(nil),             // 34: datacommons.RecognizeEntitiesResponse.Item
-	(*RecognizeEntitiesResponse_Items)(nil),            // 35: datacommons.RecognizeEntitiesResponse.Items
-	nil,                                                // 36: datacommons.RecognizeEntitiesResponse.QueryItemsEntry
-	(*RecogPlace_Name)(nil),                            // 37: datacommons.RecogPlace.Name
-	(*TokenSpans_Span)(nil),                            // 38: datacommons.TokenSpans.Span
-	(*EntitySubGraph)(nil),                             // 39: datacommons.EntitySubGraph
-	(*IdWithProperty)(nil),                             // 40: datacommons.IdWithProperty
+	(*RecogPlace)(nil),                                 // 13: datacommons.RecogPlace
+	(*RecogPlaces)(nil),                                // 14: datacommons.RecogPlaces
+	(*TokenSpans)(nil),                                 // 15: datacommons.TokenSpans
+	(*ReconEntities_Entity)(nil),                       // 16: datacommons.ReconEntities.Entity
+	(*ReconEntities_Entity_ID)(nil),                    // 17: datacommons.ReconEntities.Entity.ID
+	(*CoordinateRecon_Place)(nil),                      // 18: datacommons.CoordinateRecon.Place
+	(*ResolveEntitiesResponse_ResolvedId)(nil),         // 19: datacommons.ResolveEntitiesResponse.ResolvedId
+	(*ResolveEntitiesResponse_ResolvedEntity)(nil),     // 20: datacommons.ResolveEntitiesResponse.ResolvedEntity
+	(*ResolveCoordinatesRequest_Coordinate)(nil),       // 21: datacommons.ResolveCoordinatesRequest.Coordinate
+	(*ResolveCoordinatesResponse_Place)(nil),           // 22: datacommons.ResolveCoordinatesResponse.Place
+	(*ResolveCoordinatesResponse_PlaceCoordinate)(nil), // 23: datacommons.ResolveCoordinatesResponse.PlaceCoordinate
+	(*ResolveIdsResponse_Entity)(nil),                  // 24: datacommons.ResolveIdsResponse.Entity
+	(*BulkFindEntitiesRequest_Entity)(nil),             // 25: datacommons.BulkFindEntitiesRequest.Entity
+	(*BulkFindEntitiesResponse_Entity)(nil),            // 26: datacommons.BulkFindEntitiesResponse.Entity
+	(*RecognizePlacesResponse_Place)(nil),              // 27: datacommons.RecognizePlacesResponse.Place
+	(*RecognizePlacesResponse_Item)(nil),               // 28: datacommons.RecognizePlacesResponse.Item
+	(*RecognizePlacesResponse_Items)(nil),              // 29: datacommons.RecognizePlacesResponse.Items
+	nil,                                                // 30: datacommons.RecognizePlacesResponse.QueryItemsEntry
+	(*RecogPlace_Name)(nil),                            // 31: datacommons.RecogPlace.Name
+	(*TokenSpans_Span)(nil),                            // 32: datacommons.TokenSpans.Span
+	(*EntitySubGraph)(nil),                             // 33: datacommons.EntitySubGraph
+	(*IdWithProperty)(nil),                             // 34: datacommons.IdWithProperty
 }
 var file_recon_proto_depIdxs = []int32{
-	18, // 0: datacommons.ReconEntities.entities:type_name -> datacommons.ReconEntities.Entity
-	20, // 1: datacommons.CoordinateRecon.places:type_name -> datacommons.CoordinateRecon.Place
-	39, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
-	22, // 3: datacommons.ResolveEntitiesResponse.resolved_entities:type_name -> datacommons.ResolveEntitiesResponse.ResolvedEntity
-	23, // 4: datacommons.ResolveCoordinatesRequest.coordinates:type_name -> datacommons.ResolveCoordinatesRequest.Coordinate
-	25, // 5: datacommons.ResolveCoordinatesResponse.place_coordinates:type_name -> datacommons.ResolveCoordinatesResponse.PlaceCoordinate
-	26, // 6: datacommons.ResolveIdsResponse.entities:type_name -> datacommons.ResolveIdsResponse.Entity
-	27, // 7: datacommons.BulkFindEntitiesRequest.entities:type_name -> datacommons.BulkFindEntitiesRequest.Entity
-	28, // 8: datacommons.BulkFindEntitiesResponse.entities:type_name -> datacommons.BulkFindEntitiesResponse.Entity
-	32, // 9: datacommons.RecognizePlacesResponse.query_items:type_name -> datacommons.RecognizePlacesResponse.QueryItemsEntry
-	36, // 10: datacommons.RecognizeEntitiesResponse.query_items:type_name -> datacommons.RecognizeEntitiesResponse.QueryItemsEntry
-	37, // 11: datacommons.RecogPlace.names:type_name -> datacommons.RecogPlace.Name
-	15, // 12: datacommons.RecogPlaces.places:type_name -> datacommons.RecogPlace
-	38, // 13: datacommons.TokenSpans.spans:type_name -> datacommons.TokenSpans.Span
-	19, // 14: datacommons.ReconEntities.Entity.ids:type_name -> datacommons.ReconEntities.Entity.ID
-	40, // 15: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
-	21, // 16: datacommons.ResolveEntitiesResponse.ResolvedEntity.resolved_ids:type_name -> datacommons.ResolveEntitiesResponse.ResolvedId
-	24, // 17: datacommons.ResolveCoordinatesResponse.PlaceCoordinate.places:type_name -> datacommons.ResolveCoordinatesResponse.Place
-	29, // 18: datacommons.RecognizePlacesResponse.Item.places:type_name -> datacommons.RecognizePlacesResponse.Place
-	30, // 19: datacommons.RecognizePlacesResponse.Items.items:type_name -> datacommons.RecognizePlacesResponse.Item
-	31, // 20: datacommons.RecognizePlacesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizePlacesResponse.Items
-	33, // 21: datacommons.RecognizeEntitiesResponse.Item.entities:type_name -> datacommons.RecognizeEntitiesResponse.Entity
-	34, // 22: datacommons.RecognizeEntitiesResponse.Items.items:type_name -> datacommons.RecognizeEntitiesResponse.Item
-	35, // 23: datacommons.RecognizeEntitiesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizeEntitiesResponse.Items
-	15, // 24: datacommons.TokenSpans.Span.places:type_name -> datacommons.RecogPlace
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	16, // 0: datacommons.ReconEntities.entities:type_name -> datacommons.ReconEntities.Entity
+	18, // 1: datacommons.CoordinateRecon.places:type_name -> datacommons.CoordinateRecon.Place
+	33, // 2: datacommons.ResolveEntitiesRequest.entities:type_name -> datacommons.EntitySubGraph
+	20, // 3: datacommons.ResolveEntitiesResponse.resolved_entities:type_name -> datacommons.ResolveEntitiesResponse.ResolvedEntity
+	21, // 4: datacommons.ResolveCoordinatesRequest.coordinates:type_name -> datacommons.ResolveCoordinatesRequest.Coordinate
+	23, // 5: datacommons.ResolveCoordinatesResponse.place_coordinates:type_name -> datacommons.ResolveCoordinatesResponse.PlaceCoordinate
+	24, // 6: datacommons.ResolveIdsResponse.entities:type_name -> datacommons.ResolveIdsResponse.Entity
+	25, // 7: datacommons.BulkFindEntitiesRequest.entities:type_name -> datacommons.BulkFindEntitiesRequest.Entity
+	26, // 8: datacommons.BulkFindEntitiesResponse.entities:type_name -> datacommons.BulkFindEntitiesResponse.Entity
+	30, // 9: datacommons.RecognizePlacesResponse.query_items:type_name -> datacommons.RecognizePlacesResponse.QueryItemsEntry
+	31, // 10: datacommons.RecogPlace.names:type_name -> datacommons.RecogPlace.Name
+	13, // 11: datacommons.RecogPlaces.places:type_name -> datacommons.RecogPlace
+	32, // 12: datacommons.TokenSpans.spans:type_name -> datacommons.TokenSpans.Span
+	17, // 13: datacommons.ReconEntities.Entity.ids:type_name -> datacommons.ReconEntities.Entity.ID
+	34, // 14: datacommons.ResolveEntitiesResponse.ResolvedId.ids:type_name -> datacommons.IdWithProperty
+	19, // 15: datacommons.ResolveEntitiesResponse.ResolvedEntity.resolved_ids:type_name -> datacommons.ResolveEntitiesResponse.ResolvedId
+	22, // 16: datacommons.ResolveCoordinatesResponse.PlaceCoordinate.places:type_name -> datacommons.ResolveCoordinatesResponse.Place
+	27, // 17: datacommons.RecognizePlacesResponse.Item.places:type_name -> datacommons.RecognizePlacesResponse.Place
+	28, // 18: datacommons.RecognizePlacesResponse.Items.items:type_name -> datacommons.RecognizePlacesResponse.Item
+	29, // 19: datacommons.RecognizePlacesResponse.QueryItemsEntry.value:type_name -> datacommons.RecognizePlacesResponse.Items
+	13, // 20: datacommons.TokenSpans.Span.places:type_name -> datacommons.RecogPlace
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	21, // [21:21] is the sub-list for extension extendee
+	0,  // [0:21] is the sub-list for field type_name
 }
 
 func init() { file_recon_proto_init() }
@@ -2481,30 +2195,6 @@ func file_recon_proto_init() {
 			}
 		}
 		file_recon_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecognizeEntitiesRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecognizeEntitiesResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlace); i {
 			case 0:
 				return &v.state
@@ -2516,7 +2206,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlaces); i {
 			case 0:
 				return &v.state
@@ -2528,7 +2218,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TokenSpans); i {
 			case 0:
 				return &v.state
@@ -2540,7 +2230,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReconEntities_Entity); i {
 			case 0:
 				return &v.state
@@ -2552,7 +2242,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReconEntities_Entity_ID); i {
 			case 0:
 				return &v.state
@@ -2564,7 +2254,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CoordinateRecon_Place); i {
 			case 0:
 				return &v.state
@@ -2576,7 +2266,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveEntitiesResponse_ResolvedId); i {
 			case 0:
 				return &v.state
@@ -2588,7 +2278,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveEntitiesResponse_ResolvedEntity); i {
 			case 0:
 				return &v.state
@@ -2600,7 +2290,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesRequest_Coordinate); i {
 			case 0:
 				return &v.state
@@ -2612,7 +2302,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesResponse_Place); i {
 			case 0:
 				return &v.state
@@ -2624,7 +2314,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveCoordinatesResponse_PlaceCoordinate); i {
 			case 0:
 				return &v.state
@@ -2636,7 +2326,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ResolveIdsResponse_Entity); i {
 			case 0:
 				return &v.state
@@ -2648,7 +2338,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesRequest_Entity); i {
 			case 0:
 				return &v.state
@@ -2660,7 +2350,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BulkFindEntitiesResponse_Entity); i {
 			case 0:
 				return &v.state
@@ -2672,7 +2362,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Place); i {
 			case 0:
 				return &v.state
@@ -2684,7 +2374,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Item); i {
 			case 0:
 				return &v.state
@@ -2696,7 +2386,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecognizePlacesResponse_Items); i {
 			case 0:
 				return &v.state
@@ -2708,43 +2398,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecognizeEntitiesResponse_Entity); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecognizeEntitiesResponse_Item); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RecognizeEntitiesResponse_Items); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_recon_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RecogPlace_Name); i {
 			case 0:
 				return &v.state
@@ -2756,7 +2410,7 @@ func file_recon_proto_init() {
 				return nil
 			}
 		}
-		file_recon_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
+		file_recon_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TokenSpans_Span); i {
 			case 0:
 				return &v.state
@@ -2775,7 +2429,7 @@ func file_recon_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_recon_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   39,
+			NumMessages:   33,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

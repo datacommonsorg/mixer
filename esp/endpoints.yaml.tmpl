@@ -28,6 +28,7 @@ title:
 
 apis:
   - name: datacommons.Mixer
+  - name: datacommons.HttpProxyService
 
 endpoints:
 - target:
@@ -38,24 +39,26 @@ backend:
     # Default timeout for the ESP and mixer GRPC server.
     - selector: "datacommons.Mixer.*"
       deadline: 60
+    # Route /mcp to the HTTP service on port 12346
+    - selector: "datacommons.HttpProxyService.HttpProxy"
+      address: "http://127.0.0.1:12346"
+      path_translation: APPEND_PATH_TO_ADDRESS
+      deadline: 300
+      overrides_by_request_protocol:
+        http:
+          selector: "datacommons.HttpProxyService.HttpProxy"
+          address: "http://127.0.0.1:12346"
+          path_translation: APPEND_PATH_TO_ADDRESS
+          protocol: "http/1.1"
+          deadline: 300
 
 usage:
   rules:
   # V0 APIs can be called without an API Key.
   # This will be removed once the V0 users are fully migrated.
-  - selector: "datacommons.Mixer.GetPropertyLabels"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPropertyValues"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetTriples"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPlacesIn"
-    allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStats"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStatSetSeries"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetStatValue"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetStatSetWithinPlace"
     allow_unregistered_calls: true
@@ -74,8 +77,6 @@ usage:
   - selector: "datacommons.Mixer.Search"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetVersion"
-    allow_unregistered_calls: true
-  - selector: "datacommons.Mixer.GetPlaceStatVars"
     allow_unregistered_calls: true
   - selector: "datacommons.Mixer.GetPlaceStatDateWithinPlace"
     allow_unregistered_calls: true

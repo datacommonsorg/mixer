@@ -28,33 +28,43 @@ func TestUpdateNodeRequestNextToken(t *testing.T) {
 	}
 
 	for _, c := range []struct {
-		req           *pbv2.NodeRequest
-		id            string
-		wantNextToken string
+		req             *pbv2.NodeRequest
+		id              string
+		wantNextToken   string
+		wantIsExhausted bool
 	}{
 		{
 			&pbv2.NodeRequest{},
 			"remote",
 			"",
+			false,
 		},
 		{
+			// Token holding entries for other sources only: this source finished
+			// on an earlier page.
 			&pbv2.NodeRequest{
 				NextToken: "H4sIAAAAAAAA/+Li5+IoLkjMy0stMpRi5uhQRxIwkmLmeMEOAAAA//8BAAD//6VaKZYiAAAA",
 			},
 			"remote",
-			"",
+			"H4sIAAAAAAAA/+Li5+IoLkjMy0stMpRi5uhQRxIwkmLmeMEOAAAA//8BAAD//6VaKZYiAAAA",
+			true,
 		},
 		{
+			// Token holding a cursor for this source.
 			&pbv2.NodeRequest{
 				NextToken: "H4sIAAAAAAAA/+Li5+IoLkjMy0stMpRi5uhQ55Lh4kjKTC9JTMpJFRLg4uNiyU6tNBJi42ASYJLgQlJuJMXM8YKdS4qLrSg1N78kVUmgJLW4RKG4pCgzL10hMy8tHwAAAP//AQAA///cX0j1XAAAAA==",
 			},
 			"remote",
 			"test string info",
+			false,
 		},
 	} {
-		err := updateNodeRequestNextToken(c.req, c.id)
+		isExhausted, err := updateNodeRequestNextToken(c.req, c.id)
 		if err != nil {
 			t.Errorf("Error running updateNodeRequestNextToken(%v, %v)", c.req, c.id)
+		}
+		if isExhausted != c.wantIsExhausted {
+			t.Errorf("updateNodeRequestNextToken(%v, %v) = %t, want %t", c.req, c.id, isExhausted, c.wantIsExhausted)
 		}
 		if diff := cmp.Diff(c.req.GetNextToken(), c.wantNextToken, cmpOpts); diff != "" {
 			t.Errorf("updateNodeRequestNextToken(%v, %v) got nextToken diff: %s", c.req, c.id, diff)

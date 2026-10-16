@@ -32,6 +32,6 @@ yq eval -i '.endpoints[0].target = env(IP)' endpoints.yaml
 yq eval -i '.endpoints[0].name = env(DOMAIN)' endpoints.yaml
 
 ## Deploy ESP configuration
-gsutil cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb .
+gcloud storage cp gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb .
 gcloud endpoints services deploy mixer-grpc.latest.pb endpoints.yaml --project $PROJECT_ID
 gcloud services enable $DOMAIN

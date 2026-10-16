@@ -40,14 +40,18 @@ func (rds *RemoteDataSource) Type() datasource.DataSourceType {
 }
 
 // Id returns the id of the data source.
+//
+// Note this is not the id RemoteClient keys its pagination token entries by,
+// which is the bare remote mixer domain. The two are self-consistent today
+// because the client both writes and reads that entry, but the divergence
+// means token entries cannot be matched against DataSource.Id().
 func (rds *RemoteDataSource) Id() string {
 	return fmt.Sprintf("%s-%s", string(rds.Type()), rds.client.id)
 }
 
 func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-	// The remote datasource currently calls V2 node, which does not use custom pageSize.
-	// TODO: Configure a bounded HTTP timeout in FetchRemote so remote requests honor
-	// cancellation and deadlines.
+	// pageSize is ignored: the request, including NodeRequest.limit, is forwarded
+	// to the remote V2 node API, which picks its own page size.
 	return rds.client.Node(ctx, req)
 }
 
@@ -80,11 +84,11 @@ func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv
 }
 
 func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
-	return rds.client.SdmxData(req)
+	return rds.client.SdmxData(ctx, req)
 }
 
 func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
-	return rds.client.SdmxAvailability(req)
+	return rds.client.SdmxAvailability(ctx, req)
 }
 
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

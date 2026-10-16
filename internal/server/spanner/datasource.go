@@ -30,7 +30,6 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -143,6 +142,17 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
+	// A source that has returned all of its rows is dropped from the merged
+	// pagination token, so a token with no entry for this source means there is
+	// nothing left to return. Querying anyway would restart at offset 0.
+	offset, isExhausted, err := getOffset(req.GetNextToken(), sds.Id())
+	if err != nil {
+		return nil, fmt.Errorf("error decoding pagination info: %w", err)
+	}
+	if isExhausted {
+		return &pbv2.NodeResponse{}, nil
+	}
+
 	artifacts := addOptimizationsToNodeRequest(arc)
 	var resp *pbv2.NodeResponse
 	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
@@ -152,10 +162,6 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		}
 		resp = nodePropsToNodeResponse(props)
 	} else {
-		offset, err := getOffset(req.NextToken, sds.Id())
-		if err != nil {
-			return nil, fmt.Errorf("error decoding pagination info: %v", err)
-		}
 		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, pageSize, offset)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
@@ -505,17 +511,23 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+	if req == nil {
+		return nil, status.Errorf(codes.InvalidArgument, "request is nil")
+	}
 	normalizedResolveRequest, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
 	}
 
-	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
-		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	resolver := normalizedResolveRequest.Request.GetResolver()
+	if sds.searchConfig != nil {
+		if searchConfig, ok := sds.searchConfig.SearchConfigs[resolver]; ok {
+			slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
+			return sds.vectorSearchResolution(ctx, normalizedResolveRequest, searchConfig)
+		}
 	}
 
-	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
+	if resolver == resolvev2.ResolveResolverTopic {
 		if sds.topicExpander == nil {
 			slog.Error("SpannerDataSource: topic expander is not initialized")
 			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized in SpannerDataSource")
@@ -559,33 +571,58 @@ func loadSpannerSearchConfig(path string) (*SpannerSearchConfig, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to load search config from %s: %w", resolvedPath, err)
 	}
-	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabel", cfg.SearchConfig.EmbeddingLabel)
+	embeddingLabels := make(map[string]string, len(cfg.SearchConfigs))
+	for k, sc := range cfg.SearchConfigs {
+		embeddingLabels[k] = sc.EmbeddingLabel
+	}
+	slog.Info("Loaded Spanner search config", "path", resolvedPath, "embeddingLabels", embeddingLabels)
 	return cfg, nil
+}
+
+// validateAndNormalizeVectorSearchTypes validates and returns the typeOfs filter for vector search.
+// Returns normalized types and a boolean indicating whether resolution should continue.
+func validateAndNormalizeVectorSearchTypes(searchConfig SearchConfig, typeOfs []string) ([]string, bool) {
+	if len(searchConfig.IncludedTypes) > 0 {
+		if len(typeOfs) == 0 {
+			// Use the included types from the search config if no typeOfs are provided.
+			return searchConfig.IncludedTypes, true
+		}
+		for _, t := range typeOfs {
+			if !slices.Contains(searchConfig.IncludedTypes, t) {
+				slog.Warn("Embeddings resolution requested for unsupported type.", "type", t, "includedTypes", searchConfig.IncludedTypes)
+				return nil, false
+			}
+		}
+	}
+	if len(searchConfig.ExcludedTypes) > 0 {
+		for _, t := range typeOfs {
+			if slices.Contains(searchConfig.ExcludedTypes, t) {
+				slog.Warn("Embeddings resolution requested for excluded type.", "type", t, "excludedTypes", searchConfig.ExcludedTypes)
+				return nil, false
+			}
+		}
+	}
+	return typeOfs, true
 }
 
 // vectorSearchResolution resolves nodes using Spanner vector search.
 func (sds *SpannerDataSource) vectorSearchResolution(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
+	searchConfig SearchConfig,
 ) (*pbv2.ResolveResponse, error) {
-	cfg := sds.searchConfig
-	if cfg == nil {
-		return nil, status.Errorf(codes.Internal, "failed to load search config")
+	if searchConfig.EmbeddingTable == "" {
+		slog.Warn("Embedding table is not configured in SearchConfig.", "resolver", req.Request.GetResolver())
+		return &pbv2.ResolveResponse{}, nil
+	}
+
+	typeOfs, ok := validateAndNormalizeVectorSearchTypes(searchConfig, req.TypeOfValues)
+	if !ok {
+		return nil, fmt.Errorf("invalid typeOfs %v for resolver %s", req.TypeOfValues, req.Request.GetResolver())
 	}
 
 	resolveResponse := &pbv2.ResolveResponse{
 		Entities: []*pbv2.ResolveResponse_Entity{},
-	}
-	typeOfs := req.TypeOfValues
-	if len(typeOfs) == 0 {
-		typeOfs = []string{TypeStatisticalVariable, TypeTopic}
-	} else {
-		for _, t := range typeOfs {
-			if t != TypeStatisticalVariable && t != TypeTopic {
-				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
-				return &pbv2.ResolveResponse{}, nil
-			}
-		}
 	}
 
 	nodes := req.Request.GetNodes()
@@ -595,7 +632,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	if sds.embedder == nil {
 		return nil, status.Errorf(codes.Internal, "Embedder is not initialized in SpannerDataSource")
 	}
-	if cfg.SearchConfig.EmbeddingModelEndpoint == "" {
+	if searchConfig.EmbeddingModelEndpoint == "" {
 		return nil, fmt.Errorf("EmbeddingModelEndpoint is required in SearchConfig")
 	}
 
@@ -607,7 +644,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 1. Get term embedding
-			embeddings, err := sds.embedder.Embed(errCtx, cfg.SearchConfig.EmbeddingModelEndpoint, string(cfg.SearchConfig.QueryTaskType), node)
+			embeddings, err := sds.embedder.Embed(errCtx, searchConfig.EmbeddingModelEndpoint, string(searchConfig.QueryTaskType), node)
 			if err != nil {
 				return err
 			}
@@ -617,26 +654,27 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			}
 
 			// 2. Vector search (fetch 2x limit to ensure unique candidates count reaches limit after deduplication)
-			fetchLimit := cfg.SearchConfig.Limit * 2
+			fetchLimit := searchConfig.Limit * 2
 			if fetchLimit <= 0 {
-				fetchLimit = cfg.SearchConfig.Limit
+				fetchLimit = searchConfig.Limit
 			}
+
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
-				cfg.SearchConfig.EmbeddingTable,
+				searchConfig.EmbeddingTable,
 				fetchLimit,
 				embeddings,
-				cfg.SearchConfig.NumLeaves,
-				cfg.SearchConfig.Threshold,
+				searchConfig.NumLeaves,
+				searchConfig.Threshold,
 				typeOfs,
-				cfg.SearchConfig.EmbeddingLabel,
+				searchConfig.EmbeddingLabel,
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
 			}
 
 			// 3. Build candidates with deduplication by SubjectID (highest score first)
-			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, cfg.SearchConfig.Limit)
+			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, searchConfig.Limit)
 			seen := make(map[string]bool, len(searchResults))
 			var svDcids []string
 			for _, res := range searchResults {
@@ -668,7 +706,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				if slices.Contains(res.Types, TypeStatisticalVariable) {
 					svDcids = append(svDcids, res.SubjectID)
 				}
-				if cfg.SearchConfig.Limit > 0 && len(candidates) >= cfg.SearchConfig.Limit {
+				if searchConfig.Limit > 0 && len(candidates) >= searchConfig.Limit {
 					break
 				}
 			}
@@ -896,7 +934,7 @@ func (sds *SpannerDataSource) fetchTypes(
 	}
 
 	typeArc := &v2.Arc{SingleProp: "typeOf", Out: true}
-	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, datasources.DefaultPageSize, 0)
+	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, unpaginatedLookupPageSize, 0)
 	if err != nil {
 		return nil, err
 	}

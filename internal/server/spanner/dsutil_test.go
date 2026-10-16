@@ -731,3 +731,147 @@ func TestNodeEdgesToLinkedGraph(t *testing.T) {
 		})
 	}
 }
+
+func TestGetOffset(t *testing.T) {
+	const dataSourceID = "spanner-test-db"
+
+	tokenForThisSource, err := getNextToken(100, dataSourceID)
+	if err != nil {
+		t.Fatalf("getNextToken(100, %q) error = %v", dataSourceID, err)
+	}
+	tokenForOtherSource, err := getNextToken(100, "spanner-other-db")
+	if err != nil {
+		t.Fatalf("getNextToken(100, %q) error = %v", "spanner-other-db", err)
+	}
+	tokenWithRemoteInfo, err := util.EncodeProto(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id:             dataSourceID,
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{StringInfo: "remote cursor"},
+			},
+		},
+	})
+	if err != nil {
+		t.Fatalf("util.EncodeProto() error = %v", err)
+	}
+
+	tests := []struct {
+		name            string
+		nextToken       string
+		wantOffset      int
+		wantIsExhausted bool
+		wantErr         bool
+	}{
+		{
+			name: "first page",
+		},
+		{
+			name:       "cursor for this source",
+			nextToken:  tokenForThisSource,
+			wantOffset: 100,
+		},
+		{
+			name:            "source dropped from token",
+			nextToken:       tokenForOtherSource,
+			wantIsExhausted: true,
+		},
+		{
+			name:      "non-spanner info for this source",
+			nextToken: tokenWithRemoteInfo,
+			wantErr:   true,
+		},
+		{
+			name:      "malformed token",
+			nextToken: "!!!",
+			wantErr:   true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			offset, isExhausted, err := getOffset(tc.nextToken, dataSourceID)
+			if (err != nil) != tc.wantErr {
+				t.Fatalf("getOffset(%q, %q) error = %v, wantErr %v", tc.nextToken, dataSourceID, err, tc.wantErr)
+			}
+			if offset != tc.wantOffset || isExhausted != tc.wantIsExhausted {
+				t.Errorf("getOffset(%q, %q) = (%d, %t), want (%d, %t)", tc.nextToken, dataSourceID, offset, isExhausted, tc.wantOffset, tc.wantIsExhausted)
+			}
+		})
+	}
+}
+
+func TestOrderedFacetsRankingByProvenanceWithoutImportName(t *testing.T) {
+	const (
+		variable = "Count_Person"
+		entity   = "country/USA"
+	)
+	observations := []*Observation{
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wikidata",
+			ProvenanceID:      "dc/base/WikidataPopulation",
+			MeasurementMethod: "WikidataPopulation",
+			Observations:      TimeSeries{{Date: "2026", Value: "345000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wdi",
+			ProvenanceID:      "dc/base/WorldDevelopmentIndicators",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2025", Value: "340000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "acs",
+			ProvenanceID:      "dc/base/CensusACS5YearSurvey",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			Observations:      TimeSeries{{Date: "2024", Value: "335000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "pep",
+			ProvenanceID:      "dc/base/USCensusPEP_Annual_Population",
+			MeasurementMethod: "CensusPEPSurvey",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2023", Value: "334000000"}},
+		},
+	}
+
+	// 1. All dates request: includes all facets ranked by ProvenanceId (pep -> acs -> wdi -> wikidata).
+	allDatesReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+	}
+	allResp := obsToObsResponse(allDatesReq, observations)
+	var gotAllIDs []string
+	for _, f := range allResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotAllIDs = append(gotAllIDs, f.FacetId)
+	}
+	wantAllIDs := []string{"pep", "acs", "wdi", "wikidata"}
+	if diff := cmp.Diff(wantAllIDs, gotAllIDs); diff != "" {
+		t.Errorf("all dates OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+
+	// 2. LATEST request: filters out inferior facet (wikidata) even though it has the newest date (2026).
+	latestReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+		Date:     "LATEST",
+	}
+	latestResp := obsToObsResponse(latestReq, observations)
+	var gotLatestIDs []string
+	for _, f := range latestResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotLatestIDs = append(gotLatestIDs, f.FacetId)
+	}
+	wantLatestIDs := []string{"pep", "acs", "wdi"}
+	if diff := cmp.Diff(wantLatestIDs, gotLatestIDs); diff != "" {
+		t.Errorf("LATEST OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+	if _, exists := latestResp.Facets["wikidata"]; exists {
+		t.Errorf("expected inferior facet 'wikidata' to be removed from Facets map on LATEST request")
+	}
+}

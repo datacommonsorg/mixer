@@ -22,6 +22,9 @@ import (
 
 // QueryConfig controls Spanner query-planning behavior.
 type QueryConfig struct {
+	// BulkSVGBuildRightNodes contains StatVarGroup nodes that should build the
+	// TimeSeries side of filtered child-SVG hash joins for N <= 1 requests.
+	BulkSVGBuildRightNodes []string
 	// ContainedInPlaceAncestorFirstTypes contains child place types that
 	// should filter by ancestor before type when the query builder supports
 	// that access path.
@@ -37,17 +40,30 @@ type QueryConfig struct {
 	// SpannerEmulatorCompatibility indicates whether queries should be
 	// formatted for Cloud Spanner Emulator (e.g. omitting unsupported hints).
 	SpannerEmulatorCompatibility bool
+	// UseMaterializedLinkedEdge indicates whether queries should use the
+	// LinkedEdge table.
+	UseMaterializedLinkedEdge bool
 }
 
 type containedInPlaceAccessPath int
 
 const (
-	containedInPlaceTypeFirst containedInPlaceAccessPath = iota
+	containedInPlaceLinkedEdge containedInPlaceAccessPath = iota
+	containedInPlaceTypeFirst
 	containedInPlaceAncestorFirst
 )
 
 // Validate verifies that QueryConfig is safe to distribute to query builders.
 func (config QueryConfig) Validate() error {
+	for _, node := range config.BulkSVGBuildRightNodes {
+		trimmed := strings.TrimSpace(node)
+		if trimmed == "" {
+			return fmt.Errorf("QueryConfig: BulkSVGBuildRightNodes must not contain empty values")
+		}
+		if trimmed != node {
+			return fmt.Errorf("QueryConfig: BulkSVGBuildRightNodes must not contain surrounding whitespace")
+		}
+	}
 	if config.ContainedInPlaceEntityScanMinVariables < 0 {
 		return fmt.Errorf("QueryConfig: ContainedInPlaceEntityScanMinVariables must be non-negative")
 	}

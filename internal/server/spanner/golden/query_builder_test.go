@@ -22,7 +22,6 @@ import (
 	"testing"
 
 	cloudSpanner "cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
@@ -51,7 +50,7 @@ func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 			return spanner.GetNodeEdgesByIDQuery(
 				c.ids,
 				c.arc,
-				datasources.DefaultPageSize,
+				goldenPageSize,
 				c.offset,
 				spanner.QueryConfig{},
 			)
@@ -69,9 +68,11 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 			return spanner.GetNodeEdgesByIDQuery(
 				c.ids,
 				c.arc,
-				datasources.DefaultPageSize,
+				goldenPageSize,
 				c.offset,
-				spanner.QueryConfig{},
+				spanner.QueryConfig{
+					UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge,
+				},
 			)
 		})
 	}
@@ -118,7 +119,7 @@ func TestGetNodeContainedInPlaceAccessPathQuery(t *testing.T) {
 							"typeOf": tc.placeTypes,
 						},
 					},
-					datasources.DefaultPageSize,
+					goldenPageSize,
 					0,
 					tc.queryConfig,
 				)
@@ -156,7 +157,7 @@ func TestGetNodeDirectContainedInPlaceQuery(t *testing.T) {
 							"typeOf": tc.placeTypes,
 						},
 					},
-					datasources.DefaultPageSize,
+					goldenPageSize,
 					0,
 					spanner.QueryConfig{},
 				)
@@ -265,7 +266,7 @@ func TestGetProvenanceSummaryQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, c.variables, false), nil
+			return spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, c.variables), nil
 		})
 	}
 }
@@ -273,12 +274,12 @@ func TestGetProvenanceSummaryQuery(t *testing.T) {
 func TestGetKeyValueStoreQuery(t *testing.T) {
 	t.Parallel()
 
-	stmt := spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, []string{"foo"}, true)
+	stmt := spanner.GetKeyValueStoreQuery(spanner.TypeProvenanceSummary, []string{"foo"})
 	if stmt == nil {
 		t.Fatal("GetKeyValueStoreQuery returned nil statement")
 	}
 	if !strings.Contains(stmt.SQL, "FROM\n\t\t\tKeyValueStore") {
-		t.Errorf("GetKeyValueStoreQuery(..., useKeyValueStore=true) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
+		t.Errorf("GetKeyValueStoreQuery(...) SQL = %q, want it to contain KeyValueStore table", stmt.SQL)
 	}
 }
 
@@ -353,7 +354,6 @@ func TestGetFilteredTopicChildren(t *testing.T) {
 		})
 	}
 }
-
 
 func TestVectorSearchQuery(t *testing.T) {
 	t.Parallel()

@@ -72,17 +72,10 @@ const (
 	Mixer_V2AgentGetVariableMetadata_FullMethodName   = "/datacommons.Mixer/V2AgentGetVariableMetadata"
 	Mixer_V2GetLocationsRankings_FullMethodName       = "/datacommons.Mixer/V2GetLocationsRankings"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
-	Mixer_GetPropertyLabels_FullMethodName            = "/datacommons.Mixer/GetPropertyLabels"
-	Mixer_GetPropertyValues_FullMethodName            = "/datacommons.Mixer/GetPropertyValues"
-	Mixer_GetTriples_FullMethodName                   = "/datacommons.Mixer/GetTriples"
-	Mixer_GetPlacesIn_FullMethodName                  = "/datacommons.Mixer/GetPlacesIn"
 	Mixer_GetStats_FullMethodName                     = "/datacommons.Mixer/GetStats"
-	Mixer_GetStatValue_FullMethodName                 = "/datacommons.Mixer/GetStatValue"
 	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
-	Mixer_GetPlaceStatVars_FullMethodName             = "/datacommons.Mixer/GetPlaceStatVars"
-	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_BulkPropertyValues_FullMethodName           = "/datacommons.Mixer/BulkPropertyValues"
 	Mixer_BulkLinkedPropertyValues_FullMethodName     = "/datacommons.Mixer/BulkLinkedPropertyValues"
 	Mixer_BulkPlaceInfo_FullMethodName                = "/datacommons.Mixer/BulkPlaceInfo"
@@ -100,7 +93,6 @@ const (
 	Mixer_ResolveIds_FullMethodName                   = "/datacommons.Mixer/ResolveIds"
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
-	Mixer_RecognizeEntities_FullMethodName            = "/datacommons.Mixer/RecognizeEntities"
 	Mixer_GetImportTableData_FullMethodName           = "/datacommons.Mixer/GetImportTableData"
 )
 
@@ -143,32 +135,16 @@ type MixerClient interface {
 	V2GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
-	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(ctx context.Context, in *proto.GetPropertyLabelsRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
-	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(ctx context.Context, in *proto.GetPropertyValuesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
-	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(ctx context.Context, in *proto.GetTriplesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error)
-	// Get places contained in parent places.
-	GetPlacesIn(ctx context.Context, in *proto.GetPlacesInRequest, opts ...grpc.CallOption) (*proto.GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
 	GetStats(ctx context.Context, in *proto.GetStatsRequest, opts ...grpc.CallOption) (*proto.GetStatsResponse, error)
-	// Get a single stat value given a place, a statistical variable and a date.
-	// If no date is given, the latest statistical variable will be returned.
-	GetStatValue(ctx context.Context, in *proto.GetStatValueRequest, opts ...grpc.CallOption) (*proto.GetStatValueResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error)
-	// Give a list of place dcids, return all the statistical variables for each
-	// place.
-	GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatVarsResponse, error)
-	// Query DataCommons Graph with Sparql.
-	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	BulkPropertyValues(ctx context.Context, in *v1.BulkPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
 	BulkLinkedPropertyValues(ctx context.Context, in *v1.BulkLinkedPropertyValuesRequest, opts ...grpc.CallOption) (*v1.BulkPropertyValuesResponse, error)
 	BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error)
@@ -192,9 +168,6 @@ type MixerClient interface {
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
-	// Deprecated: Do not use.
-	// Recognize non-place entities from a NL query.
-	RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error)
 	// Get data from the imports table, used to populate import history table
 	// of the admin page for custom DCs
 	GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error)
@@ -474,54 +447,9 @@ func (c *mixerClient) Query(ctx context.Context, in *proto.QueryRequest, opts ..
 	return out, nil
 }
 
-func (c *mixerClient) GetPropertyLabels(ctx context.Context, in *proto.GetPropertyLabelsRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
-	out := new(proto.PayloadResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPropertyLabels_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPropertyValues(ctx context.Context, in *proto.GetPropertyValuesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
-	out := new(proto.PayloadResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPropertyValues_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetTriples(ctx context.Context, in *proto.GetTriplesRequest, opts ...grpc.CallOption) (*proto.PayloadResponse, error) {
-	out := new(proto.PayloadResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetTriples_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlacesIn(ctx context.Context, in *proto.GetPlacesInRequest, opts ...grpc.CallOption) (*proto.GetPlacesInResponse, error) {
-	out := new(proto.GetPlacesInResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPlacesIn_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) GetStats(ctx context.Context, in *proto.GetStatsRequest, opts ...grpc.CallOption) (*proto.GetStatsResponse, error) {
 	out := new(proto.GetStatsResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetStats_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatValue(ctx context.Context, in *proto.GetStatValueRequest, opts ...grpc.CallOption) (*proto.GetStatValueResponse, error) {
-	out := new(proto.GetStatValueResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetStatValue_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -549,24 +477,6 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRela
 func (c *mixerClient) GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error) {
 	out := new(proto.GetVersionResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetVersion_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatVarsResponse, error) {
-	out := new(proto.GetPlaceStatVarsResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPlaceStatVars_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
-	out := new(proto.QueryResponse)
-	err := c.cc.Invoke(ctx, Mixer_QueryV1_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -726,16 +636,6 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 	return out, nil
 }
 
-// Deprecated: Do not use.
-func (c *mixerClient) RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error) {
-	out := new(proto.RecognizeEntitiesResponse)
-	err := c.cc.Invoke(ctx, Mixer_RecognizeEntities_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error) {
 	out := new(proto.GetImportTableDataResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetImportTableData_FullMethodName, in, out, opts...)
@@ -784,32 +684,16 @@ type MixerServer interface {
 	V2GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
-	// Fetch property labels adjacent of nodes
-	GetPropertyLabels(context.Context, *proto.GetPropertyLabelsRequest) (*proto.PayloadResponse, error)
-	// Fetch nodes that linked to source nodes with a given property.
-	GetPropertyValues(context.Context, *proto.GetPropertyValuesRequest) (*proto.PayloadResponse, error)
-	// Fetch triples that have the given nodes as subject or object.
-	GetTriples(context.Context, *proto.GetTriplesRequest) (*proto.PayloadResponse, error)
-	// Get places contained in parent places.
-	GetPlacesIn(context.Context, *proto.GetPlacesInRequest) (*proto.GetPlacesInResponse, error)
 	// Get stats of places by StatisticalVariable. If multiple time series data
 	// are avaialable, the highest ranked one by measurement method and import
 	// will be returned.
 	GetStats(context.Context, *proto.GetStatsRequest) (*proto.GetStatsResponse, error)
-	// Get a single stat value given a place, a statistical variable and a date.
-	// If no date is given, the latest statistical variable will be returned.
-	GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error)
 	// Get rankings for given stat var DCIDs.
 	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error)
-	// Give a list of place dcids, return all the statistical variables for each
-	// place.
-	GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error)
-	// Query DataCommons Graph with Sparql.
-	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
 	BulkLinkedPropertyValues(context.Context, *v1.BulkLinkedPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error)
 	BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error)
@@ -833,9 +717,6 @@ type MixerServer interface {
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
-	// Deprecated: Do not use.
-	// Recognize non-place entities from a NL query.
-	RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error)
 	// Get data from the imports table, used to populate import history table
 	// of the admin page for custom DCs
 	GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error)
@@ -926,23 +807,8 @@ func (UnimplementedMixerServer) V2GetLocationsRankings(context.Context, *proto.G
 func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
 }
-func (UnimplementedMixerServer) GetPropertyLabels(context.Context, *proto.GetPropertyLabelsRequest) (*proto.PayloadResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyLabels not implemented")
-}
-func (UnimplementedMixerServer) GetPropertyValues(context.Context, *proto.GetPropertyValuesRequest) (*proto.PayloadResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPropertyValues not implemented")
-}
-func (UnimplementedMixerServer) GetTriples(context.Context, *proto.GetTriplesRequest) (*proto.PayloadResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTriples not implemented")
-}
-func (UnimplementedMixerServer) GetPlacesIn(context.Context, *proto.GetPlacesInRequest) (*proto.GetPlacesInResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlacesIn not implemented")
-}
 func (UnimplementedMixerServer) GetStats(context.Context, *proto.GetStatsRequest) (*proto.GetStatsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStats not implemented")
-}
-func (UnimplementedMixerServer) GetStatValue(context.Context, *proto.GetStatValueRequest) (*proto.GetStatValueResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatValue not implemented")
 }
 func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLocationsRankings not implemented")
@@ -952,12 +818,6 @@ func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetR
 }
 func (UnimplementedMixerServer) GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
-}
-func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
-}
-func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
 }
 func (UnimplementedMixerServer) BulkPropertyValues(context.Context, *v1.BulkPropertyValuesRequest) (*v1.BulkPropertyValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkPropertyValues not implemented")
@@ -1009,9 +869,6 @@ func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFin
 }
 func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
-}
-func (UnimplementedMixerServer) RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RecognizeEntities not implemented")
 }
 func (UnimplementedMixerServer) GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetImportTableData not implemented")
@@ -1517,78 +1374,6 @@ func _Mixer_Query_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_GetPropertyLabels_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPropertyLabelsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPropertyLabels(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPropertyLabels_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPropertyLabels(ctx, req.(*proto.GetPropertyLabelsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPropertyValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPropertyValuesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPropertyValues(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPropertyValues_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPropertyValues(ctx, req.(*proto.GetPropertyValuesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetTriples_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetTriplesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetTriples(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetTriples_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetTriples(ctx, req.(*proto.GetTriplesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlacesIn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPlacesInRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlacesIn(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPlacesIn_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlacesIn(ctx, req.(*proto.GetPlacesInRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.GetStatsRequest)
 	if err := dec(in); err != nil {
@@ -1603,24 +1388,6 @@ func _Mixer_GetStats_Handler(srv interface{}, ctx context.Context, dec func(inte
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStats(ctx, req.(*proto.GetStatsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatValue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetStatValueRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatValue(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetStatValue_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatValue(ctx, req.(*proto.GetStatValueRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1675,42 +1442,6 @@ func _Mixer_GetVersion_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetVersion(ctx, req.(*proto.GetVersionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlaceStatVars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPlaceStatVarsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceStatVars(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPlaceStatVars_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatVars(ctx, req.(*proto.GetPlaceStatVarsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_QueryV1_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.QueryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).QueryV1(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_QueryV1_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).QueryV1(ctx, req.(*proto.QueryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2021,24 +1752,6 @@ func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_RecognizeEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.RecognizeEntitiesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).RecognizeEntities(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_RecognizeEntities_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).RecognizeEntities(ctx, req.(*proto.RecognizeEntitiesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_GetImportTableData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.GetImportTableDataRequest)
 	if err := dec(in); err != nil {
@@ -2169,28 +1882,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_Query_Handler,
 		},
 		{
-			MethodName: "GetPropertyLabels",
-			Handler:    _Mixer_GetPropertyLabels_Handler,
-		},
-		{
-			MethodName: "GetPropertyValues",
-			Handler:    _Mixer_GetPropertyValues_Handler,
-		},
-		{
-			MethodName: "GetTriples",
-			Handler:    _Mixer_GetTriples_Handler,
-		},
-		{
-			MethodName: "GetPlacesIn",
-			Handler:    _Mixer_GetPlacesIn_Handler,
-		},
-		{
 			MethodName: "GetStats",
 			Handler:    _Mixer_GetStats_Handler,
-		},
-		{
-			MethodName: "GetStatValue",
-			Handler:    _Mixer_GetStatValue_Handler,
 		},
 		{
 			MethodName: "GetLocationsRankings",
@@ -2203,14 +1896,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVersion",
 			Handler:    _Mixer_GetVersion_Handler,
-		},
-		{
-			MethodName: "GetPlaceStatVars",
-			Handler:    _Mixer_GetPlaceStatVars_Handler,
-		},
-		{
-			MethodName: "QueryV1",
-			Handler:    _Mixer_QueryV1_Handler,
 		},
 		{
 			MethodName: "BulkPropertyValues",
@@ -2279,10 +1964,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecognizePlaces",
 			Handler:    _Mixer_RecognizePlaces_Handler,
-		},
-		{
-			MethodName: "RecognizeEntities",
-			Handler:    _Mixer_RecognizeEntities_Handler,
 		},
 		{
 			MethodName: "GetImportTableData",

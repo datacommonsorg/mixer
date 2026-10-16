@@ -19,6 +19,7 @@ import (
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -272,5 +273,36 @@ func TestDecodeNextToken_InvalidInput(t *testing.T) {
 		if !ok || st.Code() != codes.InvalidArgument {
 			t.Errorf("DecodeNextToken(%q) code = %v, want %v", token, st.Code(), codes.InvalidArgument)
 		}
+	}
+}
+
+func TestDecode_ZipBombAndOversizedLimits(t *testing.T) {
+	// Create a small compressed token (~1 KB) that decompresses to maxPaginationTokenBytes + 1 bytes.
+	zipBombPayload := make([]byte, maxPaginationTokenBytes+1)
+	zipBombToken, err := util.ZipAndEncode(zipBombPayload)
+	if err != nil {
+		t.Fatalf("ZipAndEncode() unexpected error: %v", err)
+	}
+	// Create an uncompressible base64 string whose decoded length exceeds maxPaginationTokenBytes.
+	oversizedRawToken := make([]byte, maxPaginationTokenBytes*2)
+	for i := range oversizedRawToken {
+		oversizedRawToken[i] = 'A'
+	}
+
+	for _, tc := range []struct {
+		name  string
+		token string
+	}{
+		{"zip_bomb", zipBombToken},
+		{"oversized_encoded_string", string(oversizedRawToken)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if _, err := Decode(tc.token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("Decode(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+			if _, err := DecodeNextToken(tc.token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+		})
 	}
 }

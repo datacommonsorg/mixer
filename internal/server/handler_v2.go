@@ -89,7 +89,7 @@ func (s *Server) V2Resolve(
 	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
+			err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -143,44 +143,28 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		return s.shouldDivertV2(ctx), nil
 	}
 
-	// Indicator resolver (embeddings-based) has custom request-time toggling
-	if resolver == resolve.ResolveResolverIndicator {
-		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
-		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
-			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
-			return false, nil
-		}
-		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
-		if err != nil {
-			return false, err
-		}
-		if divertVal != nil {
-			if *divertVal {
-				// Force Spanner: Fail fast if Spanner backend is not configured
-				if !s.isSpannerEnabled() {
-					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
-					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
-				}
-				return true, nil
-			} else {
-				// Force Legacy
-				return false, nil
-			}
-		}
-		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.shouldDivertV2(ctx), nil
+	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
+	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
+	// remain resolver will falls back to vector search as default
+	if !s.isSpannerEnabled() {
+		slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
+		return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
 	}
-
-	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
-	return false, nil
+	return true, nil
 }
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	// Validate the limit before choosing a backend, so a negative limit is
+	// rejected whether or not the request is diverted.
+	pageSize, err := datasources.NodePageSize(in.GetLimit())
+	if err != nil {
+		return nil, err
+	}
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+		return s.dispatcher.Node(ctx, in, pageSize)
 	}
 
 	v2StartTime := time.Now()
@@ -206,7 +190,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 		if s.metadata.RemoteMixerDomain != "" {
 			errGroup.Go(func() error {
 				remoteResp := &pbv2.NodeResponse{}
-				err := util.FetchRemote(s.metadata, s.httpClient, "/v2/node", in, remoteResp)
+				err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/node", in, remoteResp)
 				if err != nil {
 					return err
 				}
@@ -247,16 +231,15 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 			errGroup.Go(func() error {
 				// Update |next_token| before sending the request to remote.
 				// Peel off one layer of |remote_pagination_info| hierarchy.
-				remoteReqNextToken, err := util.EncodeProto(remotePaginationInfo)
+				remoteReq, err := remoteNodeRequest(in, remotePaginationInfo)
 				if err != nil {
 					return err
 				}
-				in.NextToken = remoteReqNextToken
 
 				// Call remote.
 				remoteResp := &pbv2.NodeResponse{}
 				if err := util.FetchRemote(
-					s.metadata, s.httpClient, "/v2/node", in, remoteResp); err != nil {
+					errCtx, s.metadata, s.httpClient, "/v2/node", remoteReq, remoteResp); err != nil {
 					return err
 				}
 				remoteRespChan <- remoteResp
@@ -292,6 +275,21 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	)
 
 	return v2Resp, nil
+}
+
+// remoteNodeRequest returns a private request for the continuation-page remote call.
+// It clones |in| so that the concurrent local call and the V3 mirror still observe
+// the caller's composite |next_token|.
+func remoteNodeRequest(
+	in *pbv2.NodeRequest, remotePaginationInfo *pbv1.PaginationInfo,
+) (*pbv2.NodeRequest, error) {
+	nextToken, err := util.EncodeProto(remotePaginationInfo)
+	if err != nil {
+		return nil, err
+	}
+	remoteReq := proto.Clone(in).(*pbv2.NodeRequest)
+	remoteReq.NextToken = nextToken
+	return remoteReq, nil
 }
 
 // V2Event implements API for mixer.V2Event.
@@ -346,7 +344,7 @@ func (s *Server) handleV2Event(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.EventResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/event", in, remoteResp)
+			err := util.FetchRemote(errCtx, s.metadata, s.httpClient, "/v2/event", in, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -491,13 +489,13 @@ func (s *Server) FilterStatVarsByEntity(
 
 	v2StartTime := time.Now()
 
-	errGroup, _ := errgroup.WithContext(ctx)
+	errGroup, errCtx := errgroup.WithContext(ctx)
 
 	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
 	remoteResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
 
 	errGroup.Go(func() error {
-		localResponse, err := search.FilterStatVarsByEntity(ctx, in, s.store, s.cachedata.Load())
+		localResponse, err := search.FilterStatVarsByEntity(errCtx, in, s.store, s.cachedata.Load())
 		if err != nil {
 			return err
 		}
@@ -509,6 +507,7 @@ func (s *Server) FilterStatVarsByEntity(
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			if err := util.FetchRemote(
+				errCtx,
 				s.metadata,
 				s.httpClient,
 				"/v2/variable/filter",

@@ -52,6 +52,10 @@ func planNodeQuery(arc *v2.Arc, queryConfig QueryConfig) (nodeQueryPlan, error) 
 	}
 
 	if childPlaceTypes, ok := matchNodeLinkedContainedInPlace(arc); ok {
+		if queryConfig.UseMaterializedLinkedEdge {
+			accessPath := containedInPlaceLinkedEdge
+			return newNodeContainedInPlacePlan(accessPath, queryConfig.SpannerEmulatorCompatibility), nil
+		}
 		return newNodeContainedInPlacePlan(
 			queryConfig.containedInPlaceAccessPath(childPlaceTypes...),
 			queryConfig.SpannerEmulatorCompatibility,
