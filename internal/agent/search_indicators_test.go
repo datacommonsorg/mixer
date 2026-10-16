@@ -22,8 +22,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 type mockMixerServer struct {
@@ -146,74 +144,70 @@ func (m *mockMixerServer) V2Observation(ctx context.Context, in *pbv2.Observatio
 	return resp, nil
 }
 
-var cmpOpts = cmp.Options{
-	protocmp.Transform(),
-	cmp.FilterPath(func(p cmp.Path) bool {
-		return p.String() == "status"
-	}, cmp.Ignore()),
-}
-
 func TestSearchIndicators(t *testing.T) {
-	vRow1, _ := structpb.NewList([]any{
-		"Amount_EconomicActivity_GrossODA",
-		"Gross ODA Aid",
-		[]any{},
-		[]any{"donor", "recipient"},
-	})
-	vTable1 := &pbv2.Table{
+	vTable1 := &Table{
 		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
-		Rows:    []*structpb.ListValue{vRow1},
+		Rows: [][]any{
+			{
+				"Amount_EconomicActivity_GrossODA",
+				"Gross ODA Aid",
+				[]string{},
+				[]string{"donor", "recipient"},
+			},
+		},
 	}
 
-	tRow1, _ := structpb.NewList([]any{
-		"topic/Health",
-		"Health",
-		[]any{},
-		[]any{},
-		[]any{"Count_Person_WithAsthma"},
-	})
-	vRow2, _ := structpb.NewList([]any{
-		"Count_Person_WithDiabetes",
-		"People with Diabetes",
-		[]any{},
-		[]any{},
-	})
-	tTable2 := &pbv2.Table{
+	tTable2 := &Table{
 		Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"},
-		Rows:    []*structpb.ListValue{tRow1},
+		Rows: [][]any{
+			{
+				"topic/Health",
+				"Health",
+				[]string{},
+				[]string{},
+				[]string{"Count_Person_WithAsthma"},
+			},
+		},
 	}
-	vTable2 := &pbv2.Table{
+	vTable2 := &Table{
 		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
-		Rows:    []*structpb.ListValue{vRow2},
+		Rows: [][]any{
+			{
+				"Count_Person_WithDiabetes",
+				"People with Diabetes",
+				[]string{},
+				[]string{},
+			},
+		},
 	}
 
-	tRow3, _ := structpb.NewList([]any{
-		"topic/RootHealth",
-		"Global Health Topic",
-		[]any{"Earth"},
-		[]any{},
-		[]any{"Count_Person"},
-	})
-	tTable3 := &pbv2.Table{
+	tTable3 := &Table{
 		Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"},
-		Rows:    []*structpb.ListValue{tRow3},
+		Rows: [][]any{
+			{
+				"topic/RootHealth",
+				"Global Health Topic",
+				[]string{"Earth"},
+				[]string{},
+				[]string{"Count_Person"},
+			},
+		},
 	}
-	vTable3 := &pbv2.Table{
+	vTable3 := &Table{
 		Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
-		Rows:    []*structpb.ListValue{},
 	}
 
 	for _, tc := range []struct {
 		desc            string
-		request         *pbv2.SearchIndicatorsRequest
+		request         *SearchIndicatorsRequest
 		resolveMockData map[string][]*pbv2.ResolveResponse_Entity_Candidate
 		obsMockData     map[string][]string
-		wantResponse    *pbv2.SearchIndicatorsResponse
+		wantResponse    *SearchIndicatorsResponse
 		expectedError   string
 	}{
 		{
 			desc: "Multi-entity variable populates observation_properties in tabular format",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:          "gross oda aid",
 				PerSearchLimit: 5,
 			},
@@ -227,15 +221,15 @@ func TestSearchIndicators(t *testing.T) {
 					},
 				},
 			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
+			wantResponse: &SearchIndicatorsResponse{
 				Status:             "SUCCESS",
-				TopicCandidates:    &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
+				TopicCandidates:    &Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}},
 				VariableCandidates: vTable1,
 			},
 		},
 		{
 			desc: "Basic indicator search returning tabular topics and variables",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:          "health in america",
 				PerSearchLimit: 5,
 			},
@@ -260,7 +254,7 @@ func TestSearchIndicators(t *testing.T) {
 					},
 				},
 			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
+			wantResponse: &SearchIndicatorsResponse{
 				Status:             "SUCCESS",
 				TopicCandidates:    tTable2,
 				VariableCandidates: vTable2,
@@ -268,7 +262,7 @@ func TestSearchIndicators(t *testing.T) {
 		},
 		{
 			desc: "Browsing root topics defaults to World place resolution and tabular output",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:          "",
 				PerSearchLimit: 5,
 				IncludeTopics:  proto.Bool(true),
@@ -299,7 +293,7 @@ func TestSearchIndicators(t *testing.T) {
 			obsMockData: map[string][]string{
 				"Earth": {"Count_Person"},
 			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
+			wantResponse: &SearchIndicatorsResponse{
 				Status:             "SUCCESS",
 				TopicCandidates:    tTable3,
 				VariableCandidates: vTable3,
@@ -307,7 +301,7 @@ func TestSearchIndicators(t *testing.T) {
 		},
 		{
 			desc: "Using place_dcids directly bypasses string place resolution",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:          "gross oda aid",
 				PerSearchLimit: 5,
 				PlaceDcids:     []string{"geoId/06"},
@@ -325,28 +319,25 @@ func TestSearchIndicators(t *testing.T) {
 			obsMockData: map[string][]string{
 				"geoId/06": {"Amount_EconomicActivity_GrossODA"},
 			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
+			wantResponse: &SearchIndicatorsResponse{
 				Status:          "SUCCESS",
-				TopicCandidates: &pbv2.Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}, Rows: []*structpb.ListValue{}},
-				VariableCandidates: &pbv2.Table{
+				TopicCandidates: &Table{Columns: []string{"dcid", "name", "placesWithData", "memberTopics", "memberVariables"}},
+				VariableCandidates: &Table{
 					Columns: []string{"dcid", "name", "placesWithData", "observationProperties"},
-					Rows: []*structpb.ListValue{
-						func() *structpb.ListValue {
-							row, _ := structpb.NewList([]any{
-								"Amount_EconomicActivity_GrossODA",
-								"Gross ODA Aid",
-								[]any{"geoId/06"},
-								[]any{"donor", "recipient"},
-							})
-							return row
-						}(),
+					Rows: [][]any{
+						{
+							"Amount_EconomicActivity_GrossODA",
+							"Gross ODA Aid",
+							[]string{"geoId/06"},
+							[]string{"donor", "recipient"},
+						},
 					},
 				},
 			},
 		},
 		{
 			desc: "Legacy request with places string populates legacy response fields for backward compatibility",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:          "gross oda aid",
 				Places:         []string{"California"},
 				PerSearchLimit: 5,
@@ -370,19 +361,16 @@ func TestSearchIndicators(t *testing.T) {
 			obsMockData: map[string][]string{
 				"geoId/06": {"Amount_EconomicActivity_GrossODA"},
 			},
-			wantResponse: &pbv2.SearchIndicatorsResponse{
+			wantResponse: &SearchIndicatorsResponse{
 				Status: "SUCCESS",
 				DcidNameMappings: map[string]string{
 					"Amount_EconomicActivity_GrossODA": "Gross ODA Aid",
 					"geoId/06":                          "California",
 				},
-				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
-					"geoId/06": func() *structpb.ListValue {
-						v, _ := structpb.NewList([]any{"State"})
-						return v
-					}(),
+				DcidPlaceTypeMappings: map[string][]string{
+					"geoId/06": {"State"},
 				},
-				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+				Variables: []*VariableCandidate{
 					{
 						Dcid:                  "Amount_EconomicActivity_GrossODA",
 						PlacesWithData:        []string{"geoId/06"},
@@ -414,8 +402,8 @@ func TestSearchIndicators(t *testing.T) {
 				t.Fatalf("SearchIndicators failed unexpectedly: %v", err)
 			}
 
-			if diff := cmp.Diff(got, tc.wantResponse, cmpOpts); diff != "" {
-				t.Errorf("SearchIndicators returned unexpected response (-got +want):\n%s", diff)
+			if diff := cmp.Diff(tc.wantResponse, got); diff != "" {
+				t.Errorf("SearchIndicators returned unexpected response (-want +got):\n%s", diff)
 			}
 		})
 	}
@@ -424,33 +412,33 @@ func TestSearchIndicators(t *testing.T) {
 func TestSearchIndicators_Target(t *testing.T) {
 	for _, tc := range []struct {
 		name       string
-		request    *pbv2.SearchIndicatorsRequest
+		request    *SearchIndicatorsRequest
 		wantTarget string
 		wantErr    string
 	}{
 		{
 			name: "custom_only target",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:      "health",
 				PlaceDcids: []string{"geoId/06"},
-				Target:     proto.String("custom_only"),
+				Target:     "custom_only",
 			},
 			wantTarget: "custom_only",
 		},
 		{
 			name: "base_only target",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:      "health",
 				PlaceDcids: []string{"geoId/06"},
-				Target:     proto.String("base_only"),
+				Target:     "base_only",
 			},
 			wantTarget: "base_only",
 		},
 		{
 			name: "invalid target returns error",
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:  "health",
-				Target: proto.String("invalid_target"),
+				Target: "invalid_target",
 			},
 			wantErr: "rpc error: code = InvalidArgument desc = invalid target: invalid_target, valid values are 'base_and_custom', 'base_only', 'custom_only'",
 		},
@@ -507,13 +495,13 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 	for _, tc := range []struct {
 		name             string
 		serviceOpts      *ServiceOptions
-		request          *pbv2.SearchIndicatorsRequest
+		request          *SearchIndicatorsRequest
 		wantExpandTopics bool
 	}{
 		{
 			name:             "default service option expands topics when unspecified in request",
 			serviceOpts:      nil,
-			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health"},
 			wantExpandTopics: true,
 		},
 		{
@@ -521,7 +509,7 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(false),
 			},
-			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health"},
 			wantExpandTopics: false,
 		},
 		{
@@ -529,7 +517,7 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(true),
 			},
-			request:          &pbv2.SearchIndicatorsRequest{Query: "health"},
+			request:          &SearchIndicatorsRequest{Query: "health"},
 			wantExpandTopics: true,
 		},
 		{
@@ -537,7 +525,7 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(false),
 			},
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:        "health",
 				ExpandTopics: proto.Bool(true),
 			},
@@ -548,7 +536,7 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 			serviceOpts: &ServiceOptions{
 				DefaultExpandTopics: proto.Bool(true),
 			},
-			request: &pbv2.SearchIndicatorsRequest{
+			request: &SearchIndicatorsRequest{
 				Query:        "health",
 				ExpandTopics: proto.Bool(false),
 			},

@@ -24,7 +24,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 // resolvedPlaceEntry holds intermediate candidate resolution data.
@@ -38,22 +37,22 @@ type resolvedPlaceEntry struct {
 // ResolvePlaces resolves place name queries to canonical place DCIDs, names, and place types.
 func (s *Service) ResolvePlaces(
 	ctx context.Context,
-	req *pbv2.ResolvePlacesRequest,
-) (*pbv2.ResolvePlacesResponse, error) {
+	req *ResolvePlacesRequest,
+) (*ResolvePlacesResponse, error) {
 	if err := validateResolvePlacesRequest(req); err != nil {
 		return nil, err
 	}
 	defer util.TimeTrack(time.Now(), "Agent: ResolvePlaces")
-	slog.Info("ResolvePlaces started", "places", req.GetPlaces(), "target", req.GetTarget())
+	slog.Info("ResolvePlaces started", "places", req.Places, "target", req.Target)
 
-	if len(req.GetPlaces()) == 0 {
+	if len(req.Places) == 0 {
 		return emptyResolvePlacesResponse(), nil
 	}
 
 	resolveReq := &pbv2.ResolveRequest{
-		Nodes:    req.GetPlaces(),
+		Nodes:    req.Places,
 		Resolver: ResolverPlace,
-		Target:   req.GetTarget(),
+		Target:   req.Target,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
@@ -68,39 +67,39 @@ func (s *Service) ResolvePlaces(
 
 	s.enrichPlaceEntries(ctx, dcidsToEnrich, dcidToEntries)
 
-	table, err := buildResolvedPlacesTable(entries)
-	if err != nil {
-		return nil, err
-	}
+	table := buildResolvedPlacesTable(entries)
 
-	slog.Info("ResolvePlaces completed", "placesCount", len(req.GetPlaces()), "rowsCount", len(table.GetRows()))
+	slog.Info("ResolvePlaces completed", "placesCount", len(req.Places), "rowsCount", len(table.Rows))
 
-	return &pbv2.ResolvePlacesResponse{
+	return &ResolvePlacesResponse{
 		Status:         StatusSuccess,
 		ResolvedPlaces: table,
 	}, nil
 }
 
-func validateResolvePlacesRequest(req *pbv2.ResolvePlacesRequest) error {
+// validateResolvePlacesRequest checks the validity of ResolvePlacesRequest parameters.
+func validateResolvePlacesRequest(req *ResolvePlacesRequest) error {
 	if req == nil {
 		return status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
-	if req.GetTarget() != "" && !slices.Contains(validTargets, req.GetTarget()) {
-		return status.Errorf(codes.InvalidArgument, "invalid target %q, must be one of %v", req.GetTarget(), validTargets)
+	if req.Target != "" && !slices.Contains(validTargets, req.Target) {
+		return status.Errorf(codes.InvalidArgument, "invalid target %q, must be one of %v", req.Target, validTargets)
 	}
 	return nil
 }
 
-func emptyResolvePlacesResponse() *pbv2.ResolvePlacesResponse {
-	return &pbv2.ResolvePlacesResponse{
+// emptyResolvePlacesResponse returns a ResolvePlacesResponse with empty rows.
+func emptyResolvePlacesResponse() *ResolvePlacesResponse {
+	return &ResolvePlacesResponse{
 		Status: StatusSuccess,
-		ResolvedPlaces: &pbv2.Table{
+		ResolvedPlaces: &Table{
 			Columns: []string{colQuery, colDcid, colName, colTypeOf},
-			Rows:    []*structpb.ListValue{},
+			Rows:    [][]any{},
 		},
 	}
 }
 
+// parseResolvedPlaceEntries extracts place candidate entries and unique DCIDs to enrich.
 func parseResolvedPlaceEntries(entities []*pbv2.ResolveResponse_Entity) ([]*resolvedPlaceEntry, []string, map[string][]*resolvedPlaceEntry) {
 	var entries []*resolvedPlaceEntry
 	var dcidsToEnrich []string
@@ -146,6 +145,7 @@ func parseResolvedPlaceEntries(entities []*pbv2.ResolveResponse_Entity) ([]*reso
 	return entries, dcidsToEnrich, dcidToEntries
 }
 
+// enrichPlaceEntries fetches canonical names and types for resolved place DCIDs via V2Node.
 func (s *Service) enrichPlaceEntries(
 	ctx context.Context,
 	dcidsToEnrich []string,
@@ -182,24 +182,20 @@ func (s *Service) enrichPlaceEntries(
 	}
 }
 
-func buildResolvedPlacesTable(entries []*resolvedPlaceEntry) (*pbv2.Table, error) {
-	var rows []*structpb.ListValue
+// buildResolvedPlacesTable formats resolved place entries into a tabular Table.
+func buildResolvedPlacesTable(entries []*resolvedPlaceEntry) *Table {
+	var rows [][]any
 	for _, entry := range entries {
-		typeList := util.ToStringListValue(entry.typeOf)
-		row, err := structpb.NewList([]any{
+		rows = append(rows, []any{
 			entry.query,
 			entry.dcid,
 			entry.name,
-			typeList.AsSlice(),
+			nonNilStringSlice(entry.typeOf),
 		})
-		if err != nil {
-			return nil, status.Errorf(codes.Internal, "failed to build row for place %s: %v", entry.dcid, err)
-		}
-		rows = append(rows, row)
 	}
 
-	return &pbv2.Table{
+	return &Table{
 		Columns: []string{colQuery, colDcid, colName, colTypeOf},
 		Rows:    rows,
-	}, nil
+	}
 }

@@ -89,7 +89,7 @@ func (m *mockVMMixerServer) V2Observation(ctx context.Context, in *pbv2.Observat
 func TestGetVariableMetadata(t *testing.T) {
 	for _, tc := range []struct {
 		desc              string
-		req               *pbv2.GetVariableMetadataRequest
+		req               *GetVariableMetadataRequest
 		nodeData          map[string]*pbv2.LinkedGraph
 		bulkData          map[string]*pb.StatVarSummary
 		obsData           map[string]*pb.Facet
@@ -105,7 +105,7 @@ func TestGetVariableMetadata(t *testing.T) {
 	}{
 		{
 			desc: "Successfully retrieve metadata across variable, provenance, and observation facets",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person"},
 				EntityDcids:   []string{"geoId/06"},
 			},
@@ -150,7 +150,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Validation Failure: Missing variable dcids",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				EntityDcids: []string{"geoId/06"},
 			},
 			wantErr:  true,
@@ -158,7 +158,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Validation Failure: Missing entity dcids",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person"},
 			},
 			wantErr:  true,
@@ -166,7 +166,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Validation Failure: variable dcids exceed limit of 10",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"v1", "v2", "v3", "v4", "v5", "v6", "v7", "v8", "v9", "v10", "v11"},
 				EntityDcids:   []string{"geoId/06"},
 			},
@@ -175,7 +175,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Validation Failure: entity dcids exceed limit of 10",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person"},
 				EntityDcids:   []string{"e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8", "e9", "e10", "e11"},
 			},
@@ -184,7 +184,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Graceful Degradation: Fail to fetch one variable, but successfully return other",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person", "Median_Age_Person"}, // Median_Age_Person will fail graph fetch
 				EntityDcids:   []string{"geoId/06"},
 			},
@@ -218,7 +218,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		},
 		{
 			desc: "Critical Path Failure: observations query fails",
-			req: &pbv2.GetVariableMetadataRequest{
+			req: &GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person"},
 				EntityDcids:   []string{"geoId/06"},
 			},
@@ -252,71 +252,71 @@ func TestGetVariableMetadata(t *testing.T) {
 				t.Fatalf("GetVariableMetadata failed: %v", err)
 			}
 
-			if got == nil || got.GetStatus() != StatusSuccess {
+			if got == nil || got.Status != StatusSuccess {
 				t.Fatalf("GetVariableMetadata returned non-success response: %v", got)
 			}
 
-			// 1. Assert skipped variables (graceful degradation)
+			// Assert skipped variables (graceful degradation)
 			if tc.omitVar != "" {
-				if _, exists := got.GetVariables()[tc.omitVar]; exists {
+				if _, exists := got.Variables[tc.omitVar]; exists {
 					t.Errorf("Expected variable %s to be omitted due to fetch failure, but it was present", tc.omitVar)
 				}
 			}
 
-			vMeta, ok := got.GetVariables()[tc.wantVar]
+			vMeta, ok := got.Variables[tc.wantVar]
 			if !ok {
 				t.Fatalf("Missing expected variable metadata for %s", tc.wantVar)
 			}
 
-			// 2. Assert root headers are correctly mapped
-			if vMeta.GetName() != tc.wantPropName {
-				t.Errorf("Expected root name %q, got: %q", tc.wantPropName, vMeta.GetName())
+			// Assert root headers are correctly mapped
+			if vMeta.Name != tc.wantPropName {
+				t.Errorf("Expected root name %q, got: %q", tc.wantPropName, vMeta.Name)
 			}
 
-			// 3. Assert properties does not contain redundant name
-			if _, nameExists := vMeta.GetProperties().GetFields()["name"]; nameExists {
-				t.Error("Expected properties Struct to exclude redundant 'name' key")
+			// Assert properties does not contain redundant name
+			if _, nameExists := vMeta.Properties["name"]; nameExists {
+				t.Error("Expected properties map to exclude redundant 'name' key")
 			}
 
-			// 4. Assert provenance is resolved at root map level
-			prov, ok := got.GetProvenances()[tc.wantProvDcid]
+			// Assert provenance is resolved at root map level
+			prov, ok := got.Provenances[tc.wantProvDcid]
 			if !ok {
 				t.Fatalf("Missing expected root provenance metadata for %s", tc.wantProvDcid)
 			}
-			if prov.GetProperties().GetFields()["url"].GetStringValue() != tc.wantProvUrl {
-				t.Errorf("Expected provenance url %q, got: %v", tc.wantProvUrl, prov.GetProperties().GetFields()["url"].GetStringValue())
+			if prov.Properties["url"] != tc.wantProvUrl {
+				t.Errorf("Expected provenance url %q, got: %v", tc.wantProvUrl, prov.Properties["url"])
 			}
 
-			// 5. Assert structured facets and scopes
-			if len(vMeta.GetFacets()) != 1 {
-				t.Fatalf("Expected exactly 1 facet, got: %d", len(vMeta.GetFacets()))
+			// Assert structured facets and scopes
+			if len(vMeta.Facets) != 1 {
+				t.Fatalf("Expected exactly 1 facet, got: %d", len(vMeta.Facets))
 			}
 
-			facet := vMeta.GetFacets()[0]
-			if facet.GetProvenanceId() != tc.wantProvDcid {
-				t.Errorf("Expected facet provenanceId %q, got: %q", tc.wantProvDcid, facet.GetProvenanceId())
+			facet := vMeta.Facets[0]
+			if facet.ProvenanceID != tc.wantProvDcid {
+				t.Errorf("Expected facet provenanceId %q, got: %q", tc.wantProvDcid, facet.ProvenanceID)
 			}
-			if facet.GetObsCount() != 54 {
-				t.Errorf("Expected obsCount 54, got: %d", facet.GetObsCount())
-			}
-
-			dateRange := facet.GetDateRange()
-			if dateRange.GetStart() != "2010" {
-				t.Errorf("Expected start date '2010', got: %q", dateRange.GetStart())
-			}
-			if dateRange.GetEnd() != "2020" {
-				t.Errorf("Expected end date '2020', got: %q", dateRange.GetEnd())
+			if facet.ObsCount != 54 {
+				t.Errorf("Expected obsCount 54, got: %d", facet.ObsCount)
 			}
 
-			scope := facet.GetScope()
-			coverage := scope.GetEntityCoverage()
+			dateRange := facet.DateRange
+			if dateRange.Start != "2010" {
+				t.Errorf("Expected start date '2010', got: %q", dateRange.Start)
+			}
+			if dateRange.End != "2020" {
+				t.Errorf("Expected end date '2020', got: %q", dateRange.End)
+			}
+
+			scope := facet.Scope
+			coverage := scope.EntityCoverage
 			if len(coverage) != 1 || coverage[0] != "geoId/06" {
 				t.Errorf("Expected entityCoverage ['geoId/06'], got: %v", coverage)
 			}
 
-			// 6. Assert mock PlaceTypeSummary geographic granularities
+			// Assert mock PlaceTypeSummary geographic granularities
 			if len(tc.wantGranularities) > 0 {
-				granularities := scope.GetEntityGranularity()
+				granularities := scope.EntityGranularity
 				if len(granularities) != len(tc.wantGranularities) {
 					t.Errorf("Expected granularities count %d, got: %d (%v)", len(tc.wantGranularities), len(granularities), granularities)
 				} else {
