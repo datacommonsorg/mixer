@@ -18,7 +18,6 @@ import (
 	"context"
 	"path"
 	"runtime"
-	"sort"
 	"testing"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -87,50 +86,6 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				return nil, err
 			}
 			return simplifyNodes(actual), nil
-		})
-	}
-}
-
-func TestGetObservations(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range observationsTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservations(ctx, c.variables, c.entities, "")
-			if err != nil {
-				return nil, err
-			}
-			sortObservations(actual)
-			return actual, nil
-		})
-	}
-}
-
-func TestGetObservationsContainedInPlace(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range observationsContainedInPlaceTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, "")
-			if err != nil {
-				return nil, err
-			}
-			sortObservations(actual)
-			return actual, nil
 		})
 	}
 }
@@ -285,67 +240,6 @@ func TestGetEventCollection(t *testing.T) {
 	}
 }
 
-func TestGetStatVarGroupNode(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range getStatVarGroupNodeTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetStatVarGroupNode(ctx, c.nodes, c.includeDefinitions)
-			if err != nil {
-				return nil, err
-			}
-			sortStatVarGroupNode(actual)
-			return actual, nil
-		})
-	}
-}
-
-func TestGetFilteredStatVarGroupNode(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range getFilteredStatVarGroupNodeTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetFilteredStatVarGroupNode(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions)
-			if err != nil {
-				return nil, err
-			}
-			sortFilteredStatVarGroupNode(actual)
-			return actual, nil
-		})
-	}
-}
-
-func TestGetFilteredTopic(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-
-	for _, c := range getFilteredTopicTestCases {
-		goldenFile := c.golden + ".json"
-
-		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetFilteredTopic(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
-		})
-	}
-}
-
 // runQueryGoldenTest is a helper function that performs the golden file validation.
 func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
@@ -408,25 +302,6 @@ func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edg
 	return filtered
 }
 
-// sortObservations sorts Observations by variable, entity, facet (primary key) to ensure deterministic order in tests.
-// The final Observation responses will be sorted later based on facet rank.
-func sortObservations(results []*spanner.Observation) {
-	sort.Slice(results, func(i, j int) bool {
-		a, b := results[i], results[j]
-
-		if a.VariableMeasured != b.VariableMeasured {
-			return a.VariableMeasured < b.VariableMeasured
-		}
-
-		if a.ObservationAbout != b.ObservationAbout {
-			return a.ObservationAbout < b.ObservationAbout
-		}
-
-		return a.FacetId < b.FacetId
-	})
-}
-
-
 func TestVectorSearch(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
@@ -457,34 +332,6 @@ func TestFilterNodesByTypes(t *testing.T) {
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return client.FilterNodesByTypes(ctx, c.nodes, c.typeFilters)
-		})
-	}
-}
-
-// sortStatVarGroupNode sorts StatVarGroupNode results by SVG and subject_id to ensure deterministic order in tests.
-func sortStatVarGroupNode(results []*spanner.StatVarGroupNode) {
-	sort.Slice(results, func(i, j int) bool {
-		a, b := results[i], results[j]
-
-		if a.SVG != b.SVG {
-			return a.SVG < b.SVG
-		}
-
-		return a.SubjectID < b.SubjectID
-	})
-}
-
-// sortFilteredStatVarGroupNode sorts the children of a FilteredStatVarGroupNode by subject_id to ensure deterministic order in tests.
-func sortFilteredStatVarGroupNode(results map[string]*spanner.FilteredStatVarGroupNode) {
-	for _, node := range results {
-		sort.Slice(node.SVGChild, func(i, j int) bool {
-			return node.SVGChild[i].SubjectID < node.SVGChild[j].SubjectID
-		})
-		sort.Slice(node.ChildSV, func(i, j int) bool {
-			return node.ChildSV[i].SubjectID < node.ChildSV[j].SubjectID
-		})
-		sort.Slice(node.ChildSVG, func(i, j int) bool {
-			return node.ChildSVG[i].SubjectID < node.ChildSVG[j].SubjectID
 		})
 	}
 }

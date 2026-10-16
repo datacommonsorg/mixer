@@ -548,6 +548,65 @@ func TestMultiEntityContainedInPlaceUsesEmulatorCompatibleHints(t *testing.T) {
 	}
 }
 
+func TestMultiEntityQueriesUseEmulatorCompatibleHints(t *testing.T) {
+	const nullFilteredIndexBypass = "spanner_emulator.disable_query_null_filtered_index_check=true"
+	for _, emulator := range []bool{false, true} {
+		tableConfig := DefaultTableConfig()
+		tableConfig.spannerEmulatorCompatibility = emulator
+		queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, QueryConfig{})
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		// Date-filtered observation queries use EXECUTION_METHOD, which the
+		// emulator does not implement.
+		for _, variables := range [][]string{{"var1"}, nil} {
+			stmt, err := queryBuilder.GetObservationsQuery(variables, []string{"geoId/06"}, "2020")
+			if err != nil {
+				t.Fatal(err)
+			}
+			if got := strings.Contains(stmt.SQL, "EXECUTION_METHOD=BATCH"); got == emulator {
+				t.Errorf("emulator=%t variables=%v: EXECUTION_METHOD hint present = %t\nSQL:\n%s", emulator, variables, got, stmt.SQL)
+			}
+		}
+
+		// Queries that force the NULL_FILTERED entity2/entity3 indexes need the
+		// emulator bypass hint, and only in the emulator.
+		var nullFilteredStatements []*cloudspanner.Statement
+		for _, input := range []struct{ variables, entities []string }{
+			{[]string{"var1"}, []string{"geoId/06"}},
+			{[]string{"var1"}, nil},
+			{nil, []string{"geoId/06"}},
+		} {
+			stmt, err := queryBuilder.GetStatVarsByEntityQuery(input.variables, input.entities)
+			if err != nil {
+				t.Fatal(err)
+			}
+			nullFilteredStatements = append(nullFilteredStatements, stmt)
+		}
+		groupStmt, err := queryBuilder.GetGroupPlaceExistenceQuery([]string{"dc/g/Root"}, []string{"geoId/06"}, "linkedMemberOf")
+		if err != nil {
+			t.Fatal(err)
+		}
+		nullFilteredStatements = append(nullFilteredStatements, groupStmt)
+		filteredSVGStmt, err := queryBuilder.GetFilteredSVGChildrenQuery(templateSVG, "dc/g/Root", []string{"geoId/06", "geoId/08"}, "", 2, false)
+		if err != nil {
+			t.Fatal(err)
+		}
+		nullFilteredStatements = append(nullFilteredStatements, filteredSVGStmt)
+		for _, stmt := range nullFilteredStatements {
+			if got := strings.Contains(stmt.SQL, nullFilteredIndexBypass); got != emulator {
+				t.Errorf("emulator=%t: null-filtered index bypass present = %t\nSQL:\n%s", emulator, got, stmt.SQL)
+			}
+		}
+
+		// The emulator rejects HASH_JOIN_BUILD_SIDE, so it runs the plain hash join.
+		if got := strings.Contains(filteredSVGStmt.SQL, "HASH_JOIN_BUILD_SIDE=BUILD_RIGHT"); got == emulator {
+			t.Errorf("emulator=%t: HASH_JOIN_BUILD_SIDE present = %t\nSQL:\n%s", emulator, got, filteredSVGStmt.SQL)
+		}
+	}
+}
+
 func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
 	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
