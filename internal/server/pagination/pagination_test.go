@@ -15,6 +15,7 @@
 package pagination
 
 import (
+	"strings"
 	"testing"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -353,9 +354,11 @@ func TestDecode_TamperedCursorValidation(t *testing.T) {
 			if err != nil {
 				t.Fatalf("EncodeProto() unexpected error: %v", err)
 			}
-			if _, err := Decode(token); status.Code(err) != codes.InvalidArgument {
+			_, err = Decode(token)
+			if status.Code(err) != codes.InvalidArgument {
 				t.Errorf("Decode(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
 			}
+			checkSingleStatusMessage(t, err)
 		})
 	}
 }
@@ -410,9 +413,11 @@ func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
 			if err != nil {
 				t.Fatalf("EncodeProto() unexpected error: %v", err)
 			}
-			if _, err := DecodeNextToken(token); status.Code(err) != codes.InvalidArgument {
+			_, err = DecodeNextToken(token)
+			if status.Code(err) != codes.InvalidArgument {
 				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
 			}
+			checkSingleStatusMessage(t, err)
 		})
 	}
 
@@ -428,7 +433,17 @@ func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
 			},
 		},
 	})
-	if status.Code(err) != codes.InvalidArgument {
-		t.Errorf("validatePagination(nil BigtableInfo) status code = %v, want %v (err: %v)", status.Code(err), codes.InvalidArgument, err)
+	if err == nil {
+		t.Error("validatePagination(nil BigtableInfo) = nil, want error")
+	}
+}
+
+// checkSingleStatusMessage verifies that a decode error message starts with the
+// "invalid pagination token: " prefix and contains no nested status text.
+func checkSingleStatusMessage(t *testing.T, err error) {
+	t.Helper()
+	const prefix = "invalid pagination token: "
+	if msg := status.Convert(err).Message(); !strings.HasPrefix(msg, prefix) || strings.Contains(msg, "rpc error") {
+		t.Errorf("status message = %q, want prefix %q and no nested status", msg, prefix)
 	}
 }
