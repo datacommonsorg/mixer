@@ -81,8 +81,8 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read SpannerSearchConfig: %v", err)
 	}
-	if len(cfg.SearchConfigs) != 2 {
-		t.Fatalf("Expected 2 search configs, got %d", len(cfg.SearchConfigs))
+	if len(cfg.SearchConfigs) != 3 {
+		t.Fatalf("Expected 3 search configs, got %d", len(cfg.SearchConfigs))
 	}
 
 	indicatorCfg, ok := cfg.SearchConfigs["indicator"]
@@ -107,13 +107,30 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if indicatorCfg.EmbeddingLabel != "nl_stat_var_embedding" {
 		t.Errorf("Expected EmbeddingLabel=nl_stat_var_embedding, got %s", indicatorCfg.EmbeddingLabel)
 	}
+	if len(indicatorCfg.IncludedTypes) != 2 || indicatorCfg.IncludedTypes[0] != "StatisticalVariable" || indicatorCfg.IncludedTypes[1] != "Topic" {
+		t.Errorf("Expected IncludedTypes=[StatisticalVariable, Topic], got %v", indicatorCfg.IncludedTypes)
+	}
 
-	nonPlaceCfg, ok := cfg.SearchConfigs["non_place_entity"]
+	nonPlaceCfg, ok := cfg.SearchConfigs["non_place"]
 	if !ok {
-		t.Fatalf("Expected SearchConfig for key non_place_entity")
+		t.Fatalf("Expected SearchConfig for key non_place")
 	}
 	if nonPlaceCfg.EmbeddingLabel != "non_place_entity_experimental_embedding" {
 		t.Errorf("Expected EmbeddingLabel=non_place_entity_experimental_embedding, got %s", nonPlaceCfg.EmbeddingLabel)
+	}
+	if len(nonPlaceCfg.ExcludedTypes) != 2 || nonPlaceCfg.ExcludedTypes[0] != "StatisticalVariable" || nonPlaceCfg.ExcludedTypes[1] != "Topic" {
+		t.Errorf("Expected ExcludedTypes=[StatisticalVariable, Topic], got %v", nonPlaceCfg.ExcludedTypes)
+	}
+
+	typeCfg, ok := cfg.SearchConfigs["type"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for key type")
+	}
+	if typeCfg.EmbeddingLabel != "type_embedding" {
+		t.Errorf("Expected EmbeddingLabel=type_embedding, got %s", typeCfg.EmbeddingLabel)
+	}
+	if len(typeCfg.IncludedTypes) != 1 || typeCfg.IncludedTypes[0] != "Class" {
+		t.Errorf("Expected IncludedTypes=[Class], got %v", typeCfg.IncludedTypes)
 	}
 
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
@@ -127,8 +144,8 @@ func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read DCP default SpannerSearchConfig: %v", err)
 	}
-	if len(cfg.SearchConfigs) != 1 {
-		t.Fatalf("Expected 1 search config, got %d", len(cfg.SearchConfigs))
+	if len(cfg.SearchConfigs) != 3 {
+		t.Fatalf("Expected 3 search configs, got %d", len(cfg.SearchConfigs))
 	}
 	indicatorSc, ok := cfg.SearchConfigs["indicator"]
 	if !ok {
@@ -136,6 +153,12 @@ func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
 	}
 	if indicatorSc.EmbeddingLabel != "base_text_embedding" {
 		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", indicatorSc.EmbeddingLabel)
+	}
+	if _, ok := cfg.SearchConfigs["non_place"]; !ok {
+		t.Errorf("Expected SearchConfig key for non_place")
+	}
+	if _, ok := cfg.SearchConfigs["type"]; !ok {
+		t.Errorf("Expected SearchConfig key for type")
 	}
 }
 
