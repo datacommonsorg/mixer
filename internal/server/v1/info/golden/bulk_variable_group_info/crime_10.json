@@ -7,10 +7,6 @@
         "childStatVars": [
           {
             "id": "Count_CriminalActivities_CombinedCrime",
-            "searchNames": [
-              "Count of Criminal Activities",
-              "Criminal Activities"
-            ],
             "displayName": "Criminal Activities",
             "definition": "mp=count,pt=CriminalActivities"
           }
@@ -29,10 +25,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 3,
-        "parentStatVarGroups": [
-          "dc/g/Crime"
-        ]
+        "descendentStatVarCount": 3
       }
     }
   ]
