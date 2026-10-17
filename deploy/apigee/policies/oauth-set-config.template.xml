@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-set-config">
+  <DisplayName>oauth-set-config</DisplayName>
+  <AssignVariable>
+    <Name>oauth.public_hostname</Name>
+    <Value>REPLACE_WITH_OAUTH_PUBLIC_HOSTNAME</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>private.oauth.google_client_id</Name>
+    <Value>REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>private.oauth.google_client_secret</Name>
+    <Value>REPLACE_WITH_GOOGLE_OAUTH_CLIENT_SECRET</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>private.oauth.uid_hmac_key</Name>
+    <Value>REPLACE_WITH_OAUTH_UID_HMAC_KEY</Value>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="request"/>
+</AssignMessage>

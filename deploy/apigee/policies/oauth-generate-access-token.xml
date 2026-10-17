@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="oauth-generate-access-token">
+  <DisplayName>oauth-generate-access-token</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>GenerateAccessToken</Operation>
+  <ExpiresIn>3600000</ExpiresIn>
+  <RefreshTokenExpiresIn>31536000000</RefreshTokenExpiresIn>
+  <SupportedGrantTypes>
+    <GrantType>authorization_code</GrantType>
+  </SupportedGrantTypes>
+  <GrantType>oauth.grant_type</GrantType>
+  <ClientId>request.formparam.client_id</ClientId>
+  <Code>oauthv2authcode.oauth-generate-auth-code.code</Code>
+  <RedirectUri>oauth.redirect_uri</RedirectUri>
+  <AppEndUser>oauth.uid</AppEndUser>
+  <RFCCompliantRequestResponse>true</RFCCompliantRequestResponse>
+  <GenerateResponse enabled="true"/>
+  <Attributes>
+    <Attribute name="uid" ref="oauth.uid" display="false"/>
+  </Attributes>
+</OAuthV2>

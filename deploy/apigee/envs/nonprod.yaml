@@ -28,3 +28,35 @@ proxies:
       - nl
     target_endpoints:
       - nl
+  - name: oauth
+    policies:
+      - add-cors
+      - set-southbound-key
+      - rewrite-quota-exceeded-message
+      - oauth-set-config
+      - oauth-script
+      - oauth-verify-client-id
+      - oauth-generate-state2-code
+      - oauth-get-state2-attributes
+      - oauth-delete-state2-code
+      - oauth-call-google-token
+      - oauth-verify-google-id-token
+      - oauth-compute-uid
+      - oauth-generate-auth-code
+      - oauth-decode-basic-auth
+      - oauth-verify-client-form
+      - oauth-get-code-attributes
+      - oauth-generate-access-token
+      - oauth-refresh-access-token
+      - oauth-verify-access-token
+      - oauth-enforce-user-quota
+      - oauth-strip-auth-headers
+      - oauth-raise-error
+      - oauth-rewrite-error
+      - oauth-rewrite-unauthorized-mcp
+    jsc:
+      - oauth
+    proxy_endpoints:
+      - oauth
+    target_endpoints:
+      - oauth
