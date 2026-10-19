@@ -28,6 +28,7 @@ import (
 	"runtime/pprof"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/datacommonsorg/mixer/internal/embedder"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
@@ -565,10 +566,17 @@ func main() {
 			EmbeddingsServiceClient:           embeddingsServiceClient,
 			UseSpannerGraph:                   *useSpannerGraph,
 			TopicExpander:                     topicExpander,
-			AgentDefaultExpandTopics:          agentDefaultExpandTopics,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
+
+	agentSvc := agent.NewService(
+		mixerServer,
+		agent.NewCache(mixerServer),
+		&agent.ServiceOptions{
+			DefaultExpandTopics: agentDefaultExpandTopics,
+		},
+	)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
 	if topicCacheManager != nil {
@@ -585,7 +593,7 @@ func main() {
 
 	// Register component lifecycles
 	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
-	registerAgentServiceLifecycle(mixerServer)
+	registerAgentServiceLifecycle(mixerServer, agentSvc)
 
 	// Run all startup initialization hooks
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
@@ -640,7 +648,7 @@ func main() {
 			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
-	startMCPServer(ctx, mixerServer)
+	startMCPServer(ctx, agentSvc)
 
 	slog.Info("About to listen")
 	// Listen on network
@@ -656,13 +664,10 @@ func main() {
 	}
 }
 
-func startMCPServer(ctx context.Context, mixerServer *server.Server) {
+// startMCPServer launches the Streamable HTTP MCP server on httpPort in a background goroutine.
+func startMCPServer(ctx context.Context, agentBackend mcp.AgentBackend) {
 	go func() {
 		slog.Info("Starting MCP HTTP server", "port", *httpPort)
-		var agentBackend mcp.AgentBackend
-		if agentSvc := mixerServer.AgentService(); agentSvc != nil {
-			agentBackend = agentSvc
-		}
 		mcpServer := mcp.NewDcMcpServer(
 			ctx,
 			agentBackend,
@@ -712,8 +717,9 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 	}
 }
 
-func registerAgentServiceLifecycle(s *server.Server) {
-	if agentSvc := s.AgentService(); agentSvc != nil {
+// registerAgentServiceLifecycle registers startup and periodic cache reset hooks for agentSvc.
+func registerAgentServiceLifecycle(s *server.Server, agentSvc *agent.Service) {
+	if agentSvc != nil {
 		s.RegisterLifecycle("agent-service-cache",
 			func(ctx context.Context) error {
 				agentSvc.Reset()

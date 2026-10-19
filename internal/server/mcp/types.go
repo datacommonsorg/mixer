@@ -17,17 +17,14 @@ package mcp
 import (
 	"context"
 
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/agent"
 )
 
 // AgentBackend defines the subset of agent.Service methods required by the MCP tools.
-// TODO: Once the external Python MCP server is retired and /v2/agent/* HTTP endpoints are
-// no longer needed, retire the /v2/agent/* gRPC/REST endpoints and have internal/agent
-// return native Go structs directly without intermediate protobuf serialization.
 type AgentBackend interface {
-	SearchIndicators(ctx context.Context, req *pbv2.SearchIndicatorsRequest) (*pbv2.SearchIndicatorsResponse, error)
-	GetVariableMetadata(ctx context.Context, req *pbv2.GetVariableMetadataRequest) (*pbv2.GetVariableMetadataResponse, error)
-	GetObservations(ctx context.Context, req *pbv2.GetObservationsRequest) (*pbv2.GetObservationsResponse, error)
+	SearchIndicators(ctx context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error)
+	GetVariableMetadata(ctx context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error)
+	GetObservations(ctx context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error)
 }
 
 // SearchIndicatorsInput holds arguments for the search_indicators MCP tool.

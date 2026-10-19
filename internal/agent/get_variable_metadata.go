@@ -27,7 +27,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -63,7 +62,7 @@ const (
 var (
 	obsMetadataSelect = []string{"variable", "entity", "facet"}
 
-	// properties to exclude from Statistical Variable properties Struct
+	// properties to exclude from Statistical Variable properties map
 	excludedSVProperties = map[string]struct{}{
 		propName:           {},
 		propDescription:    {},
@@ -75,7 +74,7 @@ var (
 		propLinkedMember:   {},
 	}
 
-	// properties to explicitly include for Provenance and Source dataset properties Struct.
+	// properties to explicitly include for Provenance and Source dataset properties map.
 	// These must be the exact raw property keys returned from the knowledge graph (V2Node).
 	includedDatasetProperties = map[string]struct{}{
 		propUrl:                     {},
@@ -114,39 +113,39 @@ type rawFetchResult struct {
 	provenances  map[string]*rawDatasetData
 }
 
-// translatedProperties holds the resolved name, description, and filtered dynamic properties Struct.
+// translatedProperties holds the resolved name, description, and filtered dynamic properties map.
 type translatedProperties struct {
 	name        string
 	description string
-	properties  *structpb.Struct
+	properties  map[string]any
 }
 
 // GetVariableMetadata assesses Statistical Variables by retrieving their definitions,
 // temporal/entity coverage, and source provenance descriptions.
 func (s *Service) GetVariableMetadata(
 	ctx context.Context,
-	req *pbv2.GetVariableMetadataRequest,
-) (*pbv2.GetVariableMetadataResponse, error) {
+	req *GetVariableMetadataRequest,
+) (*GetVariableMetadataResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
 	defer util.TimeTrack(time.Now(), "Agent: GetVariableMetadata")
 
-	if len(req.GetVariableDcids()) == 0 {
+	if len(req.VariableDcids) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "variable_dcids cannot be empty")
 	}
-	if len(req.GetVariableDcids()) > maxVariablesLimit {
+	if len(req.VariableDcids) > maxVariablesLimit {
 		return nil, status.Errorf(codes.InvalidArgument, "variable_dcids cannot exceed %d", maxVariablesLimit)
 	}
-	if len(req.GetEntityDcids()) == 0 {
+	if len(req.EntityDcids) == 0 {
 		return nil, status.Error(codes.InvalidArgument, "entity_dcids cannot be empty")
 	}
-	if len(req.GetEntityDcids()) > maxEntitiesLimit {
+	if len(req.EntityDcids) > maxEntitiesLimit {
 		return nil, status.Errorf(codes.InvalidArgument, "entity_dcids cannot exceed %d", maxEntitiesLimit)
 	}
 
-	varDcids := dedup(req.GetVariableDcids())
-	entityDcids := dedup(req.GetEntityDcids())
+	varDcids := dedup(req.VariableDcids)
+	entityDcids := dedup(req.EntityDcids)
 
 	// Phase 1: Fetch raw data concurrently
 	raw, err := s.fetchRawData(ctx, varDcids, entityDcids)
@@ -191,7 +190,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 		idx := i
 		dcid := vDcid
 
-		// Worker 1: Fetch Node Graph (Non-critical: log and skip on error)
+		// Fetch Node Graph (Non-critical: log and skip on error)
 		g.Go(func() error {
 			graph, err := s.fetchNodeGraph(gCtx, dcid)
 			if err != nil {
@@ -202,7 +201,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 			return nil
 		})
 
-		// Worker 2: Fetch Bulk Variable Info (Non-critical: log and skip on error)
+		// Fetch Bulk Variable Info (Non-critical: log and skip on error)
 		g.Go(func() error {
 			req := &pbv1.BulkVariableInfoRequest{Nodes: []string{dcid}}
 			resp, err := s.mixer.V2BulkVariableInfo(gCtx, req)
@@ -221,7 +220,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 		})
 	}
 
-	// Worker 3: Fetch Observations (Critical bulk query: fail if this fails)
+	// Fetch Observations (Critical bulk query: fail if this fails)
 	g.Go(func() error {
 		obsReq := &pbv2.ObservationRequest{
 			Variable: &pbv2.DcidOrExpression{Dcids: varDcids},
@@ -250,7 +249,7 @@ func (s *Service) fetchRawData(ctx context.Context, varDcids, entityDcids []stri
 		}
 	}
 
-	// Now hydrate provenances using the fetched data (lock-free!)
+	// Hydrate provenances using the fetched data in a lock-free manner
 	if err := s.fetchRawProvenances(ctx, raw); err != nil {
 		return nil, err
 	}
@@ -280,7 +279,7 @@ func (s *Service) fetchRawProvenances(ctx context.Context, raw *rawFetchResult) 
 				slog.Warn("Failed to fetch dataset graphs", "provenance", provDcid, "err", err)
 				return nil // Graceful degradation: do not fail the entire request
 			}
-			// Safe: lock-free direct pointer writes!
+			// Safe: lock-free direct pointer writes
 			rawDataset.provenance = dataset.provenance
 			rawDataset.source = dataset.source
 			return nil
@@ -359,11 +358,11 @@ func extractSourceDcid(graph *pbv2.LinkedGraph) string {
 }
 
 // composeResponse synchronously transforms raw fetched data into the final response payload.
-func (s *Service) composeResponse(raw *rawFetchResult, varDcids, entityDcids []string) *pbv2.GetVariableMetadataResponse {
-	resp := &pbv2.GetVariableMetadataResponse{
+func (s *Service) composeResponse(raw *rawFetchResult, varDcids, entityDcids []string) *GetVariableMetadataResponse {
+	resp := &GetVariableMetadataResponse{
 		Status:      StatusSuccess,
-		Variables:   make(map[string]*pbv2.GetVariableMetadataResponse_VariableMetadata),
-		Provenances: make(map[string]*pbv2.GetVariableMetadataResponse_ProvenanceMetadata),
+		Variables:   make(map[string]*VariableMetadata),
+		Provenances: make(map[string]*ProvenanceMetadata),
 	}
 
 	// Translate variables
@@ -391,41 +390,39 @@ func translateVariable(
 	rawVar *rawVariableData,
 	obs *pbv2.ObservationResponse,
 	entityDcids []string,
-) *pbv2.GetVariableMetadataResponse_VariableMetadata {
+) *VariableMetadata {
 	tp := translateProperties(rawVar.properties)
 
-	varMeta := &pbv2.GetVariableMetadataResponse_VariableMetadata{
-		Id:          dcid,
+	return &VariableMetadata{
+		ID:          dcid,
 		Name:        tp.name,
 		Description: tp.description,
 		Properties:  tp.properties,
 		Facets:      translateFacets(dcid, obs, rawVar.summary, entityDcids),
 	}
-
-	return varMeta
 }
 
-// translateProperties extracts headers and builds the dynamic properties Struct, filtering out primary name/description.
+// translateProperties extracts headers and builds the dynamic properties map, filtering out primary name/description.
 func translateProperties(graph *pbv2.LinkedGraph) *translatedProperties {
 	tp := &translatedProperties{
-		properties: &structpb.Struct{Fields: make(map[string]*structpb.Value)},
+		properties: make(map[string]any),
 	}
 
 	if graph == nil || graph.GetArcs() == nil {
 		return tp
 	}
 
-	// 1. Resolve root Name (primary name)
+	// Resolve root Name (primary name)
 	if nameArc, ok := graph.GetArcs()[propName]; ok && nameArc != nil {
 		tp.name = resolveFirstValue(nameArc.GetNodes())
 	}
 
-	// 2. Resolve root Description
+	// Resolve root Description
 	if descArc, ok := graph.GetArcs()[propDescription]; ok && descArc != nil {
 		tp.description = resolveFirstValue(descArc.GetNodes())
 	}
 
-	// 3. Build filtered dynamic properties Struct
+	// Build filtered dynamic properties map
 	for prop, nodesArc := range graph.GetArcs() {
 		if nodesArc == nil || len(nodesArc.GetNodes()) == 0 {
 			continue
@@ -437,22 +434,22 @@ func translateProperties(graph *pbv2.LinkedGraph) *translatedProperties {
 		}
 
 		// Convert values completely as-is (no root-value duplication filtering)
-		if structVal, ok := toStructValue(nodesArc.GetNodes()); ok {
-			tp.properties.Fields[prop] = structVal
+		if propVal, ok := toPropertyValue(nodesArc.GetNodes()); ok {
+			tp.properties[prop] = propVal
 		}
 	}
 
 	return tp
 }
 
-// translateFacets maps observation responses to the list of structured FacetMetadata.
+// translateFacets maps observation responses to the list of structured VariableFacetMetadata.
 func translateFacets(
 	varDcid string,
 	obs *pbv2.ObservationResponse,
 	summary *pb.StatVarSummary,
 	entityDcids []string,
-) []*pbv2.GetVariableMetadataResponse_FacetMetadata {
-	var facets []*pbv2.GetVariableMetadataResponse_FacetMetadata
+) []*VariableFacetMetadata {
+	var facets []*VariableFacetMetadata
 	if obs == nil || obs.GetByVariable() == nil {
 		return facets
 	}
@@ -462,8 +459,7 @@ func translateFacets(
 		return facets
 	}
 
-	// We aggregate by Facet ID first, then map to list of Structs
-	type facetStats struct {
+	type facetGroupStats struct {
 		facetObj *pb.Facet
 		obsCount int32
 		earliest string
@@ -471,7 +467,7 @@ func translateFacets(
 		covered  map[string]struct{}
 	}
 
-	facetGroups := make(map[string]*facetStats)
+	facetGroups := make(map[string]*facetGroupStats)
 
 	for eDcid, eObs := range vObs.GetByEntity() {
 		if eObs == nil {
@@ -489,7 +485,7 @@ func translateFacets(
 
 			stats, exists := facetGroups[fID]
 			if !exists {
-				stats = &facetStats{
+				stats = &facetGroupStats{
 					facetObj: fObj,
 					obsCount: 0,
 					covered:  make(map[string]struct{}),
@@ -551,24 +547,19 @@ func translateFacets(
 			}
 		}
 
-		fProps, err := structpb.NewStruct(fPropsMap)
-		if err != nil {
-			fProps = &structpb.Struct{Fields: make(map[string]*structpb.Value)}
-		}
-
-		facetMeta := &pbv2.GetVariableMetadataResponse_FacetMetadata{
-			Id:           fID,
-			ProvenanceId: stats.facetObj.GetProvenanceId(),
+		facetMeta := &VariableFacetMetadata{
+			ID:           fID,
+			ProvenanceID: stats.facetObj.GetProvenanceId(),
 			ObsCount:     stats.obsCount,
-			DateRange: &pbv2.GetVariableMetadataResponse_FacetMetadata_DateRange{
+			DateRange: &DateRange{
 				Start: stats.earliest,
 				End:   stats.latest,
 			},
-			Scope: &pbv2.GetVariableMetadataResponse_FacetMetadata_Scope{
+			Scope: &FacetScope{
 				EntityGranularity: geoGranularities,
 				EntityCoverage:    activeCoverage,
 			},
-			Properties: fProps,
+			Properties: fPropsMap,
 		}
 		facets = append(facets, facetMeta)
 	}
@@ -576,11 +567,11 @@ func translateFacets(
 	return facets
 }
 
-// translateProvenance merges provenance and parent source properties into a single dynamic Struct.
-func translateProvenance(id string, rawDataset *rawDatasetData) *pbv2.GetVariableMetadataResponse_ProvenanceMetadata {
-	provMeta := &pbv2.GetVariableMetadataResponse_ProvenanceMetadata{
-		Id:         id,
-		Properties: &structpb.Struct{Fields: make(map[string]*structpb.Value)},
+// translateProvenance merges provenance and parent source properties into a single dynamic map.
+func translateProvenance(id string, rawDataset *rawDatasetData) *ProvenanceMetadata {
+	provMeta := &ProvenanceMetadata{
+		ID:         id,
+		Properties: make(map[string]any),
 	}
 	if rawDataset == nil {
 		return provMeta
@@ -597,8 +588,8 @@ func translateProvenance(id string, rawDataset *rawDatasetData) *pbv2.GetVariabl
 			if _, shouldInclude := includedDatasetProperties[prop]; !shouldInclude {
 				continue
 			}
-			if structVal, ok := toStructValue(nodesArc.GetNodes()); ok {
-				provMeta.Properties.Fields[prop] = structVal
+			if propVal, ok := toPropertyValue(nodesArc.GetNodes()); ok {
+				provMeta.Properties[prop] = propVal
 			}
 		}
 	}
@@ -633,8 +624,8 @@ func resolveFirstValue(nodes []*pb.EntityInfo) string {
 	return ""
 }
 
-// toStructValue converts a slice of properties into a flat Struct Value.
-func toStructValue(nodes []*pb.EntityInfo) (*structpb.Value, bool) {
+// toPropertyValue converts a slice of properties into a string or slice of strings.
+func toPropertyValue(nodes []*pb.EntityInfo) (any, bool) {
 	var values []string
 	seen := make(map[string]struct{})
 
@@ -663,17 +654,11 @@ func toStructValue(nodes []*pb.EntityInfo) (*structpb.Value, bool) {
 		return nil, false
 	}
 
-	// If exactly 1 value, return as a flat string
 	if len(values) == 1 {
-		return structpb.NewStringValue(values[0]), true
+		return values[0], true
 	}
 
-	// If multiple values, return as a list of strings
-	var listVals []*structpb.Value
-	for _, v := range values {
-		listVals = append(listVals, structpb.NewStringValue(v))
-	}
-	return structpb.NewListValue(&structpb.ListValue{Values: listVals}), true
+	return values, true
 }
 
 // extractGeographicGranularities retrieves sorted unique place types for a specific provenance from a StatVarSummary.

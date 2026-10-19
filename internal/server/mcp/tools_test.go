@@ -16,49 +16,48 @@ package mcp
 
 import (
 	"context"
+	"encoding/json"
 	"strings"
 	"testing"
 
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 // fakeAgentBackend records incoming requests and returns canned responses for unit tests.
 type fakeAgentBackend struct {
-	lastSearchReq       *pbv2.SearchIndicatorsRequest
-	searchResp          *pbv2.SearchIndicatorsResponse
-	lastVarMetadataReq  *pbv2.GetVariableMetadataRequest
-	varMetadataResp     *pbv2.GetVariableMetadataResponse
-	lastObservationsReq *pbv2.GetObservationsRequest
-	observationsResp    *pbv2.GetObservationsResponse
+	lastSearchReq       *agent.SearchIndicatorsRequest
+	searchResp          *agent.SearchIndicatorsResponse
+	lastVarMetadataReq  *agent.GetVariableMetadataRequest
+	varMetadataResp     *agent.GetVariableMetadataResponse
+	lastObservationsReq *agent.GetObservationsRequest
+	observationsResp    *agent.GetObservationsResponse
 }
 
-func (f *fakeAgentBackend) SearchIndicators(_ context.Context, req *pbv2.SearchIndicatorsRequest) (*pbv2.SearchIndicatorsResponse, error) {
+func (f *fakeAgentBackend) SearchIndicators(_ context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error) {
 	f.lastSearchReq = req
 	if f.searchResp != nil {
 		return f.searchResp, nil
 	}
-	return &pbv2.SearchIndicatorsResponse{Status: "SUCCESS"}, nil
+	return &agent.SearchIndicatorsResponse{Status: "SUCCESS"}, nil
 }
 
-func (f *fakeAgentBackend) GetVariableMetadata(_ context.Context, req *pbv2.GetVariableMetadataRequest) (*pbv2.GetVariableMetadataResponse, error) {
+func (f *fakeAgentBackend) GetVariableMetadata(_ context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error) {
 	f.lastVarMetadataReq = req
 	if f.varMetadataResp != nil {
 		return f.varMetadataResp, nil
 	}
-	return &pbv2.GetVariableMetadataResponse{Status: "SUCCESS"}, nil
+	return &agent.GetVariableMetadataResponse{Status: "SUCCESS"}, nil
 }
 
-func (f *fakeAgentBackend) GetObservations(_ context.Context, req *pbv2.GetObservationsRequest) (*pbv2.GetObservationsResponse, error) {
+func (f *fakeAgentBackend) GetObservations(_ context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error) {
 	f.lastObservationsReq = req
 	if f.observationsResp != nil {
 		return f.observationsResp, nil
 	}
-	return &pbv2.GetObservationsResponse{
-		Variable: &pbv2.GetObservationsResponse_Node{Dcid: req.GetVariableDcid(), Name: "Test Variable"},
+	return &agent.GetObservationsResponse{
+		Variable: &agent.ObservationNode{Dcid: req.VariableDcid, Name: "Test Variable"},
 	}, nil
 }
 
@@ -67,7 +66,7 @@ func TestSearchIndicators(t *testing.T) {
 		name        string
 		searchScope string
 		input       SearchIndicatorsInput
-		wantReq     *pbv2.SearchIndicatorsRequest
+		wantReq     *agent.SearchIndicatorsRequest
 	}{
 		{
 			name:        "defaults applied without search scope",
@@ -76,11 +75,11 @@ func TestSearchIndicators(t *testing.T) {
 				Query:  "population",
 				Places: []string{"California"},
 			},
-			wantReq: &pbv2.SearchIndicatorsRequest{
+			wantReq: &agent.SearchIndicatorsRequest{
 				Query:          "population",
 				Places:         []string{"California"},
 				PerSearchLimit: 10,
-				IncludeTopics:  proto.Bool(true),
+				IncludeTopics:  true,
 			},
 		},
 		{
@@ -92,12 +91,12 @@ func TestSearchIndicators(t *testing.T) {
 				PerSearchLimit: 25,
 				IncludeTopics:  proto.Bool(false),
 			},
-			wantReq: &pbv2.SearchIndicatorsRequest{
+			wantReq: &agent.SearchIndicatorsRequest{
 				Query:          "median income",
 				Places:         []string{"Texas", "New York"},
 				PerSearchLimit: 25,
-				IncludeTopics:  proto.Bool(false),
-				Target:         proto.String("custom_only"),
+				IncludeTopics:  false,
+				Target:         "custom_only",
 			},
 		},
 	}
@@ -111,11 +110,11 @@ func TestSearchIndicators(t *testing.T) {
 			if err != nil {
 				t.Fatalf("SearchIndicators(%+v) unexpected error: %v", tc.input, err)
 			}
-			if diff := cmp.Diff(tc.wantReq, backend.lastSearchReq, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(tc.wantReq, backend.lastSearchReq); diff != "" {
 				t.Errorf("SearchIndicators request diff (-want +got):\n%s", diff)
 			}
-			if got["status"] != "SUCCESS" {
-				t.Errorf("SearchIndicators status = %v, want SUCCESS", got["status"])
+			if got.Status != "SUCCESS" {
+				t.Errorf("SearchIndicators status = %v, want SUCCESS", got.Status)
 			}
 		})
 	}
@@ -126,7 +125,7 @@ func TestSearchChildIndicators(t *testing.T) {
 		name        string
 		searchScope string
 		input       SearchChildIndicatorsInput
-		wantReq     *pbv2.SearchIndicatorsRequest
+		wantReq     *agent.SearchIndicatorsRequest
 	}{
 		{
 			name:        "child indicators search with defaults",
@@ -136,13 +135,13 @@ func TestSearchChildIndicators(t *testing.T) {
 				ParentPlace:       "United States",
 				SampleChildPlaces: []string{"California", "Texas"},
 			},
-			wantReq: &pbv2.SearchIndicatorsRequest{
+			wantReq: &agent.SearchIndicatorsRequest{
 				Query:          "unemployment rate",
 				ParentPlace:    "United States",
 				Places:         []string{"California", "Texas"},
 				PerSearchLimit: 10,
-				IncludeTopics:  proto.Bool(true),
-				Target:         proto.String("base_and_custom"),
+				IncludeTopics:  true,
+				Target:         "base_and_custom",
 			},
 		},
 	}
@@ -156,7 +155,7 @@ func TestSearchChildIndicators(t *testing.T) {
 			if err != nil {
 				t.Fatalf("SearchChildIndicators(%+v) unexpected error: %v", tc.input, err)
 			}
-			if diff := cmp.Diff(tc.wantReq, backend.lastSearchReq, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(tc.wantReq, backend.lastSearchReq); diff != "" {
 				t.Errorf("SearchChildIndicators request diff (-want +got):\n%s", diff)
 			}
 		})
@@ -167,7 +166,7 @@ func TestGetVariableMetadata(t *testing.T) {
 	tests := []struct {
 		name    string
 		input   GetVariableMetadataInput
-		wantReq *pbv2.GetVariableMetadataRequest
+		wantReq *agent.GetVariableMetadataRequest
 	}{
 		{
 			name: "forwards variable_dcids and entity_dcids",
@@ -175,7 +174,7 @@ func TestGetVariableMetadata(t *testing.T) {
 				VariableDcids: []string{"Count_Person", "Median_Income_Person"},
 				EntityDcids:   []string{"country/USA", "geoId/06"},
 			},
-			wantReq: &pbv2.GetVariableMetadataRequest{
+			wantReq: &agent.GetVariableMetadataRequest{
 				VariableDcids: []string{"Count_Person", "Median_Income_Person"},
 				EntityDcids:   []string{"country/USA", "geoId/06"},
 			},
@@ -191,7 +190,7 @@ func TestGetVariableMetadata(t *testing.T) {
 			if err != nil {
 				t.Fatalf("GetVariableMetadata(%+v) unexpected error: %v", tc.input, err)
 			}
-			if diff := cmp.Diff(tc.wantReq, backend.lastVarMetadataReq, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(tc.wantReq, backend.lastVarMetadataReq); diff != "" {
 				t.Errorf("GetVariableMetadata request diff (-want +got):\n%s", diff)
 			}
 		})
@@ -199,22 +198,10 @@ func TestGetVariableMetadata(t *testing.T) {
 }
 
 func TestGetObservationsAndChildObservations(t *testing.T) {
-	singlePlaceVal, err := structpb.NewValue([]any{"geoId/06"})
-	if err != nil {
-		t.Fatalf("failed to create structpb value: %v", err)
-	}
-	childPlaceVal, err := structpb.NewValue(map[string]any{
-		"parent_dcid": "geoId/06",
-		"child_type":  "County",
-	})
-	if err != nil {
-		t.Fatalf("failed to create structpb value: %v", err)
-	}
-
 	tests := []struct {
 		name    string
 		call    func(tools *McpTools) error
-		wantReq *pbv2.GetObservationsRequest
+		wantReq *agent.GetObservationsRequest
 	}{
 		{
 			name: "get_observations single place with default latest date",
@@ -225,11 +212,13 @@ func TestGetObservationsAndChildObservations(t *testing.T) {
 				})
 				return callErr
 			},
-			wantReq: &pbv2.GetObservationsRequest{
+			wantReq: &agent.GetObservationsRequest{
 				VariableDcid: "Count_Person",
-				Date:         proto.String("latest"),
-				Entities: map[string]*structpb.Value{
-					"observationAbout": singlePlaceVal,
+				Date:         "latest",
+				Entities: map[string]*agent.EntityConstraint{
+					"observationAbout": {
+						Dcids: []string{"geoId/06"},
+					},
 				},
 			},
 		},
@@ -247,14 +236,19 @@ func TestGetObservationsAndChildObservations(t *testing.T) {
 				})
 				return callErr
 			},
-			wantReq: &pbv2.GetObservationsRequest{
+			wantReq: &agent.GetObservationsRequest{
 				VariableDcid:   "Count_Person",
-				SourceOverride: proto.String("CensusPEP"),
-				Date:           proto.String("range"),
-				DateRangeStart: proto.String("2015"),
-				DateRangeEnd:   proto.String("2020"),
-				Entities: map[string]*structpb.Value{
-					"observationAbout": childPlaceVal,
+				SourceOverride: "CensusPEP",
+				Date:           "range",
+				DateRangeStart: "2015",
+				DateRangeEnd:   "2020",
+				Entities: map[string]*agent.EntityConstraint{
+					"observationAbout": {
+						ParentSpec: &agent.ParentPlaceSpec{
+							ParentDcid: "geoId/06",
+							ChildType:  "County",
+						},
+					},
 				},
 			},
 		},
@@ -268,7 +262,7 @@ func TestGetObservationsAndChildObservations(t *testing.T) {
 			if err := tc.call(tools); err != nil {
 				t.Fatalf("unexpected error: %v", err)
 			}
-			if diff := cmp.Diff(tc.wantReq, backend.lastObservationsReq, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(tc.wantReq, backend.lastObservationsReq); diff != "" {
 				t.Errorf("GetObservations request diff (-want +got):\n%s", diff)
 			}
 		})
@@ -276,16 +270,10 @@ func TestGetObservationsAndChildObservations(t *testing.T) {
 }
 
 func TestGetMultiEntityObservations(t *testing.T) {
-	obsAboutVal, _ := structpb.NewValue([]any{"country/USA"})
-	parentVal, _ := structpb.NewValue(map[string]any{
-		"parent_dcid": "Earth",
-		"child_type":  "Country",
-	})
-
 	tests := []struct {
 		name       string
 		input      GetMultiEntityObservationsInput
-		wantReq    *pbv2.GetObservationsRequest
+		wantReq    *agent.GetObservationsRequest
 		wantErrSub string
 	}{
 		{
@@ -297,12 +285,19 @@ func TestGetMultiEntityObservations(t *testing.T) {
 				ParentEntityDcid:     "Earth",
 				ChildEntityType:      "Country",
 			},
-			wantReq: &pbv2.GetObservationsRequest{
+			wantReq: &agent.GetObservationsRequest{
 				VariableDcid: "TradeExports",
-				Date:         proto.String("latest"),
-				Entities: map[string]*structpb.Value{
-					"observationAbout":     obsAboutVal,
-					"measurementQualifier": parentVal,
+				Date:         "latest",
+				Entities: map[string]*agent.EntityConstraint{
+					"observationAbout": {
+						Dcids: []string{"country/USA"},
+					},
+					"measurementQualifier": {
+						ParentSpec: &agent.ParentPlaceSpec{
+							ParentDcid: "Earth",
+							ChildType:  "Country",
+						},
+					},
 				},
 			},
 		},
@@ -343,8 +338,193 @@ func TestGetMultiEntityObservations(t *testing.T) {
 			if err != nil {
 				t.Fatalf("GetMultiEntityObservations unexpected error: %v", err)
 			}
-			if diff := cmp.Diff(tc.wantReq, backend.lastObservationsReq, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(tc.wantReq, backend.lastObservationsReq); diff != "" {
 				t.Errorf("GetMultiEntityObservations request diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestNativeResponseWireJSONSerialization(t *testing.T) {
+	placesFoundZero := int32(0)
+	tests := []struct {
+		name     string
+		response any
+		wantJSON map[string]any
+	}{
+		{
+			name: "SearchIndicatorsResponse preserves camelCase and empty slices in table rows and mappings",
+			response: &agent.SearchIndicatorsResponse{
+				TopicCandidates: &agent.Table{
+					Columns: []string{"dcid", "name", "memberTopics", "variables", "placesWithData"},
+					Rows: [][]any{
+						{"dc/topic/Economy", "Economy", []string{}, []string{"Count_Person"}, []string{}},
+					},
+				},
+				VariableCandidates: &agent.Table{
+					Columns: []string{"dcid", "name", "placesWithData"},
+					Rows: [][]any{
+						{"Count_Person", "Total Population", []string{"country/USA"}},
+					},
+				},
+				DcidNameMappings: map[string]string{
+					"country/USA": "United States",
+				},
+				DcidPlaceTypeMappings: map[string][]string{
+					"country/USA": {"Country"},
+					"geoId/00":    {},
+				},
+				Status: "SUCCESS",
+			},
+			wantJSON: map[string]any{
+				"topicCandidates": map[string]any{
+					"columns": []any{"dcid", "name", "memberTopics", "variables", "placesWithData"},
+					"rows": []any{
+						[]any{"dc/topic/Economy", "Economy", []any{}, []any{"Count_Person"}, []any{}},
+					},
+				},
+				"variableCandidates": map[string]any{
+					"columns": []any{"dcid", "name", "placesWithData"},
+					"rows": []any{
+						[]any{"Count_Person", "Total Population", []any{"country/USA"}},
+					},
+				},
+				"dcidNameMappings": map[string]any{
+					"country/USA": "United States",
+				},
+				"dcidPlaceTypeMappings": map[string]any{
+					"country/USA": []any{"Country"},
+					"geoId/00":    []any{},
+				},
+				"status": "SUCCESS",
+			},
+		},
+		{
+			name: "GetVariableMetadataResponse preserves empty properties maps as JSON objects",
+			response: &agent.GetVariableMetadataResponse{
+				Status: "SUCCESS",
+				Variables: map[string]*agent.VariableMetadata{
+					"Count_Person": {
+						ID:         "Count_Person",
+						Properties: map[string]any{},
+						Facets: []*agent.VariableFacetMetadata{
+							{
+								ID:         "f1",
+								Properties: map[string]any{},
+							},
+						},
+					},
+				},
+				Provenances: map[string]*agent.ProvenanceMetadata{
+					"dc/base/Census": {
+						ID:         "dc/base/Census",
+						Properties: map[string]any{},
+					},
+				},
+			},
+			wantJSON: map[string]any{
+				"status": "SUCCESS",
+				"variables": map[string]any{
+					"Count_Person": map[string]any{
+						"id":         "Count_Person",
+						"properties": map[string]any{},
+						"facets": []any{
+							map[string]any{
+								"id":         "f1",
+								"properties": map[string]any{},
+							},
+						},
+					},
+				},
+				"provenances": map[string]any{
+					"dc/base/Census": map[string]any{
+						"id":         "dc/base/Census",
+						"properties": map[string]any{},
+					},
+				},
+			},
+		},
+		{
+			name: "GetObservationsResponse preserves camelCase dual-table structure and zero placesFoundCount pointer",
+			response: &agent.GetObservationsResponse{
+				Variable: &agent.ObservationNode{
+					Dcid:   "Count_Person",
+					Name:   "Total Population",
+					TypeOf: []string{"StatisticalVariable"},
+				},
+				EntityMetadata: &agent.Table{
+					Columns: []string{"slot", "dcid", "name", "typeOf"},
+					Rows: [][]any{
+						{"observationAbout", "country/USA", "United States", "Country"},
+					},
+				},
+				Data: &agent.Table{
+					Columns: []string{"observationAbout", "date", "value", "unit"},
+					Rows: [][]any{
+						{"country/USA", "2020", 331449281.0, nil},
+					},
+				},
+				SourceMetadata: &agent.ObservationFacetMetadata{
+					SourceID:   "f1",
+					ImportName: "CensusPEP",
+				},
+				AlternativeSources: []*agent.AlternativeSource{
+					{
+						SourceMetadata: &agent.ObservationFacetMetadata{
+							SourceID:   "f2",
+							ImportName: "WorldBank",
+						},
+						PlacesFoundCount: &placesFoundZero,
+					},
+				},
+			},
+			wantJSON: map[string]any{
+				"variable": map[string]any{
+					"dcid":   "Count_Person",
+					"name":   "Total Population",
+					"typeOf": []any{"StatisticalVariable"},
+				},
+				"entityMetadata": map[string]any{
+					"columns": []any{"slot", "dcid", "name", "typeOf"},
+					"rows": []any{
+						[]any{"observationAbout", "country/USA", "United States", "Country"},
+					},
+				},
+				"data": map[string]any{
+					"columns": []any{"observationAbout", "date", "value", "unit"},
+					"rows": []any{
+						[]any{"country/USA", "2020", 331449281.0, nil},
+					},
+				},
+				"sourceMetadata": map[string]any{
+					"sourceId":   "f1",
+					"importName": "CensusPEP",
+				},
+				"alternativeSources": []any{
+					map[string]any{
+						"sourceMetadata": map[string]any{
+							"sourceId":   "f2",
+							"importName": "WorldBank",
+						},
+						"placesFoundCount": float64(0),
+					},
+				},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			rawBytes, err := json.Marshal(tc.response)
+			if err != nil {
+				t.Fatalf("json.Marshal(%T) failed: %v", tc.response, err)
+			}
+			var gotJSON map[string]any
+			if err := json.Unmarshal(rawBytes, &gotJSON); err != nil {
+				t.Fatalf("json.Unmarshal failed: %v", err)
+			}
+			if diff := cmp.Diff(tc.wantJSON, gotJSON); diff != "" {
+				t.Errorf("JSON wire output diff (-want +got):\n%s", diff)
 			}
 		})
 	}
