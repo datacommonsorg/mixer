@@ -558,15 +558,17 @@ func TestMultiEntityQueriesUseEmulatorCompatibleHints(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		// Date-filtered observation queries use EXECUTION_METHOD, which the
-		// emulator does not implement.
+		// Date-filtered observation queries use SCAN_METHOD=COLUMNAR and
+		// EXECUTION_METHOD=BATCH, both of which the emulator rejects.
 		for _, variables := range [][]string{{"var1"}, nil} {
 			stmt, err := queryBuilder.GetObservationsQuery(variables, []string{"geoId/06"}, "2020")
 			if err != nil {
 				t.Fatal(err)
 			}
-			if got := strings.Contains(stmt.SQL, "EXECUTION_METHOD=BATCH"); got == emulator {
-				t.Errorf("emulator=%t variables=%v: EXECUTION_METHOD hint present = %t\nSQL:\n%s", emulator, variables, got, stmt.SQL)
+			for _, hint := range []string{"SCAN_METHOD=COLUMNAR", "EXECUTION_METHOD=BATCH"} {
+				if got := strings.Contains(stmt.SQL, hint); got == emulator {
+					t.Errorf("emulator=%t variables=%v: %s hint present = %t\nSQL:\n%s", emulator, variables, hint, got, stmt.SQL)
+				}
 			}
 		}
 

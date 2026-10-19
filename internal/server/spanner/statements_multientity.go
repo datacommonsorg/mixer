@@ -883,8 +883,8 @@ func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) 
 }
 
 // columnarBatchStatementHint returns the statement hint for queries that read
-// many dates. The emulator rejects EXECUTION_METHOD, so in emulator mode the
-// whole hint is omitted.
+// many dates. The emulator rejects both SCAN_METHOD=COLUMNAR and
+// EXECUTION_METHOD, so in emulator mode the whole hint is omitted.
 func columnarBatchStatementHint(cfg TableConfig) string {
 	if cfg.spannerEmulatorCompatibility {
 		return ""

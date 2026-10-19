@@ -17,7 +17,6 @@ package emulator
 import (
 	"context"
 	"slices"
-	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -26,9 +25,7 @@ import (
 
 // sortRows orders existence rows so tests don't depend on UNION ALL order.
 func sortRows(rows [][]string) {
-	slices.SortFunc(rows, func(a, b []string) int {
-		return strings.Compare(strings.Join(a, "\x00"), strings.Join(b, "\x00"))
-	})
+	slices.SortFunc(rows, slices.Compare)
 }
 
 func TestCheckVariableExistence(t *testing.T) {
@@ -77,6 +74,20 @@ func TestCheckVariableExistence(t *testing.T) {
 				{"Count_MigrationByObservationAbout", "country/MEX"},
 				{"Count_MigrationByObservationAbout", "country/USA"},
 			},
+		},
+		{
+			name:      "variables only, every entity slot",
+			variables: []string{"Count_MigrationByObservationAbout"},
+			want: [][]string{
+				{"Count_MigrationByObservationAbout", "country/CAN"},
+				{"Count_MigrationByObservationAbout", "country/MEX"},
+				{"Count_MigrationByObservationAbout", "country/USA"},
+			},
+		},
+		{
+			name:     "entities only, third entity slot",
+			entities: []string{"Sea"},
+			want:     [][]string{{"Count_MigrationByTransportMode", "Sea"}},
 		},
 		{
 			name:      "no data",

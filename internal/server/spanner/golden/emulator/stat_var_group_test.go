@@ -121,6 +121,20 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 	farmAreaGroup := func(count int64) *mixerspanner.ChildSVG {
 		return &mixerspanner.ChildSVG{SubjectID: "dc/g/Farm_Area", Name: "Farm Area", DescendentStatVarCount: count}
 	}
+	// Each group constrained to geoId/01 with a threshold of 1.
+	farmAtGeoID01 := &mixerspanner.FilteredStatVarGroupNode{
+		SVGChild: farmChildren(""),
+		ChildSV:  []*mixerspanner.ChildSV{countFarm, countFarmShipment},
+		ChildSVG: []*mixerspanner.ChildSVG{farmGroup(3), farmAreaGroup(1)},
+	}
+	farmAreaAtGeoID01 := &mixerspanner.FilteredStatVarGroupNode{
+		SVGChild: []*mixerspanner.SVGChild{
+			{SubjectID: "Area_Farm", Name: "Area of Farms", Predicate: "memberOf"},
+			{SubjectID: "Area_Farm_Irrigated", Name: "Area of Irrigated Farms", Predicate: "memberOf"},
+		},
+		ChildSV:  []*mixerspanner.ChildSV{{SubjectID: "Area_Farm", Name: "Area of Farms"}},
+		ChildSVG: []*mixerspanner.ChildSVG{farmAreaGroup(1)},
+	}
 
 	tests := []struct {
 		name                 string
@@ -151,6 +165,29 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 				SVGChild: farmChildren(""),
 				ChildSV:  []*mixerspanner.ChildSV{countFarm},
 				ChildSVG: []*mixerspanner.ChildSVG{farmGroup(1)},
+			},
+		},
+		// Count_FarmShipment has two series with entity1 geoId/04. geoId/99 has
+		// no data; it only raises the constraint count to 2 so the threshold-2
+		// query isn't skipped.
+		{
+			name:                 "one place with two series",
+			node:                 "dc/g/Farm",
+			constrainedPlaces:    []string{"geoId/04", "geoId/99"},
+			numEntitiesExistence: 1,
+			want: &mixerspanner.FilteredStatVarGroupNode{
+				SVGChild: farmChildren(""),
+				ChildSV:  []*mixerspanner.ChildSV{countFarmShipment},
+				ChildSVG: []*mixerspanner.ChildSVG{farmGroup(1)},
+			},
+		},
+		{
+			name:                 "existence threshold counts places, not series",
+			node:                 "dc/g/Farm",
+			constrainedPlaces:    []string{"geoId/04", "geoId/99"},
+			numEntitiesExistence: 2,
+			want: &mixerspanner.FilteredStatVarGroupNode{
+				SVGChild: farmChildren(""),
 			},
 		},
 		{
@@ -192,14 +229,7 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 			node:                 "dc/g/Farm_Area",
 			constrainedPlaces:    []string{"geoId/01"},
 			numEntitiesExistence: 1,
-			want: &mixerspanner.FilteredStatVarGroupNode{
-				SVGChild: []*mixerspanner.SVGChild{
-					{SubjectID: "Area_Farm", Name: "Area of Farms", Predicate: "memberOf"},
-					{SubjectID: "Area_Farm_Irrigated", Name: "Area of Irrigated Farms", Predicate: "memberOf"},
-				},
-				ChildSV:  []*mixerspanner.ChildSV{{SubjectID: "Area_Farm", Name: "Area of Farms"}},
-				ChildSVG: []*mixerspanner.ChildSVG{farmAreaGroup(1)},
-			},
+			want:                 farmAreaAtGeoID01,
 		},
 		{
 			name:                 "definitions",
@@ -218,11 +248,7 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 			node:                 "dc/g/Farm",
 			constrainedPlaces:    []string{"geoId/01"},
 			numEntitiesExistence: 1,
-			want: &mixerspanner.FilteredStatVarGroupNode{
-				SVGChild: farmChildren(""),
-				ChildSV:  []*mixerspanner.ChildSV{countFarm, countFarmShipment},
-				ChildSVG: []*mixerspanner.ChildSVG{farmGroup(3), farmAreaGroup(1)},
-			},
+			want:                 farmAtGeoID01,
 		},
 		{
 			name:                 "threshold above constraint count skips filtering",
@@ -260,6 +286,29 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 			}
 		})
 	}
+
+	// A request for several nodes queries each node separately and merges the
+	// results by node.
+	t.Run("multiple nodes", func(t *testing.T) {
+		got, err := s.spannerClient.GetFilteredStatVarGroupNode(
+			context.Background(),
+			[]string{"dc/g/Farm", "dc/g/Farm_Area"},
+			[]string{"geoId/01"},
+			"",
+			1,
+			false,
+		)
+		if err != nil {
+			t.Fatalf("GetFilteredStatVarGroupNode() error = %v", err)
+		}
+		want := map[string]*mixerspanner.FilteredStatVarGroupNode{
+			"dc/g/Farm":      farmAtGeoID01,
+			"dc/g/Farm_Area": farmAreaAtGeoID01,
+		}
+		if diff := cmp.Diff(want, got, opts...); diff != "" {
+			t.Errorf("GetFilteredStatVarGroupNode() mismatch (-want +got):\n%s", diff)
+		}
+	})
 }
 
 func TestGetFilteredTopic(t *testing.T) {
