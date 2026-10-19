@@ -81,11 +81,6 @@ func (s *Service) Reset() {
 	}
 }
 
-// DefaultExpandTopics returns the configured default topic expansion behavior.
-func (s *Service) DefaultExpandTopics() bool {
-	return s.defaultExpandTopics
-}
-
 // fetchAllNodes fetches all pages of a V2Node request. Large node lists are split
 // into chunks that are fetched in parallel.
 //

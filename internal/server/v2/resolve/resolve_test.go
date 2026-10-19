@@ -218,7 +218,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -227,7 +227,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid property expression",
@@ -268,22 +268,19 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			wantTypeOfValues: []string{"ElementarySchool"},
 		},
 		{
-			desc: "invalid property for non_place resolver (inProp)",
+			desc: "valid type resolver",
 			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverNonPlace,
-				Property: "<-geoCoordinate->dcid",
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
 			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place resolution only supports 'description' as input property",
-		},
-		{
-			desc: "invalid property for non_place resolver (outProp)",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverNonPlace,
-				Property: "<-description->nutsCode",
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
 			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: non_place resolution only supports 'dcid' as output property",
+			wantInProp:       "description",
+			wantOutProp:      "dcid",
+			wantTypeOfValues: nil,
 		},
 		{
 			desc: "invalid property for indicator resolver (inProp)",

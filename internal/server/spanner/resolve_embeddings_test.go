@@ -377,7 +377,7 @@ func TestResolveEmbeddings_NonPlaceEntity_NoTypeOf(t *testing.T) {
 func TestResolveEmbeddings_MissingSearchConfig(t *testing.T) {
 	t.Parallel()
 
-	// dcp_default only defines the "indicator" search config, not "non_place_entity".
+	// dcp_default only defines the "indicator" search config, not "non_place".
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{}, &SpannerDataSourceOptions{
 		Embedder:         &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
 		SearchConfigPath: "dcp_default",
@@ -398,4 +398,51 @@ func TestResolveEmbeddings_MissingSearchConfig(t *testing.T) {
 	}
 }
 
+func TestResolveEmbeddings_Type(t *testing.T) {
+	t.Parallel()
 
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		vectorSearchRes: []*VectorSearchResult{
+			{
+				SubjectID:        "ElementarySchool",
+				Name:             "Elementary School",
+				CosineSimilarity: 0.92,
+				Types:            []string{"Class"},
+			},
+		},
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"elementary school"},
+		Resolver: resolve.ResolveResolverType,
+		Property: "<-description->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "elementary school",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{
+						Dcid:   "ElementarySchool",
+						Name:   "Elementary School",
+						TypeOf: []string{"Class"},
+						Metadata: map[string]string{
+							"score":    "0.9200",
+							"sentence": "Elementary School",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
