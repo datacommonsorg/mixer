@@ -33,7 +33,6 @@ import (
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub/v2"
-	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
@@ -65,7 +64,6 @@ type Server struct {
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph bool
 	topicExpander   resolve.TopicExpander
-	agentService    *agent.Service
 
 	// Centralized lifecycle scheduler registries
 	initHooks     map[string]func(ctx context.Context) error
@@ -174,11 +172,6 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 			return s.updateBranchTable(ctx, branchTableName)
 		},
 	)
-}
-
-// initAgentService initializes the decoupled agent.Service using Go's implicit satisfaction wiring.
-func (s *Server) initAgentService(opts *agent.ServiceOptions) {
-	s.agentService = agent.NewService(s, agent.NewCache(s), opts)
 }
 
 // RegisterLifecycle registers the startup and periodic callbacks for a component under a single name key.
@@ -306,7 +299,6 @@ type MixerServerOptions struct {
 	EmbeddingsServiceClient           *resolve.EmbeddingsServiceClient
 	UseSpannerGraph                   bool
 	TopicExpander                     resolve.TopicExpander
-	AgentDefaultExpandTopics          *bool
 }
 
 // NewMixerServer creates a new mixer server instance.
@@ -325,7 +317,6 @@ func NewMixerServer(
 		dispatcher: dispatcher,
 		flags:      flags,
 	}
-	var agentOpts *agent.ServiceOptions
 	if opts != nil {
 		s.mapsClient = opts.MapsClient
 		s.spannerStalenessTimestampProvider = opts.SpannerStalenessTimestampProvider
@@ -334,20 +325,9 @@ func NewMixerServer(
 		s.useSpannerGraph = opts.UseSpannerGraph
 		s.topicExpander = opts.TopicExpander
 		s.cachedata.Store(opts.CacheData)
-		if opts.AgentDefaultExpandTopics != nil {
-			agentOpts = &agent.ServiceOptions{
-				DefaultExpandTopics: opts.AgentDefaultExpandTopics,
-			}
-		}
 	}
-	s.initAgentService(agentOpts)
 
 	return s
-}
-
-// AgentService returns the internal agent.Service instance.
-func (s *Server) AgentService() *agent.Service {
-	return s.agentService
 }
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.

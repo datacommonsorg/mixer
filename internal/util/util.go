@@ -47,7 +47,6 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -945,15 +944,6 @@ func IsStatVarGroupDcid(dcid string) bool {
 	return idx > 0 && !strings.Contains(dcid[:idx], "/")
 }
 
-// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
-func ToStringListValue(list []string) *structpb.ListValue {
-	var values []*structpb.Value
-	for _, s := range list {
-		values = append(values, structpb.NewStringValue(s))
-	}
-	return &structpb.ListValue{Values: values}
-}
-
 // SortedStringKeys returns an alphabetically sorted slice of keys from a map with string keys.
 func SortedStringKeys[V any, M ~map[string]V](m M) []string {
 	keys := make([]string, 0, len(m))
@@ -962,4 +952,12 @@ func SortedStringKeys[V any, M ~map[string]V](m M) []string {
 	}
 	sort.Strings(keys)
 	return keys
+}
+
+// NonNilStringSlice returns s if non-empty, or an empty non-nil slice so JSON marshaling emits [] instead of null.
+func NonNilStringSlice(s []string) []string {
+	if len(s) == 0 {
+		return []string{}
+	}
+	return s
 }

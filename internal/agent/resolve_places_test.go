@@ -21,8 +21,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 type mockResolvePlacesServer struct {
@@ -91,25 +89,25 @@ func TestResolvePlaces(t *testing.T) {
 	service := NewService(mock, nil, nil)
 
 	t.Run("EmptyPlaces", func(t *testing.T) {
-		req := &pbv2.ResolvePlacesRequest{}
+		req := &ResolvePlacesRequest{}
 		got, err := service.ResolvePlaces(ctx, req)
 		if err != nil {
 			t.Fatalf("ResolvePlaces failed: %v", err)
 		}
-		want := &pbv2.ResolvePlacesResponse{
+		want := &ResolvePlacesResponse{
 			Status: StatusSuccess,
-			ResolvedPlaces: &pbv2.Table{
+			ResolvedPlaces: &Table{
 				Columns: []string{"query", "dcid", "name", "typeOf"},
-				Rows:    []*structpb.ListValue{},
+				Rows:    [][]any{},
 			},
 		}
-		if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(want, got); diff != "" {
 			t.Errorf("ResolvePlaces() diff (-want +got):\n%s", diff)
 		}
 	})
 
 	t.Run("ValidPlaces", func(t *testing.T) {
-		req := &pbv2.ResolvePlacesRequest{
+		req := &ResolvePlacesRequest{
 			Places: []string{"California", "Scotland"},
 		}
 		got, err := service.ResolvePlaces(ctx, req)
@@ -117,24 +115,24 @@ func TestResolvePlaces(t *testing.T) {
 			t.Fatalf("ResolvePlaces failed: %v", err)
 		}
 
-		r1, _ := structpb.NewList([]any{"California", "geoId/06", "California", []any{"State"}})
-		r2, _ := structpb.NewList([]any{"Scotland", "country/SCO", "Scotland", []any{"Country"}})
-		r3, _ := structpb.NewList([]any{"Scotland", "geoId/29199", "Scotland County", []any{"County"}})
-
-		want := &pbv2.ResolvePlacesResponse{
+		want := &ResolvePlacesResponse{
 			Status: StatusSuccess,
-			ResolvedPlaces: &pbv2.Table{
+			ResolvedPlaces: &Table{
 				Columns: []string{"query", "dcid", "name", "typeOf"},
-				Rows:    []*structpb.ListValue{r1, r2, r3},
+				Rows: [][]any{
+					{"California", "geoId/06", "California", []string{"State"}},
+					{"Scotland", "country/SCO", "Scotland", []string{"Country"}},
+					{"Scotland", "geoId/29199", "Scotland County", []string{"County"}},
+				},
 			},
 		}
-		if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(want, got); diff != "" {
 			t.Errorf("ResolvePlaces() diff (-want +got):\n%s", diff)
 		}
 	})
 
 	t.Run("UnresolvedPlaces", func(t *testing.T) {
-		req := &pbv2.ResolvePlacesRequest{
+		req := &ResolvePlacesRequest{
 			Places: []string{"California", "NonExistentPlace"},
 		}
 		got, err := service.ResolvePlaces(ctx, req)
@@ -142,17 +140,17 @@ func TestResolvePlaces(t *testing.T) {
 			t.Fatalf("ResolvePlaces failed: %v", err)
 		}
 
-		r1, _ := structpb.NewList([]any{"California", "geoId/06", "California", []any{"State"}})
-		r2, _ := structpb.NewList([]any{"NonExistentPlace", "", "", []any{}})
-
-		want := &pbv2.ResolvePlacesResponse{
+		want := &ResolvePlacesResponse{
 			Status: StatusSuccess,
-			ResolvedPlaces: &pbv2.Table{
+			ResolvedPlaces: &Table{
 				Columns: []string{"query", "dcid", "name", "typeOf"},
-				Rows:    []*structpb.ListValue{r1, r2},
+				Rows: [][]any{
+					{"California", "geoId/06", "California", []string{"State"}},
+					{"NonExistentPlace", "", "", []string{}},
+				},
 			},
 		}
-		if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		if diff := cmp.Diff(want, got); diff != "" {
 			t.Errorf("ResolvePlaces() diff (-want +got):\n%s", diff)
 		}
 	})
