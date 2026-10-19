@@ -11,7 +11,10 @@ search_configs:
     limit: 50
     num_leaves: 10
     threshold: 0.5
-  non_place_entity:
+    included_types:
+      - "StatisticalVariable"
+      - "Topic"
+  non_place:
     search_algorithm: "vector_search"
     embedding_model: "NodeEmbeddingModel"
     embedding_model_endpoint: "text-embedding-005"
@@ -22,5 +25,21 @@ search_configs:
     limit: 50
     num_leaves: 10
     threshold: 0.5
+    excluded_types:
+      - "StatisticalVariable"
+      - "Topic"
+  type:
+    search_algorithm: "vector_search"
+    embedding_model: "NodeEmbeddingModel"
+    embedding_model_endpoint: "text-embedding-005"
+    embedding_table: "NodeEmbedding"
+    query_task_type: "RETRIEVAL_QUERY"
+    embedding_label: "type_embedding"
+    vector_search_algo: "ANN"
+    limit: 50
+    num_leaves: 10
+    threshold: 0.5
+    included_types:
+      - "Class"
 postprocessing:
   - "none"

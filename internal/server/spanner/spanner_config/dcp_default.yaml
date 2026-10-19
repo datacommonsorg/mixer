@@ -11,5 +11,10 @@ search_configs:
     limit: 50
     num_leaves: 10
     threshold: 0.5
+    included_types:
+      - "StatisticalVariable"
+      - "Topic"
+  non_place:
+  type:
 postprocessing:
   - "none"
