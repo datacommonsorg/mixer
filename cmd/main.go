@@ -74,6 +74,8 @@ var (
 	httpPort           = flag.Int("http_port", 12346, "Port on which to run the HTTP server.")
 	mcpInstructionsDir = flag.String("mcp_instructions_dir", os.Getenv("DC_INSTRUCTIONS_DIR"), "Custom directory path (local or gs://) for MCP server/tool/skill instructions.")
 	mcpSearchScope     = flag.String("mcp_search_scope", os.Getenv("DC_SEARCH_SCOPE"), "Optional search scope target for MCP indicator searches (e.g. custom_only, base_only, base_and_custom).")
+	mcpDefaultVersion  = flag.String("mcp_default_version", mcp.DefaultVersionID, "Default MCP version backing the unversioned /mcp alias.")
+	enableMcpPreview   = flag.Bool("enable_mcp_preview", false, "Whether to mount the /mcp/preview alias and any preview-stage MCP version.")
 	hostProject          = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
@@ -664,17 +666,23 @@ func main() {
 	}
 }
 
-// startMCPServer launches the Streamable HTTP MCP server on httpPort in a background goroutine.
+// startMCPServer initializes and launches the Streamable HTTP MCP server on httpPort in a background goroutine.
 func startMCPServer(ctx context.Context, agentBackend mcp.AgentBackend) {
-	go func() {
-		slog.Info("Starting MCP HTTP server", "port", *httpPort)
-		mcpServer := mcp.NewDcMcpServer(
-			ctx,
-			agentBackend,
-			*mcpInstructionsDir,
-			*mcpSearchScope,
-		)
+	mcpServer, err := mcp.NewDcMcpServer(
+		ctx,
+		agentBackend,
+		*mcpInstructionsDir,
+		*mcpSearchScope,
+		*mcpDefaultVersion,
+		*enableMcpPreview,
+	)
+	if err != nil {
+		slog.Error("Failed to initialize MCP HTTP server", "error", err)
+		os.Exit(1)
+	}
 
+	go func() {
+		slog.Info("Starting MCP HTTP server", "port", *httpPort, "defaultVersion", *mcpDefaultVersion, "enablePreview", *enableMcpPreview)
 		mux := http.NewServeMux()
 		handler := http.StripPrefix("/mcp", mcpServer)
 		mux.Handle("/mcp", handler)

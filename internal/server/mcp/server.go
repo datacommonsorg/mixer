@@ -29,40 +29,124 @@ import (
 	"github.com/google/jsonschema-go/jsonschema"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
+	"google.golang.org/grpc/metadata"
 	"gopkg.in/yaml.v3"
 )
 
 const (
 	serverName                = "Data Commons MCP Server"
 	headerEnableDocumentation = "X-DC-Enable-Documentation"
+	surfaceHeaderKey          = "x-surface"
+	defaultRouteSurface       = "mcp-default"
+	versionSurfacePrefix      = "mcp-"
 )
 
 // docHeaderContextKey is the context key used to propagate the X-DC-Enable-Documentation
 // HTTP request header into MCP server lifecycle hooks.
 type docHeaderContextKey struct{}
 
-// DcMcpServer wraps the stateless Streamable HTTP MCP server.
-type DcMcpServer struct {
+// versionInstance holds the initialized Streamable HTTP server for a single MCP version.
+type versionInstance struct {
+	versionID  string
 	httpServer *server.StreamableHTTPServer
 }
 
-// NewDcMcpServer initializes the Data Commons MCP server with all tools, instructions, and skill resources.
+// DcMcpServer routes requests across the unversioned /mcp alias and versioned /mcp/<id> endpoints.
+type DcMcpServer struct {
+	defaultVersion string
+	routes         map[string]*versionInstance
+}
+
+// NewDcMcpServer initializes the Data Commons MCP server across all active versions.
 func NewDcMcpServer(
 	ctx context.Context,
 	agentService AgentBackend,
 	instructionsDir string,
 	searchScope string,
-) *DcMcpServer {
-	loader := NewInstructionLoader(ctx, instructionsDir)
+	defaultVersion string,
+	enablePreview bool,
+) (*DcMcpServer, error) {
+	return newDcMcpServerWithVersions(
+		ctx,
+		agentService,
+		instructionsDir,
+		searchScope,
+		AllVersions(),
+		defaultVersion,
+		enablePreview,
+	)
+}
+
+// ServeHTTP dispatches requests to the matching MCP version instance, injecting the
+// route-specific x-surface metadata and handling plain GET health checks.
+func (s *DcMcpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	inst, surface, ok := s.resolveRoute(r.URL.Path)
+	if !ok {
+		http.NotFound(w, r)
+		return
+	}
+
+	// Per the MCP Streamable HTTP spec, GET requests with "Accept: text/event-stream" are
+	// routed to inst.httpServer (which rejects SSE streaming with 405 Method Not Allowed in stateless mode);
+	// plain GET requests return health status.
+	if r.Method == http.MethodGet && !strings.Contains(r.Header.Get("Accept"), "text/event-stream") {
+		writeHealthResponse(w, inst.versionID)
+		return
+	}
+
+	ctx := withSurfaceMetadata(r.Context(), surface)
+	inst.httpServer.ServeHTTP(w, r.WithContext(ctx))
+}
+
+// newDcMcpServerWithVersions builds a DcMcpServer from an explicit slice of VersionSpecs.
+func newDcMcpServerWithVersions(
+	ctx context.Context,
+	agentService AgentBackend,
+	instructionsDir string,
+	searchScope string,
+	versions []VersionSpec,
+	defaultVersion string,
+	enablePreview bool,
+) (*DcMcpServer, error) {
+	mounted, err := resolveMountedVersions(versions, defaultVersion, enablePreview)
+	if err != nil {
+		return nil, err
+	}
+
+	tools := NewMcpTools(agentService, searchScope)
+	instancesByID := make(map[string]*versionInstance, len(mounted))
+	routes := make(map[string]*versionInstance, len(mounted))
+
+	for routeKey, spec := range mounted {
+		inst, exists := instancesByID[spec.ID]
+		if !exists {
+			inst = newVersionInstance(ctx, instructionsDir, tools, spec)
+			instancesByID[spec.ID] = inst
+		}
+		routes[routeKey] = inst
+	}
+
+	return &DcMcpServer{
+		defaultVersion: strings.TrimSpace(defaultVersion),
+		routes:         routes,
+	}, nil
+}
+
+// newVersionInstance constructs an isolated MCPServer and StreamableHTTPServer for a single VersionSpec.
+func newVersionInstance(
+	ctx context.Context,
+	instructionsDir string,
+	tools *McpTools,
+	spec VersionSpec,
+) *versionInstance {
+	loader := NewInstructionLoader(ctx, instructionsDir, spec.ID)
 	defer func() {
 		if err := loader.Close(); err != nil {
-			slog.Warn("Failed to close MCP instruction loader", "error", err)
+			slog.Warn("Failed to close MCP instruction loader", "version", spec.ID, "error", err)
 		}
 	}()
 
-	tools := NewMcpTools(agentService, searchScope)
-	sdkServer := newConfiguredMCPServer(ctx, loader, tools)
-
+	sdkServer := newConfiguredMCPServer(ctx, loader, tools, spec)
 	httpServer := server.NewStreamableHTTPServer(
 		sdkServer,
 		server.WithStateLess(true),
@@ -72,28 +156,18 @@ func NewDcMcpServer(
 		}),
 	)
 
-	return &DcMcpServer{
+	return &versionInstance{
+		versionID:  spec.ID,
 		httpServer: httpServer,
 	}
 }
 
-// ServeHTTP dispatches non-SSE GET probes to the health handler and all MCP traffic to the Streamable HTTP server.
-func (s *DcMcpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// Per the MCP Streamable HTTP spec, GET requests with "Accept: text/event-stream" are
-	// routed to s.httpServer (which rejects SSE streaming with 405 Method Not Allowed in stateless mode);
-	// plain GET requests return health status.
-	if r.Method == http.MethodGet && !strings.Contains(r.Header.Get("Accept"), "text/event-stream") {
-		writeHealthResponse(w)
-		return
-	}
-	s.httpServer.ServeHTTP(w, r)
-}
-
-// newConfiguredMCPServer builds an MCPServer instance configured with instructions, hooks, tools, and skills.
+// newConfiguredMCPServer builds an MCPServer instance configured with instructions, hooks, tools, and skills for spec.
 func newConfiguredMCPServer(
 	ctx context.Context,
 	loader *InstructionLoader,
 	tools *McpTools,
+	spec VersionSpec,
 ) *server.MCPServer {
 	baseInstructions := strings.TrimSpace(loader.Load(ctx, serverInstructionsFile))
 	docInstructions := baseInstructions
@@ -110,15 +184,47 @@ func newConfiguredMCPServer(
 		server.WithResourceCapabilities(false, false),
 	)
 
-	registerTool(ctx, srv, loader, "search_indicators", searchIndicatorsInstructionFile, tools.SearchIndicators)
-	registerTool(ctx, srv, loader, "search_child_indicators", searchChildIndicatorsInstructionFile, tools.SearchChildIndicators)
-	registerTool(ctx, srv, loader, "get_variable_metadata", getVariableMetadataInstructionFile, tools.GetVariableMetadata)
-	registerTool(ctx, srv, loader, "get_observations", getObservationsInstructionFile, tools.GetObservations)
-	registerTool(ctx, srv, loader, "get_child_observations", getChildObservationsInstructionFile, tools.GetChildObservations)
-	registerTool(ctx, srv, loader, "get_multi_entity_observations", getMultiEntityObservationsInstructionFile, tools.GetMultiEntityObservations)
+	for _, toolSpec := range spec.Tools {
+		tool := mcp.NewTool(
+			toolSpec.Name,
+			mcp.WithDescription(loader.Load(ctx, toolSpec.InstructionFile)),
+			toolSpec.InputSchema,
+		)
+		srv.AddTool(tool, toolSpec.Handler(tools))
+	}
 
-	registerSkills(ctx, srv, loader)
+	registerSkills(ctx, srv, loader, spec.SkillNames)
 	return srv
+}
+
+// resolveRoute maps an incoming HTTP request path (after /mcp prefix stripping) to its
+// backing versionInstance and usage-log surface string.
+func (s *DcMcpServer) resolveRoute(urlPath string) (inst *versionInstance, surface string, ok bool) {
+	trimmed := strings.Trim(urlPath, "/")
+	if trimmed == "" {
+		inst, ok = s.routes[s.defaultVersion]
+		return inst, defaultRouteSurface, ok
+	}
+	if strings.Contains(trimmed, "/") {
+		return nil, "", false
+	}
+	inst, ok = s.routes[trimmed]
+	if !ok {
+		return nil, "", false
+	}
+	return inst, versionSurfacePrefix + trimmed, true
+}
+
+// withSurfaceMetadata attaches the x-surface key to incoming gRPC metadata on ctx,
+// preserving any existing incoming metadata keys.
+func withSurfaceMetadata(ctx context.Context, surface string) context.Context {
+	surfaceMD := metadata.Pairs(surfaceHeaderKey, surface)
+	if existingMD, ok := metadata.FromIncomingContext(ctx); ok {
+		copied := existingMD.Copy()
+		copied.Set(surfaceHeaderKey, surface)
+		return metadata.NewIncomingContext(ctx, copied)
+	}
+	return metadata.NewIncomingContext(ctx, surfaceMD)
 }
 
 // newDocumentationHooks creates MCP server hooks that validate the X-DC-Enable-Documentation
@@ -137,30 +243,6 @@ func newDocumentationHooks(docInstructions string) *server.Hooks {
 		}
 	})
 	return hooks
-}
-
-// registerTool registers a typed tool with its markdown description and generated JSON schema.
-func registerTool[T_IN any, T_OUT any](
-	ctx context.Context,
-	srv *server.MCPServer,
-	loader *InstructionLoader,
-	name string,
-	instructionFile string,
-	bizLogic func(context.Context, T_IN) (T_OUT, error),
-) {
-	tool := mcp.NewTool(
-		name,
-		mcp.WithDescription(loader.Load(ctx, instructionFile)),
-		withToolInputSchema[T_IN](),
-	)
-	srv.AddTool(tool, mcp.NewStructuredToolHandler(func(tCtx context.Context, _ mcp.CallToolRequest, args T_IN) (T_OUT, error) {
-		slog.Debug("Invoking MCP tool", "name", name)
-		res, err := bizLogic(tCtx, args)
-		if err != nil {
-			slog.Error("MCP tool execution failed", "name", name, "error", err)
-		}
-		return res, err
-	}))
 }
 
 // withToolInputSchema generates a JSON Schema from T, simplifies nullable type lists
@@ -241,8 +323,8 @@ func applyStructDefaults[T any](s *jsonschema.Schema) {
 }
 
 // registerSkills registers each skill://<name>/SKILL.md resource on the MCPServer.
-func registerSkills(ctx context.Context, srv *server.MCPServer, loader *InstructionLoader) {
-	for _, skillName := range defaultSkillNames {
+func registerSkills(ctx context.Context, srv *server.MCPServer, loader *InstructionLoader, skillNames []string) {
+	for _, skillName := range skillNames {
 		skillText := loader.Load(ctx, path.Join("skills", skillName, "SKILL.md"))
 		if skillText == "" {
 			continue
@@ -291,13 +373,14 @@ func resolveServerVersion() string {
 	return strings.TrimSpace(os.Getenv("MIXER_HASH"))
 }
 
-// writeHealthResponse writes the JSON health status including the server name and git hash.
-func writeHealthResponse(w http.ResponseWriter) {
+// writeHealthResponse writes the JSON health status including the server name, MCP version ID, and git hash.
+func writeHealthResponse(w http.ResponseWriter, versionID string) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(w).Encode(map[string]string{
 		"status":  "ok",
 		"service": serverName,
+		"version": versionID,
 		"gitHash": resolveServerVersion(),
 	})
 }

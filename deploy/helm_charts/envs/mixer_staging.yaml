@@ -17,6 +17,7 @@ mixer:
           host: "10.55.198.51"
           port: "6379"
   enableOtlp: true
+  enableMcpPreview: true
 
 esp:
   transcodingIgnoreUnknownQueryParameters: true
