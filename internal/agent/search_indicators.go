@@ -26,21 +26,26 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/types/known/structpb"
 )
+
+// resolvedPlaceInfo holds resolved place metadata.
+type resolvedPlaceInfo struct {
+	Name   string
+	Dcid   string
+	TypeOf []string
+}
 
 // SearchIndicators resolves explicit topics and variables matching a query,
 // filtering out indicators that lack observation data for target places.
 func (s *Service) SearchIndicators(
 	ctx context.Context,
-	req *pbv2.SearchIndicatorsRequest,
-) (*pbv2.SearchIndicatorsResponse, error) {
+	req *SearchIndicatorsRequest,
+) (*SearchIndicatorsResponse, error) {
 	if req == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
 	defer util.TimeTrack(time.Now(), "Agent: SearchIndicators")
-	//nolint:staticcheck // Deprecated place fields logged for diagnostic tracking
-	slog.Info("SearchIndicators started", "query", req.GetQuery(), "places", req.GetPlaces(), "placeDcids", req.GetPlaceDcids(), "parentPlace", req.GetParentPlace())
+	slog.Info("SearchIndicators started", "query", req.Query, "places", req.Places, "placeDcids", req.PlaceDcids, "parentPlace", req.ParentPlace)
 
 	// Validate request parameters
 	if err := validateRequest(req); err != nil {
@@ -48,21 +53,9 @@ func (s *Service) SearchIndicators(
 	}
 
 	// Determine final limits: if empty, default to 10
-	limit := req.GetPerSearchLimit()
+	limit := req.PerSearchLimit
 	if limit <= 0 {
 		limit = DefaultSearchLimit
-	}
-
-	// Determine include_topics default: true unless explicitly set to false
-	includeTopics := true
-	if req.IncludeTopics != nil {
-		includeTopics = req.GetIncludeTopics()
-	}
-
-	// Determine expand_topics default: service default unless explicitly set
-	expandTopics := s.defaultExpandTopics
-	if req.ExpandTopics != nil {
-		expandTopics = req.GetExpandTopics()
 	}
 
 	// Phase 1: Resolve place names and fetch similarity candidates in parallel
@@ -82,13 +75,13 @@ func (s *Service) SearchIndicators(
 	g.Go(func() error {
 		var err error
 		oversampledLimit := limit * 2
-		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
-		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics, req.GetTarget())
+		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on s.defaultExpandTopics.
+		candidates, err = s.fetchCandidates(gCtx, req.Query, oversampledLimit, s.defaultExpandTopics, req.Target)
 		if err != nil {
 			return err
 		}
-		// If includeTopics is false, expand and deduplicate topic candidates into standard variables
-		if !includeTopics {
+		// If IncludeTopics is false, expand and deduplicate topic candidates into standard variables
+		if !req.IncludeTopics {
 			candidates = expandTopicCandidates(candidates)
 		}
 		return nil
@@ -105,7 +98,7 @@ func (s *Service) SearchIndicators(
 	g2.Go(func() error {
 		if len(placeDcids) > 0 {
 			var err error
-			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.GetTarget())
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.Target)
 			return err
 		}
 		return nil
@@ -124,35 +117,32 @@ func (s *Service) SearchIndicators(
 	}
 
 	// If place_dcids is explicitly specified, or if no legacy place fields are passed, return tabular payload.
-	//nolint:staticcheck // Legacy check for places and parentPlace
-	if len(req.GetPlaceDcids()) > 0 || (len(req.GetPlaces()) == 0 && req.GetParentPlace() == "") {
-		return s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
+	if len(req.PlaceDcids) > 0 || (len(req.Places) == 0 && req.ParentPlace == "") {
+		return s.translateToTabularResponse(candidates, resolvedPlaces, parentPlaceDcid, limit), nil
 	}
 
 	// Assemble and format legacy response payload for backward compatibility
-	return s.translateToResponse(candidates, resolvedPlaces, parentPlaceDcid, limit)
+	return s.translateToResponse(candidates, resolvedPlaces, parentPlaceDcid, limit), nil
 }
 
 // validateRequest checks the validity of the incoming request constraints.
-func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
+func validateRequest(req *SearchIndicatorsRequest) error {
 	if req == nil {
 		return status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
-	limit := req.GetPerSearchLimit()
+	limit := req.PerSearchLimit
 	if limit < MinSearchLimit || limit > MaxSearchLimit {
 		return status.Errorf(codes.InvalidArgument, "per_search_limit must be between %d and %d, got: %d", MinSearchLimit, MaxSearchLimit, limit)
 	}
-	//nolint:staticcheck // Legacy parent_place check
-	if req.GetParentPlace() != "" {
-		//nolint:staticcheck
-		if len(req.GetPlaces()) == 0 {
+	if req.ParentPlace != "" {
+		if len(req.Places) == 0 {
 			return status.Errorf(codes.InvalidArgument, "places must be specified when parent_place is provided")
 		}
-		if len(req.GetPlaceDcids()) > 0 {
+		if len(req.PlaceDcids) > 0 {
 			return status.Errorf(codes.InvalidArgument, "parent_place cannot be specified alongside place_dcids")
 		}
 	}
-	if target := req.GetTarget(); target != "" && !slices.Contains(validTargets, target) {
+	if target := req.Target; target != "" && !slices.Contains(validTargets, target) {
 		return status.Errorf(codes.InvalidArgument, "invalid target: %s, valid values are '%s'", target, strings.Join(validTargets, "', '"))
 	}
 	return nil
@@ -161,19 +151,17 @@ func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
 // acquirePlaceDcids returns direct place_dcids if provided, or resolves legacy places/parentPlace strings.
 func (s *Service) acquirePlaceDcids(
 	ctx context.Context,
-	req *pbv2.SearchIndicatorsRequest,
+	req *SearchIndicatorsRequest,
 ) ([]string, map[string]*resolvedPlaceInfo, string, error) {
-	if len(req.GetPlaceDcids()) > 0 {
-		return req.GetPlaceDcids(), nil, "", nil
+	if len(req.PlaceDcids) > 0 {
+		return req.PlaceDcids, nil, "", nil
 	}
 
-	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
-	places := req.GetPlaces()
+	places := req.Places
 	isImplicitWorld := false
 
-	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
-	if len(places) == 0 && req.GetParentPlace() == "" {
-		if req.GetQuery() == "" {
+	if len(places) == 0 && req.ParentPlace == "" {
+		if req.Query == "" {
 			places = []string{DefaultPlaceWorld}
 			isImplicitWorld = true
 		} else {
@@ -181,8 +169,7 @@ func (s *Service) acquirePlaceDcids(
 		}
 	}
 
-	//nolint:staticcheck // Legacy place resolution supports deprecated places and parent_place fields
-	resolvedMap, parentDcid, err := s.resolvePlaces(ctx, places, req.GetParentPlace(), req.GetTarget())
+	resolvedMap, parentDcid, err := s.resolvePlaces(ctx, places, req.ParentPlace, req.Target)
 	if err != nil {
 		return nil, nil, "", err
 	}
@@ -199,13 +186,6 @@ func (s *Service) acquirePlaceDcids(
 		return dcids, nil, "", nil
 	}
 	return dcids, resolvedMap, parentDcid, nil
-}
-
-// resolvedPlaceInfo holds resolved place metadata.
-type resolvedPlaceInfo struct {
-	Name   string
-	Dcid   string
-	TypeOf []string
 }
 
 // resolvePlaces maps common place name strings to their resolved KG DCIDs.
@@ -555,6 +535,7 @@ func setPlacesWithDataMetadata(c *pbv2.ResolveResponse_Entity_Candidate, places 
 	c.Metadata[MetadataPlacesWithData] = strings.Join(places, DcidSeparator)
 }
 
+// fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs.
 func (s *Service) fetchDescendantVariables(
 	ctx context.Context,
 	topicDcids []string,
@@ -606,13 +587,13 @@ func (s *Service) fetchDescendantVariables(
 	return res, nil
 }
 
+// buildTopicsTable constructs a tabular representation of matched topic candidates.
 func buildTopicsTable(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	limit int32,
-) (*pbv2.Table, error) {
-	table := &pbv2.Table{
+) *Table {
+	table := &Table{
 		Columns: []string{colDcid, colName, colPlacesWithData, colMemberTopics, colMemberVariables},
-		Rows:    []*structpb.ListValue{},
 	}
 	topicCount := int32(0)
 	for _, c := range candidates {
@@ -635,33 +616,25 @@ func buildTopicsTable(
 				memberVariables = append(memberVariables, child.GetDcid())
 			}
 		}
-		placesList := util.ToStringListValue(placesWithData)
-		topicsList := util.ToStringListValue(memberTopics)
-		varsList := util.ToStringListValue(memberVariables)
-
-		row, err := structpb.NewList([]any{
+		table.Rows = append(table.Rows, []any{
 			c.GetDcid(),
 			c.GetName(),
-			placesList.AsSlice(),
-			topicsList.AsSlice(),
-			varsList.AsSlice(),
+			util.NonNilStringSlice(placesWithData),
+			util.NonNilStringSlice(memberTopics),
+			util.NonNilStringSlice(memberVariables),
 		})
-		if err != nil {
-			return nil, err
-		}
-		table.Rows = append(table.Rows, row)
 		topicCount++
 	}
-	return table, nil
+	return table
 }
 
+// buildVariablesTable constructs a tabular representation of matched statistical variable candidates.
 func buildVariablesTable(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	limit int32,
-) (*pbv2.Table, error) {
-	table := &pbv2.Table{
+) *Table {
+	table := &Table{
 		Columns: []string{colDcid, colName, colPlacesWithData, colObservationProperties},
-		Rows:    []*structpb.ListValue{},
 	}
 	varCount := int32(0)
 	for _, c := range candidates {
@@ -675,64 +648,48 @@ func buildVariablesTable(
 		if pStr, ok := c.GetMetadata()[MetadataPlacesWithData]; ok && pStr != "" {
 			placesWithData = strings.Split(pStr, DcidSeparator)
 		}
-		placesList := util.ToStringListValue(placesWithData)
-		obsPropsList := util.ToStringListValue(c.GetObservationProperties())
-
-		row, err := structpb.NewList([]any{
+		table.Rows = append(table.Rows, []any{
 			c.GetDcid(),
 			c.GetName(),
-			placesList.AsSlice(),
-			obsPropsList.AsSlice(),
+			util.NonNilStringSlice(placesWithData),
+			util.NonNilStringSlice(c.GetObservationProperties()),
 		})
-		if err != nil {
-			return nil, err
-		}
-		table.Rows = append(table.Rows, row)
 		varCount++
 	}
-	return table, nil
+	return table
 }
 
+// translateToTabularResponse formats matched topics and variables into tabular SearchIndicatorsResponse fields.
 func (s *Service) translateToTabularResponse(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
 	parentPlaceDcid string,
 	limit int32,
-) (*pbv2.SearchIndicatorsResponse, error) {
-	topicsTable, err := buildTopicsTable(candidates, limit)
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to build topics table: %v", err)
-	}
-	variablesTable, err := buildVariablesTable(candidates, limit)
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to build variables table: %v", err)
-	}
-
-	resp := &pbv2.SearchIndicatorsResponse{
+) *SearchIndicatorsResponse {
+	resp := &SearchIndicatorsResponse{
 		Status:             StatusSuccess,
-		TopicCandidates:    topicsTable,
-		VariableCandidates: variablesTable,
+		TopicCandidates:    buildTopicsTable(candidates, limit),
+		VariableCandidates: buildVariablesTable(candidates, limit),
 	}
 
 	if resolvedPlaces != nil {
 		populatePlaceMetadata(resp, resolvedPlaces, parentPlaceDcid)
 	}
 
-	return resp, nil
+	return resp
 }
 
-// translateToResponse formats and translates candidate lists into the final RPC payload.
-//nolint:staticcheck // Legacy response builder populates deprecated response fields
+// translateToResponse formats and translates candidate lists into the legacy SearchIndicatorsResponse payload.
 func (s *Service) translateToResponse(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
 	parentPlaceDcid string,
 	limit int32,
-) (*pbv2.SearchIndicatorsResponse, error) {
-	resp := &pbv2.SearchIndicatorsResponse{
+) *SearchIndicatorsResponse {
+	resp := &SearchIndicatorsResponse{
 		Status:                StatusSuccess,
 		DcidNameMappings:      make(map[string]string),
-		DcidPlaceTypeMappings: make(map[string]*structpb.ListValue),
+		DcidPlaceTypeMappings: make(map[string][]string),
 	}
 
 	// Populate place metadata mappings
@@ -766,20 +723,19 @@ func (s *Service) translateToResponse(
 	}
 
 	// Keep the slices sorted consistently to ensure deterministic test runs
-	slices.SortFunc(resp.Topics, func(a, b *pbv2.SearchIndicatorsResponse_Topic) int {
+	slices.SortFunc(resp.Topics, func(a, b *TopicCandidate) int {
 		return strings.Compare(a.Dcid, b.Dcid)
 	})
-	slices.SortFunc(resp.Variables, func(a, b *pbv2.SearchIndicatorsResponse_Variable) int {
+	slices.SortFunc(resp.Variables, func(a, b *VariableCandidate) int {
 		return strings.Compare(a.Dcid, b.Dcid)
 	})
 
-	return resp, nil
+	return resp
 }
 
 // populatePlaceMetadata aggregates place information and registers parent place structures.
-//nolint:staticcheck // Legacy place metadata builder populates deprecated response fields
 func populatePlaceMetadata(
-	resp *pbv2.SearchIndicatorsResponse,
+	resp *SearchIndicatorsResponse,
 	resolvedPlaces map[string]*resolvedPlaceInfo,
 	parentPlaceDcid string,
 ) {
@@ -787,16 +743,15 @@ func populatePlaceMetadata(
 		resp.DcidNameMappings = make(map[string]string)
 	}
 	if resp.DcidPlaceTypeMappings == nil {
-		resp.DcidPlaceTypeMappings = make(map[string]*structpb.ListValue)
+		resp.DcidPlaceTypeMappings = make(map[string][]string)
 	}
 
 	for _, info := range resolvedPlaces {
 		resp.DcidNameMappings[info.Dcid] = info.Name
-
-		resp.DcidPlaceTypeMappings[info.Dcid] = util.ToStringListValue(info.TypeOf)
+		resp.DcidPlaceTypeMappings[info.Dcid] = util.NonNilStringSlice(info.TypeOf)
 
 		if info.Dcid == parentPlaceDcid {
-			resp.ResolvedParentPlace = &pbv2.SearchIndicatorsResponse_ResolvedPlace{
+			resp.ResolvedParentPlace = &ResolvedPlace{
 				Dcid:   info.Dcid,
 				Name:   info.Name,
 				TypeOf: info.TypeOf,
@@ -806,11 +761,10 @@ func populatePlaceMetadata(
 }
 
 // translateTopicCandidate converts a topic candidate and registers all member variable/topic names.
-//nolint:staticcheck // Legacy topic candidate translator populates deprecated response fields
 func translateTopicCandidate(
 	c *pbv2.ResolveResponse_Entity_Candidate,
 	placesWithData []string,
-	resp *pbv2.SearchIndicatorsResponse,
+	resp *SearchIndicatorsResponse,
 ) {
 	var memberTopics []string
 	var memberVariables []string
@@ -824,7 +778,7 @@ func translateTopicCandidate(
 		}
 	}
 
-	resp.Topics = append(resp.Topics, &pbv2.SearchIndicatorsResponse_Topic{
+	resp.Topics = append(resp.Topics, &TopicCandidate{
 		Dcid:                  c.GetDcid(),
 		MemberTopics:          memberTopics,
 		MemberVariables:       memberVariables,
@@ -835,13 +789,12 @@ func translateTopicCandidate(
 }
 
 // translateVariableCandidate converts a variable candidate and maps its name.
-//nolint:staticcheck // Legacy variable candidate translator populates deprecated response fields
 func translateVariableCandidate(
 	c *pbv2.ResolveResponse_Entity_Candidate,
 	placesWithData []string,
-	resp *pbv2.SearchIndicatorsResponse,
+	resp *SearchIndicatorsResponse,
 ) {
-	resp.Variables = append(resp.Variables, &pbv2.SearchIndicatorsResponse_Variable{
+	resp.Variables = append(resp.Variables, &VariableCandidate{
 		Dcid:                  c.GetDcid(),
 		PlacesWithData:        placesWithData,
 		ObservationProperties: c.GetObservationProperties(),
@@ -855,7 +808,6 @@ func isTopic(c *pbv2.ResolveResponse_Entity_Candidate) bool {
 	}
 	return slices.Contains(c.GetTypeOf(), DcidTypeTopic)
 }
-
 
 // enrichPlaceNamesAndTypes retrieves and populates the canonical names and types of resolved places.
 func (s *Service) enrichPlaceNamesAndTypes(
