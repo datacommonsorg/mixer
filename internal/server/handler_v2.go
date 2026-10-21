@@ -656,6 +656,12 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 }
 
 // V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
+//
+// TODO: Rankings are deprecated. Unlike the other V2 wrappers, there is no
+// Spanner implementation: this always reads the precomputed RelatedLocations
+// rows from Bigtable (and returns empty data when Bigtable is not configured),
+// regardless of Spanner diversion flags. A follow-up will return an empty
+// response and remove the Bigtable implementation.
 func (s *Server) V2GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
