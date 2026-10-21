@@ -272,12 +272,14 @@ func formulasFromNodeResponse(resp *pbv2.NodeResponse) map[string][]string {
 }
 
 // fetchAllNodePages reads every page of a Node request from ds and merges them.
+// Like datasource.NodeFetchAll, it splits long node lists into chunks that are
+// fetched in parallel.
 func fetchAllNodePages(
 	ctx context.Context,
 	ds *datasources.DataSources,
 	req *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
-	return nodefetcher.NodeFetchAllFunc(ctx, func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	return nodefetcher.NodeFetchAllChunkedFunc(ctx, func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 		return ds.Node(ctx, req, cachePageSize)
 	}, req)
 }
