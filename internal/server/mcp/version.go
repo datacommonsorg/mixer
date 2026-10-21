@@ -92,8 +92,22 @@ func resolveMountedVersions(
 	defaultVersion string,
 	enablePreview bool,
 ) (map[string]VersionSpec, error) {
+	stableVersions, previewSpec, err := partitionVersions(versions)
+	if err != nil {
+		return nil, err
+	}
+	mounted := buildMountedRoutes(stableVersions, previewSpec, enablePreview)
+	if err := validateDefaultVersion(defaultVersion, mounted); err != nil {
+		return nil, err
+	}
+	return mounted, nil
+}
+
+// partitionVersions validates all registered VersionSpecs and separates them into
+// stable versions and at most one preview version.
+func partitionVersions(versions []VersionSpec) ([]VersionSpec, *VersionSpec, error) {
 	if len(versions) == 0 {
-		return nil, fmt.Errorf("at least one MCP version must be registered")
+		return nil, nil, fmt.Errorf("at least one MCP version must be registered")
 	}
 
 	seenIDs := make(map[string]struct{}, len(versions))
@@ -103,17 +117,8 @@ func resolveMountedVersions(
 	for i := range versions {
 		v := versions[i]
 		id := strings.TrimSpace(v.ID)
-		if id == "" {
-			return nil, fmt.Errorf("MCP version ID cannot be empty")
-		}
-		if id == previewRouteAlias {
-			return nil, fmt.Errorf("MCP version ID %q is reserved for the preview alias route", previewRouteAlias)
-		}
-		if strings.Contains(id, "/") {
-			return nil, fmt.Errorf("MCP version ID %q cannot contain slashes", id)
-		}
-		if _, exists := seenIDs[id]; exists {
-			return nil, fmt.Errorf("duplicate MCP version ID %q", id)
+		if err := validateVersionID(id, seenIDs); err != nil {
+			return nil, nil, err
 		}
 		seenIDs[id] = struct{}{}
 		v.ID = id
@@ -123,19 +128,45 @@ func resolveMountedVersions(
 			stableVersions = append(stableVersions, v)
 		case StagePreview:
 			if previewSpec != nil {
-				return nil, fmt.Errorf("at most one MCP version may have stage %q (found %q and %q)", StagePreview, previewSpec.ID, v.ID)
+				return nil, nil, fmt.Errorf("at most one MCP version may have stage %q (found %q and %q)", StagePreview, previewSpec.ID, v.ID)
 			}
 			specCopy := v
 			previewSpec = &specCopy
 		default:
-			return nil, fmt.Errorf("MCP version %q has invalid stage %q", v.ID, v.Stage)
+			return nil, nil, fmt.Errorf("MCP version %q has invalid stage %q", v.ID, v.Stage)
 		}
 	}
 
 	if len(stableVersions) == 0 {
-		return nil, fmt.Errorf("at least one stable MCP version must be registered")
+		return nil, nil, fmt.Errorf("at least one stable MCP version must be registered")
 	}
+	return stableVersions, previewSpec, nil
+}
 
+// validateVersionID verifies that a version ID is non-empty, not reserved, slash-free, and unique.
+func validateVersionID(id string, seenIDs map[string]struct{}) error {
+	if id == "" {
+		return fmt.Errorf("MCP version ID cannot be empty")
+	}
+	if id == previewRouteAlias {
+		return fmt.Errorf("MCP version ID %q is reserved for the preview alias route", previewRouteAlias)
+	}
+	if strings.Contains(id, "/") {
+		return fmt.Errorf("MCP version ID %q cannot contain slashes", id)
+	}
+	if _, exists := seenIDs[id]; exists {
+		return fmt.Errorf("duplicate MCP version ID %q", id)
+	}
+	return nil
+}
+
+// buildMountedRoutes constructs the map of active route keys to VersionSpecs based on
+// stable versions, any preview version, and whether preview routing is enabled.
+func buildMountedRoutes(
+	stableVersions []VersionSpec,
+	previewSpec *VersionSpec,
+	enablePreview bool,
+) map[string]VersionSpec {
 	mounted := make(map[string]VersionSpec, len(stableVersions)+2)
 	for _, v := range stableVersions {
 		mounted[v.ID] = v
@@ -150,17 +181,20 @@ func resolveMountedVersions(
 			mounted[previewRouteAlias] = latestStable
 		}
 	}
+	return mounted
+}
 
+// validateDefaultVersion checks that defaultVersion is a concrete, mounted version ID.
+func validateDefaultVersion(defaultVersion string, mounted map[string]VersionSpec) error {
 	trimmedDefault := strings.TrimSpace(defaultVersion)
 	if trimmedDefault == "" {
-		return nil, fmt.Errorf("default MCP version cannot be empty")
+		return fmt.Errorf("default MCP version cannot be empty")
 	}
 	if trimmedDefault == previewRouteAlias {
-		return nil, fmt.Errorf("default MCP version cannot be %q; specify a concrete version ID", previewRouteAlias)
+		return fmt.Errorf("default MCP version cannot be %q; specify a concrete version ID", previewRouteAlias)
 	}
 	if _, ok := mounted[trimmedDefault]; !ok {
-		return nil, fmt.Errorf("default MCP version %q is not an active mounted version", trimmedDefault)
+		return fmt.Errorf("default MCP version %q is not an active mounted version", trimmedDefault)
 	}
-
-	return mounted, nil
+	return nil
 }

@@ -29,7 +29,7 @@ import (
 
 func TestDocumentationHeaderHandling(t *testing.T) {
 	t.Setenv("MIXER_HASH", "dev-test-hash")
-	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, "", "", DefaultVersionID, false)
+	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, nil)
 	if err != nil {
 		t.Fatalf("NewDcMcpServer failed: %v", err)
 	}
@@ -168,7 +168,11 @@ func TestDocumentationHeaderHandling(t *testing.T) {
 }
 
 func TestToolsAndResourcesProtocol(t *testing.T) {
-	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, "", "base_and_custom", DefaultVersionID, true)
+	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, &ServerOptions{
+		SearchScope:    "base_and_custom",
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
 	if err != nil {
 		t.Fatalf("NewDcMcpServer failed: %v", err)
 	}
@@ -318,7 +322,7 @@ func TestVersionRegistryValidation(t *testing.T) {
 		},
 		{
 			name:           "empty versions slice fails",
-			versions:       nil,
+			versions:       []VersionSpec{},
 			defaultVersion: "v1",
 			wantErrSubstr:  "at least one MCP version must be registered",
 		},
@@ -410,23 +414,23 @@ func TestVersionRegistryValidation(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := newDcMcpServerWithVersions(
+			_, err := NewDcMcpServer(
 				context.Background(),
 				&fakeAgentBackend{},
-				"",
-				"",
-				tc.versions,
-				tc.defaultVersion,
-				tc.enablePreview,
+				&ServerOptions{
+					DefaultVersion: tc.defaultVersion,
+					EnablePreview:  tc.enablePreview,
+					Versions:       tc.versions,
+				},
 			)
 			if tc.wantErrSubstr != "" {
 				if err == nil || !strings.Contains(err.Error(), tc.wantErrSubstr) {
-					t.Fatalf("newDcMcpServerWithVersions error = %v, want substring %q", err, tc.wantErrSubstr)
+					t.Fatalf("NewDcMcpServer error = %v, want substring %q", err, tc.wantErrSubstr)
 				}
 				return
 			}
 			if err != nil {
-				t.Fatalf("newDcMcpServerWithVersions unexpected error: %v", err)
+				t.Fatalf("NewDcMcpServer unexpected error: %v", err)
 			}
 		})
 	}
@@ -538,17 +542,17 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			backend := &fakeAgentBackend{}
-			srv, err := newDcMcpServerWithVersions(
+			srv, err := NewDcMcpServer(
 				context.Background(),
 				backend,
-				"",
-				"",
-				tc.versions,
-				"v1",
-				tc.enablePreview,
+				&ServerOptions{
+					DefaultVersion: "v1",
+					EnablePreview:  tc.enablePreview,
+					Versions:       tc.versions,
+				},
 			)
 			if err != nil {
-				t.Fatalf("newDcMcpServerWithVersions failed: %v", err)
+				t.Fatalf("NewDcMcpServer failed: %v", err)
 			}
 			ts := httptest.NewServer(srv)
 			defer ts.Close()

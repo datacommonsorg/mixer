@@ -51,6 +51,15 @@ type versionInstance struct {
 	httpServer *server.StreamableHTTPServer
 }
 
+// ServerOptions holds configuration options for DcMcpServer.
+type ServerOptions struct {
+	InstructionsDir string
+	SearchScope     string
+	DefaultVersion  string
+	EnablePreview   bool
+	Versions        []VersionSpec
+}
+
 // DcMcpServer routes requests across the unversioned /mcp alias and versioned /mcp/<id> endpoints.
 type DcMcpServer struct {
 	defaultVersion string
@@ -61,20 +70,41 @@ type DcMcpServer struct {
 func NewDcMcpServer(
 	ctx context.Context,
 	agentService AgentBackend,
-	instructionsDir string,
-	searchScope string,
-	defaultVersion string,
-	enablePreview bool,
+	opts *ServerOptions,
 ) (*DcMcpServer, error) {
-	return newDcMcpServerWithVersions(
-		ctx,
-		agentService,
-		instructionsDir,
-		searchScope,
-		AllVersions(),
-		defaultVersion,
-		enablePreview,
-	)
+	cfg := ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		Versions:       AllVersions(),
+	}
+	if opts != nil {
+		cfg = *opts
+		if cfg.Versions == nil {
+			cfg.Versions = AllVersions()
+		}
+	}
+
+	mounted, err := resolveMountedVersions(cfg.Versions, cfg.DefaultVersion, cfg.EnablePreview)
+	if err != nil {
+		return nil, err
+	}
+
+	tools := NewMcpTools(agentService, cfg.SearchScope)
+	instancesByID := make(map[string]*versionInstance, len(mounted))
+	routes := make(map[string]*versionInstance, len(mounted))
+
+	for routeKey, spec := range mounted {
+		inst, exists := instancesByID[spec.ID]
+		if !exists {
+			inst = newVersionInstance(ctx, cfg.InstructionsDir, tools, spec)
+			instancesByID[spec.ID] = inst
+		}
+		routes[routeKey] = inst
+	}
+
+	return &DcMcpServer{
+		defaultVersion: strings.TrimSpace(cfg.DefaultVersion),
+		routes:         routes,
+	}, nil
 }
 
 // ServeHTTP dispatches requests to the matching MCP version instance, injecting the
@@ -96,40 +126,6 @@ func (s *DcMcpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	ctx := withSurfaceMetadata(r.Context(), surface)
 	inst.httpServer.ServeHTTP(w, r.WithContext(ctx))
-}
-
-// newDcMcpServerWithVersions builds a DcMcpServer from an explicit slice of VersionSpecs.
-func newDcMcpServerWithVersions(
-	ctx context.Context,
-	agentService AgentBackend,
-	instructionsDir string,
-	searchScope string,
-	versions []VersionSpec,
-	defaultVersion string,
-	enablePreview bool,
-) (*DcMcpServer, error) {
-	mounted, err := resolveMountedVersions(versions, defaultVersion, enablePreview)
-	if err != nil {
-		return nil, err
-	}
-
-	tools := NewMcpTools(agentService, searchScope)
-	instancesByID := make(map[string]*versionInstance, len(mounted))
-	routes := make(map[string]*versionInstance, len(mounted))
-
-	for routeKey, spec := range mounted {
-		inst, exists := instancesByID[spec.ID]
-		if !exists {
-			inst = newVersionInstance(ctx, instructionsDir, tools, spec)
-			instancesByID[spec.ID] = inst
-		}
-		routes[routeKey] = inst
-	}
-
-	return &DcMcpServer{
-		defaultVersion: strings.TrimSpace(defaultVersion),
-		routes:         routes,
-	}, nil
 }
 
 // newVersionInstance constructs an isolated MCPServer and StreamableHTTPServer for a single VersionSpec.
