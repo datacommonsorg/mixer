@@ -41,6 +41,8 @@ nodes: 4
 serviceGroups:
   svg:
     replicas: 5
+    # Exercises the goMemLimit path before prod; keep ~1GiB below the 6Gi default limit.
+    goMemLimit: "5GiB"
   recon:
     replicas: 20
   observation:
