@@ -22,11 +22,13 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
 // fakeAgentBackend records incoming requests and returns canned responses for unit tests.
 type fakeAgentBackend struct {
+	lastSurface         string
 	lastSearchReq       *agent.SearchIndicatorsRequest
 	searchResp          *agent.SearchIndicatorsResponse
 	lastVarMetadataReq  *agent.GetVariableMetadataRequest
@@ -35,7 +37,17 @@ type fakeAgentBackend struct {
 	observationsResp    *agent.GetObservationsResponse
 }
 
-func (f *fakeAgentBackend) SearchIndicators(_ context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error) {
+func (f *fakeAgentBackend) recordSurface(ctx context.Context) {
+	f.lastSurface = ""
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		if vals := md.Get(surfaceHeaderKey); len(vals) > 0 {
+			f.lastSurface = vals[0]
+		}
+	}
+}
+
+func (f *fakeAgentBackend) SearchIndicators(ctx context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error) {
+	f.recordSurface(ctx)
 	f.lastSearchReq = req
 	if f.searchResp != nil {
 		return f.searchResp, nil
@@ -43,7 +55,8 @@ func (f *fakeAgentBackend) SearchIndicators(_ context.Context, req *agent.Search
 	return &agent.SearchIndicatorsResponse{Status: "SUCCESS"}, nil
 }
 
-func (f *fakeAgentBackend) GetVariableMetadata(_ context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error) {
+func (f *fakeAgentBackend) GetVariableMetadata(ctx context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error) {
+	f.recordSurface(ctx)
 	f.lastVarMetadataReq = req
 	if f.varMetadataResp != nil {
 		return f.varMetadataResp, nil
@@ -51,7 +64,8 @@ func (f *fakeAgentBackend) GetVariableMetadata(_ context.Context, req *agent.Get
 	return &agent.GetVariableMetadataResponse{Status: "SUCCESS"}, nil
 }
 
-func (f *fakeAgentBackend) GetObservations(_ context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error) {
+func (f *fakeAgentBackend) GetObservations(ctx context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error) {
+	f.recordSurface(ctx)
 	f.lastObservationsReq = req
 	if f.observationsResp != nil {
 		return f.observationsResp, nil

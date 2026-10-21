@@ -40,9 +40,9 @@ var File_service_http_proxy_proto protoreflect.FileDescriptor
 
 const file_service_http_proxy_proto_rawDesc = "" +
 	"\n" +
-	"\x18service/http_proxy.proto\x12\vdatacommons\x1a\x1cgoogle/api/annotations.proto\x1a\x19google/api/httpbody.proto2d\n" +
-	"\x10HttpProxyService\x12P\n" +
-	"\tHttpProxy\x12\x14.google.api.HttpBody\x1a\x14.google.api.HttpBody\"\x17\x82\xd3\xe4\x93\x02\x11Z\t:\x01*\"\x04/mcp\x12\x04/mcpB8Z6github.com/datacommonsorg/mixer/internal/proto/serviceb\x06proto3"
+	"\x18service/http_proxy.proto\x12\vdatacommons\x1a\x1cgoogle/api/annotations.proto\x1a\x19google/api/httpbody.proto2\x90\x01\n" +
+	"\x10HttpProxyService\x12|\n" +
+	"\tHttpProxy\x12\x14.google.api.HttpBody\x1a\x14.google.api.HttpBody\"C\x82\xd3\xe4\x93\x02=Z\t:\x01*\"\x04/mcpZ\x06*\x04/mcpZ\t\x12\a/mcp/**Z\f:\x01*\"\a/mcp/**Z\t*\a/mcp/**\x12\x04/mcpB8Z6github.com/datacommonsorg/mixer/internal/proto/serviceb\x06proto3"
 
 var file_service_http_proxy_proto_goTypes = []any{
 	(*httpbody.HttpBody)(nil), // 0: google.api.HttpBody

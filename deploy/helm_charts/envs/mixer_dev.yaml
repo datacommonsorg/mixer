@@ -19,6 +19,7 @@ mixer:
           host: "10.152.182.67"
           port: "6379"
   enableOtlp: true
+  enableMcpPreview: true
 
 ingress:
   enabled: true
