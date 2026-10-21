@@ -64,16 +64,6 @@ const (
 	// BtPagedPropTypeValOut for out-arc paged entities.
 	// Key: <dcid^predicate^type^page>
 	BtPagedPropTypeValOut = "d/m/"
-	// BtRelatedLocationsSameTypePrefix for related places with same type.
-	BtRelatedLocationsSameTypePrefix = "d/o/"
-	// BtRelatedLocationsSameTypePCPrefix for related places with same type, per capita.
-	BtRelatedLocationsSameTypePCPrefix = "d/o0/"
-	// BtRelatedLocationsSameTypeAndAncestorPrefix for related places with same
-	// type and ancestor.
-	BtRelatedLocationsSameTypeAndAncestorPrefix = "d/q/"
-	// BtRelatedLocationsSameTypeAndAncestorPCPrefix for related places with same type and ancestor,
-	// per capita.
-	BtRelatedLocationsSameTypeAndAncestorPCPrefix = "d/q0/"
 
 	// BtFamily is the key for the row.
 	BtFamily = "csv"

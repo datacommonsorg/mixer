@@ -20,12 +20,10 @@ import (
 	"os"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -45,48 +43,20 @@ func (s *Server) GetStats(ctx context.Context, in *pb.GetStatsRequest,
 }
 
 // GetRelatedLocations implements API for Mixer.GetRelatedLocations.
+// Note: This endpoint is deprecated along with the place ranking pages and
+// always returns an empty response, so that legacy custom DC instances still
+// get a valid response. It will be removed once all custom instances are
+// updated.
 func (s *Server) GetRelatedLocations(
-	ctx context.Context, in *pb.GetRelatedLocationsRequest,
+	_ context.Context, _ *pb.GetRelatedLocationsRequest,
 ) (*pb.GetRelatedLocationsResponse, error) {
-	localResp, err := place.GetRelatedLocations(ctx, in, s.store)
-	if err != nil {
-		return nil, err
-	}
-	if len(localResp.GetData()) == 0 &&
-		s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pb.GetRelatedLocationsResponse{}
-		if err := util.FetchRemote(
-			ctx, s.metadata, s.httpClient, "/v1/place/related", in, remoteResp); err != nil {
-			return nil, err
-		}
-		return remoteResp, nil
-	}
-	return localResp, nil
-}
-
-// getLocationsRankings fetches local location rankings, falling back to remote mixer if local data is empty.
-func (s *Server) getLocationsRankings(
-	ctx context.Context, in *pb.GetLocationsRankingsRequest, remoteAPIPath string,
-) (*pb.GetLocationsRankingsResponse, error) {
-	localResp, err := place.GetLocationsRankings(ctx, in, s.store)
-	if err != nil {
-		return nil, err
-	}
-	if len(localResp.GetData()) == 0 &&
-		s.metadata.RemoteMixerDomain != "" {
-		remoteResp := &pb.GetLocationsRankingsResponse{}
-		if err := util.FetchRemote(
-			ctx, s.metadata, s.httpClient, remoteAPIPath, in, remoteResp); err != nil {
-			return nil, err
-		}
-		return remoteResp, nil
-	}
-	return localResp, nil
+	return &pb.GetRelatedLocationsResponse{}, nil
 }
 
 // GetLocationsRankings implements API for Mixer.GetLocationsRankings.
-// Note: This endpoint is deprecated and now wraps the V2 implementation.
-// It will be removed once all custom instances are updated.
+// Note: This endpoint is deprecated and wraps the V2 implementation, which
+// always returns an empty response. It will be removed once all custom
+// instances are updated.
 func (s *Server) GetLocationsRankings(
 	ctx context.Context, in *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
