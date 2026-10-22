@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"errors"
+	"net/http"
 	"strings"
 	"testing"
 	"time"
@@ -26,7 +27,10 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 type versionTimestampProvider struct {
@@ -89,5 +93,84 @@ func newVersionTestServer(provider SpannerStalenessTimestampProvider) *Server {
 		dispatcher:                        dispatcher.NewDispatcher(nil, sources),
 		flags:                             nil,
 		spannerStalenessTimestampProvider: provider,
+	}
+}
+
+func TestDeprecatedPlaceRankingEndpointsReturnEmpty(t *testing.T) {
+	ctx := context.Background()
+	// Configure a remote Mixer so that any attempt to federate is recorded.
+	transport := &mockRemoteTransport{}
+	s := &Server{
+		store:      &store.Store{},
+		metadata:   &resource.Metadata{RemoteMixerDomain: "http://mock-remote"},
+		httpClient: &http.Client{Transport: transport},
+	}
+	rankingsReq := &pb.GetLocationsRankingsRequest{
+		PlaceType:    "County",
+		WithinPlace:  "geoId/06",
+		StatVarDcids: []string{"Count_Person"},
+	}
+
+	for _, tc := range []struct {
+		name string
+		call func() (proto.Message, error)
+		want proto.Message
+	}{
+		{
+			name: "GetLocationsRankings",
+			call: func() (proto.Message, error) { return s.GetLocationsRankings(ctx, rankingsReq) },
+			want: &pb.GetLocationsRankingsResponse{},
+		},
+		{
+			name: "V2GetLocationsRankings",
+			call: func() (proto.Message, error) { return s.V2GetLocationsRankings(ctx, rankingsReq) },
+			want: &pb.GetLocationsRankingsResponse{},
+		},
+		{
+			name: "GetRelatedLocations",
+			call: func() (proto.Message, error) {
+				return s.GetRelatedLocations(ctx, &pb.GetRelatedLocationsRequest{
+					Dcid:         "geoId/06085",
+					StatVarDcids: []string{"Count_Person"},
+				})
+			},
+			want: &pb.GetRelatedLocationsResponse{},
+		},
+		// Requests with missing arguments also get an empty response, not an error.
+		{
+			name: "GetLocationsRankings empty request",
+			call: func() (proto.Message, error) {
+				return s.GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{})
+			},
+			want: &pb.GetLocationsRankingsResponse{},
+		},
+		{
+			name: "V2GetLocationsRankings empty request",
+			call: func() (proto.Message, error) {
+				return s.V2GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{})
+			},
+			want: &pb.GetLocationsRankingsResponse{},
+		},
+		{
+			name: "GetRelatedLocations empty request",
+			call: func() (proto.Message, error) {
+				return s.GetRelatedLocations(ctx, &pb.GetRelatedLocationsRequest{})
+			},
+			want: &pb.GetRelatedLocationsResponse{},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			transport.lastPath = ""
+			got, err := tc.call()
+			if err != nil {
+				t.Fatalf("%s() error = %v", tc.name, err)
+			}
+			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("%s() unexpected diff (-want +got):\n%s", tc.name, diff)
+			}
+			if transport.lastPath != "" {
+				t.Errorf("%s() called remote Mixer path %q, want no remote call", tc.name, transport.lastPath)
+			}
+		})
 	}
 }

@@ -25,7 +25,6 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -632,12 +631,5 @@ func TestV2RemoteAPIPaths(t *testing.T) {
 	_, _ = s.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{Nodes: []string{}})
 	if transport.lastPath != "/v2/bulk/info/variable-group" {
 		t.Errorf("V2BulkVariableGroupInfo passed remote path %q, want %q", transport.lastPath, "/v2/bulk/info/variable-group")
-	}
-
-	// 3. V2GetLocationsRankings
-	// Must provide PlaceType and StatVarDcids to avoid early argument error.
-	_, _ = s.V2GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{PlaceType: "City", StatVarDcids: []string{"Count_Person"}})
-	if transport.lastPath != "/v2/place/ranking" {
-		t.Errorf("V2GetLocationsRankings passed remote path %q, want %q", transport.lastPath, "/v2/place/ranking")
 	}
 }

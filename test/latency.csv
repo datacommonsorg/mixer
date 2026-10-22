@@ -1,9 +1,7 @@
 method,total-latency
 CompareEntities,0.000
-GetLocationsRankings,0.434
 GetPlaceMetadata,0.394
 GetPlaceStatDateWithinPlace,0.302
-GetRelatedLocations,0.424
 GetStatSet,0.591
 GetStatSetSeries,1.451
 GetStatSetSeriesWithinPlace,0.373
