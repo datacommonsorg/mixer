@@ -179,7 +179,7 @@ func TestToolsAndResourcesProtocol(t *testing.T) {
 	ts := httptest.NewServer(srv)
 	defer ts.Close()
 
-	for _, routePath := range []string{"", "/v1", "/preview"} {
+	for _, routePath := range []string{"", "/v1"} {
 		t.Run("route_"+routePath, func(t *testing.T) {
 			endpoint := ts.URL + routePath
 			tests := []struct {
@@ -410,6 +410,13 @@ func TestVersionRegistryValidation(t *testing.T) {
 			enablePreview:  false,
 			wantErrSubstr:  `default MCP version "v2" is not an active mounted version`,
 		},
+		{
+			name:           "default version pointing to preview version fails when preview enabled",
+			versions:       AllVersions(),
+			defaultVersion: "v2",
+			enablePreview:  true,
+			wantErrSubstr:  `default MCP version "v2" is not an active mounted version`,
+		},
 	}
 
 	for _, tc := range tests {
@@ -504,24 +511,32 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 			wantCallSurface: "mcp-preview",
 		},
 		{
-			name:            "preview-stage /mcp/v2 is mounted with mcp-v2 surface when preview is enabled",
-			versions:        versionsWithV2Preview,
-			enablePreview:   true,
-			path:            "/v2",
-			wantGetStatus:   http.StatusOK,
-			wantVersion:     "v2",
-			wantToolCount:   1,
-			wantCallSurface: "mcp-v2",
-		},
-		{
 			name:            "/mcp/preview falls back to latest StageStable v1 when no StagePreview version exists",
-			versions:        AllVersions(),
+			versions:        []VersionSpec{V1Spec()},
 			enablePreview:   true,
 			path:            "/preview",
 			wantGetStatus:   http.StatusOK,
 			wantVersion:     "v1",
 			wantToolCount:   6,
 			wantCallSurface: "mcp-preview",
+		},
+		{
+			name:          "/mcp/preview serves registered V2Spec when preview is enabled",
+			versions:      AllVersions(),
+			enablePreview: true,
+			path:          "/preview",
+			wantGetStatus: http.StatusOK,
+			wantVersion:   "v2",
+			wantToolCount: len(V2Spec().Tools),
+			// V2Spec has no search_indicators tool, so the tools/call probe errors before reaching the backend.
+			wantCallSurface: "",
+		},
+		{
+			name:          "registered V2Spec is not mounted at /mcp/v2 while in preview",
+			versions:      AllVersions(),
+			enablePreview: true,
+			path:          "/v2",
+			wantGetStatus: http.StatusNotFound,
 		},
 		{
 			name:          "unknown version /mcp/v99 returns 404",
@@ -604,6 +619,90 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 			})
 			if backend.lastSurface != tc.wantCallSurface {
 				t.Errorf("backend surface = %q, want %q", backend.lastSurface, tc.wantCallSurface)
+			}
+		})
+	}
+}
+
+func TestV2PreviewSurface(t *testing.T) {
+	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, &ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
+	if err != nil {
+		t.Fatalf("NewDcMcpServer failed: %v", err)
+	}
+	ts := httptest.NewServer(srv)
+	defer ts.Close()
+	endpoint := ts.URL + "/preview"
+
+	v2ServerMD, err := instructionsFS.ReadFile("instructions/v2/server.md")
+	if err != nil {
+		t.Fatalf("failed to read embedded v2 server.md: %v", err)
+	}
+	v2DocExtension, err := instructionsFS.ReadFile("instructions/v2/doc_instructions_extension.md")
+	if err != nil {
+		t.Fatalf("failed to read embedded v2 doc_instructions_extension.md: %v", err)
+	}
+	initializeParams := map[string]any{
+		"protocolVersion": "2025-03-26",
+		"capabilities":    map[string]any{},
+		"clientInfo":      map[string]any{"name": "test-client", "version": "1.0.0"},
+	}
+
+	tests := []struct {
+		name      string
+		method    string
+		params    map[string]any
+		docHeader string
+		resultKey string
+		want      any
+	}{
+		{
+			name:      "initialize returns v2 server instructions",
+			method:    "initialize",
+			params:    initializeParams,
+			resultKey: "instructions",
+			want:      strings.TrimSpace(string(v2ServerMD)),
+		},
+		{
+			name:      "initialize with documentation header appends v2 documentation extension",
+			method:    "initialize",
+			params:    initializeParams,
+			docHeader: "true",
+			resultKey: "instructions",
+			want:      strings.TrimSpace(string(v2ServerMD)) + "\n\n" + strings.TrimSpace(string(v2DocExtension)),
+		},
+		{
+			name:      "tools/list returns no tools",
+			method:    "tools/list",
+			params:    map[string]any{},
+			resultKey: "tools",
+			want:      []any{},
+		},
+		{
+			name:      "resources/list returns no skills",
+			method:    "resources/list",
+			params:    map[string]any{},
+			resultKey: "resources",
+			want:      []any{},
+		},
+	}
+
+	for i, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			respMap := sendJSONRPC(t, endpoint, tc.docHeader, map[string]any{
+				"jsonrpc": "2.0",
+				"id":      i + 1,
+				"method":  tc.method,
+				"params":  tc.params,
+			})
+			resObj, ok := respMap["result"].(map[string]any)
+			if !ok {
+				t.Fatalf("expected JSON-RPC result object, got: %+v", respMap)
+			}
+			if diff := cmp.Diff(tc.want, resObj[tc.resultKey]); diff != "" {
+				t.Errorf("%s result.%s diff (-want +got):\n%s", tc.method, tc.resultKey, diff)
 			}
 		})
 	}

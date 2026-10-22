@@ -30,7 +30,7 @@ type VersionStage string
 const (
 	// StageStable indicates a released MCP version mounted in all environments.
 	StageStable VersionStage = "stable"
-	// StagePreview indicates an in-development MCP version mounted only when --enable_mcp_preview is set.
+	// StagePreview indicates an in-development MCP version mounted only at /mcp/preview when --enable_mcp_preview is set.
 	StagePreview VersionStage = "preview"
 
 	// DefaultVersionID is the default MCP version backing the unversioned /mcp alias.
@@ -59,6 +59,7 @@ type VersionSpec struct {
 func AllVersions() []VersionSpec {
 	return []VersionSpec{
 		V1Spec(),
+		V2Spec(),
 	}
 }
 
@@ -174,7 +175,8 @@ func buildMountedRoutes(
 
 	if enablePreview {
 		if previewSpec != nil {
-			mounted[previewSpec.ID] = *previewSpec
+			// A preview-stage version is served only via the /mcp/preview alias; its concrete
+			// /mcp/<id> route is mounted once the version is promoted to StageStable.
 			mounted[previewRouteAlias] = *previewSpec
 		} else {
 			latestStable := stableVersions[len(stableVersions)-1]

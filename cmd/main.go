@@ -75,7 +75,7 @@ var (
 	mcpInstructionsDir  = flag.String("mcp_instructions_dir", os.Getenv("DC_INSTRUCTIONS_DIR"), "Custom directory path (local or gs://) for MCP server/tool/skill instructions.")
 	mcpSearchScope      = flag.String("mcp_search_scope", os.Getenv("DC_SEARCH_SCOPE"), "Optional search scope target for MCP indicator searches (e.g. custom_only, base_only, base_and_custom).")
 	mcpDefaultVersion   = flag.String("mcp_default_version", mcp.DefaultVersionID, "Default MCP version backing the unversioned /mcp alias.")
-	enableMcpPreview    = flag.Bool("enable_mcp_preview", false, "Whether to mount the /mcp/preview alias and any preview-stage MCP version.")
+	enableMcpPreview    = flag.Bool("enable_mcp_preview", false, "Whether to mount the /mcp/preview alias (serving the preview-stage MCP version, or the latest stable version if none).")
 	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
