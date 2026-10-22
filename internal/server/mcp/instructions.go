@@ -39,35 +39,31 @@ const (
 	getMultiEntityObservationsInstructionFile = "tools/get_multi_entity_observations.md"
 )
 
-var defaultSkillNames = []string{
-	"data-commons-child-places-researcher",
-	"data-commons-multi-entity-researcher",
-	"data-commons-researcher",
-}
-
 //go:embed instructions
 var instructionsFS embed.FS
 
 // gcsObjectReader abstracts reading an object from a GCS bucket for testability.
 type gcsObjectReader func(ctx context.Context, bucket, object string) ([]byte, error)
 
-// InstructionLoader loads markdown instruction files from an optional custom directory
-// (local path or gs:// URI), falling back to embedded instructions.
+// InstructionLoader loads version-scoped markdown instruction files from an optional
+// custom directory (local path or gs:// URI), falling back to embedded instructions.
 type InstructionLoader struct {
 	customDir string
+	versionID string
 	gcsRead   gcsObjectReader
 	closeFn   func() error
 }
 
-// NewInstructionLoader creates an InstructionLoader configured with an optional custom directory.
-func NewInstructionLoader(ctx context.Context, customDir string) *InstructionLoader {
-	trimmed := strings.TrimSpace(customDir)
+// NewInstructionLoader creates a version-scoped InstructionLoader configured with an optional custom directory.
+func NewInstructionLoader(ctx context.Context, customDir string, versionID string) *InstructionLoader {
+	trimmedDir := strings.TrimSpace(customDir)
+	trimmedVer := strings.TrimSpace(versionID)
 	var reader gcsObjectReader
 	var closeFn func() error
-	if strings.HasPrefix(trimmed, "gs://") {
+	if strings.HasPrefix(trimmedDir, "gs://") {
 		client, err := storage.NewClient(ctx)
 		if err != nil {
-			slog.Warn("Failed to create GCS client for custom MCP instructions; falling back to embedded instructions", "customDir", trimmed, "error", err)
+			slog.Warn("Failed to create GCS client for custom MCP instructions; falling back to embedded instructions", "customDir", trimmedDir, "error", err)
 		} else {
 			closeFn = client.Close
 			reader = func(rCtx context.Context, bucket, object string) ([]byte, error) {
@@ -81,7 +77,8 @@ func NewInstructionLoader(ctx context.Context, customDir string) *InstructionLoa
 		}
 	}
 	return &InstructionLoader{
-		customDir: trimmed,
+		customDir: trimmedDir,
+		versionID: trimmedVer,
 		gcsRead:   reader,
 		closeFn:   closeFn,
 	}
@@ -95,33 +92,42 @@ func (l *InstructionLoader) Close() error {
 	return nil
 }
 
-// Load reads a markdown instruction file relative to the instructions root (e.g. "server.md"
-// or "tools/search_indicators.md"), checking customDir first before falling back to embedded files.
+// Load reads a markdown instruction file relative to the version's instructions root
+// (e.g. "server.md" or "tools/search_indicators.md"), checking <customDir>/<versionID>/<filename>
+// first before falling back to embedded instructions/<versionID>/<filename>.
 func (l *InstructionLoader) Load(ctx context.Context, filename string) string {
+	cleanVer := path.Clean(strings.ReplaceAll(strings.TrimPrefix(l.versionID, "/"), "\\", "/"))
+	if cleanVer == "" || cleanVer == "." || strings.HasPrefix(cleanVer, "..") || strings.Contains(cleanVer, "/") {
+		slog.Warn("Rejected invalid instruction version ID", "versionID", l.versionID)
+		return ""
+	}
+
 	cleanRel := path.Clean(strings.ReplaceAll(strings.TrimPrefix(filename, "/"), "\\", "/"))
 	if cleanRel == "." || strings.HasPrefix(cleanRel, "..") {
 		slog.Warn("Rejected invalid relative instruction path", "filename", filename)
 		return ""
 	}
 
+	versionedRel := path.Join(cleanVer, cleanRel)
+
 	if l.customDir != "" {
-		content, err := l.readExternalContent(ctx, cleanRel)
+		content, err := l.readExternalContent(ctx, versionedRel)
 		if err == nil {
 			return string(content)
 		}
-		slog.Debug("Custom instruction file not found in custom directory; falling back to embedded", "customDir", l.customDir, "filename", cleanRel, "error", err)
+		slog.Debug("Custom instruction file not found in custom directory; falling back to embedded", "customDir", l.customDir, "path", versionedRel, "error", err)
 	}
 
-	content, err := instructionsFS.ReadFile(path.Join("instructions", cleanRel))
+	content, err := instructionsFS.ReadFile(path.Join("instructions", versionedRel))
 	if err != nil {
-		slog.Warn("Failed to read embedded instruction file", "filename", cleanRel, "error", err)
+		slog.Warn("Failed to read embedded instruction file", "path", versionedRel, "error", err)
 		return ""
 	}
 	return string(content)
 }
 
-// readExternalContent reads a relative file path from either a gs:// URI or a local directory.
-func (l *InstructionLoader) readExternalContent(ctx context.Context, cleanRel string) ([]byte, error) {
+// readExternalContent reads a version-scoped relative file path from either a gs:// URI or a local directory.
+func (l *InstructionLoader) readExternalContent(ctx context.Context, versionedRel string) ([]byte, error) {
 	if strings.HasPrefix(l.customDir, "gs://") {
 		if l.gcsRead == nil {
 			return nil, fmt.Errorf("GCS reader is not initialized")
@@ -130,13 +136,13 @@ func (l *InstructionLoader) readExternalContent(ctx context.Context, cleanRel st
 		if err != nil {
 			return nil, err
 		}
-		objectPath := cleanRel
+		objectPath := versionedRel
 		if prefix != "" {
-			objectPath = path.Join(prefix, cleanRel)
+			objectPath = path.Join(prefix, versionedRel)
 		}
 		return l.gcsRead(ctx, bucket, objectPath)
 	}
-	return os.ReadFile(filepath.Join(l.customDir, filepath.FromSlash(cleanRel)))
+	return os.ReadFile(filepath.Join(l.customDir, filepath.FromSlash(versionedRel)))
 }
 
 // parseGCSURI splits a gs://bucket/optional/prefix URI into bucket and object prefix.

@@ -208,6 +208,12 @@ spec:
               {{- if eq $.Values.mixer.writeUsageLogs true}}
               --write_usage_logs=true \
               {{- end }}
+              {{- if $.Values.mixer.mcpDefaultVersion }}
+              --mcp_default_version={{ $.Values.mixer.mcpDefaultVersion }} \
+              {{- end }}
+              {{- if eq $.Values.mixer.enableMcpPreview true }}
+              --enable_mcp_preview=true \
+              {{- end }}
               {{- if $group.enableEmbeddingsSidecar }}
               --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
               {{- end }}
