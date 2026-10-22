@@ -14,19 +14,6 @@
 
 package mcp
 
-import (
-	"context"
-
-	"github.com/datacommonsorg/mixer/internal/agent"
-)
-
-// AgentBackend defines the subset of agent.Service methods required by the MCP tools.
-type AgentBackend interface {
-	SearchIndicators(ctx context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error)
-	GetVariableMetadata(ctx context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error)
-	GetObservations(ctx context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error)
-}
-
 // SearchIndicatorsInput holds arguments for the search_indicators MCP tool.
 type SearchIndicatorsInput struct {
 	Query          string   `json:"query"`
