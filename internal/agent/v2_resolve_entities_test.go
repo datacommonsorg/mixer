@@ -176,8 +176,9 @@ func TestV2ResolveEntities(t *testing.T) {
 				{Name: "Santa Clara", EntityTypeHints: []string{"county"}},
 			}},
 			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
-				resolveKey(ResolverType, "", "county"):               {{Dcid: "County"}},
-				resolveKey(ResolverPlace, unfiltered, "Santa Clara"): {{Dcid: "geoId/0669084"}},
+				resolveKey(ResolverType, "", "county"):                  {{Dcid: "County"}},
+				resolveKey(ResolverPlace, unfiltered, "Santa Clara"):    {{Dcid: "geoId/0669084"}},
+				resolveKey(ResolverNonPlace, unfiltered, "Santa Clara"): {{Dcid: "nces/1", TypeOf: []string{"PublicSchool"}}},
 			},
 			wantRows: [][]any{
 				{"Santa Clara", "", "", []string{}},
@@ -185,7 +186,7 @@ func TestV2ResolveEntities(t *testing.T) {
 			wantCalls: []string{
 				resolveKey(ResolverType, "", "county"),
 				resolveKey(ResolverPlace, "<-description{typeOf:[County]}->dcid", "Santa Clara"),
-				resolveKey(ResolverNonPlace, unfiltered, "Santa Clara"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[County]}->dcid", "Santa Clara"),
 			},
 		},
 		{
@@ -539,7 +540,7 @@ func TestResolutionPlan(t *testing.T) {
 			typeDcids: []string{"Place", "AdministrativeArea", "State", "Country"},
 			want: []resolveAttempt{
 				{resolver: ResolverPlace, typeDcids: []string{"State"}},
-				{resolver: ResolverNonPlace},
+				{resolver: ResolverNonPlace, typeDcids: []string{"State", "Country"}},
 			},
 		},
 		{

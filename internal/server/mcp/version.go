@@ -16,12 +16,14 @@ package mcp
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
+	"google.golang.org/grpc/status"
 )
 
 // VersionStage represents the lifecycle stage of an MCP version.
@@ -79,11 +81,21 @@ func newToolSpec[T_IN any, T_OUT any](
 				res, err := method(tools, tCtx, args)
 				if err != nil {
 					slog.Error("MCP tool execution failed", "name", name, "error", err)
+					return res, toolErrorForLLM(err)
 				}
-				return res, err
+				return res, nil
 			})
 		},
 	}
+}
+
+// toolErrorForLLM strips the gRPC status wrapper ("rpc error: code = ... desc = ...") from err so the
+// tool result shown to the LLM contains only the actionable message. Non-status errors are unchanged.
+func toolErrorForLLM(err error) error {
+	if st, ok := status.FromError(err); ok {
+		return errors.New(st.Message())
+	}
+	return err
 }
 
 // resolveMountedVersions validates the version registry and returns a map of mounted

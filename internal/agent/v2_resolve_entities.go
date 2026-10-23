@@ -140,20 +140,27 @@ type resolveAttempt struct {
 //
 // Types only pick the primary resolver; the others remain fallbacks when it finds nothing. Attempts run
 // one at a time rather than fanning out, since most names resolve on the first attempt.
-//   - Place queries: place resolver (filtered to the hinted place type, if any), then an unfiltered
-//     non_place search for place-like groupings the place resolver does not know (e.g. "High income
-//     countries"). When a place type is hinted, the place resolver is not retried unfiltered: returning
-//     a different type (e.g. the city for "Santa Clara" with hint "county") is worse than returning
-//     nothing. Callers are instead asked to pass fully qualified names (e.g. "Santa Clara County,
-//     California, United States"), which the place resolver matches directly.
+//   - Place queries: place resolver (filtered to the hinted place type, if any), then a non_place search
+//     for place-like groupings the place resolver does not know (e.g. "High income countries"). When a
+//     place type is hinted, no fallback drops the hint: the non_place search is filtered to the hinted
+//     types and the place resolver is not retried unfiltered, since returning a different type (e.g. the
+//     city, or a school, for "Santa Clara" with hint "county") is worse than returning nothing. Callers
+//     are instead asked to pass fully qualified names (e.g. "Santa Clara County, California, United
+//     States"), which the place resolver matches directly.
 //   - Non-place queries: non_place filtered to the hinted types, then unfiltered non_place (hints from an
 //     LLM may not match the entity's exact class), then the place resolver last, because it is backed by
 //     Google Maps and can return false positives for organization names (e.g. a street sharing the name).
 func resolutionPlan(typeDcids []string, placeTypes map[string]struct{}) []resolveAttempt {
 	if isPlaceQuery(typeDcids, placeTypes) {
+		placeFilter := placeTypeFilter(typeDcids, placeTypes)
+		var nonPlaceFilter []string
+		if len(placeFilter) > 0 {
+			// Generic types are dropped so the filter does not match every place (see isGenericPlaceType).
+			nonPlaceFilter = slices.DeleteFunc(nonPlaceTypeFilter(typeDcids), isGenericPlaceType)
+		}
 		return []resolveAttempt{
-			{resolver: ResolverPlace, typeDcids: placeTypeFilter(typeDcids, placeTypes)},
-			{resolver: ResolverNonPlace},
+			{resolver: ResolverPlace, typeDcids: placeFilter},
+			{resolver: ResolverNonPlace, typeDcids: nonPlaceFilter},
 		}
 	}
 	var attempts []resolveAttempt

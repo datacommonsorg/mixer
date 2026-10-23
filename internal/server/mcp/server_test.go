@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"slices"
@@ -26,6 +27,8 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func TestDocumentationHeaderHandling(t *testing.T) {
@@ -768,6 +771,32 @@ func TestV2PreviewResolveEntitiesCall(t *testing.T) {
 	wantReq := &agent.V2ResolveEntitiesRequest{Entities: []*agent.V2EntityQuery{{Name: "California"}}}
 	if diff := cmp.Diff(wantReq, backend.lastV2ResolveReq); diff != "" {
 		t.Errorf("agent request diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestToolErrorForLLM(t *testing.T) {
+	tests := []struct {
+		name string
+		err  error
+		want string
+	}{
+		{
+			name: "status error keeps only its message",
+			err:  status.Error(codes.InvalidArgument, "'entities' cannot be empty"),
+			want: "'entities' cannot be empty",
+		},
+		{
+			name: "non-status error is unchanged",
+			err:  errors.New("agent service is not initialized"),
+			want: "agent service is not initialized",
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := toolErrorForLLM(tc.err).Error(); got != tc.want {
+				t.Errorf("toolErrorForLLM() = %q, want %q", got, tc.want)
+			}
+		})
 	}
 }
 
