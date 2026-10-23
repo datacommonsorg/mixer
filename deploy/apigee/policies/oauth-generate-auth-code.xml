@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="oauth-generate-auth-code">
+  <DisplayName>oauth-generate-auth-code</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>GenerateAuthorizationCode</Operation>
+  <ExpiresIn>300000</ExpiresIn>
+  <GenerateResponse enabled="false"/>
+  <ClientId>request.formparam.client_id</ClientId>
+  <RedirectUri>request.queryparam.redirect_uri</RedirectUri>
+  <ResponseType>request.queryparam.response_type</ResponseType>
+  <Scope>request.queryparam.scope</Scope>
+  <Attributes>
+    <Attribute name="auth_step" display="false">callback</Attribute>
+    <Attribute name="uid" ref="oauth.uid" display="false"/>
+    <Attribute name="redirect_uri" ref="oauth.callback.redirect_uri" display="false"/>
+    <Attribute name="code_challenge" ref="oauth.callback.code_challenge" display="false"/>
+    <Attribute name="code_challenge_method" ref="oauth.callback.code_challenge_method" display="false"/>
+  </Attributes>
+</OAuthV2>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault continueOnError="false" enabled="true" name="oauth-raise-error">
+  <DisplayName>oauth-raise-error</DisplayName>
+  <FaultResponse>
+    <Set>
+      <Headers>
+        <Header name="Cache-Control">no-store</Header>
+      </Headers>
+      <Payload contentType="application/json">{"error": "{oauth.error}", "error_description": "{oauth.error_description}"}</Payload>
+      <StatusCode>{oauth.status_code}</StatusCode>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
