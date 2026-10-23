@@ -24,6 +24,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
 )
 
@@ -205,6 +206,10 @@ func TestToolsAndResourcesProtocol(t *testing.T) {
 
 							if desc, _ := toolMap["description"].(string); strings.TrimSpace(desc) == "" {
 								t.Errorf("tool %s has empty description", name)
+							}
+							wantAnnotations := map[string]any{"readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": true}
+							if diff := cmp.Diff(wantAnnotations, toolMap["annotations"]); diff != "" {
+								t.Errorf("tool %s annotations diff (-want +got):\n%s", name, diff)
 							}
 
 							// Ensure every property's "type" is a single string (e.g. "array") rather than a list (e.g. ["null", "array"]).
@@ -656,6 +661,7 @@ func TestV2PreviewSurface(t *testing.T) {
 		params    map[string]any
 		docHeader string
 		resultKey string
+		transform func(any) any
 		want      any
 	}{
 		{
@@ -674,11 +680,12 @@ func TestV2PreviewSurface(t *testing.T) {
 			want:      strings.TrimSpace(string(v2ServerMD)) + "\n\n" + strings.TrimSpace(string(v2DocExtension)),
 		},
 		{
-			name:      "tools/list returns no tools",
+			name:      "tools/list returns V2Spec tools",
 			method:    "tools/list",
 			params:    map[string]any{},
 			resultKey: "tools",
-			want:      []any{},
+			transform: listedToolNames,
+			want:      []string{"resolve_entities"},
 		},
 		{
 			name:      "resources/list returns no skills",
@@ -701,11 +708,77 @@ func TestV2PreviewSurface(t *testing.T) {
 			if !ok {
 				t.Fatalf("expected JSON-RPC result object, got: %+v", respMap)
 			}
-			if diff := cmp.Diff(tc.want, resObj[tc.resultKey]); diff != "" {
+			got := resObj[tc.resultKey]
+			if tc.transform != nil {
+				got = tc.transform(got)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
 				t.Errorf("%s result.%s diff (-want +got):\n%s", tc.method, tc.resultKey, diff)
 			}
 		})
 	}
+}
+
+func TestV2PreviewResolveEntitiesCall(t *testing.T) {
+	backend := &fakeAgentBackend{v2ResolveResp: &agent.V2ResolveEntitiesResponse{ResolvedEntities: &agent.Table{
+		Columns: []string{"query", "dcid", "name", "types"},
+		Rows:    [][]any{{"California", "geoId/06", "California", []string{"State"}}},
+	}}}
+	srv, err := NewDcMcpServer(context.Background(), backend, &ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
+	if err != nil {
+		t.Fatalf("NewDcMcpServer failed: %v", err)
+	}
+	ts := httptest.NewServer(srv)
+	defer ts.Close()
+
+	respMap := sendJSONRPC(t, ts.URL+"/preview", "", map[string]any{
+		"jsonrpc": "2.0",
+		"id":      1,
+		"method":  "tools/call",
+		"params": map[string]any{
+			"name":      "resolve_entities",
+			"arguments": map[string]any{"entities": []any{map[string]any{"name": "California"}}},
+		},
+	})
+	result, ok := respMap["result"].(map[string]any)
+	if !ok || result["isError"] == true {
+		t.Fatalf("expected successful tools/call result, got: %+v", respMap)
+	}
+	wantStructured := map[string]any{"resolved_entities": map[string]any{
+		"columns": []any{"query", "dcid", "name", "types"},
+		"rows":    []any{[]any{"California", "geoId/06", "California", []any{"State"}}},
+	}}
+	if diff := cmp.Diff(wantStructured, result["structuredContent"]); diff != "" {
+		t.Errorf("structuredContent diff (-want +got):\n%s", diff)
+	}
+	text := result["content"].([]any)[0].(map[string]any)["text"].(string)
+	var textJSON any
+	if err := json.Unmarshal([]byte(text), &textJSON); err != nil {
+		t.Fatalf("text content is not JSON: %v", err)
+	}
+	if diff := cmp.Diff(wantStructured, textJSON); diff != "" {
+		t.Errorf("text content diff (-want +got):\n%s", diff)
+	}
+	if backend.lastSurface != "mcp-preview" {
+		t.Errorf("backend surface = %q, want %q", backend.lastSurface, "mcp-preview")
+	}
+	wantReq := &agent.V2ResolveEntitiesRequest{Entities: []*agent.V2EntityQuery{{Name: "California"}}}
+	if diff := cmp.Diff(wantReq, backend.lastV2ResolveReq); diff != "" {
+		t.Errorf("agent request diff (-want +got):\n%s", diff)
+	}
+}
+
+// listedToolNames extracts the sorted tool names from a decoded tools/list "tools" result.
+func listedToolNames(rawTools any) any {
+	names := []string{}
+	for _, item := range rawTools.([]any) {
+		names = append(names, item.(map[string]any)["name"].(string))
+	}
+	slices.Sort(names)
+	return names
 }
 
 // sendJSONRPC sends a JSON-RPC POST request to the test server and decodes the JSON response map.
