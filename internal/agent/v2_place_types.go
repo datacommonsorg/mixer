@@ -54,7 +54,6 @@ const (
 	// failing backend does not add an RPC (and lock wait) to every request.
 	v2PlaceTypesRetryInterval = time.Minute
 	// v2PlaceTypesLoadTimeout bounds the lookup, which runs independently of the triggering request.
-	// Concurrent requests wait on the lock for at most this long, and only on first load or retry.
 	v2PlaceTypesLoadTimeout = 10 * time.Second
 )
 
@@ -69,21 +68,32 @@ type placeTypeCache struct {
 // first use. If the lookup fails (or returns no subclasses), the roots and extras alone are returned and
 // the lookup is retried after v2PlaceTypesRetryInterval, so a transient failure does not stick.
 // The returned set is shared and must not be modified.
+//
+// The lock is not held during the lookup so concurrent requests are never blocked on it. Concurrent
+// cold-start requests may each run the lookup; that is rare and cheaper than coordinating them.
 func (s *Service) v2PlaceTypes(ctx context.Context) map[string]struct{} {
 	s.placeTypes.mu.Lock()
-	defer s.placeTypes.mu.Unlock()
-	if s.placeTypes.types != nil {
-		return s.placeTypes.types
+	cached, lastFailure := s.placeTypes.types, s.placeTypes.lastFailure
+	s.placeTypes.mu.Unlock()
+	if cached != nil {
+		return cached
 	}
 	types := baseV2PlaceTypes()
-	if time.Since(s.placeTypes.lastFailure) < v2PlaceTypesRetryInterval {
+	if time.Since(lastFailure) < v2PlaceTypesRetryInterval {
 		return types
 	}
+
 	subclasses, err := s.fetchPlaceSubclasses(ctx)
 	if err == nil && len(subclasses) == 0 {
 		// An empty hierarchy would silently route "country"/"state" hints to non_place, so it is
 		// treated as a failure rather than cached.
 		err = errors.New("no place subclasses returned")
+	}
+
+	s.placeTypes.mu.Lock()
+	defer s.placeTypes.mu.Unlock()
+	if s.placeTypes.types != nil {
+		return s.placeTypes.types
 	}
 	if err != nil {
 		slog.Warn("Failed to load place subclasses; using root place types only", "error", err)
