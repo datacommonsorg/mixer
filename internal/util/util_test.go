@@ -30,7 +30,6 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -53,6 +52,70 @@ func TestZipAndEndocde(t *testing.T) {
 
 		if got, want := r2, c; string(got) != string(want) {
 			t.Errorf("UnzipAndDecode(ZipAndEncode()) = %v, want %v", got, want)
+		}
+	}
+}
+
+func TestUnzipWithLimit(t *testing.T) {
+	payload := []byte(strings.Repeat("a", 1024))
+	compressed, err := Zip(payload)
+	if err != nil {
+		t.Fatalf("Zip() unexpected error: %v", err)
+	}
+
+	// Exact limit succeeds.
+	got, err := UnzipWithLimit(compressed, 1024)
+	if err != nil {
+		t.Fatalf("UnzipWithLimit(exact) unexpected error: %v", err)
+	}
+	if len(got) != 1024 {
+		t.Errorf("UnzipWithLimit(exact) len = %d, want 1024", len(got))
+	}
+
+	// Decompressed payload exceeding limit by 1 byte fails.
+	if _, err := UnzipWithLimit(compressed, 1023); err == nil {
+		t.Errorf("UnzipWithLimit(1023) expected error for 1024-byte payload, got nil")
+	}
+
+	// Non-positive maxBytes fails closed.
+	for _, invalidLimit := range []int64{0, -1} {
+		if _, err := UnzipWithLimit(compressed, invalidLimit); err == nil {
+			t.Errorf("UnzipWithLimit(%d) expected error, got nil", invalidLimit)
+		}
+	}
+}
+
+func TestUnzipAndDecodeWithLimit(t *testing.T) {
+	payload := []byte(strings.Repeat("z", 2048))
+	encoded, err := ZipAndEncode(payload)
+	if err != nil {
+		t.Fatalf("ZipAndEncode() unexpected error: %v", err)
+	}
+
+	// Exact decompressed limit succeeds.
+	got, err := UnzipAndDecodeWithLimit(encoded, 2048)
+	if err != nil {
+		t.Fatalf("UnzipAndDecodeWithLimit(exact) unexpected error: %v", err)
+	}
+	if len(got) != 2048 {
+		t.Errorf("UnzipAndDecodeWithLimit(exact) len = %d, want 2048", len(got))
+	}
+
+	// Zip bomb: small base64 string whose decompressed payload exceeds limit.
+	if _, err := UnzipAndDecodeWithLimit(encoded, 1024); err == nil {
+		t.Errorf("UnzipAndDecodeWithLimit(zip bomb) expected error, got nil")
+	}
+
+	// Oversized input string rejected before base64 decoding.
+	oversizedInput := strings.Repeat("A", 4096)
+	if _, err := UnzipAndDecodeWithLimit(oversizedInput, 1024); err == nil {
+		t.Errorf("UnzipAndDecodeWithLimit(oversized input) expected error, got nil")
+	}
+
+	// Non-positive maxBytes fails closed.
+	for _, invalidLimit := range []int64{0, -1} {
+		if _, err := UnzipAndDecodeWithLimit(encoded, invalidLimit); err == nil {
+			t.Errorf("UnzipAndDecodeWithLimit(%d) expected error, got nil", invalidLimit)
 		}
 	}
 }
@@ -457,39 +520,6 @@ func TestShouldIncludeFacet(t *testing.T) {
 	}
 }
 
-func TestToStringListValue(t *testing.T) {
-	for _, c := range []struct {
-		desc  string
-		input []string
-		want  *structpb.ListValue
-	}{
-		{
-			desc:  "non-empty list of strings",
-			input: []string{"Place", "State"},
-			want: &structpb.ListValue{
-				Values: []*structpb.Value{
-					structpb.NewStringValue("Place"),
-					structpb.NewStringValue("State"),
-				},
-			},
-		},
-		{
-			desc:  "empty list of strings",
-			input: []string{},
-			want: &structpb.ListValue{
-				Values: []*structpb.Value{},
-			},
-		},
-	} {
-		t.Run(c.desc, func(t *testing.T) {
-			got := ToStringListValue(c.input)
-			if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
-				t.Errorf("ToStringListValue(%v) returned unexpected diff (-got +want):\n%s", c.input, diff)
-			}
-		})
-	}
-}
-
 func TestSortedStringKeys(t *testing.T) {
 	input := map[string]int{
 		"recipient":          1,
@@ -500,6 +530,40 @@ func TestSortedStringKeys(t *testing.T) {
 	got := SortedStringKeys(input)
 	if diff := cmp.Diff(got, want); diff != "" {
 		t.Errorf("SortedStringKeys mismatch (-got +want):\n%s", diff)
+	}
+}
+
+func TestNonNilStringSlice(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		input []string
+		want  []string
+	}{
+		{
+			name:  "nil slice returns non-nil empty slice",
+			input: nil,
+			want:  []string{},
+		},
+		{
+			name:  "empty slice returns non-nil empty slice",
+			input: []string{},
+			want:  []string{},
+		},
+		{
+			name:  "non-empty slice returned unchanged",
+			input: []string{"country/USA", "geoId/06"},
+			want:  []string{"country/USA", "geoId/06"},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			got := NonNilStringSlice(tc.input)
+			if got == nil {
+				t.Fatalf("NonNilStringSlice(%v) returned nil, want non-nil slice", tc.input)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("NonNilStringSlice(%v) mismatch (-want +got):\n%s", tc.input, diff)
+			}
+		})
 	}
 }
 

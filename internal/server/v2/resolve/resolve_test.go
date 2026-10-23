@@ -218,7 +218,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -227,7 +227,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic', 'non_place', 'type'",
 		},
 		{
 			desc: "invalid property expression",
@@ -249,6 +249,36 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "<-unknown->dcid",
 			},
 			wantInProp:       "unknown",
+			wantOutProp:      "dcid",
+			wantTypeOfValues: nil,
+		},
+		{
+			desc: "valid non_place resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverNonPlace,
+				Property: "<-description{typeOf:ElementarySchool}->dcid",
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverNonPlace,
+				Property: "<-description{typeOf:ElementarySchool}->dcid",
+			},
+			wantInProp:       "description",
+			wantOutProp:      "dcid",
+			wantTypeOfValues: []string{"ElementarySchool"},
+		},
+		{
+			desc: "valid type resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverType,
+				Property: "<-description->dcid",
+			},
+			wantInProp:       "description",
 			wantOutProp:      "dcid",
 			wantTypeOfValues: nil,
 		},

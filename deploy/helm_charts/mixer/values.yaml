@@ -60,6 +60,10 @@ mixer:
   # This is an optional flag so that it is not enabled in custom DC by default
   writeUsageLogs: true
 
+  # MCP server version configuration
+  mcpDefaultVersion: "v1"
+  enableMcpPreview: false
+
   # URL root for the mixer service launched.
   # Example: dev.api.datacommons.org
   serviceName:
@@ -429,6 +433,12 @@ kgStoreConfig:
 # To overwrite any portion of serviceGroups, please copy and paste
 # the entire serviceGroups below into the custom values yaml file,
 # and make changes to it.
+#
+# Optional per-group field:
+#   goMemLimit: soft memory limit for the Go runtime (sets GOMEMLIMIT), e.g.
+#     "9GiB". Must use Go units (B/KiB/MiB/GiB/TiB), not Kubernetes units
+#     ("9Gi" makes the Go runtime abort at startup; the template rejects it).
+#     Keep it ~10% below resources.memoryLimit. Unset by default.
 serviceGroups:
   svg:
     urlPaths:
@@ -447,7 +457,7 @@ serviceGroups:
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/v1/recon/*"
       - "/v2/resolve"
@@ -487,9 +497,14 @@ serviceGroups:
       memoryRequest: "12Gi"
       memoryLimit: "12Gi"
       cpuRequest: "300m"
+    espResources:
+      # Higher memory for /v2/node pages of up to 25k edges. The request
+      # equals the limit so ESP memory is reserved rather than overcommitted.
+      memoryRequest: "1Gi"
+      memoryLimit: "1Gi"
     cacheSVG: true
   default:
-    enableEmbeddingsSidecar: true
+    enableEmbeddingsSidecar: false
     urlPaths:
       - "/*"
     replicas: 1

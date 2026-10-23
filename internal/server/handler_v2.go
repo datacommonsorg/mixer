@@ -143,44 +143,28 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		return s.shouldDivertV2(ctx), nil
 	}
 
-	// Indicator resolver (embeddings-based) has custom request-time toggling
-	if resolver == resolve.ResolveResolverIndicator {
-		// X-Disable-Spanner is a global override: skip Spanner for all resolvers.
-		if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
-			slog.Info("X-Disable-Spanner header set, skipping Spanner for indicator resolver")
-			return false, nil
-		}
-		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)
-		if err != nil {
-			return false, err
-		}
-		if divertVal != nil {
-			if *divertVal {
-				// Force Spanner: Fail fast if Spanner backend is not configured
-				if !s.isSpannerEnabled() {
-					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
-					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
-				}
-				return true, nil
-			} else {
-				// Force Legacy
-				return false, nil
-			}
-		}
-		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.shouldDivertV2(ctx), nil
+	// TODO: (Fixit) vector search based resolve always dispatch to spanner. Remove the legacy v2 resolve logic for embeddings
+	// TODO: (Fixit) Remove the embeddingsServerURL flag and EmbeddingsServiceClient
+	// remain resolver will falls back to vector search as default
+	if !s.isSpannerEnabled() {
+		slog.Error("Spanner backend required for vector search resolver", "resolver", resolver)
+		return false, status.Errorf(codes.FailedPrecondition, "Spanner backend required for %s resolver", resolver)
 	}
-
-	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
-	return false, nil
+	return true, nil
 }
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	// Validate the limit before choosing a backend, so a negative limit is
+	// rejected whether or not the request is diverted.
+	pageSize, err := datasources.NodePageSize(in.GetLimit())
+	if err != nil {
+		return nil, err
+	}
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+		return s.dispatcher.Node(ctx, in, pageSize)
 	}
 
 	v2StartTime := time.Now()
@@ -672,22 +656,12 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 }
 
 // V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
+// Note: Place rankings are deprecated along with the place ranking pages. This
+// endpoint (and the V1 GetLocationsRankings endpoint, which wraps it) always
+// returns an empty response, so that legacy custom DC instances still get a
+// valid response. It will be removed once all custom instances are updated.
 func (s *Server) V2GetLocationsRankings(
-	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+	_ context.Context, _ *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-
-	// Fetch local location rankings, falling back to the remote mixer using the v2 API path for remote fetch.
-	v2Resp, err := s.getLocationsRankings(ctx, in, "/v2/place/ranking")
-	if err != nil {
-		return nil, err
-	}
-	if v2Resp == nil {
-		return &pb.GetLocationsRankingsResponse{}, nil
-	}
-	v2Resp = proto.Clone(v2Resp).(*pb.GetLocationsRankingsResponse)
-
-	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
-	v2Resp.Legacy = true
-
-	return v2Resp, nil
+	return &pb.GetLocationsRankingsResponse{}, nil
 }

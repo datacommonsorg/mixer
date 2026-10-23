@@ -15,10 +15,12 @@
 package pagination
 
 import (
+	"strings"
 	"testing"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -272,5 +274,176 @@ func TestDecodeNextToken_InvalidInput(t *testing.T) {
 		if !ok || st.Code() != codes.InvalidArgument {
 			t.Errorf("DecodeNextToken(%q) code = %v, want %v", token, st.Code(), codes.InvalidArgument)
 		}
+	}
+}
+
+func TestDecode_ZipBombAndOversizedLimits(t *testing.T) {
+	// Create a small compressed token (~1 KB) that decompresses to maxPaginationTokenBytes + 1 bytes.
+	zipBombPayload := make([]byte, maxPaginationTokenBytes+1)
+	zipBombToken, err := util.ZipAndEncode(zipBombPayload)
+	if err != nil {
+		t.Fatalf("ZipAndEncode() unexpected error: %v", err)
+	}
+	// Create an uncompressible base64 string whose decoded length exceeds maxPaginationTokenBytes.
+	oversizedRawToken := make([]byte, maxPaginationTokenBytes*2)
+	for i := range oversizedRawToken {
+		oversizedRawToken[i] = 'A'
+	}
+
+	for _, tc := range []struct {
+		name  string
+		token string
+	}{
+		{"zip_bomb", zipBombToken},
+		{"oversized_encoded_string", string(oversizedRawToken)},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			if _, err := Decode(tc.token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("Decode(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+			if _, err := DecodeNextToken(tc.token); status.Code(err) != codes.InvalidArgument {
+				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+		})
+	}
+}
+
+func TestDecode_TamperedCursorValidation(t *testing.T) {
+	deepRemote := &pbv1.PaginationInfo{}
+	curr := deepRemote
+	for i := 0; i <= maxRemotePaginationDepth+1; i++ {
+		curr.RemotePaginationInfo = &pbv1.PaginationInfo{}
+		curr = curr.RemotePaginationInfo
+	}
+
+	for _, tc := range []struct {
+		name string
+		info *pbv1.PaginationInfo
+	}{
+		{
+			name: "negative_import_group",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{ImportGroup: -1}}}},
+			},
+		},
+		{
+			name: "negative_page",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Page: -1}}}},
+			},
+		},
+		{
+			name: "negative_item",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Item: -1}}}},
+			},
+		},
+		{
+			name: "negative_offset",
+			info: &pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Offset: -1}}}},
+			},
+		},
+		{
+			name: "excessive_remote_nesting_depth",
+			info: deepRemote,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			token, err := util.EncodeProto(tc.info)
+			if err != nil {
+				t.Fatalf("EncodeProto() unexpected error: %v", err)
+			}
+			_, err = Decode(token)
+			if status.Code(err) != codes.InvalidArgument {
+				t.Errorf("Decode(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+			checkSingleStatusMessage(t, err)
+		})
+	}
+}
+
+func TestDecodeNextToken_TamperedCursorValidation(t *testing.T) {
+	for _, tc := range []struct {
+		name string
+		info *pbv2.Pagination
+	}{
+		{
+			name: "negative_spanner_offset",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "spanner",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{Offset: -5},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "negative_nested_bigtable_item",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "bigtable",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+							BigtableInfo: &pbv1.PaginationInfo{
+								CursorGroups: []*pbv1.CursorGroup{{Cursors: []*pbv1.Cursor{{Item: -1}}}},
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			name: "missing_data_source_info_oneof",
+			info: &pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id:             "bigtable",
+						DataSourceInfo: nil,
+					},
+				},
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			token, err := util.EncodeProto(tc.info)
+			if err != nil {
+				t.Fatalf("EncodeProto() unexpected error: %v", err)
+			}
+			_, err = DecodeNextToken(token)
+			if status.Code(err) != codes.InvalidArgument {
+				t.Errorf("DecodeNextToken(%s) status code = %v, want %v (err: %v)", tc.name, status.Code(err), codes.InvalidArgument, err)
+			}
+			checkSingleStatusMessage(t, err)
+		})
+	}
+
+	// Also verify in-memory nil BigtableInfo (since proto.Marshal converts a nil
+	// oneof submessage pointer into an empty submessage on the wire).
+	err := validatePagination(&pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: "bigtable",
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+					BigtableInfo: nil,
+				},
+			},
+		},
+	})
+	if err == nil {
+		t.Error("validatePagination(nil BigtableInfo) = nil, want error")
+	}
+}
+
+// checkSingleStatusMessage verifies that a decode error message starts with the
+// "invalid pagination token: " prefix and contains no nested status text.
+func checkSingleStatusMessage(t *testing.T, err error) {
+	t.Helper()
+	const prefix = "invalid pagination token: "
+	if msg := status.Convert(err).Message(); !strings.HasPrefix(msg, prefix) || strings.Contains(msg, "rpc error") {
+		t.Errorf("status message = %q, want prefix %q and no nested status", msg, prefix)
 	}
 }

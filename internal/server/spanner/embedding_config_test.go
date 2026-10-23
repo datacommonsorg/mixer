@@ -22,12 +22,14 @@ import (
 
 func TestSpannerSearchConfig_JSON(t *testing.T) {
 	data := []byte(`{
-		"search_config": {
-			"search_algorithm": "vector_search",
-			"embedding_model": "text-embedding-005",
-			"query_task_type": "RETRIEVAL_QUERY",
-			"embedding_label": "base_text_embedding",
-			"vector_search_algo": "ANN"
+		"search_configs": {
+			"indicator": {
+				"search_algorithm": "vector_search",
+				"embedding_model": "text-embedding-005",
+				"query_task_type": "RETRIEVAL_QUERY",
+				"embedding_label": "base_text_embedding",
+				"vector_search_algo": "ANN"
+			}
 		},
 		"postprocessing": ["none"]
 	}`)
@@ -37,20 +39,24 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 		t.Fatalf("Failed to unmarshal JSON into SpannerSearchConfig: %v", err)
 	}
 
-	if cfg.SearchConfig.SearchAlgorithm != VectorSearch {
-		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchConfig.SearchAlgorithm)
+	sc, ok := cfg.SearchConfigs["indicator"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for key indicator")
 	}
-	if cfg.SearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
-		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.SearchConfig.VectorSearchAlgo)
+	if sc.SearchAlgorithm != VectorSearch {
+		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, sc.SearchAlgorithm)
 	}
-	if cfg.SearchConfig.EmbeddingModel != "text-embedding-005" {
-		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", cfg.SearchConfig.EmbeddingModel)
+	if sc.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, sc.VectorSearchAlgo)
 	}
-	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
-		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
+	if sc.EmbeddingModel != "text-embedding-005" {
+		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", sc.EmbeddingModel)
 	}
-	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	if sc.QueryTaskType != QueryTaskTypeRetrievalQuery {
+		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, sc.QueryTaskType)
+	}
+	if sc.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", sc.EmbeddingLabel)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
@@ -75,24 +81,58 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read SpannerSearchConfig: %v", err)
 	}
-	if cfg.SearchConfig.SearchAlgorithm != VectorSearch {
-		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchConfig.SearchAlgorithm)
+	if len(cfg.SearchConfigs) != 3 {
+		t.Fatalf("Expected 3 search configs, got %d", len(cfg.SearchConfigs))
 	}
-	if cfg.SearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
-		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.SearchConfig.VectorSearchAlgo)
+
+	indicatorCfg, ok := cfg.SearchConfigs["indicator"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for key indicator")
 	}
-	if cfg.SearchConfig.EmbeddingModel != "NodeEmbeddingModel" {
-		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", cfg.SearchConfig.EmbeddingModel)
+	if indicatorCfg.SearchAlgorithm != VectorSearch {
+		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, indicatorCfg.SearchAlgorithm)
 	}
-	if cfg.SearchConfig.EmbeddingModelEndpoint != "text-embedding-005" {
-		t.Errorf("Expected EmbeddingModelEndpoint=text-embedding-005, got %s", cfg.SearchConfig.EmbeddingModelEndpoint)
+	if indicatorCfg.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, indicatorCfg.VectorSearchAlgo)
 	}
-	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
-		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
+	if indicatorCfg.EmbeddingModel != "NodeEmbeddingModel" {
+		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", indicatorCfg.EmbeddingModel)
 	}
-	if cfg.SearchConfig.EmbeddingLabel != "nl_stat_var_embedding" {
-		t.Errorf("Expected EmbeddingLabel=nl_stat_var_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	if indicatorCfg.EmbeddingModelEndpoint != "text-embedding-005" {
+		t.Errorf("Expected EmbeddingModelEndpoint=text-embedding-005, got %s", indicatorCfg.EmbeddingModelEndpoint)
 	}
+	if indicatorCfg.QueryTaskType != QueryTaskTypeRetrievalQuery {
+		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, indicatorCfg.QueryTaskType)
+	}
+	if indicatorCfg.EmbeddingLabel != "nl_stat_var_embedding" {
+		t.Errorf("Expected EmbeddingLabel=nl_stat_var_embedding, got %s", indicatorCfg.EmbeddingLabel)
+	}
+	if len(indicatorCfg.IncludedTypes) != 2 || indicatorCfg.IncludedTypes[0] != "StatisticalVariable" || indicatorCfg.IncludedTypes[1] != "Topic" {
+		t.Errorf("Expected IncludedTypes=[StatisticalVariable, Topic], got %v", indicatorCfg.IncludedTypes)
+	}
+
+	nonPlaceCfg, ok := cfg.SearchConfigs["non_place"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for key non_place")
+	}
+	if nonPlaceCfg.EmbeddingLabel != "non_place_entity_experimental_embedding" {
+		t.Errorf("Expected EmbeddingLabel=non_place_entity_experimental_embedding, got %s", nonPlaceCfg.EmbeddingLabel)
+	}
+	if len(nonPlaceCfg.ExcludedTypes) != 2 || nonPlaceCfg.ExcludedTypes[0] != "StatisticalVariable" || nonPlaceCfg.ExcludedTypes[1] != "Topic" {
+		t.Errorf("Expected ExcludedTypes=[StatisticalVariable, Topic], got %v", nonPlaceCfg.ExcludedTypes)
+	}
+
+	typeCfg, ok := cfg.SearchConfigs["type"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for key type")
+	}
+	if typeCfg.EmbeddingLabel != "type_embedding" {
+		t.Errorf("Expected EmbeddingLabel=type_embedding, got %s", typeCfg.EmbeddingLabel)
+	}
+	if len(typeCfg.IncludedTypes) != 1 || typeCfg.IncludedTypes[0] != "Class" {
+		t.Errorf("Expected IncludedTypes=[Class], got %v", typeCfg.IncludedTypes)
+	}
+
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
 	}
@@ -104,8 +144,21 @@ func TestReadSpannerSearchConfig_DCPDefault(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read DCP default SpannerSearchConfig: %v", err)
 	}
-	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
+	if len(cfg.SearchConfigs) != 3 {
+		t.Fatalf("Expected 3 search configs, got %d", len(cfg.SearchConfigs))
+	}
+	indicatorSc, ok := cfg.SearchConfigs["indicator"]
+	if !ok {
+		t.Fatalf("Expected SearchConfig for indicator")
+	}
+	if indicatorSc.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", indicatorSc.EmbeddingLabel)
+	}
+	if _, ok := cfg.SearchConfigs["non_place"]; !ok {
+		t.Errorf("Expected SearchConfig key for non_place")
+	}
+	if _, ok := cfg.SearchConfigs["type"]; !ok {
+		t.Errorf("Expected SearchConfig key for type")
 	}
 }
 
@@ -115,8 +168,9 @@ func TestLoadSpannerSearchConfig(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to load search config via profile name: %v", err)
 	}
-	if cfgProfile.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfgProfile.SearchConfig.EmbeddingLabel)
+	sc, ok := cfgProfile.SearchConfigs["indicator"]
+	if !ok || sc.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %v", sc)
 	}
 
 	// Test error on invalid path
@@ -134,8 +188,9 @@ func TestNewSpannerDataSource_SearchConfigPath(t *testing.T) {
 	if ds.searchConfig == nil {
 		t.Fatalf("Expected searchConfig to be initialized, got nil")
 	}
-	if ds.searchConfig.SearchConfig.EmbeddingLabel != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", ds.searchConfig.SearchConfig.EmbeddingLabel)
+	sc, ok := ds.searchConfig.SearchConfigs["indicator"]
+	if !ok || sc.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %v", sc)
 	}
 }
 

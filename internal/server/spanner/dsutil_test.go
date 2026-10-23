@@ -16,6 +16,7 @@ package spanner
 
 import (
 	"reflect"
+	"slices"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -527,6 +528,92 @@ func TestGetSpecializedEntity(t *testing.T) {
 	}
 }
 
+// testEdge returns a resolved edge to a literal value.
+func testEdge(subject, predicate, value string) *Edge {
+	return &Edge{SubjectID: subject, Predicate: predicate, Value: value, Resolved: true}
+}
+
+// The request's node slice is shared with other data sources that read it
+// concurrently, so building the response must not reorder it.
+func TestNodeEdgesToNodeResponseDoesNotReorderNodes(t *testing.T) {
+	nodes := []string{"geoId/06", "geoId/02", "geoId/04"}
+	want := slices.Clone(nodes)
+	edges := map[string][]*Edge{
+		"geoId/02": {testEdge("geoId/02", "name", "Alaska")},
+	}
+
+	if _, err := nodeEdgesToNodeResponse(nodes, edges, "spanner-test", 10, 0); err != nil {
+		t.Fatalf("nodeEdgesToNodeResponse() error = %v", err)
+	}
+	if diff := cmp.Diff(want, nodes); diff != "" {
+		t.Errorf("nodeEdgesToNodeResponse() reordered the request nodes (-want +got):\n%s", diff)
+	}
+}
+
+// Spanner returns each node's rows once even when the request repeats the node,
+// so a repeated node must not be counted twice when finding the page boundary.
+func TestNodeEdgesToNodeResponseDuplicateNodes(t *testing.T) {
+	const id = "spanner-test"
+	values := func(vs ...string) *pbv2.Nodes {
+		nodes := &pbv2.Nodes{}
+		for _, v := range vs {
+			nodes.Nodes = append(nodes.Nodes, &pb.EntityInfo{Value: v})
+		}
+		return nodes
+	}
+	nextToken, err := getNextToken(4, id)
+	if err != nil {
+		t.Fatalf("getNextToken() error = %v", err)
+	}
+
+	for _, tc := range []struct {
+		desc     string
+		nodes    []string
+		edges    map[string][]*Edge
+		pageSize int
+		want     *pbv2.NodeResponse
+	}{
+		{
+			desc:  "full page",
+			nodes: []string{"a", "a", "b"},
+			// pageSize 4 asks Spanner for 5 rows, and it returned 5.
+			edges: map[string][]*Edge{
+				"a": {testEdge("a", "p", "a1"), testEdge("a", "p", "a2"), testEdge("a", "p", "a3")},
+				"b": {testEdge("b", "p", "b1"), testEdge("b", "p", "b2")},
+			},
+			pageSize: 4,
+			want: &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"a": {Arcs: map[string]*pbv2.Nodes{"p": values("a1", "a2", "a3")}},
+					"b": {Arcs: map[string]*pbv2.Nodes{"p": values("b1")}},
+				},
+				NextToken: nextToken,
+			},
+		},
+		{
+			desc:     "page that is not full",
+			nodes:    []string{"a", "a"},
+			edges:    map[string][]*Edge{"a": {testEdge("a", "p", "a1"), testEdge("a", "p", "a2")}},
+			pageSize: 3,
+			want: &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"a": {Arcs: map[string]*pbv2.Nodes{"p": values("a1", "a2")}},
+				},
+			},
+		},
+	} {
+		t.Run(tc.desc, func(t *testing.T) {
+			got, err := nodeEdgesToNodeResponse(tc.nodes, tc.edges, id, tc.pageSize, 0)
+			if err != nil {
+				t.Fatalf("nodeEdgesToNodeResponse() error = %v", err)
+			}
+			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("nodeEdgesToNodeResponse() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestNodeEdgesToLinkedGraph(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
@@ -797,5 +884,81 @@ func TestGetOffset(t *testing.T) {
 				t.Errorf("getOffset(%q, %q) = (%d, %t), want (%d, %t)", tc.nextToken, dataSourceID, offset, isExhausted, tc.wantOffset, tc.wantIsExhausted)
 			}
 		})
+	}
+}
+
+func TestOrderedFacetsRankingByProvenanceWithoutImportName(t *testing.T) {
+	const (
+		variable = "Count_Person"
+		entity   = "country/USA"
+	)
+	observations := []*Observation{
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wikidata",
+			ProvenanceID:      "dc/base/WikidataPopulation",
+			MeasurementMethod: "WikidataPopulation",
+			Observations:      TimeSeries{{Date: "2026", Value: "345000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "wdi",
+			ProvenanceID:      "dc/base/WorldDevelopmentIndicators",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2025", Value: "340000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "acs",
+			ProvenanceID:      "dc/base/CensusACS5YearSurvey",
+			MeasurementMethod: "CensusACS5yrSurvey",
+			Observations:      TimeSeries{{Date: "2024", Value: "335000000"}},
+		},
+		{
+			VariableMeasured:  variable,
+			ObservationAbout:  entity,
+			FacetId:           "pep",
+			ProvenanceID:      "dc/base/USCensusPEP_Annual_Population",
+			MeasurementMethod: "CensusPEPSurvey",
+			ObservationPeriod: "P1Y",
+			Observations:      TimeSeries{{Date: "2023", Value: "334000000"}},
+		},
+	}
+
+	// 1. All dates request: includes all facets ranked by ProvenanceId (pep -> acs -> wdi -> wikidata).
+	allDatesReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+	}
+	allResp := obsToObsResponse(allDatesReq, observations)
+	var gotAllIDs []string
+	for _, f := range allResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotAllIDs = append(gotAllIDs, f.FacetId)
+	}
+	wantAllIDs := []string{"pep", "acs", "wdi", "wikidata"}
+	if diff := cmp.Diff(wantAllIDs, gotAllIDs); diff != "" {
+		t.Errorf("all dates OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+
+	// 2. LATEST request: filters out inferior facet (wikidata) even though it has the newest date (2026).
+	latestReq := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{variable}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{entity}},
+		Date:     "LATEST",
+	}
+	latestResp := obsToObsResponse(latestReq, observations)
+	var gotLatestIDs []string
+	for _, f := range latestResp.ByVariable[variable].ByEntity[entity].OrderedFacets {
+		gotLatestIDs = append(gotLatestIDs, f.FacetId)
+	}
+	wantLatestIDs := []string{"pep", "acs", "wdi"}
+	if diff := cmp.Diff(wantLatestIDs, gotLatestIDs); diff != "" {
+		t.Errorf("LATEST OrderedFacets mismatch (-want +got):\n%s", diff)
+	}
+	if _, exists := latestResp.Facets["wikidata"]; exists {
+		t.Errorf("expected inferior facet 'wikidata' to be removed from Facets map on LATEST request")
 	}
 }

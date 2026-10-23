@@ -32,6 +32,11 @@ import (
 // Each chunk still pages on its own, so this only affects speed, not correctness.
 const fetchAllChunkSize = 200
 
+// maxConcurrentChunkFetches caps how many chunks are fetched at once, so a very
+// long node list (for example, every unresolved node on a 25k-edge page) does
+// not send one concurrent request per chunk to the backend.
+const maxConcurrentChunkFetches = 10
+
 // NodeAllFetcher defines the contract for fetching all pages of V2 Node responses.
 type NodeAllFetcher interface {
 	NodeFetchAll(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
@@ -121,6 +126,7 @@ func fetchChunksParallel(
 	chunks [][]string,
 ) ([]*pbv2.NodeResponse, error) {
 	g, groupCtx := errgroup.WithContext(ctx)
+	g.SetLimit(maxConcurrentChunkFetches)
 	responses := make([]*pbv2.NodeResponse, len(chunks))
 
 	for idx, chunk := range chunks {

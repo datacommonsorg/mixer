@@ -25,7 +25,6 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -39,7 +38,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -140,6 +141,92 @@ func TestV2NodeKeepsCallerPaginationToken(t *testing.T) {
 	}
 	if got := sentReq.GetNextToken(); got != wantRemoteToken {
 		t.Errorf("remote received next token = %q, want %q", got, wantRemoteToken)
+	}
+}
+
+// pageSizeRecordingDataSource records the page size the dispatcher passes to Node.
+type pageSizeRecordingDataSource struct {
+	datasource.DataSource
+	calls    int
+	pageSize int
+}
+
+func (m *pageSizeRecordingDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	m.calls++
+	m.pageSize = pageSize
+	return &pbv2.NodeResponse{}, nil
+}
+
+// Diverted V2Node and V3Node are both served by the dispatcher, so they must
+// turn NodeRequest.limit into the same page size.
+func TestNodeLimitSetsPageSize(t *testing.T) {
+	endpoints := []struct {
+		name string
+		call func(*Server, context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	}{
+		{name: "V2Node", call: (*Server).V2Node},
+		{name: "V3Node", call: (*Server).V3Node},
+	}
+
+	for _, tc := range []struct {
+		desc         string
+		limit        int32
+		wantPageSize int
+		wantCode     codes.Code
+	}{
+		{desc: "unset uses default", limit: 0, wantPageSize: datasources.DefaultPageSize},
+		{desc: "smaller limit is honored", limit: 10, wantPageSize: 10},
+		{desc: "limit above max is lowered", limit: datasources.MaxPageSize + 1, wantPageSize: datasources.MaxPageSize},
+		{desc: "negative limit is rejected", limit: -1, wantCode: codes.InvalidArgument},
+	} {
+		for _, endpoint := range endpoints {
+			t.Run(endpoint.name+"/"+tc.desc, func(t *testing.T) {
+				ds := &pageSizeRecordingDataSource{}
+				s := &Server{
+					flags:           &featureflags.Flags{},
+					useSpannerGraph: true,
+					dispatcher:      dispatcher.NewDispatcher(nil, datasources.NewDataSources([]datasource.DataSource{ds}, nil)),
+				}
+				in := &pbv2.NodeRequest{
+					Nodes:    []string{"geoId/06"},
+					Property: "<-containedInPlace",
+					Limit:    tc.limit,
+				}
+
+				_, err := endpoint.call(s, context.Background(), in)
+				if gotCode := status.Code(err); gotCode != tc.wantCode {
+					t.Fatalf("%s() error code = %v, want %v (err: %v)", endpoint.name, gotCode, tc.wantCode, err)
+				}
+				if tc.wantCode != codes.OK {
+					if ds.calls != 0 {
+						t.Errorf("datasource Node() called %d times, want 0", ds.calls)
+					}
+					return
+				}
+				if ds.calls != 1 {
+					t.Fatalf("datasource Node() called %d times, want 1", ds.calls)
+				}
+				if ds.pageSize != tc.wantPageSize {
+					t.Errorf("datasource Node() pageSize = %d, want %d", ds.pageSize, tc.wantPageSize)
+				}
+			})
+		}
+	}
+}
+
+// A negative limit is rejected on the legacy path too, so partial diversion
+// does not make the same request succeed or fail at random.
+func TestV2NodeLegacyRejectsNegativeLimit(t *testing.T) {
+	s := &Server{
+		store:    &store.Store{},
+		metadata: &resource.Metadata{},
+		flags:    &featureflags.Flags{},
+	}
+	s.cachedata.Store(&cache.Cache{})
+
+	in := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}, Property: "<-containedInPlace", Limit: -1}
+	if _, err := s.V2Node(context.Background(), in); status.Code(err) != codes.InvalidArgument {
+		t.Errorf("V2Node() error = %v, want code %v", err, codes.InvalidArgument)
 	}
 }
 
@@ -346,15 +433,13 @@ func TestV2Observation_UsageLog(t *testing.T) {
 
 func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
-		desc                   string
-		useSpannerGraph        bool // CLI flag
-		useSpannerGraphFlag    bool // Feature flag
-		enableEmbeddings       bool // flags.EnableSpannerSearchEmbeddings
-		resolver               string
-		indicatorSpannerHeader string // X-V2Resolve-Indicator-Spanner header
-		disableSpannerHeader   string // X-Disable-Spanner header
-		wantRoute              bool
-		wantErr                bool
+		desc                 string
+		useSpannerGraph      bool // CLI flag
+		useSpannerGraphFlag  bool // Feature flag
+		resolver             string
+		disableSpannerHeader string // X-Disable-Spanner header
+		wantRoute            bool
+		wantErr              bool
 	}{
 		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
@@ -402,110 +487,64 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:       true,
 		},
 
-		// Indicator resolver - Default path (no header)
+		// Indicator resolver - always routes to Spanner when enabled, errors when disabled
 		{
-			desc:             "Indicator resolver - Spanner enabled & flag true -> route",
-			useSpannerGraph:  true,
-			enableEmbeddings: true,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        true,
+			desc:            "Indicator resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverIndicator,
+			wantRoute:       true,
 		},
 		{
-			desc:             "Indicator resolver - Spanner enabled & flag false -> don't route",
-			useSpannerGraph:  true,
-			enableEmbeddings: false,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        false,
+			desc:                "Indicator resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverIndicator,
+			wantRoute:           true,
 		},
 		{
-			desc:             "Indicator resolver - Spanner disabled & flag true -> don't route",
-			useSpannerGraph:  false,
-			enableEmbeddings: true,
-			resolver:         resolve.ResolveResolverIndicator,
-			wantRoute:        false,
+			desc:            "Indicator resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverIndicator,
+			wantErr:         true,
 		},
 
-		// Indicator resolver - Header override: true (force Spanner)
+		// Non-place resolver - always routes to Spanner when enabled, errors when disabled
 		{
-			desc:                   "Indicator resolver - Force Spanner (true), Spanner enabled -> route",
-			useSpannerGraph:        true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantRoute:              true,
+			desc:            "Non-place resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverNonPlace,
+			wantRoute:       true,
 		},
 		{
-			desc:                   "Indicator resolver - Force Spanner (true), Spanner disabled -> error (fail-fast)",
-			useSpannerGraph:        false,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantErr:                true,
+			desc:                "Non-place resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverNonPlace,
+			wantRoute:           true,
 		},
 		{
-			desc:                   "Indicator resolver - Force Spanner (true) via Feature Flag, Spanner enabled -> route",
-			useSpannerGraphFlag:    true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			wantRoute:              true,
+			desc:            "Non-place resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverNonPlace,
+			wantErr:         true,
 		},
 
-		// Indicator resolver - Header override: false (force Legacy)
+		// Type resolver - always routes to Spanner when enabled, errors when disabled
 		{
-			desc:                   "Indicator resolver - Force Legacy (false), Spanner enabled & flag true -> don't route",
-			useSpannerGraph:        true,
-			enableEmbeddings:       true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			wantRoute:              false,
+			desc:            "Type resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverType,
+			wantRoute:       true,
 		},
 		{
-			desc:                   "Indicator resolver - Force Legacy (false), Spanner disabled -> don't route",
-			useSpannerGraph:        false,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			wantRoute:              false,
-		},
-
-		// Indicator resolver - X-Disable-Spanner global override
-		{
-			desc:                 "Indicator resolver - X-Disable-Spanner overrides default routing (flag true)",
-			useSpannerGraph:      true,
-			enableEmbeddings:     true,
-			resolver:             resolve.ResolveResolverIndicator,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
+			desc:                "Type resolver with Spanner enabled via feature flag -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverType,
+			wantRoute:           true,
 		},
 		{
-			desc:                   "Indicator resolver - X-Disable-Spanner overrides force Spanner header",
-			useSpannerGraph:        true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "true",
-			disableSpannerHeader:   "true",
-			wantRoute:              false,
-		},
-		{
-			desc:                   "Indicator resolver - X-Disable-Spanner true with force Legacy header",
-			useSpannerGraph:        true,
-			enableEmbeddings:       true,
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "false",
-			disableSpannerHeader:   "true",
-			wantRoute:              false,
-		},
-		{
-			desc:                 "Indicator resolver - X-Disable-Spanner false does not prevent routing",
-			useSpannerGraph:      true,
-			enableEmbeddings:     true,
-			resolver:             resolve.ResolveResolverIndicator,
-			disableSpannerHeader: "false",
-			wantRoute:            true,
-		},
-
-		// Invalid header values
-		{
-			desc:                   "Indicator resolver - Invalid header value -> error",
-			resolver:               resolve.ResolveResolverIndicator,
-			indicatorSpannerHeader: "invalid_value",
-			wantErr:                true,
+			desc:            "Type resolver with Spanner disabled -> error",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverType,
+			wantErr:         true,
 		},
 	}
 
@@ -514,16 +553,12 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			s := &Server{
 				useSpannerGraph: tc.useSpannerGraph,
 				flags: &featureflags.Flags{
-					UseSpannerGraph:               tc.useSpannerGraphFlag,
-					EnableSpannerSearchEmbeddings: tc.enableEmbeddings,
+					UseSpannerGraph: tc.useSpannerGraphFlag,
 				},
 			}
 
 			ctx := context.Background()
 			md := metadata.MD{}
-			if tc.indicatorSpannerHeader != "" {
-				md.Set(util.XV2ResolveIndicatorSpanner, tc.indicatorSpannerHeader)
-			}
 			if tc.disableSpannerHeader != "" {
 				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
 			}
@@ -596,12 +631,5 @@ func TestV2RemoteAPIPaths(t *testing.T) {
 	_, _ = s.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{Nodes: []string{}})
 	if transport.lastPath != "/v2/bulk/info/variable-group" {
 		t.Errorf("V2BulkVariableGroupInfo passed remote path %q, want %q", transport.lastPath, "/v2/bulk/info/variable-group")
-	}
-
-	// 3. V2GetLocationsRankings
-	// Must provide PlaceType and StatVarDcids to avoid early argument error.
-	_, _ = s.V2GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{PlaceType: "City", StatVarDcids: []string{"Count_Person"}})
-	if transport.lastPath != "/v2/place/ranking" {
-		t.Errorf("V2GetLocationsRankings passed remote path %q, want %q", transport.lastPath, "/v2/place/ranking")
 	}
 }

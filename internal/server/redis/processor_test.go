@@ -17,8 +17,10 @@ package redis
 import (
 	"context"
 	"errors"
+	"strings"
 	"testing"
 	"time"
+	"unicode/utf8"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -32,6 +34,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/anypb"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 type MockCacheClient struct {
@@ -358,3 +361,115 @@ func TestSkipCache(t *testing.T) {
 		})
 	}
 }
+
+func TestCacheProcessorPostProcess_ResponseSizeLimit(t *testing.T) {
+	exactBoundaryResp := &wrapperspb.BytesValue{Value: make([]byte, 500)}
+	exactLimit := proto.Size(exactBoundaryResp)
+
+	tests := []struct {
+		name              string
+		limitBytes        int
+		originalReq       proto.Message
+		currentResp       proto.Message
+		nilRequestContext bool
+		wantCached        bool
+	}{
+		{
+			name:        "Under limit - caches response",
+			limitBytes:  exactLimit,
+			originalReq: &wrapperspb.StringValue{Value: "test"},
+			currentResp: &wrapperspb.BytesValue{Value: make([]byte, 50)},
+			wantCached:  true,
+		},
+		{
+			name:        "Exact boundary limit - caches response",
+			limitBytes:  exactLimit,
+			originalReq: &wrapperspb.StringValue{Value: "test"},
+			currentResp: exactBoundaryResp,
+			wantCached:  true,
+		},
+		{
+			name:        "Over limit by 1 byte - skips cache without error",
+			limitBytes:  exactLimit - 1,
+			originalReq: &wrapperspb.StringValue{Value: strings.Repeat("x", maxLoggedRequestBytes+200)},
+			currentResp: exactBoundaryResp,
+			wantCached:  false,
+		},
+		{
+			name:        "Nil OriginalRequest - skips cache",
+			limitBytes:  exactLimit,
+			originalReq: nil,
+			currentResp: &wrapperspb.BytesValue{Value: make([]byte, 50)},
+			wantCached:  false,
+		},
+		{
+			name:              "Nil RequestContext - no-op",
+			limitBytes:        exactLimit,
+			nilRequestContext: true,
+			wantCached:        false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mockClient := &MockCacheClient{}
+			processor := newCacheProcessorWithLimit(mockClient, tc.limitBytes)
+
+			var rc *dispatcher.RequestContext
+			if !tc.nilRequestContext {
+				rc = &dispatcher.RequestContext{
+					Context:         context.Background(),
+					Type:            dispatcher.TypeObservation,
+					OriginalRequest: tc.originalReq,
+					CurrentResponse: tc.currentResp,
+				}
+			}
+
+			outcome, err := processor.PostProcess(rc)
+			assert.NoError(t, err)
+			assert.Equal(t, dispatcher.Continue, outcome)
+			assert.Equal(t, tc.wantCached, mockClient.ResponseCached)
+		})
+	}
+}
+
+func TestFormatRequestForLog(t *testing.T) {
+	if got := formatRequestForLog(nil); got != "" {
+		t.Errorf("formatRequestForLog(nil) = %q, want empty string", got)
+	}
+
+	shortReq := &wrapperspb.StringValue{Value: "short"}
+	if got := formatRequestForLog(shortReq); got != `"short"` {
+		t.Errorf("formatRequestForLog(short) = %q, want %q", got, `"short"`)
+	}
+
+	longReq := &wrapperspb.StringValue{Value: strings.Repeat("a", maxLoggedRequestBytes+50)}
+	gotLong := formatRequestForLog(longReq)
+	if !strings.HasSuffix(gotLong, truncatedSuffix) {
+		t.Errorf("formatRequestForLog(long) = %q, expected suffix %q", gotLong, truncatedSuffix)
+	}
+	wantLen := maxLoggedRequestBytes + len(truncatedSuffix)
+	if len(gotLong) != wantLen {
+		t.Errorf("len(formatRequestForLog(long)) = %d, want %d", len(gotLong), wantLen)
+	}
+
+	// Place a 3-byte UTF-8 rune ('日', 0xE6 0x97 0xA5) so that it straddles
+	// maxLoggedRequestBytes (1024): protojson marshals StringValue as `"<val>"`,
+	// so byte 0 is '"' and indices 1..1022 are 'a' (1022 bytes), placing '日'
+	// at bytes 1023, 1024, 1025. Truncation at 1024 must back up to byte 1023.
+	utf8BoundaryReq := &wrapperspb.StringValue{
+		Value: strings.Repeat("a", maxLoggedRequestBytes-2) + "日本",
+	}
+	gotUTF8 := formatRequestForLog(utf8BoundaryReq)
+	if !utf8.ValidString(gotUTF8) {
+		t.Fatalf("formatRequestForLog(utf8BoundaryReq) produced invalid UTF-8 string: %q", gotUTF8)
+	}
+	if !strings.HasSuffix(gotUTF8, truncatedSuffix) {
+		t.Errorf("formatRequestForLog(utf8BoundaryReq) = %q, expected suffix %q", gotUTF8, truncatedSuffix)
+	}
+	wantUTF8PrefixLen := maxLoggedRequestBytes - 1 // backed up 1 byte to start of '日'
+	if len(gotUTF8) != wantUTF8PrefixLen+len(truncatedSuffix) {
+		t.Errorf("len(formatRequestForLog(utf8BoundaryReq)) = %d, want %d", len(gotUTF8), wantUTF8PrefixLen+len(truncatedSuffix))
+	}
+}
+

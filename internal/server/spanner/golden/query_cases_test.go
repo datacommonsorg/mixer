@@ -18,10 +18,14 @@ package golden
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
+
+// goldenPageSize is the Node page size used by the golden tests. It is pinned,
+// rather than tied to datasources.DefaultPageSize, so the golden files do not
+// change when the production default changes.
+const goldenPageSize = 500
 
 // The goldenTestFunc type represents a function that can be tested with the golden file pattern.
 // It returns the actual result as an interface and an error.
@@ -198,7 +202,7 @@ var nodeInEdgesByIDTestCases = []struct {
 			Out:        false,
 			SingleProp: "typeOf",
 		},
-		offset: datasources.DefaultPageSize,
+		offset: goldenPageSize,
 		golden: "get_node_edges_second_page",
 	},
 	{
@@ -218,7 +222,7 @@ var nodeInEdgesByIDTestCases = []struct {
 			SingleProp: "specializationOf",
 			Decorator:  "+",
 		},
-		offset: datasources.DefaultPageSize,
+		offset: goldenPageSize,
 		golden: "get_node_edges_second_page_chain",
 	},
 	{
@@ -669,6 +673,16 @@ var vectorSearchNodeTestCases = []struct {
 		nodeTypes:      []string{"StatisticalVariable", "Topic"},
 		embeddingLabel: "base_text_embedding",
 		golden:         "vector_search_node",
+	},
+	{
+		tableName:      "NodeEmbedding",
+		limit:          5,
+		embeddings:     []float64{0.1, 0.2, 0.3},
+		numLeaves:      20,
+		threshold:      0.6,
+		nodeTypes:      []string{},
+		embeddingLabel: "base_text_embedding",
+		golden:         "vector_search_node_all_types",
 	},
 }
 var getFilteredStatVarGroupNodeTestCases = []struct {

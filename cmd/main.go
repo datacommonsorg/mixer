@@ -28,6 +28,7 @@ import (
 	"runtime/pprof"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/datacommonsorg/mixer/internal/embedder"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
@@ -41,6 +42,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/mcp"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -69,6 +71,11 @@ const (
 var (
 	// Server config
 	port                = flag.Int("port", 12345, "Port on which to run the server.")
+	httpPort            = flag.Int("http_port", 12346, "Port on which to run the HTTP server.")
+	mcpInstructionsDir  = flag.String("mcp_instructions_dir", os.Getenv("DC_INSTRUCTIONS_DIR"), "Custom directory path (local or gs://) for MCP server/tool/skill instructions.")
+	mcpSearchScope      = flag.String("mcp_search_scope", os.Getenv("DC_SEARCH_SCOPE"), "Optional search scope target for MCP indicator searches (e.g. custom_only, base_only, base_and_custom).")
+	mcpDefaultVersion   = flag.String("mcp_default_version", mcp.DefaultVersionID, "Default MCP version backing the unversioned /mcp alias.")
+	enableMcpPreview    = flag.Bool("enable_mcp_preview", false, "Whether to mount the /mcp/preview alias and any preview-stage MCP version.")
 	hostProject         = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	genAIClientLocation = flag.String("genai_client_location", "", "The GCP location for GenAI client.")
 	writeUsageLogs      = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
@@ -236,7 +243,6 @@ func main() {
 			DatabaseOverride:             flags.SpannerGraphDatabase,
 			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
-			UseSpannerKeyValueStore:      flags.UseSpannerKeyValueStore,
 			QueryConfig:                  queryConfig,
 		})
 		if err != nil {
@@ -421,7 +427,10 @@ func main() {
 	var redisCacheClient redis.CacheClient
 	if *useRedis && *redisInfo != "" {
 		slog.Info("Setting up Redis cache client")
-		client, err := redis.NewCacheClient(*redisInfo)
+		client, err := redis.NewCacheClient(*redisInfo, &redis.CacheClientOptions{
+			Password: os.Getenv("REDIS_PASSWORD"),
+			CaCert:   os.Getenv("REDIS_CA_CERT"),
+		})
 		if err != nil {
 			slog.Error("Failed to create Redis client", "error", err)
 			os.Exit(1)
@@ -559,10 +568,17 @@ func main() {
 			EmbeddingsServiceClient:           embeddingsServiceClient,
 			UseSpannerGraph:                   *useSpannerGraph,
 			TopicExpander:                     topicExpander,
-			AgentDefaultExpandTopics:          agentDefaultExpandTopics,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
+
+	agentSvc := agent.NewService(
+		mixerServer,
+		agent.NewCache(mixerServer),
+		&agent.ServiceOptions{
+			DefaultExpandTopics: agentDefaultExpandTopics,
+		},
+	)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
 	if topicCacheManager != nil {
@@ -579,7 +595,7 @@ func main() {
 
 	// Register component lifecycles
 	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
-	registerAgentServiceLifecycle(mixerServer)
+	registerAgentServiceLifecycle(mixerServer, agentSvc)
 
 	// Run all startup initialization hooks
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
@@ -634,6 +650,8 @@ func main() {
 			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
+	startMCPServer(ctx, agentSvc)
+
 	slog.Info("About to listen")
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
@@ -646,6 +664,40 @@ func main() {
 		slog.Error("Failed to serve", "error", err)
 		os.Exit(1)
 	}
+}
+
+// startMCPServer initializes and launches the Streamable HTTP MCP server on httpPort in a background goroutine.
+func startMCPServer(ctx context.Context, agentBackend mcp.AgentBackend) {
+	mcpServer, err := mcp.NewDcMcpServer(ctx, agentBackend, &mcp.ServerOptions{
+		InstructionsDir: *mcpInstructionsDir,
+		SearchScope:     *mcpSearchScope,
+		DefaultVersion:  *mcpDefaultVersion,
+		EnablePreview:   *enableMcpPreview,
+	})
+	if err != nil {
+		slog.Error("Failed to initialize MCP HTTP server", "error", err)
+		os.Exit(1)
+	}
+
+	go func() {
+		slog.Info("Starting MCP HTTP server", "port", *httpPort, "defaultVersion", *mcpDefaultVersion, "enablePreview", *enableMcpPreview)
+		mux := http.NewServeMux()
+		handler := http.StripPrefix("/mcp", mcpServer)
+		mux.Handle("/mcp", handler)
+		mux.Handle("/mcp/", handler)
+
+		httpSrv := &http.Server{
+			Addr:              fmt.Sprintf(":%d", *httpPort),
+			Handler:           mux,
+			ReadHeaderTimeout: 10 * time.Second,
+			ReadTimeout:       30 * time.Second,
+			WriteTimeout:      300 * time.Second,
+			IdleTimeout:       120 * time.Second,
+		}
+		if err := httpSrv.ListenAndServe(); err != nil {
+			slog.Error("Failed to start MCP HTTP server", "error", err)
+		}
+	}()
 }
 
 func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
@@ -671,8 +723,9 @@ func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager)
 	}
 }
 
-func registerAgentServiceLifecycle(s *server.Server) {
-	if agentSvc := s.AgentService(); agentSvc != nil {
+// registerAgentServiceLifecycle registers startup and periodic cache reset hooks for agentSvc.
+func registerAgentServiceLifecycle(s *server.Server, agentSvc *agent.Service) {
+	if agentSvc != nil {
 		s.RegisterLifecycle("agent-service-cache",
 			func(ctx context.Context) error {
 				agentSvc.Reset()

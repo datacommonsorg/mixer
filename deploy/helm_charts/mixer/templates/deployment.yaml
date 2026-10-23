@@ -173,8 +173,13 @@ spec:
                 echo "Dynamic BigQuery version file not found. Using static version."
               fi
 
-              # Start the mixer with the determined configs
-              /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
+              # Start the mixer with the determined configs.
+              # `exec` replaces this shell so mixer runs as PID 1 and receives
+              # SIGTERM directly; otherwise the shell swallows it and every pod
+              # waits out the full termination grace period before SIGKILL.
+              # If a preStop delay is ever added to the esp container, add the
+              # same delay here, or mixer will exit while esp still routes to it.
+              exec /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
               --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
               --host_project="${HOST_PROJECT}" \
               {{- if $.Values.mixer.useBigquery }}
@@ -202,6 +207,12 @@ spec:
               {{- end }}
               {{- if eq $.Values.mixer.writeUsageLogs true}}
               --write_usage_logs=true \
+              {{- end }}
+              {{- if $.Values.mixer.mcpDefaultVersion }}
+              --mcp_default_version={{ $.Values.mixer.mcpDefaultVersion }} \
+              {{- end }}
+              {{- if eq $.Values.mixer.enableMcpPreview true }}
+              --enable_mcp_preview=true \
               {{- end }}
               {{- if $group.enableEmbeddingsSidecar }}
               --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
@@ -261,6 +272,15 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
+          {{- with $group.goMemLimit }}
+          {{- if not (regexMatch "^[0-9]+(B|KiB|MiB|GiB|TiB)$" (toString .)) }}
+          {{- fail (printf "serviceGroups.%s.goMemLimit must be a Go byte size such as \"9GiB\" (B/KiB/MiB/GiB/TiB, not Kubernetes units like 9Gi); got %v" $serviceName .) }}
+          {{- end }}
+            # Soft memory limit for the Go GC. Keep it below resources.memoryLimit
+            # so the GC collects harder before the container is OOMKilled.
+            - name: GOMEMLIMIT
+              value: {{ . | quote }}
+          {{- end }}
           {{- if eq $.Values.mixer.enableOtlp true}}
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317

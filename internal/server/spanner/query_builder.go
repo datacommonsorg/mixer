@@ -589,21 +589,16 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-// GetKeyValueStoreQuery builds a query targeting KeyValueStore (or legacy Cache table when useKeyValueStore is false).
-func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string, useKeyValueStore bool) *spanner.Statement {
+// GetKeyValueStoreQuery builds a query targeting KeyValueStore.
+func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string) *spanner.Statement {
 	keyFilter, keyVal := getParamStatement("key", keys)
 	params := map[string]interface{}{
 		"type": string(typeFilter),
 		"key":  keyVal,
 	}
 
-	sql := statements.getCacheData
-	if useKeyValueStore {
-		sql = statements.getKeyValueStoreData
-	}
-
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(sql, keyFilter),
+		SQL:    fmt.Sprintf(statements.getKeyValueStoreData, keyFilter),
 		Params: params,
 	}
 }
@@ -823,14 +818,19 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) *spanner.Statement {
 	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
+	params := map[string]interface{}{
+		"embeddings":      embeddings,
+		"limit":           limit,
+		"embedding_label": embeddingLabel,
+	}
+	var nodeTypeCondition string
+	if len(nodeTypes) > 0 {
+		nodeTypeCondition = statements.nodeTypeExistence
+		params["node_types"] = nodeTypes
+	}
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
-		Params: map[string]interface{}{
-			"embeddings":      embeddings,
-			"limit":           limit,
-			"node_types":      nodeTypes,
-			"embedding_label": embeddingLabel,
-		},
+		SQL:    fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold), nodeTypeCondition),
+		Params: params,
 	}
 }
 

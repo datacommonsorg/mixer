@@ -29,8 +29,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/testing/protocmp"
-	"google.golang.org/protobuf/types/known/structpb"
+	"google.golang.org/protobuf/proto"
 )
 
 func TestObservationsDate(t *testing.T) {
@@ -175,247 +174,10 @@ func TestObservationsDate(t *testing.T) {
 	})
 }
 
-func TestSelectPrimarySource(t *testing.T) {
-	filterLatest, _ := parseDateFilter(dateTypeLatest, "", "")
-	filterAll, _ := parseDateFilter(dateTypeAll, "", "")
-
-	tests := []struct {
-		desc           string
-		variableData   *pbv2.VariableObservation
-		sourceOverride string
-		filter         *dateFilter
-		wantPrimary    string
-		wantAlts       map[string]int
-		wantProcessed  map[string][]float64 // maps entity to expected values
-	}{
-		{
-			desc: "Heuristic 1: Place Coverage Wins",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A",
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(10)},
-								},
-							},
-							{
-								FacetId: "source-B",
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(20)},
-								},
-							},
-						},
-					},
-					"geoId/08": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A",
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(15)},
-								},
-							},
-						},
-					},
-				},
-			},
-			filter:      filterAll,
-			wantPrimary: "source-A",
-			wantAlts:    map[string]int{"source-B": 1},
-			wantProcessed: map[string][]float64{
-				"geoId/06": {10},
-				"geoId/08": {15},
-			},
-		},
-		{
-			desc: "Heuristic 2: Total Observations Wins",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A", // 2 observations
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(10)},
-									{Date: "2021", Value: ptrFloat64(11)},
-								},
-							},
-							{
-								FacetId: "source-B", // 1 observation
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(20)},
-								},
-							},
-						},
-					},
-				},
-			},
-			filter:      filterAll,
-			wantPrimary: "source-A",
-			wantAlts:    map[string]int{"source-B": 1},
-			wantProcessed: map[string][]float64{
-				"geoId/06": {10, 11},
-			},
-		},
-		{
-			desc: "Heuristic 3: Recency Wins",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A", // latest is 2021
-								Observations: []*pb.PointStat{
-									{Date: "2021", Value: ptrFloat64(10)},
-								},
-							},
-							{
-								FacetId: "source-B", // latest is 2022
-								Observations: []*pb.PointStat{
-									{Date: "2022", Value: ptrFloat64(20)},
-								},
-							},
-						},
-					},
-				},
-			},
-			filter:      filterAll,
-			wantPrimary: "source-B",
-			wantAlts:    map[string]int{"source-A": 1},
-			wantProcessed: map[string][]float64{
-				"geoId/06": {20},
-			},
-		},
-		{
-			desc: "Heuristic 4: Original Index Wins",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A", // Index 0 (preferred)
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(10)},
-								},
-							},
-							{
-								FacetId: "source-B", // Index 1
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(20)},
-								},
-							},
-						},
-					},
-				},
-			},
-			filter:      filterAll,
-			wantPrimary: "source-A",
-			wantAlts:    map[string]int{"source-B": 1},
-			wantProcessed: map[string][]float64{
-				"geoId/06": {10},
-			},
-		},
-		{
-			desc: "Source Override Bypasses Ranking",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A", // Would normally win Heuristic 2 (2 obs vs 1 obs)
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(10)},
-									{Date: "2021", Value: ptrFloat64(11)},
-								},
-							},
-							{
-								FacetId: "source-B",
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(20)},
-								},
-							},
-						},
-					},
-				},
-			},
-			sourceOverride: "source-B",
-			filter:         filterAll,
-			wantPrimary:    "source-B",
-			wantAlts:       map[string]int{}, // Override means no alternatives returned
-			wantProcessed: map[string][]float64{
-				"geoId/06": {20},
-			},
-		},
-		{
-			desc: "Filter Latest Returns Only the Most Recent Point",
-			variableData: &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/06": {
-						OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "source-A",
-								Observations: []*pb.PointStat{
-									{Date: "2020", Value: ptrFloat64(10)},
-									{Date: "2022", Value: ptrFloat64(12)},
-									{Date: "2021", Value: ptrFloat64(11)},
-								},
-							},
-						},
-					},
-				},
-			},
-			filter:      filterLatest,
-			wantPrimary: "source-A",
-			wantAlts:    map[string]int{},
-			wantProcessed: map[string][]float64{
-				"geoId/06": {12}, // 2022 is the maximum date.
-			},
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.desc, func(t *testing.T) {
-			got := selectPrimarySource(tc.variableData, tc.sourceOverride, tc.filter)
-			if got.primarySourceID != tc.wantPrimary {
-				t.Errorf("primarySourceID = %q, want: %q", got.primarySourceID, tc.wantPrimary)
-			}
-			if diff := cmp.Diff(got.alternativeSourceCounts, tc.wantAlts); diff != "" {
-				t.Errorf("alternativeSourceCounts mismatch (-got +want):\n%s", diff)
-			}
-			// Verify processed values
-			if len(got.processedDataByPlace) != len(tc.wantProcessed) {
-				t.Fatalf("processed places count = %d, want: %d", len(got.processedDataByPlace), len(tc.wantProcessed))
-			}
-			for place, data := range got.processedDataByPlace {
-				wantVals, ok := tc.wantProcessed[place]
-				if !ok {
-					t.Fatalf("unexpected processed place in response: %s", place)
-				}
-				var gotVals []float64
-				for _, obs := range data.observations {
-					gotVals = append(gotVals, obs.GetValue())
-				}
-				if diff := cmp.Diff(gotVals, wantVals); diff != "" {
-					t.Errorf("processed values for place %s mismatch (-got +want):\n%s", place, diff)
-				}
-			}
-		})
-	}
-}
-
 type obsMockMixer struct {
 	Mixer
-	v2ObsFn    func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 	v2NodeFn   func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
 	sdmxDataFn func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error)
-}
-
-func (m *obsMockMixer) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	if m.v2ObsFn != nil {
-		return m.v2ObsFn(ctx, in)
-	}
-	return nil, nil
 }
 
 func (m *obsMockMixer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
@@ -432,19 +194,14 @@ func (m *obsMockMixer) SdmxData(ctx context.Context, in *sdmxpb.SdmxDataQuery) (
 	return nil, nil
 }
 
-//nolint:staticcheck // Legacy test cases access deprecated fields for backward compatibility testing
 func TestGetObservations(t *testing.T) {
-	cmpOpts := cmp.Options{
-		protocmp.Transform(),
-	}
-
 	t.Run("Validation Failures", func(t *testing.T) {
 		mock := &obsMockMixer{}
 		svc := NewService(mock, nil, nil)
 
 		tests := []struct {
 			desc    string
-			req     *pbv2.GetObservationsRequest
+			req     *GetObservationsRequest
 			wantErr codes.Code
 		}{
 			{
@@ -454,24 +211,28 @@ func TestGetObservations(t *testing.T) {
 			},
 			{
 				desc: "missing variable",
-				req: &pbv2.GetObservationsRequest{
-					PlaceDcid: "geoId/06",
+				req: &GetObservationsRequest{
+					Entities: map[string]*EntityConstraint{
+						"observationAbout": {Dcids: []string{"geoId/06"}},
+					},
 				},
 				wantErr: codes.InvalidArgument,
 			},
 			{
-				desc: "missing place",
-				req: &pbv2.GetObservationsRequest{
+				desc: "missing entities",
+				req: &GetObservationsRequest{
 					VariableDcid: "Count_Person",
 				},
 				wantErr: codes.InvalidArgument,
 			},
 			{
 				desc: "invalid date format",
-				req: &pbv2.GetObservationsRequest{
+				req: &GetObservationsRequest{
 					VariableDcid: "Count_Person",
-					PlaceDcid:    "geoId/06",
-					Date:         ptrString("invalid"),
+					Entities: map[string]*EntityConstraint{
+						"observationAbout": {Dcids: []string{"geoId/06"}},
+					},
+					Date: "invalid",
 				},
 				wantErr: codes.InvalidArgument,
 			},
@@ -489,453 +250,6 @@ func TestGetObservations(t *testing.T) {
 			})
 		}
 	})
-
-	t.Run("Case 1: Basic Single Place (Latest Date)", func(t *testing.T) {
-		mock := &obsMockMixer{
-			v2ObsFn: func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-				// Verify buildObservationRequest inputs
-				if diff := cmp.Diff(in.GetVariable().GetDcids(), []string{"Count_Person"}); diff != "" {
-					t.Errorf("V2Observation variable DCIDs mismatch (-got +want):\n%s", diff)
-				}
-				if diff := cmp.Diff(in.GetEntity().GetDcids(), []string{"geoId/06"}); diff != "" {
-					t.Errorf("V2Observation entity DCIDs mismatch (-got +want):\n%s", diff)
-				}
-				if in.GetDate() != "LATEST" {
-					t.Errorf("V2Observation date = %q, want: LATEST", in.GetDate())
-				}
-
-				return &pbv2.ObservationResponse{
-					ByVariable: map[string]*pbv2.VariableObservation{
-						"Count_Person": {
-							ByEntity: map[string]*pbv2.EntityObservation{
-								"geoId/06": {
-									OrderedFacets: []*pbv2.FacetObservation{
-										{
-											FacetId: "source-A", // older
-											Observations: []*pb.PointStat{
-												{Date: "2020", Value: ptrFloat64(10)},
-											},
-										},
-										{
-											FacetId: "source-B", // newer
-											Observations: []*pb.PointStat{
-												{Date: "2021", Value: ptrFloat64(20)},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					Facets: map[string]*pb.Facet{
-						"source-A": {
-							ImportName:        "Census",
-							MeasurementMethod: "CensusMethod",
-							ProvenanceUrl:     "census.gov",
-						},
-						"source-B": {
-							ImportName:        "CDC",
-							MeasurementMethod: "CDCMethod",
-							ProvenanceUrl:     "cdc.gov",
-						},
-					},
-				}, nil
-			},
-			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-				// V2Node should fetch variable and place name/type
-				expectedNodes := []string{"Count_Person", "geoId/06"}
-				sort.Strings(in.GetNodes())
-				sort.Strings(expectedNodes)
-				if diff := cmp.Diff(in.GetNodes(), expectedNodes); diff != "" {
-					t.Errorf("V2Node nodes mismatch (-got +want):\n%s", diff)
-				}
-				if in.GetProperty() != nodePropertiesQuery {
-					t.Errorf("V2Node property = %q, want: %q", in.GetProperty(), nodePropertiesQuery)
-				}
-
-				return &pbv2.NodeResponse{
-					Data: map[string]*pbv2.LinkedGraph{
-						"Count_Person": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name": {
-									Nodes: []*pb.EntityInfo{{Value: "Total Population"}},
-								},
-								"typeOf": {
-									Nodes: []*pb.EntityInfo{{Dcid: "StatisticalVariable"}},
-								},
-							},
-						},
-						"geoId/06": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name": {
-									Nodes: []*pb.EntityInfo{{Value: "California"}},
-								},
-								"typeOf": {
-									Nodes: []*pb.EntityInfo{{Dcid: "State"}},
-								},
-							},
-						},
-					},
-				}, nil
-			},
-		}
-
-		svc := NewService(mock, nil, nil)
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
-			VariableDcid: "Count_Person",
-			PlaceDcid:    "geoId/06",
-		})
-		if err != nil {
-			t.Fatalf("GetObservations failed: %v", err)
-		}
-
-		want := &pbv2.GetObservationsResponse{
-			Variable: &pbv2.GetObservationsResponse_Node{
-				Dcid:   "Count_Person",
-				Name:   "Total Population",
-				TypeOf: []string{"StatisticalVariable"},
-			},
-			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-				SourceId:          "source-B",
-				ImportName:        "CDC",
-				MeasurementMethod: "CDCMethod",
-				ProvenanceUrl:     "cdc.gov",
-			},
-			AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
-				{
-					SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-						SourceId:          "source-A",
-						ImportName:        "Census",
-						MeasurementMethod: "CensusMethod",
-						ProvenanceUrl:     "census.gov",
-					},
-				},
-			},
-			PlaceObservations: []*pbv2.GetObservationsResponse_PlaceObservation{
-				{
-					Place: &pbv2.GetObservationsResponse_Node{
-						Dcid:   "geoId/06",
-						Name:   "California",
-						TypeOf: []string{"State"},
-					},
-					TimeSeries: []*pbv2.GetObservationsResponse_TimeSeriesPoint{
-						{Date: "2021", Value: 20},
-					},
-				},
-			},
-		}
-
-		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
-			t.Errorf("GetObservations response mismatch (-got +want):\n%s", diff)
-		}
-	})
-
-	t.Run("Case 2: ContainedInPlace Hierarchy Query (Latest Date)", func(t *testing.T) {
-		mock := &obsMockMixer{
-			v2ObsFn: func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-				if in.GetEntity().GetExpression() != "geoId/06<-containedInPlace+{typeOf:County}" {
-					t.Errorf("V2Observation entity expression = %q, want: geoId/06<-containedInPlace+{typeOf:County}", in.GetEntity().GetExpression())
-				}
-
-				return &pbv2.ObservationResponse{
-					ByVariable: map[string]*pbv2.VariableObservation{
-						"Count_Person": {
-							ByEntity: map[string]*pbv2.EntityObservation{
-								"geoId/06001": {
-									OrderedFacets: []*pbv2.FacetObservation{
-										{
-											FacetId: "source-A",
-											Observations: []*pb.PointStat{
-												{Date: "2020", Value: ptrFloat64(100)},
-											},
-										},
-										{
-											FacetId: "source-B", // older
-											Observations: []*pb.PointStat{
-												{Date: "2019", Value: ptrFloat64(90)},
-											},
-										},
-									},
-								},
-								"geoId/06003": {
-									OrderedFacets: []*pbv2.FacetObservation{
-										{
-											FacetId: "source-A",
-											Observations: []*pb.PointStat{
-												{Date: "2020", Value: ptrFloat64(300)},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					Facets: map[string]*pb.Facet{
-						"source-A": {ImportName: "Census"},
-						"source-B": {ImportName: "CDC"},
-					},
-				}, nil
-			},
-			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-				return &pbv2.NodeResponse{
-					Data: map[string]*pbv2.LinkedGraph{
-						"Count_Person": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "Total Population"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "StatisticalVariable"}}},
-							},
-						},
-						"geoId/06": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "California"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "State"}}},
-							},
-						},
-						"geoId/06001": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alameda County"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
-							},
-						},
-						"geoId/06003": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "Alpine County"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
-							},
-						},
-					},
-				}, nil
-			},
-		}
-
-		svc := NewService(mock, nil, nil)
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
-			VariableDcid:   "Count_Person",
-			PlaceDcid:      "geoId/06",
-			ChildPlaceType: ptrString("County"),
-		})
-		if err != nil {
-			t.Fatalf("GetObservations failed: %v", err)
-		}
-
-		// Prepare expected values (sort for deterministic assertion order)
-		sort.Slice(got.PlaceObservations, func(i, j int) bool {
-			return got.PlaceObservations[i].Place.Dcid < got.PlaceObservations[j].Place.Dcid
-		})
-
-		count1 := int32(1)
-		want := &pbv2.GetObservationsResponse{
-			Variable: &pbv2.GetObservationsResponse_Node{
-				Dcid:   "Count_Person",
-				Name:   "Total Population",
-				TypeOf: []string{"StatisticalVariable"},
-			},
-			ResolvedParentPlace: &pbv2.GetObservationsResponse_Node{
-				Dcid:   "geoId/06",
-				Name:   "California",
-				TypeOf: []string{"State"},
-			},
-			ChildPlaceType: "County",
-			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-				SourceId:   "source-A",
-				ImportName: "Census",
-			},
-			AlternativeSources: []*pbv2.GetObservationsResponse_AlternativeSource{
-				{
-					SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-						SourceId:   "source-B",
-						ImportName: "CDC",
-					},
-					PlacesFoundCount: &count1,
-				},
-			},
-			PlaceObservations: []*pbv2.GetObservationsResponse_PlaceObservation{
-				{
-					Place: &pbv2.GetObservationsResponse_Node{
-						Dcid:   "geoId/06001",
-						Name:   "Alameda County",
-						TypeOf: []string{"County"},
-					},
-					TimeSeries: []*pbv2.GetObservationsResponse_TimeSeriesPoint{
-						{Date: "2020", Value: 100},
-					},
-				},
-				{
-					Place: &pbv2.GetObservationsResponse_Node{
-						Dcid:   "geoId/06003",
-						Name:   "Alpine County",
-						TypeOf: []string{"County"},
-					},
-					TimeSeries: []*pbv2.GetObservationsResponse_TimeSeriesPoint{
-						{Date: "2020", Value: 300},
-					},
-				},
-			},
-		}
-
-		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
-			t.Errorf("GetObservations response mismatch (-got +want):\n%s", diff)
-		}
-	})
-
-	t.Run("Case 3: Date Filtering (Specific Year '2020')", func(t *testing.T) {
-		mock := &obsMockMixer{
-			v2ObsFn: func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-				if in.GetDate() != "" {
-					t.Errorf("V2Observation date = %q, want empty (requests all dates for custom filter)", in.GetDate())
-				}
-
-				return &pbv2.ObservationResponse{
-					ByVariable: map[string]*pbv2.VariableObservation{
-						"Count_Person": {
-							ByEntity: map[string]*pbv2.EntityObservation{
-								"geoId/06": {
-									OrderedFacets: []*pbv2.FacetObservation{
-										{
-											FacetId: "source-A",
-											Observations: []*pb.PointStat{
-												{Date: "2019", Value: ptrFloat64(10)},
-												{Date: "2020", Value: ptrFloat64(12)},
-												{Date: "2021", Value: ptrFloat64(14)},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					Facets: map[string]*pb.Facet{
-						"source-A": {ImportName: "Census"},
-					},
-				}, nil
-			},
-			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-				return &pbv2.NodeResponse{
-					Data: map[string]*pbv2.LinkedGraph{
-						"Count_Person": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "Total Population"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "StatisticalVariable"}}},
-							},
-						},
-						"geoId/06": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "California"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "State"}}},
-							},
-						},
-					},
-				}, nil
-			},
-		}
-
-		svc := NewService(mock, nil, nil)
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
-			VariableDcid: "Count_Person",
-			PlaceDcid:    "geoId/06",
-			Date:         ptrString("2020"),
-		})
-		if err != nil {
-			t.Fatalf("GetObservations failed: %v", err)
-		}
-
-		want := []*pbv2.GetObservationsResponse_TimeSeriesPoint{
-			{Date: "2020", Value: 12},
-		}
-
-		if diff := cmp.Diff(got.PlaceObservations[0].TimeSeries, want, cmpOpts); diff != "" {
-			t.Errorf("TimeSeries mismatch (-got +want):\n%s", diff)
-		}
-	})
-
-	t.Run("Case 4: Source Override", func(t *testing.T) {
-		mock := &obsMockMixer{
-			v2ObsFn: func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-				if diff := cmp.Diff(in.GetFilter().GetFacetIds(), []string{"source-B"}); diff != "" {
-					t.Errorf("V2Observation facet filters mismatch (-got +want):\n%s", diff)
-				}
-
-				return &pbv2.ObservationResponse{
-					ByVariable: map[string]*pbv2.VariableObservation{
-						"Count_Person": {
-							ByEntity: map[string]*pbv2.EntityObservation{
-								"geoId/06": {
-									OrderedFacets: []*pbv2.FacetObservation{
-										{
-											FacetId: "source-B",
-											Observations: []*pb.PointStat{
-												{Date: "2020", Value: ptrFloat64(20)},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-					Facets: map[string]*pb.Facet{
-						"source-B": {ImportName: "CDC"},
-					},
-				}, nil
-			},
-			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-				return &pbv2.NodeResponse{
-					Data: map[string]*pbv2.LinkedGraph{
-						"Count_Person": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "Total Population"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "StatisticalVariable"}}},
-							},
-						},
-						"geoId/06": {
-							Arcs: map[string]*pbv2.Nodes{
-								"name":   {Nodes: []*pb.EntityInfo{{Value: "California"}}},
-								"typeOf": {Nodes: []*pb.EntityInfo{{Dcid: "State"}}},
-							},
-						},
-					},
-				}, nil
-			},
-		}
-
-		svc := NewService(mock, nil, nil)
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
-			VariableDcid:   "Count_Person",
-			PlaceDcid:      "geoId/06",
-			SourceOverride: ptrString("source-B"),
-		})
-		if err != nil {
-			t.Fatalf("GetObservations failed: %v", err)
-		}
-
-		if got.SourceMetadata.SourceId != "source-B" {
-			t.Errorf("SourceId = %q, want: source-B", got.SourceMetadata.SourceId)
-		}
-		if len(got.AlternativeSources) != 0 {
-			t.Errorf("alternative sources count = %d, want: 0", len(got.AlternativeSources))
-		}
-	})
-}
-
-func ptrString(s string) *string {
-	return &s
-}
-
-func ptrFloat64(f float64) *float64 {
-	return &f
-}
-
-func mustListValue(vals ...interface{}) *structpb.ListValue {
-	l, err := structpb.NewList(vals)
-	if err != nil {
-		panic(err)
-	}
-	return l
-}
-
-func TestGetObservations_Sdmx(t *testing.T) {
-	cmpOpts := cmp.Options{
-		protocmp.Transform(),
-	}
 
 	t.Run("Multi-entity SDMX Query with Dual Tables", func(t *testing.T) {
 		mock := &obsMockMixer{
@@ -991,50 +305,47 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001", "geoId/06003")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001", "geoId/06003"}},
+			},
 		})
 		if err != nil {
 			t.Fatalf("GetObservations SDMX path failed: %v", err)
 		}
 
-		want := &pbv2.GetObservationsResponse{
-			Variable: &pbv2.GetObservationsResponse_Node{
+		want := &GetObservationsResponse{
+			Variable: &ObservationNode{
 				Dcid: "Count_Person",
 			},
-			EntityMetadata: &pbv2.Table{
-				Columns: []string{"dcid", "name", "typeOf"},
-				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
-					mustListValue("geoId/06003", "Alpine County", []interface{}{"County"}),
+			EntityMetadata: &Table{
+				Columns: []string{"dcid", "name"},
+				Rows: [][]any{
+					{"geoId/06001", "Alameda County"},
+					{"geoId/06003", "Alpine County"},
 				},
 			},
-			Data: &pbv2.Table{
+			Data: &Table{
 				Columns: []string{"observationAbout", "date", "value"},
-				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "2021", float64(1682353)),
-					mustListValue("geoId/06003", "2020", float64(1204)),
+				Rows: [][]any{
+					{"geoId/06001", "2021", float64(1682353)},
+					{"geoId/06003", "2020", float64(1204)},
 				},
 			},
-			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-				SourceId: "178129038",
+			SourceMetadata: &ObservationFacetMetadata{
+				SourceID: "178129038",
 			},
 		}
 
-		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
-			t.Errorf("GetObservations SDMX response mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("GetObservations SDMX response mismatch (-want +got):\n%s", diff)
 		}
 	})
 
 	t.Run("Parent Place Expansion (ContainedInPlace)", func(t *testing.T) {
 		mock := &obsMockMixer{
 			sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
-				// Verify property constraints are generated correctly on query
 				c, ok := in.GetConstraints()["observationAbout"]
 				if !ok {
 					t.Fatalf("missing constraint for observationAbout")
@@ -1080,104 +391,99 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		parentSpec, err := structpb.NewStruct(map[string]interface{}{
-			"parent_dcid": "geoId/06",
-			"child_type":  "County",
-		})
-		if err != nil {
-			t.Fatalf("failed to create parent spec struct: %v", err)
-		}
-
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewStructValue(parentSpec),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {
+					ParentSpec: &ParentPlaceSpec{
+						ParentDcid: "geoId/06",
+						ChildType:  "County",
+					},
+				},
+			},
 		})
 		if err != nil {
 			t.Fatalf("GetObservations SDMX parent path failed: %v", err)
 		}
 
-		want := &pbv2.GetObservationsResponse{
-			Variable: &pbv2.GetObservationsResponse_Node{
+		want := &GetObservationsResponse{
+			Variable: &ObservationNode{
 				Dcid: "Count_Person",
 			},
-			EntityMetadata: &pbv2.Table{
-				Columns: []string{"dcid", "name", "typeOf"},
-				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "Alameda County", []interface{}{"County"}),
+			EntityMetadata: &Table{
+				Columns: []string{"dcid", "name"},
+				Rows: [][]any{
+					{"geoId/06001", "Alameda County"},
 				},
 			},
-			Data: &pbv2.Table{
+			Data: &Table{
 				Columns: []string{"observationAbout", "date", "value"},
-				Rows: []*structpb.ListValue{
-					mustListValue("geoId/06001", "2020", float64(1671329)),
+				Rows: [][]any{
+					{"geoId/06001", "2020", float64(1671329)},
 				},
 			},
-			SourceMetadata: &pbv2.GetObservationsResponse_FacetMetadata{
-				SourceId: "178129038",
+			SourceMetadata: &ObservationFacetMetadata{
+				SourceID: "178129038",
 			},
 		}
 
-		if diff := cmp.Diff(got, want, cmpOpts); diff != "" {
-			t.Errorf("GetObservations SDMX parent response mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("GetObservations SDMX parent response mismatch (-want +got):\n%s", diff)
 		}
 	})
 
 	t.Run("Validation Failure: Multi-Parent Expansion Limit", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		p1, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/06", "child_type": "County"})
-		p2, _ := structpb.NewStruct(map[string]interface{}{"parent_dcid": "geoId/48", "child_type": "County"})
-
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewStructValue(p1),
-			"comparisonPlace":  structpb.NewStructValue(p2),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {ParentSpec: &ParentPlaceSpec{ParentDcid: "geoId/06", ChildType: "County"}},
+				"comparisonPlace":  {ParentSpec: &ParentPlaceSpec{ParentDcid: "geoId/48", ChildType: "County"}},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
 			t.Errorf("expected InvalidArgument error for multi-parent expansion, got code: %v (err: %v)", status.Code(err), err)
 		}
 	})
 
-	t.Run("Validation Failure: Invalid Entities JSON Type", func(t *testing.T) {
+	t.Run("Validation Failure: Empty String DCID in List", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		// Passing boolean kind inside list value to trigger type validation error (Finding 1)
-		listVal, _ := structpb.NewList([]interface{}{"geoId/06", true})
-
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(listVal),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06", ""}},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
-			t.Errorf("expected InvalidArgument error for invalid entities list type, got code: %v (err: %v)", status.Code(err), err)
+			t.Errorf("expected InvalidArgument error for empty string DCID, got code: %v (err: %v)", status.Code(err), err)
 		}
 	})
 
-	t.Run("Validation Failure: Empty Struct Value Fields", func(t *testing.T) {
+	t.Run("Validation Failure: Both Dcids and ParentSpec Specified", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		// Passing empty parent_dcid string to trigger blank check validation (Finding 2)
-		parentSpec, _ := structpb.NewStruct(map[string]interface{}{
-			"parent_dcid": "",
-			"child_type":  "County",
-		})
-
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewStructValue(parentSpec),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {
+					Dcids:      []string{"geoId/06"},
+					ParentSpec: &ParentPlaceSpec{ParentDcid: "geoId/06", ChildType: "County"},
+				},
+			},
+		})
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("expected InvalidArgument error when both dcids and parent_spec are set, got code: %v (err: %v)", status.Code(err), err)
+		}
+	})
+
+	t.Run("Validation Failure: Empty ParentSpec Fields", func(t *testing.T) {
+		svc := NewService(&obsMockMixer{}, nil, nil)
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {
+					ParentSpec: &ParentPlaceSpec{ParentDcid: "", ChildType: "County"},
+				},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
 			t.Errorf("expected InvalidArgument error for empty parent spec fields, got code: %v (err: %v)", status.Code(err), err)
@@ -1186,14 +492,11 @@ func TestGetObservations_Sdmx(t *testing.T) {
 
 	t.Run("Validation Failure: Empty Entity List", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		emptyList, _ := structpb.NewList([]interface{}{})
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(emptyList),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
 			t.Errorf("expected InvalidArgument error for empty entity list, got code: %v (err: %v)", status.Code(err), err)
@@ -1202,14 +505,11 @@ func TestGetObservations_Sdmx(t *testing.T) {
 
 	t.Run("Validation Failure: Empty Slot Name", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
-		entitiesMap := map[string]*structpb.Value{
-			"": structpb.NewListValue(listVal),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"": {Dcids: []string{"geoId/06"}},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
 			t.Errorf("expected InvalidArgument error for empty entity slot name, got code: %v (err: %v)", status.Code(err), err)
@@ -1218,14 +518,11 @@ func TestGetObservations_Sdmx(t *testing.T) {
 
 	t.Run("Validation Failure: Reserved Slot Name", func(t *testing.T) {
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		listVal, _ := structpb.NewList([]interface{}{"Median_Age_Person"})
-		entitiesMap := map[string]*structpb.Value{
-			"variableMeasured": structpb.NewListValue(listVal),
-		}
-
-		_, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"variableMeasured": {Dcids: []string{"Median_Age_Person"}},
+			},
 		})
 		if status.Code(err) != codes.InvalidArgument {
 			t.Errorf("expected InvalidArgument error for reserved entity slot name, got code: %v (err: %v)", status.Code(err), err)
@@ -1237,14 +534,11 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		cancel()
 
 		svc := NewService(&obsMockMixer{}, nil, nil)
-		listVal, _ := structpb.NewList([]interface{}{"geoId/06"})
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(listVal),
-		}
-
-		_, err := svc.GetObservations(ctx, &pbv2.GetObservationsRequest{
+		_, err := svc.GetObservations(ctx, &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06"}},
+			},
 		})
 		if err == nil {
 			t.Errorf("expected error on canceled context, got nil")
@@ -1285,25 +579,23 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
-			Date:         ptrString("2020"),
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001"}},
+			},
+			Date: "2020",
 		})
 		if err != nil {
 			t.Fatalf("GetObservations failed: %v", err)
 		}
 
-		wantRows := []*structpb.ListValue{
-			mustListValue("geoId/06001", "2020", float64(12)),
+		wantRows := [][]any{
+			{"geoId/06001", "2020", float64(12)},
 		}
 
-		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
-			t.Errorf("SDMX Date Filter rows mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(wantRows, got.Data.Rows); diff != "" {
+			t.Errorf("SDMX Date Filter rows mismatch (-want +got):\n%s", diff)
 		}
 	})
 
@@ -1340,26 +632,24 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
-			Date:         ptrString("all"),
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001"}},
+			},
+			Date: "all",
 		})
 		if err != nil {
 			t.Fatalf("GetObservations failed: %v", err)
 		}
 
-		wantRows := []*structpb.ListValue{
-			mustListValue("geoId/06001", "2019", float64(10)),
-			mustListValue("geoId/06001", "2020", float64(12)),
+		wantRows := [][]any{
+			{"geoId/06001", "2019", float64(10)},
+			{"geoId/06001", "2020", float64(12)},
 		}
 
-		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
-			t.Errorf("SDMX 'all' Date Filter rows mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(wantRows, got.Data.Rows); diff != "" {
+			t.Errorf("SDMX 'all' Date Filter rows mismatch (-want +got):\n%s", diff)
 		}
 	})
 
@@ -1398,28 +688,26 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
-			VariableDcid:    "Count_Person",
-			Entities:        entitiesMap,
-			Date:            ptrString("range"),
-			DateRangeStart: ptrString("2019"),
-			DateRangeEnd:   ptrString("2020"),
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
+			VariableDcid: "Count_Person",
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001"}},
+			},
+			Date:           "range",
+			DateRangeStart: "2019",
+			DateRangeEnd:   "2020",
 		})
 		if err != nil {
 			t.Fatalf("GetObservations failed: %v", err)
 		}
 
-		wantRows := []*structpb.ListValue{
-			mustListValue("geoId/06001", "2019", float64(10)),
-			mustListValue("geoId/06001", "2020", float64(12)),
+		wantRows := [][]any{
+			{"geoId/06001", "2019", float64(10)},
+			{"geoId/06001", "2020", float64(12)},
 		}
 
-		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
-			t.Errorf("SDMX 'range' Date Filter rows mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(wantRows, got.Data.Rows); diff != "" {
+			t.Errorf("SDMX 'range' Date Filter rows mismatch (-want +got):\n%s", diff)
 		}
 	})
 
@@ -1457,25 +745,23 @@ func TestGetObservations_Sdmx(t *testing.T) {
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
-			Date:         ptrString("latest"),
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001"}},
+			},
+			Date: "latest",
 		})
 		if err != nil {
 			t.Fatalf("GetObservations failed: %v", err)
 		}
 
-		wantRows := []*structpb.ListValue{
-			mustListValue("geoId/06001", "2020-01", float64(12)),
+		wantRows := [][]any{
+			{"geoId/06001", "2020-01", float64(12)},
 		}
 
-		if diff := cmp.Diff(got.Data.Rows, wantRows, cmpOpts); diff != "" {
-			t.Errorf("SDMX 'latest' Date Filter rows mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(wantRows, got.Data.Rows); diff != "" {
+			t.Errorf("SDMX 'latest' Date Filter rows mismatch (-want +got):\n%s", diff)
 		}
 	})
 
@@ -1497,79 +783,214 @@ func TestGetObservations_Sdmx(t *testing.T) {
 				}, nil
 			},
 			v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-				// Simulate downstream gRPC failure
 				return nil, status.Error(codes.Unavailable, "V2Node service temporarily unavailable")
 			},
 		}
 
 		svc := NewService(mock, nil, nil)
-		entitiesMap := map[string]*structpb.Value{
-			"observationAbout": structpb.NewListValue(mustListValue("geoId/06001")),
-		}
-
-		got, err := svc.GetObservations(context.Background(), &pbv2.GetObservationsRequest{
+		got, err := svc.GetObservations(context.Background(), &GetObservationsRequest{
 			VariableDcid: "Count_Person",
-			Entities:     entitiesMap,
-			Date:         ptrString("latest"),
+			Entities: map[string]*EntityConstraint{
+				"observationAbout": {Dcids: []string{"geoId/06001"}},
+			},
+			Date: "latest",
 		})
 		if err != nil {
 			t.Fatalf("GetObservations failed on metadata fallback test: %v", err)
 		}
 
-		// Ensure result succeeded but returns empty metadata fields for entities
-		wantRow, err := structpb.NewList([]interface{}{"geoId/06001", "", []interface{}{}})
-		if err != nil {
-			t.Fatalf("failed to build expected row: %v", err)
-		}
-		wantMeta := &pbv2.Table{
-			Columns: []string{"dcid", "name", "typeOf"},
-			Rows:    []*structpb.ListValue{wantRow},
+		wantMeta := &Table{
+			Columns: []string{"dcid", "name"},
+			Rows:    [][]any{{"geoId/06001", ""}},
 		}
 
-		if diff := cmp.Diff(got.EntityMetadata, wantMeta, cmpOpts); diff != "" {
-			t.Errorf("SDMX network fallback metadata mismatch (-got +want):\n%s", diff)
+		if diff := cmp.Diff(wantMeta, got.EntityMetadata); diff != "" {
+			t.Errorf("SDMX network fallback metadata mismatch (-want +got):\n%s", diff)
 		}
 	})
 }
 
-func TestFetchEntityProperties_Deduplication(t *testing.T) {
-	mock := &obsMockMixer{
-		v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-			return &pbv2.NodeResponse{
-				Data: map[string]*pbv2.LinkedGraph{
-					"country/AFG": {
-						Arcs: map[string]*pbv2.Nodes{
-							"name": {Nodes: []*pb.EntityInfo{{Value: "Afghanistan"}}},
-							"typeOf": {
-								Nodes: []*pb.EntityInfo{
-									{Dcid: "Country", ProvenanceId: "dc/base/Provenance1"},
-									{Dcid: "Country", ProvenanceId: "dc/base/Provenance2"},
-									{Dcid: "Place", ProvenanceId: "dc/base/Provenance3"},
-								},
-							},
-						},
+func TestGetObservationsSdmxFacetSelection(t *testing.T) {
+	nodeNames := map[string]string{
+		"Count_Person": "Total Population",
+		"geoId/06001":  "Alameda County",
+		"geoId/06003":  "Alpine County",
+		"geoId/06005":  "Amador County",
+	}
+
+	tests := []struct {
+		desc           string
+		entities       map[string][]string
+		date           string
+		dateRangeStart string
+		dateRangeEnd   string
+		series         []*sdmxpb.SdmxTimeSeries
+		want           *GetObservationsResponse
+	}{
+		{
+			desc:     "entity metadata only includes entities in data rows",
+			entities: map[string][]string{"observationAbout": {"geoId/06001", "geoId/06003", "geoId/06005"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f1", "2019"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06005"}, "f2", "2019"),
+			},
+			want: &GetObservationsResponse{
+				Variable: &ObservationNode{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &Table{
+					Columns: []string{"dcid", "name"},
+					Rows:    [][]any{{"geoId/06001", "Alameda County"}},
+				},
+				Data: &Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    [][]any{{"geoId/06001", "2020", float64(1)}},
+				},
+				SourceMetadata: &ObservationFacetMetadata{SourceID: "f1"},
+				AlternativeSources: []*AlternativeSource{
+					{SourceMetadata: &ObservationFacetMetadata{SourceID: "f2"}},
+				},
+			},
+		},
+		{
+			// Two places are requested, but the primary facet only covers one of them, so alternative
+			// place counts are omitted (legacy gates on the primary source's place count).
+			desc:     "alternative place counts are gated on the primary facet's place count",
+			entities: map[string][]string{"observationAbout": {"geoId/06001", "geoId/06003"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2020"),
+			},
+			want: &GetObservationsResponse{
+				Variable: &ObservationNode{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &Table{
+					Columns: []string{"dcid", "name"},
+					Rows:    [][]any{{"geoId/06001", "Alameda County"}},
+				},
+				Data: &Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    [][]any{{"geoId/06001", "2020", float64(1)}},
+				},
+				SourceMetadata: &ObservationFacetMetadata{SourceID: "f1"},
+				AlternativeSources: []*AlternativeSource{
+					{SourceMetadata: &ObservationFacetMetadata{SourceID: "f2"}},
+				},
+			},
+		},
+		{
+			desc:     "no data in the date window returns no entity metadata rows",
+			entities: map[string][]string{"observationAbout": {"geoId/06001"}},
+			date:     "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2019"),
+			},
+			want: &GetObservationsResponse{
+				Variable:       &ObservationNode{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &Table{Columns: []string{"dcid", "name"}},
+				Data:           &Table{Columns: []string{"observationAbout", "date", "value"}},
+				SourceMetadata: &ObservationFacetMetadata{SourceID: "f1"},
+			},
+		},
+		{
+			desc:           "places without data in the date window do not count toward a facet",
+			entities:       map[string][]string{"observationAbout": {"geoId/06001", "geoId/06003"}},
+			date:           "range",
+			dateRangeStart: "2019",
+			dateRangeEnd:   "2020",
+			series: []*sdmxpb.SdmxTimeSeries{
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f1", "2019", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f1", "2010"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06001"}, "f2", "2020"),
+				newTestSeries(map[string]string{"observationAbout": "geoId/06003"}, "f2", "2019"),
+			},
+			want: &GetObservationsResponse{
+				Variable: &ObservationNode{Dcid: "Count_Person", Name: "Total Population"},
+				EntityMetadata: &Table{
+					Columns: []string{"dcid", "name"},
+					Rows: [][]any{
+						{"geoId/06001", "Alameda County"},
+						{"geoId/06003", "Alpine County"},
 					},
 				},
-			}, nil
+				Data: &Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows: [][]any{
+						{"geoId/06001", "2020", float64(1)},
+						{"geoId/06003", "2019", float64(1)},
+					},
+				},
+				SourceMetadata: &ObservationFacetMetadata{SourceID: "f2"},
+				AlternativeSources: []*AlternativeSource{
+					{
+						SourceMetadata:   &ObservationFacetMetadata{SourceID: "f1"},
+						PlacesFoundCount: proto.Int32(1),
+					},
+				},
+			},
 		},
 	}
 
-	svc := NewService(mock, nil, nil)
-	props, err := svc.fetchEntityProperties(context.Background(), []string{"country/AFG"})
-	if err != nil {
-		t.Fatalf("fetchEntityProperties failed: %v", err)
-	}
+	for _, test := range tests {
+		t.Run(test.desc, func(t *testing.T) {
+			mock := &obsMockMixer{
+				sdmxDataFn: func(ctx context.Context, in *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
+					return &sdmxpb.SdmxDataResult{Series: test.series}, nil
+				},
+				v2NodeFn: func(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+					return newTestNodeResponse(in.GetNodes(), nodeNames), nil
+				},
+			}
 
-	wantProps := map[string]*nodeProperties{
-		"country/AFG": {
-			name:   "Afghanistan",
-			typeOf: []string{"Country", "Place"},
-		},
-	}
+			entities := make(map[string]*EntityConstraint, len(test.entities))
+			for slot, dcids := range test.entities {
+				entities[slot] = &EntityConstraint{Dcids: dcids}
+			}
+			req := &GetObservationsRequest{
+				VariableDcid:   "Count_Person",
+				Entities:       entities,
+				Date:           test.date,
+				DateRangeStart: test.dateRangeStart,
+				DateRangeEnd:   test.dateRangeEnd,
+			}
 
-	if diff := cmp.Diff(props, wantProps, cmp.AllowUnexported(nodeProperties{})); diff != "" {
-		t.Errorf("fetchEntityProperties typeOf deduplication mismatch (-got +want):\n%s", diff)
+			got, err := NewService(mock, nil, nil).GetObservations(context.Background(), req)
+			if err != nil {
+				t.Fatalf("GetObservations() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(test.want, got); diff != "" {
+				t.Errorf("GetObservations() mismatch (-want +got):\n%s", diff)
+			}
+		})
 	}
+}
+
+// newTestSeries builds a Count_Person series with the given dimensions and a value of "1" at each date.
+func newTestSeries(dims map[string]string, facetID string, dates ...string) *sdmxpb.SdmxTimeSeries {
+	series := &sdmxpb.SdmxTimeSeries{
+		Dimensions: map[string]string{"variableMeasured": "Count_Person"},
+		Attributes: map[string]string{"facetId": facetID},
+	}
+	for k, v := range dims {
+		series.Dimensions[k] = v
+	}
+	for _, d := range dates {
+		series.Points = append(series.Points, &sdmxpb.SdmxDataPoint{TimePeriod: d, ObservationValue: "1"})
+	}
+	return series
+}
+
+// newTestNodeResponse returns name arcs for the requested nodes found in names.
+func newTestNodeResponse(nodes []string, names map[string]string) *pbv2.NodeResponse {
+	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
+	for _, dcid := range nodes {
+		arcs := make(map[string]*pbv2.Nodes)
+		if name, ok := names[dcid]; ok {
+			arcs[arcName] = &pbv2.Nodes{Nodes: []*pb.EntityInfo{{Value: name}}}
+		}
+		resp.Data[dcid] = &pbv2.LinkedGraph{Arcs: arcs}
+	}
+	return resp
 }
 
 // truncatingNodeMixer fakes the way V2Node truncates. It sorts the requested nodes,
@@ -1609,8 +1030,7 @@ func (m *truncatingNodeMixer) V2Node(_ context.Context, req *pbv2.NodeRequest) (
 		}
 		resp.Data[dcid] = &pbv2.LinkedGraph{
 			Arcs: map[string]*pbv2.Nodes{
-				arcName:   {Nodes: []*pb.EntityInfo{{Value: dcid + " Name"}}},
-				arcTypeOf: {Nodes: []*pb.EntityInfo{{Dcid: "County"}}},
+				arcName: {Nodes: []*pb.EntityInfo{{Value: dcid + " Name"}}},
 			},
 		}
 	}
@@ -1645,7 +1065,7 @@ func TestFetchEntityPropertiesPagination(t *testing.T) {
 			for i := range test.entityCount {
 				dcid := fmt.Sprintf("geoId/%05d", i)
 				dcids = append(dcids, dcid)
-				want[dcid] = &nodeProperties{name: dcid + " Name", typeOf: []string{"County"}}
+				want[dcid] = &nodeProperties{name: dcid + " Name"}
 			}
 
 			svc := NewService(&truncatingNodeMixer{nodesPerPage: test.nodesPerPage}, nil, nil)

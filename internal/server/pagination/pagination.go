@@ -15,6 +15,9 @@
 package pagination
 
 import (
+	"errors"
+	"fmt"
+
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -23,38 +26,107 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// maxPaginationTokenBytes is the maximum allowed size (1 MB) for a
+	// pagination token, protecting against zip bomb attacks.
+	maxPaginationTokenBytes = 1024 * 1024
+	// maxRemotePaginationDepth bounds recursive nesting of RemotePaginationInfo.
+	maxRemotePaginationDepth = 5
+)
+
 // Decode decodes a compressed token string into PaginationInfo.
 func Decode(s string) (*pbv1.PaginationInfo, error) {
-	if s == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
-	}
-
-	data, err := util.UnzipAndDecode(s)
+	result, err := decodeToken(s, &pbv1.PaginationInfo{})
 	if err != nil {
+		return nil, err
+	}
+	if err := validatePaginationInfo(result, 0); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
-	}
-	result := &pbv1.PaginationInfo{}
-	err = proto.Unmarshal(data, result)
-	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
 	}
 	return result, nil
 }
 
-// Decode decodes a compressed token string into Pagination.
+// DecodeNextToken decodes a compressed token string into Pagination.
 func DecodeNextToken(s string) (*pbv2.Pagination, error) {
-	if s == "" {
-		return nil, status.Errorf(codes.InvalidArgument, "empty pagination token string")
-	}
-
-	data, err := util.UnzipAndDecode(s)
+	result, err := decodeToken(s, &pbv2.Pagination{})
 	if err != nil {
+		return nil, err
+	}
+	if err := validatePagination(result); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
 	}
-	result := &pbv2.Pagination{}
-	err = proto.Unmarshal(data, result)
-	if err != nil {
-		return nil, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
-	}
 	return result, nil
+}
+
+func decodeToken[T proto.Message](s string, dst T) (T, error) {
+	var zero T
+	if s == "" {
+		return zero, status.Errorf(codes.InvalidArgument, "empty pagination token string")
+	}
+
+	data, err := util.UnzipAndDecodeWithLimit(s, maxPaginationTokenBytes)
+	if err != nil {
+		return zero, status.Errorf(codes.InvalidArgument, "invalid pagination token: %v", err)
+	}
+	if err := proto.Unmarshal(data, dst); err != nil {
+		return zero, status.Errorf(codes.InvalidArgument, "malformed pagination token: %v", err)
+	}
+	return dst, nil
+}
+
+// validatePaginationInfo and validatePagination return plain errors. Decode and
+// DecodeNextToken attach the InvalidArgument status, so it is applied once.
+func validatePaginationInfo(pi *pbv1.PaginationInfo, depth int) error {
+	if pi == nil {
+		return errors.New("pagination info must not be nil")
+	}
+	if depth > maxRemotePaginationDepth {
+		return fmt.Errorf("remote pagination info exceeds maximum depth of %d", maxRemotePaginationDepth)
+	}
+	for _, cg := range pi.GetCursorGroups() {
+		if cg == nil {
+			return errors.New("cursor group must not be nil")
+		}
+		for _, c := range cg.GetCursors() {
+			if c == nil {
+				return errors.New("cursor must not be nil")
+			}
+			if c.GetImportGroup() < 0 || c.GetPage() < 0 || c.GetItem() < 0 || c.GetOffset() < 0 {
+				return errors.New("cursor values must be non-negative")
+			}
+		}
+	}
+	if pi.GetRemotePaginationInfo() != nil {
+		return validatePaginationInfo(pi.GetRemotePaginationInfo(), depth+1)
+	}
+	return nil
+}
+
+func validatePagination(p *pbv2.Pagination) error {
+	if p == nil {
+		return errors.New("pagination must not be nil")
+	}
+	for _, dsi := range p.GetInfo() {
+		if dsi == nil {
+			return errors.New("data source info must not be nil")
+		}
+		switch info := dsi.GetDataSourceInfo().(type) {
+		case *pbv2.Pagination_DataSourceInfo_SpannerInfo:
+			if info.SpannerInfo == nil || info.SpannerInfo.GetOffset() < 0 {
+				return errors.New("spanner offset must be non-negative")
+			}
+		case *pbv2.Pagination_DataSourceInfo_BigtableInfo:
+			if info.BigtableInfo == nil {
+				return errors.New("bigtable pagination info must not be nil")
+			}
+			if err := validatePaginationInfo(info.BigtableInfo, 0); err != nil {
+				return err
+			}
+		case *pbv2.Pagination_DataSourceInfo_StringInfo:
+			// Validated by the target data source when decoded.
+		default:
+			return errors.New("data source info must specify a valid source type")
+		}
+	}
+	return nil
 }
