@@ -15,6 +15,8 @@ CREATE TABLE Edge (
 ) PRIMARY KEY(subject_id, predicate, object_id, provenance),
 INTERLEAVE IN Node;
 
+CREATE INDEX InEdge ON Edge(object_id, predicate, subject_id, provenance);
+
 CREATE TABLE TimeSeries (
   variable_measured STRING(1024) NOT NULL,
   entity1 STRING(1024) NOT NULL AS (JSON_VALUE(entities, '$.entity1')) STORED,
@@ -87,6 +89,15 @@ CREATE PROPERTY GRAPH DCGraph
         provenance,
         subject_id)
   );
+
+CREATE TABLE KeyValueStore (
+  type STRING(1024) NOT NULL,
+  key STRING(1024) NOT NULL,
+  provenance STRING(1024) NOT NULL,
+  value JSON
+) PRIMARY KEY(type, key, provenance);
+
+CREATE INDEX KeyValueStoreByProvenance ON KeyValueStore(provenance);
 
 CREATE TABLE LinkedEdge (
   predicate STRING(1024) NOT NULL,

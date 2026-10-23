@@ -24,6 +24,130 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 )
 
+func point(date, value string) *mixerspanner.DateValue {
+	return &mixerspanner.DateValue{Date: date, Value: value}
+}
+
+func lessObservation(a, b *mixerspanner.Observation) bool {
+	if a.VariableMeasured != b.VariableMeasured {
+		return a.VariableMeasured < b.VariableMeasured
+	}
+	if a.ObservationAbout != b.ObservationAbout {
+		return a.ObservationAbout < b.ObservationAbout
+	}
+	return a.FacetId < b.FacetId
+}
+
+func TestGetObservations(t *testing.T) {
+	s := requireSuite(t)
+	farmCensus := func(entity string, points ...*mixerspanner.DateValue) *mixerspanner.Observation {
+		return &mixerspanner.Observation{
+			VariableMeasured:  "Count_Farm",
+			ObservationAbout:  entity,
+			FacetId:           "farm-census",
+			Observations:      points,
+			ImportName:        "USDA_Census",
+			ProvenanceID:      "dc/base/USDA_Census",
+			ObservationPeriod: "P5Y",
+			MeasurementMethod: "USDA_Census",
+			Unit:              "Count",
+			ProvenanceURL:     "https://www.nass.usda.gov/AgCensus/",
+		}
+	}
+	farmArea := func(points ...*mixerspanner.DateValue) *mixerspanner.Observation {
+		return &mixerspanner.Observation{
+			VariableMeasured:  "Area_Farm",
+			ObservationAbout:  "geoId/01",
+			FacetId:           "farm-area",
+			Observations:      points,
+			ProvenanceID:      "dc/base/OtherAg",
+			MeasurementMethod: "Survey",
+			Unit:              "Acre",
+		}
+	}
+
+	tests := []struct {
+		name      string
+		variables []string
+		entities  []string
+		date      string
+		want      []*mixerspanner.Observation
+	}{
+		{
+			name:      "variables and entities, all dates",
+			variables: []string{"Count_Farm", "Area_Farm"},
+			entities:  []string{"geoId/01", "geoId/02"},
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2017", "100"), point("2022", "90")),
+				farmCensus("geoId/02", point("2022", "10")),
+				farmArea(point("2022", "5000")),
+			},
+		},
+		{
+			name:      "variables and entities, latest date",
+			variables: []string{"Count_Farm", "Area_Farm"},
+			entities:  []string{"geoId/01", "geoId/02"},
+			date:      "LATEST",
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2022", "90")),
+				farmCensus("geoId/02", point("2022", "10")),
+				farmArea(point("2022", "5000")),
+			},
+		},
+		{
+			name:      "variables and entities, specific date drops series without it",
+			variables: []string{"Count_Farm", "Area_Farm"},
+			entities:  []string{"geoId/01", "geoId/02"},
+			date:      "2017",
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2017", "100")),
+			},
+		},
+		{
+			name:      "entity without data",
+			variables: []string{"Count_Farm"},
+			entities:  []string{"geoId/99"},
+		},
+		{
+			name:     "entities only, all dates",
+			entities: []string{"geoId/01"},
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2017", "100"), point("2022", "90")),
+				farmArea(point("2022", "5000")),
+			},
+		},
+		{
+			name:     "entities only, latest date",
+			entities: []string{"geoId/01"},
+			date:     "LATEST",
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2022", "90")),
+				farmArea(point("2022", "5000")),
+			},
+		},
+		{
+			name:     "entities only, specific date",
+			entities: []string{"geoId/01"},
+			date:     "2017",
+			want: []*mixerspanner.Observation{
+				farmCensus("geoId/01", point("2017", "100")),
+			},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got, err := s.spannerClient.GetObservations(context.Background(), test.variables, test.entities, test.date)
+			if err != nil {
+				t.Fatalf("GetObservations() error = %v", err)
+			}
+			if diff := cmp.Diff(test.want, got, cmpopts.SortSlices(lessObservation), cmpopts.EquateEmpty()); diff != "" {
+				t.Errorf("GetObservations() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 	s := requireSuite(t)
 	containedInPlace := &v2.ContainedInPlace{
@@ -31,36 +155,43 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 		ChildPlaceType: "Country",
 	}
 	variables := []string{"Count_Person", "Count_TimeSeries"}
-	want := []*mixerspanner.Observation{
-		{
-			VariableMeasured:  "Count_Person",
+	usaSeries := func(variable, facetID, measurementMethod string, points ...*mixerspanner.DateValue) *mixerspanner.Observation {
+		return &mixerspanner.Observation{
+			VariableMeasured:  variable,
 			ObservationAbout:  "country/USA",
-			FacetId:           "facet",
-			Observations:      mixerspanner.TimeSeries{{Date: "2024", Value: "100"}},
+			FacetId:           facetID,
+			Observations:      points,
 			ProvenanceID:      "dc/base/HumanReadableStatVars",
 			ObservationPeriod: "P1Y",
-			MeasurementMethod: "Census",
+			MeasurementMethod: measurementMethod,
 			Unit:              "Count",
+		}
+	}
+	dates := []struct {
+		date string
+		want []*mixerspanner.Observation
+	}{
+		{
+			date: "latest",
+			want: []*mixerspanner.Observation{
+				usaSeries("Count_Person", "facet", "Census", point("2024", "100")),
+				usaSeries("Count_TimeSeries", "facet-a", "Census", point("2022", "12")),
+				usaSeries("Count_TimeSeries", "facet-b", "Survey", point("2023", "23")),
+			},
 		},
 		{
-			VariableMeasured:  "Count_TimeSeries",
-			ObservationAbout:  "country/USA",
-			FacetId:           "facet-a",
-			Observations:      mixerspanner.TimeSeries{{Date: "2022", Value: "12"}},
-			ProvenanceID:      "dc/base/HumanReadableStatVars",
-			ObservationPeriod: "P1Y",
-			MeasurementMethod: "Census",
-			Unit:              "Count",
+			date: "",
+			want: []*mixerspanner.Observation{
+				usaSeries("Count_Person", "facet", "Census", point("2024", "100")),
+				usaSeries("Count_TimeSeries", "facet-a", "Census", point("2020", "10"), point("2022", "12")),
+				usaSeries("Count_TimeSeries", "facet-b", "Survey", point("2021", "20"), point("2023", "23")),
+			},
 		},
 		{
-			VariableMeasured:  "Count_TimeSeries",
-			ObservationAbout:  "country/USA",
-			FacetId:           "facet-b",
-			Observations:      mixerspanner.TimeSeries{{Date: "2023", Value: "23"}},
-			ProvenanceID:      "dc/base/HumanReadableStatVars",
-			ObservationPeriod: "P1Y",
-			MeasurementMethod: "Survey",
-			Unit:              "Count",
+			date: "2022",
+			want: []*mixerspanner.Observation{
+				usaSeries("Count_TimeSeries", "facet-a", "Census", point("2022", "12")),
+			},
 		},
 	}
 
@@ -101,8 +232,9 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 	}
 
 	// Query-builder goldens assert which index hint each configuration emits.
-	// These emulator cases complement them by proving that both access paths
-	// execute against the same data and preserve the latest-observation result.
+	// These emulator cases complement them by proving that every access path
+	// returns the same observations for the latest date, all dates and a
+	// specific date.
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			client, err := s.newSpannerClient(context.Background(), test.queryConfig)
@@ -111,23 +243,16 @@ func TestGetObservationsContainedInPlaceAccessPaths(t *testing.T) {
 			}
 			defer client.Close()
 
-			got, err := client.GetObservationsContainedInPlace(
-				context.Background(), variables, containedInPlace, "latest")
-			if err != nil {
-				t.Fatalf("GetObservationsContainedInPlace() error = %v", err)
-			}
+			for _, d := range dates {
+				got, err := client.GetObservationsContainedInPlace(
+					context.Background(), variables, containedInPlace, d.date)
+				if err != nil {
+					t.Fatalf("GetObservationsContainedInPlace(date=%q) error = %v", d.date, err)
+				}
 
-			less := func(a, b *mixerspanner.Observation) bool {
-				if a.VariableMeasured != b.VariableMeasured {
-					return a.VariableMeasured < b.VariableMeasured
+				if diff := cmp.Diff(d.want, got, cmpopts.SortSlices(lessObservation)); diff != "" {
+					t.Errorf("date=%q: observations mismatch (-want +got):\n%s", d.date, diff)
 				}
-				if a.ObservationAbout != b.ObservationAbout {
-					return a.ObservationAbout < b.ObservationAbout
-				}
-				return a.FacetId < b.FacetId
-			}
-			if diff := cmp.Diff(want, got, cmpopts.SortSlices(less)); diff != "" {
-				t.Errorf("observations mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}

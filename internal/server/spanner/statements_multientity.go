@@ -82,9 +82,16 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	if err := validateMultiEntityTableConfig(cfg); err != nil {
 		return nil, err
 	}
-	sdmxDateStatementHint := "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n\t\t"
+	sdmxDateStatementHint := columnarBatchStatementHint(cfg) + "\t\t"
+	dateStatementHint := columnarBatchStatementHint(cfg)
+	// Queries that force the NULL_FILTERED entity2/entity3 indexes always filter
+	// NULL entities explicitly, but the emulator can't prove that and rejects the
+	// index without its bypass hint. Production SQL is unchanged.
+	entity2IndexHint := cfg.TimeSeriesByEntity2Index
+	entity3IndexHint := cfg.TimeSeriesByEntity3Index
 	if cfg.spannerEmulatorCompatibility {
-		sdmxDateStatementHint = "\t\t"
+		entity2IndexHint += ", spanner_emulator.disable_query_null_filtered_index_check=true"
+		entity3IndexHint += ", spanner_emulator.disable_query_null_filtered_index_check=true"
 	}
 	buildSdmxAvailabilityWithDates := func(timeSeriesTable, observationTable, joinHint string) string {
 		return fmt.Sprintf(`%[1]sSELECT DISTINCT %%[1]s AS value
@@ -130,8 +137,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			ON t.variable_measured = p.var AND t.entity1 = p.ent`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Retrieve observations for a specific date (both variables and entities present)
-		getObsBothWithDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH params AS (
+		getObsBothWithDate: fmt.Sprintf(`%[3]s		WITH params AS (
 			SELECT var, ent
 			FROM UNNEST(@variables) AS var
 			CROSS JOIN UNNEST(@entities) AS ent
@@ -162,7 +168,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM series t
 		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable),
+		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable, dateStatementHint),
 
 		// Retrieve latest observation (both variables and entities present)
 		getObsBothLatest: fmt.Sprintf(`		WITH params AS (
@@ -217,8 +223,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		WHERE t.entity1 IN UNNEST(@entities)`, cfg.ObservationTable, cfg.TimeSeriesTable),
 
 		// Retrieve observations where only entities are present (fetch all variables, specific date)
-		getObsEntitiesOnlyWithDate: fmt.Sprintf(`		@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}
-		WITH series AS (
+		getObsEntitiesOnlyWithDate: fmt.Sprintf(`%[3]s		WITH series AS (
 			SELECT
 				t.variable_measured,
 				t.entity1,
@@ -243,7 +248,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		FROM series t
 		JOIN@{JOIN_METHOD=APPLY_JOIN} %[1]s o
 		USING (variable_measured, entity1, extra_entities_id, facet_id)
-		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable),
+		WHERE o.date = @date`, cfg.ObservationTable, cfg.TimeSeriesTable, dateStatementHint),
 
 		// Retrieve observations where only entities are present (fetch all variables, latest only)
 		getObsEntitiesOnlyLatest: fmt.Sprintf(`		SELECT
@@ -522,7 +527,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, entity2IndexHint, entity3IndexHint),
 
 		// Check existence when only variables are specified
 		getStatVarsByEntityVarsOnly: fmt.Sprintf(`		WITH
@@ -545,7 +550,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, entity2IndexHint, entity3IndexHint),
 
 		// Check existence when only entities are specified
 		getStatVarsByEntityEntitiesOnly: fmt.Sprintf(`		WITH
@@ -568,7 +573,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
+		SELECT variable_measured, entity FROM slot3`, cfg.TimeSeriesTable, entity2IndexHint, entity3IndexHint),
 
 		checkGroupPlaceExistence: fmt.Sprintf(`		WITH
 		group_members AS (
@@ -617,7 +622,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 			UNION ALL
 			SELECT variable, entity FROM slot3
 		) AS combined
-		ORDER BY variable, entity`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
+		ORDER BY variable, entity`, cfg.TimeSeriesTable, entity2IndexHint, entity3IndexHint),
 
 		getStatVarGroupNode: fmt.Sprintf(`		WITH ChildSVGs AS (
 				SELECT DISTINCT
@@ -781,7 +786,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 						SELECT t.variable_measured, t.entity3 AS entity, t.provenance
 						FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
 						%%[3]s
-					) AS ts`, cfg.TimeSeriesTable, cfg.TimeSeriesByEntity2Index, cfg.TimeSeriesByEntity3Index),
+					) AS ts`, cfg.TimeSeriesTable, entity2IndexHint, entity3IndexHint),
 
 		joinDescendentStatVarsByProvenance: `
 					JOIN Edge@{FORCE_INDEX=InEdge} e1
@@ -877,11 +882,18 @@ func newContainedInPlaceAccessPathStatements(cfg TableConfig, placesCTE string) 
 	}
 }
 
-func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource string) containedInPlaceStatements {
-	statementHint := "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n"
+// columnarBatchStatementHint returns the statement hint for queries that read
+// many dates. The emulator rejects both SCAN_METHOD=COLUMNAR and
+// EXECUTION_METHOD, so in emulator mode the whole hint is omitted.
+func columnarBatchStatementHint(cfg TableConfig) string {
 	if cfg.spannerEmulatorCompatibility {
-		statementHint = ""
+		return ""
 	}
+	return "\t\t@{SCAN_METHOD=COLUMNAR, EXECUTION_METHOD=BATCH}\n"
+}
+
+func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource string) containedInPlaceStatements {
+	statementHint := columnarBatchStatementHint(cfg)
 	return containedInPlaceStatements{
 		// Join all dates before aggregation to optimize total result throughput.
 		all: statementHint + fmt.Sprintf(`		WITH %[3]s,
