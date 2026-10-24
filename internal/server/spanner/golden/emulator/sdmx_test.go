@@ -58,6 +58,37 @@ func (s *sdmxRemoteDataSource) SdmxAvailability(context.Context, *sdmxpb.SdmxAva
 	return &sdmxpb.SdmxAvailabilityResult{}, nil
 }
 
+type sdmxAccessPath struct {
+	name        string
+	queryConfig mixerspanner.QueryConfig
+}
+
+// sdmxContainedInPlaceAccessPaths lists the query configurations that resolve
+// SDMX containedInPlace+ constraints: the Edge self-join and the materialized
+// LinkedEdge table. The query-builder goldens assert which SQL each
+// configuration emits; the emulator cases below run both against the shared
+// fixture, whose LinkedEdge rows mirror its linkedContainedInPlace edges, so
+// both access paths must reproduce the same goldens.
+var sdmxContainedInPlaceAccessPaths = []sdmxAccessPath{
+	{name: "edge join"},
+	{
+		name:        "materialized LinkedEdge",
+		queryConfig: mixerspanner.QueryConfig{UseMaterializedLinkedEdge: true},
+	},
+}
+
+// newSDMXAccessPathClient returns a Spanner client for queryConfig that is
+// closed after t and all of its subtests complete.
+func newSDMXAccessPathClient(t *testing.T, s *emulatorSuite, queryConfig mixerspanner.QueryConfig) mixerspanner.SpannerClient {
+	t.Helper()
+	client, err := s.newSpannerClient(context.Background(), queryConfig)
+	if err != nil {
+		t.Fatalf("newSpannerClient() error = %v", err)
+	}
+	t.Cleanup(client.Close)
+	return client
+}
+
 func TestSDMXData(t *testing.T) {
 	sdmxService := newSDMXService(requireSuite(t).spannerClient)
 	tests := []struct {
@@ -115,26 +146,6 @@ func TestSDMXData(t *testing.T) {
 			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FZZZ",
 			golden: "data_empty.csv",
 		},
-		{
-			name:   "contained destination on entity1",
-			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&c[sourceCountry]=country%2FUSA",
-			golden: "data_two_entities.csv",
-		},
-		{
-			name:   "contained source on entity2",
-			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
-			golden: "data_two_entities.csv",
-		},
-		{
-			name:   "same containment on entity2 and entity3",
-			query:  "c[variableMeasured]=Count_MigrationByObservationAbout&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
-			golden: "data_explicit_observation_about.csv",
-		},
-		{
-			name:   "empty containment result",
-			query:  "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
-			golden: "data_empty.csv",
-		},
 	}
 	for _, testCase := range tests {
 		t.Run(testCase.name, func(t *testing.T) {
@@ -151,20 +162,91 @@ func TestSDMXData(t *testing.T) {
 	}
 }
 
+func TestSDMXDataContainedInPlaceAccessPaths(t *testing.T) {
+	s := requireSuite(t)
+	tests := []struct {
+		name   string
+		query  string
+		golden string
+	}{
+		{
+			name:   "contained destination on entity1",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&c[sourceCountry]=country%2FUSA",
+			golden: "data_two_entities.csv",
+		},
+		{
+			name:   "contained source on entity2",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry]=country%2FCAN&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_two_entities.csv",
+		},
+		{
+			name:   "same containment on entity2 and entity3",
+			query:  "c[variableMeasured]=Count_MigrationByObservationAbout&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_explicit_observation_about.csv",
+		},
+		{
+			name:   "same containment on all three entity slots",
+			query:  "c[variableMeasured]=Count_MigrationByObservationAbout&c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_explicit_observation_about.csv",
+		},
+		{
+			name:   "distinct ancestors on entity1 and entity2",
+			query:  "c[variableMeasured]=Count_Refugee&c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&c[sourceCountry.containedInPlace+]=asia&c[sourceCountry.typeOf]=Country",
+			golden: "data_contained_distinct_ancestors.csv",
+		},
+		{
+			name:   "disjoint ancestors on entity1 and entity2",
+			query:  "c[variableMeasured]=Count_Migration&c[destinationCountry.containedInPlace+]=europe&c[destinationCountry.typeOf]=Country&c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country",
+			golden: "data_empty.csv",
+		},
+		{
+			name:   "empty containment result",
+			query:  "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
+			golden: "data_empty.csv",
+		},
+	}
+	for _, accessPath := range sdmxContainedInPlaceAccessPaths {
+		t.Run(accessPath.name, func(t *testing.T) {
+			sdmxService := newSDMXService(newSDMXAccessPathClient(t, s, accessPath.queryConfig))
+			for _, testCase := range tests {
+				t.Run(testCase.name, func(t *testing.T) {
+					t.Parallel()
+					response, err := sdmxService.Data(context.Background(), emulatorDataRequest(testCase.query))
+					if err != nil {
+						t.Fatalf("Data() error = %v", err)
+					}
+					if response.ContentType != sdmxformat.CSVContentType {
+						t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
+					}
+					compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
+				})
+			}
+		})
+	}
+}
+
 func TestSDMXDataTimePeriods(t *testing.T) {
-	sdmxService := newSDMXService(requireSuite(t).spannerClient)
-	paths := []struct {
+	s := requireSuite(t)
+	type dataPath struct {
 		name     string
 		selector string
-	}{
+		client   mixerspanner.SpannerClient
+	}
+	// Direct selectors do not resolve containment, so they run once on the
+	// shared client; contained selectors run on every containment access path.
+	paths := []dataPath{
 		{
 			name:     "direct",
 			selector: "c[observationAbout]=country%2FUSA",
+			client:   s.spannerClient,
 		},
-		{
-			name:     "contained",
+	}
+	for _, accessPath := range sdmxContainedInPlaceAccessPaths {
+		paths = append(paths, dataPath{
+			name:     "contained/" + accessPath.name,
 			selector: "c[observationAbout.containedInPlace+]=northamerica&c[observationAbout.typeOf]=Country",
-		},
+			client:   newSDMXAccessPathClient(t, s, accessPath.queryConfig),
+		})
 	}
 	timeSelections := []struct {
 		name   string
@@ -203,6 +285,7 @@ func TestSDMXDataTimePeriods(t *testing.T) {
 	}
 
 	for _, path := range paths {
+		sdmxService := newSDMXService(path.client)
 		for _, selection := range timeSelections {
 			t.Run(path.name+"/"+selection.name, func(t *testing.T) {
 				t.Parallel()
@@ -224,6 +307,7 @@ func TestSDMXDataTimePeriods(t *testing.T) {
 }
 
 func TestSDMXDataUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
+	s := requireSuite(t)
 	earthCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
 	northAmericaCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "northamerica", ChildPlaceType: "Country"}
 	europeCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "europe", ChildPlaceType: "Country"}
@@ -315,60 +399,65 @@ func TestSDMXDataUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
 		},
 	}
 
-	for _, testCase := range tests {
-		t.Run(testCase.name, func(t *testing.T) {
-			if testCase.verifyLocalEmpty {
-				response, err := newSDMXService(requireSuite(t).spannerClient).Data(
-					context.Background(), emulatorDataRequest(testCase.query),
-				)
-				if err != nil {
-					t.Fatalf("local Data() error = %v", err)
-				}
-				compareEmulatorCSVGolden(t, "data_empty.csv", string(response.Body))
-			}
-
-			var mu sync.Mutex
-			calls := map[datacommons.ContainedInPlaceConstraint]int{}
-			var requestErrors []string
-			remoteSource := &sdmxRemoteDataSource{
-				nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
-					relation, err := matchSdmxRemoteExpansion(req, expansions)
-					if err != nil {
-						mu.Lock()
-						requestErrors = append(requestErrors, err.Error())
-						mu.Unlock()
-						return nil, err
+	for _, accessPath := range sdmxContainedInPlaceAccessPaths {
+		t.Run(accessPath.name, func(t *testing.T) {
+			client := newSDMXAccessPathClient(t, s, accessPath.queryConfig)
+			for _, testCase := range tests {
+				t.Run(testCase.name, func(t *testing.T) {
+					if testCase.verifyLocalEmpty {
+						response, err := newSDMXService(client).Data(
+							context.Background(), emulatorDataRequest(testCase.query),
+						)
+						if err != nil {
+							t.Fatalf("local Data() error = %v", err)
+						}
+						compareEmulatorCSVGolden(t, "data_empty.csv", string(response.Body))
 					}
-					mu.Lock()
-					calls[relation]++
-					mu.Unlock()
-					return sdmxRemoteNodeResponse(relation, expansions[relation]), nil
-				},
-			}
-			sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
-			response, err := sdmxService.Data(context.Background(), emulatorDataRequest(testCase.query))
-			if err != nil {
-				t.Fatalf("Data() error = %v", err)
-			}
 
-			mu.Lock()
-			gotCalls := maps.Clone(calls)
-			gotRequestErrors := slices.Clone(requestErrors)
-			mu.Unlock()
-			if len(gotRequestErrors) > 0 {
-				t.Fatalf("unexpected remote Node requests: %v", gotRequestErrors)
+					var mu sync.Mutex
+					calls := map[datacommons.ContainedInPlaceConstraint]int{}
+					var requestErrors []string
+					remoteSource := &sdmxRemoteDataSource{
+						nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+							relation, err := matchSdmxRemoteExpansion(req, expansions)
+							if err != nil {
+								mu.Lock()
+								requestErrors = append(requestErrors, err.Error())
+								mu.Unlock()
+								return nil, err
+							}
+							mu.Lock()
+							calls[relation]++
+							mu.Unlock()
+							return sdmxRemoteNodeResponse(relation, expansions[relation]), nil
+						},
+					}
+					sdmxService := newSDMXServiceWithRemote(client, remoteSource)
+					response, err := sdmxService.Data(context.Background(), emulatorDataRequest(testCase.query))
+					if err != nil {
+						t.Fatalf("Data() error = %v", err)
+					}
+
+					mu.Lock()
+					gotCalls := maps.Clone(calls)
+					gotRequestErrors := slices.Clone(requestErrors)
+					mu.Unlock()
+					if len(gotRequestErrors) > 0 {
+						t.Fatalf("unexpected remote Node requests: %v", gotRequestErrors)
+					}
+					wantCalls := map[datacommons.ContainedInPlaceConstraint]int{}
+					for _, relation := range testCase.wantRelations {
+						wantCalls[relation] = 1
+					}
+					if diff := cmp.Diff(wantCalls, gotCalls); diff != "" {
+						t.Fatalf("Node() calls mismatch (-want +got):\n%s", diff)
+					}
+					if response.ContentType != sdmxformat.CSVContentType {
+						t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
+					}
+					compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
+				})
 			}
-			wantCalls := map[datacommons.ContainedInPlaceConstraint]int{}
-			for _, relation := range testCase.wantRelations {
-				wantCalls[relation] = 1
-			}
-			if diff := cmp.Diff(wantCalls, gotCalls); diff != "" {
-				t.Fatalf("Node() calls mismatch (-want +got):\n%s", diff)
-			}
-			if response.ContentType != sdmxformat.CSVContentType {
-				t.Fatalf("Data() content type = %q, want %q", response.ContentType, sdmxformat.CSVContentType)
-			}
-			compareEmulatorCSVGolden(t, testCase.golden, string(response.Body))
 		})
 	}
 }
@@ -505,7 +594,7 @@ func TestSDMXAvailability(t *testing.T) {
 }
 
 func TestSDMXAvailabilityContainedInPlace(t *testing.T) {
-	sdmxService := newSDMXService(requireSuite(t).spannerClient)
+	s := requireSuite(t)
 	baseQuery := "c[variableMeasured]=Count_Migration,Count_Refugee&" +
 		"c[sourceCountry.containedInPlace+]=northamerica&c[sourceCountry.typeOf]=Country"
 	tests := []struct {
@@ -527,27 +616,39 @@ func TestSDMXAvailabilityContainedInPlace(t *testing.T) {
 			golden:    "availability_contained_source_country_with_time_periods.json",
 		},
 		{
+			name:      "distinct ancestors on entity1 and entity2",
+			component: "unit",
+			query: "c[variableMeasured]=Count_Migration,Count_Refugee&" +
+				"c[destinationCountry.containedInPlace+]=northamerica&c[destinationCountry.typeOf]=Country&" +
+				"c[sourceCountry.containedInPlace+]=asia&c[sourceCountry.typeOf]=Country",
+			golden: "availability_contained_distinct_ancestors.json",
+		},
+		{
 			name:      "empty entity2",
 			component: "destinationCountry",
 			query:     "c[variableMeasured]=Count_Migration&c[sourceCountry.containedInPlace+]=oceania&c[sourceCountry.typeOf]=Country",
 			golden:    "availability_contained_empty.json",
 		},
 	}
-	for _, testCase := range tests {
-		testCase := testCase
-		t.Run(testCase.name, func(t *testing.T) {
-			t.Parallel()
-			response, err := sdmxService.Availability(
-				context.Background(),
-				emulatorAvailabilityRequest(testCase.component, testCase.query),
-			)
-			if err != nil {
-				t.Fatalf("Availability() error = %v", err)
+	for _, accessPath := range sdmxContainedInPlaceAccessPaths {
+		t.Run(accessPath.name, func(t *testing.T) {
+			sdmxService := newSDMXService(newSDMXAccessPathClient(t, s, accessPath.queryConfig))
+			for _, testCase := range tests {
+				t.Run(testCase.name, func(t *testing.T) {
+					t.Parallel()
+					response, err := sdmxService.Availability(
+						context.Background(),
+						emulatorAvailabilityRequest(testCase.component, testCase.query),
+					)
+					if err != nil {
+						t.Fatalf("Availability() error = %v", err)
+					}
+					if response.ContentType != sdmxformat.StructureJSONType {
+						t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+					}
+					compareEmulatorJSONGolden(t, testCase.golden, string(response.Body))
+				})
 			}
-			if response.ContentType != sdmxformat.StructureJSONType {
-				t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
-			}
-			compareEmulatorJSONGolden(t, testCase.golden, string(response.Body))
 		})
 	}
 }
@@ -632,36 +733,41 @@ func TestSDMXAvailabilityTimePeriods(t *testing.T) {
 }
 
 func TestSDMXAvailabilityUsesRemoteContainedInPlaceWithLocalObservations(t *testing.T) {
+	s := requireSuite(t)
 	relation := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
 	expansions := map[datacommons.ContainedInPlaceConstraint][]string{
 		relation: {"country/USA"},
 	}
-	var calls int
-	remoteSource := &sdmxRemoteDataSource{
-		nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
-			got, err := matchSdmxRemoteExpansion(req, expansions)
-			if err != nil {
-				return nil, err
+	for _, accessPath := range sdmxContainedInPlaceAccessPaths {
+		t.Run(accessPath.name, func(t *testing.T) {
+			var calls int
+			remoteSource := &sdmxRemoteDataSource{
+				nodeFunc: func(_ context.Context, req *pbv2.NodeRequest, _ int) (*pbv2.NodeResponse, error) {
+					got, err := matchSdmxRemoteExpansion(req, expansions)
+					if err != nil {
+						return nil, err
+					}
+					calls++
+					return sdmxRemoteNodeResponse(got, expansions[got]), nil
+				},
 			}
-			calls++
-			return sdmxRemoteNodeResponse(got, expansions[got]), nil
-		},
+			sdmxService := newSDMXServiceWithRemote(newSDMXAccessPathClient(t, s, accessPath.queryConfig), remoteSource)
+			response, err := sdmxService.Availability(context.Background(), emulatorAvailabilityRequest(
+				"destinationCountry",
+				"c[variableMeasured]=Count_Migration,Count_Refugee&c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
+			))
+			if err != nil {
+				t.Fatalf("Availability() error = %v", err)
+			}
+			if calls != 1 {
+				t.Fatalf("Node() calls = %d, want 1", calls)
+			}
+			if response.ContentType != sdmxformat.StructureJSONType {
+				t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
+			}
+			compareEmulatorJSONGolden(t, "availability_remote_contained_source_country.json", string(response.Body))
+		})
 	}
-	sdmxService := newSDMXServiceWithRemote(requireSuite(t).spannerClient, remoteSource)
-	response, err := sdmxService.Availability(context.Background(), emulatorAvailabilityRequest(
-		"destinationCountry",
-		"c[variableMeasured]=Count_Migration,Count_Refugee&c[sourceCountry.containedInPlace+]=Earth&c[sourceCountry.typeOf]=Country",
-	))
-	if err != nil {
-		t.Fatalf("Availability() error = %v", err)
-	}
-	if calls != 1 {
-		t.Fatalf("Node() calls = %d, want 1", calls)
-	}
-	if response.ContentType != sdmxformat.StructureJSONType {
-		t.Fatalf("Availability() content type = %q, want %q", response.ContentType, sdmxformat.StructureJSONType)
-	}
-	compareEmulatorJSONGolden(t, "availability_remote_contained_source_country.json", string(response.Body))
 }
 
 func TestSDMXRejectsIncompatibleStatVariableShapes(t *testing.T) {
