@@ -19,11 +19,11 @@ const (
 )
 
 // V2Spec returns the VersionSpec for MCP v2, the entity-first tool surface under development.
-// Tools are added incrementally while v2 is in preview.
 func V2Spec() VersionSpec {
 	return VersionSpec{
 		ID:    "v2",
 		Stage: StagePreview,
+		// Tools are added incrementally while v2 is in preview.
 		Tools: []ToolSpec{
 			newToolSpec("resolve_entities", v2ResolveEntitiesInstructionFile, (*McpTools).V2ResolveEntities),
 		},
