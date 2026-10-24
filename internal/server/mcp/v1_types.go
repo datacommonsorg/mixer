@@ -20,8 +20,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/agent"
 )
 
-// AgentBackend defines the subset of agent.Service methods required by the MCP tools.
-type AgentBackend interface {
+// V1AgentBackend defines the agent.Service methods required by the v1 MCP tools.
+type V1AgentBackend interface {
 	SearchIndicators(ctx context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error)
 	GetVariableMetadata(ctx context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error)
 	GetObservations(ctx context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error)

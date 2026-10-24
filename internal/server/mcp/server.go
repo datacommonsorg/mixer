@@ -185,6 +185,7 @@ func newConfiguredMCPServer(
 			toolSpec.Name,
 			mcp.WithDescription(loader.Load(ctx, toolSpec.InstructionFile)),
 			toolSpec.InputSchema,
+			readOnlyToolAnnotations(),
 		)
 		srv.AddTool(tool, toolSpec.Handler(tools))
 	}
@@ -239,6 +240,19 @@ func newDocumentationHooks(docInstructions string) *server.Hooks {
 		}
 	})
 	return hooks
+}
+
+// readOnlyToolAnnotations marks a tool as read-only, non-destructive and idempotent. All Data Commons
+// tools only query data, and mcp-go's defaults (destructive, not read-only) can make clients ask users
+// to confirm every call. OpenWorldHint keeps its default (true), since tools query an external
+// knowledge graph and resolvers such as Google Maps.
+func readOnlyToolAnnotations() mcp.ToolOption {
+	return mcp.WithToolAnnotation(mcp.ToolAnnotation{
+		ReadOnlyHint:    mcp.ToBoolPtr(true),
+		DestructiveHint: mcp.ToBoolPtr(false),
+		IdempotentHint:  mcp.ToBoolPtr(true),
+		OpenWorldHint:   mcp.ToBoolPtr(true),
+	})
 }
 
 // withToolInputSchema generates a JSON Schema from T, simplifies nullable type lists

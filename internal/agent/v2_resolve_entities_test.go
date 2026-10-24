@@ -1,0 +1,637 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package agent
+
+import (
+	"context"
+	"errors"
+	"slices"
+	"strings"
+	"sync"
+	"testing"
+	"time"
+
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
+)
+
+// mockV2ResolveEntitiesServer returns canned V2Resolve candidates keyed by resolveKey and records
+// every resolve call so tests can assert which resolvers ran.
+type mockV2ResolveEntitiesServer struct {
+	Mixer
+	resolveCandidates map[string][]*pbv2.ResolveResponse_Entity_Candidate
+	resolverErrs      map[string]error // keyed by resolver name
+	nodeData          map[string]*pbv2.LinkedGraph
+	nodeErr           error // applies to enrichment lookups only, not the place-type lookup
+	placeTypesErr     error // applies to the place-type lookup only
+
+	mu    sync.Mutex
+	calls []string
+}
+
+// resolveKey identifies a canned resolve result by resolver, property expression, and node.
+func resolveKey(resolver, property, node string) string {
+	return resolver + "|" + property + "|" + node
+}
+
+func (m *mockV2ResolveEntitiesServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+	resp := &pbv2.ResolveResponse{}
+	for _, node := range in.GetNodes() {
+		key := resolveKey(in.GetResolver(), in.GetProperty(), node)
+		m.mu.Lock()
+		m.calls = append(m.calls, key)
+		m.mu.Unlock()
+		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
+			Node:       node,
+			Candidates: m.resolveCandidates[key],
+		})
+	}
+	if err := m.resolverErrs[in.GetResolver()]; err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (m *mockV2ResolveEntitiesServer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	if in.GetProperty() == v2PlaceSubclassProperty {
+		if m.placeTypesErr != nil {
+			return nil, m.placeTypesErr
+		}
+		// Mirrors the legacy V2Node path, which rejects unfiltered "+" arcs unless diverted to Spanner
+		// (X-Disable-Spanner overrides the divert).
+		if !util.IsHeaderTrue(ctx, util.XDivertSpanner) || util.IsHeaderTrue(ctx, util.XDisableSpanner) {
+			return nil, status.Error(codes.InvalidArgument, "unfiltered + arcs require Spanner")
+		}
+		if ctx.Err() != nil {
+			return nil, ctx.Err()
+		}
+	} else if m.nodeErr != nil {
+		return nil, m.nodeErr
+	}
+	resp := &pbv2.NodeResponse{Data: make(map[string]*pbv2.LinkedGraph)}
+	for _, node := range in.GetNodes() {
+		if graph, ok := m.nodeData[node]; ok {
+			resp.Data[node] = graph
+		}
+	}
+	return resp, nil
+}
+
+// placeSubclassGraphs returns V2Node data for the place type roots, as returned for "<-subClassOf+".
+func placeSubclassGraphs(subclasses ...string) map[string]*pbv2.LinkedGraph {
+	nodes := make([]*pb.EntityInfo, 0, len(subclasses))
+	for _, dcid := range subclasses {
+		nodes = append(nodes, &pb.EntityInfo{Dcid: dcid})
+	}
+	return map[string]*pbv2.LinkedGraph{
+		"AdministrativeArea": {Arcs: map[string]*pbv2.Nodes{"subClassOf+": {Nodes: nodes}}},
+	}
+}
+
+// withPlaceSubclasses returns nodeData plus place-type root subclasses used by most tests.
+func withPlaceSubclasses(nodeData map[string]*pbv2.LinkedGraph) map[string]*pbv2.LinkedGraph {
+	merged := placeSubclassGraphs("Country", "State", "County", "City", "AdministrativeArea1")
+	for k, v := range nodeData {
+		merged[k] = v
+	}
+	return merged
+}
+
+// nodeGraph builds a LinkedGraph with a name and typeOf values for V2Node mocks.
+func nodeGraph(name string, types ...string) *pbv2.LinkedGraph {
+	typeNodes := make([]*pb.EntityInfo, 0, len(types))
+	for _, t := range types {
+		typeNodes = append(typeNodes, &pb.EntityInfo{Dcid: t})
+	}
+	return &pbv2.LinkedGraph{
+		Arcs: map[string]*pbv2.Nodes{
+			"name":   {Nodes: []*pb.EntityInfo{{Value: name}}},
+			"typeOf": {Nodes: typeNodes},
+		},
+	}
+}
+
+func TestV2ResolveEntities(t *testing.T) {
+	const unfiltered = PropDescription
+	tests := []struct {
+		name              string
+		req               *V2ResolveEntitiesRequest
+		resolveCandidates map[string][]*pbv2.ResolveResponse_Entity_Candidate
+		resolverErrs      map[string]error
+		nodeData          map[string]*pbv2.LinkedGraph
+		nodeErr           error
+		wantRows          [][]any
+		wantCalls         []string
+	}{
+		{
+			name: "place without hints uses place resolver and enriches name and types",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "California"}}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverPlace, unfiltered, "California"): {{Dcid: "geoId/06"}},
+			},
+			nodeData: map[string]*pbv2.LinkedGraph{"geoId/06": nodeGraph("California", "State", "Place")},
+			wantRows: [][]any{
+				{"California", "geoId/06", "California", []string{"State"}},
+			},
+			wantCalls: []string{resolveKey(ResolverPlace, unfiltered, "California")},
+		},
+		{
+			name: "place type hint filters place resolution by the hinted place type",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Georgia", EntityTypeHints: []string{"country"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "country"):                                       {{Dcid: "Country"}, {Dcid: "CountryGroup"}},
+				resolveKey(ResolverPlace, "<-description{typeOf:[Country]}->dcid", "Georgia"): {{Dcid: "country/GEO"}},
+			},
+			nodeData: map[string]*pbv2.LinkedGraph{"country/GEO": nodeGraph("Georgia", "Country", "Country")},
+			wantRows: [][]any{
+				{"Georgia", "country/GEO", "Georgia", []string{"Country"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "country"),
+				resolveKey(ResolverPlace, "<-description{typeOf:[Country]}->dcid", "Georgia"),
+			},
+		},
+		{
+			name: "hinted place type is not dropped when the filtered place search finds nothing",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Santa Clara", EntityTypeHints: []string{"county"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "county"):                  {{Dcid: "County"}},
+				resolveKey(ResolverPlace, unfiltered, "Santa Clara"):    {{Dcid: "geoId/0669084"}},
+				resolveKey(ResolverNonPlace, unfiltered, "Santa Clara"): {{Dcid: "nces/1", TypeOf: []string{"PublicSchool"}}},
+			},
+			wantRows: [][]any{
+				{"Santa Clara", "", "", []string{}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "county"),
+				resolveKey(ResolverPlace, "<-description{typeOf:[County]}->dcid", "Santa Clara"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[County]}->dcid", "Santa Clara"),
+			},
+		},
+		{
+			name: "place query falls back to unfiltered non_place when place resolver finds nothing",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "High income countries"}}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverNonPlace, unfiltered, "High income countries"): {
+					{Dcid: "HighIncomeCountries", Name: "high income countries", TypeOf: []string{"CountryGroup"}},
+				},
+			},
+			wantRows: [][]any{
+				{"High income countries", "HighIncomeCountries", "high income countries", []string{"CountryGroup"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverPlace, unfiltered, "High income countries"),
+				resolveKey(ResolverNonPlace, unfiltered, "High income countries"),
+			},
+		},
+		{
+			name: "non-place hint skips place resolver and strips types rejected by non_place",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "St. Mary's Food Bank", EntityTypeHints: []string{"food bank"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "food bank"): {{Dcid: "FoodBank"}, {Dcid: "Topic"}},
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[FoodBank]}->dcid", "St. Mary's Food Bank"): {
+					{Dcid: "foodBank/stMarys", Name: "St Marys", TypeOf: []string{"FoodBank"}},
+				},
+			},
+			nodeData: map[string]*pbv2.LinkedGraph{"foodBank/stMarys": nodeGraph("St. Mary's Food Bank", "FoodBank")},
+			wantRows: [][]any{
+				{"St. Mary's Food Bank", "foodBank/stMarys", "St. Mary's Food Bank", []string{"FoodBank"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "food bank"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[FoodBank]}->dcid", "St. Mary's Food Bank"),
+			},
+		},
+		{
+			name: "non-place query falls back to unfiltered non_place when filtered search finds nothing",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "FEMA", EntityTypeHints: []string{"agency"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "agency"): {{Dcid: "GovernmentAgency"}},
+				resolveKey(ResolverNonPlace, unfiltered, "FEMA"): {
+					{Dcid: "fema", Name: "FEMA", TypeOf: []string{"Organization"}},
+				},
+			},
+			wantRows: [][]any{
+				{"FEMA", "fema", "FEMA", []string{"Organization"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "agency"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[GovernmentAgency]}->dcid", "FEMA"),
+				resolveKey(ResolverNonPlace, unfiltered, "FEMA"),
+			},
+		},
+		{
+			name: "non-place query tries the place resolver last",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Golden Gate Bridge", EntityTypeHints: []string{"bridge"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "bridge"):                      {{Dcid: "Bridge"}},
+				resolveKey(ResolverPlace, unfiltered, "Golden Gate Bridge"): {{Dcid: "bridge/ggb"}},
+			},
+			nodeData: map[string]*pbv2.LinkedGraph{"bridge/ggb": nodeGraph("Golden Gate Bridge", "Bridge")},
+			wantRows: [][]any{
+				{"Golden Gate Bridge", "bridge/ggb", "Golden Gate Bridge", []string{"Bridge"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "bridge"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[Bridge]}->dcid", "Golden Gate Bridge"),
+				resolveKey(ResolverNonPlace, unfiltered, "Golden Gate Bridge"),
+				resolveKey(ResolverPlace, unfiltered, "Golden Gate Bridge"),
+			},
+		},
+		{
+			name: "candidates are deduplicated and capped per query",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "Springfield"}}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverPlace, unfiltered, "Springfield"): {
+					{Dcid: "a"}, {Dcid: "a"}, {Dcid: "b"}, {Dcid: "c"}, {Dcid: "d"}, {Dcid: "e"}, {Dcid: "f"},
+				},
+			},
+			wantRows: [][]any{
+				{"Springfield", "a", "", []string{}},
+				{"Springfield", "b", "", []string{}},
+				{"Springfield", "c", "", []string{}},
+			},
+			wantCalls: []string{resolveKey(ResolverPlace, unfiltered, "Springfield")},
+		},
+		{
+			name: "place filter uses only the first non-generic place type",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Georgia", EntityTypeHints: []string{"state"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "state"):                                       {{Dcid: "Place"}, {Dcid: "State"}, {Dcid: "AdministrativeArea1"}},
+				resolveKey(ResolverPlace, "<-description{typeOf:[State]}->dcid", "Georgia"): {{Dcid: "geoId/13"}},
+			},
+			nodeData: map[string]*pbv2.LinkedGraph{"geoId/13": nodeGraph("Georgia", "State")},
+			wantRows: [][]any{
+				{"Georgia", "geoId/13", "Georgia", []string{"State"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "state"),
+				resolveKey(ResolverPlace, "<-description{typeOf:[State]}->dcid", "Georgia"),
+			},
+		},
+		{
+			name: "mixed hints route by the first hint and filter by all hinted types in hint order",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Lincoln High", EntityTypeHints: []string{"school", "city"}},
+			}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverType, "", "school"): {{Dcid: "School"}},
+				resolveKey(ResolverType, "", "city"):   {{Dcid: "City"}},
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[School,City]}->dcid", "Lincoln High"): {
+					{Dcid: "nces/1", Name: "Lincoln High School", TypeOf: []string{"School"}},
+				},
+			},
+			wantRows: [][]any{
+				{"Lincoln High", "nces/1", "Lincoln High School", []string{"School"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverType, "", "school"),
+				resolveKey(ResolverType, "", "city"),
+				resolveKey(ResolverNonPlace, "<-description{typeOf:[School,City]}->dcid", "Lincoln High"),
+			},
+		},
+		{
+			name:         "place resolver error falls back to non_place",
+			req:          &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "Middle East"}}},
+			resolverErrs: map[string]error{ResolverPlace: errors.New("maps unavailable")},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverNonPlace, unfiltered, "Middle East"): {
+					{Dcid: "MiddleEast", Name: "Middle East", TypeOf: []string{"GeoRegion"}},
+				},
+			},
+			wantRows: [][]any{
+				{"Middle East", "MiddleEast", "Middle East", []string{"GeoRegion"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverPlace, unfiltered, "Middle East"),
+				resolveKey(ResolverNonPlace, unfiltered, "Middle East"),
+			},
+		},
+		{
+			name: "enrichment failure keeps resolver names and types",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "  FEMA  "}}},
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverNonPlace, unfiltered, "FEMA"): {
+					{Dcid: "fema", Name: "FEMA", TypeOf: []string{"Organization"}},
+				},
+			},
+			nodeErr: errors.New("node lookup failed"),
+			wantRows: [][]any{
+				{"  FEMA  ", "fema", "FEMA", []string{"Organization"}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverPlace, unfiltered, "FEMA"),
+				resolveKey(ResolverNonPlace, unfiltered, "FEMA"),
+			},
+		},
+		{
+			name: "unresolved name returns a placeholder row",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "Nowhereville"}}},
+			wantRows: [][]any{
+				{"Nowhereville", "", "", []string{}},
+			},
+			wantCalls: []string{
+				resolveKey(ResolverPlace, unfiltered, "Nowhereville"),
+				resolveKey(ResolverNonPlace, unfiltered, "Nowhereville"),
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockV2ResolveEntitiesServer{
+				resolveCandidates: tc.resolveCandidates,
+				resolverErrs:      tc.resolverErrs,
+				nodeData:          withPlaceSubclasses(tc.nodeData),
+				nodeErr:           tc.nodeErr,
+			}
+			got, err := NewService(mock, nil, nil).V2ResolveEntities(context.Background(), tc.req)
+			if err != nil {
+				t.Fatalf("V2ResolveEntities() unexpected error: %v", err)
+			}
+			want := &V2ResolveEntitiesResponse{ResolvedEntities: &Table{
+				Columns: []string{"query", "dcid", "name", "types"},
+				Rows:    tc.wantRows,
+			}}
+			if diff := cmp.Diff(want, got); diff != "" {
+				t.Errorf("V2ResolveEntities() diff (-want +got):\n%s", diff)
+			}
+			// Each case has a single entity, so calls are sequential and their order is the resolution order.
+			if diff := cmp.Diff(tc.wantCalls, mock.calls); diff != "" {
+				t.Errorf("V2Resolve calls diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestV2ResolveEntitiesErrors(t *testing.T) {
+	tests := []struct {
+		name          string
+		req           *V2ResolveEntitiesRequest
+		resolverErrs  map[string]error
+		wantCode      codes.Code
+		wantErrSubstr string
+	}{
+		{
+			name:          "nil request",
+			req:           nil,
+			wantErrSubstr: "'entities' cannot be empty",
+		},
+		{
+			name:          "empty entities",
+			req:           &V2ResolveEntitiesRequest{},
+			wantErrSubstr: "'entities' cannot be empty",
+		},
+		{
+			name:          "blank entity name",
+			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "California"}, {Name: "  "}}},
+			wantErrSubstr: "entities[1].name cannot be empty",
+		},
+		{
+			name:          "invalid target",
+			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "California"}}, Target: "bogus"},
+			wantErrSubstr: `invalid target "bogus"`,
+		},
+		{
+			name:          "too many entities",
+			req:           &V2ResolveEntitiesRequest{Entities: slices.Repeat([]*V2EntityQuery{{Name: "California"}}, v2MaxEntitiesPerRequest+1)},
+			wantCode:      codes.InvalidArgument,
+			wantErrSubstr: "entities per call and split the rest",
+		},
+		{
+			name: "error is returned with its status code only when every attempt fails",
+			req:  &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "California"}}},
+			resolverErrs: map[string]error{
+				ResolverPlace:    errors.New("maps unavailable"),
+				ResolverNonPlace: status.Error(codes.Unimplemented, "non_place not supported"),
+			},
+			wantCode:      codes.Unimplemented,
+			wantErrSubstr: "non_place not supported",
+		},
+		{
+			name:          "type hint failure is returned",
+			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "FEMA", EntityTypeHints: []string{"agency"}}}},
+			resolverErrs:  map[string]error{ResolverType: errors.New("type backend down")},
+			wantCode:      codes.Internal,
+			wantErrSubstr: "type backend down",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockV2ResolveEntitiesServer{resolverErrs: tc.resolverErrs}
+			_, err := NewService(mock, nil, nil).V2ResolveEntities(context.Background(), tc.req)
+			if err == nil || !strings.Contains(err.Error(), tc.wantErrSubstr) {
+				t.Fatalf("V2ResolveEntities() error = %v, want substring %q", err, tc.wantErrSubstr)
+			}
+			wantCode := tc.wantCode
+			if wantCode == codes.OK {
+				wantCode = codes.InvalidArgument
+			}
+			if got := status.Code(err); got != wantCode {
+				t.Errorf("V2ResolveEntities() code = %v, want %v", got, wantCode)
+			}
+		})
+	}
+}
+
+func TestV2PlaceTypes(t *testing.T) {
+	ctx := context.Background()
+	mock := &mockV2ResolveEntitiesServer{placeTypesErr: errors.New("node lookup failed")}
+	service := NewService(mock, nil, nil)
+	isPlace := func(dcid string) bool {
+		_, ok := service.v2PlaceTypes(ctx)[dcid]
+		return ok
+	}
+
+	if !isPlace("AdministrativeArea") || !isPlace("Town") || isPlace("Country") {
+		t.Errorf("on lookup failure, want only roots and extras")
+	}
+
+	mock.placeTypesErr = nil
+	mock.nodeData = placeSubclassGraphs("Country")
+	if isPlace("Country") {
+		t.Errorf("within the retry interval after a failure, want no reload")
+	}
+
+	service.placeTypes.lastFailure = time.Time{}
+	mock.nodeData = nil
+	if isPlace("Country") {
+		t.Errorf("want an empty subclass response treated as a failure, not cached")
+	}
+
+	service.placeTypes.lastFailure = time.Time{}
+	mock.nodeData = placeSubclassGraphs("Country")
+	if !isPlace("Country") {
+		t.Errorf("after the retry interval, want subclasses loaded")
+	}
+
+	mock.nodeData = placeSubclassGraphs("State")
+	if isPlace("State") {
+		t.Errorf("want loaded place types to be cached until Reset")
+	}
+
+	service.Reset()
+	if !isPlace("State") || isPlace("Country") {
+		t.Errorf("after Reset, want place types reloaded")
+	}
+
+	service.Reset()
+	cancelledCtx, cancel := context.WithCancel(ctx)
+	cancel()
+	if _, ok := service.v2PlaceTypes(cancelledCtx)["State"]; !ok {
+		t.Errorf("want the shared lookup to ignore the triggering request's cancellation")
+	}
+
+	service.Reset()
+	disableCtx := metadata.NewIncomingContext(ctx, metadata.Pairs(util.XDisableSpanner, "true"))
+	if _, ok := service.v2PlaceTypes(disableCtx)["State"]; !ok {
+		t.Errorf("want the shared lookup to ignore the triggering request's X-Disable-Spanner header")
+	}
+}
+
+func TestResolutionPlan(t *testing.T) {
+	placeTypes := map[string]struct{}{"Place": {}, "AdministrativeArea": {}, "Country": {}, "State": {}}
+	tests := []struct {
+		name      string
+		typeDcids []string
+		want      []resolveAttempt
+	}{
+		{
+			name: "no hints is a place query without a filter",
+			want: []resolveAttempt{{resolver: ResolverPlace}, {resolver: ResolverNonPlace}},
+		},
+		{
+			name:      "generic-only place hint is a place query without a filter",
+			typeDcids: []string{"Place"},
+			want:      []resolveAttempt{{resolver: ResolverPlace}, {resolver: ResolverNonPlace}},
+		},
+		{
+			name:      "place hint filters by the first non-generic place type",
+			typeDcids: []string{"Place", "AdministrativeArea", "State", "Country"},
+			want: []resolveAttempt{
+				{resolver: ResolverPlace, typeDcids: []string{"State"}},
+				{resolver: ResolverNonPlace, typeDcids: []string{"State", "Country"}},
+			},
+		},
+		{
+			name:      "non-place hint tries filtered and unfiltered non_place, then place last",
+			typeDcids: []string{"School", "Topic", "City"},
+			want: []resolveAttempt{
+				{resolver: ResolverNonPlace, typeDcids: []string{"School", "City"}},
+				{resolver: ResolverNonPlace},
+				{resolver: ResolverPlace},
+			},
+		},
+		{
+			name:      "non-place hint with only excluded types skips the filtered attempt",
+			typeDcids: []string{"Topic"},
+			want:      []resolveAttempt{{resolver: ResolverNonPlace}, {resolver: ResolverPlace}},
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := resolutionPlan(tc.typeDcids, placeTypes)
+			if diff := cmp.Diff(tc.want, got, cmp.AllowUnexported(resolveAttempt{})); diff != "" {
+				t.Errorf("resolutionPlan() diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestBuildResolvedEntitiesTable(t *testing.T) {
+	groups := []*v2EntityGroup{
+		{query: "Georgia", entities: []*v2ResolvedEntity{
+			{dcid: "country/GEO", name: "Georgia", types: []string{"Country"}},
+			{dcid: "geoId/13", name: "Georgia", types: []string{"State"}},
+		}},
+		{query: "Nowhereville", entities: []*v2ResolvedEntity{}},
+	}
+	want := &Table{
+		Columns: []string{"query", "dcid", "name", "types"},
+		Rows: [][]any{
+			{"Georgia", "country/GEO", "Georgia", []string{"Country"}},
+			{"Georgia", "geoId/13", "Georgia", []string{"State"}},
+			{"Nowhereville", "", "", []string{}},
+		},
+	}
+	if diff := cmp.Diff(want, buildResolvedEntitiesTable(groups)); diff != "" {
+		t.Errorf("buildResolvedEntitiesTable() diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestV2ResolveEntitiesMultipleEntities(t *testing.T) {
+	ctx := context.Background()
+	unfiltered := PropDescription
+
+	t.Run("rows follow request order", func(t *testing.T) {
+		mock := &mockV2ResolveEntitiesServer{
+			resolveCandidates: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				resolveKey(ResolverPlace, unfiltered, "India"):      {{Dcid: "country/IND"}},
+				resolveKey(ResolverPlace, unfiltered, "California"): {{Dcid: "geoId/06"}},
+			},
+			nodeData: withPlaceSubclasses(map[string]*pbv2.LinkedGraph{
+				"country/IND": nodeGraph("India", "Country"),
+				"geoId/06":    nodeGraph("California", "State"),
+			}),
+		}
+		got, err := NewService(mock, nil, nil).V2ResolveEntities(ctx, &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+			{Name: "India"}, {Name: "Nowhereville"}, {Name: "California"},
+		}})
+		if err != nil {
+			t.Fatalf("V2ResolveEntities() unexpected error: %v", err)
+		}
+		wantRows := [][]any{
+			{"India", "country/IND", "India", []string{"Country"}},
+			{"Nowhereville", "", "", []string{}},
+			{"California", "geoId/06", "California", []string{"State"}},
+		}
+		if diff := cmp.Diff(wantRows, got.ResolvedEntities.Rows); diff != "" {
+			t.Errorf("rows diff (-want +got):\n%s", diff)
+		}
+	})
+
+	t.Run("a name whose attempts all fail fails the call with its status code", func(t *testing.T) {
+		mock := &mockV2ResolveEntitiesServer{
+			resolverErrs: map[string]error{
+				ResolverPlace:    status.Error(codes.Unavailable, "maps unavailable"),
+				ResolverNonPlace: status.Error(codes.Unavailable, "embeddings unavailable"),
+			},
+		}
+		_, err := NewService(mock, nil, nil).V2ResolveEntities(ctx, &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+			{Name: "India"}, {Name: "California"},
+		}})
+		if got := status.Code(err); got != codes.Unavailable {
+			t.Errorf("V2ResolveEntities() code = %v, want %v (err: %v)", got, codes.Unavailable, err)
+		}
+	})
+}

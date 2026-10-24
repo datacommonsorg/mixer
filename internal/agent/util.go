@@ -21,6 +21,8 @@ import (
 // Package-level constants representing standard resolver, property, metadata, and boundary literals.
 const (
 	ResolverPlace          = "place"
+	ResolverNonPlace       = "non_place" // non-place entities (organizations, schools, groupings, etc.) via embeddings
+	ResolverType           = "type"      // natural-language type names (e.g. "food bank") to Class DCIDs via embeddings
 	ResolverIndicator      = "indicator"
 	ResolverTopic          = "topic"
 	PropDescription        = "<-description->dcid"
@@ -42,7 +44,7 @@ const (
 	colQuery                 = "query"
 	colDcid                  = "dcid"
 	colName                  = "name"
-	colTypeOf                = "typeOf"
+	colTypes                 = "types"
 	colPlacesWithData        = "placesWithData"
 	colMemberTopics          = "memberTopics"
 	colMemberVariables       = "memberVariables"

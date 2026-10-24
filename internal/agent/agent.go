@@ -53,6 +53,7 @@ type Service struct {
 	mixer               Mixer
 	cache               *Cache
 	defaultExpandTopics bool
+	placeTypes          placeTypeCache
 }
 
 // ServiceOptions holds optional configuration for agent.Service.
@@ -79,6 +80,7 @@ func (s *Service) Reset() {
 	if s.cache != nil {
 		s.cache.Reset()
 	}
+	s.placeTypes.reset()
 }
 
 // fetchAllNodes fetches all pages of a V2Node request. Large node lists are split
