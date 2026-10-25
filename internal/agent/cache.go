@@ -148,6 +148,11 @@ func (c *Cache) ChildTypes(ctx context.Context, ancestors []string) (map[string]
 	}
 	c.mu.Lock()
 	for _, ancestor := range missing {
+		// A concurrent call may have cached this ancestor meanwhile; keep its entry.
+		if cached, ok := c.childTypes[ancestor]; ok {
+			result[ancestor] = cached
+			continue
+		}
 		types := fetched[ancestor]
 		if types == nil {
 			types = []string{}
