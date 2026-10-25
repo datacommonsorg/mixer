@@ -17,6 +17,8 @@ package agent
 
 import (
 	"context"
+	"fmt"
+	"slices"
 
 	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -93,4 +95,23 @@ func (s *Service) Reset() {
 // nothing back instead of a partial result.
 func (s *Service) fetchAllNodes(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	return nodefetcher.NodeFetchAllChunkedFunc(ctx, s.mixer.V2Node, req)
+}
+
+// fetchNodeGraphs fetches the given property for the unique, non-empty DCIDs (in first-seen order) via
+// fetchAllNodes and returns the node graphs keyed by DCID, or nil when there is nothing to fetch.
+func (s *Service) fetchNodeGraphs(ctx context.Context, dcids []string, property string) (map[string]*pbv2.LinkedGraph, error) {
+	var unique []string
+	for _, dcid := range dcids {
+		if dcid != "" && !slices.Contains(unique, dcid) {
+			unique = append(unique, dcid)
+		}
+	}
+	if len(unique) == 0 {
+		return nil, nil
+	}
+	resp, err := s.fetchAllNodes(ctx, &pbv2.NodeRequest{Nodes: unique, Property: property})
+	if err != nil {
+		return nil, fmt.Errorf("fetch %d nodes: %w", len(unique), err)
+	}
+	return resp.GetData(), nil
 }

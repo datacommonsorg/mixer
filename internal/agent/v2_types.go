@@ -55,20 +55,19 @@ type v2ResolvedEntity struct {
 	types []string
 }
 
-// v2EntityGroup holds the resolved candidates for one queried name and, when child type hints were
-// given, the matching child types within its best-matching entity.
+// v2EntityGroup holds the resolved candidates for one queried name.
 type v2EntityGroup struct {
-	query           string
-	entities        []*v2ResolvedEntity
-	hasChildHints   bool
-	childTypeParent string
-	childTypes      []*v2ChildType
+	query    string
+	entities []*v2ResolvedEntity
 }
 
-// typeCandidate is a Class DCID resolved from a natural-language type hint, with its similarity score.
-type typeCandidate struct {
-	dcid  string
-	score float64
+// v2ChildTypesResult holds, for one query with child type hints, the matched child entity types within
+// its best-matching entity (parent). parent is empty when the query did not resolve.
+type v2ChildTypesResult struct {
+	query  string
+	hints  []string
+	parent string
+	types  []*v2ChildType
 }
 
 // v2ChildType is a child entity type (Class DCID) that exists within a parent entity.

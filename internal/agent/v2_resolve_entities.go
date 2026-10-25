@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"log/slog"
 	"slices"
-	"strconv"
 	"strings"
 	"time"
 
@@ -42,14 +41,6 @@ const (
 	// or two types they want; the error steers them back. Keep in sync with the
 	// 'child_entity_type_hints' field description in internal/server/mcp/v2_types.go.
 	v2MaxChildHintsPerEntity = 3
-	// v2MaxTypesPerHint caps the Class DCIDs used per entity type hint. The type resolver can return many
-	// loosely related classes; the top few cover close variants (e.g. School, PublicSchool) without diluting
-	// filters.
-	v2MaxTypesPerHint = 3
-	// v2MaxTypeCandidatesPerHint caps the Class DCIDs kept per hint from the type resolver. It is larger
-	// than v2MaxTypesPerHint because child type hints filter candidates by existence under the parent
-	// (see matchChildTypes), so the wanted type can rank below generic or absent classes.
-	v2MaxTypeCandidatesPerHint = 10
 )
 
 // v2NonPlaceExcludedTypes mirrors excluded_types for the non_place resolver in
@@ -101,7 +92,7 @@ func (s *Service) V2ResolveEntities(
 			if err != nil {
 				return err
 			}
-			results[i] = &v2EntityGroup{query: query.Name, entities: entities, hasChildHints: hasNonBlank(query.ChildEntityTypeHints)}
+			results[i] = &v2EntityGroup{query: query.Name, entities: entities}
 			return nil
 		})
 	}
@@ -111,8 +102,8 @@ func (s *Service) V2ResolveEntities(
 
 	s.enrichResolvedEntities(ctx, results)
 	resp := &V2ResolveEntitiesResponse{ResolvedEntities: buildResolvedEntitiesTable(results)}
-	if s.resolveChildEntityTypes(ctx, req.Entities, results, typesByHint) {
-		resp.CandidateChildEntityTypes = buildChildEntityTypesTable(results)
+	if childTypes, ok := s.resolveChildEntityTypes(ctx, req.Entities, results, typesByHint); ok {
+		resp.CandidateChildEntityTypes = buildChildEntityTypesTable(childTypes)
 	} else {
 		resp.ChildEntityTypesNote = v2ChildTypesUnavailableNote
 	}
@@ -244,48 +235,6 @@ func (s *Service) resolveWithResolver(
 	return collectResolvedEntities(resp.GetEntities()), nil
 }
 
-// resolveTypeHints resolves natural-language type hints to Class DCIDs in one V2Resolve call,
-// keeping the top v2MaxTypeCandidatesPerHint classes per hint (with their similarity scores) in resolver order.
-func (s *Service) resolveTypeHints(ctx context.Context, hints []string, target string) (map[string][]typeCandidate, error) {
-	if len(hints) == 0 {
-		return nil, nil
-	}
-	resp, err := s.mixer.V2Resolve(ctx, &pbv2.ResolveRequest{
-		Nodes:    hints,
-		Resolver: ResolverType,
-		Target:   target,
-	})
-	if err != nil {
-		slog.Error("Type hint resolution failed", "hintsCount", len(hints), "error", err)
-		return nil, errV2TypeHintsFailed(err)
-	}
-	typesByHint := make(map[string][]typeCandidate, len(hints))
-	for _, entity := range resp.GetEntities() {
-		hint := entity.GetNode()
-		for _, candidate := range entity.GetCandidates() {
-			if len(typesByHint[hint]) >= v2MaxTypeCandidatesPerHint {
-				break
-			}
-			dcid := candidate.GetDcid()
-			if dcid == "" || slices.ContainsFunc(typesByHint[hint], func(c typeCandidate) bool { return c.dcid == dcid }) {
-				continue
-			}
-			typesByHint[hint] = append(typesByHint[hint], typeCandidate{dcid: dcid, score: candidateScore(candidate)})
-		}
-	}
-	return typesByHint, nil
-}
-
-// candidateScore returns the similarity score the embeddings resolver reports in candidate metadata,
-// or 0 when absent or malformed.
-func candidateScore(candidate *pbv2.ResolveResponse_Entity_Candidate) float64 {
-	score, err := strconv.ParseFloat(candidate.GetMetadata()["score"], 64)
-	if err != nil {
-		return 0
-	}
-	return score
-}
-
 // enrichResolvedEntities fills canonical names and types for all resolved DCIDs via one V2Node call.
 // The place resolver returns bare DCIDs, and non_place candidate names come from embedding sentences,
 // so the knowledge graph values are preferred when available. Failures are logged and the resolver
@@ -294,22 +243,17 @@ func (s *Service) enrichResolvedEntities(ctx context.Context, groups []*v2Entity
 	var dcids []string
 	for _, group := range groups {
 		for _, entity := range group.entities {
-			if !slices.Contains(dcids, entity.dcid) {
-				dcids = append(dcids, entity.dcid)
-			}
+			dcids = append(dcids, entity.dcid)
 		}
 	}
-	if len(dcids) == 0 {
-		return
-	}
-	nodeResp, err := s.fetchAllNodes(ctx, &pbv2.NodeRequest{Nodes: dcids, Property: nodePropertiesQuery})
+	nodes, err := s.fetchNodeGraphs(ctx, dcids, nodePropertiesQuery)
 	if err != nil {
-		slog.Warn("Failed to enrich resolved entities via V2Node", "error", err, "dcidsCount", len(dcids))
+		slog.Warn("Failed to enrich resolved entities via V2Node", "error", err)
 		return
 	}
 	for _, group := range groups {
 		for _, entity := range group.entities {
-			nodeData, ok := nodeResp.GetData()[entity.dcid]
+			nodeData, ok := nodes[entity.dcid]
 			if !ok {
 				continue
 			}
@@ -396,35 +340,6 @@ func collectResolvedEntities(resolveEntities []*pbv2.ResolveResponse_Entity) []*
 	return entities
 }
 
-// collectTypeHints returns the unique, non-empty entity and child entity type hints across all
-// queries, in first-seen order.
-func collectTypeHints(queries []*V2EntityQuery) []string {
-	var hints []string
-	for _, query := range queries {
-		for _, hint := range slices.Concat(query.EntityTypeHints, query.ChildEntityTypeHints) {
-			if hint = strings.TrimSpace(hint); hint != "" && !slices.Contains(hints, hint) {
-				hints = append(hints, hint)
-			}
-		}
-	}
-	return hints
-}
-
-// typesForHints returns the resolved Class DCIDs for hints, deduplicated and ordered by hint order and
-// then by resolver rank within each hint, keeping the top v2MaxTypesPerHint classes per hint.
-func typesForHints(hints []string, typesByHint map[string][]typeCandidate) []string {
-	var typeDcids []string
-	for _, hint := range hints {
-		candidates := typesByHint[strings.TrimSpace(hint)]
-		for _, candidate := range candidates[:min(len(candidates), v2MaxTypesPerHint)] {
-			if !slices.Contains(typeDcids, candidate.dcid) {
-				typeDcids = append(typeDcids, candidate.dcid)
-			}
-		}
-	}
-	return typeDcids
-}
-
 // uniqueTypes returns the sorted, deduplicated types as a non-nil slice. typeOf values can repeat when
 // merged from multiple data sources (e.g. ["Country", "Country"]). The generic "Place" type is dropped
 // when more specific types exist, since it adds nothing for disambiguation.
@@ -453,9 +368,4 @@ func buildResolvedEntitiesTable(groups []*v2EntityGroup) *Table {
 		Columns: []string{colQuery, colDcid, colName, colTypes},
 		Rows:    rows,
 	}
-}
-
-// hasNonBlank reports whether any value is non-blank after trimming whitespace.
-func hasNonBlank(values []string) bool {
-	return slices.ContainsFunc(values, func(v string) bool { return strings.TrimSpace(v) != "" })
 }

@@ -21,8 +21,6 @@ import (
 	"slices"
 	"strings"
 	"time"
-
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 const (
@@ -46,33 +44,40 @@ const (
 	v2MaxChildTypesPerHint = 3
 )
 
-// resolveChildEntityTypes finds, for each query with child type hints, the hinted child types that exist
-// within the query's best-matching entity, and records them on its group.
+// resolveChildEntityTypes returns, for each query with child type hints (in query order), the hinted
+// child types that exist within the query's best-matching entity. groups[i] holds the resolved entities
+// for queries[i].
 //
 // The child types of all best matches are fetched in one call (served from the Spanner LinkedEdge table,
 // and cached per ancestor), then filtered by the hints (see matchChildTypes). Only the best match is
 // used; callers wanting another candidate's child types can re-resolve with a more specific name.
-// It reports whether the child types are usable: false if the lookup failed. Failures are logged rather
-// than returned, since child types are supplementary to the entity resolution result, and the caller
-// omits the child types table so a failed lookup is not mistaken for "no such child types".
+//
+// It reports whether the results are usable: false if the lookup failed. Failures are logged rather than
+// returned, since child types are supplementary to the entity resolution result, and the caller omits the
+// child types table so a failed lookup is not mistaken for "no such child types".
 func (s *Service) resolveChildEntityTypes(
 	ctx context.Context,
 	queries []*V2EntityQuery,
 	groups []*v2EntityGroup,
 	typesByHint map[string][]typeCandidate,
-) bool {
+) ([]*v2ChildTypesResult, bool) {
+	var results []*v2ChildTypesResult
 	var parents []string
-	for _, group := range groups {
-		if !group.hasChildHints || len(group.entities) == 0 {
+	for i, query := range queries {
+		if !hasNonBlank(query.ChildEntityTypeHints) {
 			continue
 		}
-		group.childTypeParent = group.entities[0].dcid
-		if !slices.Contains(parents, group.childTypeParent) {
-			parents = append(parents, group.childTypeParent)
+		result := &v2ChildTypesResult{query: query.Name, hints: query.ChildEntityTypeHints}
+		if len(groups[i].entities) > 0 {
+			result.parent = groups[i].entities[0].dcid
+			if !slices.Contains(parents, result.parent) {
+				parents = append(parents, result.parent)
+			}
 		}
+		results = append(results, result)
 	}
 	if len(parents) == 0 {
-		return true
+		return results, true
 	}
 
 	lookupCtx, cancel := context.WithTimeout(ctx, v2ChildTypesTimeout)
@@ -80,19 +85,18 @@ func (s *Service) resolveChildEntityTypes(
 	available, err := s.childTypesOf(lookupCtx, parents)
 	if err != nil {
 		slog.Warn("Failed to fetch child entity types", "error", err, "parentsCount", len(parents))
-		return false
+		return nil, false
 	}
-	for i, query := range queries {
-		group := groups[i]
-		if group.childTypeParent == "" {
+	for _, result := range results {
+		if result.parent == "" {
 			continue
 		}
-		for _, dcid := range matchChildTypes(query.ChildEntityTypeHints, typesByHint, available[group.childTypeParent]) {
-			group.childTypes = append(group.childTypes, &v2ChildType{dcid: dcid})
+		for _, dcid := range matchChildTypes(result.hints, typesByHint, available[result.parent]) {
+			result.types = append(result.types, &v2ChildType{dcid: dcid})
 		}
 	}
-	s.enrichChildTypeNames(ctx, groups)
-	return true
+	s.enrichChildTypeNames(ctx, results)
+	return results, true
 }
 
 // childTypesOf returns the child entity types of each ancestor, via the per-ancestor cache when the
@@ -165,52 +169,49 @@ func nearTopTypes(candidates []typeCandidate) []typeCandidate {
 
 // enrichChildTypeNames fills human-readable names for matched child types via one V2Node call.
 // Failures are logged and the names are left empty.
-func (s *Service) enrichChildTypeNames(ctx context.Context, groups []*v2EntityGroup) {
+func (s *Service) enrichChildTypeNames(ctx context.Context, results []*v2ChildTypesResult) {
 	var dcids []string
-	for _, group := range groups {
-		for _, childType := range group.childTypes {
-			if !slices.Contains(dcids, childType.dcid) {
-				dcids = append(dcids, childType.dcid)
-			}
+	for _, result := range results {
+		for _, childType := range result.types {
+			dcids = append(dcids, childType.dcid)
 		}
 	}
-	if len(dcids) == 0 {
-		return
-	}
-	nodeResp, err := s.fetchAllNodes(ctx, &pbv2.NodeRequest{Nodes: dcids, Property: "->name"})
+	nodes, err := s.fetchNodeGraphs(ctx, dcids, "->name")
 	if err != nil {
-		slog.Warn("Failed to fetch child entity type names via V2Node", "error", err, "dcidsCount", len(dcids))
+		slog.Warn("Failed to fetch child entity type names via V2Node", "error", err)
 		return
 	}
-	for _, group := range groups {
-		for _, childType := range group.childTypes {
-			childType.name = getPropValue(nodeResp.GetData()[childType.dcid], "name")
+	for _, result := range results {
+		for _, childType := range result.types {
+			childType.name = getPropValue(nodes[childType.dcid], "name")
 		}
 	}
 }
 
-// buildChildEntityTypesTable formats matched child types into a table, or returns nil when no query
-// had child type hints. Queries with hints but no matching child type (or no resolved entity) get a
+// buildChildEntityTypesTable formats child type results into a table, or returns nil when no query had
+// child type hints. Queries with hints but no matching child type (or no resolved entity) get a
 // placeholder row so every such query appears in the output.
-func buildChildEntityTypesTable(groups []*v2EntityGroup) *Table {
-	rows := [][]any{}
-	for _, group := range groups {
-		if !group.hasChildHints {
-			continue
-		}
-		if len(group.childTypes) == 0 {
-			rows = append(rows, []any{group.query, group.childTypeParent, "", ""})
-			continue
-		}
-		for _, childType := range group.childTypes {
-			rows = append(rows, []any{group.query, group.childTypeParent, childType.dcid, childType.name})
-		}
-	}
-	if len(rows) == 0 {
+func buildChildEntityTypesTable(results []*v2ChildTypesResult) *Table {
+	if len(results) == 0 {
 		return nil
+	}
+	rows := [][]any{}
+	for _, result := range results {
+		if len(result.types) == 0 {
+			rows = append(rows, []any{result.query, result.parent, "", ""})
+			continue
+		}
+		for _, childType := range result.types {
+			rows = append(rows, []any{result.query, result.parent, childType.dcid, childType.name})
+		}
 	}
 	return &Table{
 		Columns: []string{colQuery, colEntityDcid, colChildEntityType, colChildEntityTypeName},
 		Rows:    rows,
 	}
+}
+
+// hasNonBlank reports whether any value is non-blank after trimming whitespace.
+func hasNonBlank(values []string) bool {
+	return slices.ContainsFunc(values, func(v string) bool { return strings.TrimSpace(v) != "" })
 }
