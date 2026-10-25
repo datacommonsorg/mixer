@@ -248,3 +248,17 @@ func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb
 	}
 	return response.(*pb.FilterStatVarsByEntityResponse), nil
 }
+
+// ChildTypes handles child entity type requests.
+func (dispatcher *Dispatcher) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeChildTypes)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.ChildTypes(ctx, request.(*pbv2.ChildTypesRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv2.ChildTypesResponse), nil
+}

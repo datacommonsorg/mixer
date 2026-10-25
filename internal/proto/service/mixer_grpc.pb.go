@@ -49,6 +49,7 @@ const (
 	Mixer_V3SdmxAvailability_FullMethodName           = "/datacommons.Mixer/V3SdmxAvailability"
 	Mixer_V2InternalSdmxData_FullMethodName           = "/datacommons.Mixer/V2InternalSdmxData"
 	Mixer_V2InternalSdmxAvailability_FullMethodName   = "/datacommons.Mixer/V2InternalSdmxAvailability"
+	Mixer_V2InternalChildTypes_FullMethodName         = "/datacommons.Mixer/V2InternalChildTypes"
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
@@ -104,6 +105,10 @@ type MixerClient interface {
 	// Internal endpoint for structured SDMX availability queries between remote data sources.
 	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxAvailability(ctx context.Context, in *sdmx.SdmxAvailabilityQuery, opts ...grpc.CallOption) (*sdmx.SdmxAvailabilityResult, error)
+	// Internal endpoint for the types of entities contained in ancestor entities, used by remote
+	// data sources (e.g. custom DC instances querying the base DC).
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+	V2InternalChildTypes(ctx context.Context, in *v2.ChildTypesRequest, opts ...grpc.CallOption) (*v2.ChildTypesResponse, error)
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
@@ -216,6 +221,16 @@ func (c *mixerClient) V2InternalSdmxAvailability(ctx context.Context, in *sdmx.S
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(sdmx.SdmxAvailabilityResult)
 	err := c.cc.Invoke(ctx, Mixer_V2InternalSdmxAvailability_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2InternalChildTypes(ctx context.Context, in *v2.ChildTypesRequest, opts ...grpc.CallOption) (*v2.ChildTypesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(v2.ChildTypesResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2InternalChildTypes_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -644,6 +659,10 @@ type MixerServer interface {
 	// Internal endpoint for structured SDMX availability queries between remote data sources.
 	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee) that block /v3 routes.
 	V2InternalSdmxAvailability(context.Context, *sdmx.SdmxAvailabilityQuery) (*sdmx.SdmxAvailabilityResult, error)
+	// Internal endpoint for the types of entities contained in ancestor entities, used by remote
+	// data sources (e.g. custom DC instances querying the base DC).
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+	V2InternalChildTypes(context.Context, *v2.ChildTypesRequest) (*v2.ChildTypesResponse, error)
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
@@ -723,6 +742,9 @@ func (UnimplementedMixerServer) V2InternalSdmxData(context.Context, *sdmx.SdmxDa
 }
 func (UnimplementedMixerServer) V2InternalSdmxAvailability(context.Context, *sdmx.SdmxAvailabilityQuery) (*sdmx.SdmxAvailabilityResult, error) {
 	return nil, status.Error(codes.Unimplemented, "method V2InternalSdmxAvailability not implemented")
+}
+func (UnimplementedMixerServer) V2InternalChildTypes(context.Context, *v2.ChildTypesRequest) (*v2.ChildTypesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method V2InternalChildTypes not implemented")
 }
 func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3Node not implemented")
@@ -928,6 +950,24 @@ func _Mixer_V2InternalSdmxAvailability_Handler(srv interface{}, ctx context.Cont
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2InternalSdmxAvailability(ctx, req.(*sdmx.SdmxAvailabilityQuery))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2InternalChildTypes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.ChildTypesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2InternalChildTypes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2InternalChildTypes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2InternalChildTypes(ctx, req.(*v2.ChildTypesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1688,6 +1728,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2InternalSdmxAvailability",
 			Handler:    _Mixer_V2InternalSdmxAvailability_Handler,
+		},
+		{
+			MethodName: "V2InternalChildTypes",
+			Handler:    _Mixer_V2InternalChildTypes_Handler,
 		},
 		{
 			MethodName: "V3Node",

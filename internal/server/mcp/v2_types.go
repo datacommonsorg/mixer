@@ -28,8 +28,9 @@ type V2AgentBackend interface {
 // V2EntityInput is a single entity to resolve in the resolve_entities MCP tool.
 // jsonschema tags become per-field descriptions in the tool's input schema shown to the LLM.
 type V2EntityInput struct {
-	Name            string   `json:"name" jsonschema:"Fully qualified entity name including its type word and parent places, e.g. 'Santa Clara County, California, United States', 'Washington State, United States', 'Madrid, Spain', 'Lincoln Elementary School, Atlanta, Georgia'."`
-	EntityTypeHints []string `json:"entity_type_hints,omitempty" jsonschema:"Optional entity types, most specific first, e.g. ['state'], ['county', 'administrative area 2'], ['food bank']."`
+	Name                 string   `json:"name" jsonschema:"Fully qualified entity name including its type word and parent places, e.g. 'Santa Clara County, California, United States', 'Washington State, United States', 'Madrid, Spain', 'Lincoln Elementary School, Atlanta, Georgia'."`
+	EntityTypeHints      []string `json:"entity_type_hints,omitempty" jsonschema:"Optional entity types, most specific first, e.g. ['state'], ['county', 'administrative area 2'], ['food bank']."`
+	ChildEntityTypeHints []string `json:"child_entity_type_hints,omitempty" jsonschema:"Terms for the type of entities contained in this entity, for questions like 'counties of Kenya' (name 'Kenya', hints ['county', 'administrative area 1']). Depending on the country, Data Commons types subdivisions by a specific type (e.g. County, State), a generic administrative level (e.g. AdministrativeArea1), or both, and may not recognize local terms (e.g. 'autonomous community'), so pair the local term with its administrative level. Use at most 3 hints, most specific first."`
 }
 
 // V2ResolveEntitiesInput holds arguments for the v2 resolve_entities MCP tool.

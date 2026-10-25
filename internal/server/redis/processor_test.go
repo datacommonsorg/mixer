@@ -84,6 +84,27 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 			wantResponse:    &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
 		},
 		{
+			name:        "ChildTypes Cache Hit",
+			requestType: dispatcher.TypeChildTypes,
+			mockSetup: func(mock redismock.ClientMock) {
+				request := &pbv2.ChildTypesRequest{Ancestors: []string{"geoId/06"}}
+				response := &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+					"geoId/06": {Types: []string{"County"}},
+				}}
+				key, _ := generateCacheKey(request)
+				anyMsg, _ := anypb.New(response)
+				marshaled, _ := proto.Marshal(anyMsg)
+				cached, _ := util.Zip(marshaled)
+				mock.ExpectGet(key).SetVal(string(cached))
+			},
+			originalRequest: &pbv2.ChildTypesRequest{Ancestors: []string{"geoId/06"}},
+			wantOutcome:     dispatcher.Done,
+			wantErr:         false,
+			wantResponse: &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+				"geoId/06": {Types: []string{"County"}},
+			}},
+		},
+		{
 			name:        "Cache Miss",
 			requestType: dispatcher.TypeNode,
 			mockSetup: func(mock redismock.ClientMock) {
@@ -274,6 +295,11 @@ func TestNewEmptyResponse(t *testing.T) {
 			name:        "SdmxAvailability",
 			requestType: dispatcher.TypeSdmxAvailability,
 			want:        &sdmxpb.SdmxAvailabilityResult{},
+		},
+		{
+			name:        "ChildTypes",
+			requestType: dispatcher.TypeChildTypes,
+			want:        &pbv2.ChildTypesResponse{},
 		},
 	}
 
@@ -472,4 +498,3 @@ func TestFormatRequestForLog(t *testing.T) {
 		t.Errorf("len(formatRequestForLog(utf8BoundaryReq)) = %d, want %d", len(gotUTF8), wantUTF8PrefixLen+len(truncatedSuffix))
 	}
 }
-

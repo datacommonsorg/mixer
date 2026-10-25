@@ -147,6 +147,11 @@ func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.Sdmx
 	return &sdmxpb.SdmxAvailabilityResult{}, nil
 }
 
+// ChildTypes is not supported by SQL data sources; it returns no child types.
+func (sds *SQLDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	return &pbv2.ChildTypesResponse{}, nil
+}
+
 func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return &pb.FilterStatVarsByEntityResponse{}, nil
 }

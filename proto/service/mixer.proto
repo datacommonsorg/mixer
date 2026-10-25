@@ -41,6 +41,7 @@ import "v1/observations.proto";
 import "v1/observation_dates.proto";
 import "v1/page.proto";
 
+import "v2/child_types.proto";
 import "v2/event.proto";
 import "v2/node.proto";
 import "v2/node_search.proto";
@@ -81,6 +82,17 @@ service Mixer {
       returns (datacommons.sdmx.SdmxAvailabilityResult) {
     option (google.api.http) = {
       post : "/v2/internal/sdmx/availability"
+      body : "*"
+    };
+  }
+
+  // Internal endpoint for the types of entities contained in ancestor entities, used by remote
+  // data sources (e.g. custom DC instances querying the base DC).
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+  rpc V2InternalChildTypes(datacommons.v2.ChildTypesRequest)
+      returns (datacommons.v2.ChildTypesResponse) {
+    option (google.api.http) = {
+      post : "/v2/internal/child-types"
       body : "*"
     };
   }
