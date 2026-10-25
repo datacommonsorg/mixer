@@ -17,6 +17,7 @@ package agent
 import (
 	"context"
 	"errors"
+	"fmt"
 	"slices"
 	"strings"
 	"sync"
@@ -466,14 +467,14 @@ func TestV2ResolveEntitiesErrors(t *testing.T) {
 				ResolverNonPlace: status.Error(codes.Unimplemented, "non_place not supported"),
 			},
 			wantCode:      codes.Unimplemented,
-			wantErrSubstr: "non_place not supported",
+			wantErrSubstr: v2BackendUnsupportedMessage,
 		},
 		{
 			name:          "type hint failure is returned",
 			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "FEMA", EntityTypeHints: []string{"agency"}}}},
 			resolverErrs:  map[string]error{ResolverType: errors.New("type backend down")},
 			wantCode:      codes.Internal,
-			wantErrSubstr: "type backend down",
+			wantErrSubstr: "failed to resolve entity_type_hints and child_entity_type_hints: " + v2BackendRetryMessage,
 		},
 	}
 
@@ -957,6 +958,72 @@ func TestTypesForHints(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			if diff := cmp.Diff(tc.want, typesForHints(tc.hints, typesByHint)); diff != "" {
 				t.Errorf("typesForHints() diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestWrapV2BackendError(t *testing.T) {
+	tests := []struct {
+		name     string
+		err      error
+		wantCode codes.Code
+		wantMsg  string
+	}{
+		{
+			name:     "invalid argument keeps its message",
+			err:      status.Error(codes.InvalidArgument, "unsupported target"),
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "ctx: unsupported target",
+		},
+		{
+			name:     "wrapped status errors are classified by their code",
+			err:      fmt.Errorf("resolve: %w", status.Error(codes.InvalidArgument, "unsupported target")),
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "ctx: unsupported target",
+		},
+		{
+			name:     "transient errors get the retry message",
+			err:      status.Error(codes.NotFound, "Session not found: projects/p/instances/i/databases/d/sessions/s"),
+			wantCode: codes.NotFound,
+			wantMsg:  "ctx: " + v2BackendRetryMessage,
+		},
+		{
+			name:     "non-status errors become Internal with the retry message",
+			err:      errors.New("spanner: connection reset"),
+			wantCode: codes.Internal,
+			wantMsg:  "ctx: " + v2BackendRetryMessage,
+		},
+		{
+			name:     "deployment problems get the do-not-retry message",
+			err:      status.Error(codes.FailedPrecondition, "Embeddings service client is not initialized"),
+			wantCode: codes.FailedPrecondition,
+			wantMsg:  "ctx: " + v2BackendUnsupportedMessage,
+		},
+		{
+			name:     "backend credential errors become Internal with the do-not-retry message",
+			err:      status.Error(codes.Unauthenticated, `auth: "invalid_grant" https://us-central1-aiplatform.googleapis.com/v1/projects/p`),
+			wantCode: codes.Internal,
+			wantMsg:  "ctx: " + v2BackendUnsupportedMessage,
+		},
+		{
+			name:     "timeouts get the timeout message",
+			err:      context.DeadlineExceeded,
+			wantCode: codes.DeadlineExceeded,
+			wantMsg:  "ctx: " + v2BackendTimeoutMessage,
+		},
+		{
+			name:     "cancellation gets the timeout message",
+			err:      context.Canceled,
+			wantCode: codes.Canceled,
+			wantMsg:  "ctx: " + v2BackendTimeoutMessage,
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			st := status.Convert(wrapV2BackendError(tc.err, "ctx"))
+			if st.Code() != tc.wantCode || st.Message() != tc.wantMsg {
+				t.Errorf("wrapV2BackendError() = (%v, %q), want (%v, %q)", st.Code(), st.Message(), tc.wantCode, tc.wantMsg)
 			}
 		})
 	}

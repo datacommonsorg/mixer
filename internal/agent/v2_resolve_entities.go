@@ -206,7 +206,6 @@ func (s *Service) resolveEntityCandidates(
 			if ctx.Err() != nil {
 				return nil, err
 			}
-			slog.Warn("Entity resolution attempt failed; trying next resolver", "name", name, "resolver", attempt.resolver, "error", err)
 			lastErr = err
 			failed++
 			continue
@@ -237,6 +236,9 @@ func (s *Service) resolveWithResolver(
 		Target:   target,
 	})
 	if err != nil {
+		if ctx.Err() == nil {
+			slog.Warn("Entity resolution attempt failed", "name", name, "resolver", resolver, "error", err)
+		}
 		return nil, errV2ResolveFailed(err, name, resolver)
 	}
 	return collectResolvedEntities(resp.GetEntities()), nil
@@ -254,6 +256,7 @@ func (s *Service) resolveTypeHints(ctx context.Context, hints []string, target s
 		Target:   target,
 	})
 	if err != nil {
+		slog.Error("Type hint resolution failed", "hintsCount", len(hints), "error", err)
 		return nil, errV2TypeHintsFailed(err)
 	}
 	typesByHint := make(map[string][]typeCandidate, len(hints))

@@ -23,6 +23,7 @@
 package agent
 
 import (
+	"errors"
 	"fmt"
 
 	"google.golang.org/grpc/codes"
@@ -73,17 +74,48 @@ func errV2TypeHintsFailed(err error) error {
 	return wrapV2BackendError(err, "failed to resolve entity_type_hints and child_entity_type_hints")
 }
 
-// wrapV2BackendError adds caller-facing context to a backend error while keeping its gRPC status code
-// (e.g. InvalidArgument, Unimplemented, DeadlineExceeded), defaulting to Internal for other errors.
-// Only the status message is kept so the caller-facing text is not cluttered with "rpc error: ..." prefixes.
+// Generic caller-facing replacements for backend error details, which are not actionable for the caller
+// and can expose internal endpoints, resource paths and project IDs. Details are logged by the callers.
+const (
+	v2BackendRetryMessage       = "a Data Commons backend is temporarily unavailable; retry the call shortly"
+	v2BackendTimeoutMessage     = "a Data Commons backend timed out; retry the call shortly"
+	v2BackendUnsupportedMessage = "this operation is not available in this Data Commons deployment; do not retry it"
+)
+
+// wrapV2BackendError adds caller-facing context to a backend error and replaces backend details with a
+// generic message chosen by gRPC code (non-status errors count as Internal):
+//   - InvalidArgument keeps its message: backends use it to reject request values (e.g. an unsupported
+//     target) and it is trusted to be safe and actionable for the caller.
+//   - DeadlineExceeded and Canceled get the timeout message.
+//   - Unimplemented, FailedPrecondition, PermissionDenied and Unauthenticated are deployment or
+//     configuration problems that retrying will not fix. Backend auth codes are returned as Internal, since
+//     they concern the server's credentials, not the caller's.
+//   - Everything else (e.g. Unavailable, Internal, NotFound for transient Spanner sessions) gets the retry
+//     message.
+//
+// It does not log; callers log the original error.
 func wrapV2BackendError(err error, msg string) error {
 	st := status.FromContextError(err)
 	if st.Code() == codes.Unknown {
-		if parsed, ok := status.FromError(err); ok {
-			st = parsed
+		// errors.As finds the innermost status, so wrapped errors keep only the status message (status.FromError
+		// would use the full wrapped text).
+		var withStatus interface{ GRPCStatus() *status.Status }
+		if errors.As(err, &withStatus) {
+			st = withStatus.GRPCStatus()
 		} else {
 			st = status.New(codes.Internal, err.Error())
 		}
 	}
-	return status.Errorf(st.Code(), "%s: %s", msg, st.Message())
+	switch st.Code() {
+	case codes.InvalidArgument:
+		return status.Errorf(st.Code(), "%s: %s", msg, st.Message())
+	case codes.DeadlineExceeded, codes.Canceled:
+		return status.Errorf(st.Code(), "%s: %s", msg, v2BackendTimeoutMessage)
+	case codes.Unimplemented, codes.FailedPrecondition:
+		return status.Errorf(st.Code(), "%s: %s", msg, v2BackendUnsupportedMessage)
+	case codes.PermissionDenied, codes.Unauthenticated:
+		return status.Errorf(codes.Internal, "%s: %s", msg, v2BackendUnsupportedMessage)
+	default:
+		return status.Errorf(st.Code(), "%s: %s", msg, v2BackendRetryMessage)
+	}
 }
