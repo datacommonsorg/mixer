@@ -17,7 +17,6 @@ package datasources
 import (
 	"context"
 	"fmt"
-	"slices"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -308,25 +307,9 @@ func (ds *DataSources) ChildTypes(ctx context.Context, in *pbv2.ChildTypesReques
 			return s.ChildTypes(c, r)
 		},
 		func(all []*pbv2.ChildTypesResponse) (*pbv2.ChildTypesResponse, error) {
-			return mergeChildTypes(all), nil
+			return merger.MergeMultiChildTypes(all), nil
 		},
 	)
-}
-
-// mergeChildTypes unions child types per ancestor, sorted and deduplicated.
-func mergeChildTypes(all []*pbv2.ChildTypesResponse) *pbv2.ChildTypesResponse {
-	byAncestor := map[string][]string{}
-	for _, resp := range all {
-		for ancestor, childTypes := range resp.GetChildTypes() {
-			byAncestor[ancestor] = append(byAncestor[ancestor], childTypes.GetTypes()...)
-		}
-	}
-	merged := &pbv2.ChildTypesResponse{ChildTypes: make(map[string]*pbv2.ChildTypesResponse_ChildTypes, len(byAncestor))}
-	for ancestor, types := range byAncestor {
-		slices.Sort(types)
-		merged.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: slices.Compact(types)}
-	}
-	return merged
 }
 
 func (ds *DataSources) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

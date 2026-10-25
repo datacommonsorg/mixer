@@ -33,6 +33,9 @@ func (s *Server) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*p
 	if in == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
 	}
+	if len(in.GetAncestors()) == 0 {
+		return &pbv2.ChildTypesResponse{}, nil
+	}
 	if len(in.GetAncestors()) > maxChildTypesAncestors {
 		return nil, status.Errorf(codes.InvalidArgument,
 			"too many ancestors (%d): request at most %d per call", len(in.GetAncestors()), maxChildTypesAncestors)

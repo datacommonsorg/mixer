@@ -2259,3 +2259,37 @@ func TestMergeMultiBulkVariableGroupInfo(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeMultiChildTypes(t *testing.T) {
+	for _, c := range []struct {
+		desc string
+		all  []*pbv2.ChildTypesResponse
+		want *pbv2.ChildTypesResponse
+	}{
+		{
+			desc: "no responses",
+			want: &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{}},
+		},
+		{
+			desc: "union per ancestor, sorted and deduplicated",
+			all: []*pbv2.ChildTypesResponse{
+				{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{"geoId/06": {Types: []string{"County", "City"}}}},
+				{},
+				{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+					"geoId/06":    {Types: []string{"City", "CensusTract"}},
+					"country/KEN": {Types: []string{"County"}},
+				}},
+			},
+			want: &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+				"geoId/06":    {Types: []string{"CensusTract", "City", "County"}},
+				"country/KEN": {Types: []string{"County"}},
+			}},
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			if diff := cmp.Diff(c.want, MergeMultiChildTypes(c.all), protocmp.Transform()); diff != "" {
+				t.Errorf("MergeMultiChildTypes() diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}

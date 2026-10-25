@@ -64,6 +64,11 @@ func TestV2InternalChildTypes(t *testing.T) {
 			want: resp,
 		},
 		{
+			name: "no ancestors returns an empty response without querying data sources",
+			req:  &pbv2.ChildTypesRequest{},
+			want: &pbv2.ChildTypesResponse{},
+		},
+		{
 			name:     "rejects too many ancestors",
 			req:      &pbv2.ChildTypesRequest{Ancestors: tooMany},
 			wantCode: codes.InvalidArgument,
@@ -87,7 +92,11 @@ func TestV2InternalChildTypes(t *testing.T) {
 			if err != nil {
 				t.Fatalf("V2InternalChildTypes() error = %v", err)
 			}
-			if diff := cmp.Diff(tc.req, ds.got, protocmp.Transform()); diff != "" {
+			wantForwarded := tc.req
+			if len(tc.req.GetAncestors()) == 0 {
+				wantForwarded = nil
+			}
+			if diff := cmp.Diff(wantForwarded, ds.got, protocmp.Transform()); diff != "" {
 				t.Errorf("forwarded request diff (-want +got):\n%s", diff)
 			}
 			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
