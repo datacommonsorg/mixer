@@ -35,6 +35,13 @@ const (
 	// terms like "school" have subtypes within ~0.02, while specific terms like "county" or "state" lead
 	// the next class by 0.06 or more.
 	v2ChildTypeScoreMargin = 0.02
+	// v2ChildTypeRelevanceMargin is how far (in type resolver similarity) below a hint's best class a class
+	// may score and still be considered for that hint. It drops loosely related classes that happen to exist
+	// under the parent when the hint's own class does not (e.g. "state" -> County under Kenya, or an
+	// unrecognized term like "autonomous community" -> Neighborhood). Measured on staging type embeddings:
+	// genuine alternatives are within ~0.03 of the best class (AdministrativeArea1 for "administrative area
+	// 1", school subtypes, PublicSchool), while such loose matches trail by 0.07 or more.
+	v2ChildTypeRelevanceMargin = 0.05
 	// v2MaxChildTypesPerHint caps the child types returned per hint.
 	v2MaxChildTypesPerHint = 3
 )
@@ -99,8 +106,9 @@ func (s *Service) childTypesOf(ctx context.Context, ancestors []string) (map[str
 }
 
 // matchChildTypes returns, in hint order, the child types for each hint: of the hint's resolved classes
-// that exist within the parent (generic types excluded, see isGenericPlaceType), the highest-scoring one
-// plus any others scoring within v2ChildTypeScoreMargin of it, up to v2MaxChildTypesPerHint.
+// that are relevant (within v2ChildTypeRelevanceMargin of the hint's best class) and exist within the
+// parent (generic types excluded, see isGenericPlaceType), the highest-scoring one plus any others scoring
+// within v2ChildTypeScoreMargin of it, up to v2MaxChildTypesPerHint.
 //
 // One type per hint is the norm, since callers name the specific type they want (e.g. "county" and
 // "administrative area 2"). Near-ties are kept because they usually mean an umbrella term over subtypes
@@ -109,8 +117,12 @@ func (s *Service) childTypesOf(ctx context.Context, ancestors []string) (map[str
 func matchChildTypes(hints []string, typesByHint map[string][]typeCandidate, available []string) []string {
 	var matched []string
 	for _, hint := range hints {
+		candidates := typesByHint[strings.TrimSpace(hint)]
 		var existing []typeCandidate
-		for _, candidate := range typesByHint[strings.TrimSpace(hint)] {
+		for _, candidate := range candidates {
+			if bestScore(candidates)-candidate.score > v2ChildTypeRelevanceMargin {
+				continue
+			}
 			if slices.Contains(available, candidate.dcid) && !isGenericPlaceType(candidate.dcid) {
 				existing = append(existing, candidate)
 			}
@@ -122,6 +134,15 @@ func matchChildTypes(hints []string, typesByHint map[string][]typeCandidate, ava
 		}
 	}
 	return matched
+}
+
+// bestScore returns the highest score among candidates, or 0 for none.
+func bestScore(candidates []typeCandidate) float64 {
+	best := 0.0
+	for _, candidate := range candidates {
+		best = max(best, candidate.score)
+	}
+	return best
 }
 
 // nearTopTypes returns the highest-scoring candidate and those within v2ChildTypeScoreMargin of it,

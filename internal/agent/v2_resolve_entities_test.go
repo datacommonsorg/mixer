@@ -870,6 +870,15 @@ func TestMatchChildTypes(t *testing.T) {
 			want:        []string{"HighSchool", "ElementarySchool", "MiddleSchool"},
 		},
 		{
+			name:  "loosely related existing classes far below the hint's best class are dropped",
+			hints: []string{"state", "autonomous community"},
+			typesByHint: map[string][]typeCandidate{
+				"state":                {{"State", 0.724}, {"Governorate", 0.613}, {"County", 0.594}},
+				"autonomous community": {{"AutonomousRegion", 0.594}, {"Neighborhood", 0.515}, {"AdministrativeArea1", 0.509}},
+			},
+			available: []string{"County", "Neighborhood", "AdministrativeArea1"},
+		},
+		{
 			name:        "classes beyond the margin are dropped",
 			hints:       []string{"county"},
 			typesByHint: map[string][]typeCandidate{"county": {{"County", 0.75}, {"CensusCountyDivision", 0.70}}},
