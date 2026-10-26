@@ -332,26 +332,19 @@ func NewMixerServer(
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
-	// First, check if the header override is set.
-	// If true, ALWAYS revert back to legacy backend.
-	if util.IsHeaderTrue(ctx, util.XDisableSpanner) {
-		slog.Info("X-Disable-Spanner header set, reverting to legacy backend")
-		return false
-	}
-
-	// Second, check if the overall Mixer Spanner flag is set.
+	// First, check if the overall Mixer Spanner flag is set.
 	if s.useSpannerGraph {
 		// Divert all requests to Spanner.
 		return true
 	}
 
-	// Third, check if the experimental Spanner flag is set.
+	// Second, check if the experimental Spanner flag is set.
 	if !s.flags.UseSpannerGraph {
 		// If Spanner is not enabled, do not divert regardless of any other flags or headers.
 		return false
 	}
 
-	// Fourth, check if the specific request has the header to divert to Spanner.
+	// Third, check if the specific request has the header to divert to Spanner.
 	if util.IsHeaderTrue(ctx, util.XDivertSpanner) {
 		return true
 	}

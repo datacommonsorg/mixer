@@ -73,8 +73,12 @@ func TestParseGCSURI(t *testing.T) {
 
 func TestInstructionLoaderLocalAndGCSFallback(t *testing.T) {
 	tmpDir := t.TempDir()
-	customServerMd := "# Custom Local Server Instructions"
-	if err := os.WriteFile(filepath.Join(tmpDir, serverInstructionsFile), []byte(customServerMd), 0644); err != nil {
+	v1Dir := filepath.Join(tmpDir, "v1")
+	if err := os.MkdirAll(v1Dir, 0755); err != nil {
+		t.Fatalf("failed to create v1 directory: %v", err)
+	}
+	customServerMd := "# Custom Local v1 Server Instructions"
+	if err := os.WriteFile(filepath.Join(v1Dir, serverInstructionsFile), []byte(customServerMd), 0644); err != nil {
 		t.Fatalf("failed to write custom server.md: %v", err)
 	}
 
@@ -86,41 +90,43 @@ func TestInstructionLoaderLocalAndGCSFallback(t *testing.T) {
 		wantEmpty  bool
 	}{
 		{
-			name:       "embedded default server instructions",
-			loader:     &InstructionLoader{},
+			name:       "embedded default v1 server instructions",
+			loader:     NewInstructionLoader(context.Background(), "", "v1"),
 			filename:   serverInstructionsFile,
 			wantSubstr: "Data Commons",
 		},
 		{
-			name:       "embedded documentation extension",
-			loader:     &InstructionLoader{},
+			name:       "embedded v1 documentation extension",
+			loader:     NewInstructionLoader(context.Background(), "", "v1"),
 			filename:   docInstructionsExtensionFile,
 			wantSubstr: "https://docs.datacommons.org/llms.txt",
 		},
 		{
-			name:       "local custom directory override",
-			loader:     &InstructionLoader{customDir: tmpDir},
+			name:       "local custom directory versioned override",
+			loader:     NewInstructionLoader(context.Background(), tmpDir, "v1"),
 			filename:   serverInstructionsFile,
 			wantSubstr: customServerMd,
 		},
 		{
-			name: "GCS custom directory override",
+			name: "GCS custom directory versioned override",
 			loader: &InstructionLoader{
 				customDir: "gs://test-bucket/mcp-prompts",
+				versionID: "v1",
 				gcsRead: func(_ context.Context, bucket, object string) ([]byte, error) {
-					if bucket == "test-bucket" && object == "mcp-prompts/server.md" {
-						return []byte("# Custom GCS Server Instructions"), nil
+					if bucket == "test-bucket" && object == "mcp-prompts/v1/server.md" {
+						return []byte("# Custom GCS v1 Server Instructions"), nil
 					}
 					return nil, fmt.Errorf("not found")
 				},
 			},
 			filename:   serverInstructionsFile,
-			wantSubstr: "# Custom GCS Server Instructions",
+			wantSubstr: "# Custom GCS v1 Server Instructions",
 		},
 		{
 			name: "GCS error falls back to embedded instructions",
 			loader: &InstructionLoader{
 				customDir: "gs://test-bucket/missing",
+				versionID: "v1",
 				gcsRead: func(_ context.Context, _, _ string) ([]byte, error) {
 					return nil, fmt.Errorf("object not found")
 				},
@@ -130,8 +136,14 @@ func TestInstructionLoaderLocalAndGCSFallback(t *testing.T) {
 		},
 		{
 			name:      "rejects relative path traversal",
-			loader:    &InstructionLoader{customDir: tmpDir},
+			loader:    NewInstructionLoader(context.Background(), tmpDir, "v1"),
 			filename:  "../../etc/passwd",
+			wantEmpty: true,
+		},
+		{
+			name:      "rejects empty or invalid version ID",
+			loader:    NewInstructionLoader(context.Background(), tmpDir, "../v1"),
+			filename:  serverInstructionsFile,
 			wantEmpty: true,
 		},
 	}

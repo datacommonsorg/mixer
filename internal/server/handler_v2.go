@@ -656,28 +656,12 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 }
 
 // V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
-//
-// TODO: Rankings are deprecated. Unlike the other V2 wrappers, there is no
-// Spanner implementation: this always reads the precomputed RelatedLocations
-// rows from Bigtable (and returns empty data when Bigtable is not configured),
-// regardless of Spanner diversion flags. A follow-up will return an empty
-// response and remove the Bigtable implementation.
+// Note: Place rankings are deprecated along with the place ranking pages. This
+// endpoint (and the V1 GetLocationsRankings endpoint, which wraps it) always
+// returns an empty response, so that legacy custom DC instances still get a
+// valid response. It will be removed once all custom instances are updated.
 func (s *Server) V2GetLocationsRankings(
-	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+	_ context.Context, _ *pb.GetLocationsRankingsRequest,
 ) (*pb.GetLocationsRankingsResponse, error) {
-
-	// Fetch local location rankings, falling back to the remote mixer using the v2 API path for remote fetch.
-	v2Resp, err := s.getLocationsRankings(ctx, in, "/v2/place/ranking")
-	if err != nil {
-		return nil, err
-	}
-	if v2Resp == nil {
-		return &pb.GetLocationsRankingsResponse{}, nil
-	}
-	v2Resp = proto.Clone(v2Resp).(*pb.GetLocationsRankingsResponse)
-
-	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
-	v2Resp.Legacy = true
-
-	return v2Resp, nil
+	return &pb.GetLocationsRankingsResponse{}, nil
 }

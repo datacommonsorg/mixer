@@ -25,42 +25,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// fakeAgentBackend records incoming requests and returns canned responses for unit tests.
-type fakeAgentBackend struct {
-	lastSearchReq       *agent.SearchIndicatorsRequest
-	searchResp          *agent.SearchIndicatorsResponse
-	lastVarMetadataReq  *agent.GetVariableMetadataRequest
-	varMetadataResp     *agent.GetVariableMetadataResponse
-	lastObservationsReq *agent.GetObservationsRequest
-	observationsResp    *agent.GetObservationsResponse
-}
-
-func (f *fakeAgentBackend) SearchIndicators(_ context.Context, req *agent.SearchIndicatorsRequest) (*agent.SearchIndicatorsResponse, error) {
-	f.lastSearchReq = req
-	if f.searchResp != nil {
-		return f.searchResp, nil
-	}
-	return &agent.SearchIndicatorsResponse{Status: "SUCCESS"}, nil
-}
-
-func (f *fakeAgentBackend) GetVariableMetadata(_ context.Context, req *agent.GetVariableMetadataRequest) (*agent.GetVariableMetadataResponse, error) {
-	f.lastVarMetadataReq = req
-	if f.varMetadataResp != nil {
-		return f.varMetadataResp, nil
-	}
-	return &agent.GetVariableMetadataResponse{Status: "SUCCESS"}, nil
-}
-
-func (f *fakeAgentBackend) GetObservations(_ context.Context, req *agent.GetObservationsRequest) (*agent.GetObservationsResponse, error) {
-	f.lastObservationsReq = req
-	if f.observationsResp != nil {
-		return f.observationsResp, nil
-	}
-	return &agent.GetObservationsResponse{
-		Variable: &agent.ObservationNode{Dcid: req.VariableDcid, Name: "Test Variable"},
-	}, nil
-}
-
 func TestSearchIndicators(t *testing.T) {
 	tests := []struct {
 		name        string

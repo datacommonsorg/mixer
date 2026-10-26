@@ -25,7 +25,6 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -434,13 +433,12 @@ func TestV2Observation_UsageLog(t *testing.T) {
 
 func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
-		desc                 string
-		useSpannerGraph      bool // CLI flag
-		useSpannerGraphFlag  bool // Feature flag
-		resolver             string
-		disableSpannerHeader string // X-Disable-Spanner header
-		wantRoute            bool
-		wantErr              bool
+		desc                string
+		useSpannerGraph     bool // CLI flag
+		useSpannerGraphFlag bool // Feature flag
+		resolver            string
+		wantRoute           bool
+		wantErr             bool
 	}{
 		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
@@ -466,20 +464,6 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			useSpannerGraph: false,
 			resolver:        resolve.ResolveResolverTopic,
 			wantRoute:       false,
-		},
-		{
-			desc:                 "Place resolver with X-Disable-Spanner -> don't route",
-			useSpannerGraph:      true,
-			resolver:             resolve.ResolveResolverPlace,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
-		},
-		{
-			desc:                 "Topic resolver with X-Disable-Spanner -> don't route",
-			useSpannerGraph:      true,
-			resolver:             resolve.ResolveResolverTopic,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
 		},
 		{
 			desc:            "Empty resolver defaults to place (Spanner enabled) -> route",
@@ -558,16 +542,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 				},
 			}
 
-			ctx := context.Background()
-			md := metadata.MD{}
-			if tc.disableSpannerHeader != "" {
-				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
-			}
-			if len(md) > 0 {
-				ctx = metadata.NewIncomingContext(ctx, md)
-			}
-
-			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
+			gotRoute, err := s.shouldRouteResolveToDispatcher(context.Background(), tc.resolver)
 			if (err != nil) != tc.wantErr {
 				t.Fatalf("shouldRouteResolveToDispatcher() error = %v, wantErr %v", err, tc.wantErr)
 			}
@@ -632,12 +607,5 @@ func TestV2RemoteAPIPaths(t *testing.T) {
 	_, _ = s.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{Nodes: []string{}})
 	if transport.lastPath != "/v2/bulk/info/variable-group" {
 		t.Errorf("V2BulkVariableGroupInfo passed remote path %q, want %q", transport.lastPath, "/v2/bulk/info/variable-group")
-	}
-
-	// 3. V2GetLocationsRankings
-	// Must provide PlaceType and StatVarDcids to avoid early argument error.
-	_, _ = s.V2GetLocationsRankings(ctx, &pb.GetLocationsRankingsRequest{PlaceType: "City", StatVarDcids: []string{"Count_Person"}})
-	if transport.lastPath != "/v2/place/ranking" {
-		t.Errorf("V2GetLocationsRankings passed remote path %q, want %q", transport.lastPath, "/v2/place/ranking")
 	}
 }
