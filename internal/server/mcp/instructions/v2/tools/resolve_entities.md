@@ -1,0 +1,1 @@
+Resolve place and other entity names (e.g. countries, cities, organizations, schools, food banks) to Data Commons DCIDs. Resolve every entity this way before using it in other tools; never guess DCIDs.

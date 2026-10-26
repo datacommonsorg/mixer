@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "schema": "https://json.sdmx.org/2.0.0/sdmx-json-structure-schema.json",
+    "id": "DF_OBS_AVAILABILITY",
+    "prepared": "2026-08-10T12:34:56Z",
+    "sender": {
+      "id": "DC"
+    }
+  },
+  "data": {
+    "dataConstraints": [
+      {
+        "agencyID": "DC",
+        "cubeRegions": [
+          {
+            "include": true,
+            "keyValues": [
+              {
+                "id": "unit",
+                "include": true,
+                "values": [
+                  {
+                    "value": "Percent"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "id": "DF_OBS_AVAILABILITY",
+        "name": "Available DF_OBS data",
+        "role": "Actual",
+        "version": "1.0.0"
+      }
+    ]
+  }
+}

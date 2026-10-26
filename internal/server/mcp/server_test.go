@@ -18,13 +18,17 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"slices"
 	"strings"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func TestDocumentationHeaderHandling(t *testing.T) {
@@ -179,7 +183,7 @@ func TestToolsAndResourcesProtocol(t *testing.T) {
 	ts := httptest.NewServer(srv)
 	defer ts.Close()
 
-	for _, routePath := range []string{"", "/v1", "/preview"} {
+	for _, routePath := range []string{"", "/v1"} {
 		t.Run("route_"+routePath, func(t *testing.T) {
 			endpoint := ts.URL + routePath
 			tests := []struct {
@@ -205,6 +209,10 @@ func TestToolsAndResourcesProtocol(t *testing.T) {
 
 							if desc, _ := toolMap["description"].(string); strings.TrimSpace(desc) == "" {
 								t.Errorf("tool %s has empty description", name)
+							}
+							wantAnnotations := map[string]any{"readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": true}
+							if diff := cmp.Diff(wantAnnotations, toolMap["annotations"]); diff != "" {
+								t.Errorf("tool %s annotations diff (-want +got):\n%s", name, diff)
 							}
 
 							// Ensure every property's "type" is a single string (e.g. "array") rather than a list (e.g. ["null", "array"]).
@@ -410,6 +418,13 @@ func TestVersionRegistryValidation(t *testing.T) {
 			enablePreview:  false,
 			wantErrSubstr:  `default MCP version "v2" is not an active mounted version`,
 		},
+		{
+			name:           "default version pointing to preview version fails when preview enabled",
+			versions:       AllVersions(),
+			defaultVersion: "v2",
+			enablePreview:  true,
+			wantErrSubstr:  `default MCP version "v2" is not an active mounted version`,
+		},
 	}
 
 	for _, tc := range tests {
@@ -504,24 +519,32 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 			wantCallSurface: "mcp-preview",
 		},
 		{
-			name:            "preview-stage /mcp/v2 is mounted with mcp-v2 surface when preview is enabled",
-			versions:        versionsWithV2Preview,
-			enablePreview:   true,
-			path:            "/v2",
-			wantGetStatus:   http.StatusOK,
-			wantVersion:     "v2",
-			wantToolCount:   1,
-			wantCallSurface: "mcp-v2",
-		},
-		{
 			name:            "/mcp/preview falls back to latest StageStable v1 when no StagePreview version exists",
-			versions:        AllVersions(),
+			versions:        []VersionSpec{V1Spec()},
 			enablePreview:   true,
 			path:            "/preview",
 			wantGetStatus:   http.StatusOK,
 			wantVersion:     "v1",
 			wantToolCount:   6,
 			wantCallSurface: "mcp-preview",
+		},
+		{
+			name:          "/mcp/preview serves registered V2Spec when preview is enabled",
+			versions:      AllVersions(),
+			enablePreview: true,
+			path:          "/preview",
+			wantGetStatus: http.StatusOK,
+			wantVersion:   "v2",
+			wantToolCount: len(V2Spec().Tools),
+			// V2Spec has no search_indicators tool, so the tools/call probe errors before reaching the backend.
+			wantCallSurface: "",
+		},
+		{
+			name:          "registered V2Spec is not mounted at /mcp/v2 while in preview",
+			versions:      AllVersions(),
+			enablePreview: true,
+			path:          "/v2",
+			wantGetStatus: http.StatusNotFound,
 		},
 		{
 			name:          "unknown version /mcp/v99 returns 404",
@@ -607,6 +630,184 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestV2PreviewSurface(t *testing.T) {
+	srv, err := NewDcMcpServer(context.Background(), &fakeAgentBackend{}, &ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
+	if err != nil {
+		t.Fatalf("NewDcMcpServer failed: %v", err)
+	}
+	ts := httptest.NewServer(srv)
+	defer ts.Close()
+	endpoint := ts.URL + "/preview"
+
+	v2ServerMD, err := instructionsFS.ReadFile("instructions/v2/server.md")
+	if err != nil {
+		t.Fatalf("failed to read embedded v2 server.md: %v", err)
+	}
+	v2DocExtension, err := instructionsFS.ReadFile("instructions/v2/doc_instructions_extension.md")
+	if err != nil {
+		t.Fatalf("failed to read embedded v2 doc_instructions_extension.md: %v", err)
+	}
+	initializeParams := map[string]any{
+		"protocolVersion": "2025-03-26",
+		"capabilities":    map[string]any{},
+		"clientInfo":      map[string]any{"name": "test-client", "version": "1.0.0"},
+	}
+
+	tests := []struct {
+		name      string
+		method    string
+		params    map[string]any
+		docHeader string
+		resultKey string
+		transform func(any) any
+		want      any
+	}{
+		{
+			name:      "initialize returns v2 server instructions",
+			method:    "initialize",
+			params:    initializeParams,
+			resultKey: "instructions",
+			want:      strings.TrimSpace(string(v2ServerMD)),
+		},
+		{
+			name:      "initialize with documentation header appends v2 documentation extension",
+			method:    "initialize",
+			params:    initializeParams,
+			docHeader: "true",
+			resultKey: "instructions",
+			want:      strings.TrimSpace(string(v2ServerMD)) + "\n\n" + strings.TrimSpace(string(v2DocExtension)),
+		},
+		{
+			name:      "tools/list returns V2Spec tools",
+			method:    "tools/list",
+			params:    map[string]any{},
+			resultKey: "tools",
+			transform: listedToolNames,
+			want:      []string{"resolve_entities"},
+		},
+		{
+			name:      "resources/list returns no skills",
+			method:    "resources/list",
+			params:    map[string]any{},
+			resultKey: "resources",
+			want:      []any{},
+		},
+	}
+
+	for i, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			respMap := sendJSONRPC(t, endpoint, tc.docHeader, map[string]any{
+				"jsonrpc": "2.0",
+				"id":      i + 1,
+				"method":  tc.method,
+				"params":  tc.params,
+			})
+			resObj, ok := respMap["result"].(map[string]any)
+			if !ok {
+				t.Fatalf("expected JSON-RPC result object, got: %+v", respMap)
+			}
+			got := resObj[tc.resultKey]
+			if tc.transform != nil {
+				got = tc.transform(got)
+			}
+			if diff := cmp.Diff(tc.want, got); diff != "" {
+				t.Errorf("%s result.%s diff (-want +got):\n%s", tc.method, tc.resultKey, diff)
+			}
+		})
+	}
+}
+
+func TestV2PreviewResolveEntitiesCall(t *testing.T) {
+	backend := &fakeAgentBackend{v2ResolveResp: &agent.V2ResolveEntitiesResponse{ResolvedEntities: &agent.Table{
+		Columns: []string{"query", "dcid", "name", "types"},
+		Rows:    [][]any{{"California", "geoId/06", "California", []string{"State"}}},
+	}}}
+	srv, err := NewDcMcpServer(context.Background(), backend, &ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
+	if err != nil {
+		t.Fatalf("NewDcMcpServer failed: %v", err)
+	}
+	ts := httptest.NewServer(srv)
+	defer ts.Close()
+
+	respMap := sendJSONRPC(t, ts.URL+"/preview", "", map[string]any{
+		"jsonrpc": "2.0",
+		"id":      1,
+		"method":  "tools/call",
+		"params": map[string]any{
+			"name":      "resolve_entities",
+			"arguments": map[string]any{"entities": []any{map[string]any{"name": "California"}}},
+		},
+	})
+	result, ok := respMap["result"].(map[string]any)
+	if !ok || result["isError"] == true {
+		t.Fatalf("expected successful tools/call result, got: %+v", respMap)
+	}
+	wantStructured := map[string]any{"resolved_entities": map[string]any{
+		"columns": []any{"query", "dcid", "name", "types"},
+		"rows":    []any{[]any{"California", "geoId/06", "California", []any{"State"}}},
+	}}
+	if diff := cmp.Diff(wantStructured, result["structuredContent"]); diff != "" {
+		t.Errorf("structuredContent diff (-want +got):\n%s", diff)
+	}
+	text := result["content"].([]any)[0].(map[string]any)["text"].(string)
+	var textJSON any
+	if err := json.Unmarshal([]byte(text), &textJSON); err != nil {
+		t.Fatalf("text content is not JSON: %v", err)
+	}
+	if diff := cmp.Diff(wantStructured, textJSON); diff != "" {
+		t.Errorf("text content diff (-want +got):\n%s", diff)
+	}
+	if backend.lastSurface != "mcp-preview" {
+		t.Errorf("backend surface = %q, want %q", backend.lastSurface, "mcp-preview")
+	}
+	wantReq := &agent.V2ResolveEntitiesRequest{Entities: []*agent.V2EntityQuery{{Name: "California"}}}
+	if diff := cmp.Diff(wantReq, backend.lastV2ResolveReq); diff != "" {
+		t.Errorf("agent request diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestToolErrorForLLM(t *testing.T) {
+	tests := []struct {
+		name string
+		err  error
+		want string
+	}{
+		{
+			name: "status error keeps only its message",
+			err:  status.Error(codes.InvalidArgument, "'entities' cannot be empty"),
+			want: "'entities' cannot be empty",
+		},
+		{
+			name: "non-status error is unchanged",
+			err:  errors.New("agent service is not initialized"),
+			want: "agent service is not initialized",
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if got := toolErrorForLLM(tc.err).Error(); got != tc.want {
+				t.Errorf("toolErrorForLLM() = %q, want %q", got, tc.want)
+			}
+		})
+	}
+}
+
+// listedToolNames extracts the sorted tool names from a decoded tools/list "tools" result.
+func listedToolNames(rawTools any) any {
+	names := []string{}
+	for _, item := range rawTools.([]any) {
+		names = append(names, item.(map[string]any)["name"].(string))
+	}
+	slices.Sort(names)
+	return names
 }
 
 // sendJSONRPC sends a JSON-RPC POST request to the test server and decodes the JSON response map.

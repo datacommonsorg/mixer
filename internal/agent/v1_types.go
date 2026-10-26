@@ -21,18 +21,6 @@ type Table struct {
 	Rows    [][]any  `json:"rows,omitempty"`
 }
 
-// ResolvePlacesRequest holds parameters for ResolvePlaces.
-type ResolvePlacesRequest struct {
-	Places []string
-	Target string
-}
-
-// ResolvePlacesResponse holds the tabular place resolution output.
-type ResolvePlacesResponse struct {
-	Status         string `json:"status,omitempty"`
-	ResolvedPlaces *Table `json:"resolvedPlaces,omitempty"`
-}
-
 // SearchIndicatorsRequest holds parameters for SearchIndicators.
 type SearchIndicatorsRequest struct {
 	Query          string
