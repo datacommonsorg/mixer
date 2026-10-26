@@ -154,7 +154,7 @@ func (s *Service) fetchPlaceSubclasses(ctx context.Context) ([]string, error) {
 
 // withSpannerDivert returns ctx with incoming metadata containing only X-Divert-Spanner. The triggering
 // caller's metadata is deliberately not carried over: the result is shared, so it must not depend on
-// per-caller headers (e.g. X-Disable-Spanner would override the divert and cache a failure for everyone).
+// per-caller headers.
 func withSpannerDivert(ctx context.Context) context.Context {
 	return metadata.NewIncomingContext(ctx, metadata.Pairs(util.XDivertSpanner, "true"))
 }

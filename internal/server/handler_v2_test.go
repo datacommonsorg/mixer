@@ -433,13 +433,12 @@ func TestV2Observation_UsageLog(t *testing.T) {
 
 func TestShouldRouteResolveToDispatcher(t *testing.T) {
 	tests := []struct {
-		desc                 string
-		useSpannerGraph      bool // CLI flag
-		useSpannerGraphFlag  bool // Feature flag
-		resolver             string
-		disableSpannerHeader string // X-Disable-Spanner header
-		wantRoute            bool
-		wantErr              bool
+		desc                string
+		useSpannerGraph     bool // CLI flag
+		useSpannerGraphFlag bool // Feature flag
+		resolver            string
+		wantRoute           bool
+		wantErr             bool
 	}{
 		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
@@ -465,20 +464,6 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			useSpannerGraph: false,
 			resolver:        resolve.ResolveResolverTopic,
 			wantRoute:       false,
-		},
-		{
-			desc:                 "Place resolver with X-Disable-Spanner -> don't route",
-			useSpannerGraph:      true,
-			resolver:             resolve.ResolveResolverPlace,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
-		},
-		{
-			desc:                 "Topic resolver with X-Disable-Spanner -> don't route",
-			useSpannerGraph:      true,
-			resolver:             resolve.ResolveResolverTopic,
-			disableSpannerHeader: "true",
-			wantRoute:            false,
 		},
 		{
 			desc:            "Empty resolver defaults to place (Spanner enabled) -> route",
@@ -557,16 +542,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 				},
 			}
 
-			ctx := context.Background()
-			md := metadata.MD{}
-			if tc.disableSpannerHeader != "" {
-				md.Set(util.XDisableSpanner, tc.disableSpannerHeader)
-			}
-			if len(md) > 0 {
-				ctx = metadata.NewIncomingContext(ctx, md)
-			}
-
-			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
+			gotRoute, err := s.shouldRouteResolveToDispatcher(context.Background(), tc.resolver)
 			if (err != nil) != tc.wantErr {
 				t.Fatalf("shouldRouteResolveToDispatcher() error = %v, wantErr %v", err, tc.wantErr)
 			}

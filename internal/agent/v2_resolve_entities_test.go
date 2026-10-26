@@ -28,7 +28,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -74,9 +73,8 @@ func (m *mockV2ResolveEntitiesServer) V2Node(ctx context.Context, in *pbv2.NodeR
 		if m.placeTypesErr != nil {
 			return nil, m.placeTypesErr
 		}
-		// Mirrors the legacy V2Node path, which rejects unfiltered "+" arcs unless diverted to Spanner
-		// (X-Disable-Spanner overrides the divert).
-		if !util.IsHeaderTrue(ctx, util.XDivertSpanner) || util.IsHeaderTrue(ctx, util.XDisableSpanner) {
+		// Mirrors the legacy V2Node path, which rejects unfiltered "+" arcs unless diverted to Spanner.
+		if !util.IsHeaderTrue(ctx, util.XDivertSpanner) {
 			return nil, status.Error(codes.InvalidArgument, "unfiltered + arcs require Spanner")
 		}
 		if ctx.Err() != nil {
@@ -510,12 +508,6 @@ func TestV2PlaceTypes(t *testing.T) {
 	cancel()
 	if _, ok := service.v2PlaceTypes(cancelledCtx)["State"]; !ok {
 		t.Errorf("want the shared lookup to ignore the triggering request's cancellation")
-	}
-
-	service.Reset()
-	disableCtx := metadata.NewIncomingContext(ctx, metadata.Pairs(util.XDisableSpanner, "true"))
-	if _, ok := service.v2PlaceTypes(disableCtx)["State"]; !ok {
-		t.Errorf("want the shared lookup to ignore the triggering request's X-Disable-Spanner header")
 	}
 }
 
