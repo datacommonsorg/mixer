@@ -16,6 +16,7 @@ package agent
 
 import (
 	"context"
+	"slices"
 	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -23,21 +24,25 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// Cache manages a high-performance, thread-safe in-memory cache
-// of Statistical Variable observations availability for places.
+// Cache manages a high-performance, thread-safe in-memory cache of per-place data: Statistical
+// Variable observations availability and child entity types.
 type Cache struct {
 	mixer Mixer
 	mu    sync.RWMutex
 
 	// Cache map: placeDcid -> Set of available variableDcids
 	placeVars map[string]map[string]struct{}
+
+	// Cache map: ancestorDcid -> child entity types (empty when it has none)
+	childTypes map[string][]string
 }
 
 // NewCache constructs a new Cache instance backed by the Mixer client.
 func NewCache(mixer Mixer) *Cache {
 	return &Cache{
-		mixer:     mixer,
-		placeVars: make(map[string]map[string]struct{}),
+		mixer:      mixer,
+		placeVars:  make(map[string]map[string]struct{}),
+		childTypes: make(map[string][]string),
 	}
 }
 
@@ -114,6 +119,64 @@ func (c *Cache) Reset() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 	c.placeVars = make(map[string]map[string]struct{})
+	c.childTypes = make(map[string][]string)
+}
+
+// ChildTypes returns the child entity types (types of entities contained in it via containedInPlace) of
+// each ancestor, reading through the cache: ancestors not yet cached are fetched in one Mixer call and
+// cached, including ancestors without child types.
+// Fetch errors are returned and not cached, so a failed lookup is retried on the next call.
+// The returned slices are shared and must not be modified.
+func (c *Cache) ChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {
+	result := make(map[string][]string, len(ancestors))
+	var missing []string
+	c.mu.RLock()
+	for _, ancestor := range ancestors {
+		if types, ok := c.childTypes[ancestor]; ok {
+			result[ancestor] = types
+		} else {
+			missing = append(missing, ancestor)
+		}
+	}
+	c.mu.RUnlock()
+	if len(missing) == 0 {
+		return result, nil
+	}
+
+	fetched, err := fetchChildTypes(ctx, c.mixer, missing)
+	if err != nil {
+		return nil, err
+	}
+	c.mu.Lock()
+	for _, ancestor := range missing {
+		// A concurrent call may have cached this ancestor meanwhile; keep its entry.
+		if cached, ok := c.childTypes[ancestor]; ok {
+			result[ancestor] = cached
+			continue
+		}
+		types := fetched[ancestor]
+		if types == nil {
+			types = []string{}
+		}
+		c.childTypes[ancestor] = types
+		result[ancestor] = types
+	}
+	c.mu.Unlock()
+	return result, nil
+}
+
+// fetchChildTypes calls Mixer.ChildTypes for ancestors and returns child types keyed by ancestor.
+// Ancestors are sent sorted so equal sets map to the same request (and Redis cache key).
+func fetchChildTypes(ctx context.Context, mixer Mixer, ancestors []string) (map[string][]string, error) {
+	resp, err := mixer.ChildTypes(ctx, &pbv2.ChildTypesRequest{Ancestors: slices.Sorted(slices.Values(ancestors))})
+	if err != nil {
+		return nil, err
+	}
+	childTypes := make(map[string][]string, len(resp.GetChildTypes()))
+	for ancestor, types := range resp.GetChildTypes() {
+		childTypes[ancestor] = types.GetTypes()
+	}
+	return childTypes, nil
 }
 
 // checkLocalCache queries the local cache for a list of places under read lock.

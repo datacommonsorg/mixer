@@ -24,6 +24,8 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // SQLDataSource represents a data source that interacts with SQL.
@@ -145,6 +147,12 @@ func (sds *SQLDataSource) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuer
 // SdmxAvailability retrieves SDMX availability from the data source.
 func (sds *SQLDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	return &sdmxpb.SdmxAvailabilityResult{}, nil
+}
+
+// ChildTypes is not supported by SQL data sources. It returns an Unimplemented error rather than an
+// empty response, so that DataSources.ChildTypes does not count this source as having succeeded.
+func (sds *SQLDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "ChildTypes is not supported by SQL data sources")
 }
 
 func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

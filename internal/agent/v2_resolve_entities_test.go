@@ -38,8 +38,11 @@ type mockV2ResolveEntitiesServer struct {
 	resolveCandidates map[string][]*pbv2.ResolveResponse_Entity_Candidate
 	resolverErrs      map[string]error // keyed by resolver name
 	nodeData          map[string]*pbv2.LinkedGraph
-	nodeErr           error // applies to enrichment lookups only, not the place-type lookup
-	placeTypesErr     error // applies to the place-type lookup only
+	nodeErr           error               // applies to name/type V2Node lookups (including child type names), not the place-type lookup or ChildTypes
+	placeTypesErr     error               // applies to the place-type lookup only
+	childTypes        map[string][]string // ChildTypes response, keyed by ancestor
+	childTypesErr     error
+	childTypesCalls   [][]string
 
 	mu    sync.Mutex
 	calls []string
@@ -92,6 +95,22 @@ func (m *mockV2ResolveEntitiesServer) V2Node(ctx context.Context, in *pbv2.NodeR
 	return resp, nil
 }
 
+func (m *mockV2ResolveEntitiesServer) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	m.mu.Lock()
+	m.childTypesCalls = append(m.childTypesCalls, in.GetAncestors())
+	m.mu.Unlock()
+	if m.childTypesErr != nil {
+		return nil, m.childTypesErr
+	}
+	resp := &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{}}
+	for _, ancestor := range in.GetAncestors() {
+		if types, ok := m.childTypes[ancestor]; ok {
+			resp.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: types}
+		}
+	}
+	return resp, nil
+}
+
 // placeSubclassGraphs returns V2Node data for the place type roots, as returned for "<-subClassOf+".
 func placeSubclassGraphs(subclasses ...string) map[string]*pbv2.LinkedGraph {
 	nodes := make([]*pb.EntityInfo, 0, len(subclasses))
@@ -110,6 +129,11 @@ func withPlaceSubclasses(nodeData map[string]*pbv2.LinkedGraph) map[string]*pbv2
 		merged[k] = v
 	}
 	return merged
+}
+
+// scoredType builds a type resolver candidate with a similarity score in its metadata.
+func scoredType(dcid string, score string) *pbv2.ResolveResponse_Entity_Candidate {
+	return &pbv2.ResolveResponse_Entity_Candidate{Dcid: dcid, Metadata: map[string]string{"score": score}}
 }
 
 // nodeGraph builds a LinkedGraph with a name and typeOf values for V2Node mocks.
@@ -415,6 +439,13 @@ func TestV2ResolveEntitiesErrors(t *testing.T) {
 			wantErrSubstr: "entities[1].name cannot be empty",
 		},
 		{
+			name: "too many child type hints",
+			req: &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{
+				{Name: "Kenya", ChildEntityTypeHints: []string{"county", "subcounty", "ward", "town"}},
+			}},
+			wantErrSubstr: "entities[0].child_entity_type_hints has 4 hints: use at most 3",
+		},
+		{
 			name:          "invalid target",
 			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "California"}}, Target: "bogus"},
 			wantErrSubstr: `invalid target "bogus"`,
@@ -433,14 +464,14 @@ func TestV2ResolveEntitiesErrors(t *testing.T) {
 				ResolverNonPlace: status.Error(codes.Unimplemented, "non_place not supported"),
 			},
 			wantCode:      codes.Unimplemented,
-			wantErrSubstr: "non_place not supported",
+			wantErrSubstr: v2BackendUnsupportedMessage,
 		},
 		{
 			name:          "type hint failure is returned",
 			req:           &V2ResolveEntitiesRequest{Entities: []*V2EntityQuery{{Name: "FEMA", EntityTypeHints: []string{"agency"}}}},
 			resolverErrs:  map[string]error{ResolverType: errors.New("type backend down")},
 			wantCode:      codes.Internal,
-			wantErrSubstr: "type backend down",
+			wantErrSubstr: "failed to resolve entity_type_hints and child_entity_type_hints: " + v2BackendRetryMessage,
 		},
 	}
 

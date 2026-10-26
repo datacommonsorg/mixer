@@ -125,6 +125,10 @@ func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tab
 }
 
 
+func (m *coordinateMockSpannerClient) GetChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	return nil, nil
 }

@@ -240,3 +240,61 @@ func TestRemoteClientNodeSkipsExhaustedSource(t *testing.T) {
 		t.Errorf("Node() issued %d remote calls, want 0", remoteCalls)
 	}
 }
+
+func TestRemoteClientChildTypes(t *testing.T) {
+	tests := []struct {
+		name       string
+		statusCode int
+		body       string
+		want       *pbv2.ChildTypesResponse
+		wantErr    bool
+	}{
+		{
+			name:       "success",
+			statusCode: http.StatusOK,
+			body:       `{"childTypes":{"geoId/06":{"types":["City","County"]}}}`,
+			want: &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+				"geoId/06": {Types: []string{"City", "County"}},
+			}},
+		},
+		{
+			name:       "remote error is returned",
+			statusCode: http.StatusNotFound,
+			body:       `{"error":"not found"}`,
+			wantErr:    true,
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			var gotPath string
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				gotPath = r.URL.Path
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(tc.statusCode)
+				_, _ = w.Write([]byte(tc.body))
+			}))
+			defer ts.Close()
+
+			client, err := NewRemoteClient(&resource.Metadata{RemoteMixerDomain: ts.URL, RemoteMixerAPIKey: "test-api-key"})
+			if err != nil {
+				t.Fatalf("NewRemoteClient failed: %v", err)
+			}
+			got, err := client.ChildTypes(context.Background(), &pbv2.ChildTypesRequest{Ancestors: []string{"geoId/06"}})
+			if gotPath != "/v2/internal/child-types" {
+				t.Errorf("request path = %q, want %q", gotPath, "/v2/internal/child-types")
+			}
+			if tc.wantErr {
+				if err == nil {
+					t.Fatalf("client.ChildTypes() error = nil, want error")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("client.ChildTypes() unexpected error = %v", err)
+			}
+			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("client.ChildTypes() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}

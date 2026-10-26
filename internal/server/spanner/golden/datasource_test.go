@@ -109,6 +109,9 @@ func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, quer
 func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	res := map[string][]string{}
 	for _, typeFilter := range typeFilters {
