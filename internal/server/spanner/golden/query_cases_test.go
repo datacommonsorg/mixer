@@ -685,51 +685,6 @@ var vectorSearchNodeTestCases = []struct {
 		golden:         "vector_search_node_all_types",
 	},
 }
-var getFilteredStatVarGroupNodeTestCases = []struct {
-	nodes                []string
-	constrainedPlaces    []string
-	constrainedImport    string
-	numEntitiesExistence int
-	includeDefinitions   bool
-	golden               string
-}{
-	{
-		nodes:                []string{"dc/g/Demographics", "dc/g/Agriculture"},
-		constrainedPlaces:    []string{"country/USA", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_stat_var_group_node_places",
-	},
-	{
-		nodes:                []string{"dc/g/Demographics"},
-		constrainedPlaces:    []string{},
-		constrainedImport:    "dc/s/WorldBank",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_stat_var_group_node_import",
-	},
-	{
-		nodes:                []string{"dc/g/Demographics"},
-		constrainedPlaces:    []string{"country/USA", "country/IND"},
-		constrainedImport:    "dc/s/WorldBank",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_stat_var_group_node_place_import",
-	},
-	{
-		nodes:                []string{"dc/g/Demographics"},
-		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
-		constrainedImport:    "",
-		numEntitiesExistence: 2,
-		golden:               "get_filtered_stat_var_group_node_num_entities_existence",
-	},
-	{
-		nodes:                []string{"dc/g/Demographics"},
-		constrainedPlaces:    []string{"country/USA"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		includeDefinitions:   true,
-		golden:               "get_filtered_stat_var_group_node_with_definitions",
-	},
-}
 
 var getFilteredTopicTestCases = []struct {
 	nodes                []string

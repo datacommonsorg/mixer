@@ -308,7 +308,11 @@ func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool, stmts *MultiEntity
 // GetFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
 func (b *multiEntityQueryBuilder) GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool) (*spanner.Statement, error) {
 	stmts := b.statements
-	useBuildRight := template == templateSVG &&
+	// The emulator rejects HASH_JOIN_BUILD_SIDE even with JOIN_METHOD=HASH_JOIN.
+	// The build side only changes the physical plan, so the emulator runs the
+	// plain hash join instead.
+	useBuildRight := !b.tableConfig.spannerEmulatorCompatibility &&
+		template == templateSVG &&
 		len(constrainedPlaces) > 0 &&
 		constrainedProvenance == "" &&
 		(numEntitiesExistence > 1 || slices.Contains(b.queryConfig.BulkSVGBuildRightNodes, node))

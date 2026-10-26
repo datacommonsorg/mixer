@@ -447,8 +447,8 @@ func TestEmulatorSchemaStatements(t *testing.T) {
 	if err != nil {
 		t.Fatalf("emulatorSchemaStatements() error = %v", err)
 	}
-	if len(statements) != 11 {
-		t.Fatalf("emulatorSchemaStatements() returned %d statements, want 11", len(statements))
+	if len(statements) != 14 {
+		t.Fatalf("emulatorSchemaStatements() returned %d statements, want 14", len(statements))
 	}
 	if !strings.HasPrefix(statements[0], "CREATE TABLE Node") {
 		t.Errorf("first schema statement = %q, want CREATE TABLE Node", statements[0])
@@ -516,8 +516,8 @@ func TestEmulatorSeedStatements(t *testing.T) {
 	if err != nil {
 		t.Fatalf("emulatorSeedStatements() error = %v", err)
 	}
-	if len(statements) != 5 {
-		t.Fatalf("emulatorSeedStatements() returned %d statements, want 5", len(statements))
+	if len(statements) != 7 {
+		t.Fatalf("emulatorSeedStatements() returned %d statements, want 7", len(statements))
 	}
 	if !strings.HasPrefix(statements[0], "INSERT INTO Node") {
 		t.Errorf("first seed statement = %q, want INSERT INTO Node", statements[0])
