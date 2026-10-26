@@ -73,10 +73,21 @@ func TestChildTypes(t *testing.T) {
 			}},
 		},
 		{
-			// A partial (other sources only) result must not be returned, since it would be cached as complete.
-			name: "any source error fails the call",
+			// Support varies by source (e.g. a custom DC's database may lack LinkedEdge), so failed sources are skipped.
+			name: "failed sources are ignored when another source succeeds",
 			sources: []datasource.DataSource{
-				&childTypesDataSource{id: "spanner", childTypes: map[string][]string{"geoId/06": {"County"}}},
+				&childTypesDataSource{id: "spanner", err: errors.New("Table not found: LinkedEdge")},
+				&childTypesDataSource{id: "remote", childTypes: map[string][]string{"geoId/06": {"County"}}},
+			},
+			want: &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{
+				"geoId/06": {Types: []string{"County"}},
+			}},
+		},
+		{
+			// An empty result must not be returned, since it would be cached as "no child types".
+			name: "all sources failing fails the call",
+			sources: []datasource.DataSource{
+				&childTypesDataSource{id: "spanner", err: errors.New("Table not found: LinkedEdge")},
 				&childTypesDataSource{id: "remote", err: errors.New("remote mixer unavailable")},
 			},
 			wantErr: true,

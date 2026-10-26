@@ -46,7 +46,8 @@ const (
 
 // resolveChildEntityTypes returns, for each query with child type hints (in query order), the hinted
 // child types that exist within the query's best-matching entity. groups[i] holds the resolved entities
-// for queries[i].
+// for queries[i]. "Within" means place containment: child entities are those linked to the parent by a
+// (transitive) containedInPlace relation; other hierarchical relations are not considered.
 //
 // The child types of all best matches are fetched in one call (served from the Spanner LinkedEdge table,
 // and cached per ancestor), then filtered by the hints (see matchChildTypes). Only the best match is

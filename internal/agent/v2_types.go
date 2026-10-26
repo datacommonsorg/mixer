@@ -70,7 +70,7 @@ type v2ChildTypesResult struct {
 	types  []*v2ChildType
 }
 
-// v2ChildType is a child entity type (Class DCID) that exists within a parent entity.
+// v2ChildType is a child entity type (Class DCID) that exists within a parent entity (via containedInPlace).
 type v2ChildType struct {
 	dcid string
 	name string

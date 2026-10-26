@@ -48,7 +48,8 @@ type Mixer interface {
 	// SdmxAvailability fetches available SDMX component values.
 	SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 
-	// ChildTypes fetches the types of entities contained in each ancestor entity.
+	// ChildTypes fetches the types of entities contained in each ancestor entity, via the (transitive)
+	// containedInPlace relation.
 	ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error)
 }
 

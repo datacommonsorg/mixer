@@ -122,8 +122,9 @@ func (c *Cache) Reset() {
 	c.childTypes = make(map[string][]string)
 }
 
-// ChildTypes returns the child entity types of each ancestor, reading through the cache: ancestors
-// not yet cached are fetched in one Mixer call and cached, including ancestors without child types.
+// ChildTypes returns the child entity types (types of entities contained in it via containedInPlace) of
+// each ancestor, reading through the cache: ancestors not yet cached are fetched in one Mixer call and
+// cached, including ancestors without child types.
 // Fetch errors are returned and not cached, so a failed lookup is retried on the next call.
 // The returned slices are shared and must not be modified.
 func (c *Cache) ChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {

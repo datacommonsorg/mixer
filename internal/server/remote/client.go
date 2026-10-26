@@ -170,8 +170,8 @@ func (rc *RemoteClient) SdmxData(ctx context.Context, req *sdmxpb.SdmxDataQuery)
 
 // ChildTypes fetches child entity types from the remote mixer (e.g. the base DC for a custom DC).
 //
-// Unlike SdmxAvailability, failures are returned rather than suppressed: a partial (local-only) result
-// would otherwise be cached as if complete. Callers treat child types as best-effort.
+// Unlike SdmxAvailability, failures are returned rather than suppressed, so that DataSources.ChildTypes
+// can tell whether any source succeeded. Callers treat child types as best-effort.
 func (rc *RemoteClient) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
 	resp := &pbv2.ChildTypesResponse{}
 	if err := util.FetchRemote(ctx, rc.metadata, rc.httpClient, "/v2/internal/child-types", req, resp); err != nil {
