@@ -55,24 +55,14 @@ func (c *Cache) CheckAvailability(
 	entities []string,
 	variables []string,
 ) (map[string]map[string]bool, error) {
-	result := make(map[string]map[string]bool)
-
-	// Check local cache under read lock
-	missing := c.checkLocalCache(entities, variables, result)
-	if len(missing) == 0 {
-		return result, nil
-	}
-
-	uniqueMap, err := c.loadEntityVariables(ctx, missing)
+	sets, err := c.entityVariableSets(ctx, entities)
 	if err != nil {
 		return nil, err
 	}
-
-	// Populate final results directly
-	for _, entity := range missing {
-		populateResult(entity, variables, uniqueMap[entity], result)
+	result := make(map[string]map[string]bool)
+	for _, entity := range entities {
+		populateResult(entity, variables, sets[entity], result)
 	}
-
 	return result, nil
 }
 
@@ -81,35 +71,17 @@ func (c *Cache) CheckAvailability(
 // ones not cached yet, so a later CheckAvailability for these entities is served from L1. If any load
 // fails, the error is returned and nothing from that load is cached.
 func (c *Cache) EntitiesWithoutData(ctx context.Context, entities []string) ([]string, error) {
-	cached := make(map[string]map[string]struct{}, len(entities))
-	var missing []string
-	c.mu.RLock()
+	sets, err := c.entityVariableSets(ctx, entities)
+	if err != nil {
+		return nil, err
+	}
+	withoutData := newDcidSet()
 	for _, entity := range entities {
-		if vars, ok := c.entityVars[entity]; ok {
-			cached[entity] = vars
-		} else {
-			missing = append(missing, entity)
+		if len(sets[entity]) == 0 {
+			withoutData.add(entity)
 		}
 	}
-	c.mu.RUnlock()
-
-	if len(missing) > 0 {
-		loaded, err := c.loadEntityVariables(ctx, missing)
-		if err != nil {
-			return nil, err
-		}
-		for entity, vars := range loaded {
-			cached[entity] = vars
-		}
-	}
-
-	var withoutData []string
-	for _, entity := range entities {
-		if len(cached[entity]) == 0 && !slices.Contains(withoutData, entity) {
-			withoutData = append(withoutData, entity)
-		}
-	}
-	return withoutData, nil
+	return withoutData.dcids, nil
 }
 
 // Reset flushes all cached entity availability mappings atomically,
@@ -178,6 +150,36 @@ func fetchChildTypes(ctx context.Context, mixer Mixer, ancestors []string) (map[
 	return childTypes, nil
 }
 
+// entityVariableSets returns the set of variables with data for each entity, read through the L1 cache:
+// entities not cached yet are loaded (and cached) by loadEntityVariables. The sets are shared with the
+// cache and must not be modified. Cached sets are only ever replaced, never mutated, so they can be read
+// after the lock is released.
+func (c *Cache) entityVariableSets(ctx context.Context, entities []string) (map[string]map[string]struct{}, error) {
+	sets := make(map[string]map[string]struct{}, len(entities))
+	var missing []string
+	c.mu.RLock()
+	for _, entity := range entities {
+		if vars, ok := c.entityVars[entity]; ok {
+			sets[entity] = vars
+		} else {
+			missing = append(missing, entity)
+		}
+	}
+	c.mu.RUnlock()
+	if len(missing) == 0 {
+		return sets, nil
+	}
+
+	loaded, err := c.loadEntityVariables(ctx, missing)
+	if err != nil {
+		return nil, err
+	}
+	for entity, vars := range loaded {
+		sets[entity] = vars
+	}
+	return sets, nil
+}
+
 // loadEntityVariables fetches the available variables of each entity in parallel (one V2Observation call
 // per unique entity) and warms the L1 cache with them. Results are returned keyed by entity, so callers are
 // unaffected by a concurrent Reset. If any fetch fails, nothing is cached and the error is returned.
@@ -195,14 +197,12 @@ func (c *Cache) loadEntityVariables(ctx context.Context, entities []string) (map
 	g, groupCtx := errgroup.WithContext(ctx)
 
 	for i, entity := range uniqueMissing {
-		idx := i
-		e := entity // Pin loop variable for goroutine closure
 		g.Go(func() error {
-			vars, err := c.fetchEntityVariables(groupCtx, e)
+			vars, err := c.fetchEntityVariables(groupCtx, entity)
 			if err != nil {
 				return err
 			}
-			fetchedVars[idx] = vars
+			fetchedVars[i] = vars
 			return nil
 		})
 	}
@@ -225,27 +225,6 @@ func (c *Cache) loadEntityVariables(ctx context.Context, entities []string) (map
 	c.mu.Unlock()
 
 	return uniqueMap, nil
-}
-
-// checkLocalCache queries the local cache for a list of entities under read lock.
-// It populates the provided result map and returns the slice of missing entities.
-func (c *Cache) checkLocalCache(
-	entities []string,
-	variables []string,
-	result map[string]map[string]bool,
-) []string {
-	c.mu.RLock()
-	defer c.mu.RUnlock()
-
-	var missing []string
-	for _, e := range entities {
-		if cachedSet, ok := c.entityVars[e]; ok {
-			populateResult(e, variables, cachedSet, result)
-		} else {
-			missing = append(missing, e)
-		}
-	}
-	return missing
 }
 
 // fetchEntityVariables calls V2Observation to fetch all available variables for a single entity.
