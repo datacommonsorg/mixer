@@ -663,6 +663,14 @@ func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLea
 	}
 }
 
+// GetChildTypesQuery returns a Spanner statement listing the child entity types of each ancestor.
+func GetChildTypesQuery(ancestors []string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL:    statements.getChildTypes,
+		Params: map[string]interface{}{"ancestors": ancestors},
+	}
+}
+
 // FilterNodesByTypesQuery returns a Spanner statement to filter nodes by type.
 func FilterNodesByTypesQuery(nodes []string, typeFilters []string) *spanner.Statement {
 	return &spanner.Statement{

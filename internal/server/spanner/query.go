@@ -1062,6 +1062,29 @@ func getGrpcCode(err error) codes.Code {
 	return codes.Unknown
 }
 
+// GetChildTypes returns the distinct child entity types for each ancestor, keyed by ancestor.
+// Ancestors without child entities are omitted.
+func (sc *spannerDatabaseClient) GetChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {
+	childTypes := map[string][]string{}
+	if len(ancestors) == 0 {
+		return childTypes, nil
+	}
+	err := queryStructs(
+		ctx,
+		sc,
+		*GetChildTypesQuery(ancestors),
+		func() interface{} { return &AncestorChildType{} },
+		func(rowStruct interface{}) {
+			r := rowStruct.(*AncestorChildType)
+			childTypes[r.Ancestor] = append(childTypes[r.Ancestor], r.ChildType)
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return childTypes, nil
+}
+
 // IsTableNotFoundError checks if an error indicates a missing table, property graph, or database.
 func IsTableNotFoundError(err error) bool {
 	if err == nil {

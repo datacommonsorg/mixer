@@ -1204,6 +1204,19 @@ func (sds *SpannerDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.
 	return sds.client.GetSdmxAvailability(ctx, req)
 }
 
+// ChildTypes returns the child entity types of each requested ancestor from the LinkedEdge table.
+func (sds *SpannerDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	childTypes, err := sds.client.GetChildTypes(ctx, req.GetAncestors())
+	if err != nil {
+		return nil, err
+	}
+	resp := &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{}}
+	for ancestor, types := range childTypes {
+		resp.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: types}
+	}
+	return resp, nil
+}
+
 // filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.
 func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNodes []string) []*pbv1.VariableGroupInfoResponse {
 	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data)+len(invalidNodes))

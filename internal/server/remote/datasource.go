@@ -91,6 +91,10 @@ func (rds *RemoteDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.S
 	return rds.client.SdmxAvailability(ctx, req)
 }
 
+func (rds *RemoteDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	return rds.client.ChildTypes(ctx, req)
+}
+
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return rds.client.FilterStatVarsByEntity(ctx, req)
 }

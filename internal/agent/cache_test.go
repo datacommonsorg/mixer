@@ -16,6 +16,7 @@ package agent
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"sync"
 	"sync/atomic"
@@ -190,5 +191,78 @@ func TestCacheCheckAvailability(t *testing.T) {
 				t.Errorf("Cache state after lookup did not match expected state (-got +want):\n%s", diff)
 			}
 		})
+	}
+}
+
+// childTypesMixer implements agent.Mixer ChildTypes for cache tests, recording requested ancestors.
+type childTypesMixer struct {
+	Mixer
+	childTypes map[string][]string
+	err        error
+	calls      [][]string
+}
+
+func (m *childTypesMixer) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	m.calls = append(m.calls, in.GetAncestors())
+	if m.err != nil {
+		return nil, m.err
+	}
+	resp := &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{}}
+	for _, ancestor := range in.GetAncestors() {
+		if types, ok := m.childTypes[ancestor]; ok {
+			resp.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: types}
+		}
+	}
+	return resp, nil
+}
+
+func TestCacheChildTypes(t *testing.T) {
+	ctx := context.Background()
+	mixer := &childTypesMixer{childTypes: map[string][]string{"geoId/06": {"City", "County"}}}
+	cache := NewCache(mixer)
+
+	got, err := cache.ChildTypes(ctx, []string{"geoId/06", "nowhere/1"})
+	if err != nil {
+		t.Fatalf("ChildTypes() error = %v", err)
+	}
+	want := map[string][]string{"geoId/06": {"City", "County"}, "nowhere/1": {}}
+	if diff := cmp.Diff(want, got); diff != "" {
+		t.Errorf("ChildTypes() mismatch (-want +got):\n%s", diff)
+	}
+
+	// Both ancestors, including the one without child types, are now cached.
+	if _, err := cache.ChildTypes(ctx, []string{"nowhere/1", "geoId/06", "country/KEN"}); err != nil {
+		t.Fatalf("ChildTypes() error = %v", err)
+	}
+	cache.Reset()
+	if _, err := cache.ChildTypes(ctx, []string{"geoId/06"}); err != nil {
+		t.Fatalf("ChildTypes() error = %v", err)
+	}
+	wantCalls := [][]string{{"geoId/06", "nowhere/1"}, {"country/KEN"}, {"geoId/06"}}
+	if diff := cmp.Diff(wantCalls, mixer.calls); diff != "" {
+		t.Errorf("Mixer.ChildTypes calls mismatch (-want +got):\n%s", diff)
+	}
+}
+
+func TestCacheChildTypesDoesNotCacheErrors(t *testing.T) {
+	ctx := context.Background()
+	mixer := &childTypesMixer{err: errors.New("LinkedEdge not found")}
+	cache := NewCache(mixer)
+
+	if _, err := cache.ChildTypes(ctx, []string{"geoId/06"}); err == nil {
+		t.Fatalf("ChildTypes() error = nil, want error")
+	}
+	// After the failure clears, the ancestor is fetched again rather than served as cached empty.
+	mixer.err = nil
+	mixer.childTypes = map[string][]string{"geoId/06": {"County"}}
+	got, err := cache.ChildTypes(ctx, []string{"geoId/06"})
+	if err != nil {
+		t.Fatalf("ChildTypes() error = %v", err)
+	}
+	if diff := cmp.Diff(map[string][]string{"geoId/06": {"County"}}, got); diff != "" {
+		t.Errorf("ChildTypes() mismatch (-want +got):\n%s", diff)
+	}
+	if len(mixer.calls) != 2 {
+		t.Errorf("Mixer.ChildTypes called %d times, want 2", len(mixer.calls))
 	}
 }

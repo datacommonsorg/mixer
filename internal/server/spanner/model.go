@@ -93,6 +93,13 @@ type ResolutionCandidate struct {
 	Candidate string `spanner:"candidate"`
 }
 
+// AncestorChildType represents a row of the child types query: one distinct type of entity
+// contained in an ancestor.
+type AncestorChildType struct {
+	Ancestor  string `spanner:"ancestor"`
+	ChildType string `spanner:"child_type"`
+}
+
 // EventIdWithMagnitudeDcid represents a raw event row from Spanner graph queries.
 type EventIdWithMagnitudeDcid struct {
 	EventID       string

@@ -120,6 +120,7 @@ var statements = struct {
 	vectorSearchNode string
 	// Filter nodes by type.
 	filterNodesByTypes string
+	getChildTypes      string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
 	// Check existence of variable groups against sources.
@@ -546,6 +547,15 @@ OR CreationTimestamp > (
 		FROM Node
 		WHERE subject_id IN UNNEST(@nodes)
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
+	// getChildTypes lists the distinct types of entities contained in each ancestor. LinkedEdge is
+	// keyed by (predicate, ancestor, child_type, ...), so this reads one row per distinct child type.
+	getChildTypes: `		SELECT DISTINCT
+			ancestor,
+			child_type
+		FROM LinkedEdge
+		WHERE
+			predicate = 'containedInPlace'
+			AND ancestor IN UNNEST(@ancestors)`,
 	nodeTypeExistence: `
 			AND EXISTS (
 				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)

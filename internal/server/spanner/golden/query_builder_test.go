@@ -286,6 +286,14 @@ func TestFilterNodesByTypesQuery(t *testing.T) {
 	}
 }
 
+func TestGetChildTypesQuery(t *testing.T) {
+	t.Parallel()
+
+	runQueryBuilderGoldenTest(t, "get_child_types.sql", func(ctx context.Context) (interface{}, error) {
+		return spanner.GetChildTypesQuery([]string{"country/USA", "geoId/06"}), nil
+	})
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

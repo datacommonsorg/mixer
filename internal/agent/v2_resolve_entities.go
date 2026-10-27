@@ -25,8 +25,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 const (
@@ -38,9 +36,11 @@ const (
 	// several resolvers (Maps-backed place resolution and embeddings search), so this bounds backend fan-out.
 	// Keep in sync with the 'entities' field description in internal/server/mcp/v2_types.go.
 	v2MaxEntitiesPerRequest = 20
-	// v2MaxTypesPerHint caps the Class DCIDs kept per type hint. The type resolver can return many loosely
-	// related classes; the top few cover close variants (e.g. School, PublicSchool) without diluting filters.
-	v2MaxTypesPerHint = 3
+	// v2MaxChildHintsPerEntity caps child_entity_type_hints per entity. Without it, agents tend to send
+	// many loosely related hints (e.g. "subcounty", "sub-county", "ward", "town", ...) instead of the one
+	// or two types they want; the error steers them back. Keep in sync with the
+	// 'child_entity_type_hints' field description in internal/server/mcp/v2_types.go.
+	v2MaxChildHintsPerEntity = 3
 )
 
 // v2NonPlaceExcludedTypes mirrors excluded_types for the non_place resolver in
@@ -69,8 +69,9 @@ func (s *Service) V2ResolveEntities(
 	defer util.TimeTrack(time.Now(), "Agent: V2ResolveEntities")
 	slog.Info("V2ResolveEntities started", "entitiesCount", len(req.Entities), "target", req.Target)
 
-	// All hints across the batch are resolved in a single call before entity resolution,
-	// since entity routing depends on the resolved types.
+	// All hints (entity and child entity types) across the batch are resolved in a single call before
+	// entity resolution, since entity routing depends on the resolved types. A failure of this call fails
+	// the request, whichever hint list the hints came from.
 	typesByHint, err := s.resolveTypeHints(ctx, collectTypeHints(req.Entities), req.Target)
 	if err != nil {
 		return nil, err
@@ -86,7 +87,7 @@ func (s *Service) V2ResolveEntities(
 	g, gCtx := errgroup.WithContext(ctx)
 	for i, query := range req.Entities {
 		g.Go(func() error {
-			attempts := resolutionPlan(typesForQuery(query, typesByHint), placeTypes)
+			attempts := resolutionPlan(typesForHints(query.EntityTypeHints, typesByHint), placeTypes)
 			entities, err := s.resolveEntityCandidates(gCtx, strings.TrimSpace(query.Name), attempts, req.Target)
 			if err != nil {
 				return err
@@ -100,31 +101,36 @@ func (s *Service) V2ResolveEntities(
 	}
 
 	s.enrichResolvedEntities(ctx, results)
+	resp := &V2ResolveEntitiesResponse{ResolvedEntities: buildResolvedEntitiesTable(results)}
+	if childTypes, ok := s.resolveChildEntityTypes(ctx, req.Entities, results, typesByHint); ok {
+		resp.CandidateChildEntityTypes = buildChildEntityTypesTable(childTypes)
+	} else {
+		resp.ChildEntityTypesNote = v2ChildTypesUnavailableNote
+	}
 
 	slog.Info("V2ResolveEntities completed", "entitiesCount", len(req.Entities))
-	return &V2ResolveEntitiesResponse{ResolvedEntities: buildResolvedEntitiesTable(results)}, nil
+	return resp, nil
 }
 
-// validateV2ResolveEntitiesRequest checks the request and returns actionable errors that tell the
-// caller (typically an LLM) how to fix the call.
+// validateV2ResolveEntitiesRequest checks the request and returns actionable errors (see v2_tool_errors.go)
+// that tell the caller (typically an LLM) how to fix the call.
 func validateV2ResolveEntitiesRequest(req *V2ResolveEntitiesRequest) error {
 	if req == nil || len(req.Entities) == 0 {
-		return status.Error(codes.InvalidArgument,
-			`'entities' cannot be empty: provide at least one entity to resolve, e.g. [{"name": "California"}]`)
+		return errV2NoEntities()
 	}
 	if len(req.Entities) > v2MaxEntitiesPerRequest {
-		return status.Errorf(codes.InvalidArgument,
-			"too many entities (%d): resolve at most %d entities per call and split the rest into additional calls",
-			len(req.Entities), v2MaxEntitiesPerRequest)
+		return errV2TooManyEntities(len(req.Entities))
 	}
 	for i, query := range req.Entities {
 		if query == nil || strings.TrimSpace(query.Name) == "" {
-			return status.Errorf(codes.InvalidArgument,
-				"entities[%d].name cannot be empty: provide the entity name to resolve, e.g. 'California' or 'FEMA'", i)
+			return errV2EmptyEntityName(i)
+		}
+		if len(query.ChildEntityTypeHints) > v2MaxChildHintsPerEntity {
+			return errV2TooManyChildHints(i, len(query.ChildEntityTypeHints))
 		}
 	}
 	if req.Target != "" && !slices.Contains(validTargets, req.Target) {
-		return status.Errorf(codes.InvalidArgument, "invalid target %q, must be one of %v", req.Target, validTargets)
+		return errV2InvalidTarget(req.Target)
 	}
 	return nil
 }
@@ -191,7 +197,6 @@ func (s *Service) resolveEntityCandidates(
 			if ctx.Err() != nil {
 				return nil, err
 			}
-			slog.Warn("Entity resolution attempt failed; trying next resolver", "name", name, "resolver", attempt.resolver, "error", err)
 			lastErr = err
 			failed++
 			continue
@@ -222,38 +227,12 @@ func (s *Service) resolveWithResolver(
 		Target:   target,
 	})
 	if err != nil {
-		return nil, wrapResolveError(err, fmt.Sprintf("failed to resolve %q with resolver %q", name, resolver))
+		if ctx.Err() == nil {
+			slog.Warn("Entity resolution attempt failed", "name", name, "resolver", resolver, "error", err)
+		}
+		return nil, errV2ResolveFailed(err, name, resolver)
 	}
 	return collectResolvedEntities(resp.GetEntities()), nil
-}
-
-// resolveTypeHints resolves natural-language type hints to Class DCIDs in one V2Resolve call,
-// keeping the top v2MaxTypesPerHint classes per hint in resolver (similarity) order.
-func (s *Service) resolveTypeHints(ctx context.Context, hints []string, target string) (map[string][]string, error) {
-	if len(hints) == 0 {
-		return nil, nil
-	}
-	resp, err := s.mixer.V2Resolve(ctx, &pbv2.ResolveRequest{
-		Nodes:    hints,
-		Resolver: ResolverType,
-		Target:   target,
-	})
-	if err != nil {
-		return nil, wrapResolveError(err, "failed to resolve entity type hints")
-	}
-	typesByHint := make(map[string][]string, len(hints))
-	for _, entity := range resp.GetEntities() {
-		hint := entity.GetNode()
-		for _, candidate := range entity.GetCandidates() {
-			if len(typesByHint[hint]) >= v2MaxTypesPerHint {
-				break
-			}
-			if dcid := candidate.GetDcid(); dcid != "" && !slices.Contains(typesByHint[hint], dcid) {
-				typesByHint[hint] = append(typesByHint[hint], dcid)
-			}
-		}
-	}
-	return typesByHint, nil
 }
 
 // enrichResolvedEntities fills canonical names and types for all resolved DCIDs via one V2Node call.
@@ -264,22 +243,17 @@ func (s *Service) enrichResolvedEntities(ctx context.Context, groups []*v2Entity
 	var dcids []string
 	for _, group := range groups {
 		for _, entity := range group.entities {
-			if !slices.Contains(dcids, entity.dcid) {
-				dcids = append(dcids, entity.dcid)
-			}
+			dcids = append(dcids, entity.dcid)
 		}
 	}
-	if len(dcids) == 0 {
-		return
-	}
-	nodeResp, err := s.fetchAllNodes(ctx, &pbv2.NodeRequest{Nodes: dcids, Property: nodePropertiesQuery})
+	nodes, err := s.fetchNodeGraphs(ctx, dcids, nodePropertiesQuery)
 	if err != nil {
-		slog.Warn("Failed to enrich resolved entities via V2Node", "error", err, "dcidsCount", len(dcids))
+		slog.Warn("Failed to enrich resolved entities via V2Node", "error", err)
 		return
 	}
 	for _, group := range groups {
 		for _, entity := range group.entities {
-			nodeData, ok := nodeResp.GetData()[entity.dcid]
+			nodeData, ok := nodes[entity.dcid]
 			if !ok {
 				continue
 			}
@@ -364,48 +338,6 @@ func collectResolvedEntities(resolveEntities []*pbv2.ResolveResponse_Entity) []*
 		}
 	}
 	return entities
-}
-
-// collectTypeHints returns the unique, non-empty type hints across all queries, in first-seen order.
-func collectTypeHints(queries []*V2EntityQuery) []string {
-	var hints []string
-	for _, query := range queries {
-		for _, hint := range query.EntityTypeHints {
-			if hint = strings.TrimSpace(hint); hint != "" && !slices.Contains(hints, hint) {
-				hints = append(hints, hint)
-			}
-		}
-	}
-	return hints
-}
-
-// typesForQuery returns the resolved Class DCIDs for a query's hints, deduplicated and ordered by hint
-// order and then by resolver rank within each hint.
-func typesForQuery(query *V2EntityQuery, typesByHint map[string][]string) []string {
-	var typeDcids []string
-	for _, hint := range query.EntityTypeHints {
-		for _, dcid := range typesByHint[strings.TrimSpace(hint)] {
-			if !slices.Contains(typeDcids, dcid) {
-				typeDcids = append(typeDcids, dcid)
-			}
-		}
-	}
-	return typeDcids
-}
-
-// wrapResolveError adds context to a V2Resolve error while keeping its gRPC status code
-// (e.g. InvalidArgument, Unimplemented, DeadlineExceeded), defaulting to Internal for other errors.
-// Only the status message is kept so the caller-facing text is not cluttered with "rpc error: ..." prefixes.
-func wrapResolveError(err error, msg string) error {
-	st := status.FromContextError(err)
-	if st.Code() == codes.Unknown {
-		if parsed, ok := status.FromError(err); ok {
-			st = parsed
-		} else {
-			st = status.New(codes.Internal, err.Error())
-		}
-	}
-	return status.Errorf(st.Code(), "%s: %s", msg, st.Message())
 }
 
 // uniqueTypes returns the sorted, deduplicated types as a non-nil slice. typeOf values can repeat when

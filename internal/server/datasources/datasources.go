@@ -16,8 +16,11 @@ package datasources
 
 import (
 	"context"
+	"errors"
 	"fmt"
+	"log/slog"
 	"sort"
+	"sync"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -298,6 +301,39 @@ func (ds *DataSources) SdmxAvailability(ctx context.Context, in *sdmxpb.SdmxAvai
 			return res, nil
 		},
 	)
+}
+
+// ChildTypes returns the union of child entity types per ancestor across the data sources that succeed.
+//
+// Unlike fetchAndMerge, a failing source does not fail the call: support varies by source (e.g. a
+// custom DC's Spanner database may lack the LinkedEdge table that its remote base DC has), so the
+// sources that succeed are merged. If all sources fail, their errors are returned, so that an empty
+// result is not mistaken for (and cached as) "no child types".
+func (ds *DataSources) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
+	resps := make([]*pbv2.ChildTypesResponse, len(ds.sources))
+	errs := make([]error, len(ds.sources))
+	var wg sync.WaitGroup
+	for i, source := range ds.sources {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			resps[i], errs[i] = source.ChildTypes(ctx, in)
+		}()
+	}
+	wg.Wait()
+
+	var succeeded []*pbv2.ChildTypesResponse
+	for i, err := range errs {
+		if err != nil {
+			slog.Warn("ChildTypes: ignoring failed data source", "source", ds.sources[i].Id(), "error", err)
+			continue
+		}
+		succeeded = append(succeeded, resps[i])
+	}
+	if len(succeeded) == 0 && len(ds.sources) > 0 {
+		return nil, fmt.Errorf("ChildTypes failed for all data sources: %w", errors.Join(errs...))
+	}
+	return merger.MergeMultiChildTypes(succeeded), nil
 }
 
 func (ds *DataSources) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {

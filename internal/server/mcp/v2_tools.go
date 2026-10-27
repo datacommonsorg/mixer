@@ -29,8 +29,9 @@ func (t *McpTools) V2ResolveEntities(ctx context.Context, input V2ResolveEntitie
 	queries := make([]*agent.V2EntityQuery, 0, len(input.Entities))
 	for _, entity := range input.Entities {
 		queries = append(queries, &agent.V2EntityQuery{
-			Name:            entity.Name,
-			EntityTypeHints: entity.EntityTypeHints,
+			Name:                 entity.Name,
+			EntityTypeHints:      entity.EntityTypeHints,
+			ChildEntityTypeHints: entity.ChildEntityTypeHints,
 		})
 	}
 	return t.agentService.V2ResolveEntities(ctx, &agent.V2ResolveEntitiesRequest{

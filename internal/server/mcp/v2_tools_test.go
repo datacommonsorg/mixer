@@ -34,13 +34,13 @@ func TestV2ResolveEntities(t *testing.T) {
 		{
 			name: "maps entities and hints and uses the server search scope as target",
 			input: V2ResolveEntitiesInput{Entities: []V2EntityInput{
-				{Name: "California"},
+				{Name: "California", ChildEntityTypeHints: []string{"county"}},
 				{Name: "St. Mary's Food Bank", EntityTypeHints: []string{"food bank"}},
 			}},
 			searchScope: "base_only",
 			wantReq: &agent.V2ResolveEntitiesRequest{
 				Entities: []*agent.V2EntityQuery{
-					{Name: "California"},
+					{Name: "California", ChildEntityTypeHints: []string{"county"}},
 					{Name: "St. Mary's Food Bank", EntityTypeHints: []string{"food bank"}},
 				},
 				Target: "base_only",
@@ -82,7 +82,12 @@ func TestV2ResolveEntitiesInputSchema(t *testing.T) {
 		"required":     []any{"name"},
 	}
 	itemProps := items["properties"].(map[string]any)
-	for field, prop := range map[string]any{"entities": entities, "name": itemProps["name"], "entity_type_hints": itemProps["entity_type_hints"]} {
+	for field, prop := range map[string]any{
+		"entities":                entities,
+		"name":                    itemProps["name"],
+		"entity_type_hints":       itemProps["entity_type_hints"],
+		"child_entity_type_hints": itemProps["child_entity_type_hints"],
+	} {
 		if desc, _ := prop.(map[string]any)["description"].(string); desc == "" {
 			t.Errorf("resolve_entities input schema field %q has no description", field)
 		}

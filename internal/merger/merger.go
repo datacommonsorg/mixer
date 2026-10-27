@@ -545,6 +545,23 @@ func MergeMultiFilterStatVarsByEntity(allResp []*pb.FilterStatVarsByEntityRespon
 	return prev
 }
 
+// MergeMultiChildTypes unions child types per ancestor across ChildTypesResponses, sorted and
+// deduplicated. It returns an empty response for no input.
+func MergeMultiChildTypes(allResp []*pbv2.ChildTypesResponse) *pbv2.ChildTypesResponse {
+	byAncestor := map[string][]string{}
+	for _, resp := range allResp {
+		for ancestor, childTypes := range resp.GetChildTypes() {
+			byAncestor[ancestor] = append(byAncestor[ancestor], childTypes.GetTypes()...)
+		}
+	}
+	merged := &pbv2.ChildTypesResponse{ChildTypes: make(map[string]*pbv2.ChildTypesResponse_ChildTypes, len(byAncestor))}
+	for ancestor, types := range byAncestor {
+		slices.Sort(types)
+		merged.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: slices.Compact(types)}
+	}
+	return merged
+}
+
 // Merges multiple V2 NodeSearchResponses.
 // Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {
