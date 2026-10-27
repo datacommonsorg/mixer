@@ -63,39 +63,9 @@ func (c *Cache) CheckAvailability(
 		return result, nil
 	}
 
-	// Dynamic Cache Miss: Fetch available variables for missing places in parallel.
-	// Deduplicate missingPlaces to avoid redundant parallel fetches.
-	uniqueMissing := util.StringSetToSlice(util.StringSliceToSet(missingPlaces))
-
-	// CONCURRENCY NOTE: We collect results in a local slice (`fetchedVars`) by index.
-	// While Go maps are not thread-safe for parallel writes (even for disjoint keys),
-	// writing to disjoint indices of a Go slice from parallel goroutines is 100% thread-safe
-	// and guarantees no data races or lock contention during parallel fetches.
-	// It also keeps the current request immune to any concurrent L1 cache map Reset() wipes.
-	fetchedVars := make([]map[string]struct{}, len(uniqueMissing))
-	g, groupCtx := errgroup.WithContext(ctx)
-
-	for i, place := range uniqueMissing {
-		idx := i
-		p := place // Pin loop variable for goroutine closure
-		g.Go(func() error {
-			vars, err := c.fetchPlaceAvailableVariables(groupCtx, p)
-			if err != nil {
-				return err
-			}
-			fetchedVars[idx] = vars
-			return nil
-		})
-	}
-
-	if err := g.Wait(); err != nil {
+	uniqueMap, err := c.loadPlaceVariables(ctx, missingPlaces)
+	if err != nil {
 		return nil, err
-	}
-
-	// Map unique results for fast lookup
-	uniqueMap := make(map[string]map[string]struct{})
-	for i, place := range uniqueMissing {
-		uniqueMap[place] = fetchedVars[i]
 	}
 
 	// Populate final results directly
@@ -103,14 +73,43 @@ func (c *Cache) CheckAvailability(
 		populateResult(place, variables, uniqueMap[place], result)
 	}
 
-	// Warm L1 cache map under write lock
-	c.mu.Lock()
-	for place, vars := range uniqueMap {
-		c.placeVars[place] = vars
-	}
-	c.mu.Unlock()
-
 	return result, nil
+}
+
+// EntitiesWithoutData returns, in request order, the entities that have no observation data for any
+// variable. It uses the same per-entity variable sets as CheckAvailability, loading (and caching) the
+// ones not cached yet, so a later CheckAvailability for these entities is served from L1. If any load
+// fails, the error is returned and nothing from that load is cached.
+func (c *Cache) EntitiesWithoutData(ctx context.Context, entities []string) ([]string, error) {
+	cached := make(map[string]map[string]struct{}, len(entities))
+	var missing []string
+	c.mu.RLock()
+	for _, entity := range entities {
+		if vars, ok := c.placeVars[entity]; ok {
+			cached[entity] = vars
+		} else {
+			missing = append(missing, entity)
+		}
+	}
+	c.mu.RUnlock()
+
+	if len(missing) > 0 {
+		loaded, err := c.loadPlaceVariables(ctx, missing)
+		if err != nil {
+			return nil, err
+		}
+		for entity, vars := range loaded {
+			cached[entity] = vars
+		}
+	}
+
+	var withoutData []string
+	for _, entity := range entities {
+		if len(cached[entity]) == 0 && !slices.Contains(withoutData, entity) {
+			withoutData = append(withoutData, entity)
+		}
+	}
+	return withoutData, nil
 }
 
 // Reset flushes all cached place availability mappings atomically,
@@ -177,6 +176,55 @@ func fetchChildTypes(ctx context.Context, mixer Mixer, ancestors []string) (map[
 		childTypes[ancestor] = types.GetTypes()
 	}
 	return childTypes, nil
+}
+
+// loadPlaceVariables fetches the available variables of each place in parallel (one V2Observation call
+// per unique place) and warms the L1 cache with them. Results are returned keyed by place, so callers are
+// unaffected by a concurrent Reset. If any fetch fails, nothing is cached and the error is returned.
+func (c *Cache) loadPlaceVariables(ctx context.Context, places []string) (map[string]map[string]struct{}, error) {
+	// Dynamic Cache Miss: Fetch available variables for missing places in parallel.
+	// Deduplicate places to avoid redundant parallel fetches.
+	uniqueMissing := util.StringSetToSlice(util.StringSliceToSet(places))
+
+	// CONCURRENCY NOTE: We collect results in a local slice (`fetchedVars`) by index.
+	// While Go maps are not thread-safe for parallel writes (even for disjoint keys),
+	// writing to disjoint indices of a Go slice from parallel goroutines is 100% thread-safe
+	// and guarantees no data races or lock contention during parallel fetches.
+	// It also keeps the current request immune to any concurrent L1 cache map Reset() wipes.
+	fetchedVars := make([]map[string]struct{}, len(uniqueMissing))
+	g, groupCtx := errgroup.WithContext(ctx)
+
+	for i, place := range uniqueMissing {
+		idx := i
+		p := place // Pin loop variable for goroutine closure
+		g.Go(func() error {
+			vars, err := c.fetchPlaceAvailableVariables(groupCtx, p)
+			if err != nil {
+				return err
+			}
+			fetchedVars[idx] = vars
+			return nil
+		})
+	}
+
+	if err := g.Wait(); err != nil {
+		return nil, err
+	}
+
+	// Map unique results for fast lookup
+	uniqueMap := make(map[string]map[string]struct{})
+	for i, place := range uniqueMissing {
+		uniqueMap[place] = fetchedVars[i]
+	}
+
+	// Warm L1 cache map under write lock
+	c.mu.Lock()
+	for place, vars := range uniqueMap {
+		c.placeVars[place] = vars
+	}
+	c.mu.Unlock()
+
+	return uniqueMap, nil
 }
 
 // checkLocalCache queries the local cache for a list of places under read lock.
