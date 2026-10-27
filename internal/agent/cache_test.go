@@ -31,10 +31,10 @@ import (
 // mockMixerClient implements agent.Mixer for unit testing the cache.
 type mockMixerClient struct {
 	Mixer
-	observationCalls int32
-	mu               sync.Mutex
-	requestedPlaces  []string
-	observationFunc  func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
+	observationCalls  int32
+	mu                sync.Mutex
+	requestedEntities []string
+	observationFunc   func(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 }
 
 func (m *mockMixerClient) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
@@ -42,7 +42,7 @@ func (m *mockMixerClient) V2Observation(ctx context.Context, in *pbv2.Observatio
 
 	m.mu.Lock()
 	if len(in.GetEntity().GetDcids()) > 0 {
-		m.requestedPlaces = append(m.requestedPlaces, in.GetEntity().GetDcids()[0])
+		m.requestedEntities = append(m.requestedEntities, in.GetEntity().GetDcids()[0])
 	}
 	m.mu.Unlock()
 
@@ -55,28 +55,28 @@ func TestCacheCheckAvailability(t *testing.T) {
 	}
 
 	for _, tc := range []struct {
-		desc                string
-		setupCache          func(*Cache)
-		places              []string
-		variables           []string
-		mockResponse        *pbv2.ObservationResponse
-		wantCalls           int32
-		wantPlacesRequested []string
-		wantResult          map[string]map[string]bool
-		wantCache           map[string]map[string]struct{}
+		desc                  string
+		setupCache            func(*Cache)
+		entities              []string
+		variables             []string
+		mockResponse          *pbv2.ObservationResponse
+		wantCalls             int32
+		wantEntitiesRequested []string
+		wantResult            map[string]map[string]bool
+		wantCache             map[string]map[string]struct{}
 	}{
 		{
 			desc: "100% Cache Hit - returns instantly without calling V2Observation",
 			setupCache: func(c *Cache) {
-				c.placeVars["geoId/06"] = map[string]struct{}{
+				c.entityVars["geoId/06"] = map[string]struct{}{
 					"Count_Person":        {},
 					"Count_Person_Female": {},
 				}
 			},
-			places:              []string{"geoId/06"},
-			variables:           []string{"Count_Person", "Count_Person_Female", "Count_Person_Male"},
-			wantCalls:           0,
-			wantPlacesRequested: nil,
+			entities:              []string{"geoId/06"},
+			variables:             []string{"Count_Person", "Count_Person_Female", "Count_Person_Male"},
+			wantCalls:             0,
+			wantEntitiesRequested: nil,
 			wantResult: map[string]map[string]bool{
 				"geoId/06": {
 					"Count_Person":        true,
@@ -96,15 +96,15 @@ func TestCacheCheckAvailability(t *testing.T) {
 			setupCache: func(c *Cache) {
 				// Cache empty
 			},
-			places:    []string{"geoId/06"},
+			entities:  []string{"geoId/06"},
 			variables: []string{"Count_Person", "Count_Person_Male"},
 			mockResponse: &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {},
 				},
 			},
-			wantCalls:           1,
-			wantPlacesRequested: []string{"geoId/06"},
+			wantCalls:             1,
+			wantEntitiesRequested: []string{"geoId/06"},
 			wantResult: map[string]map[string]bool{
 				"geoId/06": {
 					"Count_Person":      true,
@@ -118,21 +118,21 @@ func TestCacheCheckAvailability(t *testing.T) {
 			},
 		},
 		{
-			desc: "Partial Cache Hit - fetches missing place and keeps existing cache",
+			desc: "Partial Cache Hit - fetches missing entity and keeps existing cache",
 			setupCache: func(c *Cache) {
-				c.placeVars["geoId/06"] = map[string]struct{}{
+				c.entityVars["geoId/06"] = map[string]struct{}{
 					"Count_Person": {},
 				}
 			},
-			places:    []string{"geoId/06", "geoId/17"}, // Illinois is missing
+			entities:  []string{"geoId/06", "geoId/17"}, // Illinois is missing
 			variables: []string{"Count_Person"},
 			mockResponse: &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {},
 				},
 			},
-			wantCalls:           1,
-			wantPlacesRequested: []string{"geoId/17"}, // Only Illinois is requested
+			wantCalls:             1,
+			wantEntitiesRequested: []string{"geoId/17"}, // Only Illinois is requested
 			wantResult: map[string]map[string]bool{
 				"geoId/06": {
 					"Count_Person": true,
@@ -159,7 +159,7 @@ func TestCacheCheckAvailability(t *testing.T) {
 						return nil, fmt.Errorf("expected wildcard request without variables, got: %v", in.GetVariable().GetDcids())
 					}
 					if len(in.GetEntity().GetDcids()) != 1 {
-						return nil, fmt.Errorf("expected single place per request for better Redis L2 caching, got: %v", in.GetEntity().GetDcids())
+						return nil, fmt.Errorf("expected single entity per request for better Redis L2 caching, got: %v", in.GetEntity().GetDcids())
 					}
 					return tc.mockResponse, nil
 				},
@@ -170,7 +170,7 @@ func TestCacheCheckAvailability(t *testing.T) {
 				tc.setupCache(cache)
 			}
 
-			gotResult, err := cache.CheckAvailability(context.Background(), tc.places, tc.variables)
+			gotResult, err := cache.CheckAvailability(context.Background(), tc.entities, tc.variables)
 			if err != nil {
 				t.Fatalf("CheckAvailability failed: %v", err)
 			}
@@ -179,16 +179,16 @@ func TestCacheCheckAvailability(t *testing.T) {
 				t.Errorf("CheckAvailability triggered %d V2Observation calls, want: %d", mock.observationCalls, tc.wantCalls)
 			}
 
-			// Assert that exactly the expected place DCIDs were requested
-			if diff := cmp.Diff(mock.requestedPlaces, tc.wantPlacesRequested); diff != "" {
-				t.Errorf("Mock received unexpected place requests (-got +want):\n%s", diff)
+			// Assert that exactly the expected entity DCIDs were requested
+			if diff := cmp.Diff(mock.requestedEntities, tc.wantEntitiesRequested); diff != "" {
+				t.Errorf("Mock received unexpected entity requests (-got +want):\n%s", diff)
 			}
 
 			if diff := cmp.Diff(gotResult, tc.wantResult); diff != "" {
 				t.Errorf("CheckAvailability returned unexpected results (-got +want):\n%s", diff)
 			}
 
-			if diff := cmp.Diff(cache.placeVars, tc.wantCache, cmpOpts); diff != "" {
+			if diff := cmp.Diff(cache.entityVars, tc.wantCache, cmpOpts); diff != "" {
 				t.Errorf("Cache state after lookup did not match expected state (-got +want):\n%s", diff)
 			}
 		})
@@ -198,15 +198,15 @@ func TestCacheCheckAvailability(t *testing.T) {
 func TestCacheEntitiesWithoutData(t *testing.T) {
 	withVars := &pbv2.ObservationResponse{ByVariable: map[string]*pbv2.VariableObservation{"Count_Person": {}}}
 	for _, tc := range []struct {
-		desc                string
-		setupCache          func(*Cache)
-		entities            []string
-		varsByEntity        map[string]*pbv2.ObservationResponse
-		fetchErr            error
-		wantWithoutData     []string
-		wantErr             bool
-		wantPlacesRequested []string
-		wantCache           map[string]map[string]struct{}
+		desc                  string
+		setupCache            func(*Cache)
+		entities              []string
+		varsByEntity          map[string]*pbv2.ObservationResponse
+		fetchErr              error
+		wantWithoutData       []string
+		wantErr               bool
+		wantEntitiesRequested []string
+		wantCache             map[string]map[string]struct{}
 	}{
 		{
 			desc:     "loads uncached entities, returns those without data in request order, and caches all",
@@ -214,8 +214,8 @@ func TestCacheEntitiesWithoutData(t *testing.T) {
 			varsByEntity: map[string]*pbv2.ObservationResponse{
 				"geoId/06": withVars,
 			},
-			wantWithoutData:     []string{"bogus/1", "dc/food_bank/1"},
-			wantPlacesRequested: []string{"bogus/1", "dc/food_bank/1", "geoId/06"},
+			wantWithoutData:       []string{"bogus/1", "dc/food_bank/1"},
+			wantEntitiesRequested: []string{"bogus/1", "dc/food_bank/1", "geoId/06"},
 			wantCache: map[string]map[string]struct{}{
 				"bogus/1":        {},
 				"dc/food_bank/1": {},
@@ -225,8 +225,8 @@ func TestCacheEntitiesWithoutData(t *testing.T) {
 		{
 			desc: "serves cached entities from L1 without fetching",
 			setupCache: func(c *Cache) {
-				c.placeVars["geoId/06"] = map[string]struct{}{"Count_Person": {}}
-				c.placeVars["bogus/1"] = map[string]struct{}{}
+				c.entityVars["geoId/06"] = map[string]struct{}{"Count_Person": {}}
+				c.entityVars["bogus/1"] = map[string]struct{}{}
 			},
 			entities:        []string{"geoId/06", "bogus/1"},
 			wantWithoutData: []string{"bogus/1"},
@@ -236,12 +236,12 @@ func TestCacheEntitiesWithoutData(t *testing.T) {
 			},
 		},
 		{
-			desc:                "fetch errors are returned and not cached",
-			entities:            []string{"geoId/06"},
-			fetchErr:            errors.New("observation backend down"),
-			wantErr:             true,
-			wantPlacesRequested: []string{"geoId/06"},
-			wantCache:           map[string]map[string]struct{}{},
+			desc:                  "fetch errors are returned and not cached",
+			entities:              []string{"geoId/06"},
+			fetchErr:              errors.New("observation backend down"),
+			wantErr:               true,
+			wantEntitiesRequested: []string{"geoId/06"},
+			wantCache:             map[string]map[string]struct{}{},
 		},
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
@@ -272,11 +272,11 @@ func TestCacheEntitiesWithoutData(t *testing.T) {
 			if diff := cmp.Diff(tc.wantWithoutData, got); diff != "" {
 				t.Errorf("EntitiesWithoutData() mismatch (-want +got):\n%s", diff)
 			}
-			gotRequested := slices.Sorted(slices.Values(mock.requestedPlaces))
-			if diff := cmp.Diff(tc.wantPlacesRequested, gotRequested); diff != "" {
-				t.Errorf("requested places mismatch (-want +got):\n%s", diff)
+			gotRequested := slices.Sorted(slices.Values(mock.requestedEntities))
+			if diff := cmp.Diff(tc.wantEntitiesRequested, gotRequested); diff != "" {
+				t.Errorf("requested entities mismatch (-want +got):\n%s", diff)
 			}
-			if diff := cmp.Diff(tc.wantCache, cache.placeVars); diff != "" {
+			if diff := cmp.Diff(tc.wantCache, cache.entityVars); diff != "" {
 				t.Errorf("cache state mismatch (-want +got):\n%s", diff)
 			}
 		})

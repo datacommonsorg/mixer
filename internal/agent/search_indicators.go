@@ -140,44 +140,44 @@ func gatherVarsToCheck(
 	return vars
 }
 
-// hasPlacesWithData checks if any descendant variable has data for any target place.
+// hasPlacesWithData checks if any descendant variable has data for any target entity.
 func hasPlacesWithData(
 	descendants []string,
-	placeDcids []string,
+	entityDcids []string,
 	availabilityMap map[string]map[string]bool,
 ) []string {
-	var places []string
-	for _, p := range placeDcids {
-		placeMap, ok := availabilityMap[p]
-		if !ok || placeMap == nil {
+	var entities []string
+	for _, e := range entityDcids {
+		entityMap, ok := availabilityMap[e]
+		if !ok || entityMap == nil {
 			continue
 		}
 		for _, v := range descendants {
-			if placeMap[v] {
-				places = append(places, p)
+			if entityMap[v] {
+				entities = append(entities, e)
 				break
 			}
 		}
 	}
-	slices.Sort(places)
-	return places
+	slices.Sort(entities)
+	return entities
 }
 
-// placesWithDataForVar returns a sorted list of places where the variable has data.
+// placesWithDataForVar returns a sorted list of entities where the variable has data.
 func placesWithDataForVar(
 	varDcid string,
-	placeDcids []string,
+	entityDcids []string,
 	availabilityMap map[string]map[string]bool,
 ) []string {
-	var places []string
-	for _, p := range placeDcids {
-		placeMap, ok := availabilityMap[p]
-		if ok && placeMap != nil && placeMap[varDcid] {
-			places = append(places, p)
+	var entities []string
+	for _, e := range entityDcids {
+		entityMap, ok := availabilityMap[e]
+		if ok && entityMap != nil && entityMap[varDcid] {
+			entities = append(entities, e)
 		}
 	}
-	slices.Sort(places)
-	return places
+	slices.Sort(entities)
+	return entities
 }
 
 // fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs.

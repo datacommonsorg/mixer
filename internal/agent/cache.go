@@ -24,14 +24,14 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// Cache manages a high-performance, thread-safe in-memory cache of per-place data: Statistical
+// Cache manages a high-performance, thread-safe in-memory cache of per-entity data: Statistical
 // Variable observations availability and child entity types.
 type Cache struct {
 	mixer Mixer
 	mu    sync.RWMutex
 
-	// Cache map: placeDcid -> Set of available variableDcids
-	placeVars map[string]map[string]struct{}
+	// Cache map: entityDcid -> Set of available variableDcids
+	entityVars map[string]map[string]struct{}
 
 	// Cache map: ancestorDcid -> child entity types (empty when it has none)
 	childTypes map[string][]string
@@ -41,36 +41,36 @@ type Cache struct {
 func NewCache(mixer Mixer) *Cache {
 	return &Cache{
 		mixer:      mixer,
-		placeVars:  make(map[string]map[string]struct{}),
+		entityVars: make(map[string]map[string]struct{}),
 		childTypes: make(map[string][]string),
 	}
 }
 
 // CheckAvailability verifies the observation data existence for a list of candidate variables
-// at a set of target places. It returns a map of place DCID to its matched variables availability map,
+// at a set of target entities. It returns a map of entity DCID to its matched variables availability map,
 // utilizing a modular, high-performance read-through cache to dynamically load all variables
-// for missing places in parallel.
+// for missing entities in parallel.
 func (c *Cache) CheckAvailability(
 	ctx context.Context,
-	places []string,
+	entities []string,
 	variables []string,
 ) (map[string]map[string]bool, error) {
 	result := make(map[string]map[string]bool)
 
 	// Check local cache under read lock
-	missingPlaces := c.checkLocalCache(places, variables, result)
-	if len(missingPlaces) == 0 {
+	missing := c.checkLocalCache(entities, variables, result)
+	if len(missing) == 0 {
 		return result, nil
 	}
 
-	uniqueMap, err := c.loadPlaceVariables(ctx, missingPlaces)
+	uniqueMap, err := c.loadEntityVariables(ctx, missing)
 	if err != nil {
 		return nil, err
 	}
 
 	// Populate final results directly
-	for _, place := range missingPlaces {
-		populateResult(place, variables, uniqueMap[place], result)
+	for _, entity := range missing {
+		populateResult(entity, variables, uniqueMap[entity], result)
 	}
 
 	return result, nil
@@ -85,7 +85,7 @@ func (c *Cache) EntitiesWithoutData(ctx context.Context, entities []string) ([]s
 	var missing []string
 	c.mu.RLock()
 	for _, entity := range entities {
-		if vars, ok := c.placeVars[entity]; ok {
+		if vars, ok := c.entityVars[entity]; ok {
 			cached[entity] = vars
 		} else {
 			missing = append(missing, entity)
@@ -94,7 +94,7 @@ func (c *Cache) EntitiesWithoutData(ctx context.Context, entities []string) ([]s
 	c.mu.RUnlock()
 
 	if len(missing) > 0 {
-		loaded, err := c.loadPlaceVariables(ctx, missing)
+		loaded, err := c.loadEntityVariables(ctx, missing)
 		if err != nil {
 			return nil, err
 		}
@@ -112,12 +112,12 @@ func (c *Cache) EntitiesWithoutData(ctx context.Context, entities []string) ([]s
 	return withoutData, nil
 }
 
-// Reset flushes all cached place availability mappings atomically,
+// Reset flushes all cached entity availability mappings atomically,
 // called during background database reloads.
 func (c *Cache) Reset() {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	c.placeVars = make(map[string]map[string]struct{})
+	c.entityVars = make(map[string]map[string]struct{})
 	c.childTypes = make(map[string][]string)
 }
 
@@ -178,13 +178,13 @@ func fetchChildTypes(ctx context.Context, mixer Mixer, ancestors []string) (map[
 	return childTypes, nil
 }
 
-// loadPlaceVariables fetches the available variables of each place in parallel (one V2Observation call
-// per unique place) and warms the L1 cache with them. Results are returned keyed by place, so callers are
+// loadEntityVariables fetches the available variables of each entity in parallel (one V2Observation call
+// per unique entity) and warms the L1 cache with them. Results are returned keyed by entity, so callers are
 // unaffected by a concurrent Reset. If any fetch fails, nothing is cached and the error is returned.
-func (c *Cache) loadPlaceVariables(ctx context.Context, places []string) (map[string]map[string]struct{}, error) {
-	// Dynamic Cache Miss: Fetch available variables for missing places in parallel.
-	// Deduplicate places to avoid redundant parallel fetches.
-	uniqueMissing := util.StringSetToSlice(util.StringSliceToSet(places))
+func (c *Cache) loadEntityVariables(ctx context.Context, entities []string) (map[string]map[string]struct{}, error) {
+	// Dynamic Cache Miss: Fetch available variables for missing entities in parallel.
+	// Deduplicate entities to avoid redundant parallel fetches.
+	uniqueMissing := util.StringSetToSlice(util.StringSliceToSet(entities))
 
 	// CONCURRENCY NOTE: We collect results in a local slice (`fetchedVars`) by index.
 	// While Go maps are not thread-safe for parallel writes (even for disjoint keys),
@@ -194,11 +194,11 @@ func (c *Cache) loadPlaceVariables(ctx context.Context, places []string) (map[st
 	fetchedVars := make([]map[string]struct{}, len(uniqueMissing))
 	g, groupCtx := errgroup.WithContext(ctx)
 
-	for i, place := range uniqueMissing {
+	for i, entity := range uniqueMissing {
 		idx := i
-		p := place // Pin loop variable for goroutine closure
+		e := entity // Pin loop variable for goroutine closure
 		g.Go(func() error {
-			vars, err := c.fetchPlaceAvailableVariables(groupCtx, p)
+			vars, err := c.fetchEntityVariables(groupCtx, e)
 			if err != nil {
 				return err
 			}
@@ -213,24 +213,24 @@ func (c *Cache) loadPlaceVariables(ctx context.Context, places []string) (map[st
 
 	// Map unique results for fast lookup
 	uniqueMap := make(map[string]map[string]struct{})
-	for i, place := range uniqueMissing {
-		uniqueMap[place] = fetchedVars[i]
+	for i, entity := range uniqueMissing {
+		uniqueMap[entity] = fetchedVars[i]
 	}
 
 	// Warm L1 cache map under write lock
 	c.mu.Lock()
-	for place, vars := range uniqueMap {
-		c.placeVars[place] = vars
+	for entity, vars := range uniqueMap {
+		c.entityVars[entity] = vars
 	}
 	c.mu.Unlock()
 
 	return uniqueMap, nil
 }
 
-// checkLocalCache queries the local cache for a list of places under read lock.
-// It populates the provided result map and returns the slice of missing places.
+// checkLocalCache queries the local cache for a list of entities under read lock.
+// It populates the provided result map and returns the slice of missing entities.
 func (c *Cache) checkLocalCache(
-	places []string,
+	entities []string,
 	variables []string,
 	result map[string]map[string]bool,
 ) []string {
@@ -238,23 +238,23 @@ func (c *Cache) checkLocalCache(
 	defer c.mu.RUnlock()
 
 	var missing []string
-	for _, p := range places {
-		if cachedSet, ok := c.placeVars[p]; ok {
-			populateResult(p, variables, cachedSet, result)
+	for _, e := range entities {
+		if cachedSet, ok := c.entityVars[e]; ok {
+			populateResult(e, variables, cachedSet, result)
 		} else {
-			missing = append(missing, p)
+			missing = append(missing, e)
 		}
 	}
 	return missing
 }
 
-// fetchPlaceAvailableVariables calls V2Observation to fetch all available variables for a single place.
-// Queries are made per-place separately to maximize Redis L2 cache hit rates.
-func (c *Cache) fetchPlaceAvailableVariables(ctx context.Context, placeDcid string) (map[string]struct{}, error) {
+// fetchEntityVariables calls V2Observation to fetch all available variables for a single entity.
+// Queries are made per-entity separately to maximize Redis L2 cache hit rates.
+func (c *Cache) fetchEntityVariables(ctx context.Context, entityDcid string) (map[string]struct{}, error) {
 	// Wildcard facet-only V2 Observation request to fetch all available variables
 	req := &pbv2.ObservationRequest{
 		Entity: &pbv2.DcidOrExpression{
-			Dcids: []string{placeDcid},
+			Dcids: []string{entityDcid},
 		},
 		// Exclude date and value to perform a lightweight, metadata-only existence check
 		Select: []string{"variable", "entity", "facet"},
@@ -277,16 +277,16 @@ func (c *Cache) fetchPlaceAvailableVariables(ctx context.Context, placeDcid stri
 // populateResult is a pure helper function that extracts variable availabilities
 // from a source availableVariables set and populates the output result map.
 func populateResult(
-	place string,
+	entity string,
 	variables []string,
 	availableVariables map[string]struct{},
 	result map[string]map[string]bool,
 ) {
-	if _, exists := result[place]; !exists {
-		result[place] = make(map[string]bool)
+	if _, exists := result[entity]; !exists {
+		result[entity] = make(map[string]bool)
 	}
 	for _, v := range variables {
 		_, hasData := availableVariables[v]
-		result[place][v] = hasData
+		result[entity][v] = hasData
 	}
 }
