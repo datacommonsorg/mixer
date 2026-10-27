@@ -53,6 +53,12 @@ const (
 	colMemberVariables       = "memberVariables"
 	colObservationProperties = "observationProperties"
 
+	colEntitiesWithData        = "entities_with_data"
+	colV2MemberTopics          = "member_topics"
+	colV2MemberVariables       = "member_variables"
+	colDescendantVariableCount = "descendant_variable_count"
+	colV2ObservationProperties = "observation_properties"
+
 	DefaultPlaceDcidWorld = "Earth"
 
 	dateTypeLatest = "latest"

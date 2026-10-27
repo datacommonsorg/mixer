@@ -74,12 +74,83 @@ func errV2TypeHintsFailed(err error) error {
 	return wrapV2BackendError(err, "failed to resolve entity_type_hints and child_entity_type_hints")
 }
 
+// search_indicators: request validation.
+
+func errV2QueryAndTopicDcids() error {
+	return status.Error(codes.InvalidArgument,
+		"pass either 'query' (to search) or 'topic_dcids' (to browse those topics), not both")
+}
+
+func errV2TooManyEntityDcids(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many entity_dcids (%d): pass at most %d per call and split the rest into additional calls",
+		count, v2MaxEntityDcids)
+}
+
+func errV2TooManyTopicDcids(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many topic_dcids (%d): pass at most %d per call", count, v2MaxTopicDcids)
+}
+
+func errV2UnknownEntityDcids(dcids []string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"unknown entity_dcids %q: pass DCIDs returned by resolve_entities (e.g. 'geoId/06'), not names", dcids)
+}
+
+func errV2UnknownTopicDcids(dcids []string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"unknown topic_dcids %q: pass topic DCIDs from search_indicators results (a topic's dcid or its member_topics)", dcids)
+}
+
+// search_indicators: notes. These are returned in successful responses.
+//
+// Empty-result notes state only what was checked. They deliberately give no retry guidance: agents decide
+// on their own whether to rephrase, and hints about where else data might be tend to send them looping.
+
+// v2NoEntitiesNote is returned when no entity_dcids were given, so results were not filtered.
+const v2NoEntitiesNote = "results are not filtered by data availability, which varies by entity; pass entity_dcids from resolve_entities to keep only indicators with data for those entities"
+
+// v2NoMatchNote is returned when a search matched no topics or variables at all.
+const v2NoMatchNote = "no topics or variables match this query."
+
+// Empty-result notes for when entity_dcids filtered out every result.
+const (
+	// v2NoEntityDataNote: none of the entities has observation data for any variable.
+	v2NoEntityDataNote = "there is no data for the given entity_dcids."
+	// v2NoQueryDataNote: the search matched topics or variables, but none has data for the entities.
+	v2NoQueryDataNote = "none of the topics or variables matching this query have data for the given entity_dcids."
+	// v2NoRequestedTopicDataNote: none of the requested topics has data for the entities.
+	v2NoRequestedTopicDataNote = "none of the requested topics have data for the given entity_dcids."
+	// v2NoTopLevelTopicDataNote: none of the top-level topics has data for the entities.
+	v2NoTopLevelTopicDataNote = "no topics have data for the given entity_dcids."
+)
+
+// search_indicators: backend failures.
+
+func errV2SearchFailed(err error) error {
+	return wrapV2BackendError(err, "failed to search indicators")
+}
+
+func errV2TopicLookupFailed(err error) error {
+	return wrapV2BackendError(err, "failed to look up topics")
+}
+
+func errV2EntityLookupFailed(err error) error {
+	return wrapV2BackendError(err, "failed to look up entity_dcids")
+}
+
+func errV2AvailabilityFailed(err error) error {
+	return wrapV2BackendError(err, "failed to check which indicators have data for entity_dcids")
+}
+
 // Generic caller-facing replacements for backend error details, which are not actionable for the caller
 // and can expose internal endpoints, resource paths and project IDs. Details are logged by the callers.
+// They don't name the product, since Data Commons Platform deployments may not present themselves as
+// Data Commons.
 const (
-	v2BackendRetryMessage       = "a Data Commons backend is temporarily unavailable; retry the call shortly"
-	v2BackendTimeoutMessage     = "a Data Commons backend timed out; retry the call shortly"
-	v2BackendUnsupportedMessage = "this operation is not available in this Data Commons deployment; do not retry it"
+	v2BackendRetryMessage       = "a backend service is temporarily unavailable; retry the call shortly"
+	v2BackendTimeoutMessage     = "a backend service timed out; retry the call shortly"
+	v2BackendUnsupportedMessage = "this operation is not available in this deployment; do not retry it"
 )
 
 // wrapV2BackendError adds caller-facing context to a backend error and replaces backend details with a
