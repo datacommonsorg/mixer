@@ -337,12 +337,27 @@ func (d *v2IndicatorData) descendantCount(topicDcid string) int {
 		if _, ok := seen[varDcid]; ok {
 			continue
 		}
-		if d.filtered() && len(placesWithDataForVar(varDcid, d.entities, d.availability)) == 0 {
+		if !d.hasDataForVariable(varDcid) {
 			continue
 		}
 		seen[varDcid] = struct{}{}
 	}
 	return len(seen)
+}
+
+// hasDataForVariable reports whether a variable row or member is kept: always when results are not filtered,
+// otherwise when some entity has data for it. Unlike variableEntities, it doesn't build a sorted list, since
+// it runs for every descendant of every topic.
+func (d *v2IndicatorData) hasDataForVariable(varDcid string) bool {
+	if !d.filtered() {
+		return true
+	}
+	for _, entity := range d.entities {
+		if d.availability[entity][varDcid] {
+			return true
+		}
+	}
+	return false
 }
 
 // noEntityHasData reports whether results are filtered and none of the entities has any data.
@@ -464,7 +479,7 @@ func v2TopicMembers(c *pbv2.ResolveResponse_Entity_Candidate, data *v2IndicatorD
 			if data.descendantCount(child.GetDcid()) > 0 {
 				topics = append(topics, ref)
 			}
-		} else if data.hasData(data.variableEntities(child.GetDcid())) {
+		} else if data.hasDataForVariable(child.GetDcid()) {
 			variables = append(variables, ref)
 		}
 	}
