@@ -53,6 +53,12 @@ const (
 	colMemberVariables       = "memberVariables"
 	colObservationProperties = "observationProperties"
 
+	colEntitiesWithData        = "entities_with_data"
+	colV2MemberTopics          = "member_topics"
+	colV2MemberVariables       = "member_variables"
+	colDescendantVariableCount = "descendant_variable_count"
+	colV2ObservationProperties = "observation_properties"
+
 	DefaultPlaceDcidWorld = "Earth"
 
 	dateTypeLatest = "latest"
@@ -67,6 +73,27 @@ var validTargets = []string{
 	TargetBaseAndCustom,
 	TargetBaseOnly,
 	TargetCustomOnly,
+}
+
+// dcidSet collects unique DCIDs in the order they were first added.
+type dcidSet struct {
+	seen  map[string]struct{}
+	dcids []string
+}
+
+// newDcidSet returns an empty dcidSet.
+func newDcidSet() *dcidSet {
+	return &dcidSet{seen: map[string]struct{}{}}
+}
+
+// add adds dcid unless it was added before, and reports whether it was added.
+func (s *dcidSet) add(dcid string) bool {
+	if _, ok := s.seen[dcid]; ok {
+		return false
+	}
+	s.seen[dcid] = struct{}{}
+	s.dcids = append(s.dcids, dcid)
+	return true
 }
 
 // getPropValue extracts the first string value of a property from a LinkedGraph.

@@ -39,3 +39,17 @@ func (t *McpTools) V2ResolveEntities(ctx context.Context, input V2ResolveEntitie
 		Target:   t.searchScope,
 	})
 }
+
+// V2SearchIndicators searches for topics and variables, or browses topics, keeping only those with data for
+// the given entities.
+func (t *McpTools) V2SearchIndicators(ctx context.Context, input V2SearchIndicatorsInput) (*agent.V2SearchIndicatorsResponse, error) {
+	if t.agentService == nil {
+		return nil, fmt.Errorf("agent service is not initialized")
+	}
+	return t.agentService.V2SearchIndicators(ctx, &agent.V2SearchIndicatorsRequest{
+		Query:       input.Query,
+		TopicDcids:  input.TopicDcids,
+		EntityDcids: input.EntityDcids,
+		Target:      t.searchScope,
+	})
+}

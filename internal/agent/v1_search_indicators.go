@@ -78,7 +78,7 @@ func (s *Service) SearchIndicators(
 		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on s.defaultExpandTopics.
 		candidates, err = s.fetchCandidates(gCtx, req.Query, oversampledLimit, s.defaultExpandTopics, req.Target)
 		if err != nil {
-			return err
+			return status.Errorf(codes.Internal, "failed to execute embeddings search: %v", err)
 		}
 		// If IncludeTopics is false, expand and deduplicate topic candidates into standard variables
 		if !req.IncludeTopics {
@@ -246,54 +246,6 @@ func (s *Service) resolvePlaces(
 	return resolvedMap, parentPlaceDcid, nil
 }
 
-// fetchCandidates calls V2Resolve to execute embeddings similarity searches.
-func (s *Service) fetchCandidates(
-	ctx context.Context,
-	query string,
-	limit int32,
-	expandTopics bool,
-	target string,
-) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
-	defer util.TimeTrack(time.Now(), "Agent: fetchCandidates")
-	// Map empty queries to browse root topics
-	var nodes []string
-	if query != "" {
-		nodes = []string{query}
-	}
-
-	resolver := ResolverIndicator
-	if query == "" {
-		resolver = ResolverTopic
-	}
-
-	resolveReq := &pbv2.ResolveRequest{
-		Nodes:        nodes,
-		Resolver:     resolver,
-		ExpandTopics: expandTopics,
-		Target:       target,
-	}
-
-	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to execute embeddings search: %v", err)
-	}
-	if resp == nil {
-		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
-	}
-
-	var candidates []*pbv2.ResolveResponse_Entity_Candidate
-	for _, entity := range resp.GetEntities() {
-		candidates = append(candidates, entity.GetCandidates()...)
-	}
-
-	// Enforce search limit
-	if limit > 0 && int(limit) < len(candidates) {
-		candidates = candidates[:limit]
-	}
-
-	return candidates, nil
-}
-
 // filterByPlaceExistence uses the Cache layer to filter out candidates lacking data.
 func (s *Service) filterByPlaceExistence(
 	ctx context.Context,
@@ -314,7 +266,7 @@ func (s *Service) filterByPlaceExistence(
 	// Fetch descendant variables of all topics concurrently in a single batch
 	topicDescendants, err := s.fetchDescendantVariables(ctx, topicDcids, target)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
 	}
 
 	// Gather all variables to check for place availability
@@ -375,91 +327,6 @@ func expandTopicCandidates(
 	return flat
 }
 
-// collectSubtopicsAndDirectVars separates subtopic DCIDs and direct variable DCIDs across candidates.
-func collectSubtopicsAndDirectVars(
-	candidates []*pbv2.ResolveResponse_Entity_Candidate,
-) ([]string, []string) {
-	var topicDcids []string
-	var directVarDcids []string
-	seenTopics := make(map[string]bool)
-	seenVars := make(map[string]bool)
-
-	for _, c := range candidates {
-		if isTopic(c) {
-			if !seenTopics[c.GetDcid()] {
-				seenTopics[c.GetDcid()] = true
-				topicDcids = append(topicDcids, c.GetDcid())
-			}
-			for _, child := range c.GetChildren() {
-				if isTopic(child) {
-					if !seenTopics[child.GetDcid()] {
-						seenTopics[child.GetDcid()] = true
-						topicDcids = append(topicDcids, child.GetDcid())
-					}
-				} else {
-					if !seenVars[child.GetDcid()] {
-						seenVars[child.GetDcid()] = true
-						directVarDcids = append(directVarDcids, child.GetDcid())
-					}
-				}
-			}
-		} else {
-			if !seenVars[c.GetDcid()] {
-				seenVars[c.GetDcid()] = true
-				directVarDcids = append(directVarDcids, c.GetDcid())
-			}
-		}
-	}
-	return topicDcids, directVarDcids
-}
-
-// gatherVarsToCheck aggregates direct variables and all subtopic descendant variables.
-func gatherVarsToCheck(
-	directVarDcids []string,
-	subtopicDescendants map[string][]string,
-) []string {
-	var vars []string
-	seen := make(map[string]bool)
-	for _, v := range directVarDcids {
-		if !seen[v] {
-			seen[v] = true
-			vars = append(vars, v)
-		}
-	}
-	for _, descendantVars := range subtopicDescendants {
-		for _, v := range descendantVars {
-			if !seen[v] {
-				seen[v] = true
-				vars = append(vars, v)
-			}
-		}
-	}
-	return vars
-}
-
-// hasPlacesWithData checks if any descendant variable has data for any target place.
-func hasPlacesWithData(
-	descendants []string,
-	placeDcids []string,
-	availabilityMap map[string]map[string]bool,
-) []string {
-	var places []string
-	for _, p := range placeDcids {
-		placeMap, ok := availabilityMap[p]
-		if !ok || placeMap == nil {
-			continue
-		}
-		for _, v := range descendants {
-			if placeMap[v] {
-				places = append(places, p)
-				break
-			}
-		}
-	}
-	slices.Sort(places)
-	return places
-}
-
 // pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic itself has data.
 func pruneSingleTopic(
 	c *pbv2.ResolveResponse_Entity_Candidate,
@@ -467,7 +334,7 @@ func pruneSingleTopic(
 	topicDescendants map[string][]string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	parentPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
+	parentPlaces := entitiesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
 	if len(parentPlaces) == 0 {
 		return nil, false
 	}
@@ -476,9 +343,9 @@ func pruneSingleTopic(
 	for _, child := range c.GetChildren() {
 		var childPlaces []string
 		if isTopic(child) {
-			childPlaces = hasPlacesWithData(topicDescendants[child.GetDcid()], placeDcids, availabilityMap)
+			childPlaces = entitiesWithData(topicDescendants[child.GetDcid()], placeDcids, availabilityMap)
 		} else {
-			childPlaces = placesWithDataForVar(child.GetDcid(), placeDcids, availabilityMap)
+			childPlaces = entitiesWithData([]string{child.GetDcid()}, placeDcids, availabilityMap)
 		}
 
 		if len(childPlaces) > 0 {
@@ -502,29 +369,12 @@ func pruneSingleVariable(
 	placeDcids []string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	placesWithData := placesWithDataForVar(c.GetDcid(), placeDcids, availabilityMap)
+	placesWithData := entitiesWithData([]string{c.GetDcid()}, placeDcids, availabilityMap)
 	if len(placesWithData) == 0 {
 		return nil, false
 	}
 	setPlacesWithDataMetadata(c, placesWithData)
 	return c, true
-}
-
-// placesWithDataForVar returns a sorted list of places where the variable has data.
-func placesWithDataForVar(
-	varDcid string,
-	placeDcids []string,
-	availabilityMap map[string]map[string]bool,
-) []string {
-	var places []string
-	for _, p := range placeDcids {
-		placeMap, ok := availabilityMap[p]
-		if ok && placeMap != nil && placeMap[varDcid] {
-			places = append(places, p)
-		}
-	}
-	slices.Sort(places)
-	return places
 }
 
 // setPlacesWithDataMetadata sets the metadata field for places with data.
@@ -533,58 +383,6 @@ func setPlacesWithDataMetadata(c *pbv2.ResolveResponse_Entity_Candidate, places 
 		c.Metadata = make(map[string]string)
 	}
 	c.Metadata[MetadataPlacesWithData] = strings.Join(places, DcidSeparator)
-}
-
-// fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs.
-func (s *Service) fetchDescendantVariables(
-	ctx context.Context,
-	topicDcids []string,
-	target string,
-) (map[string][]string, error) {
-	defer util.TimeTrack(time.Now(), "Agent: fetchDescendantVariables")
-	if len(topicDcids) == 0 {
-		return nil, nil
-	}
-
-	resolveReq := &pbv2.ResolveRequest{
-		Nodes:        topicDcids,
-		Resolver:     ResolverTopic,
-		ExpandTopics: true,
-		Target:       target,
-	}
-
-	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
-	}
-	if resp == nil {
-		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
-	}
-
-	res := make(map[string][]string)
-	for _, entity := range resp.GetEntities() {
-		node := entity.GetNode()
-		if node == "" {
-			// Root topics expansion
-			for _, cand := range entity.GetCandidates() {
-				var vars []string
-				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
-				}
-				res[cand.GetDcid()] = vars
-			}
-		} else {
-			// Specific topic expansion
-			var vars []string
-			for _, cand := range entity.GetCandidates() {
-				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
-				}
-			}
-			res[node] = vars
-		}
-	}
-	return res, nil
 }
 
 // buildTopicsTable constructs a tabular representation of matched topic candidates.
@@ -799,14 +597,6 @@ func translateVariableCandidate(
 		PlacesWithData:        placesWithData,
 		ObservationProperties: c.GetObservationProperties(),
 	})
-}
-
-// isTopic returns true if the candidate is classified as a Topic in TypeOf or DominantType.
-func isTopic(c *pbv2.ResolveResponse_Entity_Candidate) bool {
-	if c.GetDominantType() == DcidTypeTopic {
-		return true
-	}
-	return slices.Contains(c.GetTypeOf(), DcidTypeTopic)
 }
 
 // enrichPlaceNamesAndTypes retrieves and populates the canonical names and types of resolved places.

@@ -75,3 +75,37 @@ type v2ChildType struct {
 	dcid string
 	name string
 }
+
+// V2SearchIndicatorsRequest holds parameters for V2SearchIndicators. Query searches for topics and
+// variables; TopicDcids browses those topics; with neither, the top-level topics are browsed. EntityDcids
+// keeps only indicators with data for those entities.
+type V2SearchIndicatorsRequest struct {
+	Query       string
+	TopicDcids  []string
+	EntityDcids []string
+	Target      string
+}
+
+// V2SearchIndicatorsResponse holds the matched topics and variables as tables.
+//
+// TopicCandidates has columns dcid, name, entities_with_data, member_topics, member_variables and
+// descendant_variable_count. member_topics and member_variables list the topic's direct members with
+// data as {dcid, name} objects, in the order the topic defines them; descendant_variable_count counts the
+// variables at any depth under the topic (only those with data when entities are given). A topic row has
+// the same content in search and browse, so agents drill down by browsing member_topics.
+//
+// VariableCandidates (search only) has columns dcid, name, entities_with_data and observation_properties.
+//
+// Without entities, entities_with_data is empty and nothing is filtered. Note explains unfiltered or
+// empty results.
+type V2SearchIndicatorsResponse struct {
+	TopicCandidates    *Table `json:"topic_candidates"`
+	VariableCandidates *Table `json:"variable_candidates,omitempty"`
+	Note               string `json:"note,omitempty"`
+}
+
+// v2IndicatorRef is a topic member (sub-topic or variable) in member_topics or member_variables.
+type v2IndicatorRef struct {
+	Dcid string `json:"dcid"`
+	Name string `json:"name"`
+}

@@ -103,3 +103,63 @@ func TestV2ResolveEntitiesInputSchema(t *testing.T) {
 		t.Errorf("resolve_entities input schema diff (-want +got):\n%s", diff)
 	}
 }
+
+func TestV2SearchIndicators(t *testing.T) {
+	tests := []struct {
+		name        string
+		input       V2SearchIndicatorsInput
+		searchScope string
+		wantReq     *agent.V2SearchIndicatorsRequest
+	}{
+		{
+			name:        "maps search fields and uses the server search scope as target",
+			input:       V2SearchIndicatorsInput{Query: "unemployment rate", EntityDcids: []string{"country/KEN"}},
+			searchScope: "base_only",
+			wantReq:     &agent.V2SearchIndicatorsRequest{Query: "unemployment rate", EntityDcids: []string{"country/KEN"}, Target: "base_only"},
+		},
+		{
+			name:    "maps browse fields",
+			input:   V2SearchIndicatorsInput{TopicDcids: []string{"dc/topic/Health"}},
+			wantReq: &agent.V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/Health"}},
+		},
+		{
+			name:    "empty input is passed through to browse the top-level topics",
+			wantReq: &agent.V2SearchIndicatorsRequest{},
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			backend := &fakeAgentBackend{}
+			if _, err := NewMcpTools(backend, tc.searchScope).V2SearchIndicators(context.Background(), tc.input); err != nil {
+				t.Fatalf("V2SearchIndicators() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(tc.wantReq, backend.lastV2SearchReq); diff != "" {
+				t.Errorf("agent request diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestV2SearchIndicatorsInputSchema(t *testing.T) {
+	tool := mcp.NewTool("search_indicators", withToolInputSchema[V2SearchIndicatorsInput]())
+	var got map[string]any
+	if err := json.Unmarshal(tool.RawInputSchema, &got); err != nil {
+		t.Fatalf("failed to decode input schema: %v", err)
+	}
+	props := got["properties"].(map[string]any)
+	gotTypes := map[string]any{}
+	for _, field := range []string{"query", "topic_dcids", "entity_dcids"} {
+		prop := props[field].(map[string]any)
+		if desc, _ := prop["description"].(string); desc == "" {
+			t.Errorf("search_indicators input schema field %q has no description", field)
+		}
+		gotTypes[field] = prop["type"]
+	}
+	wantTypes := map[string]any{"query": "string", "topic_dcids": "array", "entity_dcids": "array"}
+	if diff := cmp.Diff(wantTypes, gotTypes); diff != "" {
+		t.Errorf("search_indicators input schema types diff (-want +got):\n%s", diff)
+	}
+	if required, ok := got["required"]; ok && len(required.([]any)) > 0 {
+		t.Errorf("search_indicators input schema required = %v, want no required fields", required)
+	}
+}
