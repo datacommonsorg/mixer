@@ -155,12 +155,8 @@ func (s *Service) fetchV2CandidatesAndEntityData(
 	if len(req.EntityDcids) > 0 {
 		g.Go(func() error {
 			var err error
-			entitiesWithoutData, err = s.cache.EntitiesWithoutData(gCtx, req.EntityDcids)
-			if err != nil {
-				slog.Warn("Failed to load entity variables", "error", err, "entitiesCount", len(req.EntityDcids))
-				return errV2AvailabilityFailed(err)
-			}
-			return nil
+			entitiesWithoutData, err = s.loadEntitiesWithoutData(gCtx, req.EntityDcids)
+			return err
 		})
 	}
 	if err := g.Wait(); err != nil {
@@ -214,6 +210,19 @@ func (s *Service) fetchTopicCandidates(
 		slog.Warn("Failed to look up topics", "error", err, "topicsCount", len(topicDcids))
 		return nil, errV2TopicLookupFailed(err)
 	}
+	candidates, unknown := topicCandidatesInRequestOrder(resp, topicDcids)
+	if len(unknown) > 0 {
+		return nil, errV2UnknownTopicDcids(unknown)
+	}
+	return candidates, nil
+}
+
+// topicCandidatesInRequestOrder returns the topic resolver's candidates for the requested topics in request
+// order (the resolver may return them in any order), and the requested DCIDs it returned no topic for.
+func topicCandidatesInRequestOrder(
+	resp *pbv2.ResolveResponse,
+	topicDcids []string,
+) ([]*pbv2.ResolveResponse_Entity_Candidate, []string) {
 	byDcid := map[string]*pbv2.ResolveResponse_Entity_Candidate{}
 	for _, entity := range resp.GetEntities() {
 		for _, candidate := range entity.GetCandidates() {
@@ -231,10 +240,18 @@ func (s *Service) fetchTopicCandidates(
 			unknown = append(unknown, dcid)
 		}
 	}
-	if len(unknown) > 0 {
-		return nil, errV2UnknownTopicDcids(unknown)
+	return candidates, unknown
+}
+
+// loadEntitiesWithoutData loads (and caches) the entities' variable sets and returns the entities without any
+// data, mapping a failed load to a caller-facing error.
+func (s *Service) loadEntitiesWithoutData(ctx context.Context, entities []string) ([]string, error) {
+	withoutData, err := s.cache.EntitiesWithoutData(ctx, entities)
+	if err != nil {
+		slog.Warn("Failed to load entity variables", "error", err, "entitiesCount", len(entities))
+		return nil, errV2AvailabilityFailed(err)
 	}
-	return candidates, nil
+	return withoutData, nil
 }
 
 // checkEntitiesExist returns an error listing the entities that don't exist in the knowledge graph (no
@@ -320,12 +337,6 @@ func (d *v2IndicatorData) variableEntities(varDcid string) []string {
 		return []string{}
 	}
 	return util.NonNilStringSlice(entitiesWithData([]string{varDcid}, d.entities, d.availability))
-}
-
-// hasData reports whether a row with the given entities_with_data is kept: always when results are not
-// filtered, otherwise only when some entity has data.
-func (d *v2IndicatorData) hasData(entitiesWithData []string) bool {
-	return !d.filtered() || len(entitiesWithData) > 0
 }
 
 // descendantCount returns the number of distinct variables at any depth under the topic (a variable can be
@@ -417,50 +428,61 @@ func v2ResponseNote(
 // variables are dropped even when unfiltered: some topics (e.g. SDG goals) group variables the topic
 // hierarchy doesn't list, and an empty row gives the agent nothing to use or drill into.
 func buildV2TopicsTable(candidates []*pbv2.ResolveResponse_Entity_Candidate, data *v2IndicatorData, limit int) *Table {
-	table := &Table{Columns: []string{colDcid, colName, colEntitiesWithData, colV2MemberTopics, colV2MemberVariables, colDescendantVariableCount}}
-	seen := map[string]struct{}{}
-	for _, c := range candidates {
-		if limit > 0 && len(table.Rows) >= limit {
-			break
-		}
-		if _, ok := seen[c.GetDcid()]; ok || !isTopic(c) {
-			continue
-		}
-		seen[c.GetDcid()] = struct{}{}
-		count := data.descendantCount(c.GetDcid())
-		if count == 0 {
-			continue
-		}
-		memberTopics, memberVariables := v2TopicMembers(c, data)
-		table.Rows = append(table.Rows, []any{
-			c.GetDcid(), c.GetName(), data.topicEntities(c.GetDcid()), memberTopics, memberVariables, count,
-		})
-	}
-	return table
+	columns := []string{colDcid, colName, colEntitiesWithData, colV2MemberTopics, colV2MemberVariables, colDescendantVariableCount}
+	return buildV2Table(columns, candidates, true /* topics */, limit, data.topicRow)
 }
 
 // buildV2VariablesTable returns a row per variable candidate with data, in candidate order and without
 // duplicates, up to limit rows (0 means no limit).
 func buildV2VariablesTable(candidates []*pbv2.ResolveResponse_Entity_Candidate, data *v2IndicatorData, limit int) *Table {
-	table := &Table{Columns: []string{colDcid, colName, colEntitiesWithData, colV2ObservationProperties}}
-	seen := map[string]struct{}{}
+	columns := []string{colDcid, colName, colEntitiesWithData, colV2ObservationProperties}
+	return buildV2Table(columns, candidates, false /* variables */, limit, data.variableRow)
+}
+
+// buildV2Table returns a table with a row per unique candidate of one kind (topics when wantTopics is set,
+// variables otherwise), in candidate order, skipping candidates the row function rejects, up to limit rows
+// (0 means no limit).
+func buildV2Table(
+	columns []string,
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+	wantTopics bool,
+	limit int,
+	row func(*pbv2.ResolveResponse_Entity_Candidate) ([]any, bool),
+) *Table {
+	table := &Table{Columns: columns}
+	seen := newDcidSet()
 	for _, c := range candidates {
 		if limit > 0 && len(table.Rows) >= limit {
 			break
 		}
-		if _, ok := seen[c.GetDcid()]; ok || isTopic(c) {
+		if isTopic(c) != wantTopics || !seen.add(c.GetDcid()) {
 			continue
 		}
-		seen[c.GetDcid()] = struct{}{}
-		entitiesWithData := data.variableEntities(c.GetDcid())
-		if !data.hasData(entitiesWithData) {
-			continue
+		if r, ok := row(c); ok {
+			table.Rows = append(table.Rows, r)
 		}
-		table.Rows = append(table.Rows, []any{
-			c.GetDcid(), c.GetName(), entitiesWithData, util.NonNilStringSlice(c.GetObservationProperties()),
-		})
 	}
 	return table
+}
+
+// topicRow returns the row for a topic candidate, or false when no variables (with data, when filtered) are
+// below it.
+func (d *v2IndicatorData) topicRow(c *pbv2.ResolveResponse_Entity_Candidate) ([]any, bool) {
+	count := d.descendantCount(c.GetDcid())
+	if count == 0 {
+		return nil, false
+	}
+	memberTopics, memberVariables := v2TopicMembers(c, d)
+	return []any{c.GetDcid(), c.GetName(), d.topicEntities(c.GetDcid()), memberTopics, memberVariables, count}, true
+}
+
+// variableRow returns the row for a variable candidate, or false when results are filtered and no entity has
+// data for it.
+func (d *v2IndicatorData) variableRow(c *pbv2.ResolveResponse_Entity_Candidate) ([]any, bool) {
+	if !d.hasDataForVariable(c.GetDcid()) {
+		return nil, false
+	}
+	return []any{c.GetDcid(), c.GetName(), d.variableEntities(c.GetDcid()), util.NonNilStringSlice(c.GetObservationProperties())}, true
 }
 
 // v2TopicMembers returns the topic's direct sub-topics and variables with data, in the order the topic
