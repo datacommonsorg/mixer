@@ -310,7 +310,7 @@ func (d *v2IndicatorData) topicEntities(topicDcid string) []string {
 	if !d.filtered() {
 		return []string{}
 	}
-	return util.NonNilStringSlice(hasPlacesWithData(d.descendants[topicDcid], d.entities, d.availability))
+	return util.NonNilStringSlice(entitiesWithData(d.descendants[topicDcid], d.entities, d.availability))
 }
 
 // variableEntities returns the sorted entities with data for the variable, or an empty list when results
@@ -319,7 +319,7 @@ func (d *v2IndicatorData) variableEntities(varDcid string) []string {
 	if !d.filtered() {
 		return []string{}
 	}
-	return util.NonNilStringSlice(placesWithDataForVar(varDcid, d.entities, d.availability))
+	return util.NonNilStringSlice(entitiesWithData([]string{varDcid}, d.entities, d.availability))
 }
 
 // hasData reports whether a row with the given entities_with_data is kept: always when results are not
@@ -332,17 +332,13 @@ func (d *v2IndicatorData) hasData(entitiesWithData []string) bool {
 // listed under several sub-topics), counting only those with data for some entity when filtered. A topic is
 // kept only when this is positive, which when filtered means some entity has data under it.
 func (d *v2IndicatorData) descendantCount(topicDcid string) int {
-	seen := map[string]struct{}{}
+	counted := map[string]struct{}{}
 	for _, varDcid := range d.descendants[topicDcid] {
-		if _, ok := seen[varDcid]; ok {
-			continue
+		if _, ok := counted[varDcid]; !ok && d.hasDataForVariable(varDcid) {
+			counted[varDcid] = struct{}{}
 		}
-		if !d.hasDataForVariable(varDcid) {
-			continue
-		}
-		seen[varDcid] = struct{}{}
 	}
-	return len(seen)
+	return len(counted)
 }
 
 // hasDataForVariable reports whether a variable row or member is kept: always when results are not filtered,
@@ -489,12 +485,11 @@ func v2TopicMembers(c *pbv2.ResolveResponse_Entity_Candidate, data *v2IndicatorD
 // uniqueNonBlank returns the trimmed, non-blank values without duplicates, in their original order.
 // util.MergeDedupe is not used because it sorts, and browse returns topics in request order.
 func uniqueNonBlank(values []string) []string {
-	var unique []string
+	unique := newDcidSet()
 	for _, value := range values {
-		value = strings.TrimSpace(value)
-		if value != "" && !slices.Contains(unique, value) {
-			unique = append(unique, value)
+		if value = strings.TrimSpace(value); value != "" {
+			unique.add(value)
 		}
 	}
-	return unique
+	return unique.dcids
 }

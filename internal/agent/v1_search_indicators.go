@@ -334,7 +334,7 @@ func pruneSingleTopic(
 	topicDescendants map[string][]string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	parentPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
+	parentPlaces := entitiesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
 	if len(parentPlaces) == 0 {
 		return nil, false
 	}
@@ -343,9 +343,9 @@ func pruneSingleTopic(
 	for _, child := range c.GetChildren() {
 		var childPlaces []string
 		if isTopic(child) {
-			childPlaces = hasPlacesWithData(topicDescendants[child.GetDcid()], placeDcids, availabilityMap)
+			childPlaces = entitiesWithData(topicDescendants[child.GetDcid()], placeDcids, availabilityMap)
 		} else {
-			childPlaces = placesWithDataForVar(child.GetDcid(), placeDcids, availabilityMap)
+			childPlaces = entitiesWithData([]string{child.GetDcid()}, placeDcids, availabilityMap)
 		}
 
 		if len(childPlaces) > 0 {
@@ -369,7 +369,7 @@ func pruneSingleVariable(
 	placeDcids []string,
 	availabilityMap map[string]map[string]bool,
 ) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
-	placesWithData := placesWithDataForVar(c.GetDcid(), placeDcids, availabilityMap)
+	placesWithData := entitiesWithData([]string{c.GetDcid()}, placeDcids, availabilityMap)
 	if len(placesWithData) == 0 {
 		return nil, false
 	}

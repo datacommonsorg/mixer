@@ -82,38 +82,22 @@ func (s *Service) fetchCandidates(
 func collectSubtopicsAndDirectVars(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 ) ([]string, []string) {
-	var topicDcids []string
-	var directVarDcids []string
-	seenTopics := make(map[string]bool)
-	seenVars := make(map[string]bool)
-
+	topics, vars := newDcidSet(), newDcidSet()
 	for _, c := range candidates {
-		if isTopic(c) {
-			if !seenTopics[c.GetDcid()] {
-				seenTopics[c.GetDcid()] = true
-				topicDcids = append(topicDcids, c.GetDcid())
-			}
-			for _, child := range c.GetChildren() {
-				if isTopic(child) {
-					if !seenTopics[child.GetDcid()] {
-						seenTopics[child.GetDcid()] = true
-						topicDcids = append(topicDcids, child.GetDcid())
-					}
-				} else {
-					if !seenVars[child.GetDcid()] {
-						seenVars[child.GetDcid()] = true
-						directVarDcids = append(directVarDcids, child.GetDcid())
-					}
-				}
-			}
-		} else {
-			if !seenVars[c.GetDcid()] {
-				seenVars[c.GetDcid()] = true
-				directVarDcids = append(directVarDcids, c.GetDcid())
+		if !isTopic(c) {
+			vars.add(c.GetDcid())
+			continue
+		}
+		topics.add(c.GetDcid())
+		for _, child := range c.GetChildren() {
+			if isTopic(child) {
+				topics.add(child.GetDcid())
+			} else {
+				vars.add(child.GetDcid())
 			}
 		}
 	}
-	return topicDcids, directVarDcids
+	return topics.dcids, vars.dcids
 }
 
 // gatherVarsToCheck aggregates direct variables and all subtopic descendant variables.
@@ -121,58 +105,27 @@ func gatherVarsToCheck(
 	directVarDcids []string,
 	subtopicDescendants map[string][]string,
 ) []string {
-	var vars []string
-	seen := make(map[string]bool)
+	vars := newDcidSet()
 	for _, v := range directVarDcids {
-		if !seen[v] {
-			seen[v] = true
-			vars = append(vars, v)
-		}
+		vars.add(v)
 	}
 	for _, descendantVars := range subtopicDescendants {
 		for _, v := range descendantVars {
-			if !seen[v] {
-				seen[v] = true
-				vars = append(vars, v)
-			}
+			vars.add(v)
 		}
 	}
-	return vars
+	return vars.dcids
 }
 
-// hasPlacesWithData checks if any descendant variable has data for any target entity.
-func hasPlacesWithData(
-	descendants []string,
+// entitiesWithData returns, sorted, the entities with data for at least one of the variables.
+func entitiesWithData(
+	varDcids []string,
 	entityDcids []string,
 	availabilityMap map[string]map[string]bool,
 ) []string {
 	var entities []string
 	for _, e := range entityDcids {
-		entityMap, ok := availabilityMap[e]
-		if !ok || entityMap == nil {
-			continue
-		}
-		for _, v := range descendants {
-			if entityMap[v] {
-				entities = append(entities, e)
-				break
-			}
-		}
-	}
-	slices.Sort(entities)
-	return entities
-}
-
-// placesWithDataForVar returns a sorted list of entities where the variable has data.
-func placesWithDataForVar(
-	varDcid string,
-	entityDcids []string,
-	availabilityMap map[string]map[string]bool,
-) []string {
-	var entities []string
-	for _, e := range entityDcids {
-		entityMap, ok := availabilityMap[e]
-		if ok && entityMap != nil && entityMap[varDcid] {
+		if slices.ContainsFunc(varDcids, func(v string) bool { return availabilityMap[e][v] }) {
 			entities = append(entities, e)
 		}
 	}
@@ -180,8 +133,10 @@ func placesWithDataForVar(
 	return entities
 }
 
-// fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs.
-// V2Resolve errors are returned unchanged, as in fetchCandidates.
+// fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs, keyed by
+// topic DCID. The topic resolver returns one candidate per requested topic, with the topic's descendant variables
+// as children, and none for unknown topics or topics without variables, which get no key. V2Resolve errors are
+// returned unchanged, as in fetchCandidates.
 func (s *Service) fetchDescendantVariables(
 	ctx context.Context,
 	topicDcids []string,
@@ -209,28 +164,20 @@ func (s *Service) fetchDescendantVariables(
 
 	res := make(map[string][]string)
 	for _, entity := range resp.GetEntities() {
-		node := entity.GetNode()
-		if node == "" {
-			// Root topics expansion
-			for _, cand := range entity.GetCandidates() {
-				var vars []string
-				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
-				}
-				res[cand.GetDcid()] = vars
-			}
-		} else {
-			// Specific topic expansion
-			var vars []string
-			for _, cand := range entity.GetCandidates() {
-				for _, child := range cand.GetChildren() {
-					vars = append(vars, child.GetDcid())
-				}
-			}
-			res[node] = vars
+		for _, cand := range entity.GetCandidates() {
+			res[cand.GetDcid()] = append(res[cand.GetDcid()], childDcids(cand)...)
 		}
 	}
 	return res, nil
+}
+
+// childDcids returns the DCIDs of a candidate's children.
+func childDcids(c *pbv2.ResolveResponse_Entity_Candidate) []string {
+	var dcids []string
+	for _, child := range c.GetChildren() {
+		dcids = append(dcids, child.GetDcid())
+	}
+	return dcids
 }
 
 // isTopic returns true if the candidate is classified as a Topic in TypeOf or DominantType.
