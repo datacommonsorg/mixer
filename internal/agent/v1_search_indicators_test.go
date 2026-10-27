@@ -21,6 +21,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -552,6 +554,48 @@ func TestSearchIndicators_DefaultExpandTopics(t *testing.T) {
 
 			if got := mock.lastCandidateResolveReq.GetExpandTopics(); got != tc.wantExpandTopics {
 				t.Errorf("V2Resolve expand_topics = %v, want %v", got, tc.wantExpandTopics)
+			}
+		})
+	}
+}
+
+func TestSearchIndicators_BackendErrors(t *testing.T) {
+	backendErr := status.Error(codes.FailedPrecondition, "resolution unavailable")
+	for _, tc := range []struct {
+		name         string
+		failResolver string
+		wantErr      string
+	}{
+		{
+			name:         "candidate search failure is wrapped as Internal",
+			failResolver: ResolverIndicator,
+			wantErr:      "rpc error: code = Internal desc = failed to execute embeddings search: rpc error: code = FailedPrecondition desc = resolution unavailable",
+		},
+		{
+			name:         "descendant fetch failure is wrapped as Internal",
+			failResolver: ResolverTopic,
+			wantErr:      "rpc error: code = Internal desc = failed to fetch descendant variables for topics: rpc error: code = FailedPrecondition desc = resolution unavailable",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &failingResolveMixer{
+				mockMixerServer: &mockMixerServer{
+					resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+						"health": {{Dcid: "dc/topic/Health", DominantType: "Topic", Name: "Health"}},
+					},
+				},
+				failResolver: tc.failResolver,
+				err:          backendErr,
+			}
+			svc := NewService(mock, NewCache(mock), nil)
+
+			_, err := svc.SearchIndicators(context.Background(), &SearchIndicatorsRequest{
+				Query:         "health",
+				PlaceDcids:    []string{"geoId/06"},
+				IncludeTopics: true,
+			})
+			if err == nil || err.Error() != tc.wantErr {
+				t.Fatalf("SearchIndicators() error = %v, want: %s", err, tc.wantErr)
 			}
 		})
 	}

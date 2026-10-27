@@ -78,7 +78,7 @@ func (s *Service) SearchIndicators(
 		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on s.defaultExpandTopics.
 		candidates, err = s.fetchCandidates(gCtx, req.Query, oversampledLimit, s.defaultExpandTopics, req.Target)
 		if err != nil {
-			return err
+			return status.Errorf(codes.Internal, "failed to execute embeddings search: %v", err)
 		}
 		// If IncludeTopics is false, expand and deduplicate topic candidates into standard variables
 		if !req.IncludeTopics {
@@ -266,7 +266,7 @@ func (s *Service) filterByPlaceExistence(
 	// Fetch descendant variables of all topics concurrently in a single batch
 	topicDescendants, err := s.fetchDescendantVariables(ctx, topicDcids, target)
 	if err != nil {
-		return nil, err
+		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
 	}
 
 	// Gather all variables to check for place availability

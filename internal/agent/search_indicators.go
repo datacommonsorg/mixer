@@ -28,6 +28,9 @@ import (
 )
 
 // fetchCandidates calls V2Resolve to execute embeddings similarity searches.
+//
+// V2Resolve errors are returned unchanged so each tool version can word them for its callers: v1 wraps them
+// as Internal, while v2 maps the gRPC code to caller-facing guidance (see wrapV2BackendError).
 func (s *Service) fetchCandidates(
 	ctx context.Context,
 	query string,
@@ -56,7 +59,7 @@ func (s *Service) fetchCandidates(
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to execute embeddings search: %v", err)
+		return nil, err
 	}
 	if resp == nil {
 		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
@@ -178,6 +181,7 @@ func placesWithDataForVar(
 }
 
 // fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs.
+// V2Resolve errors are returned unchanged, as in fetchCandidates.
 func (s *Service) fetchDescendantVariables(
 	ctx context.Context,
 	topicDcids []string,
@@ -197,7 +201,7 @@ func (s *Service) fetchDescendantVariables(
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
+		return nil, err
 	}
 	if resp == nil {
 		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
