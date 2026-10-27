@@ -15,7 +15,8 @@
 package mcp
 
 const (
-	v2ResolveEntitiesInstructionFile = "tools/resolve_entities.md"
+	v2ResolveEntitiesInstructionFile  = "tools/resolve_entities.md"
+	v2SearchIndicatorsInstructionFile = "tools/search_indicators.md"
 )
 
 // V2Spec returns the VersionSpec for MCP v2, the entity-first tool surface under development.
@@ -26,6 +27,7 @@ func V2Spec() VersionSpec {
 		// Tools are added incrementally while v2 is in preview.
 		Tools: []ToolSpec{
 			newToolSpec("resolve_entities", v2ResolveEntitiesInstructionFile, (*McpTools).V2ResolveEntities),
+			newToolSpec("search_indicators", v2SearchIndicatorsInstructionFile, (*McpTools).V2SearchIndicators),
 		},
 	}
 }

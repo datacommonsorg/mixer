@@ -529,15 +529,14 @@ func TestVersionRoutingAndSurfacePropagation(t *testing.T) {
 			wantCallSurface: "mcp-preview",
 		},
 		{
-			name:          "/mcp/preview serves registered V2Spec when preview is enabled",
-			versions:      AllVersions(),
-			enablePreview: true,
-			path:          "/preview",
-			wantGetStatus: http.StatusOK,
-			wantVersion:   "v2",
-			wantToolCount: len(V2Spec().Tools),
-			// V2Spec has no search_indicators tool, so the tools/call probe errors before reaching the backend.
-			wantCallSurface: "",
+			name:            "/mcp/preview serves registered V2Spec when preview is enabled",
+			versions:        AllVersions(),
+			enablePreview:   true,
+			path:            "/preview",
+			wantGetStatus:   http.StatusOK,
+			wantVersion:     "v2",
+			wantToolCount:   len(V2Spec().Tools),
+			wantCallSurface: "mcp-preview",
 		},
 		{
 			name:          "registered V2Spec is not mounted at /mcp/v2 while in preview",
@@ -688,7 +687,7 @@ func TestV2PreviewSurface(t *testing.T) {
 			params:    map[string]any{},
 			resultKey: "tools",
 			transform: listedToolNames,
-			want:      []string{"resolve_entities"},
+			want:      []string{"resolve_entities", "search_indicators"},
 		},
 		{
 			name:      "resources/list returns no skills",

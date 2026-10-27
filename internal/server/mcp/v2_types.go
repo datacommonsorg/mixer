@@ -23,6 +23,7 @@ import (
 // V2AgentBackend defines the agent.Service methods required by the v2 MCP tools.
 type V2AgentBackend interface {
 	V2ResolveEntities(ctx context.Context, req *agent.V2ResolveEntitiesRequest) (*agent.V2ResolveEntitiesResponse, error)
+	V2SearchIndicators(ctx context.Context, req *agent.V2SearchIndicatorsRequest) (*agent.V2SearchIndicatorsResponse, error)
 }
 
 // V2EntityInput is a single entity to resolve in the resolve_entities MCP tool.
@@ -36,4 +37,13 @@ type V2EntityInput struct {
 // V2ResolveEntitiesInput holds arguments for the v2 resolve_entities MCP tool.
 type V2ResolveEntitiesInput struct {
 	Entities []V2EntityInput `json:"entities" jsonschema:"Entities to resolve, up to 20 per call."`
+}
+
+// V2SearchIndicatorsInput holds arguments for the v2 search_indicators MCP tool. All fields are optional:
+// with neither query nor topic_dcids, the top-level topics are returned. Field descriptions give each field's
+// format, limit and an example; when and how to use them is in tools/search_indicators.md.
+type V2SearchIndicatorsInput struct {
+	Query       string   `json:"query,omitempty" jsonschema:"One concept to search for, e.g. 'unemployment rate'. Cannot be combined with topic_dcids."`
+	TopicDcids  []string `json:"topic_dcids,omitempty" jsonschema:"Topic DCIDs to browse, e.g. ['dc/topic/Health']. Up to 10. Cannot be combined with query."`
+	EntityDcids []string `json:"entity_dcids,omitempty" jsonschema:"Entity DCIDs from resolve_entities, e.g. ['geoId/06', 'country/KEN']. Up to 20."`
 }

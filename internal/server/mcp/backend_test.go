@@ -32,6 +32,7 @@ type fakeAgentBackend struct {
 	observationsResp    *agent.GetObservationsResponse
 	lastV2ResolveReq    *agent.V2ResolveEntitiesRequest
 	v2ResolveResp       *agent.V2ResolveEntitiesResponse
+	lastV2SearchReq     *agent.V2SearchIndicatorsRequest
 }
 
 func (f *fakeAgentBackend) recordSurface(ctx context.Context) {
@@ -79,4 +80,10 @@ func (f *fakeAgentBackend) V2ResolveEntities(ctx context.Context, req *agent.V2R
 		return f.v2ResolveResp, nil
 	}
 	return &agent.V2ResolveEntitiesResponse{}, nil
+}
+
+func (f *fakeAgentBackend) V2SearchIndicators(ctx context.Context, req *agent.V2SearchIndicatorsRequest) (*agent.V2SearchIndicatorsResponse, error) {
+	f.recordSurface(ctx)
+	f.lastV2SearchReq = req
+	return &agent.V2SearchIndicatorsResponse{}, nil
 }
