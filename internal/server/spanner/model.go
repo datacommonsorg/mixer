@@ -43,20 +43,22 @@ type Edge struct {
 	Types      []string `spanner:"types"`
 }
 
-// Observation struct represents a single row in the Observation table.
+// Observation is one time series returned by an observation query, with its
+// facet metadata. It is built in Go from rawObservation rows rather than
+// decoded from Spanner directly.
 type Observation struct {
-	VariableMeasured  string     `spanner:"variable_measured"`
-	ObservationAbout  string     `spanner:"observation_about"`
-	FacetId           string     `spanner:"facet_id"`
-	Observations      TimeSeries `spanner:"observations"`
-	ImportName        string     `spanner:"import_name"`
-	ProvenanceID      string     `spanner:"provenance"`
-	ObservationPeriod string     `spanner:"observation_period"`
-	MeasurementMethod string     `spanner:"measurement_method"`
-	Unit              string     `spanner:"unit"`
-	ScalingFactor     string     `spanner:"scaling_factor"`
-	IsDcAggregate     bool       `spanner:"is_dc_aggregate"`
-	ProvenanceURL     string     `spanner:"provenance_url"`
+	VariableMeasured  string
+	ObservationAbout  string
+	FacetId           string
+	Observations      TimeSeries
+	ImportName        string
+	ProvenanceID      string
+	ObservationPeriod string
+	MeasurementMethod string
+	Unit              string
+	ScalingFactor     string
+	IsDcAggregate     bool
+	ProvenanceURL     string
 }
 
 // Single observation in a time series.
