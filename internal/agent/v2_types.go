@@ -78,12 +78,14 @@ type v2ChildType struct {
 
 // V2SearchIndicatorsRequest holds parameters for V2SearchIndicators. Query searches for topics and
 // variables; TopicDcids browses those topics; with neither, the top-level topics are browsed. EntityDcids
-// keeps only indicators with data for those entities.
+// keeps only indicators with data for those entities. ChildEntityTypeDcid (child mode) instead keeps only
+// indicators with data for the child entities of that type within the single entity in EntityDcids.
 type V2SearchIndicatorsRequest struct {
-	Query       string
-	TopicDcids  []string
-	EntityDcids []string
-	Target      string
+	Query               string
+	TopicDcids          []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	Target              string
 }
 
 // V2SearchIndicatorsResponse holds the matched topics and variables as tables.
@@ -96,7 +98,8 @@ type V2SearchIndicatorsRequest struct {
 //
 // VariableCandidates (search only) has columns dcid, name, entities_with_data and observation_properties.
 //
-// Without entities, entities_with_data is empty and nothing is filtered. Note explains unfiltered or
+// Without entities, entities_with_data is empty and nothing is filtered. In child mode, entities_with_data
+// lists the parent entity when any of its sampled child entities has data. Note explains unfiltered or
 // empty results.
 type V2SearchIndicatorsResponse struct {
 	TopicCandidates    *Table `json:"topic_candidates"`
