@@ -49,14 +49,14 @@ var sdmxFacetComponentIDs = map[string]struct{}{
 }
 
 // GetObservations retrieves observations using the new schema.
-func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
-	stmt, err := nc.queryBuilder.GetObservationsQuery(variables, entities, date)
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
+	stmt, err := sc.queryBuilder.GetObservationsQuery(variables, entities, date)
 	if err != nil {
 		return nil, err
 	}
 
 	var rawObs []*rawObservation
-	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err = queryStructs(ctx, sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	if err != nil {
@@ -74,41 +74,41 @@ func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []st
 }
 
 // CheckVariableExistence checks variable existence across all entity slots in a single CTE-based query.
-func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	stmt, err := nc.queryBuilder.GetStatVarsByEntityQuery(variables, entities)
+func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	stmt, err := sc.queryBuilder.GetStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
 	}
-	return queryDynamic(ctx, nc.sc, *stmt)
+	return queryDynamic(ctx, sc, *stmt)
 }
 
 // CheckVariableGroupPlaceExistence checks SVG/topic existence across all entity slots.
-func (nc *multiEntityClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
 	if len(variableGroups) == 0 || len(entities) == 0 {
 		return [][]string{}, nil
 	}
-	stmt, err := nc.queryBuilder.GetGroupPlaceExistenceQuery(variableGroups, entities, predicate)
+	stmt, err := sc.queryBuilder.GetGroupPlaceExistenceQuery(variableGroups, entities, predicate)
 	if err != nil {
 		return nil, err
 	}
-	return queryDynamic(ctx, nc.sc, *stmt)
+	return queryDynamic(ctx, sc, *stmt)
 }
 
 // GetStatVarGroupNode fetches StatVarGroupNode info using multi-entity TimeSeries existence checks.
-func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
 	if len(nodes) == 0 {
 		return svgNodes, nil
 	}
 
-	stmt, err := nc.queryBuilder.GetStatVarGroupNodeQuery(nodes, includeDefinitions)
+	stmt, err := sc.queryBuilder.GetStatVarGroupNodeQuery(nodes, includeDefinitions)
 	if err != nil {
 		return svgNodes, err
 	}
 
 	err = queryStructs(
 		ctx,
-		nc.sc,
+		sc,
 		*stmt,
 		func() interface{} {
 			return &StatVarGroupNode{}
@@ -125,7 +125,7 @@ func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []st
 }
 
 // GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info using multi-entity TimeSeries filters.
-func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines)
@@ -139,7 +139,7 @@ func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, no
 	for _, node := range nodes {
 		node := node
 		errGroup.Go(func() error {
-			resp, err := nc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			resp, err := sc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
 			if err != nil {
 				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
 			}
@@ -160,7 +160,7 @@ func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, no
 	return response, nil
 }
 
-func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	var svgChildren []*SVGChild
 	var childSVs []*ChildSV
@@ -169,7 +169,7 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 	errGroup.Go(func() error {
 		return queryStructs(
 			errCtx,
-			nc.sc,
+			sc,
 			*GetSVGChildrenQuery(node, includeDefinitions),
 			func() interface{} {
 				return &SVGChild{}
@@ -187,13 +187,13 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 	}
 	if numEntitiesExistence <= numConstrainedEntities {
 		errGroup.Go(func() error {
-			stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			stmt, err := sc.queryBuilder.GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
 			if err != nil {
 				return err
 			}
 			return queryStructs(
 				errCtx,
-				nc.sc,
+				sc,
 				*stmt,
 				func() interface{} {
 					return &ChildSV{}
@@ -205,13 +205,13 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 		})
 
 		errGroup.Go(func() error {
-			stmt, err := nc.queryBuilder.GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			stmt, err := sc.queryBuilder.GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
 			if err != nil {
 				return err
 			}
 			return queryStructs(
 				errCtx,
-				nc.sc,
+				sc,
 				*stmt,
 				func() interface{} {
 					return &ChildSVG{}
@@ -235,7 +235,7 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 }
 
 // GetFilteredTopic fetches filtered Topic counts using multi-entity TimeSeries filters.
-func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
 	counts := make(map[string]int, len(nodes))
 	for _, node := range nodes {
 		counts[node] = 0
@@ -250,11 +250,11 @@ func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []strin
 		return counts, nil
 	}
 
-	stmt, err := nc.queryBuilder.GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	stmt, err := sc.queryBuilder.GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
 	if err != nil {
 		return counts, err
 	}
-	err = nc.sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+	err = sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
 		for {
 			row, err := iter.Next()
 			if err == iterator.Done {
@@ -281,19 +281,19 @@ func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []strin
 }
 
 // GetObservationsContainedInPlace fetches observations for children containment.
-func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
 	}
 
-	stmt, err := nc.queryBuilder.GetObservationsContainedInPlaceQuery(variables, containedInPlace, date)
+	stmt, err := sc.queryBuilder.GetObservationsContainedInPlaceQuery(variables, containedInPlace, date)
 	if err != nil {
 		return nil, err
 	}
 
 	var rawObs []*rawObservation
-	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err = queryStructs(ctx, sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	if err != nil {
@@ -456,7 +456,7 @@ func getJSONBool(m map[string]interface{}, key string) bool {
 }
 
 // GetSdmxObservations retrieves observations for SDMX query using dynamic entity slot mappings.
-func (nc *multiEntityClient) GetSdmxObservations(
+func (sc *spannerDatabaseClient) GetSdmxObservations(
 	ctx context.Context,
 	req *sdmxpb.SdmxDataQuery,
 ) (*sdmxpb.SdmxDataResult, error) {
@@ -470,15 +470,15 @@ func (nc *multiEntityClient) GetSdmxObservations(
 	prepared, err := prepareSdmxObservationsQuery(
 		ctx,
 		req.Constraints,
-		nc.sc.GetNodeEdgesByID,
-		nc.queryBuilder,
+		sc.GetNodeEdgesByID,
+		sc.queryBuilder,
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	var rawObs []*rawObservation
-	err = queryStructs(ctx, nc.sc, *prepared.statement, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err = queryStructs(ctx, sc, *prepared.statement, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	if err != nil {
@@ -811,7 +811,7 @@ func sdmxFacetComponentKind(componentID string) (datacommons.ComponentKind, bool
 }
 
 // GetSdmxAvailability retrieves available SDMX dimension values.
-func (nc *multiEntityClient) GetSdmxAvailability(
+func (sc *spannerDatabaseClient) GetSdmxAvailability(
 	ctx context.Context,
 	req *sdmxpb.SdmxAvailabilityQuery,
 ) (*sdmxpb.SdmxAvailabilityResult, error) {
@@ -828,15 +828,15 @@ func (nc *multiEntityClient) GetSdmxAvailability(
 	stmt, err := prepareSdmxAvailabilityQuery(
 		ctx,
 		req,
-		nc.sc.GetNodeEdgesByID,
-		nc.queryBuilder,
+		sc.GetNodeEdgesByID,
+		sc.queryBuilder,
 	)
 	if err != nil {
 		return nil, err
 	}
 
 	result := &sdmxpb.SdmxAvailabilityResult{}
-	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawSdmxAvailabilityValue{} }, func(row interface{}) {
+	err = queryStructs(ctx, sc, *stmt, func() interface{} { return &rawSdmxAvailabilityValue{} }, func(row interface{}) {
 		value := row.(*rawSdmxAvailabilityValue).Value
 		if value != "" {
 			result.Values = append(result.Values, value)

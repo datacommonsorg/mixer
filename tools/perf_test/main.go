@@ -21,8 +21,9 @@ import (
 	"log"
 	"log/slog"
 	"os"
+	"slices"
 	"strings"
-	"sync"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -42,6 +43,8 @@ var (
 	date                 = flag.String("date", "", "Optional date filter")
 	numEntitiesExistence = flag.Int("num_entities_existence", 0, "Minimum number of constrained entities that must have observations")
 	includeDefinitions   = flag.Bool("include_definitions", false, "Include definitions for StatVarGroup nodes")
+	iterations           = flag.Int("iterations", 1, "Number of times to run the method")
+	logSQL               = flag.Bool("log_sql", true, "Print each executed SQL statement with its Spanner execution time")
 )
 
 const (
@@ -55,86 +58,81 @@ func main() {
 	if err := validateInputs(*method, *variables, *entities, *ancestor, *childType, *nodes, *constrainedEntities, *numEntitiesExistence); err != nil {
 		log.Fatal(err)
 	}
+	if *iterations < 1 {
+		log.Fatal("iterations must be at least 1")
+	}
+	if err := run(context.Background()); err != nil {
+		log.Fatal(err)
+	}
+}
 
-	ctx := context.Background()
+// run times the selected method and prints a latency summary.
+func run(ctx context.Context) error {
 	client, err := initSpannerClient(ctx, *config)
 	if err != nil {
-		log.Fatalf("Failed to initialize Spanner client: %v", err)
+		return fmt.Errorf("failed to initialize Spanner client: %w", err)
 	}
 	defer client.Close()
 
+	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo})))
+
+	op, err := newOperation(client, *method)
+	if err != nil {
+		return err
+	}
+	durations, err := runTimed(ctx, *iterations, *logSQL, op)
+	printSummary(*method, durations)
+	return err
+}
+
+// newOperation returns a function that calls the selected Spanner client method with the flag values.
+func newOperation(client spanner.SpannerClient, method string) (func(context.Context) error, error) {
 	vars := splitList(*variables)
 	ents := splitList(*entities)
 	nodeIDs := splitList(*nodes)
 
-	// Setup logging to Info by default, but enable extraction via header.
-	slog.SetDefault(slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelInfo})))
-
-	switch *method {
+	switch method {
 	case "GetObservations":
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetObservations(c, vars, ents, *date)
+		return func(ctx context.Context) error {
+			_, err := client.GetObservations(ctx, vars, ents, *date)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.GetObservations(c, vars, ents, *date)
-			return err
-		})
+		}, nil
 	case "CheckVariableExistence":
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.CheckVariableExistence(c, vars, ents)
+		return func(ctx context.Context) error {
+			_, err := client.CheckVariableExistence(ctx, vars, ents)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.CheckVariableExistence(c, vars, ents)
-			return err
-		})
+		}, nil
 	case "GetObservationsContainedInPlace":
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetObservationsContainedInPlace(c, vars, &v2.ContainedInPlace{
-				Ancestor:       *ancestor,
-				ChildPlaceType: *childType,
-			}, *date)
+		containedInPlace := &v2.ContainedInPlace{Ancestor: *ancestor, ChildPlaceType: *childType}
+		return func(ctx context.Context) error {
+			_, err := client.GetObservationsContainedInPlace(ctx, vars, containedInPlace, *date)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.GetObservationsContainedInPlace(c, vars, &v2.ContainedInPlace{
-				Ancestor:       *ancestor,
-				ChildPlaceType: *childType,
-			}, *date)
-			return err
-		})
+		}, nil
 	case "GetStatVarGroupNode":
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetStatVarGroupNode(c, nodeIDs, *includeDefinitions)
+		return func(ctx context.Context) error {
+			_, err := client.GetStatVarGroupNode(ctx, nodeIDs, *includeDefinitions)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.GetStatVarGroupNode(c, nodeIDs, *includeDefinitions)
-			return err
-		})
+		}, nil
 	case "GetFilteredStatVarGroupNode":
 		constrainedPlaces, constrainedImport, err := parseConstrainedEntities(*constrainedEntities)
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetFilteredStatVarGroupNode(c, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence, *includeDefinitions)
+		return func(ctx context.Context) error {
+			_, err := client.GetFilteredStatVarGroupNode(ctx, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence, *includeDefinitions)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.GetFilteredStatVarGroupNode(c, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence, *includeDefinitions)
-			return err
-		})
+		}, nil
 	case "GetFilteredTopic":
 		constrainedPlaces, constrainedImport, err := parseConstrainedEntities(*constrainedEntities)
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
-		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetFilteredTopic(c, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence)
+		return func(ctx context.Context) error {
+			_, err := client.GetFilteredTopic(ctx, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence)
 			return err
-		}, "MultiEntity", client, func(c context.Context) error {
-			_, err := client.GetFilteredTopic(c, nodeIDs, constrainedPlaces, constrainedImport, *numEntitiesExistence)
-			return err
-		})
+		}, nil
 	default:
-		log.Fatalf("Unsupported method: %s", *method)
+		return nil, fmt.Errorf("unsupported method: %s", method)
 	}
 }
 
@@ -215,49 +213,65 @@ func initSpannerClient(ctx context.Context, configPath string) (spanner.SpannerC
 	return spanner.NewSpannerClient(ctx, string(yamlFile), nil)
 }
 
-// runParallelTest runs two operations in parallel and injects metadata headers.
-// It injects X-Log-SQL=true for both, and X-Use-Multi-Entity-Schema=true for the second operation.
-func runParallelTest(
-	ctx context.Context,
-	name1 string, client1 spanner.SpannerClient, op1 func(context.Context) error,
-	name2 string, client2 spanner.SpannerClient, op2 func(context.Context) error,
-) {
-	var wg sync.WaitGroup
-	wg.Add(2)
-
-	var err1, err2 error
-
-	// Run Operation 1 (Legacy usually)
-	go func() {
-		defer wg.Done()
-		// Inject X-Log-SQL to see the query
-		c1 := metadata.NewIncomingContext(ctx, metadata.Pairs(util.XLogSQL, "true"))
-		err1 = op1(c1)
-	}()
-
-	// Run Operation 2 (MultiEntity usually)
-	go func() {
-		defer wg.Done()
-		// Inject X-Log-SQL and X-Use-Multi-Entity-Schema
-		c2 := metadata.NewIncomingContext(ctx, metadata.Pairs(
-			util.XLogSQL, "true",
-			util.XUseMultiEntitySchema, "true",
-		))
-		err2 = op2(c2)
-	}()
-
-	wg.Wait()
-
-	fmt.Println("\n=== Execution Status ===")
-	if err1 != nil {
-		fmt.Printf("%s: Failed with error: %v\n", name1, err1)
-	} else {
-		fmt.Printf("%s: Succeeded\n", name1)
+// runTimed runs op the given number of times in sequence and returns the
+// wall-clock duration of each successful run. With logSQL, it injects
+// X-Log-SQL=true so the Spanner client prints each statement and its execution time.
+func runTimed(ctx context.Context, iterations int, logSQL bool, op func(context.Context) error) ([]time.Duration, error) {
+	if logSQL {
+		ctx = metadata.NewIncomingContext(ctx, metadata.Pairs(util.XLogSQL, "true"))
 	}
+	durations := make([]time.Duration, 0, iterations)
+	for i := 1; i <= iterations; i++ {
+		start := time.Now()
+		if err := op(ctx); err != nil {
+			return durations, fmt.Errorf("iteration %d: %w", i, err)
+		}
+		durations = append(durations, time.Since(start))
+	}
+	return durations, nil
+}
 
-	if err2 != nil {
-		fmt.Printf("%s: Failed with error: %v\n", name2, err2)
-	} else {
-		fmt.Printf("%s: Succeeded\n", name2)
+// latencySummary summarizes the durations of repeated runs.
+type latencySummary struct {
+	runs   int
+	min    time.Duration
+	median time.Duration
+	mean   time.Duration
+	max    time.Duration
+}
+
+func summarizeDurations(durations []time.Duration) latencySummary {
+	if len(durations) == 0 {
+		return latencySummary{}
+	}
+	sorted := slices.Clone(durations)
+	slices.Sort(sorted)
+	var total time.Duration
+	for _, d := range sorted {
+		total += d
+	}
+	mid := len(sorted) / 2
+	median := sorted[mid]
+	if len(sorted)%2 == 0 {
+		median = (sorted[mid-1] + sorted[mid]) / 2
+	}
+	return latencySummary{
+		runs:   len(sorted),
+		min:    sorted[0],
+		median: median,
+		mean:   total / time.Duration(len(sorted)),
+		max:    sorted[len(sorted)-1],
+	}
+}
+
+// printSummary prints the duration of each successful run and their summary.
+func printSummary(method string, durations []time.Duration) {
+	fmt.Printf("\n=== %s latency ===\n", method)
+	for i, d := range durations {
+		fmt.Printf("run %d: %v\n", i+1, d)
+	}
+	if len(durations) > 0 {
+		s := summarizeDurations(durations)
+		fmt.Printf("runs=%d min=%v median=%v mean=%v max=%v\n", s.runs, s.min, s.median, s.mean, s.max)
 	}
 }

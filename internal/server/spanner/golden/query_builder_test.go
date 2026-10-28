@@ -166,63 +166,6 @@ func TestGetNodeDirectContainedInPlaceQuery(t *testing.T) {
 	}
 }
 
-func TestGetObservationsQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range observationsTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetObservationsQuery(c.variables, c.entities), nil
-		})
-	}
-}
-
-func TestGetObservationsContainedInPlaceQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range observationsContainedInPlaceTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetObservationsContainedInPlaceQuery(c.variables, c.containedInPlace), nil
-		})
-	}
-}
-
-func TestFilterStatVarsByEntityQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range filterStatVarsByEntityTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.FilterStatVarsByEntityQuery(c.variables, c.entities)
-		})
-	}
-}
-
-func TestFilterStatVarsByEntityQueryError(t *testing.T) {
-	t.Parallel()
-
-	_, err := spanner.FilterStatVarsByEntityQuery([]string{}, []string{})
-	if err == nil {
-		t.Errorf("FilterStatVarsByEntityQuery() expected error, got nil")
-	}
-}
-
-func TestCheckGroupPlaceExistenceQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range checkGroupPlaceExistenceTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.CheckGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate), nil
-		})
-	}
-}
-
 func TestSearchNodesQuery(t *testing.T) {
 	t.Parallel()
 
@@ -307,18 +250,6 @@ func TestGetEventCollectionDcidsQuery(t *testing.T) {
 	}
 }
 
-func TestGetStatVarGroupNodeQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range getStatVarGroupNodeTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetStatVarGroupNodeQuery(c.nodes, c.includeDefinitions), nil
-		})
-	}
-}
-
 func TestGetSVGChildrenQuery(t *testing.T) {
 	t.Parallel()
 
@@ -327,30 +258,6 @@ func TestGetSVGChildrenQuery(t *testing.T) {
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return spanner.GetSVGChildrenQuery(c.node, c.includeDefinitions), nil
-		})
-	}
-}
-
-func TestGetFilteredSVGChildren(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range getFilteredSVGChildrenTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions), nil
-		})
-	}
-}
-
-func TestGetFilteredTopicChildren(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range getFilteredTopicTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
 		})
 	}
 }

@@ -45,8 +45,6 @@ const (
 	sqlOrderBy = "\n\t\tORDER BY "
 	// LIMIT clause for SQL queries.
 	sqlLimit = "\n\t\tLIMIT @limit"
-	// AND keyword for SQL queries.
-	sqlAnd = "AND"
 )
 
 const (
@@ -374,77 +372,6 @@ func getNodeQueryPagination(pageSize, offset int) string {
 	return query + fmt.Sprintf(statements.applyLimit, pageSize+1)
 }
 
-func GetObservationsQuery(variables []string, entities []string) *spanner.Statement {
-	stmt := &spanner.Statement{
-		SQL:    statements.getObs,
-		Params: map[string]interface{}{},
-	}
-
-	filters := []string{}
-	if len(variables) > 0 {
-		variableFilter, variableVal := getParamStatement("variable", variables)
-		stmt.Params["variable"] = variableVal
-		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, variableFilter))
-	}
-	if len(entities) > 0 {
-		entityFilter, entityVal := getParamStatement("entity", entities)
-		stmt.Params["entity"] = entityVal
-		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, entityFilter))
-	}
-	stmt.SQL += where + strings.Join(filters, and)
-
-	return stmt
-}
-
-func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace) *spanner.Statement {
-	stmt := GetObservationsQuery(variables, []string{} /*entities*/)
-	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)
-	stmt.Params["ancestor"] = containedInPlace.Ancestor
-	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType
-	return stmt
-}
-
-func FilterStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
-	if len(variables) == 0 && len(entities) == 0 {
-		return nil, fmt.Errorf("FilterStatVarsByEntityQuery must be called with at least one variable or entity")
-	}
-	sql := statements.getStatVarsByEntity
-	params := map[string]interface{}{}
-
-	var filters []string
-	if len(variables) > 0 {
-		filter, val := getParamStatement("variables", variables)
-		params["variables"] = val
-		filters = append(filters, fmt.Sprintf("variable_measured %s", filter))
-	}
-	if len(entities) > 0 {
-		filter, val := getParamStatement("entities", entities)
-		params["entities"] = val
-		filters = append(filters, fmt.Sprintf("observation_about %s", filter))
-	}
-
-	if len(filters) > 0 {
-		sql += where + strings.Join(filters, and)
-	}
-
-	return &spanner.Statement{
-		SQL:    sql,
-		Params: params,
-	}, nil
-}
-
-// CheckGroupPlaceExistenceQuery returns a query to check existence of svg/topic for places.
-func CheckGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string) *spanner.Statement {
-	return &spanner.Statement{
-		SQL: statements.checkGroupPlaceExistence,
-		Params: map[string]interface{}{
-			"variableGroups": variableGroups,
-			"entities":       entities,
-			"predicate":      predicate,
-		},
-	}
-}
-
 func SearchNodesQuery(query string, types []string) *spanner.Statement {
 	params := map[string]interface{}{
 		"query": query,
@@ -603,25 +530,6 @@ func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string) *spanner
 	}
 }
 
-// GetStatVarGroupNode returns a query to get StatVarGroupNode info.
-func GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
-	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
-
-	selfFilter := statements.attachSVGs
-
-	sqlTemplate := statements.getStatVarGroupNode
-	if includeDefinitions {
-		sqlTemplate = statements.getStatVarGroupNodeWithDefinitions
-	}
-
-	return &spanner.Statement{
-		SQL: fmt.Sprintf(sqlTemplate, nodeFilter, selfFilter),
-		Params: map[string]interface{}{
-			"nodes": nodeVal,
-		},
-	}
-}
-
 // GetSVGChildren returns a query to get all children for a given stat var group.
 func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statement {
 	sqlTemplate := statements.getSVGChildren
@@ -633,85 +541,6 @@ func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statemen
 		Params: map[string]interface{}{
 			"node": node,
 		},
-	}
-}
-
-// filterDescendentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
-func filterDescendentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
-	var params = map[string]interface{}{}
-
-	var entityFilter string
-	distinct := "observation_about"
-	if constrainedImport != "" {
-		params["predicate"] = getImportFilterPredicate(constrainedImport)
-		params["import"] = constrainedImport
-		// Optimization when filtering only by import (and no places).
-		// This allows reading from aggregated ProvenanceSummary.
-		// TODO: Confirm whether we'd ever want to filter by import AND place.
-		if len(constrainedPlaces) == 0 {
-			return &spanner.Statement{
-				SQL:    statements.filterDescendentStatVarsByOnlyImport,
-				Params: params,
-			}
-		}
-		entityFilter = statements.filterDescendentStatVarsByImport
-		distinct = "e1.subject_id"
-	}
-	if len(constrainedPlaces) > 0 {
-		placeFilter, placeVal := getParamStatement("places", constrainedPlaces)
-		if entityFilter == "" {
-			entityFilter = "\n\t\t\t\t" + sqlWhere + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
-		} else {
-			entityFilter = entityFilter + "\n\t\t\t\t\t" + sqlAnd + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
-		}
-		params["places"] = placeVal
-	}
-
-	var numFilter string
-	if numEntitiesExistence > 1 {
-		numFilter = fmt.Sprintf(statements.filterDescendentStatVarsByNumEntitiesExistence, distinct)
-		params["numEntitiesExistence"] = numEntitiesExistence
-	}
-
-	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.filterDescendentStatVars, entityFilter, numFilter),
-		Params: params,
-	}
-}
-
-// GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
-func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
-	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
-	subquery.Params["node"] = node
-
-	var baseStatement string
-	switch template {
-	case templateSV:
-		if includeDefinitions {
-			baseStatement = statements.getFilteredChildSVsWithDefinitions
-		} else {
-			baseStatement = statements.getFilteredChildSVs
-		}
-	case templateSVG:
-		baseStatement = statements.getFilteredChildSVGs
-	}
-
-	return &spanner.Statement{
-		SQL:    fmt.Sprintf(baseStatement, subquery.SQL),
-		Params: subquery.Params,
-	}
-}
-
-// GetFilteredTopicChildren returns a query to get children for given topics filtered by constrained entities and existence threshold.
-func GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
-	subquery := filterDescendentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
-
-	nodeFilter, nodeVal := getParamStatement("node", nodes)
-	subquery.Params["node"] = nodeVal
-
-	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.getFilteredTopic, subquery.SQL, nodeFilter),
-		Params: subquery.Params,
 	}
 }
 

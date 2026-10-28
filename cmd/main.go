@@ -241,7 +241,6 @@ func main() {
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, &spanner.SpannerClientOptions{
 			DatabaseOverride:             flags.SpannerGraphDatabase,
-			UseMultiEntitySchema:         flags.UseMultiEntitySchema,
 			UseNewIngestionHistorySchema: flags.UseNewIngestionHistorySchema,
 			QueryConfig:                  queryConfig,
 		})

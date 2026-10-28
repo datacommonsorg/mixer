@@ -15,7 +15,9 @@
 package spanner
 
 import (
+	"context"
 	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -96,6 +98,75 @@ database: default-database
 				t.Errorf("createSpannerConfig() mismatch (-want +got):\n%s", diff)
 			}
 		})
+	}
+}
+
+func TestTableConfigFromSpannerConfig(t *testing.T) {
+	name := func(s string) *string { return &s }
+	testCases := []struct {
+		name string
+		cfg  *SpannerConfig
+		want TableConfig
+	}{
+		{
+			name: "no overrides",
+			cfg:  &SpannerConfig{},
+			want: DefaultTableConfig(),
+		},
+		{
+			name: "all overrides",
+			cfg: &SpannerConfig{
+				TimeSeriesTable:             name("TimeSeries_v2"),
+				ObservationTable:            name("Observation_v2"),
+				TimeSeriesByEntity1Index:    name("TimeSeriesByEntity1_v2"),
+				TimeSeriesByEntity2Index:    name("TimeSeriesByEntity2_v2"),
+				TimeSeriesByEntity3Index:    name("TimeSeriesByEntity3_v2"),
+				TimeSeriesByProvenanceIndex: name("TimeSeriesByProvenance_v2"),
+			},
+			want: TableConfig{
+				TimeSeriesTable:             "TimeSeries_v2",
+				ObservationTable:            "Observation_v2",
+				TimeSeriesByEntity1Index:    "TimeSeriesByEntity1_v2",
+				TimeSeriesByEntity2Index:    "TimeSeriesByEntity2_v2",
+				TimeSeriesByEntity3Index:    "TimeSeriesByEntity3_v2",
+				TimeSeriesByProvenanceIndex: "TimeSeriesByProvenance_v2",
+			},
+		},
+		{
+			name: "one override",
+			cfg:  &SpannerConfig{ObservationTable: name("Observation_v2")},
+			want: func() TableConfig {
+				want := DefaultTableConfig()
+				want.ObservationTable = "Observation_v2"
+				return want
+			}(),
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			got := tableConfigFromSpannerConfig(tc.cfg)
+			if diff := cmp.Diff(tc.want, got, cmp.AllowUnexported(TableConfig{})); diff != "" {
+				t.Errorf("tableConfigFromSpannerConfig() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestNewSpannerClientRejectsInvalidTableConfig(t *testing.T) {
+	// The table configuration is validated before a connection is opened, so
+	// this fails without a Spanner backend.
+	_, err := NewSpannerClient(context.Background(), `
+project: test-project
+instance: test-instance
+database: test-database
+timeSeriesTable: " "
+`, nil)
+	if err == nil {
+		t.Fatal("NewSpannerClient() error = nil, want error")
+	}
+	if !strings.Contains(err.Error(), "TimeSeriesTable") {
+		t.Errorf("NewSpannerClient() error = %q, want it to mention TimeSeriesTable", err)
 	}
 }
 

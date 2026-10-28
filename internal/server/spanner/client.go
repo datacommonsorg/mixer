@@ -30,8 +30,6 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	"gopkg.in/yaml.v3"
 )
 
@@ -72,14 +70,15 @@ const (
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
-	client      *spanner.Client
-	queryConfig QueryConfig
-	timestamp   atomic.Int64
-	ticker      Ticker
-	stopCh      chan struct{}
-	startOnce   sync.Once
-	stopOnce    sync.Once
-	wg          sync.WaitGroup
+	client       *spanner.Client
+	queryConfig  QueryConfig
+	queryBuilder *multiEntityQueryBuilder
+	timestamp    atomic.Int64
+	ticker       Ticker
+	stopCh       chan struct{}
+	startOnce    sync.Once
+	stopOnce     sync.Once
+	wg           sync.WaitGroup
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
@@ -97,22 +96,18 @@ type spannerDatabaseClient struct {
 // SpannerClientOptions holds optional configuration settings and feature toggles for SpannerClient.
 type SpannerClientOptions struct {
 	DatabaseOverride             string
-	UseMultiEntitySchema         bool
 	UseNewIngestionHistorySchema bool
 	QueryConfig                  QueryConfig
 	SpannerEmulatorCompatibility bool
 }
 
-// newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions) (*spannerDatabaseClient, error) {
-	if opts == nil {
-		opts = &SpannerClientOptions{}
-	}
-	queryConfig := opts.QueryConfig
-	queryConfig.SpannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
+// newSpannerDatabaseClient creates a new spannerDatabaseClient that builds its
+// observation queries with queryBuilder.
+func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions, queryConfig QueryConfig, queryBuilder *multiEntityQueryBuilder) *spannerDatabaseClient {
 	sc := &spannerDatabaseClient{
 		client:                       client,
 		queryConfig:                  queryConfig,
+		queryBuilder:                 queryBuilder,
 		useNewIngestionHistorySchema: opts.UseNewIngestionHistorySchema,
 		tracker:                      newStalenessTracker(noChangeLogThreshold, failureLogThreshold),
 	}
@@ -124,29 +119,20 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 	if err := sc.updateTimestamp(context.Background()); err != nil {
 		slog.Warn("Error initializing Spanner staleness timestamp on startup (falling back to default staleness reads)", "error", err.Error())
 	}
-	return sc, nil
+	return sc
 }
 
-// NewRawSpannerClient creates a new SpannerClient without the schema selector.
-// This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
-	if opts == nil {
-		opts = &SpannerClientOptions{}
-	}
-	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
+// newQueryBuilder returns the client's query configuration and a query builder
+// that shares it, with emulator compatibility applied to both.
+func newQueryBuilder(opts *SpannerClientOptions, tableConfig TableConfig) (QueryConfig, *multiEntityQueryBuilder, error) {
+	queryConfig := opts.QueryConfig
+	queryConfig.SpannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
+	tableConfig.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
+	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, queryConfig)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
+		return QueryConfig{}, nil, fmt.Errorf("failed to create query builder: %w", err)
 	}
-	client, err := createSpannerClient(ctx, cfg)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
-	}
-	rawClient, err := newSpannerDatabaseClient(client, opts)
-	if err != nil {
-		client.Close()
-		return nil, err
-	}
-	return rawClient, nil
+	return queryConfig, queryBuilder, nil
 }
 
 // TableConfig holds the names of multi-entity Spanner tables and indexes.
@@ -172,19 +158,8 @@ func DefaultTableConfig() TableConfig {
 	}
 }
 
-func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
-	if opts == nil {
-		opts = &SpannerClientOptions{}
-	}
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, opts)
-	if err != nil {
-		return nil, err
-	}
-	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
-	if err != nil {
-		return nil, err
-	}
-
+// tableConfigFromSpannerConfig applies the optional table and index overrides in cfg to the defaults.
+func tableConfigFromSpannerConfig(cfg *SpannerConfig) TableConfig {
 	tableCfg := DefaultTableConfig()
 	if cfg.TimeSeriesTable != nil {
 		tableCfg.TimeSeriesTable = *cfg.TimeSeriesTable
@@ -204,9 +179,28 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *Spann
 	if cfg.TimeSeriesByProvenanceIndex != nil {
 		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
-	tableCfg.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
+	return tableCfg
+}
 
-	return NewSchemaSelectorClient(rawClient, opts.UseMultiEntitySchema, tableCfg)
+// NewSpannerClient creates a SpannerClient for the database described by spannerConfigYaml.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml string, opts *SpannerClientOptions) (SpannerClient, error) {
+	if opts == nil {
+		opts = &SpannerClientOptions{}
+	}
+	cfg, err := createSpannerConfig(spannerConfigYaml, opts.DatabaseOverride)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
+	}
+	// Validate the table configuration before opening a connection.
+	queryConfig, queryBuilder, err := newQueryBuilder(opts, tableConfigFromSpannerConfig(cfg))
+	if err != nil {
+		return nil, err
+	}
+	client, err := createSpannerClient(ctx, cfg)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
+	}
+	return newSpannerDatabaseClient(client, opts, queryConfig, queryBuilder), nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -320,14 +314,4 @@ func (sc *spannerDatabaseClient) Close() {
 			sc.client.Close()
 		}
 	})
-}
-
-// GetSdmxObservations is not supported on the default client.
-func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *sdmxpb.SdmxDataQuery) (*sdmxpb.SdmxDataResult, error) {
-	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the multi-entity schema")
-}
-
-// GetSdmxAvailability is not supported on the default client.
-func (sc *spannerDatabaseClient) GetSdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
-	return nil, status.Error(codes.Unimplemented, "SDMX availability is only supported on the multi-entity schema")
 }

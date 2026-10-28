@@ -326,7 +326,7 @@ func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *tes
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			client := &multiEntityClient{}
+			client := &spannerDatabaseClient{}
 
 			observations, err := client.GetObservationsContainedInPlace(
 				context.Background(),
@@ -626,18 +626,31 @@ func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testin
 	}
 }
 
-func TestNewMultiEntityClientUsesSharedQueryConfig(t *testing.T) {
-	queryConfig := QueryConfig{
-		ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
-		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
-		ContainedInPlaceEntityScanMinVariables:         50,
-	}
-	client, err := newMultiEntityClient(&spannerDatabaseClient{queryConfig: queryConfig}, DefaultTableConfig())
-	if err != nil {
-		t.Fatal(err)
-	}
-	if diff := cmp.Diff(queryConfig, client.queryBuilder.queryConfig); diff != "" {
-		t.Errorf("query config mismatch (-want +got):\n%s", diff)
+func TestNewQueryBuilderUsesSharedQueryConfig(t *testing.T) {
+	for _, emulator := range []bool{false, true} {
+		opts := &SpannerClientOptions{
+			QueryConfig: QueryConfig{
+				ContainedInPlaceAncestorFirstTypes:             []string{"Place"},
+				ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Place"},
+				ContainedInPlaceEntityScanMinVariables:         50,
+			},
+			SpannerEmulatorCompatibility: emulator,
+		}
+		queryConfig, queryBuilder, err := newQueryBuilder(opts, DefaultTableConfig())
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := opts.QueryConfig
+		want.SpannerEmulatorCompatibility = emulator
+		if diff := cmp.Diff(want, queryConfig); diff != "" {
+			t.Errorf("emulator=%t: client query config mismatch (-want +got):\n%s", emulator, diff)
+		}
+		if diff := cmp.Diff(want, queryBuilder.queryConfig); diff != "" {
+			t.Errorf("emulator=%t: query builder config mismatch (-want +got):\n%s", emulator, diff)
+		}
+		if got := queryBuilder.tableConfig.spannerEmulatorCompatibility; got != emulator {
+			t.Errorf("emulator=%t: table config emulator compatibility = %t", emulator, got)
+		}
 	}
 }
 
@@ -729,7 +742,7 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxObservations(context.Background(), nil)
 	if status.Code(err) != codes.InvalidArgument {
 		t.Fatalf("GetSdmxObservations() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
@@ -740,7 +753,7 @@ func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{})
 	if status.Code(err) != codes.InvalidArgument {
 		t.Fatalf("GetSdmxObservations() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
@@ -774,7 +787,7 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client := &multiEntityClient{}
+			client := &spannerDatabaseClient{}
 			_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{
 				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 					datacommons.ComponentVariableMeasured: tt.constraint,
@@ -1463,7 +1476,7 @@ func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), nil)
 	if status.Code(err) != codes.InvalidArgument {
 		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
@@ -1474,7 +1487,7 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentTimePeriod,
 	})
@@ -1487,7 +1500,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) 
 }
 
 func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
 		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
@@ -1504,7 +1517,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
-	client := &multiEntityClient{}
+	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
 	if status.Code(err) != codes.InvalidArgument {
 		t.Fatalf("GetSdmxAvailability() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
@@ -1523,11 +1536,11 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 	}
 	endpoints := []struct {
 		name string
-		call func(*multiEntityClient, *sdmxpb.SdmxComponentConstraint) error
+		call func(*spannerDatabaseClient, *sdmxpb.SdmxComponentConstraint) error
 	}{
 		{
 			name: "data",
-			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+			call: func(client *spannerDatabaseClient, constraint *sdmxpb.SdmxComponentConstraint) error {
 				_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{
 					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 						datacommons.ComponentVariableMeasured: constraint,
@@ -1538,7 +1551,7 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 		},
 		{
 			name: "availability",
-			call: func(client *multiEntityClient, constraint *sdmxpb.SdmxComponentConstraint) error {
+			call: func(client *spannerDatabaseClient, constraint *sdmxpb.SdmxComponentConstraint) error {
 				_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 					ComponentId: datacommons.ComponentVariableMeasured,
 					Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
@@ -1552,7 +1565,7 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 
 	for _, endpoint := range endpoints {
 		t.Run(endpoint.name, func(t *testing.T) {
-			err := endpoint.call(&multiEntityClient{}, constraint)
+			err := endpoint.call(&spannerDatabaseClient{}, constraint)
 			if status.Code(err) != codes.Unimplemented {
 				t.Fatalf("SDMX backend code = %v, want %v; err = %v", status.Code(err), codes.Unimplemented, err)
 			}
@@ -1564,7 +1577,7 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 }
 
 func TestMultiEntitySdmxAvailabilityRejectsIncompletePropertyConstraints(t *testing.T) {
-	_, err := (&multiEntityClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
+	_, err := (&spannerDatabaseClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
 		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
 			datacommons.ComponentVariableMeasured: sdmxComponentConstraint("Count_Person"),
@@ -1604,7 +1617,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client := &multiEntityClient{}
+			client := &spannerDatabaseClient{}
 			_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 				ComponentId: datacommons.ComponentVariableMeasured,
 				Constraints: map[string]*sdmxpb.SdmxComponentConstraint{

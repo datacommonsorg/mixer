@@ -1,9 +1,11 @@
-# Performance Test Tool
+# Spanner Latency Test Tool
 
-This CLI tool is designed to compare the performance of the legacy and multi-entity Spanner schemas for key Spanner client methods in Data Commons Mixer.
+This CLI tool times key Spanner client methods in Data Commons Mixer against a
+Spanner database.
 
 ## Objective
-To measure and compare Spanner query execution time in both schemas in parallel, helping to identify performance bottlenecks.
+To measure Spanner query latency for a single client method, print the SQL it
+executes, and help identify performance bottlenecks.
 
 ## How to Run
 
@@ -39,6 +41,11 @@ go run tools/perf_test/main.go -method=GetFilteredStatVarGroupNode -nodes=dc/g/E
 go run tools/perf_test/main.go -method=GetFilteredTopic -nodes=dc/topic/Demographics,dc/topic/Economy -constrained_entities=dc/s/WorldBank
 ```
 
+#### 7. Repeat a method and summarize latency without SQL logs
+```bash
+go run tools/perf_test/main.go -method=GetObservations -variables=Count_Person -entities=geoId/06 -date=LATEST -iterations=10 -log_sql=false
+```
+
 ## Flags
 - `-method`: The method to test (e.g., `GetObservations`, `CheckVariableExistence`, `GetObservationsContainedInPlace`, `GetStatVarGroupNode`, `GetFilteredStatVarGroupNode`, `GetFilteredTopic`).
 - `-variables`: Comma-separated list of variable DCIDs. Add a fake variable (e.g., `Fake_$RANDOM`) to bypass Spanner query cache.
@@ -49,9 +56,12 @@ go run tools/perf_test/main.go -method=GetFilteredTopic -nodes=dc/topic/Demograp
 - `-include_definitions`: Include definitions for StatVarGroup node methods.
 - `-ancestor`: Ancestor place DCID for contained-in queries.
 - `-child_type`: Child place type for contained-in queries.
+- `-date`: Optional date filter (`LATEST` or a specific date).
+- `-iterations`: Number of sequential runs (default `1`).
+- `-log_sql`: Print each executed SQL statement with its Spanner execution time (default `true`).
 - `-config`: Path to Spanner graph info YAML (defaults to `deploy/storage/spanner_graph_info.yaml`).
 
 ## Notes
 - The tool directly calls Spanner client methods; it does not go through Mixer API cache.
-- The tool injects `X-Log-SQL=true` for both schemas and `X-Use-Multi-Entity-Schema=true` for the multi-entity schema leg.
-- It runs both schemas in parallel by default. Query execution times are printed by the Spanner query logger for each executed query, not aggregated by this CLI.
+- It prints the wall-clock time of each run and a min/median/mean/max summary. The first run includes session setup, so use several iterations and compare medians.
+- With `-log_sql`, the tool injects `X-Log-SQL=true`, and the Spanner query logger prints each executed query and its execution time.
