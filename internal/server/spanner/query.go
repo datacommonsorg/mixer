@@ -1085,7 +1085,8 @@ func (sc *spannerDatabaseClient) GetChildTypes(ctx context.Context, ancestors []
 	return childTypes, nil
 }
 
-// sampleChildEntitiesOversample is how many LinkedEdge rows SampleChildEntities reads per requested child.
+// sampleChildEntitiesOversample multiplies the requested limit to get how many LinkedEdge rows
+// SampleChildEntities reads per ancestor (e.g. 10 rows for a sample of 5).
 // A child has one row per provenance, so its copies are deduped in Go: oversampling is cheaper than
 // GROUP BY in Spanner (USA block groups: about 140ms vs 210-410ms), and a child with more rows than this can
 // only make a sample shorter than the limit, never wrong.
