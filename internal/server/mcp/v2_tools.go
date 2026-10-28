@@ -47,9 +47,10 @@ func (t *McpTools) V2SearchIndicators(ctx context.Context, input V2SearchIndicat
 		return nil, fmt.Errorf("agent service is not initialized")
 	}
 	return t.agentService.V2SearchIndicators(ctx, &agent.V2SearchIndicatorsRequest{
-		Query:       input.Query,
-		TopicDcids:  input.TopicDcids,
-		EntityDcids: input.EntityDcids,
-		Target:      t.searchScope,
+		Query:               input.Query,
+		TopicDcids:          input.TopicDcids,
+		EntityDcids:         input.EntityDcids,
+		ChildEntityTypeDcid: input.ChildEntityTypeDcid,
+		Target:              t.searchScope,
 	})
 }

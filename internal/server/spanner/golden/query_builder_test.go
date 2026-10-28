@@ -294,6 +294,14 @@ func TestGetChildTypesQuery(t *testing.T) {
 	})
 }
 
+func TestSampleChildEntitiesQuery(t *testing.T) {
+	t.Parallel()
+
+	runQueryBuilderGoldenTest(t, "sample_child_entities.sql", func(ctx context.Context) (interface{}, error) {
+		return spanner.SampleChildEntitiesQuery([]string{"country/USA", "geoId/06"}, "County", 10), nil
+	})
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

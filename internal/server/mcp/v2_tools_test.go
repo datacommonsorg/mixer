@@ -118,6 +118,11 @@ func TestV2SearchIndicators(t *testing.T) {
 			wantReq:     &agent.V2SearchIndicatorsRequest{Query: "unemployment rate", EntityDcids: []string{"country/KEN"}, Target: "base_only"},
 		},
 		{
+			name:    "maps child mode fields",
+			input:   V2SearchIndicatorsInput{Query: "median income", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			wantReq: &agent.V2SearchIndicatorsRequest{Query: "median income", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+		},
+		{
 			name:    "maps browse fields",
 			input:   V2SearchIndicatorsInput{TopicDcids: []string{"dc/topic/Health"}},
 			wantReq: &agent.V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/Health"}},
@@ -148,14 +153,14 @@ func TestV2SearchIndicatorsInputSchema(t *testing.T) {
 	}
 	props := got["properties"].(map[string]any)
 	gotTypes := map[string]any{}
-	for _, field := range []string{"query", "topic_dcids", "entity_dcids"} {
+	for _, field := range []string{"query", "topic_dcids", "entity_dcids", "child_entity_type_dcid"} {
 		prop := props[field].(map[string]any)
 		if desc, _ := prop["description"].(string); desc == "" {
 			t.Errorf("search_indicators input schema field %q has no description", field)
 		}
 		gotTypes[field] = prop["type"]
 	}
-	wantTypes := map[string]any{"query": "string", "topic_dcids": "array", "entity_dcids": "array"}
+	wantTypes := map[string]any{"query": "string", "topic_dcids": "array", "entity_dcids": "array", "child_entity_type_dcid": "string"}
 	if diff := cmp.Diff(wantTypes, gotTypes); diff != "" {
 		t.Errorf("search_indicators input schema types diff (-want +got):\n%s", diff)
 	}

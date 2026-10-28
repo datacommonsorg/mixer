@@ -710,7 +710,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 					break
 				}
 			}
-			sds.populateObservationProperties(errCtx, candidates, svDcids)
+			sds.populateStatVarInfo(errCtx, candidates, svDcids)
 			entity.Candidates = candidates
 			resolveResponse.Entities[i] = entity
 			return nil
@@ -724,7 +724,12 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	return resolveResponse, nil
 }
 
-func (sds *SpannerDataSource) populateObservationProperties(
+// populateStatVarInfo sets the name and observation properties of statistical variable candidates from
+// their variable metadata. The vector search returns the embedding sentence that matched the query as the
+// name (e.g. "population count" for Count_Person), so it is replaced with the variable's own name (e.g.
+// "Total population"), as the embeddings-server resolver does; the sentence stays in the "sentence"
+// metadata. Candidates without metadata keep the sentence as their name.
+func (sds *SpannerDataSource) populateStatVarInfo(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	svDcids []string,
@@ -739,6 +744,9 @@ func (sds *SpannerDataSource) populateObservationProperties(
 	}
 	for _, c := range candidates {
 		if info, ok := svInfos[c.GetDcid()]; ok {
+			if info.Name != "" {
+				c.Name = info.Name
+			}
 			c.ObservationProperties = info.ObservationProperties
 		}
 	}
@@ -1213,6 +1221,20 @@ func (sds *SpannerDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTyp
 	resp := &pbv2.ChildTypesResponse{ChildTypes: map[string]*pbv2.ChildTypesResponse_ChildTypes{}}
 	for ancestor, types := range childTypes {
 		resp.ChildTypes[ancestor] = &pbv2.ChildTypesResponse_ChildTypes{Types: types}
+	}
+	return resp, nil
+}
+
+// SampleChildEntities returns a sample of each requested ancestor's child entities of one type from the
+// LinkedEdge table.
+func (sds *SpannerDataSource) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	samples, err := sds.client.SampleChildEntities(ctx, req.GetAncestors(), req.GetChildType(), int(req.GetLimitPerAncestor()))
+	if err != nil {
+		return nil, err
+	}
+	resp := &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{}}
+	for ancestor, children := range samples {
+		resp.ChildEntities[ancestor] = &pbv2.SampleChildEntitiesResponse_ChildEntities{Dcids: children}
 	}
 	return resp, nil
 }

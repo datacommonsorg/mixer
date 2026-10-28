@@ -155,6 +155,12 @@ func (sds *SQLDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRe
 	return nil, status.Error(codes.Unimplemented, "ChildTypes is not supported by SQL data sources")
 }
 
+// SampleChildEntities is not supported by SQL data sources. Like ChildTypes, it returns an Unimplemented
+// error so that DataSources.SampleChildEntities does not count this source as having succeeded.
+func (sds *SQLDataSource) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "SampleChildEntities is not supported by SQL data sources")
+}
+
 func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return &pb.FilterStatVarsByEntityResponse{}, nil
 }

@@ -47,6 +47,7 @@ import "v2/node.proto";
 import "v2/node_search.proto";
 import "v2/observation.proto";
 import "v2/resolve.proto";
+import "v2/sample_child_entities.proto";
 import "sdmx/sdmx.proto";
 
 service Mixer {
@@ -93,6 +94,17 @@ service Mixer {
       returns (datacommons.v2.ChildTypesResponse) {
     option (google.api.http) = {
       post : "/v2/internal/child-types"
+      body : "*"
+    };
+  }
+
+  // Internal endpoint for a sample of the entities of one type contained in ancestor entities, used by
+  // remote data sources (e.g. custom DC instances querying the base DC).
+  // Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+  rpc V2InternalSampleChildEntities(datacommons.v2.SampleChildEntitiesRequest)
+      returns (datacommons.v2.SampleChildEntitiesResponse) {
+    option (google.api.http) = {
+      post : "/v2/internal/sample-child-entities"
       body : "*"
     };
   }

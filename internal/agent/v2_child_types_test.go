@@ -25,7 +25,7 @@ import (
 
 func TestV2ResolveEntitiesChildTypes(t *testing.T) {
 	const unfiltered = PropDescription
-	childColumns := []string{"query", "entity_dcid", "child_entity_type", "child_entity_type_name"}
+	childColumns := []string{"query", "entity_dcid", "child_entity_type_dcid", "child_entity_type_name"}
 	californiaChildTypes := []string{"AdministrativeArea", "AdministrativeArea2", "CensusCountyDivision", "CensusTract", "City", "County", "Place", "PublicSchool"}
 	tests := []struct {
 		name              string
@@ -255,6 +255,13 @@ func TestMatchChildTypes(t *testing.T) {
 			name:        "nothing available returns nothing",
 			hints:       []string{"county"},
 			typesByHint: map[string][]typeCandidate{"county": {{"County", 0.75}}},
+		},
+		{
+			// Custom DCs store children whose type is unknown under an empty child type, which no hint matches.
+			name:        "an empty available type is never matched",
+			hints:       []string{"county"},
+			typesByHint: map[string][]typeCandidate{"county": {{"County", 0.75}}},
+			available:   []string{""},
 		},
 	}
 	for _, tc := range tests {

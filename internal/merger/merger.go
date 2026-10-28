@@ -562,6 +562,27 @@ func MergeMultiChildTypes(allResp []*pbv2.ChildTypesResponse) *pbv2.ChildTypesRe
 	return merged
 }
 
+// MergeMultiSampleChildEntities merges child entity samples per ancestor across SampleChildEntitiesResponses:
+// DCIDs in response order, without duplicates, capped at limitPerAncestor. It returns an empty response for
+// no input.
+func MergeMultiSampleChildEntities(allResp []*pbv2.SampleChildEntitiesResponse, limitPerAncestor int32) *pbv2.SampleChildEntitiesResponse {
+	byAncestor := map[string][]string{}
+	for _, resp := range allResp {
+		for ancestor, children := range resp.GetChildEntities() {
+			byAncestor[ancestor] = append(byAncestor[ancestor], children.GetDcids()...)
+		}
+	}
+	merged := &pbv2.SampleChildEntitiesResponse{
+		ChildEntities: make(map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities, len(byAncestor)),
+	}
+	for ancestor, dcids := range byAncestor {
+		merged.ChildEntities[ancestor] = &pbv2.SampleChildEntitiesResponse_ChildEntities{
+			Dcids: util.FirstDistinct(dcids, int(limitPerAncestor)),
+		}
+	}
+	return merged
+}
+
 // Merges multiple V2 NodeSearchResponses.
 // Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {

@@ -27,6 +27,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 // mockV2SearchIndicatorsServer fakes the Mixer calls V2SearchIndicators makes, from a small topic tree.
@@ -44,13 +45,16 @@ type mockV2SearchIndicatorsServer struct {
 	entityVariables map[string][]string
 	// entityTypes maps an entity DCID to its types; entities without types don't exist.
 	entityTypes map[string][]string
-	// errs fails calls by method name ("indicator", "topic", "V2Observation", "V2Node").
+	// childEntities maps a parent DCID and a child type to the parent's sampled child entities.
+	childEntities map[string]map[string][]string
+	// errs fails calls by method name ("indicator", "topic", "V2Observation", "V2Node", "SampleChildEntities").
 	errs map[string]error
 	// reverseTopicEntities returns topic resolver entities in reverse request order.
 	reverseTopicEntities bool
 
-	mu        sync.Mutex
-	nodeCalls int
+	mu         sync.Mutex
+	nodeCalls  int
+	sampleReqs []*pbv2.SampleChildEntitiesRequest
 }
 
 // mockTopic is a topic in mockV2SearchIndicatorsServer.
@@ -131,6 +135,22 @@ func (m *mockV2SearchIndicatorsServer) V2Node(ctx context.Context, in *pbv2.Node
 	return resp, nil
 }
 
+func (m *mockV2SearchIndicatorsServer) SampleChildEntities(ctx context.Context, in *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	m.mu.Lock()
+	m.sampleReqs = append(m.sampleReqs, in)
+	m.mu.Unlock()
+	if err := m.errs["SampleChildEntities"]; err != nil {
+		return nil, err
+	}
+	resp := &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{}}
+	for _, ancestor := range in.GetAncestors() {
+		if children := m.childEntities[ancestor][in.GetChildType()]; len(children) > 0 {
+			resp.ChildEntities[ancestor] = &pbv2.SampleChildEntitiesResponse_ChildEntities{Dcids: children}
+		}
+	}
+	return resp, nil
+}
+
 // candidate returns the resolver candidate for a topic or variable DCID, with the topic's direct members as
 // children when withMembers is set.
 func (m *mockV2SearchIndicatorsServer) candidate(dcid string, withMembers bool) *pbv2.ResolveResponse_Entity_Candidate {
@@ -187,6 +207,8 @@ func newSearchIndicatorsMock() *mockV2SearchIndicatorsServer {
 			"country/KEN": {"UnemploymentRate"},
 			"country/FRA": {"Count_Ungrouped"},
 			"country/IND": {"Count_Asthma"},
+			// A California county; the other sampled county (geoId/06085) and Kenya's county have no data.
+			"geoId/06001": {"Count_Uninsured"},
 		},
 		entityTypes: map[string][]string{
 			"geoId/06":    {"State"},
@@ -194,6 +216,10 @@ func newSearchIndicatorsMock() *mockV2SearchIndicatorsServer {
 			"country/FRA": {"Country"},
 			"country/IND": {"Country"},
 			"dc/school/1": {"School"},
+		},
+		childEntities: map[string]map[string][]string{
+			"geoId/06":    {"County": {"geoId/06001", "geoId/06085"}},
+			"country/KEN": {"County": {"wikidataId/Q1"}},
 		},
 	}
 }
@@ -336,7 +362,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoQueryDataNote,
+				Note:               v2NoQueryDataNote(v2GivenEntitiesScope),
 			},
 		},
 		{
@@ -344,7 +370,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/Health"}, EntityDcids: []string{"country/KEN"}},
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns},
-				Note:            v2NoRequestedTopicDataNote,
+				Note:            v2NoRequestedTopicDataNote(v2GivenEntitiesScope),
 			},
 		},
 		{
@@ -352,7 +378,64 @@ func TestV2SearchIndicators(t *testing.T) {
 			req:  &V2SearchIndicatorsRequest{EntityDcids: []string{"country/FRA"}},
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns},
-				Note:            v2NoTopLevelTopicDataNote,
+				Note:            v2NoTopLevelTopicDataNote(v2GivenEntitiesScope),
+			},
+		},
+		{
+			// Only geoId/06001 has data, and only for Count_Uninsured, so the parent's own data (e.g.
+			// UnemploymentRate) doesn't count. The other sampled county has no data, which needs no V2Node call.
+			name: "child search keeps indicators with data for some sampled child and reports the parent",
+			req:  &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: " County "},
+			want: &V2SearchIndicatorsResponse{
+				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
+					{"dc/topic/Health", "Health", []string{"geoId/06"},
+						refs("dc/topic/Insurance", "Health Insurance"),
+						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+				}},
+				VariableCandidates: &Table{Columns: v2VariableColumns, Rows: [][]any{
+					{"Count_Uninsured", "People Without Health Insurance", []string{"geoId/06"}, []string{}},
+				}},
+			},
+		},
+		{
+			name: "child browse of requested topics",
+			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/Health", "dc/topic/Economy"}, EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			want: &V2SearchIndicatorsResponse{
+				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
+					{"dc/topic/Health", "Health", []string{"geoId/06"},
+						refs("dc/topic/Insurance", "Health Insurance"),
+						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+				}},
+			},
+		},
+		{
+			name: "child browse of top-level topics",
+			req:  &V2SearchIndicatorsRequest{EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			want: &V2SearchIndicatorsResponse{
+				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
+					{"dc/topic/Health", "Health", []string{"geoId/06"},
+						refs("dc/topic/Insurance", "Health Insurance"),
+						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+				}},
+			},
+		},
+		{
+			name: "empty child result gets the note with the child scope",
+			req:  &V2SearchIndicatorsRequest{Query: "asthma", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			want: &V2SearchIndicatorsResponse{
+				TopicCandidates:    &Table{Columns: v2TopicColumns},
+				VariableCandidates: &Table{Columns: v2VariableColumns},
+				Note:               v2NoQueryDataNote("County entities in geoId/06"),
+			},
+		},
+		{
+			// A sample can't show that the whole type has no data, so the no-data note is never used.
+			name: "sampled children without any data get the child-scope note, not the no-data note",
+			req:  &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"country/KEN"}, ChildEntityTypeDcid: "County"},
+			want: &V2SearchIndicatorsResponse{
+				TopicCandidates:    &Table{Columns: v2TopicColumns},
+				VariableCandidates: &Table{Columns: v2VariableColumns},
+				Note:               v2NoQueryDataNote("County entities in country/KEN"),
 			},
 		},
 	}
@@ -455,11 +538,12 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 		return dcids
 	}
 	tests := []struct {
-		name     string
-		req      *V2SearchIndicatorsRequest
-		errs     map[string]error
-		wantCode codes.Code
-		wantMsg  string
+		name          string
+		req           *V2SearchIndicatorsRequest
+		errs          map[string]error
+		wantCode      codes.Code
+		wantMsg       string
+		wantNodeCalls int
 	}{
 		{
 			name:     "query and topic_dcids",
@@ -486,10 +570,11 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			wantMsg:  `invalid target "everything", must be one of [base_and_custom base_only custom_only]`,
 		},
 		{
-			name:     "unknown entity DCIDs and names, but not known entities without data",
-			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06", "bogus/1", "dc/school/1", "California"}},
-			wantCode: codes.InvalidArgument,
-			wantMsg:  `unknown entity_dcids ["bogus/1" "California"]: pass DCIDs returned by resolve_entities (e.g. 'geoId/06'), not names`,
+			name:          "unknown entity DCIDs and names, but not known entities without data",
+			req:           &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06", "bogus/1", "dc/school/1", "California"}},
+			wantCode:      codes.InvalidArgument,
+			wantMsg:       `unknown entity_dcids ["bogus/1" "California"]: pass DCIDs returned by resolve_entities (e.g. 'geoId/06'), not names`,
+			wantNodeCalls: 1,
 		},
 		{
 			name:     "unknown topics and variables passed as topics",
@@ -519,11 +604,59 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			wantMsg:  "failed to check which indicators have data for entity_dcids: a backend service timed out; retry the call shortly",
 		},
 		{
-			name:     "entity lookup failure",
-			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"bogus/1"}},
-			errs:     map[string]error{"V2Node": status.Error(codes.Internal, "spanner: session projects/p/instances/i/databases/d/sessions/s")},
-			wantCode: codes.Internal,
-			wantMsg:  "failed to look up entity_dcids: a backend service is temporarily unavailable; retry the call shortly",
+			name:     "child mode without a parent",
+			req:      &V2SearchIndicatorsRequest{Query: "health", ChildEntityTypeDcid: "County"},
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "child_entity_type_dcid needs exactly one parent DCID in entity_dcids (got 0); make one call per parent",
+		},
+		{
+			name:     "child mode with two parents",
+			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06", "geoId/48"}, ChildEntityTypeDcid: "County"},
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "child_entity_type_dcid needs exactly one parent DCID in entity_dcids (got 2); make one call per parent",
+		},
+		{
+			name:     "child mode with more parents than the entity cap gets the one-parent error",
+			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: manyDcids("geoId/", 21), ChildEntityTypeDcid: "County"},
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "child_entity_type_dcid needs exactly one parent DCID in entity_dcids (got 21); make one call per parent",
+		},
+		{
+			name:          "known parent without children of the type",
+			req:           &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "State"},
+			wantCode:      codes.InvalidArgument,
+			wantMsg:       `no entities of type "State" under "geoId/06": use a child_entity_type_dcid from resolve_entities' candidate_child_entity_types for this parent`,
+			wantNodeCalls: 1,
+		},
+		{
+			name:          "unknown parent in child mode",
+			req:           &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"bogus/1"}, ChildEntityTypeDcid: "County"},
+			wantCode:      codes.InvalidArgument,
+			wantMsg:       `unknown entity_dcids ["bogus/1"]: pass DCIDs returned by resolve_entities (e.g. 'geoId/06'), not names`,
+			wantNodeCalls: 1,
+		},
+		{
+			name:     "child sampling timeout",
+			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			errs:     map[string]error{"SampleChildEntities": status.Error(codes.DeadlineExceeded, "spanner: deadline exceeded on session projects/p/sessions/s")},
+			wantCode: codes.DeadlineExceeded,
+			wantMsg:  "failed to sample child entities: a backend service timed out; retry the call shortly",
+		},
+		{
+			// Deployments without the LinkedEdge table fail with InvalidArgument, whose text must not reach the caller.
+			name:     "child sampling failure",
+			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			errs:     map[string]error{"SampleChildEntities": status.Error(codes.InvalidArgument, "Table not found: LinkedEdge")},
+			wantCode: codes.Unavailable,
+			wantMsg:  "filtering by child entities is not available right now; do not retry with child_entity_type_dcid",
+		},
+		{
+			name:          "entity lookup failure",
+			req:           &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"bogus/1"}},
+			errs:          map[string]error{"V2Node": status.Error(codes.Internal, "spanner: session projects/p/instances/i/databases/d/sessions/s")},
+			wantCode:      codes.Internal,
+			wantMsg:       "failed to look up entity_dcids: a backend service is temporarily unavailable; retry the call shortly",
+			wantNodeCalls: 1,
 		},
 	}
 	for _, tc := range tests {
@@ -535,12 +668,27 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			if st.Code() != tc.wantCode || st.Message() != tc.wantMsg {
 				t.Errorf("V2SearchIndicators() error = (%v, %q), want (%v, %q)", st.Code(), st.Message(), tc.wantCode, tc.wantMsg)
 			}
+			if mock.nodeCalls != tc.wantNodeCalls {
+				t.Errorf("V2Node calls = %d, want %d", mock.nodeCalls, tc.wantNodeCalls)
+			}
 			for _, backendErr := range tc.errs {
 				if detail := status.Convert(backendErr).Message(); strings.Contains(st.Message(), detail) {
 					t.Errorf("error message %q leaks backend detail %q", st.Message(), detail)
 				}
 			}
 		})
+	}
+}
+
+func TestV2SearchIndicatorsChildModeSampleRequest(t *testing.T) {
+	mock := newSearchIndicatorsMock()
+	req := &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"}
+	if _, err := NewService(mock, NewCache(mock), nil).V2SearchIndicators(context.Background(), req); err != nil {
+		t.Fatalf("V2SearchIndicators() error = %v", err)
+	}
+	want := []*pbv2.SampleChildEntitiesRequest{{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: v2ChildEntitySampleSize}}
+	if diff := cmp.Diff(want, mock.sampleReqs, protocmp.Transform()); diff != "" {
+		t.Errorf("SampleChildEntities requests mismatch (-want +got):\n%s", diff)
 	}
 }
 
@@ -557,15 +705,17 @@ func TestNormalizeV2SearchIndicatorsRequest(t *testing.T) {
 		{
 			name: "trims, drops blanks and duplicates, keeps order",
 			req: &V2SearchIndicatorsRequest{
-				Query:       " health ",
-				TopicDcids:  []string{" ", ""},
-				EntityDcids: []string{"geoId/06", " country/KEN ", "", "geoId/06"},
-				Target:      "base_only",
+				Query:               " health ",
+				TopicDcids:          []string{" ", ""},
+				EntityDcids:         []string{"geoId/06", " country/KEN ", "", "geoId/06"},
+				ChildEntityTypeDcid: " County ",
+				Target:              "base_only",
 			},
 			want: &V2SearchIndicatorsRequest{
-				Query:       "health",
-				EntityDcids: []string{"geoId/06", "country/KEN"},
-				Target:      "base_only",
+				Query:               "health",
+				EntityDcids:         []string{"geoId/06", "country/KEN"},
+				ChildEntityTypeDcid: "County",
+				Target:              "base_only",
 			},
 		},
 	}

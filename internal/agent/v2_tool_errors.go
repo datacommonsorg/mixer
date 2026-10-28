@@ -102,10 +102,29 @@ func errV2UnknownTopicDcids(dcids []string) error {
 		"unknown topic_dcids %q: pass topic DCIDs from search_indicators results (a topic's dcid or its member_topics)", dcids)
 }
 
+func errV2ChildModeNeedsOneEntity(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"child_entity_type_dcid needs exactly one parent DCID in entity_dcids (got %d); make one call per parent", count)
+}
+
+func errV2NoChildEntitiesOfType(parent, childType string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"no entities of type %q under %q: use a child_entity_type_dcid from resolve_entities' candidate_child_entity_types for this parent",
+		childType, parent)
+}
+
 // search_indicators: notes. These are returned in successful responses.
 //
 // Empty-result notes state only what was checked. They deliberately give no retry guidance: agents decide
 // on their own whether to rephrase, and hints about where else data might be tend to send them looping.
+
+// Scopes for the empty-result notes: what the results were filtered by.
+const v2GivenEntitiesScope = "the given entity_dcids"
+
+// v2ChildEntitiesScope is the note scope in child mode, e.g. "County entities in geoId/06".
+func v2ChildEntitiesScope(parent, childType string) string {
+	return fmt.Sprintf("%s entities in %s", childType, parent)
+}
 
 // v2NoEntitiesNote is returned when no entity_dcids were given, so results were not filtered.
 const v2NoEntitiesNote = "results are not filtered by data availability, which varies by entity; pass entity_dcids from resolve_entities to keep only indicators with data for those entities"
@@ -113,17 +132,27 @@ const v2NoEntitiesNote = "results are not filtered by data availability, which v
 // v2NoMatchNote is returned when a search matched no topics or variables at all.
 const v2NoMatchNote = "no topics or variables match this query."
 
-// Empty-result notes for when entity_dcids filtered out every result.
-const (
-	// v2NoEntityDataNote: none of the entities has observation data for any variable.
-	v2NoEntityDataNote = "there is no data for the given entity_dcids."
-	// v2NoQueryDataNote: the search matched topics or variables, but none has data for the entities.
-	v2NoQueryDataNote = "none of the topics or variables matching this query have data for the given entity_dcids."
-	// v2NoRequestedTopicDataNote: none of the requested topics has data for the entities.
-	v2NoRequestedTopicDataNote = "none of the requested topics have data for the given entity_dcids."
-	// v2NoTopLevelTopicDataNote: none of the top-level topics has data for the entities.
-	v2NoTopLevelTopicDataNote = "no topics have data for the given entity_dcids."
-)
+// Empty-result notes for when the entities filtered out every result. scope is what the results were
+// filtered by (v2GivenEntitiesScope or v2ChildEntitiesScope).
+
+// v2NoEntityDataNote: none of the given entities has observation data for any variable. Child mode never
+// uses it, since a few sampled children can't show that a whole type has no data.
+const v2NoEntityDataNote = "there is no data for the given entity_dcids."
+
+// v2NoQueryDataNote: the search matched topics or variables, but none has data for the scope.
+func v2NoQueryDataNote(scope string) string {
+	return "none of the topics or variables matching this query have data for " + scope + "."
+}
+
+// v2NoRequestedTopicDataNote: none of the requested topics has data for the scope.
+func v2NoRequestedTopicDataNote(scope string) string {
+	return "none of the requested topics have data for " + scope + "."
+}
+
+// v2NoTopLevelTopicDataNote: none of the top-level topics has data for the scope.
+func v2NoTopLevelTopicDataNote(scope string) string {
+	return "no topics have data for " + scope + "."
+}
 
 // search_indicators: backend failures.
 
@@ -141,6 +170,22 @@ func errV2EntityLookupFailed(err error) error {
 
 func errV2AvailabilityFailed(err error) error {
 	return wrapV2BackendError(err, "failed to check which indicators have data for entity_dcids")
+}
+
+// errV2ChildEntitySamplingFailed is returned when sampling child entities times out.
+func errV2ChildEntitySamplingFailed(err error) error {
+	return wrapV2BackendError(err, "failed to sample child entities")
+}
+
+// errV2ChildEntitiesUnavailable is returned when child entities can't be sampled for any reason other than a
+// timeout. Unlike the other backend failures it is agent-owned rather than built by wrapV2BackendError: the
+// sample comes from the LinkedEdge table, which some deployments lack, and wrapV2BackendError passes
+// InvalidArgument messages through, which would expose Spanner's "Table not found: LinkedEdge" to the
+// caller. A missing table is permanent, so the message says not to retry; other failures get the same
+// message rather than a guess at whether they are temporary. The raw error is logged by the caller.
+func errV2ChildEntitiesUnavailable() error {
+	return status.Error(codes.Unavailable,
+		"filtering by child entities is not available right now; do not retry with child_entity_type_dcid")
 }
 
 // Generic caller-facing replacements for backend error details, which are not actionable for the caller
@@ -166,17 +211,7 @@ const (
 //
 // It does not log; callers log the original error.
 func wrapV2BackendError(err error, msg string) error {
-	st := status.FromContextError(err)
-	if st.Code() == codes.Unknown {
-		// errors.As finds the innermost status, so wrapped errors keep only the status message (status.FromError
-		// would use the full wrapped text).
-		var withStatus interface{ GRPCStatus() *status.Status }
-		if errors.As(err, &withStatus) {
-			st = withStatus.GRPCStatus()
-		} else {
-			st = status.New(codes.Internal, err.Error())
-		}
-	}
+	st := v2BackendStatus(err)
 	switch st.Code() {
 	case codes.InvalidArgument:
 		return status.Errorf(st.Code(), "%s: %s", msg, st.Message())
@@ -189,4 +224,20 @@ func wrapV2BackendError(err error, msg string) error {
 	default:
 		return status.Errorf(st.Code(), "%s: %s", msg, v2BackendRetryMessage)
 	}
+}
+
+// v2BackendStatus returns the gRPC status of a backend error: context errors map to their codes, wrapped
+// errors keep their innermost status, and other errors count as Internal.
+func v2BackendStatus(err error) *status.Status {
+	st := status.FromContextError(err)
+	if st.Code() != codes.Unknown {
+		return st
+	}
+	// errors.As finds the innermost status, so wrapped errors keep only the status message (status.FromError
+	// would use the full wrapped text).
+	var withStatus interface{ GRPCStatus() *status.Status }
+	if errors.As(err, &withStatus) {
+		return withStatus.GRPCStatus()
+	}
+	return status.New(codes.Internal, err.Error())
 }

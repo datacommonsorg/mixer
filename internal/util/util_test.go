@@ -169,6 +169,39 @@ func TestMergeDedupe(t *testing.T) {
 	}
 }
 
+func TestFirstDistinct(t *testing.T) {
+	tests := []struct {
+		name   string
+		values []string
+		limit  int
+		want   []string
+	}{
+		{
+			name:   "drops repeated values and keeps order",
+			values: []string{"country/CAN", "country/USA", "country/USA", "country/MEX"},
+			limit:  5,
+			want:   []string{"country/CAN", "country/USA", "country/MEX"},
+		},
+		{
+			name:   "caps at the limit after deduping",
+			values: []string{"country/CAN", "country/USA", "country/USA", "country/MEX"},
+			limit:  2,
+			want:   []string{"country/CAN", "country/USA"},
+		},
+		{
+			name:  "no values",
+			limit: 5,
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			if diff := cmp.Diff(tc.want, FirstDistinct(tc.values, tc.limit)); diff != "" {
+				t.Errorf("FirstDistinct() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestSample(t *testing.T) {
 	for _, c := range []struct {
 		input    protoreflect.ProtoMessage

@@ -46,7 +46,7 @@ const (
 	colName                  = "name"
 	colTypes                 = "types"
 	colEntityDcid            = "entity_dcid"
-	colChildEntityType       = "child_entity_type"
+	colChildEntityTypeDcid   = "child_entity_type_dcid"
 	colChildEntityTypeName   = "child_entity_type_name"
 	colPlacesWithData        = "placesWithData"
 	colMemberTopics          = "memberTopics"
