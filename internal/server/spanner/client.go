@@ -72,7 +72,7 @@ const (
 type spannerDatabaseClient struct {
 	client       *spanner.Client
 	queryConfig  QueryConfig
-	queryBuilder *multiEntityQueryBuilder
+	queryBuilder *observationQueryBuilder
 	timestamp    atomic.Int64
 	ticker       Ticker
 	stopCh       chan struct{}
@@ -103,7 +103,7 @@ type SpannerClientOptions struct {
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient that builds its
 // observation queries with queryBuilder.
-func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions, queryConfig QueryConfig, queryBuilder *multiEntityQueryBuilder) *spannerDatabaseClient {
+func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions, queryConfig QueryConfig, queryBuilder *observationQueryBuilder) *spannerDatabaseClient {
 	sc := &spannerDatabaseClient{
 		client:                       client,
 		queryConfig:                  queryConfig,
@@ -124,18 +124,18 @@ func newSpannerDatabaseClient(client *spanner.Client, opts *SpannerClientOptions
 
 // newQueryBuilder returns the client's query configuration and a query builder
 // that shares it, with emulator compatibility applied to both.
-func newQueryBuilder(opts *SpannerClientOptions, tableConfig TableConfig) (QueryConfig, *multiEntityQueryBuilder, error) {
+func newQueryBuilder(opts *SpannerClientOptions, tableConfig TableConfig) (QueryConfig, *observationQueryBuilder, error) {
 	queryConfig := opts.QueryConfig
 	queryConfig.SpannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
 	tableConfig.spannerEmulatorCompatibility = opts.SpannerEmulatorCompatibility
-	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, queryConfig)
+	queryBuilder, err := NewObservationQueryBuilder(tableConfig, queryConfig)
 	if err != nil {
 		return QueryConfig{}, nil, fmt.Errorf("failed to create query builder: %w", err)
 	}
 	return queryConfig, queryBuilder, nil
 }
 
-// TableConfig holds the names of multi-entity Spanner tables and indexes.
+// TableConfig holds the names of the observation tables and indexes.
 type TableConfig struct {
 	TimeSeriesTable              string
 	ObservationTable             string
@@ -146,7 +146,7 @@ type TableConfig struct {
 	spannerEmulatorCompatibility bool
 }
 
-// DefaultTableConfig returns the default suffix-less table and index configuration for multi-entity Spanner tables.
+// DefaultTableConfig returns the default observation table and index names.
 func DefaultTableConfig() TableConfig {
 	return TableConfig{
 		TimeSeriesTable:             "TimeSeries",

@@ -307,7 +307,7 @@ func TestPointStatJSONOmitsMissingAttributes(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *testing.T) {
+func TestGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *testing.T) {
 	for _, tc := range []struct {
 		name             string
 		variables        []string
@@ -344,8 +344,8 @@ func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *tes
 	}
 }
 
-func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+func TestCoreQueryBuildersDeduplicateParameters(t *testing.T) {
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -385,7 +385,7 @@ func TestMultiEntityCoreQueryBuildersDeduplicateParameters(t *testing.T) {
 	}
 }
 
-func TestMultiEntityContainedInPlaceSelectsAccessPathByPlaceTypeAndUniqueVariableCount(t *testing.T) {
+func TestContainedInPlaceSelectsAccessPathByPlaceTypeAndUniqueVariableCount(t *testing.T) {
 	const (
 		variableSeekHint = "FORCE_INDEX=_BASE_TABLE"
 		entityScanHint   = "FORCE_INDEX=TimeSeriesByEntity1, SEEKABLE_KEY_SIZE=1"
@@ -487,7 +487,7 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByPlaceTypeAndUniqueVariabl
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), tc.queryConfig)
+			queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), tc.queryConfig)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -514,10 +514,10 @@ func TestMultiEntityContainedInPlaceSelectsAccessPathByPlaceTypeAndUniqueVariabl
 	}
 }
 
-func TestMultiEntityContainedInPlaceUsesEmulatorCompatibleHints(t *testing.T) {
+func TestContainedInPlaceUsesEmulatorCompatibleHints(t *testing.T) {
 	tableConfig := DefaultTableConfig()
 	tableConfig.spannerEmulatorCompatibility = true
-	queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, QueryConfig{
+	queryBuilder, err := NewObservationQueryBuilder(tableConfig, QueryConfig{
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"Country"},
 		ContainedInPlaceEntityScanMinVariables:         2,
 	})
@@ -548,12 +548,12 @@ func TestMultiEntityContainedInPlaceUsesEmulatorCompatibleHints(t *testing.T) {
 	}
 }
 
-func TestMultiEntityQueriesUseEmulatorCompatibleHints(t *testing.T) {
+func TestQueriesUseEmulatorCompatibleHints(t *testing.T) {
 	const nullFilteredIndexBypass = "spanner_emulator.disable_query_null_filtered_index_check=true"
 	for _, emulator := range []bool{false, true} {
 		tableConfig := DefaultTableConfig()
 		tableConfig.spannerEmulatorCompatibility = emulator
-		queryBuilder, err := NewMultiEntityQueryBuilder(tableConfig, QueryConfig{})
+		queryBuilder, err := NewObservationQueryBuilder(tableConfig, QueryConfig{})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -609,8 +609,8 @@ func TestMultiEntityQueriesUseEmulatorCompatibleHints(t *testing.T) {
 	}
 }
 
-func TestMultiEntityEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{
+func TestEntityScanThresholdDoesNotAffectDirectObservations(t *testing.T) {
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
 		ContainedInPlaceEntityScanMinVariables:         1,
 	})
@@ -701,7 +701,7 @@ func TestValidateObservationsRequiresProvenance(t *testing.T) {
 	}
 }
 
-func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
+func TestObservationResponseIncludesProvenanceID(t *testing.T) {
 	observations, err := reconstructObservations([]*rawObservation{
 		{
 			VariableMeasured: "Count_Person",
@@ -741,7 +741,7 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
+func TestGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxObservations(context.Background(), nil)
 	if status.Code(err) != codes.InvalidArgument {
@@ -752,7 +752,7 @@ func TestMultiEntityGetSdmxObservationsNilRequestReturnsError(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) {
+func TestGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxObservations(context.Background(), &sdmxpb.SdmxDataQuery{})
 	if status.Code(err) != codes.InvalidArgument {
@@ -763,7 +763,7 @@ func TestMultiEntityGetSdmxObservationsNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing.T) {
+func TestGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing.T) {
 	tests := []struct {
 		name       string
 		constraint *sdmxpb.SdmxComponentConstraint
@@ -807,7 +807,7 @@ func TestMultiEntityGetSdmxObservationsRejectsInvalidVariableMeasured(t *testing
 }
 
 func TestPrepareSdmxObservationsQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -900,7 +900,7 @@ func TestPrepareSdmxObservationsQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryWithRemoteContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -981,7 +981,7 @@ func TestCompileSdmxConstraintsCanonicalizesObservationPropertyNames(t *testing.
 }
 
 func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropertyNames(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1019,7 +1019,7 @@ func TestGetSdmxObservationsQueryCanonicalizesContainedInPlaceObservationPropert
 func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
 	cfg := DefaultTableConfig()
 	cfg.spannerEmulatorCompatibility = true
-	queryBuilder, err := NewMultiEntityQueryBuilder(cfg, QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(cfg, QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1045,7 +1045,7 @@ func TestGetSdmxObservationsQueryUsesEmulatorCompatibleHints(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1092,7 +1092,7 @@ func TestPrepareSdmxObservationsQueryWithContainedInPlace(t *testing.T) {
 }
 
 func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservationProperties(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1115,7 +1115,7 @@ func TestPrepareSdmxObservationsQueryRejectsPropertyConstraintOutsideObservation
 }
 
 func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1188,7 +1188,7 @@ func TestPrepareSdmxAvailabilityQuery(t *testing.T) {
 }
 
 func TestPrepareSdmxAvailabilityQueryWithRemoteContainedInPlace(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1238,7 +1238,7 @@ func TestPrepareSdmxAvailabilityQueryWithRemoteContainedInPlace(t *testing.T) {
 }
 
 func TestPrepareSdmxAvailabilityQueryValidation(t *testing.T) {
-	queryBuilder, err := NewMultiEntityQueryBuilder(DefaultTableConfig(), QueryConfig{})
+	queryBuilder, err := NewObservationQueryBuilder(DefaultTableConfig(), QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -1475,7 +1475,7 @@ func TestSdmxAvailabilityValueExpressionValidation(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
+func TestGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), nil)
 	if status.Code(err) != codes.InvalidArgument {
@@ -1486,7 +1486,7 @@ func TestMultiEntityGetSdmxAvailabilityNilRequestReturnsError(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
+func TestGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentTimePeriod,
@@ -1499,7 +1499,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsTimePeriodComponent(t *testing.T) 
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
+func TestGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
@@ -1516,7 +1516,7 @@ func TestMultiEntityGetSdmxAvailabilityRejectsLatestTimePeriod(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
+func TestGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) {
 	client := &spannerDatabaseClient{}
 	_, err := client.GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{})
 	if status.Code(err) != codes.InvalidArgument {
@@ -1527,7 +1527,7 @@ func TestMultiEntityGetSdmxAvailabilityNilConstraintsReturnsError(t *testing.T) 
 	}
 }
 
-func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
+func TestSdmxRejectsUnsupportedOperator(t *testing.T) {
 	constraint := &sdmxpb.SdmxComponentConstraint{
 		Predicates: []*sdmxpb.SdmxPredicate{{
 			Operator: sdmxpb.SdmxOperator(1),
@@ -1576,7 +1576,7 @@ func TestMultiEntitySdmxRejectsUnsupportedOperator(t *testing.T) {
 	}
 }
 
-func TestMultiEntitySdmxAvailabilityRejectsIncompletePropertyConstraints(t *testing.T) {
+func TestSdmxAvailabilityRejectsIncompletePropertyConstraints(t *testing.T) {
 	_, err := (&spannerDatabaseClient{}).GetSdmxAvailability(context.Background(), &sdmxpb.SdmxAvailabilityQuery{
 		ComponentId: datacommons.ComponentObservationAbout,
 		Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
@@ -1593,7 +1593,7 @@ func TestMultiEntitySdmxAvailabilityRejectsIncompletePropertyConstraints(t *test
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing.T) {
+func TestGetSdmxAvailabilityRejectsInvalidVariableMeasured(t *testing.T) {
 	tests := []struct {
 		name       string
 		constraint *sdmxpb.SdmxComponentConstraint
