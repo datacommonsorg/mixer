@@ -207,7 +207,7 @@ func buildChildEntityTypesTable(results []*v2ChildTypesResult) *Table {
 		}
 	}
 	return &Table{
-		Columns: []string{colQuery, colEntityDcid, colChildEntityType, colChildEntityTypeName},
+		Columns: []string{colQuery, colEntityDcid, colChildEntityTypeDcid, colChildEntityTypeName},
 		Rows:    rows,
 	}
 }

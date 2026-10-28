@@ -35,8 +35,8 @@ type V2ResolveEntitiesRequest struct {
 //
 // CandidateChildEntityTypes is only set when some query has child type hints and the child type lookup
 // succeeded (a failed lookup omits it rather than reporting no child types). It has columns query,
-// entity_dcid, child_entity_type and child_entity_type_name, with one row per hinted child type that
-// exists within the query's best-matching entity, or a single row with an empty child_entity_type when
+// entity_dcid, child_entity_type_dcid and child_entity_type_name, with one row per hinted child type that
+// exists within the query's best-matching entity, or a single row with an empty child_entity_type_dcid when
 // none matched (or the query did not resolve, in which case entity_dcid is also empty).
 //
 // ChildEntityTypesNote explains, when set, why CandidateChildEntityTypes is missing despite child type
