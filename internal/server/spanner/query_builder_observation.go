@@ -343,6 +343,8 @@ func (b *observationQueryBuilder) GetFilteredSVGChildrenQuery(template string, n
 		}
 	case templateSVG:
 		baseStatement = stmts.getFilteredChildSVGs
+	default:
+		return nil, fmt.Errorf("GetFilteredSVGChildrenQuery: unsupported template %q", template)
 	}
 
 	return &spanner.Statement{

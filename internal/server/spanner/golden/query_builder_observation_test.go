@@ -247,6 +247,21 @@ func TestGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T) {
 	}
 }
 
+func TestGetFilteredSVGChildrenQueryRejectsUnsupportedTemplate(t *testing.T) {
+	t.Parallel()
+
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, template := range []string{"", "Topic"} {
+		stmt, err := builder.GetFilteredSVGChildrenQuery(template, "dc/g/Root", []string{"country/USA"}, "", 1, false)
+		if err == nil {
+			t.Errorf("GetFilteredSVGChildrenQuery(template=%q) error = nil, want error; SQL:\n%s", template, stmt.SQL)
+		}
+	}
+}
+
 func TestGetFilteredTopicChildrenQuery(t *testing.T) {
 	t.Parallel()
 
