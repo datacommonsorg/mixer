@@ -197,6 +197,7 @@ type mockTopicExpander struct {
 	expandTopicRes []*pbv2.ResolveResponse_Entity_Candidate
 	expandTopicErr error
 	displayNameRes string
+	svInfos        map[string]resolve.SVPropertyInfo
 }
 
 func (m *mockTopicExpander) ExpandTopic(ctx context.Context, topicDcid string, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
@@ -205,6 +206,65 @@ func (m *mockTopicExpander) ExpandTopic(ctx context.Context, topicDcid string, e
 
 func (m *mockTopicExpander) GetTopicDisplayName(ctx context.Context, topicDcid string) string {
 	return m.displayNameRes
+}
+
+func (m *mockTopicExpander) GetSVPropertyInfos(ctx context.Context, svDcids []string) (map[string]resolve.SVPropertyInfo, error) {
+	return m.svInfos, nil
+}
+
+func TestResolveEmbeddings_StatVarNames(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		vectorSearchRes: []*VectorSearchResult{
+			{SubjectID: "Count_Person", Name: "population count", CosineSimilarity: 0.9, Types: []string{"StatisticalVariable"}},
+			{SubjectID: "Count_Unnamed", Name: "unnamed count", CosineSimilarity: 0.8, Types: []string{"StatisticalVariable"}},
+		},
+	}, &SpannerDataSourceOptions{
+		Embedder: &mockEmbedder{embeddingsRes: []float64{0.1, 0.2}},
+		TopicExpander: &mockTopicExpander{svInfos: map[string]resolve.SVPropertyInfo{
+			"Count_Person":  {Name: "Total population", ObservationProperties: []string{"observationAbout"}},
+			"Count_Unnamed": {ObservationProperties: []string{"observationAbout"}},
+		}},
+	})
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"population"},
+		Resolver: "indicator",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	// The variable's own name replaces the matched sentence, which stays in metadata; a variable without a
+	// name keeps the sentence.
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "population",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{
+						Dcid:                  "Count_Person",
+						Name:                  "Total population",
+						TypeOf:                []string{"StatisticalVariable"},
+						Metadata:              map[string]string{"score": "0.9000", "sentence": "population count"},
+						ObservationProperties: []string{"observationAbout"},
+					},
+					{
+						Dcid:                  "Count_Unnamed",
+						Name:                  "unnamed count",
+						TypeOf:                []string{"StatisticalVariable"},
+						Metadata:              map[string]string{"score": "0.8000", "sentence": "unnamed count"},
+						ObservationProperties: []string{"observationAbout"},
+					},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
 }
 
 func TestResolveTopic_Success(t *testing.T) {

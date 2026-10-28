@@ -710,7 +710,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 					break
 				}
 			}
-			sds.populateObservationProperties(errCtx, candidates, svDcids)
+			sds.populateStatVarInfo(errCtx, candidates, svDcids)
 			entity.Candidates = candidates
 			resolveResponse.Entities[i] = entity
 			return nil
@@ -724,7 +724,12 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 	return resolveResponse, nil
 }
 
-func (sds *SpannerDataSource) populateObservationProperties(
+// populateStatVarInfo sets the name and observation properties of statistical variable candidates from
+// their variable metadata. The vector search returns the embedding sentence that matched the query as the
+// name (e.g. "population count" for Count_Person), so it is replaced with the variable's own name (e.g.
+// "Total population"), as the embeddings-server resolver does; the sentence stays in the "sentence"
+// metadata. Candidates without metadata keep the sentence as their name.
+func (sds *SpannerDataSource) populateStatVarInfo(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	svDcids []string,
@@ -739,6 +744,9 @@ func (sds *SpannerDataSource) populateObservationProperties(
 	}
 	for _, c := range candidates {
 		if info, ok := svInfos[c.GetDcid()]; ok {
+			if info.Name != "" {
+				c.Name = info.Name
+			}
 			c.ObservationProperties = info.ObservationProperties
 		}
 	}
