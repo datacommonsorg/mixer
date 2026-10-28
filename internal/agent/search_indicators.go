@@ -134,15 +134,34 @@ func entitiesWithData(
 }
 
 // fetchDescendantVariables resolves all descendant statistical variables for the given topic DCIDs, keyed by
-// topic DCID. The topic resolver returns one candidate per requested topic, with the topic's descendant variables
-// as children, and none for unknown topics or topics without variables, which get no key. V2Resolve errors are
-// returned unchanged, as in fetchCandidates.
+// topic DCID (see fetchDescendantCandidates). V2Resolve errors are returned unchanged, as in fetchCandidates.
 func (s *Service) fetchDescendantVariables(
 	ctx context.Context,
 	topicDcids []string,
 	target string,
 ) (map[string][]string, error) {
-	defer util.TimeTrack(time.Now(), "Agent: fetchDescendantVariables")
+	candidates, err := s.fetchDescendantCandidates(ctx, topicDcids, target)
+	if err != nil {
+		return nil, err
+	}
+	res := make(map[string][]string, len(candidates))
+	for topicDcid, children := range candidates {
+		res[topicDcid] = childDcids(children)
+	}
+	return res, nil
+}
+
+// fetchDescendantCandidates resolves the descendant statistical variable candidates (with their names) for
+// the given topic DCIDs, keyed by topic DCID, in hierarchy order. The topic resolver returns one candidate per
+// requested topic, with the topic's descendant variables as children, and none for unknown topics or topics
+// without variables, which get no key. A variable listed under several sub-topics appears once per listing.
+// V2Resolve errors are returned unchanged, as in fetchCandidates.
+func (s *Service) fetchDescendantCandidates(
+	ctx context.Context,
+	topicDcids []string,
+	target string,
+) (map[string][]*pbv2.ResolveResponse_Entity_Candidate, error) {
+	defer util.TimeTrack(time.Now(), "Agent: fetchDescendantCandidates")
 	if len(topicDcids) == 0 {
 		return nil, nil
 	}
@@ -162,20 +181,20 @@ func (s *Service) fetchDescendantVariables(
 		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
 	}
 
-	res := make(map[string][]string)
+	res := make(map[string][]*pbv2.ResolveResponse_Entity_Candidate)
 	for _, entity := range resp.GetEntities() {
 		for _, cand := range entity.GetCandidates() {
-			res[cand.GetDcid()] = append(res[cand.GetDcid()], childDcids(cand)...)
+			res[cand.GetDcid()] = append(res[cand.GetDcid()], cand.GetChildren()...)
 		}
 	}
 	return res, nil
 }
 
-// childDcids returns the DCIDs of a candidate's children.
-func childDcids(c *pbv2.ResolveResponse_Entity_Candidate) []string {
+// childDcids returns the DCIDs of the given candidates, in order.
+func childDcids(candidates []*pbv2.ResolveResponse_Entity_Candidate) []string {
 	var dcids []string
-	for _, child := range c.GetChildren() {
-		dcids = append(dcids, child.GetDcid())
+	for _, c := range candidates {
+		dcids = append(dcids, c.GetDcid())
 	}
 	return dcids
 }

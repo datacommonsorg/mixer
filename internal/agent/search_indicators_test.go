@@ -61,6 +61,14 @@ func TestSharedSearchHelpersReturnBackendErrors(t *testing.T) {
 				return err
 			},
 		},
+		{
+			name:         "fetchDescendantCandidates",
+			failResolver: ResolverTopic,
+			call: func(s *Service) error {
+				_, err := s.fetchDescendantCandidates(context.Background(), []string{"dc/topic/Health"}, "")
+				return err
+			},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			mock := &failingResolveMixer{mockMixerServer: &mockMixerServer{}, failResolver: tc.failResolver, err: backendErr}
