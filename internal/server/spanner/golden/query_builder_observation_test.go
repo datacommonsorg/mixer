@@ -29,15 +29,15 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func TestMultiEntityGetObservationsQuery(t *testing.T) {
+func TestGetObservationsQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityObservationsTestCases {
+	for _, c := range observationsTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -47,15 +47,15 @@ func TestMultiEntityGetObservationsQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
+func TestGetStatVarsByEntityQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityCheckVariableExistenceTestCases {
+	for _, c := range checkVariableExistenceTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -65,15 +65,15 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
+func TestCheckGroupPlaceExistenceQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityCheckGroupPlaceExistenceTestCases {
+	for _, c := range checkGroupPlaceExistenceTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -83,15 +83,15 @@ func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
+func TestGetObservationsContainedInPlaceQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityObservationsContainedInPlaceTestCases {
+	for _, c := range observationsContainedInPlaceTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
 					ContainedInPlaceAncestorFirstTypes:             c.ancestorFirstTypes,
 					ContainedInPlacePreferTimeSeriesScanPlaceTypes: c.preferTimeSeriesScanPlaceTypes,
 					ContainedInPlaceEntityScanMinVariables:         c.entityScanMinVars,
@@ -109,15 +109,15 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
+func TestGetStatVarGroupNodeQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityStatVarGroupNodeTestCases {
+	for _, c := range statVarGroupNodeTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -127,15 +127,15 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
+func TestGetFilteredSVGChildrenQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityFilteredSVGChildrenTestCases {
+	for _, c := range filteredSVGChildrenTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -145,11 +145,11 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetFilteredSVGChildrenQueryConfiguredBuildRight(t *testing.T) {
+func TestGetFilteredSVGChildrenQueryConfiguredBuildRight(t *testing.T) {
 	t.Parallel()
 
-	runQueryBuilderGoldenTest(t, "get_multientity_filtered_svg_default_existence_build_right.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+	runQueryBuilderGoldenTest(t, "get_filtered_svg_default_existence_build_right.sql", func(ctx context.Context) (interface{}, error) {
+		builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
 			BulkSVGBuildRightNodes: []string{"dc/g/Root"},
 		})
 		if err != nil {
@@ -166,7 +166,7 @@ func TestMultiEntityGetFilteredSVGChildrenQueryConfiguredBuildRight(t *testing.T
 	})
 }
 
-func TestMultiEntityGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T) {
+func TestGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T) {
 	t.Parallel()
 
 	for _, tc := range []struct {
@@ -222,7 +222,7 @@ func TestMultiEntityGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T)
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
+			builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{
 				BulkSVGBuildRightNodes: []string{"dc/g/Root"},
 			})
 			if err != nil {
@@ -247,16 +247,30 @@ func TestMultiEntityGetFilteredSVGChildrenQueryBuildRightSelection(t *testing.T)
 	}
 }
 
-// TestMultiEntityGetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
-func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
+func TestGetFilteredSVGChildrenQueryRejectsUnsupportedTemplate(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntityFilteredTopicTestCases {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, template := range []string{"", "Topic"} {
+		stmt, err := builder.GetFilteredSVGChildrenQuery(template, "dc/g/Root", []string{"country/USA"}, "", 1, false)
+		if err == nil {
+			t.Errorf("GetFilteredSVGChildrenQuery(template=%q) error = nil, want error; SQL:\n%s", template, stmt.SQL)
+		}
+	}
+}
+
+func TestGetFilteredTopicChildrenQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range filteredTopicTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -266,15 +280,15 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
+func TestGetSdmxObservationsQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range multiEntitySdmxObservationsTestCases {
+	for _, c := range sdmxObservationsTestCases {
 		c := c // Capture loop variable
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge})
 				if err != nil {
 					return nil, err
 				}
@@ -289,8 +303,8 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxObservationsQuery_Validation(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -428,8 +442,8 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxObservationsQueryTimePlans(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -488,8 +502,8 @@ func TestMultiEntityGetSdmxObservationsQueryTimePlans(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -541,8 +555,8 @@ func TestMultiEntityGetSdmxObservationsQueryDateArraysAreNonNull(t *testing.T) {
 	}
 }
 
-func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestSdmxTimePeriodUnrollPlans(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -639,13 +653,13 @@ func TestMultiEntitySdmxTimePeriodUnrollPlans(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	for _, c := range multiEntitySdmxObservationsTestCases {
+	for _, c := range sdmxObservationsTestCases {
 		stmt, err := builder.GetSdmxObservationsQuery(c.constraints, c.observationPropertyToEntitySlot, nil)
 		if err != nil {
 			t.Fatalf("GetSdmxObservationsQuery(%q) error = %v", c.name, err)
@@ -656,8 +670,8 @@ func TestMultiEntityGetSdmxObservationsQueryDoesNotUseFacetJSONFallback(t *testi
 	}
 }
 
-func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -684,14 +698,14 @@ func TestMultiEntityGetSdmxObservationsQueryUsesResolvedObservationAboutSlot(t *
 	}
 }
 
-func TestMultiEntityQueryBuildersUseCustomTableConfig(t *testing.T) {
+func TestQueryBuildersUseCustomTableConfig(t *testing.T) {
 	cfg := spanner.DefaultTableConfig()
 	cfg.TimeSeriesTable = "CustomTsTable"
 	cfg.ObservationTable = "CustomObsTable"
 	cfg.TimeSeriesByEntity1Index = "CustomEntity1Index"
 	cfg.TimeSeriesByEntity2Index = "CustomEntity2Index"
 	cfg.TimeSeriesByEntity3Index = "CustomEntity3Index"
-	builder, err := spanner.NewMultiEntityQueryBuilder(cfg, spanner.QueryConfig{
+	builder, err := spanner.NewObservationQueryBuilder(cfg, spanner.QueryConfig{
 		ContainedInPlacePreferTimeSeriesScanPlaceTypes: []string{"County"},
 		ContainedInPlaceEntityScanMinVariables:         1,
 	})
@@ -778,7 +792,7 @@ func assertSQLContains(t *testing.T, sql string, values ...string) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
+func TestGetSdmxAvailabilityQuery(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range []struct {
@@ -832,7 +846,7 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 		c := c
 		t.Run(c.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, c.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 				if err != nil {
 					return nil, err
 				}
@@ -847,9 +861,9 @@ func TestMultiEntityGetSdmxAvailabilityQuery(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
+func TestGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	runQueryBuilderGoldenTest(t, "get_sdmx_availability_filtered_destination_country.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+		builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 		if err != nil {
 			return nil, err
 		}
@@ -870,9 +884,9 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithDimensionFilters(t *testing.T) {
 	})
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
+func TestGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
 	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+		builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 		if err != nil {
 			return nil, err
 		}
@@ -886,9 +900,9 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriods(t *testing.T) {
 	})
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *testing.T) {
+func TestGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *testing.T) {
 	runQueryBuilderGoldenTest(t, "get_sdmx_availability_measurement_method_with_time_periods_and_unit.sql", func(ctx context.Context) (interface{}, error) {
-		builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+		builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 		if err != nil {
 			return nil, err
 		}
@@ -903,8 +917,8 @@ func TestMultiEntityGetSdmxAvailabilityQueryWithTimePeriodsAndSeriesFilter(t *te
 	})
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -936,8 +950,8 @@ func TestMultiEntityGetSdmxAvailabilityQueryTimePlan(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -968,7 +982,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryFilteredTimePlan(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
+func TestGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 	t.Parallel()
 	earthCountries := datacommons.ContainedInPlaceConstraint{Ancestor: "Earth", ChildPlaceType: "Country"}
 
@@ -1050,7 +1064,7 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			runQueryBuilderGoldenTest(t, tc.golden, func(ctx context.Context) (interface{}, error) {
-				builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: tc.useMaterializedLinkedEdge})
+				builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{UseMaterializedLinkedEdge: tc.useMaterializedLinkedEdge})
 				if err != nil {
 					return nil, err
 				}
@@ -1067,8 +1081,8 @@ func TestMultiEntityGetSdmxAvailabilityQueryContainedInPlace(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetSdmxAvailabilityQuery_Validation(t *testing.T) {
-	builder, err := spanner.NewMultiEntityQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+func TestGetSdmxAvailabilityQuery_Validation(t *testing.T) {
+	builder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
 	if err != nil {
 		t.Fatal(err)
 	}

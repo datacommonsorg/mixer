@@ -48,7 +48,7 @@ var sdmxFacetComponentIDs = map[string]struct{}{
 	datacommons.ComponentScalingFactor:     {},
 }
 
-// GetObservations retrieves observations using the new schema.
+// GetObservations retrieves observations for the given variables and entities.
 func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	stmt, err := sc.queryBuilder.GetObservationsQuery(variables, entities, date)
 	if err != nil {
@@ -94,7 +94,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Co
 	return queryDynamic(ctx, sc, *stmt)
 }
 
-// GetStatVarGroupNode fetches StatVarGroupNode info using multi-entity TimeSeries existence checks.
+// GetStatVarGroupNode fetches StatVarGroupNode info using TimeSeries existence checks.
 func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
 	if len(nodes) == 0 {
@@ -124,7 +124,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 	return svgNodes, nil
 }
 
-// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info using multi-entity TimeSeries filters.
+// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info using TimeSeries filters.
 func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
@@ -170,7 +170,7 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 		return queryStructs(
 			errCtx,
 			sc,
-			*GetSVGChildrenQuery(node, includeDefinitions),
+			*sc.queryBuilder.GetSVGChildrenQuery(node, includeDefinitions),
 			func() interface{} {
 				return &SVGChild{}
 			},
@@ -234,7 +234,7 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 	}, nil
 }
 
-// GetFilteredTopic fetches filtered Topic counts using multi-entity TimeSeries filters.
+// GetFilteredTopic fetches filtered Topic counts using TimeSeries filters.
 func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
 	counts := make(map[string]int, len(nodes))
 	for _, node := range nodes {
@@ -560,7 +560,7 @@ func prepareSdmxObservationsQuery(
 	ctx context.Context,
 	constraints map[string]*sdmxpb.SdmxComponentConstraint,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
-	queryBuilder *multiEntityQueryBuilder,
+	queryBuilder *observationQueryBuilder,
 ) (*preparedSdmxObservationsQuery, error) {
 	if err := datacommons.ValidateDataConstraints(constraints); err != nil {
 		return nil, err
@@ -852,7 +852,7 @@ func prepareSdmxAvailabilityQuery(
 	ctx context.Context,
 	req *sdmxpb.SdmxAvailabilityQuery,
 	getNodeEdgesByID getNodeEdgesByIDFunc,
-	queryBuilder *multiEntityQueryBuilder,
+	queryBuilder *observationQueryBuilder,
 ) (*spanner.Statement, error) {
 	if err := datacommons.ValidateAvailabilityConstraints(req.GetConstraints()); err != nil {
 		return nil, err

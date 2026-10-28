@@ -19,8 +19,8 @@ import (
 	"strings"
 )
 
-// MultiEntityStatements contains preformatted SQL templates for multi-entity query builders.
-type MultiEntityStatements struct {
+// ObservationStatements contains preformatted SQL templates for the observation query builder.
+type ObservationStatements struct {
 	getObsBoth                                     string
 	getObsBothWithDate                             string
 	getObsBothLatest                               string
@@ -66,6 +66,24 @@ type MultiEntityStatements struct {
 	filterEntity3ByPlaces                          string
 	filterEntity2Exists                            string
 	filterEntity3Exists                            string
+
+	// Stat var group and topic hierarchy templates. They read only Node and
+	// Edge; the builder composes them with the TimeSeries filters above.
+
+	// Attach stat var groups.
+	attachSVGs string
+	// Fetch all children of a stat var group without definitions.
+	getSVGChildren string
+	// Fetch all children of a stat var group with definitions.
+	getSVGChildrenWithDefinitions string
+	// Fetch filtered count of descendent stat vars for a given variable group.
+	getFilteredChildSVGs string
+	// Fetch filtered descendent stat vars for a given variable group without definitions.
+	getFilteredChildSVs string
+	// Fetch filtered descendent stat vars for a given variable group with definitions.
+	getFilteredChildSVsWithDefinitions string
+	// Fetch filtered count of descendent stat vars for a given topic.
+	getFilteredTopic string
 }
 
 type containedInPlaceStatements struct {
@@ -79,9 +97,9 @@ type containedInPlaceAccessPathStatements struct {
 	entityScan   containedInPlaceStatements
 }
 
-// NewMultiEntityStatements builds multi-entity SQL templates from table configuration.
-func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
-	if err := validateMultiEntityTableConfig(cfg); err != nil {
+// NewObservationStatements builds the observation SQL templates from table configuration.
+func NewObservationStatements(cfg TableConfig) (*ObservationStatements, error) {
+	if err := validateTableConfig(cfg); err != nil {
 		return nil, err
 	}
 	sdmxDateStatementHint := columnarBatchStatementHint(cfg) + "\t\t"
@@ -110,7 +128,7 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 	ancestorFirstContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, ancestorFirstPlacesCTE)
 	materializedContainedInPlace := newContainedInPlaceAccessPathStatements(cfg, materializedPlacesCTE)
 
-	return &MultiEntityStatements{
+	return &ObservationStatements{
 		// Retrieve observations where both variables and entities are present (full series)
 		getObsBoth: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent
@@ -827,6 +845,119 @@ func NewMultiEntityStatements(cfg TableConfig) (*MultiEntityStatements, error) {
 		filterEntity2Exists: "WHERE t.entity2 IS NOT NULL",
 
 		filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
+		attachSVGs: `SELECT
+				node AS child_svg,
+				node AS svg
+				FROM UNNEST(@nodes) AS node`,
+		getSVGChildren: `		SELECT DISTINCT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e.predicate,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id`,
+		getSVGChildrenWithDefinitions: `		SELECT DISTINCT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e.predicate,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id`,
+		getFilteredChildSVs: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			%s
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+		getFilteredChildSVsWithDefinitions: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			%s
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+		getFilteredChildSVGs: `		SELECT
+			n.subject_id,
+			IFNULL(n.name, '') AS name,
+			e_counts.descendent_stat_var_count
+		FROM Node n
+		JOIN (
+			SELECT
+				e.object_id AS subject_id,
+				COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
+			FROM Edge e
+			%s
+			WHERE e.predicate = 'linkedMemberOf'
+				AND e.object_id IN (
+					SELECT DISTINCT subject_id
+					FROM Edge
+					WHERE object_id = @node
+						AND predicate = 'specializationOf'
+					UNION ALL
+					SELECT @node AS subject_id
+				)
+			GROUP BY
+				e.object_id
+		) e_counts
+			ON n.subject_id = e_counts.subject_id`,
+		getFilteredTopic: `		SELECT
+			e.object_id AS subject_id,
+			COUNT(DISTINCT e.subject_id) AS descendent_stat_var_count
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		%[1]s
+		WHERE e.predicate = 'linkedMember'
+			AND e.object_id %[2]s
+		GROUP BY
+			e.object_id`,
 	}, nil
 }
 
@@ -1016,7 +1147,7 @@ func newContainedInPlaceStatements(cfg TableConfig, placesCTE, timeSeriesSource 
 	}
 }
 
-func validateMultiEntityTableConfig(cfg TableConfig) error {
+func validateTableConfig(cfg TableConfig) error {
 	missing := []string{}
 	if strings.TrimSpace(cfg.TimeSeriesTable) == "" {
 		missing = append(missing, "TimeSeriesTable")
@@ -1037,7 +1168,7 @@ func validateMultiEntityTableConfig(cfg TableConfig) error {
 		missing = append(missing, "TimeSeriesByProvenanceIndex")
 	}
 	if len(missing) > 0 {
-		return fmt.Errorf("NewMultiEntityStatements: missing required TableConfig fields: %s", strings.Join(missing, ", "))
+		return fmt.Errorf("NewObservationStatements: missing required TableConfig fields: %s", strings.Join(missing, ", "))
 	}
 	return nil
 }

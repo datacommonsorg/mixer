@@ -530,20 +530,6 @@ func GetKeyValueStoreQuery(typeFilter KeyValueStoreType, keys []string) *spanner
 	}
 }
 
-// GetSVGChildren returns a query to get all children for a given stat var group.
-func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statement {
-	sqlTemplate := statements.getSVGChildren
-	if includeDefinitions {
-		sqlTemplate = statements.getSVGChildrenWithDefinitions
-	}
-	return &spanner.Statement{
-		SQL: sqlTemplate,
-		Params: map[string]interface{}{
-			"node": node,
-		},
-	}
-}
-
 // generateSafeAliasMap generates a map of safe aliases for SPARQL queries.
 func generateSafeAliasMap(queries []*types.Query) map[string]string {
 	safeAliasMap := make(map[string]string)
