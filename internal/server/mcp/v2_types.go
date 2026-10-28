@@ -43,7 +43,8 @@ type V2ResolveEntitiesInput struct {
 // with neither query nor topic_dcids, the top-level topics are returned. Field descriptions give each field's
 // format, limit and an example; when and how to use them is in tools/search_indicators.md.
 type V2SearchIndicatorsInput struct {
-	Query       string   `json:"query,omitempty" jsonschema:"One concept to search for, e.g. 'unemployment rate'. Cannot be combined with topic_dcids."`
-	TopicDcids  []string `json:"topic_dcids,omitempty" jsonschema:"Topic DCIDs to browse, e.g. ['dc/topic/Health']. Up to 10. Cannot be combined with query."`
-	EntityDcids []string `json:"entity_dcids,omitempty" jsonschema:"Entity DCIDs from resolve_entities, e.g. ['geoId/06', 'country/KEN']. Up to 20."`
+	Query               string   `json:"query,omitempty" jsonschema:"One concept to search for, e.g. 'unemployment rate'. Cannot be combined with topic_dcids."`
+	TopicDcids          []string `json:"topic_dcids,omitempty" jsonschema:"Topic DCIDs to browse, e.g. ['dc/topic/Health']. Up to 10. Cannot be combined with query."`
+	EntityDcids         []string `json:"entity_dcids,omitempty" jsonschema:"Entity DCIDs from resolve_entities, e.g. ['geoId/06', 'country/KEN']. Up to 20, or exactly one with child_entity_type_dcid."`
+	ChildEntityTypeDcid string   `json:"child_entity_type_dcid,omitempty" jsonschema:"A child entity type DCID from resolve_entities' candidate_child_entity_types, e.g. 'County'. Requires exactly one DCID in entity_dcids, the parent entity: indicators are then kept when they have data for that entity's child entities of this type, rather than for the entity itself."`
 }
