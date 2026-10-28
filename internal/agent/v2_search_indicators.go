@@ -39,6 +39,13 @@ const (
 	// v2MaxTopicDcids caps topic_dcids per call, since each requested topic returns all its direct members.
 	// Keep in sync with the 'topic_dcids' field description in internal/server/mcp/v2_types.go.
 	v2MaxTopicDcids = 10
+	// v2MaxFlattenedVariables is the largest number of variables below a topic (with data, when filtered) for
+	// which its row lists all of them in member_variables, with no member_topics. Sparse filters (child mode,
+	// schools) prune sibling topics and leave chains of single-member topics, each costing the agent a browse;
+	// listing a small subtree's variables at once removes those calls. It is kept low because search can
+	// return a parent topic and its sub-topics as separate rows, each listing the same variables: at 20, such
+	// searches grew past the size where agent clients move tool output to files.
+	v2MaxFlattenedVariables = 10
 	// v2ChildEntitySampleSize is how many child entities child mode checks for data. The sample is the same
 	// on every call (see SampleChildEntities), so the children's variable sets stay cached across calls.
 	v2ChildEntitySampleSize = 5
@@ -382,11 +389,13 @@ func (sc *v2EntityScope) noteScope() string {
 }
 
 // v2IndicatorData holds what the response builders need beyond the candidates: the entity scope, each
-// topic's descendant variables and, when entities are given, which entities have data for each variable.
+// topic's descendant variables (in hierarchy order) and their names, and, when entities are given, which
+// entities have data for each variable.
 type v2IndicatorData struct {
 	v2EntityScope
-	descendants  map[string][]string
-	availability map[string]map[string]bool
+	descendants   map[string][]string
+	variableNames map[string]string
+	availability  map[string]map[string]bool
 }
 
 // fetchV2IndicatorData fetches the descendant variables of every topic among the candidates and their
@@ -400,12 +409,13 @@ func (s *Service) fetchV2IndicatorData(
 	target string,
 ) (*v2IndicatorData, error) {
 	topicDcids, directVarDcids := collectSubtopicsAndDirectVars(candidates)
-	descendants, err := s.fetchDescendantVariables(ctx, topicDcids, target)
+	descendantCandidates, err := s.fetchDescendantCandidates(ctx, topicDcids, target)
 	if err != nil {
 		slog.Warn("Failed to fetch topic descendants", "error", err, "topicsCount", len(topicDcids))
 		return nil, errV2TopicLookupFailed(err)
 	}
-	data := &v2IndicatorData{v2EntityScope: *scope, descendants: descendants}
+	descendants, variableNames := splitDescendantCandidates(descendantCandidates)
+	data := &v2IndicatorData{v2EntityScope: *scope, descendants: descendants, variableNames: variableNames}
 	if !data.filtered() {
 		return data, nil
 	}
@@ -415,6 +425,22 @@ func (s *Service) fetchV2IndicatorData(
 		return nil, errV2AvailabilityFailed(err)
 	}
 	return data, nil
+}
+
+// splitDescendantCandidates returns each topic's descendant variable DCIDs, in hierarchy order, and the
+// variables' names.
+func splitDescendantCandidates(
+	candidates map[string][]*pbv2.ResolveResponse_Entity_Candidate,
+) (map[string][]string, map[string]string) {
+	descendants := make(map[string][]string, len(candidates))
+	names := map[string]string{}
+	for topicDcid, children := range candidates {
+		descendants[topicDcid] = childDcids(children)
+		for _, child := range children {
+			names[child.GetDcid()] = child.GetName()
+		}
+	}
+	return descendants, names
 }
 
 // filtered reports whether results are filtered by data availability (entities were given).
@@ -441,17 +467,24 @@ func (d *v2IndicatorData) variableEntities(varDcid string) []string {
 	return d.reported(entitiesWithData([]string{varDcid}, d.entities, d.availability))
 }
 
-// descendantCount returns the number of distinct variables at any depth under the topic (a variable can be
-// listed under several sub-topics), counting only those with data for some entity when filtered. A topic is
-// kept only when this is positive, which when filtered means some entity has data under it.
+// descendantCount returns the number of distinct variables at any depth under the topic, counting only those
+// with data for some entity when filtered (see distinctVariablesWithData). A topic is kept only when this is
+// positive, which when filtered means some entity has data under it.
 func (d *v2IndicatorData) descendantCount(topicDcid string) int {
-	counted := map[string]struct{}{}
+	return len(d.distinctVariablesWithData(topicDcid))
+}
+
+// distinctVariablesWithData returns the distinct variables at any depth under the topic (a variable can be
+// listed under several sub-topics), with data for some entity when filtered, in hierarchy order. Both the
+// descendant count and a flattened row's member variables come from it, so they always agree.
+func (d *v2IndicatorData) distinctVariablesWithData(topicDcid string) []string {
+	variables := newDcidSet()
 	for _, varDcid := range d.descendants[topicDcid] {
-		if _, ok := counted[varDcid]; !ok && d.hasDataForVariable(varDcid) {
-			counted[varDcid] = struct{}{}
+		if d.hasDataForVariable(varDcid) {
+			variables.add(varDcid)
 		}
 	}
-	return len(counted)
+	return variables.dcids
 }
 
 // hasDataForVariable reports whether a variable row or member is kept: always when results are not filtered,
@@ -569,14 +602,31 @@ func buildV2Table(
 }
 
 // topicRow returns the row for a topic candidate, or false when no variables (with data, when filtered) are
-// below it.
+// below it. A topic with at most v2MaxFlattenedVariables variables below it lists all of them and no member
+// topics (see flattenedVariables); others list their direct members. Either way the row depends only on the
+// topic and the filter, so it is the same in search and browse.
 func (d *v2IndicatorData) topicRow(c *pbv2.ResolveResponse_Entity_Candidate) ([]any, bool) {
 	count := d.descendantCount(c.GetDcid())
 	if count == 0 {
 		return nil, false
 	}
-	memberTopics, memberVariables := v2TopicMembers(c, d)
+	var memberTopics, memberVariables []v2IndicatorRef
+	if count <= v2MaxFlattenedVariables {
+		memberTopics, memberVariables = []v2IndicatorRef{}, d.flattenedVariables(c.GetDcid())
+	} else {
+		memberTopics, memberVariables = v2TopicMembers(c, d)
+	}
 	return []any{c.GetDcid(), c.GetName(), d.topicEntities(c.GetDcid()), memberTopics, memberVariables, count}, true
+}
+
+// flattenedVariables returns the topic's distinct variables with data (see distinctVariablesWithData) as
+// member refs, so a variable listed under several sub-topics appears once, at its first position.
+func (d *v2IndicatorData) flattenedVariables(topicDcid string) []v2IndicatorRef {
+	variables := []v2IndicatorRef{}
+	for _, varDcid := range d.distinctVariablesWithData(topicDcid) {
+		variables = append(variables, v2IndicatorRef{Dcid: varDcid, Name: d.variableNames[varDcid]})
+	}
+	return variables
 }
 
 // variableRow returns the row for a variable candidate, or false when results are filtered and no entity has
