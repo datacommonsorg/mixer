@@ -140,4 +140,8 @@ VALUES
   ('containedInPlace', 'northamerica', 'Country', 'country/USA', 'dc/base/WikidataOtherIdGeos'),
   ('containedInPlace', 'europe', 'Country', 'country/FRA', 'dc/base/WikidataOtherIdGeos'),
   ('containedInPlace', 'europe', 'Country', 'country/GBR', 'dc/base/WikidataOtherIdGeos'),
-  ('containedInPlace', 'asia', 'Country', 'country/IND', 'dc/base/WikidataOtherIdGeos');
+  ('containedInPlace', 'asia', 'Country', 'country/IND', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'testRegion/duplicateProvenance', 'Country', 'country/CAN', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'testRegion/duplicateProvenance', 'Country', 'country/MEX', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'testRegion/duplicateProvenance', 'Country', 'country/USA', 'dc/base/WikidataOtherIdGeos'),
+  ('containedInPlace', 'testRegion/duplicateProvenance', 'Country', 'country/USA', 'dc/base/OtherProvenance');

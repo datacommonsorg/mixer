@@ -105,6 +105,27 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 			}},
 		},
 		{
+			name:        "SampleChildEntities Cache Hit",
+			requestType: dispatcher.TypeSampleChildEntities,
+			mockSetup: func(mock redismock.ClientMock) {
+				request := &pbv2.SampleChildEntitiesRequest{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: 5}
+				response := &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{
+					"geoId/06": {Dcids: []string{"geoId/06085"}},
+				}}
+				key, _ := generateCacheKey(request)
+				anyMsg, _ := anypb.New(response)
+				marshaled, _ := proto.Marshal(anyMsg)
+				cached, _ := util.Zip(marshaled)
+				mock.ExpectGet(key).SetVal(string(cached))
+			},
+			originalRequest: &pbv2.SampleChildEntitiesRequest{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: 5},
+			wantOutcome:     dispatcher.Done,
+			wantErr:         false,
+			wantResponse: &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{
+				"geoId/06": {Dcids: []string{"geoId/06085"}},
+			}},
+		},
+		{
 			name:        "Cache Miss",
 			requestType: dispatcher.TypeNode,
 			mockSetup: func(mock redismock.ClientMock) {
@@ -300,6 +321,11 @@ func TestNewEmptyResponse(t *testing.T) {
 			name:        "ChildTypes",
 			requestType: dispatcher.TypeChildTypes,
 			want:        &pbv2.ChildTypesResponse{},
+		},
+		{
+			name:        "SampleChildEntities",
+			requestType: dispatcher.TypeSampleChildEntities,
+			want:        &pbv2.SampleChildEntitiesResponse{},
 		},
 	}
 

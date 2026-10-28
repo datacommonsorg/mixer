@@ -671,6 +671,19 @@ func GetChildTypesQuery(ancestors []string) *spanner.Statement {
 	}
 }
 
+// SampleChildEntitiesQuery returns a Spanner statement listing, per ancestor, up to rowLimit LinkedEdge
+// child rows of childType (a child with several provenance rows appears once per row).
+func SampleChildEntitiesQuery(ancestors []string, childType string, rowLimit int) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.sampleChildEntities,
+		Params: map[string]interface{}{
+			"ancestors":  ancestors,
+			"child_type": childType,
+			"row_limit":  int64(rowLimit),
+		},
+	}
+}
+
 // FilterNodesByTypesQuery returns a Spanner statement to filter nodes by type.
 func FilterNodesByTypesQuery(nodes []string, typeFilters []string) *spanner.Statement {
 	return &spanner.Statement{

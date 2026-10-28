@@ -54,6 +54,7 @@ type DataSource interface {
 	SdmxAvailability(context.Context, *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error)
 	FilterStatVarsByEntity(context.Context, *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error)
 	ChildTypes(context.Context, *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error)
+	SampleChildEntities(context.Context, *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error)
 }
 
 // NodeFetchAll fetches all NodeResponse pages for a given request by repeatedly calling ds.Node

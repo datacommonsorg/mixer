@@ -2293,3 +2293,41 @@ func TestMergeMultiChildTypes(t *testing.T) {
 		})
 	}
 }
+
+func TestMergeMultiSampleChildEntities(t *testing.T) {
+	type children = pbv2.SampleChildEntitiesResponse_ChildEntities
+	for _, c := range []struct {
+		desc  string
+		all   []*pbv2.SampleChildEntitiesResponse
+		limit int32
+		want  *pbv2.SampleChildEntitiesResponse
+	}{
+		{
+			desc:  "no responses",
+			limit: 3,
+			want:  &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*children{}},
+		},
+		{
+			desc:  "per ancestor, response order, deduplicated and capped",
+			limit: 3,
+			all: []*pbv2.SampleChildEntitiesResponse{
+				{ChildEntities: map[string]*children{"geoId/06": {Dcids: []string{"geoId/06085", "geoId/06001"}}}},
+				{},
+				{ChildEntities: map[string]*children{
+					"geoId/06":    {Dcids: []string{"geoId/06001", "geoId/06037", "geoId/06075"}},
+					"country/KEN": {Dcids: []string{"wikidataId/Q1"}},
+				}},
+			},
+			want: &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*children{
+				"geoId/06":    {Dcids: []string{"geoId/06085", "geoId/06001", "geoId/06037"}},
+				"country/KEN": {Dcids: []string{"wikidataId/Q1"}},
+			}},
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			if diff := cmp.Diff(c.want, MergeMultiSampleChildEntities(c.all, c.limit), protocmp.Transform()); diff != "" {
+				t.Errorf("MergeMultiSampleChildEntities() diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}

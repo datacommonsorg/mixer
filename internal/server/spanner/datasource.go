@@ -1217,6 +1217,20 @@ func (sds *SpannerDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTyp
 	return resp, nil
 }
 
+// SampleChildEntities returns a sample of each requested ancestor's child entities of one type from the
+// LinkedEdge table.
+func (sds *SpannerDataSource) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	samples, err := sds.client.SampleChildEntities(ctx, req.GetAncestors(), req.GetChildType(), int(req.GetLimitPerAncestor()))
+	if err != nil {
+		return nil, err
+	}
+	resp := &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{}}
+	for ancestor, children := range samples {
+		resp.ChildEntities[ancestor] = &pbv2.SampleChildEntitiesResponse_ChildEntities{Dcids: children}
+	}
+	return resp, nil
+}
+
 // filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.
 func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNodes []string) []*pbv1.VariableGroupInfoResponse {
 	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data)+len(invalidNodes))

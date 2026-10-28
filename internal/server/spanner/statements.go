@@ -121,6 +121,9 @@ var statements = struct {
 	// Filter nodes by type.
 	filterNodesByTypes string
 	getChildTypes      string
+
+	// Sample child entities of one type per ancestor.
+	sampleChildEntities string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
 	// Check existence of variable groups against sources.
@@ -556,6 +559,23 @@ OR CreationTimestamp > (
 		WHERE
 			predicate = 'containedInPlace'
 			AND ancestor IN UNNEST(@ancestors)`,
+	// sampleChildEntities returns, per ancestor, up to @row_limit LinkedEdge rows for child entities of one
+	// type. Ordering by FARM_FINGERPRINT spreads the sample across the ancestor (key order would return only
+	// the first state's counties for the USA) and returns the same sample every time, so it caches. A child
+	// with several provenance rows appears more than once, so callers oversample and dedupe.
+	sampleChildEntities: `		SELECT
+			a AS ancestor,
+			ARRAY(
+				SELECT child
+				FROM LinkedEdge
+				WHERE
+					predicate = 'containedInPlace'
+					AND ancestor = a
+					AND child_type = @child_type
+				ORDER BY FARM_FINGERPRINT(child)
+				LIMIT @row_limit
+			) AS children
+		FROM UNNEST(@ancestors) AS a`,
 	nodeTypeExistence: `
 			AND EXISTS (
 				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)

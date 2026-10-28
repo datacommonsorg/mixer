@@ -180,6 +180,17 @@ func (rc *RemoteClient) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequ
 	return resp, nil
 }
 
+// SampleChildEntities fetches child entity samples from the remote mixer (e.g. the base DC for a custom DC).
+// Like ChildTypes, failures are returned rather than suppressed, so that DataSources.SampleChildEntities can
+// tell whether any source succeeded.
+func (rc *RemoteClient) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	resp := &pbv2.SampleChildEntitiesResponse{}
+	if err := util.FetchRemote(ctx, rc.metadata, rc.httpClient, "/v2/internal/sample-child-entities", req, resp); err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
 func (rc *RemoteClient) SdmxAvailability(ctx context.Context, req *sdmxpb.SdmxAvailabilityQuery) (*sdmxpb.SdmxAvailabilityResult, error) {
 	resp := &sdmxpb.SdmxAvailabilityResult{}
 	err := util.FetchRemote(ctx, rc.metadata, rc.httpClient, "/v2/internal/sdmx/availability", req, resp)

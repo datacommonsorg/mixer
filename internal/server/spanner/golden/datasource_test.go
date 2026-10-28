@@ -112,6 +112,9 @@ func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []stri
 func (m *mockSpannerClient) GetChildTypes(ctx context.Context, ancestors []string) (map[string][]string, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) SampleChildEntities(ctx context.Context, ancestors []string, childType string, limit int) (map[string][]string, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	res := map[string][]string{}
 	for _, typeFilter := range typeFilters {
