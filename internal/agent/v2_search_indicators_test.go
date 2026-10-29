@@ -252,8 +252,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{"geoId/06"},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 					{"dc/topic/Economy", "Economy", []string{"geoId/06"},
 						refs(), refs("UnemploymentRate", "Unemployment Rate"), 1},
 				}},
@@ -268,8 +267,8 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance", "Count_Asthma", "People With Asthma"), 3},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance", "Count_Insured", "People With Health Insurance",
+							"Count_Asthma", "People With Asthma"), 3},
 					{"dc/topic/Economy", "Economy", []string{},
 						refs(), refs("UnemploymentRate", "Unemployment Rate"), 1},
 				}},
@@ -288,8 +287,7 @@ func TestV2SearchIndicators(t *testing.T) {
 					{"dc/topic/Insurance", "Health Insurance", []string{"geoId/06"},
 						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 					{"dc/topic/Health", "Health", []string{"geoId/06"},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 				}},
 			},
 		},
@@ -319,8 +317,8 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance", "Count_Asthma", "People With Asthma"), 3},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance", "Count_Insured", "People With Health Insurance",
+							"Count_Asthma", "People With Asthma"), 3},
 					{"dc/topic/Economy", "Economy", []string{},
 						refs(), refs("UnemploymentRate", "Unemployment Rate"), 1},
 				}},
@@ -389,8 +387,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{"geoId/06"},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 				}},
 				VariableCandidates: &Table{Columns: v2VariableColumns, Rows: [][]any{
 					{"Count_Uninsured", "People Without Health Insurance", []string{"geoId/06"}, []string{}},
@@ -403,8 +400,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{"geoId/06"},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 				}},
 			},
 		},
@@ -414,8 +410,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns, Rows: [][]any{
 					{"dc/topic/Health", "Health", []string{"geoId/06"},
-						refs("dc/topic/Insurance", "Health Insurance"),
-						refs("Count_Uninsured", "People Without Health Insurance"), 1},
+						refs(), refs("Count_Uninsured", "People Without Health Insurance"), 1},
 				}},
 			},
 		},
@@ -513,6 +508,104 @@ func firstColumn(table *Table) []string {
 		dcids = append(dcids, row[0].(string))
 	}
 	return dcids
+}
+
+// overLimitVar is the variable that takes dc/topic/OverLimit in newFlatteningMock over the limit.
+var overLimitVar = fmt.Sprintf("A%d", v2MaxFlattenedVariables+1)
+
+// seqDcids returns prefix+from through prefix+to, e.g. seqDcids("A", 1, 3) is [A1 A2 A3].
+func seqDcids(prefix string, from, to int) []string {
+	var dcids []string
+	for i := from; i <= to; i++ {
+		dcids = append(dcids, fmt.Sprintf("%s%d", prefix, i))
+	}
+	return dcids
+}
+
+// namedRefs returns member refs for variables named "Variable <dcid>", as in newFlatteningMock.
+func namedRefs(dcids ...string) []v2IndicatorRef {
+	out := []v2IndicatorRef{}
+	for _, dcid := range dcids {
+		out = append(out, v2IndicatorRef{Dcid: dcid, Name: "Variable " + dcid})
+	}
+	return out
+}
+
+// newFlatteningMock returns a mock with topics around v2MaxFlattenedVariables (N = 10):
+//   - dc/topic/AtLimit has N distinct variables: its sub-topic's A1-A5, then A1 again and A6-AN.
+//   - dc/topic/OverLimit adds A(N+1) and a sub-topic (Z1) that no entity has data for: N+2 variables unfiltered.
+//
+// geoId/full has data for A1-A(N+1), and geoId/few only for A1 and A(N+1).
+func newFlatteningMock() *mockV2SearchIndicatorsServer {
+	atLimitMembers := append([]string{"dc/topic/AtLimitSub", "A1"}, seqDcids("A", 6, v2MaxFlattenedVariables)...)
+	overLimitMembers := append(append([]string{}, atLimitMembers...), overLimitVar, "dc/topic/NoDataSub")
+	variableNames := map[string]string{"Z1": "Variable Z1"}
+	for _, dcid := range seqDcids("A", 1, v2MaxFlattenedVariables+1) {
+		variableNames[dcid] = "Variable " + dcid
+	}
+	return &mockV2SearchIndicatorsServer{
+		topics: map[string]mockTopic{
+			"dc/topic/AtLimit":    {name: "At Limit", members: atLimitMembers},
+			"dc/topic/AtLimitSub": {name: "At Limit Sub", members: seqDcids("A", 1, 5)},
+			"dc/topic/OverLimit":  {name: "Over Limit", members: overLimitMembers},
+			"dc/topic/NoDataSub":  {name: "No Data Sub", members: []string{"Z1"}},
+		},
+		variableNames: variableNames,
+		entityVariables: map[string][]string{
+			"geoId/full": seqDcids("A", 1, v2MaxFlattenedVariables+1),
+			"geoId/few":  {"A1", overLimitVar},
+		},
+	}
+}
+
+func TestV2SearchIndicatorsFlattensSmallTopics(t *testing.T) {
+	tests := []struct {
+		name string
+		req  *V2SearchIndicatorsRequest
+		want []any
+	}{
+		{
+			// Without entities, every variable counts toward the limit. A1, listed directly and under the sub-topic,
+			// appears once, at its first position.
+			name: "a topic with exactly the limit lists all its variables in hierarchy order, without member topics",
+			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/AtLimit"}},
+			want: []any{"dc/topic/AtLimit", "At Limit", []string{}, refs(), namedRefs(seqDcids("A", 1, v2MaxFlattenedVariables)...), v2MaxFlattenedVariables},
+		},
+		{
+			name: "a topic over the limit lists its direct members",
+			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/OverLimit"}},
+			want: []any{"dc/topic/OverLimit", "Over Limit", []string{},
+				refs("dc/topic/AtLimitSub", "At Limit Sub", "dc/topic/NoDataSub", "No Data Sub"),
+				namedRefs(append(append([]string{"A1"}, seqDcids("A", 6, v2MaxFlattenedVariables)...), overLimitVar)...),
+				v2MaxFlattenedVariables + 2},
+		},
+		{
+			name: "filtered, a topic over the limit lists direct members with data and drops sub-topics without data",
+			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/OverLimit"}, EntityDcids: []string{"geoId/full"}},
+			want: []any{"dc/topic/OverLimit", "Over Limit", []string{"geoId/full"},
+				refs("dc/topic/AtLimitSub", "At Limit Sub"),
+				namedRefs(append(append([]string{"A1"}, seqDcids("A", 6, v2MaxFlattenedVariables)...), overLimitVar)...),
+				v2MaxFlattenedVariables + 1},
+		},
+		{
+			name: "filtering that leaves a topic under the limit lists its variables with data",
+			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/OverLimit"}, EntityDcids: []string{"geoId/few"}},
+			want: []any{"dc/topic/OverLimit", "Over Limit", []string{"geoId/few"}, refs(), namedRefs("A1", overLimitVar), 2},
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := newFlatteningMock()
+			got, err := NewService(mock, NewCache(mock), nil).V2SearchIndicators(context.Background(), tc.req)
+			if err != nil {
+				t.Fatalf("V2SearchIndicators() error = %v", err)
+			}
+			want := &Table{Columns: v2TopicColumns, Rows: [][]any{tc.want}}
+			if diff := cmp.Diff(want, got.TopicCandidates); diff != "" {
+				t.Errorf("topic rows mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
 }
 
 func TestV2SearchIndicatorsBrowseKeepsRequestOrder(t *testing.T) {
