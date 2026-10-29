@@ -736,7 +736,7 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			wantMsg:  "failed to sample child entities: a backend service timed out; retry the call shortly",
 		},
 		{
-			// Deployments without the LinkedEdge table fail with InvalidArgument, whose text must not reach the caller.
+			// Deployments configured for LinkedEdge without the table fail with InvalidArgument, whose text must not reach the caller.
 			name:     "child sampling failure",
 			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
 			errs:     map[string]error{"SampleChildEntities": status.Error(codes.InvalidArgument, "Table not found: LinkedEdge")},

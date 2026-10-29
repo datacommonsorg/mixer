@@ -32,7 +32,7 @@ const (
 
 // SampleChildEntities returns, for each requested ancestor, a sample of its child entities of one type, for
 // in-process consumers such as the agent service. It is served by the dispatcher's data sources (Spanner
-// LinkedEdge, and remote data sources for custom DC instances).
+// LinkedEdge or Edge, and remote data sources for custom DC instances).
 func (s *Server) SampleChildEntities(ctx context.Context, in *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
 	if in == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")

@@ -18,9 +18,20 @@ import (
 	"context"
 	"testing"
 
+	mixerspanner "github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 )
+
+// childQueryConfigs covers both sources of child entities, LinkedEdge and Edge. The seed data holds the same
+// containment in both, so every child entity test expects the same results from each.
+var childQueryConfigs = []struct {
+	name        string
+	queryConfig mixerspanner.QueryConfig
+}{
+	{name: "LinkedEdge", queryConfig: mixerspanner.QueryConfig{UseMaterializedLinkedEdge: true}},
+	{name: "Edge", queryConfig: mixerspanner.QueryConfig{}},
+}
 
 func TestGetChildTypes(t *testing.T) {
 	s := requireSuite(t)
@@ -42,16 +53,23 @@ func TestGetChildTypes(t *testing.T) {
 			want: map[string][]string{},
 		},
 	}
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			got, err := s.spannerClient.GetChildTypes(context.Background(), tc.ancestors)
-			if err != nil {
-				t.Fatalf("GetChildTypes() error = %v", err)
-			}
-			// Types per ancestor come back in scan order, so compare them as sets.
-			if diff := cmp.Diff(tc.want, got, cmpopts.SortSlices(func(a, b string) bool { return a < b })); diff != "" {
-				t.Errorf("GetChildTypes() mismatch (-want +got):\n%s", diff)
-			}
-		})
+	for _, cfg := range childQueryConfigs {
+		client, err := s.newSpannerClient(context.Background(), cfg.queryConfig)
+		if err != nil {
+			t.Fatalf("newSpannerClient(%s) error = %v", cfg.name, err)
+		}
+		defer client.Close()
+		for _, tc := range tests {
+			t.Run(cfg.name+"/"+tc.name, func(t *testing.T) {
+				got, err := client.GetChildTypes(context.Background(), tc.ancestors)
+				if err != nil {
+					t.Fatalf("GetChildTypes() error = %v", err)
+				}
+				// Types per ancestor come back in scan order, so compare them as sets.
+				if diff := cmp.Diff(tc.want, got, cmpopts.SortSlices(func(a, b string) bool { return a < b })); diff != "" {
+					t.Errorf("GetChildTypes() mismatch (-want +got):\n%s", diff)
+				}
+			})
+		}
 	}
 }

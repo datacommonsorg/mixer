@@ -1212,7 +1212,8 @@ func (sds *SpannerDataSource) SdmxAvailability(ctx context.Context, req *sdmxpb.
 	return sds.client.GetSdmxAvailability(ctx, req)
 }
 
-// ChildTypes returns the child entity types of each requested ancestor from the LinkedEdge table.
+// ChildTypes returns the child entity types of each requested ancestor from the LinkedEdge table, or from
+// Edge when LinkedEdge is disabled.
 func (sds *SpannerDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
 	childTypes, err := sds.client.GetChildTypes(ctx, req.GetAncestors())
 	if err != nil {
@@ -1226,7 +1227,7 @@ func (sds *SpannerDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildTyp
 }
 
 // SampleChildEntities returns a sample of each requested ancestor's child entities of one type from the
-// LinkedEdge table.
+// LinkedEdge table, or from Edge when LinkedEdge is disabled.
 func (sds *SpannerDataSource) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
 	samples, err := sds.client.SampleChildEntities(ctx, req.GetAncestors(), req.GetChildType(), int(req.GetLimitPerAncestor()))
 	if err != nil {

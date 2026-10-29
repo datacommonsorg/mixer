@@ -121,9 +121,13 @@ var statements = struct {
 	// Filter nodes by type.
 	filterNodesByTypes string
 	getChildTypes      string
+	// getChildTypes from Edge, for when LinkedEdge is disabled.
+	getChildTypesEdge string
 
 	// Sample child entities of one type per ancestor.
 	sampleChildEntities string
+	// sampleChildEntities from Edge, for when LinkedEdge is disabled.
+	sampleChildEntitiesEdge string
 	// Check existence of SVs against sources.
 	checkSVSourceExistence string
 	// Check existence of variable groups against sources.
@@ -573,6 +577,45 @@ OR CreationTimestamp > (
 					AND ancestor = a
 					AND child_type = @child_type
 				ORDER BY FARM_FINGERPRINT(child)
+				LIMIT @row_limit
+			) AS children
+		FROM UNNEST(@ancestors) AS a`,
+	// getChildTypesEdge is getChildTypes for when QueryConfig.useLinkedEdge is false, i.e. LinkedEdge is
+	// disabled or absent (e.g. Data Commons Platform instances until they support it). It derives the
+	// equivalent (ancestor, child_type) pairs from Edge: each ancestor's linkedContainedInPlace children
+	// joined to their typeOf edges (children without a typeOf edge are skipped). Unlike getChildTypes, it
+	// reads every child of the ancestor, so it is slow at base scale (about 1.7s for California) but fast at
+	// custom DC scale (about 40ms for 4k children). It reads typeOf edges rather than Node.types, which is
+	// only filled in by a later aggregation step.
+	getChildTypesEdge: `		SELECT DISTINCT
+			contained.object_id AS ancestor,
+			typed.object_id AS child_type
+		FROM Edge@{FORCE_INDEX=InEdge} contained
+		JOIN@{FORCE_JOIN_ORDER=TRUE} Edge typed ON typed.subject_id = contained.subject_id
+		WHERE
+			contained.predicate = 'linkedContainedInPlace'
+			AND contained.object_id IN UNNEST(@ancestors)
+			AND typed.predicate = 'typeOf'`,
+	// sampleChildEntitiesEdge is sampleChildEntities for when QueryConfig.useLinkedEdge is false. It reads
+	// each ancestor's linkedContainedInPlace children from Edge and keeps those with a typeOf edge to
+	// @child_type, in the same FARM_FINGERPRINT order. Like getChildTypesEdge, it reads every child of the
+	// ancestor, which is fast at custom DC scale only.
+	// Starting from the ancestor rather than from the type keeps the cost bounded by the ancestor's size:
+	// starting from the type reads every entity of that type in the database (about 0.5s for census tracts
+	// even for a county). A child with several provenance rows for either edge appears more than once, so
+	// callers oversample and dedupe as for sampleChildEntities.
+	sampleChildEntitiesEdge: `		SELECT
+			a AS ancestor,
+			ARRAY(
+				SELECT contained.subject_id
+				FROM Edge@{FORCE_INDEX=InEdge} contained
+				JOIN@{FORCE_JOIN_ORDER=TRUE} Edge typed ON typed.subject_id = contained.subject_id
+				WHERE
+					contained.predicate = 'linkedContainedInPlace'
+					AND contained.object_id = a
+					AND typed.predicate = 'typeOf'
+					AND typed.object_id = @child_type
+				ORDER BY FARM_FINGERPRINT(contained.subject_id)
 				LIMIT @row_limit
 			) AS children
 		FROM UNNEST(@ancestors) AS a`,

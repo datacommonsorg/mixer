@@ -50,8 +50,9 @@ const (
 // (transitive) containedInPlace relation; other hierarchical relations are not considered.
 //
 // The child types of all best matches are fetched in one call (served from the Spanner LinkedEdge table,
-// and cached per ancestor), then filtered by the hints (see matchChildTypes). Only the best match is
-// used; callers wanting another candidate's child types can re-resolve with a more specific name.
+// or Edge when LinkedEdge is disabled, and cached per ancestor), then filtered by the hints (see
+// matchChildTypes). Only the best match is used; callers wanting another candidate's child types can
+// re-resolve with a more specific name.
 //
 // It reports whether the results are usable: false if the lookup failed. Failures are logged rather than
 // returned, since child types are supplementary to the entity resolution result, and the caller omits the

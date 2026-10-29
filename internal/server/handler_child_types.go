@@ -28,7 +28,7 @@ const maxChildTypesAncestors = 100
 
 // ChildTypes returns the types of entities contained in each requested ancestor, for in-process
 // consumers such as the agent service. It is served by the dispatcher's data sources (Spanner
-// LinkedEdge, and remote data sources for custom DC instances).
+// LinkedEdge or Edge, and remote data sources for custom DC instances).
 func (s *Server) ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error) {
 	if in == nil {
 		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
