@@ -192,7 +192,7 @@ func (s *Service) fetchDescendantCandidates(
 
 // childDcids returns the DCIDs of the given candidates, in order.
 func childDcids(candidates []*pbv2.ResolveResponse_Entity_Candidate) []string {
-	var dcids []string
+	dcids := make([]string, 0, len(candidates))
 	for _, c := range candidates {
 		dcids = append(dcids, c.GetDcid())
 	}

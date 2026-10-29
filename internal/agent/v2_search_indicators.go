@@ -622,8 +622,9 @@ func (d *v2IndicatorData) topicRow(c *pbv2.ResolveResponse_Entity_Candidate) ([]
 // flattenedVariables returns the topic's distinct variables with data (see distinctVariablesWithData) as
 // member refs, so a variable listed under several sub-topics appears once, at its first position.
 func (d *v2IndicatorData) flattenedVariables(topicDcid string) []v2IndicatorRef {
-	variables := []v2IndicatorRef{}
-	for _, varDcid := range d.distinctVariablesWithData(topicDcid) {
+	distinctVars := d.distinctVariablesWithData(topicDcid)
+	variables := make([]v2IndicatorRef, 0, len(distinctVars))
+	for _, varDcid := range distinctVars {
 		variables = append(variables, v2IndicatorRef{Dcid: varDcid, Name: d.variableNames[varDcid]})
 	}
 	return variables
