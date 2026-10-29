@@ -158,7 +158,7 @@ func (b *multiEntityQueryBuilder) GetObservationsContainedInPlaceQuery(variables
 	}
 
 	var containedInPlaceStatements containedInPlaceAccessPathStatements
-	if b.queryConfig.UseMaterializedLinkedEdge {
+	if b.queryConfig.useLinkedEdge() {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceMaterialized
 	} else if b.queryConfig.containedInPlaceAccessPath(containedInPlace.ChildPlaceType) == containedInPlaceAncestorFirst {
 		containedInPlaceStatements = stmts.getObsByContainedInPlaceAncestorFirst
@@ -649,7 +649,7 @@ func (b *multiEntityQueryBuilder) buildSdmxContainedSeriesPlan(
 			params[childPlaceTypeParam] = key.ChildPlaceType
 			remoteDCIDs := containedInPlaceToRemoteDCIDs[key]
 			var containedPlaces string
-			if b.queryConfig.UseMaterializedLinkedEdge {
+			if b.queryConfig.useLinkedEdge() {
 				containedPlaces = fmt.Sprintf(
 					b.statements.sdmxContainedPlacesLinkedEdge,
 					datacommons.PropertyContainedInPlace,
