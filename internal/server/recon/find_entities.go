@@ -30,7 +30,6 @@ import (
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"googlemaps.github.io/maps"
 )
 
 const (
@@ -394,21 +393,7 @@ func findPlaceIDsForEntity(
 		input += (" " + t)
 	}
 
-	resp, err := mapsClient.FindPlaceFromText(ctx, &maps.FindPlaceFromTextRequest{
-		Input:     input,
-		InputType: maps.FindPlaceFromTextInputTypeTextQuery,
-		Fields:    []maps.PlaceSearchFieldMask{maps.PlaceSearchFieldMaskPlaceID},
-	})
-	if err != nil {
-		return nil, err
-	}
-
-	placeIDs := []string{}
-	for _, candidate := range resp.Candidates {
-		placeIDs = append(placeIDs, candidate.PlaceID)
-	}
-
-	return placeIDs, nil
+	return mapsClient.FindPlaceIDsFromText(ctx, input)
 }
 
 func resolveDCIDsFromPlaceIDs(
