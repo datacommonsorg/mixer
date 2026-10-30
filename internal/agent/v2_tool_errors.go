@@ -179,10 +179,11 @@ func errV2ChildEntitySamplingFailed(err error) error {
 
 // errV2ChildEntitiesUnavailable is returned when child entities can't be sampled for any reason other than a
 // timeout. Unlike the other backend failures it is agent-owned rather than built by wrapV2BackendError: the
-// sample comes from the LinkedEdge table, which some deployments lack, and wrapV2BackendError passes
-// InvalidArgument messages through, which would expose Spanner's "Table not found: LinkedEdge" to the
-// caller. A missing table is permanent, so the message says not to retry; other failures get the same
-// message rather than a guess at whether they are temporary. The raw error is logged by the caller.
+// sample can come from the LinkedEdge table, which a misconfigured deployment may lack, and
+// wrapV2BackendError passes InvalidArgument messages through, which would expose Spanner's "Table not
+// found: LinkedEdge" to the caller. A missing table is permanent, so the message says not to retry; other
+// failures get the same message rather than a guess at whether they are temporary. The raw error is logged
+// by the caller.
 func errV2ChildEntitiesUnavailable() error {
 	return status.Error(codes.Unavailable,
 		"filtering by child entities is not available right now; do not retry with child_entity_type_dcid")

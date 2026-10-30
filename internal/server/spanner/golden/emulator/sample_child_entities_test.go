@@ -68,14 +68,23 @@ func TestSampleChildEntities(t *testing.T) {
 			want:  map[string][]string{},
 		},
 	}
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			got, err := s.spannerClient.SampleChildEntities(context.Background(), tc.ancestors, tc.childType, tc.limit)
+	for _, cfg := range childQueryConfigs {
+		t.Run(cfg.name, func(t *testing.T) {
+			client, err := s.newSpannerClient(context.Background(), cfg.queryConfig)
 			if err != nil {
-				t.Fatalf("SampleChildEntities() error = %v", err)
+				t.Fatalf("newSpannerClient() error = %v", err)
 			}
-			if diff := cmp.Diff(tc.want, got); diff != "" {
-				t.Errorf("SampleChildEntities() mismatch (-want +got):\n%s", diff)
+			defer client.Close()
+			for _, tc := range tests {
+				t.Run(tc.name, func(t *testing.T) {
+					got, err := client.SampleChildEntities(context.Background(), tc.ancestors, tc.childType, tc.limit)
+					if err != nil {
+						t.Fatalf("SampleChildEntities() error = %v", err)
+					}
+					if diff := cmp.Diff(tc.want, got); diff != "" {
+						t.Errorf("SampleChildEntities() mismatch (-want +got):\n%s", diff)
+					}
+				})
 			}
 		})
 	}

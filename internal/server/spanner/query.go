@@ -1072,7 +1072,7 @@ func (sc *spannerDatabaseClient) GetChildTypes(ctx context.Context, ancestors []
 	err := queryStructs(
 		ctx,
 		sc,
-		*GetChildTypesQuery(ancestors),
+		*GetChildTypesQuery(ancestors, sc.queryConfig),
 		func() interface{} { return &AncestorChildType{} },
 		func(rowStruct interface{}) {
 			r := rowStruct.(*AncestorChildType)
@@ -1085,11 +1085,12 @@ func (sc *spannerDatabaseClient) GetChildTypes(ctx context.Context, ancestors []
 	return childTypes, nil
 }
 
-// sampleChildEntitiesOversample multiplies the requested limit to get how many LinkedEdge rows
+// sampleChildEntitiesOversample multiplies the requested limit to get how many child rows
 // SampleChildEntities reads per ancestor (e.g. 10 rows for a sample of 5).
-// A child has one row per provenance, so its copies are deduped in Go: oversampling is cheaper than
-// GROUP BY in Spanner (USA block groups: about 140ms vs 210-410ms), and a child with more rows than this can
-// only make a sample shorter than the limit, never wrong.
+// A child appears once per provenance row (on the Edge path, once per pair of containment and typeOf
+// provenances), so its copies are deduped in Go: oversampling is cheaper than GROUP BY in Spanner (USA block
+// groups: about 140ms vs 210-410ms), and a child with more rows than this can only make a sample shorter
+// than the limit, never wrong.
 const sampleChildEntitiesOversample = 2
 
 // SampleChildEntities returns, per ancestor, up to limit distinct child entities of childType, in sample
@@ -1102,7 +1103,7 @@ func (sc *spannerDatabaseClient) SampleChildEntities(ctx context.Context, ancest
 	err := queryStructs(
 		ctx,
 		sc,
-		*SampleChildEntitiesQuery(ancestors, childType, sampleChildEntitiesOversample*limit),
+		*SampleChildEntitiesQuery(ancestors, childType, sampleChildEntitiesOversample*limit, sc.queryConfig),
 		func() interface{} { return &AncestorChildren{} },
 		func(rowStruct interface{}) {
 			r := rowStruct.(*AncestorChildren)

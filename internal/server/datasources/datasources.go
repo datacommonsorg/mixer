@@ -127,10 +127,10 @@ func fetchAndMerge[req any, resp any](
 // succeed. name labels logs and errors.
 //
 // Unlike fetchAndMerge, a failing source does not fail the call: support varies by source (e.g. a custom
-// DC's Spanner database may lack the LinkedEdge table that its remote base DC has), so the sources that
-// succeed are merged. If all sources fail, their errors are returned, so that an empty result is not
-// mistaken for (and cached as) an empty answer. A partial result, when only some sources fail, is returned
-// as a success, so the Redis cache stores it like a complete one.
+// DC's Spanner database lacks the LinkedEdge table if UseMaterializedLinkedEdge is set without it), so the
+// sources that succeed are merged. If all sources fail, their errors are returned, so that an empty result
+// is not mistaken for (and cached as) an empty answer. A partial result, when only some sources fail, is
+// returned as a success, so the Redis cache stores it like a complete one.
 func fetchAndMergeSucceeded[req any, resp any](
 	ctx context.Context,
 	name string,

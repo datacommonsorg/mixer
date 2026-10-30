@@ -289,17 +289,45 @@ func TestFilterNodesByTypesQuery(t *testing.T) {
 func TestGetChildTypesQuery(t *testing.T) {
 	t.Parallel()
 
-	runQueryBuilderGoldenTest(t, "get_child_types.sql", func(ctx context.Context) (interface{}, error) {
-		return spanner.GetChildTypesQuery([]string{"country/USA", "geoId/06"}), nil
-	})
+	for _, c := range []struct {
+		golden                    string
+		useMaterializedLinkedEdge bool
+	}{
+		{golden: "get_child_types_linked_edge", useMaterializedLinkedEdge: true},
+		{golden: "get_child_types_edge"},
+	} {
+		t.Run(c.golden, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, c.golden+".sql", func(ctx context.Context) (interface{}, error) {
+				return spanner.GetChildTypesQuery(
+					[]string{"country/USA", "geoId/06"},
+					spanner.QueryConfig{UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge},
+				), nil
+			})
+		})
+	}
 }
 
 func TestSampleChildEntitiesQuery(t *testing.T) {
 	t.Parallel()
 
-	runQueryBuilderGoldenTest(t, "sample_child_entities.sql", func(ctx context.Context) (interface{}, error) {
-		return spanner.SampleChildEntitiesQuery([]string{"country/USA", "geoId/06"}, "County", 10), nil
-	})
+	for _, c := range []struct {
+		golden                    string
+		useMaterializedLinkedEdge bool
+	}{
+		{golden: "sample_child_entities_linked_edge", useMaterializedLinkedEdge: true},
+		{golden: "sample_child_entities_edge"},
+	} {
+		t.Run(c.golden, func(t *testing.T) {
+			runQueryBuilderGoldenTest(t, c.golden+".sql", func(ctx context.Context) (interface{}, error) {
+				return spanner.SampleChildEntitiesQuery(
+					[]string{"country/USA", "geoId/06"},
+					"County",
+					10,
+					spanner.QueryConfig{UseMaterializedLinkedEdge: c.useMaterializedLinkedEdge},
+				), nil
+			})
+		})
+	}
 }
 
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
