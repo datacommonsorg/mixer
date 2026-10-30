@@ -41,7 +41,7 @@ type QueryConfig struct {
 	// formatted for Cloud Spanner Emulator (e.g. omitting unsupported hints).
 	SpannerEmulatorCompatibility bool
 	// UseMaterializedLinkedEdge indicates whether queries should use the
-	// LinkedEdge table.
+	// LinkedEdge table. Query builders read it through useLinkedEdge.
 	UseMaterializedLinkedEdge bool
 }
 
@@ -95,4 +95,12 @@ func (config QueryConfig) containedInPlaceAccessPath(childPlaceTypes ...string) 
 		}
 	}
 	return containedInPlaceTypeFirst
+}
+
+// useLinkedEdge reports whether queries should read the LinkedEdge table rather than derive the same
+// relations from Edge. All LinkedEdge-or-Edge decisions go through it, so the rule can change in one
+// place: today it is the UseMaterializedLinkedEdge flag, but it could later depend on whether the table
+// exists, on the DCP version, etc.
+func (config QueryConfig) useLinkedEdge() bool {
+	return config.UseMaterializedLinkedEdge
 }
