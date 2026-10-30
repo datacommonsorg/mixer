@@ -54,22 +54,24 @@ func TestGetChildTypes(t *testing.T) {
 		},
 	}
 	for _, cfg := range childQueryConfigs {
-		client, err := s.newSpannerClient(context.Background(), cfg.queryConfig)
-		if err != nil {
-			t.Fatalf("newSpannerClient(%s) error = %v", cfg.name, err)
-		}
-		defer client.Close()
-		for _, tc := range tests {
-			t.Run(cfg.name+"/"+tc.name, func(t *testing.T) {
-				got, err := client.GetChildTypes(context.Background(), tc.ancestors)
-				if err != nil {
-					t.Fatalf("GetChildTypes() error = %v", err)
-				}
-				// Types per ancestor come back in scan order, so compare them as sets.
-				if diff := cmp.Diff(tc.want, got, cmpopts.SortSlices(func(a, b string) bool { return a < b })); diff != "" {
-					t.Errorf("GetChildTypes() mismatch (-want +got):\n%s", diff)
-				}
-			})
-		}
+		t.Run(cfg.name, func(t *testing.T) {
+			client, err := s.newSpannerClient(context.Background(), cfg.queryConfig)
+			if err != nil {
+				t.Fatalf("newSpannerClient() error = %v", err)
+			}
+			defer client.Close()
+			for _, tc := range tests {
+				t.Run(tc.name, func(t *testing.T) {
+					got, err := client.GetChildTypes(context.Background(), tc.ancestors)
+					if err != nil {
+						t.Fatalf("GetChildTypes() error = %v", err)
+					}
+					// Types per ancestor come back in scan order, so compare them as sets.
+					if diff := cmp.Diff(tc.want, got, cmpopts.SortSlices(func(a, b string) bool { return a < b })); diff != "" {
+						t.Errorf("GetChildTypes() mismatch (-want +got):\n%s", diff)
+					}
+				})
+			}
+		})
 	}
 }
