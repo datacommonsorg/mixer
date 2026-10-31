@@ -168,3 +168,101 @@ func TestV2SearchIndicatorsInputSchema(t *testing.T) {
 		t.Errorf("search_indicators input schema required = %v, want no required fields", required)
 	}
 }
+
+func TestV2GetObservations(t *testing.T) {
+	tests := []struct {
+		name    string
+		input   V2GetObservationsInput
+		wantReq *agent.V2GetObservationsRequest
+	}{
+		{
+			name: "maps all explicit, child, multi-entity, date, and source_override fields",
+			input: V2GetObservationsInput{
+				VariableDcids:       []string{"Amount_EconomicActivity_GrossODA"},
+				EntityDcids:         []string{"Earth"},
+				ChildEntityTypeDcid: "Country",
+				EntityProperty:      "recipient",
+				AdditionalEntities:  map[string][]string{"donor": {"country/USA"}},
+				Date:                "range",
+				DateRangeStart:      "2018",
+				DateRangeEnd:        "2023",
+				SourceOverride:      "facet-1",
+			},
+			wantReq: &agent.V2GetObservationsRequest{
+				VariableDcids:       []string{"Amount_EconomicActivity_GrossODA"},
+				EntityDcids:         []string{"Earth"},
+				ChildEntityTypeDcid: "Country",
+				EntityProperty:      "recipient",
+				AdditionalEntities:  map[string][]string{"donor": {"country/USA"}},
+				Date:                "range",
+				DateRangeStart:      "2018",
+				DateRangeEnd:        "2023",
+				SourceOverride:      "facet-1",
+			},
+		},
+		{
+			name:    "empty input is passed through for agent validation",
+			input:   V2GetObservationsInput{},
+			wantReq: &agent.V2GetObservationsRequest{},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			backend := &fakeAgentBackend{}
+			if _, err := NewMcpTools(backend, "base_and_custom").V2GetObservations(context.Background(), tc.input); err != nil {
+				t.Fatalf("V2GetObservations() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(tc.wantReq, backend.lastV2ObservationsReq); diff != "" {
+				t.Errorf("agent request diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestV2GetObservationsInputSchema(t *testing.T) {
+	tool := mcp.NewTool("get_observations", withToolInputSchema[V2GetObservationsInput]())
+	var got map[string]any
+	if err := json.Unmarshal(tool.RawInputSchema, &got); err != nil {
+		t.Fatalf("failed to decode input schema: %v", err)
+	}
+	props := got["properties"].(map[string]any)
+	wantTypes := map[string]any{
+		"variable_dcids":         "array",
+		"entity_dcids":           "array",
+		"child_entity_type_dcid": "string",
+		"entity_property":        "string",
+		"additional_entities":    "object",
+		"date":                   "string",
+		"date_range_start":       "string",
+		"date_range_end":         "string",
+		"source_override":        "string",
+	}
+	gotTypes := make(map[string]any, len(wantTypes))
+	for field := range wantTypes {
+		prop, ok := props[field].(map[string]any)
+		if !ok {
+			t.Fatalf("get_observations input schema missing property %q", field)
+		}
+		if desc, _ := prop["description"].(string); desc == "" {
+			t.Errorf("get_observations input schema field %q has no description", field)
+		}
+		if _, hasDefault := prop["default"]; hasDefault {
+			t.Errorf("get_observations input schema field %q unexpectedly set default=%v", field, prop["default"])
+		}
+		gotTypes[field] = prop["type"]
+	}
+	if diff := cmp.Diff(wantTypes, gotTypes); diff != "" {
+		t.Errorf("get_observations input schema types diff (-want +got):\n%s", diff)
+	}
+
+	addlValues, ok := props["additional_entities"].(map[string]any)["additionalProperties"].(map[string]any)
+	if !ok || addlValues["type"] != "array" {
+		t.Errorf("additional_entities.additionalProperties = %#v, want array schema", props["additional_entities"])
+	}
+
+	wantRequired := []any{"variable_dcids", "entity_dcids"}
+	if diff := cmp.Diff(wantRequired, got["required"]); diff != "" {
+		t.Errorf("get_observations input schema required diff (-want +got):\n%s", diff)
+	}
+}
