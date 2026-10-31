@@ -54,3 +54,22 @@ func (t *McpTools) V2SearchIndicators(ctx context.Context, input V2SearchIndicat
 		Target:              t.searchScope,
 	})
 }
+
+// V2GetObservations fetches observation series and source metadata for 1 to 10 statistical variables across
+// explicit entities, child entities of a parent, or multi-entity relationship slots.
+func (t *McpTools) V2GetObservations(ctx context.Context, input V2GetObservationsInput) (*agent.V2GetObservationsResponse, error) {
+	if t.agentService == nil {
+		return nil, fmt.Errorf("agent service is not initialized")
+	}
+	return t.agentService.V2GetObservations(ctx, &agent.V2GetObservationsRequest{
+		VariableDcids:       input.VariableDcids,
+		EntityDcids:         input.EntityDcids,
+		ChildEntityTypeDcid: input.ChildEntityTypeDcid,
+		EntityProperty:      input.EntityProperty,
+		AdditionalEntities:  input.AdditionalEntities,
+		Date:                input.Date,
+		DateRangeStart:      input.DateRangeStart,
+		DateRangeEnd:        input.DateRangeEnd,
+		SourceOverride:      input.SourceOverride,
+	})
+}
