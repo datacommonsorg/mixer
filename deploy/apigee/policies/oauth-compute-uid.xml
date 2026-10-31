@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-compute-uid">
+  <DisplayName>oauth-compute-uid</DisplayName>
+  <AssignVariable>
+    <Name>oauth.uid</Name>
+    <Template>{hmacSha256(private.oauth.uid_hmac_key,jwt.oauth-verify-google-id-token.decoded.claim.sub,'utf-8','base16')}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="request"/>
+</AssignMessage>
