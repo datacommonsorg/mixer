@@ -23,7 +23,19 @@ VALUES
 	('northamerica', 'northamerica'),
   ('observationAbout', 'observationAbout'),
   ('sourceCountry', 'sourceCountry'),
-  ('transportMode', 'transportMode');
+  ('transportMode', 'transportMode'),
+  ('StatisticalVariable', 'StatisticalVariable'),
+  ('Continent', 'Continent'),
+  ('Air', 'Air'),
+  ('Sea', 'Sea'),
+  ('lit/UnitedStates', 'United States'),
+  ('lit/Canada', 'Canada'),
+  ('lit/Mexico', 'Mexico'),
+  ('lit/AirTransport', 'Air Transport'),
+  ('lit/SeaTransport', 'Sea Transport'),
+  ('lit/TotalPopulation', 'Total Population'),
+  ('lit/USDACensusName', 'USDA Census of Agriculture'),
+  ('lit/USDACensusUrl', 'https://www.nass.usda.gov/AgCensus/');
 
 INSERT INTO Node (subject_id, value, name)
 VALUES
@@ -86,7 +98,24 @@ VALUES
   ('Count_Farm', 'definition', 'definition/Count_Farm', 'dc/base/HumanReadableStatVars'),
   ('dc/base/USDA_Census', 'source', 'dc/s/USDA', 'dc/base/USDA_Census'),
   ('dc/base/USDA_Census', 'isPartOf', 'dc/d/USDA_AgCensus', 'dc/base/USDA_Census'),
-  ('dc/base/OtherAg', 'source', 'dc/s/Other', 'dc/base/OtherAg');
+  ('dc/base/USDA_Census', 'name', 'lit/USDACensusName', 'dc/base/USDA_Census'),
+  ('dc/base/USDA_Census', 'url', 'lit/USDACensusUrl', 'dc/base/USDA_Census'),
+  ('dc/base/OtherAg', 'source', 'dc/s/Other', 'dc/base/OtherAg'),
+  ('northamerica', 'typeOf', 'Continent', 'dc/base/WikidataOtherIdGeos'),
+  ('country/USA', 'name', 'lit/UnitedStates', 'dc/base/WikidataOtherIdGeos'),
+  ('country/CAN', 'name', 'lit/Canada', 'dc/base/WikidataOtherIdGeos'),
+  ('country/MEX', 'name', 'lit/Mexico', 'dc/base/WikidataOtherIdGeos'),
+  ('Air', 'name', 'lit/AirTransport', 'dc/base/HumanReadableStatVars'),
+  ('Sea', 'name', 'lit/SeaTransport', 'dc/base/HumanReadableStatVars'),
+  ('Count_Person', 'name', 'lit/TotalPopulation', 'dc/base/HumanReadableStatVars'),
+  ('Count_Person', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Count_TimeSeries', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Count_Farm', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Area_Farm_Irrigated', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Count_Migration', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Count_Refugee', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars'),
+  ('Count_MigrationByTransportMode', 'typeOf', 'StatisticalVariable', 'dc/base/HumanReadableStatVars');
 
 INSERT INTO TimeSeries (variable_measured, extra_entities_id, facet_id, entities, facet, last_update_timestamp)
 VALUES

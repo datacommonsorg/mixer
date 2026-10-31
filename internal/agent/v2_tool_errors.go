@@ -189,6 +189,168 @@ func errV2ChildEntitiesUnavailable() error {
 		"filtering by child entities is not available right now; do not retry with child_entity_type_dcid")
 }
 
+// get_observations: request validation.
+
+func errV2NoVariableDcids() error {
+	return status.Errorf(codes.InvalidArgument,
+		"'variable_dcids' cannot be empty: pass 1 to %d variable DCIDs returned by search_indicators, e.g. ['Count_Person']",
+		v2MaxVariableDcids)
+}
+
+func errV2TooManyVariableDcids(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many variable_dcids (%d): pass at most %d per call and split the rest into parallel calls",
+		count, v2MaxVariableDcids)
+}
+
+func errV2TooManyChildVariableDcids(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many variable_dcids (%d) with child_entity_type_dcid: pass at most %d per call and split the rest into parallel calls",
+		count, v2MaxChildVariableDcids)
+}
+
+func errV2SourceOverrideNeedsOneVariable(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"source_override applies to a single variable's dataset facet: pass 1 variable in variable_dcids (got %d), or make separate calls per variable",
+		count)
+}
+
+func errV2TopicAsVariableDcids(dcids []string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"variable_dcids %q are topics, not statistical variables: pass topic_dcids to search_indicators to browse their member_variables, then pass variable DCIDs to get_observations",
+		dcids)
+}
+
+func errV2UnknownVariableDcids(dcids []string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"unknown variable_dcids %q: pass variable DCIDs returned by search_indicators, not guessed IDs or names",
+		dcids)
+}
+
+func errV2MixedObservationProperties(summary string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"variable_dcids have different observation_properties (%s): group variables with the same observation_properties, or make separate get_observations calls",
+		summary)
+}
+
+func errV2NoEntityDcids() error {
+	return status.Errorf(codes.InvalidArgument,
+		"'entity_dcids' cannot be empty: pass 1 to %d entity DCIDs returned by resolve_entities, e.g. ['geoId/06']",
+		v2MaxEntityDcids)
+}
+
+func errV2ReservedEntityProperty(prop string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"invalid observation property %q: pass an observation property from search_indicators' observation_properties (default 'observationAbout')",
+		prop)
+}
+
+func errV2DuplicateEntityProperty(prop string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"observation property %q is constrained by both entity_property (default 'observationAbout') and additional_entities: pass its DCIDs in entity_dcids (or set entity_property to another property), and use additional_entities for other observation_properties",
+		prop)
+}
+
+func errV2TooManyAdditionalEntityProps(count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many properties in additional_entities (%d): pass at most %d properties alongside entity_property",
+		count, v2MaxAdditionalEntityProps)
+}
+
+func errV2EmptyAdditionalEntityDcids(prop string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"additional_entities[%q] cannot be empty: provide 1 to %d entity DCIDs from resolve_entities, or omit %q from additional_entities to leave it unconstrained",
+		prop, v2MaxEntityDcids, prop)
+}
+
+func errV2TooManyAdditionalEntityDcids(prop string, count int) error {
+	return status.Errorf(codes.InvalidArgument,
+		"too many DCIDs in additional_entities[%q] (%d): pass at most %d per call and split the rest into additional calls",
+		prop, count, v2MaxEntityDcids)
+}
+
+func errV2WrongObservationProperty(variable string, badProps, allowedProps []string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"variable %q uses observation_properties %q, not %q: set entity_property to one of %q for entity_dcids (and pass any other constrained properties in additional_entities)",
+		variable, allowedProps, badProps, allowedProps)
+}
+
+func errV2InvalidDate(date string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"invalid date %q: use 'latest', 'all', 'range', or an ISO date (YYYY, YYYY-MM, or YYYY-MM-DD)", date)
+}
+
+func errV2ConflictingDateRange(date string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"date_range_start and date_range_end can only be used when date is 'range' (or omitted), got date=%q", date)
+}
+
+func errV2MissingDateRangeBounds() error {
+	return status.Error(codes.InvalidArgument,
+		"date='range' requires at least one of date_range_start or date_range_end (YYYY, YYYY-MM, or YYYY-MM-DD)")
+}
+
+func errV2UnboundedChildDate() error {
+	return status.Error(codes.InvalidArgument,
+		"unbounded historical dates (date='all' or a range without date_range_start) are not supported with child_entity_type_dcid: use date='latest', a specific date (e.g. '2023'), or a bounded range with date_range_start (e.g. date_range_start='2019', date_range_end='2024')")
+}
+
+func errV2InvalidDateRangeBound(field, val string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"invalid %s %q: expected YYYY, YYYY-MM, or YYYY-MM-DD", field, val)
+}
+
+func errV2InvertedDateRange(start, end string) error {
+	return status.Errorf(codes.InvalidArgument,
+		"date_range_start (%q) cannot be after date_range_end (%q)", start, end)
+}
+
+// get_observations: notes. These are returned on individual variable entries when Data has no rows.
+// Like search_indicators notes, they state only what was checked and give no retry advice.
+
+// v2GivenEntitiesAndAdditionalScope is the note scope in explicit mode when additional_entities is also set.
+const v2GivenEntitiesAndAdditionalScope = "the given entity_dcids and additional_entities"
+
+// v2ChildAndAdditionalEntitiesScope is the note scope in child mode when additional_entities is also set.
+func v2ChildAndAdditionalEntitiesScope(parent, childType string) string {
+	return fmt.Sprintf("%s entities in %s with the given additional_entities", childType, parent)
+}
+
+func v2NoObsNote(variable, scope string) string {
+	return fmt.Sprintf("no observations found for %s on %s.", variable, scope)
+}
+
+func v2NoObsForSourceNote(variable, scope, sourceID string) string {
+	return fmt.Sprintf("no observations found for %s on %s with source_override '%s'.", variable, scope, sourceID)
+}
+
+func v2NoObsInDateWindowNote(variable, scope, minDate, maxDate string) string {
+	return fmt.Sprintf(
+		"no observations found across any source for %s on %s in the requested date window (available dates across all sources span %s to %s).",
+		variable, scope, minDate, maxDate)
+}
+
+func v2NoObsForSourceInDateWindowNote(variable, scope, sourceID, minDate, maxDate string) string {
+	return fmt.Sprintf(
+		"no observations found for %s on %s with source_override '%s' in the requested date window (available dates for this source span %s to %s).",
+		variable, scope, sourceID, minDate, maxDate)
+}
+
+// get_observations: backend failures.
+
+func errV2ObservationsFailed(err error) error {
+	return wrapV2BackendError(err, "failed to fetch observations")
+}
+
+// errV2ObservationsUnavailable is returned when SdmxData fails with an internal InvalidArgument (for
+// example, Spanner's "Table not found: LinkedEdge" on a misconfigured deployment) after variable and
+// observation_properties checks pass. Like errV2ChildEntitiesUnavailable, it is agent-owned so
+// wrapV2BackendError never exposes raw Spanner or SDMX messages to the caller.
+func errV2ObservationsUnavailable() error {
+	return status.Error(codes.Unavailable,
+		"observations could not be fetched right now; retry the call shortly, or if child_entity_type_dcid was set, do not retry if it fails again")
+}
+
 // Generic caller-facing replacements for backend error details, which are not actionable for the caller
 // and can expose internal endpoints, resource paths and project IDs. Details are logged by the callers.
 // They don't name the product, since Data Commons Platform deployments may not present themselves as
