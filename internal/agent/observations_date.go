@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Shared date parsing and point filtering helpers for the v1 and v2 observation tools.
+
 package agent
 
 import (
 	"fmt"
 	"regexp"
 	"time"
+
+	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 )
 
 var dateFormatRegex = regexp.MustCompile(`^\d{4}(-\d{2})?(-\d{2})?$`)
@@ -148,4 +152,38 @@ func isDateInInterval(obsDate string, filter *dateFilter) bool {
 		return false
 	}
 	return true
+}
+
+// filterPointsByDate filters series data points based on the specified date configuration.
+func filterPointsByDate(points []*sdmxpb.SdmxDataPoint, filter *dateFilter) []*sdmxpb.SdmxDataPoint {
+	var targetPoints []*sdmxpb.SdmxDataPoint
+	if filter != nil && filter.dateType == dateTypeLatest {
+		if latest := findLatestPoint(points); latest != nil {
+			targetPoints = append(targetPoints, latest)
+		}
+	} else {
+		for _, point := range points {
+			if isDateInInterval(point.GetTimePeriod(), filter) {
+				targetPoints = append(targetPoints, point)
+			}
+		}
+	}
+	return targetPoints
+}
+
+// findLatestPoint identifies the temporally latest point in a series using parseDateStringToInterval.
+func findLatestPoint(points []*sdmxpb.SdmxDataPoint) *sdmxpb.SdmxDataPoint {
+	var latestPoint *sdmxpb.SdmxDataPoint
+	var latestTime time.Time
+	for _, point := range points {
+		t, _, err := parseDateStringToInterval(point.GetTimePeriod())
+		if err != nil {
+			continue
+		}
+		if latestPoint == nil || t.After(latestTime) {
+			latestPoint = point
+			latestTime = t
+		}
+	}
+	return latestPoint
 }

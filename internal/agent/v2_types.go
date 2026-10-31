@@ -114,3 +114,69 @@ type v2IndicatorRef struct {
 	Dcid string `json:"dcid"`
 	Name string `json:"name"`
 }
+
+// V2GetObservationsRequest holds parameters for V2GetObservations. VariableDcids lists 1 to 10 statistical
+// variables sharing the same observation_properties (at most 2 in child mode, 1 with SourceOverride).
+// EntityDcids constrains EntityProperty (default "observationAbout"), or in child mode (ChildEntityTypeDcid
+// set) holds the single parent entity whose children of that type constrain EntityProperty.
+// AdditionalEntities constrains other observation properties of multi-entity variables; omitted properties
+// are left unconstrained.
+type V2GetObservationsRequest struct {
+	VariableDcids       []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	EntityProperty      string
+	AdditionalEntities  map[string][]string
+	Date                string
+	DateRangeStart      string
+	DateRangeEnd        string
+	SourceOverride      string
+}
+
+// V2GetObservationsResponse holds observation series for one or more statistical variables, with shared
+// entity names at the top level.
+//
+// EntityMetadata has columns dcid and name for the union of entities appearing in any variable's Data rows
+// (deduplicated and sorted by dcid), so child-entity and multi-variable responses transmit entity names once.
+//
+// Observations has one entry per requested variable in VariableDcids order. Each variable keeps its own
+// Data table, primary SourceMetadata, AlternativeSources, and empty-result Note so units, scaling factors,
+// and dataset citations never mix across variables.
+type V2GetObservationsResponse struct {
+	EntityMetadata *Table                    `json:"entity_metadata"`
+	Observations   []*V2VariableObservations `json:"observations"`
+}
+
+// V2VariableObservations holds the observation table, selected source metadata, and ranked alternative
+// sources for one statistical variable.
+//
+// Data has columns [<sorted observation properties...>, "date", "value"], with numeric values parsed as
+// float64 and rows sorted by dimension values and date. SourceMetadata and AlternativeSources are omitted
+// when Data has no rows, and Note states why Data is empty.
+type V2VariableObservations struct {
+	Variable           *ObservationNode         `json:"variable"`
+	Data               *Table                   `json:"data"`
+	SourceMetadata     *V2ObservationSourceMeta `json:"source_metadata,omitempty"`
+	AlternativeSources []*V2AlternativeSource   `json:"alternative_sources,omitempty"`
+	Note               string                   `json:"note,omitempty"`
+}
+
+// V2ObservationSourceMeta describes a single dataset facet (provenance, unit, scaling factor, measurement
+// method, and observation period) for a statistical variable's observations.
+type V2ObservationSourceMeta struct {
+	SourceID          string `json:"source_id"`
+	ImportName        string `json:"import_name,omitempty"`
+	ProvenanceURL     string `json:"provenance_url,omitempty"`
+	Unit              string `json:"unit,omitempty"`
+	ScalingFactor     string `json:"scaling_factor,omitempty"`
+	MeasurementMethod string `json:"measurement_method,omitempty"`
+	ObservationPeriod string `json:"observation_period,omitempty"`
+}
+
+// V2AlternativeSource describes another dataset facet that also has observations in the requested date
+// window, ordered by facet rank. EntitiesFoundCount is set when more than one distinct entity or entity
+// combination appears in the variable's Data rows.
+type V2AlternativeSource struct {
+	SourceMetadata     *V2ObservationSourceMeta `json:"source_metadata"`
+	EntitiesFoundCount *int32                   `json:"entities_found_count,omitempty"`
+}
