@@ -3,3 +3,4 @@ flags:
   UseSpannerGraph: true
   UseSpannerKeyValueStore: true
   UseMultiEntitySchema: true
+  UseMaterializedLinkedEdge: true
