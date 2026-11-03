@@ -23,16 +23,18 @@ import (
 
 // fakeAgentBackend records incoming requests and returns canned responses for unit tests.
 type fakeAgentBackend struct {
-	lastSurface         string
-	lastSearchReq       *agent.SearchIndicatorsRequest
-	searchResp          *agent.SearchIndicatorsResponse
-	lastVarMetadataReq  *agent.GetVariableMetadataRequest
-	varMetadataResp     *agent.GetVariableMetadataResponse
-	lastObservationsReq *agent.GetObservationsRequest
-	observationsResp    *agent.GetObservationsResponse
-	lastV2ResolveReq    *agent.V2ResolveEntitiesRequest
-	v2ResolveResp       *agent.V2ResolveEntitiesResponse
-	lastV2SearchReq     *agent.V2SearchIndicatorsRequest
+	lastSurface           string
+	lastSearchReq         *agent.SearchIndicatorsRequest
+	searchResp            *agent.SearchIndicatorsResponse
+	lastVarMetadataReq    *agent.GetVariableMetadataRequest
+	varMetadataResp       *agent.GetVariableMetadataResponse
+	lastObservationsReq   *agent.GetObservationsRequest
+	observationsResp      *agent.GetObservationsResponse
+	lastV2ResolveReq      *agent.V2ResolveEntitiesRequest
+	v2ResolveResp         *agent.V2ResolveEntitiesResponse
+	lastV2SearchReq       *agent.V2SearchIndicatorsRequest
+	lastV2ObservationsReq *agent.V2GetObservationsRequest
+	v2ObservationsResp    *agent.V2GetObservationsResponse
 }
 
 func (f *fakeAgentBackend) recordSurface(ctx context.Context) {
@@ -86,4 +88,13 @@ func (f *fakeAgentBackend) V2SearchIndicators(ctx context.Context, req *agent.V2
 	f.recordSurface(ctx)
 	f.lastV2SearchReq = req
 	return &agent.V2SearchIndicatorsResponse{}, nil
+}
+
+func (f *fakeAgentBackend) V2GetObservations(ctx context.Context, req *agent.V2GetObservationsRequest) (*agent.V2GetObservationsResponse, error) {
+	f.recordSurface(ctx)
+	f.lastV2ObservationsReq = req
+	if f.v2ObservationsResp != nil {
+		return f.v2ObservationsResp, nil
+	}
+	return &agent.V2GetObservationsResponse{}, nil
 }

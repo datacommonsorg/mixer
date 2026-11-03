@@ -687,7 +687,7 @@ func TestV2PreviewSurface(t *testing.T) {
 			params:    map[string]any{},
 			resultKey: "tools",
 			transform: listedToolNames,
-			want:      []string{"resolve_entities", "search_indicators"},
+			want:      []string{"get_observations", "resolve_entities", "search_indicators"},
 		},
 		{
 			name:      "resources/list returns no skills",
@@ -769,6 +769,105 @@ func TestV2PreviewResolveEntitiesCall(t *testing.T) {
 	}
 	wantReq := &agent.V2ResolveEntitiesRequest{Entities: []*agent.V2EntityQuery{{Name: "California"}}}
 	if diff := cmp.Diff(wantReq, backend.lastV2ResolveReq); diff != "" {
+		t.Errorf("agent request diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestV2PreviewGetObservationsCall(t *testing.T) {
+	altCount := int32(2)
+	backend := &fakeAgentBackend{v2ObservationsResp: &agent.V2GetObservationsResponse{
+		EntityMetadata: &agent.Table{
+			Columns: []string{"dcid", "name"},
+			Rows:    [][]any{{"country/CAN", "Canada"}, {"country/USA", "United States"}},
+		},
+		Observations: []*agent.V2VariableObservations{
+			{
+				Variable: &agent.ObservationNode{Dcid: "Count_Person", Name: "Total Population"},
+				Data: &agent.Table{
+					Columns: []string{"observationAbout", "date", "value"},
+					Rows:    [][]any{{"country/CAN", "2024", 40.0}, {"country/USA", "2024", 340.0}},
+				},
+				SourceMetadata: &agent.V2ObservationSourceMeta{
+					SourceID:      "facet-1",
+					ImportName:    "WorldDevelopmentIndicators",
+					ProvenanceURL: "https://data.worldbank.org/",
+					Unit:          "Person",
+				},
+				AlternativeSources: []*agent.V2AlternativeSource{
+					{
+						SourceMetadata:     &agent.V2ObservationSourceMeta{SourceID: "facet-2", ImportName: "OECD"},
+						EntitiesFoundCount: &altCount,
+					},
+				},
+			},
+		},
+	}}
+	srv, err := NewDcMcpServer(context.Background(), backend, &ServerOptions{
+		DefaultVersion: DefaultVersionID,
+		EnablePreview:  true,
+	})
+	if err != nil {
+		t.Fatalf("NewDcMcpServer failed: %v", err)
+	}
+	ts := httptest.NewServer(srv)
+	defer ts.Close()
+
+	respMap := sendJSONRPC(t, ts.URL+"/preview", "", map[string]any{
+		"jsonrpc": "2.0",
+		"id":      1,
+		"method":  "tools/call",
+		"params": map[string]any{
+			"name": "get_observations",
+			"arguments": map[string]any{
+				"variable_dcids":   []any{"Count_Person"},
+				"entity_dcids":     []any{"country/USA", "country/CAN"},
+				"date_range_start": "2020",
+			},
+		},
+	})
+	result, ok := respMap["result"].(map[string]any)
+	if !ok || result["isError"] == true {
+		t.Fatalf("expected successful tools/call result, got: %+v", respMap)
+	}
+	wantStructured := map[string]any{
+		"entity_metadata": map[string]any{
+			"columns": []any{"dcid", "name"},
+			"rows":    []any{[]any{"country/CAN", "Canada"}, []any{"country/USA", "United States"}},
+		},
+		"observations": []any{
+			map[string]any{
+				"variable": map[string]any{"dcid": "Count_Person", "name": "Total Population"},
+				"data": map[string]any{
+					"columns": []any{"observationAbout", "date", "value"},
+					"rows":    []any{[]any{"country/CAN", "2024", 40.0}, []any{"country/USA", "2024", 340.0}},
+				},
+				"source_metadata": map[string]any{
+					"source_id":      "facet-1",
+					"import_name":    "WorldDevelopmentIndicators",
+					"provenance_url": "https://data.worldbank.org/",
+					"unit":           "Person",
+				},
+				"alternative_sources": []any{
+					map[string]any{
+						"source_metadata":      map[string]any{"source_id": "facet-2", "import_name": "OECD"},
+						"entities_found_count": float64(2),
+					},
+				},
+			},
+		},
+	}
+	if diff := cmp.Diff(wantStructured, result["structuredContent"]); diff != "" {
+		t.Errorf("structuredContent diff (-want +got):\n%s", diff)
+	}
+	if backend.lastSurface != "mcp-preview" {
+		t.Errorf("backend surface = %q, want %q", backend.lastSurface, "mcp-preview")
+	}
+	wantReq := &agent.V2GetObservationsRequest{
+		VariableDcids:  []string{"Count_Person"},
+		EntityDcids:    []string{"country/USA", "country/CAN"},
+		DateRangeStart: "2020",
+	}
+	if diff := cmp.Diff(wantReq, backend.lastV2ObservationsReq); diff != "" {
 		t.Errorf("agent request diff (-want +got):\n%s", diff)
 	}
 }
