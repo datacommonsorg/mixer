@@ -1,6 +1,5 @@
 # This workflow runs unprivileged on all pull requests (including forks).
-# It captures the PR number and event metadata, uploading it as an artifact
-# so that on-pr-handler.yml can safely act on the PR from the base branch.
+# Its completion triggers on-pr-handler.yml on the base branch via workflow_run.
 name: On PR Trigger
 
 on:
@@ -13,23 +12,7 @@ permissions: {}
 jobs:
   trigger:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    permissions: {}
     steps:
-      - name: Record PR event payload
-        env:
-          PR_NUMBER: ${{ github.event.number }}
-          PR_ACTION: ${{ github.event.action }}
-        run: |
-          mkdir -p payload
-          jq -n \
-            --argjson number "$PR_NUMBER" \
-            --arg action "$PR_ACTION" \
-            '{number: $number, action: $action}' > payload/event.json
-
-      - name: Upload PR event context
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: pr-context
-          path: payload/event.json
-          retention-days: 1
+      - name: Trigger downstream PR handler
+        run: echo "Triggered PR handler for commit ${GITHUB_SHA}."

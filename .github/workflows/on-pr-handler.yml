@@ -1,9 +1,21 @@
 # This workflow runs in the trusted context of the base repository (master)
 # after On PR Trigger finishes. It securely evaluates PR changes and executes
 # repository automations (e.g. feature flag checklists, auto-labeling).
+#
+# SECURITY GUARDRAILS (MUST FOLLOW WHEN ADDING NEW HANDLERS):
+# - Never check out or execute untrusted PR code (do not use actions/checkout
+#   with the PR head ref or run scripts/binaries from the PR).
+# - Never download or trust artifacts from On PR Trigger; always query PR state
+#   and changed files directly from the GitHub API using verified workflow_run metadata.
+# - Never interpolate untrusted PR metadata (title, body, branch name) directly
+#   inside ${{ ... }} in `run:` blocks; handle them inside actions/github-script
+#   or pass them through `env:` variables.
+# - Keep job permissions scoped to the minimum required (pull-requests: write).
 name: On PR Handler
 
+# zizmor: ignore[dangerous-triggers] - {Safe workflow_run usage: no PR code or artifacts are checked out or read.}
 on:
+  # zizmor: ignore[dangerous-triggers] - {Safe workflow_run usage: no PR code or artifacts are checked out or read.}
   workflow_run:
     workflows: ["On PR Trigger"]
     types: [completed]
@@ -13,35 +25,44 @@ permissions: {}
 jobs:
   handle:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'pull_request'
     permissions:
-      actions: read
       pull-requests: write
     steps:
-      - name: Download PR event context
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.1.0
-        with:
-          name: pr-context
-          path: payload
-          run-id: ${{ github.event.workflow_run.id }}
-
+      # Official GitHub action that runs a Node.js script with a pre-authenticated
+      # Octokit REST client (`github`) and workflow event context (`context`).
+      # This lets the job query PR files and post comments via api.github.com
+      # using the job's scoped GITHUB_TOKEN without checking out repository code.
       - name: Execute PR Automations
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
-            const fs = require('fs');
-            const payloadPath = 'payload/event.json';
-            if (!fs.existsSync(payloadPath)) {
-              core.setFailed('Missing event payload from On PR Trigger.');
+            const wfRun = context.payload.workflow_run;
+            const headOwner = wfRun.head_repository?.owner?.login;
+            const headBranch = wfRun.head_branch;
+            const headSha = wfRun.head_sha;
+
+            if (!headOwner || !headBranch || !headSha) {
+              core.setFailed('Missing head repository metadata on workflow_run payload.');
               return;
             }
 
-            const { number: prNumber, action } = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
-            if (!Number.isInteger(prNumber) || prNumber <= 0) {
-              core.setFailed(`Invalid PR number in event payload: ${prNumber}`);
+            // * Resolve the open PR matching the exact head branch and commit SHA from GitHub API
+            const { data: prs } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${headOwner}:${headBranch}`,
+            });
+
+            const pr = prs.find(p => p.head.sha === headSha);
+            if (!pr) {
+              core.info(`No open PR found matching ${headOwner}:${headBranch} @ ${headSha}.`);
               return;
             }
-            core.info(`Processing PR #${prNumber} (event action: ${action})`);
+
+            const prNumber = pr.number;
+            core.info(`Processing PR #${prNumber}`);
 
             // * Fetch changed files via GitHub REST API with pagination (no checkout required)
             const files = await github.paginate(github.rest.pulls.listFiles, {
