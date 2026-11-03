@@ -1,0 +1,67 @@
+# This check enforces that pull requests modifying production feature flags
+# (deploy/featureflags/prod*) include the required attestation statement in
+# the PR description.
+name: Feature flag checks
+
+on:
+  pull_request:
+    branches: ["master"]
+    types: [opened, synchronize, reopened, edited]
+
+permissions: {}
+
+jobs:
+  enforce_feature_flag_merge_restrictions:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      # Official GitHub action that runs a Node.js script with a pre-authenticated
+      # Octokit REST client (`github`) and workflow event context (`context`).
+      - name: Verify production feature flag attestation in PR description
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+
+            // * Fetch changed files via GitHub REST API with pagination (no checkout required)
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              per_page: 100
+            });
+
+            const touchesProdFlags = files.some(f => f.filename.startsWith('deploy/featureflags/prod'));
+            if (!touchesProdFlags) {
+              core.info('No production feature flags modified in this PR.');
+              return;
+            }
+
+            const requiredLines = [
+              'Production Feature Flag Attestation:',
+              '- Validated these exact flag changes in staging (or rolling back to a known-good config).',
+              '- Coordinated with the oncaller (merging triggers a rolling restart of all production pods).',
+              '- Will announce this update on the oncall thread and clear the Redis cache if API responses change.',
+              '- Merging during normal working hours (Mon-Thu), or with lead/oncaller approval.',
+            ];
+            const attestationBlock = requiredLines.join('\n');
+
+            const prBody = context.payload.pull_request.body || '';
+            const missingLines = requiredLines.filter(line => !prBody.includes(line));
+
+            if (missingLines.length > 0) {
+              await core.summary
+                .addHeading('Production Feature Flag Attestation Required', 2)
+                .addRaw('This PR modifies `deploy/featureflags/prod*`. Please copy the block below into your **PR description**:\n\n')
+                .addCodeBlock(attestationBlock, 'markdown')
+                .write();
+
+              core.setFailed(
+                `This PR modifies production feature flags (deploy/featureflags/prod*). ` +
+                `Please add the following attestation block to the PR description:\n\n${attestationBlock}`
+              );
+              return;
+            }
+
+            core.info('Production feature flag attestation verified in PR description.');

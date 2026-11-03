@@ -12,7 +12,7 @@ Feature flags can have their live values updated quickly (<15 min) on a per-envi
   - [scripts/check_flags.sh](https://github.com/datacommonsorg/mixer/blob/master/scripts/check_flags.sh) and [scripts/check_flags.go](https://github.com/datacommonsorg/mixer/blob/master/scripts/check_flags.go)
   - [internal/featureflags/featureflags.go](https://github.com/datacommonsorg/mixer/blob/master/internal/featureflags/featureflags.go)
   - [build/ci/cloudbuild.deploy_flags.yaml](https://github.com/datacommonsorg/mixer/blob/master/build/ci/cloudbuild.deploy_flags.yaml)
-  - [.github/workflows/on-pr-trigger.yml](https://github.com/datacommonsorg/mixer/blob/master/.github/workflows/on-pr-trigger.yml) and [.github/workflows/on-pr-handler.yml](https://github.com/datacommonsorg/mixer/blob/master/.github/workflows/on-pr-handler.yml)
+  - [.github/workflows/feature-flag-checks.yml](https://github.com/datacommonsorg/mixer/blob/master/.github/workflows/feature-flag-checks.yml)
 - datcom-ci GCP project
   - [mixer-deploy-feature-flags](https://pantheon.corp.google.com/cloud-build/triggers?project=datcom-ci&e=13803378&mods=-monitoring_api_staging&pageState=(%22triggers%22:(%22f%22:%22%255B%257B_22k_22_3A_22Name_22_2C_22t_22_3A10_2C_22v_22_3A_22_5C_22mixer-deploy-feature-flags_~*mixer-deploy-feature-flags_5C_22_22_2C_22s_22_3Atrue_2C_22i_22_3A_22name_22%257D%255D%22))) trigger
   - [Trigger failure alert policy](https://pantheon.corp.google.com/monitoring/alerting/policies/2406337156848324980?e=13803378&mods=-monitoring_api_staging&project=datcom-ci) (sends an email to datacommons-alerts@ with the subject "Mixer feature flags failed to deploy")
