@@ -1,0 +1,108 @@
+# This workflow runs in the trusted context of the base repository (master)
+# after On PR Trigger finishes. It securely evaluates PR changes and executes
+# repository automations (e.g. feature flag checklists, auto-labeling).
+name: On PR Handler
+
+on:
+  workflow_run:
+    workflows: ["On PR Trigger"]
+    types: [completed]
+
+permissions: {}
+
+jobs:
+  handle:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+    permissions:
+      actions: read
+      pull-requests: write
+    steps:
+      - name: Download PR event context
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.1.0
+        with:
+          name: pr-context
+          path: payload
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Execute PR Automations
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            const payloadPath = 'payload/event.json';
+            if (!fs.existsSync(payloadPath)) {
+              core.setFailed('Missing event payload from On PR Trigger.');
+              return;
+            }
+
+            const { number: prNumber, action } = JSON.parse(fs.readFileSync(payloadPath, 'utf8'));
+            if (!Number.isInteger(prNumber) || prNumber <= 0) {
+              core.setFailed(`Invalid PR number in event payload: ${prNumber}`);
+              return;
+            }
+            core.info(`Processing PR #${prNumber} (event action: ${action})`);
+
+            // * Fetch changed files via GitHub REST API with pagination (no checkout required)
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              per_page: 100
+            });
+            const changedFilenames = files.map(f => f.filename);
+            core.info(`Found ${changedFilenames.length} changed file(s) in PR #${prNumber}`);
+
+            // =========================================================================
+            // HANDLER: Production Feature Flag Review Checklist
+            // =========================================================================
+            const touchesProdFlags = changedFilenames.some(name => name.startsWith('deploy/featureflags/prod'));
+
+            if (touchesProdFlags) {
+              core.info('Production feature flags modified. Ensuring checklist comment is present.');
+
+              const checklistBody = [
+                '⚠️ **PRODUCTION FEATURE FLAG CHANGE — REVIEW CHECKLIST**',
+                '',
+                'Please conduct a careful review before merging this production change & coordinate with the oncaller.',
+                'Merging this PR will trigger a rolling restart of all Kubernetes pods in production.',
+                '',
+                '### Things to check before approving:',
+                '- [ ] **Staging Validated**: Have these exact flag changes been tested and verified in staging?',
+                '- [ ] **Cache Invalidation**: If API responses change, remember to clear the Redis cache after merging.',
+                '- [ ] **Time Window**: Ensure updates occur during global working hours; request lead approval for Friday–Sunday updates.',
+                '- [ ] **Oncall Communication**: Please additionally announce this update on the oncall thread.',
+                '- [ ] **Type Safety**: Verify that flag value types match what the server binary expects.',
+              ].join('\n');
+
+              // * Find existing bot checklist comment to maintain idempotency
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                per_page: 100
+              });
+
+              const existingComment = comments.find(c =>
+                c.user.type === 'Bot' &&
+                c.body.includes('PRODUCTION FEATURE FLAG CHANGE — REVIEW CHECKLIST')
+              );
+
+              if (existingComment) {
+                core.info(`Checklist comment ID ${existingComment.id} already exists; skipping update to preserve checked boxes.`);
+              } else {
+                core.info('Creating new checklist comment');
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: checklistBody
+                });
+              }
+            } else {
+              core.info('No production feature flags modified in this PR.');
+            }
+
+            // =========================================================================
+            // FUTURE HANDLERS (e.g. labels, greetings, automated triage) CAN BE ADDED HERE
+            // =========================================================================
