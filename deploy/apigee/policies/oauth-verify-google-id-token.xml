@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT continueOnError="false" enabled="true" name="oauth-verify-google-id-token">
+  <DisplayName>oauth-verify-google-id-token</DisplayName>
+  <Algorithm>RS256</Algorithm>
+  <Source>private.oauth.google_id_token</Source>
+  <PublicKey>
+    <JWKS uri="https://www.googleapis.com/oauth2/v3/certs"/>
+  </PublicKey>
+  <Issuer>https://accounts.google.com</Issuer>
+  <Audience ref="private.oauth.google_client_id"/>
+  <TimeAllowance>60s</TimeAllowance>
+</VerifyJWT>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="oauth-verify-access-token">
+  <DisplayName>oauth-verify-access-token</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>VerifyAccessToken</Operation>
+  <SupportedGrantTypes/>
+  <GenerateResponse enabled="true"/>
+  <Tokens/>
+</OAuthV2>

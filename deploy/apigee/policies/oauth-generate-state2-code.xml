@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="oauth-generate-state2-code">
+  <DisplayName>oauth-generate-state2-code</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>GenerateAuthorizationCode</Operation>
+  <ExpiresIn>600000</ExpiresIn>
+  <GenerateResponse enabled="false"/>
+  <ClientId>request.formparam.client_id</ClientId>
+  <RedirectUri>request.queryparam.redirect_uri</RedirectUri>
+  <ResponseType>request.queryparam.response_type</ResponseType>
+  <Scope>request.queryparam.scope</Scope>
+  <Attributes>
+    <Attribute name="auth_step" display="false">authorize</Attribute>
+    <Attribute name="client_id" ref="oauth.authorize.client_id" display="false"/>
+    <Attribute name="redirect_uri" ref="oauth.authorize.redirect_uri" display="false"/>
+    <Attribute name="response_type" ref="oauth.authorize.response_type" display="false"/>
+    <Attribute name="scope" ref="oauth.authorize.scope" display="false"/>
+    <Attribute name="state1" ref="oauth.authorize.state1" display="false"/>
+    <Attribute name="code_challenge" ref="oauth.authorize.code_challenge" display="false"/>
+    <Attribute name="code_challenge_method" ref="oauth.authorize.code_challenge_method" display="false"/>
+    <Attribute name="csrf_nonce" ref="oauth.authorize.csrf_nonce" display="false"/>
+    <Attribute name="issued_at_ms" ref="oauth.authorize.issued_at_ms" display="false"/>
+  </Attributes>
+</OAuthV2>

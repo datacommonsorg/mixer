@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="oauth">
+  <Description>OAuth 2.0 Authorization Server and OAuth-protected MCP Endpoint</Description>
+  <FaultRules>
+    <FaultRule name="handle_UnauthorizedMcp">
+      <Step>
+        <Name>oauth-rewrite-unauthorized-mcp</Name>
+      </Step>
+      <Condition>
+        ((proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")) and
+        (
+          (fault.name = "InvalidAccessToken") or
+          (fault.name = "access_token_expired") or
+          (fault.name = "invalid_access_token") or
+          (fault.name = "InsufficientScope") or
+          (fault.name = "InvalidAPICallAsNoApiProductMatchFound")
+        )
+      </Condition>
+    </FaultRule>
+    <FaultRule name="handle_QuotaExceeded">
+      <Step>
+        <Name>rewrite-quota-exceeded-message</Name>
+      </Step>
+      <Condition>(fault.name = "QuotaViolation")</Condition>
+    </FaultRule>
+    <FaultRule name="handle_OAuthFault">
+      <Step>
+        <Name>oauth-script</Name>
+      </Step>
+      <Step>
+        <Name>oauth-rewrite-error</Name>
+      </Step>
+      <Condition>
+        (fault.name = "InvalidApiKey") or
+        (fault.name = "FailedToResolveAPIKey") or
+        (fault.name = "InvalidApiKeyForGivenResource") or
+        (fault.name = "DeveloperStatusNotActive") or
+        (fault.name = "invalid_client") or
+        (fault.name = "InvalidClientIdentifier") or
+        (fault.name = "InvalidAuthorizationCode") or
+        (fault.name = "InvalidRefreshToken") or
+        (fault.name = "refresh_token_expired") or
+        (fault.name = "invalid_refresh_token") or
+        (fault.name = "InvalidScope") or
+        (fault.name = "ExecutionFailed") or
+        (fault.name = "InvalidClaim") or
+        (fault.name = "TokenExpired") or
+        (fault.name = "InvalidToken") or
+        (fault.name = "VerificationException") or
+        (fault.name = "FailedToDecode")
+      </Condition>
+    </FaultRule>
+  </FaultRules>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>add-cors</Name>
+      </Step>
+      <Step>
+        <Name>oauth-set-config</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="as-metadata">
+      <Description>OAuth 2.0 Authorization Server Metadata</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
+      <Condition>
+        ((request.verb = "GET") or (request.verb = "HEAD")) and
+        (
+          (proxy.pathsuffix MatchesPath "/.well-known/openid-configuration") or
+          (proxy.pathsuffix MatchesPath "/.well-known/oauth-authorization-server")
+        )
+      </Condition>
+    </Flow>
+    <Flow name="protected-resource-metadata">
+      <Description>OAuth 2.0 Protected Resource Metadata (RFC 9728)</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
+      <Condition>
+        ((request.verb = "GET") or (request.verb = "HEAD")) and
+        (
+          (proxy.pathsuffix MatchesPath "/.well-known/oauth-protected-resource") or
+          (proxy.pathsuffix MatchesPath "/mcp/.well-known/oauth-protected-resource")
+        )
+      </Condition>
+    </Flow>
+    <Flow name="authorize">
+      <Description>OAuth 2.0 Authorization Endpoint</Description>
+      <Request>
+        <Step>
+          <Name>oauth-verify-client-id</Name>
+        </Step>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Name>oauth-generate-state2-code</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/authorize")</Condition>
+    </Flow>
+    <Flow name="callback">
+      <Description>OAuth 2.0 Callback from Google Sign-In</Description>
+      <Request>
+        <Step>
+          <Name>oauth-get-state2-attributes</Name>
+        </Step>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Name>oauth-delete-state2-code</Name>
+        </Step>
+        <Step>
+          <Name>oauth-call-google-token</Name>
+        </Step>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Name>oauth-verify-google-id-token</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (jwt.oauth-verify-google-id-token.decoded.claim.sub = null) or
+            (jwt.oauth-verify-google-id-token.decoded.claim.sub = "")
+          </Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Name>oauth-compute-uid</Name>
+        </Step>
+        <Step>
+          <Name>oauth-generate-auth-code</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb = "GET") and (proxy.pathsuffix MatchesPath "/callback")</Condition>
+    </Flow>
+    <Flow name="token">
+      <Description>OAuth 2.0 Token Endpoint</Description>
+      <Request>
+        <Step>
+          <Condition>request.header.Authorization ~~ "^[Bb]asic .+"</Condition>
+          <Name>oauth-decode-basic-auth</Name>
+        </Step>
+        <Step>
+          <Name>oauth-verify-client-form</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type = "authorization_code"</Condition>
+          <Name>oauth-get-code-attributes</Name>
+        </Step>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.failed = "true"</Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer"</Condition>
+          <Name>oauth-verify-google-id-token</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer") and
+            (
+              (jwt.oauth-verify-google-id-token.decoded.claim.sub = null) or
+              (jwt.oauth-verify-google-id-token.decoded.claim.sub = "")
+            )
+          </Condition>
+          <Name>oauth-raise-error</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer"</Condition>
+          <Name>oauth-compute-uid</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (request.formparam.grant_type = "urn:ietf:params:oauth:grant-type:jwt-bearer") and
+            (oauth.jwt_bearer.intent != "check")
+          </Condition>
+          <Name>oauth-generate-auth-code</Name>
+        </Step>
+        <Step>
+          <Condition>oauth.grant_type = "authorization_code"</Condition>
+          <Name>oauth-generate-access-token</Name>
+        </Step>
+        <Step>
+          <Condition>request.formparam.grant_type = "refresh_token"</Condition>
+          <Name>oauth-refresh-access-token</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Condition>oauth.jwt_bearer.intent = "check"</Condition>
+          <Name>oauth-script</Name>
+        </Step>
+      </Response>
+      <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/token")</Condition>
+    </Flow>
+    <Flow name="mcp-resource">
+      <Description>OAuth-protected MCP Endpoint</Description>
+      <Request>
+        <Step>
+          <Name>oauth-verify-access-token</Name>
+        </Step>
+        <Step>
+          <Name>oauth-enforce-user-quota</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>
+        ((proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")) and
+        !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**") and
+        (request.verb != "OPTIONS")
+      </Condition>
+    </Flow>
+    <Flow name="cors-preflight">
+      <Description>CORS Preflight</Description>
+      <Request/>
+      <Response/>
+      <Condition>request.verb = "OPTIONS"</Condition>
+    </Flow>
+    <Flow name="not-found">
+      <Description>Reject all other paths under /oauth</Description>
+      <Request>
+        <Step>
+          <Name>oauth-script</Name>
+        </Step>
+        <Step>
+          <Name>oauth-raise-error</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/api/oauth</BasePath>
+    <Properties>
+      <Property name="response.streaming.enabled">true</Property>
+      <Property name="api.timeout">86400000</Property>
+    </Properties>
+    <VirtualHost>default</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="mcp-target">
+    <Condition>
+      ((proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")) and
+      !(proxy.pathsuffix MatchesPath "/mcp/.well-known/**") and
+      (request.verb != "OPTIONS")
+    </Condition>
+    <TargetEndpoint>oauth</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="no-target"/>
+</ProxyEndpoint>
