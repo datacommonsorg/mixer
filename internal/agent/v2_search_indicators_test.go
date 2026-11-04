@@ -733,7 +733,7 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
 			errs:     map[string]error{"SampleChildEntities": status.Error(codes.DeadlineExceeded, "spanner: deadline exceeded on session projects/p/sessions/s")},
 			wantCode: codes.DeadlineExceeded,
-			wantMsg:  "failed to sample child entities: a backend service timed out; retry the call shortly",
+			wantMsg:  "failed to look up child entities: a backend service timed out; retry the call shortly",
 		},
 		{
 			// Deployments configured for LinkedEdge without the table fail with InvalidArgument, whose text must not reach the caller.
@@ -741,7 +741,7 @@ func TestV2SearchIndicatorsErrors(t *testing.T) {
 			req:      &V2SearchIndicatorsRequest{Query: "health", EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
 			errs:     map[string]error{"SampleChildEntities": status.Error(codes.InvalidArgument, "Table not found: LinkedEdge")},
 			wantCode: codes.Unavailable,
-			wantMsg:  "filtering by child entities is not available right now; do not retry with child_entity_type_dcid",
+			wantMsg:  "child entities cannot be looked up right now; do not retry with child_entity_type_dcid",
 		},
 		{
 			name:          "entity lookup failure",
