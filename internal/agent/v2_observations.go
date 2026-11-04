@@ -639,13 +639,13 @@ func rankV2VariableFacets(
 	return statsList, facetsByID
 }
 
-// v2SeriesFacetID returns the series' facet ID, or "unknown" when SdmxData returned none, so every series
+// v2SeriesFacetID returns the series' facet ID, or unknownFacetID when SdmxData returned none, so every series
 // groups under a source.
 func v2SeriesFacetID(series *sdmxpb.SdmxTimeSeries) string {
 	if facetID := series.GetAttributes()[attrFacetID]; facetID != "" {
 		return facetID
 	}
-	return "unknown"
+	return unknownFacetID
 }
 
 // seriesEntityTupleKey builds a NUL-separated tuple key from the series' dimension values across dimSlots,
