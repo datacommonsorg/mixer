@@ -33,6 +33,7 @@ type fakeAgentBackend struct {
 	lastV2ResolveReq      *agent.V2ResolveEntitiesRequest
 	v2ResolveResp         *agent.V2ResolveEntitiesResponse
 	lastV2SearchReq       *agent.V2SearchIndicatorsRequest
+	lastV2MetadataReq     *agent.V2GetVariableMetadataRequest
 	lastV2ObservationsReq *agent.V2GetObservationsRequest
 	v2ObservationsResp    *agent.V2GetObservationsResponse
 }
@@ -88,6 +89,12 @@ func (f *fakeAgentBackend) V2SearchIndicators(ctx context.Context, req *agent.V2
 	f.recordSurface(ctx)
 	f.lastV2SearchReq = req
 	return &agent.V2SearchIndicatorsResponse{}, nil
+}
+
+func (f *fakeAgentBackend) V2GetVariableMetadata(ctx context.Context, req *agent.V2GetVariableMetadataRequest) (*agent.V2GetVariableMetadataResponse, error) {
+	f.recordSurface(ctx)
+	f.lastV2MetadataReq = req
+	return &agent.V2GetVariableMetadataResponse{}, nil
 }
 
 func (f *fakeAgentBackend) V2GetObservations(ctx context.Context, req *agent.V2GetObservationsRequest) (*agent.V2GetObservationsResponse, error) {

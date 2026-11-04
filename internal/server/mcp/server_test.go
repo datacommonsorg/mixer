@@ -687,7 +687,7 @@ func TestV2PreviewSurface(t *testing.T) {
 			params:    map[string]any{},
 			resultKey: "tools",
 			transform: listedToolNames,
-			want:      []string{"get_observations", "resolve_entities", "search_indicators"},
+			want:      []string{"get_observations", "get_variable_metadata", "resolve_entities", "search_indicators"},
 		},
 		{
 			name:      "resources/list returns no skills",
