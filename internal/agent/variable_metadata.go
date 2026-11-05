@@ -17,6 +17,8 @@
 package agent
 
 import (
+	"cmp"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
@@ -189,21 +191,17 @@ func resolveFirstValue(nodes []*pb.EntityInfo) string {
 		return ""
 	}
 	for _, n := range nodes {
-		if n == nil {
-			continue
-		}
-		val := n.GetValue()
-		if val == "" {
-			val = n.GetName()
-		}
-		if val == "" {
-			val = n.GetDcid()
-		}
-		if val != "" {
+		if val := entityInfoValue(n); val != "" {
 			return val
 		}
 	}
 	return ""
+}
+
+// entityInfoValue returns the node's value, falling back to its name and then its DCID; it is empty for a nil
+// node.
+func entityInfoValue(n *pb.EntityInfo) string {
+	return cmp.Or(n.GetValue(), n.GetName(), n.GetDcid())
 }
 
 // toPropertyValue converts a slice of properties into a string or slice of strings.
@@ -212,16 +210,7 @@ func toPropertyValue(nodes []*pb.EntityInfo) (any, bool) {
 	seen := make(map[string]struct{})
 
 	for _, n := range nodes {
-		if n == nil {
-			continue
-		}
-		val := n.GetValue()
-		if val == "" {
-			val = n.GetName()
-		}
-		if val == "" {
-			val = n.GetDcid()
-		}
+		val := entityInfoValue(n)
 		if val == "" {
 			continue
 		}
