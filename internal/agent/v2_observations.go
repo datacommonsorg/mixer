@@ -366,7 +366,7 @@ func (s *Service) executeV2SdmxData(
 	if code == codes.InvalidArgument || code == codes.Unimplemented {
 		return nil, s.diagnoseV2SdmxRejection(ctx, req, err, code)
 	}
-	slog.Warn("V2GetObservations SdmxData failed", "error", err, "variablesCount", len(req.VariableDcids))
+	slog.Warn("V2 SdmxData failed", "error", err, "variablesCount", len(req.VariableDcids))
 	return nil, errV2ObservationsFailed(err)
 }
 
@@ -413,7 +413,7 @@ func (s *Service) diagnoseV2SdmxRejection(
 		return errV2WrongObservationProperty(req.VariableDcids[0], badProps, refProps)
 	}
 
-	slog.Warn("V2GetObservations SdmxData rejected valid-looking request", "error", sdmxErr, "variables", req.VariableDcids)
+	slog.Warn("V2 SdmxData rejected valid-looking request", "error", sdmxErr, "variables", req.VariableDcids)
 	if sdmxCode == codes.InvalidArgument {
 		return errV2ObservationsUnavailable()
 	}
@@ -606,10 +606,7 @@ func rankV2VariableFacets(
 	tuplesByFacet := make(map[string]map[string]struct{})
 
 	for _, series := range varSeries {
-		facetID := series.GetAttributes()[attrFacetID]
-		if facetID == "" {
-			facetID = "unknown"
-		}
+		facetID := v2SeriesFacetID(series)
 		if _, ok := facetsByID[facetID]; !ok {
 			facetsByID[facetID] = extractV2RawFacet(series, facetID)
 		}
@@ -640,6 +637,15 @@ func rankV2VariableFacets(
 	}
 	sortFacetStats(statsList)
 	return statsList, facetsByID
+}
+
+// v2SeriesFacetID returns the series' facet ID, or unknownFacetID when SdmxData returned none, so every series
+// groups under a source.
+func v2SeriesFacetID(series *sdmxpb.SdmxTimeSeries) string {
+	if facetID := series.GetAttributes()[attrFacetID]; facetID != "" {
+		return facetID
+	}
+	return unknownFacetID
 }
 
 // seriesEntityTupleKey builds a NUL-separated tuple key from the series' dimension values across dimSlots,
@@ -779,13 +785,18 @@ func (s *Service) fetchV2ProvenanceMetadata(ctx context.Context, dcids []string)
 	}
 	res := make(map[string]*v2ProvenanceMeta, len(dcids))
 	for _, dcid := range dcids {
-		graph := graphs[dcid]
-		res[dcid] = &v2ProvenanceMeta{
-			name: getPropValue(graph, arcName),
-			url:  getPropValue(graph, "url"),
-		}
+		res[dcid] = newV2ProvenanceMeta(graphs[dcid])
 	}
 	return res, nil
+}
+
+// newV2ProvenanceMeta reads a provenance's name and URL from its node graph; both are empty when the graph
+// lacks them.
+func newV2ProvenanceMeta(graph *pbv2.LinkedGraph) *v2ProvenanceMeta {
+	return &v2ProvenanceMeta{
+		name: getPropValue(graph, arcName),
+		url:  getPropValue(graph, "url"),
+	}
 }
 
 // buildV2GetObservationsResponse assembles the top-level entity_metadata table and per-variable observations
@@ -856,12 +867,9 @@ func buildV2FacetMeta(raw *v2RawFacet, provByDcid map[string]*v2ProvenanceMeta) 
 	}
 	var importName, provURL string
 	if raw.provenanceDcid != "" {
+		importName = v2ImportName(raw.provenanceDcid, provByDcid)
 		if pm, ok := provByDcid[raw.provenanceDcid]; ok {
-			importName = pm.name
 			provURL = pm.url
-		}
-		if importName == "" {
-			importName = raw.provenanceDcid
 		}
 	}
 	return &V2ObservationSourceMeta{
@@ -873,6 +881,14 @@ func buildV2FacetMeta(raw *v2RawFacet, provByDcid map[string]*v2ProvenanceMeta) 
 		MeasurementMethod: raw.measurementMethod,
 		ObservationPeriod: raw.observationPeriod,
 	}
+}
+
+// v2ImportName returns the display name of a provenance: its graph name when known, otherwise its DCID.
+func v2ImportName(provenanceDcid string, provByDcid map[string]*v2ProvenanceMeta) string {
+	if pm, ok := provByDcid[provenanceDcid]; ok && pm.name != "" {
+		return pm.name
+	}
+	return provenanceDcid
 }
 
 // extractV2DimensionSlots returns the sorted non-reserved observation property dimension slots for a

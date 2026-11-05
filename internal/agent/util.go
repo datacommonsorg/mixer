@@ -58,6 +58,16 @@ const (
 	colV2MemberVariables       = "member_variables"
 	colDescendantVariableCount = "descendant_variable_count"
 	colV2ObservationProperties = "observation_properties"
+	colV2SourceID              = "source_id"
+	colV2ImportName            = "import_name"
+	colV2ProvenanceURL         = "provenance_url"
+	colV2Unit                  = "unit"
+	colV2ScalingFactor         = "scaling_factor"
+	colV2MeasurementMethod     = "measurement_method"
+	colV2ObservationPeriod     = "observation_period"
+	colV2EarliestDate          = "earliest_date"
+	colV2LatestDate            = "latest_date"
+	colV2ObservationCount      = "observation_count"
 
 	DefaultPlaceDcidWorld = "Earth"
 

@@ -180,3 +180,44 @@ type V2AlternativeSource struct {
 	SourceMetadata     *V2ObservationSourceMeta `json:"source_metadata"`
 	EntitiesFoundCount *int32                   `json:"entities_found_count,omitempty"`
 }
+
+// V2GetVariableMetadataRequest holds parameters for V2GetVariableMetadata. Its fields mean the same as in
+// V2GetObservationsRequest, which has the same limits.
+type V2GetVariableMetadataRequest struct {
+	VariableDcids       []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	EntityProperty      string
+	AdditionalEntities  map[string][]string
+}
+
+// V2GetVariableMetadataResponse holds one entry per requested variable, in request order, and the details of
+// every dataset their sources come from, each listed once in first-appearance order. Datasets without
+// properties are omitted.
+type V2GetVariableMetadataResponse struct {
+	Variables []*V2VariableMetadata `json:"variables"`
+	Datasets  []*V2DatasetMetadata  `json:"datasets"`
+}
+
+// V2VariableMetadata holds a variable's definition and the sources with data for the requested entities.
+//
+// Sources has one row per source in the order V2GetObservations ranks them for the latest date, with columns
+// source_id, import_name, provenance_url, unit, scaling_factor, measurement_method, observation_period (as
+// in V2ObservationSourceMeta), earliest_date, latest_date, observation_count and entities_with_data. In child
+// mode, rows are ranked and dated by a sample of the parent's child entities, entities_with_data lists the
+// parent, and observation_count is nil. Note explains an empty Sources table.
+type V2VariableMetadata struct {
+	Dcid        string         `json:"dcid"`
+	Name        string         `json:"name,omitempty"`
+	Description string         `json:"description,omitempty"`
+	Properties  map[string]any `json:"properties,omitempty"`
+	Sources     *Table         `json:"sources"`
+	Note        string         `json:"note,omitempty"`
+}
+
+// V2DatasetMetadata holds the properties of the dataset behind a source, keyed by the import_name its source
+// rows show: the dataset properties v1 returns, merged from the provenance node and its parent source node.
+type V2DatasetMetadata struct {
+	ImportName string         `json:"import_name"`
+	Properties map[string]any `json:"properties,omitempty"`
+}

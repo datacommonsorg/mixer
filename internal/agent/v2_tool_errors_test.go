@@ -120,7 +120,7 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 			name:     "topic as variable_dcids",
 			err:      errV2TopicAsVariableDcids([]string{"dc/topic/Health"}),
 			wantCode: codes.InvalidArgument,
-			wantMsg:  `variable_dcids ["dc/topic/Health"] are topics, not statistical variables: pass topic_dcids to search_indicators to browse their member_variables, then pass variable DCIDs to get_observations`,
+			wantMsg:  `variable_dcids ["dc/topic/Health"] are topics, not statistical variables: pass topic_dcids to search_indicators to browse their member_variables, and pass those variable DCIDs instead`,
 		},
 		{
 			name:     "unknown variable_dcids",
@@ -132,7 +132,7 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 			name:     "mixed observation_properties",
 			err:      errV2MixedObservationProperties(`Count_Person: ["observationAbout"]; Count_Migration: ["destinationCountry" "sourceCountry"]`),
 			wantCode: codes.InvalidArgument,
-			wantMsg:  `variable_dcids have different observation_properties (Count_Person: ["observationAbout"]; Count_Migration: ["destinationCountry" "sourceCountry"]): group variables with the same observation_properties, or make separate get_observations calls`,
+			wantMsg:  `variable_dcids have different observation_properties (Count_Person: ["observationAbout"]; Count_Migration: ["destinationCountry" "sourceCountry"]): group variables with the same observation_properties, or make separate calls`,
 		},
 		{
 			name:     "empty entity_dcids",

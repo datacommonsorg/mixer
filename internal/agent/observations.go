@@ -29,10 +29,11 @@ import (
 )
 
 const (
-	colDate     = "date"
-	colValue    = "value"
-	attrFacetID = "facetId"
-	arcName     = "name"
+	colDate        = "date"
+	colValue       = "value"
+	attrFacetID    = "facetId"
+	unknownFacetID = "unknown"
+	arcName        = "name"
 )
 
 var reservedSlotDimensions = map[string]struct{}{
@@ -168,7 +169,7 @@ func buildSdmxDataRows(
 	for _, series := range result.GetSeries() {
 		facetID := series.GetAttributes()[attrFacetID]
 		if facetID == "" {
-			facetID = "unknown"
+			facetID = unknownFacetID
 		}
 		if facetID != primaryFacetID {
 			continue

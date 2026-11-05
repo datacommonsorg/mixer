@@ -169,6 +169,91 @@ func TestV2SearchIndicatorsInputSchema(t *testing.T) {
 	}
 }
 
+func TestV2GetVariableMetadata(t *testing.T) {
+	tests := []struct {
+		name    string
+		input   V2GetVariableMetadataInput
+		wantReq *agent.V2GetVariableMetadataRequest
+	}{
+		{
+			name: "maps all explicit, child and multi-entity fields",
+			input: V2GetVariableMetadataInput{
+				VariableDcids:       []string{"Amount_EconomicActivity_GrossODA"},
+				EntityDcids:         []string{"Earth"},
+				ChildEntityTypeDcid: "Country",
+				EntityProperty:      "recipient",
+				AdditionalEntities:  map[string][]string{"donor": {"country/USA"}},
+			},
+			wantReq: &agent.V2GetVariableMetadataRequest{
+				VariableDcids:       []string{"Amount_EconomicActivity_GrossODA"},
+				EntityDcids:         []string{"Earth"},
+				ChildEntityTypeDcid: "Country",
+				EntityProperty:      "recipient",
+				AdditionalEntities:  map[string][]string{"donor": {"country/USA"}},
+			},
+		},
+		{
+			name:    "empty input is passed through for agent validation",
+			wantReq: &agent.V2GetVariableMetadataRequest{},
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			backend := &fakeAgentBackend{}
+			if _, err := NewMcpTools(backend, "base_and_custom").V2GetVariableMetadata(context.Background(), tc.input); err != nil {
+				t.Fatalf("V2GetVariableMetadata() unexpected error: %v", err)
+			}
+			if diff := cmp.Diff(tc.wantReq, backend.lastV2MetadataReq); diff != "" {
+				t.Errorf("agent request diff (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+
+func TestV2GetVariableMetadataInputSchema(t *testing.T) {
+	tool := mcp.NewTool("get_variable_metadata", withToolInputSchema[V2GetVariableMetadataInput]())
+	var got map[string]any
+	if err := json.Unmarshal(tool.RawInputSchema, &got); err != nil {
+		t.Fatalf("failed to decode input schema: %v", err)
+	}
+	props := got["properties"].(map[string]any)
+	wantTypes := map[string]any{
+		"variable_dcids":         "array",
+		"entity_dcids":           "array",
+		"child_entity_type_dcid": "string",
+		"entity_property":        "string",
+		"additional_entities":    "object",
+	}
+	gotTypes := make(map[string]any, len(props))
+	for field, raw := range props {
+		prop := raw.(map[string]any)
+		if desc, _ := prop["description"].(string); desc == "" {
+			t.Errorf("get_variable_metadata input schema field %q has no description", field)
+		}
+		gotTypes[field] = prop["type"]
+	}
+	if diff := cmp.Diff(wantTypes, gotTypes); diff != "" {
+		t.Errorf("get_variable_metadata input schema types diff (-want +got):\n%s", diff)
+	}
+	if diff := cmp.Diff([]any{"variable_dcids", "entity_dcids"}, got["required"]); diff != "" {
+		t.Errorf("get_variable_metadata input schema required diff (-want +got):\n%s", diff)
+	}
+
+	// The fields are get_observations' scope fields, whose descriptions state the shared limits, so they must
+	// not drift apart.
+	obsTool := mcp.NewTool("get_observations", withToolInputSchema[V2GetObservationsInput]())
+	var obs map[string]any
+	if err := json.Unmarshal(obsTool.RawInputSchema, &obs); err != nil {
+		t.Fatalf("failed to decode get_observations input schema: %v", err)
+	}
+	obsProps := obs["properties"].(map[string]any)
+	for field, prop := range props {
+		if diff := cmp.Diff(obsProps[field], prop); diff != "" {
+			t.Errorf("get_variable_metadata field %q differs from get_observations (-get_observations +get_variable_metadata):\n%s", field, diff)
+		}
+	}
+}
+
 func TestV2GetObservations(t *testing.T) {
 	tests := []struct {
 		name    string

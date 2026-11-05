@@ -172,9 +172,10 @@ func errV2AvailabilityFailed(err error) error {
 	return wrapV2BackendError(err, "failed to check which indicators have data for entity_dcids")
 }
 
-// errV2ChildEntitySamplingFailed is returned when sampling child entities times out.
+// errV2ChildEntitySamplingFailed is returned when looking up child entities times out. get_variable_metadata
+// returns it too.
 func errV2ChildEntitySamplingFailed(err error) error {
-	return wrapV2BackendError(err, "failed to sample child entities")
+	return wrapV2BackendError(err, "failed to look up child entities")
 }
 
 // errV2ChildEntitiesUnavailable is returned when child entities can't be sampled for any reason other than a
@@ -183,13 +184,13 @@ func errV2ChildEntitySamplingFailed(err error) error {
 // wrapV2BackendError passes InvalidArgument messages through, which would expose Spanner's "Table not
 // found: LinkedEdge" to the caller. A missing table is permanent, so the message says not to retry; other
 // failures get the same message rather than a guess at whether they are temporary. The raw error is logged
-// by the caller.
+// by the caller. get_variable_metadata returns it too.
 func errV2ChildEntitiesUnavailable() error {
 	return status.Error(codes.Unavailable,
-		"filtering by child entities is not available right now; do not retry with child_entity_type_dcid")
+		"child entities cannot be looked up right now; do not retry with child_entity_type_dcid")
 }
 
-// get_observations: request validation.
+// get_observations: request validation. get_variable_metadata reuses the variable and entity checks.
 
 func errV2NoVariableDcids() error {
 	return status.Errorf(codes.InvalidArgument,
@@ -211,7 +212,7 @@ func errV2TooManyChildVariableDcids(count int) error {
 
 func errV2TopicAsVariableDcids(dcids []string) error {
 	return status.Errorf(codes.InvalidArgument,
-		"variable_dcids %q are topics, not statistical variables: pass topic_dcids to search_indicators to browse their member_variables, then pass variable DCIDs to get_observations",
+		"variable_dcids %q are topics, not statistical variables: pass topic_dcids to search_indicators to browse their member_variables, and pass those variable DCIDs instead",
 		dcids)
 }
 
@@ -223,7 +224,7 @@ func errV2UnknownVariableDcids(dcids []string) error {
 
 func errV2MixedObservationProperties(summary string) error {
 	return status.Errorf(codes.InvalidArgument,
-		"variable_dcids have different observation_properties (%s): group variables with the same observation_properties, or make separate get_observations calls",
+		"variable_dcids have different observation_properties (%s): group variables with the same observation_properties, or make separate calls",
 		summary)
 }
 
@@ -301,6 +302,7 @@ func errV2InvertedDateRange(start, end string) error {
 
 // get_observations: notes. These are returned on individual variable entries when Data has no rows.
 // Like search_indicators notes, they state only what was checked and give no retry advice.
+// get_variable_metadata uses v2NoObsNote with the same scopes when a variable has no sources.
 
 // v2GivenEntitiesAndAdditionalScope is the note scope in explicit mode when additional_entities is also set.
 const v2GivenEntitiesAndAdditionalScope = "the given entity_dcids and additional_entities"
@@ -330,7 +332,7 @@ func v2NoObsForSourceInDateWindowNote(variable, scope, sourceID, minDate, maxDat
 		variable, scope, sourceID, minDate, maxDate)
 }
 
-// get_observations: backend failures.
+// get_observations: backend failures. get_variable_metadata returns the same errors for its SdmxData query.
 
 func errV2ObservationsFailed(err error) error {
 	return wrapV2BackendError(err, "failed to fetch observations")

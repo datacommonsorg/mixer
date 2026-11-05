@@ -34,7 +34,7 @@ const (
 	v2MaxSearchTopics    = 10
 	v2MaxSearchVariables = 10
 	// v2MaxEntityDcids caps entity_dcids per call; each entity's available variables are loaded once and
-	// cached. Keep in sync with the 'entity_dcids' field description in internal/server/mcp/v2_types.go.
+	// cached. Keep in sync with the 'entity_dcids' field descriptions in internal/server/mcp/v2_types.go.
 	v2MaxEntityDcids = 20
 	// v2MaxTopicDcids caps topic_dcids per call, since each requested topic returns all its direct members.
 	// Keep in sync with the 'topic_dcids' field description in internal/server/mcp/v2_types.go.
@@ -277,10 +277,25 @@ func (s *Service) loadGivenEntityScope(ctx context.Context, entities []string) (
 }
 
 // loadChildEntityScope returns the scope for child mode: a sample of the parent's child entities of the
-// type, whose variable sets are loaded (and cached). The children come from the graph, so unlike explicit
-// entities they skip the existence check. Only an empty sample needs the parent looked up, to tell an
-// unknown DCID from a parent without children of the type.
+// type (see requireChildEntitySample), whose variable sets are loaded (and cached).
 func (s *Service) loadChildEntityScope(ctx context.Context, parent, childType string) (*v2EntityScope, error) {
+	children, err := s.requireChildEntitySample(ctx, parent, childType)
+	if err != nil {
+		return nil, err
+	}
+	withoutData, err := s.loadEntitiesWithoutData(ctx, children)
+	if err != nil {
+		return nil, err
+	}
+	return &v2EntityScope{entities: children, entitiesWithoutData: withoutData, parent: parent, childType: childType}, nil
+}
+
+// requireChildEntitySample returns a sample of the parent's child entities of the type (see
+// sampleChildEntities), or an error when there are none. The children come from the graph, so unlike explicit
+// entities they skip the existence check. Only an empty sample needs the parent looked up, to tell an unknown
+// DCID (errV2UnknownEntityDcids) from a parent without children of the type (errV2NoChildEntitiesOfType).
+// get_variable_metadata uses it too.
+func (s *Service) requireChildEntitySample(ctx context.Context, parent, childType string) ([]string, error) {
 	children, err := s.sampleChildEntities(ctx, parent, childType)
 	if err != nil {
 		return nil, err
@@ -291,11 +306,7 @@ func (s *Service) loadChildEntityScope(ctx context.Context, parent, childType st
 		}
 		return nil, errV2NoChildEntitiesOfType(parent, childType)
 	}
-	withoutData, err := s.loadEntitiesWithoutData(ctx, children)
-	if err != nil {
-		return nil, err
-	}
-	return &v2EntityScope{entities: children, entitiesWithoutData: withoutData, parent: parent, childType: childType}, nil
+	return children, nil
 }
 
 // sampleChildEntities returns up to v2ChildEntitySampleSize of the parent's child entities of the type.
