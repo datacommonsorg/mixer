@@ -35,8 +35,8 @@ Feature flags can have their live values updated quickly (<15 min) on a per-envi
   - Compatibility issues arise when a flag value in config cannot be parsed as the expected type in the binary—for example, if a float-valued flag has a string value defined.
   - A flag value may also be incompatible if it fails manually-added validation checks in the featureflags package.
   - It is not a problem if a flag is defined in the binary but not in the config, or vice versa (in the former case, the flag will fall back to default value).
-- **Time/date prod change restrictions**: A GitHub check `enforce_feature_flag_merge_restrictions` disallows merging prod flag changes on weekends, on Fridays, or outside of California business hours.
-  - This check can be bypassed by running the `deploy_flags.sh` script manually: `deploy/featureflags/deploy_flags.sh deploy/featureflags prod`
+- **Production change review & attestation**: Pull requests modifying `deploy/featureflags/prod*` require approval from `@datacommonsorg/oncallers` (via [.github/CODEOWNERS](https://github.com/datacommonsorg/mixer/blob/master/.github/CODEOWNERS)) and are checked by [.github/workflows/feature-flag-checks.yml](https://github.com/datacommonsorg/mixer/blob/master/.github/workflows/feature-flag-checks.yml) to verify that the PR description includes the required production feature flag attestation block.
+  - In emergencies, flags can also be deployed manually via `deploy/featureflags/deploy_flags.sh deploy/featureflags prod`.
 
 ## [How to check current live flag values](#check)
 
@@ -60,7 +60,14 @@ Note: Flags should only be used for temporary values, e.g. for gradual feature r
 1. Edit the config YAML for the target environment
   - Note that the values for standalone mixer and mixer bundled with website must be changed separately
 1. Merge the changes into the mixer main branch with a reviewed PR
-  - Prod changes can only be merged on Monday through Thursday between 8:00 AM and 5:00 PM in California.
+  - For production flag changes (`deploy/featureflags/prod*`), coordinate with `@datacommonsorg/oncallers`, announce the update on the oncall thread, and include the following attestation block in your PR description (enforced by the `Feature flag checks` GitHub workflow):
+    ```markdown
+    Production Feature Flag Attestation:
+    - Validated these exact flag changes in staging (or rolling back to a known-good config).
+    - Coordinated with the oncaller (merging triggers a rolling restart of all production pods).
+    - Will announce this update on the oncall thread and clear the Redis cache if API responses change.
+    - Merging during normal working hours (Mon-Thu), or with lead/oncaller approval.
+    ```
 1. [Optional] If your feature change will cause APIs to return different data:
   - Clear the Redis cache: from the **website** repo, `./tools/clearcache/run.sh mixer <env>`
   - Update goldens: from the website repo, `gcloud builds submit --config build/ci/cloudbuild.update_nl_goldens.yaml --project=datcom-ci`

@@ -298,3 +298,61 @@ func TestRemoteClientChildTypes(t *testing.T) {
 		})
 	}
 }
+
+func TestRemoteClientSampleChildEntities(t *testing.T) {
+	tests := []struct {
+		name       string
+		statusCode int
+		body       string
+		want       *pbv2.SampleChildEntitiesResponse
+		wantErr    bool
+	}{
+		{
+			name:       "success",
+			statusCode: http.StatusOK,
+			body:       `{"childEntities":{"geoId/06":{"dcids":["geoId/06085","geoId/06001"]}}}`,
+			want: &pbv2.SampleChildEntitiesResponse{ChildEntities: map[string]*pbv2.SampleChildEntitiesResponse_ChildEntities{
+				"geoId/06": {Dcids: []string{"geoId/06085", "geoId/06001"}},
+			}},
+		},
+		{
+			name:       "remote error is returned",
+			statusCode: http.StatusNotFound,
+			body:       `{"error":"not found"}`,
+			wantErr:    true,
+		},
+	}
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			var gotPath string
+			ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				gotPath = r.URL.Path
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(tc.statusCode)
+				_, _ = w.Write([]byte(tc.body))
+			}))
+			defer ts.Close()
+
+			client, err := NewRemoteClient(&resource.Metadata{RemoteMixerDomain: ts.URL, RemoteMixerAPIKey: "test-api-key"})
+			if err != nil {
+				t.Fatalf("NewRemoteClient failed: %v", err)
+			}
+			got, err := client.SampleChildEntities(context.Background(), &pbv2.SampleChildEntitiesRequest{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: 5})
+			if gotPath != "/v2/internal/sample-child-entities" {
+				t.Errorf("request path = %q, want %q", gotPath, "/v2/internal/sample-child-entities")
+			}
+			if tc.wantErr {
+				if err == nil {
+					t.Fatalf("client.SampleChildEntities() error = nil, want error")
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("client.SampleChildEntities() unexpected error = %v", err)
+			}
+			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("client.SampleChildEntities() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}

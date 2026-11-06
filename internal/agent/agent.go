@@ -51,6 +51,10 @@ type Mixer interface {
 	// ChildTypes fetches the types of entities contained in each ancestor entity, via the (transitive)
 	// containedInPlace relation.
 	ChildTypes(ctx context.Context, in *pbv2.ChildTypesRequest) (*pbv2.ChildTypesResponse, error)
+
+	// SampleChildEntities fetches, for each ancestor entity, a fixed sample of the entities of one type
+	// contained (transitively, via containedInPlace) in it.
+	SampleChildEntities(ctx context.Context, in *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error)
 }
 
 // Service orchestrates the aggregation and formatting of lower-level API data in response

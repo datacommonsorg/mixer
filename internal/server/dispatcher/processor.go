@@ -40,6 +40,7 @@ const (
 	TypeSdmxAvailability       RequestType = "SdmxAvailability"
 	TypeFilterStatVarsByEntity RequestType = "FilterStatVarsByEntity"
 	TypeChildTypes             RequestType = "ChildTypes"
+	TypeSampleChildEntities    RequestType = "SampleChildEntities"
 )
 
 // RequestContext holds state for a single request as it flows through processors.

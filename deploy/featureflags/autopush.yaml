@@ -12,3 +12,4 @@ flags:
   UseSpannerKeyValueStore: true
   V2DivertFraction: 1.0
   UseNewIngestionHistorySchema: true
+  UseMaterializedLinkedEdge: true

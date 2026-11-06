@@ -13,3 +13,4 @@ flags:
   EnableSDMXDataApi: true
   UseSpannerKeyValueStore: true
   UseNewIngestionHistorySchema: true
+  UseMaterializedLinkedEdge: true

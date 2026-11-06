@@ -73,7 +73,7 @@ func TestChildTypes(t *testing.T) {
 			}},
 		},
 		{
-			// Support varies by source (e.g. a custom DC's database may lack LinkedEdge), so failed sources are skipped.
+			// Support varies by source (e.g. a misconfigured custom DC's database lacks LinkedEdge), so failed sources are skipped.
 			name: "failed sources are ignored when another source succeeds",
 			sources: []datasource.DataSource{
 				&childTypesDataSource{id: "spanner", err: errors.New("Table not found: LinkedEdge")},

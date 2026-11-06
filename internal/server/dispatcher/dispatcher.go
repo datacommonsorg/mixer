@@ -262,3 +262,17 @@ func (dispatcher *Dispatcher) ChildTypes(ctx context.Context, in *pbv2.ChildType
 	}
 	return response.(*pbv2.ChildTypesResponse), nil
 }
+
+// SampleChildEntities handles child entity sample requests.
+func (dispatcher *Dispatcher) SampleChildEntities(ctx context.Context, in *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeSampleChildEntities)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.SampleChildEntities(ctx, request.(*pbv2.SampleChildEntitiesRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv2.SampleChildEntitiesResponse), nil
+}

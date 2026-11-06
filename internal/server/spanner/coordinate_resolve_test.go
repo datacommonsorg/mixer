@@ -129,6 +129,10 @@ func (m *coordinateMockSpannerClient) GetChildTypes(ctx context.Context, ancesto
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) SampleChildEntities(ctx context.Context, ancestors []string, childType string, limit int) (map[string][]string, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	return nil, nil
 }

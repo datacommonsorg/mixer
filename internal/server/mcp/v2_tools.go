@@ -47,9 +47,44 @@ func (t *McpTools) V2SearchIndicators(ctx context.Context, input V2SearchIndicat
 		return nil, fmt.Errorf("agent service is not initialized")
 	}
 	return t.agentService.V2SearchIndicators(ctx, &agent.V2SearchIndicatorsRequest{
-		Query:       input.Query,
-		TopicDcids:  input.TopicDcids,
-		EntityDcids: input.EntityDcids,
-		Target:      t.searchScope,
+		Query:               input.Query,
+		TopicDcids:          input.TopicDcids,
+		EntityDcids:         input.EntityDcids,
+		ChildEntityTypeDcid: input.ChildEntityTypeDcid,
+		Target:              t.searchScope,
+	})
+}
+
+// V2GetVariableMetadata describes 1 to 10 statistical variables and the sources with data for them on explicit
+// entities, child entities of a parent, or multi-entity relationship slots.
+func (t *McpTools) V2GetVariableMetadata(ctx context.Context, input V2GetVariableMetadataInput) (*agent.V2GetVariableMetadataResponse, error) {
+	if t.agentService == nil {
+		return nil, fmt.Errorf("agent service is not initialized")
+	}
+	return t.agentService.V2GetVariableMetadata(ctx, &agent.V2GetVariableMetadataRequest{
+		VariableDcids:       input.VariableDcids,
+		EntityDcids:         input.EntityDcids,
+		ChildEntityTypeDcid: input.ChildEntityTypeDcid,
+		EntityProperty:      input.EntityProperty,
+		AdditionalEntities:  input.AdditionalEntities,
+	})
+}
+
+// V2GetObservations fetches observation series and source metadata for 1 to 10 statistical variables across
+// explicit entities, child entities of a parent, or multi-entity relationship slots.
+func (t *McpTools) V2GetObservations(ctx context.Context, input V2GetObservationsInput) (*agent.V2GetObservationsResponse, error) {
+	if t.agentService == nil {
+		return nil, fmt.Errorf("agent service is not initialized")
+	}
+	return t.agentService.V2GetObservations(ctx, &agent.V2GetObservationsRequest{
+		VariableDcids:       input.VariableDcids,
+		EntityDcids:         input.EntityDcids,
+		ChildEntityTypeDcid: input.ChildEntityTypeDcid,
+		EntityProperty:      input.EntityProperty,
+		AdditionalEntities:  input.AdditionalEntities,
+		Date:                input.Date,
+		DateRangeStart:      input.DateRangeStart,
+		DateRangeEnd:        input.DateRangeEnd,
+		SourceOverride:      input.SourceOverride,
 	})
 }

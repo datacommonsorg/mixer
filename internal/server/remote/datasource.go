@@ -95,6 +95,10 @@ func (rds *RemoteDataSource) ChildTypes(ctx context.Context, req *pbv2.ChildType
 	return rds.client.ChildTypes(ctx, req)
 }
 
+func (rds *RemoteDataSource) SampleChildEntities(ctx context.Context, req *pbv2.SampleChildEntitiesRequest) (*pbv2.SampleChildEntitiesResponse, error) {
+	return rds.client.SampleChildEntities(ctx, req)
+}
+
 func (rds *RemoteDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
 	return rds.client.FilterStatVarsByEntity(ctx, req)
 }

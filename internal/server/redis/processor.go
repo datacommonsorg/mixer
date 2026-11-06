@@ -160,6 +160,8 @@ func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error)
 		return &pb.FilterStatVarsByEntityResponse{}, nil
 	case dispatcher.TypeChildTypes:
 		return &pbv2.ChildTypesResponse{}, nil
+	case dispatcher.TypeSampleChildEntities:
+		return &pbv2.SampleChildEntitiesResponse{}, nil
 	default:
 		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}

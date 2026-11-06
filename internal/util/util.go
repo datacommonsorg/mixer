@@ -420,6 +420,22 @@ func MergeDedupe(strLists ...[]string) []string {
 	return result
 }
 
+// FirstDistinct returns up to limit distinct values from values, in their original order.
+func FirstDistinct(values []string, limit int) []string {
+	var distinct []string
+	seen := map[string]struct{}{}
+	for _, value := range values {
+		if len(distinct) >= limit {
+			break
+		}
+		if _, ok := seen[value]; !ok {
+			seen[value] = struct{}{}
+			distinct = append(distinct, value)
+		}
+	}
+	return distinct
+}
+
 // Sample constructs a sampled protobuf message based on the sampling strategy.
 // The output is deterministic given the same strategy.
 func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {

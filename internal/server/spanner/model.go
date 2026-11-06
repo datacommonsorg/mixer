@@ -102,6 +102,13 @@ type AncestorChildType struct {
 	ChildType string `spanner:"child_type"`
 }
 
+// AncestorChildren represents a row of the child entity sample query: an ancestor and up to the row limit
+// of its child entity rows, in sample order.
+type AncestorChildren struct {
+	Ancestor string   `spanner:"ancestor"`
+	Children []string `spanner:"children"`
+}
+
 // EventIdWithMagnitudeDcid represents a raw event row from Spanner graph queries.
 type EventIdWithMagnitudeDcid struct {
 	EventID       string

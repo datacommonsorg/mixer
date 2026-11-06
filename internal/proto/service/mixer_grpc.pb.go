@@ -45,52 +45,53 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
-	Mixer_V3SdmxAvailability_FullMethodName           = "/datacommons.Mixer/V3SdmxAvailability"
-	Mixer_V2InternalSdmxData_FullMethodName           = "/datacommons.Mixer/V2InternalSdmxData"
-	Mixer_V2InternalSdmxAvailability_FullMethodName   = "/datacommons.Mixer/V2InternalSdmxAvailability"
-	Mixer_V2InternalChildTypes_FullMethodName         = "/datacommons.Mixer/V2InternalChildTypes"
-	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
-	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
-	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
-	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
-	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
-	Mixer_V3Sparql_FullMethodName                     = "/datacommons.Mixer/V3Sparql"
-	Mixer_V3BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V3BulkVariableInfo"
-	Mixer_V3BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V3BulkVariableGroupInfo"
-	Mixer_V2Sparql_FullMethodName                     = "/datacommons.Mixer/V2Sparql"
-	Mixer_V2Resolve_FullMethodName                    = "/datacommons.Mixer/V2Resolve"
-	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
-	Mixer_V2Event_FullMethodName                      = "/datacommons.Mixer/V2Event"
-	Mixer_V2Observation_FullMethodName                = "/datacommons.Mixer/V2Observation"
-	Mixer_V2RecognizePlaces_FullMethodName            = "/datacommons.Mixer/V2RecognizePlaces"
-	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
-	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
-	Mixer_V2BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V2BulkVariableGroupInfo"
-	Mixer_V2GetLocationsRankings_FullMethodName       = "/datacommons.Mixer/V2GetLocationsRankings"
-	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
-	Mixer_GetStats_FullMethodName                     = "/datacommons.Mixer/GetStats"
-	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
-	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
-	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
-	Mixer_BulkPropertyValues_FullMethodName           = "/datacommons.Mixer/BulkPropertyValues"
-	Mixer_BulkLinkedPropertyValues_FullMethodName     = "/datacommons.Mixer/BulkLinkedPropertyValues"
-	Mixer_BulkPlaceInfo_FullMethodName                = "/datacommons.Mixer/BulkPlaceInfo"
-	Mixer_BulkVariableInfo_FullMethodName             = "/datacommons.Mixer/BulkVariableInfo"
-	Mixer_BulkVariableGroupInfo_FullMethodName        = "/datacommons.Mixer/BulkVariableGroupInfo"
-	Mixer_BulkObservationsPoint_FullMethodName        = "/datacommons.Mixer/BulkObservationsPoint"
-	Mixer_BulkObservationsSeries_FullMethodName       = "/datacommons.Mixer/BulkObservationsSeries"
-	Mixer_BulkObservationsSeriesLinked_FullMethodName = "/datacommons.Mixer/BulkObservationsSeriesLinked"
-	Mixer_BulkObservationDatesLinked_FullMethodName   = "/datacommons.Mixer/BulkObservationDatesLinked"
-	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
-	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
-	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
-	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
-	Mixer_ResolveCoordinates_FullMethodName           = "/datacommons.Mixer/ResolveCoordinates"
-	Mixer_ResolveIds_FullMethodName                   = "/datacommons.Mixer/ResolveIds"
-	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
-	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
-	Mixer_GetImportTableData_FullMethodName           = "/datacommons.Mixer/GetImportTableData"
+	Mixer_V3SdmxData_FullMethodName                    = "/datacommons.Mixer/V3SdmxData"
+	Mixer_V3SdmxAvailability_FullMethodName            = "/datacommons.Mixer/V3SdmxAvailability"
+	Mixer_V2InternalSdmxData_FullMethodName            = "/datacommons.Mixer/V2InternalSdmxData"
+	Mixer_V2InternalSdmxAvailability_FullMethodName    = "/datacommons.Mixer/V2InternalSdmxAvailability"
+	Mixer_V2InternalChildTypes_FullMethodName          = "/datacommons.Mixer/V2InternalChildTypes"
+	Mixer_V2InternalSampleChildEntities_FullMethodName = "/datacommons.Mixer/V2InternalSampleChildEntities"
+	Mixer_V3Node_FullMethodName                        = "/datacommons.Mixer/V3Node"
+	Mixer_V3Observation_FullMethodName                 = "/datacommons.Mixer/V3Observation"
+	Mixer_V3NodeSearch_FullMethodName                  = "/datacommons.Mixer/V3NodeSearch"
+	Mixer_V3Resolve_FullMethodName                     = "/datacommons.Mixer/V3Resolve"
+	Mixer_V3Event_FullMethodName                       = "/datacommons.Mixer/V3Event"
+	Mixer_V3Sparql_FullMethodName                      = "/datacommons.Mixer/V3Sparql"
+	Mixer_V3BulkVariableInfo_FullMethodName            = "/datacommons.Mixer/V3BulkVariableInfo"
+	Mixer_V3BulkVariableGroupInfo_FullMethodName       = "/datacommons.Mixer/V3BulkVariableGroupInfo"
+	Mixer_V2Sparql_FullMethodName                      = "/datacommons.Mixer/V2Sparql"
+	Mixer_V2Resolve_FullMethodName                     = "/datacommons.Mixer/V2Resolve"
+	Mixer_V2Node_FullMethodName                        = "/datacommons.Mixer/V2Node"
+	Mixer_V2Event_FullMethodName                       = "/datacommons.Mixer/V2Event"
+	Mixer_V2Observation_FullMethodName                 = "/datacommons.Mixer/V2Observation"
+	Mixer_V2RecognizePlaces_FullMethodName             = "/datacommons.Mixer/V2RecognizePlaces"
+	Mixer_FilterStatVarsByEntity_FullMethodName        = "/datacommons.Mixer/FilterStatVarsByEntity"
+	Mixer_V2BulkVariableInfo_FullMethodName            = "/datacommons.Mixer/V2BulkVariableInfo"
+	Mixer_V2BulkVariableGroupInfo_FullMethodName       = "/datacommons.Mixer/V2BulkVariableGroupInfo"
+	Mixer_V2GetLocationsRankings_FullMethodName        = "/datacommons.Mixer/V2GetLocationsRankings"
+	Mixer_Query_FullMethodName                         = "/datacommons.Mixer/Query"
+	Mixer_GetStats_FullMethodName                      = "/datacommons.Mixer/GetStats"
+	Mixer_GetLocationsRankings_FullMethodName          = "/datacommons.Mixer/GetLocationsRankings"
+	Mixer_GetRelatedLocations_FullMethodName           = "/datacommons.Mixer/GetRelatedLocations"
+	Mixer_GetVersion_FullMethodName                    = "/datacommons.Mixer/GetVersion"
+	Mixer_BulkPropertyValues_FullMethodName            = "/datacommons.Mixer/BulkPropertyValues"
+	Mixer_BulkLinkedPropertyValues_FullMethodName      = "/datacommons.Mixer/BulkLinkedPropertyValues"
+	Mixer_BulkPlaceInfo_FullMethodName                 = "/datacommons.Mixer/BulkPlaceInfo"
+	Mixer_BulkVariableInfo_FullMethodName              = "/datacommons.Mixer/BulkVariableInfo"
+	Mixer_BulkVariableGroupInfo_FullMethodName         = "/datacommons.Mixer/BulkVariableGroupInfo"
+	Mixer_BulkObservationsPoint_FullMethodName         = "/datacommons.Mixer/BulkObservationsPoint"
+	Mixer_BulkObservationsSeries_FullMethodName        = "/datacommons.Mixer/BulkObservationsSeries"
+	Mixer_BulkObservationsSeriesLinked_FullMethodName  = "/datacommons.Mixer/BulkObservationsSeriesLinked"
+	Mixer_BulkObservationDatesLinked_FullMethodName    = "/datacommons.Mixer/BulkObservationDatesLinked"
+	Mixer_PlacePage_FullMethodName                     = "/datacommons.Mixer/PlacePage"
+	Mixer_VariableAncestors_FullMethodName             = "/datacommons.Mixer/VariableAncestors"
+	Mixer_SearchStatVar_FullMethodName                 = "/datacommons.Mixer/SearchStatVar"
+	Mixer_ResolveEntities_FullMethodName               = "/datacommons.Mixer/ResolveEntities"
+	Mixer_ResolveCoordinates_FullMethodName            = "/datacommons.Mixer/ResolveCoordinates"
+	Mixer_ResolveIds_FullMethodName                    = "/datacommons.Mixer/ResolveIds"
+	Mixer_BulkFindEntities_FullMethodName              = "/datacommons.Mixer/BulkFindEntities"
+	Mixer_RecognizePlaces_FullMethodName               = "/datacommons.Mixer/RecognizePlaces"
+	Mixer_GetImportTableData_FullMethodName            = "/datacommons.Mixer/GetImportTableData"
 )
 
 // MixerClient is the client API for Mixer service.
@@ -109,6 +110,10 @@ type MixerClient interface {
 	// data sources (e.g. custom DC instances querying the base DC).
 	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
 	V2InternalChildTypes(ctx context.Context, in *v2.ChildTypesRequest, opts ...grpc.CallOption) (*v2.ChildTypesResponse, error)
+	// Internal endpoint for a sample of the entities of one type contained in ancestor entities, used by
+	// remote data sources (e.g. custom DC instances querying the base DC).
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+	V2InternalSampleChildEntities(ctx context.Context, in *v2.SampleChildEntitiesRequest, opts ...grpc.CallOption) (*v2.SampleChildEntitiesResponse, error)
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
@@ -231,6 +236,16 @@ func (c *mixerClient) V2InternalChildTypes(ctx context.Context, in *v2.ChildType
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(v2.ChildTypesResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2InternalChildTypes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2InternalSampleChildEntities(ctx context.Context, in *v2.SampleChildEntitiesRequest, opts ...grpc.CallOption) (*v2.SampleChildEntitiesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(v2.SampleChildEntitiesResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2InternalSampleChildEntities_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -663,6 +678,10 @@ type MixerServer interface {
 	// data sources (e.g. custom DC instances querying the base DC).
 	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
 	V2InternalChildTypes(context.Context, *v2.ChildTypesRequest) (*v2.ChildTypesResponse, error)
+	// Internal endpoint for a sample of the entities of one type contained in ancestor entities, used by
+	// remote data sources (e.g. custom DC instances querying the base DC).
+	// Uses /v2/internal prefix to ensure remote calls succeed through proxy policies (e.g. Apigee).
+	V2InternalSampleChildEntities(context.Context, *v2.SampleChildEntitiesRequest) (*v2.SampleChildEntitiesResponse, error)
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
@@ -745,6 +764,9 @@ func (UnimplementedMixerServer) V2InternalSdmxAvailability(context.Context, *sdm
 }
 func (UnimplementedMixerServer) V2InternalChildTypes(context.Context, *v2.ChildTypesRequest) (*v2.ChildTypesResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V2InternalChildTypes not implemented")
+}
+func (UnimplementedMixerServer) V2InternalSampleChildEntities(context.Context, *v2.SampleChildEntitiesRequest) (*v2.SampleChildEntitiesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method V2InternalSampleChildEntities not implemented")
 }
 func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method V3Node not implemented")
@@ -968,6 +990,24 @@ func _Mixer_V2InternalChildTypes_Handler(srv interface{}, ctx context.Context, d
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2InternalChildTypes(ctx, req.(*v2.ChildTypesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2InternalSampleChildEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v2.SampleChildEntitiesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2InternalSampleChildEntities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2InternalSampleChildEntities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2InternalSampleChildEntities(ctx, req.(*v2.SampleChildEntitiesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1732,6 +1772,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2InternalChildTypes",
 			Handler:    _Mixer_V2InternalChildTypes_Handler,
+		},
+		{
+			MethodName: "V2InternalSampleChildEntities",
+			Handler:    _Mixer_V2InternalSampleChildEntities_Handler,
 		},
 		{
 			MethodName: "V3Node",

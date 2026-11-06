@@ -649,11 +649,34 @@ func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLea
 	}
 }
 
-// GetChildTypesQuery returns a Spanner statement listing the child entity types of each ancestor.
-func GetChildTypesQuery(ancestors []string) *spanner.Statement {
+// GetChildTypesQuery returns a Spanner statement listing the child entity types of each ancestor, read from
+// LinkedEdge, or from Edge when queryConfig doesn't enable LinkedEdge.
+func GetChildTypesQuery(ancestors []string, queryConfig QueryConfig) *spanner.Statement {
+	sql := statements.getChildTypesEdge
+	if queryConfig.useLinkedEdge() {
+		sql = statements.getChildTypes
+	}
 	return &spanner.Statement{
-		SQL:    statements.getChildTypes,
+		SQL:    sql,
 		Params: map[string]interface{}{"ancestors": ancestors},
+	}
+}
+
+// SampleChildEntitiesQuery returns a Spanner statement listing, per ancestor, up to rowLimit child rows of
+// childType (a child with several provenance rows appears once per row), read from LinkedEdge, or from Edge
+// when queryConfig doesn't enable LinkedEdge.
+func SampleChildEntitiesQuery(ancestors []string, childType string, rowLimit int, queryConfig QueryConfig) *spanner.Statement {
+	sql := statements.sampleChildEntitiesEdge
+	if queryConfig.useLinkedEdge() {
+		sql = statements.sampleChildEntities
+	}
+	return &spanner.Statement{
+		SQL: sql,
+		Params: map[string]interface{}{
+			"ancestors":  ancestors,
+			"child_type": childType,
+			"row_limit":  int64(rowLimit),
+		},
 	}
 }
 

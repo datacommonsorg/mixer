@@ -35,8 +35,8 @@ type V2ResolveEntitiesRequest struct {
 //
 // CandidateChildEntityTypes is only set when some query has child type hints and the child type lookup
 // succeeded (a failed lookup omits it rather than reporting no child types). It has columns query,
-// entity_dcid, child_entity_type and child_entity_type_name, with one row per hinted child type that
-// exists within the query's best-matching entity, or a single row with an empty child_entity_type when
+// entity_dcid, child_entity_type_dcid and child_entity_type_name, with one row per hinted child type that
+// exists within the query's best-matching entity, or a single row with an empty child_entity_type_dcid when
 // none matched (or the query did not resolve, in which case entity_dcid is also empty).
 //
 // ChildEntityTypesNote explains, when set, why CandidateChildEntityTypes is missing despite child type
@@ -78,12 +78,14 @@ type v2ChildType struct {
 
 // V2SearchIndicatorsRequest holds parameters for V2SearchIndicators. Query searches for topics and
 // variables; TopicDcids browses those topics; with neither, the top-level topics are browsed. EntityDcids
-// keeps only indicators with data for those entities.
+// keeps only indicators with data for those entities. ChildEntityTypeDcid (child mode) instead keeps only
+// indicators with data for the child entities of that type within the single entity in EntityDcids.
 type V2SearchIndicatorsRequest struct {
-	Query       string
-	TopicDcids  []string
-	EntityDcids []string
-	Target      string
+	Query               string
+	TopicDcids          []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	Target              string
 }
 
 // V2SearchIndicatorsResponse holds the matched topics and variables as tables.
@@ -91,12 +93,15 @@ type V2SearchIndicatorsRequest struct {
 // TopicCandidates has columns dcid, name, entities_with_data, member_topics, member_variables and
 // descendant_variable_count. member_topics and member_variables list the topic's direct members with
 // data as {dcid, name} objects, in the order the topic defines them; descendant_variable_count counts the
-// variables at any depth under the topic (only those with data when entities are given). A topic row has
-// the same content in search and browse, so agents drill down by browsing member_topics.
+// variables at any depth under the topic (only those with data when entities are given). A topic with at
+// most v2MaxFlattenedVariables such variables instead lists all of them in member_variables, in hierarchy
+// order, and no member_topics. A topic row has the same content in search and browse, so agents drill down
+// by browsing member_topics.
 //
 // VariableCandidates (search only) has columns dcid, name, entities_with_data and observation_properties.
 //
-// Without entities, entities_with_data is empty and nothing is filtered. Note explains unfiltered or
+// Without entities, entities_with_data is empty and nothing is filtered. In child mode, entities_with_data
+// lists the parent entity when any of its sampled child entities has data. Note explains unfiltered or
 // empty results.
 type V2SearchIndicatorsResponse struct {
 	TopicCandidates    *Table `json:"topic_candidates"`
@@ -108,4 +113,111 @@ type V2SearchIndicatorsResponse struct {
 type v2IndicatorRef struct {
 	Dcid string `json:"dcid"`
 	Name string `json:"name"`
+}
+
+// V2GetObservationsRequest holds parameters for V2GetObservations. VariableDcids lists 1 to 10 statistical
+// variables sharing the same observation_properties (at most 2 in child mode).
+// EntityDcids constrains EntityProperty (default "observationAbout"), or in child mode (ChildEntityTypeDcid
+// set) holds the single parent entity whose children of that type constrain EntityProperty.
+// AdditionalEntities constrains other observation properties of multi-entity variables; omitted properties
+// are left unconstrained.
+type V2GetObservationsRequest struct {
+	VariableDcids       []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	EntityProperty      string
+	AdditionalEntities  map[string][]string
+	Date                string
+	DateRangeStart      string
+	DateRangeEnd        string
+	SourceOverride      string
+}
+
+// V2GetObservationsResponse holds observation series for one or more statistical variables, with shared
+// entity names at the top level.
+//
+// EntityMetadata has columns dcid and name for the union of entities appearing in any variable's Data rows
+// (deduplicated and sorted by dcid), so child-entity and multi-variable responses transmit entity names once.
+//
+// Observations has one entry per requested variable in VariableDcids order. Each variable keeps its own
+// Data table, primary SourceMetadata, AlternativeSources, and empty-result Note so units, scaling factors,
+// and dataset citations never mix across variables.
+type V2GetObservationsResponse struct {
+	EntityMetadata *Table                    `json:"entity_metadata"`
+	Observations   []*V2VariableObservations `json:"observations"`
+}
+
+// V2VariableObservations holds the observation table, selected source metadata, and ranked alternative
+// sources for one statistical variable.
+//
+// Data has columns [<sorted observation properties...>, "date", "value"], with numeric values parsed as
+// float64 and rows sorted by dimension values and date. SourceMetadata and AlternativeSources are omitted
+// when Data has no rows, and Note states why Data is empty.
+type V2VariableObservations struct {
+	Variable           *ObservationNode         `json:"variable"`
+	Data               *Table                   `json:"data"`
+	SourceMetadata     *V2ObservationSourceMeta `json:"source_metadata,omitempty"`
+	AlternativeSources []*V2AlternativeSource   `json:"alternative_sources,omitempty"`
+	Note               string                   `json:"note,omitempty"`
+}
+
+// V2ObservationSourceMeta describes a single dataset facet (provenance, unit, scaling factor, measurement
+// method, and observation period) for a statistical variable's observations.
+type V2ObservationSourceMeta struct {
+	SourceID          string `json:"source_id"`
+	ImportName        string `json:"import_name,omitempty"`
+	ProvenanceURL     string `json:"provenance_url,omitempty"`
+	Unit              string `json:"unit,omitempty"`
+	ScalingFactor     string `json:"scaling_factor,omitempty"`
+	MeasurementMethod string `json:"measurement_method,omitempty"`
+	ObservationPeriod string `json:"observation_period,omitempty"`
+}
+
+// V2AlternativeSource describes another dataset facet that also has observations in the requested date
+// window, ordered by facet rank. EntitiesFoundCount is set when more than one distinct entity or entity
+// combination appears in the variable's Data rows.
+type V2AlternativeSource struct {
+	SourceMetadata     *V2ObservationSourceMeta `json:"source_metadata"`
+	EntitiesFoundCount *int32                   `json:"entities_found_count,omitempty"`
+}
+
+// V2GetVariableMetadataRequest holds parameters for V2GetVariableMetadata. Its fields mean the same as in
+// V2GetObservationsRequest, which has the same limits.
+type V2GetVariableMetadataRequest struct {
+	VariableDcids       []string
+	EntityDcids         []string
+	ChildEntityTypeDcid string
+	EntityProperty      string
+	AdditionalEntities  map[string][]string
+}
+
+// V2GetVariableMetadataResponse holds one entry per requested variable, in request order, and the details of
+// every dataset their sources come from, each listed once in first-appearance order. Datasets without
+// properties are omitted.
+type V2GetVariableMetadataResponse struct {
+	Variables []*V2VariableMetadata `json:"variables"`
+	Datasets  []*V2DatasetMetadata  `json:"datasets"`
+}
+
+// V2VariableMetadata holds a variable's definition and the sources with data for the requested entities.
+//
+// Sources has one row per source in the order V2GetObservations ranks them for the latest date, with columns
+// source_id, import_name, provenance_url, unit, scaling_factor, measurement_method, observation_period (as
+// in V2ObservationSourceMeta), earliest_date, latest_date, observation_count and entities_with_data. In child
+// mode, rows are ranked and dated by a sample of the parent's child entities, entities_with_data lists the
+// parent, and observation_count is nil. Note explains an empty Sources table.
+type V2VariableMetadata struct {
+	Dcid        string         `json:"dcid"`
+	Name        string         `json:"name,omitempty"`
+	Description string         `json:"description,omitempty"`
+	Properties  map[string]any `json:"properties,omitempty"`
+	Sources     *Table         `json:"sources"`
+	Note        string         `json:"note,omitempty"`
+}
+
+// V2DatasetMetadata holds the properties of the dataset behind a source, keyed by the import_name its source
+// rows show: the dataset properties v1 returns, merged from the provenance node and its parent source node.
+type V2DatasetMetadata struct {
+	ImportName string         `json:"import_name"`
+	Properties map[string]any `json:"properties,omitempty"`
 }

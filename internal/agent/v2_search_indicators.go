@@ -24,6 +24,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
 )
 
 const (
@@ -33,11 +34,21 @@ const (
 	v2MaxSearchTopics    = 10
 	v2MaxSearchVariables = 10
 	// v2MaxEntityDcids caps entity_dcids per call; each entity's available variables are loaded once and
-	// cached. Keep in sync with the 'entity_dcids' field description in internal/server/mcp/v2_types.go.
+	// cached. Keep in sync with the 'entity_dcids' field descriptions in internal/server/mcp/v2_types.go.
 	v2MaxEntityDcids = 20
 	// v2MaxTopicDcids caps topic_dcids per call, since each requested topic returns all its direct members.
 	// Keep in sync with the 'topic_dcids' field description in internal/server/mcp/v2_types.go.
 	v2MaxTopicDcids = 10
+	// v2MaxFlattenedVariables is the largest number of variables below a topic (with data, when filtered) for
+	// which its row lists all of them in member_variables, with no member_topics. Sparse filters (child mode,
+	// schools) prune sibling topics and leave chains of single-member topics, each costing the agent a browse;
+	// listing a small subtree's variables at once removes those calls. It is kept low because search can
+	// return a parent topic and its sub-topics as separate rows, each listing the same variables: at 20, such
+	// searches grew past the size where agent clients move tool output to files.
+	v2MaxFlattenedVariables = 10
+	// v2ChildEntitySampleSize is how many child entities child mode checks for data. The sample is the same
+	// on every call (see SampleChildEntities), so the children's variable sets stay cached across calls.
+	v2ChildEntitySampleSize = 5
 )
 
 // v2SearchMode is what a search_indicators call does, decided by which of query and topic_dcids is set.
@@ -73,19 +84,19 @@ func (s *Service) V2SearchIndicators(
 	}
 	defer util.TimeTrack(time.Now(), "Agent: V2SearchIndicators")
 	mode := v2SearchModeOf(req)
-	slog.Info("V2SearchIndicators started", "mode", mode, "topicDcidsCount", len(req.TopicDcids), "entitiesCount", len(req.EntityDcids), "target", req.Target)
+	slog.Info("V2SearchIndicators started", "mode", mode, "topicDcidsCount", len(req.TopicDcids), "entitiesCount", len(req.EntityDcids), "childEntityType", req.ChildEntityTypeDcid, "target", req.Target)
 
-	candidates, entitiesWithoutData, err := s.fetchV2CandidatesAndEntityData(ctx, req, mode)
+	candidates, scope, err := s.fetchV2CandidatesAndEntityScope(ctx, req, mode)
 	if err != nil {
 		return nil, err
 	}
-	data, err := s.fetchV2IndicatorData(ctx, candidates, req.EntityDcids, entitiesWithoutData, req.Target)
+	data, err := s.fetchV2IndicatorData(ctx, candidates, scope, req.Target)
 	if err != nil {
 		return nil, err
 	}
 	resp := buildV2SearchIndicatorsResponse(mode, candidates, data)
 
-	slog.Info("V2SearchIndicators completed", "mode", mode, "candidatesCount", len(candidates), "topicsCount", len(resp.TopicCandidates.Rows))
+	slog.Info("V2SearchIndicators completed", "mode", mode, "candidatesCount", len(candidates), "filterEntitiesCount", len(scope.entities), "topicsCount", len(resp.TopicCandidates.Rows))
 	return resp, nil
 }
 
@@ -96,10 +107,11 @@ func normalizeV2SearchIndicatorsRequest(req *V2SearchIndicatorsRequest) *V2Searc
 		return &V2SearchIndicatorsRequest{}
 	}
 	return &V2SearchIndicatorsRequest{
-		Query:       strings.TrimSpace(req.Query),
-		TopicDcids:  uniqueNonBlank(req.TopicDcids),
-		EntityDcids: uniqueNonBlank(req.EntityDcids),
-		Target:      req.Target,
+		Query:               strings.TrimSpace(req.Query),
+		TopicDcids:          uniqueNonBlank(req.TopicDcids),
+		EntityDcids:         uniqueNonBlank(req.EntityDcids),
+		ChildEntityTypeDcid: strings.TrimSpace(req.ChildEntityTypeDcid),
+		Target:              req.Target,
 	}
 }
 
@@ -108,6 +120,10 @@ func normalizeV2SearchIndicatorsRequest(req *V2SearchIndicatorsRequest) *V2Searc
 func validateV2SearchIndicatorsRequest(req *V2SearchIndicatorsRequest) error {
 	if req.Query != "" && len(req.TopicDcids) > 0 {
 		return errV2QueryAndTopicDcids()
+	}
+	// Checked before the entity cap, so that many parents get the one-parent error rather than the cap error.
+	if req.ChildEntityTypeDcid != "" && len(req.EntityDcids) != 1 {
+		return errV2ChildModeNeedsOneEntity(len(req.EntityDcids))
 	}
 	if len(req.EntityDcids) > v2MaxEntityDcids {
 		return errV2TooManyEntityDcids(len(req.EntityDcids))
@@ -133,40 +149,44 @@ func v2SearchModeOf(req *V2SearchIndicatorsRequest) v2SearchMode {
 	}
 }
 
-// fetchV2CandidatesAndEntityData fetches the candidates for the request and, in parallel, loads which
-// entities have no data at all, then rejects unknown entity DCIDs.
+// fetchV2CandidatesAndEntityScope fetches the candidates for the request and, in parallel, the entity scope
+// that filters them (see v2EntityScope).
 //
 // Entity variable sets are loaded in parallel with the candidate fetch because the availability filter
 // needs them anyway (they are cached, so its later check is served from memory), and loading them early
-// overlaps their cold latency with the search.
-func (s *Service) fetchV2CandidatesAndEntityData(
+// overlaps their cold latency with the search. The unknown-entity check runs in the same goroutine, so each
+// kind of scope is built in one function and the check overlaps the search too.
+func (s *Service) fetchV2CandidatesAndEntityScope(
 	ctx context.Context,
 	req *V2SearchIndicatorsRequest,
 	mode v2SearchMode,
-) ([]*pbv2.ResolveResponse_Entity_Candidate, []string, error) {
+) ([]*pbv2.ResolveResponse_Entity_Candidate, *v2EntityScope, error) {
 	var candidates []*pbv2.ResolveResponse_Entity_Candidate
-	var entitiesWithoutData []string
+	scope := &v2EntityScope{}
 	g, gCtx := errgroup.WithContext(ctx)
 	g.Go(func() error {
 		var err error
 		candidates, err = s.fetchV2Candidates(gCtx, req, mode)
 		return err
 	})
-	if len(req.EntityDcids) > 0 {
+	switch {
+	case req.ChildEntityTypeDcid != "":
 		g.Go(func() error {
 			var err error
-			entitiesWithoutData, err = s.loadEntitiesWithoutData(gCtx, req.EntityDcids)
+			scope, err = s.loadChildEntityScope(gCtx, req.EntityDcids[0], req.ChildEntityTypeDcid)
+			return err
+		})
+	case len(req.EntityDcids) > 0:
+		g.Go(func() error {
+			var err error
+			scope, err = s.loadGivenEntityScope(gCtx, req.EntityDcids)
 			return err
 		})
 	}
 	if err := g.Wait(); err != nil {
 		return nil, nil, err
 	}
-
-	if err := s.checkEntitiesExist(ctx, entitiesWithoutData); err != nil {
-		return nil, nil, err
-	}
-	return candidates, entitiesWithoutData, nil
+	return candidates, scope, nil
 }
 
 // fetchV2Candidates fetches the topic and variable candidates for the mode. Topics come with their direct
@@ -243,6 +263,71 @@ func topicCandidatesInRequestOrder(
 	return candidates, unknown
 }
 
+// loadGivenEntityScope returns the scope for explicit entity_dcids: their variable sets are loaded (and
+// cached), and unknown DCIDs are rejected.
+func (s *Service) loadGivenEntityScope(ctx context.Context, entities []string) (*v2EntityScope, error) {
+	withoutData, err := s.loadEntitiesWithoutData(ctx, entities)
+	if err != nil {
+		return nil, err
+	}
+	if err := s.checkEntitiesExist(ctx, withoutData); err != nil {
+		return nil, err
+	}
+	return &v2EntityScope{entities: entities, entitiesWithoutData: withoutData}, nil
+}
+
+// loadChildEntityScope returns the scope for child mode: a sample of the parent's child entities of the
+// type (see requireChildEntitySample), whose variable sets are loaded (and cached).
+func (s *Service) loadChildEntityScope(ctx context.Context, parent, childType string) (*v2EntityScope, error) {
+	children, err := s.requireChildEntitySample(ctx, parent, childType)
+	if err != nil {
+		return nil, err
+	}
+	withoutData, err := s.loadEntitiesWithoutData(ctx, children)
+	if err != nil {
+		return nil, err
+	}
+	return &v2EntityScope{entities: children, entitiesWithoutData: withoutData, parent: parent, childType: childType}, nil
+}
+
+// requireChildEntitySample returns a sample of the parent's child entities of the type (see
+// sampleChildEntities), or an error when there are none. The children come from the graph, so unlike explicit
+// entities they skip the existence check. Only an empty sample needs the parent looked up, to tell an unknown
+// DCID (errV2UnknownEntityDcids) from a parent without children of the type (errV2NoChildEntitiesOfType).
+// get_variable_metadata uses it too.
+func (s *Service) requireChildEntitySample(ctx context.Context, parent, childType string) ([]string, error) {
+	children, err := s.sampleChildEntities(ctx, parent, childType)
+	if err != nil {
+		return nil, err
+	}
+	if len(children) == 0 {
+		if err := s.checkEntitiesExist(ctx, []string{parent}); err != nil {
+			return nil, err
+		}
+		return nil, errV2NoChildEntitiesOfType(parent, childType)
+	}
+	return children, nil
+}
+
+// sampleChildEntities returns up to v2ChildEntitySampleSize of the parent's child entities of the type.
+// Failures are logged. Timeouts get the usual retry-shortly backend error, since they are temporary and carry
+// no backend text; any other failure gets the agent-owned errV2ChildEntitiesUnavailable (see there for why).
+func (s *Service) sampleChildEntities(ctx context.Context, parent, childType string) ([]string, error) {
+	resp, err := s.mixer.SampleChildEntities(ctx, &pbv2.SampleChildEntitiesRequest{
+		Ancestors:        []string{parent},
+		ChildType:        childType,
+		LimitPerAncestor: v2ChildEntitySampleSize,
+	})
+	if err != nil {
+		slog.Warn("Failed to sample child entities", "error", err, "parent", parent, "childType", childType)
+		if code := v2BackendStatus(err).Code(); code == codes.DeadlineExceeded || code == codes.Canceled {
+			return nil, errV2ChildEntitySamplingFailed(err)
+		}
+		return nil, errV2ChildEntitiesUnavailable()
+	}
+	return resp.GetChildEntities()[parent].GetDcids(), nil
+}
+
 // loadEntitiesWithoutData loads (and caches) the entities' variable sets and returns the entities without any
 // data, mapping a failed load to a caller-facing error.
 func (s *Service) loadEntitiesWithoutData(ctx context.Context, entities []string) ([]string, error) {
@@ -278,13 +363,50 @@ func (s *Service) checkEntitiesExist(ctx context.Context, entitiesWithoutData []
 	return nil
 }
 
-// v2IndicatorData holds what the response builders need beyond the candidates: each topic's descendant
-// variables and, when entities are given, which entities have data for each variable.
-type v2IndicatorData struct {
+// v2EntityScope holds the entities whose data filters the results: the given entity_dcids or, in child mode
+// (childType set), a sample of the parent's child entities of the type. It is empty when no entities were
+// given.
+type v2EntityScope struct {
 	entities            []string
 	entitiesWithoutData []string
-	descendants         map[string][]string
-	availability        map[string]map[string]bool
+	parent              string
+	childType           string
+}
+
+// childMode reports whether the entities are a sample of the parent's child entities.
+func (sc *v2EntityScope) childMode() bool {
+	return sc.childType != ""
+}
+
+// reported returns what entities_with_data lists, given the filtering entities with data: those entities,
+// or in child mode the parent when any sampled child has data. The sample is internal, so the caller only
+// ever sees the parent it passed.
+func (sc *v2EntityScope) reported(entitiesWithData []string) []string {
+	if !sc.childMode() {
+		return util.NonNilStringSlice(entitiesWithData)
+	}
+	if len(entitiesWithData) == 0 {
+		return []string{}
+	}
+	return []string{sc.parent}
+}
+
+// noteScope returns what empty-result notes say the results were filtered by.
+func (sc *v2EntityScope) noteScope() string {
+	if sc.childMode() {
+		return v2ChildEntitiesScope(sc.parent, sc.childType)
+	}
+	return v2GivenEntitiesScope
+}
+
+// v2IndicatorData holds what the response builders need beyond the candidates: the entity scope, each
+// topic's descendant variables (in hierarchy order) and their names, and, when entities are given, which
+// entities have data for each variable.
+type v2IndicatorData struct {
+	v2EntityScope
+	descendants   map[string][]string
+	variableNames map[string]string
+	availability  map[string]map[string]bool
 }
 
 // fetchV2IndicatorData fetches the descendant variables of every topic among the candidates and their
@@ -294,26 +416,42 @@ type v2IndicatorData struct {
 func (s *Service) fetchV2IndicatorData(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
-	entities []string,
-	entitiesWithoutData []string,
+	scope *v2EntityScope,
 	target string,
 ) (*v2IndicatorData, error) {
 	topicDcids, directVarDcids := collectSubtopicsAndDirectVars(candidates)
-	descendants, err := s.fetchDescendantVariables(ctx, topicDcids, target)
+	descendantCandidates, err := s.fetchDescendantCandidates(ctx, topicDcids, target)
 	if err != nil {
 		slog.Warn("Failed to fetch topic descendants", "error", err, "topicsCount", len(topicDcids))
 		return nil, errV2TopicLookupFailed(err)
 	}
-	data := &v2IndicatorData{entities: entities, entitiesWithoutData: entitiesWithoutData, descendants: descendants}
+	descendants, variableNames := splitDescendantCandidates(descendantCandidates)
+	data := &v2IndicatorData{v2EntityScope: *scope, descendants: descendants, variableNames: variableNames}
 	if !data.filtered() {
 		return data, nil
 	}
-	data.availability, err = s.cache.CheckAvailability(ctx, entities, gatherVarsToCheck(directVarDcids, descendants))
+	data.availability, err = s.cache.CheckAvailability(ctx, data.entities, gatherVarsToCheck(directVarDcids, descendants))
 	if err != nil {
-		slog.Warn("Failed to check indicator availability", "error", err, "entitiesCount", len(entities))
+		slog.Warn("Failed to check indicator availability", "error", err, "entitiesCount", len(data.entities))
 		return nil, errV2AvailabilityFailed(err)
 	}
 	return data, nil
+}
+
+// splitDescendantCandidates returns each topic's descendant variable DCIDs, in hierarchy order, and the
+// variables' names.
+func splitDescendantCandidates(
+	candidates map[string][]*pbv2.ResolveResponse_Entity_Candidate,
+) (map[string][]string, map[string]string) {
+	descendants := make(map[string][]string, len(candidates))
+	names := map[string]string{}
+	for topicDcid, children := range candidates {
+		descendants[topicDcid] = childDcids(children)
+		for _, child := range children {
+			names[child.GetDcid()] = child.GetName()
+		}
+	}
+	return descendants, names
 }
 
 // filtered reports whether results are filtered by data availability (entities were given).
@@ -321,35 +459,43 @@ func (d *v2IndicatorData) filtered() bool {
 	return len(d.entities) > 0
 }
 
-// topicEntities returns the sorted entities with data for any variable under the topic, or an empty list
-// when results are not filtered.
+// topicEntities returns entities_with_data for a topic row: the sorted entities with data for any variable
+// under the topic (or the parent, in child mode; see reported), or an empty list when results are not
+// filtered.
 func (d *v2IndicatorData) topicEntities(topicDcid string) []string {
 	if !d.filtered() {
 		return []string{}
 	}
-	return util.NonNilStringSlice(entitiesWithData(d.descendants[topicDcid], d.entities, d.availability))
+	return d.reported(entitiesWithData(d.descendants[topicDcid], d.entities, d.availability))
 }
 
-// variableEntities returns the sorted entities with data for the variable, or an empty list when results
-// are not filtered.
+// variableEntities returns entities_with_data for a variable row: the sorted entities with data for the
+// variable (or the parent, in child mode; see reported), or an empty list when results are not filtered.
 func (d *v2IndicatorData) variableEntities(varDcid string) []string {
 	if !d.filtered() {
 		return []string{}
 	}
-	return util.NonNilStringSlice(entitiesWithData([]string{varDcid}, d.entities, d.availability))
+	return d.reported(entitiesWithData([]string{varDcid}, d.entities, d.availability))
 }
 
-// descendantCount returns the number of distinct variables at any depth under the topic (a variable can be
-// listed under several sub-topics), counting only those with data for some entity when filtered. A topic is
-// kept only when this is positive, which when filtered means some entity has data under it.
+// descendantCount returns the number of distinct variables at any depth under the topic, counting only those
+// with data for some entity when filtered (see distinctVariablesWithData). A topic is kept only when this is
+// positive, which when filtered means some entity has data under it.
 func (d *v2IndicatorData) descendantCount(topicDcid string) int {
-	counted := map[string]struct{}{}
+	return len(d.distinctVariablesWithData(topicDcid))
+}
+
+// distinctVariablesWithData returns the distinct variables at any depth under the topic (a variable can be
+// listed under several sub-topics), with data for some entity when filtered, in hierarchy order. Both the
+// descendant count and a flattened row's member variables come from it, so they always agree.
+func (d *v2IndicatorData) distinctVariablesWithData(topicDcid string) []string {
+	variables := newDcidSet()
 	for _, varDcid := range d.descendants[topicDcid] {
-		if _, ok := counted[varDcid]; !ok && d.hasDataForVariable(varDcid) {
-			counted[varDcid] = struct{}{}
+		if d.hasDataForVariable(varDcid) {
+			variables.add(varDcid)
 		}
 	}
-	return len(counted)
+	return variables.dcids
 }
 
 // hasDataForVariable reports whether a variable row or member is kept: always when results are not filtered,
@@ -367,9 +513,10 @@ func (d *v2IndicatorData) hasDataForVariable(varDcid string) bool {
 	return false
 }
 
-// noEntityHasData reports whether results are filtered and none of the entities has any data.
+// noEntityHasData reports whether results are filtered by given entities and none of them has any data. It
+// is false in child mode: a few sampled children without data don't show that the whole type has none.
 func (d *v2IndicatorData) noEntityHasData() bool {
-	return d.filtered() && len(d.entitiesWithoutData) == len(d.entities)
+	return d.filtered() && !d.childMode() && len(d.entitiesWithoutData) == len(d.entities)
 }
 
 // buildV2SearchIndicatorsResponse builds the tables and note for the mode. Search returns up to
@@ -415,11 +562,11 @@ func v2ResponseNote(
 	case !empty:
 		return ""
 	case mode == v2ModeSearch:
-		return v2NoQueryDataNote
+		return v2NoQueryDataNote(data.noteScope())
 	case mode == v2ModeBrowseTopics:
-		return v2NoRequestedTopicDataNote
+		return v2NoRequestedTopicDataNote(data.noteScope())
 	default:
-		return v2NoTopLevelTopicDataNote
+		return v2NoTopLevelTopicDataNote(data.noteScope())
 	}
 }
 
@@ -466,14 +613,32 @@ func buildV2Table(
 }
 
 // topicRow returns the row for a topic candidate, or false when no variables (with data, when filtered) are
-// below it.
+// below it. A topic with at most v2MaxFlattenedVariables variables below it lists all of them and no member
+// topics (see flattenedVariables); others list their direct members. Either way the row depends only on the
+// topic and the filter, so it is the same in search and browse.
 func (d *v2IndicatorData) topicRow(c *pbv2.ResolveResponse_Entity_Candidate) ([]any, bool) {
 	count := d.descendantCount(c.GetDcid())
 	if count == 0 {
 		return nil, false
 	}
-	memberTopics, memberVariables := v2TopicMembers(c, d)
+	var memberTopics, memberVariables []v2IndicatorRef
+	if count <= v2MaxFlattenedVariables {
+		memberTopics, memberVariables = []v2IndicatorRef{}, d.flattenedVariables(c.GetDcid())
+	} else {
+		memberTopics, memberVariables = v2TopicMembers(c, d)
+	}
 	return []any{c.GetDcid(), c.GetName(), d.topicEntities(c.GetDcid()), memberTopics, memberVariables, count}, true
+}
+
+// flattenedVariables returns the topic's distinct variables with data (see distinctVariablesWithData) as
+// member refs, so a variable listed under several sub-topics appears once, at its first position.
+func (d *v2IndicatorData) flattenedVariables(topicDcid string) []v2IndicatorRef {
+	distinctVars := d.distinctVariablesWithData(topicDcid)
+	variables := make([]v2IndicatorRef, 0, len(distinctVars))
+	for _, varDcid := range distinctVars {
+		variables = append(variables, v2IndicatorRef{Dcid: varDcid, Name: d.variableNames[varDcid]})
+	}
+	return variables
 }
 
 // variableRow returns the row for a variable candidate, or false when results are filtered and no entity has
