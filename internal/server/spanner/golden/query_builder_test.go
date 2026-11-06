@@ -253,11 +253,15 @@ func TestGetEventCollectionDcidsQuery(t *testing.T) {
 func TestGetSVGChildrenQuery(t *testing.T) {
 	t.Parallel()
 
+	queryBuilder, err := spanner.NewObservationQueryBuilder(spanner.DefaultTableConfig(), spanner.QueryConfig{})
+	if err != nil {
+		t.Fatalf("NewObservationQueryBuilder() error = %v", err)
+	}
 	for _, c := range getSVGChildrenTestCases {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetSVGChildrenQuery(c.node, c.includeDefinitions), nil
+			return queryBuilder.GetSVGChildrenQuery(c.node, c.includeDefinitions), nil
 		})
 	}
 }
