@@ -27,7 +27,7 @@ type McpTools struct {
 // NewMcpTools creates a new McpTools instance backed by the provided AgentBackend.
 func NewMcpTools(agentService AgentBackend, searchScope string) *McpTools {
 	if agentService != nil {
-		if v := reflect.ValueOf(agentService); v.Kind() == reflect.Ptr && v.IsNil() {
+		if v := reflect.ValueOf(agentService); v.Kind() == reflect.Pointer && v.IsNil() {
 			agentService = nil
 		}
 	}

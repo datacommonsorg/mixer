@@ -752,7 +752,7 @@ func generateCTESelectStatement(paramPrefix string, values []string) statement {
 	for i, value := range values {
 		param := fmt.Sprintf("%s%d", paramPrefix, i+1)
 		args[param] = value
-		sb.WriteString(fmt.Sprintf("SELECT :%s", param))
+		fmt.Fprintf(&sb, "SELECT :%s", param)
 		if i < len(values)-1 {
 			sb.WriteString(" UNION ALL ")
 		}

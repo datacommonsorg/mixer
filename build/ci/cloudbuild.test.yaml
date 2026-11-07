@@ -90,7 +90,7 @@ steps:
     waitFor: ["build-proto", "start-emulator"]
 
 substitutions:
-  _FULL_ENV_VERSION: "mixer-only-2026-02-20"
+  _FULL_ENV_VERSION: "mixer-only-2026-11-06"
   _SPANNER_EMULATOR_VERSION: "1.5.55"
 
 options:
