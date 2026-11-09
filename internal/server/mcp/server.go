@@ -305,7 +305,7 @@ func applyStructDefaults[T any](s *jsonschema.Schema) {
 		return
 	}
 	t := reflect.TypeFor[T]()
-	if t.Kind() == reflect.Ptr {
+	if t.Kind() == reflect.Pointer {
 		t = t.Elem()
 	}
 	if t.Kind() != reflect.Struct {
