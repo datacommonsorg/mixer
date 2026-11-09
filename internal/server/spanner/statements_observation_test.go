@@ -19,14 +19,14 @@ import (
 	"testing"
 )
 
-func TestNewMultiEntityStatementsValidatesTableConfig(t *testing.T) {
-	if _, err := NewMultiEntityStatements(DefaultTableConfig()); err != nil {
-		t.Fatalf("NewMultiEntityStatements(DefaultTableConfig()) returned error: %v", err)
+func TestNewObservationStatementsValidatesTableConfig(t *testing.T) {
+	if _, err := NewObservationStatements(DefaultTableConfig()); err != nil {
+		t.Fatalf("NewObservationStatements(DefaultTableConfig()) returned error: %v", err)
 	}
 
-	_, err := NewMultiEntityStatements(TableConfig{})
+	_, err := NewObservationStatements(TableConfig{})
 	if err == nil {
-		t.Fatal("NewMultiEntityStatements(TableConfig{}) error = nil, want error")
+		t.Fatal("NewObservationStatements(TableConfig{}) error = nil, want error")
 	}
 	for _, field := range []string{
 		"TimeSeriesTable",
@@ -37,19 +37,19 @@ func TestNewMultiEntityStatementsValidatesTableConfig(t *testing.T) {
 		"TimeSeriesByProvenanceIndex",
 	} {
 		if !strings.Contains(err.Error(), field) {
-			t.Fatalf("NewMultiEntityStatements(TableConfig{}) error = %q, want missing field %q", err, field)
+			t.Fatalf("NewObservationStatements(TableConfig{}) error = %q, want missing field %q", err, field)
 		}
 	}
 
 	cfg := DefaultTableConfig()
 	cfg.ObservationTable = " "
 	cfg.TimeSeriesByEntity2Index = ""
-	_, err = NewMultiEntityStatements(cfg)
+	_, err = NewObservationStatements(cfg)
 	if err == nil {
-		t.Fatal("NewMultiEntityStatements(partial config) error = nil, want error")
+		t.Fatal("NewObservationStatements(partial config) error = nil, want error")
 	}
-	want := "NewMultiEntityStatements: missing required TableConfig fields: ObservationTable, TimeSeriesByEntity2Index"
+	want := "NewObservationStatements: missing required TableConfig fields: ObservationTable, TimeSeriesByEntity2Index"
 	if got := err.Error(); got != want {
-		t.Fatalf("NewMultiEntityStatements(partial config) error = %q, want %q", got, want)
+		t.Fatalf("NewObservationStatements(partial config) error = %q, want %q", got, want)
 	}
 }

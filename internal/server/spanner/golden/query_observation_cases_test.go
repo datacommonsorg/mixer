@@ -39,7 +39,7 @@ func sdmxContainedInPlaceConstraint(ancestor, childPlaceType string) *sdmxpb.Sdm
 	}
 }
 
-var multiEntityObservationsTestCases = []struct {
+var observationsTestCases = []struct {
 	name      string
 	variables []string
 	entities  []string
@@ -51,32 +51,32 @@ var multiEntityObservationsTestCases = []struct {
 		variables: []string{"AirPollutant_Cancer_Risk"},
 		entities:  []string{"geoId/01001", "geoId/02013"},
 		date:      "",
-		golden:    "get_multientity_obs_basic",
+		golden:    "get_obs_basic",
 	},
 	{
 		name:      "latest date with variables and entities",
 		variables: []string{"AirPollutant_Cancer_Risk"},
 		entities:  []string{"geoId/01001", "geoId/02013"},
 		date:      "latest",
-		golden:    "get_multientity_obs_latest",
+		golden:    "get_obs_latest",
 	},
 	{
 		name:      "specific date with variables and entities",
 		variables: []string{"AirPollutant_Cancer_Risk"},
 		entities:  []string{"geoId/01001", "geoId/02013"},
 		date:      "2015",
-		golden:    "get_multientity_obs_date",
+		golden:    "get_obs_date",
 	},
 	{
 		name:      "entities only",
 		variables: []string{},
 		entities:  []string{"geoId/01001", "geoId/02013"},
 		date:      "",
-		golden:    "get_multientity_obs_entities_only",
+		golden:    "get_obs_entities_only",
 	},
 }
 
-var multiEntityCheckVariableExistenceTestCases = []struct {
+var checkVariableExistenceTestCases = []struct {
 	name      string
 	variables []string
 	entities  []string
@@ -86,23 +86,23 @@ var multiEntityCheckVariableExistenceTestCases = []struct {
 		name:      "both variables and entities specified",
 		variables: []string{"AirPollutant_Cancer_Risk"},
 		entities:  []string{"geoId/01001", "geoId/02013"},
-		golden:    "check_multientity_var_existence_both",
+		golden:    "check_var_existence_both",
 	},
 	{
 		name:      "variables only specified",
 		variables: []string{"AirPollutant_Cancer_Risk"},
 		entities:  []string{},
-		golden:    "check_multientity_var_existence_vars_only",
+		golden:    "check_var_existence_vars_only",
 	},
 	{
 		name:      "entities only specified",
 		variables: []string{},
 		entities:  []string{"geoId/01001", "geoId/02013"},
-		golden:    "check_multientity_var_existence_entities_only",
+		golden:    "check_var_existence_entities_only",
 	},
 }
 
-var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
+var checkGroupPlaceExistenceTestCases = []struct {
 	name           string
 	variableGroups []string
 	entities       []string
@@ -114,18 +114,18 @@ var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
 		variableGroups: []string{"dc/g/Demographics", "dc/g/Economy"},
 		entities:       []string{"geoId/01001", "geoId/02013"},
 		predicate:      "linkedMemberOf",
-		golden:         "check_multientity_group_place_existence_svg",
+		golden:         "check_group_place_existence_svg",
 	},
 	{
 		name:           "topics and places",
 		variableGroups: []string{"dc/t/Place/Population"},
 		entities:       []string{"geoId/01001", "geoId/02013"},
 		predicate:      "linkedMember",
-		golden:         "check_multientity_group_place_existence_topic",
+		golden:         "check_group_place_existence_topic",
 	},
 }
 
-var multiEntityObservationsContainedInPlaceTestCases = []struct {
+var observationsContainedInPlaceTestCases = []struct {
 	name                           string
 	variables                      []string
 	ancestor                       string
@@ -144,7 +144,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "County",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "",
-		golden:             "get_multientity_obs_contained_in_place_both",
+		golden:             "get_obs_contained_in_place_both",
 	},
 	{
 		name:                      "contained in place materialized with variables",
@@ -154,7 +154,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes:        []string{"Place"},
 		useMaterializedLinkedEdge: true,
 		date:                      "",
-		golden:                    "get_multientity_obs_contained_in_place_materialized_both",
+		golden:                    "get_obs_contained_in_place_materialized_both",
 	},
 	{
 		name:               "contained in place latest date with variables",
@@ -163,7 +163,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "County",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "latest",
-		golden:             "get_multientity_obs_contained_in_place_latest",
+		golden:             "get_obs_contained_in_place_latest",
 	},
 	{
 		name:                      "contained in place materialized latest date with variables",
@@ -173,7 +173,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes:        []string{"Place"},
 		useMaterializedLinkedEdge: true,
 		date:                      "latest",
-		golden:                    "get_multientity_obs_contained_in_place_materialized_latest",
+		golden:                    "get_obs_contained_in_place_materialized_latest",
 	},
 	{
 		name:                           "contained in place non-preferred type uses variable seeks",
@@ -184,7 +184,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		preferTimeSeriesScanPlaceTypes: []string{"Place"},
 		entityScanMinVars:              2,
 		date:                           "latest",
-		golden:                         "get_multientity_obs_contained_in_place_non_preferred_type_latest",
+		golden:                         "get_obs_contained_in_place_non_preferred_type_latest",
 	},
 	{
 		name:               "contained in place specific date with variables",
@@ -193,7 +193,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "County",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "2015",
-		golden:             "get_multientity_obs_contained_in_place_date",
+		golden:             "get_obs_contained_in_place_date",
 	},
 	{
 		name:                      "contained in place materialized specific date with variables",
@@ -203,7 +203,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		ancestorFirstTypes:        []string{"Place"},
 		useMaterializedLinkedEdge: true,
 		date:                      "2015",
-		golden:                    "get_multientity_obs_contained_in_place_materialized_date",
+		golden:                    "get_obs_contained_in_place_materialized_date",
 	},
 	{
 		name:               "contained in place ancestor first with variables",
@@ -212,7 +212,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "Place",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "",
-		golden:             "get_multientity_obs_contained_in_place_ancestor_first_both",
+		golden:             "get_obs_contained_in_place_ancestor_first_both",
 	},
 	{
 		name:               "contained in place ancestor first latest date with variables",
@@ -221,7 +221,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "Place",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "latest",
-		golden:             "get_multientity_obs_contained_in_place_ancestor_first_latest",
+		golden:             "get_obs_contained_in_place_ancestor_first_latest",
 	},
 	{
 		name:               "contained in place ancestor first specific date with variables",
@@ -230,7 +230,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		childPlaceType:     "Place",
 		ancestorFirstTypes: []string{"Place"},
 		date:               "2015",
-		golden:             "get_multientity_obs_contained_in_place_ancestor_first_date",
+		golden:             "get_obs_contained_in_place_ancestor_first_date",
 	},
 	{
 		name:                           "contained in place entity scan with variables",
@@ -240,7 +240,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		preferTimeSeriesScanPlaceTypes: []string{"County"},
 		entityScanMinVars:              2,
 		date:                           "",
-		golden:                         "get_multientity_obs_contained_in_place_entity_scan_both",
+		golden:                         "get_obs_contained_in_place_entity_scan_both",
 	},
 	{
 		name:                           "contained in place entity scan latest date with variables",
@@ -250,7 +250,7 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		preferTimeSeriesScanPlaceTypes: []string{"County"},
 		entityScanMinVars:              2,
 		date:                           "latest",
-		golden:                         "get_multientity_obs_contained_in_place_entity_scan_latest",
+		golden:                         "get_obs_contained_in_place_entity_scan_latest",
 	},
 	{
 		name:                           "contained in place entity scan specific date with variables",
@@ -260,11 +260,11 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		preferTimeSeriesScanPlaceTypes: []string{"County"},
 		entityScanMinVars:              2,
 		date:                           "2015",
-		golden:                         "get_multientity_obs_contained_in_place_entity_scan_date",
+		golden:                         "get_obs_contained_in_place_entity_scan_date",
 	},
 }
 
-var multiEntityStatVarGroupNodeTestCases = []struct {
+var statVarGroupNodeTestCases = []struct {
 	name               string
 	nodes              []string
 	includeDefinitions bool
@@ -273,22 +273,22 @@ var multiEntityStatVarGroupNodeTestCases = []struct {
 	{
 		name:   "single stat var group",
 		nodes:  []string{"dc/g/Demographics"},
-		golden: "get_multientity_stat_var_group_node",
+		golden: "get_stat_var_group_node",
 	},
 	{
 		name:   "multiple stat var groups",
 		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
-		golden: "get_multientity_stat_var_group_node_multi",
+		golden: "get_stat_var_group_node_multi",
 	},
 	{
 		name:               "single stat var group with definitions",
 		nodes:              []string{"dc/g/Demographics"},
 		includeDefinitions: true,
-		golden:             "get_multientity_stat_var_group_node_with_definitions",
+		golden:             "get_stat_var_group_node_with_definitions",
 	},
 }
 
-var multiEntityFilteredSVGChildrenTestCases = []struct {
+var filteredSVGChildrenTestCases = []struct {
 	name                  string
 	template              string
 	node                  string
@@ -304,7 +304,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		node:                 "dc/g/Demographics",
 		constrainedPlaces:    []string{"country/USA", "country/IND"},
 		numEntitiesExistence: 1,
-		golden:               "get_multientity_filtered_sv_places",
+		golden:               "get_filtered_sv_places",
 	},
 	{
 		name:                 "stat vars filtered by place threshold",
@@ -312,7 +312,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		node:                 "dc/g/Demographics",
 		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
 		numEntitiesExistence: 2,
-		golden:               "get_multientity_filtered_sv_num_entities_existence",
+		golden:               "get_filtered_sv_num_entities_existence",
 	},
 	{
 		name:                 "stat var groups filtered by places",
@@ -320,7 +320,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		node:                 "dc/g/Demographics",
 		constrainedPlaces:    []string{"country/USA", "country/IND"},
 		numEntitiesExistence: 1,
-		golden:               "get_multientity_filtered_svg_places",
+		golden:               "get_filtered_svg_places",
 	},
 	{
 		name:                  "stat vars filtered by source",
@@ -328,7 +328,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		node:                  "dc/g/Demographics",
 		constrainedProvenance: "dc/s/WorldBank",
 		numEntitiesExistence:  1,
-		golden:                "get_multientity_filtered_sv_import",
+		golden:                "get_filtered_sv_import",
 	},
 	{
 		name:                  "stat vars filtered by place and source",
@@ -337,7 +337,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		constrainedPlaces:     []string{"country/USA", "country/IND"},
 		constrainedProvenance: "dc/s/WorldBank",
 		numEntitiesExistence:  1,
-		golden:                "get_multientity_filtered_sv_place_import",
+		golden:                "get_filtered_sv_place_import",
 	},
 	{
 		name:                 "stat var groups filtered by place threshold",
@@ -345,7 +345,7 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		node:                 "dc/g/Demographics",
 		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
 		numEntitiesExistence: 2,
-		golden:               "get_multientity_filtered_svg_num_entities_existence",
+		golden:               "get_filtered_svg_num_entities_existence",
 	},
 	{
 		name:                 "stat vars filtered by places with definitions",
@@ -354,11 +354,11 @@ var multiEntityFilteredSVGChildrenTestCases = []struct {
 		constrainedPlaces:    []string{"country/USA"},
 		numEntitiesExistence: 1,
 		includeDefinitions:   true,
-		golden:               "get_multientity_filtered_sv_with_definitions",
+		golden:               "get_filtered_sv_with_definitions",
 	},
 }
 
-var multiEntityFilteredTopicTestCases = []struct {
+var filteredTopicTestCases = []struct {
 	name                  string
 	nodes                 []string
 	constrainedPlaces     []string
@@ -371,28 +371,28 @@ var multiEntityFilteredTopicTestCases = []struct {
 		nodes:                []string{"dc/topic/Demographics"},
 		constrainedPlaces:    []string{"country/CAN", "country/IND"},
 		numEntitiesExistence: 1,
-		golden:               "get_multientity_filtered_topic_places",
+		golden:               "get_filtered_topic_places",
 	},
 	{
 		name:                 "multiple topics filtered by places",
 		nodes:                []string{"dc/topic/Demographics", "dc/topic/Economy"},
 		constrainedPlaces:    []string{"country/CAN", "country/IND"},
 		numEntitiesExistence: 1,
-		golden:               "get_multientity_filtered_topic_places_multiple_topics",
+		golden:               "get_filtered_topic_places_multiple_topics",
 	},
 	{
 		name:                  "topic filtered by source",
 		nodes:                 []string{"dc/topic/Demographics"},
 		constrainedProvenance: "dc/s/WorldBank",
 		numEntitiesExistence:  1,
-		golden:                "get_multientity_filtered_topic_import",
+		golden:                "get_filtered_topic_import",
 	},
 	{
 		name:                  "topic filtered by dataset",
 		nodes:                 []string{"dc/topic/Demographics"},
 		constrainedProvenance: "dc/d/TestDataset",
 		numEntitiesExistence:  1,
-		golden:                "get_multientity_filtered_topic_dataset",
+		golden:                "get_filtered_topic_dataset",
 	},
 	{
 		name:                  "topic filtered by place and source",
@@ -400,18 +400,18 @@ var multiEntityFilteredTopicTestCases = []struct {
 		constrainedPlaces:     []string{"country/CAN", "country/IND"},
 		constrainedProvenance: "dc/s/WorldBank",
 		numEntitiesExistence:  1,
-		golden:                "get_multientity_filtered_topic_place_import",
+		golden:                "get_filtered_topic_place_import",
 	},
 	{
 		name:                 "topic filtered by place threshold",
 		nodes:                []string{"dc/topic/Demographics"},
 		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
 		numEntitiesExistence: 2,
-		golden:               "get_multientity_filtered_topic_num_entities_existence",
+		golden:               "get_filtered_topic_num_entities_existence",
 	},
 }
 
-var multiEntitySdmxObservationsTestCases = []struct {
+var sdmxObservationsTestCases = []struct {
 	name                            string
 	constraints                     map[string]*sdmxpb.SdmxComponentConstraint
 	observationPropertyToEntitySlot map[string]string
