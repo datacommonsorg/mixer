@@ -213,6 +213,18 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 			wantMsg:  `date_range_start ("2024") cannot be after date_range_end ("2020")`,
 		},
 		{
+			name:     "too many observation rows with explicit entities",
+			err:      errV2TooManyObservationRows(31403, []string{"Max_Concentration_AirPollutant_Ozone: 31403 rows, 1980-01-01 to 2025-06-30"}, false),
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "this request matched 31403 rows, more than the 10000 one call returns (Max_Concentration_AirPollutant_Ozone: 31403 rows, 1980-01-01 to 2025-06-30): pass date_range_start and date_range_end for a shorter window, or fewer entity_dcids or variable_dcids per call",
+		},
+		{
+			name:     "too many observation rows with child entities",
+			err:      errV2TooManyObservationRows(10002, []string{"Count_Person: 5001 rows, 2023 to 2023", "Median_Age_Person: 5001 rows, 2023 to 2023"}, true),
+			wantCode: codes.InvalidArgument,
+			wantMsg:  "this request matched 10002 rows, more than the 10000 one call returns (Count_Person: 5001 rows, 2023 to 2023; Median_Age_Person: 5001 rows, 2023 to 2023): pass one variable per call, a shorter date range, or a smaller parent entity (for example a state instead of a country)",
+		},
+		{
 			name:     "observations backend failed",
 			err:      errV2ObservationsFailed(status.Error(codes.Unavailable, "spanner down")),
 			wantCode: codes.Unavailable,

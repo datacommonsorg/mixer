@@ -21,6 +21,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -1285,6 +1286,82 @@ func TestV2GetObservations(t *testing.T) {
 				if strings.Contains(prop, "typeOf") {
 					t.Errorf("unexpected typeOf V2Node call %q when SdmxData succeeded", prop)
 				}
+			}
+		})
+	}
+}
+
+// dailyObsSeries returns a series of n daily points from one facet for a variable and entity, starting on
+// 2000-01-01, so tests can build responses of a given size.
+func dailyObsSeries(variable, entity string, n int) *sdmxpb.SdmxTimeSeries {
+	series := &sdmxpb.SdmxTimeSeries{
+		Dimensions: map[string]string{"variableMeasured": variable, "observationAbout": entity, "provenance": "dc/base/EPA"},
+		Attributes: map[string]string{"facetId": "epa"},
+	}
+	start := time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC)
+	for i := range n {
+		series.Points = append(series.Points, &sdmxpb.SdmxDataPoint{
+			TimePeriod:       start.AddDate(0, 0, i).Format(time.DateOnly),
+			ObservationValue: "1",
+		})
+	}
+	return series
+}
+
+// TestV2GetObservationsRowLimit checks that a response over v2MaxObservationRows rows returns an actionable
+// error instead of the rows, and that a response at the limit is returned.
+func TestV2GetObservationsRowLimit(t *testing.T) {
+	const ozone = "Max_Concentration_AirPollutant_Ozone"
+	childSeries := make([]*sdmxpb.SdmxTimeSeries, 0, v2MaxObservationRows+1)
+	for i := range v2MaxObservationRows + 1 {
+		childSeries = append(childSeries, dailyObsSeries("Count_Person", fmt.Sprintf("geoId/%05d", i), 1))
+	}
+	tests := []struct {
+		name     string
+		req      *V2GetObservationsRequest
+		series   []*sdmxpb.SdmxTimeSeries
+		wantErr  error
+		wantRows int
+	}{
+		{
+			name:   "date='all' over the limit returns each variable's row count and date span",
+			req:    &V2GetObservationsRequest{VariableDcids: []string{ozone}, EntityDcids: []string{"epa/1", "epa/2"}, Date: "all"},
+			series: []*sdmxpb.SdmxTimeSeries{dailyObsSeries(ozone, "epa/1", 5001), dailyObsSeries(ozone, "epa/2", 5001)},
+			wantErr: errV2TooManyObservationRows(10002,
+				[]string{ozone + ": 10002 rows, 2000-01-01 to 2013-09-09"}, false),
+		},
+		{
+			name:     "a response at the limit is returned",
+			req:      &V2GetObservationsRequest{VariableDcids: []string{ozone}, EntityDcids: []string{"epa/1", "epa/2"}, Date: "all"},
+			series:   []*sdmxpb.SdmxTimeSeries{dailyObsSeries(ozone, "epa/1", 5000), dailyObsSeries(ozone, "epa/2", 5000)},
+			wantRows: v2MaxObservationRows,
+		},
+		{
+			name:   "child mode over the limit gives child entity advice",
+			req:    &V2GetObservationsRequest{VariableDcids: []string{"Count_Person"}, EntityDcids: []string{"country/USA"}, ChildEntityTypeDcid: "City"},
+			series: childSeries,
+			wantErr: errV2TooManyObservationRows(10001,
+				[]string{"Count_Person: 10001 rows, 2000-01-01 to 2000-01-01"}, true),
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockV2ObservationsServer{sdmxResult: &sdmxpb.SdmxDataResult{Series: tc.series}}
+			got, err := NewService(mock, NewCache(mock), nil).V2GetObservations(context.Background(), tc.req)
+			gotSt, wantSt := status.Convert(err), status.Convert(tc.wantErr)
+			if gotSt.Code() != wantSt.Code() || gotSt.Message() != wantSt.Message() {
+				t.Fatalf("V2GetObservations() error = (%v, %q), want (%v, %q)", gotSt.Code(), gotSt.Message(), wantSt.Code(), wantSt.Message())
+			}
+			if tc.wantErr != nil {
+				// The error is returned before the name and provenance lookups.
+				if len(mock.nodeProperties) != 0 {
+					t.Errorf("V2Node calls = %v, want none", mock.nodeProperties)
+				}
+				return
+			}
+			if rows := len(got.Observations[0].Data.Rows); rows != tc.wantRows {
+				t.Errorf("rows = %d, want %d", rows, tc.wantRows)
 			}
 		})
 	}

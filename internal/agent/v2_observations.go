@@ -41,6 +41,10 @@ const (
 	// v2MaxAdditionalEntityProps caps keys in additional_entities alongside entity_property, matching the
 	// 3-slot (entity1, entity2, entity3) TimeSeries schema.
 	v2MaxAdditionalEntityProps = 2
+	// v2MaxObservationRows caps the rows in one get_observations response, as a safety net against responses
+	// no agent can use and that strain the server, such as date='all' on daily series (an eval call returned
+	// 31,403 rows). Typical requests stay far below it. Keep in sync with tools/get_observations.md.
+	v2MaxObservationRows = 10000
 
 	v2VarDiagPropertiesQuery    = "->[typeOf, observationProperties]"
 	v2ProvenancePropertiesQuery = "->[name, url]"
@@ -103,6 +107,9 @@ func (s *Service) V2GetObservations(
 	byVariable := partitionSeriesByVariable(sdmxResult, req.VariableDcids)
 	scope := v2ObservationNoteScope(req)
 	evaluated, unionActiveEntities, provenanceDcids := evaluateAllV2Variables(req, sdmxResult, byVariable, filter, scope)
+	if err := checkV2ObservationRows(evaluated, req.ChildEntityTypeDcid != ""); err != nil {
+		return nil, err
+	}
 
 	// Entity and provenance metadata are fetched only after per-variable facet selection so child-mode and
 	// multi-facet responses resolve names solely for entities and provenances present in the winning rows.
@@ -546,6 +553,45 @@ func evaluateAllV2Variables(
 	}
 
 	return evaluated, slices.Sorted(maps.Keys(entitySet)), slices.Sorted(maps.Keys(provSet))
+}
+
+// checkV2ObservationRows returns errV2TooManyObservationRows when the evaluated variables have more than
+// v2MaxObservationRows rows in total, listing each variable's row count and date span so the caller can
+// narrow the request.
+func checkV2ObservationRows(evaluated []*v2EvaluatedVariable, childMode bool) error {
+	total := 0
+	for _, ev := range evaluated {
+		total += len(ev.rows)
+	}
+	if total <= v2MaxObservationRows {
+		return nil
+	}
+	var summaries []string
+	for _, ev := range evaluated {
+		if len(ev.rows) == 0 {
+			continue
+		}
+		minDate, maxDate := v2RowsDateSpan(ev.rows, len(ev.dimSlots))
+		summaries = append(summaries, fmt.Sprintf("%s: %d rows, %s to %s", ev.dcid, len(ev.rows), minDate, maxDate))
+	}
+	return errV2TooManyObservationRows(total, summaries, childMode)
+}
+
+// v2RowsDateSpan returns the earliest and latest dates in rows, whose date column is dateIdx (see
+// buildSdmxDataRows). Dates are ISO strings, so string order is date order.
+func v2RowsDateSpan(rows [][]any, dateIdx int) (string, string) {
+	var minDate, maxDate string
+	for _, row := range rows {
+		date, _ := row[dateIdx].(string)
+		if date == "" {
+			continue
+		}
+		if minDate == "" || date < minDate {
+			minDate = date
+		}
+		maxDate = max(maxDate, date)
+	}
+	return minDate, maxDate
 }
 
 // evaluateV2VariableSeries filters points, selects the primary facet via sortFacetStats, and extracts table

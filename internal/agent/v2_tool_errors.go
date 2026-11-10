@@ -25,6 +25,7 @@ package agent
 import (
 	"errors"
 	"fmt"
+	"strings"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -304,6 +305,20 @@ func errV2InvalidDateRangeBound(field, val string) error {
 func errV2InvertedDateRange(start, end string) error {
 	return status.Errorf(codes.InvalidArgument,
 		"date_range_start (%q) cannot be after date_range_end (%q)", start, end)
+}
+
+// get_observations: response size. Returned after the query when the response would be too large.
+
+// errV2TooManyObservationRows reports a response over v2MaxObservationRows rows. summaries give each
+// variable's row count and date span, and the advice depends on whether child_entity_type_dcid was set.
+func errV2TooManyObservationRows(total int, summaries []string, childMode bool) error {
+	narrow := "pass date_range_start and date_range_end for a shorter window, or fewer entity_dcids or variable_dcids per call"
+	if childMode {
+		narrow = "pass one variable per call, a shorter date range, or a smaller parent entity (for example a state instead of a country)"
+	}
+	return status.Errorf(codes.InvalidArgument,
+		"this request matched %d rows, more than the %d one call returns (%s): %s",
+		total, v2MaxObservationRows, strings.Join(summaries, "; "), narrow)
 }
 
 // get_observations: notes. These are returned on individual variable entries when Data has no rows.
