@@ -331,7 +331,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoEntityDataNote,
+				Note:               v2NoEntityDataNote + v2NoDataRetryHint,
 			},
 			wantNodeCalls: 1,
 		},
@@ -341,7 +341,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoEntityDataNote,
+				Note:               v2NoEntityDataNote + v2NoDataRetryHint,
 			},
 			wantNodeCalls: 1,
 		},

@@ -66,8 +66,8 @@ func (s *Service) V2GetVariableMetadata(
 ) (*V2GetVariableMetadataResponse, error) {
 	obsReq := normalizeV2GetObservationsRequest(toV2ObservationsRequest(req))
 	// The request has no dates, so validation parses the default date and only variable and entity checks can
-	// fail.
-	if _, err := validateV2GetObservationsRequest(obsReq, v2MaxVariableDcids); err != nil {
+	// fail. Child mode gets the general variable cap, since the query reads only a sample of the child entities.
+	if _, err := validateV2GetObservationsRequest(obsReq, false /* capChildVariables */); err != nil {
 		return nil, err
 	}
 	defer util.TimeTrack(time.Now(), "Agent: V2GetVariableMetadata")
@@ -102,8 +102,9 @@ func (s *Service) V2GetVariableMetadata(
 }
 
 // toV2ObservationsRequest returns a V2GetObservationsRequest with req's variables and entity scope and no dates
-// or source_override, so V2GetObservations normalization, validation, query building and errors apply
-// unchanged. A nil request stays nil, which normalization turns into an empty request.
+// or source_override, so V2GetObservations normalization, validation, query building and errors apply, except
+// for the variable cap with child_entity_type_dcid (see V2GetVariableMetadata). A nil request stays nil,
+// which normalization turns into an empty request.
 func toV2ObservationsRequest(req *V2GetVariableMetadataRequest) *V2GetObservationsRequest {
 	if req == nil {
 		return nil

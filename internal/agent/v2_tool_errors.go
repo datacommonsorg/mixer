@@ -116,8 +116,9 @@ func errV2NoChildEntitiesOfType(parent, childType string) error {
 
 // search_indicators: notes. These are returned in successful responses.
 //
-// Empty-result notes state only what was checked. They deliberately give no retry guidance: agents decide
-// on their own whether to rephrase, and hints about where else data might be tend to send them looping.
+// Empty-result notes state only what was checked and never suggest where else data might be, since such
+// hints tend to send agents looping; agents decide on their own whether to rephrase. The one addition is
+// v2NoDataRetryHint on explicit-entity notes, which says what dropping entity_dcids would return.
 
 // Scopes for the empty-result notes: what the results were filtered by.
 const v2GivenEntitiesScope = "the given entity_dcids"
@@ -136,14 +137,15 @@ const v2NoMatchNote = "no topics or variables match this query."
 // Empty-result notes for when the entities filtered out every result. scope is what the results were
 // filtered by (v2GivenEntitiesScope or v2ChildEntitiesScope).
 
-// v2NoDataRetryHint follows the empty-result notes for explicit entities, since agents that retry without
-// entity_dcids only find indicators without data for those entities. Child mode leaves it out: checking the
-// parent's own data without child_entity_type_dcid is a valid fallback there.
-const v2NoDataRetryHint = " Retrying without entity_dcids only returns indicators without data for them."
+// v2NoDataRetryHint follows every empty-result note for explicit entities (v2ResponseNote appends it), since
+// agents that retry without entity_dcids only find results without data for those entities. Child mode
+// leaves it out: checking the parent's own data without child_entity_type_dcid is a valid fallback there.
+const v2NoDataRetryHint = " Retrying without entity_dcids returns only results without data for those entities."
 
-// v2NoEntityDataNote: none of the given entities has observation data for any variable. Child mode never
-// uses it, since a few sampled children can't show that a whole type has no data.
-const v2NoEntityDataNote = "there is no data for the given entity_dcids." + v2NoDataRetryHint
+// v2NoEntityDataNote: none of the given entities has observation data for any variable. Like the other
+// empty-result notes for explicit entities, it is followed by v2NoDataRetryHint. Child mode never uses it,
+// since a few sampled children can't show that a whole type has no data.
+const v2NoEntityDataNote = "there is no data for the given entity_dcids."
 
 // v2NoQueryDataNote: the search matched topics or variables, but none has data for the scope.
 func v2NoQueryDataNote(scope string) string {
@@ -210,11 +212,10 @@ func errV2TooManyVariableDcids(count int) error {
 		count, v2MaxVariableDcids)
 }
 
-// errV2TooManyChildVariableDcids reports more than limit variable_dcids with child_entity_type_dcid.
-func errV2TooManyChildVariableDcids(count, limit int) error {
+func errV2TooManyChildVariableDcids(count int) error {
 	return status.Errorf(codes.InvalidArgument,
 		"too many variable_dcids (%d) with child_entity_type_dcid: pass at most %d per call and split the rest into parallel calls",
-		count, limit)
+		count, v2MaxChildVariableDcids)
 }
 
 func errV2TopicAsVariableDcids(dcids []string) error {
@@ -312,17 +313,17 @@ func errV2InvertedDateRange(start, end string) error {
 // errV2TooManyObservationRows reports a response over v2MaxObservationRows rows. summaries give each
 // variable's row count and date span, and the advice depends on whether child_entity_type_dcid was set.
 func errV2TooManyObservationRows(total int, summaries []string, childMode bool) error {
-	narrow := "pass date_range_start and date_range_end for a shorter window, or fewer entity_dcids or variable_dcids per call"
+	narrow := "omit date and pass a shorter date_range_start and date_range_end window, or fewer entity_dcids or variable_dcids per call"
 	if childMode {
-		narrow = "pass one variable per call, a shorter date range, or a smaller parent entity (for example a state instead of a country)"
+		narrow = "pass a smaller parent entity (for example a state instead of a country), one variable per call, or a shorter date range"
 	}
 	return status.Errorf(codes.InvalidArgument,
-		"this request matched %d rows, more than the %d one call returns (%s): %s",
+		"this request matched %d rows, more than the %d one call can return (%s): %s",
 		total, v2MaxObservationRows, strings.Join(summaries, "; "), narrow)
 }
 
 // get_observations: notes. These are returned on individual variable entries when Data has no rows.
-// Like search_indicators notes, they state only what was checked and give no retry advice.
+// They state only what was checked and give no retry advice.
 // get_variable_metadata uses v2NoObsNote with the same scopes when a variable has no sources.
 
 // v2GivenEntitiesAndAdditionalScope is the note scope in explicit mode when additional_entities is also set.

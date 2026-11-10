@@ -91,6 +91,45 @@ func TestWrapV2BackendError(t *testing.T) {
 	}
 }
 
+func TestV2SearchIndicatorsNoteMessages(t *testing.T) {
+	noteCases := []struct {
+		name string
+		got  string
+		want string
+	}{
+		{
+			name: "no data for the given entities",
+			got:  v2NoEntityDataNote + v2NoDataRetryHint,
+			want: "there is no data for the given entity_dcids. Retrying without entity_dcids returns only results without data for those entities.",
+		},
+		{
+			name: "no data for the search matches",
+			got:  v2NoQueryDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
+			want: "none of the topics or variables matching this query have data for the given entity_dcids. Retrying without entity_dcids returns only results without data for those entities.",
+		},
+		{
+			name: "no data for the requested topics",
+			got:  v2NoRequestedTopicDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
+			want: "none of the requested topics have data for the given entity_dcids. Retrying without entity_dcids returns only results without data for those entities.",
+		},
+		{
+			name: "no data for the top-level topics",
+			got:  v2NoTopLevelTopicDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
+			want: "no topics have data for the given entity_dcids. Retrying without entity_dcids returns only results without data for those entities.",
+		},
+	}
+	for _, tc := range noteCases {
+		t.Run(tc.name, func(t *testing.T) {
+			if tc.got != tc.want {
+				t.Errorf("note = %q, want %q", tc.got, tc.want)
+			}
+			if strings.Contains(strings.ToLower(tc.got), "data commons") {
+				t.Errorf("note %q must not mention Data Commons", tc.got)
+			}
+		})
+	}
+}
+
 func TestV2GetObservationsErrorMessages(t *testing.T) {
 	errCases := []struct {
 		name     string
@@ -112,7 +151,7 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 		},
 		{
 			name:     "too many child variable_dcids",
-			err:      errV2TooManyChildVariableDcids(3, v2MaxChildVariableDcids),
+			err:      errV2TooManyChildVariableDcids(3),
 			wantCode: codes.InvalidArgument,
 			wantMsg:  "too many variable_dcids (3) with child_entity_type_dcid: pass at most 2 per call and split the rest into parallel calls",
 		},
@@ -216,13 +255,13 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 			name:     "too many observation rows with explicit entities",
 			err:      errV2TooManyObservationRows(31403, []string{"Max_Concentration_AirPollutant_Ozone: 31403 rows, 1980-01-01 to 2025-06-30"}, false),
 			wantCode: codes.InvalidArgument,
-			wantMsg:  "this request matched 31403 rows, more than the 10000 one call returns (Max_Concentration_AirPollutant_Ozone: 31403 rows, 1980-01-01 to 2025-06-30): pass date_range_start and date_range_end for a shorter window, or fewer entity_dcids or variable_dcids per call",
+			wantMsg:  "this request matched 31403 rows, more than the 10000 one call can return (Max_Concentration_AirPollutant_Ozone: 31403 rows, 1980-01-01 to 2025-06-30): omit date and pass a shorter date_range_start and date_range_end window, or fewer entity_dcids or variable_dcids per call",
 		},
 		{
 			name:     "too many observation rows with child entities",
 			err:      errV2TooManyObservationRows(10002, []string{"Count_Person: 5001 rows, 2023 to 2023", "Median_Age_Person: 5001 rows, 2023 to 2023"}, true),
 			wantCode: codes.InvalidArgument,
-			wantMsg:  "this request matched 10002 rows, more than the 10000 one call returns (Count_Person: 5001 rows, 2023 to 2023; Median_Age_Person: 5001 rows, 2023 to 2023): pass one variable per call, a shorter date range, or a smaller parent entity (for example a state instead of a country)",
+			wantMsg:  "this request matched 10002 rows, more than the 10000 one call can return (Count_Person: 5001 rows, 2023 to 2023; Median_Age_Person: 5001 rows, 2023 to 2023): pass a smaller parent entity (for example a state instead of a country), one variable per call, or a shorter date range",
 		},
 		{
 			name:     "observations backend failed",

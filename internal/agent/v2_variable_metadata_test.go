@@ -557,7 +557,7 @@ func TestV2GetVariableMetadataErrors(t *testing.T) {
 		{
 			name:    "more than 10 variables in child mode",
 			req:     &V2GetVariableMetadataRequest{VariableDcids: manyDcids("Var", 11), EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
-			wantErr: errV2TooManyChildVariableDcids(11, v2MaxVariableDcids),
+			wantErr: errV2TooManyVariableDcids(11),
 		},
 		{
 			name:    "topic DCID passed as a variable",

@@ -30,7 +30,8 @@ import (
 const (
 	// v2MaxEntitiesPerQuery caps the candidates returned per queried name. The non_place resolver can
 	// return up to 50 candidates above its similarity threshold; a few are enough for an LLM to pick
-	// from and keep responses small.
+	// from and keep responses small. Keep in sync with
+	// internal/server/mcp/instructions/v2/tools/resolve_entities.md.
 	v2MaxEntitiesPerQuery = 3
 	// v2MaxEntitiesPerRequest caps the names per call. Names are resolved in parallel and each can try
 	// several resolvers (Maps-backed place resolution and embeddings search), so this bounds backend fan-out.

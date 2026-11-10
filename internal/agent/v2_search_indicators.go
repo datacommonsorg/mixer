@@ -563,7 +563,7 @@ func v2ResponseNote(
 	// Checked first: when no entity has any data, rephrasing the query can't help, so the agent is told that
 	// rather than that nothing matched.
 	case data.noEntityHasData():
-		return v2NoEntityDataNote
+		return v2NoEntityDataNote + data.emptyResultHint()
 	case mode == v2ModeSearch && len(candidates) == 0:
 		return v2NoMatchNote
 	case !data.filtered():

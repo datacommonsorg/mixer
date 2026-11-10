@@ -52,9 +52,9 @@ type V2SearchIndicatorsInput struct {
 }
 
 // V2GetVariableMetadataInput holds arguments for the v2 get_variable_metadata MCP tool. variable_dcids and
-// entity_dcids are required. The fields match get_observations' variable and entity fields, with the same
-// limits except that variable_dcids allows 10 variables with child_entity_type_dcid too (metadata reads only a
-// sample of the child entities), so agents pass the same scope to both tools.
+// entity_dcids are required. The fields match get_observations' variable and entity fields, so agents pass the
+// same scope to both tools, with the same limits except that variable_dcids allows 10 variables with
+// child_entity_type_dcid too (metadata reads only a sample of the child entities).
 type V2GetVariableMetadataInput struct {
 	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call, also with child_entity_type_dcid; never pass topic DCIDs or DCIDs extrapolated from similar ones."`
 	EntityDcids         []string            `json:"entity_dcids" jsonschema:"Entity DCIDs from resolve_entities constraining entity_property, e.g. ['geoId/06', 'country/KEN']. Pass 1 to 20 per call, or exactly 1 parent entity DCID with child_entity_type_dcid."`
