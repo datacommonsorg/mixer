@@ -54,11 +54,12 @@ type v2FacetCoverage struct {
 // variable's definition and the sources with data for the requested entities, ranked as V2GetObservations
 // ranks them for the latest date, plus the details of the sources' datasets.
 //
-// Coverage comes from one SdmxData query over all dates, built and validated exactly as for
-// V2GetObservations. In child mode the query runs on the sample of the parent's child entities that
-// V2SearchIndicators checks (see requireChildEntitySample): coverage is reported for the parent, ranking
-// reflects the sample, and observation counts are left empty since they would only count the sample. The
-// sample is not exposed to callers.
+// Coverage comes from one SdmxData query over all dates, built and validated as for V2GetObservations,
+// except that up to v2MaxVariableDcids variables are allowed in child mode too. In child mode the query runs
+// on the sample of the parent's child entities that V2SearchIndicators checks (see
+// requireChildEntitySample), so its cost does not grow with the number of children: coverage is reported for
+// the parent, ranking reflects the sample, and observation counts are left empty since they would only count
+// the sample. The sample is not exposed to callers.
 func (s *Service) V2GetVariableMetadata(
 	ctx context.Context,
 	req *V2GetVariableMetadataRequest,
@@ -66,7 +67,7 @@ func (s *Service) V2GetVariableMetadata(
 	obsReq := normalizeV2GetObservationsRequest(toV2ObservationsRequest(req))
 	// The request has no dates, so validation parses the default date and only variable and entity checks can
 	// fail.
-	if _, err := validateV2GetObservationsRequest(obsReq); err != nil {
+	if _, err := validateV2GetObservationsRequest(obsReq, v2MaxVariableDcids); err != nil {
 		return nil, err
 	}
 	defer util.TimeTrack(time.Now(), "Agent: V2GetVariableMetadata")

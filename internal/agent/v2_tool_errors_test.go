@@ -112,7 +112,7 @@ func TestV2GetObservationsErrorMessages(t *testing.T) {
 		},
 		{
 			name:     "too many child variable_dcids",
-			err:      errV2TooManyChildVariableDcids(3),
+			err:      errV2TooManyChildVariableDcids(3, v2MaxChildVariableDcids),
 			wantCode: codes.InvalidArgument,
 			wantMsg:  "too many variable_dcids (3) with child_entity_type_dcid: pass at most 2 per call and split the rest into parallel calls",
 		},

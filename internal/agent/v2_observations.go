@@ -81,7 +81,7 @@ func (s *Service) V2GetObservations(
 	req *V2GetObservationsRequest,
 ) (*V2GetObservationsResponse, error) {
 	req = normalizeV2GetObservationsRequest(req)
-	filter, err := validateV2GetObservationsRequest(req)
+	filter, err := validateV2GetObservationsRequest(req, v2MaxChildVariableDcids)
 	if err != nil {
 		return nil, err
 	}
@@ -156,8 +156,11 @@ func normalizeV2GetObservationsRequest(req *V2GetObservationsRequest) *V2GetObse
 }
 
 // validateV2GetObservationsRequest checks all variable, entity, property, and date invariants on a
-// normalized request and returns the parsed date filter.
-func validateV2GetObservationsRequest(req *V2GetObservationsRequest) (*dateFilter, error) {
+// normalized request and returns the parsed date filter. maxChildVariables caps variable_dcids when
+// child_entity_type_dcid is set: v2MaxChildVariableDcids for V2GetObservations, which expands each variable
+// across every child entity, and v2MaxVariableDcids for V2GetVariableMetadata, which reads only a sample of
+// them.
+func validateV2GetObservationsRequest(req *V2GetObservationsRequest, maxChildVariables int) (*dateFilter, error) {
 	if len(req.VariableDcids) == 0 {
 		return nil, errV2NoVariableDcids()
 	}
@@ -170,8 +173,8 @@ func validateV2GetObservationsRequest(req *V2GetObservationsRequest) (*dateFilte
 	if len(topicDcids) > 0 {
 		return nil, errV2TopicAsVariableDcids(topicDcids)
 	}
-	if req.ChildEntityTypeDcid != "" && len(req.VariableDcids) > v2MaxChildVariableDcids {
-		return nil, errV2TooManyChildVariableDcids(len(req.VariableDcids))
+	if req.ChildEntityTypeDcid != "" && len(req.VariableDcids) > maxChildVariables {
+		return nil, errV2TooManyChildVariableDcids(len(req.VariableDcids), maxChildVariables)
 	}
 	if len(req.VariableDcids) > v2MaxVariableDcids {
 		return nil, errV2TooManyVariableDcids(len(req.VariableDcids))

@@ -172,7 +172,7 @@ func TestV2GetObservationsValidation(t *testing.T) {
 				EntityDcids:         []string{"geoId/06"},
 				ChildEntityTypeDcid: "County",
 			},
-			wantErr: errV2TooManyChildVariableDcids(3),
+			wantErr: errV2TooManyChildVariableDcids(3, v2MaxChildVariableDcids),
 		},
 		{
 			name: "source_override keeps the child mode variable cap",
@@ -182,7 +182,7 @@ func TestV2GetObservationsValidation(t *testing.T) {
 				ChildEntityTypeDcid: "County",
 				SourceOverride:      "facet-1",
 			},
-			wantErr: errV2TooManyChildVariableDcids(3),
+			wantErr: errV2TooManyChildVariableDcids(3, v2MaxChildVariableDcids),
 		},
 		{
 			name: "empty entity_dcids rejected",
@@ -505,7 +505,7 @@ func TestBuildV2SdmxDataQuery(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			norm := normalizeV2GetObservationsRequest(tc.req)
-			filter, err := validateV2GetObservationsRequest(norm)
+			filter, err := validateV2GetObservationsRequest(norm, v2MaxChildVariableDcids)
 			if err != nil {
 				t.Fatalf("validateV2GetObservationsRequest() unexpected error: %v", err)
 			}

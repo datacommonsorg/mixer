@@ -182,7 +182,8 @@ type V2AlternativeSource struct {
 }
 
 // V2GetVariableMetadataRequest holds parameters for V2GetVariableMetadata. Its fields mean the same as in
-// V2GetObservationsRequest, which has the same limits.
+// V2GetObservationsRequest, with the same limits, except that VariableDcids allows up to 10 variables in child
+// mode too.
 type V2GetVariableMetadataRequest struct {
 	VariableDcids       []string
 	EntityDcids         []string

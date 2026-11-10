@@ -21,6 +21,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/mark3labs/mcp-go/mcp"
 )
 
@@ -240,7 +241,9 @@ func TestV2GetVariableMetadataInputSchema(t *testing.T) {
 	}
 
 	// The fields are get_observations' scope fields, whose descriptions state the shared limits, so they must
-	// not drift apart.
+	// not drift apart. variable_dcids differs only in its description: metadata allows 10 variables with
+	// child_entity_type_dcid too.
+	descriptionMayDiffer := map[string]bool{"variable_dcids": true}
 	obsTool := mcp.NewTool("get_observations", withToolInputSchema[V2GetObservationsInput]())
 	var obs map[string]any
 	if err := json.Unmarshal(obsTool.RawInputSchema, &obs); err != nil {
@@ -248,7 +251,11 @@ func TestV2GetVariableMetadataInputSchema(t *testing.T) {
 	}
 	obsProps := obs["properties"].(map[string]any)
 	for field, prop := range props {
-		if diff := cmp.Diff(obsProps[field], prop); diff != "" {
+		opts := cmp.Options{}
+		if descriptionMayDiffer[field] {
+			opts = append(opts, cmpopts.IgnoreMapEntries(func(k string, _ any) bool { return k == "description" }))
+		}
+		if diff := cmp.Diff(obsProps[field], prop, opts...); diff != "" {
 			t.Errorf("get_variable_metadata field %q differs from get_observations (-get_observations +get_variable_metadata):\n%s", field, diff)
 		}
 	}

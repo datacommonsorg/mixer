@@ -271,6 +271,46 @@ func TestV2GetVariableMetadata(t *testing.T) {
 			wantSampleReqs: []*pbv2.SampleChildEntitiesRequest{{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: v2ChildEntitySampleSize}},
 		},
 		{
+			// get_observations allows 2 variables in child mode; metadata reads only the sampled children, so it
+			// allows as many variables as with explicit entities.
+			name: "child mode accepts more than 2 variables",
+			req: &V2GetVariableMetadataRequest{
+				VariableDcids:       []string{"Count_Person", "Median_Age_Person", "Count_Farm"},
+				EntityDcids:         []string{"geoId/06"},
+				ChildEntityTypeDcid: "County",
+			},
+			samples: map[string][]string{"geoId/06|County": {"geoId/06001"}},
+			series: []*sdmxpb.SdmxTimeSeries{
+				metaSeries("Count_Person", "pep-facet", pepDims("geoId/06001"), "2021"),
+			},
+			want: &V2GetVariableMetadataResponse{
+				Variables: []*V2VariableMetadata{
+					countPersonEntry(&Table{Columns: v2MetadataSourceColumns, Rows: [][]any{
+						{"pep-facet", "US Census PEP", "https://www.census.gov/popest", "", "", "CensusPEPSurvey", "", "2021", "2021", nil, []string{"geoId/06"}},
+					}}, ""),
+					{
+						Dcid:       "Median_Age_Person",
+						Name:       "Median Age",
+						Properties: map[string]any{"measuredProperty": "age", "statType": "medianValue"},
+						Sources:    &Table{Columns: v2MetadataSourceColumns},
+						Note:       "no observations found for Median_Age_Person on County entities in geoId/06.",
+					},
+					{
+						Dcid:       "Count_Farm",
+						Properties: map[string]any{},
+						Sources:    &Table{Columns: v2MetadataSourceColumns},
+						Note:       "no observations found for Count_Farm on County entities in geoId/06.",
+					},
+				},
+				Datasets: []*V2DatasetMetadata{censusPEPDataset},
+			},
+			wantQuery: &sdmxpb.SdmxDataQuery{Constraints: map[string]*sdmxpb.SdmxComponentConstraint{
+				datacommons.ComponentVariableMeasured: makeSdmxConstraint("Count_Person", "Median_Age_Person", "Count_Farm"),
+				datacommons.ComponentObservationAbout: makeSdmxConstraint("geoId/06001"),
+			}},
+			wantSampleReqs: []*pbv2.SampleChildEntitiesRequest{{Ancestors: []string{"geoId/06"}, ChildType: "County", LimitPerAncestor: v2ChildEntitySampleSize}},
+		},
+		{
 			name: "multi-entity variable lists entity_property values and counts observations across counterparts",
 			req: &V2GetVariableMetadataRequest{
 				VariableDcids:  []string{"Amount_ODA"},
@@ -515,9 +555,9 @@ func TestV2GetVariableMetadataErrors(t *testing.T) {
 			wantErr: errV2NoVariableDcids(),
 		},
 		{
-			name:    "more than 2 variables in child mode",
-			req:     &V2GetVariableMetadataRequest{VariableDcids: manyDcids("Var", 3), EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
-			wantErr: errV2TooManyChildVariableDcids(3),
+			name:    "more than 10 variables in child mode",
+			req:     &V2GetVariableMetadataRequest{VariableDcids: manyDcids("Var", 11), EntityDcids: []string{"geoId/06"}, ChildEntityTypeDcid: "County"},
+			wantErr: errV2TooManyChildVariableDcids(11, v2MaxVariableDcids),
 		},
 		{
 			name:    "topic DCID passed as a variable",

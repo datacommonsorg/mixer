@@ -204,10 +204,11 @@ func errV2TooManyVariableDcids(count int) error {
 		count, v2MaxVariableDcids)
 }
 
-func errV2TooManyChildVariableDcids(count int) error {
+// errV2TooManyChildVariableDcids reports more than limit variable_dcids with child_entity_type_dcid.
+func errV2TooManyChildVariableDcids(count, limit int) error {
 	return status.Errorf(codes.InvalidArgument,
 		"too many variable_dcids (%d) with child_entity_type_dcid: pass at most %d per call and split the rest into parallel calls",
-		count, v2MaxChildVariableDcids)
+		count, limit)
 }
 
 func errV2TopicAsVariableDcids(dcids []string) error {

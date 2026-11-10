@@ -53,9 +53,10 @@ type V2SearchIndicatorsInput struct {
 
 // V2GetVariableMetadataInput holds arguments for the v2 get_variable_metadata MCP tool. variable_dcids and
 // entity_dcids are required. The fields match get_observations' variable and entity fields, with the same
-// limits, so agents pass the same scope to both tools.
+// limits except that variable_dcids allows 10 variables with child_entity_type_dcid too (metadata reads only a
+// sample of the child entities), so agents pass the same scope to both tools.
 type V2GetVariableMetadataInput struct {
-	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call (1 to 2 with child_entity_type_dcid); never pass topic DCIDs."`
+	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call, also with child_entity_type_dcid; never pass topic DCIDs."`
 	EntityDcids         []string            `json:"entity_dcids" jsonschema:"Entity DCIDs from resolve_entities constraining entity_property, e.g. ['geoId/06', 'country/KEN']. Pass 1 to 20 per call, or exactly 1 parent entity DCID with child_entity_type_dcid."`
 	ChildEntityTypeDcid string              `json:"child_entity_type_dcid,omitempty" jsonschema:"A child entity type DCID from resolve_entities' candidate_child_entity_types, e.g. 'County'. Expands the single parent in entity_dcids to its child entities of this type on entity_property."`
 	EntityProperty      string              `json:"entity_property,omitempty" jsonschema:"Observation property constrained by entity_dcids (or child_entity_type_dcid), e.g. 'donor' or 'sourceCounty'. Defaults to 'observationAbout'."`
