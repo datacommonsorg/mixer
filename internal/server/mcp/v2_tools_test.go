@@ -241,9 +241,9 @@ func TestV2GetVariableMetadataInputSchema(t *testing.T) {
 	}
 
 	// The fields are get_observations' scope fields, whose descriptions state the shared limits, so they must
-	// not drift apart. variable_dcids differs only in its description: metadata allows 10 variables with
-	// child_entity_type_dcid too.
-	descriptionMayDiffer := map[string]bool{"variable_dcids": true}
+	// not drift apart. variable_dcids and child_entity_type_dcid differ only in their descriptions: metadata
+	// allows 10 variables with child_entity_type_dcid too.
+	descriptionMayDiffer := map[string]bool{"variable_dcids": true, "child_entity_type_dcid": true}
 	obsTool := mcp.NewTool("get_observations", withToolInputSchema[V2GetObservationsInput]())
 	var obs map[string]any
 	if err := json.Unmarshal(obsTool.RawInputSchema, &obs); err != nil {

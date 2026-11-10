@@ -135,9 +135,14 @@ const v2NoMatchNote = "no topics or variables match this query."
 // Empty-result notes for when the entities filtered out every result. scope is what the results were
 // filtered by (v2GivenEntitiesScope or v2ChildEntitiesScope).
 
+// v2NoDataRetryHint follows the empty-result notes for explicit entities, since agents that retry without
+// entity_dcids only find indicators without data for those entities. Child mode leaves it out: checking the
+// parent's own data without child_entity_type_dcid is a valid fallback there.
+const v2NoDataRetryHint = " Retrying without entity_dcids only returns indicators without data for them."
+
 // v2NoEntityDataNote: none of the given entities has observation data for any variable. Child mode never
 // uses it, since a few sampled children can't show that a whole type has no data.
-const v2NoEntityDataNote = "there is no data for the given entity_dcids."
+const v2NoEntityDataNote = "there is no data for the given entity_dcids." + v2NoDataRetryHint
 
 // v2NoQueryDataNote: the search matched topics or variables, but none has data for the scope.
 func v2NoQueryDataNote(scope string) string {

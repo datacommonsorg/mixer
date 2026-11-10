@@ -399,6 +399,15 @@ func (sc *v2EntityScope) noteScope() string {
 	return v2GivenEntitiesScope
 }
 
+// emptyResultHint returns what follows an empty-result note: v2NoDataRetryHint for explicit entities, and
+// nothing in child mode (see v2NoDataRetryHint).
+func (sc *v2EntityScope) emptyResultHint() string {
+	if sc.childMode() {
+		return ""
+	}
+	return v2NoDataRetryHint
+}
+
 // v2IndicatorData holds what the response builders need beyond the candidates: the entity scope, each
 // topic's descendant variables (in hierarchy order) and their names, and, when entities are given, which
 // entities have data for each variable.
@@ -562,11 +571,11 @@ func v2ResponseNote(
 	case !empty:
 		return ""
 	case mode == v2ModeSearch:
-		return v2NoQueryDataNote(data.noteScope())
+		return v2NoQueryDataNote(data.noteScope()) + data.emptyResultHint()
 	case mode == v2ModeBrowseTopics:
-		return v2NoRequestedTopicDataNote(data.noteScope())
+		return v2NoRequestedTopicDataNote(data.noteScope()) + data.emptyResultHint()
 	default:
-		return v2NoTopLevelTopicDataNote(data.noteScope())
+		return v2NoTopLevelTopicDataNote(data.noteScope()) + data.emptyResultHint()
 	}
 }
 
