@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="oauth-call-google-token">
+  <DisplayName>oauth-call-google-token</DisplayName>
+  <Request clearPayload="true" variable="googleTokenRequest">
+    <Set>
+      <Verb>POST</Verb>
+      <FormParams>
+        <FormParam name="code">{oauth.google_code}</FormParam>
+        <FormParam name="client_id">{private.oauth.google_client_id}</FormParam>
+        <FormParam name="client_secret">{private.oauth.google_client_secret}</FormParam>
+        <FormParam name="redirect_uri">https://{oauth.public_hostname}/oauth/callback</FormParam>
+        <FormParam name="grant_type">authorization_code</FormParam>
+      </FormParams>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  </Request>
+  <Response>googleTokenResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <URL>https://oauth2.googleapis.com/token</URL>
+    <SSLInfo>
+      <Enabled>true</Enabled>
+    </SSLInfo>
+  </HTTPTargetConnection>
+</ServiceCallout>

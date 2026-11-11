@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DeleteOAuthV2Info continueOnError="false" enabled="true" name="oauth-delete-state2-code">
+  <DisplayName>oauth-delete-state2-code</DisplayName>
+  <AuthorizationCode ref="oauth.state2"/>
+</DeleteOAuthV2Info>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyAPIKey continueOnError="false" enabled="true" name="oauth-verify-client-form">
+  <DisplayName>oauth-verify-client-form</DisplayName>
+  <Properties/>
+  <APIKey ref="request.formparam.client_id"/>
+</VerifyAPIKey>
