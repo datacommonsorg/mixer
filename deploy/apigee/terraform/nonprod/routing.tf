@@ -19,10 +19,6 @@ locals {
     "matcher-api" = {
       hostname = var.api_hostname
       prefix   = "/api/"
-    },
-    "matcher-nl" = {
-      hostname = var.nl_api_hostname
-      prefix   = "/nl/"
     }
   }
 }

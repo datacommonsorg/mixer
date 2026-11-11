@@ -16,15 +16,13 @@ module "apigee" {
   source     = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/apigee"
   project_id = var.project_id
   envgroups = {
-    staging-api  = [var.api_hostname]
-    staging-nl   = [var.nl_api_hostname]
+    staging-api = [var.api_hostname]
   }
   environments = {
     dev = {
       display_name = "dev"
       envgroups = [
         "staging-api",
-        "staging-nl",
       ]
       type = "INTERMEDIATE"
     }
@@ -37,13 +35,6 @@ module "apigee" {
       environments = ["dev"]
     }
   }
-  endpoint_attachments = {
-    # This has "bard" in the name but is used by staging.nl.datacommons.org
-    datcom-bard-staging-website = {
-      region             = "us-central1"
-      service_attachment = "projects/${var.psc_project}/regions/us-central1/serviceAttachments/${var.psc_service_name}"
-    }
-  }
 }
 
 resource "apigee_proxy" "api" {
@@ -52,11 +43,6 @@ resource "apigee_proxy" "api" {
   bundle_hash = filebase64sha256(".tmp/api.zip")
 }
 
-resource "apigee_proxy" "nl" {
-  name        = "nl"
-  bundle      = ".tmp/nl.zip"
-  bundle_hash = filebase64sha256(".tmp/nl.zip")
-}
 
 resource "apigee_proxy_deployment" "dev-api" {
   proxy_name       = apigee_proxy.api.name
@@ -65,11 +51,6 @@ resource "apigee_proxy_deployment" "dev-api" {
   service_account  = var.deployment_service_account
 }
 
-resource "apigee_proxy_deployment" "dev-nl" {
-  proxy_name       = apigee_proxy.nl.name
-  environment_name = "dev"
-  revision         = apigee_proxy.nl.revision # Deploy latest
-}
 
 resource "apigee_product" "datacommons-api-staging" {
   name               = "datacommons-api-staging"
@@ -89,20 +70,3 @@ resource "apigee_product" "datacommons-api-staging" {
   }
 }
 
-resource "apigee_product" "datacommons-nl-api-staging" {
-  name               = "datacommons-nl-api-staging"
-  display_name       = "Data Commons NL API (Staging)"
-  auto_approval_type = true
-  description        = var.nl_api_hostname
-  environments = [
-    "dev",
-  ]
-  attributes = {
-    access = "public"
-  }
-  operation {
-    api_source = apigee_proxy.nl.name
-    path       = "/"
-    methods    = [] # Accept all methods
-  }
-}

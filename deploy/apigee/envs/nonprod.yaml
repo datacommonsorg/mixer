@@ -19,12 +19,3 @@ proxies:
       - api
     target_endpoints:
       - api
-  - name: nl
-    policies:
-      - copy-key-param-to-header
-      - verify-api-key-in-header
-      - strip-api-key-header-and-params
-    proxy_endpoints:
-      - nl
-    target_endpoints:
-      - nl

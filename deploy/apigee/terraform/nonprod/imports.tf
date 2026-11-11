@@ -32,10 +32,6 @@ import {
   id = "us-central1/attachments/a4dd5147-38c9-4bde-82bb-312f14e535e1"
 }
 
-import {
-  to = module.apigee.google_apigee_endpoint_attachment.endpoint_attachments["datcom-bard-staging-website"]
-  id = "endpointAttachments/datcom-bard-staging-website"
-}
 
 import {
   to = apigee_proxy.api
@@ -52,10 +48,6 @@ import {
   id = "datacommons-api-staging"
 }
 
-import {
-  to = apigee_product.datacommons-nl-api-staging
-  id = "datacommons-nl-api-staging"
-}
 
 import {
   to = google_compute_global_network_endpoint_group.api_esp_neg

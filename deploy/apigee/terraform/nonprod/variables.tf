@@ -39,26 +39,13 @@ variable "api_hostname" {
   type = string
 }
 
-# Hostname for the public-facing version of the NL API.
-variable "nl_api_hostname" {
-  type = string
-}
 
 # Hostname that permanently points to Mixer API's Cloud Endpoints deployment.
 variable "api_esp_hostname" {
   type = string
 }
 
-# ID of the GCP project that publishes a PSC service for both versions of the
-# NL API.
-variable "psc_project" {
-  type = string
-}
 
-# Name of the PSC service for the NL API.
-variable "psc_service_name" {
-  type = string
-}
 
 # Service Account email to use for the Apigee proxy deployment (Cloud Run invoker).
 variable "deployment_service_account" {
