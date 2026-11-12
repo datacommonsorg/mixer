@@ -32,15 +32,22 @@ import (
 )
 
 const (
-	// v2MaxVariableDcids caps variable_dcids per call when querying explicit entities. Keep in sync with
-	// internal/server/mcp/v2_types.go.
+	// v2MaxVariableDcids caps variable_dcids per call, except in get_observations with child_entity_type_dcid
+	// (see v2MaxChildVariableDcids). Keep in sync with internal/server/mcp/v2_types.go and
+	// internal/server/mcp/instructions/v2/tools/get_variable_metadata.md.
 	v2MaxVariableDcids = 10
-	// v2MaxChildVariableDcids caps variable_dcids per call when child_entity_type_dcid is set, since each
-	// variable expands across every child entity under the parent.
+	// v2MaxChildVariableDcids caps variable_dcids per get_observations call when child_entity_type_dcid is set,
+	// since each variable expands across every child entity under the parent. Keep in sync with
+	// internal/server/mcp/v2_types.go.
 	v2MaxChildVariableDcids = 2
 	// v2MaxAdditionalEntityProps caps keys in additional_entities alongside entity_property, matching the
 	// 3-slot (entity1, entity2, entity3) TimeSeries schema.
 	v2MaxAdditionalEntityProps = 2
+	// v2MaxObservationRows caps the rows in one get_observations response, as a safety net against responses
+	// no agent can use and that strain the server, such as date='all' on daily series (an eval call returned
+	// 31,403 rows). Typical requests stay far below it. Keep in sync with
+	// internal/server/mcp/instructions/v2/tools/get_observations.md.
+	v2MaxObservationRows = 10000
 
 	v2VarDiagPropertiesQuery    = "->[typeOf, observationProperties]"
 	v2ProvenancePropertiesQuery = "->[name, url]"
@@ -75,13 +82,14 @@ type v2EvaluatedVariable struct {
 }
 
 // V2GetObservations fetches observation series for 1 to 10 statistical variables sharing observation_properties
-// across explicit entities, child entities of a parent, or multi-entity relationship slots.
+// across explicit entities, child entities of a parent, or multi-entity relationship slots. A response over
+// v2MaxObservationRows rows returns errV2TooManyObservationRows instead of the rows.
 func (s *Service) V2GetObservations(
 	ctx context.Context,
 	req *V2GetObservationsRequest,
 ) (*V2GetObservationsResponse, error) {
 	req = normalizeV2GetObservationsRequest(req)
-	filter, err := validateV2GetObservationsRequest(req)
+	filter, err := validateV2GetObservationsRequest(req, true /* capChildVariables */)
 	if err != nil {
 		return nil, err
 	}
@@ -103,6 +111,9 @@ func (s *Service) V2GetObservations(
 	byVariable := partitionSeriesByVariable(sdmxResult, req.VariableDcids)
 	scope := v2ObservationNoteScope(req)
 	evaluated, unionActiveEntities, provenanceDcids := evaluateAllV2Variables(req, sdmxResult, byVariable, filter, scope)
+	if err := checkV2ObservationRows(evaluated, req.ChildEntityTypeDcid != ""); err != nil {
+		return nil, err
+	}
 
 	// Entity and provenance metadata are fetched only after per-variable facet selection so child-mode and
 	// multi-facet responses resolve names solely for entities and provenances present in the winning rows.
@@ -156,8 +167,10 @@ func normalizeV2GetObservationsRequest(req *V2GetObservationsRequest) *V2GetObse
 }
 
 // validateV2GetObservationsRequest checks all variable, entity, property, and date invariants on a
-// normalized request and returns the parsed date filter.
-func validateV2GetObservationsRequest(req *V2GetObservationsRequest) (*dateFilter, error) {
+// normalized request and returns the parsed date filter. capChildVariables applies v2MaxChildVariableDcids
+// when child_entity_type_dcid is set. V2GetObservations sets it because it expands each variable across every
+// child entity. V2GetVariableMetadata doesn't, so only the general v2MaxVariableDcids cap applies.
+func validateV2GetObservationsRequest(req *V2GetObservationsRequest, capChildVariables bool) (*dateFilter, error) {
 	if len(req.VariableDcids) == 0 {
 		return nil, errV2NoVariableDcids()
 	}
@@ -170,7 +183,7 @@ func validateV2GetObservationsRequest(req *V2GetObservationsRequest) (*dateFilte
 	if len(topicDcids) > 0 {
 		return nil, errV2TopicAsVariableDcids(topicDcids)
 	}
-	if req.ChildEntityTypeDcid != "" && len(req.VariableDcids) > v2MaxChildVariableDcids {
+	if capChildVariables && req.ChildEntityTypeDcid != "" && len(req.VariableDcids) > v2MaxChildVariableDcids {
 		return nil, errV2TooManyChildVariableDcids(len(req.VariableDcids))
 	}
 	if len(req.VariableDcids) > v2MaxVariableDcids {
@@ -719,6 +732,45 @@ func seriesDateBounds(varSeries []*sdmxpb.SdmxTimeSeries) (string, string) {
 		}
 	}
 	return minStr, maxStr
+}
+
+// checkV2ObservationRows returns errV2TooManyObservationRows when the evaluated variables have more than
+// v2MaxObservationRows rows in total, listing the row count and date span of each variable with rows
+// (variables without rows are skipped) so the caller can narrow the request.
+func checkV2ObservationRows(evaluated []*v2EvaluatedVariable, childMode bool) error {
+	total := 0
+	for _, ev := range evaluated {
+		total += len(ev.rows)
+	}
+	if total <= v2MaxObservationRows {
+		return nil
+	}
+	var summaries []string
+	for _, ev := range evaluated {
+		if len(ev.rows) == 0 {
+			continue
+		}
+		minDate, maxDate := v2RowsDateSpan(ev.rows)
+		summaries = append(summaries, fmt.Sprintf("%s: %d rows, %s to %s", ev.dcid, len(ev.rows), minDate, maxDate))
+	}
+	return errV2TooManyObservationRows(total, summaries, childMode)
+}
+
+// v2RowsDateSpan returns the earliest and latest dates in rows, each laid out by buildSdmxDataRows as
+// [dims..., date, value]. Dates are ISO strings, so string order is date order.
+func v2RowsDateSpan(rows [][]any) (string, string) {
+	var minDate, maxDate string
+	for _, row := range rows {
+		date, _ := row[len(row)-2].(string)
+		if date == "" {
+			continue
+		}
+		if minDate == "" || date < minDate {
+			minDate = date
+		}
+		maxDate = max(maxDate, date)
+	}
+	return minDate, maxDate
 }
 
 // fetchV2ObservationMetadata resolves display names for variables and active entities in parallel with

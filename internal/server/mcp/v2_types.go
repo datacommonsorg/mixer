@@ -32,7 +32,7 @@ type V2AgentBackend interface {
 // jsonschema tags become per-field descriptions in the tool's input schema shown to the LLM.
 type V2EntityInput struct {
 	Name                 string   `json:"name" jsonschema:"Fully qualified entity name including its type word and parent places, e.g. 'Santa Clara County, California, United States', 'Washington State, United States', 'Madrid, Spain', 'Lincoln Elementary School, Atlanta, Georgia'."`
-	EntityTypeHints      []string `json:"entity_type_hints,omitempty" jsonschema:"Optional entity types, most specific first, e.g. ['state'], ['county', 'administrative area 2'], ['food bank']."`
+	EntityTypeHints      []string `json:"entity_type_hints,omitempty" jsonschema:"Optional type of the entity, e.g. ['state'], ['county'], ['public school'], ['food bank']. Pass one specific type."`
 	ChildEntityTypeHints []string `json:"child_entity_type_hints,omitempty" jsonschema:"Terms for the type of entities contained in this entity, for questions like 'counties of Kenya' (name 'Kenya', hints ['county', 'administrative area 1']). Depending on the country, Data Commons types subdivisions by a specific type (e.g. County, State), a generic administrative level (e.g. AdministrativeArea1), or both, and may not recognize local terms (e.g. 'autonomous community'), so pair the local term with its administrative level. Use at most 3 hints, most specific first."`
 }
 
@@ -52,10 +52,11 @@ type V2SearchIndicatorsInput struct {
 }
 
 // V2GetVariableMetadataInput holds arguments for the v2 get_variable_metadata MCP tool. variable_dcids and
-// entity_dcids are required. The fields match get_observations' variable and entity fields, with the same
-// limits, so agents pass the same scope to both tools.
+// entity_dcids are required. The fields match get_observations' variable and entity fields, so agents pass the
+// same scope to both tools, with the same limits except that variable_dcids allows 10 variables with
+// child_entity_type_dcid too (metadata reads only a sample of the child entities).
 type V2GetVariableMetadataInput struct {
-	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call (1 to 2 with child_entity_type_dcid); never pass topic DCIDs."`
+	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call, also with child_entity_type_dcid; never pass topic DCIDs or DCIDs extrapolated from similar ones."`
 	EntityDcids         []string            `json:"entity_dcids" jsonschema:"Entity DCIDs from resolve_entities constraining entity_property, e.g. ['geoId/06', 'country/KEN']. Pass 1 to 20 per call, or exactly 1 parent entity DCID with child_entity_type_dcid."`
 	ChildEntityTypeDcid string              `json:"child_entity_type_dcid,omitempty" jsonschema:"A child entity type DCID from resolve_entities' candidate_child_entity_types, e.g. 'County'. Expands the single parent in entity_dcids to its child entities of this type on entity_property."`
 	EntityProperty      string              `json:"entity_property,omitempty" jsonschema:"Observation property constrained by entity_dcids (or child_entity_type_dcid), e.g. 'donor' or 'sourceCounty'. Defaults to 'observationAbout'."`
@@ -66,12 +67,12 @@ type V2GetVariableMetadataInput struct {
 // are required; all other fields are optional, and date intentionally omits a JSON Schema default so omitting
 // date alongside date_range_start or date_range_end can infer 'range' without clients injecting 'latest'.
 type V2GetObservationsInput struct {
-	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call (1 to 2 with child_entity_type_dcid); never pass topic DCIDs."`
+	VariableDcids       []string            `json:"variable_dcids" jsonschema:"Variable DCIDs from search_indicators sharing the same observation_properties, e.g. ['Count_Person', 'UnemploymentRate_Person']. Pass 1 to 10 per call (1 to 2 with child_entity_type_dcid); never pass topic DCIDs or DCIDs extrapolated from similar ones."`
 	EntityDcids         []string            `json:"entity_dcids" jsonschema:"Entity DCIDs from resolve_entities constraining entity_property, e.g. ['geoId/06', 'country/KEN']. Pass 1 to 20 per call, or exactly 1 parent entity DCID with child_entity_type_dcid."`
-	ChildEntityTypeDcid string              `json:"child_entity_type_dcid,omitempty" jsonschema:"A child entity type DCID from resolve_entities' candidate_child_entity_types, e.g. 'County'. Expands the single parent in entity_dcids to its child entities of this type on entity_property."`
+	ChildEntityTypeDcid string              `json:"child_entity_type_dcid,omitempty" jsonschema:"A child entity type DCID from resolve_entities' candidate_child_entity_types, e.g. 'County'. Expands the single parent in entity_dcids to its child entities of this type on entity_property. Allows at most 2 variable_dcids per call."`
 	EntityProperty      string              `json:"entity_property,omitempty" jsonschema:"Observation property constrained by entity_dcids (or child_entity_type_dcid), e.g. 'donor' or 'sourceCounty'. Defaults to 'observationAbout'."`
 	AdditionalEntities  map[string][]string `json:"additional_entities,omitempty" jsonschema:"Other observation_properties to constrain, mapping each property to 1 to 20 entity DCIDs from resolve_entities, e.g. {'recipient': ['country/KEN']}. Up to 2 properties, distinct from entity_property."`
-	Date                string              `json:"date,omitempty" jsonschema:"Which dates to return: 'latest' (default when date_range_start and date_range_end are omitted), 'all' (only without child_entity_type_dcid), 'range', or an ISO date ('YYYY', 'YYYY-MM', or 'YYYY-MM-DD', e.g. '2023'). Omitting date when date_range_start or date_range_end is set infers 'range'."`
+	Date                string              `json:"date,omitempty" jsonschema:"Which dates to return: 'latest' (default when date_range_start and date_range_end are omitted), 'all' (only without child_entity_type_dcid; on daily or monthly series, use date_range_start and date_range_end instead), 'range', or an ISO date ('YYYY', 'YYYY-MM', or 'YYYY-MM-DD', e.g. '2023'). Omitting date when date_range_start or date_range_end is set infers 'range'."`
 	DateRangeStart      string              `json:"date_range_start,omitempty" jsonschema:"Inclusive start date ('YYYY', 'YYYY-MM', or 'YYYY-MM-DD', e.g. '2018') when date is 'range' or omitted. Required for range queries with child_entity_type_dcid."`
 	DateRangeEnd        string              `json:"date_range_end,omitempty" jsonschema:"Inclusive end date ('YYYY', 'YYYY-MM', or 'YYYY-MM-DD', e.g. '2023') when date is 'range' or omitted."`
 	SourceOverride      string              `json:"source_override,omitempty" jsonschema:"A source_id from get_observations' source_metadata or alternative_sources, or from get_variable_metadata's sources, to fetch from that source. Applies to every variable in variable_dcids."`

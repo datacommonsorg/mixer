@@ -17,6 +17,8 @@ package mcp
 import (
 	"context"
 	"encoding/json"
+	"maps"
+	"strings"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/agent"
@@ -240,7 +242,14 @@ func TestV2GetVariableMetadataInputSchema(t *testing.T) {
 	}
 
 	// The fields are get_observations' scope fields, whose descriptions state the shared limits, so they must
-	// not drift apart.
+	// not drift apart. They differ only where metadata allows 10 variables with child_entity_type_dcid too:
+	// variable_dcids descriptions differ only in the phrase giving that cap, and get_observations'
+	// child_entity_type_dcid description adds its cap to metadata's.
+	const (
+		metadataVariableCaps = "Pass 1 to 10 per call, also with child_entity_type_dcid;"
+		obsVariableCaps      = "Pass 1 to 10 per call (1 to 2 with child_entity_type_dcid);"
+		obsChildVariableCap  = " Allows at most 2 variable_dcids per call."
+	)
 	obsTool := mcp.NewTool("get_observations", withToolInputSchema[V2GetObservationsInput]())
 	var obs map[string]any
 	if err := json.Unmarshal(obsTool.RawInputSchema, &obs); err != nil {
@@ -248,6 +257,16 @@ func TestV2GetVariableMetadataInputSchema(t *testing.T) {
 	}
 	obsProps := obs["properties"].(map[string]any)
 	for field, prop := range props {
+		switch field {
+		case "variable_dcids":
+			withObsCaps := maps.Clone(prop.(map[string]any))
+			withObsCaps["description"] = strings.Replace(withObsCaps["description"].(string), metadataVariableCaps, obsVariableCaps, 1)
+			prop = withObsCaps
+		case "child_entity_type_dcid":
+			withCap := maps.Clone(prop.(map[string]any))
+			withCap["description"] = withCap["description"].(string) + obsChildVariableCap
+			prop = withCap
+		}
 		if diff := cmp.Diff(obsProps[field], prop); diff != "" {
 			t.Errorf("get_variable_metadata field %q differs from get_observations (-get_observations +get_variable_metadata):\n%s", field, diff)
 		}

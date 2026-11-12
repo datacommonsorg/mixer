@@ -21,6 +21,7 @@ import (
 	"strings"
 	"sync"
 	"testing"
+	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	sdmxpb "github.com/datacommonsorg/mixer/internal/proto/sdmx"
@@ -173,6 +174,15 @@ func TestV2GetObservationsValidation(t *testing.T) {
 				ChildEntityTypeDcid: "County",
 			},
 			wantErr: errV2TooManyChildVariableDcids(3),
+		},
+		{
+			name: "more than 10 variable_dcids with child_entity_type_dcid gets the child cap",
+			req: &V2GetObservationsRequest{
+				VariableDcids:       manyDcids("Var", 11),
+				EntityDcids:         []string{"geoId/06"},
+				ChildEntityTypeDcid: "County",
+			},
+			wantErr: errV2TooManyChildVariableDcids(11),
 		},
 		{
 			name: "source_override keeps the child mode variable cap",
@@ -505,7 +515,7 @@ func TestBuildV2SdmxDataQuery(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			norm := normalizeV2GetObservationsRequest(tc.req)
-			filter, err := validateV2GetObservationsRequest(norm)
+			filter, err := validateV2GetObservationsRequest(norm, true /* capChildVariables */)
 			if err != nil {
 				t.Fatalf("validateV2GetObservationsRequest() unexpected error: %v", err)
 			}
@@ -1285,6 +1295,109 @@ func TestV2GetObservations(t *testing.T) {
 				if strings.Contains(prop, "typeOf") {
 					t.Errorf("unexpected typeOf V2Node call %q when SdmxData succeeded", prop)
 				}
+			}
+		})
+	}
+}
+
+// dailyObsSeries returns a series of n daily points from the EPA facet for a variable and entity, starting on
+// 2000-01-01, so tests can build responses of a given size.
+func dailyObsSeries(variable, entity string, n int) *sdmxpb.SdmxTimeSeries {
+	return dailyFacetObsSeries(variable, entity, "epa", "dc/base/EPA", n)
+}
+
+// dailyFacetObsSeries is dailyObsSeries for the facet with the given ID and provenance.
+func dailyFacetObsSeries(variable, entity, facetID, provenance string, n int) *sdmxpb.SdmxTimeSeries {
+	series := &sdmxpb.SdmxTimeSeries{
+		Dimensions: map[string]string{"variableMeasured": variable, "observationAbout": entity, "provenance": provenance},
+		Attributes: map[string]string{"facetId": facetID},
+	}
+	start := time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC)
+	for i := range n {
+		series.Points = append(series.Points, &sdmxpb.SdmxDataPoint{
+			TimePeriod:       start.AddDate(0, 0, i).Format(time.DateOnly),
+			ObservationValue: "1",
+		})
+	}
+	return series
+}
+
+// TestV2GetObservationsRowLimit checks that a response over v2MaxObservationRows rows returns an actionable
+// error instead of the rows, and that a response at the limit is returned.
+func TestV2GetObservationsRowLimit(t *testing.T) {
+	const (
+		ozone = "Max_Concentration_AirPollutant_Ozone"
+		co    = "Max_Concentration_AirPollutant_CO"
+		no2   = "Max_Concentration_AirPollutant_NO2"
+	)
+	childSeries := make([]*sdmxpb.SdmxTimeSeries, 0, v2MaxObservationRows+1)
+	for i := range v2MaxObservationRows + 1 {
+		childSeries = append(childSeries, dailyObsSeries("Count_Person", fmt.Sprintf("geoId/%05d", i), 1))
+	}
+	tests := []struct {
+		name     string
+		req      *V2GetObservationsRequest
+		series   []*sdmxpb.SdmxTimeSeries
+		wantErr  error
+		wantRows int
+	}{
+		{
+			name:   "date='all' over the limit returns the variable's row count and date span",
+			req:    &V2GetObservationsRequest{VariableDcids: []string{ozone}, EntityDcids: []string{"epa/1", "epa/2"}, Date: "all"},
+			series: []*sdmxpb.SdmxTimeSeries{dailyObsSeries(ozone, "epa/1", 5001), dailyObsSeries(ozone, "epa/2", 5001)},
+			wantErr: errV2TooManyObservationRows(10002,
+				[]string{ozone + ": 10002 rows, 2000-01-01 to 2013-09-09"}, false),
+		},
+		{
+			name:   "variables over the limit together are each listed, except those without rows",
+			req:    &V2GetObservationsRequest{VariableDcids: []string{ozone, co, no2}, EntityDcids: []string{"epa/1"}, Date: "all"},
+			series: []*sdmxpb.SdmxTimeSeries{dailyObsSeries(ozone, "epa/1", 5001), dailyObsSeries(no2, "epa/1", 5001)},
+			wantErr: errV2TooManyObservationRows(10002,
+				[]string{ozone + ": 5001 rows, 2000-01-01 to 2013-09-09", no2 + ": 5001 rows, 2000-01-01 to 2013-09-09"}, false),
+		},
+		{
+			name:     "a response at the limit is returned",
+			req:      &V2GetObservationsRequest{VariableDcids: []string{ozone}, EntityDcids: []string{"epa/1", "epa/2"}, Date: "all"},
+			series:   []*sdmxpb.SdmxTimeSeries{dailyObsSeries(ozone, "epa/1", 5000), dailyObsSeries(ozone, "epa/2", 5000)},
+			wantRows: v2MaxObservationRows,
+		},
+		{
+			// 12,000 points are fetched, but the facets tie on entities, points and latest date, so sortFacetStats
+			// picks "airnow" by facet ID and only its 6,000 rows are returned.
+			name: "only the primary facet's rows count toward the limit",
+			req:  &V2GetObservationsRequest{VariableDcids: []string{ozone}, EntityDcids: []string{"epa/1"}, Date: "all"},
+			series: []*sdmxpb.SdmxTimeSeries{
+				dailyObsSeries(ozone, "epa/1", 6000),
+				dailyFacetObsSeries(ozone, "epa/1", "airnow", "dc/base/AirNow", 6000),
+			},
+			wantRows: 6000,
+		},
+		{
+			name:   "child mode over the limit gives child entity advice",
+			req:    &V2GetObservationsRequest{VariableDcids: []string{"Count_Person"}, EntityDcids: []string{"country/USA"}, ChildEntityTypeDcid: "City"},
+			series: childSeries,
+			wantErr: errV2TooManyObservationRows(10001,
+				[]string{"Count_Person: 10001 rows, 2000-01-01 to 2000-01-01"}, true),
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			mock := &mockV2ObservationsServer{sdmxResult: &sdmxpb.SdmxDataResult{Series: tc.series}}
+			got, err := NewService(mock, NewCache(mock), nil).V2GetObservations(context.Background(), tc.req)
+			gotSt, wantSt := status.Convert(err), status.Convert(tc.wantErr)
+			if gotSt.Code() != wantSt.Code() || gotSt.Message() != wantSt.Message() {
+				t.Fatalf("V2GetObservations() error = (%v, %q), want (%v, %q)", gotSt.Code(), gotSt.Message(), wantSt.Code(), wantSt.Message())
+			}
+			if tc.wantErr != nil {
+				// The error is returned before the name and provenance lookups.
+				if len(mock.nodeProperties) != 0 {
+					t.Errorf("V2Node calls = %v, want none", mock.nodeProperties)
+				}
+				return
+			}
+			if rows := len(got.Observations[0].Data.Rows); rows != tc.wantRows {
+				t.Errorf("rows = %d, want %d", rows, tc.wantRows)
 			}
 		})
 	}

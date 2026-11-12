@@ -331,7 +331,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoEntityDataNote,
+				Note:               v2NoEntityDataNote + v2NoDataRetryHint,
 			},
 			wantNodeCalls: 1,
 		},
@@ -341,7 +341,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoEntityDataNote,
+				Note:               v2NoEntityDataNote + v2NoDataRetryHint,
 			},
 			wantNodeCalls: 1,
 		},
@@ -360,7 +360,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates:    &Table{Columns: v2TopicColumns},
 				VariableCandidates: &Table{Columns: v2VariableColumns},
-				Note:               v2NoQueryDataNote(v2GivenEntitiesScope),
+				Note:               v2NoQueryDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
 			},
 		},
 		{
@@ -368,7 +368,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			req:  &V2SearchIndicatorsRequest{TopicDcids: []string{"dc/topic/Health"}, EntityDcids: []string{"country/KEN"}},
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns},
-				Note:            v2NoRequestedTopicDataNote(v2GivenEntitiesScope),
+				Note:            v2NoRequestedTopicDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
 			},
 		},
 		{
@@ -376,7 +376,7 @@ func TestV2SearchIndicators(t *testing.T) {
 			req:  &V2SearchIndicatorsRequest{EntityDcids: []string{"country/FRA"}},
 			want: &V2SearchIndicatorsResponse{
 				TopicCandidates: &Table{Columns: v2TopicColumns},
-				Note:            v2NoTopLevelTopicDataNote(v2GivenEntitiesScope),
+				Note:            v2NoTopLevelTopicDataNote(v2GivenEntitiesScope) + v2NoDataRetryHint,
 			},
 		},
 		{
