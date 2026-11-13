@@ -68,6 +68,10 @@ deploy/git/mixer_hash.txt
 scripts/tmp*.sh
 
 
+# Test coverage output (GO_TEST_COVERAGE=1 ./run_test.sh)
+coverage.out
+coverage.xml
+
 # Memory profiling output
 http_memprof_out
 

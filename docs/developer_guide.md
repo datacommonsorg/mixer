@@ -240,6 +240,18 @@ go mod tidy
 ./run_test.sh
 ```
 
+## Test coverage
+
+CI measures test coverage on every pull request to `master`, prints it in the build log, and uploads it to [Codacy](https://app.codacy.com/gh/datacommonsorg/mixer/coverage) (report-only: coverage never fails the build).
+
+To measure coverage locally:
+
+```bash
+GO_TEST_COVERAGE=1 ./run_test.sh
+```
+
+This writes `coverage.out` and `coverage.xml` (without the generated code in `internal/proto`). Set `COVERAGE_BASE_BRANCH=master` to also print coverage of the lines you changed.
+
 ## Lint (Go)
 
 ```bash
