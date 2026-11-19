@@ -177,10 +177,18 @@ function apply_debug_mask() {
   fi
   org=$(yq eval '.project_id' "$ENV_DATA")
   variables=$(yq eval -o=json -I=0 '.debug_mask.variables' "$ENV_DATA")
+  if [[ -z "$variables" || "$variables" == "null" ]]; then
+    echo "No debug_mask variables in ${ENV_DATA}. Skipping debug mask."
+    return
+  fi
   echo "Setting debug mask on $org/$debug_mask_env: $variables"
+  token=$(gcloud auth application-default print-access-token 2>/dev/null || true)
+  if [[ -z "$token" ]]; then
+    token=$(gcloud auth print-access-token)
+  fi
   curl --fail-with-body -sS -X PATCH \
     "https://apigee.googleapis.com/v1/organizations/$org/environments/$debug_mask_env/debugmask?updateMask=variables" \
-    -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+    -H "Authorization: Bearer $token" \
     -H "Content-Type: application/json" \
     -d "{\"variables\": $variables}"
   echo
