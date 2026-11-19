@@ -72,6 +72,12 @@ steps:
     env:
       - 'SPANNER_EMULATOR_HOST=spanner-emulator:9010'
       - 'RUN_SPANNER_EMULATOR_TESTS=true'
+      # Also write coverage.xml and log overall and changed-line coverage
+      # (report only). See "Test coverage" in docs/developer_guide.md.
+      - 'GO_TEST_COVERAGE=1'
+      - 'COVERAGE_BASE_BRANCH=${_BASE_BRANCH}'
+      - 'COVERAGE_REMOTE=https://github.com/${REPO_FULL_NAME}'
+      - 'SHARED_COVERAGE_SCRIPTS_URL=${_SHARED_SCRIPTS_URL}'
     entrypoint: "bash"
     args:
       - -c
@@ -86,15 +92,37 @@ steps:
           fi
           sleep 1
         done
-        go test -v ./...
+        ./run_test.sh
     waitFor: ["build-proto", "start-emulator"]
+
+  # Uploads the coverage that the tests wrote to Codacy. Report-only: always
+  # succeeds, and skips when there's no token.
+  - id: upload_coverage
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk:593.0.0-slim
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        s=$(mktemp) && trap 'rm -f "$$s"' EXIT
+        curl -fsSL --retry 3 -o "$$s" "$_SHARED_SCRIPTS_URL/upload_coverage.sh" \
+          || { echo "Codacy upload skipped: script download failed"; exit 0; }
+        bash "$$s" coverage.xml || echo "Codacy upload failed (report-only)"
+    env:
+      - COMMIT_SHA=$COMMIT_SHA
+      - BRANCH_NAME=$BRANCH_NAME
+      - _BASE_BRANCH=$_BASE_BRANCH
+      - CODACY_DEFAULT_BRANCH=master
+      - CODACY_SECRET_NAME=codacy-project-token-mixer
+    waitFor: ["test"]
 
 substitutions:
   _FULL_ENV_VERSION: "mixer-only-2026-11-06"
   _SPANNER_EMULATOR_VERSION: "1.5.55"
+  _SHARED_SCRIPTS_URL: "https://raw.githubusercontent.com/datacommonsorg/.github/main/scripts"
 
 options:
   volumes:
     - name: go-modules
       path: /go
   machineType: "N1_HIGHCPU_32"
+  substitutionOption: "ALLOW_LOOSE"
