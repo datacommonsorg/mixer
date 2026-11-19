@@ -64,6 +64,12 @@ print("#### Overall line coverage: %.1f%%" % (100 * rate))
 EOF
 }
 
+# Installs diff-cover in a new venv at $1.
+function install_diff_cover {
+  python3 -m venv "$1" \
+    && "$1/bin/pip" install -q --disable-pip-version-check "$DIFF_COVER"
+}
+
 # Prints the coverage of the lines changed since COVERAGE_BASE_BRANCH, with the
 # shared report_changed_lines.sh and diff-cover in a temporary venv.
 function print_changed_lines_coverage {
@@ -76,8 +82,7 @@ function print_changed_lines_coverage {
   if ! curl -fsSL --retry 3 -o "$tmp/report_changed_lines.sh" \
     "$SHARED_COVERAGE_SCRIPTS_URL/report_changed_lines.sh"; then
     echo "Changed-line coverage not measured: script download failed"
-  elif ! python3 -m venv "$tmp/venv" \
-    || ! "$tmp/venv/bin/pip" install -q "$DIFF_COVER"; then
+  elif ! install_diff_cover "$tmp/venv"; then
     echo "Changed-line coverage not measured: diff-cover install failed"
   else
     PATH="$tmp/venv/bin:$PATH" bash "$tmp/report_changed_lines.sh" coverage.xml
