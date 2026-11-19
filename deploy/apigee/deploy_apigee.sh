@@ -166,6 +166,26 @@ function copy_file() {
   fi
 }
 
+# Sets the environment debug mask from the env config yaml so debug sessions
+# show masked values instead of credentials. Terraform does not manage the
+# debug mask, so it is set here with the Apigee API.
+function apply_debug_mask() {
+  debug_mask_env=$(yq eval '.debug_mask.environment // ""' "$ENV_DATA")
+  if [[ -z "$debug_mask_env" ]]; then
+    echo "No debug_mask in ${ENV_DATA}. Skipping debug mask."
+    return
+  fi
+  org=$(yq eval '.project_id' "$ENV_DATA")
+  variables=$(yq eval -o=json -I=0 '.debug_mask.variables' "$ENV_DATA")
+  echo "Setting debug mask on $org/$debug_mask_env: $variables"
+  curl --fail-with-body -sS -X PATCH \
+    "https://apigee.googleapis.com/v1/organizations/$org/environments/$debug_mask_env/debugmask?updateMask=variables" \
+    -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+    -H "Content-Type: application/json" \
+    -d "{\"variables\": $variables}"
+  echo
+}
+
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
   PLAN_FILE="$TMP_DIR/tfplan_$TIMESTAMP"
@@ -228,4 +248,5 @@ function terraform_plan_and_maybe_apply() {
 
 validate_terraform_backend
 prep_proxies
+apply_debug_mask
 terraform_plan_and_maybe_apply
