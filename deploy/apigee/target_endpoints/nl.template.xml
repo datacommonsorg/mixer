@@ -9,6 +9,7 @@
         <Name>copy-key-param-to-header</Name>
       </Step>
       <Step>
+        <Condition>!(proxy.pathsuffix MatchesPath "/version")</Condition>
         <Name>verify-api-key-in-header</Name>
       </Step>
     </Request>
