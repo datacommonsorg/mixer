@@ -50,4 +50,11 @@ COPY cmd/ cmd
 COPY esp/ esp
 RUN go build -o /go/bin/mixer cmd/main.go
 RUN go build -o /go/bin/tools/clearcache cmd/tools/clearcache.go
+
+# Run as non-root user (UID/GID 10001).
+RUN addgroup -g 10001 appuser && \
+    adduser -u 10001 -D -G appuser -H -h /tmp -s /sbin/nologin appuser && \
+    chmod -R go-w,a+rX /mixer /go/bin
+USER 10001:10001
+
 ENTRYPOINT ["/go/bin/mixer"]
