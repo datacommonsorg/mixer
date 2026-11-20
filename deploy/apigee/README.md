@@ -73,4 +73,5 @@ The project uses a **Pull-Edit-Push** workflow to manage sensitive configuration
 ## **Known issues**
 
 * **Analytics**: Cannot be enabled via Terraform. Enable manually at console.cloud.google.com/apigee/addons/analytics.  
+* **Debug mask**: Set by deploy_apigee.sh with the Apigee API from `debug_mask` in envs/$ENV_NAME.yaml, after the Terraform step. Could move to the `google_apigee_environment_debugmask` Terraform resource.  
 * **Sequential Runs**: Modifying multiple endpoint attachments often requires multiple runs of the deploy script to resolve dependencies.

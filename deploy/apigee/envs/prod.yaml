@@ -1,4 +1,21 @@
 project_id: datcom-apigee
+# Values that debug sessions show as *****. Set by deploy_apigee.sh.
+debug_mask:
+  environment: main
+  variables:
+    - request.header.authorization
+    - request.header.x-api-key
+    - request.header.cookie
+    - response.header.set-cookie
+    - request.queryparam.key
+    - request.queryparam.apikey
+    # Caller API key and app secret set by verify-api-key-in-header.
+    - client_id
+    - verifyapikey.verify-api-key-in-header.client_id
+    - verifyapikey.verify-api-key-in-header.client_secret
+    # Southbound Mixer key set by set-southbound-key.
+    - message.queryparam.key
+    - message.header.x-api-key
 proxies:
   - name: api
     policies:

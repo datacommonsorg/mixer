@@ -1,4 +1,5 @@
 project_id: datcom-apigee-dev
+# No debug_mask: the debug mask API rejects the INTERMEDIATE dev environment.
 proxies:
   - name: api
     policies:
