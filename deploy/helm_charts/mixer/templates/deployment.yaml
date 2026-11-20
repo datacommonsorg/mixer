@@ -61,6 +61,9 @@ spec:
         cloud.google.com/gke-nodepool: {{ $group.nodePool }}
       {{- end }}
       serviceAccountName: {{ $.Values.serviceAccount.name }}
+      {{- if and $.Values.securityContext $.Values.securityContext.enabled }}
+      {{- include "mixer.podSecurityContext" $ | nindent 6 }}
+      {{- end }}
       volumes:
         - name: schema-mapping
           configMap:
@@ -75,6 +78,15 @@ spec:
             name: service-config-configmap
         - name: dynamic-config
           emptyDir: {}
+        - name: init-tmp
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: mixer-tmp
+          emptyDir:
+            sizeLimit: 64Mi
+        - name: esp-tmp
+          emptyDir:
+            sizeLimit: 64Mi
         - name: static-bt-config-volume
           configMap:
             name: {{ include "mixer.fullname" $ }}-store-config
@@ -94,6 +106,11 @@ spec:
       initContainers:
         - name: update-bigtable-info
           image: gcr.io/datcom-ci/datacommons-script-runner:latest
+          # datacommons-script-runner stays root in its Dockerfile because Cloud Build
+          # steps also use it; run as Debian 'nobody' (65534) in GKE pods.
+          {{- if and $.Values.securityContext $.Values.securityContext.enabled }}
+          {{- include "mixer.containerSecurityContext" (dict "uid" 65534 "gid" 65534) | nindent 10 }}
+          {{- end }}
           command:
             - /bin/bash
             - -c
@@ -127,13 +144,23 @@ spec:
               {{- else }}
               echo "Skipping dynamic config fetch for {{ default "unknown" $.Values.mixer.hostProject }}."
               {{- end }}
+          env:
+            - name: HOME
+              value: /tmp
+            - name: CLOUDSDK_CONFIG
+              value: /tmp/gcloud
           volumeMounts:
             - name: dynamic-config
               mountPath: /dynamic-config
+            - name: init-tmp
+              mountPath: /tmp
       containers:
         - name: mixer
           image:  "{{ $.Values.mixer.image.repository }}{{- if $.Values.mixer.image.tag -}}:{{ $.Values.mixer.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.mixer.image.pullPolicy }}
+          {{- if and $.Values.securityContext $.Values.securityContext.enabled }}
+          {{- include "mixer.containerSecurityContext" (dict "uid" 10001 "gid" 10001) | nindent 10 }}
+          {{- end }}
           resources:
             limits:
               memory: {{ $group.resources.memoryLimit }}
@@ -228,13 +255,18 @@ spec:
               mountPath: /datacommons/svg
             - name: dynamic-config
               mountPath: /dynamic-config
+              readOnly: true
             - name: static-bt-config-volume
               mountPath: /static-config
               readOnly: true
             - name: feature-flags
               mountPath: /datacommons/flags
               readOnly: true
+            - name: mixer-tmp
+              mountPath: /tmp
           env:
+            - name: HOME
+              value: /tmp
             - name: HOST_PROJECT
               valueFrom:
                 configMapKeyRef:
@@ -373,6 +405,9 @@ spec:
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
+          {{- if and $.Values.securityContext $.Values.securityContext.enabled }}
+          {{- include "mixer.containerSecurityContext" (dict "uid" 65532 "gid" 65532) | nindent 10 }}
+          {{- end }}
           {{- $espResources := $group.espResources | default dict }}
           resources:
             limits:
@@ -388,6 +423,10 @@ spec:
           volumeMounts:
             - mountPath: /etc/espv2_config
               name: service-config-volume
+              readOnly: true
+            # ESPv2 startproxy writes the generated Envoy bootstrap JSON to /tmp.
+            - mountPath: /tmp
+              name: esp-tmp
           args:
             - --listener_port=8081
             - --backend=grpc://127.0.0.1:12345

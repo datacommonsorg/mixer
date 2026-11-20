@@ -87,3 +87,28 @@ Selector labels
 app.kubernetes.io/name: {{ include "mixer.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Pod-level securityContext fields.
+*/}}
+{{- define "mixer.podSecurityContext" -}}
+securityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+{{- end }}
+
+{{/*
+Container-level securityContext fields. Expects a dict with "uid" and "gid".
+*/}}
+{{- define "mixer.containerSecurityContext" -}}
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: {{ .uid }}
+  runAsGroup: {{ .gid }}
+  capabilities:
+    drop:
+      - ALL
+{{- end }}
