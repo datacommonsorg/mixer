@@ -11,6 +11,7 @@ debug_mask:
     - request.queryparam.apikey
     # Caller API key and app secret set by verify-api-key-in-header.
     - client_id
+    - apigee.client_id
     - verifyapikey.verify-api-key-in-header.client_id
     - verifyapikey.verify-api-key-in-header.client_secret
     # Southbound Mixer key set by set-southbound-key.
