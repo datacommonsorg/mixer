@@ -9,6 +9,10 @@ debug_mask:
     - response.header.set-cookie
     - request.queryparam.key
     - request.queryparam.apikey
+    # Caller API key and app secret set by verify-api-key-in-header.
+    - client_id
+    - verifyapikey.verify-api-key-in-header.client_id
+    - verifyapikey.verify-api-key-in-header.client_secret
     # Southbound Mixer key set by set-southbound-key.
     - message.queryparam.key
     - message.header.x-api-key

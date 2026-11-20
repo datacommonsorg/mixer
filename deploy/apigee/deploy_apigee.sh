@@ -167,8 +167,8 @@ function copy_file() {
 }
 
 # Sets the environment debug mask from the env config yaml so debug sessions
-# show masked values instead of credentials. Terraform does not manage the
-# debug mask, so it is set here with the Apigee API.
+# show masked values instead of credentials. The yaml list replaces the live
+# list. Runs after the Terraform step and reuses its $ACCESS_TOKEN.
 function apply_debug_mask() {
   debug_mask_env=$(yq eval '.debug_mask.environment // ""' "$ENV_DATA")
   if [[ -z "$debug_mask_env" ]]; then
@@ -181,14 +181,19 @@ function apply_debug_mask() {
     echo "No debug_mask variables in ${ENV_DATA}. Skipping debug mask."
     return
   fi
-  echo "Setting debug mask on $org/$debug_mask_env: $variables"
-  token=$(gcloud auth application-default print-access-token 2>/dev/null || true)
-  if [[ -z "$token" ]]; then
-    token=$(gcloud auth print-access-token)
-  fi
+  echo
+  echo "Debug mask for $org/$debug_mask_env: $variables"
+  while true; do
+    read -p "Apply the debug mask? (y/n) " yn
+    case $yn in
+    [Yy]*) break ;;
+    [Nn]*) return ;;
+    *) echo "Please answer yes or no." ;;
+    esac
+  done
   curl --fail-with-body -sS -X PATCH \
-    "https://apigee.googleapis.com/v1/organizations/$org/environments/$debug_mask_env/debugmask?updateMask=variables" \
-    -H "Authorization: Bearer $token" \
+    "https://apigee.googleapis.com/v1/organizations/$org/environments/$debug_mask_env/debugmask?updateMask=variables&replaceRepeatedFields=true" \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
     -H "Content-Type: application/json" \
     -d "{\"variables\": $variables}"
   echo
@@ -226,7 +231,7 @@ function terraform_plan_and_maybe_apply() {
 
   if [ $PLAN_EXIT_CODE -eq 0 ]; then
     cd "$WORKING_DIR"
-    exit 0
+    return
   elif [ $PLAN_EXIT_CODE -eq 1 ]; then
     echo "Terraform plan failed."
     cd "$WORKING_DIR"
@@ -256,5 +261,5 @@ function terraform_plan_and_maybe_apply() {
 
 validate_terraform_backend
 prep_proxies
-apply_debug_mask
 terraform_plan_and_maybe_apply
+apply_debug_mask
