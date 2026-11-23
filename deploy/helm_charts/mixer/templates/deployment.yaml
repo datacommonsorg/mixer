@@ -77,7 +77,8 @@ spec:
             defaultMode: 420
             name: service-config-configmap
         - name: dynamic-config
-          emptyDir: {}
+          emptyDir:
+            sizeLimit: 1Mi
         - name: init-tmp
           emptyDir:
             sizeLimit: 64Mi
@@ -141,6 +142,7 @@ spec:
               gcloud storage cp gs://datcom-control/latest_base_bigquery_version.txt $BQ_OUTPUT_FILE
               echo "Successfully fetched BigQuery version."
               cat $BQ_OUTPUT_FILE
+              chmod 0644 "$BT_OUTPUT_FILE" "$BQ_OUTPUT_FILE"
               {{- else }}
               echo "Skipping dynamic config fetch for {{ default "unknown" $.Values.mixer.hostProject }}."
               {{- end }}
@@ -251,8 +253,10 @@ spec:
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
+              readOnly: true
             - name: blocklist-svg
               mountPath: /datacommons/svg
+              readOnly: true
             - name: dynamic-config
               mountPath: /dynamic-config
               readOnly: true
