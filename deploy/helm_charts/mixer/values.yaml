@@ -32,6 +32,10 @@ namespace:
 customDC:
   enabled: false
 
+# Pod and container securityContext (non-root + read-only root filesystem).
+securityContext:
+  enabled: true
+
 # Mixer service config.
 mixer:
   hostProject:

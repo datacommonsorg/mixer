@@ -45,9 +45,14 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.61 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 
-# Build binary
+# Build binaries and configure non-root user (UID/GID 10001) in one layer.
 COPY cmd/ cmd
 COPY esp/ esp
-RUN go build -o /go/bin/mixer cmd/main.go
-RUN go build -o /go/bin/tools/clearcache cmd/tools/clearcache.go
+RUN go build -o /go/bin/mixer cmd/main.go && \
+    go build -o /go/bin/tools/clearcache cmd/tools/clearcache.go && \
+    addgroup -g 10001 appuser && \
+    adduser -u 10001 -D -G appuser -H -h /tmp -s /sbin/nologin appuser && \
+    find /mixer /go/bin ! -type l \( -perm /022 -o ! -perm -444 -o \( -type d ! -perm -111 \) -o \( -perm /111 ! -perm -111 \) \) -exec chmod go-w,a+rX {} +
+USER 10001:10001
+
 ENTRYPOINT ["/go/bin/mixer"]
