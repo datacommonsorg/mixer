@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-rewrite-error">
+  <DisplayName>oauth-rewrite-error</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{"error": "{oauth.error}", "error_description": "{oauth.error_description}"}</Payload>
+    <StatusCode>{oauth.status_code}</StatusCode>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>

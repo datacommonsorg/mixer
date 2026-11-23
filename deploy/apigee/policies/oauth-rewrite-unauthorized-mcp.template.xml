@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="oauth-rewrite-unauthorized-mcp">
+  <DisplayName>oauth-rewrite-unauthorized-mcp</DisplayName>
+  <Set>
+    <Headers>
+      <Header name="WWW-Authenticate">Bearer resource_metadata="https://REPLACE_WITH_OAUTH_PUBLIC_HOSTNAME/oauth/mcp/.well-known/oauth-protected-resource", scope="mcp"</Header>
+      <Header name="Cache-Control">no-store</Header>
+    </Headers>
+    <Payload contentType="application/json">{"error": "unauthorized", "error_description": "Missing, invalid, or expired OAuth access token."}</Payload>
+    <StatusCode>401</StatusCode>
+    <ReasonPhrase>Unauthorized</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" type="response"/>
+</AssignMessage>
