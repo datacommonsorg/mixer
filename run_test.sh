@@ -123,7 +123,15 @@ else
   echo "Running tests..."
   cover_flags=()
   if [ "${GO_TEST_COVERAGE:-}" = 1 ]; then
-    cover_flags=(-covermode=set -coverpkg=./... -coverprofile=coverage.out)
+    # Cap package-level parallelism under -coverpkg=./... so concurrent golden
+    # test servers (each loading an in-memory SVG cache) and linkers do not OOM
+    # 32-vCPU CI builders.
+    cover_flags=(
+      -p "${GO_TEST_PARALLELISM:-8}"
+      -covermode=set
+      -coverpkg=./...
+      -coverprofile=coverage.out
+    )
   fi
   go test -v "${cover_flags[@]}" ./...
   if [ "${GO_TEST_COVERAGE:-}" = 1 ]; then
