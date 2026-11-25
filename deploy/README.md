@@ -45,7 +45,7 @@ To deploy changes to the Mixer dev instance, follow these steps:
 
 ## Helm charts
 
-`deploy/helm_charts/mixer` contains the [Helm chart](https://helm.sh/docs/topics/charts/) used by both standalone Mixer (`*.api.datacommons.org`) and website's bundled Mixer (`*datacommons.org`). Each deployment layers a single per-environment YAML file directly over `deploy/helm_charts/mixer/values.yaml`:
+`deploy/helm_charts/mixer` contains the [Helm chart](https://helm.sh/docs/topics/charts/) used by both standalone Mixer (`api.datacommons.org`) and website's bundled Mixer (`datacommons.org`). Each deployment layers a single per-environment YAML file directly over `deploy/helm_charts/mixer/values.yaml`:
 
 | Deployment | Base Defaults | Per-Environment Overrides |
 | :--- | :--- | :--- |
