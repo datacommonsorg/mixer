@@ -28,8 +28,9 @@ To deploy changes to the Mixer dev instance, follow these steps:
     * And the gRPC descriptor gets uploaded here: https://pantheon.corp.google.com/storage/browser/datcom-mixer-grpc/mixer-grpc?project=datcom-ci
 
 3.  **(Optional) Update Deployment Config:**
-    *   **If you have modified deployment configurations** (e.g., `deploy/helm_charts/values.yaml`, `deploy/helm_charts/envs/*.yaml`), you **MUST** pull these changes into the `website` repository prior to deploying.
+    *   **If you have modified standalone Mixer or base chart configurations** (e.g., `deploy/helm_charts/mixer/values.yaml`, `deploy/helm_charts/envs/mixer_*.yaml`), you **MUST** pull these changes into the `website` repository prior to deploying.
     *   Update your local `website` repo's mixer submodule to point to your `mixer` commit.
+    *   Note: Per-environment overrides for website's bundled Mixer live directly in `datacommonsorg/website` at `deploy/helm_charts/envs/website_mixer_*.yaml` (not in `deploy/helm_charts/envs/mixer_*.yaml`).
 
 4.  **Deploy:**
     Once the image upload (Step 2) is complete, run the deployment script **from your fork of the `website` repository**.
@@ -44,10 +45,14 @@ To deploy changes to the Mixer dev instance, follow these steps:
 
 ## Helm charts
 
-Each folder in `helm_charts/` contains a single
-[helm chart](https://helm.sh/docs/topics/charts/).
+`deploy/helm_charts/mixer` contains the [Helm chart](https://helm.sh/docs/topics/charts/) used by both standalone Mixer (`*.api.datacommons.org`) and website's bundled Mixer (`*datacommons.org`). Each deployment layers a single per-environment YAML file directly over `deploy/helm_charts/mixer/values.yaml`:
 
-A single helm chart organizes a collection of templatized k8s yaml files.
+| Deployment | Base Defaults | Per-Environment Overrides |
+| :--- | :--- | :--- |
+| Standalone Mixer (`mixer-*`) | `deploy/helm_charts/mixer/values.yaml` | `deploy/helm_charts/envs/mixer_<env>.yaml` (this repo) |
+| Website's Bundled Mixer (`dc-mixer`) | `deploy/helm_charts/mixer/values.yaml` | `deploy/helm_charts/envs/website_mixer_<env>.yaml` (`datacommonsorg/website`) |
+
+Overrides in `deploy/helm_charts/envs/mixer_*.yaml` apply to standalone Mixer only and are not inherited by website's bundled Mixer. When changing a setting that should apply to both deployments, update both files.
 
 ## Installing a Helm chart
 

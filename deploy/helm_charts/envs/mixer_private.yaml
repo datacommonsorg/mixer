@@ -1,3 +1,7 @@
+# Overrides for standalone Mixer (datcom-mixer-statvar).
+# Base defaults come from deploy/helm_charts/mixer/values.yaml.
+# These overrides apply to this standalone Mixer deployment only.
+
 # Helm config
 mixer:
   hostProject: datcom-mixer-statvar

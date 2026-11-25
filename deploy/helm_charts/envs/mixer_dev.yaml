@@ -1,7 +1,14 @@
-# Helm config
+# Overrides for standalone Mixer (datcom-mixer-dev-316822).
+# Base defaults come from deploy/helm_charts/mixer/values.yaml.
+#
+# Website's bundled Mixer overrides are independent and configured at
+# deploy/helm_charts/envs/website_mixer_dev.yaml in datacommonsorg/website.
 
+# ----------------------------------------------------------------------------
+# Read by website's scripts/deploy_cloud_esp.sh via yq (not used by Helm templates).
 project: datcom-mixer-dev-316822
 cluster_prefix: mixer
+# ----------------------------------------------------------------------------
 
 mixer:
   hostProject: datcom-mixer-dev-316822
