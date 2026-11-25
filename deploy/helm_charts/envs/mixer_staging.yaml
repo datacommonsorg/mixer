@@ -1,5 +1,15 @@
+# Overrides for standalone Mixer (datcom-mixer-staging).
+# Base defaults come from deploy/helm_charts/mixer/values.yaml.
+#
+# Website's bundled Mixer overrides are independent and configured at
+# deploy/helm_charts/envs/website_mixer_staging.yaml in datacommonsorg/website.
+
+# ----------------------------------------------------------------------------
+# Read by website's scripts/deploy_cloud_esp.sh and tools/clearcache/run.sh
+# via yq (not used by Helm templates).
 project: datcom-mixer-staging
 cluster_prefix: mixer
+# ----------------------------------------------------------------------------
 
 # Helm config
 mixer:

@@ -12,9 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Default values for mixer.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# Default values for the mixer Helm chart.
+#
+# These base defaults are inherited by both:
+# - Standalone Mixer overrides in deploy/helm_charts/envs/mixer_*.yaml
+# - Website's bundled Mixer overrides in deploy/helm_charts/envs/website_mixer_*.yaml
+#   (in datacommonsorg/website)
+# Consider both deployments when changing default values here.
 
 # Name of the Chart.
 nameOverride: ""
